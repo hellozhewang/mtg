@@ -1,11 +1,11 @@
 # MTG Commander deckbuilding workspace
 
-A collection of Magic: The Gathering Commander decks for **Tabletop Simulator**,
-plus the tooling that builds and checks them — and a Discord bot that can do it
+A collection of Magic: The Gathering Commander decks, plus the tooling that
+builds and checks them — and a Discord bot that can do it
 from chat.
 
-**How it works.** Decks are plain `.txt` files, one card per line, importable
-straight into Tabletop Simulator. Around them sit a few Python scripts with no
+**How it works.** Decks are plain `.txt` files, one card per line, importable by
+any client that reads a decklist. Around them sit a few Python scripts with no
 dependencies beyond the standard library:
 
 | | |
@@ -59,9 +59,9 @@ This is why **web search is mandatory** when researching cards. Training data go
 stale, new sets land constantly, and the Game Changers and ban lists both change.
 Check what's current before recommending anything.
 
-### 3. Ignore physical card cost
+### 3. Ignore card prices
 
-**These decks are for Tabletop Simulator.** Price is irrelevant. Underground Sea,
+**Price is not a constraint. Build for power, not budget.** Underground Sea,
 Gaea's Cradle, Moat, Mishra's Workshop, The Tabernacle at Pendrell Vale, full
 original dual and fetch suites — all fair game. Never substitute a worse card for
 budget reasons, and never mention price as a downside.
@@ -141,7 +141,7 @@ same file. Rename the file if a deck's plan changes; the name is documentation.
 
 ## Deck file format
 
-One `.txt` per deck, importable directly into Tabletop Simulator.
+One `.txt` per deck, importable directly by a client that reads decklists.
 
 ```
 1 Zur the Enchanter        <- line 1 is ALWAYS the commander
@@ -154,24 +154,11 @@ One `.txt` per deck, importable directly into Tabletop Simulator.
 - `<count> <exact card name>`, one per line
 - Commander on line 1, **no blank line** after it
 - Alphabetised after the commander line
-- **No tokens** — TTS generates them automatically, and token names don't resolve
+- **No tokens** — they are generated automatically, and token names don't resolve
   against a card database
 - Double-faced cards use the **front face only** (`Agadeem's Awakening`, not
   `Agadeem's Awakening // Agadeem, the Undercrypt`)
 - Exactly **100 cards** counting the commander
-
-### Source of truth
-
-The original decks live as **Tabletop Simulator Saved Objects** (JSON), not text:
-
-```
-.../Tabletop Simulator/Saves/Saved Objects/<Bracket>/<Deck>.json
-```
-
-`ObjectStates[0]` is a `Bag` holding a `DeckCustom` named "Deck", an optional
-`DeckCustom` named "Tokens", and the commander as a loose `Card`. Card name and
-type live in `Nickname` as `"Name\nTypeLine NCMC"`; oracle text plus `[b]P/T[/b]`
-in `Description`. Those files are UTF-8 **without BOM**.
 
 ---
 
@@ -325,7 +312,7 @@ anything.
 **Required before calling any deck done.** Checks all five rules:
 
 1. Exactly **100 cards** including the commander
-2. Every name **resolves on Scryfall** (catches typos that would fail TTS import)
+2. Every name **resolves on Scryfall** (catches typos that would fail import)
 3. Every card is inside the commander's **colour identity**
 4. **Game Changer count** within the bracket cap (inferred from folder name)
 5. **Singleton** — no duplicate non-basic entries, no repeated lines

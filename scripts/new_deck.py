@@ -12,8 +12,8 @@ shell so you are not typing 99 lines from memory; the tuning is the actual work.
 Two things to know before trusting the output.
 
 **It defaults to the `expensive` cut, on purpose.** EDHREC's plain average is
-dragged down by what players can afford. These decks are for Tabletop Simulator
-where price is irrelevant (README rule 3), so the expensive cut is strictly closer
+dragged down by what players can afford, and price is not a constraint here
+(README rule 3), so the expensive cut is strictly closer
 to what this repo wants — it is where Chrome Mox, Lotus Petal, the fetch suite and
 the original duals live. Pass `--flavour average` if you want the popular build
 instead.

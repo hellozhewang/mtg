@@ -44,7 +44,7 @@ HEADERS = {"User-Agent": "MtgDeckTuner/1.0", "Accept": "application/json"}
 POLITE_DELAY = 0.12
 
 # Aggregate flavours. "expensive" matters for this repo: these decks are for
-# Tabletop Simulator, so price is irrelevant (README rule 3), and the default
+# power over budget (README rule 3), and the default
 # average is dragged down by what people can actually afford. The expensive cut
 # is where Chrome Mox, Lotus Petal, the fetch suite and Aura Shards live.
 FLAVOURS = ("average", "expensive", "budget", "cheap")

@@ -19,7 +19,7 @@ means renaming it in that project too, and AGENTS.md tells the agent to referenc
 These exist because listing and printing decks is pure file reading. Routing it
 through the model would cost tokens and latency for a fixed answer, and would risk
 a paraphrased or partially-hallucinated decklist. A decklist is something you paste
-into Tabletop Simulator, so it has to be byte-exact.
+into a client to import, so it has to be byte-exact.
 
 Output is fenced in ``` so Discord renders it monospaced and stops "smart" quote
 substitution from corrupting card names like `Urza's Saga`.
@@ -120,7 +120,7 @@ def cmd_decks(_arg: str) -> list[str]:
 
 
 def cmd_deck(arg: str) -> list[str]:
-    """Print one decklist verbatim, ready to paste into Tabletop Simulator."""
+    """Print one decklist verbatim, ready to paste in."""
     matches, err = _match(arg)
     if err:
         return [err]

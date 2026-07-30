@@ -19,7 +19,7 @@ Defaults that encode this repo's rules (see README.md):
     powerful / most played", so the top of the list is what you actually want.
   * Game Changers are flagged [GC] straight off each card's `game_changer`
     field -- no separate is:gamechanger query needed.
-  * Price is never shown or filtered on -- these decks are for Tabletop Simulator.
+  * Price is never shown or filtered on -- build for power, not budget.
 
 This module is business logic only: query construction and presentation. All card
 access goes through cardlib.CardQuery.

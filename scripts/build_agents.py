@@ -68,9 +68,9 @@ at a user — that is the internal wire format between the Discord app and this
 harness, and typing it is not how they invoke anything.
 
 Two reasons to hand off rather than print: that path is byte-exact and instant,
-whereas you retyping or catting the file risks a transcription error that fails a
-Tabletop Simulator import; and it already splits around Discord's 2000-character
-cap, which your own replies do not — nothing chunks a long reply from you.
+whereas you retyping or catting the file risks a transcription error that fails an
+import; and it already splits around Discord's 2000-character cap, which your own
+replies do not — nothing chunks a long reply from you.
 
 ## Link the deck on GitHub
 
@@ -87,7 +87,7 @@ So a deck saved to `Bracket3/Winota-Attacks.txt` is linked as
 
 Substitute the real bracket folder and filename — `Bracket3.5` works unchanged,
 and the `Commander-Theme.txt` convention means names never need URL-escaping.
-For a plain-text version that pastes straight into Tabletop Simulator, swap the
+For a plain-text version that pastes straight into a deck importer, swap the
 host: `https://raw.githubusercontent.com/hellozhewang/mtg/main/public/...`.
 
 To point someone at the whole collection rather than one deck, tell them to run
@@ -146,8 +146,8 @@ if a task genuinely needs it, say so and stop.
 
 `../README.md` is the authority on how decks are built here: the three core rules
 (follow the bracket unless told otherwise; use the most powerful cards in the
-bracket including recent printings; ignore card prices, this is for Tabletop
-Simulator), the assumed 4-player free-for-all context, the decklist format, and the
+bracket including recent printings; ignore card prices and build for power, not
+budget), the assumed 4-player free-for-all context, the decklist format, and the
 required validation checks. Read it once, before your first real deck task.
 
 ## Tools
@@ -263,8 +263,8 @@ around it. See "The sandbox boundary, measured" in `../README.md`.
 ## Other non-negotiables
 
 Never invent card names. If you are unsure a card exists or what it does, look it up
-with `find_cards.py` instead of guessing — a hallucinated name fails to import into
-Tabletop Simulator, which is the entire reason validation exists.
+with `find_cards.py` instead of guessing — a hallucinated name fails to import,
+which is the entire reason validation exists.
 
 Decklist format: `<count> <exact card name>`, one per line, commander on line 1 with
 no blank line after it, alphabetised below that, no tokens, double-faced cards by

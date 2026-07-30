@@ -9,7 +9,7 @@
 
 Checks (all must pass, see README.md):
   1. exactly 100 cards including the commander
-  2. every name resolves on Scryfall  -- catches typos that would fail TTS import
+  2. every name resolves on Scryfall  -- catches typos that would fail import
   3. every card is inside the commander's colour identity
   4. Game Changer count within the bracket cap
   5. singleton -- no duplicate non-basic entries, no repeated lines

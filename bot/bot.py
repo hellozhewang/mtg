@@ -565,7 +565,7 @@ def send(message: str, channel: str | int | None = DEFAULT_CHANNEL) -> str:
     log().info("PROMPT [%s] %s", chan, _oneline(message))
 
     # Deterministic commands short-circuit the model: a decklist has to be
-    # byte-exact for Tabletop Simulator, and listing files needs no inference.
+    # byte-exact to import cleanly, and listing files needs no inference.
     canned = commands.handle(message)
     if canned is not None:
         reply = "\n".join(canned)

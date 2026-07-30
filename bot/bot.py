@@ -616,10 +616,10 @@ def send(message: str, channel: str | int | None = DEFAULT_CHANNEL) -> str:
                 print("warning: could not parse session id from codex output; "
                       "session not pinned", file=sys.stderr)
                 log().warning("could not parse session id; next call will start over")
-        log().info("REPLY  [%s/model] %d chars %dms", chan, len(answer),
-                   int((time.time() - started) * 1000))
-        log().debug("REPLY-BODY %s", _oneline(answer))
-        return answer
+        # Same tail as the two resume paths above — a fresh session is where a
+        # deck is most likely to be CREATED, so skipping this skipped autopush
+        # exactly when it mattered most.
+        return _finish(chan, answer, combined, started)
     except Exception as exc:                       # log the failure, then re-raise
         log().error("FAILED [%s] after %dms: %s: %s", chan,
                     int((time.time() - started) * 1000),

@@ -1,6 +1,34 @@
-# Deck Building Guide
+# MTG Commander deckbuilding workspace
 
-How decks in this repo get built. Read this before adding or tuning a list.
+A collection of Magic: The Gathering Commander decks for **Tabletop Simulator**,
+plus the tooling that builds and checks them — and a Discord bot that can do it
+from chat.
+
+**How it works.** Decks are plain `.txt` files, one card per line, importable
+straight into Tabletop Simulator. Around them sit a few Python scripts with no
+dependencies beyond the standard library:
+
+| | |
+|---|---|
+| [`new_deck.py`](scripts/new_deck.py) | seed a decklist from EDHREC's aggregate for a commander |
+| [`find_cards.py`](scripts/find_cards.py) | search Scryfall, or look cards up by name |
+| [`find_inspiration.py`](scripts/find_inspiration.py) | what other pilots of a commander run that yours doesn't |
+| [`validate_deck.py`](scripts/validate_deck.py) | 100 cards, real names, colour identity, bracket legality, singleton |
+
+Every deck targets a **Commander bracket** and has to obey its restrictions, which
+is what most of this document is about. The bracket rules themselves live in
+[commander-brackets-and-rules.md](commander-brackets-and-rules.md).
+
+**Browse the decks:** [public/](public/) — grouped by bracket, or in Discord via
+`/deck-list` and `/deck-print`.
+
+```bash
+./scripts/new_deck.py "Queen Marchesa" -o public/Bracket3/Marchesa-Pillowfort.txt
+./scripts/validate_deck.py public/Bracket3/Marchesa-Pillowfort.txt
+```
+
+The rest of this file is the deckbuilding guide: the rules a deck must follow, the
+file format, what each tool does, and the order to use them in.
 
 ---
 
@@ -150,62 +178,6 @@ in `Description`. Those files are UTF-8 **without BOM**.
 ## Tools
 
 All in [scripts/](scripts/). No dependencies beyond Python 3 stdlib.
-
-### Architecture
-
-Card data access is split into three layers, so each has one job:
-
-```
-cardlib/api.py     Scryfall HTTP only.    Knows nothing about storage.
-cardlib/edhrec.py  EDHREC HTTP only.      A sibling of api.py, not a layer above.
-cardlib/db.py      SQLite storage only.   Knows nothing about the network.
-cardlib/query.py   Orchestration.         The only module aware of both.
-```
-
-Two upstreams, because they answer different questions. Scryfall answers *what is
-this card*; EDHREC answers *what do other people play with this commander*. Two
-orchestrators in `query.py` to match — `CardQuery` and `EdhrecQuery` — sharing one
-SQLite file but separate tables and TTLs.
-
-`edhrec.py` is split into `url_*` / `get` / `parse_*` methods precisely so the
-cache can be inserted above it without it knowing storage exists.
-
-Everything above imports `CardQuery` and nothing else:
-
-```python
-from cardlib import CardQuery
-q = CardQuery()
-cards, missing   = q.cards(["Sol Ring", "Rhystic Study"])   # cache-first
-hits, total, new = q.search("t:enchantment mv<=3 id<=wub")  # always live
-```
-
-`deckfile.py` is a fourth, separate concern: the `.txt` decklist format, with no
-knowledge of Scryfall or brackets. `find_cards.py`, `validate_deck.py` and
-`cache.py` are then pure business logic — query construction, rule checking and
-presentation.
-
-The split means every Scryfall quirk (required headers, the 75-identifier POST
-cap, 404-means-empty, pagination) is contained in `api.py`, and every schema
-detail (oracle_id keying, the alias table) is contained in `db.py`. Both layers
-are injectable, so business logic can be tested without a network or a database.
-
-**Caching policy lives in `query.py`, deliberately:**
-
-- **Card lookups are cache-first.** Card data is stable; a 30-day TTL is fine.
-- **Searches are always live.** Which cards *match* a query changes every set
-  release, and rule 2 says favour new printings — a cached search would silently
-  hide exactly the cards you are looking for. Results are still banked, since
-  they are complete card objects.
-- **EDHREC pages are cached for 24 hours.** The opposite call from searches, for
-  two reasons that don't apply to Scryfall: the payloads are large (a commander
-  page is ~90 KB, a full deck index ~3.5 MB) and the numbers inside move over
-  *days*, so a one-day TTL can't hide a trend that takes weeks to form. Without
-  it, one tuning session re-downloads megabytes per question from a free service
-  that asks for no API key.
-
-That difference in lifetime is why `PageStore` is a separate class from
-`CardStore` rather than a third method on it — one class would mean one TTL for
-card objects and fetched pages both.
 
 ### Finding cards — `scripts/find_cards.py`
 
@@ -417,69 +389,13 @@ Two schema details worth knowing:
   Undercrypt`. An `aliases` table maps query → card so front-face lookups keep
   working. Getting this wrong silently drops every MDFC from your stats.
 
-### Scryfall API notes
-
-- **Requests without both `User-Agent` and `Accept` headers get HTTP 400.**
-- `/cards/collection` accepts **at most 75 identifiers per POST** — chunk longer
-  lists or you get a 400.
-- Sleep ~100ms between calls to be polite.
-- Each card object carries a **`game_changer` boolean**, so bracket checking needs
-  no separate `is:gamechanger` query.
-- **Modal DFCs count as lands only on their back face.** `Malakir Rebirth` is
-  `Instant // Land` — playable as a tapped land, but not a mana source you can
-  plan around. The validator reports these separately as `(+N MDFC)`.
-
-### Line endings
-
-Files written on Windows carry **CRLF**. In Linux tooling that makes the last card
-parse as `"Sol Ring\r"`. Convert when working in WSL:
-
-```bash
-find . -name '*.txt' -exec sed -i 's/\r$//' {} +
-```
-
----
-
-### Second opinion — `scripts/ask_codex.py`
-
-Queries Codex for an independent review. Model and reasoning effort are resolved
-**dynamically** from `~/.codex/models_cache.json` on every run — nothing is
-hardcoded, so a new tier is picked up automatically. Runs read-only with web
-search on.
-
-```bash
-./scripts/ask_codex.py "Review Bracket3/Sythis.txt for Bracket 3 legality"
-./scripts/ask_codex.py --list                       # models + effort tiers
-./scripts/ask_codex.py "q" --model gpt-5.6-luna --effort low
-```
-
-Codex reads the same `.txt` files but **has no access to the conversation** — it
-won't know the bracket target, the 4-player context, or why any swap was made.
-Spell that out in the prompt, and point it at `commander-brackets-and-rules.md` for the
-ruleset.
-
-Codex CLI gotchas encoded in the script:
-
-- **`--search` is top-level only and is rejected by `codex exec`.** Web search on
-  exec requires `-c tools.web_search=true`.
-- **`-a/--ask-for-approval` is likewise top-level only**; exec is already
-  non-interactive.
-- **`--skip-git-repo-check` is required** — this folder is not a git repo and
-  codex refuses to run without it.
-- If the model list looks stale, **update the CLI**. A newer Codex writes effort
-  values an older build can't parse, so `models_cache.json` fails to load
-  entirely and silently falls back to an old list — that hid the whole 5.6 family
-  behind a phantom "5.5 is newest".
-
----
-
 ## Building a deck, step by step
 
 Each tool above does one job. This is the order they compose in, for a human or
 Claude session working in an editor or terminal — the Discord bot follows the same
 sequence minus the last step (see `AGENTS.md`, and why below).
 
-1. **Seed the shell.** `new_deck.py "<commander>" -o private/Bracket3/<file>.txt`
+1. **Seed the shell.** `new_deck.py "<commander>" -o public/Bracket3/<file>.txt`
    gets you a real, importable 100 cards in one command instead of typing 99 lines
    from memory. Expect it to land 4-11 Game Changers, not 3 — it has no bracket
    awareness, it just composes EDHREC's most-played build.
@@ -586,8 +502,7 @@ mtg/
 │   ├── Bracket3.5/            deliberately breaks Bracket 3, by request
 │   └── AGENTS.md              GENERATED, 0444 — edit AGENTS_MD in
 │                              scripts/build_agents.py, never this file
-├── private/                 a second deck collection — readable, never writable
-├── todo/                    known gaps, written up but not acted on
+├── private/                 a local second collection, not published
 ├── logs/<utc-date>.log      request + debug log, outside the writable tree
 ├── .cache/cards.db          generated; granted to the bot via --add-dir
 ├── commander-brackets-and-rules.md
@@ -597,8 +512,8 @@ mtg/
 Folder name states the bracket. File name is `Commander-Theme` — see
 [Deck file naming](#deck-file-naming).
 
-Decks Claude builds in an interactive session go to **`private/`**; `public/` is the
-Discord bot's tree. They started as byte-identical copies and will drift.
+`public/` is the published collection and the bot's writable tree. `private/` is a
+local-only second collection, kept out of the repo.
 
 **`scripts/` and `bot/` both sit deliberately outside `public/`.** The Discord-driven
 Codex session is rooted at `public/` with `-s workspace-write`, so it can edit decks
@@ -624,72 +539,3 @@ and both import it; `MTG_DECKS` overrides the deck root:
 MTG_DECKS=./private ./scripts/validate_deck.py    # validate the other collection
 ```
 
-## The sandbox boundary, measured
-
-Tested rather than assumed, with `codex exec -C public -s workspace-write`:
-
-| | Result |
-|---|---|
-| Write `public/` (decks) | **allowed** |
-| Write `../scripts/` | **blocked** — `operation not permitted` |
-| Write `../private/` | **blocked** |
-| Write `../.cache/` | allowed **only** via `--add-dir` |
-| **Read** anything, anywhere | **allowed — `-C` is not a read boundary** |
-| Network (Scryfall) | blocked by default; needs `sandbox_workspace_write.network_access=true` |
-| Run `claude` by bare name | **blocked** — `command not found` |
-| Run `/opt/homebrew/bin/claude` by absolute path | **allowed** — PATH is not a real exec boundary |
-| Run `python3`, `git`, `diff`, `grep`, `curl` | allowed — all standard system tools kept |
-
-Two of those are easy to get wrong. `-C` bounds *writes*, not *reads* — a session
-rooted at `public/` can `cat ../private/*` freely, so this is not a confidentiality
-boundary. And `workspace-write` blocks network egress, which surfaces as a **DNS
-error** from `find_cards.py` rather than a permission error; the config key above is
-what makes live card search work.
-
-**The two exec rows are a different mechanism from everything else in this table**,
-and are deliberately the *weak* form. The other rows are `codex exec`'s own sandbox
-flags; these are `bot.py` handing the subprocess an allowlist `PATH`
-(`/usr/bin:/bin:/usr/sbin:/sbin:/usr/libexec`) instead of inheriting its own. All
-standard system tools are kept on purpose — this agent legitimately runs `python3`,
-`diff` and `grep`. What's excluded is the homebrew prefix, where `claude` lives.
-
-Why bother, and why it's honestly labelled weak. `AGENTS.md` tells the session never
-to invoke another LLM/agent CLI, but that's advisory like anything a prompt says.
-`claude` is installed here, on the PATH a naive subprocess inherits whole, running as
-the same OS user — so it would start already authenticated, not fail on login. The
-PATH allowlist raises that from one obvious command to a deliberate act. It does not
-prevent it: measured live, `which claude` returns "not found" but
-`/opt/homebrew/bin/claude --version` still prints `2.1.177`.
-
-**The proper fix does not work here, and that's worth recording.** The sibling
-discord-bot project's `src/infra/execSandbox.ts` wraps codex in a macOS Seatbelt
-profile that denies `process-exec` at kernel level, which absolute paths cannot
-bypass. Porting it was attempted and measured:
-
-> codex applies its **own** Seatbelt profile per shell tool-call, and macOS denies a
-> nested `sandbox_apply`. Under an outer `sandbox-exec` wrapper codex starts and
-> answers normally, but every tool call fails with
-> `sandbox-exec: sandbox_apply: Operation not permitted`. Confirmed on **both**
-> `-s read-only` and `-s workspace-write`, so it isn't a workspace-write quirk.
-
-That is precisely why the approach suits that project and not this one: it locks down
-a *chat* backend that must never run a shell command, whereas running commands is
-this agent's whole job. Wrapping this one in Seatbelt breaks the tools instead of
-protecting them.
-
-Two things that did survive from the port. `bot.py` now execs codex's **native
-compiled binary** rather than the npm `#!/usr/bin/env node` shim — the shim would drag
-`node` in, and `node` lives in the same homebrew directory as `claude`, so supporting
-it meant either exposing that directory or maintaining a symlink workaround. Going
-native removes `node` from the picture entirely (verified: `which node` → not found,
-codex still works). And codex's own undocumented `execpolicy` `.rules` mechanism (see
-`--ignore-rules`) would not conflict, being *inside* codex rather than wrapped around
-it — that's the thing to revisit if this ever needs to be a real boundary, though its
-parser is unstable and undocumented today.
-
-If this needs to be genuinely airtight, the answer isn't a PATH tweak: run the
-sandboxed session as a **separate OS user**. Note that reads are unrestricted and
-`curl` is deliberately present, so a determined session could read a credentials file
-and POST it over raw HTTP without ever invoking `claude` — the PATH allowlist does
-nothing about that path. Written up, not done:
-[todo/service-user-isolation.md](todo/service-user-isolation.md).

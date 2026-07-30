@@ -10,6 +10,10 @@ logs/
 bot/.sessions/
 bot/.session.json
 
+# Empty SQLite file used only as a cross-process mutex for autopush. Holds no
+# data — it exists so BEGIN IMMEDIATE has something to lock.
+bot/.locks.db
+
 # Transient reply files bot.py writes for `codex -o` and cleans up after.
 bot/.reply-*.txt
 
@@ -20,6 +24,16 @@ bot/.sandbox-bin/
 # this copy is overwritten before every message. Committing it would invite
 # editing the wrong one.
 public/AGENTS.md
+
+# Internal notes, deliberately NOT published. Implementation detail, the measured
+# sandbox boundary, and known security gaps including machine-local absolute
+# paths — useful to whoever runs this, not to whoever reads the repo.
+INTERNALS.md
+todo/
+
+# The second deck collection. Kept local: `public/` is what the repo publishes,
+# and this one is the working copy that need not be anyone else's business.
+private/
 
 __pycache__/
 *.pyc

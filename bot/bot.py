@@ -19,12 +19,16 @@ thread keeps its own conversation context. Pass the channel id:
 
 Omitting it uses the "cli" channel, which is what the command line uses.
 
-Operating instructions: edit `<repo>/AGENTS.md`. `scripts/build_agents.py` deploys
-it to `public/AGENTS.md` as mode 0444 before every send, because codex auto-injects
-AGENTS.md only from its working directory — under an `# AGENTS.md instructions for <dir>` /
-`<INSTRUCTIONS>` header, on every invocation including resumes. So the rules cost
-no turn, apply to fresh sessions, and take effect mid-conversation when edited.
-The canonical copy lives outside `-C public` so the session cannot alter it.
+Operating instructions: edit the AGENTS_MD string in `scripts/build_agents.py`,
+which deploys it to `public/AGENTS.md` as mode 0444 before every send, because
+codex auto-injects AGENTS.md only from its working directory — under an
+`# AGENTS.md instructions for <dir>` / `<INSTRUCTIONS>` header, on every invocation
+including resumes. So the rules cost no turn, apply to fresh sessions, and take
+effect mid-conversation when edited. The source lives outside `-C public` so the
+session cannot alter it.
+
+After each model turn, decklist changes under `public/` are committed and pushed
+automatically — see `_autopush`, and note it is scoped to that directory only.
 
 Codex has no flag to name a session, so the UUID is scraped from the startup
 banner (`session id: <uuid>`) and persisted here. Note `codex exec resume` filters
@@ -46,6 +50,7 @@ import logging
 import os
 import re
 import shutil
+import sqlite3
 import subprocess
 import sys
 import time
@@ -268,6 +273,59 @@ def channels() -> list[tuple[str, dict]]:
 
 
 @contextlib.contextmanager
+def _flock(path: Path):
+    """Exclusive advisory lock on `path`, blocking until acquired.
+
+    Used where locks must be PER CHANNEL — one file per channel gives that for
+    free. Best-effort no-op on non-POSIX, where fcntl is unavailable; see
+    `_dblock` for the global lock, which has no such gap.
+    """
+    if fcntl is None:
+        yield
+        return
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w") as fh:
+        fcntl.flock(fh, fcntl.LOCK_EX)
+        try:
+            yield
+        finally:
+            fcntl.flock(fh, fcntl.LOCK_UN)
+
+
+# Global mutex, held only briefly. Lives in bot/ and NOT in .cache/cards.db,
+# deliberately: the cache is handed to the sandbox via --add-dir, so a lock kept
+# there would be one the sandboxed session could take, hold or corrupt.
+LOCK_DB = HERE / ".locks.db"
+LOCK_TIMEOUT = 120
+
+
+@contextlib.contextmanager
+def _dblock(timeout: int = LOCK_TIMEOUT):
+    """Cross-platform exclusive lock, via SQLite's own writer lock.
+
+    `BEGIN IMMEDIATE` takes the database-wide RESERVED lock, so a second caller
+    blocks until the first commits or rolls back — a real mutex, with two
+    properties `_flock` cannot match:
+
+      * it works on Windows, where `fcntl` is missing and `_flock` silently
+        degrades to no locking at all;
+      * it is crash-safe. SQLite's locks are OS file locks underneath, so a
+        killed process releases them when the kernel closes its handle. A
+        lock-row-in-a-table scheme would instead strand the lock forever.
+
+    Database-wide is the right granularity here precisely because the thing it
+    guards — the git index — is itself global.
+    """
+    con = sqlite3.connect(LOCK_DB, timeout=timeout)
+    try:
+        con.execute("BEGIN IMMEDIATE")
+        yield
+    finally:
+        con.rollback()          # release without writing; nothing to persist
+        con.close()
+
+
+@contextlib.contextmanager
 def _creation_lock(channel: str | int | None):
     """Serialise session creation for ONE channel.
 
@@ -280,16 +338,8 @@ def _creation_lock(channel: str | int | None):
     already-pinned session was tested safe (three parallel turns, all recalled),
     and two different channels have no reason to block each other.
     """
-    if fcntl is None:                              # non-POSIX: best effort
+    with _flock(SESSIONS / f"{_key(channel)}.lock"):
         yield
-        return
-    SESSIONS.mkdir(parents=True, exist_ok=True)
-    with (SESSIONS / f"{_key(channel)}.lock").open("w") as fh:
-        fcntl.flock(fh, fcntl.LOCK_EX)
-        try:
-            yield
-        finally:
-            fcntl.flock(fh, fcntl.LOCK_UN)
 
 
 def reset(channel: str | int | None = DEFAULT_CHANNEL) -> str | None:
@@ -384,6 +434,84 @@ def _base_args() -> list[str]:
 TOOL_LINE = re.compile(r"\[mtg-tool\]\s*(.+)")
 
 
+# Auto-commit deck changes after each turn. Set MTG_BOT_NO_PUSH=1 to disable.
+#
+# This runs in bot.py — the trusted PARENT, outside the sandbox — deliberately.
+# The alternative was a git repo inside public/ so the session could commit its
+# own work, and that was rejected: `.git/` is currently unwritable from the
+# sandbox, which is the only thing stopping the agent from publishing to the
+# internet under the owner's GitHub identity. (Measured: `git push` itself
+# already works from inside and authenticates via osxkeychain — it simply has
+# nothing to push, because `git add`/`commit` hit
+# ".git/index.lock: Operation not permitted". Handing it a writable .git would
+# join those two halves.) Doing it here gets the same outcome — deck links live
+# immediately instead of 404ing until a human pushes — while every commit stays
+# attributable to a bot turn rather than to the model's discretion.
+AUTOPUSH = not os.environ.get("MTG_BOT_NO_PUSH")
+
+
+def _git(*args: str, timeout: int = 120) -> subprocess.CompletedProcess:
+    return subprocess.run(["git", "-C", str(REPO), *args],
+                          capture_output=True, text=True, timeout=timeout)
+
+
+def _autopush(chan: str) -> None:
+    """Commit and push decklist changes. Never raises — a git failure must not
+    lose the user's reply, which has already been produced by this point."""
+    if not AUTOPUSH:
+        return
+    try:
+        # Serialise: two channels replying at once would otherwise race on the
+        # git index, and git errors rather than waiting.
+        with _dblock():
+            # Scope to the deck workspace only. A bare `git add -A` would sweep
+            # up whatever else is in flight in the repo — someone editing
+            # scripts/ in another window, say — into a commit attributed to a
+            # Discord turn.
+            rel = str(WORKSPACE.relative_to(REPO))
+            if not _git("status", "--porcelain", "--", rel).stdout.strip():
+                return                                  # no deck changed
+            add = _git("add", "--", rel)
+            if add.returncode:
+                log().warning("autopush: git add failed: %s", add.stderr.strip()[:200])
+                return
+            msg = f"Deck update via Discord ({chan})"
+            commit = _git("commit", "-m", msg)
+            if commit.returncode:
+                log().warning("autopush: git commit failed: %s",
+                              commit.stderr.strip()[:200])
+                return
+            log().info("autopush: committed deck changes (%s)", chan)
+
+            if not _git("remote").stdout.strip():
+                log().info("autopush: no remote configured; committed only")
+                return
+            push = _git("push", "origin", "HEAD", timeout=180)
+            if push.returncode:
+                # Diverged history, offline, revoked token — all recoverable by
+                # hand later. The commit is already safe locally.
+                log().warning("autopush: push failed (commit kept): %s",
+                              push.stderr.strip()[:200])
+            else:
+                log().info("autopush: pushed to origin")
+    except Exception as exc:                            # never break a reply
+        log().warning("autopush: skipped (%s: %s)", type(exc).__name__, exc)
+
+
+def _finish(chan: str, answer: str, combined: str, started: float) -> str:
+    """Everything that happens after ANY model turn, in one place.
+
+    Previously the tool-usage log lived only on the fresh-session path, so resume
+    turns — the overwhelmingly common case — recorded nothing.
+    """
+    _log_tool_usage(chan, combined)
+    _autopush(chan)
+    log().info("REPLY  [%s/model] %d chars %dms", chan, len(answer),
+               int((time.time() - started) * 1000))
+    log().debug("REPLY-BODY %s", _oneline(answer))
+    return answer
+
+
 def _log_tool_usage(chan: str, combined: str) -> None:
     """Record which repo tools the session actually ran this turn."""
     seen = TOOL_LINE.findall(combined or "")
@@ -457,11 +585,8 @@ def send(message: str, channel: str | int | None = DEFAULT_CHANNEL) -> str:
             log().info("[%s] resuming session %s (model=%s effort=%s)",
                        chan, sid, MODEL, EFFORT)
             args = _base_args() + ["-o", str(out_file), "resume", sid, message]
-            answer, _ = _run(args, out_file)
-            log().info("REPLY  [%s/model] %d chars %dms", chan, len(answer),
-                       int((time.time() - started) * 1000))
-            log().debug("REPLY-BODY %s", _oneline(answer))
-            return answer
+            answer, combined = _run(args, out_file)
+            return _finish(chan, answer, combined, started)
 
         # No session pinned yet. Take the lock, then re-check: a concurrent call
         # may have created and pinned one while we waited, in which case resume it
@@ -472,17 +597,13 @@ def send(message: str, channel: str | int | None = DEFAULT_CHANNEL) -> str:
                 log().info("[%s] another process pinned %s while waiting; resuming it",
                            chan, sid)
                 args = _base_args() + ["-o", str(out_file), "resume", sid, message]
-                answer, _ = _run(args, out_file)
-                log().info("REPLY  [%s/model] %d chars %dms", chan, len(answer),
-                           int((time.time() - started) * 1000))
-                log().debug("REPLY-BODY %s", _oneline(answer))
-                return answer
+                answer, combined = _run(args, out_file)
+                return _finish(chan, answer, combined, started)
 
             log().info("[%s] no pinned session; opening a new one (model=%s effort=%s)",
                        chan, MODEL, EFFORT)
             args = _base_args() + ["-o", str(out_file), message]
             answer, combined = _run(args, out_file)
-            _log_tool_usage(chan, combined)
 
             found = SESSION_RE.search(combined)
             if found:

@@ -1,0 +1,26 @@
+# Generated Scryfall/EDHREC cache. 12 MB, rebuilds itself on demand — the tools
+# refetch anything missing, so committing it only adds churn.
+.cache/
+
+# Request and tool-usage logs. Machine-local history, not source.
+logs/
+
+# Pinned Codex session UUIDs, one per Discord channel. Machine-local state, and
+# a session id from one machine is meaningless on another.
+bot/.sessions/
+bot/.session.json
+
+# Transient reply files bot.py writes for `codex -o` and cleans up after.
+bot/.reply-*.txt
+
+# Only created on the npm-shim fallback path; a symlink to a local node install.
+bot/.sandbox-bin/
+
+# GENERATED — the source of truth is AGENTS_MD in scripts/build_agents.py, and
+# this copy is overwritten before every message. Committing it would invite
+# editing the wrong one.
+public/AGENTS.md
+
+__pycache__/
+*.pyc
+.DS_Store

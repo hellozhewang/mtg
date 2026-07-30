@@ -1,0 +1,94 @@
+1 Zur the Enchanter
+1 Academy Rector
+1 All That Glitters
+1 Anguished Unmaking
+1 Arcane Signet
+1 Archon of Sun's Grace
+1 Arid Mesa
+1 Aura of Silence
+1 Beseech the Mirror
+1 Bloodstained Mire
+1 Cavern of Souls
+1 Clever Concealment
+1 Command Tower
+1 Copy Enchantment
+1 Cyclonic Rift
+1 Darksteel Mutation
+1 Daybreak Coronet
+1 Diplomatic Immunity
+1 Dovin's Veto
+1 Eiganjo, Seat of the Empire
+1 Esper Sentinel
+1 Estrid's Invocation
+1 Ethereal Armor
+1 Fellwar Stone
+1 Flawless Maneuver
+1 Flooded Strand
+1 Force of Negation
+1 Get Lost
+1 Ghostly Prison
+1 Godless Shrine
+1 Grand Abolisher
+1 Grasp of Fate
+1 Greater Auramancy
+1 Hall of Heliod's Generosity
+1 Hall of the Bandit Lord
+1 Hallowed Fountain
+1 Idyllic Tutor
+3 Island
+1 Karmic Justice
+1 Kor Spiritdancer
+1 Land Tax
+1 Lavaspur Boots
+1 Lightning Greaves
+1 Light-Paws, Emperor's Voice
+1 Luminarch Ascension
+1 Malakir Rebirth
+1 Mana Confluence
+1 Mana Drain
+1 Marsh Flats
+1 Misty Rainforest
+1 Moat
+1 Mother of Runes
+1 Mox Amber
+1 Mystic Remora
+1 Necropotence
+1 Open the Armory
+1 Otawara, Soaring City
+1 Oubliette
+1 Out of Time
+1 Phyrexian Arena
+4 Plains
+1 Polluted Delta
+1 Prismatic Vista
+1 Reliquary Tower
+1 Replenish
+1 Rhystic Study
+1 Roaming Throne
+1 Rogue's Passage
+1 Sage's Reverie
+1 Scalding Tarn
+1 Scroll Rack
+1 Scrubland
+1 Sensei's Divining Top
+1 Sol Ring
+1 Solitary Confinement
+1 Solitude
+1 Sram, Senior Edificer
+1 Steel of the Godhead
+2 Swamp
+1 Swan Song
+1 Swiftfoot Boots
+1 Swords to Plowshares
+1 Talisman of Dominance
+1 Talisman of Progress
+1 Timely Ward
+1 Toxic Deluge
+1 Tundra
+1 Underground Sea
+1 Unquestioned Authority
+1 Vanishing Verse
+1 Verdant Catacombs
+1 Watery Grave
+1 Winds of Rath
+1 Windswept Heath

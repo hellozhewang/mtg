@@ -1,0 +1,91 @@
+1 Sythis, Harvest's Hand
+1 Abundant Growth
+1 Ajani's Chosen
+1 All That Glitters
+1 Ancestral Mask
+1 Arcane Signet
+1 Archon of Sun's Grace
+1 Argothian Enchantress
+1 Aura of Silence
+1 Aura Shards
+1 Beast Within
+1 Blossoming Sands
+1 Boseiju, Who Endures
+1 Brushland
+1 Canopy Vista
+1 Command Tower
+1 Danitha Capashen, Paragon
+1 Daybreak Coronet
+1 Destiny Spinner
+1 Eidolon of Blossoms
+1 Eiganjo, Seat of the Empire
+1 Enchantress's Presence
+1 Ethereal Armor
+1 Exotic Orchard
+1 Farseek
+1 Femeref Enchantress
+1 Fertile Ground
+5 Forest
+1 Fortified Village
+1 Generous Gift
+1 Ghostly Prison
+1 Grasp of Fate
+1 Greater Auramancy
+1 Hall of Heliod's Generosity
+1 Heliod's Pilgrim
+1 Herald of the Pantheon
+1 Horizon Canopy
+1 Idyllic Tutor
+1 Karmic Justice
+1 Kenrith's Transformation
+1 Kor Spiritdancer
+1 Krosan Verge
+1 Land Tax
+1 Lightning Greaves
+1 Luminarch Ascension
+1 Mesa Enchantress
+1 Mirri's Guile
+1 Nature's Lore
+1 Nylea's Presence
+1 Open the Armory
+1 Overgrowth
+1 Path of Ancestry
+1 Path to Exile
+6 Plains
+1 Prismatic Vista
+1 Privileged Position
+1 Razorverge Thicket
+1 Reliquary Tower
+1 Replenish
+1 Rogue's Passage
+1 Sanctum Weaver
+1 Satyr Enchanter
+1 Scattered Groves
+1 Setessan Champion
+1 Setessan Training
+1 Sigarda's Aid
+1 Sigil of the Empty Throne
+1 Skullclamp
+1 Sol Ring
+1 Solitary Confinement
+1 Song of the Dryads
+1 Sphere of Safety
+1 Sram, Senior Edificer
+1 Starfield of Nyx
+1 Sterling Grove
+1 Sungrass Prairie
+1 Sunpetal Grove
+1 Swords to Plowshares
+1 Sylvan Library
+1 Talisman of Unity
+1 Tanglespan Lookout
+1 Temple Garden
+1 Three Dreams
+1 Three Visits
+1 Trouble in Pairs
+1 Utopia Sprawl
+1 Verduran Enchantress
+1 Weathered Wayfarer
+1 Wild Growth
+1 Windswept Heath
+1 Wooded Bastion

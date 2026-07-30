@@ -4,6 +4,7 @@
     db.py      -> SQLite storage only.    Knows nothing about the network.
     query.py   -> orchestration.          The only module aware of both.
     edhrec.py  -> EDHREC HTTP only.       A sibling of api.py, not a layer above.
+    images.py  -> image CDN HTTP only.    Another sibling; different host, bytes not JSON.
 
 For card data, business logic imports CardQuery and nothing else:
 
@@ -20,13 +21,24 @@ commander" — so it gets its own orchestrator rather than living behind CardQue
     name, cards = e.average_deck("Sythis, Harvest's Hand")   # starting point
     rows = e.commander_cards("Sythis, Harvest's Hand")       # inclusion + synergy
 
-Both orchestrators share one SQLite file but separate tables and TTLs: card
-objects live for 30 days, fetched pages for 24 hours. See PageStore for why.
+Card pictures are a third question again — "what does it look like" — and the
+site builder is the only caller, so they get their own orchestrator too:
+
+    from cardlib import ImageQuery
+    img = ImageQuery(db_path)
+    body = img.get(card["image_uris"]["thumb"])               # bytes, or None
+
+All three orchestrators share one SQLite file but separate tables and lifetimes:
+card objects live for 30 days, fetched pages for 24 hours, and image bytes never
+expire because their URLs are content-addressed. See PageStore and ImageStore.
 """
 from .api import ScryfallAPI, ScryfallError
-from .db import CardStore, PageStore
+from .db import CardStore, ImageStore, PageStore
 from .edhrec import EdhrecAPI, EdhrecError
-from .query import DEFAULT_DB, CardQuery, EdhrecQuery
+from .images import ImageAPI, ImageError, local_name
+from .query import DEFAULT_DB, CardQuery, EdhrecQuery, ImageQuery
 
-__all__ = ["CardQuery", "EdhrecQuery", "CardStore", "PageStore",
-           "ScryfallAPI", "ScryfallError", "EdhrecAPI", "EdhrecError", "DEFAULT_DB"]
+__all__ = ["CardQuery", "EdhrecQuery", "ImageQuery",
+           "CardStore", "PageStore", "ImageStore",
+           "ScryfallAPI", "ScryfallError", "EdhrecAPI", "EdhrecError",
+           "ImageAPI", "ImageError", "local_name", "DEFAULT_DB"]

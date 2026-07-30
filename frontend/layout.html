@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<meta name="description" content="{{DESCRIPTION}}">
+<link rel="stylesheet" href="{{UP}}style.css">
+<header class="topbar">
+  <a class="brand" href="{{UP}}index.html">Commander&nbsp;decks</a>
+  <select class="deckpicker" aria-label="Jump to a deck">
+    <option value="">Jump to a deck&hellip;</option>
+    {{PICKER}}
+  </select>
+  <a class="repo" href="{{REPO}}" target="_blank" rel="noopener">Repo&nbsp;&#8599;</a>
+</header>
+{{MAIN}}
+<script src="{{UP}}app.js"></script>
+</html>
+
+<template data-part="picker-group">
+    <optgroup label="{{BRACKET}}">{{OPTIONS}}</optgroup>
+</template>
+
+<template data-part="picker-option"><option value="{{HREF}}"{{SELECTED}}>{{LABEL}}</option></template>

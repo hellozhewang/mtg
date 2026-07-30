@@ -37,6 +37,11 @@ CREATE TABLE IF NOT EXISTS pages (
     body       TEXT NOT NULL,
     fetched_at REAL NOT NULL
 );
+CREATE TABLE IF NOT EXISTS images (
+    url        TEXT PRIMARY KEY,
+    body       BLOB NOT NULL,
+    fetched_at REAL NOT NULL
+);
 CREATE INDEX IF NOT EXISTS idx_cards_name ON cards(name);
 """
 
@@ -172,3 +177,57 @@ class PageStore:
     def clear(self) -> None:
         self.conn.executescript("DELETE FROM pages;")
         self.conn.commit()
+
+
+class ImageStore:
+    """Card image bytes, keyed by URL. The third concern in the same file.
+
+    **No TTL, deliberately.** Every other cache here expires because the thing it
+    holds drifts: oracle text gets errata'd, inclusion rates move. Image URLs do
+    not drift — they are content-addressed, ending in a printing UUID plus a
+    `?<version>` stamp that Scryfall changes when it replaces a scan. So a hit is
+    correct forever, and a replaced scan arrives as a *different* URL via the
+    refreshed card object rather than as stale bytes under the old one.
+
+    Bytes, not paths: the cache has to survive `docs/` being deleted and rebuilt,
+    which is the whole point of it. A rebuild from an empty output directory
+    should cost zero downloads, and it does.
+    """
+
+    def __init__(self, path: Path):
+        path.parent.mkdir(parents=True, exist_ok=True)
+        self.path = path
+        self.conn = sqlite3.connect(path)
+        self.conn.row_factory = sqlite3.Row
+        self.conn.executescript(SCHEMA)
+        self.hits = self.misses = 0
+
+    def get(self, url: str) -> bytes | None:
+        row = self.conn.execute(
+            "SELECT body FROM images WHERE url = ?", (url,)).fetchone()
+        if row is None:
+            self.misses += 1
+            return None
+        self.hits += 1
+        return bytes(row["body"])
+
+    def put(self, url: str, body: bytes) -> None:
+        self.conn.execute(
+            "INSERT OR REPLACE INTO images (url, body, fetched_at) VALUES (?,?,?)",
+            (url, sqlite3.Binary(body), time.time()))
+
+    def commit(self) -> None:
+        self.conn.commit()
+
+    def stats(self) -> dict:
+        q = lambda sql: self.conn.execute(sql).fetchone()[0]
+        return {
+            "images": q("SELECT COUNT(*) FROM images"),
+            "images_mb": round((q("SELECT COALESCE(SUM(LENGTH(body)),0) FROM images")
+                                or 0) / 1048576, 1),
+        }
+
+    def clear(self) -> None:
+        self.conn.executescript("DELETE FROM images;")
+        self.conn.commit()
+        self.conn.execute("VACUUM")          # image blobs are the bulk of the file

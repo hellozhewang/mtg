@@ -18,8 +18,9 @@ import os
 from pathlib import Path
 
 from .api import ScryfallAPI, ScryfallError          # noqa: F401  (re-exported)
-from .db import DEFAULT_TTL_DAYS, PAGE_TTL_HOURS, CardStore, PageStore
+from .db import DEFAULT_TTL_DAYS, PAGE_TTL_HOURS, CardStore, ImageStore, PageStore
 from .edhrec import EdhrecAPI, EdhrecError           # noqa: F401  (re-exported)
+from .images import ImageAPI, ImageError, local_name  # noqa: F401  (re-exported)
 
 # Fallback only. Business logic passes an explicit path from workspace.cache_db(),
 # because scripts/ lives outside the workspace and must not infer it from __file__.
@@ -146,3 +147,47 @@ class EdhrecQuery:
     def counters(self) -> str:
         return (f"pages {self.store.hits} hit / {self.store.misses} miss, "
                 f"{self.api.calls} EDHREC calls")
+
+
+class ImageQuery:
+    """Cache-aware card images. The third orchestrator, for the same reason as
+    the other two: business logic should never see an HTTP call.
+
+    Policy here is simpler than either sibling because the data is immutable —
+    see ImageStore. A hit is always used, and nothing ever expires, so the site
+    builder re-runs offline once each image has been seen once.
+    """
+
+    def __init__(self, db_path: Path = DEFAULT_DB,
+                 store: ImageStore | None = None,
+                 api: ImageAPI | None = None):
+        self.store = store or ImageStore(db_path)
+        self.api = api or ImageAPI()
+        self.failed: list[str] = []
+
+    def get(self, url: str) -> bytes | None:
+        """Bytes for one image, fetching only on a miss. None if unavailable.
+
+        A download failure is recorded and swallowed rather than raised: this
+        runs inside a bot turn, and one 503 from a CDN must not cost a reply.
+        """
+        if not url:
+            return None
+        body = self.store.get(url)
+        if body is not None:
+            return body
+        try:
+            body = self.api.get(url)
+        except ImageError:
+            self.failed.append(url)
+            return None
+        self.store.put(url, body)
+        return body
+
+    def commit(self) -> None:
+        self.store.commit()
+
+    def counters(self) -> str:
+        return (f"images {self.store.hits} hit / {self.store.misses} miss, "
+                f"{self.api.calls} downloads"
+                + (f", {len(self.failed)} failed" if self.failed else ""))

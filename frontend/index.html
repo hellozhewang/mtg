@@ -1,0 +1,26 @@
+<main>
+<h1>Commander decks</h1>
+<p class="lede">{{COUNT}} decks, each validated to 100 cards, single colour
+identity and the Game&nbsp;Changer cap for its bracket. Pick one to see the list,
+hover a card to preview it, click to enlarge.</p>
+{{SECTIONS}}
+</main>
+
+<template data-part="section">
+<section>
+  <h2>{{BRACKET}} <span class="count">{{N}}</span></h2>
+  <div class="tiles">
+{{TILES}}  </div>
+</section>
+</template>
+
+<template data-part="tile">
+    <a class="tile" href="{{HREF}}">
+      {{ART}}
+      <span class="tile-body">
+        <span class="tile-name">{{NAME}}</span>
+        <span class="tile-cmd">{{COMMANDER}}</span>
+        <span class="tile-meta">{{PIPS}}<span class="chip">{{TOTAL}} cards</span><span class="chip">{{LANDS}} lands</span><span class="chip">MV {{MV}}</span><span class="chip gc">GC {{GC}}</span></span>
+      </span>
+    </a>
+</template>

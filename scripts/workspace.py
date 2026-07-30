@@ -50,6 +50,22 @@ def cache_db() -> Path:
     return cache_dir() / "cards.db"
 
 
+def site_dir() -> Path:
+    """Generated GitHub Pages catalog. `docs/` is not arbitrary — Pages serves a
+    branch subfolder only from `/docs`, so this name is what lets the site deploy
+    with no workflow file and no second branch.
+
+    It sits at the repo root, OUTSIDE the deck workspace, so the sandboxed session
+    cannot write it. Publishing is bot.py's job, from outside the sandbox."""
+    return Path(os.environ.get("MTG_SITE") or _REPO / "docs").expanduser().resolve()
+
+
+def frontend_dir() -> Path:
+    """Hand-written markup, CSS and JS for the catalog. Source, not output —
+    `site_dir()` is what gets generated from it."""
+    return Path(os.environ.get("MTG_FRONTEND") or _REPO / "frontend").expanduser().resolve()
+
+
 def log_dir() -> Path:
     """Where tool invocations and bot requests are logged. Repo root, OUTSIDE the
     deck workspace and NOT granted via --add-dir, so a sandboxed session cannot

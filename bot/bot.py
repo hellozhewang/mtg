@@ -28,7 +28,9 @@ effect mid-conversation when edited. The source lives outside `-C public` so the
 session cannot alter it.
 
 After each model turn, decklist changes under `public/` are committed and pushed
-automatically — see `_autopush`, and note it is scoped to that directory only.
+automatically — see `_autopush`. Detection is scoped to that directory only; when
+something there did change, `docs/` (the published catalog) is regenerated from
+it and staged in the same commit, so the site never lags the decks.
 
 Codex has no flag to name a session, so the UUID is scraped from the startup
 banner (`session id: <uuid>`) and persisted here. Note `codex exec resume` filters
@@ -449,10 +451,45 @@ TOOL_LINE = re.compile(r"\[mtg-tool\]\s*(.+)")
 # attributable to a bot turn rather than to the model's discretion.
 AUTOPUSH = not os.environ.get("MTG_BOT_NO_PUSH")
 
+# Generous, because the first build after a NEW deck downloads a card image for
+# each card it introduced. Steady state is a fraction of a second — every image
+# is already in the SQLite cache — so this ceiling is for the cold case only.
+SITE_TIMEOUT = int(os.environ.get("MTG_SITE_TIMEOUT", "180"))
+
 
 def _git(*args: str, timeout: int = 120) -> subprocess.CompletedProcess:
     return subprocess.run(["git", "-C", str(REPO), *args],
                           capture_output=True, text=True, timeout=timeout)
+
+
+def _build_site() -> str | None:
+    """Regenerate the published catalog. Returns its path relative to REPO, for
+    staging, or None if the build failed.
+
+    A subprocess rather than an import, for two reasons: a timeout is available
+    (a new deck can need a few dozen card images, and a stalled CDN must not hold
+    a Discord reply open), and a crash in the generator cannot take down the bot.
+
+    Runs OUTSIDE the codex sandbox, in this process's own environment — which is
+    the point. `docs/` sits outside the workspace precisely so the model cannot
+    write the published site directly; only a completed bot turn can.
+    """
+    site = workspace.site_dir()
+    try:
+        r = subprocess.run([sys.executable, str(REPO / "scripts" / "build_site.py"),
+                            "--quiet"],
+                           capture_output=True, text=True, timeout=SITE_TIMEOUT)
+    except subprocess.SubprocessError as exc:
+        log().warning("site: build did not finish (%s)", type(exc).__name__)
+        return None
+    if r.returncode:
+        log().warning("site: build failed rc=%d: %s", r.returncode,
+                      (r.stderr or r.stdout).strip()[:300])
+        return None
+    if r.stderr.strip():                       # unavailable images, say
+        log().info("site: %s", r.stderr.strip()[:300])
+    log().info("site: rebuilt %s", site.name)
+    return str(site.relative_to(REPO))
 
 
 def _autopush(chan: str) -> None:
@@ -471,7 +508,8 @@ def _autopush(chan: str) -> None:
             rel = str(WORKSPACE.relative_to(REPO))
             if not _git("status", "--porcelain", "--", rel).stdout.strip():
                 return                                  # no deck changed
-            add = _git("add", "--", rel)
+            site = _build_site()
+            add = _git("add", "--", rel, *([site] if site else []))
             if add.returncode:
                 log().warning("autopush: git add failed: %s", add.stderr.strip()[:200])
                 return

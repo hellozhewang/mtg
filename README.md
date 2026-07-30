@@ -327,6 +327,40 @@ Real bugs this caught: `Sunbaked Canyon` is R/W and was illegal in a Jund deck;
 `Sling-Gang Lieutenant` is black and was illegal in mono-red Krenko. Both would
 have imported as 99-card decks with a silently missing card.
 
+### Publishing the catalog — `scripts/build_site.py`
+
+Renders every deck into a browsable site at
+**<https://hellozhewang.github.io/mtg/>** — a menu of decks, then per-deck pages
+with the list grouped by card type, a mana curve, hover-to-preview card images, a
+click-to-enlarge view (with a flip button for double-faced cards), a gallery mode
+and a copy-the-decklist button.
+
+```bash
+./scripts/build_site.py              # rebuild docs/ from public/
+./scripts/build_site.py --check      # exit 1 if docs/ is stale, write nothing
+./scripts/build_site.py --out /tmp/x # build elsewhere to look before publishing
+```
+
+Data comes from the decks; **markup, CSS and JS come from `frontend/`**, so a
+design change never means editing Python. The templating is two mechanisms and no
+dependency: `{{TOKEN}}` substitution, and `<template data-part="tile">` fragments
+that live next to the page repeating them.
+
+**The output is deliberately deterministic** — everything sorted, no clock read
+anywhere. `bot.py` regenerates the site after every model turn and commits what
+changed, so a build timestamp would mean an empty commit on every Discord message.
+
+Card images are split by size, because a public git repo keeps every version of a
+binary forever:
+
+| | source | size | why |
+|---|---|---|---|
+| gallery grid, catalog tiles | committed to `docs/img/` | 7.7 MB total | same-origin and instant; the page as it first appears makes no external request |
+| hover preview, click-to-enlarge | `cards.scryfall.io` | 0 MB | the same 818 cards at readable size would be **78 MB** in the repo |
+
+Either way the bytes are cached in SQLite, so deleting `docs/` and rebuilding from
+scratch downloads nothing.
+
 ### Caching — `scripts/cache.py`
 
 A SQLite cache sits under every tool. Lookups hit the DB first; only missing or
@@ -362,9 +396,16 @@ cached cards that cost ~14 Scryfall round trips to rebuild:
 |---|---|---|---|---|
 | `cards` + `aliases` | `CardStore` | `oracle_id` | 30 days | Scryfall |
 | `pages` | `PageStore` | URL | 24 hours | EDHREC |
+| `images` | `ImageStore` | URL | **never** | Scryfall image CDN |
 
 Each store owns only its own tables — `CardStore.clear()` deliberately does *not*
 touch `pages`, and each reports its own `stats()`, which `cache.py` merges.
+
+Images never expire because their URLs are **content-addressed**: a card image URL
+ends in the printing's UUID plus a `?<version>` stamp that Scryfall changes when it
+replaces a scan. A hit is therefore correct forever, and a replaced scan arrives as
+a *different* URL via the refreshed card object rather than as stale bytes under the
+old one.
 
 Lives at `.cache/cards.db` (repo root, outside the workspace). Pass `--no-cache` to `validate_deck.py` to bypass it.
 
@@ -468,18 +509,31 @@ mtg/
 │   ├── cardlib/               card and deck data access
 │   │   ├── api.py               Scryfall HTTP only
 │   │   ├── edhrec.py            EDHREC HTTP only (sibling of api.py)
-│   │   ├── db.py                SQLite storage only (CardStore + PageStore)
-│   │   └── query.py             orchestration (CardQuery + EdhrecQuery)
+│   │   ├── images.py            card image CDN, HTTP only (another sibling)
+│   │   ├── db.py                SQLite storage (CardStore + PageStore + ImageStore)
+│   │   └── query.py             orchestration (CardQuery + EdhrecQuery + ImageQuery)
 │   ├── workspace.py           owns all path policy (deck root, cache location)
 │   ├── deckfile.py            .txt decklist format, read and write
+│   ├── frontend.py            {{TOKEN}} + <template data-part> loader
 │   ├── find_cards.py          Scryfall search with bracket rules applied
 │   ├── new_deck.py            seed a decklist from EDHREC's aggregate
 │   ├── find_inspiration.py    what other pilots run that yours doesn't
 │   ├── validate_deck.py       the five required checks
+│   ├── build_site.py          renders frontend/ + public/ into docs/
 │   ├── cache.py               cache admin CLI
 │   ├── build_agents.py        HOLDS the agent's instructions (AGENTS_MD) and
 │   │                          deploys them to public/AGENTS.md as 0444
 │   └── ask_codex.py           one-off second opinion
+├── frontend/                the catalog's source — markup, CSS and JS
+│   ├── layout.html            page shell and the deck menu on every page
+│   ├── index.html             the catalog
+│   ├── deck.html              one deck
+│   ├── style.css              copied to docs/ verbatim
+│   └── app.js                 hover preview, lightbox, gallery, copy button
+├── docs/                    GENERATED SITE — published, do not hand-edit
+│   ├── index.html             rebuilt by build_site.py from the two above
+│   ├── <Bracket>/<Deck>.html
+│   └── img/*.webp             committed card thumbnails
 ├── bot/                     the harness — OUTSIDE the workspace it drives
 │   ├── bot.py                 persistent Codex session the Discord app calls
 │   ├── commands.py            deterministic !decks / !deck / !help

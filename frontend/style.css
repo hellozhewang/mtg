@@ -1,0 +1,147 @@
+/* Deck catalog. Copied verbatim to docs/style.css by scripts/build_site.py. */
+:root{
+  --bg:#12141a; --panel:#1a1d26; --panel2:#222634; --line:#2e3242;
+  --fg:#e7e9f0; --dim:#98a0b3; --accent:#c8a24a; --accent-bg:#2a2415;
+  --accent-line:#4a3f24; --warn:#e0765a;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  -webkit-text-size-adjust:100%}
+a{color:inherit}
+main{max-width:1120px;margin:0 auto;padding:26px 20px 90px}
+h1{font-size:1.75rem;margin:.1em 0 .35em;letter-spacing:-.015em}
+h2{font-size:.82rem;margin:2em 0 .7em;color:var(--dim);
+  text-transform:uppercase;letter-spacing:.09em;font-weight:600}
+h2 .count{color:var(--line)}
+
+/* ---- header ---- */
+.topbar{display:flex;gap:14px;align-items:center;padding:10px 20px;
+  background:var(--panel);border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:5}
+.brand{font-weight:700;text-decoration:none;white-space:nowrap}
+.repo{margin-left:auto;color:var(--dim);text-decoration:none;
+  white-space:nowrap;font-size:.9rem}
+.repo:hover{color:var(--fg)}
+.deckpicker{flex:1;min-width:0;max-width:430px;background:var(--panel2);
+  color:var(--fg);border:1px solid var(--line);border-radius:7px;
+  padding:6px 9px;font:inherit;font-size:.9rem}
+
+/* ---- colour pips ---- */
+.pip{display:inline-grid;place-items:center;width:19px;height:19px;
+  border-radius:50%;font:700 11px/1 ui-monospace,SFMono-Regular,monospace;
+  color:#1b1b1b;margin-right:3px;flex:none}
+.pip-w{background:#f6f2dc}.pip-u{background:#a8d0ea}.pip-b{background:#b3a9a4}
+.pip-r{background:#ec9a7f}.pip-g{background:#98c79a}.pip-c{background:#cfd2da}
+
+/* ---- index ---- */
+.lede{color:var(--dim);margin:0 0 1.6em;max-width:64ch}
+.tiles{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(272px,1fr))}
+.tile{display:flex;flex-direction:column;text-decoration:none;overflow:hidden;
+  background:var(--panel);border:1px solid var(--line);border-radius:11px;
+  transition:transform .12s ease,border-color .12s ease}
+.tile:hover{transform:translateY(-2px);border-color:var(--accent)}
+.art{width:100%;height:116px;object-fit:cover;display:block;background:var(--panel2)}
+.art-blank{height:116px;display:block;background:var(--panel2)}
+.tile-body{padding:11px 13px 13px}
+.tile-name{display:block;font-weight:650}
+.tile-cmd{display:block;color:var(--dim);font-size:.87rem;margin:1px 0 9px}
+.tile-meta{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.chip{background:var(--panel2);border:1px solid var(--line);border-radius:99px;
+  padding:2px 8px;font-size:.74rem;color:var(--dim);white-space:nowrap}
+.chip.gc{color:var(--accent);border-color:var(--accent-line)}
+
+/* ---- deck header ---- */
+.sub{display:flex;gap:9px;align-items:center;margin:0 0 18px;flex-wrap:wrap}
+.cmd{font-weight:600}
+.bracket{background:var(--panel2);border:1px solid var(--line);border-radius:99px;
+  padding:2px 9px;font-size:.77rem;color:var(--dim)}
+.stats{display:flex;gap:10px;flex-wrap:wrap;list-style:none;padding:0;margin:0 0 18px}
+.stats li{display:flex;flex-direction:column;gap:1px;background:var(--panel);
+  border:1px solid var(--line);border-radius:9px;padding:8px 15px;
+  font-size:.7rem;color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
+.stats b{font-size:1.2rem;color:var(--fg);text-transform:none;letter-spacing:0}
+.gclist{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 18px}
+.gcname{background:var(--accent-bg);border:1px solid var(--accent-line);
+  color:var(--accent);border-radius:99px;padding:3px 10px;font-size:.8rem}
+.warn{background:#2b1a18;border:1px solid #5a2f27;color:var(--warn);
+  border-radius:8px;padding:9px 12px;margin:0 0 18px}
+
+/* ---- mana curve ---- */
+.curve{display:flex;gap:6px;align-items:flex-end;height:92px;margin:0 0 24px;
+  max-width:520px}
+.bar{flex:1;max-width:58px;display:flex;flex-direction:column;
+  justify-content:flex-end;align-items:center;height:100%;position:relative}
+.fill{width:100%;border-radius:4px 4px 0 0;min-height:2px;
+  background:linear-gradient(180deg,#4a5270,#2b3145)}
+.bar .n{position:absolute;top:-3px;font-size:.7rem;color:var(--dim)}
+.bar .mv{font-size:.7rem;color:var(--dim);margin-top:5px}
+
+/* ---- toolbar ---- */
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}
+.btn{background:var(--panel);border:1px solid var(--line);color:var(--fg);
+  border-radius:8px;padding:7px 13px;font:inherit;font-size:.85rem;
+  cursor:pointer;text-decoration:none;display:inline-block}
+.btn:hover{border-color:var(--accent)}
+.btn[aria-pressed="true"]{background:var(--panel2);border-color:var(--accent);
+  color:var(--accent)}
+/* Off-screen rather than display:none — a hidden textarea cannot be selected,
+   and selection is the clipboard fallback on insecure origins (file://). */
+.rawlist{position:absolute;left:-9999px;top:0;width:1px;height:1px;opacity:0}
+
+/* ---- card list ---- */
+.cardlist{list-style:none;padding:0;margin:0;display:grid;gap:2px;
+  grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
+.card{display:flex;align-items:center;gap:9px;padding:5px 9px;border-radius:6px;
+  cursor:pointer;border:1px solid transparent}
+.card:hover,.card:focus{background:var(--panel);border-color:var(--line);outline:none}
+.card.cmdr{background:var(--accent-bg);border-color:var(--accent-line)}
+.qty{color:var(--dim);font:12px/1 ui-monospace,SFMono-Regular,monospace;
+  min-width:1.5em;text-align:right;flex:none}
+.cname{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cost{color:var(--dim);font:12px/1 ui-monospace,SFMono-Regular,monospace;
+  white-space:nowrap;flex:none}
+.gcflag{background:var(--accent-bg);border:1px solid var(--accent-line);
+  color:var(--accent);border-radius:4px;padding:1px 5px;flex:none;
+  font:600 10px/1.5 ui-monospace,SFMono-Regular,monospace}
+
+/* ---- gallery view ---- */
+.cards[data-view="gallery"] .cardlist{gap:10px;
+  grid-template-columns:repeat(auto-fill,minmax(146px,1fr))}
+.cards[data-view="gallery"] .card{flex-direction:column;padding:0;
+  background:none;border:none;position:relative}
+.cards[data-view="gallery"] .cost,
+.cards[data-view="gallery"] .gcflag,
+.cards[data-view="gallery"] .cname{position:absolute;left:-9999px}
+.cards[data-view="gallery"] .qty{position:absolute;top:5px;right:6px;z-index:1;
+  background:#000c;border-radius:4px;padding:2px 5px;color:var(--fg)}
+.cards[data-view="gallery"] .card img{width:100%;display:block;
+  border-radius:4.7%/3.4%;background:var(--panel2);aspect-ratio:146/204}
+.cards[data-view="gallery"] .card:hover img,
+.cards[data-view="gallery"] .card:focus img{outline:2px solid var(--accent)}
+.cards[data-view="gallery"] .card.cmdr img{outline:2px solid var(--accent-line)}
+
+/* ---- hover preview ---- */
+#preview{position:fixed;z-index:50;pointer-events:none;width:244px;
+  border-radius:4.7%/3.4%;box-shadow:0 12px 34px #000a;display:none}
+#preview.on{display:block}
+
+/* ---- lightbox ---- */
+#lightbox{position:fixed;inset:0;z-index:60;background:#000d;display:none;
+  place-items:center;padding:24px}
+#lightbox.on{display:grid}
+#lightbox .box{display:grid;justify-items:center;gap:14px}
+#lightbox img{max-width:min(430px,86vw);max-height:78vh;border-radius:4.7%/3.4%;
+  box-shadow:0 18px 50px #000}
+#lightbox .flip{display:none}
+#lightbox.two .flip{display:inline-block}
+
+/* A pointer that cannot hover has no use for a follow-the-cursor preview, and
+   showing one would mean it appears on tap and never goes away. */
+@media (hover:none){#preview{display:none!important}}
+@media (max-width:560px){
+  .topbar{flex-wrap:wrap}
+  .deckpicker{order:3;flex-basis:100%;max-width:none}
+  .cardlist{grid-template-columns:1fr}
+  .curve{max-width:none}
+}

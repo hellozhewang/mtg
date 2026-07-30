@@ -1,0 +1,156 @@
+/* Deck catalog. Copied verbatim to docs/app.js by scripts/build_site.py.
+ *
+ * Each card row carries up to three image sources, and which one is used is the
+ * whole hosting policy in one place:
+ *   data-thumb  a local file in docs/img/ — gallery grid. Committed, so it is
+ *               same-origin and instant, and small enough not to bloat the repo.
+ *   data-img    cards.scryfall.io at readable size — hover preview and zoom.
+ *   data-back   the same, for the back face of a double-faced card.
+ *
+ * No build step and no framework: this file ships exactly as written.
+ */
+(function () {
+  'use strict';
+
+  // The deck menu is on every page, not just the index, because a deck page is
+  // the thing people share and landing on one should not be a dead end.
+  var picker = document.querySelector('.deckpicker');
+  if (picker) {
+    picker.addEventListener('change', function () {
+      if (picker.value) location.href = picker.value;
+    });
+  }
+
+  var cards = document.querySelector('.cards');
+  if (!cards) return;                       // index page: nothing below applies
+
+  /* ---- view toggle ---------------------------------------------------- */
+  // Gallery images are injected on first switch rather than at build time, so
+  // the list view — the common case — downloads no images at all.
+  var toggles = document.querySelectorAll('.btn[data-view]');
+  Array.prototype.forEach.call(toggles, function (btn) {
+    btn.addEventListener('click', function () {
+      cards.dataset.view = btn.dataset.view;
+      Array.prototype.forEach.call(toggles, function (b) {
+        b.setAttribute('aria-pressed', String(b === btn));
+      });
+      if (btn.dataset.view === 'gallery') fillGallery();
+    });
+  });
+
+  function fillGallery() {
+    var list = document.querySelectorAll('.card[data-thumb]');
+    Array.prototype.forEach.call(list, function (li) {
+      if (li.querySelector('img')) return;
+      var img = new Image();
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.alt = li.dataset.name || '';
+      img.src = li.dataset.thumb;
+      li.appendChild(img);
+    });
+  }
+
+  /* ---- copy decklist -------------------------------------------------- */
+  var copyBtn = document.querySelector('.btn[data-copy]');
+  var raw = document.querySelector('.rawlist');
+  if (copyBtn && raw) {
+    copyBtn.addEventListener('click', function () {
+      function done() {
+        var was = copyBtn.textContent;
+        copyBtn.textContent = 'Copied';
+        setTimeout(function () { copyBtn.textContent = was; }, 1400);
+      }
+      // execCommand is the fallback, not the preference: navigator.clipboard is
+      // undefined on insecure origins, which includes opening docs/ over file://.
+      function selectAndCopy() {
+        raw.removeAttribute('aria-hidden');
+        raw.select();
+        try { document.execCommand('copy'); done(); } catch (e) { /* copy by hand */ }
+        raw.setAttribute('aria-hidden', 'true');
+      }
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(raw.value).then(done, selectAndCopy);
+      } else {
+        selectAndCopy();
+      }
+    });
+  }
+
+  /* ---- hover preview --------------------------------------------------- */
+  var preview = document.createElement('img');
+  preview.id = 'preview';
+  preview.alt = '';
+  document.body.appendChild(preview);
+
+  var GAP = 18;
+  function place(ev) {
+    var w = preview.offsetWidth || 244;
+    var h = preview.offsetHeight || 340;
+    var x = ev.clientX + GAP;
+    if (x + w > window.innerWidth - 8) x = ev.clientX - w - GAP;   // flip side
+    var y = Math.min(Math.max(8, ev.clientY - h / 2), window.innerHeight - h - 8);
+    preview.style.left = x + 'px';
+    preview.style.top = Math.max(8, y) + 'px';
+  }
+
+  cards.addEventListener('mouseover', function (ev) {
+    if (cards.dataset.view === 'gallery') return;      // the image is already there
+    var li = ev.target.closest('.card[data-img]');
+    if (!li) return;
+    if (preview.getAttribute('src') !== li.dataset.img) preview.src = li.dataset.img;
+    preview.classList.add('on');
+    place(ev);
+  });
+  cards.addEventListener('mousemove', function (ev) {
+    if (preview.classList.contains('on')) place(ev);
+  });
+  cards.addEventListener('mouseout', function (ev) {
+    var to = ev.relatedTarget;
+    if (!to || !to.closest || !to.closest('.card[data-img]')) {
+      preview.classList.remove('on');
+    }
+  });
+
+  /* ---- lightbox -------------------------------------------------------- */
+  var box = document.createElement('div');
+  box.id = 'lightbox';
+  box.innerHTML =
+    '<div class="box"><img alt=""><button class="btn flip">Flip &#8635;</button></div>';
+  document.body.appendChild(box);
+  var big = box.querySelector('img');
+  var flip = box.querySelector('.flip');
+  var sides = [];
+  var side = 0;
+
+  function open(li) {
+    sides = [li.dataset.img];
+    if (li.dataset.back) sides.push(li.dataset.back);
+    side = 0;
+    big.src = sides[0];
+    big.alt = li.dataset.name || '';
+    box.classList.toggle('two', sides.length > 1);
+    box.classList.add('on');
+    preview.classList.remove('on');
+  }
+  function close() { box.classList.remove('on'); }
+
+  cards.addEventListener('click', function (ev) {
+    var li = ev.target.closest('.card[data-img]');
+    if (li) open(li);
+  });
+  cards.addEventListener('keydown', function (ev) {
+    if (ev.key !== 'Enter' && ev.key !== ' ') return;
+    var li = ev.target.closest('.card[data-img]');
+    if (li) { ev.preventDefault(); open(li); }
+  });
+  flip.addEventListener('click', function (ev) {
+    ev.stopPropagation();                        // do not also close the box
+    side = (side + 1) % sides.length;
+    big.src = sides[side];
+  });
+  box.addEventListener('click', close);
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Escape') close();
+  });
+})();

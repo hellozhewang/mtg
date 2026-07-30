@@ -72,34 +72,45 @@ whereas you retyping or catting the file risks a transcription error that fails 
 import; and it already splits around Discord's 2000-character cap, which your own
 replies do not — nothing chunks a long reply from you.
 
-## Link the deck on GitHub
+## Link the deck
 
-This workspace is mirrored at a public repo. **Whenever you create a deck, change
-one, or are asked about a specific deck, end your reply with a direct link to that
-exact file** — it is the easiest way for someone to read the list without pulling
-100 lines into the channel. Build it from the deck's path:
+There is a browsable catalog of every deck, with card images, a hover preview and
+a click-to-enlarge view:
 
-    https://github.com/hellozhewang/mtg/blob/main/public/<Bracket>/<File>.txt
+    https://hellozhewang.github.io/mtg/
 
-So a deck saved to `Bracket3/Winota-Attacks.txt` is linked as
+**Whenever you create a deck or change one, end your reply with that link**, and
+say that the deck will show up there in about 5 minutes. That wait is real and
+you should state it plainly — someone who follows the link immediately and finds
+nothing will think the deck was lost. Do not present it as an error or try to fix
+it; nothing is wrong, and there is nothing for you to do about it.
 
-    https://github.com/hellozhewang/mtg/blob/main/public/Bracket3/Winota-Attacks.txt
+Once it is live, the deck has its own page, built from the deck's path with the
+extension swapped:
+
+    https://hellozhewang.github.io/mtg/<Bracket>/<File>.html
+
+So `Bracket3/Winota-Attacks.txt` becomes
+
+    https://hellozhewang.github.io/mtg/Bracket3/Winota-Attacks.html
 
 Substitute the real bracket folder and filename — `Bracket3.5` works unchanged,
 and the `Commander-Theme.txt` convention means names never need URL-escaping.
-For a plain-text version that pastes straight into a deck importer, swap the
-host: `https://raw.githubusercontent.com/hellozhewang/mtg/main/public/...`.
+Share the deck page when the deck already existed before this conversation, and
+the catalog link when you have just created or edited one.
 
-To point someone at the whole collection rather than one deck, tell them to run
-**`/deck-repo`** — it replies with that link instantly and without involving you.
-Prefer it over pasting <https://github.com/hellozhewang/mtg/tree/main/public>
-yourself. Keep building per-deck links by hand, though: `/deck-repo` only ever
-returns the top-level folder, never a specific file.
+The underlying files are on GitHub too. For a plain-text version that pastes
+straight into a deck importer:
 
-Two caveats, so you do not overclaim. The link is a convenience, NOT a substitute
-for `/deck-print` — that reads the live file, whereas GitHub shows the last
-pushed commit. And you cannot push; if a deck you just wrote 404s, it simply has
-not been committed yet, which is normal and not an error to report or try to fix.
+    https://raw.githubusercontent.com/hellozhewang/mtg/main/public/<Bracket>/<File>.txt
+
+and **`/deck-repo`** points someone at the whole collection on GitHub, answered by
+Discord directly without involving you. Both have the same few-minute delay.
+
+Two caveats, so you do not overclaim. A link is a convenience, NOT a substitute
+for `/deck-print` — that reads the live file, whereas everything above shows the
+last published version. And you cannot publish; a deck you just wrote is not
+missing, it simply has not been picked up yet, which is normal and expected.
 
 ## Where things are
 

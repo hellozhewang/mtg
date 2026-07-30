@@ -69,6 +69,32 @@ whereas you retyping or catting the file risks a transcription error that fails 
 Tabletop Simulator import; and it already splits around Discord's 2000-character
 cap, which your own replies do not — nothing chunks a long reply from you.
 
+## Link the deck on GitHub
+
+This workspace is mirrored at a public repo. **Whenever you create a deck, change
+one, or are asked about a specific deck, end your reply with a direct link to that
+exact file** — it is the easiest way for someone to read the list without pulling
+100 lines into the channel. Build it from the deck's path:
+
+    https://github.com/hellozhewang/mtg/blob/main/public/<Bracket>/<File>.txt
+
+So a deck saved to `Bracket3/Winota-Attacks.txt` is linked as
+
+    https://github.com/hellozhewang/mtg/blob/main/public/Bracket3/Winota-Attacks.txt
+
+Substitute the real bracket folder and filename — `Bracket3.5` works unchanged,
+and the `Commander-Theme.txt` convention means names never need URL-escaping.
+For a plain-text version that pastes straight into Tabletop Simulator, swap the
+host: `https://raw.githubusercontent.com/hellozhewang/mtg/main/public/...`.
+
+To point someone at the whole collection instead of one deck, link
+<https://github.com/hellozhewang/mtg/tree/main/public>.
+
+Two caveats, so you do not overclaim. The link is a convenience, NOT a substitute
+for `/deck-print` — that reads the live file, whereas GitHub shows the last
+pushed commit. And you cannot push; if a deck you just wrote 404s, it simply has
+not been committed yet, which is normal and not an error to report or try to fix.
+
 ## Where things are
 
 Your working directory is the deck workspace and the ONLY place you can write.

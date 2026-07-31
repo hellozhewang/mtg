@@ -40,11 +40,11 @@
 1 Harvestrite Host
 1 Hinterland Sanctifier
 1 Island
-1 Jacked Rabbit
 1 Jackdaw Savior
+1 Jacked Rabbit
 1 Jazal Goldmane
-1 Kutzil, Malamet Exemplar
 1 Kutzil's Flanker
+1 Kutzil, Malamet Exemplar
 1 Ledger Shredder
 1 Lion Sash
 1 Luminous Broodmoth

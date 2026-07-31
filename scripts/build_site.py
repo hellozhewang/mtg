@@ -79,8 +79,12 @@ CATEGORIES = [
     ("Enchantment", "Enchantments"),
     ("Artifact", "Artifacts"),
 ]
-SECTION_ORDER = ["Creatures", "Planeswalkers", "Instants", "Sorceries",
-                 "Artifacts", "Enchantments", "Battles", "Lands", "Other"]
+# Commander first, and as its own section rather than a highlighted row inside
+# Creatures: it is the one card always available, so it is the first thing anyone
+# reading a list wants to see, and it is not really part of the creature count.
+SECTION_ORDER = ["Commander", "Creatures", "Planeswalkers", "Instants",
+                 "Sorceries", "Artifacts", "Enchantments", "Battles",
+                 "Lands", "Other"]
 
 COLOUR_NAMES = {"W": "White", "U": "Blue", "B": "Black", "R": "Red", "G": "Green"}
 MANA_TOKEN = re.compile(r"\{[^}]+\}")
@@ -239,9 +243,13 @@ class DeckInfo:
     def sections(self) -> list[tuple[str, list[tuple[int, str, dict]]]]:
         """Entries bucketed by card type, each bucket sorted by cost then name."""
         buckets: dict[str, list] = {}
-        for entry in self.deck.entries:
+        for i, entry in enumerate(self.deck.entries):
             card = self.cards.get(entry.name, {})
-            buckets.setdefault(category(card), []).append((entry.count, entry.name, card))
+            # Line 1 is the commander by format definition -- keyed on position,
+            # not on a name match, so a deck that (illegally) repeats the name
+            # cannot pull a second card into the Commander section.
+            bucket = "Commander" if i == 0 else category(card)
+            buckets.setdefault(bucket, []).append((entry.count, entry.name, card))
         for rows in buckets.values():
             rows.sort(key=lambda r: (r[2].get("cmc", 0) or 0, r[1].lower()))
         return [(name, buckets[name]) for name in SECTION_ORDER if name in buckets]

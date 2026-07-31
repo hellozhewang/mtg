@@ -137,7 +137,6 @@ h2 .count{color:var(--line)}
 .card{display:flex;align-items:center;gap:9px;padding:5px 9px;border-radius:6px;
   cursor:pointer;border:1px solid transparent}
 .card:hover,.card:focus{background:var(--panel);border-color:var(--line);outline:none}
-.card.cmdr{background:var(--accent-bg);border-color:var(--accent-line)}
 .qty{color:var(--dim);font:12px/1 ui-monospace,SFMono-Regular,monospace;
   min-width:1.5em;text-align:right;flex:none}
 .cname{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -157,13 +156,18 @@ h2 .count{color:var(--line)}
 .cards[data-view="gallery"] .cname{position:absolute;left:-9999px}
 .cards[data-view="gallery"] .qty{position:absolute;top:5px;right:6px;z-index:1;
   background:#000c;border-radius:4px;padding:2px 5px;color:var(--fg)}
+/* Hidden by DEFAULT, shown only in gallery. The images are injected into the DOM
+   once and left there so switching back and forth is instant — but that means
+   list view has to actively hide them, or they linger at full size and wreck the
+   list the moment you toggle back. Default-hiding rather than hiding in
+   `[data-view="list"]` so any future view is safe without remembering this. */
+.card img.thumb{display:none}
 /* `img.thumb` and not `img`: the cost column puts a mana-symbol <img> in every
    row, and the unqualified selector stretched those to 100% too. */
 .cards[data-view="gallery"] .card img.thumb{width:100%;display:block;
   border-radius:4.7%/3.4%;background:var(--panel2);aspect-ratio:146/204}
 .cards[data-view="gallery"] .card:hover img.thumb,
 .cards[data-view="gallery"] .card:focus img.thumb{outline:2px solid var(--accent)}
-.cards[data-view="gallery"] .card.cmdr img.thumb{outline:2px solid var(--accent-line)}
 
 /* ---- hover preview ---- */
 #preview{position:fixed;z-index:50;pointer-events:none;width:244px;

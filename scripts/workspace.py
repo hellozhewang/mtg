@@ -4,18 +4,17 @@ The scripts sit OUTSIDE the workspace they operate on:
 
     mtg/
     ├── scripts/     <- here. Codex reads and executes these; it cannot write them.
-    ├── public/      <- the workspace. Codex's working root, and the only writable tree.
-    └── private/     <- readable, never writable.
+    └── public/      <- the workspace. Codex's working root, and the only writable tree.
 
 That layout means a script must NOT derive the deck root from its own location
 (`__file__`) — doing so would point at `mtg/`, which would make Codex's writable
-root the whole repo, `private/` included. The deck root is therefore explicit
-here, and everything writable (notably the SQLite cache) lives inside it so that
+root the whole repo. The deck root is therefore explicit here, and everything
+writable (notably the SQLite cache) lives inside it so that
 `codex -s workspace-write -C <deck root>` can actually write it.
 
 Override with MTG_DECKS to point the tools at a different workspace:
 
-    MTG_DECKS=~/projects/mtg/private ./scripts/validate_deck.py
+    MTG_DECKS=~/decks ./scripts/validate_deck.py
 """
 from __future__ import annotations
 
@@ -58,23 +57,6 @@ def site_dir() -> Path:
     It sits at the repo root, OUTSIDE the deck workspace, so the sandboxed session
     cannot write it. Publishing is bot.py's job, from outside the sandbox."""
     return Path(os.environ.get("MTG_SITE") or _REPO / "docs").expanduser().resolve()
-
-
-def private_root() -> Path:
-    """The second, unpublished deck collection. Readable by the tools, never
-    written by the sandboxed session and never committed."""
-    return Path(os.environ.get("MTG_PRIVATE") or _REPO / "private").expanduser().resolve()
-
-
-def private_site_dir() -> Path:
-    """Catalog covering BOTH collections — for looking at locally, never served.
-
-    A separate output tree rather than a flag on `site_dir()` so the two can never
-    be confused: `docs/` is what GitHub Pages publishes, and anything private
-    landing there would be public the moment the bot's next autopush ran. This one
-    is gitignored, so it cannot be committed by accident."""
-    return Path(os.environ.get("MTG_PRIVATE_SITE")
-                or _REPO / "private-docs").expanduser().resolve()
 
 
 def frontend_dir() -> Path:

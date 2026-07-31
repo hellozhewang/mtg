@@ -31,18 +31,12 @@ public/AGENTS.md
 INTERNALS.md
 todo/
 
-# The second deck collection. Kept local: `public/` is what the repo publishes,
-# and this one is the working copy that need not be anyone else's business.
-private/
-
-# The catalog built from BOTH collections (build_site.py --private). Generated,
-# and it embeds private decklists, so it must never reach the repo. `docs/` is the
-# published one; this is for looking at locally.
-private-docs/
-
 __pycache__/
 *.pyc
 .DS_Store
 
-# Whole-bot mutex. Empty SQLite file; the lock IS the open transaction.
-bot/.busy.db
+# Whole-bot mutex. Empty SQLite file; the lock IS the open transaction. The glob
+# matters: SQLite also writes `-journal`/`-wal` siblings, and a pattern without it
+# let `.busy.db-journal` get committed once.
+bot/.busy.db*
+bot/.locks.db*

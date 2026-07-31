@@ -2,7 +2,7 @@
 """Seed a decklist from EDHREC's aggregate deck for a commander.
 
     ./scripts/new_deck.py "Sythis, Harvest's Hand"                    # preview
-    ./scripts/new_deck.py "Sythis, Harvest's Hand" -o private/Bracket3/Sythis-Enchantress.txt
+    ./scripts/new_deck.py "Sythis, Harvest's Hand" -o public/Bracket3/Sythis-Enchantress.txt
     ./scripts/new_deck.py "Krenko, Mob Boss" --flavour average        # budget-weighted
     ./scripts/new_deck.py "Lord Windgrace" --lands 40                 # force a land count
 

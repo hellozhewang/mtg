@@ -140,7 +140,6 @@ One level up — readable and runnable, NOT writable:
     ../.cache/cards.db          Scryfall cache the tools read and write
     ../bot/                     the harness that runs you. Never run it — that
                                 would start a second session inside this one.
-    ../private/                 a separate deck collection. Do not read unless asked.
 
 **Card-legality questions are answered by files, not by web search.** Before
 searching the web for whether something is a Game Changer, mass land denial, or a

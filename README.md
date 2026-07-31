@@ -337,18 +337,9 @@ and a copy-the-decklist button.
 
 ```bash
 ./scripts/build_site.py              # rebuild docs/ from public/  -- PUBLISHED
-./scripts/build_site.py --private    # public + private -> private-docs/, local only
 ./scripts/build_site.py --check      # exit 1 if docs/ is stale, write nothing
 ./scripts/build_site.py --out /tmp/x # build elsewhere to look before publishing
 ```
-
-`--private` builds a second catalog covering **both** collections, with the
-unpublished decks marked `private` and their GitHub links omitted (those files are
-not on GitHub, so the links would 404). They share the same bracket sections
-rather than getting a separate one, and take a `private/` URL prefix because the
-two collections genuinely collide -- the same filename can hold different lists.
-Output goes to `private-docs/`, which is **gitignored**: a separate tree, not a
-flag on `docs/`, so a private decklist cannot end up in a published commit.
 
 Data comes from the decks; **markup, CSS and JS come from `frontend/`**, so a
 design change never means editing Python. The templating is two mechanisms and no
@@ -466,7 +457,7 @@ sequence minus the last step (see `AGENTS.md`, and why below).
    (a land entering, an attack, a controller's own upkeep).
 
 6. **Validate. This is the gate.**
-   `MTG_DECKS=./private ./scripts/validate_deck.py <path>` — 100 cards, every name
+   `./scripts/validate_deck.py <path>` — 100 cards, every name
    resolves, colour identity, the GC cap, singleton. A deck that hasn't passed
    this is not done.
 
@@ -546,7 +537,6 @@ mtg/
 │   ├── <Bracket>/<Deck>.html
 │   ├── img/*.webp             committed card thumbnails
 │   └── mana/*.svg             Scryfall's official mana symbols
-├── private-docs/            GENERATED, gitignored — both collections, local only
 ├── bot/                     the harness — OUTSIDE the workspace it drives
 │   ├── bot.py                 persistent Codex session the Discord app calls
 │   ├── commands.py            deterministic !decks / !deck / !help
@@ -556,7 +546,6 @@ mtg/
 │   ├── Bracket3.5/            deliberately breaks Bracket 3, by request
 │   └── AGENTS.md              GENERATED, 0444 — edit AGENTS_MD in
 │                              scripts/build_agents.py, never this file
-├── private/                 a local second collection, not published
 ├── logs/<utc-date>.log      request + debug log, outside the writable tree
 ├── .cache/cards.db          generated; granted to the bot via --add-dir
 ├── commander-brackets-and-rules.md
@@ -566,13 +555,12 @@ mtg/
 Folder name states the bracket. File name is `Commander-Theme` — see
 [Deck file naming](#deck-file-naming).
 
-`public/` is the published collection and the bot's writable tree. `private/` is a
-local-only second collection, kept out of the repo.
+`public/` is the published collection and the bot's writable tree.
 
 **`scripts/` and `bot/` both sit deliberately outside `public/`.** The Discord-driven
 Codex session is rooted at `public/` with `-s workspace-write`, so it can edit decks
 but cannot modify its own toolchain, its own harness, its own session state, its own
-logs, or reach `private/`. `public/` holds decklists and the generated `AGENTS.md`,
+or its own logs. `public/` holds decklists and the generated `AGENTS.md`,
 nothing else — the workspace boundary is only worth anything if the code that
 enforces it lives on the other side of it.
 
@@ -590,6 +578,5 @@ silently grant write access to everything. `scripts/workspace.py` owns that poli
 and both import it; `MTG_DECKS` overrides the deck root:
 
 ```bash
-MTG_DECKS=./private ./scripts/validate_deck.py    # validate the other collection
 ```
 

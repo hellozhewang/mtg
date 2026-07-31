@@ -38,7 +38,7 @@ by cwd, so every invocation must run from the same directory — hence the fixed
 `-C WORKSPACE`.
 
 Sandbox: `-s workspace-write -C <public/>` confines writes to the deck workspace.
-`../scripts`, `../private`, `../logs`, and the docs are readable and runnable but
+`../scripts`, `../logs`, and the docs are readable and runnable but
 not writable. The cache lives at `<repo>/.cache`, outside the workspace, so it is
 granted explicitly with `--add-dir` — without that the tools would still run but
 could not bank Scryfall results.
@@ -79,7 +79,7 @@ import commands
 
 # Ask workspace.py; do NOT derive these from __file__. bot/ sits outside the tree
 # it drives, so `HERE.parent` is the repo root — using it as the workspace would
-# silently hand the Codex session write access to scripts/, private/ and logs/.
+# silently hand the Codex session write access to scripts/, docs/ and logs/.
 WORKSPACE = workspace.deck_root()                    # public/ — the writable root
 CACHE_DIR = workspace.cache_dir()                    # outside WORKSPACE; needs --add-dir
 SESSIONS = HERE / ".sessions"                        # one JSON per Discord channel

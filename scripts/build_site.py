@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """Generate the static deck catalog that GitHub Pages publishes.
 
-    ./build_site.py                  # rebuild docs/ from public/  -- PUBLISHED
-    ./build_site.py --private        # public + private -> private-docs/, local only
+    ./build_site.py                  # rebuild docs/ from public/
     ./build_site.py --check          # exit 1 if docs/ is stale; write nothing
     ./build_site.py --out /tmp/site  # build elsewhere to look before publishing
 
@@ -207,21 +206,13 @@ class Mana:
 class DeckInfo:
     """One decklist, resolved against Scryfall and ready to render."""
 
-    def __init__(self, path: Path, root: Path, q: CardQuery,
-                 private: bool = False):
+    def __init__(self, path: Path, root: Path, q: CardQuery):
         self.path = path
-        self.private = private
         self.rel = path.resolve().relative_to(root)
         self.bracket = self.rel.parent.as_posix()
         self.label = bracket_label(self.bracket)
         self.stem = path.stem
-        # Private decks get their own URL prefix because the two collections DO
-        # collide -- GrandArbiter-Prison exists in both, as different lists. They
-        # still share a bracket section in the UI; only the path is separated.
-        self.href = ("private/" if private else "") + \
-            self.rel.with_suffix(".html").as_posix()
-        # From the href, not from `rel`: the private prefix adds a level, and
-        # getting this wrong points every asset link one directory too high.
+        self.href = self.rel.with_suffix(".html").as_posix()
         self.depth = self.href.count("/")
         self.deck = deckfile.parse(path)
         self.cards, self.missing = q.cards(self.deck.names)
@@ -291,8 +282,7 @@ def picker(layout: frontend.Template, decks: list[DeckInfo],
         opts.append(layout.part("picker-option").render(
             HREF=up + e(d.href),
             SELECTED=" selected" if current is d else "",
-            LABEL=f"{e(d.stem)} — {e(d.commander)}"
-                  + (" (private)" if d.private else "")))
+            LABEL=f"{e(d.stem)} — {e(d.commander)}"))
     if bracket is not None:
         groups.append(layout.part("picker-group").render(
             BRACKET=e(bracket_label(bracket)), OPTIONS="".join(opts)))
@@ -318,7 +308,6 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
                if d.art_url else '<span class="art-blank"></span>')
         tiles.append(index.part("tile").render(
             HREF=e(d.href), ART=art, NAME=e(d.stem), COMMANDER=e(d.commander),
-            TAG=index.part("tag").render() if d.private else "",
             PIPS=mana.pips(d.colours, ""), TOTAL=d.total, LANDS=d.lands,
             MV=f"{d.avg_mv:.2f}",
             GC=f"{len(d.gcs)}/{d.cap}" if d.cap is not None else str(len(d.gcs))))
@@ -340,8 +329,6 @@ def render_deck(tpl: dict[str, frontend.Template], d: DeckInfo,
     raw = (repo.replace("https://github.com/", "https://raw.githubusercontent.com/")
            + f"/main/public/{d.rel.as_posix()}")
 
-    # A private deck is not on GitHub, so linking to it would 404. Omit both.
-    links = "" if d.private else page.part("links").render(RAW=e(raw), BLOB=e(blob))
     gclist = page.part("gclist").render(NAMES="".join(
         page.part("gcname").render(NAME=e(n)) for n in d.gcs)) if d.gcs else ""
     warn = page.part("warn").render(
@@ -381,8 +368,8 @@ def render_deck(tpl: dict[str, frontend.Template], d: DeckInfo,
         PICKER=picker(layout, decks, d, up),
         MAIN=page.render(
             NAME=e(d.stem), PIPS=mana.pips(d.colours, up), COMMANDER=e(d.commander),
-            BRACKET=e(d.label), TAG=page.part("tag").render() if d.private else "",
-            LINKS=links, TOTAL=d.total,
+            BRACKET=e(d.label), TOTAL=d.total,
+            RAW=e(raw), BLOB=e(blob),
             LANDS=f"{d.lands}" + (f" +{d.flex}" if d.flex else ""),
             # A modal DFC like Malakir Rebirth is `Instant // Land`: playable as a
             # tapped land but not a mana source you can plan around, so it is
@@ -464,29 +451,6 @@ def collect_images(decks: list[DeckInfo], img: ImageQuery,
     return files
 
 
-def refuse_if_publishable(out_dir: Path) -> None:
-    """Abort if private decks would be written somewhere git can see.
-
-    The failure this prevents is one command away — `--private --out docs` — and
-    it is silent: the pages would look right, and `bot.py` would push them on the
-    next Discord turn without anyone deciding to. So the check is on the OUTPUT,
-    not on the flag, and it asks git rather than pattern-matching a path: whatever
-    `.gitignore` currently says is the real answer.
-    """
-    if out_dir == workspace.site_dir():
-        raise SystemExit(f"refusing --private into the published tree: {out_dir}")
-    try:
-        r = subprocess.run(["git", "-C", str(workspace.deck_root().parent),
-                            "check-ignore", "-q", str(out_dir)],
-                           capture_output=True, timeout=10)
-    except (OSError, subprocess.SubprocessError):
-        return                      # no git here: the equality check above stands
-    if r.returncode == 1:           # 0 = ignored, 1 = NOT ignored, 128 = not a repo
-        raise SystemExit(
-            f"refusing --private into a tracked directory: {out_dir}\n"
-            f"private decklists must not be committable — add it to .gitignore first")
-
-
 def collect_symbols(mana: Mana, sym: SymbolQuery, out_dir: Path) -> dict[Path, bytes]:
     """SVGs for the mana symbols the pages actually reference.
 
@@ -501,26 +465,17 @@ def collect_symbols(mana: Mana, sym: SymbolQuery, out_dir: Path) -> dict[Path, b
     return files
 
 
-def plan(sources: list[tuple[Path, bool]], out_dir: Path, repo: str,
-         q: CardQuery, img: ImageQuery, sym: SymbolQuery) -> dict[Path, str | bytes]:
+def plan(root: Path, out_dir: Path, repo: str, q: CardQuery,
+         img: ImageQuery, sym: SymbolQuery) -> dict[Path, str | bytes]:
     """Every file the site consists of, as {path: content}. Nothing written yet.
-
-    `sources` is [(deck root, is_private)]. Both collections share one set of
-    bracket sections -- a private deck is marked, not segregated -- so they are
-    merged and sorted together here rather than rendered as separate groups.
 
     Building the whole thing in memory first is what makes `--check` possible and
     what lets sync() write only real differences.
     """
     tpl = frontend.load(workspace.frontend_dir())
     fdir = workspace.frontend_dir()
-    decks = sorted(
-        (DeckInfo(p, root, q, private)
-         for root, private in sources for p in deckfile.discover([root])),
-        # `private` is in the key, not just for grouping: the two collections can
-        # hold the same filename, and without it the sort order of a colliding
-        # pair would be arbitrary -- which breaks byte-determinism.
-        key=lambda d: (d.bracket, d.stem.lower(), d.private))
+    decks = sorted((DeckInfo(p, root, q) for p in deckfile.discover([root])),
+                   key=lambda d: (d.bracket, d.stem.lower()))
     mana = Mana(sym.uris())
 
     files: dict[Path, str | bytes] = {
@@ -579,26 +534,18 @@ def main() -> int:
     toollog.record()
     ap = argparse.ArgumentParser(description="Build the static deck catalog.")
     ap.add_argument("--out", type=Path,
-                    help="output directory (default: docs/, or private-docs/ with --private)")
-    ap.add_argument("--private", action="store_true",
-                    help="include private/ decks too, marked (private), and build "
-                         "to private-docs/ -- gitignored, never published")
+                    help="output directory (default: docs/)")
     ap.add_argument("--check", action="store_true",
                     help="exit 1 if the site is stale; write nothing")
     ap.add_argument("--quiet", action="store_true", help="only report problems")
     args = ap.parse_args()
 
-    sources = [(workspace.deck_root(), False)]
-    if args.private:
-        sources.append((workspace.private_root(), True))
-    default_out = workspace.private_site_dir() if args.private else workspace.site_dir()
-    out_dir = args.out.expanduser().resolve() if args.out else default_out
-    if args.private:
-        refuse_if_publishable(out_dir)
+    root = workspace.deck_root()
+    out_dir = args.out.expanduser().resolve() if args.out else workspace.site_dir()
     q = CardQuery(db_path=workspace.cache_db())
     img = ImageQuery(db_path=workspace.cache_db())
     sym = SymbolQuery(db_path=workspace.cache_db())
-    files = plan(sources, out_dir, repo_url(), q, img, sym)
+    files = plan(root, out_dir, repo_url(), q, img, sym)
 
     if args.check:
         stale = [p for p, body in files.items() if not _same(p, body)]

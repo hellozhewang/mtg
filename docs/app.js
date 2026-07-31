@@ -113,6 +113,14 @@
 
   // Injected on first switch rather than at build time, so the list view — the
   // common case — downloads no images at all.
+  //
+  // srcset, not a plain src: the committed thumbnail is 146x204, and a grid cell
+  // renders around 147-172 CSS px. On a 1x screen that is fine, but on a 2x one
+  // the browser wants ~293 device px and has 146 — half the detail, which reads
+  // as blurry. Offering both widths lets the browser pick per display, and
+  // `loading=lazy` means only the cards actually scrolled into view download the
+  // larger file. `sizes` has to describe the real rendered width or the choice
+  // is made against the wrong number.
   function fillGallery() {
     toArray(document.querySelectorAll('.card[data-thumb]')).forEach(function (li) {
       if (li.querySelector('img.thumb')) return;          // convention 2
@@ -121,7 +129,11 @@
       img.loading = 'lazy';
       img.decoding = 'async';
       img.alt = li.dataset.name || '';
-      img.src = li.dataset.thumb;
+      img.sizes = '(max-width: 560px) 46vw, 172px';
+      if (li.dataset.img) {
+        img.srcset = li.dataset.thumb + ' 146w, ' + li.dataset.img + ' 488w';
+      }
+      img.src = li.dataset.thumb;                          // fallback + instant paint
       li.appendChild(img);
     });
   }

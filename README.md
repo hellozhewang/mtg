@@ -313,6 +313,32 @@ the deck has been tuned away from average. `GrandArbiter-Prison` sits at 21.
 Game Changers are flagged `[GC]` so the bracket cap is visible before you add
 anything.
 
+### What's popular right now — `scripts/find_inspiration.py --top`
+
+Every other EDHREC call starts from a commander you already have in mind. This one
+does not — it ranks the most-built commanders by deck count, which is the question
+to ask when picking what to build next.
+
+```bash
+./scripts/find_inspiration.py --top            # past week (default)
+./scripts/find_inspiration.py --top month
+./scripts/find_inspiration.py --top year -n 20 # EDHREC calls this "Past 2 Years"
+```
+
+```
+Past Week — most-built commanders
+
+  #     decks   commander
+  1     1,919   Y'shtola, Night's Blessed
+  2     1,464   Doctor Doom, King of Latveria
+  3     1,396   Hearthhull, the Worldseed
+```
+
+The windows disagree, and that is the useful part: `year` is dominated by
+accumulated volume (The Ur-Dragon, Edgar Markov), while `week` shows what people
+are building *today*. A commander high in both is genuinely rising rather than
+coasting.
+
 ### Validating — `scripts/validate_deck.py`
 
 **Required before calling any deck done.** Checks all six rules:

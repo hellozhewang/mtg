@@ -112,6 +112,23 @@ for `/deck-print` — that reads the live file, whereas everything above shows t
 last published version. And you cannot publish; a deck you just wrote is not
 missing, it simply has not been picked up yet, which is normal and expected.
 
+## Choosing a commander when the user has not named one
+
+If someone asks for "a good deck" or "something popular" without naming a
+commander, do NOT guess from memory — training data goes stale and new legends
+are printed constantly. Ask the tool:
+
+    ../scripts/find_inspiration.py --top             # most-built, past week
+    ../scripts/find_inspiration.py --top month
+    ../scripts/find_inspiration.py --top year        # EDHREC's "Past 2 Years"
+
+It prints commanders ranked by how many decks EDHREC has for each. The windows
+disagree on purpose: `year` reflects accumulated volume, `week` reflects what is
+being built right now. Something high in both is genuinely rising.
+
+Popularity is not power — the same caveat as every other EDHREC number. Use it to
+find candidates, then judge them on the bracket rules.
+
 ## Where things are
 
 Your working directory is the deck workspace and the ONLY place you can write.

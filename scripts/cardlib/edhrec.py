@@ -47,6 +47,7 @@ POLITE_DELAY = 0.12
 # power over budget (README rule 3), and the default
 # average is dragged down by what people can actually afford. The expensive cut
 # is where Chrome Mox, Lotus Petal, the fetch suite and Aura Shards live.
+TOP_WINDOWS = ("week", "month", "year")
 FLAVOURS = ("average", "expensive", "budget", "cheap")
 
 
@@ -103,6 +104,18 @@ class EdhrecAPI:
         return f"{PAGES}/decks/{slug(commander)}.json"
 
     @staticmethod
+    def url_top_commanders(window: str = "week") -> str:
+        """Ranked commanders by deck count. `window` is week | month | year.
+
+        `year` is EDHREC's "Past 2 Years" list, not twelve months -- their
+        naming, kept verbatim so the URL stays predictable. `past6months` exists
+        in their UI but 403s here.
+        """
+        if window not in TOP_WINDOWS:
+            raise ValueError(f"window must be one of {TOP_WINDOWS}, got {window!r}")
+        return f"{PAGES}/commanders/{window}.json"
+
+    @staticmethod
     def url_deck(urlhash: str) -> str:
         # Different host on purpose: json.edhrec.com 403s on deckpreview.
         return f"{API}/deckpreview/{urlhash}"
@@ -153,6 +166,27 @@ class EdhrecAPI:
                     "trend": c.get("trend_zscore") or 0.0,
                 })
         return rows
+
+    @staticmethod
+    def parse_top_commanders(payload: dict) -> tuple[str, list[dict]]:
+        """Returns (window label, [{rank, name, decks}]).
+
+        The label comes from EDHREC rather than being reconstructed, because
+        "year" actually reports "Past 2 Years".
+        """
+        lists = (payload.get("container", {}).get("json_dict", {})
+                 .get("cardlists") or [])
+        if not lists:
+            return "", []
+        label = lists[0].get("header", "")
+        rows = []
+        for i, c in enumerate(lists[0].get("cardviews") or [], 1):
+            rows.append({
+                "rank": c.get("rank") or i,
+                "name": c.get("name", "?"),
+                "decks": c.get("num_decks") or 0,
+            })
+        return label, rows
 
     @staticmethod
     def parse_deck_index(payload: dict) -> list[dict]:

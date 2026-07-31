@@ -140,6 +140,16 @@ class EdhrecQuery:
         return self.api.parse_deck_index(
             self._page(self.api.url_deck_index(commander)))
 
+    def top_commanders(self, window: str = "week") -> tuple[str, list[dict]]:
+        """The most-built commanders, ranked, with deck counts.
+
+        Answers "what is popular right now", which nothing else here could: every
+        other EDHREC call needs a commander named up front. Cached like any other
+        page, so repeated calls in a session cost one fetch.
+        """
+        return self.api.parse_top_commanders(
+            self._page(self.api.url_top_commanders(window)))
+
     def deck(self, urlhash: str) -> dict:
         """One real uploaded deck, as ready "1 Card Name" lines."""
         return self._page(self.api.url_deck(urlhash))

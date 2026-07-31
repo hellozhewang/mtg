@@ -112,6 +112,10 @@ def main() -> int:
         epilog=EPILOG, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("deck", nargs="?", type=Path,
                     help="decklist to compare (omit to just browse a commander)")
+    ap.add_argument("--top", nargs="?", const="week", metavar="WINDOW",
+                    choices=["week", "month", "year"],
+                    help="list the most-built commanders instead: week|month|year "
+                         "(default week). Takes no deck and no --commander.")
     ap.add_argument("--commander",
                     help="browse this commander without a decklist, or override "
                          "the one read from line 1 of the deck (e.g. to check a "
@@ -132,6 +136,18 @@ def main() -> int:
     ap.add_argument("--limit", "-n", "--max", type=int, default=25, dest="limit",
                     help="rows to print (default: 25)")
     args = ap.parse_args()
+
+    if args.top:
+        # Ranked by deck count across all of EDHREC — the one question that does
+        # not start from a commander you already have in mind.
+        e = EdhrecQuery(db_path=workspace.cache_db())
+        label, rows = e.top_commanders(args.top)
+        print(f"\n{label} — most-built commanders\n")
+        print(f"{'#':>3}  {'decks':>8}   commander")
+        for r in rows[:args.limit]:
+            print(f"{r['rank']:>3}  {r['decks']:>8,}   {r['name']}")
+        print(f"\n# {e.counters()}")
+        return 0
     resolve_mode(args, ap)
 
     if not args.deck and not args.commander:

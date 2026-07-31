@@ -306,8 +306,7 @@ BUSY_DB = HERE / ".busy.db"
 # Users reach this agent by typing `builder <request>` as a plain Discord
 # message (see deckBuilder.ts in the discord-bot project), so name that, not a
 # slash command — there isn't one.
-BUSY_REPLY = ("I'm already working on another `builder` request — one at a time. "
-              "Give it a minute and try again.")
+BUSY_REPLY = "Builder is busy with another request. Try again in a minute."
 LOCK_TIMEOUT = 120
 
 
@@ -681,7 +680,7 @@ def send(message: str, channel: str | int | None = DEFAULT_CHANNEL) -> str:
     try:
         busy = _claim_bot()
     except Busy:
-        log().info("BUSY   [%s] refused; another turn is in flight", chan)
+        log().info("BUSY   [%s] refused; already busy", chan)
         return BUSY_REPLY
 
     changed, status = build_agents.build()  # redeploy AGENTS.md 0444 before codex reads

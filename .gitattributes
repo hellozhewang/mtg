@@ -1,0 +1,14 @@
+# Decklists are pasted into deck importers, and a stray CR makes the last card on
+# every line parse as "Sol Ring\r" — which then fails to resolve on Scryfall.
+# Normalising in git means a file edited on Windows cannot reintroduce it, and a
+# one-card swap shows as a one-line diff instead of a whole-file rewrite.
+*.txt   text eol=lf
+*.md    text eol=lf
+*.py    text eol=lf
+*.html  text eol=lf
+*.css   text eol=lf
+*.js    text eol=lf
+
+# Generated card art. Binary, and diffing it is meaningless noise.
+docs/img/**   binary
+docs/mana/**  -diff

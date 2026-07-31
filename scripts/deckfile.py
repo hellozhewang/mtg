@@ -85,7 +85,12 @@ def write(path: Path, commander: str, cards: dict[str, int]) -> int:
 
 
 def discover(paths: list[Path]) -> list[Path]:
-    """Expand a mix of files and folders into a sorted list of decklist files."""
+    """Expand a mix of files and folders into a sorted list of decklist files.
+
+    No exclusions are needed: `staging/` lives at the repo root, outside the deck
+    workspace, so expanding the deck root never reaches it — while naming a
+    staging file explicitly still works, which is how you validate one in progress.
+    """
     out: list[Path] = []
     for p in paths:
         p = Path(p).resolve()

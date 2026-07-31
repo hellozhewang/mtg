@@ -1,4 +1,5 @@
 1 Lord Windgrace
+1 Ancient Greenwarden
 1 Assassin's Trophy
 1 Avenger of Zendikar
 1 Azusa, Lost but Seeking
@@ -15,22 +16,21 @@
 1 Chaos Warp
 1 Command Tower
 1 Constant Mists
-1 Courser of Kruphix
+1 Crop Rotation
 1 Crucible of Worlds
 1 Crystal Vein
 1 Cultivate
 1 Dragonskull Summit
 1 Exotic Orchard
 1 Exploration
-1 Explosive Vegetation
 1 Farseek
 1 Field of Ruin
+1 Field of the Dead
 6 Forest
 1 Ghost Quarter
 1 Grove of the Burnwillows
 1 Harmonize
 1 Harrow
-1 Hissing Quagmire
 1 Karplusan Forest
 1 Kodama's Reach
 1 Life from the Loam
@@ -42,22 +42,19 @@
 1 Multani, Yavimaya's Avatar
 1 Nature's Lore
 1 Nurturing Peatland
-1 Ob Nixilis, the Fallen
 1 Oracle of Mul Daya
 1 Overgrown Tomb
-1 Path of Ancestry
 1 Petrified Field
 1 Phyrexian Arena
 1 Prismatic Vista
-1 Putrefy
 1 Raging Ravine
 1 Ramunap Excavator
-1 Reliquary Tower
 1 Return of the Wildspeaker
 1 Riveteers Overlook
 1 Rogue's Passage
 1 Roiling Regrowth
 1 Rootbound Crag
+1 Scapeshift
 1 Scute Swarm
 1 Sheltered Thicket
 1 Skyshroud Claim
@@ -70,19 +67,22 @@
 1 Sylvan Library
 1 Takenuma, Abandoned Mire
 1 Terminate
+1 The Gitrog Monster
+1 The One Ring
 1 Thespian's Stage
 1 Three Visits
 1 Titania, Protector of Argoth
+1 Torment of Hailfire
 1 Toxic Deluge
-1 Tunneling Geopede
+1 Traveling Chocobo
 1 Urborg, Tomb of Yawgmoth
 1 Vandalblast
 1 Verdant Catacombs
 1 Vesuva
 1 Wayward Swordtooth
+1 Windgrace's Judgment
 1 Wooded Foothills
 1 Woodland Cemetery
 1 World Shaper
 1 Yavimaya, Cradle of Growth
-1 Zendikar's Roil
 1 Ziatora's Proving Ground

@@ -180,3 +180,67 @@ built toward that emerges mid-game is not a violation.
 
 Redundant stax pieces are **not** a combo. Sphere of Resistance plus Thorn of
 Amethyst is just two taxes stacking; the table can still play.
+
+---
+
+## Banned in Commander
+
+**83 cards.** A banned card makes a deck illegal in every bracket — this is
+not a bracket restriction, it is the format's own list, and it overrides
+everything below.
+
+`validate_deck.py` enforces this automatically. It reads each card's own
+`legalities.commander` from Scryfall rather than a list copied into this repo, so
+it cannot go stale: Wizards updates the list a few times a year and Scryfall
+reflects it the same day. The list here is for reading; the validator is the
+check. Regenerate it with:
+
+```bash
+python3 -c "import sys;sys.path.insert(0,'scripts');from cardlib import ScryfallAPI;\
+print('\n'.join(sorted(c['name'] for c in ScryfallAPI().search('banned:commander')[0])))"
+```
+
+Note `find_cards.py` cannot show you these — it always prepends `legal:commander`,
+so `banned:commander` returns nothing through it. That is deliberate: the search
+tool exists to find cards you may actually play.
+
+### Banned on power level (38)
+
+```
+Ancestral Recall                              Balance                                       Black Lotus
+Channel                                       Dockside Extortionist                         Emrakul, the Aeons Torn
+Erayo, Soratami Ascendant // Erayo's Essence  Fastbond                                      Flash
+Golos, Tireless Pilgrim                       Griselbrand                                   Hullbreacher
+Iona, Shield of Emeria                        Jeweled Lotus                                 Karakas
+Leovold, Emissary of Trest                    Library of Alexandria                         Mana Crypt
+Mox Emerald                                   Mox Jet                                       Mox Pearl
+Mox Ruby                                      Mox Sapphire                                  Nadu, Winged Wisdom
+Paradox Engine                                Primeval Titan                                Prophet of Kruphix
+Recurring Nightmare                           Rofellos, Llanowar Emissary                   Sundering Titan
+Sylvan Primordial                             Time Vault                                    Time Walk
+Tinker                                        Tolarian Academy                              Trade Secrets
+Upheaval                                      Yawgmoth's Bargain
+```
+
+### Banned for other reasons (45)
+
+Ante, conspiracy/draft-matters cards that do nothing in a normal game, dexterity
+cards, and cards withdrawn for offensive art or text.
+
+```
+Adriana's Valor             Advantageous Proclamation   Amulet of Quoz
+Assemble the Rank and Vile  Backup Plan                 Brago's Favor
+Bronze Tablet               Chaos Orb                   Cleanse
+Contract from Below         Crusade                     Darkpact
+Demonic Attorney            Double Stroke               Echoing Boon
+Emissary's Ploy             Falling Star                Hired Heist
+Hold the Perimeter          Hymn of the Wilds           Immediate Action
+Imprison                    Incendiary Dissent          Invoke Prejudice
+Iterative Analysis          Jeweled Bird                Jihad
+Limited Resources           Muzzio's Preparations       Natural Unity
+Power Play                  Pradesh Gypsies             Rebirth
+Secret Summoning            Secrets of Paradise         Sentinel Dispatch
+Shahrazad                   Sovereign's Realm           Stone-Throwing Devils
+Summoner's Bond             Tempest Efreet              Timmerian Fiends
+Unexpected Potential        Weight Advantage            Worldknit
+```

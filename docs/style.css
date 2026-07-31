@@ -23,7 +23,17 @@ h2 .count{color:var(--line)}
 .repo{margin-left:auto;color:var(--dim);text-decoration:none;
   white-space:nowrap;font-size:.9rem}
 .repo:hover{color:var(--fg)}
-.deckpicker{flex:1;min-width:0;max-width:430px;background:var(--panel2);
+.search{flex:1;min-width:90px;max-width:260px;background:var(--panel2);
+  color:var(--fg);border:1px solid var(--line);border-radius:7px;
+  padding:6px 10px;font:inherit;font-size:.9rem}
+.search:focus{outline:none;border-color:var(--accent)}
+.search::-webkit-search-cancel-button{filter:invert(.6)}
+/* Filtering hides whole sections once every child is gone, so the page does not
+   end up as a column of empty headings. */
+.is-filtered{display:none!important}
+.nomatch{color:var(--dim);padding:18px 2px;display:none}
+.nomatch.on{display:block}
+.deckpicker{flex:1;min-width:0;max-width:340px;background:var(--panel2);
   color:var(--fg);border:1px solid var(--line);border-radius:7px;
   padding:6px 9px;font:inherit;font-size:.9rem}
 

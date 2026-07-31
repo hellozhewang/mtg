@@ -1,6 +1,6 @@
 1 Sythis, Harvest's Hand
 1 Abundant Growth
-1 Ajani's Chosen
+1 Akroma's Will
 1 All That Glitters
 1 Ancestral Mask
 1 Arcane Signet
@@ -32,6 +32,7 @@
 1 Grasp of Fate
 1 Greater Auramancy
 1 Hall of Heliod's Generosity
+1 Hallowed Haunting
 1 Heliod's Pilgrim
 1 Herald of the Pantheon
 1 Horizon Canopy
@@ -55,17 +56,16 @@
 1 Prismatic Vista
 1 Privileged Position
 1 Razorverge Thicket
-1 Reliquary Tower
 1 Replenish
 1 Rogue's Passage
 1 Sanctum Weaver
 1 Satyr Enchanter
 1 Scattered Groves
+1 Serra's Sanctum
 1 Setessan Champion
-1 Setessan Training
 1 Sigarda's Aid
 1 Sigil of the Empty Throne
-1 Skullclamp
+1 Smothering Tithe
 1 Sol Ring
 1 Solitary Confinement
 1 Song of the Dryads

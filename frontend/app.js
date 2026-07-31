@@ -21,6 +21,64 @@
     });
   }
 
+  /* ---- search / filter ------------------------------------------------- */
+  // One box, two jobs: on the index it filters deck tiles, on a deck page it
+  // filters card rows. Both work the same way, so the code is shared -- the only
+  // difference is which elements carry the searchable text.
+  //
+  // `searchBox`, not `box`: the lightbox below also wanted `box`, and since both
+  // are `var` in the same function scope the lightbox silently reassigned it.
+  // The filter then read `.value` off a <div> and got undefined, so every query
+  // looked empty and nothing was ever hidden -- on deck pages only, because the
+  // index returns before the lightbox code runs.
+  var searchBox = document.querySelector('.search');
+  if (searchBox) (function () {
+    var tiles = [].slice.call(document.querySelectorAll('.tile'));
+    var rows = [].slice.call(document.querySelectorAll('.card'));
+    var items = tiles.length ? tiles : rows;
+    if (!items.length) return;
+
+    // Fold case AND punctuation, so "zurvoltron" finds Zur-Voltron and "urzas"
+    // finds Urza's Saga. Same rule the Discord !deck matcher uses.
+    function norm(s) { return (s || '').toLowerCase().replace(/[^a-z0-9]/g, ''); }
+    items.forEach(function (el) {
+      el._key = norm(el.dataset.search || el.dataset.name || el.textContent);
+    });
+
+    // Sections wrap the items; hide one once all its children are filtered out
+    // rather than leaving a column of empty headings.
+    var sections = [].slice.call(document.querySelectorAll('main section'));
+    var empty = document.createElement('p');
+    empty.className = 'nomatch';
+    (document.querySelector('main') || document.body).appendChild(empty);
+
+    function apply() {
+      var q = norm(searchBox.value);
+      var shown = 0;
+      items.forEach(function (el) {
+        var hit = !q || el._key.indexOf(q) !== -1;
+        el.classList.toggle('is-filtered', !hit);
+        if (hit) shown++;
+      });
+      sections.forEach(function (sec) {
+        var any = sec.querySelector('.tile:not(.is-filtered), .card:not(.is-filtered)');
+        sec.classList.toggle('is-filtered', !any);
+      });
+      empty.textContent = 'Nothing matches \u201c' + searchBox.value + '\u201d.';
+      empty.classList.toggle('on', q && !shown);
+    }
+
+    searchBox.addEventListener('input', apply);
+    // `/` focuses the searchBox, Escape clears it -- the two shortcuts people try.
+    document.addEventListener('keydown', function (ev) {
+      if (ev.key === '/' && document.activeElement !== searchBox) {
+        ev.preventDefault(); searchBox.focus(); searchBox.select();
+      } else if (ev.key === 'Escape' && document.activeElement === searchBox) {
+        searchBox.value = ''; apply(); searchBox.blur();
+      }
+    });
+  })();
+
   var cards = document.querySelector('.cards');
   if (!cards) return;                       // index page: nothing below applies
 

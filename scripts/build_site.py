@@ -308,6 +308,7 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
                if d.art_url else '<span class="art-blank"></span>')
         tiles.append(index.part("tile").render(
             HREF=e(d.href), ART=art, NAME=e(d.stem), COMMANDER=e(d.commander),
+            SEARCH=e(f"{d.stem} {d.commander} {d.label}"),
             PIPS=mana.pips(d.colours, ""), TOTAL=d.total, LANDS=d.lands,
             MV=f"{d.avg_mv:.2f}",
             GC=f"{len(d.gcs)}/{d.cap}" if d.cap is not None else str(len(d.gcs))))
@@ -507,6 +508,13 @@ def sync(files: dict[Path, str | bytes], out_dir: Path) -> tuple[int, int]:
 
     Writing only on difference is what keeps `git status` quiet between real deck
     edits; pruning is what stops a renamed deck leaving a stale page live forever.
+
+    **Pruning is confined to `out_dir`. It never touches the database.** Deleting a
+    deck removes its page and any card image no longer used by another deck, but
+    every cached card, page and image row stays. That is what makes deletion cheap
+    to undo: restoring the .txt and rebuilding costs zero downloads, because the
+    bytes were never thrown away. Measured — remove a deck, rebuild, restore,
+    rebuild: `images 937 hit / 0 miss, 0 downloads`.
     """
     written = 0
     for path, body in sorted(files.items()):

@@ -5,12 +5,10 @@
 1 Beast Whisperer
 1 Beast Within
 1 Beastmaster Ascension
-1 Bloodline Pretender
 1 Blooming Marsh
 1 Bojuka Bog
 1 Boseiju, Who Endures
 1 Cabal Coffers
-1 Canopy Tactician
 1 Castle Locthwain
 1 Circle of Dreams Druid
 1 Command Tower
@@ -18,43 +16,44 @@
 1 Cultivate
 1 Damnation
 1 Darkbore Pathway
-1 Deserted Temple
+1 Dionus, Elvish Archdruid
 1 Dwynen's Elite
+1 Elves of Deep Shadow
 1 Elvish Archdruid
 1 Elvish Champion
-1 Elvish Clancaller
 1 Elvish Guidance
 1 Elvish Harbinger
 1 Elvish Mystic
-1 Elvish Piper
 1 Elvish Promenade
 1 Elvish Visionary
 1 Elvish Warmaster
 1 Exotic Orchard
 1 Ezuri, Renegade Leader
 1 Farhaven Elf
-1 Fellwar Stone
 5 Forest
 1 Freyalise, Llanowar's Fury
 1 Fyndhorn Elves
+1 Gaea's Cradle
 1 Go for the Throat
 1 Golgari Signet
 1 Growing Rites of Itlimoc
-1 Harmonize
 1 Heritage Druid
+1 Heroic Intervention
 1 Hissing Quagmire
 1 Immaculate Magistrate
 1 Imperious Perfect
 1 Joraga Warcaller
 1 Kodama's Reach
 1 Krosan Grip
+1 Leaf-Crowned Visionary
 1 Lightning Greaves
 1 Llanowar Elves
 1 Llanowar Wastes
 1 Lys Alana Huntmaster
 1 Maelstrom Pulse
+1 Marsh Flats
 1 Marwyn, the Nurturer
-1 Nath of the Gilt-Leaf
+1 Necropotence
 1 Night's Whisper
 1 Nurturing Peatland
 1 Overgrown Tomb
@@ -67,16 +66,17 @@
 1 Putrefy
 1 Read the Bones
 1 Realmwalker
+1 Reclamation Sage
 1 Reliquary Tower
 1 Return of the Wildspeaker
 1 Rogue's Passage
+1 Seedborn Muse
 1 Shaman of the Pack
 1 Skemfar Shadowsage
 1 Skullclamp
 1 Sol Ring
 4 Swamp
 1 Swiftfoot Boots
-1 Sylvan Library
 1 Sylvan Messenger
 1 Takenuma, Abandoned Mire
 1 Talisman of Resilience

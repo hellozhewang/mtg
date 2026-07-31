@@ -5,7 +5,6 @@
 1 Bane of Bala Ged
 1 Basalt Monolith
 1 Blast Zone
-1 Breaker of Armies
 1 Buried Ruin
 1 Chromatic Orrery
 1 Cloudpost
@@ -14,7 +13,6 @@
 1 Crystal Vein
 1 Darksteel Citadel
 1 Darksteel Forge
-1 Desolation Twin
 1 Dreamstone Hedron
 1 Duplicant
 1 Eldrazi Temple
@@ -22,6 +20,7 @@
 1 Endless One
 1 Everflowing Chalice
 1 Expedition Map
+1 Eye of Ugin
 1 Field of Ruin
 1 Foundry Inspector
 1 Ghost Quarter
@@ -55,13 +54,13 @@
 1 Spawnsire of Ulamog
 1 Spine of Ish Sah
 1 Steel Hellkite
-1 Temple of the False God
 1 Thespian's Stage
+1 Thought-Knot Seer
 1 Thran Dynamo
+1 Titan's Presence
 1 Ugin, the Spirit Dragon
 1 Ulamog, the Ceaseless Hunger
 1 Ulamog, the Infinite Gyre
-1 Ulamog's Crusher
 1 Unwinding Clock
 1 Ur-Golem's Eye
 1 Vesuva
@@ -71,3 +70,4 @@
 28 Wastes
 1 Worn Powerstone
 1 Wurmcoil Engine
+1 Zhulodok, Void Gorger

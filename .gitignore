@@ -40,3 +40,7 @@ __pycache__/
 # let `.busy.db-journal` get committed once.
 bot/.busy.db*
 bot/.locks.db*
+
+# Scratch space for decks being built by hand. Outside public/, so autopush
+# cannot reach it; ignored here so `git status` stays readable while working.
+staging/

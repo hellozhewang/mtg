@@ -10,9 +10,10 @@
 Checks (all must pass, see README.md):
   1. exactly 100 cards including the commander
   2. every name resolves on Scryfall  -- catches typos that would fail import
-  3. every card is inside the commander's colour identity
-  4. Game Changer count within the bracket cap
-  5. singleton -- no duplicate non-basic entries, no repeated lines
+  3. every card is LEGAL in Commander -- catches the 83 banned cards
+  4. every card is inside the commander's colour identity
+  5. Game Changer count within the bracket cap
+  6. singleton -- no duplicate non-basic entries, no repeated lines
 
 This module is business logic only: decklist parsing lives in deckfile.py and all
 card data access goes through cardlib.CardQuery.
@@ -68,6 +69,15 @@ def check(deck: deckfile.Deck, cards: dict[str, dict], missing: list[str],
     cmd = cards.get(deck.commander)
     identity = set(cmd.get("color_identity", [])) if cmd else set()
 
+    # Legality comes from each card's own `legalities.commander`, not a list
+    # transcribed into this repo. Wizards updates the ban list a few times a year
+    # and Scryfall reflects it the same day, so a hardcoded copy would be wrong
+    # without anyone noticing. Anything not "legal" is reported with its status,
+    # since `banned` and `restricted` mean different things.
+    illegal = [(n, (c.get("legalities") or {}).get("commander", "unknown"))
+               for n, c in cards.items()
+               if (c.get("legalities") or {}).get("commander") != "legal"]
+
     off_colour = [(n, c) for n, c in cards.items()
                   if set(c.get("color_identity", [])) - identity]
     gcs = [n for n in deck.names if cards.get(n, {}).get("game_changer")]
@@ -79,6 +89,9 @@ def check(deck: deckfile.Deck, cards: dict[str, dict], missing: list[str],
         problems.append(f"unparseable lines: {deck.bad_lines}")
     if missing:
         problems.append(f"unresolved names: {', '.join(missing)}")
+    if illegal:
+        problems.append("NOT LEGAL in Commander: " + ", ".join(
+            f"{n} [{why}]" for n, why in sorted(illegal)))
     if off_colour:
         problems.append("off-colour: " + ", ".join(
             f"{n}[{''.join(c['color_identity'])}]" for n, c in off_colour))

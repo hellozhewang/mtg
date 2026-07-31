@@ -23,9 +23,15 @@ is what most of this document is about. The bracket rules themselves live in
 `/deck-list` and `/deck-print`.
 
 ```bash
-./scripts/new_deck.py "Queen Marchesa" -o public/Bracket3/Marchesa-Pillowfort.txt
-./scripts/validate_deck.py public/Bracket3/Marchesa-Pillowfort.txt
+./scripts/new_deck.py "Queen Marchesa" -o staging/Marchesa-Pillowfort.txt
+./scripts/validate_deck.py staging/Marchesa-Pillowfort.txt
+mv staging/Marchesa-Pillowfort.txt public/Bracket3/          # once it passes
 ```
+
+New decks are built by hand in `staging/` at the repo root, then moved into a
+bracket folder once they validate. It sits outside `public/` and is gitignored, so
+a deck you are halfway through writing cannot be swept into a commit by a bot turn
+that fires while you work.
 
 The rest of this file is the deckbuilding guide: the rules a deck must follow, the
 file format, what each tool does, and the order to use them in.
@@ -309,13 +315,19 @@ anything.
 
 ### Validating — `scripts/validate_deck.py`
 
-**Required before calling any deck done.** Checks all five rules:
+**Required before calling any deck done.** Checks all six rules:
 
 1. Exactly **100 cards** including the commander
 2. Every name **resolves on Scryfall** (catches typos that would fail import)
-3. Every card is inside the commander's **colour identity**
-4. **Game Changer count** within the bracket cap (inferred from folder name)
-5. **Singleton** — no duplicate non-basic entries, no repeated lines
+3. Every card is **legal in Commander** — the 83 banned cards fail the deck
+4. Every card is inside the commander's **colour identity**
+5. **Game Changer count** within the bracket cap (inferred from folder name)
+6. **Singleton** — no duplicate non-basic entries, no repeated lines
+
+Legality is read from each card's own `legalities.commander`, not from a list
+copied into this repo, so it tracks Wizards' updates the day Scryfall does. The
+readable list is in
+[commander-brackets-and-rules.md](commander-brackets-and-rules.md).
 
 ```bash
 ./scripts/validate_deck.py                  # every deck in public/
@@ -326,6 +338,10 @@ anything.
 Real bugs this caught: `Sunbaked Canyon` is R/W and was illegal in a Jund deck;
 `Sling-Gang Lieutenant` is black and was illegal in mono-red Krenko. Both would
 have imported as 99-card decks with a silently missing card.
+
+The legality check was added after noticing the validator had no opinion at all
+about banned cards — a deck with `Mana Crypt` or `Dockside Extortionist` passed
+every check and was simply illegal.
 
 ### Publishing the catalog — `scripts/build_site.py`
 

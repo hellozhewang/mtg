@@ -49,6 +49,21 @@ def cache_db() -> Path:
     return cache_dir() / "cards.db"
 
 
+def staging_dir() -> Path:
+    """Scratch space for a deck being built BY HAND. Repo root, OUTSIDE the deck
+    workspace — so the sandboxed session cannot reach it at all, and `_autopush`,
+    which stages only `public/` and `docs/`, cannot sweep it up.
+
+    The race this closes is human-versus-bot, not bot-versus-bot: bot turns are
+    already serialised by a whole-bot lock. But autopush commits everything under
+    `public/` at the end of a turn, so a deck someone is editing there, 40 cards
+    in, would get published half-written the moment a Discord user asks an
+    unrelated question — under a "Deck update via Discord" message nobody wrote.
+
+    Being outside `public/` is what makes that structural rather than careful."""
+    return Path(os.environ.get("MTG_STAGING") or _REPO / "staging").expanduser().resolve()
+
+
 def site_dir() -> Path:
     """Generated GitHub Pages catalog. `docs/` is not arbitrary — Pages serves a
     branch subfolder only from `/docs`, so this name is what lets the site deploy

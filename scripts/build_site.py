@@ -84,6 +84,7 @@ SECTION_ORDER = ["Creatures", "Planeswalkers", "Instants", "Sorceries",
 
 COLOUR_NAMES = {"W": "White", "U": "Blue", "B": "Black", "R": "Red", "G": "Green"}
 MANA_TOKEN = re.compile(r"\{[^}]+\}")
+TIP_ATTR = re.compile(r'data-tip="([^"]*)"')
 
 
 # ---------- card helpers ----------
@@ -96,6 +97,19 @@ def category(card: dict) -> str:
     return "Other"
 
 
+def mana_cost(card: dict) -> str:
+    """Front-face mana cost.
+
+    A transforming double-faced card has NO top-level `mana_cost` — the cost sits
+    on each face — so reading only the top level renders Serah Farron and friends
+    as though they were free.
+    """
+    if card.get("mana_cost"):
+        return card["mana_cost"]
+    faces = card.get("card_faces") or []
+    return (faces[0].get("mana_cost") if faces else "") or ""
+
+
 def art_sets(card: dict) -> list[dict]:
     """The `image_uris` dicts for a card: one, or one per face on a DFC."""
     if card.get("image_uris"):
@@ -105,6 +119,17 @@ def art_sets(card: dict) -> list[dict]:
 
 def e(text: object) -> str:
     return html.escape(str(text), quote=True)
+
+
+def mirror_tips(page: str) -> str:
+    """Give every `data-tip` a matching `aria-label`.
+
+    The tooltip itself is CSS `::after` content, which screen readers do not
+    reliably announce — so the accessible name has to be a real attribute. Done
+    here rather than in the templates so each sentence exists once instead of
+    twice, where the two copies would drift.
+    """
+    return TIP_ATTR.sub(lambda m: f'{m.group(0)} aria-label="{m.group(1)}"', page)
 
 
 def bracket_label(folder: str) -> str:
@@ -281,11 +306,11 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
     if bracket is not None:
         flush()
 
-    return layout.render(
+    return mirror_tips(layout.render(
         TITLE="Commander decks", UP="", REPO=e(repo),
         DESCRIPTION=f"{len(decks)} Magic: the Gathering Commander decklists.",
         PICKER=picker(layout, decks, None, ""),
-        MAIN=index.render(COUNT=len(decks), SECTIONS="".join(sections)))
+        MAIN=index.render(COUNT=len(decks), SECTIONS="".join(sections))))
 
 
 def render_deck(tpl: dict[str, frontend.Template], d: DeckInfo,
@@ -322,13 +347,14 @@ def render_deck(tpl: dict[str, frontend.Template], d: DeckInfo,
             rendered.append(page.part("card").render(
                 CLASS="card cmdr" if cardname == d.commander else "card",
                 NAME=e(cardname), DATA=data, QTY=count,
-                GCFLAG='<span class="gcflag" title="Game Changer">GC</span>'
+                GCFLAG='<span class="gcflag" data-tip="Game Changer — on '
+                       'Wizards\' list of the format\'s most powerful cards">GC</span>'
                        if card.get("game_changer") else "",
-                COST=mana.render(card.get("mana_cost") or "", up)))
+                COST=mana.render(mana_cost(card), up)))
         sections.append(page.part("section").render(
             NAME=e(name), N=sum(c for c, _, _ in rows), CARDS="".join(rendered)))
 
-    return layout.render(
+    return mirror_tips(layout.render(
         TITLE=f"{d.stem} — {d.commander}", UP=up, REPO=e(repo),
         DESCRIPTION=f"{e(d.commander)} — {d.total}-card Commander deck, "
                     f"{d.label}, {d.gc_label} Game Changers.",
@@ -347,7 +373,7 @@ def render_deck(tpl: dict[str, frontend.Template], d: DeckInfo,
             MV=f"{d.avg_mv:.2f}", GC=e(d.gc_label),
             GCLIST=gclist, WARN=warn, CURVE=bars,
             RAWLIST=e(d.raw),
-            SECTIONS="".join(sections)))
+            SECTIONS="".join(sections))))
 
 
 # ---------- driver ----------

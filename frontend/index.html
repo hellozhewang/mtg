@@ -14,7 +14,7 @@ hover a card to preview it, click to enlarge.</p>
 </section>
 </template>
 
-<template data-part="tag"><span class="tag-private" title="Local only &mdash; not published to the repo">private</span></template>
+<template data-part="tag"><span class="tag-private" data-tip="Local only &mdash; this deck lives in private/ and is not published to the repo.">private</span></template>
 
 <template data-part="tile">
     <a class="tile" href="{{HREF}}">
@@ -22,7 +22,7 @@ hover a card to preview it, click to enlarge.</p>
       <span class="tile-body">
         <span class="tile-name">{{NAME}}{{TAG}}</span>
         <span class="tile-cmd">{{COMMANDER}}</span>
-        <span class="tile-meta">{{PIPS}}<span class="chip">{{TOTAL}} cards</span><span class="chip">{{LANDS}} lands</span><span class="chip" title="Average mana value of the nonland cards">MV {{MV}}</span><span class="chip gc" title="Game Changers used, out of the bracket cap">GC {{GC}}</span></span>
+        <span class="tile-meta">{{PIPS}}<span class="chip" data-tip="Every card including the commander. Commander decks are exactly 100.">{{TOTAL}} cards</span><span class="chip" data-tip="Lands in the deck. Most Commander decks run 34-38.">{{LANDS}} lands</span><span class="chip" data-tip="MV = mana value, what a card costs in total. This is the average across the nonland cards, so it says roughly how fast the deck is.">MV {{MV}}</span><span class="chip gc" data-tip="GC = Game Changer, a card on Wizards' list of the most powerful in the format. Shown as used / allowed for the bracket.">GC {{GC}}</span></span>
       </span>
     </a>
 </template>

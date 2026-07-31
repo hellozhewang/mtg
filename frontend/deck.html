@@ -1,11 +1,11 @@
 <main class="deck">
 <h1>{{NAME}}</h1>
-<p class="sub">{{PIPS}}<span class="cmd">{{COMMANDER}}</span><span class="bracket">{{BRACKET}}</span>{{TAG}}</p>
+<p class="sub">{{PIPS}}<span class="cmd">{{COMMANDER}}</span><span class="bracket" data-tip="Power level the deck is built to. Higher brackets allow more Game Changers, land denial and fast combos.">{{BRACKET}}</span>{{TAG}}</p>
 <ul class="stats">
-  <li title="Including the commander. Commander decks are exactly 100."><b>{{TOTAL}}</b>cards</li>
-  <li title="{{LANDNOTE}}"><b>{{LANDS}}</b>lands</li>
-  <li title="Average mana value of the nonland cards — roughly, how expensive the deck is to cast"><b>{{MV}}</b>avg MV</li>
-  <li title="Cards on Wizards' Game Changer list. Bracket 3 allows at most 3, and the commander counts."><b>{{GC}}</b>Game Changers</li>
+  <li data-tip="Every card in the deck, including the commander. Commander decks are exactly 100."><b>{{TOTAL}}</b>cards</li>
+  <li data-tip="{{LANDNOTE}}"><b>{{LANDS}}</b>lands</li>
+  <li data-tip="MV = mana value, what a card costs in total. This is the average across the nonland cards, so it says roughly how fast the deck is."><b>{{MV}}</b>avg MV</li>
+  <li data-tip="GC = Game Changer, a card on Wizards' list of the most powerful in the format. Bracket 3 allows at most 3, and the commander counts."><b>{{GC}}</b>Game Changers</li>
 </ul>
 {{GCLIST}}{{WARN}}
 <div class="curve" aria-label="Mana curve, nonland cards">
@@ -28,13 +28,13 @@
   <a class="btn" href="{{BLOB}}" target="_blank" rel="noopener">On GitHub &#8599;</a>
 </template>
 
-<template data-part="tag"><span class="tag-private" title="Local only — not published to the repo">private</span></template>
+<template data-part="tag"><span class="tag-private" data-tip="Local only — this deck lives in private/ and is not published to the repo.">private</span></template>
 
 <template data-part="gclist">
 <p class="gclist">{{NAMES}}</p>
 </template>
 
-<template data-part="gcname"><span class="gcname">{{NAME}}</span></template>
+<template data-part="gcname"><span class="gcname" data-tip="Game Changer — one of the format's most powerful cards. Bracket 3 allows 3.">{{NAME}}</span></template>
 
 <template data-part="warn">
 <p class="warn">Not resolved on Scryfall: {{NAMES}}</p>

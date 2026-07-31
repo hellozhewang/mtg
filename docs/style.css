@@ -27,6 +27,34 @@ h2 .count{color:var(--line)}
   color:var(--fg);border:1px solid var(--line);border-radius:7px;
   padding:6px 9px;font:inherit;font-size:.9rem}
 
+/* ---- tooltips ----
+   Replaces the native `title` attribute, which takes about a second to appear,
+   cannot be styled, and gives no hint it exists. `data-tip` shows instantly and
+   `cursor:help` plus the dotted underline advertise that there is something to
+   read — MV and GC are jargon nobody should have to guess at.
+   `aria-label` carries the same text for screen readers; see build_site.py. */
+[data-tip]{position:relative;cursor:help;
+  text-decoration:underline dotted color-mix(in srgb,currentColor 45%,transparent);
+  text-underline-offset:3px}
+[data-tip]::after{
+  content:attr(data-tip);position:absolute;z-index:40;
+  bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);
+  width:max-content;max-width:min(250px,62vw);
+  background:#0a0c11;border:1px solid var(--line);border-radius:8px;
+  padding:7px 10px;box-shadow:0 8px 22px #000a;
+  /* The chips and stat blocks are uppercase and letter-spaced; the tooltip is
+     prose and must not inherit any of that. */
+  font:400 .76rem/1.4 ui-sans-serif,system-ui,sans-serif;
+  color:var(--fg);text-transform:none;letter-spacing:0;text-align:left;
+  white-space:normal;text-decoration:none;
+  opacity:0;visibility:hidden;transition:opacity .1s ease;pointer-events:none}
+[data-tip]:hover::after,[data-tip]:focus-visible::after{opacity:1;visibility:visible}
+/* A card row is already clickable and already shows an image on hover; a second
+   floating panel there would fight it, so the GC badge only speaks on focus. */
+.card [data-tip]:hover::after{opacity:0;visibility:hidden}
+.card [data-tip]:focus-visible::after{opacity:1;visibility:visible}
+@media (hover:none){[data-tip]::after{display:none}}
+
 /* ---- mana symbols (real Scryfall SVGs, served from docs/mana/) ---- */
 /* .pip is a deck's colour identity; .ms is one symbol in a card's cost. Both get
    a drop shadow rather than a border — the SVGs are already round and already
@@ -129,11 +157,13 @@ h2 .count{color:var(--line)}
 .cards[data-view="gallery"] .cname{position:absolute;left:-9999px}
 .cards[data-view="gallery"] .qty{position:absolute;top:5px;right:6px;z-index:1;
   background:#000c;border-radius:4px;padding:2px 5px;color:var(--fg)}
-.cards[data-view="gallery"] .card img{width:100%;display:block;
+/* `img.thumb` and not `img`: the cost column puts a mana-symbol <img> in every
+   row, and the unqualified selector stretched those to 100% too. */
+.cards[data-view="gallery"] .card img.thumb{width:100%;display:block;
   border-radius:4.7%/3.4%;background:var(--panel2);aspect-ratio:146/204}
-.cards[data-view="gallery"] .card:hover img,
-.cards[data-view="gallery"] .card:focus img{outline:2px solid var(--accent)}
-.cards[data-view="gallery"] .card.cmdr img{outline:2px solid var(--accent-line)}
+.cards[data-view="gallery"] .card:hover img.thumb,
+.cards[data-view="gallery"] .card:focus img.thumb{outline:2px solid var(--accent)}
+.cards[data-view="gallery"] .card.cmdr img.thumb{outline:2px solid var(--accent-line)}
 
 /* ---- hover preview ---- */
 #preview{position:fixed;z-index:50;pointer-events:none;width:244px;

@@ -41,8 +41,14 @@
   function fillGallery() {
     var list = document.querySelectorAll('.card[data-thumb]');
     Array.prototype.forEach.call(list, function (li) {
-      if (li.querySelector('img')) return;
-      var img = new Image();
+      // `img.thumb`, NOT any <img>: a card row already contains one <img> per
+      // mana symbol in its cost, so a bare `querySelector('img')` matched those
+      // and the guard skipped every card that costs mana. The only cards that
+      // rendered were transforming double-faced ones, which carry no top-level
+      // mana cost and so had no symbol to trip over.
+      if (li.querySelector('img.thumb')) return;
+      var img = new Image(146, 204);        // intrinsic size => no layout shift
+      img.className = 'thumb';
       img.loading = 'lazy';
       img.decoding = 'async';
       img.alt = li.dataset.name || '';

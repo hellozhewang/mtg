@@ -44,3 +44,6 @@ bot/.locks.db*
 # Scratch space for decks being built by hand. Outside public/, so autopush
 # cannot reach it; ignored here so `git status` stays readable while working.
 staging/
+
+# VS Code workspace settings, which are machine-local and not source.
+.vscode/

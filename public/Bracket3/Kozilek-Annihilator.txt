@@ -63,11 +63,14 @@
 1 Ulamog, the Infinite Gyre
 1 Unwinding Clock
 1 Ur-Golem's Eye
+1 Urza's Mine
+1 Urza's Power Plant
+1 Urza's Tower
 1 Vesuva
 1 Void Winnower
 1 War Room
 1 Warping Wail
-28 Wastes
+25 Wastes
 1 Worn Powerstone
 1 Wurmcoil Engine
 1 Zhulodok, Void Gorger

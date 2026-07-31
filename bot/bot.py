@@ -299,6 +299,15 @@ def _flock(path: Path):
 # deliberately: the cache is handed to the sandbox via --add-dir, so a lock kept
 # there would be one the sandboxed session could take, hold or corrupt.
 LOCK_DB = HERE / ".locks.db"
+# Separate file from LOCK_DB on purpose. The busy lock is held for a WHOLE turn
+# (minutes), while _dblock is taken briefly inside that turn by _autopush — one
+# file for both would mean a turn deadlocking against itself.
+BUSY_DB = HERE / ".busy.db"
+# Users reach this agent by typing `builder <request>` as a plain Discord
+# message (see deckBuilder.ts in the discord-bot project), so name that, not a
+# slash command — there isn't one.
+BUSY_REPLY = ("I'm already working on another `builder` request — one at a time. "
+              "Give it a minute and try again.")
 LOCK_TIMEOUT = 120
 
 
@@ -430,10 +439,10 @@ def _base_args() -> list[str]:
     ]
 
 
-# Emitted on stderr by scripts/toollog.py. The sandbox blocks the tools from
-# writing logs/ themselves (deliberately — that is what stops the session
-# rewriting its own history), so they announce on stderr, codex captures it, and
-# we re-log it here from OUTSIDE the sandbox where it cannot be forged.
+# Fallback only. Tools record themselves through toollog, which writes to the
+# cache database the sandbox can reach; this regex recovers a call from codex's
+# captured output if that failed. It is lossy — codex does not echo every tool's
+# stderr — which is exactly why it is no longer the primary source.
 TOOL_LINE = re.compile(r"\[mtg-tool\]\s*(.+)")
 
 
@@ -493,6 +502,42 @@ def _build_site() -> str | None:
     return str(site.relative_to(REPO))
 
 
+class Busy(RuntimeError):
+    """Raised when a model turn is already in flight."""
+
+
+def _claim_bot() -> sqlite3.Connection:
+    """Take the whole-bot lock WITHOUT waiting. Raises Busy if another turn holds it.
+
+    Per-channel locks only stopped one channel racing itself. This is bot-wide,
+    because the expensive things a turn does are global: one Codex process at a
+    high reasoning effort, the shared Scryfall cache, the git index, and a `git
+    push`. Two turns at once contend on all four.
+
+    Non-blocking on purpose. Queueing would leave a Discord user staring at
+    nothing for the length of someone else's turn — minutes — with no idea why;
+    a refusal they can retry is the kinder failure. `timeout=0` is what makes
+    BEGIN IMMEDIATE fail instantly rather than wait.
+
+    The lock is the SQLite transaction itself, so it cannot leak: if this process
+    dies the connection closes and the lock is gone, with no stale file to clean.
+    """
+    con = sqlite3.connect(BUSY_DB, timeout=0)
+    try:
+        con.execute("BEGIN IMMEDIATE")
+    except sqlite3.OperationalError as exc:
+        con.close()
+        raise Busy from exc
+    return con
+
+
+def _release_bot(con: sqlite3.Connection) -> None:
+    try:
+        con.rollback()
+    finally:
+        con.close()
+
+
 def _autopush(chan: str) -> None:
     """Commit and push decklist changes. Never raises — a git failure must not
     lose the user's reply, which has already been produced by this point."""
@@ -550,7 +595,7 @@ def _finish(chan: str, answer: str, combined: str, started: float) -> str:
     Previously the tool-usage log lived only on the fresh-session path, so resume
     turns — the overwhelmingly common case — recorded nothing.
     """
-    _log_tool_usage(chan, combined)
+    _log_tool_usage(chan, combined, started)
     _autopush(chan)
     log().info("REPLY  [%s/model] %d chars %dms", chan, len(answer),
                int((time.time() - started) * 1000))
@@ -558,50 +603,17 @@ def _finish(chan: str, answer: str, combined: str, started: float) -> str:
     return answer
 
 
-def _drain_tool_spool(chan: str) -> list[str]:
-    """Take this channel's tool records out of the spool. Never raises.
+def _log_tool_usage(chan: str, combined: str, started: float) -> None:
+    """Record which repo tools the session ran this turn.
 
-    The spool is `.cache/toolcalls.log`, the one place inside the sandbox the
-    tools can always write (see scripts/toollog.py). Draining moves the records
-    into `logs/`, which the session cannot touch.
-
-    Only THIS channel's lines are taken; another channel mid-turn keeps its own.
-    The read-and-rewrite is not atomic on its own, hence the global lock — two
-    channels finishing together would otherwise drop each other's records.
+    Asks toollog for the calls in this turn's window; how it stores them is its
+    business. Scraping codex's output is kept only as a fallback for the case
+    where the log itself was unavailable — it is lossy, which is why it is no
+    longer the primary source.
     """
-    spool = CACHE_DIR / toollog.SPOOL
-    mine: list[str] = []
-    try:
-        with _dblock():
-            if not spool.exists():
-                return []
-            keep = []
-            for raw in spool.read_text(encoding="utf-8").splitlines():
-                parts = raw.split(toollog.SEP)
-                if len(parts) == 3 and parts[1] == chan:
-                    mine.append(parts[2])
-                elif raw.strip():
-                    keep.append(raw)
-            spool.write_text("\n".join(keep) + ("\n" if keep else ""),
-                             encoding="utf-8")
-    except Exception as exc:
-        log().warning("toollog: spool drain failed (%s: %s)",
-                      type(exc).__name__, exc)
-    return mine
-
-
-def _log_tool_usage(chan: str, combined: str) -> None:
-    """Record which repo tools the session actually ran this turn.
-
-    Two sources, because neither is complete alone. The spool catches every
-    invocation; scraping codex's output catches anything that ran with the spool
-    unavailable. Deduplicated, since a tool normally lands in both.
-    """
-    seen = _drain_tool_spool(chan)
-    for line in TOOL_LINE.findall(combined or ""):
-        line = line.strip()
-        if line not in seen:
-            seen.append(line)
+    seen = [c.command for c in toollog.since(started, chan)]
+    if not seen:
+        seen = [m.strip() for m in TOOL_LINE.findall(combined or "")]
     for line in seen:
         log().info("TOOL   [%s] %s", chan, line)
     if not seen:
@@ -663,6 +675,15 @@ def send(message: str, channel: str | int | None = DEFAULT_CHANNEL) -> str:
         log().debug("REPLY-BODY %s", _oneline(reply))
         return reply
 
+    # One model turn at a time, bot-wide. Taken AFTER the deterministic commands
+    # above so /deck-print and /deck-list keep answering while a build runs —
+    # they only read files and cost nothing.
+    try:
+        busy = _claim_bot()
+    except Busy:
+        log().info("BUSY   [%s] refused; another turn is in flight", chan)
+        return BUSY_REPLY
+
     changed, status = build_agents.build()  # redeploy AGENTS.md 0444 before codex reads
     log().log(logging.INFO if changed else logging.DEBUG, "agents.md: %s", status)
 
@@ -716,6 +737,7 @@ def send(message: str, channel: str | int | None = DEFAULT_CHANNEL) -> str:
         raise
     finally:
         out_file.unlink(missing_ok=True)
+        _release_bot(busy)
 
 
 # ---------- cli ----------

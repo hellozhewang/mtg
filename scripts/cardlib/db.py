@@ -42,7 +42,15 @@ CREATE TABLE IF NOT EXISTS images (
     body       BLOB NOT NULL,
     fetched_at REAL NOT NULL
 );
+CREATE TABLE IF NOT EXISTS toolcalls (
+    id      INTEGER PRIMARY KEY AUTOINCREMENT,
+    at      REAL NOT NULL,
+    channel TEXT NOT NULL,
+    tool    TEXT NOT NULL,
+    args    TEXT NOT NULL
+);
 CREATE INDEX IF NOT EXISTS idx_cards_name ON cards(name);
+CREATE INDEX IF NOT EXISTS idx_toolcalls_at ON toolcalls(at);
 """
 
 
@@ -176,6 +184,69 @@ class PageStore:
 
     def clear(self) -> None:
         self.conn.executescript("DELETE FROM pages;")
+        self.conn.commit()
+
+
+class ToolLogStore:
+    """One row per tool invocation. Not card data, but the same file.
+
+    Here rather than in a log file because SQLite already solves what the log
+    needed: concurrent appends from several processes, ordering, and querying a
+    slice without parsing text. It is also the only writable location the
+    sandboxed session has (bot.py grants `.cache` with --add-dir), which is what
+    makes the records complete -- the previous scheme recovered them by grepping
+    codex's captured output and silently lost most of them.
+
+    `id` is monotonic, so "everything since I last looked" is one comparison --
+    that is what `scripts/toollog.py --flush` checkpoints on.
+    """
+
+    def __init__(self, path: Path, timeout: float = 10.0):
+        path.parent.mkdir(parents=True, exist_ok=True)
+        self.path = path
+        # A timeout, not the default 5s-and-die: several tools can be writing at
+        # once and a logger must wait its turn rather than fail the tool.
+        self.conn = sqlite3.connect(path, timeout=timeout)
+        self.conn.row_factory = sqlite3.Row
+        self.conn.executescript(SCHEMA)
+
+    def add(self, channel: str, tool: str, args: str) -> None:
+        self.conn.execute(
+            "INSERT INTO toolcalls (at, channel, tool, args) VALUES (?,?,?,?)",
+            (time.time(), channel, tool, args))
+        self.conn.commit()
+
+    def query(self, since_id: int = 0, since_time: float | None = None,
+              channel: str | None = None, limit: int | None = None) -> list[sqlite3.Row]:
+        sql = "SELECT * FROM toolcalls WHERE id > ?"
+        args: list = [since_id]
+        if since_time is not None:
+            sql += " AND at >= ?"
+            args.append(since_time)
+        if channel:
+            sql += " AND channel = ?"
+            args.append(channel)
+        sql += " ORDER BY id"
+        if limit:
+            sql += f" LIMIT {int(limit)}"
+        return self.conn.execute(sql, args).fetchall()
+
+    def recent(self, limit: int = 50, channel: str | None = None) -> list[sqlite3.Row]:
+        rows = self.conn.execute(
+            "SELECT * FROM toolcalls" + (" WHERE channel = ?" if channel else "")
+            + " ORDER BY id DESC LIMIT ?",
+            ((channel, limit) if channel else (limit,))).fetchall()
+        return list(reversed(rows))
+
+    def stats(self) -> dict:
+        q = lambda sql: self.conn.execute(sql).fetchone()[0]
+        return {
+            "tool_calls": q("SELECT COUNT(*) FROM toolcalls"),
+            "tool_channels": q("SELECT COUNT(DISTINCT channel) FROM toolcalls"),
+        }
+
+    def clear(self) -> None:
+        self.conn.executescript("DELETE FROM toolcalls;")
         self.conn.commit()
 
 

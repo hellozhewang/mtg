@@ -19,6 +19,10 @@ Three caches share one SQLite file because their lifetimes differ:
     cards   CardStore    keyed by oracle_id, 30-day TTL   (Scryfall)
     pages   PageStore    keyed by URL, 24-hour TTL        (EDHREC payloads)
     images  ImageStore   keyed by URL, NEVER expires      (Scryfall image CDN)
+    toolcalls ToolLogStore  append-only, never expires    (our own tools)
+
+To read the tool log rather than clear it, use `toollog.py` — it has the query
+and flush commands, and this file is for administration only.
 
 Which is why `--clear` takes a target. Clearing everything to refresh one EDHREC
 page throws away ~1000 cards that cost ~14 Scryfall round trips to rebuild — and
@@ -37,7 +41,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import deckfile
 import toollog
 import workspace
-from cardlib import CardQuery, ImageStore, PageStore
+from cardlib import CardQuery, ImageStore, PageStore, ToolLogStore
 
 
 def main() -> int:
@@ -46,8 +50,9 @@ def main() -> int:
         description="Inspect and clear the card, EDHREC page and image caches.")
     ap.add_argument("--stats", action="store_true")
     ap.add_argument("--clear", nargs="?", const="all",
-                    choices=["all", "cards", "pages", "images"], metavar="WHAT",
-                    help="wipe all|cards|pages|images (default: all)")
+                    choices=["all", "cards", "pages", "images", "tools"],
+                    metavar="WHAT",
+                    help="wipe all|cards|pages|images|tools (default: all)")
     ap.add_argument("--warm", nargs="+", metavar="PATH", help="pre-fetch deck cards")
     args = ap.parse_args()
 
@@ -55,6 +60,7 @@ def main() -> int:
     q = CardQuery(db_path=db)
     pages = PageStore(db)
     images = ImageStore(db)
+    tools = ToolLogStore(db)
 
     if args.clear:
         if args.clear in ("all", "cards"):
@@ -66,6 +72,9 @@ def main() -> int:
         if args.clear in ("all", "images"):
             images.clear()
             print("cleared: card images (build_site.py will refetch them)")
+        if args.clear in ("all", "tools"):
+            tools.clear()
+            print("cleared: tool-invocation log")
 
     if args.warm:
         names = sorted({e.name
@@ -78,7 +87,7 @@ def main() -> int:
             print(f"UNRESOLVED: {', '.join(missing)}")
 
     if args.stats or not any([args.clear, args.warm]):
-        for k, v in {**q.stats(), **pages.stats(), **images.stats()}.items():
+        for k, v in {**q.stats(), **pages.stats(), **images.stats(), **tools.stats()}.items():
             print(f"{k:>22}: {v}")
     return 0
 

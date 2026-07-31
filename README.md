@@ -406,6 +406,7 @@ cached cards that cost ~14 Scryfall round trips to rebuild:
 | `cards` + `aliases` | `CardStore` | `oracle_id` | 30 days | Scryfall |
 | `pages` | `PageStore` | URL | 24 hours | EDHREC |
 | `images` | `ImageStore` | URL | **never** | Scryfall image CDN |
+| `toolcalls` | `ToolLogStore` | rowid | **never** | our own tools |
 
 Each store owns only its own tables — `CardStore.clear()` deliberately does *not*
 touch `pages`, and each reports its own `stats()`, which `cache.py` merges.
@@ -524,6 +525,7 @@ mtg/
 │   ├── workspace.py           owns all path policy (deck root, cache location)
 │   ├── deckfile.py            .txt decklist format, read and write
 │   ├── frontend.py            {{TOKEN}} + <template data-part> loader
+│   ├── toollog.py             tool-invocation log: API + CLI over SQLite
 │   ├── find_cards.py          Scryfall search with bracket rules applied
 │   ├── new_deck.py            seed a decklist from EDHREC's aggregate
 │   ├── find_inspiration.py    what other pilots run that yours doesn't

@@ -76,6 +76,15 @@ class ScryfallAPI:
             missing.extend(x.get("name", "?") for x in r.get("not_found", []))
         return found, missing
 
+    def symbology(self) -> list[dict]:
+        """Every mana symbol Magic has, with the URL of its official SVG.
+
+        Used rather than deriving the URL from the symbol text — `{W/U}` does map
+        to `WU.svg` and `{2/W}` to `2W.svg`, but that pattern is undocumented, and
+        this endpoint is one cached call that cannot silently drift.
+        """
+        return self._get("/symbology", {}).get("data", [])
+
     def search(self, query: str, order: str = "edhrec",
                unique: str = "cards", limit: int | None = None) -> tuple[list[dict], int]:
         """Run a Scryfall query, following pagination up to `limit` results."""

@@ -33,9 +33,11 @@ import urllib.request
 from pathlib import PurePosixPath
 from urllib.parse import urlsplit
 
-HOST = "cards.scryfall.io"
-# The CDN serves images, so `Accept: application/json` — required by the API —
-# would be actively wrong here. Only the User-Agent carries over.
+# Two CDNs, both Scryfall's: card scans, and the mana-symbol SVGs. Note `.io`,
+# NOT `.com` — svgs.scryfall.com does not resolve at all.
+HOSTS = ("cards.scryfall.io", "svgs.scryfall.io")
+# These serve images, so `Accept: application/json` — required by the API — would
+# be actively wrong here. Only the User-Agent carries over.
 HEADERS = {"User-Agent": "MtgDeckTuner/1.0", "Accept": "image/*"}
 POLITE_DELAY = 0.05            # a CDN, so lighter than api.py's 0.12
 
@@ -72,11 +74,11 @@ class ImageAPI:
         self.calls = 0
 
     def get(self, url: str) -> bytes:
-        if urlsplit(url).hostname != HOST:
+        if urlsplit(url).hostname not in HOSTS:
             # Guardrail, not paranoia: URLs come from card JSON, and this keeps a
             # malformed or hand-edited one from turning the builder into a
             # general-purpose downloader.
-            raise ImageError(f"refusing non-{HOST} url: {url}")
+            raise ImageError(f"refusing url outside {HOSTS}: {url}")
         req = urllib.request.Request(url, headers=HEADERS)
         self.calls += 1
         try:

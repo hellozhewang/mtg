@@ -17,7 +17,7 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-from .api import ScryfallAPI, ScryfallError          # noqa: F401  (re-exported)
+from .api import BASE, ScryfallAPI, ScryfallError   # noqa: F401  (re-exported)
 from .db import DEFAULT_TTL_DAYS, PAGE_TTL_HOURS, CardStore, ImageStore, PageStore
 from .edhrec import EdhrecAPI, EdhrecError           # noqa: F401  (re-exported)
 from .images import ImageAPI, ImageError, local_name  # noqa: F401  (re-exported)
@@ -147,6 +147,53 @@ class EdhrecQuery:
     def counters(self) -> str:
         return (f"pages {self.store.hits} hit / {self.store.misses} miss, "
                 f"{self.api.calls} EDHREC calls")
+
+
+class SymbolQuery:
+    """Mana symbol SVGs — the `{W}` and `{2}` glyphs printed on a card's cost.
+
+    Spans both stores because the job has two halves: a small JSON map of symbol
+    to SVG URL, and the SVG bytes themselves. The map goes in PageStore with a
+    30-day TTL rather than the usual 24 hours — Magic adds a mana symbol every few
+    years, not every day — and the bytes go in ImageStore alongside card images,
+    where they never expire at all.
+    """
+
+    SYMBOLOGY_TTL_HOURS = 24 * 30
+    SYMBOLOGY_URL = f"{BASE}/symbology"        # the PageStore key, not a fetch
+
+    def __init__(self, db_path: Path = DEFAULT_DB,
+                 pages: PageStore | None = None,
+                 images: ImageStore | None = None,
+                 api: ScryfallAPI | None = None,
+                 cdn: ImageAPI | None = None):
+        self.pages = pages or PageStore(db_path, self.SYMBOLOGY_TTL_HOURS)
+        self.images = images or ImageStore(db_path)
+        self.api = api or ScryfallAPI()
+        self.cdn = cdn or ImageAPI()
+
+    def uris(self) -> dict[str, str]:
+        """{"{W}": "https://svgs.scryfall.io/card-symbols/W.svg", ...}"""
+        payload = self.pages.get(self.SYMBOLOGY_URL)
+        if payload is None:
+            payload = {"data": self.api.symbology()}
+            self.pages.put(self.SYMBOLOGY_URL, payload)
+        return {s["symbol"]: s["svg_uri"]
+                for s in payload.get("data", []) if s.get("svg_uri")}
+
+    def svg(self, url: str) -> bytes | None:
+        body = self.images.get(url)
+        if body is not None:
+            return body
+        try:
+            body = self.cdn.get(url)
+        except ImageError:
+            return None
+        self.images.put(url, body)
+        return body
+
+    def commit(self) -> None:
+        self.images.commit()
 
 
 class ImageQuery:

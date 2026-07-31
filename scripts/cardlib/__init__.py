@@ -36,9 +36,9 @@ from .api import ScryfallAPI, ScryfallError
 from .db import CardStore, ImageStore, PageStore
 from .edhrec import EdhrecAPI, EdhrecError
 from .images import ImageAPI, ImageError, local_name
-from .query import DEFAULT_DB, CardQuery, EdhrecQuery, ImageQuery
+from .query import DEFAULT_DB, CardQuery, EdhrecQuery, ImageQuery, SymbolQuery
 
-__all__ = ["CardQuery", "EdhrecQuery", "ImageQuery",
+__all__ = ["CardQuery", "EdhrecQuery", "ImageQuery", "SymbolQuery",
            "CardStore", "PageStore", "ImageStore",
            "ScryfallAPI", "ScryfallError", "EdhrecAPI", "EdhrecError",
            "ImageAPI", "ImageError", "local_name", "DEFAULT_DB"]

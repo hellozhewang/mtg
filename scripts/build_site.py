@@ -16,6 +16,7 @@ Data comes from here, markup comes from `frontend/`:
     docs/index.html        <- generated
     docs/<Bracket>/<Deck>.html
     docs/img/*.webp        <- card thumbnails, see below
+    docs/mana/*.svg        <- the real Magic mana symbols, from Scryfall
     docs/.nojekyll         serve the files as-is instead of running Jekyll
 
 IMAGE HOSTING IS A SPLIT, and the reason is repo size. 818 unique cards across
@@ -41,9 +42,11 @@ from __future__ import annotations
 
 import argparse
 import html
+import re
 import subprocess
 import sys
 from pathlib import Path
+from urllib.parse import urlsplit
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
@@ -51,7 +54,7 @@ import deckfile
 import frontend
 import toollog
 import workspace
-from cardlib import CardQuery, ImageQuery, local_name
+from cardlib import CardQuery, ImageQuery, SymbolQuery, local_name
 # Same policy as the validator, imported rather than restated: a bracket cap or a
 # land count that disagreed with `validate_deck.py` would make the site lie.
 from validate_deck import gc_cap, land_counts
@@ -79,6 +82,7 @@ SECTION_ORDER = ["Creatures", "Planeswalkers", "Instants", "Sorceries",
                  "Artifacts", "Enchantments", "Battles", "Lands", "Other"]
 
 COLOUR_NAMES = {"W": "White", "U": "Blue", "B": "Black", "R": "Red", "G": "Green"}
+MANA_TOKEN = re.compile(r"\{[^}]+\}")
 
 
 # ---------- card helpers ----------
@@ -102,12 +106,60 @@ def e(text: object) -> str:
     return html.escape(str(text), quote=True)
 
 
-def pips(colours: list[str]) -> str:
-    if not colours:
-        return '<span class="pip pip-c" title="Colourless">C</span>'
-    return "".join(
-        f'<span class="pip pip-{c.lower()}" title="{COLOUR_NAMES.get(c, c)}">{c}</span>'
-        for c in sorted(colours, key="WUBRG".index))
+def bracket_label(folder: str) -> str:
+    """`Bracket3` -> `Bracket 3`, `Bracket3.5` -> `Bracket 3.5`.
+
+    Display only. The folder name itself is the bracket's identity — it drives the
+    Game Changer cap in validate_deck.py and the published URL — so it is never
+    the thing that gets rewritten.
+    """
+    return re.sub(r"(?<=[A-Za-z])(?=\d)", " ", folder)
+
+
+class Mana:
+    """Renders `{W}{W}` as the real Magic symbols.
+
+    Holds the symbol -> SVG-filename map and hands back <img> tags. Files land in
+    docs/mana/ and are committed: 25 symbols cover every deck here and they total
+    about 40 KB, so the argument that keeps card scans on Scryfall's CDN does not
+    apply — these are small, reused hundreds of times per page, and better served
+    same-origin.
+    """
+
+    def __init__(self, uris: dict[str, str]):
+        self.uris = uris
+        self.used: dict[str, str] = {}          # url -> filename, for collect()
+
+    def _file(self, url: str) -> str:
+        name = Path(urlsplit(url).path).name
+        self.used[url] = name
+        return name
+
+    def render(self, cost: str, up: str) -> str:
+        out = []
+        for token in MANA_TOKEN.findall(cost or ""):
+            url = self.uris.get(token)
+            if url:
+                out.append(f'<img class="ms" src="{up}mana/{e(self._file(url))}"'
+                           f' alt="{e(token)}" width="15" height="15">')
+            else:                               # unknown symbol: show the text
+                out.append(f'<span class="ms-text">{e(token)}</span>')
+        return "".join(out)
+
+    def pips(self, colours: list[str], up: str) -> str:
+        """A deck's colour identity, as the five mana symbols."""
+        tokens = [f"{{{c}}}" for c in sorted(colours, key="WUBRG".index)] or ["{C}"]
+        out = []
+        for token in tokens:
+            title = COLOUR_NAMES.get(token[1], "Colourless")
+            url = self.uris.get(token)
+            if url:
+                out.append(f'<img class="pip" src="{up}mana/{e(self._file(url))}"'
+                           f' alt="{e(title)}" title="{e(title)}"'
+                           f' width="19" height="19">')
+            else:
+                out.append(f'<span class="ms-text">{e(token)}</span>')
+        return "".join(out)
 
 
 # ---------- model ----------
@@ -119,6 +171,7 @@ class DeckInfo:
         self.path = path
         self.rel = path.resolve().relative_to(root)
         self.bracket = self.rel.parent.as_posix()
+        self.label = bracket_label(self.bracket)
         self.stem = path.stem
         self.href = self.rel.with_suffix(".html").as_posix()
         self.depth = len(self.rel.parts) - 1
@@ -180,7 +233,7 @@ def picker(layout: frontend.Template, decks: list[DeckInfo],
         if d.bracket != bracket:
             if bracket is not None:
                 groups.append(layout.part("picker-group").render(
-                    BRACKET=e(bracket), OPTIONS="".join(opts)))
+                    BRACKET=e(bracket_label(bracket)), OPTIONS="".join(opts)))
             bracket, opts = d.bracket, []
         opts.append(layout.part("picker-option").render(
             HREF=up + e(d.href),
@@ -188,18 +241,18 @@ def picker(layout: frontend.Template, decks: list[DeckInfo],
             LABEL=f"{e(d.stem)} — {e(d.commander)}"))
     if bracket is not None:
         groups.append(layout.part("picker-group").render(
-            BRACKET=e(bracket), OPTIONS="".join(opts)))
+            BRACKET=e(bracket_label(bracket)), OPTIONS="".join(opts)))
     return "".join(groups)
 
 
 def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
-                 repo: str) -> str:
+                 repo: str, mana: Mana) -> str:
     index, layout = tpl["index"], tpl["layout"]
     sections, bracket, tiles = [], None, []
 
     def flush() -> None:
         sections.append(index.part("section").render(
-            BRACKET=e(bracket), N=len(tiles), TILES="".join(tiles)))
+            BRACKET=e(bracket_label(bracket)), N=len(tiles), TILES="".join(tiles)))
 
     for d in decks:
         if d.bracket != bracket:
@@ -211,7 +264,7 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
                if d.art_url else '<span class="art-blank"></span>')
         tiles.append(index.part("tile").render(
             HREF=e(d.href), ART=art, NAME=e(d.stem), COMMANDER=e(d.commander),
-            PIPS=pips(d.colours), TOTAL=d.total, LANDS=d.lands,
+            PIPS=mana.pips(d.colours, ""), TOTAL=d.total, LANDS=d.lands,
             MV=f"{d.avg_mv:.2f}",
             GC=f"{len(d.gcs)}/{d.cap}" if d.cap is not None else str(len(d.gcs))))
     if bracket is not None:
@@ -225,7 +278,7 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
 
 
 def render_deck(tpl: dict[str, frontend.Template], d: DeckInfo,
-                decks: list[DeckInfo], repo: str) -> str:
+                decks: list[DeckInfo], repo: str, mana: Mana) -> str:
     page, layout = tpl["deck"], tpl["layout"]
     up = "../" * d.depth
     blob = f"{repo}/blob/main/public/{d.rel.as_posix()}"
@@ -258,18 +311,18 @@ def render_deck(tpl: dict[str, frontend.Template], d: DeckInfo,
                 NAME=e(cardname), DATA=data, QTY=count,
                 GCFLAG='<span class="gcflag" title="Game Changer">GC</span>'
                        if card.get("game_changer") else "",
-                COST=e(card.get("mana_cost") or "")))
+                COST=mana.render(card.get("mana_cost") or "", up)))
         sections.append(page.part("section").render(
             NAME=e(name), N=sum(c for c, _, _ in rows), CARDS="".join(rendered)))
 
     return layout.render(
         TITLE=f"{d.stem} — {d.commander}", UP=up, REPO=e(repo),
         DESCRIPTION=f"{e(d.commander)} — {d.total}-card Commander deck, "
-                    f"{d.bracket}, {d.gc_label} Game Changers.",
+                    f"{d.label}, {d.gc_label} Game Changers.",
         PICKER=picker(layout, decks, d, up),
         MAIN=page.render(
-            NAME=e(d.stem), PIPS=pips(d.colours), COMMANDER=e(d.commander),
-            BRACKET=e(d.bracket), TOTAL=d.total,
+            NAME=e(d.stem), PIPS=mana.pips(d.colours, up), COMMANDER=e(d.commander),
+            BRACKET=e(d.label), TOTAL=d.total,
             LANDS=f"{d.lands}" + (f" +{d.flex}" if d.flex else ""),
             # A modal DFC like Malakir Rebirth is `Instant // Land`: playable as a
             # tapped land but not a mana source you can plan around, so it is
@@ -349,8 +402,22 @@ def collect_images(decks: list[DeckInfo], img: ImageQuery,
     return files
 
 
+def collect_symbols(mana: Mana, sym: SymbolQuery, out_dir: Path) -> dict[Path, bytes]:
+    """SVGs for the mana symbols the pages actually reference.
+
+    Driven by `mana.used`, populated as the pages rendered, so a symbol no deck
+    uses is never downloaded or committed — 25 of Magic's 84, here.
+    """
+    files: dict[Path, bytes] = {}
+    for url, name in sorted(mana.used.items()):
+        if body := sym.svg(url):
+            files[out_dir / "mana" / name] = body
+    sym.commit()
+    return files
+
+
 def plan(root: Path, out_dir: Path, repo: str, q: CardQuery,
-         img: ImageQuery) -> dict[Path, str | bytes]:
+         img: ImageQuery, sym: SymbolQuery) -> dict[Path, str | bytes]:
     """Every file the site consists of, as {path: content}. Nothing written yet.
 
     Building the whole thing in memory first is what makes `--check` possible and
@@ -360,16 +427,18 @@ def plan(root: Path, out_dir: Path, repo: str, q: CardQuery,
     fdir = workspace.frontend_dir()
     decks = sorted((DeckInfo(p, root, q) for p in deckfile.discover([root])),
                    key=lambda d: (d.bracket, d.stem.lower()))
+    mana = Mana(sym.uris())
 
     files: dict[Path, str | bytes] = {
-        out_dir / "index.html": render_index(tpl, decks, repo),
+        out_dir / "index.html": render_index(tpl, decks, repo, mana),
         out_dir / "style.css": (fdir / "style.css").read_text(encoding="utf-8"),
         out_dir / "app.js": (fdir / "app.js").read_text(encoding="utf-8"),
         out_dir / ".nojekyll": "",
     }
     for d in decks:
-        files[out_dir / d.href] = render_deck(tpl, d, decks, repo)
+        files[out_dir / d.href] = render_deck(tpl, d, decks, repo, mana)
     files.update(collect_images(decks, img, out_dir))
+    files.update(collect_symbols(mana, sym, out_dir))   # after render: needs .used
     return files
 
 
@@ -425,7 +494,8 @@ def main() -> int:
     out_dir = args.out.expanduser().resolve() if args.out else workspace.site_dir()
     q = CardQuery(db_path=workspace.cache_db())
     img = ImageQuery(db_path=workspace.cache_db())
-    files = plan(root, out_dir, repo_url(), q, img)
+    sym = SymbolQuery(db_path=workspace.cache_db())
+    files = plan(root, out_dir, repo_url(), q, img, sym)
 
     if args.check:
         stale = [p for p, body in files.items() if not _same(p, body)]

@@ -27,12 +27,16 @@ h2 .count{color:var(--line)}
   color:var(--fg);border:1px solid var(--line);border-radius:7px;
   padding:6px 9px;font:inherit;font-size:.9rem}
 
-/* ---- colour pips ---- */
-.pip{display:inline-grid;place-items:center;width:19px;height:19px;
-  border-radius:50%;font:700 11px/1 ui-monospace,SFMono-Regular,monospace;
-  color:#1b1b1b;margin-right:3px;flex:none}
-.pip-w{background:#f6f2dc}.pip-u{background:#a8d0ea}.pip-b{background:#b3a9a4}
-.pip-r{background:#ec9a7f}.pip-g{background:#98c79a}.pip-c{background:#cfd2da}
+/* ---- mana symbols (real Scryfall SVGs, served from docs/mana/) ---- */
+/* .pip is a deck's colour identity; .ms is one symbol in a card's cost. Both get
+   a drop shadow rather than a border — the SVGs are already round and already
+   carry their own colour, so a border would just fight the artwork. */
+.pip{width:19px;height:19px;margin-right:3px;flex:none;vertical-align:-4px;
+  filter:drop-shadow(0 1px 1px #0007)}
+.ms{width:15px;height:15px;flex:none;vertical-align:-2px;
+  filter:drop-shadow(0 1px 1px #0007)}
+.ms + .ms{margin-left:1px}
+.ms-text{font:12px/1 ui-monospace,SFMono-Regular,monospace;color:var(--dim)}
 
 /* ---- index ---- */
 .lede{color:var(--dim);margin:0 0 1.6em;max-width:64ch}
@@ -100,7 +104,7 @@ h2 .count{color:var(--line)}
   min-width:1.5em;text-align:right;flex:none}
 .cname{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .cost{color:var(--dim);font:12px/1 ui-monospace,SFMono-Regular,monospace;
-  white-space:nowrap;flex:none}
+  white-space:nowrap;flex:none;display:flex;align-items:center;gap:1px}
 .gcflag{background:var(--accent-bg);border:1px solid var(--accent-line);
   color:var(--accent);border-radius:4px;padding:1px 5px;flex:none;
   font:600 10px/1.5 ui-monospace,SFMono-Regular,monospace}

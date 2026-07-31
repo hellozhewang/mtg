@@ -47,8 +47,19 @@ restrictions. The full rules are in [commander-brackets-and-rules.md](commander-
 
 **Exception: the user can explicitly say a deck may break its bracket.** When that
 happens, put the deck in its own folder and name the folder honestly — see
-`Bracket3.5/` (Krenko), which respects Bracket 3's Game Changer cap of 3 but
-deliberately keeps two-card infinite combos that Bracket 3 forbids.
+`Bracket3.5/`, whose decks respect Bracket 3's Game Changer cap of 3 but
+deliberately keep two-card infinite combos that Bracket 3 forbids.
+
+Use it when stripping the combos would gut the deck's identity rather than tune
+it. `Urza-Combo` is the clearest case: Urza, Lord High Artificer taps artifacts
+for mana, so Basalt Monolith with Power Artifact or Rings of Brighthearth, and
+Isochron Scepter with Dramatic Reversal, are what the commander is *for*. Cutting
+them leaves a generic artifact-value pile wearing Urza's name. `Krenko-Combo` is
+the same argument for Kiki-Jiki and Zealous Conscripts.
+
+Note this covers the COMBO rule only. Mass land denial stays out of 3.5 — Urza's
+EDHREC seed arrived with `Back to Basics` and `Winter Orb` and both were cut,
+because that is a separate restriction, not the one this folder relaxes.
 
 Never silently exceed a bracket. If a requested card would break the cap, say so
 and offer the trade — e.g. adding Cyclonic Rift to a deck already at 3 Game
@@ -132,6 +143,7 @@ Bracket3/Zur-Voltron.txt
 Bracket3/Lathril-Elves.txt
 Bracket3/GrandArbiter-Prison.txt
 Bracket3.5/Krenko-Combo.txt
+Bracket3.5/Urza-Combo.txt
 ```
 
 The commander part is a short recognisable form of the name — first word usually

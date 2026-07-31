@@ -46,24 +46,30 @@ class ImageError(RuntimeError):
     pass
 
 
-def local_name(url: str) -> str:
-    """Stable filename for an image URL: `<uuid>-<face>-<size>.<ext>`.
+FACES = ("front", "back")
 
-    Both qualifiers are load-bearing, and each was a collision:
 
-      * FACE. A double-faced card's two images share one printing UUID and differ
-        only in the `front`/`back` path segment, so keying on the UUID alone
-        collapses every DFC to one side.
-      * SIZE. `thumb` and `art` are both webp for the same printing, so a name
-        without the size silently maps a card's portrait and its landscape crop
-        onto the same file — whichever was written last would win.
+def local_name(oracle_id: str, face: int, size: str, url: str) -> str:
+    """Stable filename for a card image: `<oracle_id>-<face>-<size>.<ext>`.
+
+    **Keyed on ORACLE ID, not the printing UUID.** A card object in the cache is
+    whichever printing Scryfall happened to return, and any search rewrites it —
+    `find_cards.py` banks every card a search hits. So a routine ninja search can
+    swap Yuriko from one printing to another, which changes the image URL. With
+    printing-keyed names that renamed the file, so the site builder wrote a new
+    one and pruned the old: unrelated card art churning in git on a turn that
+    only added a deck. Measured once: 8 deleted, 44 added, for one new decklist.
+
+    Oracle id is the card's identity across every printing, so the filename now
+    holds still. A different printing still changes the BYTES, and git records
+    that as a modification — but it stays one stable path per card instead of an
+    add/delete pair, and nothing goes stale.
+
+    Face and size stay in the name because each was a real collision: a DFC's two
+    faces share one identity, and `thumb` and `art` are both `.webp`.
     """
-    parts = PurePosixPath(urlsplit(url).path).parts     # ('/', size, face, a, b, 'uuid.ext')
-    if len(parts) < 3:
-        raise ImageError(f"unrecognised image url: {url}")
-    stem = PurePosixPath(parts[-1])
-    face = parts[2] if parts[2] in ("front", "back") else "front"
-    return f"{stem.stem}-{face}-{parts[1]}{stem.suffix}"
+    ext = PurePosixPath(urlsplit(url).path).suffix or ".jpg"
+    return f"{oracle_id}-{FACES[1 if face else 0]}-{size}{ext}"
 
 
 class ImageAPI:

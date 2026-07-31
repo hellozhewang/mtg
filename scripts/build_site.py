@@ -114,6 +114,16 @@ def mana_cost(card: dict) -> str:
     return (faces[0].get("mana_cost") if faces else "") or ""
 
 
+def image_file(card: dict, face: int, size: str, url: str) -> str:
+    """Committed filename for one of a card's images.
+
+    Oracle id identifies the card across printings; `id` is the per-printing
+    fallback for the rare object that has no oracle id (art series, tokens).
+    """
+    return local_name(card.get("oracle_id") or card.get("id") or "unknown",
+                      face, size, url)
+
+
 def art_sets(card: dict) -> list[dict]:
     """The `image_uris` dicts for a card: one, or one per face on a DFC."""
     if card.get("image_uris"):
@@ -222,6 +232,7 @@ class DeckInfo:
         self.colours = list((cmd or {}).get("color_identity") or [])
         arts = art_sets(cmd or {})
         self.art_url = arts[0].get(ART, "") if arts else ""
+        self.art_card = cmd or {}
 
         self.lands, self.flex = land_counts(self.deck, self.cards)
         self.cap = gc_cap(path, None)
@@ -302,7 +313,7 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
             if bracket is not None:
                 flush()
             bracket, tiles = d.bracket, []
-        art = (f'<img class="art" src="img/{e(local_name(d.art_url))}" alt=""'
+        art = (f'<img class="art" src="img/{e(image_file(d.art_card, 0, ART, d.art_url))}" alt=""'
                f' loading="lazy" decoding="async" width="626" height="457">'
                if d.art_url else '<span class="art-blank"></span>')
         tiles.append(index.part("tile").render(
@@ -349,7 +360,8 @@ def render_deck(tpl: dict[str, frontend.Template], d: DeckInfo,
             data = ""
             if uris:
                 data = (f' data-img="{e(uris[0].get(FULL, ""))}"'
-                        f' data-thumb="{up}img/{e(local_name(uris[0][THUMB]))}"')
+                        f' data-thumb="{up}img/'
+                        f'{e(image_file(card, 0, THUMB, uris[0][THUMB]))}"')
                 if len(uris) > 1:
                     data += f' data-back="{e(uris[1].get(FULL, ""))}"'
             rendered.append(page.part("card").render(
@@ -417,11 +429,13 @@ def collect_images(decks: list[DeckInfo], img: ImageQuery,
     wanted: dict[str, Path] = {}
     for d in decks:
         if d.art_url:
-            wanted[d.art_url] = out_dir / "img" / local_name(d.art_url)
+            wanted[d.art_url] = (out_dir / "img" /
+                                 image_file(d.art_card, 0, ART, d.art_url))
         for card in d.cards.values():
-            for uris in art_sets(card):
+            for face, uris in enumerate(art_sets(card)):
                 if url := uris.get(THUMB):
-                    wanted[url] = out_dir / "img" / local_name(url)
+                    wanted[url] = (out_dir / "img" /
+                                   image_file(card, face, THUMB, url))
 
     # Two URLs mapping to one file is a silent data-loss bug — one image simply
     # overwrites the other and the page still validates. It has happened once

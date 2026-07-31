@@ -72,6 +72,7 @@ REPO = HERE.parent
 # session cannot edit the thing that writes its own instructions.
 sys.path.insert(0, str(REPO / "scripts"))
 import build_agents
+import toollog
 import workspace
 
 import commands
@@ -557,25 +558,68 @@ def _finish(chan: str, answer: str, combined: str, started: float) -> str:
     return answer
 
 
+def _drain_tool_spool(chan: str) -> list[str]:
+    """Take this channel's tool records out of the spool. Never raises.
+
+    The spool is `.cache/toolcalls.log`, the one place inside the sandbox the
+    tools can always write (see scripts/toollog.py). Draining moves the records
+    into `logs/`, which the session cannot touch.
+
+    Only THIS channel's lines are taken; another channel mid-turn keeps its own.
+    The read-and-rewrite is not atomic on its own, hence the global lock — two
+    channels finishing together would otherwise drop each other's records.
+    """
+    spool = CACHE_DIR / toollog.SPOOL
+    mine: list[str] = []
+    try:
+        with _dblock():
+            if not spool.exists():
+                return []
+            keep = []
+            for raw in spool.read_text(encoding="utf-8").splitlines():
+                parts = raw.split(toollog.SEP)
+                if len(parts) == 3 and parts[1] == chan:
+                    mine.append(parts[2])
+                elif raw.strip():
+                    keep.append(raw)
+            spool.write_text("\n".join(keep) + ("\n" if keep else ""),
+                             encoding="utf-8")
+    except Exception as exc:
+        log().warning("toollog: spool drain failed (%s: %s)",
+                      type(exc).__name__, exc)
+    return mine
+
+
 def _log_tool_usage(chan: str, combined: str) -> None:
-    """Record which repo tools the session actually ran this turn."""
-    seen = TOOL_LINE.findall(combined or "")
+    """Record which repo tools the session actually ran this turn.
+
+    Two sources, because neither is complete alone. The spool catches every
+    invocation; scraping codex's output catches anything that ran with the spool
+    unavailable. Deduplicated, since a tool normally lands in both.
+    """
+    seen = _drain_tool_spool(chan)
+    for line in TOOL_LINE.findall(combined or ""):
+        line = line.strip()
+        if line not in seen:
+            seen.append(line)
     for line in seen:
-        log().info("TOOL   [%s] %s", chan, line.strip())
+        log().info("TOOL   [%s] %s", chan, line)
     if not seen:
         # Worth flagging: a deck change with no tool call means it skipped
         # validation, which AGENTS.md requires.
         log().info("TOOL   [%s] (none)", chan)
 
 
-def _run(args: list[str], out_file: Path) -> tuple[str, str]:
+def _run(args: list[str], out_file: Path, chan: str) -> tuple[str, str]:
     """Run codex, returning (final_message, combined_output)."""
     log().debug("exec: %s", " ".join(args))
     t0 = time.time()
     # SANDBOX_PATH restricts what the codex PROCESS sees as its own PATH, hence
     # what any shell tool-call it makes internally can find — args[0] is already
     # an absolute path (CODEX_BIN), so this does not affect launching codex itself.
-    env = {**os.environ, "PATH": SANDBOX_PATH}
+    # MTG_TOOL_CHANNEL tags each tool record in the spool so the drain after
+    # this turn takes only its own lines. See scripts/toollog.py.
+    env = {**os.environ, "PATH": SANDBOX_PATH, "MTG_TOOL_CHANNEL": chan}
     proc = subprocess.run(
         args, stdin=subprocess.DEVNULL, capture_output=True, text=True,
         timeout=TIMEOUT, env=env,
@@ -630,7 +674,7 @@ def send(message: str, channel: str | int | None = DEFAULT_CHANNEL) -> str:
             log().info("[%s] resuming session %s (model=%s effort=%s)",
                        chan, sid, MODEL, EFFORT)
             args = _base_args() + ["-o", str(out_file), "resume", sid, message]
-            answer, combined = _run(args, out_file)
+            answer, combined = _run(args, out_file, chan)
             return _finish(chan, answer, combined, started)
 
         # No session pinned yet. Take the lock, then re-check: a concurrent call
@@ -642,13 +686,13 @@ def send(message: str, channel: str | int | None = DEFAULT_CHANNEL) -> str:
                 log().info("[%s] another process pinned %s while waiting; resuming it",
                            chan, sid)
                 args = _base_args() + ["-o", str(out_file), "resume", sid, message]
-                answer, combined = _run(args, out_file)
+                answer, combined = _run(args, out_file, chan)
                 return _finish(chan, answer, combined, started)
 
             log().info("[%s] no pinned session; opening a new one (model=%s effort=%s)",
                        chan, MODEL, EFFORT)
             args = _base_args() + ["-o", str(out_file), message]
-            answer, combined = _run(args, out_file)
+            answer, combined = _run(args, out_file, chan)
 
             found = SESSION_RE.search(combined)
             if found:

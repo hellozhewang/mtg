@@ -45,11 +45,21 @@ h2 .count{color:var(--line)}
   background:var(--panel);border:1px solid var(--line);border-radius:11px;
   transition:transform .12s ease,border-color .12s ease}
 .tile:hover{transform:translateY(-2px);border-color:var(--accent)}
-.art{width:100%;height:116px;object-fit:cover;display:block;background:var(--panel2)}
+/* The tile is far wider than Scryfall's 626x457 art crop is tall, so ~40% of the
+   image height gets cut. Centring split that loss evenly and sliced the tops off
+   heads; biasing the window toward the top keeps the subject. */
+.art{width:100%;height:116px;object-fit:cover;object-position:center 20%;
+  display:block;background:var(--panel2)}
 .art-blank{height:116px;display:block;background:var(--panel2)}
 .tile-body{padding:11px 13px 13px}
 .tile-name{display:block;font-weight:650}
 .tile-cmd{display:block;color:var(--dim);font-size:.87rem;margin:1px 0 9px}
+/* Only ever RENDERED by `build_site.py --private`, which refuses to write
+   anywhere git can see. The rule ships in the published stylesheet because the
+   file is copied verbatim; it simply never matches anything there. */
+.tag-private{margin-left:6px;padding:1px 7px;border-radius:99px;font-size:.68rem;
+  font-weight:600;letter-spacing:.04em;text-transform:uppercase;vertical-align:1px;
+  background:#2a1f2e;border:1px solid #57406b;color:#c2a3e0}
 .tile-meta{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
 .chip{background:var(--panel2);border:1px solid var(--line);border-radius:99px;
   padding:2px 8px;font-size:.74rem;color:var(--dim);white-space:nowrap}

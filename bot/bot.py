@@ -509,12 +509,19 @@ def _autopush(chan: str) -> None:
             if not _git("status", "--porcelain", "--", rel).stdout.strip():
                 return                                  # no deck changed
             site = _build_site()
-            add = _git("add", "--", rel, *([site] if site else []))
+            paths = [rel, *([site] if site else [])]     # public/ and docs/, nothing else
+            add = _git("add", "--", *paths)
             if add.returncode:
                 log().warning("autopush: git add failed: %s", add.stderr.strip()[:200])
                 return
             msg = f"Deck update via Discord ({chan})"
-            commit = _git("commit", "-m", msg)
+            # `--` PATHS is what actually bounds the commit. Without it, `git
+            # commit` records the WHOLE index, so anything a human had staged in
+            # another window — a half-finished script — would be swept into a
+            # commit attributed to a Discord turn and pushed. Scoping the `git
+            # add` above does not prevent that; only this does. Untracked files
+            # still land, because the add above makes them known to the index.
+            commit = _git("commit", "-m", msg, "--", *paths)
             if commit.returncode:
                 log().warning("autopush: git commit failed: %s",
                               commit.stderr.strip()[:200])

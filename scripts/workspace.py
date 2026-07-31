@@ -60,6 +60,23 @@ def site_dir() -> Path:
     return Path(os.environ.get("MTG_SITE") or _REPO / "docs").expanduser().resolve()
 
 
+def private_root() -> Path:
+    """The second, unpublished deck collection. Readable by the tools, never
+    written by the sandboxed session and never committed."""
+    return Path(os.environ.get("MTG_PRIVATE") or _REPO / "private").expanduser().resolve()
+
+
+def private_site_dir() -> Path:
+    """Catalog covering BOTH collections — for looking at locally, never served.
+
+    A separate output tree rather than a flag on `site_dir()` so the two can never
+    be confused: `docs/` is what GitHub Pages publishes, and anything private
+    landing there would be public the moment the bot's next autopush ran. This one
+    is gitignored, so it cannot be committed by accident."""
+    return Path(os.environ.get("MTG_PRIVATE_SITE")
+                or _REPO / "private-docs").expanduser().resolve()
+
+
 def frontend_dir() -> Path:
     """Hand-written markup, CSS and JS for the catalog. Source, not output —
     `site_dir()` is what gets generated from it."""

@@ -35,6 +35,11 @@ todo/
 # and this one is the working copy that need not be anyone else's business.
 private/
 
+# The catalog built from BOTH collections (build_site.py --private). Generated,
+# and it embeds private decklists, so it must never reach the repo. `docs/` is the
+# published one; this is for looking at locally.
+private-docs/
+
 __pycache__/
 *.pyc
 .DS_Store

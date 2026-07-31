@@ -336,10 +336,19 @@ click-to-enlarge view (with a flip button for double-faced cards), a gallery mod
 and a copy-the-decklist button.
 
 ```bash
-./scripts/build_site.py              # rebuild docs/ from public/
+./scripts/build_site.py              # rebuild docs/ from public/  -- PUBLISHED
+./scripts/build_site.py --private    # public + private -> private-docs/, local only
 ./scripts/build_site.py --check      # exit 1 if docs/ is stale, write nothing
 ./scripts/build_site.py --out /tmp/x # build elsewhere to look before publishing
 ```
+
+`--private` builds a second catalog covering **both** collections, with the
+unpublished decks marked `private` and their GitHub links omitted (those files are
+not on GitHub, so the links would 404). They share the same bracket sections
+rather than getting a separate one, and take a `private/` URL prefix because the
+two collections genuinely collide -- the same filename can hold different lists.
+Output goes to `private-docs/`, which is **gitignored**: a separate tree, not a
+flag on `docs/`, so a private decklist cannot end up in a published commit.
 
 Data comes from the decks; **markup, CSS and JS come from `frontend/`**, so a
 design change never means editing Python. The templating is two mechanisms and no
@@ -533,7 +542,9 @@ mtg/
 ├── docs/                    GENERATED SITE — published, do not hand-edit
 │   ├── index.html             rebuilt by build_site.py from the two above
 │   ├── <Bracket>/<Deck>.html
-│   └── img/*.webp             committed card thumbnails
+│   ├── img/*.webp             committed card thumbnails
+│   └── mana/*.svg             Scryfall's official mana symbols
+├── private-docs/            GENERATED, gitignored — both collections, local only
 ├── bot/                     the harness — OUTSIDE the workspace it drives
 │   ├── bot.py                 persistent Codex session the Discord app calls
 │   ├── commands.py            deterministic !decks / !deck / !help

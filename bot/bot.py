@@ -622,7 +622,14 @@ def _log_tool_usage(chan: str, combined: str, started: float) -> None:
 
 
 def _run(args: list[str], out_file: Path, chan: str) -> tuple[str, str]:
-    """Run codex, returning (final_message, combined_output)."""
+    """Run codex, returning (final_message, combined_output).
+
+    Note the `--` the callers put before the message. Without it, a Discord user
+    starting a line with a dash — "- give me the list" — makes codex's argument
+    parser read it as a flag and exit 2 before the model ever sees it. Measured
+    in the wild; the user retried without the dash and it worked, which is the
+    kind of failure nobody reports as a bug.
+    """
     log().debug("exec: %s", " ".join(args))
     t0 = time.time()
     # SANDBOX_PATH restricts what the codex PROCESS sees as its own PATH, hence
@@ -693,7 +700,7 @@ def send(message: str, channel: str | int | None = DEFAULT_CHANNEL) -> str:
         if sid:
             log().info("[%s] resuming session %s (model=%s effort=%s)",
                        chan, sid, MODEL, EFFORT)
-            args = _base_args() + ["-o", str(out_file), "resume", sid, message]
+            args = _base_args() + ["-o", str(out_file), "resume", sid, "--", message]
             answer, combined = _run(args, out_file, chan)
             return _finish(chan, answer, combined, started)
 
@@ -705,13 +712,13 @@ def send(message: str, channel: str | int | None = DEFAULT_CHANNEL) -> str:
             if sid:
                 log().info("[%s] another process pinned %s while waiting; resuming it",
                            chan, sid)
-                args = _base_args() + ["-o", str(out_file), "resume", sid, message]
+                args = _base_args() + ["-o", str(out_file), "resume", sid, "--", message]
                 answer, combined = _run(args, out_file, chan)
                 return _finish(chan, answer, combined, started)
 
             log().info("[%s] no pinned session; opening a new one (model=%s effort=%s)",
                        chan, MODEL, EFFORT)
-            args = _base_args() + ["-o", str(out_file), message]
+            args = _base_args() + ["-o", str(out_file), "--", message]
             answer, combined = _run(args, out_file, chan)
 
             found = SESSION_RE.search(combined)

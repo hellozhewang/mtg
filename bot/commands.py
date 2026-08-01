@@ -37,9 +37,24 @@ import deckfile
 import workspace
 
 PREFIX = "!"
-# Discord hard-caps a message at 2000 chars. The largest deck is ~1826 with
-# fences, so one deck fits today — but the margin is thin, so split defensively.
-LIMIT = 1900
+# What Discord actually accepts in one message. Our reply is flattened to a
+# single string by bot.py and then re-split by splitDiscordText() in the
+# discord-bot project, which cuts at the nearest newline under this number and
+# knows nothing about ``` fences. So a reply longer than this does not merely
+# arrive in two parts — it arrives with the code fences CUT THROUGH, leaving
+# half the list rendered as plain text and a stray ``` floating in the channel.
+# Everything below exists to keep a decklist reply under it.
+DISCORD_LIMIT = 2000
+# Discord hard-caps a message at 2000 chars; this is our budget within that.
+#
+# It was 1900, which is where a real bug lived: a 100-card list runs 1500-1950
+# characters, so decks landed in the 1892-2000 gap between our cap and Discord's
+# and got split across two fenced blocks. A decklist exists to be pasted into an
+# importer, and half a list is useless — the split broke the one thing the
+# command is for, on the biggest decks, while Discord would have accepted them
+# whole. 1990 leaves a 10-character margin and keeps every current deck in one
+# block.
+LIMIT = 1990
 
 
 # ---------- formatting ----------
@@ -127,12 +142,24 @@ def cmd_deck(arg: str) -> list[str]:
     path = matches[0]
     deck = deckfile.parse(path)
     header = f"{path.stem} — {deck.commander} — {deck.total} cards ({_bracket_of(path)})"
-    blocks = _fence(path.read_text(encoding="utf-8"))
-    # Keep the header in the same message as the list when it fits, rather than
-    # burning a second Discord message on one line of text.
-    if len(blocks) == 1 and len(header) + 1 + len(blocks[0]) <= LIMIT:
-        return [f"{header}\n{blocks[0]}"]
-    return [header] + blocks
+    body = path.read_text(encoding="utf-8").rstrip()
+    one = f"{header}\n```\n{body}\n```"
+
+    # ONE message or none — never two. bot.py flattens whatever we return into a
+    # single string, and the Discord side re-splits that blind at 2000 characters
+    # (splitDiscordText, discord-bot/src/features/deckBuilder.ts). It cuts at the
+    # nearest newline and knows nothing about ``` fences, so a two-block reply
+    # comes back with a fence cut through: half the list renders as plain text
+    # and a stray ``` is left in the channel.
+    #
+    # So when the list will not fit, do not try. Send the raw link instead: it is
+    # a single paste at any length, and a correct link beats a mangled list.
+    if len(one) <= DISCORD_LIMIT:
+        return [one]
+    return [f"{header}\n"
+            f"Too long for one Discord message ({len(body)} characters), and "
+            f"splitting it would break the code block. Full list, ready to copy "
+            f"in one go:\n{workspace.raw_url(path)}"]
 
 
 def cmd_help(_arg: str) -> list[str]:

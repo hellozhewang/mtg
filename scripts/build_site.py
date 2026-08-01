@@ -59,8 +59,6 @@ from cardlib import CardQuery, ImageQuery, SymbolQuery, local_name
 # land count that disagreed with `validate_deck.py` would make the site lie.
 from validate_deck import gc_cap, land_counts
 
-REPO_FALLBACK = "https://github.com/hellozhewang/mtg"
-
 THUMB = "thumb"        # webp, 146x204, ~9 KB — committed
 FULL = "normal"        # jpg, 488x680, ~96 KB — hotlinked
 ART = "art"            # webp, landscape crop — committed, catalog tiles only
@@ -386,25 +384,6 @@ def render_deck(tpl: dict[str, frontend.Template], d: DeckInfo,
 
 # ---------- driver ----------
 
-def repo_url() -> str:
-    """Derive the GitHub URL from the git remote, so a moved repo stays linked.
-
-    Local config only — no network, so it is safe inside a bot turn and gives the
-    same answer every run for a given checkout.
-    """
-    try:
-        out = subprocess.run(
-            ["git", "-C", str(workspace.deck_root().parent),
-             "config", "--get", "remote.origin.url"],
-            capture_output=True, text=True, timeout=10)
-        url = out.stdout.strip()
-    except (OSError, subprocess.SubprocessError):
-        url = ""
-    if not url:
-        return REPO_FALLBACK
-    if url.startswith("git@github.com:"):
-        url = "https://github.com/" + url[len("git@github.com:"):]
-    return url[:-4] if url.endswith(".git") else url
 
 
 def collect_images(decks: list[DeckInfo], img: ImageQuery,
@@ -553,7 +532,7 @@ def main() -> int:
     q = CardQuery(db_path=workspace.cache_db())
     img = ImageQuery(db_path=workspace.cache_db())
     sym = SymbolQuery(db_path=workspace.cache_db())
-    files = plan(root, out_dir, repo_url(), q, img, sym)
+    files = plan(root, out_dir, workspace.repo_url(), q, img, sym)
 
     if args.check:
         stale = [p for p, body in files.items() if not _same(p, body)]

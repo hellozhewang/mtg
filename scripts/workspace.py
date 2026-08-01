@@ -19,6 +19,7 @@ Override with MTG_DECKS to point the tools at a different workspace:
 from __future__ import annotations
 
 import os
+import subprocess
 from pathlib import Path
 
 # scripts/ lives one level above the workspace it operates on.
@@ -78,6 +79,37 @@ def frontend_dir() -> Path:
     """Hand-written markup, CSS and JS for the catalog. Source, not output —
     `site_dir()` is what gets generated from it."""
     return Path(os.environ.get("MTG_FRONTEND") or _REPO / "frontend").expanduser().resolve()
+
+
+REPO_FALLBACK = "https://github.com/hellozhewang/mtg"
+
+
+def repo_url() -> str:
+    """The GitHub URL for this checkout, derived from the git remote.
+
+    Local config only — no network — so it is safe inside a bot turn and gives
+    the same answer every run. Lives here because it is a location fact, and both
+    the site builder and the Discord commands need it; two copies would drift."""
+    try:
+        out = subprocess.run(["git", "-C", str(_REPO), "config",
+                              "--get", "remote.origin.url"],
+                             capture_output=True, text=True, timeout=10)
+        url = out.stdout.strip()
+    except (OSError, subprocess.SubprocessError):
+        url = ""
+    if not url:
+        return REPO_FALLBACK
+    if url.startswith("git@github.com:"):
+        url = "https://github.com/" + url[len("git@github.com:"):]
+    return url[:-4] if url.endswith(".git") else url
+
+
+def raw_url(deck: Path) -> str:
+    """raw.githubusercontent link for a decklist — one paste, however long it is."""
+    rel = deck.resolve().relative_to(deck_root().parent).as_posix()
+    return (repo_url().replace("https://github.com/",
+                               "https://raw.githubusercontent.com/")
+            + f"/main/{rel}")
 
 
 def log_dir() -> Path:

@@ -11,6 +11,7 @@ Checks (all must pass, see README.md):
   1. exactly 100 cards including the commander
   2. every name resolves on Scryfall  -- catches typos that would fail import
   3. every card is LEGAL in Commander -- catches the 83 banned cards
+  3b. no NAMED mass land denial in Brackets 1-3 (see commander-brackets-and-rules.md)
   4. every card is inside the commander's colour identity
   5. Game Changer count within the bracket cap
   6. singleton -- no duplicate non-basic entries, no repeated lines
@@ -21,6 +22,7 @@ card data access goes through cardlib.CardQuery.
 from __future__ import annotations
 
 import argparse
+import re
 import sys
 from pathlib import Path
 
@@ -32,6 +34,32 @@ import workspace
 from cardlib import CardQuery
 
 ROOT = workspace.deck_root()
+RULES = ROOT.parent / "commander-brackets-and-rules.md"
+
+
+def denial_cards() -> set[str]:
+    """Cards the rules file names as mass land denial, read from that file.
+
+    Read rather than restated so the two cannot disagree, and because the wording
+    across these cards is genuinely un-matchable by pattern: Winter Orb says
+    "more than one LAND", Static Orb says "more than two PERMANENTS", Blood Moon
+    says nothing about untapping at all. A regex that caught the first missed the
+    second -- which is exactly how Static Orb reached a Bracket 3.5 deck.
+
+    The file calls these "named examples", so this is a floor, not a ceiling. It
+    catches the ones that actually turn up in EDHREC seeds.
+    """
+    try:
+        text = RULES.read_text(encoding="utf-8")
+    except OSError:
+        return set()
+    block = re.search(r"\*\*Caught by it\*\*.*?:\s*\n(.*?)(?:\n\n|\Z)",
+                      text, re.S)
+    if not block:
+        return set()
+    names = (n.replace("**", "").strip().rstrip(".")
+             for n in block.group(1).split("·"))
+    return {n for n in names if n}
 
 
 def gc_cap(path: Path, override: int | None) -> int | None:
@@ -92,6 +120,10 @@ def check(deck: deckfile.Deck, cards: dict[str, dict], missing: list[str],
     if illegal:
         problems.append("NOT LEGAL in Commander: " + ", ".join(
             f"{n} [{why}]" for n, why in sorted(illegal)))
+    # Brackets 4 and 5 allow mass land denial; a cap of None means we are in one.
+    if cap is not None and (denial := denial_cards() & set(deck.names)):
+        problems.append("mass land denial, banned below Bracket 4: "
+                        + ", ".join(sorted(denial)))
     if off_colour:
         problems.append("off-colour: " + ", ".join(
             f"{n}[{''.join(c['color_identity'])}]" for n, c in off_colour))

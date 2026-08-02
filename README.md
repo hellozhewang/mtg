@@ -497,11 +497,11 @@ sequence minus the last step (see `AGENTS.md`, and why below).
    from memory. Expect it to land 4-11 Game Changers, not 3 — it has no bracket
    awareness, it just composes EDHREC's most-played build.
 
-2. **Cut to the cap — and check the two things no tool checks.** The GC report
-   tells you what to drop for the Bracket 3 cap of 3. While you're cutting, check
-   **mass land denial** and **two-card lockouts** by hand against
-   `commander-brackets-and-rules.md` — `validate_deck.py` does not catch either of
-   these, only the GC count.
+2. **Cut to the cap — then audit the judgment calls.** The GC report tells you
+   what to drop for the Bracket 3 cap of 3. `validate_deck.py` rejects the mass
+   land-denial cards explicitly named in `commander-brackets-and-rules.md`, but
+   the list is only a floor: check unlisted denial patterns and **two-card
+   lockouts** by hand against the same rules.
 
 3. **Tune for power creep.** `find_cards.py "<query>" --since 2025 --no-gc` for a
    specific mechanic you're hunting; `find_inspiration.py <deck> --new` or
@@ -548,7 +548,8 @@ from a genuinely separate reviewing context, which the bot never has.
 |---|---|---|
 | 100 cards, names resolve, colour identity, GC cap, singleton | `validate_deck.py` | yes |
 | inclusion, synergy, new printings | `find_inspiration.py`, `find_cards.py` | yes |
-| mass land denial, two-card lockouts | you, against `commander-brackets-and-rules.md` | no |
+| named mass land denial | `validate_deck.py` | yes |
+| unlisted land denial, two-card lockouts | you, against `commander-brackets-and-rules.md` | no |
 | does each card's trigger match the theme | you | no |
 | whether the deck can actually win | you, or `ask_codex.py` (human sessions only) | no |
 | which symmetric stax hurts you more than the table | you, or `ask_codex.py` (human sessions only) | no |

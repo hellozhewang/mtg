@@ -3,26 +3,41 @@
 `handle(text)` returns a list of Discord-ready messages, or None when the text
 isn't a command — in which case bot.py forwards it to the model as usual.
 
-**The `!` prefix here is an internal wire format, not what users type.** Discord
-users invoke registered slash commands, which live in the sibling discord-bot
-project (`src/features/commands/deck-print.ts`, `deck-list.ts`). Those translate:
+**The `!` names here are an internal wire format, and they are NOT the `!` names
+users type.** Both layers use a `!` prefix, which is worth untangling:
 
-    user types  /deck-print deck: zur      (`deck` is a required string option)
-    deck-print.ts -> askDeckBuilder("!deck zur", channelId)
-    -> python3 bot.py --channel <id> "!deck zur"
-    -> handle("!deck zur")  [here]
+    what a user types      /deck-print deck: zur     (slash command)
+                           !deck-print deck: zur     (same command, as chat text)
+    what reaches us        !deck zur                 (this module's wire format)
 
-`/deck-list` takes no options and maps to "!decks". So renaming a command here
-means renaming it in that project too, and AGENTS.md tells the agent to reference
-`/deck-print deck:` and `/deck-list`, never the `!` forms.
+The user-facing commands live in the sibling discord-bot project and are named
+after the slash commands: `deck-print`, `deck-list`, `deck-repo`. Any of them a
+manifest marks `supportsChat: true` can also be invoked as plain text with `!`,
+running the identical `execute()` — that exists because Discord will not turn a
+pasted `/command` into a real interaction, so `!` gives people something they can
+copy, paste and share.
+
+Ours are the shorter `!deck` and `!decks`, which no user types and no chat
+command matches. So AGENTS.md should quote `/deck-print deck:` or
+`!deck-print deck:` — never the bare `!deck`.
 
 These exist because listing and printing decks is pure file reading. Routing it
 through the model would cost tokens and latency for a fixed answer, and would risk
 a paraphrased or partially-hallucinated decklist. A decklist is something you paste
 into a client to import, so it has to be byte-exact.
 
-Output is fenced in ``` so Discord renders it monospaced and stops "smart" quote
-substitution from corrupting card names like `Urza's Saga`.
+**`!deck` returns the decklist RAW** — newline-separated `1 Card Name` lines and
+nothing else. No fence, no header, no length handling. That is deliberate: the
+reply is flattened to one string by bot.py and then re-split by the Discord side,
+which cuts at the nearest newline under 2000 characters and knows nothing about
+``` fences. Anything we fenced here came back with a fence cut through it, half
+the list rendered as plain text. Fencing and splitting belong to whoever knows
+Discord's rules; our job is to hand over an exact list.
+
+`!decks` and `!help` ARE still fenced, and the difference is not an oversight:
+that output is READ, so monospacing it here is harmless and it never approaches
+the length limit. A decklist is PASTED, so anything we wrap around it is
+something the user has to strip back out.
 """
 from __future__ import annotations
 
@@ -37,44 +52,21 @@ import deckfile
 import workspace
 
 PREFIX = "!"
-# What Discord actually accepts in one message. Our reply is flattened to a
-# single string by bot.py and then re-split by splitDiscordText() in the
-# discord-bot project, which cuts at the nearest newline under this number and
-# knows nothing about ``` fences. So a reply longer than this does not merely
-# arrive in two parts — it arrives with the code fences CUT THROUGH, leaving
-# half the list rendered as plain text and a stray ``` floating in the channel.
-# Everything below exists to keep a decklist reply under it.
-DISCORD_LIMIT = 2000
-# Discord hard-caps a message at 2000 chars; this is our budget within that.
-#
-# It was 1900, which is where a real bug lived: a 100-card list runs 1500-1950
-# characters, so decks landed in the 1892-2000 gap between our cap and Discord's
-# and got split across two fenced blocks. A decklist exists to be pasted into an
-# importer, and half a list is useless — the split broke the one thing the
-# command is for, on the biggest decks, while Discord would have accepted them
-# whole. 1990 leaves a 10-character margin and keeps every current deck in one
-# block.
-LIMIT = 1990
 
 
 # ---------- formatting ----------
 
-def _fence(body: str, lang: str = "") -> list[str]:
-    """Wrap body in ``` fences, splitting across messages if it exceeds LIMIT."""
-    overhead = len(f"```{lang}\n\n```")
-    budget = LIMIT - overhead
-    lines, chunks, cur = body.rstrip("\n").split("\n"), [], []
-    size = 0
-    for line in lines:
-        # +1 for the newline that will rejoin it
-        if cur and size + len(line) + 1 > budget:
-            chunks.append("\n".join(cur))
-            cur, size = [], 0
-        cur.append(line)
-        size += len(line) + 1
-    if cur:
-        chunks.append("\n".join(cur))
-    return [f"```{lang}\n{c}\n```" for c in chunks] or [f"```{lang}\n(empty)\n```"]
+def _fence(body: str, lang: str = "") -> str:
+    """Wrap body in ``` fences. No length limit — that is not ours to know.
+
+    There used to be a LIMIT here that split long output across messages, and it
+    was the source of the bug it was meant to prevent: the split happened at OUR
+    budget, then bot.py flattened the pieces back into one string and the Discord
+    side re-split THAT at its own boundary, cutting through a fence. Two layers
+    guessing at the same limit produced output neither would have produced alone.
+    Length now belongs entirely to whoever talks to Discord.
+    """
+    return f"```{lang}\n{body.rstrip(chr(10)) or '(empty)'}\n```"
 
 
 # ---------- deck discovery ----------
@@ -110,8 +102,11 @@ def _match(query: str) -> tuple[list[Path], str | None]:
     if not partial:
         return [], f"no deck matching `{query}`. Try `!decks`."
     if len(partial) > 1:
-        names = ", ".join(f"`{p.stem}`" for p in partial)
-        return [], f"`{query}` matches several decks: {names}"
+        # One per line, and none of them on the sentence's line. Run together
+        # after a colon, the first match reads as part of the prose and the list
+        # is hard to scan — which is the whole job of this message.
+        names = "\n".join(p.stem for p in partial)
+        return [], f"`{query}` matches {len(partial)} decks — say which:\n{names}"
     return partial, None
 
 
@@ -131,35 +126,21 @@ def cmd_decks(_arg: str) -> list[str]:
             rows.append(f"  {path.stem} — unreadable ({exc.__class__.__name__})")
     if not rows:
         return [f"No decks found under `{workspace.deck_root()}`."]
-    return _fence("\n".join(rows))
+    return [_fence("\n".join(rows))]
 
 
 def cmd_deck(arg: str) -> list[str]:
-    """Print one decklist verbatim, ready to paste in."""
+    """The decklist, raw — `1 Card Name` lines separated by newlines, nothing else.
+
+    No fence, no header, no splitting. Whatever this returns is what someone
+    pastes into a deck importer, so anything wrapped around it is something they
+    have to strip back out. Presentation is the Discord layer's job: it knows the
+    2000-character limit and where a fence may legally be cut, and this does not.
+    """
     matches, err = _match(arg)
     if err:
         return [err]
-    path = matches[0]
-    deck = deckfile.parse(path)
-    header = f"{path.stem} — {deck.commander} — {deck.total} cards ({_bracket_of(path)})"
-    body = path.read_text(encoding="utf-8").rstrip()
-    one = f"{header}\n```\n{body}\n```"
-
-    # ONE message or none — never two. bot.py flattens whatever we return into a
-    # single string, and the Discord side re-splits that blind at 2000 characters
-    # (splitDiscordText, discord-bot/src/features/deckBuilder.ts). It cuts at the
-    # nearest newline and knows nothing about ``` fences, so a two-block reply
-    # comes back with a fence cut through: half the list renders as plain text
-    # and a stray ``` is left in the channel.
-    #
-    # So when the list will not fit, do not try. Send the raw link instead: it is
-    # a single paste at any length, and a correct link beats a mangled list.
-    if len(one) <= DISCORD_LIMIT:
-        return [one]
-    return [f"{header}\n"
-            f"Too long for one Discord message ({len(body)} characters), and "
-            f"splitting it would break the code block. Full list, ready to copy "
-            f"in one go:\n{workspace.raw_url(path)}"]
+    return [matches[0].read_text(encoding="utf-8").rstrip() + "\n"]
 
 
 def cmd_help(_arg: str) -> list[str]:
@@ -169,7 +150,7 @@ def cmd_help(_arg: str) -> list[str]:
         f"{PREFIX}{name:<14} {(fn.__doc__ or '').strip().splitlines()[0] if fn.__doc__ else '-'}"
         for name, fn in COMMANDS.items()
     )
-    return _fence(body + "\n\nAnything else is sent to the deckbuilding agent.")
+    return [_fence(body + "\n\nAnything else is sent to the deckbuilding agent.")]
 
 
 COMMANDS = {

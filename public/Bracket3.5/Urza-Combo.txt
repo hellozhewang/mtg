@@ -38,6 +38,7 @@
 1 Mental Misstep
 1 Merchant Scroll
 1 Minamo, School at Water's Edge
+1 Mind Stone
 1 Mindbreak Trap
 1 Mishra's Bauble
 1 Misty Rainforest
@@ -65,7 +66,6 @@
 1 Sol Ring
 1 Solve the Equation
 1 Spellskite
-1 Static Orb
 1 Swan Song
 1 Tezzeret the Seeker
 1 The One Ring

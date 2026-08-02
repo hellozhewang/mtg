@@ -110,6 +110,26 @@ class DeckAuthorTests(unittest.TestCase):
             'data-search="Test-Deck Test Commander Bracket 3 alice"', page
         )
 
+    def test_index_does_not_reference_an_unavailable_art_file(self) -> None:
+        templates = frontend.load(ROOT / "frontend")
+        deck = FakeDeck()
+        deck.art_url = "https://cards.scryfall.io/art/front/a/b/card.webp"
+        deck.art_card = {"oracle_id": "cloud-oracle"}
+        art_name = build_site.image_file(
+            deck.art_card, 0, build_site.ART, deck.art_url
+        )
+
+        missing = build_site.render_index(
+            templates, [deck], "https://example.test/repo", FakeMana(), set()
+        )
+        self.assertIn('<span class="art-blank"></span>', missing)
+        self.assertNotIn(f'src="img/{art_name}"', missing)
+
+        available = build_site.render_index(
+            templates, [deck], "https://example.test/repo", FakeMana(), {art_name}
+        )
+        self.assertIn(f'src="img/{art_name}"', available)
+
 
 if __name__ == "__main__":
     unittest.main()

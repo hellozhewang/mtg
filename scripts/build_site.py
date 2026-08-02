@@ -291,7 +291,8 @@ def picker(layout: frontend.Template, decks: list[DeckInfo],
 
 
 def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
-                 repo: str, mana: Mana) -> str:
+                 repo: str, mana: Mana,
+                 available_images: set[str] | None = None) -> str:
     index, layout = tpl["index"], tpl["layout"]
     sections, bracket, tiles = [], None, []
 
@@ -304,9 +305,15 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
             if bracket is not None:
                 flush()
             bracket, tiles = d.bracket, []
-        art = (f'<img class="art" src="img/{e(image_file(d.art_card, 0, ART, d.art_url))}" alt=""'
+        art_name = image_file(d.art_card, 0, ART, d.art_url) if d.art_url else ""
+        # A transient CDN failure must not leave a dangling <img> in the
+        # published catalog. `None` preserves the standalone renderer's old
+        # behavior; production passes the filenames fetched for this build.
+        has_art = bool(art_name and
+                       (available_images is None or art_name in available_images))
+        art = (f'<img class="art" src="img/{e(art_name)}" alt=""'
                f' loading="lazy" decoding="async" width="626" height="457">'
-               if d.art_url else '<span class="art-blank"></span>')
+               if has_art else '<span class="art-blank"></span>')
         tiles.append(index.part("tile").render(
             HREF=e(d.href), ART=art, NAME=e(d.stem), COMMANDER=e(d.commander),
             AUTHOR=(f'        <span class="tile-author">by {e(d.author)}</span>\n'
@@ -468,16 +475,20 @@ def plan(root: Path, out_dir: Path, repo: str, q: CardQuery,
                     for p in deckfile.discover([root])),
                    key=lambda d: (d.bracket, d.stem.lower()))
     mana = Mana(sym.uris())
+    image_files = collect_images(decks, img, out_dir)
+    available_images = {path.name for path in image_files}
 
     files: dict[Path, str | bytes] = {
-        out_dir / "index.html": render_index(tpl, decks, repo, mana),
+        out_dir / "index.html": render_index(
+            tpl, decks, repo, mana, available_images
+        ),
         out_dir / "style.css": (fdir / "style.css").read_text(encoding="utf-8"),
         out_dir / "app.js": (fdir / "app.js").read_text(encoding="utf-8"),
         out_dir / ".nojekyll": "",
     }
     for d in decks:
         files[out_dir / d.href] = render_deck(tpl, d, decks, repo, mana)
-    files.update(collect_images(decks, img, out_dir))
+    files.update(image_files)
     files.update(collect_symbols(mana, sym, out_dir))   # after render: needs .used
     return files
 

@@ -48,7 +48,8 @@ h2 .count{color:var(--line)}
   text-underline-offset:3px}
 [data-tip]::after{
   content:attr(data-tip);position:absolute;z-index:40;
-  bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);
+  bottom:calc(100% + 8px);left:calc(50% + var(--tip-shift-x,0px));
+  transform:translateX(-50%);
   width:max-content;max-width:min(250px,62vw);
   background:#0a0c11;border:1px solid var(--line);border-radius:8px;
   padding:7px 10px;box-shadow:0 8px 22px #000a;

@@ -79,7 +79,7 @@ REPO = HERE.parent
 sys.path.insert(0, str(REPO / "scripts"))
 import build_agents
 import deckfile
-from deckmeta import DeckAuthorStore
+from deckmeta import DeckAuthorStore, created_paths
 import toollog
 import workspace
 
@@ -597,33 +597,44 @@ def _autopush(chan: str) -> None:
         log().warning("autopush: skipped (%s: %s)", type(exc).__name__, exc)
 
 
-def _deck_paths(root: Path) -> set[str]:
-    """Every deck path relative to `root`, for before/after turn snapshots."""
+def _created_at_ns(path: Path) -> int | None:
+    """Filesystem birth timestamp in nanoseconds, when the OS exposes one.
+
+    macOS provides `st_birthtime` as fractional epoch seconds. Do not fall back
+    to mtime or ctime: both change during an ordinary edit, which would transfer
+    authorship from the creator to whoever merely tuned the deck.
+    """
+    birth = getattr(path.stat(), "st_birthtime", None)
+    return round(birth * 1_000_000_000) if birth is not None else None
+
+
+def _deck_snapshot(root: Path) -> dict[str, int | None]:
+    """Workspace-relative deck path -> filesystem birth timestamp."""
     root = root.resolve()
     return {
-        path.resolve().relative_to(root).as_posix()
+        path.resolve().relative_to(root).as_posix(): _created_at_ns(path)
         for path in deckfile.discover([root])
     }
 
 
-def _attribute_new_decks(username: str, before: set[str], root: Path,
-                         db_path: Path) -> list[str]:
-    """Persist authorship for deck paths created since the turn began.
+def _reconcile_deck_authors(
+    username: str, before: dict[str, int | None], root: Path, db_path: Path,
+) -> tuple[list[str], list[str], dict[str, int | None]]:
+    """Persist new authors and remove rows for paths that no longer exist.
 
     The path-set difference is the authority. The model's answer is deliberately
     not parsed: it can omit a file it wrote or say it created one when it did not.
-    Sorted paths make a multi-deck turn deterministic in both writes and logs.
+    The database represents live decks only, so deleting and later recreating the
+    same path cannot leak the old author's attribution onto the new deck.
     """
-    created = sorted(_deck_paths(root) - before)
-    if not created:
-        return []
+    after = _deck_snapshot(root)
+    created = created_paths(before, after)
     with DeckAuthorStore(db_path) as authors:
-        for deck in created:
-            authors.set(deck, username)
-    return created
+        deleted = authors.sync(after, created, username)
+    return created, deleted, after
 
 
-def _finish(chan: str, username: str, decks_before: set[str], answer: str,
+def _finish(chan: str, username: str, decks_before: dict[str, int | None], answer: str,
             combined: str, started: float) -> str:
     """Everything that happens after ANY model turn, in one place.
 
@@ -632,14 +643,31 @@ def _finish(chan: str, username: str, decks_before: set[str], answer: str,
     """
     _log_tool_usage(chan, combined, started)
     try:
-        created = _attribute_new_decks(username, decks_before, WORKSPACE,
-                                       METADATA_DB)
+        created, deleted, decks_after = _reconcile_deck_authors(
+            username, decks_before, WORKSPACE, METADATA_DB
+        )
+        log().info(
+            "AUTHOR-SYNC [%s/%s] before=%d after=%d created=%d deleted=%d",
+            chan, username, len(decks_before), len(decks_after),
+            len(created), len(deleted),
+        )
         for deck in created:
-            log().info("AUTHOR [%s/%s] %s", chan, username, deck)
+            log().info(
+                "AUTHOR [%s/%s] %s birth_ns=%s",
+                chan, username, deck, decks_after[deck],
+            )
+        for deck in deleted:
+            log().info(
+                "AUTHOR-DELETE [%s/%s] %s prior_birth_ns=%s",
+                chan, username, deck, decks_before.get(deck),
+            )
     except Exception as exc:
         # As with git publishing, provenance failure must not discard a reply the
         # model already produced. Keep it loud in the trusted parent log.
-        log().warning("authorship: skipped (%s: %s)", type(exc).__name__, exc)
+        log().warning(
+            "AUTHOR-SYNC [%s/%s] skipped (%s: %s)",
+            chan, username, type(exc).__name__, exc,
+        )
     _autopush(chan)
     log().info("REPLY  [%s/model] %d chars %dms", chan, len(answer),
                int((time.time() - started) * 1000))
@@ -742,7 +770,12 @@ def send(message: str, username: str,
 
     changed, status = build_agents.build()  # redeploy AGENTS.md 0444 before codex reads
     log().log(logging.INFO if changed else logging.DEBUG, "agents.md: %s", status)
-    decks_before = _deck_paths(WORKSPACE)
+    decks_before = _deck_snapshot(WORKSPACE)
+    timestamped = sum(stamp is not None for stamp in decks_before.values())
+    log().debug(
+        "AUTHOR-SNAPSHOT [%s/%s] decks=%d birth_timestamps=%d metadata=%s",
+        chan, username, len(decks_before), timestamped, METADATA_DB,
+    )
 
     # pid in the name: two calls in the same millisecond would otherwise collide
     out_file = HERE / f".reply-{int(time.time() * 1000)}-{os.getpid()}.txt"

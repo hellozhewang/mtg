@@ -408,8 +408,13 @@ changed, so a build timestamp would mean an empty commit on every Discord messag
 
 Authorship is deterministic too. `bot.py` snapshots the set of deck paths before
 a model turn, compares it after the turn, and records each newly appeared path
-against the requesting Discord username in `bot/.deck-metadata.db`. The site
-builder reads that mapping before rendering. This provenance database is separate
+against the requesting Discord username in `bot/.deck-metadata.db`. At the same
+point it deletes every metadata row whose path no longer exists, so recreating a
+deleted path starts with the new requester's authorship. The row also stores the
+file's OS birth timestamp; if a deck is deleted and recreated at the exact same
+path within one turn, the changed timestamp still identifies it as a new file and
+updates the author. The site builder reads that mapping before rendering. This
+provenance database is separate
 from `.cache/cards.db`: the latter is writable by the sandboxed model and can be
 cleared, while authorship must be written only by the trusted bot parent.
 

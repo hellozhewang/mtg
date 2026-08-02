@@ -97,6 +97,25 @@
     });
   }
 
+  /* ---- tooltip placement ------------------------------------------------ */
+  // A chip near a tile edge cannot center a 250px tooltip on itself without
+  // sending part of the popup outside the clipped tile. Recalculate on each
+  // reveal so responsive tile widths and wrapped metadata stay correct.
+  function initTooltips() {
+    toArray(document.querySelectorAll('.tile [data-tip]')).forEach(function (tip) {
+      function centerInTile() {
+        var tile = tip.closest('.tile');
+        var tileBox = tile.getBoundingClientRect();
+        var tipBox = tip.getBoundingClientRect();
+        var shift = tileBox.left + tileBox.width / 2
+          - tipBox.left - tipBox.width / 2;
+        tip.style.setProperty('--tip-shift-x', shift + 'px');
+      }
+      tip.addEventListener('mouseenter', centerInTile);
+      tip.addEventListener('focus', centerInTile);
+    });
+  }
+
   /* ---- list / gallery toggle --------------------------------------------- */
   function initViewToggle(cards) {
     var buttons = toArray(document.querySelectorAll('.btn[data-view]'));
@@ -262,6 +281,7 @@
   /* ---- start --------------------------------------------------------------- */
   initDeckPicker();
   initSearch();
+  initTooltips();
 
   var cards = document.querySelector('.cards');
   if (!cards) return;                       // index page: nothing below applies

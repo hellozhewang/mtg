@@ -2,11 +2,11 @@
 """Persistent Codex session for the Discord bot to talk to.
 
     from bot import send, reset, session_id
-    reply = send("Which Game Changers is Zur-Voltron running?")
+    reply = send("Which Game Changers is Zur-Voltron running?", "discord_username")
 
 Or from a shell, for testing:
 
-    ./bot.py "swap Moat out of Zur-Voltron for something legal"
+    ./bot.py --user discord_username "swap Moat out of Zur-Voltron for something legal"
     ./bot.py --reset            # start a fresh session
     ./bot.py --status
 
@@ -15,7 +15,7 @@ One long-lived Codex session is pinned PER CHANNEL. State lives in
 and every later call uses `codex exec resume <uuid>`, so each Discord channel or
 thread keeps its own conversation context. Pass the channel id:
 
-    reply = send("...", channel=message.channel.id)
+    reply = send("...", message.author.username, channel=message.channel.id)
 
 Omitting it uses the "cli" channel, which is what the command line uses.
 
@@ -31,6 +31,12 @@ After each model turn, decklist changes under `public/` are committed and pushed
 automatically — see `_autopush`. Detection is scoped to that directory only; when
 something there did change, `docs/` (the published catalog) is regenerated from
 it and staged in the same commit, so the site never lags the decks.
+
+The caller also supplies the Discord username. `send()` snapshots the deck paths
+before the model runs, and `_finish()` attributes any paths that appeared during
+that turn to that user in the trusted deck-metadata database before rebuilding
+the site. This is derived from filesystem state, never from what the model claims
+it created in prose.
 
 Codex has no flag to name a session, so the UUID is scraped from the startup
 banner (`session id: <uuid>`) and persisted here. Note `codex exec resume` filters
@@ -72,6 +78,8 @@ REPO = HERE.parent
 # session cannot edit the thing that writes its own instructions.
 sys.path.insert(0, str(REPO / "scripts"))
 import build_agents
+import deckfile
+from deckmeta import DeckAuthorStore
 import toollog
 import workspace
 
@@ -82,6 +90,7 @@ import commands
 # silently hand the Codex session write access to scripts/, docs/ and logs/.
 WORKSPACE = workspace.deck_root()                    # public/ — the writable root
 CACHE_DIR = workspace.cache_dir()                    # outside WORKSPACE; needs --add-dir
+METADATA_DB = workspace.deck_metadata_db()           # trusted parent state; never granted
 SESSIONS = HERE / ".sessions"                        # one JSON per Discord channel
 LEGACY_STATE = HERE / ".session.json"                # pre-per-channel; migrated on load
 LOG_DIR = REPO / "logs"                              # one text log per UTC day
@@ -588,13 +597,49 @@ def _autopush(chan: str) -> None:
         log().warning("autopush: skipped (%s: %s)", type(exc).__name__, exc)
 
 
-def _finish(chan: str, answer: str, combined: str, started: float) -> str:
+def _deck_paths(root: Path) -> set[str]:
+    """Every deck path relative to `root`, for before/after turn snapshots."""
+    root = root.resolve()
+    return {
+        path.resolve().relative_to(root).as_posix()
+        for path in deckfile.discover([root])
+    }
+
+
+def _attribute_new_decks(username: str, before: set[str], root: Path,
+                         db_path: Path) -> list[str]:
+    """Persist authorship for deck paths created since the turn began.
+
+    The path-set difference is the authority. The model's answer is deliberately
+    not parsed: it can omit a file it wrote or say it created one when it did not.
+    Sorted paths make a multi-deck turn deterministic in both writes and logs.
+    """
+    created = sorted(_deck_paths(root) - before)
+    if not created:
+        return []
+    with DeckAuthorStore(db_path) as authors:
+        for deck in created:
+            authors.set(deck, username)
+    return created
+
+
+def _finish(chan: str, username: str, decks_before: set[str], answer: str,
+            combined: str, started: float) -> str:
     """Everything that happens after ANY model turn, in one place.
 
     Previously the tool-usage log lived only on the fresh-session path, so resume
     turns — the overwhelmingly common case — recorded nothing.
     """
     _log_tool_usage(chan, combined, started)
+    try:
+        created = _attribute_new_decks(username, decks_before, WORKSPACE,
+                                       METADATA_DB)
+        for deck in created:
+            log().info("AUTHOR [%s/%s] %s", chan, username, deck)
+    except Exception as exc:
+        # As with git publishing, provenance failure must not discard a reply the
+        # model already produced. Keep it loud in the trusted parent log.
+        log().warning("authorship: skipped (%s: %s)", type(exc).__name__, exc)
     _autopush(chan)
     log().info("REPLY  [%s/model] %d chars %dms", chan, len(answer),
                int((time.time() - started) * 1000))
@@ -656,20 +701,25 @@ def _run(args: list[str], out_file: Path, chan: str) -> tuple[str, str]:
     return answer or "(no output)", combined
 
 
-def send(message: str, channel: str | int | None = DEFAULT_CHANNEL) -> str:
+def send(message: str, username: str,
+         channel: str | int | None = DEFAULT_CHANNEL) -> str:
     """Send one message to `channel`'s pinned session and return Codex's reply.
 
     Each Discord channel (or thread) gets its own long-lived Codex session, so
-    separate conversations keep separate context. Pass the channel/thread id.
-    Opens a session if none is pinned. Instructions arrive via AGENTS.md, not a turn.
+    separate conversations keep separate context. `username` is the Discord
+    username used to attribute decks created during this turn. Opens a session
+    if none is pinned. Instructions arrive via AGENTS.md, not a turn.
     """
     if not message.strip():
         raise ValueError("empty message")
+    username = username.strip()
+    if not username:
+        raise ValueError("empty Discord username")
 
     started = time.time()
     chan = _key(channel)
     # Full prompt, newlines escaped so one request stays one greppable line.
-    log().info("PROMPT [%s] %s", chan, _oneline(message))
+    log().info("PROMPT [%s/%s] %s", chan, _oneline(username), _oneline(message))
 
     # Deterministic commands short-circuit the model: a decklist has to be
     # byte-exact to import cleanly, and listing files needs no inference.
@@ -692,6 +742,7 @@ def send(message: str, channel: str | int | None = DEFAULT_CHANNEL) -> str:
 
     changed, status = build_agents.build()  # redeploy AGENTS.md 0444 before codex reads
     log().log(logging.INFO if changed else logging.DEBUG, "agents.md: %s", status)
+    decks_before = _deck_paths(WORKSPACE)
 
     # pid in the name: two calls in the same millisecond would otherwise collide
     out_file = HERE / f".reply-{int(time.time() * 1000)}-{os.getpid()}.txt"
@@ -702,7 +753,7 @@ def send(message: str, channel: str | int | None = DEFAULT_CHANNEL) -> str:
                        chan, sid, MODEL, EFFORT)
             args = _base_args() + ["-o", str(out_file), "resume", sid, "--", message]
             answer, combined = _run(args, out_file, chan)
-            return _finish(chan, answer, combined, started)
+            return _finish(chan, username, decks_before, answer, combined, started)
 
         # No session pinned yet. Take the lock, then re-check: a concurrent call
         # may have created and pinned one while we waited, in which case resume it
@@ -714,7 +765,7 @@ def send(message: str, channel: str | int | None = DEFAULT_CHANNEL) -> str:
                            chan, sid)
                 args = _base_args() + ["-o", str(out_file), "resume", sid, "--", message]
                 answer, combined = _run(args, out_file, chan)
-                return _finish(chan, answer, combined, started)
+                return _finish(chan, username, decks_before, answer, combined, started)
 
             log().info("[%s] no pinned session; opening a new one (model=%s effort=%s)",
                        chan, MODEL, EFFORT)
@@ -735,7 +786,7 @@ def send(message: str, channel: str | int | None = DEFAULT_CHANNEL) -> str:
         # Same tail as the two resume paths above — a fresh session is where a
         # deck is most likely to be CREATED, so skipping this skipped autopush
         # exactly when it mattered most.
-        return _finish(chan, answer, combined, started)
+        return _finish(chan, username, decks_before, answer, combined, started)
     except Exception as exc:                       # log the failure, then re-raise
         log().error("FAILED [%s] after %dms: %s: %s", chan,
                     int((time.time() - started) * 1000),
@@ -753,6 +804,8 @@ def main() -> int:
     ap.add_argument("message", nargs="?", help="message to send")
     ap.add_argument("-c", "--channel", default=DEFAULT_CHANNEL,
                     help=f"channel/thread id (default: {DEFAULT_CHANNEL})")
+    ap.add_argument("-u", "--user",
+                    help="Discord username sending the request (required with a message)")
     ap.add_argument("--reset", action="store_true",
                     help="drop this channel's pinned session")
     ap.add_argument("--reset-all", action="store_true",
@@ -779,6 +832,7 @@ def main() -> int:
     if args.status:
         print(f"workspace : {WORKSPACE}")
         print(f"cache     : {CACHE_DIR}  (granted via --add-dir)")
+        print(f"metadata  : {METADATA_DB}  (trusted parent only)")
         print(f"sessions  : {SESSIONS}")
         print(f"defaults  : model={MODEL} effort={EFFORT}")
         rows = channels()
@@ -802,9 +856,11 @@ def main() -> int:
 
     if not args.message:
         ap.error("give a message, or use --status / --reset / --reset-all / --tail")
+    if not args.user:
+        ap.error("--user is required when sending a message")
 
     try:
-        print(send(args.message, channel=args.channel))
+        print(send(args.message, args.user, channel=args.channel))
     except (CodexError, subprocess.TimeoutExpired) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1

@@ -8,9 +8,9 @@ The scripts sit OUTSIDE the workspace they operate on:
 
 That layout means a script must NOT derive the deck root from its own location
 (`__file__`) — doing so would point at `mtg/`, which would make Codex's writable
-root the whole repo. The deck root is therefore explicit here, and everything
-writable (notably the SQLite cache) lives inside it so that
-`codex -s workspace-write -C <deck root>` can actually write it.
+root the whole repo. The deck root is therefore explicit here. Other writable
+state is explicit too: the card cache is separately granted to the sandbox, while
+trusted deck provenance is kept outside both writable locations.
 
 Override with MTG_DECKS to point the tools at a different workspace:
 
@@ -48,6 +48,22 @@ def cache_db() -> Path:
     if override:
         return Path(override).expanduser().resolve()
     return cache_dir() / "cards.db"
+
+
+def deck_metadata_db() -> Path:
+    """Trusted metadata written by the bot parent, currently deck authorship.
+
+    This deliberately does NOT live in `.cache/`: that whole directory is
+    granted to the sandboxed model so card tools can bank Scryfall results. An
+    author attribution is provenance, not a cache entry, and the model must not
+    be able to forge it or erase it with `cache.py --clear`.
+
+    `MTG_DECK_METADATA` exists for tests and alternate deployments.
+    """
+    override = os.environ.get("MTG_DECK_METADATA")
+    if override:
+        return Path(override).expanduser().resolve()
+    return _REPO / "bot" / ".deck-metadata.db"
 
 
 def staging_dir() -> Path:

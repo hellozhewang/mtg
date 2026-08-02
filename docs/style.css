@@ -91,7 +91,9 @@ h2 .count{color:var(--line)}
 .art-blank{height:116px;display:block;background:var(--panel2)}
 .tile-body{padding:11px 13px 13px}
 .tile-name{display:block;font-weight:650}
-.tile-cmd{display:block;color:var(--dim);font-size:.87rem;margin:1px 0 9px}
+.tile-cmd{display:block;color:var(--dim);font-size:.87rem;margin-top:1px}
+.tile-author{display:block;color:var(--accent);font-size:.78rem;margin:2px 0 9px}
+.tile-cmd + .tile-meta{margin-top:9px}
 .tile-meta{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
 .chip{background:var(--panel2);border:1px solid var(--line);border-radius:99px;
   padding:2px 8px;font-size:.74rem;color:var(--dim);white-space:nowrap}

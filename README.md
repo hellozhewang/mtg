@@ -387,7 +387,9 @@ Renders every deck into a browsable site at
 **<https://hellozhewang.github.io/mtg/>** — a menu of decks, then per-deck pages
 with the list grouped by card type, a mana curve, hover-to-preview card images, a
 click-to-enlarge view (with a flip button for double-faced cards), a gallery mode
-and a copy-the-decklist button.
+and a copy-the-decklist button. Decks created through Discord also show the
+Discord user who requested them; the catalog search matches those usernames, so
+typing an author filters the deck cards the same way typing a commander does.
 
 ```bash
 ./scripts/build_site.py              # rebuild docs/ from public/  -- PUBLISHED
@@ -403,6 +405,13 @@ that live next to the page repeating them.
 **The output is deliberately deterministic** — everything sorted, no clock read
 anywhere. `bot.py` regenerates the site after every model turn and commits what
 changed, so a build timestamp would mean an empty commit on every Discord message.
+
+Authorship is deterministic too. `bot.py` snapshots the set of deck paths before
+a model turn, compares it after the turn, and records each newly appeared path
+against the requesting Discord username in `bot/.deck-metadata.db`. The site
+builder reads that mapping before rendering. This provenance database is separate
+from `.cache/cards.db`: the latter is writable by the sandboxed model and can be
+cleared, while authorship must be written only by the trusted bot parent.
 
 Card images are split by size, because a public git repo keeps every version of a
 binary forever:
@@ -567,8 +576,9 @@ mtg/
 │   │   ├── images.py            card image CDN, HTTP only (another sibling)
 │   │   ├── db.py                SQLite storage (CardStore + PageStore + ImageStore)
 │   │   └── query.py             orchestration (CardQuery + EdhrecQuery + ImageQuery)
-│   ├── workspace.py           owns all path policy (deck root, cache location)
+│   ├── workspace.py           owns all path policy (deck root, cache, metadata)
 │   ├── deckfile.py            .txt decklist format, read and write
+│   ├── deckmeta.py            trusted SQLite deck-author mapping
 │   ├── frontend.py            {{TOKEN}} + <template data-part> loader
 │   ├── toollog.py             tool-invocation log: API + CLI over SQLite
 │   ├── find_cards.py          Scryfall search with bracket rules applied
@@ -594,7 +604,8 @@ mtg/
 ├── bot/                     the harness — OUTSIDE the workspace it drives
 │   ├── bot.py                 persistent Codex session the Discord app calls
 │   ├── commands.py            deterministic !decks / !deck / !help
-│   └── .sessions/             one pinned session UUID per Discord channel
+│   ├── .sessions/             one pinned session UUID per Discord channel
+│   └── .deck-metadata.db      generated trusted deck-author provenance
 ├── public/                  THE WORKSPACE — the only writable tree
 │   ├── Bracket3/              bracket-legal decks (≤3 Game Changers)
 │   ├── Bracket3.5/            deliberately breaks Bracket 3, by request
@@ -633,4 +644,3 @@ and both import it; `MTG_DECKS` overrides the deck root:
 
 ```bash
 ```
-

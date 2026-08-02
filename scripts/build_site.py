@@ -51,6 +51,7 @@ from urllib.parse import urlsplit
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import deckfile
+from deckmeta import DeckAuthorStore
 import frontend
 import toollog
 import workspace
@@ -204,9 +205,11 @@ class Mana:
 class DeckInfo:
     """One decklist, resolved against Scryfall and ready to render."""
 
-    def __init__(self, path: Path, root: Path, q: CardQuery):
+    def __init__(self, path: Path, root: Path, q: CardQuery,
+                 authors: dict[str, str]):
         self.path = path
         self.rel = path.resolve().relative_to(root)
+        self.author = authors.get(self.rel.as_posix())
         self.bracket = self.rel.parent.as_posix()
         self.label = bracket_label(self.bracket)
         self.stem = path.stem
@@ -306,7 +309,12 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
                if d.art_url else '<span class="art-blank"></span>')
         tiles.append(index.part("tile").render(
             HREF=e(d.href), ART=art, NAME=e(d.stem), COMMANDER=e(d.commander),
-            SEARCH=e(f"{d.stem} {d.commander} {d.label}"),
+            AUTHOR=(f'        <span class="tile-author">by {e(d.author)}</span>\n'
+                    if d.author else ""),
+            # The existing free-text filter reads data-search, so including the
+            # author makes a username a first-class filter with no second state.
+            SEARCH=e(" ".join(x for x in
+                              (d.stem, d.commander, d.label, d.author) if x)),
             PIPS=mana.pips(d.colours, ""), TOTAL=d.total, LANDS=d.lands,
             MV=f"{d.avg_mv:.2f}",
             GC=f"{len(d.gcs)}/{d.cap}" if d.cap is not None else str(len(d.gcs))))
@@ -454,7 +462,10 @@ def plan(root: Path, out_dir: Path, repo: str, q: CardQuery,
     """
     tpl = frontend.load(workspace.frontend_dir())
     fdir = workspace.frontend_dir()
-    decks = sorted((DeckInfo(p, root, q) for p in deckfile.discover([root])),
+    with DeckAuthorStore(workspace.deck_metadata_db()) as store:
+        authors = store.all()
+    decks = sorted((DeckInfo(p, root, q, authors)
+                    for p in deckfile.discover([root])),
                    key=lambda d: (d.bracket, d.stem.lower()))
     mana = Mana(sym.uris())
 

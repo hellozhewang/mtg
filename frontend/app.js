@@ -44,8 +44,9 @@
   }
 
   /* ---- search / filter --------------------------------------------------- */
-  // One box, two jobs: on the index it filters deck tiles, on a deck page it
-  // filters card rows. Same code — only the elements carrying the text differ.
+  // One box, two jobs: on the index it filters deck tiles (including by author),
+  // on a deck page it filters card rows. Same code — only the elements carrying
+  // the text differ.
   function initSearch() {
     var input = document.querySelector('.search');
     if (!input) return;

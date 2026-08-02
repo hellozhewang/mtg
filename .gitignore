@@ -41,6 +41,10 @@ __pycache__/
 bot/.busy.db*
 bot/.locks.db*
 
+# Trusted deck provenance written by bot.py after a model turn. Machine-local
+# SQLite state; the generated catalog carries the author text that gets published.
+bot/.deck-metadata.db*
+
 # Scratch space for decks being built by hand. Outside public/, so autopush
 # cannot reach it; ignored here so `git status` stays readable while working.
 staging/

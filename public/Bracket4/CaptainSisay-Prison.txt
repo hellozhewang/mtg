@@ -6,10 +6,10 @@
 1 Avacyn's Pilgrim
 1 Badgermole Cub
 1 Birds of Paradise
-1 Bloodstained Mire
 1 Bloom Tender
 1 Boromir, Warden of the Tower
 1 Boseiju, Who Endures
+1 Bountiful Promenade
 1 Brushland
 1 Cavern of Souls
 1 Chord of Calling
@@ -69,10 +69,10 @@
 1 Pattern of Rebirth
 1 Plains
 1 Plaza of Heroes
+1 Prismatic Vista
 1 Ranger-Captain of Eos
 1 Recruiter of the Guard
 1 Savannah
-1 Scalding Tarn
 1 Seedborn Muse
 1 Selvala, Heart of the Wilds
 1 Serra's Sanctum

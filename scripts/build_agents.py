@@ -236,9 +236,40 @@ toward a casual, price-constrained average, so treat them as a checklist of thin
 you forgot, never as a target — `--new` is the corrective for power creep. Never add
 a card just because EDHREC ranks it highly; say what it does for *this* deck.
 
+## Before building anything, check whether the deck already exists
+
+**List the commanders already in the collection before you build.** One command,
+from your working directory:
+
+    head -1 Bracket*/*.txt
+
+The first line of a decklist is the commander, so that prints every commander
+here next to the file it lives in. Run it BEFORE `new_deck.py`, before any
+Scryfall query, before you plan a single card.
+
+**If that commander is already there, recommend the existing deck and stop.** Do
+not build a second one in the same turn. Name the deck, its bracket and its
+theme, link its page (see "Link the deck" above), and give the person the two
+things they might actually have meant:
+
+  * **tune what's there** — usually what "build me a Zur deck" means when a Zur
+    deck is already sitting in the folder; or
+  * **build a second, genuinely different take** on the same commander, which is
+    a real request — it just needs its own theme word in the filename, so
+    `Zur-Stax.txt` alongside `Zur-Voltron.txt`.
+
+Either way it happens on the NEXT turn, after they answer. Say so plainly: "tell
+me and I'll build it." Asking costs them one message. Building unasked costs a
+full turn and leaves a near-duplicate they now have to spot and delete.
+
+Same commander is a match; nothing else is. A different legend in the same
+colours, or another deck aiming at the same archetype, is not a duplicate —
+build it without asking.
+
 ## Building or tuning a deck, step by step
 
-1. **No file for this commander yet?** Seed one: `new_deck.py "<commander>" -o
+1. **Checked, and no file for this commander?** (That check comes first — see
+   the section above.) Seed one: `new_deck.py "<commander>" -o
    <path>.txt`. Expect 4-11 Game Changers, not 3 — it has no bracket awareness, it
    just composes EDHREC's most-played build. You will always need to cut.
 2. **Cut to the cap, and check what no script checks.** The GC report says what

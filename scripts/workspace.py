@@ -66,10 +66,11 @@ def deck_metadata_db() -> Path:
     return _REPO / "bot" / ".deck-metadata.db"
 
 
-def staging_dir() -> Path:
-    """Scratch space for a deck being built BY HAND. Repo root, OUTSIDE the deck
-    workspace — so the sandboxed session cannot reach it at all, and `_autopush`,
-    which stages only `public/` and `docs/`, cannot sweep it up.
+def private_dir() -> Path:
+    """Decks that are NOT published: work in progress, and anything kept back.
+    Repo root, OUTSIDE the deck workspace — so the sandboxed session cannot reach
+    it at all, and `_autopush`, which stages only `public/` and `docs/`, cannot
+    sweep it up. Gitignored, so nothing in here reaches GitHub either.
 
     The race this closes is human-versus-bot, not bot-versus-bot: bot turns are
     already serialised by a whole-bot lock. But autopush commits everything under
@@ -77,8 +78,10 @@ def staging_dir() -> Path:
     in, would get published half-written the moment a Discord user asks an
     unrelated question — under a "Deck update via Discord" message nobody wrote.
 
-    Being outside `public/` is what makes that structural rather than careful."""
-    return Path(os.environ.get("MTG_STAGING") or _REPO / "staging").expanduser().resolve()
+    Being outside `public/` is what makes that structural rather than careful.
+    Mirror the bracket folders in here (`private/Bracket3/Foo.txt`) and the
+    bracket rules apply as usual; `private_site_dir()` renders these decks too."""
+    return Path(os.environ.get("MTG_PRIVATE") or _REPO / "private").expanduser().resolve()
 
 
 def site_dir() -> Path:
@@ -89,6 +92,30 @@ def site_dir() -> Path:
     It sits at the repo root, OUTSIDE the deck workspace, so the sandboxed session
     cannot write it. Publishing is bot.py's job, from outside the sandbox."""
     return Path(os.environ.get("MTG_SITE") or _REPO / "docs").expanduser().resolve()
+
+
+PRIVATE_SITE_NAME = "private"
+
+
+def private_site_dir() -> Path:
+    """The same catalog plus the decks in `private_dir()`, for local browsing only.
+
+    A subdirectory of the published site, and gitignored — which is the whole
+    trick. GitHub Pages serves the *committed* contents of `docs/`, so a folder
+    git never records is a folder Pages can never publish, no matter that it sits
+    inside the published tree. `git add -- public docs` in `_autopush` honours
+    .gitignore for untracked paths, so the bot cannot stage it by accident either.
+
+    Being inside `docs/` is what makes it browsable with the same relative asset
+    paths; being ignored is what keeps it local. Both properties are load-bearing.
+
+    It exists because `docs/index.html` IS published: one catalog cannot both list
+    a private deck and be served to the world. So the private decks get their own
+    index next to the public one, rather than a flag that changes what `docs/`
+    contains — nothing about the published site should depend on how it was built.
+
+    The public build must not prune this — see `sync(keep=...)` in build_site.py."""
+    return site_dir() / PRIVATE_SITE_NAME
 
 
 def frontend_dir() -> Path:

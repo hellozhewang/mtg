@@ -1,6 +1,6 @@
 <main class="deck">
 <h1>{{NAME}}</h1>
-<p class="sub">{{PIPS}}<span class="cmd">{{COMMANDER}}</span><span class="bracket" data-tip="Power level the deck is built to. Higher brackets allow more Game Changers, land denial and fast combos.">{{BRACKET}}</span></p>
+<p class="sub">{{PIPS}}<span class="cmd">{{COMMANDER}}</span><span class="bracket" data-tip="Power level the deck is built to. Higher brackets allow more Game Changers, land denial and fast combos.">{{BRACKET}}</span>{{TAG}}</p>
 <ul class="stats">
   <li data-tip="Every card in the deck, including the commander. Commander decks are exactly 100."><b>{{TOTAL}}</b>cards</li>
   <li data-tip="{{LANDNOTE}}"><b>{{LANDS}}</b>lands</li>
@@ -15,14 +15,24 @@
   <button class="btn" data-view="list" aria-pressed="true">List</button>
   <button class="btn" data-view="gallery" aria-pressed="false">Gallery</button>
   <button class="btn" data-copy>Copy decklist</button>
-  <a class="btn" href="{{RAW}}" target="_blank" rel="noopener">Plain text &#8599;</a>
-  <a class="btn" href="{{BLOB}}" target="_blank" rel="noopener">On GitHub &#8599;</a>
+{{LINKS}}
 </div>
 <textarea class="rawlist" readonly aria-hidden="true" tabindex="-1">{{RAWLIST}}</textarea>
 
 <div class="cards" data-view="list">
 {{SECTIONS}}</div>
 </main>
+
+<template data-part="links">
+  <a class="btn" href="{{RAW}}" target="_blank" rel="noopener">Plain text &#8599;</a>
+  <a class="btn" href="{{BLOB}}" target="_blank" rel="noopener">On GitHub &#8599;</a>
+</template>
+
+<template data-part="private-note">
+  <span class="btn btn-off" data-tip="This deck has not been pushed, so there is nothing to link to on GitHub. Copy decklist still works — the list is in this page.">Not on GitHub</span>
+</template>
+
+<template data-part="tag"><span class="chip private" data-tip="Not published. This deck lives in private/ and appears only in the local build of this site.">private</span></template>
 
 <template data-part="gclist">
 <p class="gclist">{{NAMES}}</p>

@@ -99,6 +99,11 @@ h2 .count{color:var(--line)}
 .chip{background:var(--panel2);border:1px solid var(--line);border-radius:99px;
   padding:2px 8px;font-size:.74rem;color:var(--dim);white-space:nowrap}
 .chip.gc{color:var(--accent);border-color:var(--accent-line)}
+/* Unpublished. Deliberately the warn hue rather than the gold accent: gold means
+   "notable card" everywhere else on the page, and this means "do not expect to
+   find this on GitHub". Used on tiles and in the deck header alike. */
+.chip.private{color:var(--warn);border-color:var(--warn);background:transparent;
+  text-transform:uppercase;letter-spacing:.06em;font-size:.68rem}
 
 /* ---- deck header ---- */
 .sub{display:flex;gap:9px;align-items:center;margin:0 0 18px;flex-wrap:wrap}
@@ -132,6 +137,10 @@ h2 .count{color:var(--line)}
   border-radius:8px;padding:7px 13px;font:inherit;font-size:.85rem;
   cursor:pointer;text-decoration:none;display:inline-block}
 .btn:hover{border-color:var(--accent)}
+/* Sits in the toolbar where the GitHub links would be, and states why they are
+   not there. Not a <button> and not a link, so it must not offer either affordance. */
+.btn-off{color:var(--dim);border-style:dashed;cursor:default}
+.btn-off:hover{border-color:var(--line)}
 .btn[aria-pressed="true"]{background:var(--panel2);border-color:var(--accent);
   color:var(--accent)}
 /* Off-screen rather than display:none — a hidden textarea cannot be selected,

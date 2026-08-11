@@ -23,15 +23,14 @@ is what most of this document is about. The bracket rules themselves live in
 `/deck-list` and `/deck-print`.
 
 ```bash
-./scripts/new_deck.py "Queen Marchesa" -o staging/Marchesa-Pillowfort.txt
-./scripts/validate_deck.py staging/Marchesa-Pillowfort.txt
-mv staging/Marchesa-Pillowfort.txt public/Bracket3/          # once it passes
+./scripts/new_deck.py "Queen Marchesa" -o public/Bracket3/Marchesa-Pillowfort.txt
+./scripts/validate_deck.py public/Bracket3/Marchesa-Pillowfort.txt
+./scripts/build_site.py                                      # refresh the catalog
 ```
 
-New decks are built by hand in `staging/` at the repo root, then moved into a
-bracket folder once they validate. It sits outside `public/` and is gitignored, so
-a deck you are halfway through writing cannot be swept into a commit by a bot turn
-that fires while you work.
+A deck is not real until `validate_deck.py` passes it: exactly 100 cards, every
+name resolving on Scryfall, one colour identity, the bracket's Game Changer cap,
+singleton, format legality, and no mass land denial below Bracket 4.
 
 The rest of this file is the deckbuilding guide: the rules a deck must follow, the
 file format, what each tool does, and the order to use them in.

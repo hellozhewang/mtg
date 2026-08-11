@@ -481,8 +481,8 @@ def _git(*args: str, timeout: int = 120) -> subprocess.CompletedProcess:
 
 
 def _build_site() -> str | None:
-    """Regenerate the published catalog. Returns its path relative to REPO, for
-    staging, or None if the build failed.
+    """Regenerate the published catalog. Returns its path relative to REPO, ready
+    to hand to `git add`, or None if the build failed.
 
     A subprocess rather than an import, for two reasons: a timeout is available
     (a new deck can need a few dozen card images, and a stalled CDN must not hold
@@ -546,6 +546,19 @@ def _release_bot(con: sqlite3.Connection) -> None:
         con.close()
 
 
+def _private_site_prefix() -> str:
+    """`docs/private/`, or "" if it is configured outside the repo.
+
+    Repo-relative and slash-terminated, to compare against `git diff --cached`
+    output. Derived rather than written out, so moving the local catalog cannot
+    leave this check pointing at a directory that no longer exists.
+    """
+    try:
+        return workspace.private_site_dir().relative_to(REPO).as_posix() + "/"
+    except ValueError:
+        return ""                       # outside the repo; git cannot stage it
+
+
 def _autopush(chan: str) -> None:
     """Commit and push decklist changes. Never raises — a git failure must not
     lose the user's reply, which has already been produced by this point."""
@@ -568,6 +581,30 @@ def _autopush(chan: str) -> None:
             if add.returncode:
                 log().warning("autopush: git add failed: %s", add.stderr.strip()[:200])
                 return
+
+            # docs/private/ is the local-only catalog, and it lives INSIDE docs/ —
+            # so the pathspec above does NOT exclude it. One line in .gitignore is
+            # the only thing standing between a private decklist and a live URL on
+            # the published site, and this is the path that would breach it without
+            # anyone acting: `git add -- docs` sweeps the whole tree, and the local
+            # catalog is a working, self-contained site (its own style.css, app.js
+            # and images), so committing it publishes it. Measured: 1301 files.
+            #
+            # So check rather than trust, and fail CLOSED. Skipping the commit
+            # stalls publishing until someone fixes the ignore, which is loud and
+            # recoverable; the alternative is silent and permanent, because a push
+            # cannot be taken back out of anyone's clone.
+            priv = _private_site_prefix()
+            staged = _git("diff", "--cached", "--name-only").stdout.splitlines()
+            if priv and (leaked := [p for p in staged if p.startswith(priv)]):
+                _git("reset", "--quiet", "--", priv.rstrip("/"))
+                log().error(
+                    "autopush: REFUSING to commit — %d file(s) under %s were "
+                    "staged, which would publish private decks. Unstaged them; "
+                    "check that .gitignore still covers %s. First: %s",
+                    len(leaked), priv, priv, leaked[0])
+                return
+
             msg = f"Deck update via Discord ({chan})"
             # `--` PATHS is what actually bounds the commit. Without it, `git
             # commit` records the WHOLE index, so anything a human had staged in

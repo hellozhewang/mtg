@@ -20,7 +20,9 @@ hover a card to preview it, click to enlarge.</p>
       <span class="tile-body">
         <span class="tile-name">{{NAME}}</span>
         <span class="tile-cmd">{{COMMANDER}}</span>
-{{AUTHOR}}        <span class="tile-meta">{{PIPS}}<span class="chip" data-tip="Every card including the commander. Commander decks are exactly 100.">{{TOTAL}} cards</span><span class="chip" data-tip="Lands in the deck. Most Commander decks run 34-38.">{{LANDS}} lands</span><span class="chip" data-tip="MV = mana value, what a card costs in total. This is the average across the nonland cards, so it says roughly how fast the deck is.">MV {{MV}}</span><span class="chip gc" data-tip="GC = Game Changer, a card on Wizards' list of the most powerful in the format. Shown as used / allowed for the bracket.">GC {{GC}}</span></span>
+{{AUTHOR}}        <span class="tile-meta">{{PIPS}}{{TAG}}<span class="chip" data-tip="Every card including the commander. Commander decks are exactly 100.">{{TOTAL}} cards</span><span class="chip" data-tip="Lands in the deck. Most Commander decks run 34-38.">{{LANDS}} lands</span><span class="chip" data-tip="MV = mana value, what a card costs in total. This is the average across the nonland cards, so it says roughly how fast the deck is.">MV {{MV}}</span><span class="chip gc" data-tip="GC = Game Changer, a card on Wizards' list of the most powerful in the format. Shown as used / allowed for the bracket.">GC {{GC}}</span></span>
       </span>
     </a>
 </template>
+
+<template data-part="tag"><span class="chip private" data-tip="Not published. This deck lives in private/ and appears only in the local build of this site.">private</span></template>

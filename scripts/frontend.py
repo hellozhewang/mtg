@@ -18,6 +18,12 @@ language, no logic in the markup:
                     lives next to the page that repeats it instead of being an
                     f-string in Python.
 
+Extraction takes the blank line that separates a `<template>` from whatever comes
+before it, not just the template itself. Without that, every part defined in a
+file left one blank line behind in the rendered page, so ADDING a part — a change
+that alters no output — rewrote the tail of all 23 deck pages. Generated files are
+diffed and committed here; a template edit should move only what it means to move.
+
 Nothing here escapes anything. Escaping is the caller's decision because the
 caller knows which values are text (a card name) and which are already markup (a
 rendered list of tiles) — a template engine guessing that is how you get either
@@ -30,7 +36,7 @@ from pathlib import Path
 
 TOKEN = re.compile(r"\{\{([A-Z0-9_]+)\}\}")
 PART = re.compile(
-    r'[ \t]*<template\s+data-part="([a-z0-9-]+)"\s*>(.*?)</template>[ \t]*\n?',
+    r'\n?[ \t]*<template\s+data-part="([a-z0-9-]+)"\s*>(.*?)</template>[ \t]*\n?',
     re.DOTALL)
 
 

@@ -45,9 +45,18 @@ bot/.locks.db*
 # SQLite state; the generated catalog carries the author text that gets published.
 bot/.deck-metadata.db*
 
-# Scratch space for decks being built by hand. Outside public/, so autopush
-# cannot reach it; ignored here so `git status` stays readable while working.
-staging/
+# Unpublished decks: work in progress, and anything kept back on purpose.
+# Outside public/, so autopush cannot reach it; ignored here so it never ships.
+private/
+
+# Local-only catalog: every public deck PLUS the ones in private/. It lives inside
+# docs/ so it can share the same relative asset paths, and is ignored so GitHub
+# Pages — which serves the COMMITTED contents of docs/ — has nothing to publish.
+# Ignoring it is the only thing keeping private decks off the web, so do not
+# narrow this pattern. (The unanchored `private/` above already matches this, but
+# it is spelled out so anchoring that one to the repo root stays safe. bot.py's
+# _autopush also refuses to commit anything under here.)
+docs/private/
 
 # VS Code workspace settings, which are machine-local and not source.
 .vscode/

@@ -1,19 +1,13 @@
 1 Nicol Bolas, the Ravager
 1 An Offer You Can't Refuse
 1 Animate Dead
-1 Anvil of Bogardan
 1 Arcane Signet
-1 Archfiend of Ifnir
-1 Archon of Cruelty
-1 Armaggon, Future Shark
 1 Badlands
 1 Baleful Strix
-1 Behold the Sinister Six!
 1 Blasphemous Edict
 1 Blood Crypt
 1 Bloodstained Mire
 1 Bolas's Citadel
-1 Breach the Multiverse
 1 Buried Alive
 1 Cabal Coffers
 1 Cephalid Coliseum
@@ -21,13 +15,14 @@
 1 Chaos Warp
 1 City of Brass
 1 Command Tower
+1 Command the Dreadhorde
 1 Containment Construct
 1 Counterspell
 1 Cyclonic Rift
-1 Dance of the Dead
 1 Dauthi Voidwalker
 1 Deadly Rollick
 1 Deflecting Swat
+1 Diluvian Primordial
 1 Displacer Kitten
 1 Entomb
 1 Exotic Orchard
@@ -37,11 +32,15 @@
 1 Flooded Strand
 1 Force of Negation
 1 Forced Fruition
+1 Frantic Search
 1 Geier Reach Sanitarium
+1 Glint-Horn Buccaneer
 1 Grave Researcher
+1 Howling Mine
+1 Hullbreaker Horror
 1 Intuition
 1 Island
-1 Jin-Gitaxias, Progress Tyrant
+1 Izzet Signet
 1 Kaya's Ghostform
 1 Living Death
 1 Luxury Suite
@@ -49,27 +48,29 @@
 1 Mana Confluence
 1 Mana Drain
 1 Marsh Flats
+1 Massacre Wurm
 1 Memory Deluge
 1 Misty Rainforest
+1 Monument to Endurance
 1 Morphic Pool
 1 Necromancy
 1 Nicol Bolas, Dragon-God
-1 Oskar, Rubbish Reclaimer
+1 Noxious Gearhulk
 1 Otawara, Soaring City
 1 Persist
 1 Polluted Delta
 1 Raucous Theater
 1 Reanimate
-1 Sauron's Ransom
 1 Scalding Tarn
-1 Scholar of the Lost Trove
+1 Sepulchral Primordial
 1 Sheoldred, the Apocalypse
 1 Sink into Stupor
 1 Sol Ring
 1 Spark Double
 1 Spellseeker
-1 Sphinx of the Second Sun
 1 Steam Vents
+1 Stitch Together
+1 Sunken Ruins
 1 Swamp
 1 Swan Song
 1 Takenuma, Abandoned Mire
@@ -77,24 +78,23 @@
 1 Talisman of Dominance
 1 Talisman of Indulgence
 1 The Scarab God
-1 The Soul Stone
 1 Thran Dynamo
-1 Thundering Falls
 1 Tomorrow, Azami's Familiar
 1 Torment of Hailfire
 1 Toxic Deluge
 1 Training Center
-1 Toxrill, the Corrosive
 1 Undercity Sewers
 1 Underground Sea
+1 Unmarked Grave
 1 Urborg, Tomb of Yawgmoth
 1 Vandalblast
 1 Verdant Catacombs
 1 Victimize
+1 Vilis, Broker of Blood
 1 Volcanic Island
 1 Waste Not
 1 Waterlogged Teachings
 1 Watery Grave
-1 Will of the Abzan
 1 Xander's Lounge
 1 Y'shtola Rhul
+1 Zombify

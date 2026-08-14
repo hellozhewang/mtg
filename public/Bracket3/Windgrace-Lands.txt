@@ -3,11 +3,15 @@
 1 Assassin's Trophy
 1 Avenger of Zendikar
 1 Azusa, Lost but Seeking
+1 Badlands
+1 Bayou
 1 Beast Within
+1 Blackcleave Cliffs
 1 Blasphemous Act
 1 Blast Zone
 1 Blood Crypt
 1 Bloodstained Mire
+1 Blooming Marsh
 1 Bojuka Bog
 1 Boseiju, Who Endures
 1 Burgeoning
@@ -16,6 +20,7 @@
 1 Chaos Warp
 1 Command Tower
 1 Constant Mists
+1 Copperline Gorge
 1 Crop Rotation
 1 Crucible of Worlds
 1 Crystal Vein
@@ -26,8 +31,10 @@
 1 Farseek
 1 Field of Ruin
 1 Field of the Dead
-6 Forest
+1 Fire-Lit Thicket
+2 Forest
 1 Ghost Quarter
+1 Graven Cairns
 1 Grove of the Burnwillows
 1 Harmonize
 1 Harrow
@@ -38,7 +45,7 @@
 1 Lotus Cobra
 1 Maze of Ith
 1 Misty Rainforest
-4 Mountain
+2 Mountain
 1 Multani, Yavimaya's Avatar
 1 Nature's Lore
 1 Nurturing Peatland
@@ -63,8 +70,9 @@
 1 Splendid Reclamation
 1 Stomping Ground
 1 Sulfurous Springs
-5 Swamp
+2 Swamp
 1 Sylvan Library
+1 Taiga
 1 Takenuma, Abandoned Mire
 1 Terminate
 1 The Gitrog Monster
@@ -75,6 +83,7 @@
 1 Torment of Hailfire
 1 Toxic Deluge
 1 Traveling Chocobo
+1 Twilight Mire
 1 Urborg, Tomb of Yawgmoth
 1 Vandalblast
 1 Verdant Catacombs

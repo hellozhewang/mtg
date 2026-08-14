@@ -4,7 +4,6 @@
 1 Arcane Signet
 1 Badlands
 1 Baleful Strix
-1 Blasphemous Edict
 1 Blood Crypt
 1 Bloodstained Mire
 1 Buried Alive
@@ -18,6 +17,7 @@
 1 Containment Construct
 1 Counterspell
 1 Cyclonic Rift
+1 Damnation
 1 Dark Ritual
 1 Deadly Rollick
 1 Deflecting Swat

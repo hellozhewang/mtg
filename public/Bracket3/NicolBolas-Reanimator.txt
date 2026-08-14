@@ -61,6 +61,7 @@
 1 Polluted Delta
 1 Raucous Theater
 1 Reanimate
+1 Ripples of Undeath
 1 Scalding Tarn
 1 Sepulchral Primordial
 1 Sheoldred, the Apocalypse
@@ -85,7 +86,6 @@
 1 Training Center
 1 Undercity Sewers
 1 Underground Sea
-1 Unmarked Grave
 1 Urborg, Tomb of Yawgmoth
 1 Vandalblast
 1 Verdant Catacombs

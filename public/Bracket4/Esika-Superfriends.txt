@@ -1,0 +1,100 @@
+1 Esika, God of the Tree
+1 Ajani, Sleeper Agent
+1 An Offer You Can't Refuse
+1 Anguished Unmaking
+1 Arcane Signet
+1 Arena Rector
+1 Arid Mesa
+1 Atraxa, Praetors' Voice
+1 Badlands
+1 Bayou
+1 Blood Crypt
+1 Bloodstained Mire
+1 Boseiju, Who Endures
+1 Breeding Pool
+1 Carth the Lion
+1 Chandra, Awakened Inferno
+1 Chrome Mox
+1 City of Brass
+1 Command Tower
+1 Commodore Guff
+1 Cyclonic Rift
+1 Dawn's Truce
+1 Demonic Tutor
+1 Doubling Season
+1 Elspeth, Sun's Champion
+1 Enlightened Tutor
+1 Exotic Orchard
+1 Farewell
+1 Farseek
+1 Fellwar Stone
+1 Fierce Guardianship
+1 Final Showdown
+1 Flooded Strand
+1 Force of Will
+1 Garruk, Apex Predator
+1 Godless Shrine
+1 Hallowed Fountain
+1 Ichormoon Gauntlet
+1 Jace, the Mind Sculptor
+1 Kaya the Inexorable
+1 Liliana, Dreadhorde General
+1 Lord Windgrace
+1 Mana Confluence
+1 Mana Drain
+1 Mana Vault
+1 Marsh Flats
+1 Misty Rainforest
+1 Mox Amber
+1 Mox Diamond
+1 Narset, Parter of Veils
+1 Nature's Lore
+1 Nicol Bolas, Dragon-God
+1 Norn's Annex
+1 Oath of Nissa
+1 Oath of Teferi
+1 Oko, Thief of Crowns
+1 Overgrown Tomb
+1 Path to Exile
+1 Plateau
+1 Polluted Delta
+1 Reflecting Pool
+1 Rings of Brighthearth
+1 Sacred Foundry
+1 Savannah
+1 Scalding Tarn
+1 Scrubland
+1 Sensei's Divining Top
+1 Sol Ring
+1 Steam Vents
+1 Stomping Ground
+1 Swords to Plowshares
+1 Taiga
+1 Tamiyo, Compleated Sage
+1 Tamiyo, Field Researcher
+1 Teferi's Protection
+1 Teferi, Hero of Dominaria
+1 Teferi, Master of Time
+1 Teferi, Temporal Archmage
+1 Teferi, Time Raveler
+1 Teferi, Who Slows the Sunset
+1 Temple Garden
+1 Tevesh Szat, Doom of Fools
+1 The Chain Veil
+1 The Eternal Wanderer
+1 Three Visits
+1 Tropical Island
+1 Tundra
+1 Ugin, the Spirit Dragon
+1 Underground Sea
+1 Vampiric Tutor
+1 Verdant Catacombs
+1 Volcanic Island
+1 Vorinclex, Monstrous Raider
+1 Watery Grave
+1 Winds of Abandon
+1 Windswept Heath
+1 Wooded Foothills
+1 Worldly Tutor
+1 Wrenn and Realmbreaker
+1 Wrenn and Six

@@ -1,5 +1,4 @@
 1 Esika, God of the Tree
-1 Ajani, Sleeper Agent
 1 An Offer You Can't Refuse
 1 Anguished Unmaking
 1 Arcane Signet
@@ -37,7 +36,6 @@
 1 Hallowed Fountain
 1 Ichormoon Gauntlet
 1 Jace, the Mind Sculptor
-1 Kaya the Inexorable
 1 Liliana, Dreadhorde General
 1 Lord Windgrace
 1 Mana Confluence
@@ -47,6 +45,7 @@
 1 Misty Rainforest
 1 Mox Amber
 1 Mox Diamond
+1 Mystic Remora
 1 Narset, Parter of Veils
 1 Nature's Lore
 1 Nicol Bolas, Dragon-God
@@ -59,6 +58,7 @@
 1 Plateau
 1 Polluted Delta
 1 Reflecting Pool
+1 Rhystic Study
 1 Rings of Brighthearth
 1 Sacred Foundry
 1 Savannah
@@ -69,8 +69,8 @@
 1 Steam Vents
 1 Stomping Ground
 1 Swords to Plowshares
+1 Sylvan Library
 1 Taiga
-1 Tamiyo, Compleated Sage
 1 Tamiyo, Field Researcher
 1 Teferi's Protection
 1 Teferi, Hero of Dominaria
@@ -82,6 +82,7 @@
 1 Tevesh Szat, Doom of Fools
 1 The Chain Veil
 1 The Eternal Wanderer
+1 The One Ring
 1 Three Visits
 1 Tropical Island
 1 Tundra
@@ -92,7 +93,6 @@
 1 Volcanic Island
 1 Vorinclex, Monstrous Raider
 1 Watery Grave
-1 Winds of Abandon
 1 Windswept Heath
 1 Wooded Foothills
 1 Worldly Tutor

@@ -105,6 +105,29 @@ h2 .count{color:var(--line)}
 .chip.private{color:var(--warn);border-color:var(--warn);background:transparent;
   text-transform:uppercase;letter-spacing:.06em;font-size:.68rem}
 
+/* List view for the catalog. The SAME tiles, re-laid-out as rows — not a second
+   markup structure. The search filter, the section-empty rule, the tooltips and
+   the private badge all key off `.tile`, so a parallel DOM would mean teaching
+   every one of them about it, and keeping the two in sync forever. Bracket
+   sections are untouched either way; that is what makes the list browsable. */
+.decks[data-view="list"] .tiles{display:flex;flex-direction:column;gap:0}
+.decks[data-view="list"] .tile{flex-direction:row;align-items:center;
+  background:transparent;border-radius:0;border-width:0 0 1px}
+.decks[data-view="list"] .tile:hover{transform:none;background:var(--panel);
+  border-color:var(--line)}
+.decks[data-view="list"] .art,
+.decks[data-view="list"] .art-blank{display:none}
+/* Making the body a flex row turns its children into flex items, so their
+   display:block and stacking margins stop applying without being overridden
+   one by one. */
+.decks[data-view="list"] .tile-body{display:flex;align-items:center;
+  flex-wrap:wrap;gap:4px 12px;width:100%;padding:7px 11px}
+.decks[data-view="list"] .tile-name{min-width:15rem}
+.decks[data-view="list"] .tile-cmd,
+.decks[data-view="list"] .tile-author,
+.decks[data-view="list"] .tile-cmd + .tile-meta{margin:0}
+.decks[data-view="list"] .tile-meta{margin-left:auto}
+
 /* ---- deck header ---- */
 .sub{display:flex;gap:9px;align-items:center;margin:0 0 18px;flex-wrap:wrap}
 .cmd{font-weight:600}

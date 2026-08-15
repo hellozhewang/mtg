@@ -104,6 +104,13 @@
   function initTooltips() {
     toArray(document.querySelectorAll('.tile [data-tip]')).forEach(function (tip) {
       function centerInTile() {
+        // In list view a tile is a full-width row, so centring on it would fling
+        // the tooltip most of the page away from the chip it belongs to. Nothing
+        // is clipped there either, so the default placement is already right.
+        if (tip.closest('.decks[data-view="list"]')) {
+          tip.style.removeProperty('--tip-shift-x');
+          return;
+        }
         var tile = tip.closest('.tile');
         var tileBox = tile.getBoundingClientRect();
         var tipBox = tip.getBoundingClientRect();
@@ -113,6 +120,42 @@
       }
       tip.addEventListener('mouseenter', centerInTile);
       tip.addEventListener('focus', centerInTile);
+    });
+  }
+
+  /* ---- catalog: tiles / list --------------------------------------------- */
+  // Restyles the tiles already on the page instead of rendering a second list,
+  // so the search filter, the tooltips and the private badge keep working with
+  // no knowledge of which view is on. Bracket sections stay in both.
+  //
+  // `data-decks`, not `data-view`: the deck page's own toggle claims
+  // `.btn[data-view]`, and one selector matching both sets of buttons is exactly
+  // the bug convention 2 exists to prevent.
+  function initCatalogView() {
+    var wrap = document.querySelector('.decks');
+    var buttons = toArray(document.querySelectorAll('.btn[data-decks]'));
+    if (!wrap || !buttons.length) return;
+
+    function apply(view) {
+      wrap.dataset.view = view;
+      buttons.forEach(function (btn) {
+        btn.setAttribute('aria-pressed', String(btn.dataset.decks === view));
+      });
+      store(view);
+    }
+    // Wrapped: localStorage throws outright in some browsers on file://, which
+    // is how a local build of this site gets opened.
+    function store(view) {
+      try { localStorage.setItem('mtg-catalog-view', view); } catch (e) { /* fine */ }
+    }
+    function restore() {
+      try { return localStorage.getItem('mtg-catalog-view'); } catch (e) { return null; }
+    }
+
+    var saved = restore();
+    if (saved === 'list' || saved === 'tiles') apply(saved);
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () { apply(btn.dataset.decks); });
     });
   }
 
@@ -282,6 +325,7 @@
   initDeckPicker();
   initSearch();
   initTooltips();
+  initCatalogView();
 
   var cards = document.querySelector('.cards');
   if (!cards) return;                       // index page: nothing below applies

@@ -3,7 +3,12 @@
 <p class="lede">{{COUNT}} decks, each validated to 100 cards, single colour
 identity and the Game&nbsp;Changer cap for its bracket. Pick one to see the list,
 hover a card to preview it, click to enlarge.</p>
-{{SECTIONS}}
+<div class="toolbar">
+  <button class="btn" data-decks="tiles" aria-pressed="true">Tiles</button>
+  <button class="btn" data-decks="list" aria-pressed="false">List</button>
+</div>
+<div class="decks" data-view="tiles">
+{{SECTIONS}}</div>
 </main>
 
 <template data-part="section">

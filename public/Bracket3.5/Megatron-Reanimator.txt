@@ -24,7 +24,6 @@
 1 Deflecting Swat
 1 Demonic Junker
 1 Demonic Tutor
-1 Dispatch
 1 Enlightened Tutor
 1 Esper Sentinel
 1 Excalibur, Sword of Eden
@@ -87,6 +86,7 @@
 1 Trash for Treasure
 1 Treasure Vault
 1 Triplicate Titan
+1 Ugin's Nexus
 1 Ultron, Artificial Malevolence
 1 Unmarked Grave
 1 Urborg, Tomb of Yawgmoth

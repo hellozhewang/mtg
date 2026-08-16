@@ -540,8 +540,14 @@ def plan(root: Path, out_dir: Path, repo: str, q: CardQuery,
         authors = store.all()
     found = [(p, root, False) for p in deckfile.discover([root])]
     if private_root and private_root.is_dir():
+        # ONLY the bracket folders, not the whole tree. private/ is a personal
+        # scratch directory as well as a deck directory — notes, tool inputs and
+        # anything else live alongside the decks — and `discover()` would happily
+        # turn every .txt in there into a "deck". It did: four showcards input
+        # files rendered as decklists, one of them a 51-card "commander".
+        # The bracket folder is what marks a file as a deck, here and in gc_cap().
         found += [(p, private_root, True)
-                  for p in deckfile.discover([private_root])]
+                  for p in deckfile.discover(sorted(private_root.glob("Bracket*")))]
     decks = sorted((DeckInfo(p, base, q, authors, private=priv)
                     for p, base, priv in found),
                    # Private and public interleave inside a bracket rather than
@@ -652,7 +658,9 @@ def main() -> int:
     private_site = out_dir / workspace.PRIVATE_SITE_NAME
     keep = private_site
     private_root = workspace.private_dir()
-    private_decks = (deckfile.discover([private_root])
+    # Same rule as plan(): bracket folders only. These two scans must agree, or
+    # the build reports a deck count it did not render.
+    private_decks = (deckfile.discover(sorted(private_root.glob("Bracket*")))
                      if private_root.is_dir() else [])
     q = CardQuery(db_path=workspace.cache_db())
     img = ImageQuery(db_path=workspace.cache_db())

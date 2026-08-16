@@ -8,9 +8,9 @@
 1 Cephalid Coliseum
 1 Chain of Vapor
 1 City of Traitors
-1 Codex Shredder
 1 Copy Artifact
 1 Counterspell
+1 Cyberdrive Awakener
 1 Cyclonic Rift
 1 Darksteel Citadel
 1 Displacer Kitten
@@ -35,6 +35,7 @@
 1 Lotus Petal
 1 Mana Drain
 1 Manifold Key
+1 Mechanized Production
 1 Mental Misstep
 1 Merchant Scroll
 1 Minamo, School at Water's Edge
@@ -81,7 +82,6 @@
 1 Urza's Power Plant
 1 Urza's Saga
 1 Urza's Tower
-1 Valley Floodcaller
 1 Voltaic Key
 1 Walking Ballista
 1 Whir of Invention

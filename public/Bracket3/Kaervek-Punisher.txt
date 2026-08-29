@@ -44,7 +44,7 @@
 1 Mind Stone
 1 Mithril Coat
 1 Mogis, God of Slaughter
-5 Mountain
+6 Mountain
 1 Night's Whisper
 1 Obosh, the Preypiercer
 1 Ojer Axonil, Deepest Might
@@ -60,10 +60,8 @@
 1 Roiling Vortex
 1 Rug of Smothering
 1 Scalding Tarn
-1 Scytheclaw Raptor
 1 Seething Song
 1 Sheoldred, the Apocalypse
-1 Smoldering Marsh
 1 Sol Ring
 1 Solphim, Mayhem Dominus
 1 Spellshock
@@ -82,6 +80,7 @@
 1 Toxic Deluge
 1 Twinflame Tyrant
 1 Underworld Dreams
+1 Unstable Obelisk
 1 Urborg, Tomb of Yawgmoth
 1 Valgavoth, Harrower of Souls
 1 Vandalblast

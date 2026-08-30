@@ -1,0 +1,100 @@
+1 Felothar the Steadfast
+1 Access Tunnel
+1 Akroma's Will
+1 Anguished Unmaking
+1 Arbor Adherent
+1 Arcane Signet
+1 Arid Mesa
+1 Assault Formation
+1 Axebane Guardian
+1 Bayou
+1 Bedrock Tortoise
+1 Birds of Paradise
+1 Bloodstained Mire
+1 Bloom Tender
+1 Boseiju, Who Endures
+1 Bountiful Promenade
+1 Cavern of Souls
+1 Chord of Calling
+1 City of Brass
+1 Command Tower
+1 Crystal Barricade
+1 Deadly Rollick
+1 Delighted Halfling
+1 Demonic Tutor
+1 Devoted Druid
+1 Doran, Besieged by Time
+1 Duskwatch Recruiter
+1 Eiganjo, Seat of the Empire
+1 Eladamri's Call
+1 Eldritch Evolution
+1 Endurance
+1 Esper Sentinel
+1 Eternal Witness
+1 Faeburrow Elder
+1 Farseek
+1 Fecund Greenshell
+1 Finale of Devastation
+1 Flooded Strand
+1 Forest
+1 Gaea's Cradle
+1 Godless Shrine
+1 Grand Abolisher
+1 Great Forest Druid
+1 Green Sun's Zenith
+1 Heliod, Sun-Crowned
+1 Heroic Intervention
+1 High Market
+1 Indatha Triome
+1 Invasion of Ikoria
+1 Legolas's Quick Reflexes
+1 Lurrus of the Dream-Den
+1 Lush Portico
+1 Luxior, Giada's Gift
+1 Mana Confluence
+1 Marsh Flats
+1 Misty Rainforest
+1 Nature's Lore
+1 Overgrown Battlement
+1 Overgrown Tomb
+1 Phyrexian Tower
+1 Polluted Delta
+1 Ranger-Captain of Eos
+1 Recruiter of the Guard
+1 Savannah
+1 Scrubland
+1 Seedborn Muse
+1 Sevinne's Reclamation
+1 Shadowy Backstreet
+1 Shield Sphere
+1 Silence
+1 Sol Ring
+1 Staff of Domination
+1 Sting, the Glinting Dagger
+1 Swift Reconfiguration
+1 Swords to Plowshares
+1 Sylvan Caryatid
+1 Takenuma, Abandoned Mire
+1 Temple Garden
+1 Thousand-Year Elixir
+1 Three Visits
+1 Tower Defense
+1 Tree of Perdition
+1 Tree of Redemption
+1 Underground Mortuary
+1 Undergrowth Stadium
+1 Utopia Sprawl
+1 Urborg, Tomb of Yawgmoth
+1 Vault of Champions
+1 Veil of Summer
+1 Verdant Catacombs
+1 Vizier of Remedies
+1 Walking Ballista
+1 Wall of Blossoms
+1 Wall of Omens
+1 Wall of Roots
+1 Wave of Reckoning
+1 Wild Growth
+1 Windswept Heath
+1 Wooded Foothills
+1 Yavimaya, Cradle of Growth

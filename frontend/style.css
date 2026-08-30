@@ -99,6 +99,9 @@ h2 .count{color:var(--line)}
 .chip{background:var(--panel2);border:1px solid var(--line);border-radius:99px;
   padding:2px 8px;font-size:.74rem;color:var(--dim);white-space:nowrap}
 .chip.gc{color:var(--accent);border-color:var(--accent-line)}
+/* Creation date. Muted on purpose: it is context for ordering, not a stat you
+   compare decks on, so it must not compete with the card/land/MV chips. */
+.chip.date{font-variant-numeric:tabular-nums;opacity:.75}
 /* Unpublished. Deliberately the warn hue rather than the gold accent: gold means
    "notable card" everywhere else on the page, and this means "do not expect to
    find this on GitHub". Used on tiles and in the deck header alike. */

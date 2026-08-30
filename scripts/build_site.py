@@ -69,6 +69,7 @@ import argparse
 import html
 import re
 import subprocess
+from datetime import datetime, timezone
 import sys
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -236,8 +237,12 @@ class DeckInfo:
     """One decklist, resolved against Scryfall and ready to render."""
 
     def __init__(self, path: Path, root: Path, q: CardQuery,
-                 authors: dict[str, str], private: bool = False):
+                 authors: dict[str, str], private: bool = False,
+                 created: int = 0):
         self.path = path
+        self.created = created
+        self.created_label = (datetime.fromtimestamp(created, timezone.utc)
+                              .strftime("%Y-%m-%d") if created else "")
         self.rel = path.resolve().relative_to(root)
         self.private = private
         # DeckAuthorStore is keyed on the path relative to the deck root, so
@@ -373,8 +378,14 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
             # author makes a username a first-class filter with no second state.
             # "private" goes in as a word, which makes the search box a filter for
             # unpublished decks with no extra control to build.
+            CREATED=(f'<span class="chip date" data-tip="When this deck was '
+                     f'first added to the collection.">{e(d.created_label)}</span>'
+                     if d.created_label else ""),
+            # The date joins data-search too, so typing "2026-08" in the box
+            # filters the catalog to that month at no extra cost.
             SEARCH=e(" ".join(x for x in
                               (d.stem, d.commander, d.label, d.author,
+                               d.created_label,
                                "private" if d.private else "") if x)),
             PIPS=mana.pips(d.colours, ""), TOTAL=d.total, LANDS=d.lands,
             MV=f"{d.avg_mv:.2f}",
@@ -463,6 +474,51 @@ def render_deck(tpl: dict[str, frontend.Template], d: DeckInfo,
 
 
 
+
+def creation_dates(root: Path) -> dict[Path, int]:
+    """When each deck file first appeared, as a unix timestamp.
+
+    Git is the source of truth for anything published: one `git log` over the
+    whole tree costs ~30ms and knows the real date even for decks added before
+    this feature existed. `DeckAuthorStore.file_created_at_ns` only covers decks
+    the bot itself made, so it would leave most of the catalog blank.
+
+    Two details that matter:
+      * git log prints newest first, so a file that was removed and re-added
+        (Krenko) appears twice. We keep overwriting, which leaves the EARLIEST
+        add — the date the deck was actually created, not republished.
+      * a private deck is not in git at all, so it falls back to the file's own
+        birth time. That is machine-local, but private decks never reach docs/,
+        so the published build stays byte-deterministic.
+    """
+    dates: dict[Path, int] = {}
+    try:
+        out = subprocess.run(
+            ["git", "-C", str(root.parent), "log", "--diff-filter=A",
+             "--format=%at", "--name-only", "--", root.name],
+            capture_output=True, text=True, timeout=30).stdout
+    except (OSError, subprocess.SubprocessError):
+        out = ""
+    stamp = 0
+    for line in out.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        if line.isdigit():
+            stamp = int(line)
+        elif line.endswith(".txt") and stamp:
+            dates[(root.parent / line).resolve()] = stamp
+    return dates
+
+
+def created_at(path: Path, dates: dict[Path, int]) -> int:
+    """Git date if the file is tracked, else the filesystem's birth time."""
+    if found := dates.get(path.resolve()):
+        return found
+    st = path.stat()
+    return int(getattr(st, "st_birthtime", st.st_mtime))
+
+
 def collect_images(decks: list[DeckInfo], img: ImageQuery,
                    out_dir: Path) -> dict[Path, bytes]:
     """Fetch every committed image once, deduplicated across decks.
@@ -538,6 +594,7 @@ def plan(root: Path, out_dir: Path, repo: str, q: CardQuery,
     fdir = workspace.frontend_dir()
     with DeckAuthorStore(workspace.deck_metadata_db()) as store:
         authors = store.all()
+    dates = creation_dates(root)
     found = [(p, root, False) for p in deckfile.discover([root])]
     if private_root and private_root.is_dir():
         # ONLY the bracket folders, not the whole tree. private/ is a personal
@@ -548,11 +605,14 @@ def plan(root: Path, out_dir: Path, repo: str, q: CardQuery,
         # The bracket folder is what marks a file as a deck, here and in gc_cap().
         found += [(p, private_root, True)
                   for p in deckfile.discover(sorted(private_root.glob("Bracket*")))]
-    decks = sorted((DeckInfo(p, base, q, authors, private=priv)
+    decks = sorted((DeckInfo(p, base, q, authors, private=priv,
+                             created=created_at(p, dates))
                     for p, base, priv in found),
-                   # Private and public interleave inside a bracket rather than
-                   # sorting apart, so a deck sits where you would look for it.
-                   key=lambda d: (d.bracket, d.stem.lower(), d.private))
+                   # Newest first WITHIN each bracket. The bracket grouping is
+                   # what makes the catalog browsable, so date sorts inside it
+                   # rather than replacing it. Name breaks ties so two decks
+                   # added in the same commit still have a stable order.
+                   key=lambda d: (d.bracket, -d.created, d.stem.lower()))
     mana = Mana(sym.uris())
     image_files = collect_images(decks, img, out_dir)
     available_images = {path.name for path in image_files}

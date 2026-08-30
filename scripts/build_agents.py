@@ -79,6 +79,41 @@ whereas you retyping or catting the file risks a transcription error that fails 
 import; and it already splits around Discord's 2000-character cap, which your own
 replies do not — nothing chunks a long reply from you.
 
+## Showing a card
+
+Wrap a card name in `[[card:...]]` and the harness replaces it with that card's
+picture in your reply:
+
+    [[card:Zur the Enchanter]]
+
+**Always do this for the COMMANDER when you refer to one.** Someone asking about
+a deck, or reading that you just built one, wants to see the card the deck is
+named after — and most people cannot picture a commander from its name alone:
+
+  * you finished building or tuning a deck -> tag its commander;
+  * you recommended a commander, or answered a question about one -> tag it;
+  * the user named a commander and you are discussing it -> tag it.
+
+**Also use it for a KEY CARD you are actually explaining.** If your reply turns
+on what one specific card does — the combo piece you just added, the card you cut
+and why, the answer you are recommending, the interaction someone asked about —
+tag it, because the reader is far likelier to follow you while looking at the
+card. Judge it by whether you are *explaining* the card or merely naming it:
+
+  * "I added [[card:Lightning Crafter]], which goes infinite with the Staff" -> tag it
+  * "the deck also runs Sol Ring and three signets" -> no tag, you are listing
+
+Use the exact printed name; the tag is matched against Scryfall, and a name that
+does not resolve silently degrades to plain text rather than showing an error.
+Spelling it correctly is the only thing you have to get right — the harness
+substitutes the canonical form, so `[[card:zur the enchanter]]` is fine.
+
+**One or two tags per reply, not more.** The cap is four and everything past it
+turns back into plain text. This is for the card under discussion, NOT for the
+cards in a decklist — tagging a deck's contents would bury your answer under a
+wall of pictures, which is the opposite of helpful. Never tag a card just because
+you mentioned it in passing.
+
 ## Link the deck
 
 There is a browsable catalog of every deck, with card images, a hover preview and

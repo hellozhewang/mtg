@@ -84,6 +84,7 @@ import toollog
 import workspace
 
 import commands
+import postprocess
 
 # Ask workspace.py; do NOT derive these from __file__. bot/ sits outside the tree
 # it drives, so `HERE.parent` is the repo root — using it as the workspace would
@@ -706,6 +707,13 @@ def _finish(chan: str, username: str, decks_before: dict[str, int | None], answe
             chan, username, type(exc).__name__, exc,
         )
     _autopush(chan)
+    # Expand [[card:Name]] tags into card images. Model replies ONLY -- the
+    # deterministic commands return text a user pastes into a deck importer, and
+    # a URL in there is something they have to strip back out.
+    try:
+        answer = postprocess.expand(answer)
+    except Exception as exc:                # never let a picture eat the reply
+        log().warning("postprocess: skipped (%s: %s)", type(exc).__name__, exc)
     log().info("REPLY  [%s/model] %d chars %dms", chan, len(answer),
                int((time.time() - started) * 1000))
     log().debug("REPLY-BODY %s", _oneline(answer))

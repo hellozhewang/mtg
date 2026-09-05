@@ -36,7 +36,7 @@ import workspace
 
 CACHE = Path.home() / ".codex" / "models_cache.json"
 HERE = workspace.deck_root()   # codex's working root == the writable workspace
-FALLBACK = ("gpt-5.6-sol", "max")
+FALLBACK = ("gpt-6-astra", "max")
 
 
 def load_models() -> list[dict]:

@@ -100,7 +100,7 @@ LOG_DIR = REPO / "logs"                              # one text log per UTC day
 # the channel or thread id so each conversation gets its own Codex session.
 DEFAULT_CHANNEL = "cli"
 
-MODEL = os.environ.get("MTG_BOT_MODEL", "gpt-5.6-sol")
+MODEL = os.environ.get("MTG_BOT_MODEL", "gpt-6-astra")
 # Discord users are waiting on this, so default below the ceiling. `ultra`/`max`
 # can push a single turn into minutes.
 EFFORT = os.environ.get("MTG_BOT_EFFORT", "high")
@@ -270,7 +270,29 @@ def _save(channel: str | int | None, data: dict) -> None:
 
 
 def session_id(channel: str | int | None = DEFAULT_CHANNEL) -> str | None:
-    return _load(channel).get("session_id")
+    """The pinned session for a channel, or None if there is nothing to resume.
+
+    A session pinned under a DIFFERENT model or effort is treated as nothing to
+    resume. `_save` has always recorded both alongside the id, but nothing ever
+    read them back, so changing MODEL left every channel resuming a conversation
+    created under the old one — and whether `codex exec resume` honours a new
+    `-m` is not documented. Returning None here forces a fresh session, which
+    makes the switch actually take effect.
+
+    The cost is one lost conversation per channel, once, at the moment the model
+    changes. That is the right trade against a model change that silently does
+    nothing.
+    """
+    state = _load(channel)
+    sid = state.get("session_id")
+    if not sid:
+        return None
+    was, now = (state.get("model"), state.get("effort")), (MODEL, EFFORT)
+    if state.get("model") and was != now:
+        log().info("[%s] pinned under %s/%s but running %s/%s; starting fresh",
+                   _key(channel), was[0], was[1], now[0], now[1])
+        return None
+    return sid
 
 
 def channels() -> list[tuple[str, dict]]:

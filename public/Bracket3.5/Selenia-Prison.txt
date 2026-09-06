@@ -48,6 +48,7 @@
 1 High Market
 1 Idyllic Tutor
 1 Inkshield
+1 Isolated Chapel
 1 Kambal, Consul of Allocation
 1 Kaya's Ghostform
 1 Liesa, Shroud of Dusk
@@ -61,7 +62,7 @@
 1 Painful Quandary
 1 Phyrexian Arena
 1 Phyrexian Tower
-3 Plains
+2 Plains
 1 Polluted Delta
 1 Quietus Spike
 1 Reanimate
@@ -77,7 +78,7 @@
 1 Sphere of Safety
 1 Starscape Cleric
 1 Suture Priest
-4 Swamp
+3 Swamp
 1 Swords to Plowshares
 1 Takenuma, Abandoned Mire
 1 Talisman of Hierarchy
@@ -85,6 +86,7 @@
 1 The Wind Crystal
 1 Toxic Deluge
 1 Trouble in Pairs
+1 Turbulent Moor
 1 Urborg, Tomb of Yawgmoth
 1 Vault of Champions
 1 Vault of the Archangel

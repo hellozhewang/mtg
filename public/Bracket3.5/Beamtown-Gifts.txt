@@ -2,82 +2,82 @@
 1 Abrupt Decay
 1 Animate Dead
 1 Arcane Signet
-1 Archon of Cruelty
 1 Arid Mesa
 1 Assassin's Trophy
-1 Avaricious Dragon
+1 Avatar of Woe
 1 Badlands
 1 Bayou
-1 Beast Within
 1 Birds of Paradise
 1 Bitter Reunion
 1 Bitter Triumph
-1 Black Market Connections
 1 Blazemire Verge
 1 Blood Crypt
 1 Bloodstained Mire
 1 Boseiju, Who Endures
-1 Bothersome Quasit
 1 Bronze Bombshell
 1 Buried Alive
+1 Cavern of Souls
 1 City of Brass
 1 Command Tower
 1 Commercial District
+1 Dark Ritual
 1 Deadly Rollick
 1 Deathrite Shaman
 1 Deflecting Swat
 1 Delighted Halfling
+1 Demonic Tutor
 1 Despotic Scepter
-1 Disrupt Decorum
-1 Ebonblade Reaper
+1 Dina's Guidance
+1 Eater of Days
+1 Elves of Deep Shadow
+1 Endurance
 1 Entomb
 1 Eternal Witness
 1 Exotic Orchard
 1 Faithless Looting
 1 Fang, Fearless l'Cie
-1 Farseek
 1 Fauna Shaman
-1 Fellwar Stone
 1 Forest
 1 Formidable Speaker
+1 Hermit Druid
 1 Heroic Intervention
-1 Homeward Path
 1 Ignoble Hierarch
-1 Karazikar, the Eye Tyrant
-1 Kardur, Doomscourge
+1 Inverter of Truth
 1 Legolas's Quick Reflexes
-1 Life of the Party
+1 Leveler
 1 Lightning Greaves
+1 Llanowar Elves
 1 Luxury Suite
 1 Magewright's Stone
 1 Mana Confluence
 1 Marsh Flats
-1 Massacre Wurm
+1 Marvin, Murderous Mimic
 1 Misty Rainforest
 1 Nature's Lore
-1 Necromancy
-1 Orcish Bowmasters
+1 Oriq Loremage
 1 Overgrown Tomb
 1 Patriar's Seal
-1 Plague Reaver
 1 Polluted Delta
-1 Quest for Renewal
+1 Pyroblast
 1 Raucous Theater
 1 Reanimate
 1 Ripples of Undeath
-1 Royal Assassin
 1 Saryth, the Viper's Fang
 1 Scalding Tarn
 1 Seedborn Muse
+1 Seeker of Skybreak
 1 Sol Ring
+1 Soulgorger Orgg
 1 Spire Garden
 1 Sting, the Glinting Dagger
 1 Stomping Ground
 1 Survival of the Fittest
 1 Swamp
+1 Swiftfoot Boots
 1 Sylvan Library
 1 Taiga
 1 Takenuma, Abandoned Mire
+1 Thornbite Staff
 1 Thornspire Verge
 1 Thousand-Year Elixir
 1 Three Visits
@@ -86,15 +86,15 @@
 1 Underground Mortuary
 1 Undergrowth Stadium
 1 Unmarked Grave
-1 Unstoppable Slasher
 1 Urborg, Tomb of Yawgmoth
 1 Veil of Summer
-1 Vengeful Ancestor
 1 Verdant Catacombs
 1 Victimize
+1 Vile Entomber
 1 Wastewood Verge
 1 Wheel of Fortune
 1 Windswept Heath
+1 Wishclaw Talisman
 1 Wooded Foothills
 1 Yavimaya, Cradle of Growth
 1 Ziatora's Proving Ground

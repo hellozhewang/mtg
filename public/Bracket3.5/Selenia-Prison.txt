@@ -5,7 +5,6 @@
 1 Archivist of Oghma
 1 Archon of Emeria
 1 Arid Mesa
-1 Austere Command
 1 Authority of the Consuls
 1 Ayli, Eternal Pilgrim
 1 Black Market Connections
@@ -26,6 +25,7 @@
 1 Dauthi Voidwalker
 1 Deadly Rollick
 1 Debt to the Deathless
+1 Deep Gnome Terramancer
 1 Demonic Tutor
 1 Diabolic Intent
 1 Eiganjo, Seat of the Empire
@@ -55,12 +55,11 @@
 1 Malakir Rebirth
 1 Mana Confluence
 1 Marsh Flats
+1 Mind Stone
 1 Moat
 1 Necropotence
 1 No Mercy
 1 Orzhov Signet
-1 Painful Quandary
-1 Phyrexian Arena
 1 Phyrexian Tower
 1 Plains
 1 Polluted Delta
@@ -76,7 +75,6 @@
 1 Silent Clearing
 1 Smothering Tithe
 1 Sol Ring
-1 Sphere of Safety
 1 Starscape Cleric
 1 Suture Priest
 2 Swamp
@@ -84,8 +82,10 @@
 1 Tainted Field
 1 Takenuma, Abandoned Mire
 1 Talisman of Hierarchy
+1 The Mind Stone
 1 The Soul Stone
 1 The Wind Crystal
+1 Thought Vessel
 1 Toxic Deluge
 1 Trouble in Pairs
 1 Turbulent Moor

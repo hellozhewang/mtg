@@ -29,12 +29,14 @@
 1 Faithless Looting
 1 Fellwar Stone
 1 Fierce Guardianship
+1 Fiery Islet
 1 Firemind Vessel
 1 Flooded Strand
 1 Flusterstorm
 1 Forbidden Orchard
 1 Force of Negation
 1 Frantic Search
+1 Frostboil Snarl
 1 Gandalf, Goblins' Bane
 1 Ghyrson Starn, Kelermorph
 1 Goblin Electromancer
@@ -43,7 +45,7 @@
 1 High Tide
 1 Hydroblast
 1 Impulse
-7 Island
+4 Island
 1 Izzet Signet
 1 Lightning Bolt
 1 Lightning Greaves
@@ -53,7 +55,7 @@
 1 Memory Deluge
 1 Misty Rainforest
 1 Mizzium Mortars
-6 Mountain
+5 Mountain
 1 Mystic Remora
 1 Mystic Sanctuary
 1 Mystical Dispute
@@ -64,6 +66,7 @@
 1 Red Elemental Blast
 1 Reflecting Pool
 1 Rhystic Study
+1 Riverpyre Verge
 1 Rogue's Passage
 1 Scalding Tarn
 1 Shivan Reef
@@ -73,6 +76,7 @@
 1 Spirebluff Canal
 1 Steam Vents
 1 Stern Scolding
+1 Stormcarved Coast
 1 Sulfur Falls
 1 Swan Song
 1 Tale's End

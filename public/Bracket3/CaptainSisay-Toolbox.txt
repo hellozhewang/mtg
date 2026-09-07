@@ -1,7 +1,7 @@
 1 Captain Sisay
 1 Akroma's Will
-1 Arcane Signet
 1 Arbor Elf
+1 Arcane Signet
 1 Arid Mesa
 1 Austere Command
 1 Avacyn's Pilgrim
@@ -10,10 +10,13 @@
 1 Beast Within
 1 Birds of Paradise
 1 Bloom Tender
+1 Blossoming Sands
 1 Boromir, Warden of the Tower
 1 Boseiju, Who Endures
 1 Bountiful Promenade
+1 Branchloft Pathway
 1 Brushland
+1 Canopy Vista
 1 Cavern of Souls
 1 Command Tower
 1 Concordant Crossroads
@@ -30,7 +33,7 @@
 1 Flooded Strand
 1 Flowering of the White Tree
 1 Force of Vigor
-4 Forest
+2 Forest
 1 Fyndhorn Elves
 1 Gaea's Cradle
 1 Gandalf the White
@@ -59,7 +62,7 @@
 1 Nature's Rhythm
 1 Nykthos, Shrine to Nyx
 1 Okina, Temple to the Grandfathers
-3 Plains
+2 Plains
 1 Plaza of Heroes
 1 Quirion Ranger
 1 Reki, the History of Kamigawa
@@ -81,9 +84,9 @@
 1 The One Ring
 1 Thousand-Year Elixir
 1 Three Visits
-1 Utopia Sprawl
 1 Urza's Ruinous Blast
 1 Urza's Saga
+1 Utopia Sprawl
 1 Veil of Summer
 1 Venat, Heart of Hydaelyn
 1 Verdant Catacombs

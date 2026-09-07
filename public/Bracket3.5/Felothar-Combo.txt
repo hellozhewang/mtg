@@ -1,22 +1,21 @@
 1 Felothar the Steadfast
 1 Abrupt Decay
 1 Ancient Tomb
-1 Anguished Unmaking
+1 Arbor Adherent
 1 Arbor Elf
-1 Arcane Signet
 1 Arid Mesa
 1 Assassin's Trophy
-1 Avacyn's Pilgrim
 1 Bayou
 1 Birds of Paradise
 1 Bloodstained Mire
+1 Bloom Tender
 1 Boseiju, Who Endures
 1 Bountiful Promenade
+1 Brushland
 1 Cavern of Souls
 1 Chord of Calling
 1 City of Brass
 1 Command Tower
-1 Concordant Crossroads
 1 Dark Confidant
 1 Deathrite Shaman
 1 Delighted Halfling
@@ -38,9 +37,10 @@
 1 Finale of Devastation
 1 Flooded Strand
 1 Forest
+1 Formidable Speaker
 1 Fyndhorn Elves
+1 Gaea's Cradle
 1 Gemstone Caverns
-1 Gilded Goose
 1 Giver of Runes
 1 Godless Shrine
 1 Grand Abolisher
@@ -51,12 +51,10 @@
 1 Invasion of Ikoria
 1 Legolas's Quick Reflexes
 1 Llanowar Elves
-1 Loran's Escape
 1 Lotus Petal
 1 Lurrus of the Dream-Den
 1 Luxior, Giada's Gift
 1 Mana Confluence
-1 Mana Vault
 1 Marsh Flats
 1 Misty Rainforest
 1 Nature's Claim
@@ -64,8 +62,8 @@
 1 Overgrown Tomb
 1 Path to Exile
 1 Phyrexian Tower
-1 Plains
 1 Polluted Delta
+1 Priest of Titania
 1 Ranger-Captain of Eos
 1 Recruiter of the Guard
 1 Savannah
@@ -75,15 +73,19 @@
 1 Silence
 1 Silent Clearing
 1 Skrelv, Defector Mite
+1 Slaughter the Strong
 1 Sol Ring
 1 Staff of Domination
 1 Summoner's Pact
-1 Surge of Salvation
 1 Swift Reconfiguration
 1 Swords to Plowshares
 1 Sylvan Library
 1 Takenuma, Abandoned Mire
 1 Temple Garden
+1 Thousand-Year Elixir
+1 Tower Defense
+1 Tree of Perdition
+1 Tree of Redemption
 1 Tyvar, Jubilant Brawler
 1 Undergrowth Stadium
 1 Utopia Sprawl
@@ -92,9 +94,7 @@
 1 Verdant Catacombs
 1 Vizier of Remedies
 1 Walking Ballista
-1 Wall of Blossoms
 1 Wall of Roots
 1 Wild Growth
 1 Windswept Heath
-1 Wishclaw Talisman
 1 Wooded Foothills

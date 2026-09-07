@@ -14,6 +14,8 @@
 1 Avacyn, Angel of Hope
 1 Badlands
 1 Balefire Dragon
+1 Battlefield Forge
+1 Blackcleave Cliffs
 1 Blood Crypt
 1 Bloodletter of Aclazotz
 1 Bloodstained Mire
@@ -54,7 +56,7 @@
 1 Marsh Flats
 1 Master of Cruelties
 1 Mother of Runes
-2 Mountain
+1 Mountain
 1 Necromancy
 1 Necropotence
 1 Nomad Outpost
@@ -79,7 +81,7 @@
 1 Smothering Tithe
 1 Sol Ring
 1 Spectator Seating
-2 Swamp
+1 Swamp
 1 Swiftfoot Boots
 1 Swords to Plowshares
 1 Talisman of Conviction

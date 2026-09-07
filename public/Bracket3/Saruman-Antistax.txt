@@ -6,15 +6,23 @@
 1 Badlands
 1 Baral, Chief of Compliance
 1 Birgi, God of Storytelling
+1 Blackcleave Cliffs
+1 Blazemire Verge
+1 Blightstep Pathway
 1 Blood Crypt
 1 Bloodstained Mire
 1 Brotherhood's End
+1 Canyon Slough
+1 Cascade Bluffs
 1 Chaos Warp
+1 Choked Estuary
 1 City of Brass
+1 Clearwater Pathway
 1 Command Tower
 1 Counterspell
 1 Cyclonic Rift
 1 Dark Ritual
+1 Darkslick Shores
 1 Deathmark
 1 Debt to the Kami
 1 Deflecting Swat
@@ -36,7 +44,7 @@
 1 Hibernation
 1 Imprisoned in the Moon
 1 Impulse
-4 Island
+1 Island
 1 Lazotep Plating
 1 Luxury Suite
 1 Mana Drain
@@ -45,11 +53,12 @@
 1 Merchant Scroll
 1 Misty Rainforest
 1 Morphic Pool
-3 Mountain
+1 Mountain
 1 Muddle the Mixture
 1 Nightscape Familiar
 1 Opposition Agent
 1 Orcish Siegemaster
+1 Oscorp Industries
 1 Otawara, Soaring City
 1 Ovika, Enigma Goliath
 1 Perish
@@ -71,7 +80,7 @@
 1 Spell Snare
 1 Steam Vents
 1 Stern Scolding
-5 Swamp
+1 Swamp
 1 Swan Song
 1 Talrand, Sky Summoner
 1 The Great Goblin

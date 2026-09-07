@@ -1,5 +1,6 @@
 1 Zur the Enchanter
 1 Academy Rector
+1 Adarkar Wastes
 1 All That Glitters
 1 Approach of the Second Sun
 1 Arcane Signet
@@ -7,9 +8,12 @@
 1 Arid Mesa
 1 Aura of Silence
 1 Beseech the Mirror
+1 Bleachbone Verge
 1 Blind Obedience
 1 Bloodstained Mire
+1 Brightclimb Pathway
 1 Cavern of Souls
+1 Caves of Koilos
 1 Command Tower
 1 Copy Enchantment
 1 Cyclonic Rift
@@ -38,7 +42,7 @@
 1 Hallowed Fountain
 1 Idyllic Tutor
 1 Imprisoned in the Moon
-3 Island
+1 Island
 1 Karmic Justice
 1 Land Tax
 1 Lavaspur Boots
@@ -57,10 +61,11 @@
 1 Oubliette
 1 Out of Time
 1 Phyrexian Arena
-4 Plains
+1 Plains
 1 Polluted Delta
 1 Prismatic Vista
 1 Propaganda
+1 Raffine's Tower
 1 Reliquary Tower
 1 Replenish
 1 Rhystic Study

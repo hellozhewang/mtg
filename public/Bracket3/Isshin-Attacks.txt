@@ -8,17 +8,24 @@
 1 Arcane Signet
 1 Arid Mesa
 1 Aurelia, the Warleader
+1 Badlands
 1 Bastion of Remembrance
 1 Battlefield Forge
 1 Bedevil
 1 Bitterblossom
+1 Blackcleave Cliffs
 1 Blade of Selves
 1 Blasphemous Act
+1 Blazemire Verge
+1 Bleachbone Verge
+1 Blightstep Pathway
 1 Blood Crypt
 1 Bloodstained Mire
 1 Boros Charm
 1 Boros Signet
+1 Brightclimb Pathway
 1 Brutal Hordechief
+1 Canyon Slough
 1 Castle Ardenvale
 1 Cathars' Crusade
 1 Caves of Koilos
@@ -53,7 +60,7 @@
 1 Marsh Flats
 1 Midnight Reaper
 1 Mishra, Claimed by Gix
-3 Mountain
+1 Mountain
 1 Myrel, Shield of Argive
 1 Necropotence
 1 Neyali, Suns' Vanguard
@@ -63,7 +70,7 @@
 1 Path of Ancestry
 1 Path to Exile
 1 Phyrexian Arena
-4 Plains
+1 Plains
 1 Rogue's Passage
 1 Sacred Foundry
 1 Savai Triome
@@ -75,7 +82,7 @@
 1 Sol Ring
 1 Sulfurous Springs
 1 Sun Titan
-3 Swamp
+1 Swamp
 1 Swords to Plowshares
 1 Talisman of Conviction
 1 Talisman of Hierarchy

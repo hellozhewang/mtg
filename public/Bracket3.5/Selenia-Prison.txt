@@ -62,7 +62,7 @@
 1 Painful Quandary
 1 Phyrexian Arena
 1 Phyrexian Tower
-2 Plains
+1 Plains
 1 Polluted Delta
 1 Quietus Spike
 1 Reanimate
@@ -70,6 +70,7 @@
 1 Scrubland
 1 Serra Ascendant
 1 Shadowy Backstreet
+1 Shattered Sanctum
 1 Sheoldred, the Apocalypse
 1 Silence
 1 Silent Clearing
@@ -78,8 +79,9 @@
 1 Sphere of Safety
 1 Starscape Cleric
 1 Suture Priest
-3 Swamp
+2 Swamp
 1 Swords to Plowshares
+1 Tainted Field
 1 Takenuma, Abandoned Mire
 1 Talisman of Hierarchy
 1 The Soul Stone

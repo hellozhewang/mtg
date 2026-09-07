@@ -8,11 +8,13 @@
 1 Bojuka Bog
 1 Breach the Multiverse
 1 Buster Sword
+1 Choked Estuary
 1 Clearwater Pathway
 1 Command Tower
 1 Conqueror's Flail
 1 Counterspell
 1 Cyclonic Rift
+1 Darkslick Shores
 1 Dauthi Voidwalker
 1 Deadly Rollick
 1 Dimir Signet
@@ -34,7 +36,7 @@
 1 Impostor Syndrome
 1 Irenicus's Vile Duplication
 1 Irma, Part-Time Mutant
-5 Island
+2 Island
 1 Lightning Greaves
 1 Lord of the Nazgûl
 1 Mana Drain
@@ -81,6 +83,7 @@
 1 Talisman of Dominance
 1 Tasha, the Witch Queen
 1 Taskmaster, Mercenary Mimic
+1 Temple of Deceit
 1 Thieving Skydiver
 1 Toxic Deluge
 1 Undercity Sewers

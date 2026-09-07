@@ -47,7 +47,7 @@
 1 Mishra's Bauble
 1 Mistrise Village
 1 Misty Rainforest
-3 Mountain
+2 Mountain
 1 Mox Amber
 1 Mox Opal
 1 Mystic Remora
@@ -73,6 +73,7 @@
 1 Sink into Stupor
 1 Snap
 1 Sol Ring
+1 Spirebluff Canal
 1 Springleaf Drum
 1 Steam Vents
 1 Storm-Kiln Artist

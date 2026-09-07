@@ -8,6 +8,7 @@
 1 Brainstorm
 1 Changeling Outcast
 1 Choked Estuary
+1 Clearwater Pathway
 1 Command Tower
 1 Counterspell
 1 Cyclonic Rift
@@ -26,12 +27,13 @@
 1 Feed the Swarm
 1 Fellwar Stone
 1 Force of Negation
+1 Gloomlake Verge
 1 Gudul Lurker
 1 Higure, the Still Wind
 1 Infernal Grasp
 1 Ingenious Infiltrator
 1 Ink-Eyes, Servant of Oni
-7 Island
+3 Island
 1 Lightning Greaves
 1 Marsh Flats
 1 Mask of Riddles
@@ -64,13 +66,15 @@
 1 Scroll Rack
 1 Sensei's Divining Top
 1 Shadowmage Infiltrator
+1 Shipwreck Marsh
 1 Shizo, Death's Storehouse
 1 Silent-Blade Oni
 1 Slither Blade
 1 Snuff Out
 1 Sol Ring
 1 Sunken Hollow
-5 Swamp
+1 Sunken Ruins
+3 Swamp
 1 Swan Song
 1 Swiftfoot Boots
 1 Sword of Feast and Famine
@@ -83,6 +87,8 @@
 1 Tormented Soul
 1 Toxic Deluge
 1 Treasure Cruise
+1 Undercity Sewers
+1 Underground River
 1 Underground Sea
 1 Universal Automaton
 1 Vampiric Tutor

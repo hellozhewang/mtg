@@ -17,6 +17,7 @@
 1 Cavern of Souls
 1 Charismatic Conqueror
 1 City of Brass
+1 Clifftop Retreat
 1 Combat Celebrant
 1 Command Beacon
 1 Command Tower
@@ -24,6 +25,7 @@
 1 Deflecting Swat
 1 Drannith Magistrate
 1 Eiganjo, Seat of the Empire
+1 Elegant Parlor
 1 Esper Sentinel
 1 Flare of Fortitude
 1 Flooded Strand
@@ -53,7 +55,7 @@
 1 Phelia, Exuberant Shepherd
 1 Phoenix Chick
 1 Phyrexian Walker
-5 Plains
+3 Plains
 1 Plateau
 1 Professional Face-Breaker
 1 Quicksilver, Brash Blur

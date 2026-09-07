@@ -19,6 +19,7 @@
 1 Carrion Feeder
 1 Caves of Koilos
 1 Command Tower
+1 Concealed Courtyard
 1 Cruel Celebrant
 1 Damn
 1 Dark Ritual
@@ -56,7 +57,7 @@
 1 Phyrexian Altar
 1 Phyrexian Tower
 1 Pitiless Plunderer
-6 Plains
+5 Plains
 1 Priest of Forgotten Gods
 1 Reanimate
 1 Reassembling Skeleton
@@ -69,7 +70,7 @@
 1 Smothering Tithe
 1 Sol Ring
 1 Solemn Simulacrum
-6 Swamp
+5 Swamp
 1 Swords to Plowshares
 1 Syr Konrad, the Grim
 1 Tainted Field
@@ -79,6 +80,7 @@
 1 The Meathook Massacre
 1 The Soul Stone
 1 Toxic Deluge
+1 Turbulent Moor
 1 Urborg, Tomb of Yawgmoth
 1 Vault of Champions
 1 Victimize

@@ -176,6 +176,9 @@ One `.txt` per deck, importable directly by a client that reads decklists.
 - Double-faced cards use the **front face only** (`Agadeem's Awakening`, not
   `Agadeem's Awakening // Agadeem, the Undercrypt`)
 - Exactly **100 cards** counting the commander
+- Cards whose Oracle text permits any number of copies, such as **Rat Colony**
+  and **Relentless Rats**, may repeat. Write them as one quantity line, such as
+  `25 Rat Colony`; color identity and format legality still apply.
 
 ---
 
@@ -359,7 +362,8 @@ coasting.
 3. Every card is **legal in Commander** — the 83 banned cards fail the deck
 4. Every card is inside the commander's **colour identity**
 5. **Game Changer count** within the bracket cap (inferred from folder name)
-6. **Singleton** — no duplicate non-basic entries, no repeated lines
+6. **Singleton** — nonbasic duplicates require the card's own Oracle permission
+   for unlimited copies; no repeated lines
 
 Legality is read from each card's own `legalities.commander`, not from a list
 copied into this repo, so it tracks Wizards' updates the day Scryfall does. The

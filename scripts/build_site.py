@@ -83,8 +83,8 @@ import toollog
 import workspace
 from cardlib import CardQuery, ImageQuery, SymbolQuery, local_name
 # Same policy as the validator, imported rather than restated: a bracket cap or a
-# land count that disagreed with `validate_deck.py` would make the site lie.
-from validate_deck import gc_cap, land_counts
+# land count or mana average that disagreed with the validator would mislead.
+from validate_deck import average_mana_value, gc_cap, land_counts
 
 THUMB = "thumb"        # webp, 146x204, ~9 KB — committed
 FULL = "normal"        # jpg, 488x680, ~96 KB — hotlinked
@@ -282,9 +282,7 @@ class DeckInfo:
         self.cap = gc_cap(path, None)
         self.gcs = sorted(n for n in self.deck.names
                           if self.cards.get(n, {}).get("game_changer"))
-        nonland = [c for c in self.cards.values()
-                   if "Land" not in (c.get("type_line") or "").split(" // ")[0]]
-        self.avg_mv = sum(c.get("cmc", 0) for c in nonland) / len(nonland) if nonland else 0.0
+        self.avg_mv = average_mana_value(self.deck, self.cards)
 
     @property
     def total(self) -> int:

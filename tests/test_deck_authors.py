@@ -20,6 +20,8 @@ class FakeMana:
 
 
 class FakeDeck:
+    private = False
+    created_label = ""
     bracket = "Bracket3"
     label = "Bracket 3"
     stem = "Test-Deck"

@@ -14,7 +14,7 @@ Checks (all must pass, see README.md):
   3b. no NAMED mass land denial in Brackets 1-3 (see commander-brackets-and-rules.md)
   4. every card is inside the commander's colour identity
   5. Game Changer count within the bracket cap
-  6. singleton -- no duplicate non-basic entries, no repeated lines
+  6. singleton, except Oracle text allowing unlimited copies; no repeated lines
 
 This module is business logic only: decklist parsing lives in deckfile.py and all
 card data access goes through cardlib.CardQuery.
@@ -91,6 +91,25 @@ def land_counts(deck: deckfile.Deck, cards: dict[str, dict]) -> tuple[int, int]:
     return lands, flex
 
 
+def average_mana_value(deck: deckfile.Deck, cards: dict[str, dict]) -> float:
+    """Average nonland mana value, weighting every copy in the decklist."""
+    total = count = 0
+    for entry in deck.entries:
+        card = cards.get(entry.name)
+        if not card or "Land" in (card.get("type_line") or "").split(" // ")[0]:
+            continue
+        total += entry.count * (card.get("cmc") or 0)
+        count += entry.count
+    return total / count if count else 0.0
+
+
+def allows_unlimited_copies(card: dict) -> bool:
+    """Honor a card's own deck-construction exception, not a name allowlist."""
+    name = card.get("name")
+    return bool(name and f"A deck can have any number of cards named {name}."
+                in (card.get("oracle_text") or ""))
+
+
 def check(deck: deckfile.Deck, cards: dict[str, dict], missing: list[str],
           cap: int | None) -> tuple[list[str], set[str], list[str]]:
     """Return (problems, colour_identity, game_changers)."""
@@ -127,7 +146,8 @@ def check(deck: deckfile.Deck, cards: dict[str, dict], missing: list[str],
     if off_colour:
         problems.append("off-colour: " + ", ".join(
             f"{n}[{''.join(c['color_identity'])}]" for n, c in off_colour))
-    if dupes := deck.duplicates():
+    if dupes := [e for e in deck.duplicates()
+                 if not allows_unlimited_copies(cards.get(e.name, {}))]:
         problems.append("illegal duplicates: " +
                         ", ".join(f"{e.count}x {e.name}" for e in dupes))
     if repeats := deck.repeated_lines():
@@ -140,9 +160,7 @@ def check(deck: deckfile.Deck, cards: dict[str, dict], missing: list[str],
 def report(deck: deckfile.Deck, cards: dict[str, dict], problems: list[str],
            identity: set[str], gcs: list[str], cap: int | None) -> bool:
     lands, flex = land_counts(deck, cards)
-    nonland = [c for c in cards.values()
-               if "Land" not in c.get("type_line", "").split(" // ")[0]]
-    avg = sum(c.get("cmc", 0) for c in nonland) / len(nonland) if nonland else 0
+    avg = average_mana_value(deck, cards)
 
     try:
         label = deck.path.resolve().relative_to(ROOT)

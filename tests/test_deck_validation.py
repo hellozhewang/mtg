@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from deckfile import Deck, Entry
-from validate_deck import average_mana_value, check, report
+from validate_deck import average_mana_value, check, land_counts, report
 
 
 def card(name: str, mana: int, type_line: str, oracle: str = "") -> dict:
@@ -83,6 +83,40 @@ class DeckValidationTests(unittest.TestCase):
         with redirect_stdout(output):
             report(deck, self.cards, [], {"B"}, [], 3)
         self.assertIn("avg MV 2.12", output.getvalue())
+
+    def test_land_options_exclude_transforming_backs(self) -> None:
+        cards = {
+            "Swamp": self.cards["Swamp"],
+            "Blightstep Pathway": {
+                **card("Blightstep Pathway", 0, "Land // Land"),
+                "layout": "modal_dfc",
+            },
+            "Malakir Rebirth": {
+                **card("Malakir Rebirth", 1, "Instant // Land"),
+                "layout": "modal_dfc",
+            },
+            "Ojer Axonil, Deepest Might": {
+                **card("Ojer Axonil, Deepest Might", 4,
+                       "Legendary Creature — God // Land"),
+                "layout": "transform",
+            },
+            "Treasure Map": {
+                **card("Treasure Map", 2, "Artifact // Land"),
+                "layout": "transform",
+            },
+        }
+        deck = Deck(
+            ROOT / "private" / "Bracket3.5" / "Validation-Lands.txt",
+            [Entry(1, "Ojer Axonil, Deepest Might"), Entry(2, "Swamp"),
+             Entry(1, "Blightstep Pathway"), Entry(1, "Malakir Rebirth"),
+             Entry(1, "Treasure Map")],
+            [],
+        )
+        self.assertEqual(land_counts(deck, cards), (3, 1))
+        output = io.StringIO()
+        with redirect_stdout(output):
+            report(deck, cards, [], {"B", "R"}, [], 3)
+        self.assertIn("3 lands (+1 MDFC)", output.getvalue())
 
 
 if __name__ == "__main__":

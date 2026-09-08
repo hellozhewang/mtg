@@ -79,14 +79,16 @@ def land_counts(deck: deckfile.Deck, cards: dict[str, dict]) -> tuple[int, int]:
 
     A modal DFC like Malakir Rebirth is `Instant // Land` -- playable as a tapped
     land but not a mana source you can plan around, so it is counted separately
-    rather than inflating the land count.
+    rather than inflating the land count. Transforming cards such as Ojer Axonil
+    cannot be played as lands from hand and are not included in that count.
     """
     lands = flex = 0
     for e in deck.entries:
-        type_line = cards.get(e.name, {}).get("type_line", "")
+        card = cards.get(e.name, {})
+        type_line = card.get("type_line", "")
         if "Land" in type_line.split(" // ")[0]:
             lands += e.count
-        elif "Land" in type_line:
+        elif card.get("layout") == "modal_dfc" and "Land" in type_line:
             flex += e.count
     return lands, flex
 

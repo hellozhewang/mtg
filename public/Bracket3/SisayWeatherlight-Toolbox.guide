@@ -1,38 +1,65 @@
-Sisay, Weatherlight Captain in BGRUW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Sisay's power counts COLOURS among your other legendary permanents, not how many you control — so a single five-colour board makes her a 7/7 that tutors any legendary permanent costing six or less directly onto the battlefield. Each fetch adds colours, which grows her, which raises the ceiling on the next fetch. The whole deck is about paying for the first activation; after that it snowballs.
 
-# The commander
-Sisay, Weatherlight Captain :: Sisay gets +1/+1 for each color among other legendary permanents you control.
+# The commander and the maths
+Sisay, Weatherlight Captain :: base 2/2, +1/+1 per colour among your OTHER legendary permanents, and {W}{U}{B}{R}{G} searches out a legendary permanent with mana value strictly LESS than her power, straight onto the battlefield. Count before you activate.
+Esika, God of the Tree :: taps for any colour AND gives every other legendary creature "{T}: add one mana of any colour". With three legends out, that alone pays Sisay's activation.
+Faeburrow Elder :: taps for one mana of each colour among your permanents. On a five-colour board it is a one-card Sisay activation.
+Jegantha, the Wellspring :: taps for exactly {W}{U}{B}{R}{G}. It is not a legal companion for this deck — Flowering of the White Tree and Mana Drain both break the rule — so it lives in the ninety-nine as the cleanest enabler you have.
+Ioreth of the Healing House :: untaps two other legendary creatures. Untap Faeburrow Elder and Jegantha and Sisay activates twice in a turn.
+Relic of Legends :: taps for any colour, and taps a legendary creature for another.
+Kinnan, Bonder Prodigy :: doubles every nonland mana source you tap, which turns Faeburrow Elder or Esika into two activations.
+Mox Amber :: free, and live from turn one in a deck this legendary.
+Delighted Halfling :: uncounterable mana for legendary spells, which is nearly your whole deck.
+Bloom Tender :: two or three colours off one tap early.
+Loki's Scepter :: fixes, and steals a creature for a turn on the way in.
 
-# Game Changers (3 of 3)
-Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
-Smothering Tithe :: Whenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token.
-The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
+# What to fetch, and when
+Fetch to fix your colours first. The correct first activation is almost always the legend that adds a missing colour — that raises Sisay's power and makes the NEXT fetch bigger.
+Esika, God of the Tree :: the best early fetch by a distance. Mana for everything, and the back face is a free creature or planeswalker every upkeep if you drew it instead.
+Jodah, the Unifier :: your legends all get +X/+X for your legend count, and every legendary spell you cast from hand cascades into a cheaper legend for free.
+Kethis, the Hidden Hand :: legendary spells cost one less, and he turns your graveyard into a second hand.
+Lavinia, Azorius Renegade :: the fetch against a combo table. Nothing cast for free resolves, and their expensive noncreature spells stop working.
+Jennifer Walters :: opponents cannot cast spells during your turn at all — the fetch before a lethal attack.
+Kutzil, Malamet Exemplar :: the same lockout, and it draws off pumped attackers.
+Loran of the Third Path :: an artifact or enchantment destroyed on arrival.
+Ertai Resurrected :: flash, and it counters a spell or kills a creature or planeswalker.
+Ragavan, Nimble Pilferer :: a Treasure and a stolen card every hit, and it is a one-drop so Sisay can find it at almost any size.
+Omnath, Locus of Creation :: a card, four life, four mana and four damage to the table across a single turn's land drops.
+Niv-Mizzet Reborn :: ten cards deep for up to five two-colour cards. In a five-colour deck it refills your hand entirely.
 
-# Taxes and lock pieces
-Lavinia, Azorius Renegade :: Each opponent can't cast noncreature spells with mana value greater than the number of lands that player controls.
-Kutzil, Malamet Exemplar :: Your opponents can't cast spells during your turn.
-Timeless Lotus :: Timeless Lotus enters tapped.
+# Legends that draw
+Reki, the History of Kamigawa :: a card for every legendary spell you cast, which is most of them.
+Jhoira, Weatherlight Captain :: a card for every historic spell — legends, artifacts and Sagas alike.
+King T'Challa :: a card whenever anyone draws their second card each turn, and it flips into an unkillable double striker.
+Oath of Nissa :: digs three for a creature, land or planeswalker, and it fixes for planeswalker spells.
+Rhystic Study :: their turns pay for your activations.
+Mystic Remora :: the best card in the deck on turns one through four.
+Esper Sentinel :: taxes their first noncreature spell each turn.
+Lotho, Corrupt Shirriff :: a Treasure every time anyone casts their second spell — direct fuel for Sisay's five-colour cost.
+Captain Sisay :: the other Sisay, and she tutors legendary cards to HAND, including lands, which is a different axis of value.
+Nature's Rhythm :: any creature onto the battlefield for X, and harmonize buys it back from the graveyard later.
+Dihada, Binder of Wills :: digs four for legends and makes Treasures out of the misses, and the plus makes a legend indestructible.
 
-# Card advantage
-Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
-Mystic Remora :: Cumulative upkeep {1}
-Oath of Nissa :: When Oath of Nissa enters, look at the top three cards of your library. You may reveal a creature, land, or…
-Aminatou, the Fateshifter :: +1: Draw a card, then put a card from your hand on top of your library.
-Loran of the Third Path :: When Loran enters, destroy up to one target artifact or enchantment.
-Reki, the History of Kamigawa :: Whenever you cast a legendary spell, draw a card.
+# Protecting the engine
+Flowering of the White Tree :: +2/+1 and ward {1} on every legend you control. The ward is what turns their cheap removal into a tax.
+Hajar, Loyal Bodyguard :: sacrifices to make all your legendary creatures indestructible through a wrath.
+Deflecting Swat :: free with your commander out.
+Force of Negation :: free on their turn.
+Mana Drain :: counter, and the mana pays for a Sisay activation.
+An Offer You Can't Refuse :: one mana for anything noncreature.
+Abrupt Decay :: uncounterable, for the cheap problem permanent.
+Aminatou, the Fateshifter :: the minus blinks a permanent — resetting an enters trigger, or saving a creature from removal in response.
+Primevals' Glorious Rebirth :: returns EVERY legendary permanent from your graveyard to the battlefield. It is the rebuild after a wrath, and in this deck that is often six or seven cards.
 
-# Ramp
-Mox Amber :: {T}: Add one mana of any color among legendary creatures and planeswalkers you control.
-An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
-Delighted Halfling :: {T}: Add {C}.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Farseek :: Search your library for a Plains, Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle.
+# Ramp and fixing
+Arcane Signet :: fixing is the deck's real cost.
+Fellwar Stone :: usually taps for what you are missing.
+Nature's Lore :: an untapped dual with a Forest type.
+Farseek :: fetches a shockland.
+Derevi, Empyrial Tactician :: untaps a permanent on entry and on every connection, and she recurs from the command zone for four mana without commander tax.
 
-# Protection
-Skrelv, Defector Mite :: Toxic 1
-Abrupt Decay :: This spell can't be countered.
-Hajar, Loyal Bodyguard :: Sacrifice Hajar: Legendary creatures you control get +1/+0 and gain indestructible until end of turn.
-Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
-Tam, Mindful First-Year :: Each other creature you control has hexproof from each of its colors.
-Teferi, Time Raveler :: Each opponent can cast spells only any time they could cast a sorcery.
+# What to keep in an opening hand
+Keep fixing over threats. Five specific colours is the deck's entire difficulty — Bloom Tender, Faeburrow Elder, Arcane Signet and Delighted Halfling matter more than any single legend.
+Count Sisay's power BEFORE you tap out. Five colours among your other legendary permanents makes her a 7/7, which fetches mana value six. Four colours caps you at five. Adding a colour is often worth more than adding a bomb.
+Esika, God of the Tree :: this is the fetch that unlocks everything else. She fixes, she ramps, and every legend you already control starts tapping for mana the moment she resolves.
+Jodah, the Unifier :: cast your legends FROM HAND while he is out. Each one cascades into a free legend, and this deck's curve means the free hits are real cards.

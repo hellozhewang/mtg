@@ -1,47 +1,69 @@
-Sigarda, Host of Herons in GW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Sigarda cannot be targeted and cannot be edicted — the two ways a table normally answers a commander are both closed. The deck builds outward from that: more hexproof, until the whole board is untargetable, and a stack of hate bears that shut off the things a hexproof creature cannot block. Once the lock is up, one Equipment on an unanswerable 5/5 flier finishes the job.
 
-# The commander
-Sigarda, Host of Herons :: Spells and abilities your opponents control can't cause you to sacrifice permanents.
+# The commander and the hexproof shell
+Sigarda, Host of Herons :: 5/5, flies, hexproof, and opponents' spells and abilities cannot make you sacrifice anything. Edicts, Grave Pact, Braids and every "each player sacrifices" effect simply do not work on you.
+Sigarda, Font of Blessings :: your other PERMANENTS get hexproof. Between the two of them the only removal left is a board wipe.
+Shalai, Voice of Plenty :: hexproof for you, your planeswalkers and your other creatures, plus a mana sink that grows the whole team.
+Heroic Intervention :: hexproof AND indestructible for everything, which is the answer to the wrath that is your only real weakness.
+Guardian of Faith :: flash, and it phases your board out of a wrath at instant speed.
+Galadriel's Dismissal :: phases out one creature, or kicked, a whole player's creatures — a fog or a clear for a lethal swing.
+Akroma's Will :: with your commander out you take both halves. Indestructible and protection from every colour beats every wrath and every blocker at once.
 
-# Game Changers (3 of 3)
-Aura Shards :: Whenever a creature you control enters, you may destroy target artifact or enchantment.
-Enlightened Tutor :: Search your library for an artifact or enchantment card, reveal it, then shuffle and put that card on top.
-Teferi's Protection :: Until your next turn, your life total can't change and you gain protection from everything. All permanents you…
+# Hate bears
+Grand Abolisher :: opponents cannot cast spells or activate abilities during your turn.
+Linvala, Keeper of Silence :: their creatures' activated abilities all stop. Mana dorks, sacrifice outlets and combo creatures alike.
+Containment Priest :: any nontoken creature entering without being cast is exiled instead. It blanks reanimation, blink and cheating effects entirely.
+Hallowed Moonlight :: the instant-speed version, and it cantrips.
+Aven Mindcensor :: flash him onto the fetchland or the tutor.
+Archon of Valor's Reach :: name a card type and NOBODY can cast it. Against a spell deck name instant; against an artifact deck name artifact. Your own deck is almost entirely creatures, so the cost to you is near zero.
+Sanctifier en-Vec :: protection from black and red, and every black or red card that would hit a graveyard is exiled instead. Against a Rakdos or reanimator table it is close to unbeatable.
+Rest in Peace :: no graveyards at all, and this deck never uses its own.
+Karn, the Great Creator :: every activated ability on their artifacts stops working.
+Esper Sentinel :: taxes their first noncreature spell each turn.
+Elesh Norn, Mother of Machines :: your enter triggers happen twice and theirs do not happen at all. It doubles Aura Shards, Loran, Manglehorn and Guardian Project simultaneously.
 
-# Removal you can point anywhere
-Path to Exile :: Exile target creature. Its controller may search their library for a basic land card, put that card onto the…
-Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
-Generous Gift :: Destroy target permanent. Its controller creates a 3/3 green Elephant creature token.
-Krosan Grip :: Split second
-Manglehorn :: When this creature enters, you may destroy target artifact.
+# Removal without targeting problems
+Aura Shards :: every creature you play destroys an artifact or enchantment. With Elesh Norn out that is two per creature. It is the reason this deck beats stax.
+Loran of the Third Path :: an artifact or enchantment on entry, and a repeatable draw afterwards.
+Manglehorn :: the same for artifacts, and theirs enter tapped.
+Path to Exile :: one mana, exile.
+Solitude :: free, at instant speed.
+Generous Gift :: any permanent.
+March of Otherworldly Light :: scalable instant-speed exile, cheap when you pitch white cards.
+Grasp of Fate :: exiles one nonland permanent from EACH opponent, on one card.
+Darksteel Mutation :: turns a commander into a 0/1 Insect that cannot be recast from the command zone.
+Krosan Grip :: split second, so it beats the response.
+Reprieve :: not a counterspell, so it works under Archon of Valor's Reach, and it draws.
 
-# Taxes and lock pieces
-Grand Abolisher :: During your turn, your opponents can't cast spells or activate abilities of artifacts, creatures, or enchantments.
-Soulless Jailer :: Permanent cards in graveyards can't enter the battlefield.
-Karn, the Great Creator :: Activated abilities of artifacts your opponents control can't be activated.
-Linvala, Keeper of Silence :: Activated abilities of creatures your opponents control can't be activated.
-Archon of Valor's Reach :: As this creature enters, choose artifact, enchantment, instant, sorcery, or planeswalker.
+# Cards
+Guardian Project :: a card for every nontoken creature you play, doubled by Elesh Norn.
+Beast Whisperer :: the same trigger without the name restriction.
+Eladamri's Call :: instant-speed tutor for whichever hate bear the table is weak to.
+Enlightened Tutor :: finds Aura Shards, Rest in Peace or Grasp of Fate.
+Ohran Frostfang :: deathtouch on all your attackers and a card for every one that connects.
+Loran of the Third Path :: taps for a symmetrical draw when you have nothing better to do.
 
-# Card advantage
-Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
-Veil of Summer :: Draw a card if an opponent has cast a blue or black spell this turn. Spells you control can't be countered this turn.…
-Eladamri's Call :: Search your library for a creature card, reveal that card, put it into your hand, then shuffle.
-Hallowed Moonlight :: Until end of turn, if a creature would enter and it wasn't cast, exile it instead.
-Reprieve :: Return target spell to its owner's hand.
-Loran of the Third Path :: When Loran enters, destroy up to one target artifact or enchantment.
+# Mana
+Birds of Paradise :: turn-one fixing.
+Avacyn's Pilgrim :: the white half.
+Llanowar Elves :: the green half.
+Bloom Tender :: two colours off one tap.
+Delighted Halfling :: uncounterable mana for legendary spells, which covers both Sigardas and Shalai.
+Nature's Lore :: an untapped dual.
+Farseek :: the same for shocklands.
+Sol Ring :: the fastest possible start.
+Destiny Spinner :: your creature and enchantment spells cannot be countered, and it animates a land as a surprise attacker.
+Frenzied Baloth :: the same protection, and its combat damage cannot be prevented, so fogs stop working.
 
-# Ramp
-Avacyn's Pilgrim :: {T}: Add {W}.
-Birds of Paradise :: {T}: Add one mana of any color.
-Delighted Halfling :: {T}: Add {C}.
-Llanowar Elves :: {T}: Add {G}.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
+# Closing
+Blackblade Reforged :: +1/+1 per land on a hexproof, un-sacrificeable 5/5 flier. Equip for three to a legendary creature and there is genuinely no answer left but a wrath.
+Lion Sash :: grows by eating graveyards, and it reconfigures onto Sigarda.
+Duelist's Heritage :: double strike on an attacker every combat — on a Blackblade-equipped Sigarda that is lethal commander damage in one swing.
+Ohran Frostfang :: nobody can block profitably, and every connection is a card.
+Akroma's Will :: the finisher for a wide board, and the save button for a narrow one.
 
-# Protection
-Darksteel Mutation :: Enchant creature
-Destiny Spinner :: Creature and enchantment spells you control can't be countered.
-Frenzied Baloth :: This spell can't be countered.
-Heroic Intervention :: Permanents you control gain hexproof and indestructible until end of turn.
-Sterling Grove :: Other enchantments you control have shroud.
-Akroma's Will :: Choose one. If you control a commander as you cast this spell, you may choose both instead.
+# What to keep in an opening hand
+Keep a mana dork and a cheap hate bear. Turn-one acceleration into a turn-two Grand Abolisher or Containment Priest is what stops the table before it starts.
+Deploy the hate piece the table is weakest to, not the strongest card in hand. Containment Priest against reanimator, Linvala against combo, Archon of Valor's Reach against a spell deck — reading the pod is most of the skill here.
+Sigarda, Host of Herons :: five mana, and she is safe the moment she lands. Cast her into open mana without fear; the only thing that answers her is a wrath, and Heroic Intervention beats that.
+Aura Shards :: prioritise it against any table with artifacts or enchantments. It turns every creature in the deck into a removal spell for the rest of the game.

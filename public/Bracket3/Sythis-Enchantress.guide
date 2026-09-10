@@ -1,40 +1,66 @@
-Sythis, Harvest's Hand in GW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+The draw engine and the threats are the same cards. Every enchantment you cast draws you one card off Sythis, another off each enchantress effect on the battlefield, and gains life on the way. With three of them out a two-mana Aura is four cards, and the deck simply never runs out. Note the land count is deliberately low — the mana comes from Auras on lands and from Sanctum Weaver, not from drawing more Forests.
 
-# The commander
-Sythis, Harvest's Hand :: Whenever you cast an enchantment spell, you gain 1 life and draw a card.
+# The commander and the enchantress stack
+Sythis, Harvest's Hand :: two mana, and every enchantment spell is a card and a life. She is cheap enough to recast through removal all game.
+Argothian Enchantress :: the best of the redundant copies, because SHROUD means she cannot be answered by targeted removal at all.
+Mesa Enchantress :: another card per enchantment.
+Satyr Enchanter :: and another.
+Enchantress's Presence :: the same effect on an enchantment, so it triggers everything else when you cast it.
+Eidolon of Blossoms :: constellation, so it draws off enchantments that ENTER rather than are cast — which catches Replenish and every token-generated Aura.
+Setessan Champion :: draws and grows on every enchantment that enters.
+Kor Spiritdancer :: draws on Aura spells specifically, and gets +2/+2 per Aura attached to her.
+Femeref Enchantress :: a card whenever an enchantment hits a graveyard, which turns their removal into your card advantage.
 
-# Game Changers (3 of 3)
-Aura Shards :: Whenever a creature you control enters, you may destroy target artifact or enchantment.
-Serra's Sanctum :: {T}: Add {W} for each enchantment you control.
-Smothering Tithe :: Whenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token.
+# Mana out of enchantments
+Sanctum Weaver :: taps for one mana per enchantment you control. On a developed board that is six or eight mana from a two-drop.
+Fertile Ground :: an extra mana of any colour off a land, and it is an enchantment so it draws.
+Overgrowth :: two extra green off one land.
+Abundant Growth :: fixes and replaces itself immediately.
+Nylea's Presence :: makes a land every basic type, and draws.
+Herald of the Pantheon :: enchantments cost one less and gain you a life each.
+Danitha Capashen, Paragon :: Auras cost one less, on a lifelinking first striker.
+Land Tax :: this deck is deliberately land-light, so an opponent almost always has more. Three basics a turn is free fuel.
+Mirri's Guile :: sets the top three every upkeep, which with this much draw means you never miss.
 
-# Removal you can point anywhere
-Path to Exile :: Exile target creature. Its controller may search their library for a basic land card, put that card onto the…
-Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
-Aura of Silence :: Artifact and enchantment spells your opponents cast cost {2} more to cast.
-Beast Within :: Destroy target permanent. Its controller creates a 3/3 green Beast creature token.
-Generous Gift :: Destroy target permanent. Its controller creates a 3/3 green Elephant creature token.
-Karmic Justice :: Whenever a spell or ability an opponent controls destroys a noncreature permanent you control, you may destroy target…
+# Protecting the board
+Greater Auramancy :: your other enchantments have SHROUD, and enchanted creatures have shroud too. It is the single most important protection card in the deck.
+Privileged Position :: hexproof for every other permanent you control.
+Karmic Justice :: if they destroy a noncreature permanent of yours, you destroy any permanent of theirs. It stops targeted enchantment removal before it starts.
+Destiny Spinner :: your creature and enchantment spells cannot be countered, and it animates a land as an X/X where X is your enchantment count.
+Lightning Greaves :: shroud and haste for whichever creature is carrying the Auras.
+Replenish :: returns EVERY enchantment from your graveyard to the battlefield. It is the answer to a wrath, and in this deck it usually returns six or more cards at once.
 
-# Card advantage
-Abundant Growth :: Enchant land
-Land Tax :: At the beginning of your upkeep, if an opponent controls more lands than you, you may search your library for up to…
-Weathered Wayfarer :: {W}, {T}: Search your library for a land card, reveal it, put it into your hand, then shuffle. Activate only if an…
-Argothian Enchantress :: Whenever you cast an enchantment spell, draw a card.
-Femeref Enchantress :: Whenever an enchantment is put into a graveyard from the battlefield, draw a card.
-Kenrith's Transformation :: Enchant creature
+# The Voltron kill
+Ancestral Mask :: +2/+2 for each other enchantment ON THE BATTLEFIELD — including your opponents'. It routinely reads +20/+20.
+Ethereal Armor :: +1/+1 per enchantment you control, plus first strike.
+All That Glitters :: the same count including artifacts.
+Daybreak Coronet :: +3/+3, first strike, vigilance and lifelink for two mana, as long as another Aura is already there.
+Kor Spiritdancer :: the natural carrier — she grows on her own and draws every time you suit her up.
+Akroma's Will :: with your commander out, take both halves. Double strike on an Ancestral Mask creature ends the game; protection from every colour makes it unblockable and unkillable at the same time.
 
-# Ramp
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Farseek :: Search your library for a Plains, Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle.
-Sanctum Weaver :: {T}: Add X mana of any one color, where X is the number of enchantments you control.
-Talisman of Unity :: {T}: Add {C}.
+# The token kill
+Archon of Sun's Grace :: a 2/2 flying lifelinking Pegasus for every enchantment that enters. This deck plays thirty of them.
+Hallowed Haunting :: a Spirit for every enchantment you CAST, each one as big as your Spirit count, and at seven enchantments they all fly and have vigilance.
+Luminarch Ascension :: with Ghostly Prison out you rarely lose life, so the counters accumulate for free and then it makes a 4/4 flier every turn.
+Destiny Spinner :: turns a land into a surprise attacker sized by your enchantment count.
 
-# Protection
-Destiny Spinner :: Creature and enchantment spells you control can't be countered.
-Greater Auramancy :: Other enchantments you control have shroud.
-Lightning Greaves :: Equipped creature has haste and shroud.
-Sterling Grove :: Other enchantments you control have shroud.
-Solitary Confinement :: At the beginning of your upkeep, sacrifice this enchantment unless you discard a card.
-Akroma's Will :: Choose one. If you control a commander as you cast this spell, you may choose both instead.
+# Removal and defence
+Ghostly Prison :: they pay {2} per attacker or go hit somebody else. In a deck with no early blockers this buys the turns you need.
+Grasp of Fate :: exiles a nonland permanent from EACH opponent, on one enchantment that also draws you cards.
+Aura of Silence :: taxes their artifacts and enchantments two, then eats one.
+Aura Shards :: every creature you play destroys an artifact or enchantment. Alongside Archon of Sun's Grace making a Pegasus per enchantment, this is a removal engine.
+Kenrith's Transformation :: turns their commander into a vanilla 3/3 Elk and draws you a card.
+Path to Exile :: one mana, exile.
+Beast Within :: any permanent, at instant speed.
+Generous Gift :: the white copy.
+
+# Tutors
+Idyllic Tutor :: any enchantment in the deck — usually Greater Auramancy, Grasp of Fate or Hallowed Haunting.
+Open the Armory :: any Aura, which usually means Ancestral Mask.
+Heliod's Pilgrim :: the same on a body, and it triggers constellation effects when Auras come down later.
+
+# What to keep in an opening hand
+Keep an enchantress and a cheap enchantment. Sythis on turn two into a one- or two-mana Aura on turn three is how the engine starts; a hand of expensive payoffs with no draw engine stalls out.
+Deploy the draw engines before the payoffs. An extra enchantress on the battlefield multiplies every card you cast for the rest of the game; an extra Aura does not.
+Greater Auramancy :: get it down before you commit an Ancestral Mask to a creature. Without it, one removal spell in response to the Aura two-for-ones you.
+Argothian Enchantress :: she has shroud, so she survives everything except a wrath. If you have a choice of which enchantress to play into open mana, play her.

@@ -1,39 +1,91 @@
-Kinnan, Bonder Prodigy in GU, built to Bracket 3.5 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Kinnan doubles every nonland mana source you tap, which means the deck does not need to build a board — it needs to find two cards. Basalt Monolith taps for three, Kinnan makes it four, and untapping costs three: one mana of profit, repeated forever. The rest of the deck is redundancy for that line, a second and third combo that do the same job, and enough interaction to survive to turn five.
 
 # The commander
-Kinnan, Bonder Prodigy :: Whenever you tap a nonland permanent for mana, add one mana of any type that permanent produced.
+Kinnan, Bonder Prodigy :: two mana, and every nonland permanent you tap for mana produces one extra. His {5}{G}{U} ability then digs five deep and puts a non-Human creature onto the battlefield — which is how unlimited mana becomes a board.
+Delighted Halfling :: uncounterable mana for legendary spells. This is how Kinnan resolves against a table holding up blue mana.
+Shang-Chi, Master of Kung Fu :: creature abilities work as though hasty, and he taps for two mana toward them — three with Kinnan.
 
-# Combos in the deck
-Isochron Scepter :: part of infinite mana and infinite spells
-Dramatic Reversal :: part of infinite mana and infinite spells
-Walking Ballista :: part of infinite damage
-Basalt Monolith :: part of infinite damage
+# The three combos
+Basalt Monolith :: with Kinnan, four mana in and three to untap. Unlimited colourless, from two cards.
+Freed from the Real :: on Bloom Tender with green and blue among your permanents, Bloom Tender taps for {G}{U} and untapping costs {U}. That is a net green every cycle, and Kinnan makes it more.
+Bloom Tender :: the other half, and a fine two-drop on its own.
+Isochron Scepter :: imprint Dramatic Reversal. {2} and a tap untaps every nonland permanent, and with Kinnan doubling a handful of rocks the loop pays for itself.
+Dramatic Reversal :: also just a very large ritual when you have a board and no Scepter.
+Devoted Druid :: untaps itself twice for free, which is a burst rather than a loop — but it is a one-card ritual that Kinnan doubles, and it is a Green Sun's Zenith target for one mana.
 
-# Game Changers (3 of 3)
-Mana Vault :: This artifact doesn't untap during your untap step.
-Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
-Seedborn Muse :: Untap all permanents you control during each other player's untap step.
+# What the mana buys
+Walking Ballista :: the kill. {4} per counter, remove counters to ping. With unlimited mana it shoots the whole table, and without it, it is flexible removal.
+Thrasios, Triton Hero :: {4} to draw. Unlimited mana draws your entire library, and he is castable on turn two.
+Kinnan, Bonder Prodigy :: the {5}{G}{U} ability activated repeatedly puts every relevant creature onto the battlefield without casting a single spell.
+Finale of Devastation :: at X of ten, a tutor and a lethal pump at once.
+Hullbreaker Horror :: uncounterable, flash, and with unlimited spells it bounces their entire board.
 
-# Card advantage
-Mystic Remora :: Cumulative upkeep {1}
-Veil of Summer :: Draw a card if an opponent has cast a blue or black spell this turn. Spells you control can't be countered this turn.…
-Borne Upon a Wind :: You may cast spells this turn as though they had flash.
-Faerie Mastermind :: Whenever an opponent draws their second card each turn, you draw a card.
-Moonsilver Key :: {1}, {T}, Sacrifice this artifact: Search your library for an artifact card with a mana ability or a basic land card,…
-Muddle the Mixture :: Counter target instant or sorcery spell.
+# Finding the pieces
+Trophy Mage :: fetches a three-mana artifact, which is Basalt Monolith.
+Drift of Phantasms :: transmute for three — Basalt Monolith again — and it blocks fliers while you wait.
+Muddle the Mixture :: a counterspell, or transmute for two: Isochron Scepter, Bloom Tender or Agatha's Soul Cauldron.
+Moonsilver Key :: fetches any artifact with a mana ability.
+Fabricate :: any artifact, to hand.
+Transmute Artifact :: trades a rock for the rock you need.
+Green Sun's Zenith :: any green creature onto the battlefield — Bloom Tender for two, Devoted Druid for two.
+Chord of Calling :: instant speed, convoke, any creature.
+Nature's Rhythm :: the sorcery version, with harmonize to buy it back.
+Formidable Speaker :: tutors a creature and untaps a permanent every turn.
 
-# Ramp
-Lotus Petal :: {T}, Sacrifice this artifact: Add one mana of any color.
-Mox Amber :: {T}: Add one mana of any color among legendary creatures and planeswalkers you control.
-Mox Opal :: Metalcraft — {T}: Add one mana of any color. Activate only if you control three or more artifacts.
-An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
-Birds of Paradise :: {T}: Add one mana of any color.
-Delighted Halfling :: {T}: Add {C}.
+# The mana base of permanents
+Sol Ring :: turn one, doubled by Kinnan.
+Mana Vault :: three on turn one, four with Kinnan.
+Lotus Petal :: free.
+Mox Opal :: metalcraft comes quickly.
+Mox Amber :: live the moment Kinnan or Thrasios resolves.
+Birds of Paradise :: fixing that Kinnan doubles.
+Llanowar Elves :: two green from a one-drop.
+Elvish Mystic :: the second copy.
+Fyndhorn Elves :: the third.
+Elvish Spirit Guide :: a free green from your hand.
+Springleaf Drum :: taps a summoning-sick dork, doubled.
+Gene Pollinator :: taps any permanent for mana, doubled.
+Enduring Vitality :: every creature taps for any colour, and it returns as an enchantment when it dies.
+Badgermole Cub :: an extra green per creature tapped for mana.
+Simic Signet :: fixing.
+Talisman of Curiosity :: the same.
+Seedborn Muse :: untaps everything on all three opponents' turns, which with Kinnan is three extra pools per round.
+Copy Artifact :: a second Basalt Monolith or a copy of their best rock.
+Phyrexian Metamorph :: the same, and it copies creatures.
 
-# Protection
-Pact of Negation :: Counter target spell.
-Chain of Vapor :: Return target nonland permanent to its owner's hand. Then that permanent's controller may sacrifice a land of their…
-Delay :: Counter target spell. If the spell is countered this way, exile it with three time counters on it instead of putting…
-Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
-Colossal Skyturtle :: Channel — {2}{G}, Discard this card: Return target card from your graveyard to your hand.
-Hullbreaker Horror :: This spell can't be countered.
+# Interaction
+Force of Negation :: free on their turn.
+Pact of Negation :: free now, and you win before the upkeep.
+Mana Drain :: counter, and the mana goes toward the combo.
+Flusterstorm :: nearly unbeatable in a counter war.
+Swan Song :: one mana for a wrath or an enchantment.
+An Offer You Can't Refuse :: the same for anything noncreature.
+Dispel :: one mana for the counterspell aimed at your combo.
+Delay :: a hard answer for two mana that also buys three turns.
+Misdirection :: free, and it turns their removal or tutor into yours.
+Veil of Summer :: one mana that beats blue and black interaction and draws.
+Force of Vigor :: free on their turn, and it destroys two artifacts or enchantments.
+Nature's Claim :: one mana for any artifact or enchantment.
+Pongify :: one mana, kills anything.
+Chain of Vapor :: bounce anything, including your own permanent in response to removal.
+Gilded Drake :: two mana to take their commander.
+Spellskite :: redirects the removal aimed at Kinnan for two life.
+Endurance :: free graveyard hate at instant speed on a 3/4 reach body.
+Amphibian Downpour :: flash and storm; on a long turn it makes the table's commanders into 1/1 Frogs.
+
+# Card flow
+Rhystic Study :: their turns pay for yours.
+Mystic Remora :: the strongest card in the deck on turns one through four.
+Sylvan Library :: with this much selection, the four-life payments are nearly always right.
+Faerie Mastermind :: flash, flies, draws off their extra draws.
+Wan Shi Tong, Librarian :: scales, draws on entry, and grows off every tutor at the table.
+Nezahal, Primal Tide :: uncounterable, draws on their noncreature spells, and protects itself from removal.
+Agatha's Soul Cauldron :: exiles graveyards, and it hands the abilities of exiled creatures to anything with a +1/+1 counter — Walking Ballista in particular.
+Borne Upon a Wind :: everything gains flash, so the whole combo can happen on their end step.
+Colossal Skyturtle :: a big flier, or channel it for a bounce or a graveyard return without ever casting it.
+
+# What to keep in an opening hand
+Keep acceleration and a combo half. Sol Ring plus Kinnan is a keep; four lands and a Rhystic Study is not, because the deck's whole plan is two specific cards on turn four or five.
+Protect the Kinnan cast. Delighted Halfling makes him uncounterable, and Force of Negation or Pact of Negation costs nothing to hold. Losing him mid-setup is usually losing the game.
+Trophy Mage, Drift of Phantasms, Moonsilver Key and Transmute Artifact all point at Basalt Monolith. Treat them as four more copies of the combo rather than as value creatures.
+With unlimited mana, activate Kinnan before you cast from hand. Putting creatures onto the battlefield from the library never uses the stack in a way a counterspell can answer.

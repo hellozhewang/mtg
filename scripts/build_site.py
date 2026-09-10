@@ -116,6 +116,12 @@ SECTION_ORDER = ["Commander", "Creatures", "Planeswalkers", "Instants",
 # author at all; this is the one place a name is stated rather than recorded.
 PRIVATE_AUTHOR = "zzwang-private"
 
+# Fallback for a PUBLIC deck with no recorded author — one that predates the
+# provenance database, or was added by hand rather than through a Discord turn.
+# Assumed, not recorded: DeckAuthorStore stays the only source of truth, and a
+# real attribution always wins over this.
+DEFAULT_AUTHOR = "zzwang"
+
 COLOUR_NAMES = {"W": "White", "U": "Blue", "B": "Black", "R": "Red", "G": "Green"}
 MANA_TOKEN = re.compile(r"\{[^}]+\}")
 TIP_ATTR = re.compile(r'data-tip="([^"]*)"')
@@ -251,7 +257,8 @@ class DeckInfo:
         # key — a private deck would otherwise inherit the byline of an unrelated
         # public deck that happens to share a name. Private decks are hand-built
         # anyway, so they never have a row of their own; skip the lookup entirely.
-        self.author = PRIVATE_AUTHOR if private else authors.get(self.rel.as_posix())
+        self.author = (PRIVATE_AUTHOR if private
+                       else authors.get(self.rel.as_posix()) or DEFAULT_AUTHOR)
         # Grouping is by BRACKET, not by which tree the file came from, so a
         # private Bracket 3 deck sits with the public ones and is told apart by a
         # badge. That is the ask: a marker on the tile, not a section of its own.

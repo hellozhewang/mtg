@@ -127,8 +127,14 @@ h2 .count{color:var(--line)}
   flex-wrap:wrap;gap:4px 12px;width:100%;padding:7px 11px}
 .decks[data-view="list"] .tile-name{min-width:15rem}
 .decks[data-view="list"] .tile-cmd,
-.decks[data-view="list"] .tile-author,
-.decks[data-view="list"] .tile-cmd + .tile-meta{margin:0}
+.decks[data-view="list"] .tile-author{margin:0}
+/* Only the TOP margin, which is the tile-view stacking gap. Using `margin:0`
+   here also cleared margin-left, and because the adjacent-sibling selector is
+   more specific than `.tile-meta` below it, that silently beat the auto margin —
+   but ONLY on rows with no author, since that is when .tile-meta directly
+   follows .tile-cmd. Those rows stopped right-aligning while every other row
+   looked fine. */
+.decks[data-view="list"] .tile-cmd + .tile-meta{margin-top:0}
 .decks[data-view="list"] .tile-meta{margin-left:auto}
 
 /* ---- deck header ---- */

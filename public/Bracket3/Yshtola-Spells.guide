@@ -1,46 +1,64 @@
-Y'shtola, Night's Blessed in BUW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Most spellslinger decks want cheap spells. This one wants EXPENSIVE ones — Y'shtola only triggers on noncreature spells of mana value three or more, and every trigger is two damage to each opponent and two life to you. Her draw clause then checks whether a player lost four or more life this turn, which means the deck's real rhythm is two big spells per turn, every turn. One trigger is damage. Two is damage and a card.
 
 # The commander
-Y'shtola, Night's Blessed :: At the beginning of each end step, if a player lost 4 or more life this turn, you draw a card.
+Y'shtola, Night's Blessed :: vigilance on a 2/4, two damage to each opponent and two life to you per noncreature spell of mana value three or more, and a card at end step if anybody lost four or more life this turn.
+Count to two. A single trigger drains each opponent for two, which is not four — so it does not draw. Two triggers in the same turn does. Sequencing two mid-cost spells into one turn is worth more than spreading them over two.
+Lyse Hext :: noncreature spells cost {1} less, she grows on each one, and she gains double strike once you have cast two in a turn. She is the enabler and a clock at the same time.
+Alisaie Leveilleur :: the SECOND spell each turn costs {2} less, which is exactly the turn pattern Y'shtola is asking for.
+Alphinaud Leveilleur :: a card whenever you cast your second spell each turn. He and Alisaie fetch each other, so drawing either finds the pair.
 
-# Game Changers (3 of 3)
-Fierce Guardianship :: If you control a commander, you may cast this spell without paying its mana cost.
-Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
-Smothering Tithe :: Whenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token.
+# The other drain triggers
+Papalymo Totolymo :: one damage to each opponent and one life to you on EVERY noncreature spell, with no mana value floor. He fills the gap Y'shtola leaves on cheap spells, and he sacrifices to strip the table's biggest creatures.
+Professor Onyx :: two drain and two gain on every instant and sorcery you cast or copy.
+Sedgemoor Witch :: a Pest for every instant and sorcery, on a menacing warded body.
+Circle of Power :: two cards, and a Wizard token that pings each opponent on every noncreature spell.
+Sanguine Bond :: every point of life you gain becomes a point an opponent loses. Y'shtola alone is gaining you two a trigger, so this roughly doubles the deck's clock.
+Rosa, Resolute White Mage :: a counter and lifelink each combat, which with Sanguine Bond turns an attack into a drain.
+Kaya, Intangible Slayer :: hexproof, so she sticks, and the plus is three drained and three gained every turn.
 
-# Removal you can point anywhere
-Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
-Anguished Unmaking :: Exile target nonland permanent. You lose 3 life.
-Void Rend :: This spell can't be countered.
-Deadly Rollick :: If you control a commander, you may cast this spell without paying its mana cost.
-Snuff Out :: If you control a Swamp, you may pay 4 life rather than pay this spell's mana cost.
-White Auracite :: When this artifact enters, exile target nonland permanent an opponent controls until this artifact leaves the…
+# Card flow
+Rhystic Study :: their turns pay for your expensive turns.
+Decorum Dissertation :: two cards and two life loss, and paradigm makes it recur FREE at the beginning of every one of your main phases for the rest of the game.
+Dig Through Time :: delve is easy in a deck casting this many spells.
+Frantic Search :: free, and it untaps three lands so the second big spell of the turn is castable.
+Cryptic Command :: four mana, two modes, and it is a Y'shtola trigger.
+Krile Baldesion :: returns a creature from your graveyard matching each noncreature spell's mana value.
+Quistis Trepe :: recasts an instant or sorcery out of ANY graveyard on arrival.
+Curiosity :: on Y'shtola, her own damage trigger draws you a card each time.
+Ophidian Eye :: the same with flash.
+Grim Tutor :: any card in the deck.
+Beseech the Mirror :: bargain it and cast the tutored card free if it costs four or less.
 
-# Sweepers
-Toxic Deluge :: As an additional cost to cast this spell, pay X life.
-Supreme Verdict :: This spell can't be countered.
-Elspeth, Sun's Champion :: +1: Create three 1/1 white Soldier creature tokens.
+# Interaction, all of it Y'shtola triggers
+Every counterspell here costs three or more on purpose. They answer a threat AND drain the table.
+Dovin's Veto :: uncounterable, two mana — the one exception, and worth it.
+Fierce Guardianship :: free with your commander out.
+Deadly Rollick :: free, pointed at a creature.
+Mana Sculpt :: counter, and with a Wizard out it refunds you their mana.
+Rewind :: counter and untap four lands, so it is effectively free on your own turn.
+Anguished Unmaking :: instant-speed exile for any nonland permanent.
+Dismember :: one mana and four life, or three mana.
+Avatar's Wrath :: exiles the board while leaving one of yours, and locks opponents to casting from hand until your next turn.
+Elspeth, Sun's Champion :: three bodies a turn, or a one-sided wrath against the big creatures this deck cannot block.
+Inkshield :: prevents a lethal alpha strike and turns it into a flying army.
+Perch Protection :: four fliers, or gifted, a full phase-out with your life locked — the answer to a combo kill.
+Lulu, Stern Guardian :: stun counters on whatever attacks you, and a proliferate outlet to make them stick.
+Jill, Shiva's Dominant :: bounces a permanent on entry, and flips into a Saga that taps every opponent's lands.
 
-# Card advantage
-Curiosity :: Enchant creature
-Tataru Taru :: When Tataru Taru enters, you draw a card and target opponent may draw a card.
-Frantic Search :: Draw two cards, then discard two cards. Untap up to three lands.
-Grim Tutor :: Search your library for a card, put that card into your hand, then shuffle. You lose 3 life.
-Ophidian Eye :: Enchant creature
-Transpose :: Draw a card, then discard a card. You lose 1 life. If this spell was cast from your hand, create a 0/1 black Wizard…
+# How you actually win
+Approach of the Second Sun :: seven mana, gain seven, then cast it again seven cards later and win outright. In a deck that stalls the board and draws this much, it is the cleanest kill available.
+Aetherflux Reservoir :: your life total climbs fast between Y'shtola, Papalymo and Rosa. Fifty life to any target ends a game with no combat and no targeting restrictions.
+Sanguine Bond :: with the Reservoir and the drain triggers, the table's life total falls on its own.
+Multiversal Recruitment :: a nonlegendary copy of Y'shtola or Sedgemoor Witch, twice with flashback.
 
-# Ramp
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
-Talisman of Dominance :: {T}: Add {C}.
-Talisman of Hierarchy :: {T}: Add {C}.
-Talisman of Progress :: {T}: Add {C}.
+# Mana
+Coalition Relic :: fixes all three colours and stores a mana for the second big spell.
+Relic of Legends :: taps any legendary creature for mana, and this deck is full of them.
+Fellwar Stone :: usually taps for exactly what you need.
+Arcane Signet :: the same.
 
-# Protection
-Sigil of Sleep :: Enchant creature
-Dovin's Veto :: This spell can't be countered.
-Mana Sculpt :: Counter target spell. If you control a Wizard, add an amount of {C} equal to the amount of mana spent to cast that…
-Cryptic Command :: Choose two —
-Rewind :: Counter target spell. Untap up to four lands.
-Sublime Epiphany :: Choose one or more —
+# What to keep in an opening hand
+Keep mana and a cost reducer. Lyse Hext or Alisaie Leveilleur is what turns "one big spell a turn" into "two big spells a turn", and two is the number that makes Y'shtola draw.
+Hold interaction until your own turn when you safely can. A counterspell cast on your turn is a Y'shtola trigger and a step toward the second one; the same card cast on their turn is just a counterspell.
+Y'shtola, Night's Blessed :: four mana and a 2/4 with vigilance, so she blocks well and survives most sweepers aimed at bigger boards. She is worth recasting after removal — the triggers are the deck.
+Approach of the Second Sun :: start it once the board is stable and you can protect the second cast. Both copies must be cast FROM YOUR HAND, so Beseech the Mirror's free-cast mode does not finish it.

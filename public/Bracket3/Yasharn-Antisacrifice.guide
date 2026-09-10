@@ -1,41 +1,68 @@
-Yasharn, Implacable Earth in GW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Read Yasharn's second line slowly, because it is much wider than it looks. "Players can't pay life or sacrifice nonland permanents to cast spells or activate abilities" turns off Treasures, Clues, Food, every sacrifice outlet, every Phyrexian mana symbol, Force of Will's alternative cost, Necropotence, Bolas's Citadel and Mana Confluence — for the whole table, at once. This deck is built so that none of that costs you anything, and then it stacks the rest of the lock on top.
 
 # The commander
-Yasharn, Implacable Earth :: When Yasharn enters, search your library for a basic Forest card and a basic Plains card, reveal those cards, put…
+Yasharn, Implacable Earth :: fetches a basic Forest AND a basic Plains to your hand on arrival, which fuels the extra land drops below, and then shuts off an enormous slice of the format. Four mana, a 4/4 body, and against an aristocrats or storm table it is close to a hard lock on its own.
+Note what it does NOT stop: fetchlands sacrifice a LAND, so those still work. It is nonland permanents only.
+Note also that it is symmetrical. This deck runs no Treasures, no sacrifice outlets and no pay-life costs precisely so that the symmetry is free.
 
-# Game Changers (3 of 3)
-Aura Shards :: Whenever a creature you control enters, you may destroy target artifact or enchantment.
-Drannith Magistrate :: Your opponents can't cast spells from anywhere other than their hands.
-Enlightened Tutor :: Search your library for an artifact or enchantment card, reveal it, then shuffle and put that card on top.
+# The rest of the lock
+Archon of Emeria :: one spell per turn each, and their nonbasics arrive tapped.
+Rule of Law :: the enchantment copy, which removal reaches less easily.
+Gaddock Teeg :: no noncreature spell of mana value four or more, and no noncreature X spells at all. That is most wraths and most finishers.
+Drannith Magistrate :: no casting from graveyards, exile or the command zone. It turns off every other commander at the table.
+Linvala, Keeper of Silence :: their creatures' activated abilities all stop.
+Collector Ouphe :: every artifact activated ability stops, theirs and yours.
+Cursed Totem :: the creature version. Careful — it blanks Kamahl's land animation too.
+Containment Priest :: anything entering without being cast is exiled. It blanks reanimation and blink outright.
+Root Maze :: their artifacts and lands enter tapped, which quietly costs a ramp deck a turn every turn.
+Grand Abolisher :: they cannot act at all during your turn.
+Aven Mindcensor :: flash him onto a fetchland or a tutor.
+Archon of Valor's Reach :: name a card type and NOBODY can cast it. Against a spell deck name instant; against artifacts, artifact. Your own deck is creatures, lands and a handful of enchantments, so the cost to you is usually nothing.
+Rest in Peace :: no graveyards, and this deck never uses its own.
+Blind Obedience :: their creatures and artifacts enter tapped, and extort drains on every spell you cast.
 
-# Removal you can point anywhere
-Nature's Claim :: Destroy target artifact or enchantment. Its controller gains 4 life.
-Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
-Get Lost :: Destroy target creature, enchantment, or planeswalker. Its controller creates two Map tokens.
-Winds of Abandon :: Exile target creature you don't control. For each creature exiled this way, its controller searches their library for…
-Generous Gift :: Destroy target permanent. Its controller creates a 3/3 green Elephant creature token.
-Krosan Grip :: Split second
+# The one honest tension
+Hushbringer :: creatures entering or dying trigger nothing. That is devastating against half the format — and it also blanks your own Aura Shards, Elesh Norn, Mother of Machines, and Yasharn's land fetch. Play it when the table is built on enter-the-battlefield value and you are not, and be deliberate about the order: get your own triggers first, then land it.
 
-# Taxes and lock pieces
-Collector Ouphe :: Activated abilities of artifacts can't be activated.
-Cursed Totem :: Activated abilities of creatures can't be activated.
-Grand Abolisher :: During your turn, your opponents can't cast spells or activate abilities of artifacts, creatures, or enchantments.
-Stony Silence :: Activated abilities of artifacts can't be activated.
-Archon of Emeria :: Each player can't cast more than one spell each turn.
-Rule of Law :: Each player can't cast more than one spell each turn.
+# Ramp, into the lock
+Dryad of the Ilysian Grove :: an extra land drop, and your lands become every basic type — which turns Farseek and Nature's Lore into "fetch any land you own".
+Exploration :: the cheapest extra land drop.
+Oracle of Mul Daya :: an extra drop plus lands off the top of your library.
+Karametra, God of Harvests :: a land for every creature spell you cast, and an indestructible body once devotion gets there. In a deck of hatebears that is a land a turn.
+Nature's Lore :: an untapped dual with a basic type.
+Farseek :: the same for shocklands.
+Cultivate :: a land down and a land in hand.
+Kodama's Reach :: the second copy.
+Rampant Growth :: the cheap one.
+Fertile Ground :: an extra mana of any colour off a land.
 
-# Card advantage
-Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
-Veil of Summer :: Draw a card if an opponent has cast a blue or black spell this turn. Spells you control can't be countered this turn.…
-Archivist of Oghma :: Whenever an opponent searches their library, you gain 1 life and draw a card.
-Eladamri's Call :: Search your library for a creature card, reveal that card, put it into your hand, then shuffle.
-Cultivate :: Search your library for up to two basic land cards, reveal those cards, put one onto the battlefield tapped and the…
-Kodama's Reach :: Search your library for up to two basic land cards, reveal those cards, put one onto the battlefield tapped and the…
+# Removal that works under your own lock
+Get Lost :: creature, enchantment or planeswalker, for two mana, at instant speed.
+Generous Gift :: any permanent at all.
+Grasp of Fate :: exiles a nonland permanent from EVERY opponent, on one card.
+Darksteel Mutation :: turns a commander into a 0/1 Insect it cannot recast.
+Krosan Grip :: split second, so it beats the response.
+Nature's Claim :: one mana for any artifact or enchantment; the four life they gain is irrelevant.
+Manglehorn :: an artifact on entry, and theirs enter tapped.
+Aura Shards :: with a board of hatebears, every creature you play destroys an artifact or enchantment. It is how this deck beats a stax mirror.
+Final Showdown :: spree, so you choose. Strip all abilities and wrath in one cast, and give one of your own creatures indestructible on the way — a wrath that beats indestructible and hatebears alike.
+Heroic Intervention :: hexproof and indestructible for everything through their wrath.
 
-# Protection
-Final Showdown :: Spree
-Darksteel Mutation :: Enchant creature
-Heroic Intervention :: Permanents you control gain hexproof and indestructible until end of turn.
-Sterling Grove :: Other enchantments you control have shroud.
-Shalai, Voice of Plenty :: You, planeswalkers you control, and other creatures you control have hexproof.
-Karametra, God of Harvests :: As long as your devotion to green and white is less than seven, Karametra isn't a creature.
+# Cards
+Esper Sentinel :: taxes their first noncreature spell each turn.
+Archivist of Oghma :: a card and a life every time anyone searches — and Aven Mindcensor makes searching worse for them at the same time.
+Eladamri's Call :: instant-speed tutor for whichever hate bear the table is weak to.
+Enlightened Tutor :: finds Rule of Law, Grasp of Fate, Aura Shards or Rest in Peace.
+Ohran Frostfang :: deathtouch on every attacker and a card for each one that connects. It turns a stalled board into a clock.
+
+# How you actually win
+Kamahl, Heart of Krosa :: +3/+3 and trample to the team every combat, and he animates lands so the attack is wider than it looks. This is the deck's main finisher.
+Elesh Norn, Grand Cenobite :: +2/+2 to yours and -2/-2 to theirs. Against a token or hatebear table it is a one-sided wrath that stays on the battlefield.
+Ohran Frostfang :: nobody can block profitably, and every hit refuels your hand.
+Archon of Valor's Reach :: a 5/6 flying vigilant trampler is a real clock while the lock holds.
+
+# What to keep in an opening hand
+Keep ramp and a cheap hate piece. Turn-one Exploration or a turn-two Rampant Growth into a turn-three Archon of Emeria or Gaddock Teeg is the start that wins games; a hand of five-drops is not.
+Read the pod before choosing what to deploy. Yasharn against aristocrats and storm, Containment Priest against reanimator, Drannith Magistrate against a commander-centric table, Archon of Valor's Reach naming instant against a blue one.
+Yasharn, Implacable Earth :: cast him even when the lock line is not obviously relevant. The two basics he fetches feed the extra land drops, and a 4/4 blocks most of what the format attacks with.
+Watch your own lock. Cursed Totem stops Kamahl activating, Collector Ouphe stops your own mana rocks if you ever add any, and Hushbringer stops Aura Shards. None of those is a reason not to play them — it is a reason to sequence them last.

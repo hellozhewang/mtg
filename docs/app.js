@@ -165,7 +165,16 @@
     if (!buttons.length) return;
     buttons.forEach(function (btn) {
       btn.addEventListener('click', function () {
-        cards.dataset.view = btn.dataset.view;
+        var view = btn.dataset.view;
+        // The guide is its own article, not another layout of the card list, so
+        // the toggle swaps which of the two is visible rather than only
+        // restyling one. `hidden` is used per the harness note about [hidden].
+        var guide = document.querySelector('.guide');
+        if (guide) {
+          guide.hidden = view !== 'guide';
+          cards.hidden = view === 'guide';
+        }
+        if (view !== 'guide') cards.dataset.view = view;
         buttons.forEach(function (other) {
           other.setAttribute('aria-pressed', String(other === btn));
         });
@@ -269,7 +278,13 @@
   }
 
   /* ---- lightbox ----------------------------------------------------------- */
-  function initLightbox(cards, preview) {
+  // Matches a card row in EITHER view. The guide is a sibling of `.cards`, not a
+  // child of it, and its rows are `.gcard` — so a lightbox bound to `.cards` and
+  // looking for `.card` saw neither the container nor the class, and clicking a
+  // guide card did nothing at all.
+  var ZOOMABLE = '.card[data-img], .gcard[data-img]';
+
+  function initLightbox(root, preview) {
     var overlay = document.createElement('div');
     overlay.id = 'lightbox';
     overlay.innerHTML =
@@ -294,13 +309,13 @@
     }
     function close() { overlay.classList.remove('on'); }
 
-    cards.addEventListener('click', function (ev) {
-      var li = ev.target.closest('.card[data-img]');
+    root.addEventListener('click', function (ev) {
+      var li = ev.target.closest(ZOOMABLE);
       if (li) open(li);
     });
-    cards.addEventListener('keydown', function (ev) {
+    root.addEventListener('keydown', function (ev) {
       if (ev.key !== 'Enter' && ev.key !== ' ') return;
-      var li = ev.target.closest('.card[data-img]');
+      var li = ev.target.closest(ZOOMABLE);
       if (li) { ev.preventDefault(); open(li); }
     });
     flip.addEventListener('click', function (ev) {
@@ -332,5 +347,8 @@
 
   initViewToggle(cards);
   initCopy();
-  initLightbox(cards, initPreview(cards));
+  // Hover preview stays bound to `.cards`: a guide card is already rendered at
+  // 200px, so a floating copy of the same image adds nothing there. Zoom binds
+  // to <main>, which contains both the list and the guide.
+  initLightbox(document.querySelector('main') || cards, initPreview(cards));
 })();

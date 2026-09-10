@@ -1,0 +1,47 @@
+Grand Arbiter Augustin IV in UW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+Grand Arbiter Augustin IV :: White spells you cast cost {1} less to cast.
+
+# Game Changers (3 of 3)
+Grand Arbiter Augustin IV :: White spells you cast cost {1} less to cast.
+Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
+Smothering Tithe :: Whenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token.
+
+# Removal you can point anywhere
+Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
+Winds of Abandon :: Exile target creature you don't control. For each creature exiled this way, its controller searches their library for…
+Aura of Silence :: Artifact and enchantment spells your opponents cast cost {2} more to cast.
+Generous Gift :: Destroy target permanent. Its controller creates a 3/3 green Elephant creature token.
+
+# Taxes and lock pieces
+Deafening Silence :: Each player can't cast more than one noncreature spell each turn.
+Grafdigger's Cage :: Creature cards in graveyards and libraries can't enter the battlefield.
+Silence :: Your opponents can't cast spells this turn.
+Ethersworn Canonist :: Each player who has cast a nonartifact spell this turn can't cast additional nonartifact spells.
+Grand Abolisher :: During your turn, your opponents can't cast spells or activate abilities of artifacts, creatures, or enchantments.
+Lavinia, Azorius Renegade :: Each opponent can't cast noncreature spells with mana value greater than the number of lands that player controls.
+
+# Card advantage
+Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
+Mystic Remora :: Cumulative upkeep {1}
+Archivist of Oghma :: Whenever an opponent searches their library, you gain 1 life and draw a card.
+Mind Stone :: {T}: Add {C}.
+Teferi, Time Raveler :: Each opponent can cast spells only any time they could cast a sorcery.
+Trouble in Pairs :: If an opponent would begin an extra turn, that player skips that turn instead.
+
+# Ramp
+Lotus Petal :: {T}, Sacrifice this artifact: Add one mana of any color.
+Sol Ring :: {T}: Add {C}{C}.
+Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
+Azorius Signet :: {1}, {T}: Add {W}{U}.
+Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
+Talisman of Progress :: {T}: Add {C}.
+
+# Protection
+Counterspell :: Counter target spell.
+Dovin's Veto :: This spell can't be countered.
+Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
+Akroma's Will :: Choose one. If you control a commander as you cast this spell, you may choose both instead.
+Supreme Verdict :: This spell can't be countered.
+Hullbreaker Horror :: This spell can't be countered.

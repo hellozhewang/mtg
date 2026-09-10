@@ -1,0 +1,36 @@
+Feldon of the Third Path in R, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+Feldon of the Third Path :: {2}{R}, {T}: Create a token that's a copy of target creature card in your graveyard, except it's an artifact in…
+
+# Game Changers (3 of 3)
+Gamble :: Search your library for a card, put that card into your hand, discard a card at random, then shuffle.
+Jeska's Will :: Choose one. If you control a commander as you cast this spell, you may choose both instead.
+The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
+
+# Removal you can point anywhere
+Vandalblast :: Destroy target artifact you don't control.
+Abrade :: Choose one —
+Untimely Malfunction :: Choose one —
+Meteor Golem :: When this creature enters, destroy target nonland permanent an opponent controls.
+
+# Card advantage
+Faithless Looting :: Draw two cards, then discard two cards.
+Skullclamp :: Equipped creature gets +1/-1.
+Bitter Reunion :: When this enchantment enters, you may discard a card. If you do, draw two cards.
+Demand Answers :: As an additional cost to cast this spell, sacrifice an artifact or discard a card.
+Fear of Missing Out :: When this creature enters, discard a card, then draw a card.
+Mind Stone :: {T}: Add {C}.
+
+# Ramp
+Mox Opal :: Metalcraft — {T}: Add one mana of any color. Activate only if you control three or more artifacts.
+Sol Ring :: {T}: Add {C}{C}.
+Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
+Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
+Liquimetal Torque :: {T}: Add {C}.
+Cursed Mirror :: {T}: Add {R}.
+
+# Protection
+Lightning Greaves :: Equipped creature has haste and shroud.
+Swiftfoot Boots :: Equipped creature has hexproof and haste.
+Tibalt's Trickery :: Counter target spell. Choose 1, 2, or 3 at random. Its controller mills that many cards, then exiles cards from the…

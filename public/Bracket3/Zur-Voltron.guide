@@ -1,0 +1,45 @@
+Zur the Enchanter in BUW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+Zur the Enchanter :: Whenever Zur attacks, you may search your library for an enchantment card with mana value 3 or less, put it onto the…
+
+# Game Changers (3 of 3)
+Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
+Necropotence :: Skip your draw step.
+Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
+
+# Removal you can point anywhere
+Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
+Get Lost :: Destroy target creature, enchantment, or planeswalker. Its controller creates two Map tokens.
+Aura of Silence :: Artifact and enchantment spells your opponents cast cost {2} more to cast.
+Karmic Justice :: Whenever a spell or ability an opponent controls destroys a noncreature permanent you control, you may destroy target…
+
+# Taxes and lock pieces
+Grand Abolisher :: During your turn, your opponents can't cast spells or activate abilities of artifacts, creatures, or enchantments.
+Ghostly Prison :: Creatures can't attack you unless their controller pays {2} for each creature they control that's attacking you.
+Propaganda :: Creatures can't attack you unless their controller pays {2} for each creature they control that's attacking you.
+Moat :: Creatures without flying can't attack.
+
+# Card advantage
+Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
+Land Tax :: At the beginning of your upkeep, if an opponent controls more lands than you, you may search your library for up to…
+Mystic Remora :: Cumulative upkeep {1}
+Sensei's Divining Top :: {1}: Look at the top three cards of your library, then put them back in any order.
+Open the Armory :: Search your library for an Aura or Equipment card, reveal it, put it into your hand, then shuffle.
+Scroll Rack :: {1}, {T}: Exile any number of cards from your hand face down. Put that many cards from the top of your library into…
+
+# Ramp
+Sol Ring :: {T}: Add {C}{C}.
+Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
+Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
+Talisman of Dominance :: {T}: Add {C}.
+Talisman of Hierarchy :: {T}: Add {C}.
+Talisman of Progress :: {T}: Add {C}.
+
+# Protection
+Darksteel Mutation :: Enchant creature
+Diplomatic Immunity :: Enchant creature
+Dovin's Veto :: This spell can't be countered.
+Greater Auramancy :: Other enchantments you control have shroud.
+Lightning Greaves :: Equipped creature has haste and shroud.
+Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.

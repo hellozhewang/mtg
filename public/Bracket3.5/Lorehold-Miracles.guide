@@ -1,0 +1,40 @@
+Lorehold, the Historian in RW, built to Bracket 3.5 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+Lorehold, the Historian :: Each instant and sorcery card in your hand has miracle {2}.
+
+# Game Changers (3 of 3)
+Ancient Tomb :: {T}: Add {C}{C}. This land deals 2 damage to you.
+Mana Vault :: This artifact doesn't untap during your untap step.
+The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
+
+# Removal you can point anywhere
+Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
+Generous Gift :: Destroy target permanent. Its controller creates a 3/3 green Elephant creature token.
+Rise of the Eldrazi :: This spell can't be countered.
+
+# Taxes and lock pieces
+Silence :: Your opponents can't cast spells this turn.
+Grand Abolisher :: During your turn, your opponents can't cast spells or activate abilities of artifacts, creatures, or enchantments.
+Twinflame :: Strive — This spell costs {2}{R} more to cast for each target beyond the first.
+
+# Card advantage
+Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
+Land Tax :: At the beginning of your upkeep, if an opponent controls more lands than you, you may search your library for up to…
+Sensei's Divining Top :: {1}: Look at the top three cards of your library, then put them back in any order.
+Archivist of Oghma :: Whenever an opponent searches their library, you gain 1 life and draw a card.
+Cool but Rude :: Whenever you attack, you may discard a card. If you do, draw a card.
+Reprieve :: Return target spell to its owner's hand.
+
+# Ramp
+Sol Ring :: {T}: Add {C}{C}.
+Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
+Boros Signet :: {1}, {T}: Add {R}{W}.
+Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
+Talisman of Conviction :: {T}: Add {C}.
+Bender's Waterskin :: Untap this artifact during each other player's untap step.
+
+# Protection
+Everybody Lives! :: All creatures gain hexproof and indestructible until end of turn. Players gain hexproof until end of turn. Players…
+Hexing Squelcher :: This spell can't be countered.
+Tibalt's Trickery :: Counter target spell. Choose 1, 2, or 3 at random. Its controller mills that many cards, then exiles cards from the…

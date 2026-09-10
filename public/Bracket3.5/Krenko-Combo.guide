@@ -1,0 +1,47 @@
+Krenko, Mob Boss in R, built to Bracket 3.5 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+Krenko, Mob Boss :: {T}: Create X 1/1 red Goblin creature tokens, where X is the number of Goblins you control.
+
+# Combos in the deck
+Kiki-Jiki, Mirror Breaker :: part of infinite hasty copies
+Combat Celebrant :: part of infinite hasty copies
+Zealous Conscripts :: part of infinite hasty copies
+Thornbite Staff :: part of infinite untaps
+Ashnod's Altar :: part of infinite untaps
+Goblin Bombardment :: part of infinite untaps
+Goblin Chirurgeon :: part of infinite untaps
+Skirk Prospector :: part of infinite untaps
+
+# Game Changers (3 of 3)
+Ancient Tomb :: {T}: Add {C}{C}. This land deals 2 damage to you.
+Gamble :: Search your library for a card, put that card into your hand, discard a card at random, then shuffle.
+Mana Vault :: This artifact doesn't untap during your untap step.
+
+# Removal you can point anywhere
+Pyroblast :: Choose one —
+Red Elemental Blast :: Choose one —
+Vandalblast :: Destroy target artifact you don't control.
+Abrade :: Choose one —
+Goblin Trashmaster :: Other Goblins you control get +1/+1.
+
+# Card advantage
+Faithless Looting :: Draw two cards, then discard two cards.
+Skullclamp :: Equipped creature gets +1/-1.
+Mind Stone :: {T}: Add {C}.
+Goblin Matron :: When this creature enters, you may search your library for a Goblin card, reveal that card, put it into your hand,…
+Herald's Horn :: As this artifact enters, choose a creature type.
+Imperial Recruiter :: When this creature enters, search your library for a creature card with power 2 or less, reveal it, put it into your…
+
+# Ramp
+Lotus Petal :: {T}, Sacrifice this artifact: Add one mana of any color.
+Mox Amber :: {T}: Add one mana of any color among legendary creatures and planeswalkers you control.
+Brightstone Ritual :: Add {R} for each Goblin on the battlefield.
+Sol Ring :: {T}: Add {C}{C}.
+Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
+Battle Hymn :: Add {R} for each creature you control.
+
+# Protection
+Lightning Greaves :: Equipped creature has haste and shroud.
+Swiftfoot Boots :: Equipped creature has hexproof and haste.
+Purphoros, God of the Forge :: As long as your devotion to red is less than five, Purphoros isn't a creature.

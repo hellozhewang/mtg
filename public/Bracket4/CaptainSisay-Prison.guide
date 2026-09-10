@@ -1,0 +1,50 @@
+Captain Sisay in GW, built to Bracket 4 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+Captain Sisay :: {T}: Search your library for a legendary card, reveal that card, put it into your hand, then shuffle.
+
+# Game Changers (13, uncapped)
+Ancient Tomb :: {T}: Add {C}{C}. This land deals 2 damage to you.
+Chrome Mox :: Imprint — When this artifact enters, you may exile a nonartifact, nonland card from your hand.
+Crop Rotation :: As an additional cost to cast this spell, sacrifice a land.
+Enlightened Tutor :: Search your library for an artifact or enchantment card, reveal it, then shuffle and put that card on top.
+Gaea's Cradle :: {T}: Add {G} for each creature you control.
+Mana Vault :: This artifact doesn't untap during your untap step.
+Mox Diamond :: If this artifact would enter, you may discard a land card instead. If you do, put this artifact onto the battlefield.…
+Seedborn Muse :: Untap all permanents you control during each other player's untap step.
+Serra's Sanctum :: {T}: Add {W} for each enchantment you control.
+Survival of the Fittest :: {G}, Discard a creature card: Search your library for a creature card, reveal that card, put it into your hand, then…
+The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
+The Tabernacle at Pendrell Vale :: All creatures have "At the beginning of your upkeep, destroy this creature unless you pay {1}."
+Worldly Tutor :: Search your library for a creature card, reveal it, then shuffle and put the card on top.
+
+# Taxes and lock pieces
+Legolas's Quick Reflexes :: Split second
+Silence :: Your opponents can't cast spells this turn.
+Grand Abolisher :: During your turn, your opponents can't cast spells or activate abilities of artifacts, creatures, or enchantments.
+Ranger-Captain of Eos :: When this creature enters, you may search your library for a creature card with mana value 1 or less, reveal it, put…
+Linvala, Keeper of Silence :: Activated abilities of creatures your opponents control can't be activated.
+
+# Card advantage
+Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
+Veil of Summer :: Draw a card if an opponent has cast a blue or black spell this turn. Spells you control can't be countered this turn.…
+Eladamri's Call :: Search your library for a creature card, reveal that card, put it into your hand, then shuffle.
+Idyllic Tutor :: Search your library for an enchantment card, reveal it, put it into your hand, then shuffle.
+Recruiter of the Guard :: When this creature enters, you may search your library for a creature card with toughness 2 or less, reveal it, put…
+Selvala, Heart of the Wilds :: Whenever another creature enters, its controller may draw a card if its power is greater than each other creature's…
+
+# Ramp
+Lotus Petal :: {T}, Sacrifice this artifact: Add one mana of any color.
+Mox Amber :: {T}: Add one mana of any color among legendary creatures and planeswalkers you control.
+Avacyn's Pilgrim :: {T}: Add {W}.
+Birds of Paradise :: {T}: Add one mana of any color.
+Delighted Halfling :: {T}: Add {C}.
+Elvish Mystic :: {T}: Add {G}.
+
+# Protection
+Destiny Spinner :: Creature and enchantment spells you control can't be countered.
+Heroic Intervention :: Permanents you control gain hexproof and indestructible until end of turn.
+Lightning Greaves :: Equipped creature has haste and shroud.
+Sterling Grove :: Other enchantments you control have shroud.
+Boromir, Warden of the Tower :: Whenever an opponent casts a spell, if no mana was spent to cast it, counter that spell.
+Flawless Maneuver :: If you control a commander, you may cast this spell without paying its mana cost.

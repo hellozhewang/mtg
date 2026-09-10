@@ -1,0 +1,41 @@
+Hashaton, Scarab's Fist in BUW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+Hashaton, Scarab's Fist :: Whenever you discard a creature card, you may pay {2}{U}. If you do, create a tapped token that's a copy of that…
+
+# Game Changers (3 of 3)
+Consecrated Sphinx :: Whenever an opponent draws a card, you may draw two cards.
+Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
+Smothering Tithe :: Whenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token.
+
+# Removal you can point anywhere
+Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
+Damn :: Destroy target creature. A creature destroyed this way can't be regenerated.
+Deadly Rollick :: If you control a commander, you may cast this spell without paying its mana cost.
+The Scarab God :: At the beginning of your upkeep, each opponent loses X life and you scry X, where X is the number of Zombies you…
+
+# Card advantage
+Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
+Mystic Remora :: Cumulative upkeep {1}
+Soul-Guide Lantern :: When this artifact enters, exile target card from a graveyard.
+Ghostly Pilferer :: Whenever this creature becomes untapped, you may pay {2}. If you do, draw a card.
+Kitsa, Otterball Elite :: Prowess
+Ledger Shredder :: Whenever a player casts their second spell each turn, this creature connives.
+
+# Ramp
+An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
+Sol Ring :: {T}: Add {C}{C}.
+Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
+Azorius Signet :: {1}, {T}: Add {W}{U}.
+Dimir Signet :: {1}, {T}: Add {U}{B}.
+Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
+
+# Protection
+Dovin's Veto :: This spell can't be countered.
+Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
+Gleaming Overseer :: When this creature enters, amass Zombies 1.
+
+# Recursion
+Phyrexian Reclamation :: {1}{B}, Pay 2 life: Return target creature card from your graveyard to your hand.
+The Underworld Cookbook :: {T}, Discard a card: Create a Food token.
+Tortured Existence :: {B}, Discard a creature card: Return target creature card from your graveyard to your hand.

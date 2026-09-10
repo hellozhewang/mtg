@@ -1,0 +1,37 @@
+Kilo, Apogee Mind in RUW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+Kilo, Apogee Mind :: Whenever Kilo becomes tapped, proliferate.
+
+# Game Changers (3 of 3)
+Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
+Enlightened Tutor :: Search your library for an artifact or enchantment card, reveal it, then shuffle and put that card on top.
+Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
+
+# Removal you can point anywhere
+Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
+Generous Gift :: Destroy target permanent. Its controller creates a 3/3 green Elephant creature token.
+Lux Cannon :: {T}: Put a charge counter on this artifact.
+
+# Card advantage
+Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
+Mystic Remora :: Cumulative upkeep {1}
+Experimental Augury :: Look at the top three cards of your library. Put one of them into your hand and the rest on the bottom of your…
+Pollywog Prodigy :: Evolve
+Prologue to Phyresis :: Each opponent gets a poison counter.
+Fabricate :: Search your library for an artifact card, reveal it, put it into your hand, then shuffle.
+
+# Ramp
+Everflowing Chalice :: Multikicker {2}
+Mox Opal :: Metalcraft — {T}: Add one mana of any color. Activate only if you control three or more artifacts.
+Paradise Mantle :: Equipped creature has "{T}: Add one mana of any color."
+An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
+Sol Ring :: {T}: Add {C}{C}.
+Springleaf Drum :: {T}, Tap an untapped creature you control: Add one mana of any color.
+
+# Protection
+Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
+Inspirit, Flagship Vessel :: Station
+Teferi, Time Raveler :: Each opponent can cast spells only any time they could cast a sorcery.
+The Seriema :: When The Seriema enters, search your library for a legendary creature card, reveal it, put it into your hand, then…
+Tekuthal, Inquiry Dominus :: If you would proliferate, proliferate twice instead.

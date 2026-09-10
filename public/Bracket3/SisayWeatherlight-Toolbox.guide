@@ -1,0 +1,38 @@
+Sisay, Weatherlight Captain in BGRUW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+Sisay, Weatherlight Captain :: Sisay gets +1/+1 for each color among other legendary permanents you control.
+
+# Game Changers (3 of 3)
+Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
+Smothering Tithe :: Whenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token.
+The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
+
+# Taxes and lock pieces
+Lavinia, Azorius Renegade :: Each opponent can't cast noncreature spells with mana value greater than the number of lands that player controls.
+Kutzil, Malamet Exemplar :: Your opponents can't cast spells during your turn.
+Timeless Lotus :: Timeless Lotus enters tapped.
+
+# Card advantage
+Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
+Mystic Remora :: Cumulative upkeep {1}
+Oath of Nissa :: When Oath of Nissa enters, look at the top three cards of your library. You may reveal a creature, land, or…
+Aminatou, the Fateshifter :: +1: Draw a card, then put a card from your hand on top of your library.
+Loran of the Third Path :: When Loran enters, destroy up to one target artifact or enchantment.
+Reki, the History of Kamigawa :: Whenever you cast a legendary spell, draw a card.
+
+# Ramp
+Mox Amber :: {T}: Add one mana of any color among legendary creatures and planeswalkers you control.
+An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
+Delighted Halfling :: {T}: Add {C}.
+Sol Ring :: {T}: Add {C}{C}.
+Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
+Farseek :: Search your library for a Plains, Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle.
+
+# Protection
+Skrelv, Defector Mite :: Toxic 1
+Abrupt Decay :: This spell can't be countered.
+Hajar, Loyal Bodyguard :: Sacrifice Hajar: Legendary creatures you control get +1/+0 and gain indestructible until end of turn.
+Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
+Tam, Mindful First-Year :: Each other creature you control has hexproof from each of its colors.
+Teferi, Time Raveler :: Each opponent can cast spells only any time they could cast a sorcery.

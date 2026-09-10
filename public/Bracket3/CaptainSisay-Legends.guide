@@ -1,0 +1,45 @@
+Captain Sisay in GW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+Captain Sisay :: {T}: Search your library for a legendary card, reveal that card, put it into your hand, then shuffle.
+
+# Game Changers (3 of 3)
+Gaea's Cradle :: {T}: Add {G} for each creature you control.
+Seedborn Muse :: Untap all permanents you control during each other player's untap step.
+The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
+
+# Removal you can point anywhere
+Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
+Beast Within :: Destroy target permanent. Its controller creates a 3/3 green Beast creature token.
+Generous Gift :: Destroy target permanent. Its controller creates a 3/3 green Elephant creature token.
+Kogla, the Titan Ape :: When Kogla enters, it fights up to one target creature you don't control.
+
+# Taxes and lock pieces
+Legolas's Quick Reflexes :: Split second
+Grand Abolisher :: During your turn, your opponents can't cast spells or activate abilities of artifacts, creatures, or enchantments.
+Kutzil, Malamet Exemplar :: Your opponents can't cast spells during your turn.
+Linvala, Keeper of Silence :: Activated abilities of creatures your opponents control can't be activated.
+
+# Card advantage
+Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
+Veil of Summer :: Draw a card if an opponent has cast a blue or black spell this turn. Spells you control can't be countered this turn.…
+Bugenhagen, Wise Elder :: At the beginning of your upkeep, if you control a creature with power 7 or greater, draw a card.
+Loran of the Third Path :: When Loran enters, destroy up to one target artifact or enchantment.
+Reki, the History of Kamigawa :: Whenever you cast a legendary spell, draw a card.
+Selvala, Heart of the Wilds :: Whenever another creature enters, its controller may draw a card if its power is greater than each other creature's…
+
+# Ramp
+Avacyn's Pilgrim :: {T}: Add {W}.
+Birds of Paradise :: {T}: Add one mana of any color.
+Delighted Halfling :: {T}: Add {C}.
+Llanowar Elves :: {T}: Add {G}.
+Sol Ring :: {T}: Add {C}{C}.
+Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
+
+# Protection
+Heroic Intervention :: Permanents you control gain hexproof and indestructible until end of turn.
+Lightning Greaves :: Equipped creature has haste and shroud.
+Spectacular Spider-Man :: {1}: Spectacular Spider-Man gains flying until end of turn.
+Boromir, Warden of the Tower :: Whenever an opponent casts a spell, if no mana was spent to cast it, counter that spell.
+Flawless Maneuver :: If you control a commander, you may cast this spell without paying its mana cost.
+Akroma's Will :: Choose one. If you control a commander as you cast this spell, you may choose both instead.

@@ -1,0 +1,51 @@
+Felothar the Steadfast in BGW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+Felothar the Steadfast :: Each creature you control assigns combat damage equal to its toughness rather than its power.
+
+# Game Changers (3 of 3)
+Drannith Magistrate :: Your opponents can't cast spells from anywhere other than their hands.
+Gaea's Cradle :: {T}: Add {G} for each creature you control.
+Seedborn Muse :: Untap all permanents you control during each other player's untap step.
+
+# Removal you can point anywhere
+Deathrite Shaman :: {T}: Exile target land card from a graveyard. Add one mana of any color.
+Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
+Assassin's Trophy :: Destroy target permanent an opponent controls. Its controller may search their library for a basic land card, put it…
+Anguished Unmaking :: Exile target nonland permanent. You lose 3 life.
+
+# Taxes and lock pieces
+Legolas's Quick Reflexes :: Split second
+Voice of Victory :: Mobilize 2
+Archon of Emeria :: Each player can't cast more than one spell each turn.
+Linvala, Keeper of Silence :: Activated abilities of creatures your opponents control can't be activated.
+
+# Card advantage
+Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
+Veil of Summer :: Draw a card if an opponent has cast a blue or black spell this turn. Spells you control can't be countered this turn.…
+Eladamri's Call :: Search your library for a creature card, reveal that card, put it into your hand, then shuffle.
+Fauna Shaman :: {G}, {T}, Discard a creature card: Search your library for a creature card, reveal it, put it into your hand, then…
+Wall of Blossoms :: When this creature enters, draw a card.
+Wall of Omens :: When this creature enters, draw a card.
+
+# Ramp
+Birds of Paradise :: {T}: Add one mana of any color.
+Delighted Halfling :: {T}: Add {C}.
+Sol Ring :: {T}: Add {C}{C}.
+Overgrown Battlement :: {T}: Add {G} for each creature you control with defender.
+Sylvan Caryatid :: {T}: Add one mana of any color.
+Wall of Roots :: Put a -0/-1 counter on this creature: Add {G}. Activate only once each turn.
+
+# Protection
+Heroic Intervention :: Permanents you control gain hexproof and indestructible until end of turn.
+Weathered Sentinels :: This creature can attack players who attacked you during their last turn as though it didn't have defender.
+Akroma's Will :: Choose one. If you control a commander as you cast this spell, you may choose both instead.
+Shalai, Voice of Plenty :: You, planeswalkers you control, and other creatures you control have hexproof.
+The Walls of Ba Sing Se :: Other permanents you control have indestructible.
+
+# Recursion
+Nethroi, Apex of Death :: Mutate {4}{G/W}{B}{B}
+Reveillark :: When this creature leaves the battlefield, return up to two target creature cards with power 2 or less from your…
+Smile at Death :: At the beginning of your upkeep, return up to two target creature cards with power 2 or less from your graveyard to…
+Sun Titan :: Whenever this creature enters or attacks, you may return target permanent card with mana value 3 or less from your…
+Reunion of the House :: Return any number of target creature cards with total power 10 or less from your graveyard to the battlefield. Exile…

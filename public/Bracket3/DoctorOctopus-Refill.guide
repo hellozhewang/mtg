@@ -1,0 +1,36 @@
+Doctor Octopus, Master Planner in BU, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+Doctor Octopus, Master Planner :: Other Villains you control get +2/+2.
+
+# Game Changers (3 of 3)
+Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
+Fierce Guardianship :: If you control a commander, you may cast this spell without paying its mana cost.
+Lion's Eye Diamond :: Discard your hand, Sacrifice this artifact: Add three mana of any one color. Activate only as an instant.
+
+# Removal you can point anywhere
+Feed the Swarm :: Destroy target creature or enchantment an opponent controls. You lose life equal to that permanent's mana value.
+Withering Torment :: Destroy target creature or enchantment. You lose 2 life.
+Deadly Rollick :: If you control a commander, you may cast this spell without paying its mana cost.
+Snuff Out :: If you control a Swamp, you may pay 4 life rather than pay this spell's mana cost.
+
+# Card advantage
+Currency Converter :: Whenever you discard a card, you may exile that card from your graveyard.
+Mystic Remora :: Cumulative upkeep {1}
+Ponder :: Look at the top three cards of your library, then put them back in any order. You may shuffle.
+Diabolic Intent :: As an additional cost to cast this spell, sacrifice a creature.
+Ledger Shredder :: Whenever a player casts their second spell each turn, this creature connives.
+Mind Stone :: {T}: Add {C}.
+
+# Ramp
+Dark Ritual :: Add {B}{B}{B}.
+Sol Ring :: {T}: Add {C}{C}.
+Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
+Cabal Ritual :: Add {B}{B}{B}.
+Dimir Signet :: {1}, {T}: Add {U}{B}.
+Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
+
+# Protection
+Pact of Negation :: Counter target spell.
+Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
+The Soul Stone :: {T}: Add {B}.

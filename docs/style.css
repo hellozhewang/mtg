@@ -235,3 +235,24 @@ h2 .count{color:var(--line)}
   .cardlist{grid-template-columns:1fr}
   .curve{max-width:none}
 }
+
+/* ---- deck guide ----
+   A guide row is a card image beside prose, which is a different shape from the
+   dense list and from the gallery grid — you read it, you do not scan it. So it
+   gets its own layout rather than another `data-view` restyle of `.card`. */
+.guide{max-width:74ch}
+.gsec{margin:0 0 30px}
+.gsec h2{margin:1.6em 0 .8em}
+.gprose{color:var(--dim);margin:0 0 14px;line-height:1.6}
+.gcard{display:flex;gap:14px;align-items:flex-start;padding:11px 0;
+  border-top:1px solid var(--line)}
+.gcard:first-of-type{border-top:0}
+/* 146x204 committed thumbnail at its native aspect. Small enough that a section
+   of eight cards still scrolls in one screen, large enough to recognise art. */
+.gcard img.gthumb{width:88px;height:123px;border-radius:5px;flex:none;
+  background:var(--panel2);cursor:zoom-in}
+.gbody{min-width:0}
+.gname{font-weight:650;margin-right:8px}
+.gcost{white-space:nowrap;vertical-align:-2px}
+.gnote{margin:5px 0 0;line-height:1.55}
+@media (max-width:560px){.gcard img.gthumb{width:64px;height:89px}}

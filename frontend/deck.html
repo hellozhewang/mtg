@@ -14,12 +14,12 @@
 <div class="toolbar">
   <button class="btn" data-view="list" aria-pressed="true">List</button>
   <button class="btn" data-view="gallery" aria-pressed="false">Gallery</button>
-  <button class="btn" data-copy>Copy decklist</button>
+{{GUIDEBTN}}  <button class="btn" data-copy>Copy decklist</button>
 {{LINKS}}
 </div>
 <textarea class="rawlist" readonly aria-hidden="true" tabindex="-1">{{RAWLIST}}</textarea>
 
-<div class="cards" data-view="list">
+{{GUIDE}}<div class="cards" data-view="list">
 {{SECTIONS}}</div>
 </main>
 
@@ -58,4 +58,26 @@
 
 <template data-part="card">
     <li class="{{CLASS}}" data-name="{{NAME}}"{{DATA}} tabindex="0"><span class="qty">{{QTY}}</span><span class="cname">{{NAME}}</span>{{GCFLAG}}<span class="cost">{{COST}}</span></li>
+</template>
+
+<template data-part="guidebtn">  <button class="btn" data-view="guide" aria-pressed="false">Guide</button>
+</template>
+
+<template data-part="guide">
+<article class="guide" hidden>
+{{SECTIONS}}</article>
+</template>
+
+<template data-part="guide-section">
+  <section class="gsec">
+{{TITLE}}{{ROWS}}  </section>
+</template>
+
+<template data-part="guide-title">    <h2>{{TEXT}}</h2>
+</template>
+
+<template data-part="guide-prose">    <p class="gprose">{{TEXT}}</p>
+</template>
+
+<template data-part="guide-card">    <div class="gcard" data-name="{{NAME}}"{{DATA}}>{{IMG}}<div class="gbody"><span class="gname">{{NAME}}</span><span class="gcost">{{COST}}</span><p class="gnote">{{NOTE}}</p></div></div>
 </template>

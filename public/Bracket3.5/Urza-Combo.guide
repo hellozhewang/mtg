@@ -1,0 +1,41 @@
+Urza, Lord High Artificer in U, built to Bracket 3.5 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+Urza, Lord High Artificer :: When Urza enters, create a 0/0 colorless Construct artifact creature token with "This token gets +1/+1 for each…
+
+# Combos in the deck
+Basalt Monolith :: part of infinite colourless mana, and infinite damage
+Power Artifact :: part of infinite colourless mana, and infinite damage
+Rings of Brighthearth :: part of infinite colourless mana
+Isochron Scepter :: part of infinite mana and infinite spells
+Dramatic Reversal :: part of infinite mana and infinite spells
+Walking Ballista :: part of infinite damage
+
+# Game Changers (3 of 3)
+Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
+Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
+The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
+
+# Card advantage
+Mishra's Bauble :: {T}, Sacrifice this artifact: Look at the top card of target player's library. Draw a card at the beginning of the…
+Urza's Bauble :: {T}, Sacrifice this artifact: Look at a card at random in target player's hand. You draw a card at the beginning of…
+Aether Spellbomb :: {U}, Sacrifice this artifact: Return target creature to its owner's hand.
+Brainstorm :: Draw three cards, then put two cards from your hand on top of your library in any order.
+Mystic Remora :: Cumulative upkeep {1}
+Sensei's Divining Top :: {1}: Look at the top three cards of your library, then put them back in any order.
+
+# Ramp
+Everflowing Chalice :: Multikicker {2}
+Jeweled Amulet :: {1}, {T}: Put a charge counter on this artifact. Note the type of mana spent to pay this activation cost. Activate…
+Lotus Petal :: {T}, Sacrifice this artifact: Add one mana of any color.
+Mox Opal :: Metalcraft — {T}: Add one mana of any color. Activate only if you control three or more artifacts.
+An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
+Sol Ring :: {T}: Add {C}{C}.
+
+# Protection
+Pact of Negation :: Counter target spell.
+Chain of Vapor :: Return target nonland permanent to its owner's hand. Then that permanent's controller may sacrifice a land of their…
+Mental Misstep :: Counter target spell with mana value 1.
+Counterspell :: Counter target spell.
+Lightning Greaves :: Equipped creature has haste and shroud.
+Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.

@@ -35,9 +35,18 @@ the list rendered as plain text. Fencing and splitting belong to whoever knows
 Discord's rules; our job is to hand over an exact list.
 
 `!decks` and `!help` ARE still fenced, and the difference is not an oversight:
-that output is READ, so monospacing it here is harmless and it never approaches
-the length limit. A decklist is PASTED, so anything we wrap around it is
-something the user has to strip back out.
+that output is READ, so monospacing it here is helpful, whereas a decklist is
+PASTED and anything wrapped around it is something the user has to strip out.
+
+But fencing is only safe while a message fits. This docstring used to claim the
+listing "never approaches the length limit"; at 45 decks it was 1567 of Discord's
+2000 characters and still growing, and a fenced block the Discord side splits
+gets cut through the fence -- the exact failure `!deck` was changed to avoid.
+So `!decks` now returns one message PER BRACKET, and splits a bracket again if it
+would exceed a conservative budget. The rule this encodes: whoever adds the fence
+owns the split. `!deck` hands over raw text and lets Discord split it precisely
+because it does NOT fence; anything we do fence, we have to keep small enough
+that nobody else needs to cut it.
 """
 from __future__ import annotations
 
@@ -88,45 +97,98 @@ def _norm(s: str) -> str:
     return re.sub(r"[^a-z0-9]", "", s.lower())
 
 
+def _keys(path: Path) -> set[str]:
+    """Everything a user might reasonably type to mean this deck.
+
+    The filename AND the commander's printed name. Matching the filename alone
+    was the whole bug: someone who reads "Shorikai, Genesis Engine" in a reply --
+    which is now exactly what the card tags put in front of them -- and pastes it
+    back got "no deck matching", because it is not a substring of
+    "Shorikai-Prison".
+    """
+    keys = {_norm(path.stem)}
+    try:
+        keys.add(_norm(deckfile.parse(path).commander))
+    except Exception:                       # unreadable file: the stem still works
+        pass
+    return {k for k in keys if k}
+
+
+def _label(path: Path) -> str:
+    """`Stem — Commander`, for a disambiguation list."""
+    try:
+        return f"{path.stem} — {deckfile.parse(path).commander}"
+    except Exception:
+        return path.stem
+
+
 def _match(query: str) -> tuple[list[Path], str | None]:
-    """Resolve a user-typed deck name, case- and punctuation-insensitively."""
+    """Resolve a user-typed deck name, case- and punctuation-insensitively.
+
+    Error text names `!deck-list`, never `!decks`. The latter is this module's
+    internal wire format and matches no user-facing command, so telling someone
+    to type it sends them somewhere that does nothing.
+    """
     decks = _decks()
     q = _norm(query)
     if not q:
-        return [], "give a deck name — try `!decks` to see them"
+        return [], "give a deck name — try `!deck-list` to see them"
 
-    exact = [p for p in decks if _norm(p.stem) == q]
-    if exact:
+    keyed = [(p, _keys(p)) for p in decks]
+    exact = [p for p, keys in keyed if q in keys]
+    if len(exact) == 1:
         return exact, None
-    partial = [p for p in decks if q in _norm(p.stem)]
-    if not partial:
-        return [], f"no deck matching `{query}`. Try `!decks`."
-    if len(partial) > 1:
+    if not exact:
+        exact = [p for p, keys in keyed if any(q in k for k in keys)]
+    if not exact:
+        return [], f"no deck matching `{query}`. Try `!deck-list`."
+    if len(exact) > 1:
         # One per line, and none of them on the sentence's line. Run together
         # after a colon, the first match reads as part of the prose and the list
-        # is hard to scan — which is the whole job of this message.
-        names = "\n".join(p.stem for p in partial)
-        return [], f"`{query}` matches {len(partial)} decks — say which:\n{names}"
-    return partial, None
+        # is hard to scan — which is the whole job of this message. The commander
+        # is included because two decks can share a commander.
+        names = "\n".join(_label(p) for p in exact)
+        return [], f"`{query}` matches {len(exact)} decks — say which:\n{names}"
+    return exact, None
 
 
 # ---------- commands ----------
 
 def cmd_decks(_arg: str) -> list[str]:
-    """List every commander, grouped by bracket."""
-    rows, current = [], None
+    """List every commander, one fenced message PER BRACKET.
+
+    Per bracket rather than one block for the whole collection, because a fenced
+    message that exceeds Discord's 2000 characters gets split downstream and the
+    split cuts through the fence. Bracket is the natural bound: it is how people
+    already read the list, and it keeps each message small as the collection
+    grows.
+    """
+    # Budget, not Discord's real cap. We own the fence, so we own the split --
+    # and the two ``` lines plus the bracket header cost characters the cap does
+    # not know about. Well under 2000 leaves room for both and for a long
+    # commander name landing on the boundary.
+    BUDGET = 1500
+    groups: dict[str, list[str]] = {}
     for path in _decks():
-        bracket = _bracket_of(path)
-        if bracket != current:
-            rows.append(f"{bracket}" if current is None else f"\n{bracket}")
-            current = bracket
         try:
-            rows.append(f"  {deckfile.parse(path).commander}")
+            row = f"  {deckfile.parse(path).commander}"
         except Exception as exc:                        # unreadable/malformed file
-            rows.append(f"  {path.stem} — unreadable ({exc.__class__.__name__})")
-    if not rows:
+            row = f"  {path.stem} — unreadable ({exc.__class__.__name__})"
+        groups.setdefault(_bracket_of(path), []).append(row)
+    if not groups:
         return [f"No decks found under `{workspace.deck_root()}`."]
-    return [_fence("\n".join(rows))]
+    out: list[str] = []
+    for bracket, rows in groups.items():
+        chunk: list[str] = []
+        for row in rows:
+            # +1 for the newline this row will add.
+            if chunk and sum(len(r) + 1 for r in chunk) + len(row) + 1 > BUDGET:
+                out.append(_fence(f"{bracket}\n" + "\n".join(chunk)))
+                chunk = []
+            chunk.append(row)
+        if chunk:
+            out.append(_fence(f"{bracket}\n" + "\n".join(chunk)))
+    return out
 
 
 def cmd_deck(arg: str) -> list[str]:

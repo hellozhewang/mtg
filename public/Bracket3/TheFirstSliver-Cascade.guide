@@ -1,0 +1,39 @@
+The First Sliver in BGRUW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+The First Sliver :: Cascade
+
+# Game Changers (3 of 3)
+Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
+Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
+Smothering Tithe :: Whenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token.
+
+# Removal you can point anywhere
+Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
+Assassin's Trophy :: Destroy target permanent an opponent controls. Its controller may search their library for a basic land card, put it…
+Harmonic Sliver :: All Slivers have "When this permanent enters, destroy target artifact or enchantment."
+Necrotic Sliver :: All Slivers have "{3}, Sacrifice this permanent: Destroy target permanent."
+
+# Card advantage
+Profane Tutor :: Suspend 2—{1}{B}
+Mystic Remora :: Cumulative upkeep {1}
+Scroll Rack :: {1}, {T}: Exile any number of cards from your hand face down. Put that many cards from the top of your library into…
+Homing Sliver :: Each Sliver card in each player's hand has slivercycling {3}.
+Guardian Project :: Whenever a nontoken creature you control enters, if it doesn't have the same name as another creature you control or…
+Kindred Discovery :: As this enchantment enters, choose a creature type.
+
+# Ramp
+Lotus Bloom :: Suspend 3—{0}
+Birds of Paradise :: {T}: Add one mana of any color.
+Delighted Halfling :: {T}: Add {C}.
+Sol Ring :: {T}: Add {C}{C}.
+Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
+Farseek :: Search your library for a Plains, Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle.
+
+# Protection
+Crystalline Sliver :: All Slivers have shroud.
+Heroic Intervention :: Permanents you control gain hexproof and indestructible until end of turn.
+Hibernation Sliver :: All Slivers have "Pay 2 life: Return this permanent to its owner's hand."
+Akroma's Will :: Choose one. If you control a commander as you cast this spell, you may choose both instead.
+Root Sliver :: This spell can't be countered.
+Sliver Hivelord :: Sliver creatures you control have indestructible.

@@ -1,0 +1,39 @@
+Marrow-Gnawer in B, built to Bracket 3.5 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+Marrow-Gnawer :: All Rats have fear.
+
+# Combos in the deck
+Thornbite Staff :: part of infinite untaps
+Ashnod's Altar :: part of infinite untaps
+
+# Game Changers (3 of 3)
+Demonic Tutor :: Search your library for a card, put that card into your hand, then shuffle.
+Necropotence :: Skip your draw step.
+Vampiric Tutor :: Search your library for a card, then shuffle and put that card on top. You lose 2 life.
+
+# Removal you can point anywhere
+Feed the Swarm :: Destroy target creature or enchantment an opponent controls. You lose life equal to that permanent's mana value.
+Gate to Phyrexia :: Sacrifice a creature: Destroy target artifact. Activate only during your upkeep and only once each turn.
+Deadly Rollick :: If you control a commander, you may cast this spell without paying its mana cost.
+
+# Card advantage
+Skullclamp :: Equipped creature gets +1/-1.
+Deadly Dispute :: As an additional cost to cast this spell, sacrifice an artifact or creature.
+Diabolic Intent :: As an additional cost to cast this spell, sacrifice a creature.
+Karumonix, the Rat King :: Toxic 1
+Beseech the Mirror :: Bargain
+Rat King, Pale Piper :: Whenever Rat King or another nontoken creature you control leaves the battlefield, create a 1/1 black Rat creature…
+
+# Ramp
+Culling the Weak :: As an additional cost to cast this spell, sacrifice a creature.
+Dark Ritual :: Add {B}{B}{B}.
+Sol Ring :: {T}: Add {C}{C}.
+Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
+Cabal Ritual :: Add {B}{B}{B}.
+
+# Protection
+Lightning Greaves :: Equipped creature has haste and shroud.
+Swiftfoot Boots :: Equipped creature has hexproof and haste.
+Mithril Coat :: When Mithril Coat enters, attach it to target legendary creature you control.
+Eldrazi Monument :: Creatures you control get +1/+1 and have flying and indestructible.

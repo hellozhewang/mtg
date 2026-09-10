@@ -1,0 +1,39 @@
+Kotis, the Fangkeeper in BGU, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+Kotis, the Fangkeeper :: Whenever Kotis deals combat damage to a player, exile the top X cards of their library, where X is the amount of…
+
+# Game Changers (3 of 3)
+Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
+Opposition Agent :: You control your opponents while they're searching their libraries.
+Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
+
+# Removal you can point anywhere
+Deathrite Shaman :: {T}: Exile target land card from a graveyard. Add one mana of any color.
+Assassin's Trophy :: Destroy target permanent an opponent controls. Its controller may search their library for a basic land card, put it…
+Reality Shift :: Exile target creature. Its controller manifests the top card of their library.
+Manglehorn :: When this creature enters, you may destroy target artifact.
+Deadly Rollick :: If you control a commander, you may cast this spell without paying its mana cost.
+
+# Card advantage
+Combat Research :: Enchant creature
+Mystic Remora :: Cumulative upkeep {1}
+Veil of Summer :: Draw a card if an opponent has cast a blue or black spell this turn. Spells you control can't be countered this turn.…
+Buster Sword :: Equipped creature gets +3/+2.
+Toski, Bearer of Secrets :: This spell can't be countered.
+
+# Ramp
+An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
+Birds of Paradise :: {T}: Add one mana of any color.
+Delighted Halfling :: {T}: Add {C}.
+Sol Ring :: {T}: Add {C}{C}.
+Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
+Farseek :: Search your library for a Plains, Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle.
+
+# Protection
+Dragonfire Blade :: Equipped creature gets +2/+2 and has hexproof from monocolored.
+Legolas's Quick Reflexes :: Split second
+Rancor :: Enchant creature
+Heroic Intervention :: Permanents you control gain hexproof and indestructible until end of turn.
+Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
+Overprotect :: Target creature you control gets +3/+3 and gains trample, hexproof, and indestructible until end of turn.

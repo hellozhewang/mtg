@@ -77,6 +77,7 @@ from urllib.parse import urlsplit
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import deckfile
+import deckguide
 from deckmeta import DeckAuthorStore
 import frontend
 import toollog
@@ -270,6 +271,13 @@ class DeckInfo:
         self.deck = deckfile.parse(path)
         self.cards, self.missing = q.cards(self.deck.names)
         self.raw = path.read_text(encoding="utf-8")
+        self.guide = deckguide.load(path)
+        # A guide may name a card the deck does not run — a card it beat, or one
+        # you would side toward. Resolve those too or their rows render imageless.
+        extra = [n for n in deckguide.card_names(self.guide) if n not in self.cards]
+        if extra:
+            found, _missing = q.cards(extra)
+            self.cards = {**self.cards, **found}
 
         cmd = self.cards.get(self.deck.commander)
         self.commander = self.deck.commander
@@ -398,6 +406,52 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
         MAIN=index.render(COUNT=len(decks), SECTIONS="".join(sections))))
 
 
+def render_guide(page: frontend.Template, d: "DeckInfo",
+                 mana: "Mana", up: str) -> tuple[str, str]:
+    """(guide article, guide button). Empty strings when the deck has no guide.
+
+    Returning the button alongside the article keeps the two from drifting: a
+    page can never show a Guide tab with nothing behind it, or a guide nobody can
+    reach.
+    """
+    if not d.guide:
+        return "", ""
+    out = []
+    for title, rows in d.guide:
+        body = []
+        for name, note in rows:
+            if not name:
+                body.append(page.part("guide-prose").render(TEXT=e(note)))
+                continue
+            card = d.cards.get(name, {})
+            uris = art_sets(card)
+            data = img = ""
+            if uris:
+                thumb = f"{up}img/{e(image_file(card, 0, THUMB, uris[0][THUMB]))}"
+                full = e(uris[0].get(FULL, ""))
+                # Small by choice: the guide is prose you read, and the card is
+                # there to identify what the sentence is about, not to be read
+                # itself. Click zooms it to full size. srcset still offers the
+                # 488px `normal` so a 2x display gets a sharp 88px rather than an
+                # upscaled thumbnail.
+                srcset = f' srcset="{thumb} 146w, {full} 488w" sizes="88px"' if full else ""
+                img = (f'<img class="gthumb" src="{thumb}"{srcset} alt="{e(name)}"'
+                       f' loading="lazy" decoding="async" width="88" height="123">')
+                # Same data-* the list view uses, so the existing hover preview
+                # and lightbox work here with no extra JavaScript.
+                data = f' data-img="{e(uris[0].get(FULL, ""))}"'
+                if len(uris) > 1:
+                    data += f' data-back="{e(uris[1].get(FULL, ""))}"'
+            body.append(page.part("guide-card").render(
+                NAME=e(card.get("name", name)), DATA=data, IMG=img,
+                COST=mana.render(mana_cost(card), up), NOTE=e(note)))
+        out.append(page.part("guide-section").render(
+            TITLE=page.part("guide-title").render(TEXT=e(title)) if title else "",
+            ROWS="".join(body)))
+    return (page.part("guide").render(SECTIONS="".join(out)),
+            page.part("guidebtn").render())
+
+
 def render_deck(tpl: dict[str, frontend.Template], d: DeckInfo,
                 decks: list[DeckInfo], repo: str, mana: Mana) -> str:
     page, layout = tpl["deck"], tpl["layout"]
@@ -418,6 +472,8 @@ def render_deck(tpl: dict[str, frontend.Template], d: DeckInfo,
         page.part("gcname").render(NAME=e(n)) for n in d.gcs)) if d.gcs else ""
     warn = page.part("warn").render(
         NAMES=e(", ".join(sorted(d.missing)))) if d.missing else ""
+
+    guide_html, guide_btn = render_guide(page, d, mana, up)
 
     peak = max((n for _, n in d.curve()), default=0) or 1
     bars = "".join(page.part("bar").render(
@@ -463,6 +519,7 @@ def render_deck(tpl: dict[str, frontend.Template], d: DeckInfo,
                       f"card{'s' if d.flex > 1 else ''} playable as a land"
                       if d.flex else f"{d.lands} lands"),
             MV=f"{d.avg_mv:.2f}", GC=e(d.gc_label),
+            GUIDE=guide_html, GUIDEBTN=guide_btn,
             GCLIST=gclist, WARN=warn, CURVE=bars,
             RAWLIST=e(d.raw),
             SECTIONS="".join(sections))))

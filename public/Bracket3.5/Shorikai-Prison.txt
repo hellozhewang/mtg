@@ -1,0 +1,96 @@
+1 Shorikai, Genesis Engine
+1 Adarkar Wastes
+1 An Offer You Can't Refuse
+1 Ancient Den
+1 Arcane Laboratory
+1 Arcane Signet
+1 Aura of Silence
+1 Azorius Signet
+1 Bender's Waterskin
+1 Bilbo's Gambit
+1 Blind Obedience
+1 Chain of Vapor
+1 City of Brass
+1 Clever Concealment
+1 Command Tower
+1 Counterspell
+1 Crawlspace
+1 Cursed Totem
+1 Deserted Beach
+1 Dovin's Veto
+1 Eiganjo, Seat of the Empire
+1 Energy Field
+1 Exotic Orchard
+1 Fellwar Stone
+1 Flooded Strand
+1 Floodfarm Verge
+1 Fomori Vault
+1 Force of Negation
+1 Forcefield
+1 Gemstone Caverns
+1 Ghostly Prison
+1 Glacial Fortress
+1 Gleaming Bastion
+1 Grafdigger's Cage
+1 Greater Auramancy
+1 Hallowed Fountain
+1 Helm of Obedience
+1 Hengegate Pathway
+1 Humility
+1 Idyllic Tutor
+3 Island
+1 Karn, the Great Creator
+1 Knowledge Pool
+1 Liquimetal Torque
+1 Mana Confluence
+1 Mana Drain
+1 Manifold Key
+1 March of Otherworldly Light
+1 Marsh Flats
+1 Maze of Ith
+1 Meticulous Archive
+1 Minamo, School at Water's Edge
+1 Mind Stone
+1 Mindlock Orb
+1 Moat
+1 Monument to Endurance
+1 Mox Opal
+1 Mystic Gate
+1 Mystic Remora
+1 Narset, Parter of Veils
+1 Otawara, Soaring City
+1 Out of Time
+3 Plains
+1 Polluted Delta
+1 Prismatic Lens
+1 Propaganda
+1 Rest in Peace
+1 Rhystic Study
+1 Rule of Law
+1 Sea Gate Restoration
+1 Sea of Clouds
+1 Seachrome Coast
+1 Seat of the Synod
+1 Sensei's Divining Top
+1 Sink into Stupor
+1 Skycloud Expanse
+1 Sol Ring
+1 Spire of Industry
+1 Supreme Verdict
+1 Swan Song
+1 Swords to Plowshares
+1 Talisman of Progress
+1 Teferi's Puzzle Box
+1 Teferi, Time Raveler
+1 Tezzeret the Seeker
+1 Thought Vessel
+1 Torpor Orb
+1 Trinisphere
+1 Tundra
+1 Unstoppable Plan
+1 Unwinding Clock
+1 Voltaic Key
+1 Web of Inertia
+1 Whir of Invention
+1 Windswept Heath
+1 Witch Enchanter

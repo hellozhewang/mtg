@@ -1,0 +1,38 @@
+Megatron, Tyrant in BRW, built to Bracket 3.5 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+Megatron, Tyrant :: the deck is named for it
+
+# Game Changers (3 of 3)
+Demonic Tutor :: Search your library for a card, put that card into your hand, then shuffle.
+Enlightened Tutor :: Search your library for an artifact or enchantment card, reveal it, then shuffle and put that card on top.
+The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
+
+# Card advantage
+Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
+Faithless Looting :: Draw two cards, then discard two cards.
+Combustible Gearhulk :: When this creature enters, target opponent may have you draw three cards. If the player doesn't, you mill three…
+Imskir Iron-Eater :: Affinity for artifacts
+
+# Ramp
+Mox Opal :: Metalcraft — {T}: Add one mana of any color. Activate only if you control three or more artifacts.
+Sol Ring :: {T}: Add {C}{C}.
+Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
+Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
+Talisman of Conviction :: {T}: Add {C}.
+Talisman of Hierarchy :: {T}: Add {C}.
+
+# Protection
+Boros Charm :: Choose one —
+Lightning Greaves :: Equipped creature has haste and shroud.
+Solphim, Mayhem Dominus :: If a source you control would deal noncombat damage to an opponent or a permanent an opponent controls, it deals…
+Spine of Ish Sah :: When this artifact enters, destroy target permanent.
+Krang, Utrom Warlord :: Other artifact creatures you control have flying, trample, indestructible, and haste.
+
+# Recursion
+Goblin Engineer :: When this creature enters, you may search your library for an artifact card, put it into your graveyard, then shuffle.
+Persist :: Return target nonlegendary creature card from your graveyard to the battlefield with a -1/-1 counter on it.
+Trash for Treasure :: As an additional cost to cast this spell, sacrifice an artifact.
+Daretti, Scrap Savant :: +2: Discard up to two cards, then draw that many cards.
+Mishra, Tamer of Mak Fawa :: Permanents you control have "Ward—Sacrifice a permanent."
+Wake the Past :: Return all artifact cards from your graveyard to the battlefield. They gain haste until end of turn.

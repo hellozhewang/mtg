@@ -1,0 +1,40 @@
+Gríma, Saruman's Footman in BU, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+Gríma, Saruman's Footman :: Gríma can't be blocked.
+
+# Game Changers (3 of 3)
+Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
+Opposition Agent :: You control your opponents while they're searching their libraries.
+Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
+
+# Removal you can point anywhere
+Pongify :: Destroy target creature. It can't be regenerated. Its controller creates a 3/3 green Ape creature token.
+Feed the Swarm :: Destroy target creature or enchantment an opponent controls. You lose life equal to that permanent's mana value.
+Reality Shift :: Exile target creature. Its controller manifests the top card of their library.
+Withering Torment :: Destroy target creature or enchantment. You lose 2 life.
+Deadly Rollick :: If you control a commander, you may cast this spell without paying its mana cost.
+
+# Card advantage
+Mystic Remora :: Cumulative upkeep {1}
+Arcane Denial :: Counter target spell. Its controller may draw up to two cards at the beginning of the next turn's upkeep.
+Baleful Strix :: When this creature enters, draw a card.
+Faerie Mastermind :: Whenever an opponent draws their second card each turn, you draw a card.
+Mind Stone :: {T}: Add {C}.
+Buster Sword :: Equipped creature gets +3/+2.
+
+# Ramp
+An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
+Sol Ring :: {T}: Add {C}{C}.
+Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
+Dimir Signet :: {1}, {T}: Add {U}{B}.
+Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
+Talisman of Dominance :: {T}: Add {C}.
+
+# Protection
+Octopus Form :: Target creature you control gets +1/+1 and gains hexproof until end of turn. Untap it.
+Counterspell :: Counter target spell.
+Lightning Greaves :: Equipped creature has haste and shroud.
+Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
+Memory Lapse :: Counter target spell. If that spell is countered this way, put it on top of its owner's library instead of into that…
+Swiftfoot Boots :: Equipped creature has hexproof and haste.

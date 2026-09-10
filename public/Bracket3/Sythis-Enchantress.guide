@@ -1,0 +1,40 @@
+Sythis, Harvest's Hand in GW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+Sythis, Harvest's Hand :: Whenever you cast an enchantment spell, you gain 1 life and draw a card.
+
+# Game Changers (3 of 3)
+Aura Shards :: Whenever a creature you control enters, you may destroy target artifact or enchantment.
+Serra's Sanctum :: {T}: Add {W} for each enchantment you control.
+Smothering Tithe :: Whenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token.
+
+# Removal you can point anywhere
+Path to Exile :: Exile target creature. Its controller may search their library for a basic land card, put that card onto the…
+Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
+Aura of Silence :: Artifact and enchantment spells your opponents cast cost {2} more to cast.
+Beast Within :: Destroy target permanent. Its controller creates a 3/3 green Beast creature token.
+Generous Gift :: Destroy target permanent. Its controller creates a 3/3 green Elephant creature token.
+Karmic Justice :: Whenever a spell or ability an opponent controls destroys a noncreature permanent you control, you may destroy target…
+
+# Card advantage
+Abundant Growth :: Enchant land
+Land Tax :: At the beginning of your upkeep, if an opponent controls more lands than you, you may search your library for up to…
+Weathered Wayfarer :: {W}, {T}: Search your library for a land card, reveal it, put it into your hand, then shuffle. Activate only if an…
+Argothian Enchantress :: Whenever you cast an enchantment spell, draw a card.
+Femeref Enchantress :: Whenever an enchantment is put into a graveyard from the battlefield, draw a card.
+Kenrith's Transformation :: Enchant creature
+
+# Ramp
+Sol Ring :: {T}: Add {C}{C}.
+Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
+Farseek :: Search your library for a Plains, Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle.
+Sanctum Weaver :: {T}: Add X mana of any one color, where X is the number of enchantments you control.
+Talisman of Unity :: {T}: Add {C}.
+
+# Protection
+Destiny Spinner :: Creature and enchantment spells you control can't be countered.
+Greater Auramancy :: Other enchantments you control have shroud.
+Lightning Greaves :: Equipped creature has haste and shroud.
+Sterling Grove :: Other enchantments you control have shroud.
+Solitary Confinement :: At the beginning of your upkeep, sacrifice this enchantment unless you discard a card.
+Akroma's Will :: Choose one. If you control a commander as you cast this spell, you may choose both instead.

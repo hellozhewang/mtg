@@ -301,6 +301,40 @@ Same commander is a match; nothing else is. A different legend in the same
 colours, or another deck aiming at the same archetype, is not a duplicate —
 build it without asking.
 
+## The manabase: prefer dual lands over basics
+
+**In a multicolour deck, a dual land beats a basic almost every time.** Default to
+duals and keep only as many basics as the deck actually needs. A two-colour deck
+wanting `{B}{B}` and `{R}{R}{R}` on curve cannot afford a manabase that is half
+Mountains and half Swamps — it will have the wrong half.
+
+What counts as a dual here is any land producing two or more of the deck's
+colours: the original duals, shocklands, painlands, fastlands, checklands,
+filter lands, slowlands, surveil lands, verges, bounce lands, and the triomes and
+tri-lands for three or more colours.
+
+Find them with the tools rather than from memory — new cycles are printed
+constantly:
+
+    python3 ../scripts/find_cards.py "t:land produces:wu -produces:wubrg" --limit 40
+
+Swap `wu` for the pair you need. `-produces:wubrg` filters out Command Tower and
+the other any-colour lands, which are fine to run but are not what this is about.
+Check the result's colour identity fits: a triome is only legal if all three of
+its colours are in the deck.
+
+**Keep basics for a reason, not by default.** The reasons that count:
+
+  * cards that search for a *basic* specifically — Cultivate, Kodama's Reach,
+    Rampant Growth, Prismatic Vista. Two targets each is plenty;
+  * Blood Moon, Back to Basics, Ruination and Magus of the Moon on the other
+    side of the table, though none of those are legal below Bracket 4;
+  * a deck of your own that punishes nonbasics, such as Burning Earth.
+
+Note that shocklands and the original duals carry basic land TYPES, so fetchlands
+and cards reading "search for a Forest card" still find them. That is what makes
+cutting basics safe.
+
 ## Building or tuning a deck, step by step
 
 1. **Checked, and no file for this commander?** (That check comes first — see

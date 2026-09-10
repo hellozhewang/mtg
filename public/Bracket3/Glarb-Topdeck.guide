@@ -1,0 +1,40 @@
+Glarb, Calamity's Augur in BGU, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+Glarb, Calamity's Augur :: You may look at the top card of your library any time.
+
+# Game Changers (3 of 3)
+Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
+Field of the Dead :: This land enters tapped.
+Seedborn Muse :: Untap all permanents you control during each other player's untap step.
+
+# Removal you can point anywhere
+Deathrite Shaman :: {T}: Exile target land card from a graveyard. Add one mana of any color.
+Assassin's Trophy :: Destroy target permanent an opponent controls. Its controller may search their library for a basic land card, put it…
+Tear Asunder :: Kicker {1}{B}
+Deadly Rollick :: If you control a commander, you may cast this spell without paying its mana cost.
+Fangkeeper's Familiar :: When this creature enters, choose one —
+Snuff Out :: If you control a Swamp, you may pay 4 life rather than pay this spell's mana cost.
+
+# Card advantage
+Brainstorm :: Draw three cards, then put two cards from your hand on top of your library in any order.
+Mystic Remora :: Cumulative upkeep {1}
+Sensei's Divining Top :: {1}: Look at the top three cards of your library, then put them back in any order.
+Veil of Summer :: Draw a card if an opponent has cast a blue or black spell this turn. Spells you control can't be countered this turn.…
+Scroll Rack :: {1}, {T}: Exile any number of cards from your hand face down. Put that many cards from the top of your library into…
+Six :: Whenever Six attacks, mill three cards. You may put a land card from among them into your hand.
+
+# Ramp
+An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
+Birds of Paradise :: {T}: Add one mana of any color.
+Delighted Halfling :: {T}: Add {C}.
+Sol Ring :: {T}: Add {C}{C}.
+Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
+Tireless Provisioner :: Landfall — Whenever a land you control enters, create a Food token or a Treasure token.
+
+# Protection
+Legolas's Quick Reflexes :: Split second
+Counterspell :: Counter target spell.
+Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
+Transcendent Dragon :: When this creature enters, if you cast it, counter target spell. If that spell is countered this way, exile it…
+Koma, Cosmos Serpent :: This spell can't be countered.

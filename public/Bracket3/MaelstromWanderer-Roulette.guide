@@ -1,0 +1,36 @@
+Maelstrom Wanderer in GRU, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+Maelstrom Wanderer :: Creatures you control have haste.
+
+# Game Changers (3 of 3)
+Mana Vault :: This artifact doesn't untap during your untap step.
+Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
+The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
+
+# Removal you can point anywhere
+Beast Within :: Destroy target permanent. Its controller creates a 3/3 green Beast creature token.
+Natural Reclamation :: Cascade
+Trumpeting Carnosaur :: When this creature enters, discover 5.
+
+# Card advantage
+Up the Beanstalk :: When this enchantment enters and whenever you cast a spell with mana value 5 or greater, draw a card.
+Cultivate :: Search your library for up to two basic land cards, reveal those cards, put one onto the battlefield tapped and the…
+Kodama's Reach :: Search your library for up to two basic land cards, reveal those cards, put one onto the battlefield tapped and the…
+Kozilek's Unsealing :: Devoid
+Monstrous Vortex :: Whenever you cast a creature spell with power 5 or greater, discover X, where X is that spell's mana value.
+Genesis Ultimatum :: Look at the top five cards of your library. Put any number of permanent cards from among them onto the battlefield…
+
+# Ramp
+An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
+Sol Ring :: {T}: Add {C}{C}.
+Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
+Farseek :: Search your library for a Plains, Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle.
+Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
+Rampant Growth :: Search your library for a basic land card, put that card onto the battlefield tapped, then shuffle.
+
+# Protection
+Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
+Unexpected Results :: Shuffle your library, then reveal the top card. If it's a nonland card, you may cast it without paying its mana cost.…
+Etherium-Horn Sorcerer :: {1}{U}{R}: Return this creature to its owner's hand.
+Ulamog, the Ceaseless Hunger :: When you cast this spell, exile two target permanents.

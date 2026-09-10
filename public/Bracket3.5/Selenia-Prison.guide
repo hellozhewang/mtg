@@ -1,0 +1,45 @@
+Selenia, the Cursed Heart in BW, built to Bracket 3.5 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+Selenia, the Cursed Heart :: If you would gain life, you gain twice that much life instead.
+
+# Combos in the deck
+Exquisite Blood :: part of infinite drain
+Bloodthirsty Conqueror :: part of infinite drain
+Vito, Thorn of the Dusk Rose :: part of infinite drain
+
+# Game Changers (3 of 3)
+Demonic Tutor :: Search your library for a card, put that card into your hand, then shuffle.
+Necropotence :: Skip your draw step.
+Smothering Tithe :: Whenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token.
+
+# Removal you can point anywhere
+Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
+Ayli, Eternal Pilgrim :: {1}, Sacrifice another creature: You gain life equal to the sacrificed creature's toughness.
+Damn :: Destroy target creature. A creature destroyed this way can't be regenerated.
+Anguished Unmaking :: Exile target nonland permanent. You lose 3 life.
+Deadly Rollick :: If you control a commander, you may cast this spell without paying its mana cost.
+
+# Taxes and lock pieces
+Silence :: Your opponents can't cast spells this turn.
+Grand Abolisher :: During your turn, your opponents can't cast spells or activate abilities of artifacts, creatures, or enchantments.
+Archon of Emeria :: Each player can't cast more than one spell each turn.
+Ghostly Prison :: Creatures can't attack you unless their controller pays {2} for each creature they control that's attacking you.
+Rule of Law :: Each player can't cast more than one spell each turn.
+Moat :: Creatures without flying can't attack.
+
+# Card advantage
+Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
+Archivist of Oghma :: Whenever an opponent searches their library, you gain 1 life and draw a card.
+Diabolic Intent :: As an additional cost to cast this spell, sacrifice a creature.
+Gleaming Splendor :: Whenever an opponent draws their second card each turn, you create a Treasure token.
+Mind Stone :: {T}: Add {C}.
+Wishclaw Talisman :: This artifact enters with three wish counters on it.
+
+# Ramp
+Sol Ring :: {T}: Add {C}{C}.
+Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
+Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
+Orzhov Signet :: {1}, {T}: Add {W}{B}.
+Talisman of Hierarchy :: {T}: Add {C}.
+The Mind Stone :: {T}: Add {W}.

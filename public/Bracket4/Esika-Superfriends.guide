@@ -1,0 +1,51 @@
+Esika, God of the Tree in BGRUW, built to Bracket 4 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+Esika, God of the Tree :: the deck is named for it
+
+# Game Changers (15, uncapped)
+Chrome Mox :: Imprint — When this artifact enters, you may exile a nonartifact, nonland card from your hand.
+Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
+Demonic Tutor :: Search your library for a card, put that card into your hand, then shuffle.
+Enlightened Tutor :: Search your library for an artifact or enchantment card, reveal it, then shuffle and put that card on top.
+Farewell :: Choose one or more —
+Fierce Guardianship :: If you control a commander, you may cast this spell without paying its mana cost.
+Force of Will :: You may pay 1 life and exile a blue card from your hand rather than pay this spell's mana cost.
+Mana Vault :: This artifact doesn't untap during your untap step.
+Mox Diamond :: If this artifact would enter, you may discard a land card instead. If you do, put this artifact onto the battlefield.…
+Narset, Parter of Veils :: Each opponent can't draw more than one card each turn.
+Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
+Teferi's Protection :: Until your next turn, your life total can't change and you gain protection from everything. All permanents you…
+The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
+Vampiric Tutor :: Search your library for a card, then shuffle and put that card on top. You lose 2 life.
+Worldly Tutor :: Search your library for a creature card, reveal it, then shuffle and put the card on top.
+
+# Removal you can point anywhere
+Path to Exile :: Exile target creature. Its controller may search their library for a basic land card, put that card onto the…
+Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
+Anguished Unmaking :: Exile target nonland permanent. You lose 3 life.
+Nicol Bolas, Dragon-God :: Nicol Bolas has all loyalty abilities of all other planeswalkers on the battlefield.
+Teferi, Hero of Dominaria :: +1: Draw a card. At the beginning of the next end step, untap up to two lands.
+Garruk, Apex Predator :: +1: Destroy another target planeswalker.
+
+# Card advantage
+Mystic Remora :: Cumulative upkeep {1}
+Oath of Nissa :: When Oath of Nissa enters, look at the top three cards of your library. You may reveal a creature, land, or…
+Sensei's Divining Top :: {1}: Look at the top three cards of your library, then put them back in any order.
+Dawn's Truce :: Gift a card
+Teferi, Time Raveler :: Each opponent can cast spells only any time they could cast a sorcery.
+Wrenn and Realmbreaker :: Lands you control have "{T}: Add one mana of any color."
+
+# Ramp
+Mox Amber :: {T}: Add one mana of any color among legendary creatures and planeswalkers you control.
+An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
+Sol Ring :: {T}: Add {C}{C}.
+Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
+Farseek :: Search your library for a Plains, Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle.
+Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
+
+# Protection
+Final Showdown :: Spree
+Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
+Jace, the Mind Sculptor :: +2: Look at the top card of target player's library. You may put that card on the bottom of that player's library.
+Chandra, Awakened Inferno :: This spell can't be countered.

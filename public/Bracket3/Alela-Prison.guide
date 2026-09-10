@@ -1,0 +1,46 @@
+Alela, Artful Provocateur in BUW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+Alela, Artful Provocateur :: Other creatures you control with flying get +1/+0.
+
+# Game Changers (3 of 3)
+Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
+Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
+Smothering Tithe :: Whenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token.
+
+# Removal you can point anywhere
+Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
+Damn :: Destroy target creature. A creature destroyed this way can't be regenerated.
+Seal of Cleansing :: Sacrifice this enchantment: Destroy target artifact or enchantment.
+Aura of Silence :: Artifact and enchantment spells your opponents cast cost {2} more to cast.
+
+# Taxes and lock pieces
+Conqueror's Flail :: Equipped creature gets +1/+1 for each color among permanents you control.
+Cursed Totem :: Activated abilities of creatures can't be activated.
+Disruptor Flute :: As this artifact enters, choose a card name.
+Propaganda :: Creatures can't attack you unless their controller pays {2} for each creature they control that's attacking you.
+Moat :: Creatures without flying can't attack.
+
+# Card advantage
+Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
+Mystic Remora :: Cumulative upkeep {1}
+Sensei's Divining Top :: {1}: Look at the top three cards of your library, then put them back in any order.
+Skullclamp :: Equipped creature gets +1/-1.
+Soul-Guide Lantern :: When this artifact enters, exile target card from a graveyard.
+Arcane Denial :: Counter target spell. Its controller may draw up to two cards at the beginning of the next turn's upkeep.
+
+# Ramp
+Mox Opal :: Metalcraft — {T}: Add one mana of any color. Activate only if you control three or more artifacts.
+Sol Ring :: {T}: Add {C}{C}.
+Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
+Azorius Signet :: {1}, {T}: Add {W}{U}.
+Dimir Signet :: {1}, {T}: Add {U}{B}.
+Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
+
+# Protection
+Seal of Removal :: Sacrifice this enchantment: Return target creature to its owner's hand.
+Brilliant Wings :: Enchant creature you control
+Counterspell :: Counter target spell.
+Darksteel Mutation :: Enchant creature
+Dovin's Veto :: This spell can't be countered.
+Lightning Greaves :: Equipped creature has haste and shroud.

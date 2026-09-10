@@ -1,0 +1,43 @@
+Saruman, the White Hand in BRU, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+
+# The commander
+Saruman, the White Hand :: Whenever you cast a noncreature spell, amass Orcs X, where X is that spell's mana value.
+
+# Game Changers (3 of 3)
+Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
+Demonic Tutor :: Search your library for a card, put that card into your hand, then shuffle.
+Opposition Agent :: You control your opponents while they're searching their libraries.
+
+# Removal you can point anywhere
+Deathmark :: Destroy target green or white creature.
+Feed the Swarm :: Destroy target creature or enchantment an opponent controls. You lose life equal to that permanent's mana value.
+Reality Shift :: Exile target creature. Its controller manifests the top card of their library.
+Flame of Anor :: Choose one. If you control a Wizard as you cast this spell, you may choose two instead.
+
+# Sweepers
+Brotherhood's End :: Choose one —
+Perish :: Destroy all green creatures. They can't be regenerated.
+Virtue's Ruin :: Destroy all white creatures.
+
+# Card advantage
+Baral, Chief of Compliance :: Instant and sorcery spells you cast cost {1} less to cast.
+Impulse :: Look at the top four cards of your library. Put one of them into your hand and the rest on the bottom of your library…
+Merchant Scroll :: Search your library for a blue instant card, reveal that card, put it into your hand, then shuffle.
+Muddle the Mixture :: Counter target instant or sorcery spell.
+Dimir Machinations :: Look at the top three cards of target player's library. Exile any number of those cards, then put the rest back in…
+Grim Tutor :: Search your library for a card, put that card into your hand, then shuffle. You lose 3 life.
+
+# Ramp
+An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
+Dark Ritual :: Add {B}{B}{B}.
+Rite of Flame :: Add {R}{R}, then add {R} for each card named Rite of Flame in each graveyard.
+Imprisoned in the Moon :: Enchant creature, land, or planeswalker
+Seething Song :: Add {R}{R}{R}{R}{R}.
+
+# Protection
+Spell Snare :: Counter target spell with mana value 2.
+Wash Away :: Cleave {1}{U}{U}
+Counterspell :: Counter target spell.
+Lazotep Plating :: Amass Zombies 1.
+Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
+Mana Sculpt :: Counter target spell. If you control a Wizard, add an amount of {C} equal to the amount of mana spent to cast that…

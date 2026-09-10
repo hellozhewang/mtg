@@ -1,32 +1,82 @@
-The Capitoline Triad in colourless, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+A colourless artifact deck that plays a long game on purpose. The Capitoline Triad is a ten-mana 7/7 that gets cheaper for every historic card in your graveyard, and once it is out it converts that same graveyard into an EMBLEM: your creatures have base power and toughness 9/9. Emblems cannot be removed, countered, or wrathed away. Read the deck as "fill the yard, buy the emblem, then every 1/1 token you make for the rest of the game is a 9/9."
 
-# The commander
-The Capitoline Triad :: Those Who Came Before — This spell costs {1} less to cast for each historic card in your graveyard.
+# The commander and the emblem
+The Capitoline Triad :: costs {1} less per historic card in your graveyard, so a stocked yard turns a ten-drop into a four-drop. Then exile historic cards totalling thirty mana value for the emblem. Artifacts, legendaries and Sagas are all historic, and this deck is made of nothing else.
+Note the two uses of the graveyard compete. Cards you exile for the emblem are no longer discounting the commander, so cast her FIRST and buy the emblem afterwards.
+Metalwork Colossus :: mana value eleven. A single copy in the yard is a third of the emblem on its own, and it climbs back out of the graveyard for two artifacts whenever you would rather have the body.
+Ugin, the Ineffable :: colourless spells cost {2} less, which includes the commander on top of her own discount.
+Mishra's Workshop :: three mana for artifact spells, on turn one. The single fastest card in the deck.
+Sanctum of Ugin :: every colourless spell of mana value seven or more finds the next colourless creature. Chain your fatties into each other.
 
-# Game Changers (3 of 3)
-Field of the Dead :: This land enters tapped.
-Mishra's Workshop :: {T}: Add {C}{C}{C}. Spend this mana only to cast artifact spells.
-The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
+# Filling the graveyard
+Mesmeric Orb :: mills a card whenever ANY permanent untaps — including all of yours, every untap step. This is the engine that gets you to thirty.
+Unwinding Clock :: untaps your artifacts during every opponent's untap step. With Mesmeric Orb that is four untap steps a round instead of one, each one milling a card per artifact. Together they fill the graveyard faster than you could draw it.
+Perpetual Timepiece :: mill two at instant speed, and it shuffles the yard back if you are ever at risk of decking.
+Millikin :: mana and self-mill on the same tap, on a two-drop.
+Grinding Station :: untaps on every artifact that enters, so a token turn mills a pile.
+Codex Shredder :: a one-mana mill outlet that later buys back the best historic card you milled.
+The Warring Triad :: taps to mill and fix, and becomes a 5/5 flier once eight cards are down there.
+Currency Converter :: loots, and converts what you discarded into Treasures and 2/2 bodies later.
+Palantír of Orthanc :: they either give you a card or take the mill and the life loss. In a deck that WANTS to mill, both halves are upside.
+Sequestered Stash :: mills five and puts the artifact you need on top.
+Wondrous Crucible :: ward {2} on everything you own, plus two mill and a free spell off the graveyard every end step.
 
-# Removal you can point anywhere
-Null Elemental Blast :: Choose one —
-Kozilek's Command :: Choose two —
-Warping Wail :: Choose one —
-Ugin, the Ineffable :: Colorless spells you cast cost {2} less to cast.
-Meteor Golem :: When this creature enters, destroy target nonland permanent an opponent controls.
+# Why tokens, not titans
+The emblem sets BASE power and toughness. That is a colossal upgrade for a 1/1 Thopter and a downgrade for a 12/12 Golem. Once the emblem is out, your token makers are your win condition and your big creatures are just bodies.
+Stridehangar Automaton :: every artifact token you would create comes with a free Thopter attached. Under the emblem that is a free 9/9 flier on top of every other token effect in the deck.
+Threefold Thunderhulk :: Gnomes equal to its power on entry AND on every attack. Its power grows on artifacts you sacrifice, so the token count grows with it.
+Pentavus :: five Pentavites for {1} each, and it takes them back to reset. Five 9/9 fliers on demand.
+Myr Battlesphere :: four Myr immediately, and its attack trigger throws damage at the defending player on top.
+Hangarback Walker :: a mana sink that turns into a pile of flying tokens the moment it dies, wrath or no wrath.
+Thrumming Hivepool :: two Slivers every upkeep, and it hands them double strike and haste — a 9/9 double striker the turn it is made.
+Urza's Saga :: a Construct of its own, then it fetches Skullclamp, Sol Ring or Mox Opal.
+Mirrex :: a token a turn out of the mana base, with toxic attached.
+Field of the Dead :: this mana base is almost all differently named utility lands, so the Zombies come steadily.
+Fountainport :: a Fish a turn, or a Treasure, or it eats a token for a card.
+Sliversmith :: turns dead cards in hand into bodies.
+Skullclamp :: this is the card to use BEFORE the emblem. A 1/1 token clamped is two cards; a 9/9 token clamped is just a 10/8. Draw your cards early, then stop.
 
-# Card advantage
-Currency Converter :: Whenever you discard a card, you may exile that card from your graveyard.
-Expedition Map :: {2}, {T}, Sacrifice this artifact: Search your library for a land card, reveal it, put it into your hand, then…
-Skullclamp :: Equipped creature gets +1/-1.
-Collector's Vault :: {2}, {T}: Draw a card, then discard a card. Create a Treasure token.
-Mask of Memory :: Whenever equipped creature deals combat damage to a player, you may draw two cards. If you do, discard a card.
-Mind Stone :: {T}: Add {C}.
+# Making the 9/9s unanswerable
+Krang, Utrom Warlord :: gives every other artifact creature flying, trample, indestructible and haste. A board of 9/9 indestructible flying hasty tokens is not a threat, it is a concession.
+Akroma's Memorial :: the same job for all your creatures, plus first strike and protection from black and red, which blanks most of the format's removal.
+Cybermen Squadron :: myriad on every nonlegendary artifact creature. Each 9/9 attacks one player and copies itself at the other two.
+Forsaken Monument :: +2/+2 for colourless creatures, so the emblem's 9/9s attack as 11/11s, and it doubles your {C} at the same time.
+Rogue's Passage :: for the one turn a single unblockable creature is exactly lethal.
+Altar of Dementia :: the other way to win. Sacrifice a 9/9 to mill nine; on a wide emblem board this decks a player from a full library in one turn, and it dodges every combat-based answer.
 
-# Ramp
-Everflowing Chalice :: Multikicker {2}
-Mox Opal :: Metalcraft — {T}: Add one mana of any color. Activate only if you control three or more artifacts.
-Sol Ring :: {T}: Add {C}{C}.
-Millikin :: {T}, Mill a card: Add {C}.
-Ornithopter of Paradise :: {T}: Add one mana of any color.
-Thought Vessel :: You have no maximum hand size.
+# Colourless is a colour advantage
+All Is Dust :: every permanent you control is colourless. This is a one-sided board wipe that leaves your entire team standing.
+Ugin, Eye of the Storms :: exiles a coloured permanent when it lands and again on EVERY colourless spell you cast — which is all of them. Repeatable, unconditional exile.
+Ugin, the Ineffable :: minus three destroys any coloured permanent, and the plus makes a body while hiding a card.
+Warping Wail :: exiles a small creature, counters a sorcery, or makes a Scion. One mana of interaction in a colourless deck.
+Null Elemental Blast :: one mana to counter or destroy anything multicoloured, which in Commander is usually the commander.
+Eldritch Immunity :: protection from every colour, overloadable for the whole team. It beats a targeted removal spell or an entire wrath.
+Kozilek, the Great Distortion :: refills your hand to seven on cast, then turns dead cards in that hand into hard counterspells.
+Kozilek's Command :: two modes from four, at instant speed. Scions, cards, an exile, or graveyard hate.
+Meteor Golem :: destroys any nonland permanent, and it is an artifact creature so every discount in the deck applies.
+Cityscape Leveler :: destroys a nonland permanent on cast and on every attack.
+Portal to Phyrexia :: three creatures gone from every opponent, then a reanimation every upkeep — including out of THEIR graveyards.
+Blast Zone :: a sweeper aimed at exactly the mana value that is beating you.
+Scavenger Grounds :: your graveyard is spent once the emblem is bought, so exiling all graveyards afterwards costs you nothing.
+
+# Mana
+Urza's Mine :: the tron lands assemble surprisingly often here because Expedition Map and Sanctum of Ugin dig for the missing piece.
+Urza's Power Plant :: seven mana from three lands is what casts a ten-drop on turn five.
+Urza's Tower :: the third piece. Do not fetch the one you already have.
+Urza's Workshop :: with metalcraft on, it adds {C} for each Urza's land, which stacks on top of tron.
+Expedition Map :: finds the missing tron piece, Mishra's Workshop, or Field of the Dead.
+Thran Dynamo :: three mana from one card, and mana value four in the yard afterwards.
+Hedron Archive :: two mana, or two cards when you would rather have those.
+Everflowing Chalice :: scales, and it is a zero-drop for metalcraft on Mox Opal.
+Foundry Inspector :: every artifact costs one less, which in this deck is every card.
+Mycosynth Golem :: affinity on all your artifact creature spells. The big golems start costing two or three.
+Liberator, Urza's Battlethopter :: everything colourless gains flash. Deploy at the end of their turn and untap with mana up.
+Mystic Forge :: cast artifacts and colourless spells straight off the top of your library.
+Ugin's Labyrinth :: two mana from a land, at the cost of parking a fatty in exile until you want it back.
+Kuldotha Forgemaster :: three artifacts — tokens count — turns into any artifact in the deck, onto the battlefield.
+
+# What to keep in an opening hand
+Keep mana. This deck's failure case is a hand of eight-drops and four lands, and its best draws are Sol Ring or Mishra's Workshop into a rock into a self-mill piece.
+Mesmeric Orb :: prioritise it over almost anything else in the early turns. Every turn it is not out is a turn the emblem is further away.
+The Capitoline Triad :: do not hard-cast her for ten. Wait until the graveyard has discounted her to something you can pay while holding up Warping Wail or Null Elemental Blast, then buy the emblem the following turn.
+Buy the emblem the turn you can also protect or deploy. It is permanent, so there is no rush to cash it in on an empty board — but the moment you have any token maker down, it wins the game on the spot.

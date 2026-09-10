@@ -1,49 +1,70 @@
-Anafenza, the Foremost in BGW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+A creature deck that wins by being the only person allowed to play Magic. Anafenza's second ability is the one that decides games: creature cards headed for an opponent's graveyard from ANYWHERE get exiled instead — milled, discarded, countered, wrathed. Against reanimator and graveyard value decks she is not hate, she is a hard lock, and she does it while attacking for four.
 
 # The commander
-Anafenza, the Foremost :: Whenever Anafenza attacks, put a +1/+1 counter on another target tapped creature you control.
+Anafenza, the Foremost :: a 4/4 for three that exiles every creature card an opponent would put in a graveyard, from any zone. Their Entomb targets vanish, their looting does nothing, and the creature you kill never comes back. Play her early even when she is not "needed" — the exile is retroactive protection.
+Rest in Peace :: the symmetrical version, for the graveyards Anafenza does not cover — lands, instants, flashback, Underworld Breach. Your own plan never uses your graveyard, so the cost is nothing.
+Kunoros, Hound of Athreos :: nothing is cast from graveyards and no abilities are activated from them, plus a 3/3 vigilance deathtouch lifelink body that blocks anything.
+Dauthi Voidwalker :: unblockable, exiles what they would bury, and lets you cast one of the exiled cards for free. He also carries Shadowspear well.
+Talon Gates of Madara :: a land that exiles a creature for four turns. Free interaction out of the mana base, and it dodges the "no removal in hand" hands.
 
-# Game Changers (3 of 3)
-Aura Shards :: Whenever a creature you control enters, you may destroy target artifact or enchantment.
-Orcish Bowmasters :: When this creature enters and whenever an opponent draws a card except the first one they draw in each of their draw…
-Teferi's Protection :: Until your next turn, your life total can't change and you gain protection from everything. All permanents you…
+# The bears that tax them
+Thalia, Heretic Cathar :: their creatures and nonbasic lands enter tapped. It slows every ramp and blink deck at the table by a full turn and blanks flash blockers.
+Gaddock Teeg :: no noncreature spell with mana value 4 or more, and no noncreature X spells at all. That is most wraths, most big draw spells and most of the format's finishers.
+Linvala, Keeper of Silence :: opponents' creatures have no activated abilities. Mana dorks, sac outlets, equip-and-swing decks all stop; yours keep working.
+Aven Mindcensor :: flash him in response to the fetch, the tutor or the Cultivate and they see four cards instead of a library.
+Alms Collector :: they draw exactly one extra card, and you draw with them. It shuts off wheels and Rhystic-style refills without costing you a card.
+Orcish Bowmasters :: punishes every draw engine the table has, and the Orc Army grows all game.
+Hallowed Moonlight :: the instant-speed answer to a reanimation, a token swarm or a blink turn — and the creatures it catches are exiled, not returned.
+Solemnity :: for the counter decks — energy, poison, suspend, Dark Depths, planeswalkers that tick up. Be aware it also blanks Anafenza's own attack trigger, so hold it until the +1/+1 counters matter less than what they are doing.
 
-# Removal you can point anywhere
-Path to Exile :: Exile target creature. Its controller may search their library for a basic land card, put that card onto the…
-Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
-Abrupt Decay :: This spell can't be countered.
-Assassin's Trophy :: Destroy target permanent an opponent controls. Its controller may search their library for a basic land card, put it…
-Damn :: Destroy target creature. A creature destroyed this way can't be regenerated.
-Anguished Unmaking :: Exile target nonland permanent. You lose 3 life.
+# Protecting your own turn
+Grand Abolisher :: opponents cannot cast spells or activate abilities during your turn. This is how a fair creature deck resolves its Craterhoof.
+Voice of Victory :: the redundant copy on a body that also makes a token every combat.
+Sigarda, Font of Blessings :: your other legendary creatures get hexproof and cannot be sacrificed — and this deck is unusually legendary-dense, so it covers most of the board.
+Flowering of the White Tree :: an anthem plus ward for that same legendary board, which turns spot removal into a mana tax.
+Teferi's Protection :: the reset button. Phase out through a wrath, a combo kill or a Cyclonic Rift.
+Heroic Intervention :: cheaper insurance against the wrath you can see coming.
+Veil of Summer :: one mana to beat a counterspell, a targeted removal spell or a discard spell, and it draws.
+Guardian of Faith :: phases your board out at instant speed and leaves a 3/3 behind.
+Reprieve :: not a counterspell, so it works under Teeg — the spell goes back to hand and they have to find the mana again.
 
-# Taxes and lock pieces
-Grand Abolisher :: During your turn, your opponents can't cast spells or activate abilities of artifacts, creatures, or enchantments.
-Voice of Victory :: Mobilize 2
-Krosan Grip :: Split second
-Kunoros, Hound of Athreos :: Creature cards in graveyards can't enter the battlefield.
-Rhonas the Indomitable :: Rhonas can't attack or block unless you control another creature with power 4 or greater.
-Linvala, Keeper of Silence :: Activated abilities of creatures your opponents control can't be activated.
+# Answers you keep in reserve
+Swords to Plowshares :: one mana, exile, no conditions. With Anafenza on board the creature never reaches a graveyard anyway.
+Path to Exile :: same, and the land they get enters tapped under Thalia.
+Assassin's Trophy :: any permanent, two mana. The catch-all for the combo piece you did not expect.
+Anguished Unmaking :: instant-speed exile for anything nonland.
+Abrupt Decay :: uncounterable, and most of the format's problem permanents cost three or less.
+Krosan Grip :: split second, so it answers the thing they were going to protect in response.
+Aura Shards :: the ceiling. With a board of creatures, every single one that enters destroys an artifact or enchantment. It ends stax decks by itself.
+Toxic Deluge :: your creatures are cheap and theirs are not. Pay three, kill their board, keep most of yours.
+Damn :: a two-mana removal spell early and a wrath late, which is exactly the flexibility a hatebear deck wants.
+Nowhere to Run :: strips hexproof and ward first, then kills. The answer to the commander that says "can't be targeted".
+
+# The Elesh Norns
+Elesh Norn, Mother of Machines :: your enter-the-battlefield triggers happen twice and theirs do not happen at all. Aura Shards, Loran, Manglehorn and Craterhoof all double; their blink and value decks stop cold.
+Elesh Norn, Grand Cenobite :: a one-sided wrath that stays on the battlefield. Their board gets -2/-2, yours gets +2/+2, and your hatebears become real attackers.
+Loran of the Third Path :: an artifact or enchantment on the way in, twice with the other Norn.
+Manglehorn :: the same for artifacts, and the ones they keep enter tapped.
+
+# How you actually win
+Craterhoof Behemoth :: the standard ending. A board of bears that has been holding the table hostage is wide enough that Craterhoof is lethal to one player and usually two.
+God-Eternal Rhonas :: doubles the power of your other creatures and gives them deathtouch, which turns the same board into a kill without needing to go wide.
+Rhonas the Indomitable :: nearly unkillable, and the pump is a mana sink on a board that is already stalled.
+Ohran Frostfang :: everything you control has deathtouch and draws a card when it connects. Blocking becomes impossible and your attacks refuel your hand.
+Shadowspear :: trample and lifelink on the finisher, and it strips hexproof and indestructible from their blockers.
 
 # Card advantage
-Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
-Veil of Summer :: Draw a card if an opponent has cast a blue or black spell this turn. Spells you control can't be countered this turn.…
-Eladamri's Call :: Search your library for a creature card, reveal that card, put it into your hand, then shuffle.
-Hallowed Moonlight :: Until end of turn, if a creature would enter and it wasn't cast, exile it instead.
-Reprieve :: Return target spell to its owner's hand.
-Black Market Connections :: At the beginning of your first main phase, choose one or more —
+Tymna the Weaver :: your cheap evasive bears connect with different opponents, so she reliably draws two or three.
+Toski, Bearer of Secrets :: indestructible, must attack, draws for each creature that connects. He survives every wrath you cast yourself.
+Sylvan Library :: with this much cheap interaction, paying life for the extra cards is nearly always right.
+Beast Whisperer :: a card for each of the creature spells that make up most of the deck.
+Tocasia's Welcome :: the same trigger, on an enchantment removal cannot easily reach, and it only counts the cheap ones — which is what the deck is.
+Esper Sentinel :: a tax they usually pay in cards rather than mana on turn one.
+Black Market Connections :: three mana into a Treasure, a body and a card each turn. Costs life, but this deck ends games before that matters.
+Eladamri's Call :: instant speed, finds the exact bear the table is weak to. Usually Linvala, Teeg or Craterhoof.
 
-# Ramp
-Avacyn's Pilgrim :: {T}: Add {W}.
-Birds of Paradise :: {T}: Add one mana of any color.
-Delighted Halfling :: {T}: Add {C}.
-Elves of Deep Shadow :: {T}: Add {B}. This creature deals 1 damage to you.
-Llanowar Elves :: {T}: Add {G}.
-Sol Ring :: {T}: Add {C}{C}.
-
-# Protection
-Shadowspear :: Equipped creature gets +1/+1 and has trample and lifelink.
-Destiny Spinner :: Creature and enchantment spells you control can't be countered.
-Frenzied Baloth :: This spell can't be countered.
-Heroic Intervention :: Permanents you control gain hexproof and indestructible until end of turn.
-Nowhere to Run :: When this enchantment enters, target creature an opponent controls gets -3/-3 until end of turn.
-Sigarda, Font of Blessings :: Other permanents you control have hexproof.
+# What to keep in an opening hand
+Keep mana dorks and cheap bears over expensive haymakers. Delighted Halfling, Bloom Tender and the one-mana elves are what let you deploy two hate pieces in a turn, which is when the lock actually starts.
+Deploy the tax pieces in the order that hurts the table's fastest deck, not in mana order. Against combo, Grand Abolisher and Teeg come first; against a green ramp table, Thalia and Linvala; against graveyards, Anafenza and Rest in Peace.
+Anafenza, the Foremost :: cast her on turn three whenever you can. She is a 4/4 that starts a clock, and the exile clause is the kind of effect that is only worth anything if it is already on the battlefield when they try.
+Craterhoof Behemoth :: do not jam it into open mana. Grand Abolisher or Voice of Victory first, then the alpha strike — this deck has the pieces to make the last turn uninteractive.

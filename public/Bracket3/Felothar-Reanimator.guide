@@ -1,51 +1,82 @@
-Felothar the Steadfast in BGW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Walls attack here. Felothar makes every creature you control deal damage equal to its TOUGHNESS and lets defenders attack anyway, which turns a pile of 0/6 blockers into a lethal board. The second thing he does is quieter and just as important: his sacrifice ability draws cards equal to toughness and discards equal to POWER — so eating a 0/13 Tree of Perdition draws thirteen cards and discards nothing.
 
 # The commander
-Felothar the Steadfast :: Each creature you control assigns combat damage equal to its toughness rather than its power.
+Felothar the Steadfast :: toughness becomes damage, defenders can attack, and {3} plus a sacrifice turns any wall into a huge no-downside draw spell. Every 0-power creature in the deck is a free refill waiting to happen.
+Assault Formation :: the same damage-swap on a two-mana enchantment, so the plan survives Felothar being removed. It also unlocks individual defenders for {G}.
+Baldin, Century Herdmaster :: a third copy of the effect during your turn, and his attack trigger pumps toughness across the whole board by your hand size.
+The Walls of Ba Sing Se :: 0/30. That is thirty damage in one attack, and every other permanent you control is indestructible while it is out.
+Tree of Perdition :: 0/13 that attacks for thirteen, taps to swap an opponent's life total down to thirteen, and feeds Felothar for thirteen cards.
+Shield Sphere :: free, 0/6, and a perfect sacrifice target.
 
-# Game Changers (3 of 3)
-Drannith Magistrate :: Your opponents can't cast spells from anywhere other than their hands.
-Gaea's Cradle :: {T}: Add {G} for each creature you control.
-Seedborn Muse :: Untap all permanents you control during each other player's untap step.
+# Making the walls unblockable
+Sidar Kondo of Jamuraa :: opponents' creatures without flying or reach cannot block creatures with power 2 or less. Every wall in this deck has power ZERO, so the whole team walks past the ground.
+Behind the Scenes :: skulk — your creatures cannot be blocked by anything with greater power. At power zero, that is nearly everything.
+Ohran Frostfang :: deathtouch on attackers and a card for every one that connects. Blocking a 0/13 deathtoucher is not an option either.
+Akroma's Will :: with your commander out, take both halves. Double strike on a board of high-toughness attackers doubles a number that is already lethal.
+Surrak and Goreclaw :: trample for everyone, so the walls stop being chump-blocked, plus a counter and haste on every creature that arrives.
+Crashing Drawbridge :: haste for the team, which turns a reanimation spell into an attack the same turn.
 
-# Removal you can point anywhere
-Deathrite Shaman :: {T}: Exile target land card from a graveyard. Add one mana of any color.
-Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
-Assassin's Trophy :: Destroy target permanent an opponent controls. Its controller may search their library for a basic land card, put it…
-Anguished Unmaking :: Exile target nonland permanent. You lose 3 life.
+# The reanimation package, tuned to power
+Almost every recursion spell here caps on POWER, and your creatures have none. "Total power 10 or less" means "as many walls as you like".
+Nethroi, Apex of Death :: mutate returns any number of creatures with total power 10 or less. With a graveyard full of 0-power walls that is your entire graveyard, at once.
+Reunion of the House :: the same effect on a sorcery, with the same loophole.
+Smile at Death :: two creatures with power 2 or less back every upkeep, with counters on them.
+Reveillark :: two more when it leaves, and evoking it gets there immediately.
+Sun Titan :: any permanent with mana value 3 or less, on entry and on every attack.
+Victimize :: sacrifice one wall to bring back two better ones.
+Living Death :: your graveyard is full of cheap high-toughness bodies; theirs is not.
+Buried Alive :: puts the three exact creatures you want into the yard.
+Reanimate :: one mana, any graveyard.
+Animate Dead :: the second copy.
+Lurrus of the Dream-Den :: not a companion here — just a body that recasts a cheap permanent from the graveyard every turn.
+Six :: mills on attack and gives everything in your graveyard retrace, so a spare land buys back any nonland permanent.
 
-# Taxes and lock pieces
-Legolas's Quick Reflexes :: Split second
-Voice of Victory :: Mobilize 2
-Archon of Emeria :: Each player can't cast more than one spell each turn.
-Linvala, Keeper of Silence :: Activated abilities of creatures your opponents control can't be activated.
+# Mana out of the wall pile
+Overgrown Battlement :: green mana per defender. On a developed board this is four or five mana from one card.
+Axebane Guardian :: the same count, in any colours.
+Arbor Adherent :: taps for X equal to the greatest toughness among your OTHER creatures. With The Walls of Ba Sing Se out that is thirty mana of one colour.
+Wall of Roots :: mana without tapping, so it can still attack.
+Sylvan Caryatid :: hexproof fixing that also blocks forever.
+Birds of Paradise :: turn-one acceleration.
+Bloom Tender :: three colours off one tap in an Abzan board.
+Delighted Halfling :: uncounterable legendary spells, which covers Felothar himself.
+Deathrite Shaman :: mana, graveyard hate, drain and lifegain from one two-drop.
+Seedborn Muse :: untap everything on every opponent's turn — your mana walls, your blockers, and Felothar's tap ability.
+Formidable Speaker :: tutors a creature, and its untap ability resets Felothar or a mana wall.
 
-# Card advantage
-Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
-Veil of Summer :: Draw a card if an opponent has cast a blue or black spell this turn. Spells you control can't be countered this turn.…
-Eladamri's Call :: Search your library for a creature card, reveal that card, put it into your hand, then shuffle.
-Fauna Shaman :: {G}, {T}, Discard a creature card: Search your library for a creature card, reveal it, put it into your hand, then…
-Wall of Blossoms :: When this creature enters, draw a card.
-Wall of Omens :: When this creature enters, draw a card.
+# Cards that come with cards
+Wall of Blossoms :: 0/4 that replaces itself.
+Wall of Omens :: the white copy.
+Sylvan Library :: with this much life gain from Ikra Shidiqi, paying four life twice is cheap.
+Esper Sentinel :: taxes their first noncreature spell every turn.
+Eladamri's Call :: instant-speed tutor for whichever wall or hate bear the table needs.
+Fauna Shaman :: converts an unwanted creature into the right one, and fills the graveyard for the reanimation half.
+Ikra Shidiqi, the Usurper :: life equal to TOUGHNESS on every connection. With this board that is twenty or thirty life a turn.
 
-# Ramp
-Birds of Paradise :: {T}: Add one mana of any color.
-Delighted Halfling :: {T}: Add {C}.
-Sol Ring :: {T}: Add {C}{C}.
-Overgrown Battlement :: {T}: Add {G} for each creature you control with defender.
-Sylvan Caryatid :: {T}: Add one mana of any color.
-Wall of Roots :: Put a -0/-1 counter on this creature: Add {G}. Activate only once each turn.
+# Taxing them while you set up
+Archon of Emeria :: one spell per turn each, and their nonbasics enter tapped. A wall deck does not mind the symmetry; it is already playing one threat a turn.
+Drannith Magistrate :: no casting from graveyards, exile or the command zone. It shuts off commanders entirely.
+Thalia, Heretic Cathar :: everything of theirs arrives tapped, so no surprise blockers in front of your attack.
+Linvala, Keeper of Silence :: their creature abilities stop working; yours are mostly mana abilities on walls, which are unaffected by most hate anyway.
+Voice of Victory :: opponents cannot cast spells during your turn at all — cast it before the alpha strike.
+Aven Mindcensor :: flash, and it blanks a tutor or a fetch.
+Slaughter the Strong :: each player keeps creatures with total power 4 or less. Your entire board has power zero, so this is a completely one-sided wrath.
+Toxic Deluge :: pay a small X and their creatures die while your high-toughness walls shrug it off.
 
-# Protection
-Heroic Intervention :: Permanents you control gain hexproof and indestructible until end of turn.
-Weathered Sentinels :: This creature can attack players who attacked you during their last turn as though it didn't have defender.
-Akroma's Will :: Choose one. If you control a commander as you cast this spell, you may choose both instead.
-Shalai, Voice of Plenty :: You, planeswalkers you control, and other creatures you control have hexproof.
-The Walls of Ba Sing Se :: Other permanents you control have indestructible.
+# Removal and protection
+Swords to Plowshares :: one mana, exiles anything.
+Anguished Unmaking :: instant-speed exile for any nonland permanent.
+Assassin's Trophy :: two mana for literally any permanent they control.
+Dauthi Voidwalker :: unblockable, exiles what they would bury, and cashes in for a free cast of their best card.
+Shalai, Voice of Plenty :: hexproof for you and everything you control, and a mana sink that grows the board.
+Heroic Intervention :: hexproof and indestructible through a wrath.
+Veil of Summer :: one mana against blue and black, and it draws.
+Legolas's Quick Reflexes :: split second, so it resolves through anything. Untaps a creature and turns it into a removal spell.
+Tower Defense :: +0/+5 to the team is a +5 damage pump per creature under Felothar, at instant speed. This is a combat trick that ends games.
+Elesh Norn, Mother of Machines :: your enter triggers double — two Wall of Blossoms cards, two Sun Titan returns — and theirs stop happening entirely.
 
-# Recursion
-Nethroi, Apex of Death :: Mutate {4}{G/W}{B}{B}
-Reveillark :: When this creature leaves the battlefield, return up to two target creature cards with power 2 or less from your…
-Smile at Death :: At the beginning of your upkeep, return up to two target creature cards with power 2 or less from your graveyard to…
-Sun Titan :: Whenever this creature enters or attacks, you may return target permanent card with mana value 3 or less from your…
-Reunion of the House :: Return any number of target creature cards with total power 10 or less from your graveyard to the battlefield. Exile…
+# What to keep in an opening hand
+Keep a mana wall and a cheap body. Overgrown Battlement or Wall of Roots on turn two is what makes Felothar a turn-three play, and every wall you deploy early is a reanimation target later.
+Felothar the Steadfast :: he is the whole plan, so protect him. Shalai, Heroic Intervention or an untapped Veil of Summer matters more than one extra attacker.
+Sacrifice for value, not for tempo. Felothar's ability costs {3} and a tap — most turns the right target is whichever wall has the highest toughness and zero power, and the right time is your end step or in response to a wrath.
+The Walls of Ba Sing Se :: eight mana, but the mana walls get you there, and once it lands your board is indestructible and one attack is thirty damage.

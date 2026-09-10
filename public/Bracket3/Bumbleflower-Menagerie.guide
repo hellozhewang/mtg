@@ -1,38 +1,78 @@
-Ms. Bumbleflower in GUW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+The commander is a two-spells-a-turn engine with a bill attached. Every spell you cast hands an opponent a card — but it also grows a creature, gives it flying, and the SECOND resolution each turn draws you two. So the deck is built almost entirely out of cheap creatures and flash creatures, cast two at a time, every turn including everyone else's. The board goes wide, then goes airborne.
 
-# The commander
-Ms. Bumbleflower :: Whenever you cast a spell, target opponent draws a card. Put a +1/+1 counter on target creature. It gains flying…
+# The commander and the second-spell rule
+Ms. Bumbleflower :: cast a spell: an opponent draws, one of your creatures gets a permanent +1/+1 counter and temporary flying. Cast a second one the same turn and you draw two. Count to two every turn — that is the whole deck.
+Ledger Shredder :: connives on EVERY player's second spell, not just yours. The cards you are handing out with Bumbleflower push opponents into their own second spell, which turns her downside into your card selection.
+Harvestrite Host :: the same "second time this turn" clause on Rabbit enters. Two Rabbits in a turn is a card, and half the creature base is a Rabbit.
+Pollywog Prodigy :: draws off their cheap noncreature spells. Evolve keeps its power climbing, which widens what it draws from.
+Aerial Extortionist :: exiles a nonland permanent on entry and again on every hit, and draws whenever anyone casts from exile or a graveyard.
+Twenty-Toed Toad :: the sleeper win condition. It grows and draws every time you attack with two creatures, and it wins outright at twenty counters or twenty cards in hand — and Curiosity Crafter removes your maximum hand size to get there.
 
-# Game Changers (2 of 3)
-Ancient Tomb :: {T}: Add {C}{C}. This land deals 2 damage to you.
-Gaea's Cradle :: {T}: Add {G} for each creature you control.
+# Flash: casting your second spell on their turn
+Aven Interrupter :: flash, flies, exiles a spell on the stack outright, and taxes everything they try to cast back out of exile or the graveyard afterwards.
+Aven Mindcensor :: flash him in response to the fetch or the tutor. Four cards deep instead of a library.
+Whitemane Lion :: two mana at instant speed that rebuys any enter-the-battlefield creature and counts as a spell.
+Kutzil's Flanker :: flash, and all three modes are live — counters, life and scry, or exiling a graveyard deck's yard at the worst moment for them.
+Plumecreed Escort :: flash flier that saves your commander from removal.
+Skycoach Conductor :: flash flier that enters prepared, so it is two spells in one card — the creature now and a free blink later.
+Enduring Curiosity :: flash it in before combat and every connecting creature draws. It comes back as an enchantment when it dies, so removal does not really answer it.
+Studious First-Year :: a one-mana body that is also a Rampant Growth later, again splitting one card into two spells.
+Emeritus of Truce :: a body now and a Swords to Plowshares held in reserve, which is the cleanest removal in the colours.
 
-# Taxes and lock pieces
-Aven Interrupter :: When this creature enters, exile target spell. It becomes plotted.
-Kutzil, Malamet Exemplar :: Your opponents can't cast spells during your turn.
-Vryn Wingmare :: Noncreature spells cost {1} more to cast.
-Bast, Panther Goddess :: Bast can't attack or block unless you control three or more creatures.
+# Counters, and the payoff for having them
+Good-Fortune Unicorn :: a +1/+1 counter on every creature that enters. With this out, every token maker is also an anthem.
+Emiel the Blessed :: counters on entry for {G/W}, and a repeatable blink for every enter-the-battlefield creature in the deck. It is also the engine half of the Preston loop below.
+Kutzil, Malamet Exemplar :: opponents cannot cast spells during your turn — a Grand Abolisher on a body — and draws whenever creatures whose power exceeds their BASE power connect. Bumbleflower and the Unicorn are constantly making that true.
+Sovereign Okinec Ahau :: the same "bigger than base" trigger pointed at combat, snowballing counters onto the whole attack.
+Finneas, Ace Archer :: counters on every token and every Rabbit each attack, plus a card once the board reaches ten power. Two mana.
+Gavony Township :: the mana sink that keeps doing it when your hand is empty.
+Rigo, Streetwise Mentor :: draws for attacking with the small creatures the deck makes anyway, and enters with a shield counter so removal costs them two cards.
 
-# Card advantage
-Finneas, Ace Archer :: Whenever Finneas attacks, put a +1/+1 counter on each other creature you control that's a token or a Rabbit. Then if…
-Jacked Rabbit :: Ravenous
-Ledger Shredder :: Whenever a player casts their second spell each turn, this creature connives.
-Pollywog Prodigy :: Evolve
-The Goose Mother :: The Goose Mother enters with X +1/+1 counters on it.
-Thornvault Forager :: {T}: Add {G}.
+# Going wide
+Warren Warleader :: Offspring makes two of it, and every attack is either another attacking Rabbit or a team pump.
+Jacked Rabbit :: an X-cost body that makes tokens equal to its power on every attack.
+Brimaz, King of Oreskos :: a token when it attacks AND a token when it blocks, which makes it the best three-drop to hold the fort with.
+Ocelot Pride :: a Cat every end step you gained life, doubled once you have the city's blessing. Hinterland Sanctifier makes that condition true on every creature you play.
+Hinterland Sanctifier :: one life per creature entering. It looks like filler; it is what turns Ocelot Pride on every single turn and what gets Felidar Sovereign to forty.
+Preston, the Vanisher :: copies every nontoken creature that arrives WITHOUT being cast — so every Emiel blink, every Broodmoth return, every Jackdaw Savior reanimation makes an extra Illusion. Five Illusions exile any nonland permanent, which is this deck's answer to a problem it cannot attack.
+Prava of the Steel Legion :: your tokens are +1/+4 on your turn, which means the 1/1s attack as 2/5s and still survive blocking.
+Pollen-Shield Hare :: a permanent anthem for tokens on one half and a game-ending pump on the other.
 
-# Ramp
-Birds of Paradise :: {T}: Add one mana of any color.
-Gilded Goose :: When this creature enters, create a Food token.
-Poison Dart Frog :: {T}: Add one mana of any color.
-Claim Jumper :: When this creature enters, if an opponent controls more lands than you, you may search your library for a Plains card…
-Enduring Vitality :: Creatures you control have "{T}: Add one mana of any color."
-Arbor Adherent :: {T}: Add one mana of any color.
+# Making the board fly
+Luminous Broodmoth :: your ground creatures come back with flying when they die. Combined with a table full of ground blockers, this is how the stall breaks — and it is permanent, unlike Bumbleflower's until-end-of-turn flying.
+Jackdaw Savior :: every flier that dies reanimates something cheaper. With Broodmoth turning your dead ground creatures into fliers, the two of them recur each other all game.
+Curiosity Crafter :: a card for every token that connects, and no maximum hand size for the Toad plan.
+Mr. Foxglove :: draws you back up to whichever opponent is hoarding cards — which, since Bumbleflower has been feeding them, is usually a lot — or puts a creature down for free.
+Skyhunter Strike Force :: melee for the whole team while you control your commander, so a four-player attack is a +3/+3 anthem.
+Jazal Goldmane :: the mana sink that ends the game once the board is wide.
+Bast, Panther Goddess :: indestructible, and every attack pumps one creature by the size of your board.
 
-# Protection
-Selfless Savior :: Sacrifice this creature: Another target creature you control gains indestructible until end of turn.
-Plumecreed Escort :: When this creature enters, target creature you control gains hexproof until end of turn.
-Whitemane Lion :: When this creature enters, return a creature you control to its owner's hand.
-Dauntless Escort :: Sacrifice this creature: Creatures you control gain indestructible until end of turn.
-Prowling Serpopard :: This spell can't be countered.
-Toski, Bearer of Secrets :: This spell can't be countered.
+# Ramp and fixing
+Enduring Vitality :: every creature taps for any colour. On a wide board this is more mana than any rock in the format, and it comes back as an enchantment when it dies.
+Arbor Adherent :: taps for X equal to the greatest toughness among your OTHER creatures — Ms. Bumbleflower alone makes that five.
+Gaea's Cradle :: the same idea from the mana base.
+Three Tree City :: name Rabbit or Cat and it is a second Cradle.
+Birds of Paradise :: turn-one acceleration into the two-spell turns the commander wants.
+Gilded Goose :: mana now, and the Food is Thornvault Forager's fuel later.
+Poison Dart Frog :: fixes, and gives itself deathtouch to hold the ground while you set up.
+Traveling Chocobo :: doubles every land and Bird enters trigger you control, and this deck plays eleven Birds. Cast Clifftop Lookout with it out and you get two lands.
+
+# Protecting the engine
+Selfless Savior :: one mana, saves the commander from the first removal spell.
+Dauntless Escort :: saves the whole board from the first wrath.
+Spore Frog :: fogs the alpha strike that would otherwise kill you before the board is set.
+Prowling Serpopard :: your creature spells cannot be countered, and it cannot be countered itself.
+Phelia, Exuberant Shepherd :: flickers their blocker, their equipment or their enchantment out of the way each attack, and grows doing it.
+Qasali Pridemage :: artifact and enchantment removal stapled to a two-drop.
+Curious Farm Animals :: the same, on a one-drop that gains you three life for Felidar and Ocelot Pride.
+
+# The alternate ways to win
+Felidar Sovereign :: forty life is not a stretch in a deck with Hinterland Sanctifier, three lifelinkers and a board that gains on every creature. Win at your upkeep.
+Twenty-Toed Toad :: twenty cards in hand with Curiosity Crafter out, or twenty counters from repeated two-creature attacks.
+Both are real, but neither is the plan. The plan is a wide board with counters on it that Ms. Bumbleflower makes fly for a turn.
+
+# What to keep in an opening hand
+Keep cheap. Two one- or two-drops and three lands beats a hand with a five-drop in it, because the commander only pays out when you can deploy twice in a turn.
+Ms. Bumbleflower :: four mana, and she is not urgent. Every spell she sees hands an opponent a card, so casting her on an empty board with nothing to follow up is pure charity — get bodies down first, then cast her into a turn where you can immediately follow with a one-drop.
+Hold one flash creature whenever you can. It makes your second spell on THEIR turn, which is a free two cards you would not otherwise get.
+Preston, the Vanisher :: only good after Emiel, Broodmoth or Jackdaw Savior. On its own it does very little; sequenced behind any of them it takes over the game.

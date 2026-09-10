@@ -1,40 +1,74 @@
-Glarb, Calamity's Augur in BGU, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Glarb turns the top of your library into a second hand — but only for lands and for spells costing four or more. That restriction is why the deck is deliberately top-heavy, and why the surveil matters more than the deathtouch: you look, and if the top card is too cheap to cast off it, you bin it. Everything you bin then feeds a graveyard the deck is fully equipped to use.
 
 # The commander
-Glarb, Calamity's Augur :: You may look at the top card of your library any time.
+Glarb, Calamity's Augur :: three mana, deathtouch, permanent access to the top card, and lands plus mana-value-four-and-up spells can be cast straight off it. Tap to surveil 2 — that is how you fix a bad top card AND fill the yard, every single turn.
+Anything with mana value three or less on top of your library is dead. Surveil it away. This is the single most common mistake with this deck: leaving a Brainstorm on top and losing a whole turn of free casts.
+Bilbo, Thief in the Night :: spells cast from anywhere other than your hand cost {1} less, which is a discount on every single card you cast off the top. He also recasts an instant, sorcery or artifact from your graveyard on every attack.
+Planetarium of Wan Shi Tong :: whenever you scry OR surveil, look at the top card and cast it for FREE, once each turn. Glarb surveils every turn by himself, so this is a free spell per turn cycle, and it ignores the mana value floor entirely.
+Sensei's Divining Top :: sets the top three, and cashes itself in for a card when the top is bad.
+Scroll Rack :: swaps a hand of expensive cards you cannot cast for cards off the top — and then puts the expensive ones back on top where Glarb CAN cast them.
+Noxious Revival :: puts any card from any graveyard on top of your library. If it costs four or more, Glarb casts it immediately, at instant speed, for one green mana or two life.
 
-# Game Changers (3 of 3)
-Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
-Field of the Dead :: This land enters tapped.
-Seedborn Muse :: Untap all permanents you control during each other player's untap step.
+# Extra land drops, because lands are free off the top
+Exploration :: an extra land every turn, and Glarb lets you play them from the library, so it never runs out of fuel.
+Oracle of Mul Daya :: an extra land drop and lands from the top — redundant with Glarb, but it plays with the top card revealed, which turns on nothing bad and helps you plan.
+Icetill Explorer :: extra lands, lands from the GRAVEYARD, and it mills on every landfall.
+Aesi, Tyrant of Gyre Strait :: an extra land and a card for every land that enters.
+The Gitrog Monster :: an extra land, deathtouch on a 6/6, and a card for every land that hits your graveyard — which the surveil and mill effects do constantly.
+Overlord of the Hauntwoods :: cast it for its impending cost on turn three and it makes a land immediately, then again on every attack once it turns on.
+Tireless Provisioner :: a Treasure or Food on every landfall, which is how you pay for the eight-drops sitting on top of your library.
+Hedge Shredder :: every land card milled from your library goes straight onto the battlefield tapped. Combined with the surveil and mill package this is free ramp on someone else's turn.
+Six :: mills three on attack, keeps a land, and gives everything in your graveyard retrace.
+Teval, the Balanced Scale :: mills three, returns a land, and makes a 2/2 whenever anything leaves your graveyard — which under Muldrotha is every turn.
 
-# Removal you can point anywhere
-Deathrite Shaman :: {T}: Exile target land card from a graveyard. Add one mana of any color.
-Assassin's Trophy :: Destroy target permanent an opponent controls. Its controller may search their library for a basic land card, put it…
-Tear Asunder :: Kicker {1}{B}
-Deadly Rollick :: If you control a commander, you may cast this spell without paying its mana cost.
-Fangkeeper's Familiar :: When this creature enters, choose one —
-Snuff Out :: If you control a Swamp, you may pay 4 life rather than pay this spell's mana cost.
+# Using what you surveilled away
+Muldrotha, the Gravetide :: a land and one permanent of each type out of the graveyard, every turn. Everything Glarb binned is now a resource.
+Reanimate :: one mana for whatever big creature you surveilled into the yard on turn three.
+Animate Dead :: the second copy.
+Finale of Devastation :: searches the graveyard as well as the library, and at X of ten it is also the kill.
+Naga Fleshcrafter :: a copy of the best creature on the board, or renewed from the graveyard to turn your whole team into copies of your biggest threat.
+Disciple of Freyalise :: sacrifices a fatty for its power in cards and life. With Craterhoof or Titan of Industry that is seven cards.
+Deathrite Shaman :: mana, drain, lifegain and graveyard hate off one two-drop, and it eats the lands you keep milling.
+Endurance :: flash, reach, and it resets a graveyard deck's yard at instant speed. Free if you pitch a green card.
 
-# Card advantage
-Brainstorm :: Draw three cards, then put two cards from your hand on top of your library in any order.
-Mystic Remora :: Cumulative upkeep {1}
-Sensei's Divining Top :: {1}: Look at the top three cards of your library, then put them back in any order.
-Veil of Summer :: Draw a card if an opponent has cast a blue or black spell this turn. Spells you control can't be countered this turn.…
-Scroll Rack :: {1}, {T}: Exile any number of cards from your hand face down. Put that many cards from the top of your library into…
-Six :: Whenever Six attacks, mill three cards. You may put a land card from among them into your hand.
+# Interaction, mostly free
+Force of Negation :: exile a blue card to stop their combo on their turn.
+Force of Vigor :: exile a green card to destroy two artifacts or enchantments.
+Misdirection :: free, and it turns the removal spell aimed at Glarb into removal aimed at them.
+Subtlety :: free, and it answers the creature or planeswalker that resolving would end the game.
+Deadly Rollick :: free with your commander out.
+Snuff Out :: four life instead of four mana.
+Mana Drain :: counter, then spend the mana on the eight-drop sitting on top of your library.
+Counterspell :: the clean two-mana answer.
+Swan Song :: one mana for a wrath or a combo piece.
+An Offer You Can't Refuse :: the same for noncreature spells.
+Assassin's Trophy :: two mana for any permanent they control.
+Tear Asunder :: an artifact or enchantment for two, or any nonland permanent when kicked.
+Toxic Deluge :: scales past indestructible, and your best creatures are usually in the graveyard anyway.
+Cyclonic Rift :: overloaded, it is the clear for a lethal attack.
+Fangkeeper's Familiar :: flash, and all three modes are live — surveil to set the top, kill an enchantment, or counter a creature spell.
+Legolas's Quick Reflexes :: split second, so it protects Glarb through anything.
 
-# Ramp
-An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
-Birds of Paradise :: {T}: Add one mana of any color.
-Delighted Halfling :: {T}: Add {C}.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Tireless Provisioner :: Landfall — Whenever a land you control enters, create a Food token or a Treasure token.
+# Card flow
+Mystic Remora :: the first four turns it draws more than anything else here.
+Sylvan Library :: with this much surveil you always know what you are paying four life for.
+Brainstorm :: with Glarb out, the two cards you put back are castable if they cost four or more — this is a real card, not filler.
+Dig Through Time :: delve is trivial in a deck that surveils twice a turn.
+Lórien Revealed :: three cards, or an Island when you need the land.
+Talion, the Kindly Lord :: pick the number the table is built around and drain them for it every time.
+Nulldrifter :: two cards for two mana when evoked, or a flying annihilator when hard-cast off the top.
+Seedborn Muse :: untaps Glarb on every opponent's turn, so you surveil four times a round instead of once.
+High Fae Trickster :: everything gains flash. Cast your top-of-library fatty on their end step.
+Radagast of Rhosgobel :: the first creature each turn costs {2} less and gains flash.
 
-# Protection
-Legolas's Quick Reflexes :: Split second
-Counterspell :: Counter target spell.
-Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
-Transcendent Dragon :: When this creature enters, if you cast it, counter target spell. If that spell is countered this way, exile it…
-Koma, Cosmos Serpent :: This spell can't be countered.
+# Closing the game
+Craterhoof Behemoth :: the standard ending once the board has a few big bodies and some Zombie tokens.
+Koma, Cosmos Serpent :: uncounterable, a 3/3 every upkeep, and the Coils tap down blockers or make Koma indestructible.
+Titan of Industry :: two modes on entry and a shield counter that protects your commander.
+Finale of Devastation :: for X of ten or more, a tutor and a lethal pump on one card.
+
+# What to keep in an opening hand
+Keep ramp and a land drop engine. Glarb costs three, but the deck's payoff is casting five- and seven-drops off the top, so Birds of Paradise, Bloom Tender, Nature's Lore and Exploration are what make those turns happen.
+Surveil at the end of THEIR turn, not yours. Glarb's tap ability is free information and free graveyard filling — do it on the last opponent's end step so you know your draw and your top-of-library cast before your turn begins.
+Glarb, Calamity's Augur :: deathtouch on a 2/4 means he blocks almost anything, so he survives more often than he looks like he should. Still, hold up Legolas's Quick Reflexes or Misdirection when the table has a removal spell up — losing him costs you two cards a turn.
+Planetarium of Wan Shi Tong :: six mana is a lot, but with Glarb out it is a free spell every turn for the rest of the game. Prioritise it over any single creature.

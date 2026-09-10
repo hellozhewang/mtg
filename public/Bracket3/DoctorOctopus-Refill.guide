@@ -1,36 +1,77 @@
-Doctor Octopus, Master Planner in BU, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Doctor Octopus refills your hand to eight at the end of every turn. That single line changes what cards are good: emptying your hand stops being a cost. Lion's Eye Diamond, Null Brooch, Tolarian Winds and every "exile a blue card rather than pay" spell in the format become free, because the cards come straight back. The deck spends its whole hand every turn and is handed a new one.
 
 # The commander
-Doctor Octopus, Master Planner :: Other Villains you control get +2/+2.
+Doctor Octopus, Master Planner :: your maximum hand size is eight, and at the beginning of your end step you draw back up to eight. Other Villains get +2/+2 on top.
+IMPORTANT: the refill has an intervening-if clause. If you have eight cards in hand at the beginning of your end step, the ability does not trigger AT ALL. Spend down to seven or fewer before you pass, every single turn.
+Stinging Study :: draws seven and loses seven with Doc Ock in the command zone or on the battlefield. It is a one-card refill that does not care whether he has been answered.
 
-# Game Changers (3 of 3)
-Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
-Fierce Guardianship :: If you control a commander, you may cast this spell without paying its mana cost.
-Lion's Eye Diamond :: Discard your hand, Sacrifice this artifact: Add three mana of any one color. Activate only as an instant.
+# Free spells, because the hand is free
+Force of Negation :: exile a blue card to counter their combo piece on their turn. The card you pitched is replaced at your end step.
+Misdirection :: the same cost, and it turns the removal spell aimed at Doc Ock back onto its caster.
+Commandeer :: seven mana or two blue cards. In this deck it costs nothing — steal their Rhystic Study, their wrath, or their tutor.
+March of Swirling Mist :: exile blue cards to slash the cost, then phase your board out of a wrath or phase their blockers out of the way.
+Pact of Negation :: free now, and the upkeep payment is easy in a deck with this much ritual mana.
+Fierce Guardianship :: free with your commander out.
+Deadly Rollick :: the same, pointed at a creature.
+Snuff Out :: four life instead of four mana.
+Lion's Eye Diamond :: three mana of any colour for a hand you are about to be given back. In most decks it is unplayable; here it is a Black Lotus with a delay.
 
-# Removal you can point anywhere
-Feed the Swarm :: Destroy target creature or enchantment an opponent controls. You lose life equal to that permanent's mana value.
-Withering Torment :: Destroy target creature or enchantment. You lose 2 life.
-Deadly Rollick :: If you control a commander, you may cast this spell without paying its mana cost.
-Snuff Out :: If you control a Swamp, you may pay 4 life rather than pay this spell's mana cost.
+# Turning the discard into mana
+Skirge Familiar :: discard a card, add {B}. A full hand is eight black mana, and the hand comes back at end of turn. This is the deck's biggest mana engine.
+Bone Miser :: discard a land for {B}{B}, a spell for a card, a creature for a 2/2. Alongside Skirge Familiar each land discarded is a net profit.
+Dark Ritual :: the classic acceleration into a turn-three Doc Ock or an early Torment.
+Cabal Ritual :: with threshold on — and this deck fills its graveyard fast — it is five black mana for two.
+Basalt Monolith :: three mana that untaps for three, which is a mana sink with nothing else to do.
+Thran Dynamo :: three more, colourless, uncounterable.
+Cabal Coffers :: the payoff for a mostly-Swamp mana base.
+Dream Halls :: pay for spells by discarding a card of a shared colour. With a hand that refills to eight, this casts your whole hand for free every turn.
 
-# Card advantage
-Currency Converter :: Whenever you discard a card, you may exile that card from your graveyard.
-Mystic Remora :: Cumulative upkeep {1}
-Ponder :: Look at the top three cards of your library, then put them back in any order. You may shuffle.
-Diabolic Intent :: As an additional cost to cast this spell, sacrifice a creature.
-Ledger Shredder :: Whenever a player casts their second spell each turn, this creature connives.
-Mind Stone :: {T}: Add {C}.
+# Playing the cards you discarded
+Oskar, Rubbish Reclaimer :: every nonland card you discard may be cast straight out of the graveyard. Combined with Dream Halls, discarding to pay for one spell makes the discarded card castable too — the chain runs through your entire hand in a single turn.
+Containment Construct :: exiles each discarded card and lets you play it this turn.
+Moonstone, Harsh Mistress :: the same, with a window that lasts until the end of your next turn, on a Villain body Doc Ock pumps.
+Currency Converter :: banks the discards and turns them into Treasures and 2/2 Rogues later.
+Reanimate :: one mana for whatever fatty went to the yard.
+Animate Dead :: the second copy, and it can take a creature out of an opponent's graveyard.
+Living Death :: your graveyard is always the deepest at the table after a few refills. Everyone wipes and you rebuild.
+The Soul Stone :: once harnessed, a creature back from the graveyard every upkeep.
+Thought Gorger :: eats your hand for counters, then draws you a card for each one when it leaves — and Doc Ock has already replaced the hand you fed it.
 
-# Ramp
-Dark Ritual :: Add {B}{B}{B}.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Cabal Ritual :: Add {B}{B}{B}.
-Dimir Signet :: {1}, {T}: Add {U}{B}.
-Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
+# Turning the draws into damage
+Psychic Corrosion :: two mill from each opponent for every card you draw. Doc Ock draws four or five a turn on his own, so this is roughly ten to fifteen mill per opponent per turn cycle. It is a genuine alternate win.
+Teferi's Ageless Insight :: doubles every draw after your first each turn, which doubles Psychic Corrosion and Sheoldred.
+Alhammarret's Archive :: the same doubling, plus double lifegain.
+Sheoldred, the Apocalypse :: two life per card you draw, two lost per card they draw. In a deck drawing this much it gains ten or more a turn.
+Ominous Seas :: a counter per draw. Eight counters is an 8/8 Kraken, and this deck gets there in two turns.
+Ledger Shredder :: connives on everyone's second spell, filtering for you and growing itself.
+Psychic Frog :: draws on connection and eats your excess cards for counters.
+Torment of Hailfire :: the finisher. With Skirge Familiar, the rituals and Cabal Coffers, X is routinely ten or more, and their answer is to lose everything.
 
-# Protection
-Pact of Negation :: Counter target spell.
-Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
-The Soul Stone :: {T}: Add {B}.
+# Emptying the hand on purpose
+Grafted Skullcap :: an extra card every draw step, and it discards your hand at end step. Order it BEFORE Doc Ock's refill — but remember Doc Ock only triggers if you were already under eight cards.
+Tolarian Winds :: two mana, dump the hand, redraw it, and every discard payoff triggers.
+Zombie Infestation :: two cards for a 2/2, forever, at instant speed.
+Sickening Dreams :: discard X, deal X to every creature and every player. On a full hand it is a wrath and a burn spell at once.
+Null Brooch :: a hard counterspell that costs a hand you get back anyway.
+Archfiend of Ifnir :: every discard is a -1/-1 counter on each of their creatures. A full-hand dump is a one-sided board wipe.
+Windfall :: everyone dumps and redraws; you are the one with the payoffs.
+Dreamscape Artist :: turns spare lands and a discard into two basics, which feeds Cabal Coffers.
+
+# Interaction and removal
+Mana Drain :: counter, then spend the mana on Torment of Hailfire.
+Cyclonic Rift :: overloaded, it is the clear for a lethal attack or the answer to a locked board.
+Damnation :: an unconditional wrath in black.
+Toxic Deluge :: scales past indestructible and past any size.
+Withering Torment :: creature or enchantment at instant speed.
+Feed the Swarm :: the only clean enchantment answer in these colours, on a sorcery.
+Dauthi Voidwalker :: unblockable, exiles everything headed for their graveyards, and cashes in for a free cast of their best card.
+Beseech the Mirror :: bargain it and cast the tutored card for free. Usually Dream Halls, Skirge Familiar or Torment of Hailfire.
+Diabolic Intent :: a Zombie or Shapeshifter token becomes any card in the deck.
+Black Market Connections :: three effects a turn, and this deck can afford the life.
+Mystic Remora :: turns one through four, it draws more than anything else in the deck.
+
+# What to keep in an opening hand
+Keep rituals and mana. Doc Ock costs seven, and the deck does very little until he lands — Dark Ritual, Sol Ring, Thran Dynamo and Cabal Coffers are what make him a turn-four play instead of a turn-seven one.
+Count to seven before you pass the turn. Every turn. Casting one more spell, cycling something, or feeding Zombie Infestation is the difference between a full refill and no trigger at all.
+Skirge Familiar :: this is the card that converts the refill into a kill. With him out, a full hand is eight mana toward Torment of Hailfire, and you get the hand back before your next turn.
+Dream Halls :: it is symmetrical, so deploy it on a turn you can use it immediately. With Oskar out that is usually the turn you win.

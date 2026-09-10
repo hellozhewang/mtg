@@ -1,51 +1,89 @@
-Cloud, Midgar Mercenary in W, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Mono-white Voltron, and the opposite of the other Cloud deck in this catalog: here everything goes on ONE creature. Cloud, Midgar Mercenary costs two mana, tutors an Equipment when he lands, and — as long as he is equipped — every triggered ability of his and of his gear triggers a second time. Two Sword hits per connection, four with double strike. He is also small enough that a single Colossus Hammer makes him lethal commander damage in one swing.
 
-# The commander
-Cloud, Midgar Mercenary :: When Cloud enters, search your library for an Equipment card, reveal it, put it into your hand, then shuffle.
+# The commander and the doubling
+Cloud, Midgar Mercenary :: two mana, fetches an Equipment on entry, and doubles the triggers of himself and everything attached to him. Cheap enough to recast through removal all game, which matters more than any single big body would.
+Sword of Fire and Ice :: four damage and two cards per connection. This is the doubling at its most obvious.
+Sword of Forge and Frontier :: four cards exiled and playable, plus two extra land drops.
+Sword of Hearth and Home :: two blinks and two lands. Blink Stoneforge Mystic or Solitude and the value compounds.
+Sword of Feast and Famine :: they discard twice, and your lands untap — deploy a whole second turn's worth of gear after combat.
+Umezawa's Jitte :: four counters per hit instead of two. Four counters is +8/+8, or an entire opposing board at -4/-4.
+Mask of Memory :: draw four, discard two, every hit.
+Buster Sword :: two cards and two free spells off your hand, priced by the damage dealt — which on a Hammered Cloud is everything you own.
+Pip-Boy 3000 :: two modes per attack. Untap four lands, or draw and filter twice.
+Sword of the Animist :: two basic lands per attack. This is the deck's ramp, not just a stat stick.
+Halvar, God of Battle :: equipped creatures have double strike, so each Sword trigger fires on first-strike damage AND regular damage, each of those doubled by Cloud. That is four triggers per Sword per combat.
 
-# Game Changers (3 of 3)
-Smothering Tithe :: Whenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token.
-Teferi's Protection :: Until your next turn, your life total can't change and you gain protection from everything. All permanents you…
-The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
+# Equipping for free
+Puresteel Paladin :: with three artifacts every Equipment has equip {0}. This is what makes Colossus Hammer a one-mana card instead of a nine-mana card.
+Colossus Hammer :: +10/+10 for one mana, if you never pay the equip cost. Cloud goes from 2/1 to 12/11 and the game usually ends two turns later.
+Sigarda's Aid :: Equipment gains flash and attaches itself for free when it enters. Flash the Hammer on after blockers are declared.
+Hammer of Nazahn :: auto-attaches every Equipment that arrives, and the wearer is indestructible.
+Forge Anew :: a free equip each turn, equipping at instant speed, and it reanimates an Equipment from the graveyard on entry.
+Ardenn, Intrepid Archaeologist :: moves any number of Auras and Equipment for free at the start of combat. Rebuild your entire Voltron in one step after a bounce or a blink.
+Codsworth, Handy Helper :: white mana that only casts Equipment, a free attach every turn, and your commander gets ward {2}.
+Cid, Freeflier Pilot :: Equipment costs one less, he flies on your turn, and he buys Equipment back out of the graveyard.
+Super-Soldier Serum :: +2/+2, first strike, vigilance, and it re-attaches every Equipment you control whenever the creature attacks OR blocks.
 
-# Removal you can point anywhere
-Path to Exile :: Exile target creature. Its controller may search their library for a basic land card, put that card onto the…
-Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
-Cloud's Limit Break :: Tiered
-Generous Gift :: Destroy target permanent. Its controller creates a 3/3 green Elephant creature token.
+# Making it lethal in one swing
+Cloud is the commander, so twenty-one damage from him ends a player outright. That number is reachable on the turn you assemble it, not several turns later.
+Brotherhood Regalia :: equip to a legendary creature for {1}: ward {2} and CANNOT BE BLOCKED. This is the enabler — a 12/11 unblockable Cloud with double strike is twenty-four commander damage.
+Commander's Plate :: +3/+3 and protection from blue, black, red and green, because none of those are in your identity. Nothing but a white blocker can stop it and almost no removal can touch it.
+Excalibur, Sword of Eden :: +10/+0, and its cost falls by the total mana value of your historic permanents — which in an artifact deck full of legends is most of it.
+Genji Glove :: double strike and a second combat phase, so the same lethal swing happens twice.
+Swordsman's Steel :: draws a card per Equipment when it lands and gives +2/+2 per Equipment. On a full Voltron board it is often +10/+10 and four cards.
+Shadowspear :: trample and lifelink, and for {1} it strips indestructible and hexproof off their blockers.
+Mantle of the Ancients :: returns every Equipment and Aura in your graveyard to the battlefield attached, then pumps by all of them. This is the rebuild after a wrath.
+The Aetherspark :: attaches itself, cannot be attacked, and stores loyalty off combat damage until it draws two or makes ten mana.
 
-# Taxes and lock pieces
-Silence :: Your opponents can't cast spells this turn.
-Grand Abolisher :: During your turn, your opponents can't cast spells or activate abilities of artifacts, creatures, or enchantments.
-Voice of Victory :: Mobilize 2
-Ranger-Captain of Eos :: When this creature enters, you may search your library for a creature card with mana value 1 or less, reveal it, put…
-Single Combat :: Each player chooses a creature or planeswalker they control, then sacrifices the rest. Players can't cast creature or…
+# Finding the piece
+Stoneforge Mystic :: fetch, then cheat the expensive Equipment onto the battlefield for two mana.
+Stonehewer Giant :: repeatable — every turn it finds an Equipment and attaches it, for two mana, at instant speed if you leave it up.
+Steelshaper's Gift :: one mana for any Equipment in the deck.
+Open the Armory :: the same, and it also finds Mantle of the Ancients or Super-Soldier Serum.
+Armored Skyhunter :: digs six on every attack and puts the Equipment straight onto the battlefield attached.
+Recruiter of the Guard :: finds Puresteel Paladin, Giver of Runes, Stoneforge Mystic or Ranger-Captain of Eos.
+Ranger-Captain of Eos :: finds a one-drop, and sacrifices to stop every noncreature spell for a turn — which is how you protect the lethal swing.
+Adaptive Omnitool :: digs six for an artifact on each attack, twice with Cloud.
 
-# Card advantage
-Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
-Land Tax :: At the beginning of your upkeep, if an opponent controls more lands than you, you may search your library for up to…
-Pip-Boy 3000 :: Whenever equipped creature attacks, choose one —
-Steelshaper's Gift :: Search your library for an Equipment card, reveal that card, put it into your hand, then shuffle.
-Adaptive Omnitool :: Equipped creature gets +1/+1 for each artifact you control.
-Archivist of Oghma :: Whenever an opponent searches their library, you gain 1 life and draw a card.
+# Protecting the pile
+The failure mode of Voltron is one removal spell answering eight cards. Half the deck exists to make that impossible.
+Giver of Runes :: protection from a colour or from colourless for Cloud, every single turn, for one mana.
+Mithril Coat :: flash, indestructible, and it attaches itself to a legendary creature the moment it enters. Hold it up as a counterspell for removal.
+Swiftfoot Boots :: hexproof and haste, and haste matters because Cloud gets recast constantly.
+Restoration Magic :: one mana for hexproof and indestructible, or four for the whole board.
+Clever Concealment :: usually free with convoke. Phases out your permanents WITH everything attached to them.
+Teferi's Protection :: the full reset against a wrath or a combo kill.
+Boromir, Warden of the Tower :: counters anything cast for free, and sacrifices to make the board indestructible.
+Grand Abolisher :: opponents cannot cast spells or activate abilities during your turn. Cast this before the alpha strike.
+Voice of Victory :: the same lockout plus two attacking bodies every combat.
+Silence :: one mana on your turn and nobody can interact at all.
+Trouble in Pairs :: draws you a card every time an opponent doubles up, and it shuts off extra turns entirely.
 
-# Ramp
-Mox Amber :: {T}: Add one mana of any color among legendary creatures and planeswalkers you control.
-Mox Opal :: Metalcraft — {T}: Add one mana of any color. Activate only if you control three or more artifacts.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Sword of the Animist :: Equipped creature gets +1/+1.
-Codsworth, Handy Helper :: Commanders you control have ward {2}.
+# Removal
+Swords to Plowshares :: the best one-mana answer in the format.
+Path to Exile :: the second copy.
+Dispatch :: one mana to exile with metalcraft, which is always on here.
+Solitude :: free, at instant speed, and Sword of Hearth and Home can blink it back.
+Generous Gift :: the answer to anything that is not a creature.
+Cloud's Limit Break :: scales with your mana — one tapped creature, several across different players, or every tapped creature on the table after they have all attacked.
+Single Combat :: everyone keeps one permanent and nobody can cast creatures until your next turn. In a Voltron deck the one you keep is worth more than their one.
+Witch Enchanter :: an artifact or enchantment killed on entry, and it is a land on the other side when you do not need the effect.
+Galadriel's Dismissal :: phases out a blocker, or kicked, an entire player's creatures — either a defensive save or the clear for a lethal swing.
+Reprieve :: not a counterspell, but it bounces the spell and draws, which buys the turn you needed.
 
-# Protection
-Restoration Magic :: Tiered
-Shadowspear :: Equipped creature gets +1/+1 and has trample and lifelink.
-Reprieve :: Return target spell to its owner's hand.
-Swiftfoot Boots :: Equipped creature has hexproof and haste.
-Boromir, Warden of the Tower :: Whenever an opponent casts a spell, if no mana was spent to cast it, counter that spell.
-Mithril Coat :: When Mithril Coat enters, attach it to target legendary creature you control.
+# Mana and card flow
+Land Tax :: in a deck this cheap you will be behind on lands often, and three basics a turn fuels Archaeomancer's Map and Sword of the Animist.
+Archaeomancer's Map :: two Plains on entry, then free land drops whenever an opponent out-lands you.
+Mox Amber :: live from turn two onwards because your commander costs two.
+Mox Opal :: metalcraft is trivial here.
+Smothering Tithe :: the Treasures pay equip costs the free-equip effects do not cover.
+Sram, Senior Edificer :: a card for every Equipment, Aura or Vehicle spell you cast.
+Esper Sentinel :: taxes their first noncreature spell each turn, and grows when you equip it.
+The One Ring :: protection from everything for a turn — often the turn that saves you — and then an escalating draw engine.
+Archivist of Oghma :: a card and a life every time anyone fetches or tutors.
 
-# Recursion
-Cid, Freeflier Pilot :: Equipment and Vehicle spells you cast cost {1} less to cast.
-Forge Anew :: When this enchantment enters, return target Equipment card from your graveyard to the battlefield.
-Mantle of the Ancients :: Enchant creature you control
+# What to keep in an opening hand
+Keep a free-equip enabler. Puresteel Paladin, Sigarda's Aid or Hammer of Nazahn with any cheap Equipment is a keep; a hand of expensive gear with no way to attach it is not.
+Cloud, Midgar Mercenary :: cast him early and often. He is two mana and he tutors on every cast, so recasting him after removal is a card, not a setback — you are usually happy to trade a removal spell for a fresh Equipment tutor.
+Do not attach everything before you can protect it. One Giver of Runes activation or a Mithril Coat in hand is worth more than an extra Sword on the pile.
+Brotherhood Regalia :: the piece to look for once Colossus Hammer is on. Unblockable is what converts a big Cloud into twenty-one commander damage this turn instead of next turn.

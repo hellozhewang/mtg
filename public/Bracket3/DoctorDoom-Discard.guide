@@ -1,36 +1,78 @@
-Doctor Doom, King of Latveria in BRU, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Discarding is the resource here, not the cost. Doctor Doom drains the table every time you pitch a LAND, and the deck is built so that lands in hand are ammunition rather than dead cards. Then it wheels — and a wheel that makes you discard seven cards is seven separate triggers on the payoffs below. That is usually the game.
 
-# The commander
-Doctor Doom, King of Latveria :: Whenever you discard one or more land cards, each opponent loses 2 life.
+# The commander and the land engine
+Doctor Doom, King of Latveria :: every discard event that includes a land card drains each opponent for two, and every combat one of your Villains connives with menace — which is another discard, and another counter.
+Tectonic Reformation :: every land in your hand gains cycling {R}. Lands stop being flood and become "one mana: draw a card, drain the table for two." This is the card that makes the whole deck work.
+Trade Routes :: discard a land, draw a card, for {1} — and it can bounce your own lands back to hand to feed the engine again.
+Bone Miser :: discard a land and get {B}{B}; discard a spell and draw; discard a creature and make a 2/2. Every discard now pays for the next one.
+Crucible of Worlds :: play the lands back out of your graveyard. Between this and Trade Routes a single land can be discarded several times.
+Bazaar of Baghdad :: draw two, discard three, for free, every turn. In most decks that is unplayable; here it is three triggers a turn from a land.
+Surly Badgersaur :: a Treasure for every land you discard, a counter for every creature, and a fight for every spell.
+Green Goblin, Nemesis :: Treasures off land discards and counters off spell discards, on a flier.
+Monument to Endurance :: pick a different mode on each discard this turn — a card, a Treasure, or three life from each opponent. On a wheel turn it is all three.
 
-# Game Changers (3 of 3)
-Fierce Guardianship :: If you control a commander, you may cast this spell without paying its mana cost.
-Orcish Bowmasters :: When this creature enters and whenever an opponent draws a card except the first one they draw in each of their draw…
-Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
+# The wheels
+Wheel of Fortune :: everyone discards and draws seven. You are the only player at the table who is being paid for the discard half.
+Windfall :: the same effect, and it hits hardest when someone is hoarding.
+Dark Deal :: the mean one — they discard everything and draw one fewer. Cast it when your hand is nearly empty.
+Memory Jar :: seven new cards now, and everyone discards the new hand at end of turn. Two discard events for the price of one.
+Wheel of Misfortune :: name a number, deal that damage to whoever matched, and wheel everyone who did not choose the lowest. It doubles as reach.
+Waste Not :: the mirror of Bone Miser aimed at THEM. When your wheel makes three opponents discard seven cards each, you get Zombies, black mana and cards from twenty-one discards.
+Rielle, the Everwise :: the first time you discard each turn, draw that many. A Wheel of Fortune with Rielle out is seven cards, then seven more.
+Frantic Search :: free, draws two, discards two, and untaps three lands. It is a Doom trigger that costs nothing.
+Read the Runes :: draw X, then either discard X or sacrifice permanents. Both halves do something here.
 
-# Removal you can point anywhere
-Vandalblast :: Destroy target artifact you don't control.
-Rakdos Charm :: Choose one —
-Withering Torment :: Destroy target creature or enchantment. You lose 2 life.
-Deadly Rollick :: If you control a commander, you may cast this spell without paying its mana cost.
+# Turning discards into damage
+Glint-Horn Buccaneer :: one damage to EACH opponent per card discarded. A seven-card wheel is twenty-one damage spread across the table, and its own attacking ability turns every spare mana into another discard.
+Magmakin Artillerist :: damage to each opponent equal to the number of cards discarded at once. A wheel is seven to each player from a three-mana creature.
+Cool but Rude :: at level two, two damage to each opponent per discard. This is the highest-output payoff in the deck — level it up before you wheel.
+Archfiend of Ifnir :: every discard puts a -1/-1 counter on each of their creatures. A wheel is a board wipe that leaves your team untouched.
+Shadow of the Goblin :: a discard every upkeep for free, and it pings the table whenever you play something from outside your hand — which the exile-and-replay artifacts do constantly.
+Torment of Hailfire :: the finisher. After a wheel their hands are full but their boards are not, and every X is a real choice between life, a permanent and a card.
+Artist's Talent :: filters on every noncreature spell, then at level three adds two to all your noncombat damage — which upgrades every ping above.
 
-# Card advantage
-Curiosity :: Enchant creature
-Currency Converter :: Whenever you discard a card, you may exile that card from your graveyard.
-Faithless Looting :: Draw two cards, then discard two cards.
-Mystic Remora :: Cumulative upkeep {1}
-Read the Runes :: Draw X cards. For each card drawn this way, discard a card unless you sacrifice a permanent.
-Artist's Talent :: Whenever you cast a noncreature spell, you may discard a card. If you do, draw a card.
+# Playing the cards you threw away
+Containment Construct :: exile each discarded card and play it this turn. A wheel becomes "draw seven, and also play the seven you pitched."
+Moonstone, Harsh Mistress :: the same effect with a longer window — until the end of your NEXT turn — on a 2/4 flier.
+Currency Converter :: banks discarded cards, then cashes them in for Treasures and 2/2 bodies later.
+Chainer, Nightmare Adept :: discard a card to cast a creature out of your graveyard each turn, and anything you did not hard-cast gets haste.
+Master of Death :: surveils on entry and buys itself back from the graveyard every upkeep for one life. It is a free discard target forever.
+Psychic Frog :: a discard outlet that grows, draws on connection, and flies away when you need it to.
 
-# Ramp
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
-Talisman of Creativity :: {T}: Add {C}.
-Talisman of Dominance :: {T}: Add {C}.
-Talisman of Indulgence :: {T}: Add {C}.
+# Reanimating what you pitched
+Reanimate :: one mana for the biggest creature anyone has discarded, including the ones your wheel made THEM discard.
+Living Death :: after a wheel and a few turns of discards, your graveyard is deeper than theirs. Everyone sacrifices and everyone rebuilds — but you rebuild bigger.
+The Soul Stone :: once harnessed it returns a creature from your graveyard every single upkeep.
+Beseech the Mirror :: bargain it and cast the tutored card free if it costs four or less. Usually it fetches Wheel of Fortune, Torment of Hailfire or the missing payoff.
+Diabolic Intent :: turns a spare Zombie or Shapeshifter token into any card in the deck.
 
-# Protection
-Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
-The Soul Stone :: {T}: Add {B}.
-Trade Routes :: {1}: Return target land you control to its owner's hand.
+# Connive, and the Villains
+Leader, Super-Genius :: upgrades every connive in the deck — you draw a card first, THEN the creature connives. It also connives something every combat on its own.
+Baron Strucker, HYDRA Overlord :: Villain spells cost one less, and every Villain that arrives connives.
+M.O.D.O.K. :: pay three life to connive at will, and every creature your opponents control is permanently -1/-1.
+Ledger Shredder :: connives on every player's second spell each turn, so a wheel turn grows it and filters for you at the same time.
+Green Goblin, Revenant :: discards on attack, then draws for EVERY card you have discarded that turn. After a wheel it refills your hand by itself.
+Moonstone, Harsh Mistress :: also a Villain, so Doom's combat trigger can point at her.
+
+# Card advantage and interaction
+Rhystic Study :: nobody pays the one when you are the player forcing them to spend mana on their own turn.
+Mystic Remora :: the early-game version, best on turns one through four.
+Black Market Connections :: three modes a turn for life, and the Treasures pay for the cycling costs.
+Orcish Bowmasters :: every wheel makes each opponent draw seven, so Bowmasters triggers eighteen times off one Wheel of Fortune. Play it BEFORE you wheel.
+Mana Drain :: counters the answer and pays for Torment of Hailfire next turn.
+Force of Negation :: free protection for your combo turn on their turn.
+Fierce Guardianship :: the same, with your commander out.
+Deflecting Swat :: redirects the removal or the counterspell aimed at your engine.
+Muddle the Mixture :: a counterspell, or transmute for Rhystic Study, Bone Miser, Waste Not or Monument to Endurance.
+Deadly Rollick :: free exile for the creature that is about to kill you.
+Toxic Deluge :: scalable wrath that gets under indestructible.
+Withering Torment :: creature or enchantment, at instant speed.
+Chaos Warp :: the only clean answer to an enchantment or planeswalker in these colours.
+Vandalblast :: overloaded, it wipes the table's artifacts and leaves yours alone.
+Rakdos Charm :: graveyard hate, artifact removal, or a symmetric ping that finishes a token board.
+
+# What to keep in an opening hand
+Keep lands. Genuinely — this is one of the few decks where a seven-card hand with six lands is fine, because Tectonic Reformation, Trade Routes and Bazaar of Baghdad turn every one of them into a card and two life from each opponent.
+Get a payoff down before you wheel. Wheel of Fortune with an empty board is a card-neutral shuffle; Wheel of Fortune with Glint-Horn Buccaneer, Cool but Rude or Orcish Bowmasters out is often twenty damage spread across the table.
+Doctor Doom, King of Latveria :: four mana, and he does not need to be first. The engine pieces — Tectonic Reformation, Bone Miser, Monument to Endurance — are what make him lethal, so deploy those and cast him into a turn where you can immediately discard.
+Cool but Rude :: level it to two before you wheel, not after. The difference between level one and level two on a seven-card wheel is fourteen damage to each opponent.

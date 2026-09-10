@@ -1,43 +1,71 @@
-Cloud, Ex-SOLDIER in GRW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+This is not a Voltron deck. Cloud draws a card for each EQUIPPED ATTACKING CREATURE, so piling everything onto one giant body draws exactly one card. The deck wins by spreading cheap Equipment across a whole team, attacking with all of it, and refilling its hand every combat. Ardenn and the free-equip effects are what make that possible, and extra combat phases are what make it lethal.
 
-# The commander
-Cloud, Ex-SOLDIER :: When Cloud enters, attach up to one target Equipment you control to it.
+# The commander and the draw math
+Cloud, Ex-SOLDIER :: haste, attaches an Equipment on arrival, and on every attack draws one card PER equipped attacking creature. Four equipped attackers is four cards. He also makes two Treasures if his own power is seven or more, which is easy once two pieces are on him.
+Ardenn, Intrepid Archaeologist :: at the beginning of combat, move ANY number of Equipment to any permanents you control, for free. This is the single most important card in the deck — it takes a pile of gear stacked on one creature and spreads it across four attackers, quadrupling Cloud's draw.
+Inventory Management :: the same mass re-attach at instant speed with split second, so nobody can respond. Use it after blockers are declared.
+Cloud, Midgar Mercenary :: two mana, tutors an Equipment on entry, and doubles every triggered ability of itself and of the gear attached to it. Equipped with Sword of Fire and Ice that is four damage and two cards per hit.
 
-# Game Changers (3 of 3)
-Aura Shards :: Whenever a creature you control enters, you may destroy target artifact or enchantment.
-Smothering Tithe :: Whenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token.
-Teferi's Protection :: Until your next turn, your life total can't change and you gain protection from everything. All permanents you…
+# Equipment that arrives with its own body
+Every living weapon and For Mirrodin! card is a second equipped attacker for free, which is exactly what the commander is counting.
+Hexplate Wallbreaker :: a 2/2 Rebel already wearing it, and its attack untaps every attacker and gives you a whole extra combat phase. The best five-drop in the deck.
+Bitterthorn, Nissa's Animus :: a Germ that ramps you a land on every attack.
+Nettlecyst :: a Germ that grows with every artifact and enchantment you control, which here is most of the deck.
+Kaldra Compleat :: a 5/5 first strike trample indestructible haste Germ that exiles whatever blocks it. It is also indestructible itself, so Blasphemous Act does not touch it.
+Barret, Avalanche Leader :: a 2/2 Rebel for every Equipment that enters, and he attaches gear to them at the start of combat. Bodies and equipment in the same card.
+Dáin Ironfoot :: makes an Axe and attaches it, then hands every equipped attacker double strike when he attacks.
+Firion, Wild Rose Warrior :: haste for all equipped creatures, and every nontoken Equipment you play arrives with a temporary copy — which is one more equipped attacker for the turn you needed it.
 
-# Removal you can point anywhere
-Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
-Winds of Abandon :: Exile target creature you don't control. For each creature exiled this way, its controller searches their library for…
-Generous Gift :: Destroy target permanent. Its controller creates a 3/3 green Elephant creature token.
+# Equipping for free
+Puresteel Paladin :: with three artifacts, every Equipment has equip {0}. This is what turns Ardenn's spread into an entire turn's worth of re-equipping at no cost.
+Bruenor Battlehammer :: the first equip each turn is free, and every creature gets +2/+0 per Equipment on it. He is also how Cloud reaches power seven.
+Forge Anew :: first equip free, equip at instant speed on your turn, and it reanimates an Equipment from the graveyard when it lands.
+Kíli the Resourceful :: another free first equip once you have three artifacts or legends, and a card whenever a Dwarf or Equipment enters.
+Sigarda's Aid :: Equipment gains flash and attaches itself for free on arrival. Flash in Embercleave or a Sword after blockers.
+Hammer of Nazahn :: auto-attaches every Equipment that enters, and the equipped creature is indestructible.
+Stoneforge Mystic :: finds an Equipment, then cheats the expensive one onto the battlefield. Fetch Kaldra Compleat.
+Steelshaper's Gift :: one mana for whichever Equipment the board needs.
+Kellan, the Fae-Blooded :: the Adventure fetches an Equipment, and the creature half pumps the whole team by everything attached to it.
 
-# Taxes and lock pieces
-Conqueror's Flail :: Equipped creature gets +1/+1 for each color among permanents you control.
-Inventory Management :: Split second
-Kutzil, Malamet Exemplar :: Your opponents can't cast spells during your turn.
+# Extra combats
+Aurelia, the Warleader :: untaps everything and gives a second full combat. With Cloud attacking twice, you draw the whole board twice.
+Genji Glove :: double strike, and the equipped creature untaps for another combat phase.
+Tifa, Martial Artist :: any creature with power seven or more connecting untaps the team and adds a combat. Bruenor and the Swords make that trivially true.
+Reconnaissance :: the quiet all-star. Remove an attacker from combat after blockers are declared and it untaps — so you attack with everything with no risk, keep blockers back, and still collect every Cloud trigger.
+Akiri, Fearless Voyager :: a card on every attack with an equipped creature, and {W} unattaches a piece to make a creature indestructible through removal or a bad block.
 
-# Card advantage
-Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
-Steelshaper's Gift :: Search your library for an Equipment card, reveal that card, put it into your hand, then shuffle.
-Adaptive Omnitool :: Equipped creature gets +1/+1 for each artifact you control.
-Cloud, Midgar Mercenary :: When Cloud enters, search your library for an Equipment card, reveal it, put it into your hand, then shuffle.
-Kíli the Resourceful :: Storied
-Puresteel Paladin :: Whenever an Equipment you control enters, you may draw a card.
+# Drawing off the attack
+Nahiri, Forged in Fury :: every equipped attacker exiles a card you may play this turn, and Equipment spells among them are FREE. With four attackers that is four extra cards and often two free Equipment.
+Sram, Senior Edificer :: a card for every Equipment spell you cast.
+Buster Sword :: draws on damage and lets you cast a spell free off the top of your hand. On Cloud with Bruenor out, that spell can be anything.
+Sword of Fire and Ice :: two damage and a card each hit, and protection from red and blue dodges most removal.
+Sword of Feast and Famine :: untaps all your lands after damage, so a second main phase deploys another Equipment for free.
+Adaptive Omnitool :: digs six deep for an artifact on every attack, and grows with your artifact count.
+The Reaver Cleaver :: Treasures equal to the damage dealt. On a pumped creature that is an explosive mana turn.
+Esper Sentinel :: taxes their first noncreature spell each turn, and it grows if you equip it.
+Smothering Tithe :: the Treasures that pay for equip costs you did not get for free.
 
-# Ramp
-Birds of Paradise :: {T}: Add one mana of any color.
-Delighted Halfling :: {T}: Add {C}.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Farseek :: Search your library for a Plains, Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle.
-Sword of the Animist :: Equipped creature gets +1/+1.
+# Removal, protection and the finish
+Swords to Plowshares :: one mana, exile, no questions.
+Generous Gift :: instant-speed answer to any permanent.
+Winds of Abandon :: overload it and every creature but yours is exiled. A one-sided wrath in a deck that only wants combat to happen.
+Blasphemous Act :: usually one or two mana. Kaldra Compleat is indestructible and Hammer of Nazahn makes its wearer indestructible, so the board you keep is the one that matters.
+Aura Shards :: with the Rebel and Germ tokens the deck makes, this destroys an artifact or enchantment nearly every turn.
+Shadowspear :: strips hexproof and indestructible from their blockers before you swing, on top of trample and lifelink.
+Mjölnir, Hammer of Thor :: doubles all damage the equipped creature deals, and four damage on arrival. Equip worthy for {1} onto Cloud.
+Lightning, Army of One :: once Lightning connects, every source you control deals DOUBLE damage to that player until your next turn. Stacked with Mjölnir and an extra combat this is how a table dies out of nowhere.
+Akroma's Will :: with your commander out you take both halves — flying, vigilance, double strike, plus indestructible and protection from every colour. On a wide equipped board it is lethal and uninteractive at once.
+Embercleave :: flashes in for almost nothing after blockers, granting double strike and trample.
+Boros Charm :: four damage, or double strike, or indestructible for your whole board through a wrath.
+Deflecting Swat :: free, and it redirects the removal spell aimed at Cloud or the counterspell aimed at your finisher.
+Teferi's Protection :: phases out everything, gear included, through any wrath or combo kill.
+Clever Concealment :: the convoke version, usually free on a board this wide.
+Conqueror's Flail :: opponents cannot cast spells during your turn at all. Equip this before the alpha strike.
+Kutzil, Malamet Exemplar :: the same lockout on a body, and every equipped creature has power above its base power, so he draws too.
 
-# Protection
-Dragonfire Blade :: Equipped creature gets +2/+2 and has hexproof from monocolored.
-Shadowspear :: Equipped creature gets +1/+1 and has trample and lifelink.
-Boros Charm :: Choose one —
-Akiri, Fearless Voyager :: Whenever you attack a player with one or more equipped creatures, draw a card.
-Akroma's Will :: Choose one. If you control a commander as you cast this spell, you may choose both instead.
-Hammer of Nazahn :: Whenever Hammer of Nazahn or another Equipment you control enters, you may attach that Equipment to target creature…
+# What to keep in an opening hand
+Keep cheap Equipment and a free-equip enabler over expensive gear. Puresteel Paladin or Sigarda's Aid with two one-mana Equipment beats a hand with Kaldra Compleat in it.
+Spread, do not stack. The instinct to make one huge Cloud is wrong — three creatures with one Equipment each draws three cards, and a 22/22 Cloud draws one. Only stack when you are going for damage that turn.
+Ardenn, Intrepid Archaeologist :: play him before you commit gear anywhere. His combat-step move means you can deploy Equipment onto whatever is convenient and rearrange the whole board for free every single turn.
+Cloud, Ex-SOLDIER :: five mana and he has haste, so he does not need to be early. Deploy bodies and cheap Equipment first, then cast him into a turn where four creatures can attack — that is a four-card turn, not a one-card turn.
+Reconnaissance :: cast it before you ever want it. It costs one mana and it turns every alpha strike into a free roll.

@@ -1,29 +1,77 @@
-Don Andres, the Renegade in BRU, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+A theft deck that barely draws cards — it plays off the top of everyone else's library instead. Almost every creature here exiles an opponent's card when it connects, and almost every one of those effects says "mana of any type can be spent", so colour is never the problem. Don Andres then does two things at once: the creatures you steal become +2/+2 deathtouch menace Pirates, and the SPELLS you steal pay you two Treasures each.
 
-# The commander
-Don Andres, the Renegade :: Each creature you control but don't own gets +2/+2, has menace and deathtouch, and is a Pirate in addition to its…
+# The commander, read carefully
+Don Andres, the Renegade :: creatures you control but do not OWN get +2/+2, menace and deathtouch, and become Pirates. Separately, casting a NONCREATURE spell you do not own makes two tapped Treasures. Stolen creatures get the buff; stolen spells get the mana. Not both.
+The Pirate clause is the hidden half. Every creature you take off an opponent turns into a Pirate, which switches on Breeches, Malcolm, Ramirez DePietro and The Indomitable using their stuff.
+Nathan Drake, Treasure Hunter :: mana of any type for every spell you do not own AND for abilities of permanents you control but do not own. He fixes the entire theft plan, and his attack exiles a card off each player.
 
-# Game Changers (3 of 3)
-Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
-Opposition Agent :: You control your opponents while they're searching their libraries.
-Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
+# Hitting them to steal from them
+Ragavan, Nimble Pilferer :: a Treasure and their top card on the first connection, on turn one.
+Breeches, Brazen Plunderer :: whenever ANY Pirates you control damage opponents, exile the top card of each of those players' libraries. With Don Andres out, your stolen creatures are Pirates too, so a single alpha strike exiles a card off everyone.
+Malcolm, Keen-Eyed Navigator :: a Treasure per opponent damaged. He is what turns a wide attack into the mana to cast everything Breeches just exiled.
+Ramirez DePietro, Pillager :: two Treasures on entry and another exiled card per Pirate connection, and the cards stay castable indefinitely.
+Vaan, Street Thief :: exile or a Treasure on every Rogue, Scout and Pirate hit, and +1/+1 counters on the whole crew whenever you cast something you do not own.
+Grenzo, Havoc Raiser :: two mana, and every connection either steals a card or goads a creature into attacking someone else.
+Locke, Treasure Hunter :: unblockable by anything bigger, mills everyone a card and lets you cast from among them.
+Klaw, Master of Sound :: deathtouch, steals their top card on damage, and becomes indestructible every time you play a card from exile — which in this deck is constantly.
+Black Widow, Super Spy :: menace, and each hit digs past their lands to a real card.
+Thief of Sanity :: three cards deep every hit, and the two you do not take go to their graveyard.
+Gríma, Saruman's Footman :: unblockable, and it digs specifically for an instant or sorcery and casts it FREE.
+Zara, Renegade Recruiter :: reads their hand and puts a creature from it onto the battlefield attacking. Under Don Andres it arrives as a +2/+2 deathtouch menace Pirate.
+Professional Face-Breaker :: a Treasure on every combat damage step, and Treasures convert into impulse draws.
+Gonti, Night Minister :: Treasures whenever anyone casts a stolen spell, and it fires whenever ANY creature damages one of your opponents — including their attacks on each other.
 
-# Card advantage
-Black Market Connections :: At the beginning of your first main phase, choose one or more —
-Seize the Spotlight :: Each opponent chooses fame or fortune. For each player who chose fame, gain control of a creature that player…
-The Indomitable :: Whenever a creature you control deals combat damage to a player, draw a card.
-Tasha, the Witch Queen :: Whenever you cast a spell you don't own, create a 3/3 black Demon creature token.
+# Taking things outright
+Hostage Taker :: exiles a creature or artifact and lets you cast it with any mana. The single most efficient theft card in the deck.
+Gonti, Lord of Luxury :: deathtouch blocker that keeps a card from their library forever.
+Bribery :: their library is full of better creatures than yours, and under Don Andres whatever you find gains deathtouch and menace.
+Praetor's Grasp :: takes the combo piece out of their deck permanently and lets you cast it yourself.
+Hurl Through Hell :: instant-speed exile that doubles as a two-turn loan of their best creature.
+Opposition Agent :: flash him in response to a fetchland or a tutor. You control the search, and everything they find is yours to cast.
+Siphon Insight :: two mana, twice, for the best of their top two.
+Dauthi Voidwalker :: unblockable, exiles everything headed for their graveyards, and cashes itself in for a free cast of any of it.
+Gisa, Glorious Resurrector :: every creature that dies under an opponent's control is exiled and comes back on YOUR upkeep. Combine with Blasphemous Act — the wrath kills the table and hands you their entire board the following turn.
+Blasphemous Act :: usually one or two mana in a four-player game. Cast it while Gisa is out and it stops being a reset and becomes a heist.
 
-# Ramp
-An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Dimir Signet :: {1}, {T}: Add {U}{B}.
-Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
-Izzet Signet :: {1}, {T}: Add {U}{R}.
+# Casting off the top of their decks
+Etali, Primal Storm :: attacks and casts a free spell from every player's library. The best raw payout in the deck.
+Plargg and Nassari :: up to two free spells every upkeep, and an opponent only gets to protect one card.
+Stolen Strategy :: a card off each opponent every upkeep, castable with any mana.
+Laughing Jasper Flint :: exiles X cards off one opponent per upkeep, where X is your outlaw count — and Don Andres makes your stolen creatures Mercenaries too, so the count climbs fast.
+Brainstealer Dragon :: a card off each opponent every end step, and every stolen permanent that lands drains its owner for its mana value.
+Extract Power :: three cards, one from each opponent, playable indefinitely.
+Inside Information :: X cards deep on one player, paid for in life instead of mana.
+Ensnared by the Mara :: either a free spell for you or a large chunk of damage. Both outcomes are fine.
+Arcane Heist :: a free instant or sorcery out of their graveyard, and the cipher makes it repeatable on an unblockable body.
+Tasha, the Witch Queen :: a 3/3 Demon every time you cast something you do not own, plus a minus that casts their best removal or wrath for free.
 
-# Protection
-Lightning Greaves :: Equipped creature has haste and shroud.
-Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
-Klaw, Master of Sound :: Whenever you play a card from exile, Klaw gains indestructible until end of turn.
-Zara, Renegade Recruiter :: Whenever Zara attacks, look at defending player's hand. You may put a creature card from it onto the battlefield…
+# Borrowing the whole table
+Insurrection :: untap and steal EVERY creature in play. With Don Andres, all of them are +2/+2 deathtouch menace. This is the deck's finisher, and it usually kills two players at once.
+Mass Mutiny :: the cheaper version — one creature from each opponent, hasted.
+Seize the Spotlight :: they choose whether to give you creatures or cards and Treasures. Both halves advance you.
+Captivating Crew :: repeatable theft every turn for four mana, and the creature you borrow is a deathtouch menace attacker for the turn.
+Reanimate :: one mana for the best creature in ANY graveyard.
+Animate Dead :: the second copy, and under Don Andres a reanimated opponent's creature keeps the buff.
+
+# Interaction
+Mana Drain :: counter their wrath and spend the mana on Insurrection.
+Force of Negation :: free on their turn.
+An Offer You Can't Refuse :: one mana. The two Treasures they get are worth far less than the spell you stopped.
+Deflecting Swat :: free with your commander out, and redirecting a targeted removal spell is often a two-for-one.
+Cyclonic Rift :: overloaded it clears every blocker before the Insurrection turn.
+Chaos Warp :: the only clean answer to an enchantment or planeswalker in Grixis.
+Feed the Swarm :: creature or enchantment, on a sorcery.
+Blasphemous Act :: cheap, and much better than it looks once Gisa is on the table.
+
+# Mana and card flow
+Rhystic Study :: this deck spends its whole turn on combat, so their turns are when you get paid.
+Black Market Connections :: three modes a turn, and the Treasures cast the cards you exiled.
+Nightscape Familiar :: makes your blue and red spells cheaper and regenerates through wraths.
+Lightning Greaves :: haste matters enormously — most of your creatures only do anything the turn they connect.
+The Indomitable :: a 6/6 trampler that draws on every creature's connection, and it can be cast straight out of the graveyard once you have three tapped Pirates.
+
+# What to keep in an opening hand
+Keep a cheap evasive creature and a way to give it haste or protection. Ragavan, Grenzo or Thief of Sanity connecting on turn two or three starts the engine three turns earlier than a hand of five-drops does.
+Don Andres, the Renegade :: four mana, and he is a multiplier, not a starter. If you have no stolen permanents and no attackers, a cheap thief first is better — he doubles the value of everything you steal afterwards.
+Cast the stolen noncreature spells, even bad ones. Two Treasures per cast adds up, and Tasha and Vaan both trigger on the cast, not on the effect.
+Insurrection :: hold it until the table has creatures worth taking and you have a sacrifice-proof way to connect. Eight mana is a lot, but the Treasures from a single Malcolm attack usually cover the last three.

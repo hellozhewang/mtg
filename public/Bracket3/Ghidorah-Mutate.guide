@@ -1,40 +1,77 @@
-Illuna, Apex of Wishes in GRU, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Mutate stacks a pile of creatures into one body, and every "whenever this creature mutates" trigger you have already stacked fires AGAIN each time you add another. So the fourth mutate is not one trigger, it is four or five: draw a card, destroy an artifact, destroy a noncreature permanent, fetch a land, and put a free permanent onto the battlefield. The whole deck is about growing that pile fast and making sure one removal spell cannot eat it.
 
-# The commander
-Illuna, Apex of Wishes :: Mutate {3}{R/G}{U}{U}
+# The commander and the pile
+Illuna, Apex of Wishes :: 6/6 flying trample, and every mutate digs until it finds a nonland permanent and puts it onto the battlefield FREE. Cast her for her mutate cost, not her mana cost, whenever there is a legal base.
+Mutate does not cause an enter-the-battlefield trigger. The creature was already there — it just changed. Plan around that: your payoffs here are "whenever this mutates", not "when this enters".
+Auspicious Starrix :: exiles until it finds X permanent cards, where X is how many times IT has mutated. The third mutate onto a Starrix pile puts three free permanents onto the battlefield.
+Dreamtail Heron :: a card on every subsequent mutate.
+Gemrazer :: an artifact or enchantment destroyed on every subsequent mutate. Repeatable Naturalize is not something green usually gets.
+Sawtusk Demolisher :: any noncreature permanent destroyed, every mutate.
+Migratory Greathorn :: a land every mutate, which pays for the next one.
+Lore Drakkis :: buys back an instant or sorcery each time, so your protection spells recur.
+Pouncing Shoreshark :: bounces a creature each mutate, and it has FLASH — mutate at instant speed in response to a blocker or a removal spell.
+Cloudpiercer :: a loot on each mutate, which finds the next piece.
+Porcuparrot :: taps to deal damage equal to the number of times it has mutated. A four-deep pile is a repeatable four-damage removal spell every turn.
+Sea-Dasher Octopus :: mutate it on for {1}{U} and the pile draws a card on every connection.
 
-# Game Changers (3 of 3)
-Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
-Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
-Worldly Tutor :: Search your library for a creature card, reveal it, then shuffle and put the card on top.
+# Bases that cannot be removed
+The pile's weakness is obvious: one Swords to Plowshares answers eight cards. Start on a hexproof body and that stops being possible.
+Slippery Bogle :: one mana, hexproof, non-Human. The ideal base.
+Gladecover Scout :: the second copy.
+Venomthrope :: hexproof, flying and deathtouch, so the pile inherits evasion and an unblockable clock.
+Swiftfoot Boots :: hexproof and haste on whatever you built.
+Heroic Intervention :: hexproof and indestructible for the whole board through a wrath.
+Tamiyo's Safekeeping :: one mana for the same on the pile.
+Slip Out the Back :: phases the pile out in response to removal, and leaves a counter behind.
+Legolas's Quick Reflexes :: split second, so it cannot be responded to at all.
+Veil of Summer :: one mana that beats blue and black removal outright, and draws.
+Frenzied Baloth :: your creature spells cannot be countered — including every mutate.
+Deflecting Swat :: free, and it points their removal somewhere else.
+If the pile does die, remember Illuna can go back to the command zone instead of the graveyard. The rest of the pile is gone, but the commander is not.
 
-# Removal you can point anywhere
-Pongify :: Destroy target creature. It can't be regenerated. Its controller creates a 3/3 green Ape creature token.
-Beast Within :: Destroy target permanent. Its controller creates a 3/3 green Beast creature token.
-Gemrazer :: Mutate {1}{G}{G}
-Sawtusk Demolisher :: Mutate {3}{G}
-Titan of Industry :: When this creature enters, choose two —
+# Making mutate cheap
+Animar, Soul of Elements :: every creature spell you cast is another counter and another discount. Mutate spells are creature spells, so a few turns in they cost nothing at all.
+Pollywog Symbiote :: mutate spells cost one less, and each one you cast filters a card.
+Radagast of Rhosgobel :: the first creature spell each turn costs {2} less and can be cast as though it had flash. Mutate on their end step.
+Delighted Halfling :: uncounterable mana for legendary spells, which covers Illuna.
+Utopia Sprawl :: a Forest that taps for two.
+Skyshroud Claim :: two untapped Forests, which is a four-mana turn out of nowhere.
+Birds of Paradise :: turn-one acceleration in a deck that wants to start mutating on turn three.
 
-# Card advantage
-Brainstorm :: Draw three cards, then put two cards from your hand on top of your library in any order.
-Mystic Remora :: Cumulative upkeep {1}
-Sensei's Divining Top :: {1}: Look at the top three cards of your library, then put them back in any order.
-Veil of Summer :: Draw a card if an opponent has cast a blue or black spell this turn. Spells you control can't be countered this turn.…
-Pollywog Symbiote :: Each creature spell you cast costs {1} less to cast if it has mutate.
-Scroll Rack :: {1}, {T}: Exile any number of cards from your hand face down. Put that many cards from the top of your library into…
+# Drawing off the pile
+Season of Growth :: every mutate spell TARGETS a creature you control, so every single one draws a card. Two mana.
+Beast Whisperer :: a card for every creature spell, mutate included.
+Temur Ascendancy :: haste for the whole board — which matters because a freshly grown pile wants to attack immediately — plus a card for every big creature that enters.
+Return of the Wildspeaker :: draws cards equal to the greatest power among your non-Human creatures. On a real pile that is eight or more, at instant speed. The other mode is a team pump for the kill.
+Toski, Bearer of Secrets :: uncounterable, indestructible, and it draws on every connection.
+Rhystic Study :: their turns pay for your turns.
+Mystic Remora :: the first four turns, it is the best card in the deck.
+Sylvan Library :: with this much selection, paying life for the extra cards is nearly always right.
+Scroll Rack :: swaps a hand of dead cards for the top of your library, and it is exceptional alongside Sylvan Library.
+Sensei's Divining Top :: fixes every draw and turns spare mana into card selection.
+Parcelbeast :: a free land or a card every turn from the pile itself.
 
-# Ramp
-An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
-Birds of Paradise :: {T}: Add one mana of any color.
-Delighted Halfling :: {T}: Add {C}.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Farseek :: Search your library for a Plains, Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle.
+# Removal and interaction
+Pongify :: one mana, kills anything, and the 3/3 they get is irrelevant next to your pile.
+Beast Within :: any permanent at instant speed.
+Chaos Warp :: the answer to an enchantment or planeswalker in these colours.
+Cyclonic Rift :: overloaded, it clears every blocker and every stax piece for the lethal swing.
+Blasphemous Act :: cheap in a full board — use it while the pile is hexproof and indestructible, or before you commit.
+Mana Drain :: counter their wrath and spend the mana mutating twice next turn.
+Swan Song :: one mana for the removal spell or wrath aimed at the pile.
+An Offer You Can't Refuse :: the same, and their two Treasures matter less than your pile surviving.
+Ivy, Gleeful Spellthief :: copies any single-target spell — theirs or yours — onto herself. She steals removal and doubles pumps.
+Portal to Phyrexia :: three creatures gone from every opponent, then a reanimation every upkeep.
 
-# Protection
-Gladecover Scout :: Hexproof (This creature can't be the target of spells or abilities your opponents control.)
-Legolas's Quick Reflexes :: Split second
-Slippery Bogle :: Hexproof (This creature can't be the target of spells or abilities your opponents control.)
-Tamiyo's Safekeeping :: Target permanent you control gains hexproof and indestructible until end of turn. You gain 2 life.
-Frenzied Baloth :: This spell can't be countered.
-Heroic Intervention :: Permanents you control gain hexproof and indestructible until end of turn.
+# Closing
+Craterhoof Behemoth :: even a modest board plus one enormous trampling pile is lethal to the table.
+Titan of Industry :: two modes on entry, and the shield counter protects the pile from the removal spell it was going to die to.
+Etali, Primal Conqueror :: free spells off every player's library on entry, and it flips into an 11/11 indestructible infect threat.
+Koma, Cosmos Serpent :: uncounterable, makes a 3/3 every upkeep, and the Coils sacrifice to tap down blockers or make Koma indestructible.
+Return of the Wildspeaker :: +3/+3 to every non-Human you control is often the last three points on each opponent.
+
+# What to keep in an opening hand
+Keep a hexproof one-drop and a mutate creature. Slippery Bogle on turn one into a mutate on turn two is the start that makes the deck's engine turn on before anyone can interact.
+Do not mutate onto Animar unless you have to. He is the discount engine, and putting him under a pile risks losing him to the removal spell aimed at the whole thing.
+Order the pile with the TOP card in mind. The creature on top decides the name, power, toughness and — importantly — whether it flies and tramples. Illuna and Sawtusk Demolisher on top attack well; Porcuparrot on top does not.
+Auspicious Starrix :: mutate it EARLY and keep mutating onto that pile. Its count is per-Starrix, so a Starrix that has mutated four times puts four free permanents onto the battlefield the next time.

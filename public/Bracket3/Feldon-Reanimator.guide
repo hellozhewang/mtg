@@ -1,36 +1,78 @@
-Feldon of the Third Path in R, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Feldon never actually reanimates anything. He makes a hasty TOKEN copy that is sacrificed at the next end step — so the body is irrelevant and the triggers are everything. The deck is built out of creatures that pay you when they enter and pay you again when they die, plus a small package of tricks that let you keep the token instead of losing it.
 
 # The commander
-Feldon of the Third Path :: {2}{R}, {T}: Create a token that's a copy of target creature card in your graveyard, except it's an artifact in…
+Feldon of the Third Path :: {2}{R} and tap: a hasty artifact token copy of any creature in your graveyard, sacrificed at end of turn. Three mana for an attack trigger, an enter trigger AND a death trigger, every single turn.
+Lightning Greaves :: haste so he activates the turn he lands, and shroud so the removal aimed at him misses. Equip it before you tap him.
+Swiftfoot Boots :: hexproof instead, for when you need to target him with the Bracers.
+Thousand-Year Elixir :: haste for the activation and an untap, so Feldon goes twice a turn.
+Patriar's Seal :: mana, plus an untap aimed specifically at legendary creatures.
+Sting, the Glinting Dagger :: haste and a free untap at the beginning of EACH combat, which with an extra combat is a third activation.
+Illusionist's Bracers :: copies Feldon's ability every time. Two tokens per activation, forever.
+Battlemage's Bracers :: the same for {1} a copy, and it grants haste on its own.
 
-# Game Changers (3 of 3)
-Gamble :: Search your library for a card, put that card into your hand, discard a card at random, then shuffle.
-Jeska's Will :: Choose one. If you control a commander as you cast this spell, you may choose both instead.
-The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
+# Bodies whose death leaves something behind
+This is the core of the deck. Feldon's token dies at end of turn no matter what — so use it on creatures that leave permanent tokens behind when they die.
+Wurmcoil Engine :: the token dies and you keep a 3/3 deathtouch and a 3/3 lifelink. Every turn.
+Triplicate Titan :: a 9/9 flying vigilant trampler that leaves three 3/3 Golems when it goes.
+Ancient Stone Idol :: a 12/12 trampler that leaves a 6/12 Construct.
+Myr Battlesphere :: four Myr enter with it, and the Myr do not die when the Battlesphere token is sacrificed.
+Solemn Simulacrum :: a land on entry and a card on death, every turn, for three mana.
+Ruin Grinder :: a 7/4 menace, and its death wheels the whole table.
+Dauntless Scrapbot :: strips every opponent's graveyard and leaves a Lander behind.
 
-# Removal you can point anywhere
-Vandalblast :: Destroy target artifact you don't control.
-Abrade :: Choose one —
-Untimely Malfunction :: Choose one —
-Meteor Golem :: When this creature enters, destroy target nonland permanent an opponent controls.
+# Bodies with enter or attack triggers worth repeating
+Terror of the Peaks :: the payoff card. Every creature that enters under your control deals its power to any target — so Feldon making a 12/12 token is twelve damage to a face, and with a Bracers copy it is twenty-four.
+Balefire Dragon :: Feldon it, swing, and one opponent's entire board dies.
+Molten Primordial :: steal a creature from every opponent for the turn. Pair it with a sacrifice outlet and their creatures never come back.
+Duplicant :: exiles a creature on entry. Repeatable, unconditional removal once a turn.
+Meteor Golem :: the same for any nonland permanent.
+Combustible Gearhulk :: three cards, or three milled cards' worth of damage to the face. Milling yourself is upside here.
+Sandstone Oracle :: refills your hand to match the table's biggest.
+Ancient Copper Dragon :: connects for an average of ten Treasures.
+Daretti, Rocketeer Engineer :: returns an artifact from the graveyard on entry AND on attack, and his power scales with your biggest artifact.
 
-# Card advantage
-Faithless Looting :: Draw two cards, then discard two cards.
-Skullclamp :: Equipped creature gets +1/-1.
-Bitter Reunion :: When this enchantment enters, you may discard a card. If you do, draw two cards.
-Demand Answers :: As an additional cost to cast this spell, sacrifice an artifact or discard a card.
-Fear of Missing Out :: When this creature enters, discard a card, then draw a card.
-Mind Stone :: {T}: Add {C}.
+# Getting the fatties into the graveyard
+Faithless Looting :: two cards deep, two fatties down, twice with flashback.
+Gamble :: finds anything. The random discard is often a bonus — you were going to want it in the yard.
+Wheel of Fortune :: a fresh seven and a graveyard full of targets. Best cast with a full hand of expensive creatures.
+Wheel of Misfortune :: the same, and it doubles as reach.
+Fable of the Mirror-Breaker :: a Treasure-making Goblin, then a two-card rummage, then a permanent copy engine on the back side.
+Bitter Reunion :: discard one, draw two, and later sacrifices for team haste.
+Demand Answers :: two cards for a spare artifact or a fatty you wanted to bin.
+Fear of Missing Out :: a rummage on entry, and once delirium is on it grants an extra combat phase.
+Goblin Engineer :: puts an artifact from the library STRAIGHT into the graveyard, then recurs cheap ones. Fetch Wurmcoil Engine or Skullclamp.
+Ruin Grinder :: mountaincycles when you would rather have the land, which also puts it in the yard for Feldon.
+Monument to Endurance :: turns every discard into a card, a Treasure, or three life from each opponent.
+Jeska's Will :: a huge mana burst plus three impulse cards, and with a commander out you take both halves.
 
-# Ramp
-Mox Opal :: Metalcraft — {T}: Add one mana of any color. Activate only if you control three or more artifacts.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
-Liquimetal Torque :: {T}: Add {C}.
-Cursed Mirror :: {T}: Add {R}.
+# Keeping the token
+Sundial of the Infinite :: end the turn in response to the "sacrifice at the beginning of the next end step" trigger and the token stays permanently. This applies to Feldon, Sneak Attack, Jaxis and Reflection of Kiki-Jiki alike.
+Sneak Attack :: {R} to put any creature from your HAND onto the battlefield with haste. With Sundial, you keep it.
+Jaxis, the Troublemaker :: a hasty copy of any creature you control, and the copy draws a card when it dies.
+Cursed Mirror :: a copy of the best creature on the board, with haste, and it is a mana rock afterwards.
+Altar of Dementia :: sacrifice the token BEFORE end of turn to mill on your terms, and it is how Molten Primordial's stolen creatures die permanently.
+Goblin Bombardment :: the same idea pointed at faces, and it turns every temporary token into reach.
+Skullclamp :: on the Myr and Wurm tokens, two cards each.
 
-# Protection
-Lightning Greaves :: Equipped creature has haste and shroud.
-Swiftfoot Boots :: Equipped creature has hexproof and haste.
-Tibalt's Trickery :: Counter target spell. Choose 1, 2, or 3 at random. Its controller mills that many cards, then exiles cards from the…
+# Artifact recursion
+Goblin Welder :: swap an artifact you control for a better one in your graveyard, every turn, for free.
+Daretti, Scrap Savant :: rummages on the plus, reanimates an artifact on the minus, and the ultimate returns every artifact that dies from then on.
+Scrap Mastery :: everyone sacrifices their artifacts and returns their graveyard's — and your graveyard is far deeper.
+Portal to Phyrexia :: three creatures gone from every opponent, then a reanimation from ANY graveyard every upkeep.
+
+# Interaction
+Abrade :: three damage or an artifact, at instant speed.
+Untimely Malfunction :: an artifact, a redirect, or two creatures that cannot block. The redirect mode saves Feldon.
+Vandalblast :: overloaded it is a one-sided artifact wrath.
+Blasphemous Act :: cheap in a full board, and your value is in the graveyard anyway.
+Chaos Warp :: mono-red's only answer to an enchantment or planeswalker.
+Deflecting Swat :: free, and it turns their removal into your removal.
+Tibalt's Trickery :: a one-mana counterspell when you genuinely cannot let something resolve.
+The One Ring :: a turn of complete protection, then it draws the deck.
+Imperial Recruiter :: finds Goblin Welder, Goblin Engineer or Feldon himself.
+
+# What to keep in an opening hand
+Keep a discard outlet and a fatty. Faithless Looting plus Wurmcoil Engine is a better keep than Wurmcoil plus two more expensive creatures, because Feldon costs three and the graveyard is the hand.
+Feldon of the Third Path :: three mana, and he does nothing the turn he arrives without haste. If you have Lightning Greaves, cast him a turn early; if not, cast him with three mana up next turn so he activates immediately.
+Use Feldon on death triggers before enter triggers when the board is stalled, and on Terror of the Peaks turns when you need damage. Wurmcoil every turn builds a board that survives the wraths this deck cannot answer.
+Sundial of the Infinite :: remember it exists. Keeping one Triplicate Titan or Wurmcoil permanently is worth more than three turns of temporary copies.

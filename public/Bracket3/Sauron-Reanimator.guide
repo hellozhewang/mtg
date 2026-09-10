@@ -1,37 +1,72 @@
-Sauron, the Dark Lord in BRU, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Sauron turns "the Ring tempts you" into a free wheel: discard your hand, draw four. In almost any other deck that is a cost. Here it is the point — the cards you throw away are seven-drops you were never going to cast, and the graveyard is where this deck keeps its best creatures. Every temptation is card advantage AND a loaded graveyard at the same time.
 
 # The commander
-Sauron, the Dark Lord :: Ward—Sacrifice a legendary artifact or legendary creature.
+Sauron, the Dark Lord :: a 7/6 with a ward that eats a legendary permanent, an Orc Army that grows every time an opponent casts anything, and — the important line — discard your hand and draw four whenever the Ring tempts you.
+Call of the Ring :: tempts you at the beginning of EVERY upkeep. With Sauron out that is a free wheel each turn, and it draws an extra card when you name a Ring-bearer.
+Ringsight :: tempts you and tutors any card sharing a colour with a legend you control.
+Sauron's Ransom :: tempts you, and either pile is fine — cards in hand are cards, cards in the graveyard are reanimation targets.
+Orcish Bowmasters :: amasses alongside Sauron's own Orcs, and punishes every extra card the table draws.
+The Army is a real clock. Once it connects, Sauron tempts you again, which wheels you again.
 
-# Game Changers (3 of 3)
-Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
-Orcish Bowmasters :: When this creature enters and whenever an opponent draws a card except the first one they draw in each of their draw…
-Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
+# Filling the graveyard on purpose
+Entomb :: one mana, instant speed, exactly the creature you want.
+Buried Alive :: three at once.
+Careful Study :: two down for one mana.
+Faithless Looting :: the same, twice with flashback.
+Frantic Search :: free, and it untaps three lands.
+Ledger Shredder :: connives on everyone's second spell each turn, filtering constantly.
+Grave Researcher :: surveils every upkeep and prepares a free Reanimate once three creatures are down there.
+Archfiend of Ifnir :: every discard puts a -1/-1 counter on each of their creatures. Discarding a full hand to Sauron's trigger is a one-sided board wipe.
+Monument to Endurance :: every discard becomes a card, a Treasure or three life from each opponent. On a wheel turn it is all three.
 
-# Removal you can point anywhere
-Bitter Triumph :: As an additional cost to cast this spell, discard a card or pay 3 life.
-Feed the Swarm :: Destroy target creature or enchantment an opponent controls. You lose life equal to that permanent's mana value.
-Deadly Rollick :: If you control a commander, you may cast this spell without paying its mana cost.
+# Bringing them back
+Reanimate :: one mana, any graveyard.
+Animate Dead :: two, and it works on theirs.
+Dance of the Dead :: the third copy, and the untap clause rarely matters.
+Necromancy :: flash speed, so you can reanimate at the end of their turn or in response to a wrath.
+Persist :: two mana for any nonlegendary creature.
+Chainer, Nightmare Adept :: discard a card to cast a creature from your graveyard each turn, and anything not cast from hand gets haste.
+Living Death :: your graveyard is deliberately the deepest at the table.
+Ancient Brass Dragon :: on connection, reanimate creatures with total mana value up to a d20 roll, from ANY graveyard.
+Anger :: sitting in the graveyard with a Mountain out, everything you reanimate has haste.
 
-# Card advantage
-Careful Study :: Draw two cards, then discard two cards.
-Faithless Looting :: Draw two cards, then discard two cards.
-Mystic Remora :: Cumulative upkeep {1}
-Soul-Guide Lantern :: When this artifact enters, exile target card from a graveyard.
-Arcane Denial :: Counter target spell. Its controller may draw up to two cards at the beginning of the next turn's upkeep.
-Call of the Ring :: At the beginning of your upkeep, the Ring tempts you.
+# What you are reanimating
+Archon of Cruelty :: the best target. On entry and on every attack, an opponent sacrifices, discards and loses three while you draw and gain three.
+Burning-Rune Demon :: a two-card tutor where the "wrong" one goes to your graveyard, which is exactly where you want it.
+Marang River Regent :: a 6/7 flier that bounces two of their permanents, and an Omen half that draws three when you would rather have cards.
+Smaug, Wicked Worm :: Treasures scaled to their artifact count, and a card every time you spend Treasure mana.
+Archfiend of Ifnir :: a 5/4 flier that turns your own wheels into sweepers.
 
-# Ramp
-An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
-Talisman of Creativity :: {T}: Add {C}.
-Talisman of Dominance :: {T}: Add {C}.
+# Interaction
+Mana Drain :: counter, and the mana casts a reanimation spell.
+Counterspell :: the clean two-mana answer.
+Arcane Denial :: cheap, and the cards they get arrive too late.
+An Offer You Can't Refuse :: one mana for anything noncreature.
+Deadly Rollick :: free with your commander out.
+Deflecting Swat :: free, and it redirects the removal aimed at Sauron.
+Bitter Triumph :: a creature or planeswalker, and the discard cost is upside here.
+Feed the Swarm :: the only clean enchantment answer in Grixis.
+Chaos Warp :: the second one, and it covers planeswalkers.
+Blasphemous Act :: cheap, and your best creatures are in the graveyard where a wrath cannot reach them.
+Cyclonic Rift :: overloaded, the clear for a lethal reanimated board.
+Dauthi Voidwalker :: unblockable, blanks their graveyards, and steals their best card.
 
-# Protection
-Shadowspear :: Equipped creature gets +1/+1 and has trample and lifelink.
-Counterspell :: Counter target spell.
-Lightning Greaves :: Equipped creature has haste and shroud.
-Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
-The Soul Stone :: {T}: Add {B}.
+# Closing the game
+Chandra's Ignition :: point it at Archon of Cruelty or Sauron. Six or seven damage to every other creature on the board and to each opponent, all at once.
+Shadowspear :: trample and lifelink on a fatty, and it strips indestructible and hexproof from their blockers.
+Lightning Greaves :: haste for the thing you just reanimated, and shroud on Sauron.
+Living Death :: after a couple of wheels, this is usually lethal on the spot.
+
+# Card flow and mana
+Rhystic Study :: their turns pay for yours.
+Mystic Remora :: the best card in the deck on turns one through four.
+Black Market Connections :: three effects a turn, and this deck's life total is not its bottleneck.
+Relic of Sauron :: two coloured mana and a repeatable loot.
+Fellwar Stone :: usually taps for exactly the pip you need.
+Arcane Signet :: the same.
+
+# What to keep in an opening hand
+Keep an enabler and a reanimation spell. Entomb plus Reanimate with two lands beats any hand with an Archon of Cruelty in it, because the Archon is better in your graveyard than in your hand.
+Do not be precious about your hand. Sauron's wheel discards everything — so cast what matters first, then take the temptation. Cards you were holding "just in case" become Reanimate targets.
+Call of the Ring :: two mana, and with Sauron out it is a wheel every single upkeep. Prioritise it over almost any single fatty.
+Sauron, the Dark Lord :: his ward costs you a legendary permanent, which is real. Lightning Greaves is often the better protection, because it means they cannot target him at all.

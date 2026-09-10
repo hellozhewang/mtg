@@ -1,39 +1,68 @@
-Sheoldred, the Apocalypse in B, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Sheoldred makes drawing cards asymmetrical: two life to you for every card you draw, two off them for every card they draw. So the deck does something that looks generous and is not — it hands opponents cards. Seizan, Scrawling Crawler and Sign in Blood are all "gifts" that kill, and with the other draw-punishers on board a single forced draw can cost an opponent five or six life.
 
 # The commander
-Sheoldred, the Apocalypse :: Whenever you draw a card, you gain 2 life.
+Sheoldred, the Apocalypse :: four mana, deathtouch on a 4/5, and the whole deck is built on her second and third lines. She blocks anything and she wins the game by herself if left alone.
+Roaming Throne :: name Phyrexian. Sheoldred is a Phyrexian Praetor, so BOTH her triggers double — four life gained per card you draw, four lost per card they draw. It also doubles Psychosis Crawler and Scrawling Crawler.
+Lightning Greaves :: shroud, because she eats a removal spell the turn she lands otherwise.
+Swiftfoot Boots :: hexproof and haste when you need to target her.
+Mithril Coat :: flash and indestructible, attached automatically to a legendary creature. Hold it as a counterspell for removal.
+Kaya's Ghostform :: one mana of insurance that beats exile as well as destruction.
 
-# Game Changers (3 of 3)
-Opposition Agent :: You control your opponents while they're searching their libraries.
-Orcish Bowmasters :: When this creature enters and whenever an opponent draws a card except the first one they draw in each of their draw…
-The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
+# Making them draw
+Seizan, Perverter of Truth :: every player draws two and loses two each upkeep. With Sheoldred that is six life per opponent per round, and you are gaining four.
+Scrawling Crawler :: everyone draws at your upkeep, and each of their draws costs an extra life on top.
+Sign in Blood :: point it at an opponent. Two cards and two life from them, plus four more from Sheoldred.
+Decorum Dissertation :: the same effect, and paradigm makes it repeat free at the beginning of every one of your main phases for the rest of the game.
+Scheming Silvertongue :: a lifelinking flier that prepares another Sign in Blood whenever you gained two life — which Sheoldred does constantly.
+Dark Deal :: everyone dumps their hand and redraws one fewer. A pile of draw triggers, and it strips their held-up answers.
+Baleful Mastery :: exile a creature for two mana; the opponent drawing a card is a cost you WANT to pay.
 
-# Removal you can point anywhere
-Feed the Swarm :: Destroy target creature or enchantment an opponent controls. You lose life equal to that permanent's mana value.
-Gate to Phyrexia :: Sacrifice a creature: Destroy target artifact. Activate only during your upkeep and only once each turn.
-Withering Torment :: Destroy target creature or enchantment. You lose 2 life.
-Baleful Mastery :: You may pay {1}{B} rather than pay this spell's mana cost.
-Deadly Rollick :: If you control a commander, you may cast this spell without paying its mana cost.
-Meteor Golem :: When this creature enters, destroy target nonland permanent an opponent controls.
+# Punishing the draw
+Fate Unraveler :: one damage per card they draw.
+Orcish Bowmasters :: one damage and an Orc per card they draw past their first each draw step. A Seizan trigger fires it once for each opponent, every turn.
+Psychosis Crawler :: each opponent loses one for every card YOU draw, and its body scales with your hand.
+Bloodletter of Aclazotz :: opponents lose double during your turn. Stack it with everything above and a single main phase is lethal.
+Erebos, God of the Dead :: opponents cannot gain life at all, and he converts your life total into cards.
 
-# Card advantage
-Expedition Map :: {2}, {T}, Sacrifice this artifact: Search your library for a land card, reveal it, put it into your hand, then…
-Mind Stone :: {T}: Add {C}.
-Night's Whisper :: You draw two cards and lose 2 life.
-Black Market Connections :: At the beginning of your first main phase, choose one or more —
-Phyrexian Arena :: At the beginning of your upkeep, you draw a card and you lose 1 life.
-Beseech the Mirror :: Bargain
+# Devotion and drain
+Gray Merchant of Asphodel :: a full board of black permanents makes this six or more to each opponent, and you gain it all.
+Exsanguinate :: the clean X-drain finisher, and it refills your life for the next one.
+Crypt Ghast :: doubles every Swamp AND extorts on every spell you cast.
+Dread Presence :: every Swamp that enters is either a card or two damage and two life. In a mono-black deck with this many Swamps it is a full engine.
+Black Market Connections :: three effects a turn, paid in life you are gaining back.
+Phyrexian Arena :: a card a turn, and Sheoldred turns the life loss into a gain.
+Night's Whisper :: two cards for two mana.
 
-# Ramp
-Sol Ring :: {T}: Add {C}{C}.
-Wayfarer's Bauble :: {2}, {T}, Sacrifice this artifact: Search your library for a basic land card, put that card onto the battlefield…
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Liquimetal Torque :: {T}: Add {C}.
-Thought Vessel :: You have no maximum hand size.
-Hedron Archive :: {T}: Add {C}{C}.
+# Removal and protection
+Sheoldred's Edict :: each opponent sacrifices — pick the mode for the board. It answers hexproof commanders and token swarms alike.
+Deadly Rollick :: free with your commander out.
+Baleful Mastery :: instant-speed exile for two.
+Feed the Swarm :: mono-black's only clean enchantment answer.
+Damnation :: an unconditional wrath. Sheoldred is often the only creature you need.
+Sudden Spoiling :: split second, and it turns their whole board into 0/2s with no abilities — a fog, a combo answer and a blowout in combat.
+Imp's Mischief :: redirects the removal aimed at Sheoldred, or turns their tutor into yours.
+No Mercy :: anything that damages you dies. Combined with Sheoldred's deathtouch, attacking you is close to impossible.
+Gate to Phyrexia :: repeatable artifact destruction that costs only a creature.
+Meteor Golem :: destroys any nonland permanent.
+Karn, the Great Creator :: shuts off every activated ability on their artifacts, which blanks mana rocks and equipment decks.
+Dauthi Voidwalker :: unblockable, exiles what they would bury, and steals their best card.
+Opposition Agent :: flash him onto a fetchland or tutor and keep what they find.
 
-# Protection
-Lightning Greaves :: Equipped creature has haste and shroud.
-Swiftfoot Boots :: Equipped creature has hexproof and haste.
-Mithril Coat :: When Mithril Coat enters, attach it to target legendary creature you control.
-Erebos, God of the Dead :: As long as your devotion to black is less than five, Erebos isn't a creature.
+# Mana and tutors
+Sol Ring :: turn one.
+Jet Medallion :: a discount on every card in the deck.
+Arcane Signet :: fixing that this deck barely needs, and acceleration it does.
+Mind Stone :: ramp early, a card later.
+Hedron Archive :: two mana or two cards.
+Liquimetal Torque :: mana, and it turns any permanent into an artifact for Gate to Phyrexia or Karn.
+Expedition Map :: finds Cabal Coffers or whichever utility land matters.
+Beseech the Mirror :: bargain it and cast the tutored card free if it costs four or less. Usually Sheoldred herself, or Bloodletter of Aclazotz.
+Reanimate :: one mana for the best creature in any graveyard.
+Animate Dead :: the second copy.
+Phyrexian Reclamation :: buys Sheoldred back to hand for two mana and two life, over and over.
+
+# What to keep in an opening hand
+Keep a rock and a cheap interaction spell. Sheoldred on turn three is the strongest thing this deck does, and she demands an answer immediately — so having Imp's Mischief or Mithril Coat up matters more than having a second threat.
+Do not force draws until the punishers are down. Seizan and Scrawling Crawler on an empty board just help the table. With Sheoldred, Fate Unraveler and Orcish Bowmasters out, the same cards kill everyone.
+Roaming Throne :: name Phyrexian, not Zombie. Doubling Sheoldred is worth more than any other line the card offers here.
+Bloodletter of Aclazotz :: the turn it lands, count the table's life. Doubling on your turn plus a Gray Merchant or an Exsanguinate frequently ends the game on the spot.

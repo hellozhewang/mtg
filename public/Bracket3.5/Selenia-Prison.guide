@@ -1,45 +1,64 @@
-Selenia, the Cursed Heart in BW, built to Bracket 3.5 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Selenia doubles every point of life you gain, and the deck's whole job is to convert lifegain into opponents' life loss. Behind a wall nobody can attack through, that is a slow inevitability — and with two specific enchantments on the battlefield it stops being slow and becomes a loop that ends the game on the spot. Her death trigger is the third angle: a Curse that doubles one opponent's life loss for the rest of the game.
 
 # The commander
-Selenia, the Cursed Heart :: If you would gain life, you gain twice that much life instead.
+Selenia, the Cursed Heart :: 2/5 flying lifelink, and ALL your lifegain is doubled. Every drain, every extort, every Authority of the Consuls trigger counts twice.
+When she dies you Curse an opponent so their life loss doubles too. That is a reason to kill her yourself rather than protect her forever.
+Gift of Immortality :: enchant Selenia. Now every time she dies she comes straight back and the Aura reattaches — so with a sacrifice outlet you can hand out a Curse to every opponent, one per turn.
+Kaya's Ghostform :: one mana for the same trick once, and it works through exile.
+Ayli, Eternal Pilgrim :: the sacrifice outlet, and it gains you life for the toughness of what you eat. At fifty life it also exiles any nonland permanent, repeatedly.
+Claws of Gix :: a free sacrifice outlet that also gains life — doubled, of course.
 
-# Combos in the deck
-Exquisite Blood :: part of infinite drain
-Bloodthirsty Conqueror :: part of infinite drain
-Vito, Thorn of the Dusk Rose :: part of infinite drain
+# The loop
+Exquisite Blood :: whenever an opponent loses life, you gain that much.
+Enduring Tenacity :: whenever you gain life, an opponent loses that much.
+Together those two feed each other forever, and the table's life total goes to zero. It is two cards, it uses no combat, and it is the reason this deck sits at Bracket 3.5 rather than Bracket 3.
+Bloodthirsty Conqueror :: the second copy of the Exquisite Blood half, on a 5/5 flying deathtoucher. Either one plus Enduring Tenacity closes the game.
+Aetherflux Reservoir :: the backup kill. With doubled lifegain this deck passes fifty life quickly, and fifty damage to any target needs no setup at all.
 
-# Game Changers (3 of 3)
-Demonic Tutor :: Search your library for a card, put that card into your hand, then shuffle.
-Necropotence :: Skip your draw step.
-Smothering Tithe :: Whenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token.
+# Turning lifegain into damage
+Enduring Tenacity :: even without the loop, every gain is a drain — and it returns as an enchantment when it dies, so removal only half-answers it.
+Bloodletter of Aclazotz :: opponents lose double during your turn. Stack it with Selenia's Curse and the numbers get silly.
+Kambal, Consul of Allocation :: two off them and two to you on every noncreature spell they cast, doubled to four gained.
+Liesa, Shroud of Dusk :: two life from every player on every spell, and her commander tax is paid in life rather than mana.
+Blind Obedience :: extort on every spell you cast, plus their creatures and artifacts enter tapped.
+Debt to the Deathless :: the clean X finisher — two times X from each opponent, and you gain all of it back doubled.
+Fraying Omnipotence :: everyone halves their life, hand and board. You are the player who can afford it, and the life loss is doubled by any Curse out.
 
-# Removal you can point anywhere
-Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
-Ayli, Eternal Pilgrim :: {1}, Sacrifice another creature: You gain life equal to the sacrificed creature's toughness.
-Damn :: Destroy target creature. A creature destroyed this way can't be regenerated.
-Anguished Unmaking :: Exile target nonland permanent. You lose 3 life.
-Deadly Rollick :: If you control a commander, you may cast this spell without paying its mana cost.
+# Gaining the life
+Authority of the Consuls :: a life every time any opponent plays a creature, and their creatures arrive tapped so nothing has haste.
+Haliya, Guided by Light :: a life for every creature or artifact you play, and a card at end step whenever you gained three.
+Exemplar of Light :: a counter for every lifegain event and a card each turn it grows.
+Archivist of Oghma :: a card and a life every time anyone searches their library.
+Ayli, Eternal Pilgrim :: life equal to whatever you sacrifice.
+Black Market Connections :: three effects a turn, paid in life you are gaining back at double rate.
+Necropotence :: as many cards as you want, and this deck's life total is not the constraint it usually is.
 
-# Taxes and lock pieces
-Silence :: Your opponents can't cast spells this turn.
-Grand Abolisher :: During your turn, your opponents can't cast spells or activate abilities of artifacts, creatures, or enchantments.
-Archon of Emeria :: Each player can't cast more than one spell each turn.
-Ghostly Prison :: Creatures can't attack you unless their controller pays {2} for each creature they control that's attacking you.
-Rule of Law :: Each player can't cast more than one spell each turn.
-Moat :: Creatures without flying can't attack.
+# The wall
+Moat :: creatures without flying cannot attack. Selenia flies; most of the table does not.
+Ghostly Prison :: taxes what Moat does not stop.
+Authority of the Consuls :: no haste kills, no surprise blockers.
+Blind Obedience :: the same for artifacts.
+Archon of Emeria :: one spell per turn each, and their nonbasics enter tapped.
+Grand Abolisher :: nobody interacts during your turn — cast this before you go for the loop.
+Inkshield :: prevents a lethal alpha strike and converts it into a flying army.
+Clever Concealment :: usually free with convoke, and it phases your whole board out of a wrath.
 
-# Card advantage
-Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
-Archivist of Oghma :: Whenever an opponent searches their library, you gain 1 life and draw a card.
-Diabolic Intent :: As an additional cost to cast this spell, sacrifice a creature.
-Gleaming Splendor :: Whenever an opponent draws their second card each turn, you create a Treasure token.
-Mind Stone :: {T}: Add {C}.
-Wishclaw Talisman :: This artifact enters with three wish counters on it.
+# Removal and disruption
+Anguished Unmaking :: instant-speed exile for any nonland permanent.
+Deadly Rollick :: free with your commander out.
+Damn :: a removal spell early or a wrath late — and your board is mostly enchantments.
+Dauthi Voidwalker :: unblockable, blanks their graveyards, and steals their best card.
+Esper Sentinel :: taxes their first noncreature spell each turn.
+Deep Gnome Terramancer :: punishes every fetchland and every ramp spell at the table.
+Gleaming Splendor :: Treasures off their draws, and it can force draws itself.
 
-# Ramp
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
-Orzhov Signet :: {1}, {T}: Add {W}{B}.
-Talisman of Hierarchy :: {T}: Add {C}.
-The Mind Stone :: {T}: Add {W}.
+# Tutors
+Demonic Tutor :: any card.
+Diabolic Intent :: any card for a spare body, and the sacrifice is on plan.
+Idyllic Tutor :: the enchantment half — Exquisite Blood, Enduring Tenacity, Moat or Ghostly Prison.
+
+# What to keep in an opening hand
+Keep a wall and a mana source. The deck's clock is slow by design, so the losing pattern is being attacked to death on turn six, not running out of gas.
+Do not protect Selenia forever. Her death trigger is a permanent Curse on an opponent, and Gift of Immortality turns that into one Curse per turn. Killing her on purpose is often the strongest line available.
+Assemble the loop with Grand Abolisher up if you can. Two enchantments is a narrow window for the table to respond, and this deck has the mana to do both in one turn.
+Aetherflux Reservoir :: count your life before you go looking for the second combo piece. Fifty is closer than it looks with the gain doubled, and the Reservoir needs no partner.

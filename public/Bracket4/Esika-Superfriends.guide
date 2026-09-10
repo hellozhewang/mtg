@@ -1,51 +1,72 @@
-Esika, God of the Tree in BGRUW, built to Bracket 4 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+The front face is a mana engine; the back face is the deck. The Prismatic Bridge puts a creature or planeswalker from your library onto the battlefield at the beginning of every upkeep — free, uncastable, uncounterable — and this deck is built out of six- and seven-mana planeswalkers precisely because it never intends to pay for them. Everything else either protects the Bridge, doubles the loyalty, or untaps the walkers.
 
 # The commander
-Esika, God of the Tree :: the deck is named for it
+Esika, God of the Tree :: cast the front face for {G}{G} when you need mana and fixing: she taps for any colour and gives your other legendary creatures the same ability.
+Cast The Prismatic Bridge when you need the engine. A free planeswalker every upkeep wins the game on its own if it survives two turns, and nothing in a normal Commander game answers an enchantment quickly.
+Oath of Nissa :: digs three for a creature, land or planeswalker, and it lets you spend any colour on planeswalker spells — which in a five-colour deck matters more than it looks.
 
-# Game Changers (15, uncapped)
-Chrome Mox :: Imprint — When this artifact enters, you may exile a nonartifact, nonland card from your hand.
-Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
-Demonic Tutor :: Search your library for a card, put that card into your hand, then shuffle.
-Enlightened Tutor :: Search your library for an artifact or enchantment card, reveal it, then shuffle and put that card on top.
-Farewell :: Choose one or more —
-Fierce Guardianship :: If you control a commander, you may cast this spell without paying its mana cost.
-Force of Will :: You may pay 1 life and exile a blue card from your hand rather than pay this spell's mana cost.
-Mana Vault :: This artifact doesn't untap during your untap step.
-Mox Diamond :: If this artifact would enter, you may discard a land card instead. If you do, put this artifact onto the battlefield.…
-Narset, Parter of Veils :: Each opponent can't draw more than one card each turn.
-Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
-Teferi's Protection :: Until your next turn, your life total can't change and you gain protection from everything. All permanents you…
-The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
-Vampiric Tutor :: Search your library for a card, then shuffle and put that card on top. You lose 2 life.
-Worldly Tutor :: Search your library for a creature card, reveal it, then shuffle and put the card on top.
+# Doubling the loyalty
+Doubling Season :: planeswalkers enter with twice the loyalty, which means most of them can ULTIMATE the turn they arrive. Elspeth, Garruk and Chandra all end games immediately.
+Oath of Teferi :: blink a permanent on arrival, and then activate a loyalty ability twice each turn on every walker you control.
+Ichormoon Gauntlet :: every planeswalker gains "[0]: proliferate" and "[−12]: take an extra turn", and every noncreature spell adds counters. It turns a stalled board into a chain of extra turns.
+Atraxa, Praetors' Voice :: proliferate at every end step, so every walker ticks up an extra time for free.
+Commodore Guff :: a loyalty counter on another walker each end step, plus bodies and card advantage.
+Rings of Brighthearth :: copies any loyalty ability for {2}. Two activations, one counter spent.
+Carth the Lion :: digs seven for a planeswalker whenever he enters or a walker dies, and your walkers' abilities cost one less loyalty to activate up and one more to tick down.
 
-# Removal you can point anywhere
-Path to Exile :: Exile target creature. Its controller may search their library for a basic land card, put that card onto the…
-Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
-Anguished Unmaking :: Exile target nonland permanent. You lose 3 life.
-Nicol Bolas, Dragon-God :: Nicol Bolas has all loyalty abilities of all other planeswalkers on the battlefield.
-Teferi, Hero of Dominaria :: +1: Draw a card. At the beginning of the next end step, untap up to two lands.
-Garruk, Apex Predator :: +1: Destroy another target planeswalker.
+# The planeswalkers
+Elspeth, Sun's Champion :: three bodies a turn, a one-sided wrath against big creatures, and an emblem that ends the game.
+Garruk, Apex Predator :: kills a walker, kills a creature, makes a 3/3, and the ultimate is lethal.
+Liliana, Dreadhorde General :: a Zombie a turn, a symmetric edict, and a card for every creature you lose.
+Chandra, Awakened Inferno :: uncounterable, and the emblems accumulate so the table simply burns down.
+Jace, the Mind Sculptor :: card selection, a Brainstorm every turn, and a bounce for the creature attacking your walkers.
+Narset, Parter of Veils :: opponents draw one card a turn. Against a blue table that is close to a lock.
+Oko, Thief of Crowns :: turns their best permanent into a 3/3 Elk, or makes Food while ticking up.
+Nicol Bolas, Dragon-God :: has every loyalty ability of every other walker on the battlefield, which in this deck is an enormous menu.
+Tamiyo, Field Researcher :: draws off combat, taps blockers, and the ultimate casts spells free.
+Lord Windgrace :: card advantage and land recursion on a walker that protects itself.
 
-# Card advantage
-Mystic Remora :: Cumulative upkeep {1}
-Oath of Nissa :: When Oath of Nissa enters, look at the top three cards of your library. You may reveal a creature, land, or…
-Sensei's Divining Top :: {1}: Look at the top three cards of your library, then put them back in any order.
-Dawn's Truce :: Gift a card
-Teferi, Time Raveler :: Each opponent can cast spells only any time they could cast a sorcery.
-Wrenn and Realmbreaker :: Lands you control have "{T}: Add one mana of any color."
+# Finding the pieces
+Demonic Tutor :: any card.
+Enlightened Tutor :: any artifact or enchantment — The Prismatic Bridge is not tutorable this way, but Doubling Season and Ichormoon Gauntlet are.
+Arena Rector :: dies into ANY planeswalker onto the battlefield, for free.
+Carth the Lion :: a planeswalker off the top seven, repeatedly.
+Sensei's Divining Top :: sets your draws and the Bridge's hit.
+Sylvan Library :: with this much card selection, the four-life payments are usually right.
+Rhystic Study :: their turns pay for yours.
+Mystic Remora :: the strongest card in the deck on turns one through four.
 
-# Ramp
-Mox Amber :: {T}: Add one mana of any color among legendary creatures and planeswalkers you control.
-An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Farseek :: Search your library for a Plains, Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle.
-Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
+# Protecting the board
+Planeswalkers lose to attacks, so half the deck exists to make attacking impossible.
+Norn's Annex :: creatures cannot attack you OR your planeswalkers unless their controller pays two life per attacker. This is the single most important defensive card in the deck.
+Teferi's Protection :: phases everything out through a wrath, a combo kill or a lethal attack.
+Dawn's Truce :: hexproof for you and your permanents, and gifted it is even cheaper.
+Final Showdown :: spree, so you can strip abilities and wrath in one cast while keeping one creature.
+Farewell :: pick the modes that miss your own board. Against an artifact or graveyard table it is one-sided.
+Elspeth, Sun's Champion :: the minus is a wrath that leaves your Soldiers alive.
+Fierce Guardianship :: free with your commander out.
+Force of Will :: free, for the spell you genuinely cannot let resolve.
+Mana Drain :: counter, and the mana casts a seven-drop walker.
+An Offer You Can't Refuse :: one mana for anything noncreature.
+Cyclonic Rift :: overloaded, it clears every attacker and every answer at once.
+Swords to Plowshares :: the cleanest removal in the format.
+Path to Exile :: the second copy.
+Anguished Unmaking :: instant-speed exile for any nonland permanent.
 
-# Protection
-Final Showdown :: Spree
-Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
-Jace, the Mind Sculptor :: +2: Look at the top card of target player's library. You may put that card on the bottom of that player's library.
-Chandra, Awakened Inferno :: This spell can't be countered.
+# Mana in five colours
+Sol Ring :: turn one.
+Mana Vault :: three on turn one.
+Mox Amber :: live the moment any legend or walker resolves, which in this deck is constantly.
+Mox Diamond :: a land for a Mox.
+Chrome Mox :: fast, at the cost of a card.
+Arcane Signet :: fixing.
+Fellwar Stone :: usually taps for what you are missing.
+Nature's Lore :: an untapped dual.
+Farseek :: a shockland.
+Esika, God of the Tree :: the front face turns every legend you control into a mana source of any colour.
+
+# What to keep in an opening hand
+Keep fixing and acceleration. Five colours and a six-mana commander is the deck's real cost — Sol Ring, the Moxen and the land-fetch spells are what make turn four or five possible.
+Choose the face deliberately. Esika for two mana is a ramp piece when you are behind on mana; The Prismatic Bridge for six is the engine when you are not. Casting the wrong one is the most common mistake.
+Doubling Season before a planeswalker, always. The same Elspeth is a value engine without it and an immediate emblem with it.
+Norn's Annex :: prioritise it once you have two walkers out. Your walkers are the win condition and combat is the only thing that reliably kills them.

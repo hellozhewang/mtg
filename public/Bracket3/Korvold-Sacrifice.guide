@@ -1,41 +1,76 @@
-Korvold, Fae-Cursed King in BGR, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Korvold draws a card for EVERY permanent you sacrifice, not just the one his own trigger demands. That is the deck. Give him a free sacrifice outlet and a supply of tokens and he turns a board of Treasures into a hand of cards and a 20/20 body at the same time. Note his attack trigger is mandatory — "sacrifice another permanent" — so always have fodder available before you swing, or you will be eating your own mana rocks.
 
-# The commander
-Korvold, Fae-Cursed King :: Whenever Korvold enters or attacks, sacrifice another permanent.
+# The commander and the free outlets
+Korvold, Fae-Cursed King :: a counter and a card on every sacrifice, from any source. Five mana, flies, and grows out of removal range within a turn.
+Ashnod's Altar :: free, repeatable, and it makes mana. Every creature is two colourless and a card.
+Phyrexian Altar :: the same with colour fixing, which matters in three colours.
+Goblin Bombardment :: free, and it converts the fodder into reach at the face.
+Skullclamp :: on a 1/1 token, two cards — plus Korvold's card for the death. Three cards per token.
+Deadly Dispute :: two cards and a Treasure for a spare artifact or creature, at instant speed.
+Diabolic Intent :: a tutor for a spare body, and Korvold draws off the sacrifice.
+Baba Lysaga, Night Witch :: sacrifice three permanents of three different types for three drain, three life and three cards — plus three Korvold triggers.
 
-# Game Changers (3 of 3)
-Bolas's Citadel :: You may look at the top card of your library any time.
-Demonic Tutor :: Search your library for a card, put that card into your hand, then shuffle.
-Gaea's Cradle :: {T}: Add {G} for each creature you control.
+# Endless fodder
+Academy Manufactor :: every Treasure you would make becomes a Clue, a Food AND a Treasure. It triples every token maker below and turns each one into three Korvold draws when they get sacrificed.
+Pitiless Plunderer :: a Treasure for every creature that dies. With an Altar out this is how a board unravels into a dozen cards.
+Grim Hireling :: two Treasures per combat damage step.
+Professional Face-Breaker :: a Treasure per combat step, and it converts Treasures into impulse draws.
+Goldspan Dragon :: Treasures on attack and whenever anyone targets it, and your Treasures tap for two mana instead of one.
+Impulsive Pilferer :: a Treasure when it dies, and encore makes three more copies later.
+Jadar, Ghoulcaller of Nephalia :: a free 2/2 every single end step, forever. It is the most reliable fodder in the deck.
+Ophiomancer :: a 1/1 deathtouch Snake every upkeep, which blocks anything and then becomes a card.
+Marionette Apprentice :: fabricate gives you a Servo, and every artifact or creature that dies drains the table.
+Sakura-Tribe Elder :: a land and a card in one body.
+Black Market Connections :: a Treasure, a card and a 3/2 every turn, for life.
 
-# Removal you can point anywhere
-Deathrite Shaman :: {T}: Exile target land card from a graveyard. Add one mana of any color.
-Abrupt Decay :: This spell can't be countered.
-Assassin's Trophy :: Destroy target permanent an opponent controls. Its controller may search their library for a basic land card, put it…
+# Land sacrifice as an engine
+The Gitrog Monster :: an extra land drop, and a card for every land that reaches your graveyard — stacking with Korvold's card for the sacrifice. His upkeep cost is not a drawback here, it is a second trigger.
+Crucible of Worlds :: play those lands back out of the graveyard.
+Ramunap Excavator :: the creature version, and it is a Snake for Ophiomancer.
+Sylvan Safekeeper :: sacrifice lands for free to protect Korvold. Each one is a Korvold card and a Gitrog card, so the "cost" is card advantage.
+Aftermath Analyst :: mills three, then sacrifices itself to return EVERY land from your graveyard to the battlefield at once. With Lotus Cobra out that is a huge mana turn; with Korvold it is one card.
+Lotus Cobra :: mana on every landfall, which the Analyst turn multiplies.
+Six :: mills on attack, keeps a land, and lets you recast permanents from the graveyard by discarding lands.
 
-# Card advantage
-Skullclamp :: Equipped creature gets +1/-1.
-Veil of Summer :: Draw a card if an opponent has cast a blue or black spell this turn. Spells you control can't be countered this turn.…
-Deadly Dispute :: As an additional cost to cast this spell, sacrifice an artifact or creature.
-Diabolic Intent :: As an additional cost to cast this spell, sacrifice a creature.
-The Sackville-Bagginses :: When The Sackville-Bagginses enter, you may sacrifice another creature or artifact. If you do, draw a card and create…
-Baba Lysaga, Night Witch :: {T}, Sacrifice up to three permanents: If there were three or more card types among the sacrificed permanents, each…
-
-# Ramp
-Birds of Paradise :: {T}: Add one mana of any color.
-Delighted Halfling :: {T}: Add {C}.
-Ignoble Hierarch :: Exalted
-Impulsive Pilferer :: When this creature dies, create a Treasure token.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-
-# Protection
-Sylvan Safekeeper :: Sacrifice a land: Target creature you control gains shroud until end of turn.
-Heroic Intervention :: Permanents you control gain hexproof and indestructible until end of turn.
-Lightning Greaves :: Equipped creature has haste and shroud.
+# Turning sacrifices into damage
+Blood Artist :: a drain for every creature that dies, anywhere.
+Cauldron of Essence :: the same drain, plus a reanimation outlet.
+Marionette Apprentice :: a drain for every artifact or creature you lose, which includes every Treasure you crack.
+Mirkwood Bats :: a drain when you CREATE a token and again when you sacrifice it. With Academy Manufactor that is six drains per Treasure trigger.
+Mayhem Devil :: a damage every time ANY player sacrifices anything — including their own fetchlands.
+Juri, Master of the Revue :: grows on every sacrifice and throws all of it at a face when he dies.
+Chandra's Ignition :: point it at Korvold. His power hits every other creature on the board and every opponent in the face. This is the deck's cleanest kill.
+Bolas's Citadel :: cast off the top paying life, then sacrifice ten nonland permanents for ten damage to each opponent. In a deck making three tokens per trigger, ten permanents is one turn's work.
 
 # Recursion
-Aftermath Analyst :: When this creature enters, mill three cards.
-Cauldron of Essence :: Whenever a creature you control dies, each opponent loses 1 life and you gain 1 life.
-Eternal Witness :: When this creature enters, you may return target card from your graveyard to your hand.
-World Shaper :: Whenever this creature attacks, you may mill three cards.
+Reanimate :: one mana for whatever you sacrificed.
+Living Death :: your graveyard is deeper than theirs after two turns of this.
+Eternal Witness :: any card back, and it is a body to sacrifice afterwards.
+Cauldron of Essence :: a repeatable reanimation each turn.
+
+# Removal and protection
+Assassin's Trophy :: two mana for any permanent.
+Abrupt Decay :: uncounterable, and most problem permanents cost three or less.
+Chaos Warp :: the answer to an enchantment or planeswalker.
+Blasphemous Act :: cheap, and this deck profits from its own creatures dying.
+Heroic Intervention :: hexproof and indestructible through a wrath.
+Sylvan Safekeeper :: shroud on Korvold for a land you did not need.
+Lightning Greaves :: haste so he attacks immediately, and shroud against the removal spell.
+Deflecting Swat :: free with your commander out.
+Braids, Arisen Nightmare :: every end step, you feed it a token and they either give up a permanent or you draw and they lose two.
+
+# Mana and tutors
+Birds of Paradise :: turn-one fixing.
+Ignoble Hierarch :: all three colours plus exalted.
+Delighted Halfling :: uncounterable mana for Korvold himself.
+Deathrite Shaman :: mana, drain and lifegain from a one-drop.
+Nature's Lore :: an untapped dual with a basic type.
+Farseek :: the same for shocklands.
+Demonic Tutor :: any card.
+Diabolic Intent :: any card for a token you were going to sacrifice anyway.
+
+# What to keep in an opening hand
+Keep mana and a token maker. Jadar, Ophiomancer or a Treasure source means Korvold's attack trigger never costs you anything real, and that is what lets him attack every turn.
+Never attack without spare fodder. Korvold's sacrifice on attack is not optional. Sacrificing a Signet or a land to swing for four is usually a worse deal than not attacking at all.
+Academy Manufactor :: this is the biggest single multiplier in the deck. Every Treasure effect becomes three tokens, so every drain payoff, every Mirkwood Bats trigger and every Korvold draw triples.
+Chandra's Ignition :: hold it until Korvold is at eight power or more. It kills the table's board and usually two players at once, and it does not care about blockers.

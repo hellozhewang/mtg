@@ -1,36 +1,72 @@
-Maelstrom Wanderer in GRU, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Cascade is free mana, but this deck treats it as something better: a trigger. Half the cards here pay you specifically for casting spells FROM EXILE or for casting enormous creature spells, so a Maelstrom Wanderer that flips into two seven-drops is not just eighteen mana of value — it is a copy, a pile of damage and three cards on top. Build the mana, cast one big thing, and the rest happens on its own.
 
-# The commander
-Maelstrom Wanderer :: Creatures you control have haste.
+# The commander and the cascade chain
+Maelstrom Wanderer :: eight mana for two cascades and permanent haste for your whole board. The haste is not a rider — it is what lets the creatures you cascade into attack the same turn.
+Apex Devastator :: four cascades on one card. It is the single biggest turn in the deck.
+Imoti, Celebrant of Bounty :: every spell you cast with mana value six or more gains cascade. Half this deck qualifies.
+Quandrix, the Proof :: your instants and sorceries from hand gain cascade too, and it cascades itself.
+Averna, the Chaos Bloom :: every cascade also puts a land onto the battlefield. It ramps you while it digs.
+Etherium-Horn Sorcerer :: cascades, and it bounces itself to hand to cascade again.
+Aurora Phoenix :: cascades, and it climbs out of the graveyard every time you cast another cascade spell.
+Natural Reclamation :: removal with a cascade attached.
+Call Forth the Tempest :: two cascades and a sweeper scaled to everything you cast this turn.
+Remember the rule: cascade finds the first nonland card with a LOWER mana value. This deck is deliberately top-heavy so the flips are big — Maelstrom Wanderer at eight can hit anything up to seven.
 
-# Game Changers (3 of 3)
-Mana Vault :: This artifact doesn't untap during your untap step.
-Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
-The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
+# Getting paid for casting from exile
+Nalfeshnee :: every spell you cast from exile is COPIED. With cascade, that is two of everything you flip into.
+Keeper of Secrets :: damage equal to the mana value of every spell you cast from anywhere but your hand. A double cascade into two big spells is a dozen damage.
+Passionate Archaeologist :: the same trigger stapled to your commander, and it hits every time.
+Improvisation Capstone :: free spells now, and paradigm makes it repeat at the beginning of every one of your main phases for the rest of the game.
+Creative Technique :: a free spell off the top, and demonstrate lets you copy it for a friend to keep the table happy.
+Sunbird's Invocation :: every spell you cast from HAND reveals its mana value in cards and casts a free one from among them. It turns each hard cast into two spells.
 
-# Removal you can point anywhere
-Beast Within :: Destroy target permanent. Its controller creates a 3/3 green Beast creature token.
-Natural Reclamation :: Cascade
-Trumpeting Carnosaur :: When this creature enters, discover 5.
+# Getting paid for casting big creatures
+Kozilek's Unsealing :: draw three for every creature spell of mana value seven or more, and two mana Spawn for every four-, five- or six-drop. It fuels itself.
+Sarkhan's Unsealing :: four damage to any target for mid-sized creatures, and four to EACH opponent and each of their creatures and planeswalkers for anything with power seven or more. Two big flips is a wrath and eight damage to the table.
+Monstrous Vortex :: every creature spell with power five or more discovers X. Another free spell on top of the cascade.
+Echoes of Eternity :: colourless spells you cast are copied, and colourless triggered abilities happen twice. With the Eldrazi package it doubles everything.
 
-# Card advantage
-Up the Beanstalk :: When this enchantment enters and whenever you cast a spell with mana value 5 or greater, draw a card.
-Cultivate :: Search your library for up to two basic land cards, reveal those cards, put one onto the battlefield tapped and the…
-Kodama's Reach :: Search your library for up to two basic land cards, reveal those cards, put one onto the battlefield tapped and the…
-Kozilek's Unsealing :: Devoid
-Monstrous Vortex :: Whenever you cast a creature spell with power 5 or greater, discover X, where X is that spell's mana value.
-Genesis Ultimatum :: Look at the top five cards of your library. Put any number of permanent cards from among them onto the battlefield…
+# The things you want to hit
+Kozilek, Butcher of Truth :: four cards on cast and annihilator 4.
+Artisan of Kozilek :: reanimates something on cast and annihilator 2.
+Etali, Primal Storm :: a free spell off every player's library on every attack, and it has haste from your commander.
+Etali, Primal Conqueror :: a free spell from every player on entry, and a flipped infect finisher later.
+Emrakul, the Promised End :: cheaper for every card type in your graveyard, and it takes over an opponent's whole turn.
+Decimator of the Provinces :: emerge makes it castable off a spare body, and it pumps and tramples the entire board for the kill.
+Elder Deep-Fiend :: flash, emerge, and it taps four permanents — a fog, a counterspell substitute, or the clear for a lethal attack.
+Ancient Silver Dragon :: an average of ten cards on connection.
+Ancient Copper Dragon :: an average of ten Treasures.
+Delina, Wild Mage :: token copies of whatever monster you just cascaded into, sometimes several.
+Genesis Ultimatum :: five cards deep, every permanent among them onto the battlefield.
+Selvala's Stampede :: the table votes, and both outcomes put your fatties into play.
 
 # Ramp
-An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Farseek :: Search your library for a Plains, Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle.
-Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
-Rampant Growth :: Search your library for a basic land card, put that card onto the battlefield tapped, then shuffle.
+Sol Ring :: turn one.
+Mana Vault :: three on turn one.
+Thran Dynamo :: three more.
+Nature's Lore :: an untapped dual.
+Three Visits :: the second copy.
+Skyshroud Claim :: two untapped Forests, a four-mana swing.
+Farseek :: fetches a shockland.
+Cultivate :: a land now and a land in hand.
+Kodama's Reach :: the same.
+Rampant Growth :: the cheap one.
+Fellwar Stone :: two mana that usually taps for what you need.
+Talisman of Curiosity :: and the rest of the rocks. Getting to eight mana on turn five is the entire early game.
 
-# Protection
-Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
-Unexpected Results :: Shuffle your library, then reveal the top card. If it's a nonland card, you may cast it without paying its mana cost.…
-Etherium-Horn Sorcerer :: {1}{U}{R}: Return this creature to its owner's hand.
-Ulamog, the Ceaseless Hunger :: When you cast this spell, exile two target permanents.
+# Interaction
+Mana Drain :: counter their answer, and the mana casts a fatty next turn.
+An Offer You Can't Refuse :: one mana for anything noncreature.
+Beast Within :: instant-speed answer to any permanent.
+Chaos Warp :: the enchantment and planeswalker answer.
+Chaos Mutation :: exiles a creature from each player and replaces it with a random one — usually a downgrade for them and an upgrade for you.
+Natural Reclamation :: artifact or enchantment plus a cascade.
+Possibility Storm :: a lock that hurts everyone, but you have Nalfeshnee, Keeper of Secrets and Passionate Archaeologist to profit from every random cast. Deploy it against a combo table, not a creature one.
+The One Ring :: a turn of complete protection and then a growing draw engine.
+Rhystic Study :: their turns pay for your eight-drops.
+
+# What to keep in an opening hand
+Keep ramp. Two rocks and a land-fetch beats a hand of eight-drops every single time — the deck's payoff cards are all free once you can cast one big thing.
+Cast the cascade spell BEFORE the value engines when you are behind, and after them when you are ahead. Nalfeshnee, Keeper of Secrets and Sarkhan's Unsealing turn one Maelstrom Wanderer into a lethal turn; without them it is just a big body.
+Averna, the Chaos Bloom :: three mana, and every cascade afterwards ramps you. She is much better on turn three than on turn eight.
+Maelstrom Wanderer :: he gives your whole board haste permanently, so the creatures you cascade into attack immediately. Do not forget the attack — half the deck's damage comes from monsters that arrived this turn.

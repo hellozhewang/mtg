@@ -1,39 +1,73 @@
-Kotis, the Fangkeeper in BGU, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Kotis is Voltron where the reward is other people's cards. He exiles cards off the defending player equal to the DAMAGE he dealt, and you cast any number of them for free as long as they cost that much or less. So every point of power you add does two jobs — it kills faster and it digs deeper. And because he is indestructible, the two most dangerous pump effects in the format cost him nothing.
 
 # The commander
-Kotis, the Fangkeeper :: Whenever Kotis deals combat damage to a player, exile the top X cards of their library, where X is the amount of…
+Kotis, the Fangkeeper :: indestructible, and every connection exiles X cards and casts any number of them with mana value X or less, free. A ten-damage hit routinely produces two or three free spells.
+Berserk :: doubles his power and grants trample for one green mana. The "destroy it at end of turn" clause is a dead line of text on an indestructible creature. This is the single best card in the deck.
+Inquisitor's Flail :: doubles his combat damage. The drawback — he takes double damage back — does not matter, because he cannot be destroyed.
+Leyline Axe :: double strike, so Kotis triggers TWICE, each with its own X. It can start the game on the battlefield if it is in your opening hand.
+Felix Five-Boots :: combat damage triggers of your permanents happen an additional time. Two full Kotis triggers per connection.
+Roaming Throne :: name Zombie or Warrior. Another doubling of the same trigger.
 
-# Game Changers (3 of 3)
-Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
-Opposition Agent :: You control your opponents while they're searching their libraries.
-Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
+# Making him connect
+Brotherhood Regalia :: equip to a legendary creature for {1} — ward {2} and completely unblockable. The cheapest enabler in the deck.
+My Precious :: hexproof and unblockable on one Equipment, and the Adventure half draws two.
+Aqueous Form :: one mana, unblockable, and it scries every attack.
+Security Bypass :: unblockable while attacking alone, plus a connive on every hit.
+Indomitable Might :: flash, +3/+3, and it assigns damage as though unblocked — so a chump block does not shrink X.
+Silent Arbiter :: only one creature can block each combat. In a deck attacking with one enormous creature, that is close to unblockable, and it shuts down the table's alpha strikes at the same time.
+Conqueror's Flail :: opponents cannot cast spells during your turn while it is attached. Deploy it before the big swing.
 
-# Removal you can point anywhere
-Deathrite Shaman :: {T}: Exile target land card from a graveyard. Add one mana of any color.
-Assassin's Trophy :: Destroy target permanent an opponent controls. Its controller may search their library for a basic land card, put it…
-Reality Shift :: Exile target creature. Its controller manifests the top card of their library.
-Manglehorn :: When this creature enters, you may destroy target artifact.
-Deadly Rollick :: If you control a commander, you may cast this spell without paying its mana cost.
+# Making X large
+Blackblade Reforged :: +1/+1 per land. On turn seven that is +7/+7 for a three-mana equip on a legendary creature.
+Strong Back :: +2/+2 for every Aura and Equipment attached, and it makes every subsequent Aura and Equipment cost three less. It is both a payoff and a discount.
+Bear Umbra :: +2/+2, untaps all your lands when he attacks — so the free spells you just exiled can be followed by ones you pay for — and umbra armor eats a removal spell.
+Power Fist :: trample, and it turns every hit into permanent +1/+1 counters, so X grows every turn.
+Buster Sword :: +3/+2, a card on damage, and a free spell from your hand priced by the damage dealt.
+Rancor :: +2/+0 and trample for one mana, and it returns to your hand when it dies.
+Dragonfire Blade :: +2/+2 and hexproof from monocoloured, which is most removal.
+Overprotect :: +3/+3, trample, hexproof and indestructible at instant speed.
 
-# Card advantage
-Combat Research :: Enchant creature
-Mystic Remora :: Cumulative upkeep {1}
-Veil of Summer :: Draw a card if an opponent has cast a blue or black spell this turn. Spells you control can't be countered this turn.…
-Buster Sword :: Equipped creature gets +3/+2.
-Toski, Bearer of Secrets :: This spell can't be countered.
+# Getting paid for the free spells
+Ancient Cellarspawn :: whenever you cast a spell for LESS than its mana value, an opponent loses the difference. Every free spell Kotis gives you is a drain equal to its full cost.
+Gonti, Night Minister :: a Treasure whenever anyone casts a spell they do not own, and it exiles a card off an opponent whenever any creature damages them.
+Dauthi Voidwalker :: unblockable, exiles everything headed for their graveyards, and cashes in for a free cast.
+Opposition Agent :: flash him onto a fetchland or tutor and keep whatever they find.
 
-# Ramp
-An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
-Birds of Paradise :: {T}: Add one mana of any color.
-Delighted Halfling :: {T}: Add {C}.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Farseek :: Search your library for a Plains, Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle.
+# Protecting the pile
+The failure case is obvious: one exile effect answers eight cards. Kotis being indestructible only covers half of it.
+Guardian Augmenter :: your commander gets +2/+2 and HEXPROOF. Flash, so it can arrive in response to removal.
+Slip Out the Back :: one mana, phases him out with everything attached.
+Legolas's Quick Reflexes :: split second, so nothing can respond at all.
+Heroic Intervention :: hexproof and indestructible for the whole board.
+Overprotect :: the same on one creature, plus a pump.
+Glen Elendra Archmage :: a repeatable counterspell for the removal spell that matters, twice thanks to persist.
+Deadly Rollick :: free with your commander out.
 
-# Protection
-Dragonfire Blade :: Equipped creature gets +2/+2 and has hexproof from monocolored.
-Legolas's Quick Reflexes :: Split second
-Rancor :: Enchant creature
-Heroic Intervention :: Permanents you control gain hexproof and indestructible until end of turn.
-Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
-Overprotect :: Target creature you control gets +3/+3 and gains trample, hexproof, and indestructible until end of turn.
+# Interaction
+Mana Drain :: counter their answer, then spend the mana equipping.
+Swan Song :: one mana for a wrath.
+An Offer You Can't Refuse :: the same for anything noncreature.
+Assassin's Trophy :: two mana for any permanent.
+Reality Shift :: exile a blocker and leave them a 2/2 they cannot use.
+Damnation :: a wrath, and Kotis walks away from it untouched.
+Cyclonic Rift :: overloaded, it clears every blocker for the lethal swing.
+Amphibian Downpour :: flash, and storm means one copy per spell cast this turn — it turns a table full of commanders into a table full of 1/1 Frogs.
+Manglehorn :: an artifact destroyed on entry, and their artifacts arrive tapped.
+
+# Mana and cards
+Birds of Paradise :: turn-one fixing.
+Bloom Tender :: three colours off one tap once Kotis is out.
+Delighted Halfling :: uncounterable mana for legendary spells, which is Kotis and most of the Equipment.
+Deathrite Shaman :: mana, drain and lifegain from one card.
+Nature's Lore :: an untapped dual.
+Farseek :: the same for shocklands.
+Rhystic Study :: their turns pay for yours.
+Mystic Remora :: the strongest card in the deck on turns one through four.
+Combat Research :: a card on every hit, plus +1/+1 and ward on a legendary creature.
+Eternal Witness :: any card back from the graveyard.
+
+# What to keep in an opening hand
+Keep an unblockable enabler. Aqueous Form, Brotherhood Regalia or My Precious is what turns Kotis from a 2/1 that trades into a repeatable engine, and none of the pump matters if he does not connect.
+Attack the player whose deck you want to cast from, not the player with the lowest life. The exile is off THEIR library, so hitting the combo deck gets you tutors and rituals while hitting the creature deck may give you nothing castable.
+Berserk :: hold it for the turn a large X matters. Doubling a 12-power Kotis takes X from twelve to twenty-four, which casts essentially anything exiled.
+Do not overcommit Auras and Equipment before you have protection available. Guardian Augmenter or Slip Out the Back in hand is worth more than one more +2/+2.

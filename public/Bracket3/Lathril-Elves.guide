@@ -1,39 +1,73 @@
-Lathril, Blade of the Elves in BG, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Lathril's second ability is the real deck: tap ten Elves and every opponent loses ten life while you gain ten. It does not attack, so it ignores blockers, fogs, Ghostly Prison and every wrath they cast after you activate. Ten Elves sounds like a lot until you notice that this deck makes three or four a turn — and that tapping a creature as the COST of somebody else's ability ignores summoning sickness entirely, so Elves that arrived this turn count.
 
 # The commander
-Lathril, Blade of the Elves :: Whenever Lathril deals combat damage to a player, create that many 1/1 green Elf Warrior creature tokens.
+Lathril, Blade of the Elves :: menace, makes an Elf token for each point of combat damage, and taps ten Elves to drain the whole table for ten. Two activations kill a pod from twenty.
+Dionus, Elvish Archdruid :: your Elves untap and get a +1/+1 counter the first time each of them becomes tapped during your turn. Tap ten for Lathril, they all untap with counters, and then you attack with them. This is the best card in the deck alongside her.
+Seedborn Muse :: untaps everything during EVERY opponent's untap step. Lathril's drain becomes four activations per turn cycle — forty life off each opponent.
+Lightning Greaves :: haste so she connects the turn she lands, and shroud against the removal spell coming for her.
 
-# Game Changers (3 of 3)
-Gaea's Cradle :: {T}: Add {G} for each creature you control.
-Necropotence :: Skip your draw step.
-Seedborn Muse :: Untap all permanents you control during each other player's untap step.
+# The mana Elves
+Priest of Titania :: green mana for every Elf on the battlefield, including your opponents'. On a normal board that is five or more from a two-drop.
+Elvish Archdruid :: the same count restricted to yours, plus an anthem.
+Circle of Dreams Druid :: green for every CREATURE you control, tokens included.
+Marwyn, the Nurturer :: grows on every Elf that enters and taps for her own power.
+Heritage Druid :: tap three untapped Elves for {G}{G}{G}. Summoning sickness does not apply to Elves tapped this way, so a fresh Elvish Promenade immediately makes mana.
+Elvish Guidance :: an aura on a land that adds green for every Elf on the battlefield.
+Llanowar Elves :: turn-one acceleration.
+Fyndhorn Elves :: the second copy.
+Elvish Mystic :: the third.
+Elves of Deep Shadow :: the black one, which matters for Necropotence and the removal suite.
+Farhaven Elf :: a land and a body.
+Elvish Harbinger :: fixes, and tutors the exact Elf you need to the top.
 
-# Removal you can point anywhere
-Abrupt Decay :: This spell can't be countered.
-Assassin's Trophy :: Destroy target permanent an opponent controls. Its controller may search their library for a basic land card, put it…
-Go for the Throat :: Destroy target nonartifact creature.
-Beast Within :: Destroy target permanent. Its controller creates a 3/3 green Beast creature token.
-Krosan Grip :: Split second
-Maelstrom Pulse :: Destroy target nonland permanent and all other permanents with the same name as that permanent.
+# Going wide
+Elvish Promenade :: an Elf token for every Elf you control. It routinely doubles your board.
+Lys Alana Huntmaster :: a token for every Elf spell you cast.
+Elvish Warmaster :: a token whenever other Elves enter, and a deathtouch team pump for a mana sink.
+Imperious Perfect :: an anthem and a repeatable token maker.
+Dwynen's Elite :: two bodies for two mana.
+Freyalise, Llanowar's Fury :: a mana Elf every turn, artifact and enchantment removal on the minus, and a huge draw on the ultimate.
+Realmwalker :: name Elf and cast them straight off the top of your library.
+
+# Anthems
+Elvish Champion :: +1/+1 and FORESTWALK. Against any green deck at the table your whole board is unblockable.
+Leaf-Crowned Visionary :: +1/+1 and a card for every Elf spell you cast, for {G} apiece.
+Joraga Warcaller :: multikicked, it is a scaling anthem — kick it twice and every Elf gets +2/+2.
+Immaculate Magistrate :: taps to put a counter on a creature for each Elf you control. On Marwyn that is instantly lethal mana; on Lathril it is a much bigger token trigger.
+Beastmaster Ascension :: seven quest counters comes fast on a board this wide, and then everything gets +5/+5.
+
+# Closing the game
+Craterhoof Behemoth :: the standard ending. On a board of twenty Elves it is not close.
+Overwhelming Stampede :: the same effect, cheaper, using your biggest creature's power.
+Ezuri, Renegade Leader :: a repeatable +3/+3 and trample for the whole team, and a regeneration outlet that beats spot removal and most wraths.
+Return of the Wildspeaker :: draw cards equal to your biggest non-Human's power — with Marwyn that is often ten — or pump the team by +3/+3 at instant speed.
+Poison-Tip Archer :: reach and deathtouch to hold the ground, and a drain for every creature that dies anywhere.
+Lathril, Blade of the Elves :: remember the drain is not damage and does not target. It goes through protection, fog, prison enchantments and blockers alike.
 
 # Card advantage
-Skullclamp :: Equipped creature gets +1/-1.
-Elvish Visionary :: When this creature enters, draw a card.
-Leaf-Crowned Visionary :: Other Elves you control get +1/+1.
-Night's Whisper :: You draw two cards and lose 2 life.
-Cultivate :: Search your library for up to two basic land cards, reveal those cards, put one onto the battlefield tapped and the…
-Kodama's Reach :: Search your library for up to two basic land cards, reveal those cards, put one onto the battlefield tapped and the…
+Beast Whisperer :: a card for every creature spell.
+Leaf-Crowned Visionary :: the second copy, on an anthem body.
+Elvish Visionary :: a body that replaces itself.
+Necropotence :: as many cards as your life total allows, and Lathril's drain gains you ten a pop.
+Phyrexian Arena :: a card every turn.
+Read the Bones :: two cards and a scry.
+Night's Whisper :: two cards for two mana.
 
-# Ramp
-Elves of Deep Shadow :: {T}: Add {B}. This creature deals 1 damage to you.
-Elvish Mystic :: {T}: Add {G}.
-Fyndhorn Elves :: {T}: Add {G}.
-Heritage Druid :: Tap three untapped Elves you control: Add {G}{G}{G}.
-Llanowar Elves :: {T}: Add {G}.
-Sol Ring :: {T}: Add {C}{C}.
+# Removal and protection
+Assassin's Trophy :: two mana for any permanent.
+Abrupt Decay :: uncounterable, for the cheap problem permanent.
+Beast Within :: instant-speed answer to anything.
+Putrefy :: an artifact or a creature.
+Go for the Throat :: one of the cleanest black removal spells.
+Maelstrom Pulse :: kills a permanent and every copy of it, which is how you answer a token deck.
+Krosan Grip :: split second, so it beats the thing they were holding up.
+Reclamation Sage :: an artifact or enchantment on an Elf body.
+Damnation :: a wrath. You rebuild from an Elvish Promenade far faster than anyone else at the table.
+Heroic Intervention :: hexproof and indestructible for the whole board.
+Ezuri, Renegade Leader :: regenerate through targeted removal, one Elf at a time.
 
-# Protection
-Wirewood Symbiote :: Return an Elf you control to its owner's hand: Untap target creature. Activate only once each turn.
-Heroic Intervention :: Permanents you control gain hexproof and indestructible until end of turn.
-Lightning Greaves :: Equipped creature has haste and shroud.
-Swiftfoot Boots :: Equipped creature has hexproof and haste.
+# What to keep in an opening hand
+Keep a one-mana Elf. Llanowar Elves, Fyndhorn Elves or Elvish Mystic on turn one is what makes a turn-two Priest of Titania and a turn-three Lathril possible.
+Count your Elves before you activate. Ten is the number, tokens count, and creatures that entered this turn count — tapping a creature to pay for ANOTHER permanent's ability has no summoning-sickness restriction. This catches people out constantly.
+Dionus, Elvish Archdruid :: with him out, the tap-ten activation costs you nothing at all. Tap ten, they untap with counters, and you still get a full attack. Find him before you commit to the drain plan.
+Craterhoof Behemoth :: hold it. This deck can already win by tapping Elves, and Craterhoof is the answer to a board stall or a table that has walled off the drain with lifegain.

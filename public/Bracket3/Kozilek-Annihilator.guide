@@ -1,38 +1,69 @@
-Kozilek, the Great Distortion in colourless, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+A colourless ramp deck whose payoff is not damage but permanents. Annihilator does not care about life totals, blockers or lifegain — it takes lands, rocks and enchantments off the board until an opponent simply cannot function. The deck's job is to reach eight or ten mana two turns before anyone expects it, and Kozilek's own text turns every uncastable fatty in your hand into a hard counterspell while you get there.
 
 # The commander
-Kozilek, the Great Distortion :: When you cast this spell, if you have fewer than seven cards in hand, draw cards equal to the difference.
+Kozilek, the Great Distortion :: refills your hand to seven on cast, and then every card in that hand is a counterspell for a spell of matching mana value. In a deck full of eight- and ten-drops, that covers most of what a table casts.
+Zhulodok, Void Gorger :: every colourless spell of mana value seven or more you cast FROM HAND gets cascade twice. Casting one Eldrazi becomes casting three spells. He is the biggest single upgrade in the deck.
+Conduit of Ruin :: tutors a colourless seven-drop to the top of your library, and makes your first creature each turn cost two less. Cast it on turn four and the following turn is enormous.
+Endless One :: the flexible body that is a two-drop when you are behind and a 10/10 when you are not.
 
-# Game Changers (3 of 3)
-Ancient Tomb :: {T}: Add {C}{C}. This land deals 2 damage to you.
-Grim Monolith :: This artifact doesn't untap during your untap step.
-Mana Vault :: This artifact doesn't untap during your untap step.
+# Ramp, and a lot of it
+Sol Ring :: turn one, every time.
+Mana Vault :: three mana on turn one, and the untap cost rarely matters in a deck that wants to tap out anyway.
+Grim Monolith :: the same, with a cheaper cast.
+Basalt Monolith :: three mana that untaps for three, so it is a mana sink as well.
+Metalworker :: two colourless per artifact card revealed from hand. With a normal hand that is six or eight mana from a three-drop, on turn four.
+Thran Dynamo :: three, reliably.
+Gilded Lotus :: three of any colour, which matters only for the few coloured pips in the deck.
+Chromatic Orrery :: five mana and a draw engine.
+Hedron Archive :: two mana, or two cards when the game goes long.
+Dreamstone Hedron :: three mana, or three cards.
+Worn Powerstone :: two, and it is cheap enough to matter on turn three.
+Sisay's Ring :: two more.
+Ur-Golem's Eye :: two more again. The redundancy is the point.
+Everflowing Chalice :: scales to whatever you have spare.
+Palladium Myr :: two mana on a body, so Metalworker and Kuldotha Forgemaster can use it.
+Foundry Inspector :: a discount on every artifact in the deck.
+Unwinding Clock :: untaps every rock during each opponent's untap step. It turns a board of mana rocks into instant-speed mana on four turns instead of one.
 
-# Removal you can point anywhere
-Warping Wail :: Choose one —
-Titan's Presence :: As an additional cost to cast this spell, reveal a colorless creature card from your hand.
-Karn Liberated :: +4: Target player exiles a card from their hand.
-Meteor Golem :: When this creature enters, destroy target nonland permanent an opponent controls.
-Scour from Existence :: Exile target permanent.
-Spine of Ish Sah :: When this artifact enters, destroy target permanent.
+# The Eldrazi
+Ulamog, the Infinite Gyre :: destroys a permanent on cast, is indestructible, and annihilator 4 removes four permanents on every attack.
+Ulamog, the Ceaseless Hunger :: exiles two permanents on cast and mills twenty per attack — a legitimate alternate win.
+Kozilek, Butcher of Truth :: four cards on cast and annihilator 4, and it shuffles your graveyard back in when it dies.
+Pathrazer of Ulamog :: annihilator 3, and it cannot be blocked except by three or more creatures.
+Artisan of Kozilek :: reanimates a creature on cast, then annihilator 2 every attack.
+Spawnsire of Ulamog :: annihilator 1, and it makes Eldrazi Spawn to ramp toward the next one.
+Bane of Bala Ged :: exiles two of their permanents on every attack, which dodges every "when this dies" trigger annihilator gives them.
+Void Winnower :: opponents cannot cast spells with EVEN mana values, and cannot block with even-cost creatures. Against most decks that is half their library turned off.
+It That Betrays :: whenever an opponent sacrifices a nontoken permanent, YOU get it. Alongside any annihilator creature, every attack hands you their best lands and rocks. This is the deck's ceiling.
 
-# Card advantage
-Expedition Map :: {2}, {T}, Sacrifice this artifact: Search your library for a land card, reveal it, put it into your hand, then…
-Mind Stone :: {T}: Add {C}.
-Hedron Archive :: {T}: Add {C}{C}.
-Solemn Simulacrum :: When this creature enters, you may search your library for a basic land card, put that card onto the battlefield…
-Dreamstone Hedron :: {T}: Add {C}{C}{C}.
-Chromatic Orrery :: You may spend mana as though it were mana of any color.
+# Colourless is one-sided
+All Is Dust :: every permanent you control is colourless. It is a board wipe that leaves you with everything.
+Ugin, the Spirit Dragon :: the minus exiles only COLOURED permanents, so it is another one-sided sweeper, and the ultimate rebuilds your entire board.
+Karn Liberated :: exiles any permanent every other turn, and strips their hand in between.
+Titan's Presence :: three mana to exile almost any creature, using the fatties in your hand as fuel.
+Warping Wail :: one mana of real interaction — a small creature, a sorcery, or a mana Scion.
+Scour from Existence :: exiles anything at instant speed. Expensive, but unconditional.
+Thought-Knot Seer :: takes their best card and blanks the turn they were building toward.
 
-# Ramp
-Everflowing Chalice :: Multikicker {2}
-Sol Ring :: {T}: Add {C}{C}.
-Basalt Monolith :: This artifact doesn't untap during your untap step.
-Metalworker :: {T}: Reveal any number of artifact cards in your hand. Add {C}{C} for each card revealed this way.
-Palladium Myr :: {T}: Add {C}{C}.
-Worn Powerstone :: This artifact enters tapped.
+# Removal on artifacts
+Spine of Ish Sah :: destroys any permanent on entry, and returns to your hand whenever it hits the graveyard. Sacrifice it to Kuldotha Forgemaster and you get it back.
+Kuldotha Forgemaster :: three artifacts — the rocks you have already spent — becomes any artifact in the deck, straight onto the battlefield.
+Meteor Golem :: another destroy-on-entry body.
+Duplicant :: exiles a creature and becomes it.
+Steel Hellkite :: flies, and after it connects it destroys every nonland permanent at the mana value of your choosing. Against a token deck, name zero.
+Scrap Trawler :: every artifact that dies buys back a cheaper one.
+Darksteel Forge :: every artifact you control becomes indestructible, which with this many rocks makes you immune to most wraths.
 
-# Protection
-Darksteel Forge :: Artifacts you control have indestructible.
-Ulamog, the Ceaseless Hunger :: When you cast this spell, exile two target permanents.
-Ulamog, the Infinite Gyre :: When you cast this spell, destroy target permanent.
+# Value bodies
+Wurmcoil Engine :: deathtouch, lifelink, and two 3/3s when it dies.
+Myr Battlesphere :: five bodies and a damage burst on attack.
+Solemn Simulacrum :: a land and a card.
+Expedition Map :: finds Ancient Tomb or whichever utility land the board needs.
+Crucible of Worlds :: replays the lands that annihilator and All Is Dust cost you.
+Mind Stone :: ramp early, a card late.
+
+# What to keep in an opening hand
+Keep two mana sources and something to do with them. Sol Ring plus Mana Vault plus any three-drop rock puts Conduit of Ruin down on turn three and a real Eldrazi on turn four or five.
+Hold cheap cards for Kozilek's counter ability. A hand of nothing but ten-drops can only counter ten-drops. Keeping a Mind Stone or an Everflowing Chalice around gives you coverage of the cheap interaction people actually cast.
+Zhulodok, Void Gorger :: cast him BEFORE the fatty, always. Six mana into a ten-drop next turn with double cascade is a far bigger turn than casting the ten-drop a turn earlier alone.
+It That Betrays :: if it is on the battlefield, attack with the annihilator creature into whoever has the best board, not whoever has the lowest life. Every permanent they sacrifice becomes yours.

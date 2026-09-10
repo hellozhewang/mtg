@@ -1,40 +1,64 @@
-Lorehold, the Historian in RW, built to Bracket 3.5 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Miracle {2} on every instant and sorcery in your hand means Apex of Power, Insurrection and Approach of the Second Sun all cost two mana — if you draw them as the first card of a turn. Lorehold's third line hands you exactly that window on EVERY opponent's upkeep, so a four-player game gives you three extra miracle turns a round. The deck is built to make that draw be the card you chose.
 
-# The commander
-Lorehold, the Historian :: Each instant and sorcery card in your hand has miracle {2}.
+# The commander and the trick
+Lorehold, the Historian :: 5/5 flier with haste, miracle {2} on your whole hand, and a loot on each opponent's upkeep. That loot is what makes the miracle live — it is a fresh "first card you drew this turn" three times per round.
+Library of Leng :: this is the combo. When an effect makes you discard, you may put the card on TOP of your library instead of into the graveyard. So Lorehold's loot becomes "put any card from hand on top, then draw it" — a guaranteed miracle on whatever you want, on every opponent's upkeep.
+Cool but Rude :: the loot is also a discard, so at level two each one deals two damage to every opponent.
+Brallin, Skyshark Rider :: a counter and a damage to each opponent on every discard, which the commander does three times a round for free.
+Monument to Endurance :: every discard becomes a card, a Treasure, or three life from each opponent.
 
-# Game Changers (3 of 3)
-Ancient Tomb :: {T}: Add {C}{C}. This land deals 2 damage to you.
-Mana Vault :: This artifact doesn't untap during your untap step.
-The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
+# What you want to miracle
+Apex of Power :: mana value ten. Miracled for two, it exiles seven cards and lets you cast them — and cast from hand instead, it adds ten mana.
+Insurrection :: steal every creature on the board, untapped and hasted, for two mana.
+Approach of the Second Sun :: seven mana becomes two, twice. Note both copies must be cast FROM YOUR HAND, and miracle casting is from hand, so this works.
+Reforge the Soul :: it has its own miracle cost, and a fresh seven for everyone refills you into more miracles.
+Mizzix's Mastery :: overloaded, it recasts every instant and sorcery in your graveyard for free.
+Comet Storm :: an X spell you can point at several targets at once.
+Call Forth the Tempest :: two cascades and a sweeper scaled to your turn.
+Austere Command :: pick the two halves that miss your own board.
+Blasphemous Act :: already cheap, and lethal alongside the enchantment below.
 
-# Removal you can point anywhere
-Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
-Generous Gift :: Destroy target permanent. Its controller creates a 3/3 green Elephant creature token.
-Rise of the Eldrazi :: This spell can't be countered.
+# The kills
+Repercussion :: whenever a creature is dealt damage, that damage is also dealt to its CONTROLLER. Follow it with Blasphemous Act and every player takes thirteen for each creature they control. That is the deck's cleanest kill, and both halves are cards you would run anyway.
+Reiterate :: buyback {3}, so it copies a spell and returns to your hand. Copy Mana Geyser with it and, as long as the Geyser produces six or more red mana, the loop pays for itself and makes arbitrarily large mana. That mana goes into Comet Storm or Apex of Power.
+Mana Geyser :: red mana for every tapped land your opponents control. Cast it after they have all tapped out; eight or more is routine.
+Insurrection :: on a developed table, taking everything is simply lethal.
+Comet Storm :: the finisher for any large mana turn, and multikicker spreads it across the table.
 
-# Taxes and lock pieces
-Silence :: Your opponents can't cast spells this turn.
-Grand Abolisher :: During your turn, your opponents can't cast spells or activate abilities of artifacts, creatures, or enchantments.
-Twinflame :: Strive — This spell costs {2}{R} more to cast for each target beyond the first.
+# Copying and recurring
+Dualcaster Mage :: flash, and it copies any instant or sorcery on the stack — including one an opponent just cast.
+Arcane Bombardment :: every turn, your first instant or sorcery exiles one from your graveyard at random and copies EVERY card it has exiled so far. It snowballs enormously.
+Improvisation Capstone :: free spells now, and paradigm repeats it at the beginning of each of your main phases for the rest of the game.
+Mizzix's Mastery :: the graveyard replay, targeted or overloaded.
+Pinnacle Monk :: returns an instant or sorcery from the graveyard, and it is a land when you need one instead.
 
-# Card advantage
-Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
-Land Tax :: At the beginning of your upkeep, if an opponent controls more lands than you, you may search your library for up to…
-Sensei's Divining Top :: {1}: Look at the top three cards of your library, then put them back in any order.
-Archivist of Oghma :: Whenever an opponent searches their library, you gain 1 life and draw a card.
-Cool but Rude :: Whenever you attack, you may discard a card. If you do, draw a card.
-Reprieve :: Return target spell to its owner's hand.
+# Cheaper spells, more mana
+Longshot, Rebel Bowman :: noncreature spells cost one less, and each one deals two to every opponent.
+Electro, Assaulting Battery :: red mana does not empty between phases, and every instant and sorcery adds another. It turns a long turn into a much longer one.
+Mana Vault :: three mana on turn one.
+Mana Geyser :: the explosive turn.
+Bender's Waterskin :: untaps on every opponent's untap step, so it is mana on their turns for your miracles.
+Boros Signet :: fixing.
+Fellwar Stone :: usually taps for what you need.
+Land Tax :: three basics a turn, and this deck is happy to be behind on lands.
 
-# Ramp
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Boros Signet :: {1}, {T}: Add {R}{W}.
-Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
-Talisman of Conviction :: {T}: Add {C}.
-Bender's Waterskin :: Untap this artifact during each other player's untap step.
+# Interaction and protection
+Deflecting Swat :: free with your commander out.
+Generous Gift :: any permanent, at instant speed.
+Chaos Warp :: the enchantment and planeswalker answer.
+Olórin's Searing Light :: every opponent exiles their best creature, and with spell mastery on it burns them for that creature's power too.
+Grand Abolisher :: nobody interacts during your turn.
+Hexing Squelcher :: your spells cannot be countered and your creatures get ward.
+Clever Concealment :: usually free with convoke, and it phases your board out of a wrath.
+Everybody Lives! :: nobody can lose life, lose the game or win the game this turn. It is the answer to somebody else's combo turn, and it buys you the turn you need.
+Penance :: a repeatable prevention shield against the red and black decks, paid for in cards you were going to loot away.
+Esper Sentinel :: taxes their first noncreature spell each turn.
+Archivist of Oghma :: a card and a life every time anyone searches.
+Mangara, the Diplomat :: draws when they attack you in numbers and when they double-spell.
+Dragon's Rage Channeler :: surveils on every noncreature spell, which sets up the next miracle.
 
-# Protection
-Everybody Lives! :: All creatures gain hexproof and indestructible until end of turn. Players gain hexproof until end of turn. Players…
-Hexing Squelcher :: This spell can't be countered.
-Tibalt's Trickery :: Counter target spell. Choose 1, 2, or 3 at random. Its controller mills that many cards, then exiles cards from the…
+# What to keep in an opening hand
+Keep mana and one expensive spell. A hand with Insurrection or Apex of Power in it is a keep, because those are two-mana cards once Lorehold is out.
+Do not cast the big spells the hard way. Nine mana for Apex of Power is a bad turn; two mana on an opponent's upkeep is a great one. Hold them and loot toward the window.
+Library of Leng :: find it. It converts Lorehold's loot from a gamble into a guaranteed miracle of your choice, three times per round.
+Lorehold, the Historian :: five mana, flies, has haste, and gives the whole hand miracle immediately. He is worth recasting through removal — the discount is the deck.

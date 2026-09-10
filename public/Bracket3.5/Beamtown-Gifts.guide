@@ -1,40 +1,63 @@
-The Beamtown Bullies in BGR, built to Bracket 3.5 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+This is a gift deck, and the gifts are poisoned. The Beamtown Bullies hand an opponent a creature out of YOUR graveyard on their own turn — so the deck fills its graveyard with the worst creatures ever printed, the ones whose drawbacks land on whoever controls them. Leveler exiles their library. Eater of Days costs them two turns. Bronze Bombshell sacrifices itself and deals seven to the face. You are not reanimating; you are handing out grenades.
 
 # The commander
-The Beamtown Bullies :: {T}: Target opponent whose turn it is puts target nonlegendary creature card from your graveyard onto the battlefield…
+The Beamtown Bullies :: vigilance and haste, and {T} gives an opponent — on THEIR turn — a nonlegendary creature from your graveyard, hasted and goaded, exiled at end step. Vigilance matters: you attack on your turn and still have him untapped for theirs.
+Because the target must be "the opponent whose turn it is", you get one activation per opponent per round. Three opponents is three gifts a turn cycle, and each one only needs the Bullies to be untapped.
+Marvin, Murderous Mimic :: has all activated abilities of your other creatures, which includes the Bullies' gift ability. Two gifts per player, per round.
+Magewright's Stone :: untaps a creature with a tap ability. Another gift on the same turn.
+Patriar's Seal :: mana, plus an untap aimed at legendary creatures — the Bullies included.
+Formidable Speaker :: tutors a creature on arrival and untaps a permanent every turn afterwards.
+Lightning Greaves :: haste and shroud. The Bullies eat removal the moment the table works out what he does.
 
-# Game Changers (3 of 3)
-Demonic Tutor :: Search your library for a card, put that card into your hand, then shuffle.
-Seedborn Muse :: Untap all permanents you control during each other player's untap step.
-Survival of the Fittest :: {G}, Discard a creature card: Search your library for a creature card, reveal that card, put it into your hand, then…
+# The gifts
+Leveler :: whoever controls it exiles their entire library. They lose the game on their next draw step. This is the deck's cleanest kill and it costs you one activation.
+Eater of Days :: its controller skips their next TWO turns. Handing this to the player about to win is often better than killing anything.
+Bronze Bombshell :: any player other than its owner sacrifices it immediately and takes seven damage. You own it, so it always goes off.
+Inverter of Truth :: its controller exiles their library and shuffles their graveyard in. Early in a game, that is a very small deck; often it is lethal on its own.
+Avatar of Woe :: not a gift — a creature you actually want, and with ten creature cards in graveyards it costs two mana and taps to kill something every turn.
 
-# Removal you can point anywhere
-Deathrite Shaman :: {T}: Exile target land card from a graveyard. Add one mana of any color.
-Despotic Scepter :: {T}: Destroy target permanent you own. It can't be regenerated.
-Pyroblast :: Choose one —
-Abrupt Decay :: This spell can't be countered.
-Assassin's Trophy :: Destroy target permanent an opponent controls. Its controller may search their library for a basic land card, put it…
-Bitter Triumph :: As an additional cost to cast this spell, discard a card or pay 3 life.
+# Filling the graveyard
+Entomb :: one mana, instant speed, exactly the grenade you need.
+Buried Alive :: three at once. Leveler, Eater of Days and Bronze Bombshell is the standard pile.
+Dina's Guidance :: a creature to hand OR straight to the graveyard, at instant speed.
+Hermit Druid :: reveals until a basic land, and this deck runs very few — so it dumps a huge chunk of your library into the graveyard for one green mana.
+Oriq Loremage :: tutors any card directly into your graveyard, every turn.
+Fauna Shaman :: converts a creature in hand into the exact creature you want, and the discarded one lands where you want it anyway.
+Faithless Looting :: cheap filtering, twice.
+Bitter Reunion :: a discard, two cards, and a haste enabler later.
+Formidable Speaker :: a discard and a tutor on one body.
 
-# Card advantage
-Faithless Looting :: Draw two cards, then discard two cards.
-Veil of Summer :: Draw a card if an opponent has cast a blue or black spell this turn. Spells you control can't be countered this turn.…
-Bitter Reunion :: When this enchantment enters, you may discard a card. If you do, draw two cards.
-Fauna Shaman :: {G}, {T}, Discard a creature card: Search your library for a creature card, reveal it, put it into your hand, then…
-Hermit Druid :: {G}, {T}: Reveal cards from the top of your library until you reveal a basic land card. Put that card into your hand…
-Ripples of Undeath :: At the beginning of your first main phase, mill three cards. Then you may pay {1} and 3 life. If you do, put a card…
+# Getting them back when you want them yourself
+Animate Dead :: reanimate on your own side when the board needs a threat rather than a gift.
+Eternal Witness :: any card back from the graveyard.
+Fang, Fearless l'Cie :: a card and a life whenever cards leave your graveyard — which the Bullies do every single turn, on somebody else's turn.
+Deathrite Shaman :: mana, drain and lifegain out of everyone's graveyards.
+Endurance :: flash, and it resets a graveyard deck at instant speed — including yours, if someone is about to exile it in response.
 
-# Ramp
-Birds of Paradise :: {T}: Add one mana of any color.
-Dark Ritual :: Add {B}{B}{B}.
-Delighted Halfling :: {T}: Add {C}.
-Elves of Deep Shadow :: {T}: Add {B}. This creature deals 1 damage to you.
-Ignoble Hierarch :: Exalted
-Llanowar Elves :: {T}: Add {G}.
+# Removal and protection
+Deadly Rollick :: free with your commander out.
+Deflecting Swat :: free, and it redirects the removal spell aimed at the Bullies.
+Bitter Triumph :: a creature or planeswalker, and the discard cost puts a grenade in the yard.
+Abrupt Decay :: uncounterable, for the cheap problem permanent.
+Assassin's Trophy :: two mana for any permanent.
+Heroic Intervention :: hexproof and indestructible through a wrath.
+Legolas's Quick Reflexes :: split second, so it protects the Bullies through anything — and it untaps him for another gift.
+Pyroblast :: one mana against the blue deck holding the counterspell.
+Despotic Scepter :: destroys a permanent you OWN, which includes a gift that has not gone off yet or a creature an opponent has stolen from you.
 
-# Protection
-Legolas's Quick Reflexes :: Split second
-Heroic Intervention :: Permanents you control gain hexproof and indestructible until end of turn.
-Lightning Greaves :: Equipped creature has haste and shroud.
-Swiftfoot Boots :: Equipped creature has hexproof and haste.
-Saryth, the Viper's Fang :: Other tapped creatures you control have deathtouch.
+# Mana and tutors
+Birds of Paradise :: turn-one fixing.
+Llanowar Elves :: the green half.
+Elves of Deep Shadow :: the black half.
+Ignoble Hierarch :: all three colours and exalted.
+Delighted Halfling :: uncounterable mana for legendary spells — the Bullies included.
+Dark Ritual :: three black on turn one.
+Nature's Lore :: an untapped dual.
+Demonic Tutor :: any card in the deck.
+Arcane Signet :: fixing.
+
+# What to keep in an opening hand
+Keep a graveyard enabler and acceleration. Entomb or Buried Alive plus a mana dork means the Bullies land on turn three with a live grenade already waiting.
+Gift on THEIR turn, always — the ability requires it. Activate in their upkeep so the creature is under their control for their whole turn, and remember it is goaded, so it has to attack somebody who is not you.
+Pick the target, not the biggest threat. Leveler at the player with the most cards left in library, Eater of Days at whoever is about to take a winning turn, Bronze Bombshell at whoever is lowest.
+Hermit Druid :: it is the fastest way to load the graveyard, but it also mills your own answers. Use it when you have a specific grenade in the deck and the Bullies already on the battlefield.

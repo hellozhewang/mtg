@@ -1,45 +1,69 @@
-Zur the Enchanter in BUW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Zur does not tutor to hand — he puts an enchantment of mana value three or less straight onto the BATTLEFIELD, for free, every time he attacks. So the deck is a toolbox with a three-mana ceiling, and most of the skill is knowing what to fetch on each attack. He also flies, which means the wall he fetches stops everyone else and not him.
 
 # The commander
-Zur the Enchanter :: Whenever Zur attacks, you may search your library for an enchantment card with mana value 3 or less, put it onto the…
+Zur the Enchanter :: 1/4 flier, and every attack finds an enchantment with mana value three or less and puts it into play. He is a tutor, a threat and a value engine on one card.
+Diplomatic Immunity :: shroud on Zur — and here is the trick that makes the deck work: his ability PUTS the aura onto the battlefield rather than targeting it, so you can keep suiting him up while he is completely untargetable. Fetch this first against any table with removal.
+Greater Auramancy :: shroud for your other enchantments AND for your enchanted creatures. Between this and Diplomatic Immunity, Zur becomes almost impossible to answer without a wrath.
+Lightning Greaves :: haste so he attacks the turn he lands, and shroud as a backup.
+Lavaspur Boots :: one mana for haste and ward, and it lets you still target him yourself.
+Flawless Maneuver :: free with a commander out, and it beats the wrath that is your only real out.
 
-# Game Changers (3 of 3)
-Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
-Necropotence :: Skip your draw step.
-Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
+# What to fetch, in rough order
+Mana value four or more is NOT fetchable. Moat, Archon of Sun's Grace and Approach of the Second Sun all have to be cast the hard way — a common misplay is attacking expecting Moat.
+Diplomatic Immunity :: protection first, always, if the table can kill Zur.
+Necropotence :: three mana, and it turns your life total into as many cards as you want. Zur finding this on turn five effectively ends the card-advantage game.
+Mystic Remora :: on an early attack, it draws more than anything else in the deck.
+Land Tax :: this deck is not land-hungry, but three basics a turn is fuel and deck-thinning for free.
+Ghostly Prison :: nobody attacks you profitably, which matters because Zur has to keep attacking.
+Grasp of Fate :: exiles a nonland permanent from EVERY opponent, on one fetch.
+Oubliette :: the cleanest answer to a commander — it phases out, so no death trigger, no exile trigger, nothing.
+Imprisoned in the Moon :: turns a commander, land or planeswalker into a colourless land it cannot recast.
+Darksteel Mutation :: two mana, turns a commander into a 0/1 Insect.
+Blind Obedience :: their creatures and artifacts arrive tapped, and extort drains on every spell.
+Aura of Silence :: taxes their artifacts and enchantments, and sacrifices to destroy one.
+Karmic Justice :: they cannot answer your enchantments without losing a permanent of their own.
+Luminarch Ascension :: with Ghostly Prison out you rarely lose life, so it turns on quickly and makes a 4/4 flier every turn.
 
-# Removal you can point anywhere
-Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
-Get Lost :: Destroy target creature, enchantment, or planeswalker. Its controller creates two Map tokens.
-Aura of Silence :: Artifact and enchantment spells your opponents cast cost {2} more to cast.
-Karmic Justice :: Whenever a spell or ability an opponent controls destroys a noncreature permanent you control, you may destroy target…
+# The Voltron kill
+Ethereal Armor :: +1/+1 for every enchantment you control, plus first strike. In this deck it is routinely +6/+6 or more, and it is fetchable.
+All That Glitters :: the same count, including artifacts.
+Daybreak Coronet :: +3/+3, first strike, vigilance and lifelink for two mana — but it needs another Aura already attached, so it is the second thing you fetch, never the first.
+Zur is a flier, so the wall you fetched does not stop him. Twenty-one commander damage from a 1/4 is three attacks once two of the above are on.
 
-# Taxes and lock pieces
-Grand Abolisher :: During your turn, your opponents can't cast spells or activate abilities of artifacts, creatures, or enchantments.
-Ghostly Prison :: Creatures can't attack you unless their controller pays {2} for each creature they control that's attacking you.
-Propaganda :: Creatures can't attack you unless their controller pays {2} for each creature they control that's attacking you.
-Moat :: Creatures without flying can't attack.
+# Making the enchantments count twice
+Archon of Sun's Grace :: a 2/2 flying lifelinking Pegasus for every enchantment that enters — which with Zur is one a turn, minimum.
+Grim Guardian :: each opponent loses a life for every enchantment that enters.
+Entity Tracker :: flash, and a card for every enchantment that enters.
+Copy Enchantment :: a second Necropotence, Moat, Ghostly Prison or Greater Auramancy.
+Estrid's Invocation :: the same, and it can re-enter each upkeep to reset a constellation trigger.
+Academy Rector :: when it dies, it fetches ANY enchantment onto the battlefield — no mana value limit. This is how Moat and Approach of the Second Sun actually arrive.
 
-# Card advantage
-Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
-Land Tax :: At the beginning of your upkeep, if an opponent controls more lands than you, you may search your library for up to…
-Mystic Remora :: Cumulative upkeep {1}
-Sensei's Divining Top :: {1}: Look at the top three cards of your library, then put them back in any order.
-Open the Armory :: Search your library for an Aura or Equipment card, reveal it, put it into your hand, then shuffle.
-Scroll Rack :: {1}, {T}: Exile any number of cards from your hand face down. Put that many cards from the top of your library into…
+# Tutors and cards
+Idyllic Tutor :: any enchantment to hand, including the expensive ones Zur cannot reach.
+Open the Armory :: an Aura or Equipment.
+Beseech the Mirror :: bargain it and cast the tutored card free if it costs four or less.
+Necropotence :: as many cards as your life total allows.
+Esper Sentinel :: taxes their first noncreature spell each turn.
+Land Tax :: free basics and a thinner deck.
 
-# Ramp
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
-Talisman of Dominance :: {T}: Add {C}.
-Talisman of Hierarchy :: {T}: Add {C}.
-Talisman of Progress :: {T}: Add {C}.
+# Interaction
+Mana Drain :: counter their answer, and the mana casts the next enchantment.
+Force of Negation :: free on their turn.
+Dovin's Veto :: uncounterable.
+Get Lost :: creature, enchantment or planeswalker at instant speed.
+Cyclonic Rift :: overloaded, the clear for a lethal Zur attack.
+Out of Time :: phases every creature out, including theirs, and vanishing gives you several turns of a completely empty board to attack into.
+Grand Abolisher :: nobody responds during your turn.
+Moat :: cast it, do not fetch it. Creatures without flying cannot attack at all, and Zur flies.
 
-# Protection
-Darksteel Mutation :: Enchant creature
-Diplomatic Immunity :: Enchant creature
-Dovin's Veto :: This spell can't be countered.
-Greater Auramancy :: Other enchantments you control have shroud.
-Lightning Greaves :: Equipped creature has haste and shroud.
-Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
+# How you actually win
+Zur the Enchanter :: twenty-one commander damage in the air, behind a wall nobody can attack through.
+Approach of the Second Sun :: the backup, and Academy Rector is not how you get it — it must be CAST from hand, twice.
+Luminarch Ascension :: a 4/4 flier every turn once it is online.
+Archon of Sun's Grace :: a Pegasus per enchantment, and they all have lifelink.
+
+# What to keep in an opening hand
+Keep four lands and a rock, or three lands and Land Tax. Zur costs four and the deck does very little before he lands, so the priority is casting him on curve with a spare mana for protection.
+Attack even when the board is bad. The fetch happens on the attack trigger, before blockers, so an attack that gets chump-blocked still gives you a free enchantment. The only reason not to attack is a removal spell you cannot answer.
+Fetch protection before value against an open table. A Zur that lives to attack four more times is worth more than any single Necropotence.
+Daybreak Coronet :: remember it needs another Aura attached first. Fetch Ethereal Armor or Diplomatic Immunity on the earlier attack so the Coronet is legal on the later one.

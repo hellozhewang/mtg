@@ -1,40 +1,69 @@
-Yuriko, the Tiger's Shadow in BU, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Yuriko's trigger fires for EVERY Ninja that connects, and the damage is the mana value of the card you reveal. So the deck is built around a contradiction that only makes sense here: it runs some of the most expensive cards in Magic precisely because it never intends to cast them. Draco reveals for sixteen. Dig Through Time reveals for eight and still costs two to cast. Every Ninja that gets through is a card AND a chunk of everyone's life total.
 
 # The commander
-Yuriko, the Tiger's Shadow :: Commander ninjutsu {U}{B}
+Yuriko, the Tiger's Shadow :: commander ninjutsu, so she comes back from the command zone for {U}{B} every time. Every Ninja connection reveals your top card, puts it in your HAND, and drains each opponent for its mana value.
+Note the changelings count. Changeling Outcast and Mothdust Changeling are every creature type, so they are Ninjas — they are both the enabler AND a trigger.
+Ninjutsu goes on the stack AFTER blockers are declared. Attack with the one-drop, wait for no blocks, then swap. The Ninja arrives already unblocked.
 
-# Game Changers (2 of 3)
-Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
-Vampiric Tutor :: Search your library for a card, then shuffle and put that card on top. You lose 2 life.
+# The reveal targets
+Draco :: mana value SIXTEEN. Sixteen life from each opponent on a single flip. Its domain discount makes it castable in a pinch, but you are never casting it.
+Dig Through Time :: printed mana value eight, and delve usually makes it cost two. The best card in the deck — cheap to cast, enormous to reveal.
+Murderous Cut :: mana value five, delve makes it one. Removal that doubles as a flip.
+Everything above roughly three mana value is a real hit in a four-player pod. The deck's curve looks clumsy on paper and is deliberate.
 
-# Removal you can point anywhere
-Dokuchi Silencer :: Ninjutsu {1}{B}
-Feed the Swarm :: Destroy target creature or enchantment an opponent controls. You lose life equal to that permanent's mana value.
-Infernal Grasp :: Destroy target creature. You lose 2 life.
-Deadly Rollick :: If you control a commander, you may cast this spell without paying its mana cost.
-Snuff Out :: If you control a Swamp, you may pay 4 life rather than pay this spell's mana cost.
-Murderous Cut :: Delve
+# The unblockable bodies
+These exist to attack on turn one or two and then get swapped away.
+Changeling Outcast :: one mana, cannot block, cannot BE blocked, and it is a Ninja in its own right.
+Gudul Lurker :: unblockable, and megamorph gives it a second life later.
+Mothdust Changeling :: every type, and it can give itself flying.
+Ornithopter :: zero mana, flies, a turn-one enabler.
+Faerie Seer :: flies and scries two, which sets up the flip you are about to take.
+Bitterblossom :: a flying Faerie every upkeep, forever. Endless enablers.
+Nether Traitor :: shadow, so it is unblockable in practice, and it returns from the graveyard.
+Dauthi Voidwalker :: shadow, plus it exiles everything headed for their graveyards and steals their best card.
+Ophiomancer :: a deathtouch Snake every upkeep — a blocker when you need one and a body to swap when you do not.
 
-# Card advantage
-Brainstorm :: Draw three cards, then put two cards from your hand on top of your library in any order.
-Ponder :: Look at the top three cards of your library, then put them back in any order. You may shuffle.
-Preordain :: Scry 2, then draw a card.
-Sensei's Divining Top :: {1}: Look at the top three cards of your library, then put them back in any order.
-Baleful Strix :: When this creature enters, draw a card.
-Mask of Riddles :: Equipped creature has fear.
+# The Ninjas
+Ingenious Infiltrator :: a card for EVERY Ninja that connects, not just itself. With three attackers that is three cards on top of three Yuriko triggers.
+Fallen Shinobi :: two free cards off the defending player's library on every hit.
+Higure, the Still Wind :: tutors the next Ninja every connection, and makes any Ninja unblockable for {2}.
+Ink-Eyes, Servant of Oni :: reanimates a creature from the defending player's graveyard, and regenerates through removal.
+Okiba-Gang Shinobi :: two discards per hit. Against a control table it is brutal.
+Dokuchi Silencer :: a removal spell every hit, paid for with a spare creature card.
+Mistblade Shinobi :: bounces a blocker or a problem permanent every hit.
+Moon-Circuit Hacker :: a card per hit, with no discard on the turn it arrives.
+Azra Smokeshaper :: cheap ninjutsu, and it makes a creature indestructible on arrival — which saves the attack from a blocker or a sweeper.
 
-# Ramp
-An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Dimir Signet :: {1}, {T}: Add {U}{B}.
-Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
-Mind Stone :: {T}: Add {C}.
+# Setting the top
+Yuriko puts the revealed card in your hand, so a good top card is a card AND damage. These let you choose it.
+Brainstorm :: three deep, and the two you put back are the next two flips.
+Ponder :: orders the top three.
+Preordain :: scry two and draw.
+Faerie Seer :: a scry attached to an attacker.
+Dig Through Time :: two cards from the top seven, and the rest go to the bottom rather than clogging.
 
-# Protection
-Counterspell :: Counter target spell.
-Lightning Greaves :: Equipped creature has haste and shroud.
-Swiftfoot Boots :: Equipped creature has hexproof and haste.
-Mistblade Shinobi :: Ninjutsu {U}
-Whispersilk Cloak :: Equipped creature can't be blocked and has shroud.
-Azra Smokeshaper :: Ninjutsu {1}{B}
+# Interaction
+Counterspell :: the clean two-mana answer.
+Force of Negation :: free on their turn.
+An Offer You Can't Refuse :: one mana for anything noncreature.
+Deadly Rollick :: free with your commander out.
+Infernal Grasp :: two mana, kills anything.
+Murderous Cut :: usually one mana, and a five on the flip.
+Feed the Swarm :: the only clean enchantment answer in Dimir.
+Damnation :: your board is cheap and recastable; theirs is not. Wrath and rebuild the same turn with ninjutsu.
+Cyclonic Rift :: overloaded, the clear for a lethal alpha strike.
+Baleful Strix :: a card, a flier, and a deathtouch blocker that trades with anything.
+
+# Cards and mana
+Mask of Riddles :: fear plus a card on every connection — it makes any body unblockable in practice.
+Lightning Greaves :: haste and shroud, and haste matters because Yuriko gets recast constantly.
+Phyrexian Arena :: a card a turn.
+Night's Whisper :: two cards for two mana.
+Mind Stone :: ramp early, a card later.
+Dimir Signet :: fixing, and ninjutsu costs add up.
+
+# What to keep in an opening hand
+Keep a one-mana unblockable creature. Changeling Outcast, Ornithopter or Gudul Lurker on turn one means Yuriko is on the battlefield on turn two, and that is four or five extra triggers over the game.
+Check the top before you swing when you can. A Brainstorm or Ponder in your first main phase turns a random flip into a sixteen-damage Draco.
+Yuriko, the Tiger's Shadow :: ninjutsu her from the COMMAND ZONE. She does not need to be in your hand, and the commander tax applies to casting, not to ninjutsu — so she comes back for {U}{B} every single time they kill her.
+Attack with everything cheap, every turn. The trigger is per Ninja, so three small connections beat one big one, and Reconnaissance-style caution costs you more than the chip damage saves.

@@ -1,39 +1,60 @@
-Marrow-Gnawer in B, built to Bracket 3.5 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Twenty-five copies of Rat Colony. That is the deck. Rat Colony is one of the few cards with no four-of limit, so a quarter of the library is the same 2/1 that gets +1/+0 for every other Rat you control — and Marrow-Gnawer roughly DOUBLES your Rat count every time he taps. Add Thrumming Stone and one Rat Colony cast turns into a dozen for free.
 
 # The commander
-Marrow-Gnawer :: All Rats have fear.
+Marrow-Gnawer :: all Rats have fear, which means almost nothing can block them, and {T} plus a sacrificed Rat creates a token for EVERY Rat you control. Sacrificing one of six leaves five, then makes five more — ten. Then twenty. It doubles.
+Thornbite Staff :: equip it to Marrow-Gnawer. The Rat you sacrifice as the cost dies, which untaps him, so you activate again immediately. Each iteration doubles the board, and it keeps going as long as you want. This is the deck's engine and the reason it sits at Bracket 3.5.
+Thousand-Year Elixir :: haste for the activation, and an untap for a second one.
+Lightning Greaves :: haste so he goes off the turn he lands, and shroud against the removal that is coming for him.
+Swiftfoot Boots :: hexproof and haste when you need to equip him yourself.
+Mithril Coat :: flash and indestructible, attached automatically. Hold it as a counterspell for removal.
 
-# Combos in the deck
-Thornbite Staff :: part of infinite untaps
-Ashnod's Altar :: part of infinite untaps
+# The Rat Colony engine
+Rat Colony :: twenty-five of them. Each one gets +1/+0 for every other Rat, so on a board of fifteen they are 16/1s with fear.
+Thrumming Stone :: every spell you cast has ripple 4 — reveal the top four and cast any card with the same name for free, and those ripple too. With a quarter of the deck named Rat Colony, one cast routinely chains into six or eight more, each of them free, each of them growing the rest.
+Karumonix, the Rat King :: digs five deep and puts every Rat among them into your HAND, which reloads the Thrumming Stone chain. It also gives the whole swarm toxic.
+Pack Rat :: copies itself for {2}{B} and a discarded card, and its size is your whole board.
+Lord Skitter, Sewer King :: a free Rat every combat, and it exiles a card from an opponent's graveyard for every Rat that enters.
+Rat King, Pale Piper :: a Rat whenever a nontoken creature leaves, and it converts spare tokens into cards.
+Rat King, Verminister :: grows and makes a Rat whenever a permanent leaves, and its ability returns a creature card AND every other copy of that name from your graveyard — which, with Rat Colony, is a mass reanimation.
+Ashcoat of the Shadow Swarm :: pumps the whole swarm by its own size when it attacks or blocks, and mills four each end step to return Rats.
 
-# Game Changers (3 of 3)
-Demonic Tutor :: Search your library for a card, put that card into your hand, then shuffle.
-Necropotence :: Skip your draw step.
-Vampiric Tutor :: Search your library for a card, then shuffle and put that card on top. You lose 2 life.
+# Turning the swarm into a kill
+The swarm has fear, so the usual plan is simply to attack. These are the outs when that is not enough.
+Crypt Rats :: {X} damage to each creature and each player, paid in black mana. With a big mana turn it kills the whole table — and with Eldrazi Monument out, your Rats are indestructible and only they survive.
+Eldrazi Monument :: +1/+1, flying and indestructible for the entire board. The upkeep sacrifice is free when you make dozens of Rats a turn.
+Altar of Dementia :: sacrifice a Rat to mill its power. On a board where each Rat is a 16/1, two or three sacrifices deck a player.
+The Meathook Massacre :: a scalable wrath your indestructible Rats survive, and every creature death anywhere drains or gains.
+Karumonix, the Rat King :: toxic on the whole swarm means ten poison counters is only a couple of connections.
 
-# Removal you can point anywhere
-Feed the Swarm :: Destroy target creature or enchantment an opponent controls. You lose life equal to that permanent's mana value.
-Gate to Phyrexia :: Sacrifice a creature: Destroy target artifact. Activate only during your upkeep and only once each turn.
-Deadly Rollick :: If you control a commander, you may cast this spell without paying its mana cost.
+# Sacrifice value
+Ashnod's Altar :: free, and every Rat is two colourless mana. It is how a doubled board becomes a huge Crypt Rats activation.
+Culling the Weak :: four black mana for one Rat.
+Deadly Dispute :: two cards and a Treasure for a spare token.
+Diabolic Intent :: any card in the deck for a Rat.
+Skullclamp :: your tokens are 1/1s, so clamping is two cards each, over and over.
+Gate to Phyrexia :: repeatable artifact removal that costs only a Rat.
+Grave Venerations :: makes you the monarch for the extra card, returns a creature each end step, and drains on every creature death.
 
-# Card advantage
-Skullclamp :: Equipped creature gets +1/-1.
-Deadly Dispute :: As an additional cost to cast this spell, sacrifice an artifact or creature.
-Diabolic Intent :: As an additional cost to cast this spell, sacrifice a creature.
-Karumonix, the Rat King :: Toxic 1
-Beseech the Mirror :: Bargain
-Rat King, Pale Piper :: Whenever Rat King or another nontoken creature you control leaves the battlefield, create a 1/1 black Rat creature…
+# Mana and tutors
+Dark Ritual :: three black on turn one.
+Cabal Ritual :: five with threshold, which this deck reaches quickly.
+Sol Ring :: the fastest start.
+Jet Medallion :: everything costs one less.
+Bontu's Monument :: black creatures cost one less AND every creature spell drains the table for one. With a Thrumming Stone chain that is a lot of drain.
+Necropotence :: as many cards as your life total allows.
+Demonic Tutor :: any card.
+Beseech the Mirror :: bargain a token and cast the tutored card free if it costs four or less. Usually Thrumming Stone is too expensive for that, so take it to hand.
+Patriarch's Bidding :: name Rat. Your graveyard comes back in full; most tables get far less.
+Reanimate :: one mana for the best creature in any graveyard.
 
-# Ramp
-Culling the Weak :: As an additional cost to cast this spell, sacrifice a creature.
-Dark Ritual :: Add {B}{B}{B}.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Cabal Ritual :: Add {B}{B}{B}.
+# Interaction
+Deadly Rollick :: free with your commander out.
+Feed the Swarm :: mono-black's only clean enchantment answer.
+Imp's Mischief :: redirects the removal spell aimed at Marrow-Gnawer.
+Toxic Deluge :: a scalable wrath. Your board rebuilds from one Marrow-Gnawer activation; theirs does not.
 
-# Protection
-Lightning Greaves :: Equipped creature has haste and shroud.
-Swiftfoot Boots :: Equipped creature has hexproof and haste.
-Mithril Coat :: When Mithril Coat enters, attach it to target legendary creature you control.
-Eldrazi Monument :: Creatures you control get +1/+1 and have flying and indestructible.
+# What to keep in an opening hand
+Keep a ritual and a Rat. Dark Ritual into a turn-one Rat Colony or a turn-two Pack Rat means the board is already wide when Marrow-Gnawer lands on turn three or four.
+Count before you activate. Marrow-Gnawer sacrifices first and then counts, so six Rats becomes ten, not twelve. The doubling is fast enough that it rarely matters — but it matters for lethal maths.
+Thornbite Staff :: this is the card to find. Marrow-Gnawer alone doubles once a turn; with the Staff attached he doubles as many times as you like.
+Thrumming Stone :: cast a Rat Colony immediately afterwards, not a tutor. Rippling into six free Rat Colonies is a bigger turn than any single card you could find.

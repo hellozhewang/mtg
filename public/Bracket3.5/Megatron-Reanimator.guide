@@ -1,38 +1,66 @@
-Megatron, Tyrant in BRW, built to Bracket 3.5 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Megatron is a damage cannon that fires artifacts. On the Vehicle side, every attack sacrifices an artifact and deals damage equal to its MANA VALUE to a creature — and any excess goes to that creature's controller. Sacrifice an eleven-drop, point it at a 1/1, and eleven damage hits a face. The deck is built to have enormous artifacts in the graveyard, get them onto the battlefield cheaply, and feed them to the cannon.
 
 # The commander
-Megatron, Tyrant :: the deck is named for it
+Megatron, Tyrant :: cast him CONVERTED for {1}{R}{W}{B} — four mana instead of his printed cost — and he arrives as the Vehicle with living metal, so he is a creature on your turn without needing crew.
+On the Tyrant side, opponents cannot cast spells during combat at all, and converting in your postcombat main adds {C} for every point of life your opponents lost this turn. A big cannon shot pays for the next fatty.
+Basilisk Collar :: this is the multiplier. Deathtouch means one damage is lethal to ANY creature, so every point past the first is excess and goes to the face. Sacrificing a mana value twelve artifact deals eleven to a player regardless of what you pointed it at.
+Isshin, Two Heavens as One :: Megatron's attack trigger is an attack trigger, so it happens twice. Two artifacts sacrificed, two bursts of damage, in one combat.
+Lightning Greaves :: haste and shroud.
 
-# Game Changers (3 of 3)
-Demonic Tutor :: Search your library for a card, put that card into your hand, then shuffle.
-Enlightened Tutor :: Search your library for an artifact or enchantment card, reveal it, then shuffle and put that card on top.
-The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
+# The ammunition
+Every one of these is a huge mana value, which is the only stat the cannon reads.
+Excalibur, Sword of Eden :: mana value twelve, and its cost falls by your historic permanents, so it is castable as well as loadable.
+Metalwork Colossus :: mana value eleven, nearly free to cast with noncreature artifacts out, and it returns itself from the graveyard for two artifacts.
+Mycosynth Golem :: mana value eleven, and it gives every artifact creature spell affinity so the rest of the ammunition costs almost nothing.
+Panther Robot :: mana value ten with affinity.
+Ancient Stone Idol :: mana value ten, flash, and it leaves a 6/12 behind when it dies.
+Phyrexian Triniform :: mana value nine, and it dies into three 3/3s.
+Bygone Colossus :: mana value nine, and warp lets you play it for three now and cast it properly later.
+Cityscape Leveler :: mana value eight, destroys a permanent on cast and on every attack, and unearths.
+Imskir Iron-Eater :: a second cannon — sacrifice an artifact to deal its mana value to ANY target, no creature required.
 
-# Card advantage
-Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
-Faithless Looting :: Draw two cards, then discard two cards.
-Combustible Gearhulk :: When this creature enters, target opponent may have you draw three cards. If the player doesn't, you mill three…
-Imskir Iron-Eater :: Affinity for artifacts
+# Getting them into the graveyard and back
+Buried Alive :: three fatties straight into the yard.
+Faithless Looting :: cheap filtering, twice.
+Goblin Engineer :: tutors an artifact directly into the graveyard, then recurs cheap ones.
+Goblin Welder :: swaps an artifact you control for a better one in the graveyard, every turn, free.
+Mishra, Tamer of Mak Fawa :: every artifact card in your graveyard gains unearth {1}{B}{R}. That is three mana to put a mana-value-eleven cannon shell onto the battlefield, and it also gives your whole board a ward.
+Daretti, Rocketeer Engineer :: returns an artifact from the graveyard on entry and on every attack.
+Daretti, Scrap Savant :: rummages, reanimates an artifact on the minus, and the ultimate returns every artifact that dies from then on.
+Kuldotha Forgemaster :: three artifacts becomes any artifact in the deck, straight onto the battlefield.
+Animate Dead :: cheap reanimation for the artifact creatures.
+Necromancy :: at flash speed, so you can rebuild in response to a wrath.
+Persist :: two mana for any nonlegendary creature.
+Morbid Curiosity :: sacrifice a fatty and draw cards equal to its mana value. Eleven cards is not unusual.
 
-# Ramp
-Mox Opal :: Metalcraft — {T}: Add one mana of any color. Activate only if you control three or more artifacts.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
-Talisman of Conviction :: {T}: Add {C}.
-Talisman of Hierarchy :: {T}: Add {C}.
+# Making the attack happen
+Krang, Utrom Warlord :: every other artifact creature gains flying, trample, indestructible and haste. It turns a board of ammunition into an army.
+Anger :: sitting in the graveyard with a Mountain out, everything you reanimate has haste.
+Grand Abolisher :: nobody interacts on your turn.
+Megatron, Tyrant :: the Tyrant side already stops opponents casting during combat, which covers the window that matters most.
+Boros Charm :: indestructible for the board through a wrath, or double strike, or four to the face.
+Clever Concealment :: usually free with convoke, and it phases the board out of a sweeper.
+Deflecting Swat :: free, and it redirects the removal aimed at Megatron mid-combat.
 
-# Protection
-Boros Charm :: Choose one —
-Lightning Greaves :: Equipped creature has haste and shroud.
-Solphim, Mayhem Dominus :: If a source you control would deal noncombat damage to an opponent or a permanent an opponent controls, it deals…
-Spine of Ish Sah :: When this artifact enters, destroy target permanent.
-Krang, Utrom Warlord :: Other artifact creatures you control have flying, trample, indestructible, and haste.
+# Removal
+Demonic Junker :: destroys a creature from every player at once, and grows if one of yours died.
+Organic Extinction :: improvise makes it cheap, and it destroys every NONARTIFACT creature — a one-sided wrath here.
+Cityscape Leveler :: a permanent destroyed on cast and on every attack.
+Combustible Gearhulk :: three cards, or three milled cards' worth of damage — and milling yourself loads the cannon.
+Imskir Iron-Eater :: draws off your artifact count and throws artifacts at anything.
 
-# Recursion
-Goblin Engineer :: When this creature enters, you may search your library for an artifact card, put it into your graveyard, then shuffle.
-Persist :: Return target nonlegendary creature card from your graveyard to the battlefield with a -1/-1 counter on it.
-Trash for Treasure :: As an additional cost to cast this spell, sacrifice an artifact.
-Daretti, Scrap Savant :: +2: Discard up to two cards, then draw that many cards.
-Mishra, Tamer of Mak Fawa :: Permanents you control have "Ward—Sacrifice a permanent."
-Wake the Past :: Return all artifact cards from your graveyard to the battlefield. They gain haste until end of turn.
+# Mana and tutors
+Mox Opal :: metalcraft is trivial here.
+Arcane Signet :: fixing three colours.
+Fellwar Stone :: usually taps for what you need.
+Mycosynth Golem :: affinity on every artifact creature spell — the single biggest cost reducer.
+Metalwork Colossus :: effectively free with a few rocks down.
+Demonic Tutor :: any card.
+Enlightened Tutor :: any artifact, to the top.
+Esper Sentinel :: taxes their first noncreature spell each turn.
+
+# What to keep in an opening hand
+Keep a graveyard enabler and acceleration. Buried Alive or Goblin Engineer plus a rock means Megatron converts on turn four with a mana-value-eleven shell already waiting in the yard.
+Cast Megatron CONVERTED. Four mana for the Vehicle side is the whole point; the Tyrant side is where you flip TO after the damage, not where you start.
+Basilisk Collar :: find it before you find more ammunition. Without deathtouch you need a small creature to point at; with it, every shot dumps almost its full mana value into a player.
+Convert in your postcombat main phase. The mana it adds scales with the life your opponents lost that turn, so a big cannon shot funds a second fatty the same turn.

@@ -1,50 +1,88 @@
-Captain Sisay in GW, built to Bracket 4 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+This is the Bracket 4 version of Sisay for one reason: it destroys everybody's lands. Living Plane turns every land on the table into a creature, and Elesh Norn gives your creatures +2/+2 while giving theirs -2/-2 — so their entire mana base dies and yours grows. Mass land denial is not legal below Bracket 4, and it is the whole point of the build. Everything else is a tutor chain that assembles those two cards.
 
-# The commander
-Captain Sisay :: {T}: Search your library for a legendary card, reveal that card, put it into your hand, then shuffle.
+# The lock
+Living Plane :: all lands are 1/1 creatures. On its own it does nothing; it is half of a one-sided Armageddon.
+Elesh Norn, Grand Cenobite :: your other creatures get +2/+2 and theirs get -2/-2. With any land animation out, every land your opponents control is a 1/1 or 2/2 taking -2/-2 — it dies immediately, and yours become 3/3s.
+Nature's Revolt :: the second copy of the animation, at 2/2.
+Natural Affinity :: the INSTANT-speed version. Hold it with Elesh Norn already on the battlefield and wipe the table's mana at the end of somebody's turn, or in response to removal aimed at Norn.
+Kudo, King Among Bears :: sets other creatures to base 2/2, which turns on the same interaction and shrinks every fatty at the table on the way.
+Be deliberate about this. It ends games and it is miserable to sit through. Deploy it when you can actually close, not on turn five for value.
 
-# Game Changers (13, uncapped)
-Ancient Tomb :: {T}: Add {C}{C}. This land deals 2 damage to you.
-Chrome Mox :: Imprint — When this artifact enters, you may exile a nonartifact, nonland card from your hand.
-Crop Rotation :: As an additional cost to cast this spell, sacrifice a land.
-Enlightened Tutor :: Search your library for an artifact or enchantment card, reveal it, then shuffle and put that card on top.
-Gaea's Cradle :: {T}: Add {G} for each creature you control.
-Mana Vault :: This artifact doesn't untap during your untap step.
-Mox Diamond :: If this artifact would enter, you may discard a land card instead. If you do, put this artifact onto the battlefield.…
-Seedborn Muse :: Untap all permanents you control during each other player's untap step.
-Serra's Sanctum :: {T}: Add {W} for each enchantment you control.
-Survival of the Fittest :: {G}, Discard a creature card: Search your library for a creature card, reveal that card, put it into your hand, then…
-The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
-The Tabernacle at Pendrell Vale :: All creatures have "At the beginning of your upkeep, destroy this creature unless you pay {1}."
-Worldly Tutor :: Search your library for a creature card, reveal it, then shuffle and put the card on top.
+# The commander, and untapping her
+Captain Sisay :: {T} to search out ANY legendary card — creature, land, artifact, enchantment or planeswalker — straight to your hand. Elesh Norn is legendary; most of the lock's protection is too.
+Instill Energy :: {0} to untap her once per turn, and it grants haste. Two tutors a turn from a one-mana Aura.
+Thousand-Year Elixir :: haste for the activation plus a separate untap.
+Sting, the Glinting Dagger :: haste and a free untap at the beginning of each combat.
+Seedborn Muse :: untaps everything on all three opponents' turns. Four Sisay activations per round.
+Lightning Greaves :: haste the turn she lands, and shroud against the removal that follows.
+Sigarda, Font of Blessings :: your other permanents get hexproof, which covers Sisay and the enchantments.
+Sterling Grove :: shroud for your other enchantments, and it sacrifices to tutor one.
 
-# Taxes and lock pieces
-Legolas's Quick Reflexes :: Split second
-Silence :: Your opponents can't cast spells this turn.
-Grand Abolisher :: During your turn, your opponents can't cast spells or activate abilities of artifacts, creatures, or enchantments.
-Ranger-Captain of Eos :: When this creature enters, you may search your library for a creature card with mana value 1 or less, reveal it, put…
-Linvala, Keeper of Silence :: Activated abilities of creatures your opponents control can't be activated.
+# The other tutors
+Idyllic Tutor :: any enchantment — Living Plane, Nature's Revolt, Survival of the Fittest.
+Moon-Blessed Cleric :: the same on a body.
+Enlightened Tutor :: instant speed, to the top.
+Worldly Tutor :: any creature, to the top.
+Eladamri's Call :: any creature, to hand, at instant speed.
+Recruiter of the Guard :: any creature with toughness 2 or less.
+Ranger-Captain of Eos :: a one-drop, and it sacrifices to stop every noncreature spell for a turn.
+Green Sun's Zenith :: any green creature onto the battlefield.
+Chord of Calling :: instant speed, convoke.
+Finale of Devastation :: library or graveyard, and at X of ten it is the kill.
+Eldritch Evolution :: turns a spent mana dork into a five-drop.
+Survival of the Fittest :: the engine — a green mana and a spare creature finds any creature in the deck, repeatedly.
+Pattern of Rebirth :: on any creature, its death fetches anything. With a sacrifice outlet it is a tutor for Elesh Norn.
+Academy Rector :: dies into ANY enchantment onto the battlefield — Living Plane, for free.
+Defense of the Heart :: two creatures from your library onto the battlefield, which is Elesh Norn plus whatever ends the game.
+Loyal Retainers :: returns a legendary creature from the graveyard, which is a second Elesh Norn after a wrath.
 
-# Card advantage
-Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
-Veil of Summer :: Draw a card if an opponent has cast a blue or black spell this turn. Spells you control can't be countered this turn.…
-Eladamri's Call :: Search your library for a creature card, reveal that card, put it into your hand, then shuffle.
-Idyllic Tutor :: Search your library for an enchantment card, reveal it, put it into your hand, then shuffle.
-Recruiter of the Guard :: When this creature enters, you may search your library for a creature card with toughness 2 or less, reveal it, put…
-Selvala, Heart of the Wilds :: Whenever another creature enters, its controller may draw a card if its power is greater than each other creature's…
+# Protecting the turn
+Grand Abolisher :: they cannot cast spells or activate abilities during your turn at all.
+Jennifer Walters :: the same lockout on a body that later flips into a 6/6.
+Silence :: one mana, and nobody interacts for a turn.
+Boromir, Warden of the Tower :: counters anything cast for free, and sacrifices to make your board indestructible.
+Linvala, Keeper of Silence :: their creature abilities all stop — including the mana dorks they were going to rebuild with.
+Flawless Maneuver :: free with a commander out.
+Heroic Intervention :: hexproof and indestructible for everything.
+Veil of Summer :: one mana against blue and black.
+Legolas's Quick Reflexes :: split second, so it protects Sisay through anything, and it untaps her.
+Destiny Spinner :: your creature and enchantment spells cannot be countered.
+Force of Vigor :: free on their turn, destroying two artifacts or enchantments.
+Swords to Plowshares :: the cleanest removal in the format.
 
-# Ramp
-Lotus Petal :: {T}, Sacrifice this artifact: Add one mana of any color.
-Mox Amber :: {T}: Add one mana of any color among legendary creatures and planeswalkers you control.
-Avacyn's Pilgrim :: {T}: Add {W}.
-Birds of Paradise :: {T}: Add one mana of any color.
-Delighted Halfling :: {T}: Add {C}.
-Elvish Mystic :: {T}: Add {G}.
+# Mana
+Birds of Paradise :: turn-one fixing.
+Llanowar Elves :: the green half.
+Elvish Mystic :: the second copy.
+Fyndhorn Elves :: the third.
+Avacyn's Pilgrim :: the white one.
+Arbor Elf :: untaps a Forest, and with Wild Growth or Utopia Sprawl on it that is two or three mana.
+Wild Growth :: the aura that makes Arbor Elf a ritual.
+Utopia Sprawl :: the same, with fixing.
+Bloom Tender :: two colours off one tap.
+Delighted Halfling :: uncounterable mana for legendary spells, which is most of the deck.
+Selvala, Heart of the Wilds :: mana equal to your biggest creature, which after Elesh Norn is a lot.
+Badgermole Cub :: an extra green for every creature tapped for mana.
+Sol Ring :: the fastest start.
+Mana Vault :: three on turn one.
+Lotus Petal :: free acceleration.
+Mox Amber :: live from the moment any legend resolves.
+Mox Diamond :: a land for a Mox.
+Chrome Mox :: fast, at the cost of a card.
+Elvish Spirit Guide :: a free green from hand.
+Crop Rotation :: any land onto the battlefield at instant speed.
 
-# Protection
-Destiny Spinner :: Creature and enchantment spells you control can't be countered.
-Heroic Intervention :: Permanents you control gain hexproof and indestructible until end of turn.
-Lightning Greaves :: Equipped creature has haste and shroud.
-Sterling Grove :: Other enchantments you control have shroud.
-Boromir, Warden of the Tower :: Whenever an opponent casts a spell, if no mana was spent to cast it, counter that spell.
-Flawless Maneuver :: If you control a commander, you may cast this spell without paying its mana cost.
+# Closing after the lock
+Kamahl, Fist of Krosa :: animates lands and pumps the team +3/+3 with trample. With Living Plane already out, your lands are the army.
+Concordant Crossroads :: everything has haste, so the turn you assemble the lock is the turn you attack.
+Elesh Norn, Grand Cenobite :: the +2/+2 half is a real clock on a board of legends.
+Finale of Devastation :: at X of ten, a tutor and lethal in one card.
+The One Ring :: a turn of protection and then the cards to rebuild.
+Sylvan Library :: with this much tutoring, the four-life payments are almost always right.
+Esper Sentinel :: taxes their first noncreature spell each turn.
+
+# What to keep in an opening hand
+Keep a mana dork and a tutor. Turn-one acceleration into a turn-two or three Sisay is what makes the lock arrive before anyone can set up.
+Assemble the animation and Elesh Norn in the SAME turn where possible. Living Plane on its own telegraphs everything and invites the enchantment removal that ruins the plan.
+Natural Affinity is the surprise version. With Elesh Norn already down, holding three mana means you can wipe the table's lands at instant speed — usually at the end of the turn before yours.
+Sisay finds lands too. Do not forget the legendary lands in your own mana base; against a table with no pressure, fetching a utility land is often better than a threat.

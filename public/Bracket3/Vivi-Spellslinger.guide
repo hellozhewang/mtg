@@ -1,33 +1,64 @@
-Vivi Ornitier in RU, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Vivi is a ritual that grows. Every noncreature spell puts a counter on him and pings each opponent, and once per turn he taps for mana equal to his power. So the turn works in one direction: cast the free and cheap spells first to grow him, THEN activate for a pile of mana, then spend it. Get the order wrong and you have used the deck's biggest mana source at half size.
 
 # The commander
-Vivi Ornitier :: {0}: Add X mana in any combination of {U} and/or {R}, where X is Vivi Ornitier's power. Activate only during your…
+Vivi Ornitier :: {0}: add mana equal to his power, once each turn on your turn. Every noncreature spell you cast grows him by one and deals one to each opponent, so the damage and the mana scale together.
+Note the activation is once per turn and only on your turn. Count your hand before you use it — three cantrips first turns a four-mana activation into a seven-mana one.
+Harmonic Prodigy :: Vivi is a Wizard, so his cast trigger fires TWICE. Two counters and two damage to each opponent per spell.
+Hexing Squelcher :: your spells cannot be countered and your creatures all get ward, which is what protects a storm turn from a blue table.
 
-# Game Changers (3 of 3)
-Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
-Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
-The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
+# Free and near-free spells
+Every one of these is a Vivi counter and a point of damage to the whole table for no mana.
+Gitaxian Probe :: two life, a card, and information.
+Mishra's Bauble :: zero mana, a card next upkeep.
+Lotus Petal :: zero mana, and it adds mana.
+Mox Amber :: live from the moment Vivi is on the battlefield.
+Mox Opal :: metalcraft is easy with the other zero-drops.
+Jeweled Amulet :: stores mana across turns.
+Gut Shot :: two life for a ping and a Vivi counter.
+Mental Misstep :: two life to counter their turn-one accelerant, and a free trigger.
 
-# Card advantage
-Mishra's Bauble :: {T}, Sacrifice this artifact: Look at the top card of target player's library. Draw a card at the beginning of the…
-Brainstorm :: Draw three cards, then put two cards from your hand on top of your library in any order.
-Consider :: Surveil 1.
-Curiosity :: Enchant creature
-Dizzy Spell :: Target creature gets -3/-0 until end of turn.
-Faithless Looting :: Draw two cards, then discard two cards.
+# Cantrips that build the turn
+Ponder :: sets up the next three draws.
+Preordain :: scry two and draw.
+Brainstorm :: three cards deep.
+Consider :: a card and a surveil.
+Frantic Search :: free, and it untaps three lands.
+Faithless Looting :: filtering, twice with flashback.
+Borne Upon a Wind :: everything gains flash, so a whole storm turn can happen on their end step.
+Dramatic Reversal :: untaps every nonland permanent, which with a few rocks is a genuine ritual.
+Birgi, God of Storytelling :: red mana on every spell you cast, and the mana does not empty between phases.
 
-# Ramp
-Jeweled Amulet :: {1}, {T}: Put a charge counter on this artifact. Note the type of mana spent to pay this activation cost. Activate…
-Lotus Petal :: {T}, Sacrifice this artifact: Add one mana of any color.
-Mox Amber :: {T}: Add one mana of any color among legendary creatures and planeswalkers you control.
-Mox Opal :: Metalcraft — {T}: Add one mana of any color. Activate only if you control three or more artifacts.
-An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
-Rite of Flame :: Add {R}{R}, then add {R} for each card named Rite of Flame in each graveyard.
+# The draw engines
+Archmage Emeritus :: a card for every instant and sorcery you cast or copy.
+Niv-Mizzet, Parun :: uncounterable, and every instant or sorcery ANYONE casts draws you a card, while every card you draw pings for one.
+Niv-Mizzet, Visionary :: whenever a source you control deals noncombat damage to an opponent, you draw that many cards. Vivi pinging three opponents is three cards, every single spell.
+Curiosity :: on Niv-Mizzet, Parun this loops — his ping draws you a card, which triggers him again. Point the damage at an opponent and it goes as long as you want, which ends the game on the spot.
+Ophidian Eye :: the same line with flash, so you can assemble it at instant speed.
+Mystic Remora :: the best card in the deck on turns one through four.
 
-# Protection
-Pact of Negation :: Counter target spell.
-Chain of Vapor :: Return target nonland permanent to its owner's hand. Then that permanent's controller may sacrifice a land of their…
-Mental Misstep :: Counter target spell with mana value 1.
-Pyroblast :: Choose one —
-Counterspell :: Counter target spell.
-Hexing Squelcher :: This spell can't be countered.
+# Interaction
+Counterspell :: two mana, and a Vivi trigger.
+Force of Negation :: free on their turn.
+Pact of Negation :: free now, paid for later — and the deck usually wins before the upkeep.
+Flusterstorm :: nearly unbeatable in a counter war, and each copy is another trigger.
+An Offer You Can't Refuse :: one mana for anything noncreature.
+Mindbreak Trap :: free against a storm turn, and it EXILES, so it beats graveyard recursion too.
+Deflecting Swat :: free with your commander out.
+Lightning Bolt :: removal or three damage to the face.
+Chain of Vapor :: one mana to bounce anything, and it can chain into several.
+Cyclonic Rift :: overloaded, the clear for a lethal attack or the answer to a locked board.
+Dizzy Spell :: a combat trick, or transmute for any three-drop you are missing.
+Hullbreaker Horror :: uncounterable, flash, and every spell afterwards bounces a permanent or a whole spell.
+Imperial Recruiter :: finds Harmonic Prodigy, Vivi's protection, or a combo piece.
+
+# Closing the game
+Vivi Ornitier :: on a real storm turn he alone deals eight or ten to each opponent, doubled with Harmonic Prodigy out.
+Brain Freeze :: storm, so on a long turn it decks a player outright.
+Final Fortune :: an extra turn to finish what you started — you lose at its end step, so only cast it on a turn that wins.
+Niv-Mizzet, Parun :: with Curiosity or Ophidian Eye attached this ends the game immediately. Without them he still draws two or three cards a turn cycle off other people's spells.
+
+# What to keep in an opening hand
+Keep cheap spells and one mana source, not a hand of expensive payoffs. This deck wins by chaining six or eight spells in a turn, and Vivi turns that chain into both mana and damage.
+Sequence for Vivi's power. Cast every zero- and one-mana spell you can before the {0} activation, because you only get one per turn and its size is locked in when you use it.
+Harmonic Prodigy :: two mana that doubles the commander. Prioritise it over almost any other two-drop.
+Niv-Mizzet, Parun :: six specific pips is a real cost. He is not the plan on turn five; he is the finisher once Vivi has already made the mana.

@@ -1,44 +1,78 @@
-Heroes in a Half Shell in BGRUW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+The plan is the same every turn: attack with a one-mana creature nobody can block, wait for blockers to be declared, then swap it out for something enormous that is already through. Ninjutsu and sneak both do this, and the commander pays you a card and a permanent +1/+1 counter every time any of it connects. The cheap unblockable bodies are not filler — they are the engine.
 
 # The commander
-Heroes in a Half Shell :: Whenever one or more Mutants, Ninjas, and/or Turtles you control deal combat damage to a player, put a +1/+1 counter…
+Heroes in a Half Shell :: 5/5 vigilance, menace, trample, haste, and every combat damage step where your Mutants, Ninjas or Turtles connect puts a counter on ALL of them and draws you a card. Five colours is the cost; it is worth it.
+Roaming Throne :: name Ninja. Every Ninja damage trigger in the deck fires twice — two cards off Ingenious Infiltrator, two off Ninja of the Deep Hours, two commander triggers.
+Silver-Fur Master :: ninjutsu costs {1} less, and every other Ninja and Rogue gets +1/+1. It makes the cheap enablers into real threats.
+Splinter, Hamato Yoshi :: another Ninja anthem on a menacing body that can itself be sneaked in.
 
-# Game Changers (3 of 3)
-Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
-Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
-Teferi's Protection :: Until your next turn, your life total can't change and you gain protection from everything. All permanents you…
+# The unblockable bodies
+Changeling Outcast :: one mana, cannot block, cannot BE blocked, and it is every creature type — so it triggers the commander too.
+Mist-Cloaked Herald :: one mana, unblockable.
+Slither Blade :: the third copy.
+April O'Neil, Kunoichi Trainee :: scries two on entry and cannot be blocked by anything with power three or more.
+Prehistoric Pet :: unblockable by anything bigger, and it taps to bounce another creature you control — a free ninjutsu enabler that does not need combat.
+Faerie Seer :: flies, scries two.
+Mothdust Changeling :: every type, and it can give itself flying by tapping a spare creature.
+Inkrise Infiltrator :: flies, and pumps when you have mana spare.
+Ornithopter :: free, flies, and it is a perfectly good ninjutsu enabler on turn one.
+Smoke Shroud :: flying on anything, and it climbs back out of the graveyard every time a Ninja enters.
+Cover of Darkness :: name Ninja. Fear on the whole team means almost nothing can block them.
 
-# Removal you can point anywhere
-Path to Exile :: Exile target creature. Its controller may search their library for a basic land card, put that card onto the…
-Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
-Assassin's Trophy :: Destroy target permanent an opponent controls. Its controller may search their library for a basic land card, put it…
+# The Ninjas you swap in
+Fallen Shinobi :: two free cards off their library on every hit. The best raw payoff in the deck.
+Ingenious Infiltrator :: a card for EVERY Ninja that connects, not just itself. With three attackers that is three cards.
+Ninja of the Deep Hours :: a card per hit for two mana.
+Moon-Circuit Hacker :: a card per hit, with no discard on the turn it arrives.
+Higure, the Still Wind :: tutors the next Ninja on every connection, and makes any Ninja unblockable for {2}.
+Nashi, Moon Sage's Scion :: exiles the top card of every library and lets you cast one, paying life instead of mana.
+Prosperous Thief :: a Treasure whenever any Ninja or Rogue connects — which pays for the next ninjutsu.
+Mistblade Shinobi :: bounces a blocker or a problem permanent every hit.
+Kappa Tech-Wrecker :: exiles an artifact or enchantment on connection.
+Sakashima's Student :: a copy of the best creature on the board, and it is a Ninja on top.
+Satoru, the Infiltrator :: draws whenever creatures enter WITHOUT being cast. Ninjutsu does not use the stack as a cast, so every single ninjutsu activation draws a card.
 
-# Taxes and lock pieces
-Thousand-Faced Shadow :: Ninjutsu {2}{U}{U}
-Leonardo, Cutting Edge :: Sneak {W}
-Splinter, Hamato Yoshi :: Sneak {B}
-Donatello, Gadget Master :: Sneak {1}{U}
-Michelangelo, Improviser :: Sneak {2}{G}{G}
-Raphael, the Nightwatcher :: Sneak {1}{R}{R}
+# The Turtles you sneak in
+Sneak works like ninjutsu but is a discounted CAST — the creature enters tapped and attacking after blockers.
+Raphael, the Nightwatcher :: attacking creatures have double strike. Every damage trigger in the deck fires twice.
+Michelangelo, Improviser :: puts a creature AND a land from your hand onto the battlefield on every hit.
+Donatello, Gadget Master :: copies an artifact on every hit.
+Leonardo, Cutting Edge :: lifelink, and it grows on every point of life you gain.
+Dark Leo & Shredder :: attacking Ninjas gain deathtouch, and with five Ninjas out its damage halves an opponent's life.
+Mikey & Don, Party Planners :: lets you play lands and cast Mutants, Ninjas and Turtles straight off the top of your library, with a bonus counter.
+Don & Raph, Hard Science :: their attack makes your next noncreature spell cost one less per artifact.
+Raph & Leo, Sibling Rivals :: untaps attackers and grants an ADDITIONAL COMBAT PHASE. Two rounds of ninjutsu triggers per turn.
+Mikey & Leo, Chaos & Order :: a card the first time each turn you put a counter on a creature — which the commander does every combat.
 
-# Card advantage
-Mikey & Leo, Chaos & Order :: Whenever you put a counter on a creature you control, draw a card. This ability triggers only once each turn.
-Moon-Circuit Hacker :: Ninjutsu {U}
-Satoru, the Infiltrator :: Whenever Satoru and/or one or more other nontoken creatures you control enter, if none of them were cast or no mana…
-Yuriko, the Tiger's Shadow :: Commander ninjutsu {U}{B}
-Bident of Thassa :: Whenever a creature you control deals combat damage to a player, you may draw a card.
-Ingenious Infiltrator :: Ninjutsu {U}{B}
+# Turning the connections into a kill
+Shredder, Shadow Master :: attacks one player and makes a tapped attacking copy at each other opponent. Every copy that connects halves that player's life. Two swings ends the table.
+Dark Leo & Shredder :: the second halving effect, live as soon as you have five Ninjas.
+Sphere Grid :: a counter on every creature that connects, and everything with a counter gets reach and trample.
+Bident of Thassa :: a card for every creature that connects, and it can force the table to attack each other.
+Dolmen Gate :: your attackers take no combat damage at all. Attack with everything, every turn, for free.
+Heroic Intervention :: hexproof and indestructible through the wrath this deck is most afraid of.
+Continue? :: returns up to four creatures that died this turn straight back to the battlefield. It is the answer to a blocked alpha strike or a wrath in combat.
 
-# Ramp
-Birds of Paradise :: {T}: Add one mana of any color.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Farseek :: Search your library for a Plains, Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle.
-Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
-Chromatic Lantern :: Lands you control have "{T}: Add one mana of any color."
+# Interaction
+Path to Exile :: one mana, exile.
+Assassin's Trophy :: two mana for any permanent.
+Cyclonic Rift :: overloaded, it clears every blocker for a lethal ninjutsu turn.
+Force of Negation :: free on their turn.
+Deflecting Swat :: free with your commander out.
+Kappa Tech-Wrecker :: repeatable artifact and enchantment removal on a body.
+Rhystic Study :: their turns pay for yours.
 
-# Protection
-Prehistoric Pet :: This creature can't be blocked by creatures with greater power.
-Heroic Intervention :: Permanents you control gain hexproof and indestructible until end of turn.
-Mistblade Shinobi :: Ninjutsu {U}
-Whispersilk Cloak :: Equipped creature can't be blocked and has shroud.
+# Mana in five colours
+Birds of Paradise :: turn-one fixing, and it flies, so it is also a ninjutsu enabler.
+Bloom Tender :: with a five-colour commander down it taps for a lot.
+Chromatic Lantern :: makes every land produce every colour, which is what a WUBRG commander needs.
+Farseek :: fetches any shockland with a basic type.
+Nature's Lore :: an untapped Forest-typed dual.
+Ninja Pizza :: a Food every turn that taps for any colour.
+Prosperous Thief :: Treasures off combat, which is the deck's most reliable ramp.
+
+# What to keep in an opening hand
+Keep a one-mana unblockable creature. Changeling Outcast, Mist-Cloaked Herald or Ornithopter on turn one means a real Ninja is on the battlefield by turn two, and the deck simply does not function without that opener.
+Ninjutsu AFTER blockers are declared, not before. The whole point is that the creature you return was already unblocked, so the Ninja arrives already through. Sneak works the same way.
+Heroes in a Half Shell :: five specific colours is a real cost, so do not hold the whole hand waiting for her. The Ninja package wins games on its own; she makes it draw twice as many cards when she lands.
+Roaming Throne :: name Ninja, not Turtle. The Ninjas carry the repeatable damage triggers; the Turtles are mostly static effects that the Throne would not double anyway.

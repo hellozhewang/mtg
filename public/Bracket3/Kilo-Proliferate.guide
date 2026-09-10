@@ -1,37 +1,75 @@
-Kilo, Apogee Mind in RUW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Kilo proliferates whenever he BECOMES TAPPED — not when he attacks. That distinction is the whole deck. Tapping him for mana off Paradise Mantle, tapping him as the cost of Springleaf Drum or Relic of Legends, tapping him to station Inspirit, or tapping him as fodder for Clock of Omens all proliferate, and untapping him lets you do it again. A well-built turn taps and untaps Kilo four or five times.
 
-# The commander
-Kilo, Apogee Mind :: Whenever Kilo becomes tapped, proliferate.
+# The commander and how to tap him
+Kilo, Apogee Mind :: three mana, haste, and a proliferate every time he becomes tapped. He is an artifact creature, which matters for half the untappers below.
+Paradise Mantle :: zero mana, equip one. Now Kilo taps for mana and proliferates on the same activation.
+Springleaf Drum :: taps Kilo as a cost. Free mana and a free proliferate.
+Relic of Legends :: taps any untapped legendary creature for mana. Kilo qualifies.
+Inspirit, Flagship Vessel :: station taps a creature you control, so Kilo proliferates while you build the Spacecraft. At eight charge counters it flies and gives every other artifact you control hexproof and indestructible.
+Clock of Omens :: tap two artifacts to UNTAP Kilo. Then tap him again. With a handful of rocks this is several proliferates a turn.
+Manifold Key :: untaps another artifact — Kilo — for one mana.
+Patriar's Seal :: untaps a legendary creature, again pointed at Kilo.
+Tezzeret the Seeker :: the plus untaps two artifacts every turn, and the minus tutors any artifact straight onto the battlefield.
+Drumbellower :: untaps all your creatures during EVERY other player's untap step. Three extra Kilo taps per turn cycle, for free.
 
-# Game Changers (3 of 3)
-Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
-Enlightened Tutor :: Search your library for an artifact or enchantment card, reveal it, then shuffle and put that card on top.
-Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
+# Proliferating without him
+Tekuthal, Inquiry Dominus :: if you would proliferate, you proliferate TWICE. Every trigger in the deck doubles.
+Flux Channeler :: a proliferate for every noncreature spell you cast, and most of this deck is artifacts.
+Surge Conductor :: a proliferate for every nontoken artifact that enters.
+Patrolling Peacemaker :: a proliferate whenever an opponent commits a crime — which in practice means every removal spell or targeted effect pointed at anyone.
+Experimental Augury :: dig three, keep one, proliferate.
+Ripples of Potential :: proliferate, then phase out everything that got a counter. It is a fog, a wrath dodge and an engine turn on one card.
+Contagion Clasp :: a -1/-1 counter on a creature now, and a repeatable proliferate afterwards. With proliferate doubling, it slowly wipes their board.
 
-# Removal you can point anywhere
-Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
-Generous Gift :: Destroy target permanent. Its controller creates a 3/3 green Elephant creature token.
-Lux Cannon :: {T}: Put a charge counter on this artifact.
+# Counters that win the game
+Prologue to Phyresis :: one poison counter on each opponent, and a card. That single counter is all the deck needs — every proliferate afterwards adds one more to all three of them at once.
+Skrelv's Hive :: a toxic Mite every turn, so the poison keeps arriving even without the Prologue.
+Ten poison counters is a loss. With Tekuthal doubling and two or three proliferate sources on the battlefield, the table goes from one poison to ten in about three turns.
+Strixhaven Stadium :: point counters accumulate on combat damage, and proliferate adds more. At ten, that player simply loses the game.
+All Will Be One :: damage equal to every counter you place. A proliferate that touches six permanents is six damage, doubled by Tekuthal to twelve.
+Lux Cannon :: three charge counters destroys any permanent. Proliferate makes it every turn instead of every third turn.
 
-# Card advantage
-Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
-Mystic Remora :: Cumulative upkeep {1}
-Experimental Augury :: Look at the top three cards of your library. Put one of them into your hand and the rest on the bottom of your…
-Pollywog Prodigy :: Evolve
-Prologue to Phyresis :: Each opponent gets a poison counter.
-Fabricate :: Search your library for an artifact card, reveal it, put it into your hand, then shuffle.
+# Counters that make mana and cards
+Astral Cornucopia :: charge counters become mana, and proliferate grows it every turn.
+Everflowing Chalice :: cheap, scalable, and it snowballs the same way.
+Pentad Prism :: sunburst counters spent for any colour, refilled by proliferate.
+Crystalline Crawler :: +1/+1 counters convert to mana of any colour, and proliferate refills them.
+Insight Engine :: a charge counter and a card for each counter on it. Proliferated, this draws three or four a turn.
+Kappa Cannoneer :: ward {4}, a counter and unblockable for every artifact that enters. It is nearly impossible to remove and it closes games on its own.
+Jhoira, Weatherlight Captain :: a card for every artifact and legendary spell you cast.
+Emry, Lurker of the Loch :: nearly free, mills four, and recasts an artifact from your graveyard every turn.
+Shuri, Wakandan Inventor :: artifact spells cost one less, and she copies your best artifact onto a worse one for a turn.
 
-# Ramp
-Everflowing Chalice :: Multikicker {2}
-Mox Opal :: Metalcraft — {T}: Add one mana of any color. Activate only if you control three or more artifacts.
-Paradise Mantle :: Equipped creature has "{T}: Add one mana of any color."
-An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
-Sol Ring :: {T}: Add {C}{C}.
-Springleaf Drum :: {T}, Tap an untapped creature you control: Add one mana of any color.
+# Finding the piece
+Enlightened Tutor :: any artifact or enchantment, at instant speed, to the top.
+Fabricate :: any artifact, to hand.
+Tezzeret the Seeker :: any artifact, onto the battlefield.
+Sevinne's Reclamation :: returns a cheap permanent from the graveyard, twice if cast from the graveyard.
 
-# Protection
-Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
-Inspirit, Flagship Vessel :: Station
-Teferi, Time Raveler :: Each opponent can cast spells only any time they could cast a sorcery.
-The Seriema :: When The Seriema enters, search your library for a legendary creature card, reveal it, put it into your hand, then…
-Tekuthal, Inquiry Dominus :: If you would proliferate, proliferate twice instead.
+# Interaction
+Swords to Plowshares :: one mana, exile.
+Dispatch :: one mana with metalcraft, which is always on.
+Generous Gift :: any permanent, at instant speed.
+Mana Drain :: counter, and the mana pays for a big Astral Cornucopia.
+Swan Song :: one mana for a wrath.
+An Offer You Can't Refuse :: the same for anything noncreature.
+Deflecting Swat :: free with your commander out.
+Cyclonic Rift :: overloaded, it clears the board for a lethal artifact attack.
+Organic Extinction :: improvise makes it cheap, and it destroys every NONARTIFACT creature — a one-sided wrath in a deck of robots.
+Teferi, Time Raveler :: they can only act at sorcery speed, which protects the whole engine.
+Grand Abolisher :: they cannot interact on your turn at all.
+Rhystic Study :: their turns pay for yours.
+Mystic Remora :: the best card in the deck on turns one through four.
+Esper Sentinel :: taxes their first noncreature spell each turn.
+
+# The beatdown backup
+Cyberdrive Awakener :: turns every noncreature artifact into a 4/4 and gives them all flying. On a board of rocks that is lethal out of nowhere.
+Tezzeret the Seeker :: the ultimate does the same for a turn.
+Kappa Cannoneer :: unblockable and growing every turn on its own.
+Inspirit, Flagship Vessel :: a 5/5 that becomes an unkillable flier once stationed.
+
+# What to keep in an opening hand
+Keep cheap artifacts. Sol Ring, Springleaf Drum, Paradise Mantle and Mox Opal all turn Kilo from a 3/3 into an engine the turn he lands.
+Tap Kilo before you attack, not instead of attacking. Springleaf Drum or Paradise Mantle taps him for mana in your first main phase, Clock of Omens untaps him, and he can still attack — every one of those taps is a proliferate.
+Prologue to Phyresis :: cast it EARLY, even into an empty board. One poison counter on each opponent is the seed that every proliferate in the deck waters, and it draws a card so it costs you nothing.
+Tekuthal, Inquiry Dominus :: prioritise him once you have two proliferate sources. Doubling is worth more than any single new engine piece.

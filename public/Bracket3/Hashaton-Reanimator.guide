@@ -1,41 +1,72 @@
-Hashaton, Scarab's Fist in BUW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Hashaton reanimates without using the graveyard. Discard a creature card, pay {2}{U}, and you get a tapped 4/4 black Zombie copy of it — so the enters-the-battlefield trigger fires, the body is always a 4/4 no matter what you discarded, and none of it depends on the card surviving in your yard. Five mana total for any creature in your deck, every turn, and at instant speed if your discard outlet is.
 
 # The commander
-Hashaton, Scarab's Fist :: Whenever you discard a creature card, you may pay {2}{U}. If you do, create a tapped token that's a copy of that…
+Hashaton, Scarab's Fist :: two mana, and every creature card you discard becomes a 4/4 Zombie token copy for {2}{U}. It triggers on the DISCARD, not on the graveyard, which is why this deck plays through Rest in Peace far better than a normal reanimator deck.
+Bard, King of Dale :: token doubling. Every Hashaton activation makes TWO copies, which means two Archon of Cruelty triggers, two Angel of the Ruins triggers, two Gray Merchants. It also doubles your draws.
+The Scarab God :: the same effect from graveyards, including theirs, plus a drain and a scry each upkeep scaling with your Zombie count — and every Hashaton token is a Zombie.
+Gleaming Overseer :: your Zombie tokens get hexproof and menace. That covers every single thing Hashaton makes.
 
-# Game Changers (3 of 3)
-Consecrated Sphinx :: Whenever an opponent draws a card, you may draw two cards.
-Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
-Smothering Tithe :: Whenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token.
+# Discard outlets, which are the real cost
+Hashaton needs a way to discard on demand. The outlets are the deck's engine; the fatties are interchangeable.
+Psychic Frog :: free, repeatable, and each discard grows it. Also draws on connection.
+Putrid Imp :: one mana, unlimited discards, from turn one.
+Likeness Looter :: loots every turn AND turns into a copy of anything in your graveyard.
+Rona, Herald of Invasion :: loots, untaps on every legendary spell, and flips into a 5/5 that strips their hand.
+Kitsa, Otterball Elite :: loots, and later copies your instants and sorceries.
+Ledger Shredder :: connives on everyone's second spell each turn, so it discards on their turns too.
+Raffine, Scheming Seer :: connive X where X is your attacker count. On a wide attack that discards three or four creature cards at once, and each one is a separate Hashaton trigger.
+Frantic Search :: free, discards two, and untaps three lands to pay for the Zombies.
+Monument to Endurance :: every discard becomes a card, a Treasure or three life from each opponent.
+Archfiend of Ifnir :: cycling means it discards itself, and every other discard puts a -1/-1 counter on each of their creatures.
+Angel of the Ruins :: plainscycling turns it into a land when you need one, and the cycling IS a discard, so you can Zombie it in the same motion.
+Ghostly Pilferer :: discards to become unblockable, and draws off untaps and off their graveyard casts.
 
-# Removal you can point anywhere
-Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
-Damn :: Destroy target creature. A creature destroyed this way can't be regenerated.
-Deadly Rollick :: If you control a commander, you may cast this spell without paying its mana cost.
-The Scarab God :: At the beginning of your upkeep, each opponent loses X life and you scry X, where X is the number of Zombies you…
+# What you want to be discarding
+Archon of Cruelty :: the best target in the deck. The token's enter trigger makes an opponent sacrifice, discard and lose three, while you draw and gain — and it triggers again every time the Zombie attacks.
+Serra's Emissary :: name creature or instant. You and your whole board get protection from that card type, which is a hard lock against most decks.
+Consecrated Sphinx :: two cards for every card any opponent draws.
+Sphinx of the Second Sun :: an extra beginning phase every turn — another untap, another upkeep, another draw, and another Scarab God drain.
+Archfiend of Despair :: they cannot gain life, and every point they lost this turn is dealt again at end step. It doubles every drain in the deck.
+Angel of the Ruins :: two artifacts or enchantments exiled per copy.
+Ori, Plate Stacker :: destroys ALL artifacts and enchantments your opponents control. Doubled by Bard, it is a full reset of the table's noncreature permanents.
+Gray Merchant of Asphodel :: your devotion is high and the token copies count too.
+Riptide Gearhulk :: buries a nonland permanent from every opponent three cards deep in their library.
+Solitude :: free removal from hand, and a Zombie copy of it exiles another creature.
 
-# Card advantage
-Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
-Mystic Remora :: Cumulative upkeep {1}
-Soul-Guide Lantern :: When this artifact enters, exile target card from a graveyard.
-Ghostly Pilferer :: Whenever this creature becomes untapped, you may pay {2}. If you do, draw a card.
-Kitsa, Otterball Elite :: Prowess
-Ledger Shredder :: Whenever a player casts their second spell each turn, this creature connives.
+# Reanimating the old-fashioned way too
+Reanimate :: one mana, any graveyard.
+Animate Dead :: the second copy.
+Necromancy :: flash it in at the end of their turn, or at instant speed to reanimate in response to a wrath.
+Phyrexian Reclamation :: buys a creature back to hand for two mana and two life — and back in hand means it can be discarded again.
+Likeness Looter :: becomes a copy of the best thing in the yard, permanently.
+Phyrexian Metamorph :: a copy of any creature or artifact on the battlefield, including theirs.
 
-# Ramp
-An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Azorius Signet :: {1}, {T}: Add {W}{U}.
-Dimir Signet :: {1}, {T}: Add {U}{B}.
-Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
+# Interaction
+Swords to Plowshares :: one mana, exile, unconditional.
+Solitude :: free at instant speed.
+Deadly Rollick :: free with your commander out.
+Damn :: a two-mana removal spell early or a wrath late.
+Mana Drain :: counter their wrath and spend the mana making two Zombies.
+Force of Negation :: free protection on their turn for your combo turn.
+Dovin's Veto :: uncounterable.
+Swan Song :: one mana for a wrath or a removal spell.
+An Offer You Can't Refuse :: the same, for anything noncreature.
+Cyclonic Rift :: overloaded, it clears the way for a board of 4/4 Zombies.
+March of Swirling Mist :: phases your board out of a wrath, or phases their blockers out of the way.
+Clever Concealment :: usually free with a wide board, and it saves everything.
+Grand Abolisher :: nobody interacts on your turn, which is when the whole deck happens.
+Soul-Guide Lantern :: graveyard hate that costs you nothing, since Hashaton does not need your yard.
 
-# Protection
-Dovin's Veto :: This spell can't be countered.
-Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
-Gleaming Overseer :: When this creature enters, amass Zombies 1.
+# Card flow
+Mystic Remora :: the best card in the deck on turns one through four.
+Smothering Tithe :: the Treasures pay the {2}{U} on Hashaton over and over.
+Esper Sentinel :: taxes their first noncreature spell each turn.
+Lotho, Corrupt Shirriff :: a Treasure every time anyone casts their second spell — which in a four-player pod is several a round.
+The Queen of Dale :: a loot AND a Soldier every time an opponent casts their first noncreature spell. It is a discard outlet that other people activate for you.
+Consecrated Sphinx :: the ceiling, whether cast or Zombified.
 
-# Recursion
-Phyrexian Reclamation :: {1}{B}, Pay 2 life: Return target creature card from your graveyard to your hand.
-The Underworld Cookbook :: {T}, Discard a card: Create a Food token.
-Tortured Existence :: {B}, Discard a creature card: Return target creature card from your graveyard to your hand.
+# What to keep in an opening hand
+Keep a discard outlet. Hashaton without one does nothing at all — Putrid Imp, Psychic Frog or Likeness Looter in the opener is worth more than any fatty in the deck.
+Count to five, not three. A Hashaton turn costs {2}{U} on top of the outlet, so plan the turn where you have the discard, the mana, and a fatty in hand all at once.
+Bard, King of Dale :: this is the card that turns a good turn into a game-ending one. Prioritise finding it once the outlet is online.
+Archon of Cruelty :: discard it, do not cast it. Nine mana is unreachable; five mana for a 4/4 that triggers on entry and on every attack is the whole point of the deck.

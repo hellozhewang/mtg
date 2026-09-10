@@ -1,47 +1,81 @@
-Grand Arbiter Augustin IV in UW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Every tax in this deck is symmetrical on paper and one-sided in practice, because Grand Arbiter refunds you. Sphere of Resistance costs everyone {1} more — and gives you {1} back on every white or blue spell you cast. Stack three or four of those effects and the table simply stops being able to cast anything, while your own hand gets cheaper.
 
-# The commander
-Grand Arbiter Augustin IV :: White spells you cast cost {1} less to cast.
+# The commander and the refund
+Grand Arbiter Augustin IV :: your white spells and your blue spells each cost {1} less; theirs all cost {1} more. Nearly every card in the deck is white or blue, so the discount applies to almost everything you do.
+Sphere of Resistance :: everything costs {1} more. With Arbiter out, your white and blue spells are back to full price and theirs are up two.
+Thalia, Guardian of Thraben :: the same tax aimed at noncreature spells, on a first-striking body.
+Lodestone Golem :: nonartifact spells cost {1} more, and it is a 5/3 that actually attacks.
+God-Pharaoh's Statue :: two more on every spell they cast, plus a drain each turn — it is a clock and a lock in one card.
+Sapphire Medallion :: another {1} off your blue spells, stacking with Arbiter.
+Pearl Medallion :: and the white half. With Arbiter plus a Medallion, two-mana spells are free.
+Aura of Silence :: their artifacts and enchantments cost two more, and it eats one on the way out.
+Spelltithe Enforcer :: they pay {1} per spell or lose a permanent. With the taxes above, the {1} is not always available.
 
-# Game Changers (3 of 3)
-Grand Arbiter Augustin IV :: White spells you cast cost {1} less to cast.
-Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
-Smothering Tithe :: Whenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token.
+# One spell per turn
+The tax package makes each spell expensive; this package makes it their ONLY spell. Together they end games.
+Rule of Law :: one spell per turn, each. The enchantment version, hardest to remove.
+Archon of Emeria :: the same, on a 2/3 flier, plus their nonbasics enter tapped.
+Eidolon of Rhetoric :: a third copy on a 1/4 that blocks well.
+Ethersworn Canonist :: one nonartifact spell each, which is strictly better for you than for a table not built on artifacts.
+Deafening Silence :: one noncreature spell each, for one mana, and it never affects your creature deployment.
+Sanctum Prelate :: name the number the table is built around — usually two or three — and those spells simply cannot be cast at all.
+Lavinia, Azorius Renegade :: they cannot cast noncreature spells above their land count, and anything cast for free is countered outright. She blanks Force of Will, ritual-fuelled combo turns and cascade cheats.
+Teferi, Time Raveler :: they can only act at sorcery speed. No instant-speed removal, no counterspells on your turn.
 
-# Removal you can point anywhere
-Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
-Winds of Abandon :: Exile target creature you don't control. For each creature exiled this way, its controller searches their library for…
-Aura of Silence :: Artifact and enchantment spells your opponents cast cost {2} more to cast.
-Generous Gift :: Destroy target permanent. Its controller creates a 3/3 green Elephant creature token.
+# Locking their one spell
+Jin-Gitaxias, Progress Tyrant :: counters the first artifact, instant or sorcery each opponent casts each turn AND copies yours. Once a one-spell-per-turn effect is out, the one spell they get is the one Jin-Gitaxias counters.
+Grand Abolisher :: they cannot cast anything at all during your turn.
+Myrel, Shield of Argive :: the same lockout on a body that also builds an army every attack.
+Silence :: one mana for a whole turn of protection. Cast it before the combo turn or before the wrath.
+Counterspell :: the clean answer that never rots in hand.
+Mana Drain :: counter, and the floating mana deploys two more prison pieces.
+Dovin's Veto :: uncounterable, for the counter war you cannot afford to lose.
+Force of Negation :: free on their turn, which matters when you have tapped out to deploy.
+Swan Song :: one mana, and a 2/2 Bird is nothing against Ghostly Prison.
 
-# Taxes and lock pieces
-Deafening Silence :: Each player can't cast more than one noncreature spell each turn.
-Grafdigger's Cage :: Creature cards in graveyards and libraries can't enter the battlefield.
-Silence :: Your opponents can't cast spells this turn.
-Ethersworn Canonist :: Each player who has cast a nonartifact spell this turn can't cast additional nonartifact spells.
-Grand Abolisher :: During your turn, your opponents can't cast spells or activate abilities of artifacts, creatures, or enchantments.
-Lavinia, Azorius Renegade :: Each opponent can't cast noncreature spells with mana value greater than the number of lands that player controls.
+# The wall
+Ghostly Prison :: they pay {2} per attacker or go hit somebody else. In a pod, that is usually enough on its own.
+Blind Obedience :: their creatures and artifacts arrive tapped, so no surprise blocker and no haste kill, and extort drains them every time you cast.
+Linvala, Keeper of Silence :: no creature activated abilities for them. Mana dorks, sac outlets and tutor creatures all stop.
+Grafdigger's Cage :: nothing comes back from graveyards or libraries.
+Rest in Peace :: the full version, and this deck never uses its own graveyard.
+Aven Interrupter :: flash, exiles a spell off the stack, and taxes everything they try to cast from exile or graveyards afterwards.
+Aven Mindcensor :: flash it onto the fetchland or the tutor.
+Archivist of Oghma :: a card and a life every time anybody searches.
 
-# Card advantage
-Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
-Mystic Remora :: Cumulative upkeep {1}
-Archivist of Oghma :: Whenever an opponent searches their library, you gain 1 life and draw a card.
-Mind Stone :: {T}: Add {C}.
-Teferi, Time Raveler :: Each opponent can cast spells only any time they could cast a sorcery.
-Trouble in Pairs :: If an opponent would begin an extra turn, that player skips that turn instead.
+# Removal
+Swords to Plowshares :: one mana, exile, unconditional.
+Generous Gift :: any permanent, at instant speed.
+March of Otherworldly Light :: scalable exile, and the white cards you pitch make it cheap on a locked-out turn.
+Supreme Verdict :: uncounterable, and it usually leaves your board — enchantments, artifacts, planeswalkers — untouched.
+Hullbreaker Horror :: uncounterable, flash, and every spell you cast afterwards bounces a permanent or an entire spell off the stack. Under a one-spell-per-turn lock this is unbeatable.
 
-# Ramp
-Lotus Petal :: {T}, Sacrifice this artifact: Add one mana of any color.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Azorius Signet :: {1}, {T}: Add {W}{U}.
-Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
-Talisman of Progress :: {T}: Add {C}.
+# How you actually win
+Approach of the Second Sun :: the natural finisher for a deck that stops the game. Six mana with Arbiter out, gain seven life, then cast it again seven cards later and win. Note it must be cast FROM YOUR HAND both times.
+Luminarch Ascension :: nobody can profitably attack you through Ghostly Prison, so the quest counters accumulate for free. Then it makes a 4/4 flier every turn.
+Myrel, Shield of Argive :: her attack trigger doubles your Soldier count every combat. Two attacks after she lands, the board is lethal.
+Shark Typhoon :: a flier for every noncreature spell, or cycled at instant speed for an immediate one.
+Rise and Shine :: overloaded, every mana rock you control becomes a 4/4. This deck plays a lot of rocks.
+Cyberdrive Awakener :: animates every noncreature artifact as a 4/4 AND gives them all flying. Alongside Rise and Shine it is a lethal alpha strike from a board of Signets.
+Akroma's Will :: with your commander out, take both halves — the finisher for any of the above.
 
-# Protection
-Counterspell :: Counter target spell.
-Dovin's Veto :: This spell can't be countered.
-Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
-Akroma's Will :: Choose one. If you control a commander as you cast this spell, you may choose both instead.
-Supreme Verdict :: This spell can't be countered.
-Hullbreaker Horror :: This spell can't be countered.
+# Copying the lock
+Sakashima of a Thousand Faces :: copy Grand Arbiter. The legend rule does not apply to your permanents, so you keep both — their spells now cost {2} more and yours {2} less.
+Spark Double :: the same trick, and it can copy Jin-Gitaxias or Myrel instead.
+Multiversal Recruitment :: a nonlegendary copy of anything you control, twice with flashback.
+Quantum Misalignment :: another copy, and rebound makes it two.
+
+# Mana and cards
+Rhystic Study :: in a deck taxing every spell they cast, the extra {1} is rarely available.
+Mystic Remora :: the first four turns it is the best card in the deck.
+Smothering Tithe :: Treasures that pay for the taxes you have imposed on yourself.
+Esper Sentinel :: taxes their first noncreature spell each turn on turn one.
+Sol Ring :: the fastest possible start toward a turn-three Arbiter.
+Lotus Petal :: fixes and accelerates, and it is free under Sphere of Resistance effects.
+Mind Stone :: ramp early, a card later.
+
+# What to keep in an opening hand
+Keep a rock and a tax piece. Sol Ring or a Signet into Thalia, Deafening Silence or Sphere of Resistance on turn two is a far better start than a hand with Approach of the Second Sun in it.
+Grand Arbiter Augustin IV :: he is the discount, so land him before you commit to a hand of expensive prison pieces. Four mana on turn three or four, then two pieces a turn afterwards.
+Deploy taxes before locks. Sphere of Resistance and Thalia hurt everyone a little; Rule of Law and Sanctum Prelate hurt them a lot — and if you drop the hard lock first, they untap and remove it with the mana the taxes would have eaten.
+Approach of the Second Sun :: only start it when the board is actually locked. Seven cards is several turns, and casting the first copy into an open table just tells them what you are doing.

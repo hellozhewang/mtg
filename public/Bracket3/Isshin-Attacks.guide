@@ -1,46 +1,71 @@
-Isshin, Two Heavens as One in BRW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Isshin doubles every attack trigger you control, and this deck is built out of nothing else. Hero of Bladehold makes four Soldiers instead of two. Adeline makes two tokens per opponent instead of one. Hellrider deals two damage per attacker. Aurelia gives you TWO extra combat phases. The whole deck is one line — attack — and Isshin makes that line twice as good.
 
 # The commander
-Isshin, Two Heavens as One :: If a creature attacking causes a triggered ability of a permanent you control to trigger, that ability triggers an…
+Isshin, Two Heavens as One :: if a creature ATTACKING causes a triggered ability of a permanent you control to trigger, that ability triggers again. Read every "whenever this attacks" and "whenever you attack" in the deck as happening twice.
+Note it doubles triggers from permanents YOU control caused by attacking creatures. That includes enchantments and equipment, not just the creatures themselves — Mardu Ascendancy, Curse of Opulence and Blade of Selves all double.
 
-# Game Changers (3 of 3)
-Necropotence :: Skip your draw step.
-Smothering Tithe :: Whenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token.
-Teferi's Protection :: Until your next turn, your life total can't change and you gain protection from everything. All permanents you…
+# Token makers, doubled
+Hero of Bladehold :: four 1/1 Soldiers per attack, and battle cry twice for +2/+0 on the whole team.
+Adeline, Resplendent Cathar :: two tokens per opponent per attack. In a four-player pod that is six bodies, and her own power counts them all.
+Hanweir Garrison :: four attacking Humans every combat, off a three-drop.
+Anim Pakal, Thousandth Moon :: two counters and two batches of Gnomes per attack. It snowballs faster than anything else in the deck.
+Krenko, Tin Street Kingpin :: two counters and two batches of Goblins, and the batches are sized after the counters land.
+Myrel, Shield of Argive :: doubles your Soldier count twice per attack, and opponents cannot interact on your turn at all.
+Ainok Strike Leader :: two Goblins per opponent whenever it or your commander attacks, and it sacrifices to make your tokens indestructible through a wrath.
+Mardu Ascendancy :: two Goblins for every nontoken attacker.
+Blade of Selves :: myriad twice — two token copies of the equipped creature attacking each other opponent.
 
-# Removal you can point anywhere
-Path to Exile :: Exile target creature. Its controller may search their library for a basic land card, put that card onto the…
-Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
-Vandalblast :: Destroy target artifact you don't control.
-Terminate :: Destroy target creature. It can't be regenerated.
-Anguished Unmaking :: Exile target nonland permanent. You lose 3 life.
-Bedevil :: Destroy target artifact, creature, or planeswalker.
+# Extra combats
+Aurelia, the Warleader :: her attack trigger doubles, so you untap and get TWO additional combat phases. Three combats in one turn, each one re-triggering every token maker above.
+Combat Celebrant :: exert it and the trigger doubles, untapping the team twice and adding two more combats.
+Neyali, Suns' Vanguard :: attacking tokens have double strike, and every token attack exiles a card you may play. With six tokens attacking that is six cards.
 
-# Taxes and lock pieces
-Thalia, Guardian of Thraben :: Noncreature spells cost {1} more to cast.
-Voice of Victory :: Mobilize 2
-Mishra, Claimed by Gix :: Whenever you attack, each opponent loses X life and you gain X life, where X is the number of attacking creatures. If…
-Myrel, Shield of Argive :: During your turn, your opponents can't cast spells or activate abilities of artifacts, creatures, or enchantments.
+# Turning attackers into damage
+Hellrider :: one damage per attacking creature, doubled — so two per attacker, before combat damage. On a board of ten attackers that is twenty damage from the trigger alone.
+Brutal Hordechief :: one life drained per attacker, doubled, and it can force their creatures to block where you choose.
+Mishra, Claimed by Gix :: each opponent loses life equal to your attacker count, twice.
+Tectonic Giant :: three damage to each opponent, twice, every attack — and again whenever an opponent targets it.
+Adriana, Captain of the Guard :: melee for the whole team. Attacking three players is +3/+3 on every creature, and Isshin doubles each melee instance.
+Iroas, God of Victory :: menace for the team and no damage to your attackers at all. Attacking becomes completely free.
+Dolmen Gate :: the same protection on a two-mana artifact.
+Akroma's Will :: with your commander out, take both halves. On a board of twenty tokens it is simply lethal.
+Boros Charm :: double strike on the one creature that needs it, or indestructible for the board through a wrath.
 
-# Card advantage
-Skullclamp :: Equipped creature gets +1/-1.
-Chivalric Alliance :: Whenever you attack with two or more creatures, draw a card.
-Night's Whisper :: You draw two cards and lose 2 life.
-Midnight Reaper :: Whenever a nontoken creature you control dies, this creature deals 1 damage to you and you draw a card.
-Phyrexian Arena :: At the beginning of your upkeep, you draw a card and you lose 1 life.
-Tocasia's Welcome :: Whenever one or more creatures you control with mana value 3 or less enter, draw a card. This ability triggers only…
+# Making the tokens bigger
+Cathars' Crusade :: a counter on every creature for every creature that enters. With Adeline and Hero of Bladehold making six tokens a combat, the board grows by dozens of counters per attack.
+Goldnight Commander :: +1/+1 to the team for each creature that enters. Same trigger count, immediate damage instead of permanent counters.
+Elenda, the Dusk Rose :: grows on every death and leaves a pile of lifelinking Vampires behind.
+Bitterblossom :: a free flier every turn, which is another attacker for every "whenever you attack" trigger.
 
-# Ramp
-Curse of Opulence :: Enchant player
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Boros Signet :: {1}, {T}: Add {R}{W}.
-Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
-Orzhov Signet :: {1}, {T}: Add {W}{B}.
+# Cards and value from attacking
+Chivalric Alliance :: a card whenever you attack with two or more creatures — doubled to two.
+Firemane Commando :: the same, plus it taxes the rest of the table for attacking anyone but you.
+Neyali, Suns' Vanguard :: impulse draw scaling with your token count.
+Curse of Opulence :: a Gold token whenever the enchanted player is attacked, doubled — and the rest of the table gets one too, which points their attacks away from you.
+Skullclamp :: on 1/1 tokens, two cards each. This deck makes more 1/1s than any clamp can keep up with.
+Midnight Reaper :: a card for every nontoken creature that dies.
+Bastion of Remembrance :: a drain for every creature that dies, and this deck loses a lot of tokens in combat.
+Necropotence :: as much card advantage as your life total allows.
+Phyrexian Arena :: a card every turn.
+Night's Whisper :: two cards for two mana.
+Smothering Tithe :: Treasures to deploy two threats a turn.
 
-# Protection
-Ainok Strike Leader :: Whenever you attack with this creature and/or your commander, for each opponent, create a 1/1 red Goblin creature…
-Boros Charm :: Choose one —
-Flawless Maneuver :: If you control a commander, you may cast this spell without paying its mana cost.
-Akroma's Will :: Choose one. If you control a commander as you cast this spell, you may choose both instead.
-Iroas, God of Victory :: As long as your devotion to red and white is less than seven, Iroas isn't a creature.
+# Removal and protection
+Swords to Plowshares :: one mana, exile.
+Path to Exile :: the second copy.
+Anguished Unmaking :: instant-speed exile for any nonland permanent.
+Bedevil :: artifact, creature or planeswalker, at instant speed.
+Generous Gift :: anything at all.
+Council's Judgment :: gets around hexproof and indestructible entirely, and usually exiles more than one thing.
+Chaos Warp :: the answer to an enchantment.
+Blasphemous Act :: cheap, and this deck rebuilds a board faster than anyone else at the table.
+Flawless Maneuver :: free with your commander out.
+Teferi's Protection :: phase out through a wrath, a combo kill or a huge attack.
+Deflecting Swat :: free, and it redirects the removal aimed at Isshin or at Aurelia.
+Sun Titan :: returns Skullclamp, Bitterblossom, a Signet or a dead three-drop on entry AND on every attack — doubled, so two permanents per attack.
+
+# What to keep in an opening hand
+Keep two mana rocks or a rock and a cheap attacker. Isshin costs three and does nothing alone; the deck wants him down on turn three with a token maker following on turn four.
+Sequence the attack triggers deliberately. Cathars' Crusade counters resolve as tokens enter, so making tokens BEFORE the pump triggers resolve means more counters — with Adeline and Hero of Bladehold, order the token makers first.
+Isshin, Two Heavens as One :: he is worth a removal spell to the table, so hold Flawless Maneuver or Deflecting Swat when you can. Losing him halves every card in your hand.
+Aurelia, the Warleader :: do not cast her into an empty board. She is a three-combat turn with a wide team and a 3/4 flier without one.

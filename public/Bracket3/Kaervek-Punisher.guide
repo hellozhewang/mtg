@@ -1,39 +1,68 @@
-Kaervek the Merciless in BR, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+This deck does not stop anyone from playing Magic. It charges them for it. Every card is a tax on an action an opponent has to take anyway — casting a spell, tapping a land, drawing a card — and the damage multipliers turn those small taxes into lethal ones. The pilot's job is to deploy the punishers, then STOP casting spells, because most of these effects are symmetrical and you are the only player who can choose to sit still.
 
 # The commander
-Kaervek the Merciless :: Whenever an opponent casts a spell, Kaervek deals damage equal to that spell's mana value to any target.
+Kaervek the Merciless :: every spell an opponent casts deals its mana value to any target of your choice. Point it at faces, or use it as free removal on their creatures.
+Harmonic Prodigy :: Kaervek is a Shaman, so his trigger fires TWICE. Two mana, and it doubles the single biggest damage source in the deck.
+Lightning Greaves :: seven mana is a lot to lose to a removal spell. Shroud, and haste so he blocks or attacks immediately.
+Swiftfoot Boots :: hexproof and haste when you need to target him.
+Mithril Coat :: flash, indestructible, and it attaches itself to a legendary creature the moment it lands. Hold it as a counterspell for removal.
+Deflecting Swat :: free, and it turns their removal spell into your removal spell.
 
-# Game Changers (3 of 3)
-Ancient Tomb :: {T}: Add {C}{C}. This land deals 2 damage to you.
-Mana Vault :: This artifact doesn't untap during your untap step.
-Orcish Bowmasters :: When this creature enters and whenever an opponent draws a card except the first one they draw in each of their draw…
+# Taxing every spell they cast
+Painful Quandary :: five life or a card, on EVERY spell. The single most punishing card in the deck.
+Spellshock :: two damage per spell, for three mana.
+Pyrostatic Pillar :: two damage on every cheap spell — which is most of what a Commander table casts.
+Rug of Smothering :: one life per spell they have cast this turn, so it scales with combo turns.
+Magebane Lizard :: the same escalation aimed at noncreature spells.
+Adrenaline Jockey :: four damage to anyone casting a spell on someone else's turn. It makes instant-speed interaction cost four life.
+Gleeful Arsonist :: damage equal to its power on every noncreature spell, and undying means it comes back bigger.
+The Frightful Four :: their first noncreature spell each turn costs them its mana value in life.
+The Lord of Pain :: the first spell each turn deals its mana value to a player of your choosing — and it turns off their lifegain.
+Roiling Vortex :: a point per upkeep, no lifegain, and FIVE damage to anyone casting something for free. It blanks Force of Will, evoked Elementals and ritual-free combo turns.
+Harsh Mentor :: two damage for every nonmana activated ability they use.
 
-# Removal you can point anywhere
-Vandalblast :: Destroy target artifact you don't control.
-Feed the Swarm :: Destroy target creature or enchantment an opponent controls. You lose life equal to that permanent's mana value.
-Rakdos Charm :: Choose one —
-Unstable Obelisk :: {T}: Add {C}.
-Deadly Rollick :: If you control a commander, you may cast this spell without paying its mana cost.
+# Taxing the rest of their turn
+Manabarbs :: a damage for every land tapped, by anyone. This is the card that ends games — and the one you must deploy last, because it hits you too.
+Ankh of Mishra :: two damage per land that enters. Brutal against ramp decks and fetchlands.
+Burning Earth :: a damage per nonbasic tapped. Be honest about this one: your own mana base is largely nonbasic, so it hurts you as well. Play it against a greedy multicolour table and not against a mono-coloured one.
+Spiteful Visions :: everyone draws an extra card and takes a damage per draw. You have the life total and the payoffs to win that race.
+Stormfist Crusader :: everyone draws and loses one every upkeep.
+Razorkin Needlehead :: a damage for every card they draw.
+Orcish Bowmasters :: flash, and it punishes every extra draw at the table while building an Army.
+Sheoldred, the Apocalypse :: two life for every card you draw, two lost for every card they draw. With Spiteful Visions out it is a four-point swing per turn cycle.
+Mogis, God of Slaughter :: two damage or a creature, from every opponent, every turn, on an indestructible body.
+Rampaging Ferocidon :: no lifegain for anyone, and a damage per creature they play.
 
-# Card advantage
-Mind Stone :: {T}: Add {C}.
-Night's Whisper :: You draw two cards and lose 2 life.
-Black Market Connections :: At the beginning of your first main phase, choose one or more —
-Sheoldred, the Apocalypse :: Whenever you draw a card, you gain 2 life.
-Valgavoth, Harrower of Souls :: Ward—Pay 2 life.
-Obosh, the Preypiercer :: Companion — Your starting deck contains only cards with odd mana values and land cards.
+# Multiplying all of it
+This is where the deck turns a two-damage ping into a lethal one. The multipliers stack.
+Ojer Axonil, Deepest Might :: any red source you control dealing noncombat damage below its power deals FOUR instead. Pyrostatic Pillar's two becomes four; Magebane Lizard's one becomes four; Spellshock's two becomes four.
+Solphim, Mayhem Dominus :: doubles all noncombat damage you deal to opponents. Four becomes eight.
+Fiery Emancipation :: triples it. Eight becomes twenty-four, per spell they cast.
+Obosh, the Preypiercer :: doubles damage from your odd-mana-value sources, and Kaervek is mana value seven. He is NOT a legal companion for this deck — several cards here have even mana values — so treat him as a maindeck damage doubler.
+Basilisk Collar :: deathtouch and lifelink on any pinger. On Kaervek's trigger source it turns every spell they cast into a dead creature.
+Exquisite Blood :: you gain every point of life this deck drains. It is what lets you play Manabarbs and Spiteful Visions without losing the race.
 
-# Ramp
-Dark Ritual :: Add {B}{B}{B}.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
-Rakdos Signet :: {1}, {T}: Add {B}{R}.
-Talisman of Indulgence :: {T}: Add {C}.
+# Removal and reach
+Deadly Rollick :: free with your commander out.
+Feed the Swarm :: the only clean enchantment answer in these colours.
+Chaos Warp :: for the enchantment or planeswalker you cannot otherwise touch.
+Rakdos Charm :: graveyard hate, an artifact, or a symmetric ping that finishes a token board.
+Blasphemous Act :: cheap, and this deck's threats are mostly enchantments that survive it.
+Cursed Mirror :: a copy of the best creature on the board with haste, and a mana rock afterwards.
 
-# Protection
-Lightning Greaves :: Equipped creature has haste and shroud.
-Swiftfoot Boots :: Equipped creature has hexproof and haste.
-Mithril Coat :: When Mithril Coat enters, attach it to target legendary creature you control.
-Mogis, God of Slaughter :: As long as your devotion to black and red is less than seven, Mogis isn't a creature.
-Solphim, Mayhem Dominus :: If a source you control would deal noncombat damage to an opponent or a permanent an opponent controls, it deals…
+# Mana
+Sol Ring :: turn-one acceleration toward a turn-four commander.
+Dark Ritual :: three black on turn one.
+Seething Song :: five red for three, which is how a seven-drop lands early.
+Mana Geyser :: red mana for every tapped land your opponents control. Cast it after they have all tapped out and it is often eight or more.
+Mana Vault :: three mana now, on turn one.
+Thran Dynamo :: three more, reliably.
+Crypt Ghast :: doubles every Swamp and extorts on every spell you cast.
+Black Market Connections :: three effects a turn, paid in life you are gaining back from Exquisite Blood.
+Night's Whisper :: two cards for two mana.
+
+# What to keep in an opening hand
+Keep fast mana. This deck wants a turn-two or turn-three punisher and a turn-four or five Kaervek; Sol Ring, Dark Ritual and the Signets do that, and a hand of five-drops does not.
+Deploy the symmetrical cards LAST. Manabarbs, Ankh of Mishra and Spiteful Visions hurt you too. Cast everything you need to cast first, then land them and sit back — you win the race precisely because you can stop playing and they cannot.
+Kaervek's damage does not have to hit faces. Killing the mana dork or the combo piece with a triggered ability nobody can respond to is often worth more than three damage to a life total.
+Harmonic Prodigy :: find it. Two mana that doubles Kaervek is the biggest single upgrade in the deck. Read it carefully though — it only doubles triggered abilities of Shamans and Wizards, so it does nothing for Ojer Axonil, Solphim or the enchantments.

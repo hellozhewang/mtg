@@ -1,40 +1,71 @@
-Gríma, Saruman's Footman in BU, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Gríma cannot be blocked. That one line is the deck: a guaranteed connection every turn, and every connection digs through an opponent's library until it finds an instant or sorcery and casts it for free. The build is then about multiplying that trigger — copy Gríma, give him extra combats, and double his ability — until you are casting three or four of the table's best spells a turn without paying for any of them.
 
 # The commander
-Gríma, Saruman's Footman :: Gríma can't be blocked.
+Gríma, Saruman's Footman :: unblockable, and each hit exiles down to an instant or sorcery from that player's deck and casts it FREE. Four mana, and it never misses.
+Lightning Greaves :: haste so he connects the turn he lands, and shroud so the removal aimed at him fizzles.
+Swiftfoot Boots :: hexproof and haste, for when you need to target him yourself.
+Slip Out the Back :: one mana in response to removal. He phases out and comes back bigger.
+Octopus Form :: hexproof, +1/+1, and it untaps him — relevant after he taps for an ability or gets tapped down.
+Conqueror's Flail :: opponents cannot cast spells during your turn at all, so nothing interrupts the attack.
 
-# Game Changers (3 of 3)
-Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
-Opposition Agent :: You control your opponents while they're searching their libraries.
-Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
+# Multiplying the trigger
+Roaming Throne :: name Advisor. Gríma's damage trigger fires TWICE, so every connection is two free spells.
+Sakashima of a Thousand Faces :: copy Gríma. The legend rule does not apply to your permanents, so you attack with two unblockable Grímas.
+Spark Double :: another nonlegendary Gríma, with a counter on it.
+Irenicus's Vile Duplication :: a flying copy of anything, usually Gríma.
+Quantum Misalignment :: a copy now and a second one next upkeep from rebound.
+Auton Soldier :: a copy of Gríma with MYRIAD. It attacks one opponent and makes tapped attacking copies at the other two — all unblockable, all triggering. This is the single biggest turn the deck has.
+Impostor Syndrome :: every nontoken creature that connects makes a permanent copy of itself. Gríma connects, you get a second Gríma, and it compounds every combat.
+Irma, Part-Time Mutant :: becomes a copy of Gríma at the beginning of combat, every turn, growing each time.
+Taskmaster, Mercenary Mimic :: copies the best creature on the board OR in any graveyard, each of your turns.
+Genji Glove :: double strike plus a whole extra combat phase. Two Gríma triggers per combat, twice.
 
-# Removal you can point anywhere
-Pongify :: Destroy target creature. It can't be regenerated. Its controller creates a 3/3 green Ape creature token.
-Feed the Swarm :: Destroy target creature or enchantment an opponent controls. You lose life equal to that permanent's mana value.
-Reality Shift :: Exile target creature. Its controller manifests the top card of their library.
-Withering Torment :: Destroy target creature or enchantment. You lose 2 life.
-Deadly Rollick :: If you control a commander, you may cast this spell without paying its mana cost.
+# Getting paid for the free spells
+Tasha, the Witch Queen :: a 3/3 Demon every time you cast a spell you do not own — which is every Gríma trigger. Her minus recasts their best instant or sorcery out of exile for free too.
+Lord of the Nazgûl :: a 3/3 menace Wraith for every instant or sorcery you cast, stolen ones included, and at nine Wraiths they all become 9/9s.
+Sword of Wealth and Power :: a Treasure on damage, and it COPIES the next instant or sorcery you cast that turn — which is the spell Gríma just handed you.
+Sword of Feast and Famine :: they discard and all your lands untap, so the free spell you were given can be followed by one you pay for.
+Buster Sword :: draws on damage and lets you cast a spell from hand free, priced by the damage dealt.
+Gonti, Night Minister :: Treasures whenever anyone casts a spell they do not own, and it exiles a card off an opponent whenever ANY creature damages them.
+Grim Hireling :: two Treasures on every combat damage step, and the Treasures convert into removal.
+Eagle Vision :: freerunning costs {1}{U} whenever your commander connected this turn — which is always. Three cards for two mana.
 
-# Card advantage
-Mystic Remora :: Cumulative upkeep {1}
-Arcane Denial :: Counter target spell. Its controller may draw up to two cards at the beginning of the next turn's upkeep.
-Baleful Strix :: When this creature enters, draw a card.
-Faerie Mastermind :: Whenever an opponent draws their second card each turn, you draw a card.
-Mind Stone :: {T}: Add {C}.
-Buster Sword :: Equipped creature gets +3/+2.
+# Taking things outright
+Dauthi Voidwalker :: unblockable, exiles everything headed for their graveyards, and cashes in for a free cast of any of it.
+Opposition Agent :: flash him onto a fetchland or a tutor. You control the search and keep what they find.
+Gilded Drake :: two mana to swap a 3/3 flier for their best creature.
+Breach the Multiverse :: mills everyone ten and takes the best creature or planeswalker from EACH graveyard, onto your battlefield.
+Dream Harvest :: five mana value worth of free spells off every opponent at once.
+Reanimate :: one mana for the best creature in any graveyard, including the ones Breach the Multiverse just filled.
 
-# Ramp
-An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Dimir Signet :: {1}, {T}: Add {U}{B}.
-Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
-Talisman of Dominance :: {T}: Add {C}.
+# Interaction
+Mana Drain :: counter their answer and spend the mana on a copy effect.
+Counterspell :: the clean two-mana version.
+Arcane Denial :: cheap, and the cards they draw arrive too late to matter.
+Memory Lapse :: a Time Walk against a tapped-out player.
+Swan Song :: one mana for a wrath or a removal spell.
+Strix Serenade :: the creature and planeswalker half of the same effect.
+An Offer You Can't Refuse :: one mana for anything noncreature.
+Misdirection :: free, and it redirects the removal aimed at Gríma.
+Tale's End :: counters a triggered or activated ability, which is what most combo decks actually win with.
+Deadly Rollick :: free with your commander out.
+Pongify :: one mana, kills anything.
+Reality Shift :: exile plus a face-down 2/2 they cannot use well.
+Feed the Swarm :: the only clean enchantment answer in Dimir.
+Cyclonic Rift :: overloaded, it clears the board for a lethal alpha strike.
+March of Swirling Mist :: phases your team out of a wrath, or phases their blockers away.
+Propaganda :: nobody attacks the player with a 1/4 commander and a wall of blue mana up.
 
-# Protection
-Octopus Form :: Target creature you control gets +1/+1 and gains hexproof until end of turn. Untap it.
-Counterspell :: Counter target spell.
-Lightning Greaves :: Equipped creature has haste and shroud.
-Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
-Memory Lapse :: Counter target spell. If that spell is countered this way, put it on top of its owner's library instead of into that…
-Swiftfoot Boots :: Equipped creature has hexproof and haste.
+# Card flow
+Rhystic Study :: they will not pay while they are already paying for everything else.
+Mystic Remora :: the strongest card in the deck on turns one through four.
+Faerie Mastermind :: flash, flies, and draws whenever anyone doubles up on draws.
+Baleful Strix :: a card, a deathtouch blocker, and it trades with anything.
+Enduring Curiosity :: a card for every creature that connects — and your creatures are unblockable copies of Gríma.
+Sheoldred, the Apocalypse :: two life per card you draw and two lost per card they draw.
+
+# What to keep in an opening hand
+Keep a rock and a haste or protection piece. Gríma on turn three with Lightning Greaves is three free spells before anyone has stabilised.
+Attack the player whose deck you most want to cast from. The trigger digs through THEIR library, so hitting the storm deck gets you a ritual and a tutor, while hitting the creature deck may whiff for several cards.
+Auton Soldier :: hold it until Gríma is already on the battlefield and unblocked. Copying him with myriad is usually three free spells and three Tasha Demons in a single combat.
+Roaming Throne :: name Advisor, not Rogue. Gríma is the trigger that matters; the Rogues in the deck are incidental.

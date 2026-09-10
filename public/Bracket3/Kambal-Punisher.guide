@@ -1,45 +1,67 @@
-Kambal, Consul of Allocation in BW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Kambal charges two life for every noncreature spell an opponent casts and hands that two to you. On its own that is a slow trickle. The deck's job is to make the trickle bigger in both directions: multiply the triggers, wall off combat entirely so nobody can pressure you, and then convert the LIFE YOU GAIN back into life they lose. Once that loop is running, every card the table draws is a card that kills them.
 
-# The commander
-Kambal, Consul of Allocation :: Whenever an opponent casts a noncreature spell, that player loses 2 life and you gain 2 life.
+# The commander and the multiplier
+Kambal, Consul of Allocation :: every noncreature spell an opponent casts is two life off them and two onto you. Three mana, and it never stops.
+Delney, Streetwise Lookout :: doubles the triggered abilities of your creatures with power 2 or LESS — and Kambal is a 2/3. He is the single biggest upgrade in the deck, and he also doubles Suture Priest, Blood Seeker, Starscape Cleric, Mai and Lotho.
+Mithril Coat :: flash, indestructible, attaches itself to a legendary creature on entry. Hold it as insurance for Kambal.
+Flawless Maneuver :: free with a commander out, and it saves the whole board.
 
-# Game Changers (3 of 3)
-Smothering Tithe :: Whenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token.
-Teferi's Protection :: Until your next turn, your life total can't change and you gain protection from everything. All permanents you…
-The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
+# Turning your lifegain into their life loss
+This is what separates the deck from a pile of small taxes. Every point Kambal gains you is a point they lose.
+Enduring Tenacity :: whenever YOU gain life, an opponent loses that much. With Kambal out, every noncreature spell they cast drains four instead of two — and it comes back as an enchantment when it dies.
+Starscape Cleric :: every lifegain event costs each opponent one, and it flies and cannot block, so it is pure reach.
+Suture Priest :: life for every creature you play and life loss for every creature they play.
+Blood Seeker :: the same tax on their creature deployment.
+Kambal, Profiteering Mayor :: copies every batch of tokens they make, and drains the table for every batch of tokens YOU make — including the ones he just copied.
+Aetherflux Reservoir :: this deck's life total climbs past fifty faster than anyone expects. Fifty life to any target is the cleanest kill in the deck.
 
-# Removal you can point anywhere
-Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
-Damn :: Destroy target creature. A creature destroyed this way can't be regenerated.
-Despark :: Exile target permanent with mana value 4 or greater.
-Anguished Unmaking :: Exile target nonland permanent. You lose 3 life.
-Generous Gift :: Destroy target permanent. Its controller creates a 3/3 green Elephant creature token.
+# Taxing every spell and every land
+Mai, Scornful Striker :: two more life per noncreature spell, from every player.
+The Frightful Four :: their first noncreature spell each turn costs its mana value in life.
+Liesa, Shroud of Dusk :: two life per spell from EVERY player, including you. She is worth it because you cast the fewest spells at the table, and her commander tax can be paid in life rather than mana.
+Polluted Bonds :: two life for every land an opponent plays. Against fetchlands and ramp decks this is enormous, and it is a drain, so Enduring Tenacity sees it.
+Lotho, Corrupt Shirriff :: a Treasure every time anyone casts their second spell each turn.
+Esper Sentinel :: taxes their first noncreature spell each turn for a card.
+Scrawling Crawler :: forces everyone to draw, and every draw they take costs a life.
+Fate Unraveler :: a damage per card they draw.
+Sheoldred, the Apocalypse :: two life per card they draw, and two GAINED per card you draw — which Enduring Tenacity converts straight back into their life loss.
+Gleaming Splendor :: a Treasure whenever an opponent draws their second card, and it can force draws itself.
+Smothering Tithe :: Treasures for the whole table's draws.
+Bloodchief Ascension :: three quest counters is trivial when the table is losing two life on every spell. After that, every card that hits any opponent's graveyard drains two more.
 
-# Taxes and lock pieces
-Dáin, Lord of the Iron Hills :: Storied
-Ghostly Prison :: Creatures can't attack you unless their controller pays {2} for each creature they control that's attacking you.
-Moat :: Creatures without flying can't attack.
-Windborn Muse :: Creatures can't attack you unless their controller pays {2} for each creature they control that's attacking you.
-Sphere of Safety :: Creatures can't attack you or planeswalkers you control unless their controller pays {X} for each of those creatures,…
+# The wall
+Nobody can be allowed to attack you, because the deck's clock is slow and its life total is its resource.
+Ghostly Prison :: two per attacker or go somewhere else.
+Sphere of Safety :: X per attacker where X is your enchantment count. In this deck that is routinely five or six, which is simply unattackable.
+Moat :: creatures without flying cannot attack at all.
+No Mercy :: anything that connects with you dies.
+Revenge of Ravens :: attacking you costs a life per creature and gains you one — another Enduring Tenacity trigger.
+Marchesa's Decree :: the same tax, and it makes you the monarch for the extra card.
+Dáin, Lord of the Iron Hills :: another attack tax once you have three artifacts or legends, which is immediate.
+Authority of the Consuls :: their creatures enter tapped and you gain a life each time. No haste kills, no surprise blockers.
+Blind Obedience :: the same for artifacts and creatures, plus extort on every spell you cast.
+Righteous Aura :: a repeatable damage prevention shield for two life a shot.
+Teferi's Protection :: the full reset against a combo kill or a wrath.
+Clever Concealment :: usually free with convoke, and it phases out your whole enchantment board.
 
-# Card advantage
-Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
-Soul-Guide Lantern :: When this artifact enters, exile target card from a graveyard.
-Gleaming Splendor :: Whenever an opponent draws their second card each turn, you create a Treasure token.
-Mind Stone :: {T}: Add {C}.
-Reprieve :: Return target spell to its owner's hand.
-The Queen of Dale :: Whenever an opponent casts their first noncreature spell each turn, you recruit.
+# Finding and rebuilding
+Idyllic Tutor :: this deck is mostly enchantments, so it finds Sphere of Safety, Polluted Bonds, Bloodchief Ascension or Enduring Tenacity as needed.
+Grim Tutor :: any card at all.
+Replenish :: returns EVERY enchantment from your graveyard to the battlefield. After a wrath or a Cyclonic Rift, this rebuilds the entire lock in one card.
+The Mind Stone :: once harnessed it blinks a permanent every end step, resetting an enters trigger for free.
 
-# Ramp
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
-Lotho, Corrupt Shirriff :: Whenever a player casts their second spell each turn, you lose 1 life and create a Treasure token.
-Orzhov Signet :: {1}, {T}: Add {W}{B}.
-Talisman of Hierarchy :: {T}: Add {C}.
+# Removal
+Swords to Plowshares :: one mana, exile.
+Anguished Unmaking :: instant-speed exile for any nonland permanent.
+Despark :: two mana for anything expensive, which is what actually threatens you.
+Generous Gift :: the catch-all.
+Damn :: a removal spell early or a full wrath late — and your board is enchantments, so the wrath is nearly one-sided.
+Reprieve :: not a counterspell, so it works under most stax pieces, and it draws.
+Mangara, the Diplomat :: draws when they attack you with two or more creatures and when they cast their second spell each turn. He punishes the two things this deck most wants to discourage.
+Soul-Guide Lantern :: graveyard hate that cantrips, and it turns off the reanimator decks this wall cannot race.
 
-# Protection
-The Mind Stone :: {T}: Add {W}.
-The Soul Stone :: {T}: Add {B}.
-Flawless Maneuver :: If you control a commander, you may cast this spell without paying its mana cost.
-Mithril Coat :: When Mithril Coat enters, attach it to target legendary creature you control.
+# What to keep in an opening hand
+Keep an early wall or an early tax, plus mana. Ghostly Prison on turn three is worth more than Kambal on turn three, because the deck loses to being attacked and never loses to being outdrawn.
+Kambal, Consul of Allocation :: he is cheap and recastable, so do not hold him back out of fear. He is also the trigger Delney doubles, so having him on the battlefield when Delney lands matters.
+Deploy enchantments before Sphere of Safety, not after. The Sphere counts your enchantments as it resolves and afterwards, so a board of five enchantments makes it unattackable immediately.
+Enduring Tenacity :: prioritise it once Kambal is out. It doubles the drain on every trigger in the deck, and because it returns as an enchantment when it dies, removal only half-answers it.

@@ -1,41 +1,81 @@
-Gwenom, Remorseless in B, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Life is mana in this deck. Gwenom's attack trigger turns the top of your library into a hand you pay for in life instead of mana, and she is a lifelinking deathtoucher, so attacking refills the resource she spends. K'rrik does the same thing for every black pip in your costs. Once both are down, your life total is a second mana pool worth twenty or thirty.
 
 # The commander
-Gwenom, Remorseless :: Whenever Gwenom attacks, until end of turn, you may look at the top card of your library any time and you may play…
+Gwenom, Remorseless :: 4/4 deathtouch lifelink, and every attack lets you play off the top of your library, paying LIFE equal to mana value rather than mana. She is Bolas's Citadel that also hits for four and gains it back.
+Bolas's Citadel :: the permanent version, and it does not need to attack. Its sacrifice ability is a ten-life drain on each opponent as a finisher.
+K'rrik, Son of Yawgmoth :: every {B} in every cost can be paid with two life instead. With him out, Exsanguinate, Gray Merchant and the tutors all cost only their generic portion.
+Lightning Greaves :: haste so Gwenom attacks the turn she lands, and shroud against the removal aimed at her.
+Swiftfoot Boots :: hexproof and haste when you need to target her.
+Lavaspur Boots :: one mana, haste and ward — the cheapest way to make her connect immediately.
 
-# Combos in the deck
-Exquisite Blood :: part of infinite drain
-Bloodthirsty Conqueror :: part of infinite drain
-Vito, Thorn of the Dusk Rose :: part of infinite drain
+# Getting the life back
+Bloodthirsty Conqueror :: you gain life equal to every point an opponent loses. With a drain spell it is enormous, and it makes the life you spent free.
+Exquisite Blood :: the same effect on an enchantment.
+Sheoldred, the Apocalypse :: two life per card you draw, two lost per card they draw.
+Aetherflux Reservoir :: gains life on every spell, scaling with your storm count, then converts fifty life into fifty damage at any target. In a deck that gains life this fast, that is a real kill.
+Gray Merchant of Asphodel :: your devotion to black is high, and the drain is also lifegain.
+Crypt Ghast :: doubles every Swamp AND extorts on every spell.
+Exsanguinate :: X to each opponent, and you gain all of it back.
 
-# Game Changers (3 of 3)
-Bolas's Citadel :: You may look at the top card of your library any time.
-Necropotence :: Skip your draw step.
-Vampiric Tutor :: Search your library for a card, then shuffle and put that card on top. You lose 2 life.
+# Rituals and free mana
+Dark Ritual :: three black for one.
+Cabal Ritual :: five with threshold on, which this deck reaches quickly.
+Culling the Weak :: four black for one mana and a spare body.
+Rain of Filth :: turns every land you control into a black mana at once. It is a one-card explosive turn — and lands sacrificed this way are gone, so use it on the turn you win.
+Blood Pet :: a body that becomes a ritual.
+Lotus Petal :: fixing and acceleration for free.
+Mox Amber :: live as soon as Gwenom or K'rrik is out.
+Mox Opal :: metalcraft is easy with the Moxen and the Reservoir.
+Jet Medallion :: a discount on every card in the deck.
 
-# Removal you can point anywhere
-Feed the Swarm :: Destroy target creature or enchantment an opponent controls. You lose life equal to that permanent's mana value.
-Infernal Grasp :: Destroy target creature. You lose 2 life.
-Deadly Rollick :: If you control a commander, you may cast this spell without paying its mana cost.
-Snuff Out :: If you control a Swamp, you may pay 4 life rather than pay this spell's mana cost.
+# Drawing on life
+Necropotence :: the best card in the deck. Pay one life per card, as many as you like, with no upper limit — and this deck has three separate ways to gain the life back.
+Peer into the Abyss :: half your library into your hand. With K'rrik and rituals down, that is usually the turn you win.
+Doom Whisperer :: two life per surveil 2, digging as deep as you need for the missing piece.
+Night's Whisper :: two cards for two life.
+Black Market Connections :: three effects a turn, all paid in life.
+Insatiable Avarice :: a tutor to the top and a three-card draw on the same card.
 
-# Card advantage
-Sensei's Divining Top :: {1}: Look at the top three cards of your library, then put them back in any order.
-Diabolic Intent :: As an additional cost to cast this spell, sacrifice a creature.
-Night's Whisper :: You draw two cards and lose 2 life.
-Scroll Rack :: {1}, {T}: Exile any number of cards from your hand face down. Put that many cards from the top of your library into…
-Wishclaw Talisman :: This artifact enters with three wish counters on it.
-Black Market Connections :: At the beginning of your first main phase, choose one or more —
+# Finding the piece
+Vampiric Tutor :: two life for any card in the deck, and Gwenom can cast it off the top the same turn.
+Grim Tutor :: straight to hand.
+Beseech the Mirror :: bargain it and cast the tutored card free if it costs four or less.
+Diabolic Intent :: any card for a spare creature.
+Razaketh, the Foulblooded :: a tutor every time you sacrifice a creature, repeatedly, within a single turn.
+Scheming Symmetry :: one mana, and you cast yours off the top first while their card sits there.
+Doomsday :: five cards, stacked in the exact order you need. It costs half your life, which this deck is uniquely equipped to pay.
+Scroll Rack :: swaps a dead hand for the top of your library — and the top of your library is where Gwenom and Bolas's Citadel play from.
+Sensei's Divining Top :: sets the top three, so the free casts never whiff.
 
-# Ramp
-Lotus Petal :: {T}, Sacrifice this artifact: Add one mana of any color.
-Mox Amber :: {T}: Add one mana of any color among legendary creatures and planeswalkers you control.
-Mox Opal :: Metalcraft — {T}: Add one mana of any color. Activate only if you control three or more artifacts.
-Blood Pet :: Sacrifice this creature: Add {B}.
-Culling the Weak :: As an additional cost to cast this spell, sacrifice a creature.
-Dark Ritual :: Add {B}{B}{B}.
+# Closing the game
+Tendrils of Agony :: with rituals and free casts, the storm count on a real turn is six or more. That is twelve or more drain and twelve life back.
+Professor Onyx :: two drain and two gain on every instant and sorcery you cast OR COPY.
+Chain of Smog :: with Professor Onyx on the battlefield, target YOURSELF. Each copy triggers magecraft, and once your hand is empty the discard does nothing — so you copy it as many times as you need and drain the table out. Two cards, and it ends the game on the spot.
+Aetherflux Reservoir :: the other kill. Fifty life to the face of whoever is closest to winning.
+Bolas's Citadel :: sacrifice ten nonland permanents and every opponent loses ten.
+Exsanguinate :: the clean, uninteractive finish when you have the mana.
 
-# Protection
-Lightning Greaves :: Equipped creature has haste and shroud.
-Swiftfoot Boots :: Equipped creature has hexproof and haste.
-The Soul Stone :: {T}: Add {B}.
+# Removal and protection
+Deadly Rollick :: free with your commander out.
+Snuff Out :: four life instead of four mana, which in this deck is a discount.
+Infernal Grasp :: two mana, kills anything.
+Dismember :: one mana and four life, or three mana.
+Feed the Swarm :: mono-black's only clean enchantment removal.
+Toxic Deluge :: a wrath that scales past indestructible, and paying life for it is on-plan.
+Damnation :: the unconditional version.
+Imp's Mischief :: redirects the removal spell aimed at Gwenom back at something of theirs, or turns their tutor into yours.
+Defense Grid :: everything costs three more except on its controller's turn. Your combo turn becomes untouchable.
+Dauthi Voidwalker :: unblockable, blanks their graveyards, and steals their best card.
+Umbral Collar Zealot :: a free sacrifice outlet that surveils, which sets up both Gwenom and Reanimate.
+
+# Recursion
+Reanimate :: one mana for anything in any graveyard.
+Animate Dead :: the second copy.
+The Soul Stone :: once harnessed, a creature back from the graveyard every upkeep.
+Boggart Trawler :: graveyard hate on a body, or a land when you needed the land.
+
+# What to keep in an opening hand
+Keep fast black mana. Dark Ritual, Sol Ring, Lotus Petal and a tutor beats a hand of expensive drain spells — this deck wins by having eight mana on turn four, not by curving out.
+Watch your life total as a mana pool, but keep a floor. Between Necropotence, K'rrik, Gwenom and the tutors it is very easy to spend yourself to five with no lifelink attack available. Deploy a lifegain piece before you start burning down.
+Gwenom, Remorseless :: attack with her even into a bad board. Deathtouch means blocking is a bad trade for them, lifelink refills you, and the top-of-library access for the turn is worth more than the four damage.
+Chain of Smog :: hold it. It is a dead card without Professor Onyx and a game-winner with her, and telegraphing it early just invites the graveyard hate that stops the Reanimate half of the deck too.

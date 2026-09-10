@@ -1,29 +1,75 @@
-Lord Windgrace in BGR, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Fifty-two lands. That is not a typo and it is not greed — in this deck lands ARE the spells. Windgrace's plus turns the flood into cards, his minus rebuilds whatever you spent, and half the card pool sacrifices its own lands on purpose because a land hitting your graveyard is a trigger, not a loss. The deck is a value engine that happens to look like a mana base.
 
 # The commander
-Lord Windgrace :: +2: Discard a card, then draw a card. If a land card is discarded this way, draw an additional card.
+Lord Windgrace :: the +2 discards and draws, and draws an EXTRA card if what you pitched was a land — so every excess land in hand is a two-for-one. The -3 returns two lands from the graveyard to the battlefield, which is two landfall triggers as well as two lands. The ultimate destroys six nonland permanents and leaves six forestwalking 2/2s, which usually just ends the game.
+Play him early and plus him every turn. He is not a bomb you save; he is a draw engine that also protects itself by making Cat tokens on the way out.
 
-# Game Changers (3 of 3)
-Crop Rotation :: As an additional cost to cast this spell, sacrifice a land.
-Field of the Dead :: This land enters tapped.
-The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
+# Lands as a resource, not a cost
+Constant Mists :: buyback for a land. A fog every single turn, forever, and every buyback feeds Titania.
+Crop Rotation :: one mana, sacrifice a land, fetch ANY land onto the battlefield. It finds Cabal Coffers, Field of the Dead or a missing colour at instant speed.
+Harrow :: two basics untapped, at instant speed, and the sacrificed land is a trigger.
+Roiling Regrowth :: the same effect on a slower body.
+Scapeshift :: sacrifice as many lands as you like and replace them all. With Titania out it is a board of 5/3s; with Field of the Dead it is a board of Zombies.
+The Gitrog Monster :: an extra land drop, deathtouch on a 6/6, and a card for EVERY land that reaches your graveyard. Its upkeep sacrifice is not a drawback here — it is a free draw.
+Splendid Reclamation :: returns every land from your graveyard to the battlefield at once. After a Scapeshift or a few turns of sacrificing, this is ten or more landfall triggers in one card.
+Life from the Loam :: three lands back to hand, and dredge means it recurs itself every turn.
 
-# Removal you can point anywhere
-Vandalblast :: Destroy target artifact you don't control.
-Assassin's Trophy :: Destroy target permanent an opponent controls. Its controller may search their library for a basic land card, put it…
-Terminate :: Destroy target creature. It can't be regenerated.
-Beast Within :: Destroy target permanent. Its controller creates a 3/3 green Beast creature token.
-Windgrace's Judgment :: For any number of opponents, destroy target nonland permanent that player controls.
+# Playing them again
+Crucible of Worlds :: play lands from the graveyard. It turns every sacrifice effect above into a repeatable engine.
+Ramunap Excavator :: the creature version.
+Ancient Greenwarden :: the third copy, AND it doubles every land enters trigger you control.
+Traveling Chocobo :: doubles land and Bird enters triggers too, and lets you play lands off the top of your library.
+Azusa, Lost but Seeking :: two extra land drops a turn.
+Exploration :: one extra, for one mana.
+Wayward Swordtooth :: one extra, on a 5/5 body once you have the city's blessing.
+Oracle of Mul Daya :: an extra drop plus lands off the top of your library.
+Burgeoning :: a free land every time an OPPONENT plays one. In a four-player pod that is three extra land drops a turn cycle.
 
-# Card advantage
-Constant Mists :: Buyback—Sacrifice a land.
-Life from the Loam :: Return up to three target land cards from your graveyard to your hand.
-Cultivate :: Search your library for up to two basic land cards, reveal those cards, put one onto the battlefield tapped and the…
-Kodama's Reach :: Search your library for up to two basic land cards, reveal those cards, put one onto the battlefield tapped and the…
-Phyrexian Arena :: At the beginning of your upkeep, you draw a card and you lose 1 life.
-Harmonize :: Draw three cards.
+# The landfall payoffs
+Titania, Protector of Argoth :: a 5/3 Elemental every time a land you control hits the graveyard. Alongside Constant Mists that is a 5/3 every turn just for fogging.
+Scute Swarm :: with six or more lands, every landfall makes a COPY of Scute Swarm rather than a 1/1. It doubles each land drop and gets out of hand in two turns.
+Avenger of Zendikar :: a Plant for every land you control on entry, then a counter on all of them per landfall. With Splendid Reclamation the same turn it is lethal.
+Lotus Cobra :: mana on every landfall, which chains into more land drops.
+Multani, Yavimaya's Avatar :: power equal to lands on the battlefield PLUS lands in your graveyard. This deck makes him a 20/20 routinely, and he returns himself from the graveyard for two mana and two land bounces.
+Field of the Dead :: this mana base is full of differently named lands, so it makes Zombies on nearly every drop.
 
-# Recursion
-Splendid Reclamation :: Return all land cards from your graveyard to the battlefield tapped.
-World Shaper :: Whenever this creature attacks, you may mill three cards.
-Titania, Protector of Argoth :: When Titania enters, return target land card from your graveyard to the battlefield.
+# Cards
+Sylvan Library :: with fifty-two lands you always know what the extra cards are worth.
+Phyrexian Arena :: a card a turn.
+Harmonize :: three at once.
+The One Ring :: a turn of protection, then an escalating draw engine.
+Return of the Wildspeaker :: draws cards equal to your biggest non-Human's power. With Multani out that is often fifteen. The other half is a +3/+3 team pump for the kill.
+Life from the Loam :: dredging instead of drawing is not card advantage on paper, but with Crucible of Worlds each land it returns is a land drop you actually make.
+
+# Ramp and fixing
+Nature's Lore :: an untapped dual with a Forest type.
+Three Visits :: the second copy.
+Skyshroud Claim :: two untapped Forests — a four-mana swing.
+Cultivate :: a land down and a land in hand.
+Kodama's Reach :: the same.
+Farseek :: fetches a shockland.
+Sol Ring :: the only artifact acceleration you need.
+
+# Interaction
+Assassin's Trophy :: two mana for any permanent.
+Beast Within :: instant-speed answer to anything.
+Windgrace's Judgment :: destroys a nonland permanent from EVERY opponent, at instant speed. It is the deck's cleanest sweeper.
+Chaos Warp :: the enchantment and planeswalker answer.
+Terminate :: two mana, kills anything.
+Vandalblast :: overloaded it wipes the table's artifacts and leaves yours alone.
+Blasphemous Act :: cheap, and your value lives on lands rather than creatures.
+Toxic Deluge :: scales past indestructible.
+Constant Mists :: the real defence. A repeatable fog means the aggro deck at the table simply cannot kill you.
+
+# How you actually win
+Torment of Hailfire :: fifty-two lands plus Cabal Coffers means X is enormous. This is the most reliable kill in the deck and it ignores blockers entirely.
+Multani, Yavimaya's Avatar :: a single trampling attacker the size of your graveyard.
+Avenger of Zendikar :: with Splendid Reclamation or a Scapeshift, a lethal board out of nowhere.
+Scute Swarm :: left alone for two turns it wins on its own.
+Lord Windgrace :: the ultimate is a one-sided wrath plus six evasive bodies.
+
+# What to keep in an opening hand
+Keep lands and one engine piece. A hand of six lands and Exploration is a fine keep here — this is one of the very few decks where flooding is the plan rather than the failure case.
+Windgrace's +2 is not a last resort. Use it every turn you have a spare land in hand, even when you do not need cards; two-for-ones compound faster than any single spell in the deck.
+Crucible of Worlds :: prioritise it. Every land-sacrifice effect in the deck goes from one-shot to repeatable the turn it lands.
+Titania, Protector of Argoth :: hold Constant Mists until she is out if you can afford to. Fogging with Titania on the battlefield turns a defensive card into a 5/3 a turn.

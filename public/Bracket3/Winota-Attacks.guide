@@ -1,39 +1,67 @@
-Winota, Joiner of Forces in RW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+The deck is deliberately split in half. One half is cheap NON-HUMAN bodies whose only job is to attack; the other half is expensive HUMANS you never intend to cast. Winota converts the first into the second — every non-Human that attacks digs six cards deep and puts a Human onto the battlefield already attacking and indestructible. Count your non-Human attackers before combat, because that number is how many free Humans you get.
 
 # The commander
-Winota, Joiner of Forces :: Whenever a non-Human creature you control attacks, look at the top six cards of your library. You may put a Human…
+Winota, Joiner of Forces :: every non-Human creature that attacks looks six deep and cheats a Human into play tapped, attacking and indestructible. Four mana, and a board of four tokens is four free Humans.
+Reconnaissance :: the best card in the deck. Attack with everything, let Winota trigger on each non-Human, THEN remove the fragile attackers from combat and untap them. You keep the triggers, lose nothing to blockers, and still have blockers up.
+Deflecting Swat :: free with your commander out, and it redirects the removal spell aimed at Winota mid-combat.
+Giver of Runes :: protection from a colour every turn, for one mana, on the creature that matters.
+Flare of Fortitude :: free if you sacrifice a white creature. Your life cannot change and everything you control gains hexproof and indestructible — it beats a wrath, a burn spell and a targeted removal spell at once.
 
-# Game Changers (3 of 3)
-Drannith Magistrate :: Your opponents can't cast spells from anywhere other than their hands.
-Teferi's Protection :: Until your next turn, your life total can't change and you gain protection from everything. All permanents you…
-The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
+# The non-Human trigger engine
+These are not filler. Each one is a Winota trigger every combat.
+Goblin Rabblemaster :: a hasty Goblin at the beginning of combat, every turn, and it forces them to attack.
+Legion Warboss :: the same effect, and mentor grows whatever it attacks alongside.
+Loyal Apprentice :: a hasty flying Thopter each combat while you control your commander.
+Ainok Strike Leader :: a Goblin per opponent whenever it or Winota attacks — three extra triggers in a four-player pod.
+Anim Pakal, Thousandth Moon :: Gnomes equal to her counter total, every attack, snowballing.
+Myrel, Shield of Argive :: Soldier tokens equal to your Soldier count on every attack, and opponents cannot interact during your turn at all.
+Okoye, Dora Milaje Leader :: two Soldiers on arrival, and your attacking tokens get first strike.
+Phoenix Chick :: one mana, flies, has haste, and it climbs back out of the graveyard whenever you attack with three creatures.
+Ragavan, Nimble Pilferer :: a Monkey, so it triggers Winota, and it steals a card and a Treasure on the way through.
+Ornithopter :: zero mana, flies, and it is a Winota trigger from turn one.
+Phyrexian Walker :: the same, on the ground.
+Ornithopter of Paradise :: a trigger that also fixes your mana.
+Hope of Ghirapur :: a flying trigger that shuts off an opponent's noncreature spells for a turn.
+Quicksilver, Brash Blur :: can start the game on the battlefield, has haste, and is not a Human.
 
-# Taxes and lock pieces
-Deafening Silence :: Each player can't cast more than one noncreature spell each turn.
-Hope of Ghirapur :: Sacrifice Hope of Ghirapur: Until your next turn, target player who was dealt combat damage by Hope of Ghirapur this…
-Grand Abolisher :: During your turn, your opponents can't cast spells or activate abilities of artifacts, creatures, or enchantments.
-High Noon :: Each player can't cast more than one spell each turn.
-Thalia, Guardian of Thraben :: Noncreature spells cost {1} more to cast.
-Voice of Victory :: Mobilize 2
+# The Humans you want to hit
+Blade Historian :: attacking creatures have DOUBLE STRIKE. Cheated in mid-combat, it doubles the damage of the attack that put it there.
+Angrath's Marauders :: all your damage is doubled. Alongside Blade Historian your tokens hit for four times their printed power.
+Combat Celebrant :: exert it and you untap everything and get an ADDITIONAL COMBAT PHASE — which is a whole second round of Winota triggers.
+Lena, Selfless Champion :: a Soldier for every nontoken creature you control, and she sacrifices to make the team indestructible.
+Myrel, Shield of Argive :: doubles your Soldier count and locks opponents out of your turn.
+Anim Pakal, Thousandth Moon :: better cheated in than cast, because she starts making Gnomes immediately.
+Lightning, Army of One :: once she connects, every source you control deals DOUBLE damage to that player until your next turn.
+Grand Abolisher :: nobody can respond to anything for the rest of your turn.
+Boromir, Warden of the Tower :: counters anything cast for free, and sacrifices to make the board indestructible.
+Professional Face-Breaker :: a Treasure per combat damage step, convertible into impulse draws.
+Black Widow, Agile Avenger :: menace, and she grows and draws off the table's extra draws.
 
-# Card advantage
-Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
-Skullclamp :: Equipped creature gets +1/-1.
-Black Widow, Agile Avenger :: Whenever an opponent draws their second card each turn, put a +1/+1 counter on Black Widow and you draw a card.
-Imperial Recruiter :: When this creature enters, search your library for a creature card with power 2 or less, reveal it, put it into your…
-Ranger-Captain of Eos :: When this creature enters, you may search your library for a creature card with mana value 1 or less, reveal it, put…
-Recruiter of the Guard :: When this creature enters, you may search your library for a creature card with toughness 2 or less, reveal it, put…
+# Finding the pieces
+Imperial Recruiter :: any creature with power 2 or less — which is most of your non-Human triggers.
+Recruiter of the Guard :: any creature with toughness 2 or less.
+Ranger-Captain of Eos :: finds a one-drop, and sacrifices to stop every noncreature spell for a turn. That is how you protect the alpha strike.
 
-# Ramp
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Ornithopter of Paradise :: {T}: Add one mana of any color.
-Talisman of Conviction :: {T}: Add {C}.
+# Taxing them while you set up
+Archon of Emeria :: one spell per turn each, and their nonbasics enter tapped. A token deck barely notices; a combo deck dies to it.
+High Noon :: the same lockout on an enchantment, and it converts into five damage later.
+Deafening Silence :: one noncreature spell per turn each, and it never touches your creature deployment.
+Drannith Magistrate :: no casting from graveyards, exile or the command zone. It turns off every other commander at the table.
+Aven Mindcensor :: flash him onto a fetchland or a tutor.
+Aven Interrupter :: flash, exiles a spell outright, and taxes what they try to recast.
+Charismatic Conqueror :: everything they play either arrives tapped or gives you a lifelinking Vampire.
+Hexing Squelcher :: your spells cannot be countered and your creatures get ward.
+Esper Sentinel :: taxes their first noncreature spell every turn.
+Ocelot Pride :: a Cat every end step you gained life, doubled once you have the city's blessing — and Cats are not Human.
 
-# Protection
-Skrelv, Defector Mite :: Toxic 1
-Ainok Strike Leader :: Whenever you attack with this creature and/or your commander, for each opponent, create a 1/1 red Goblin creature…
-Hexing Squelcher :: This spell can't be countered.
-Selfless Spirit :: Sacrifice this creature: Creatures you control gain indestructible until end of turn.
-Boromir, Warden of the Tower :: Whenever an opponent casts a spell, if no mana was spent to cast it, counter that spell.
-Flare of Fortitude :: You may sacrifice a nontoken white creature rather than pay this spell's mana cost.
+# Removal and protection
+Path to Exile :: one mana, exile.
+Phelia, Exuberant Shepherd :: flash, and every attack exiles a blocker or a problem permanent for the turn.
+Flare of Fortitude :: the free save.
+Reconnaissance :: also a defensive card — remove your attackers from combat and they are untapped blockers on the crack-back.
+
+# What to keep in an opening hand
+Keep cheap non-Humans. Ornithopter, Phyrexian Walker and Phoenix Chick look like nothing and are the entire engine — a turn-four Winota with three non-Humans already attacking is three free Humans on turn four.
+Do not cast the Humans. Blade Historian, Angrath's Marauders and Lena are all far better cheated in mid-combat, and casting them wastes both the mana and the surprise. If you must hard-cast something, cast a trigger body instead.
+Attack with everything, then use Reconnaissance. The Winota triggers happen on declaration, so pulling a 1/1 out of combat afterwards costs you nothing and saves the body for next turn.
+Combat Celebrant :: the highest-value hit in the deck. An extra combat is another full round of Winota triggers, and the Humans you already cheated in are untapped for it.

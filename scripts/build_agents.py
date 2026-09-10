@@ -361,6 +361,10 @@ cutting basics safe.
    replying, and report the result. A deck you edited but did not validate is not
    done. If it fails, fix it and validate again rather than handing back a
    failing list.
+7. **Write the guide.** A `.guide` file beside the decklist — see "Writing the
+   deck's guide" below. The site renders it as a Guide tab, and a deck without one
+   has no tab at all, so this is part of finishing a deck rather than a bonus. Do
+   it after validating, so the guide describes the list you actually shipped.
 
 **Steps 1, 3 and 4 are a floor, not a ceiling — do not stop at what they return.**
 They surface what's *popular*; the user's actual request is often narrower and
@@ -380,7 +384,7 @@ already built; they cannot index what hasn't been tried. Go looking.
 outside this bot, where Codex gives a genuinely independent read. You are already
 a Codex `exec` session — invoking it here would be asking yourself to review your
 own output: no independent model, no outside context, and a multi-minute nested
-`codex exec` call spent on a report with no real signal. Stop at step 6. If the
+`codex exec` call spent on a report with no real signal. Stop at step 7. If the
 user wants a second opinion, that is theirs to run outside this session, the same
 way `../bot/` itself is off-limits to you for the same reason.
 
@@ -394,6 +398,53 @@ mid-turn. Your PATH is restricted to the standard system directories, so `claude
 is `command not found` by bare name — but that is a speed bump, not a wall, and
 you are being asked here rather than merely prevented. Do not go looking for a way
 around it. See "The sandbox boundary, measured" in `../README.md`.
+
+## Writing the deck's guide
+
+Every deck gets a `.guide` file beside its decklist — same name, `.guide` instead
+of `.txt`, so `Bracket3/Winota-Attacks.txt` gets `Bracket3/Winota-Attacks.guide`.
+The site renders it as a Guide tab on that deck's page.
+
+**Format.** The showcards format you already know: `# Section` headers, `Name ::
+comment` rows, and any line without `::` is prose. Anything before the first `#`
+renders as an intro paragraph with no heading. The parser is
+`../scripts/deckguide.py`.
+
+    A line or two naming the single thing a new pilot would get wrong.
+
+    # The engine
+    Prose lines need no card and render as a paragraph.
+    Shorikai, Genesis Engine :: taps for two Pilots and two cards, every turn
+
+**Read `Bracket3.5/Shorikai-Prison.guide` before you write your first one.** It is
+the model, and these are its rules:
+
+  * Open with the ONE thing that decides games and that a new pilot gets wrong.
+    Shorikai's is that the commander is a Vehicle, not a creature, so the
+    symmetrical creature hate in its own deck never switches it off.
+  * Section headers are the gameplan, not card types. "The wall", "Stopping the
+    spells", "How you actually win", "What to keep in an opening hand" — never a
+    bare "Creatures" / "Removal" / "Ramp".
+  * Every row says why the card is in THIS deck and how it works with the rest of
+    the list. Never paraphrase oracle text alone: the reader can already see the
+    card, what they cannot see is the plan.
+  * Name real interactions between specific cards, and only cards that are both
+    actually in the ninety-nine.
+  * Always end with an opening-hand and sequencing section.
+  * Roughly 30 to 60 rows — long enough to cover the plan, short enough to read.
+
+**Every card you name must be in the decklist.** Check the `.txt` before writing
+the row. A guide naming a card the deck does not run is worse than no guide, and
+it is the single easiest mistake to make when tuning a list and updating its guide
+in the same turn.
+
+**Be honest about what the deck costs its pilot.** If a card is symmetrical and
+hurts you too, say so and say when to deploy it. If a piece is dead without its
+partner, say that. If the manabase makes one of your own hosers awkward, say that
+too. The reader is about to play the deck, not buy it.
+
+**Tuning an existing deck means updating its guide.** If you cut a card the guide
+names, fix the guide in the same turn. Say so in your reply.
 
 ## Other non-negotiables
 

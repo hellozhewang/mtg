@@ -1,39 +1,66 @@
-The First Sliver in BGRUW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Every Sliver you cast cascades — and a cascade cast is still a CAST, so if the free spell is also a Sliver, it cascades too. One five-drop Sliver chains down through the whole curve, and each link is another body, another anthem, and another enters-the-battlefield trigger shared by the entire board. The deck is not really a tribal aggro deck. It is a combo deck whose combo is "cast a Sliver".
 
-# The commander
-The First Sliver :: Cascade
+# The commander and the chain
+The First Sliver :: five colours, a 7/7, and every Sliver spell you cast has cascade. Once he is out, the correct play is almost always "cast the most expensive Sliver in hand" — the chain does the rest.
+Morophon, the Boundless :: name Sliver and every Sliver spell costs {W}{U}{B}{R}{G} less. Most of the deck becomes free, and each free cast still cascades.
+Maelstrom Nexus :: the first spell you cast each turn cascades, Sliver or not.
+Quandrix, the Proof :: your instants and sorceries from hand cascade too.
+Maelstrom Wanderer :: two more cascades, and permanent haste for the whole board — which matters because the chain deploys creatures mid-turn.
+Apex Devastator :: four cascades on one card.
+Call Forth the Tempest :: two cascades plus a sweeper sized by everything the chain has already cast.
+Averna, the Chaos Bloom :: every cascade also puts a land onto the battlefield, so a long chain ramps you at the same time.
 
-# Game Changers (3 of 3)
-Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
-Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
-Smothering Tithe :: Whenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token.
+# Getting paid for the free casts
+Nalfeshnee :: every spell cast from exile is COPIED. A cascade chain with Nalfeshnee out doubles every Sliver in it.
+Quintorius Kand :: two damage to each opponent and two life to you for EVERY spell cast from exile. A six-link chain is twelve damage to the table before combat.
+Lavabelly Sliver :: every Sliver that enters pings a player for one and gains you one. During a chain, that is one trigger per link, on top of everything else.
+Harmonic Sliver :: every Sliver that enters destroys an artifact or enchantment. A cascade chain becomes a one-sided Vandalblast on the table's whole board.
+Guardian Project :: a card for every differently named nontoken creature — and every Sliver in the deck has a different name.
+Kindred Discovery :: name Sliver. A card for every Sliver that enters AND every one that attacks.
 
-# Removal you can point anywhere
-Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
-Assassin's Trophy :: Destroy target permanent an opponent controls. Its controller may search their library for a basic land card, put it…
-Harmonic Sliver :: All Slivers have "When this permanent enters, destroy target artifact or enchantment."
-Necrotic Sliver :: All Slivers have "{3}, Sacrifice this permanent: Destroy target permanent."
+# The mana that makes it possible
+Gemhide Sliver :: all Slivers tap for any colour. Two Slivers later this is a five-colour mana engine.
+Manaweft Sliver :: the second copy.
+Basal Sliver :: every Sliver can sacrifice for {B}{B}, which is how you convert a huge board into a huge spell.
+Birds of Paradise :: turn-one fixing.
+Bloom Tender :: scales with your colours.
+Delighted Halfling :: uncounterable mana for legendary spells — The First Sliver himself.
+Nature's Lore :: an untapped dual.
+Farseek :: a shockland.
+Fellwar Stone :: usually taps for exactly what you are missing.
+Lotus Bloom :: suspend it on turn one and it is three mana of any colour on turn four.
 
-# Card advantage
-Profane Tutor :: Suspend 2—{1}{B}
-Mystic Remora :: Cumulative upkeep {1}
-Scroll Rack :: {1}, {T}: Exile any number of cards from your hand face down. Put that many cards from the top of your library into…
-Homing Sliver :: Each Sliver card in each player's hand has slivercycling {3}.
-Guardian Project :: Whenever a nontoken creature you control enters, if it doesn't have the same name as another creature you control or…
-Kindred Discovery :: As this enchantment enters, choose a creature type.
+# The suspend package
+Suspended cards are cast for free from EXILE when their last counter is removed, which triggers Nalfeshnee and Quintorius Kand just like a cascade does.
+Ancestral Vision :: three cards for one mana, four turns later.
+Inevitable Betrayal :: the best creature out of an opponent's library, onto your battlefield.
+Profane Tutor :: any card in the deck for two mana on a delay.
+Lotus Bloom :: acceleration with no card cost.
 
-# Ramp
-Lotus Bloom :: Suspend 3—{0}
-Birds of Paradise :: {T}: Add one mana of any color.
-Delighted Halfling :: {T}: Add {C}.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Farseek :: Search your library for a Plains, Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle.
+# Anthems and evasion
+Predatory Sliver :: +1/+1 to the whole team.
+Cloudshredder Sliver :: flying AND haste for every Sliver. It is what turns a cascade chain into a lethal attack the same turn.
+Galerider Sliver :: the one-mana flying anthem.
+Bonescythe Sliver :: double strike for the whole board.
+Leeching Sliver :: a life off the defending player for every Sliver that attacks.
+Akroma's Will :: with your commander out, take both halves. On a wide Sliver board it simply ends the game.
 
-# Protection
-Crystalline Sliver :: All Slivers have shroud.
-Heroic Intervention :: Permanents you control gain hexproof and indestructible until end of turn.
-Hibernation Sliver :: All Slivers have "Pay 2 life: Return this permanent to its owner's hand."
-Akroma's Will :: Choose one. If you control a commander as you cast this spell, you may choose both instead.
-Root Sliver :: This spell can't be countered.
-Sliver Hivelord :: Sliver creatures you control have indestructible.
+# Protection and removal
+Crystalline Sliver :: all Slivers have shroud. Nothing they play can target your board — but note it stops your own targeting too.
+Diffusion Sliver :: the gentler version, taxing their removal two.
+Hibernation Sliver :: every Sliver can bounce itself for two life, saving it from removal or resetting an enters trigger.
+Quick Sliver :: Slivers gain flash, so you can build the board at the end of their turn.
+Necrotic Sliver :: every Sliver can sacrifice to destroy any permanent. On a wide board that is unlimited removal.
+Heroic Intervention :: hexproof and indestructible through a wrath.
+Assassin's Trophy :: two mana for any permanent.
+Cyclonic Rift :: overloaded, the clear for a lethal attack.
+Raise the Palisade :: name Sliver and every other creature at the table goes back to hand. A one-sided bounce wrath.
+Patriarch's Bidding :: name Sliver. You rebuild your entire graveyard; most tables get far less back.
+Homing Sliver :: gives every Sliver in hand slivercycling, so dead cards become the exact Sliver you need.
+Mystic Remora :: the best card in the deck on turns one through four.
+
+# What to keep in an opening hand
+Keep fixing and a cheap Sliver. Gemhide Sliver or Manaweft Sliver on turn two solves the five-colour problem by itself, because every Sliver you play afterwards is also a mana source.
+The First Sliver costs five specific colours. Prioritise Morophon, the mana Slivers and Bloom Tender over another anthem — the deck does nothing until he resolves, and everything once he does.
+Cast the most expensive Sliver first. Cascade finds a cheaper card, so leading with a five-drop chains through four-, three-, two- and one-drops; leading with a one-drop finds nothing.
+Cloudshredder Sliver :: keep it in mind before you start the chain. Flying and haste means the board you just built attacks this turn, which is usually the difference between a big turn and a lethal one.

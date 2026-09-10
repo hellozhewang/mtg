@@ -1,38 +1,61 @@
-Teysa Karlov in BW, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Teysa doubles every death trigger you control. Blood Artist drains twice, afterlife makes twice the Spirits, Grave Pact makes each opponent sacrifice twice, and Liliana draws two. Then the token doublers multiply the Spirits AGAIN. The deck's job is to get a free sacrifice outlet and one drain payoff onto the battlefield; after that, every creature that dies — yours or theirs — is several points of life off everyone at the table.
 
-# The commander
-Teysa Karlov :: If a creature dying causes a triggered ability of a permanent you control to trigger, that ability triggers an…
+# The commander and the second doubler
+Teysa Karlov :: if a creature DYING triggers an ability of a permanent you control, it triggers an additional time. Your tokens also get vigilance and lifelink, which quietly turns a wide board into a life-swing every combat.
+Drivnod, Carnage Dominus :: the exact same doubling on a second body. With both out, every death trigger fires FOUR times.
+Anointed Procession :: doubles every token created. Afterlife doubled by Teysa and then doubled again by Procession is four Spirits from one 2/1.
+Mondrak, Glory Dominus :: the second token doubler, and it can become indestructible.
 
-# Game Changers (3 of 3)
-Bolas's Citadel :: You may look at the top card of your library any time.
-Orcish Bowmasters :: When this creature enters and whenever an opponent draws a card except the first one they draw in each of their draw…
-Smothering Tithe :: Whenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token.
+# Free sacrifice outlets
+Ashnod's Altar :: free, repeatable, and it makes the mana for the next spell.
+Phyrexian Altar :: the same with colour fixing.
+Carrion Feeder :: a one-drop that eats everything and grows.
+Bartolomé del Presidio :: creatures AND artifacts, so Treasures are fodder too.
+Priest of Forgotten Gods :: two creatures becomes two life from every opponent, a forced sacrifice from every opponent, two black mana and a card. Doubled by Teysa it is the single most brutal activation in the deck.
+Deadly Dispute :: two cards and a Treasure for a creature that was going to die anyway.
+Diabolic Intent :: any card in the deck for a spare Spirit.
+Braids, Arisen Nightmare :: every end step, they give up a permanent or you draw and they lose two.
 
-# Removal you can point anywhere
-Path to Exile :: Exile target creature. Its controller may search their library for a basic land card, put that card onto the…
-Swords to Plowshares :: Exile target creature. Its controller gains life equal to its power.
-Damn :: Destroy target creature. A creature destroyed this way can't be regenerated.
-Anguished Unmaking :: Exile target nonland permanent. You lose 3 life.
-Teysa, Orzhov Scion :: Sacrifice three white creatures: Exile target creature.
+# Bodies that leave bodies
+Ministrant of Obligation :: afterlife 2, doubled to four Spirits, doubled again to eight with a Procession out.
+Orzhov Enforcer :: afterlife 1 on a deathtouch blocker.
+Doomed Traveler :: one mana, two bodies.
+Hunted Witness :: the same, with lifelink attached.
+Hallowed Spiritkeeper :: dies into a Spirit for every creature card in your graveyard — which by the mid-game is a dozen.
+Elenda, the Dusk Rose :: grows on every death and dies into a pile of lifelinking Vampires as big as she got.
+Bitterblossom :: a free Faerie every upkeep, forever. It is the most reliable fodder in the deck.
+Ophiomancer :: a deathtouch Snake every upkeep, which both blocks and dies well.
+Pawn of Ulamog :: a mana Spawn for every nontoken creature that dies, doubled to two.
+Pitiless Plunderer :: a Treasure per death, doubled to two, which pays for everything else.
+Luminous Broodmoth :: your ground creatures come back with flying when they die, so every death is a two-for-one.
 
-# Card advantage
-Esper Sentinel :: Whenever an opponent casts their first noncreature spell each turn, draw a card unless that player pays {X}, where X…
-Skullclamp :: Equipped creature gets +1/-1.
-Village Rites :: As an additional cost to cast this spell, sacrifice a creature.
-Deadly Dispute :: As an additional cost to cast this spell, sacrifice an artifact or creature.
-Diabolic Intent :: As an additional cost to cast this spell, sacrifice a creature.
-Priest of Forgotten Gods :: {T}, Sacrifice two other creatures: Any number of target players each lose 2 life and sacrifice a creature of their…
+# Payoffs for the deaths
+Blood Artist :: a drain for every creature that dies ANYWHERE, doubled by Teysa. Three opponents' creatures dying is six life swung.
+Cruel Celebrant :: the same, restricted to your own board, and it catches planeswalkers.
+Bastion of Remembrance :: the enchantment version, so removal cannot touch it easily.
+Elas il-Kor, Sadistic Pilgrim :: drains on your deaths and gains on your creatures entering — both halves fire constantly here.
+Funeral Room :: another drain per death, on a Room you can later unlock to return every creature from your graveyard at once.
+Marionette Apprentice :: a drain for every artifact OR creature you lose, so Treasures count.
+Mirkwood Bats :: a drain when you CREATE a token and again when you sacrifice it. With Teysa and Anointed Procession, one afterlife death is eight separate drains.
+Grave Pact :: every creature you lose makes each opponent sacrifice one — twice, with Teysa. Two turns of this empties the table's board.
+Dictate of Erebos :: the same effect with flash, so you can land it in response to a wrath.
+Liliana, Dreadhorde General :: two cards per creature death, plus a Zombie every turn and a symmetric edict on the minus.
+Midnight Reaper :: two cards per nontoken creature death.
+Grim Haruspex :: the same, without the life loss.
+Athreos, God of Passage :: every creature that dies comes back to your hand unless they pay three — doubled, that is six life or they hand it back.
 
-# Ramp
-Dark Ritual :: Add {B}{B}{B}.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Orzhov Signet :: {1}, {T}: Add {W}{B}.
-Talisman of Hierarchy :: {T}: Add {C}.
-The Soul Stone :: {T}: Add {B}.
+# Removal and closing
+Anguished Unmaking :: instant-speed exile for any nonland permanent.
+Path to Exile :: one mana.
+Damn :: a removal spell early, a wrath late — and your board rebuilds from a wrath better than anyone's.
+Orcish Bowmasters :: flash, punishes their draws, and the Orc Army is fodder.
+Bolas's Citadel :: casts your deck off the top for life, then sacrifices ten permanents to deal ten to each opponent. On a board of Spirits and Treasures, ten permanents is one turn.
+Black Market Connections :: three effects a turn including a body, all paid in life you are gaining back through lifelink tokens.
+Esper Sentinel :: taxes their first noncreature spell each turn.
+Dark Ritual :: turn-one acceleration into a turn-two Bitterblossom or turn-three Teysa.
 
-# Protection
-Athreos, God of Passage :: As long as your devotion to white and black is less than seven, Athreos isn't a creature.
-Yahenni, Undying Partisan :: Whenever a creature an opponent controls dies, put a +1/+1 counter on Yahenni.
-Mondrak, Glory Dominus :: If one or more tokens would be created under your control, twice that many of those tokens are created instead.
-Drivnod, Carnage Dominus :: If a creature dying causes a triggered ability of a permanent you control to trigger, that ability triggers an…
+# What to keep in an opening hand
+Keep a sacrifice outlet or a token generator. Bitterblossom on turn two, Carrion Feeder on turn one, or Ashnod's Altar all mean Teysa has something to do the moment she lands.
+Get the drain payoff down BEFORE you start sacrificing. Blood Artist or Cruel Celebrant first, then the outlet, then the fodder — killing six creatures with no payoff on board is six wasted cards.
+Teysa Karlov :: four mana, and she doubles everything already on the battlefield. She is a multiplier, not a starter, so develop the engine first and cast her into a turn where you can immediately convert.
+Priest of Forgotten Gods :: with Teysa out this is usually lethal over two activations. Prioritise finding her, and hold spare tokens so you can activate on their end step and again on your turn.

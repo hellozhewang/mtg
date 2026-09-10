@@ -1,37 +1,63 @@
-The Master, Multiplied in BR, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Read the third line of the commander carefully, because it is the entire deck: "triggered abilities you control can't cause you to sacrifice or exile creature tokens you control." Every temporary copy effect in Magic ends with a delayed trigger that sacrifices or exiles the token. The Master turns all of them off. Myriad tokens stay. Electroduplicate's copy stays. Delina's tokens stay. And because the legend rule does not apply to your tokens, you can copy legends as many times as you like.
 
 # The commander
-The Master, Multiplied :: Myriad
+The Master, Multiplied :: myriad on a 4/3, no legend rule for your tokens, and no trigger of yours may sacrifice or exile them. Six mana, and it converts a dozen cards in the deck from "a copy until end of turn" into "a copy, permanently".
+Blade of Selves :: myriad on anything. In a four-player pod that is two permanent token copies of the equipped creature every single attack.
+Goldlust Triad :: myriad on a flier that makes Treasures on connection.
 
-# Game Changers (3 of 3)
-Ancient Tomb :: {T}: Add {C}{C}. This land deals 2 damage to you.
-Jeska's Will :: Choose one. If you control a commander as you cast this spell, you may choose both instead.
-The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
+# Copy effects that stop being temporary
+All of these normally end with a delayed sacrifice or exile trigger. With The Master out, the tokens simply stay on the battlefield.
+Electroduplicate :: a permanent copy of any creature you control, twice with flashback.
+Molten Duplication :: a permanent artifact copy of a creature or artifact.
+Heat Shimmer :: a permanent copy of ANY creature, including theirs.
+Devastating Onslaught :: X permanent copies of your best creature. This is usually the game.
+Jaxis, the Troublemaker :: a permanent copy every turn for {R} and a discarded card.
+Determined Iteration :: populate every combat, and the copy stays.
+Delina, Wild Mage :: token copies on every attack, and the roll can chain — with The Master they all stay.
+Fable of the Mirror-Breaker :: the Kiki-Jiki back face copies a nonlegendary creature every turn, permanently.
+Foggy Swamp Visions :: copies of creature cards out of ANY graveyard, permanently.
+Gogo, Mysterious Mime :: becomes a copy of your best creature every combat, with haste and a pump.
+Cursed Mirror :: a hasty copy of the best creature on the board, and a mana rock afterwards.
 
-# Removal you can point anywhere
-Vandalblast :: Destroy target artifact you don't control.
-Feed the Swarm :: Destroy target creature or enchantment an opponent controls. You lose life equal to that permanent's mana value.
-Saw in Half :: Destroy target creature. If that creature dies this way, its controller creates two tokens that are copies of that…
-Deadly Rollick :: If you control a commander, you may cast this spell without paying its mana cost.
+# Payoffs for creatures entering
+Impact Tremors :: one damage to each opponent per creature entering. A myriad attack in a four-player pod is two triggers.
+Purphoros, God of the Forge :: TWO damage to each opponent per creature entering, on an indestructible body. This is the deck's primary kill — a Devastating Onslaught for four is sixteen damage to every opponent before combat.
+Enduring Courage :: every creature that enters gets +2/+0 and haste, so the copies attack immediately.
+Idol of Oblivion :: a card every turn you made a token, which is every turn.
+Grim Hireling :: two Treasures per combat damage step.
+Professional Face-Breaker :: a Treasure per combat step, convertible into impulse draws.
+Gix, Yawgmoth Praetor :: a card for every creature that connects with an opponent. On a myriad attack that is one per token.
 
-# Card advantage
-Idol of Oblivion :: {T}: Draw a card. Activate only if you created a token this turn.
-Mind Stone :: {T}: Add {C}.
-Night's Whisper :: You draw two cards and lose 2 life.
-Plumb the Forbidden :: As an additional cost to cast this spell, you may sacrifice one or more creatures. When you do, copy this spell for…
-Black Market Connections :: At the beginning of your first main phase, choose one or more —
-Gix, Yawgmoth Praetor :: Whenever a creature deals combat damage to one of your opponents, its controller may pay 1 life. If they do, they…
+# Extra combats and evasion
+Karlach, Fury of Avernus :: untaps all attackers, gives first strike, and grants an additional combat phase. Every myriad creature triggers again — and with The Master, that is another permanent batch of tokens.
+Cover of Darkness :: name the type your board is and almost nothing can block.
+Dolmen Gate :: your attackers take no combat damage at all, so attacking with everything is free.
+Lightning Greaves :: haste and shroud for the commander.
 
-# Ramp
-Dark Ritual :: Add {B}{B}{B}.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
-Rakdos Signet :: {1}, {T}: Add {B}{R}.
-Talisman of Indulgence :: {T}: Add {C}.
+# Interaction
+Deadly Rollick :: free with your commander out.
+Deflecting Swat :: free, and it redirects the removal aimed at The Master.
+Bolt Bend :: nearly free with a big creature out, same effect.
+Imp's Mischief :: the black version, and it can steal their tutor.
+Feed the Swarm :: the only clean enchantment answer in Rakdos.
+Chaos Warp :: the second one, and it covers planeswalkers.
+Blasphemous Act :: essentially free on a board full of tokens, and you rebuild faster than anyone.
+Plumb the Forbidden :: sacrifice your tokens in response to a wrath and draw a card for each. It turns a board wipe into a full refill.
+Animate Dead :: brings back the best creature in any graveyard, which is then copyable.
 
-# Protection
-Lightning Greaves :: Equipped creature has haste and shroud.
-Swiftfoot Boots :: Equipped creature has hexproof and haste.
-Tibalt's Trickery :: Counter target spell. Choose 1, 2, or 3 at random. Its controller mills that many cards, then exiles cards from the…
-Purphoros, God of the Forge :: As long as your devotion to red is less than five, Purphoros isn't a creature.
+# Mana and cards
+Dark Ritual :: turn-one acceleration.
+Jeska's Will :: with a commander out, both halves — a huge mana burst and three impulse cards.
+Ragavan, Nimble Pilferer :: a Treasure and a stolen card on the first hit, and it is a fine myriad target.
+Black Market Connections :: three effects a turn.
+Night's Whisper :: two cards for two mana.
+Mind Stone :: ramp early, a card later.
+Rakdos Signet :: fixing.
+Fellwar Stone :: usually taps for what you need.
+Firebender Ascension :: builds counters off your attack triggers, then starts copying them outright.
+
+# What to keep in an opening hand
+Keep acceleration. The Master costs six and the deck is far weaker without him — Dark Ritual, Signets and Jeska's Will are what land him on turn four.
+Cast the copy effects AFTER The Master, not before. The same Electroduplicate is a temporary body without him and a permanent second copy with him. If he is not out yet, hold them.
+Purphoros, God of the Forge :: this is the win condition. Count the table's life before a big copy turn — two damage per token per opponent adds up faster than the combat step does.
+Karlach, Fury of Avernus :: with a myriad creature on the board, her extra combat is a second full batch of permanent tokens. Attack, make tokens, untap, attack again.

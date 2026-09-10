@@ -1,38 +1,64 @@
-Nicol Bolas, the Ravager in BRU, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Two decks share a shell here, and they win together. One is a reanimator deck that puts a seven-drop into the graveyard on turn two and onto the battlefield on turn three. The other punishes the table for drawing cards — and once Forced Fruition is out, every spell an opponent casts makes them draw seven into a board full of punishers. Nicol Bolas himself bridges both: he strips their hands as a creature and reanimates from ANY graveyard once he flips.
 
 # The commander
-Nicol Bolas, the Ravager :: the deck is named for it
+Nicol Bolas, the Ravager :: four mana, flies, and every opponent discards on arrival. That is already fine; the flip is the point.
+Flipping costs {4}{U}{B}{R}, and the planeswalker side draws two on the plus, kills a creature or planeswalker for ten damage, reanimates ANY creature or planeswalker from ANY graveyard on the minus four, and exiles a player's whole library on the ultimate. Do not rush it — flip on a turn where the minus four takes something worth taking.
+Nicol Bolas, Dragon-God :: has every loyalty ability of every other planeswalker on the board, including the other Bolas. Its ultimate ends the game for anyone without a legend.
+Spark Double :: a nonlegendary copy of a Bolas planeswalker, with an extra loyalty counter.
 
-# Game Changers (3 of 3)
-Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
-Intuition :: Search your library for three cards and reveal them. Target opponent chooses one. Put that card into your hand and…
-Orcish Bowmasters :: When this creature enters and whenever an opponent draws a card except the first one they draw in each of their draw…
+# Getting the fatty into the graveyard
+Entomb :: one mana, instant speed, any card in the deck straight into the yard.
+Buried Alive :: three of them at once.
+Intuition :: three cards, and even the "wrong" two land in the graveyard where you wanted them.
+Faithless Looting :: two down, twice with flashback.
+Frantic Search :: free, discards two, untaps three lands.
+Ripples of Undeath :: mills three every turn and buys one back for a little life.
+Fact or Fiction :: whichever pile they give you, the other half is fuel.
 
-# Removal you can point anywhere
-Vandalblast :: Destroy target artifact you don't control.
-Feed the Swarm :: Destroy target creature or enchantment an opponent controls. You lose life equal to that permanent's mana value.
-Deadly Rollick :: If you control a commander, you may cast this spell without paying its mana cost.
-Nicol Bolas, Dragon-God :: Nicol Bolas has all loyalty abilities of all other planeswalkers on the battlefield.
-The Scarab God :: At the beginning of your upkeep, each opponent loses X life and you scry X, where X is the number of Zombies you…
-Y'shtola Rhul :: At the beginning of your end step, exile target creature you control, then return it to the battlefield under its…
+# Bringing it back
+Reanimate :: one mana, any graveyard.
+Animate Dead :: two, and it can steal from theirs.
+Necromancy :: flash speed, so you can rebuild in response to a wrath or reanimate at their end step.
+Persist :: two mana for any nonlegendary creature.
+Grave Researcher :: surveils every upkeep and prepares a free Reanimate once you have three creatures down there.
+Command the Dreadhorde :: EVERY creature and planeswalker in every graveyard, paid for in life. On turn eight it usually ends the game.
+Living Death :: your graveyard is the deepest at the table by design.
+Kaya's Ghostform :: one mana of insurance on a reanimated fatty, and it beats exile as well as destruction.
 
-# Card advantage
-Faithless Looting :: Draw two cards, then discard two cards.
-Baleful Strix :: When this creature enters, draw a card.
-Chains of Mephistopheles :: If a player would draw a card except the first one they draw in each of their draw steps, that player discards a card…
-Ripples of Undeath :: At the beginning of your first main phase, mill three cards. Then you may pay {1} and 3 life. If you do, put a card…
-Waste Not :: Whenever an opponent discards a creature card, create a 2/2 black Zombie creature token.
-Frantic Search :: Draw two cards, then discard two cards. Untap up to three lands.
+# The Primordials, and the Cat that abuses them
+Sepulchral Primordial :: takes a creature from EACH opponent's graveyard. Even in a fair game that is three bodies.
+Diluvian Primordial :: casts an instant or sorcery from each opponent's graveyard for free.
+Displacer Kitten :: every noncreature spell you cast blinks a permanent you control. Point it at a Primordial and you re-loot the table's graveyards every single time you cast a removal spell or a cantrip. This is the deck's engine, not a cute trick.
+Noxious Gearhulk :: destroys a creature and gains you its toughness, and it blinks with the Kitten too.
+Massacre Wurm :: a one-sided wrath against small boards, and every creature they lose costs them two life.
+Hullbreaker Horror :: uncounterable, flash, and every spell afterwards bounces a permanent or a whole spell off the stack.
 
-# Ramp
-An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
-Dark Ritual :: Add {B}{B}{B}.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
-Izzet Signet :: {1}, {T}: Add {U}{R}.
+# Punishing the draw
+Forced Fruition :: every spell an opponent casts makes them draw seven. On its own that is generous; with the cards below it is lethal.
+Orcish Bowmasters :: a damage and an Orc for every card they draw past the first each draw step. One Forced Fruition trigger is six or seven pings and an Army that grows every time.
+Sheoldred, the Apocalypse :: two life per card they draw. A single seven-card refill costs them fourteen.
+Chains of Mephistopheles :: their extra draws become discards or mill. Against a table that is already being forced to draw seven, it empties hands and then empties libraries.
+Howling Mine :: turns the punishers on during everyone's draw step, and you have the payoffs while they do not.
+Monument to Endurance :: every discard of yours becomes a card, a Treasure or three life from each opponent.
+Glint-Horn Buccaneer :: a damage to each opponent per card you discard, and a mana sink that discards while attacking.
+Containment Construct :: lets you play the cards you discarded, so the looting costs you nothing.
 
-# Protection
-Counterspell :: Counter target spell.
-Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
-Hullbreaker Horror :: This spell can't be countered.
+# Interaction
+Mana Drain :: counter, then spend the mana reanimating.
+Counterspell :: the clean version.
+Force of Negation :: free on their turn.
+An Offer You Can't Refuse :: one mana for anything noncreature.
+Deadly Rollick :: free with your commander out.
+Deflecting Swat :: free, and it saves Bolas from a removal spell.
+Damnation :: your best creatures live in the graveyard, so a wrath costs you far less than it costs them.
+Cyclonic Rift :: overloaded, it is the clear for a lethal reanimated board.
+Feed the Swarm :: the only clean enchantment answer in Grixis.
+Chaos Warp :: the second one, and it handles planeswalkers.
+Baleful Strix :: a card, a flier and a deathtouch blocker that trades with anything.
+Spellseeker :: finds Entomb, Reanimate, Persist, Counterspell or Dark Ritual.
+
+# What to keep in an opening hand
+Keep a graveyard enabler and a reanimation spell. Entomb plus Reanimate with two lands is a turn-two seven-drop, which is the fastest thing this deck does.
+Nicol Bolas, the Ravager :: cast him as a creature early for the discard, and flip him later when the graveyards are full. Flipping on turn six into a minus-four that takes back the best creature anyone has lost is worth far more than flipping on turn four for value.
+Displacer Kitten :: prioritise her once a Primordial is on the battlefield. She converts every cheap spell in your hand into another round of graveyard theft.
+Forced Fruition :: only deploy it with a punisher already down. On an empty board it is the best card you could give your opponents.

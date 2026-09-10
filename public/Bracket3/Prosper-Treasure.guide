@@ -1,33 +1,66 @@
-Prosper, Tome-Bound in BR, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Prosper gives you a second card every turn and a Treasure every time you use one. That is the whole engine, and it compounds: the deck is packed with other impulse effects, and every single card played off exile makes another Treasure. Then the Treasures stop being mana and start being a win condition — ten of them under Revel in Riches, or ten sacrificed to Bolas's Citadel.
 
 # The commander
-Prosper, Tome-Bound :: Mystic Arcanum — At the beginning of your end step, exile the top card of your library. Until the end of your next…
+Prosper, Tome-Bound :: exiles a card at your end step that you may play until the end of your NEXT turn — two turns of access, not one — and every card you play from exile makes a Treasure. Deathtouch on a 1/4 also means he blocks anything.
+Watch the expiry. Cards exiled by Prosper vanish at the end of your next turn. Plan the mana so the expensive ones get cast; a wasted impulse is a wasted card and a missed Treasure.
+Lightning Greaves :: haste and shroud, because Prosper is the deck.
 
-# Game Changers (3 of 3)
-Bolas's Citadel :: You may look at the top card of your library any time.
-Jeska's Will :: Choose one. If you control a commander as you cast this spell, you may choose both instead.
-Necropotence :: Skip your draw step.
+# More impulse, more Treasures
+Every one of these makes a Treasure per card played, because Prosper does not care whose effect exiled it.
+Reckless Impulse :: two cards for two mana, and two Treasures when you play them.
+Jeska's Will :: with your commander out you take both halves — a huge mana burst AND three impulse cards.
+Outpost Siege :: a card every upkeep, forever.
+Chandra, Torch of Defiance :: an impulse card or two damage to each opponent, plus a ritual on the other plus.
+Etali, Primal Storm :: a free spell off every player's library on every attack — and every one of them is a Treasure.
+Professional Face-Breaker :: Treasures on combat damage, and it converts Treasures back into impulse draws.
+Ob Nixilis, Captive Kingpin :: whenever opponents each lose EXACTLY one life, he grows and exiles a card you may play. Reckless Fireweaver and Mirkwood Bats both deal exactly one, so he fires constantly.
+Bolas's Citadel :: plays off the top of your LIBRARY rather than from exile, so it makes no Treasures — but it casts your whole deck for life, and then sacrifices ten Treasures to deal ten to each opponent.
 
-# Removal you can point anywhere
-Vandalblast :: Destroy target artifact you don't control.
-Dreadbore :: Destroy target creature or planeswalker.
-Feed the Swarm :: Destroy target creature or enchantment an opponent controls. You lose life equal to that permanent's mana value.
-Infernal Grasp :: Destroy target creature. You lose 2 life.
-Rakdos Charm :: Choose one —
-Terminate :: Destroy target creature. It can't be regenerated.
+# The Treasure multiplier
+Academy Manufactor :: every Treasure you would make becomes a Clue, a Food AND a Treasure. Three artifacts instead of one, on every single Prosper trigger.
+Goldspan Dragon :: your Treasures tap for two mana each, and it makes more on attack and whenever anyone targets it.
+Pitiless Plunderer :: a Treasure for every creature that dies.
+Grim Hireling :: two per combat damage step, and it converts them into removal.
+Ruthless Technomancer :: turns a creature into Treasures equal to its power, then reanimates with them.
+Revel in Riches :: Treasures whenever THEIR creatures die, and ten Treasures at your upkeep simply wins the game. With Academy Manufactor, ten is two or three turns away.
 
-# Card advantage
-Skullclamp :: Equipped creature gets +1/-1.
-Deadly Dispute :: As an additional cost to cast this spell, sacrifice an artifact or creature.
-Mind Stone :: {T}: Add {C}.
-Night's Whisper :: You draw two cards and lose 2 life.
-Braids, Arisen Nightmare :: At the beginning of your end step, you may sacrifice an artifact, creature, enchantment, land, or planeswalker. If…
-Commander's Sphere :: {T}: Add one mana of any color in your commander's color identity.
+# Turning artifacts into damage
+Reckless Fireweaver :: one damage to each opponent for every artifact that enters. With Academy Manufactor that is three per Prosper trigger.
+Marionette Apprentice :: a drain for every artifact or creature you lose — every Treasure you crack.
+Marionette Master :: the same, scaled to its power, which fabricate makes four.
+Mirkwood Bats :: a drain when you CREATE a token and again when you SACRIFICE it. Academy Manufactor turns one Treasure trigger into six points of drain.
+Mayhem Devil :: a damage every time any player sacrifices anything, yours included.
+Crime Novelist :: grows and makes red mana on every artifact you sacrifice.
+Hellrider :: one damage per attacking creature, which closes games the old-fashioned way.
+Rakdos Charm :: graveyard hate, artifact removal, or a symmetric ping that finishes a token board.
 
-# Ramp
-Sol Ring :: {T}: Add {C}{C}.
-Wayfarer's Bauble :: {2}, {T}, Sacrifice this artifact: Search your library for a basic land card, put that card onto the battlefield…
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
-Rakdos Signet :: {1}, {T}: Add {B}{R}.
-Talisman of Indulgence :: {T}: Add {C}.
+# Sacrifice outlets and cards
+Deadly Dispute :: two cards and a Treasure for a spare artifact, at instant speed. It is the best card in the deck alongside a board of Treasures.
+Big Score :: two cards and two Treasures.
+Braids, Arisen Nightmare :: feed it a Treasure or a Clue each end step and they either give up a permanent or you draw and they lose two.
+Skullclamp :: on a Servo or Faerie, two cards.
+Bitterblossom :: a free body every turn — Skullclamp fodder, Braids fodder, and a Mirkwood Bats trigger.
+Commander's Sphere :: mana now, a card later.
+Mind Stone :: the same.
+Necropotence :: as many cards as your life total allows.
+Phyrexian Arena :: a card a turn.
+Read the Bones :: two cards and a scry.
+Sign in Blood :: two cards, or two damage to a player at four life.
+Night's Whisper :: the cheap one.
+
+# Removal
+Bedevil :: artifact, creature or planeswalker, at instant speed.
+Dreadbore :: a creature or planeswalker for two.
+Infernal Grasp :: the cleanest black removal spell.
+Deadly Rollick :: free with your commander out.
+Feed the Swarm :: the only enchantment answer in Rakdos.
+Chaos Warp :: the second one, and it handles planeswalkers too.
+Damnation :: a wrath in a deck whose value lives on artifacts and in exile.
+Blasphemous Act :: cheap, and your Treasures survive it.
+Light Up the Night :: scalable reach at any target, with a flashback for a second helping.
+
+# What to keep in an opening hand
+Keep mana and one impulse effect. Prosper on turn four with Reckless Impulse or Outpost Siege behind him starts the Treasure engine immediately; a hand of expensive payoffs does not.
+Academy Manufactor is the single biggest upgrade. Every Treasure effect triples, so every drain payoff, every Fireweaver ping, and every Revel in Riches counter triples with it.
+Do not spend Treasures freely once Revel in Riches is out. Ten is the number and it wins on your upkeep with no combat, no targeting and nothing they can respond to except artifact removal.
+Ob Nixilis, Captive Kingpin :: play him before Reckless Fireweaver or Mirkwood Bats, not after. Every batch of exactly-one damage gives you a counter and another impulse card.

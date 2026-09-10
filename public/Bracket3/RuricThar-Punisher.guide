@@ -1,41 +1,71 @@
-Ruric Thar, the Unbowed in GR, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Ruric Thar taxes noncreature spells six life, and he taxes YOU too. The entire deck is built around that one fact: almost every card here is a creature, so his trigger is close to one-sided. Ramp is mana dorks, removal is creatures that fight, and card draw is creatures that draw. When you do run a noncreature spell it earns its slot, and you cast it before he lands or while you can afford the six.
 
 # The commander
-Ruric Thar, the Unbowed :: Ruric Thar attacks each combat if able.
+Ruric Thar, the Unbowed :: 6/6 reach and vigilance, must attack every combat, and every noncreature spell any player casts deals six to its caster. In a four-player pod that is twelve to eighteen damage a turn cycle that you did nothing to earn.
+Absorbing Man and Titania :: doubles all damage your CREATURE sources deal. Ruric Thar's trigger is a creature source, so every noncreature spell now costs them TWELVE. This is the single biggest upgrade in the deck.
+Dragonborn Champion :: draws a card whenever a source you control deals five or more damage to a player. Ruric Thar's six qualifies, so every spell they cast is a card for you.
+Rhythm of the Wild :: your creatures cannot be countered and they all get haste or a counter. It is the closest thing to a noncreature spell this deck is happy to cast.
 
-# Game Changers (3 of 3)
-Ancient Tomb :: {T}: Add {C}{C}. This land deals 2 damage to you.
-Field of the Dead :: This land enters tapped.
-Gaea's Cradle :: {T}: Add {G} for each creature you control.
+# Stacking the tax
+Scytheclaw Raptor :: four damage to anyone casting a spell on someone else's turn. Between this and Ruric Thar, instant-speed interaction costs ten.
+Adrenaline Jockey :: the second copy of that effect.
+Magebane Lizard :: escalating damage for every noncreature spell in a turn, so combo turns are lethal to their pilot.
+Cindervines :: a ping per noncreature spell, and it sacrifices to destroy an artifact or enchantment and burn its controller.
+Shadow in the Warp :: two damage on their first noncreature spell each turn, and your first creature each turn costs two less.
+Heartwood Storyteller :: every noncreature spell any opponent casts draws each of their opponents a card. In a creature deck you are the player who benefits most.
+Combustion Man :: on every attack they either lose a permanent or take four.
 
-# Removal you can point anywhere
-Pyroblast :: Choose one —
-Red Elemental Blast :: Choose one —
-Cindervines :: Whenever an opponent casts a noncreature spell, this enchantment deals 1 damage to that player.
-Mizzium Mortars :: Mizzium Mortars deals 4 damage to target creature you don't control.
-Beast Within :: Destroy target permanent. Its controller creates a 3/3 green Beast creature token.
-Krosan Grip :: Split second
+# Making your spells uncounterable
+Green creature decks lose to counterspells, so the deck simply removes that as an option.
+Allosaurus Shepherd :: one mana, and every green spell you control becomes uncounterable.
+Frenzied Baloth :: the same for creature spells, plus haste and trample, and combat damage cannot be prevented — so fogs stop working.
+Destiny Spinner :: creature and enchantment spells cannot be countered, and it animates a land as a finisher.
+Hexing Squelcher :: your spells cannot be countered and your whole board gets ward.
+Last March of the Ents :: cannot be countered, draws cards equal to your biggest toughness, and dumps your hand onto the battlefield.
 
-# Card advantage
-Veil of Summer :: Draw a card if an opponent has cast a blue or black spell this turn. Spells you control can't be countered this turn.…
-Up the Beanstalk :: When this enchantment enters and whenever you cast a spell with mana value 5 or greater, draw a card.
-Heartwood Storyteller :: Whenever a player casts a noncreature spell, each of that player's opponents may draw a card.
-Beast Whisperer :: Whenever you cast a creature spell, draw a card.
-Dragonborn Champion :: Whenever a source you control deals 5 or more damage to a player, draw a card.
-Toski, Bearer of Secrets :: This spell can't be countered.
+# Ramp, all of it creatures or auras
+Birds of Paradise :: turn-one fixing.
+Llanowar Elves :: and the green half.
+Fyndhorn Elves :: the second copy.
+Elvish Mystic :: the third.
+Arbor Elf :: untaps a Forest, and with Overgrowth or Fertile Ground on it that is two or three mana.
+Overgrowth :: two extra green off one land.
+Fertile Ground :: one extra of any colour.
+Fanatic of Rhonas :: four green mana once you have a four-power creature, which is immediate in this deck.
+Carpet of Flowers :: free mana every turn against any blue deck at the table.
+Delighted Halfling :: uncounterable mana for legendary spells, which covers Ruric Thar himself.
+Klauth, Unrivaled Ancient :: mana equal to your attacking creatures' total power, every combat. On a real board that is fifteen or more.
+Goreclaw, Terror of Qal Sisma :: your big creatures cost two less and get +1/+1 with trample when he attacks.
 
-# Ramp
-Birds of Paradise :: {T}: Add one mana of any color.
-Delighted Halfling :: {T}: Add {C}.
-Elvish Mystic :: {T}: Add {G}.
-Fyndhorn Elves :: {T}: Add {G}.
-Llanowar Elves :: {T}: Add {G}.
-Fanatic of Rhonas :: {T}: Add {G}.
+# Removal without noncreature spells
+Silverback Elder :: every creature spell destroys an artifact or enchantment, ramps you, or gains four life. It is the answer to the stax pieces Gruul normally cannot touch.
+Kogla, the Titan Ape :: fights on entry and destroys an artifact or enchantment on every attack.
+Balefire Dragon :: connects and wipes one player's entire board.
+Drakuseth, Maw of Flames :: ten damage spread across three targets on every attack.
+Cityscape Leveler :: destroys a nonland permanent on cast and on every attack.
+Kozilek, the Great Distortion :: refills your hand and turns dead cards into hard counterspells.
+Questing Beast :: haste, deathtouch, unblockable by small creatures, and its damage cannot be prevented.
 
-# Protection
-Allosaurus Shepherd :: This spell can't be countered.
-Legolas's Quick Reflexes :: Split second
-Destiny Spinner :: Creature and enchantment spells you control can't be countered.
-Frenzied Baloth :: This spell can't be countered.
-Heroic Intervention :: Permanents you control gain hexproof and indestructible until end of turn.
-Hexing Squelcher :: This spell can't be countered.
+# The noncreature spells that are worth six life
+Krosan Grip :: split second, so it answers the thing they were protecting.
+Force of Vigor :: free on their turn, and it takes six from you only if you pay mana — cast for its alternative cost you still take the six, so use it when the two artifacts matter.
+Beast Within :: any permanent, at instant speed.
+Mizzium Mortars :: overloaded, a one-sided wrath since your creatures are enormous.
+Brotherhood's End :: a sweeper of the small creatures that chump-block your fatties.
+Calming Verse :: destroys every enchantment you do not control, and yours survive if you keep a land untapped.
+Heroic Intervention :: hexproof and indestructible through a wrath.
+Legolas's Quick Reflexes :: split second protection for Ruric Thar.
+Pyroblast :: one mana against the blue deck holding a counterspell.
+Red Elemental Blast :: the second copy.
+
+# Closing
+Pathbreaker Ibex :: trample and +X/+X to the team where X is your biggest creature. On this board it is usually lethal.
+Quartzwood Crasher :: every trampling connection makes a token as big as the damage dealt.
+Goreclaw, Terror of Qal Sisma :: the cheaper version of the same effect, every attack.
+Beast Whisperer :: a card for every creature spell, which is nearly every card in the deck.
+
+# What to keep in an opening hand
+Keep a mana dork. Turn-one acceleration into a turn-three or four Ruric Thar is what makes the deck's tax matter before the table has set up.
+Cast your noncreature spells BEFORE Ruric Thar, not after. Deploy Rhythm of the Wild, Shadow in the Warp and the auras early; once he is out, six life per noncreature spell is a real cost even for you.
+Remember he attacks every combat whether you want him to or not. Plan around it — vigilance means he still blocks, but he will be tapped for the attack trigger of whoever you sent him at.
+Absorbing Man and Titania :: find it. Doubling Ruric Thar's trigger turns a slow tax into something the table cannot play through at all.

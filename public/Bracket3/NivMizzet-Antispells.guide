@@ -1,40 +1,69 @@
-Niv-Mizzet, Parun in RU, built to Bracket 3 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Niv-Mizzet draws you a card whenever ANY player casts an instant or sorcery, and pings for one whenever you draw. In a four-player pod that means the rest of the table is running your engine for you, and every counterspell you hold up is a cantrip that also deals damage. The deck is built to sit behind open mana, answer whatever matters, and convert the table's own spells into a clock.
 
 # The commander
-Niv-Mizzet, Parun :: This spell can't be countered.
+Niv-Mizzet, Parun :: six mana, three blue and three red, uncounterable, and a 5/5 flier. Every instant or sorcery cast by anybody draws you a card; every card you draw deals one damage anywhere.
+Harmonic Prodigy :: Niv-Mizzet is a Dragon WIZARD, so both of his triggers double. Every instant or sorcery anyone casts draws you two, and each of those draws pings twice. Two mana for four times the output.
+Ghyrson Starn, Kelermorph :: whenever another source you control deals EXACTLY one damage, Ghyrson deals two more. Niv's ping is exactly one, so every draw becomes three damage. With Harmonic Prodigy also out, a single opposing cantrip deals twelve.
+Basilisk Collar :: deathtouch and lifelink on Niv. Now every one-damage ping kills a creature and gains you life. It turns the engine into a board wipe.
+Lightning Greaves :: haste and shroud, because a six-mana commander that eats a removal spell is a lost game.
+Slip Out the Back :: one mana to phase him out of removal, and it leaves a counter behind.
 
-# Game Changers (3 of 3)
-Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
-Fierce Guardianship :: If you control a commander, you may cast this spell without paying its mana cost.
-Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
+# Everything you hold up is also a draw
+Counterspell :: the clean two-mana answer, and it draws you a card off your own cast.
+Mana Drain :: counter, and the mana casts Niv next turn.
+Mana Sculpt :: the same idea with a Wizard on the battlefield, which you almost always have.
+Force of Negation :: free on their turn.
+Fierce Guardianship :: free with your commander out.
+Pact of Negation :: free now; the upkeep payment is easy in a deck holding this much mana.
+Flusterstorm :: nearly unbeatable in a counter war, and each copy is another Niv trigger.
+Dispel :: one mana that answers the removal spell aimed at Niv.
+An Offer You Can't Refuse :: one mana for any noncreature spell.
+Mystical Dispute :: one mana against blue decks.
+Pyroblast :: one mana to counter or destroy anything blue. The colour hosers are maindeck here on purpose — a four-player pod nearly always has a blue or red deck in it.
+Red Elemental Blast :: the second copy.
+Hydroblast :: the mirror, against red decks.
+Blue Elemental Blast :: and its partner.
+Aether Gust :: sends a red or green spell or permanent to the top or bottom of their library.
 
-# Removal you can point anywhere
-Blue Elemental Blast :: Choose one —
-Hydroblast :: Choose one —
-Pyroblast :: Choose one —
-Red Elemental Blast :: Choose one —
-Mizzium Mortars :: Mizzium Mortars deals 4 damage to target creature you don't control.
+# Turning spells into damage
+Guttersnipe :: two damage to each opponent for every instant or sorcery YOU cast. On a turn where you counter two things that is twelve damage across the table.
+Gandalf, Goblins' Bane :: one damage to each opponent per noncreature spell — and one damage is exactly what Ghyrson Starn wants, so it becomes three to each opponent instead.
+Archmage Emeritus :: a card for every instant or sorcery you cast or copy, which is another Niv ping on top of the Niv draw.
+Lightning Bolt :: three damage for one mana, or a removal spell.
+Mizzium Mortars :: kills a creature, or overloaded, kills their whole board.
+Desolation of Smaug :: three damage to every non-Dragon creature — Niv survives — and it refunds four mana toward a Dragon.
 
-# Card advantage
-Brainstorm :: Draw three cards, then put two cards from your hand on top of your library in any order.
-Faithless Looting :: Draw two cards, then discard two cards.
-Mystic Remora :: Cumulative upkeep {1}
-Impulse :: Look at the top four cards of your library. Put one of them into your hand and the rest on the bottom of your library…
-Frantic Search :: Draw two cards, then discard two cards. Untap up to three lands.
-Archmage Emeritus :: Magecraft — Whenever you cast or copy an instant or sorcery spell, draw a card.
+# Card flow
+Rhystic Study :: in a deck already holding up mana, they rarely pay.
+Mystic Remora :: the best card in the deck on turns one through four.
+Brainstorm :: three draws with Niv out, so three pings.
+Impulse :: dig four, and it is an instant so it triggers Niv on your own turn.
+Frantic Search :: free, two draws, and it untaps three lands to keep interaction up.
+Fact or Fiction :: at instant speed, and every card drawn is a ping.
+Memory Deluge :: scales with your mana, and flashback makes it twice.
+Faithless Looting :: cheap filtering, twice.
+Big Score :: two cards and two Treasures at instant speed.
+Goblin Electromancer :: every instant and sorcery costs one less, which is how you double-spell on their turn.
 
-# Ramp
-An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
-Sol Ring :: {T}: Add {C}{C}.
-Arcane Signet :: {T}: Add one mana of any color in your commander's color identity.
-Coldsteel Heart :: This artifact enters tapped.
-Fellwar Stone :: {T}: Add one mana of any color that a land an opponent controls could produce.
-Izzet Signet :: {1}, {T}: Add {U}{R}.
+# Mana
+Arcane Signet :: the double-blue and double-red pips on Niv are the real cost of the deck.
+Izzet Signet :: fixes both halves.
+Chromatic Lantern :: makes every land produce whatever pip you are short.
+Coldsteel Heart :: cheap and colour-fixing.
+Fellwar Stone :: usually taps for exactly what you need in a multicolour pod.
+Firemind Vessel :: two different colours a turn.
+High Tide :: on a heavy-Island board this is a genuine explosive turn, and it costs one mana so it also triggers Niv.
 
-# Protection
-Pact of Negation :: Counter target spell.
-Wash Away :: Cleave {1}{U}{U}
-Counterspell :: Counter target spell.
-Lightning Greaves :: Equipped creature has haste and shroud.
-Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
-Mana Sculpt :: Counter target spell. If you control a Wizard, add an amount of {C} equal to the amount of mana spent to cast that…
+# Removal and resets
+Cyclonic Rift :: overloaded, it is the clear for a lethal Niv attack or the answer to a locked board.
+Echoing Truth :: bounces a permanent AND every copy of it — the answer to a token swarm.
+Aetherize :: returns every attacking creature to hand. In a pod that folds an entire alpha strike for four mana.
+Chaos Warp :: the only answer to an enchantment in these colours.
+Deflecting Swat :: free, and it redirects the removal spell aimed at Niv.
+Charisma :: on a deathtouch or pinging creature, it steals whatever it damages.
+
+# What to keep in an opening hand
+Keep fixing. Three blue and three red pips is a genuinely hard cost — Signets, Coldsteel Heart and Chromatic Lantern are what make Niv a turn-five or six play instead of a turn-eight one.
+Play at instant speed. Every spell you cast on somebody else's turn is a Niv trigger you would have got anyway plus a card, and holding up two mana is almost always better than tapping out.
+Ghyrson Starn, Kelermorph :: three mana, and it triples every ping in the deck. Find it before you find another counterspell.
+Basilisk Collar :: the moment it is on Niv, the table's creatures stop mattering. Prioritise it against creature decks over any additional card draw.

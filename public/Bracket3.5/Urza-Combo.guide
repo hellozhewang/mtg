@@ -1,41 +1,92 @@
-Urza, Lord High Artificer in U, built to Bracket 3.5 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Urza turns every artifact you control into a blue mana. Not artifacts that tap for mana — ALL of them: the Construct token he brings with him, Clues, Baubles, Equipment, even Sol Ring after you have already tapped it for its own mana would not work, but everything untapped does. That one line is why this deck's mana is effectively its board, and why an untap effect is the same thing as a ritual.
 
 # The commander
-Urza, Lord High Artificer :: When Urza enters, create a 0/0 colorless Construct artifact creature token with "This token gets +1/+1 for each…
+Urza, Lord High Artificer :: arrives with a Construct that is as big as your artifact count, taps any untapped artifact for {U}, and his {5} ability exiles the top card of your library and lets you play it free.
+Tapping an artifact for Urza's mana uses it up. You cannot tap Sol Ring for {C}{C} and then tap it again for Urza — pick one. That is the main thing people get wrong.
+The {5} ability is the deck's engine once mana is unlimited: shuffle, exile, cast free, repeat until you find the kill.
+Lightning Greaves :: haste so the {5} ability works immediately, and shroud against the removal that follows him.
 
-# Combos in the deck
-Basalt Monolith :: part of infinite colourless mana, and infinite damage
-Power Artifact :: part of infinite colourless mana, and infinite damage
-Rings of Brighthearth :: part of infinite colourless mana
-Isochron Scepter :: part of infinite mana and infinite spells
-Dramatic Reversal :: part of infinite mana and infinite spells
-Walking Ballista :: part of infinite damage
+# The infinite mana
+Isochron Scepter :: imprint Dramatic Reversal. {2} and a tap copies it, untapping every nonland permanent you control. If those permanents tap for three or more with Urza out — and they always do — the loop pays for itself forever.
+Dramatic Reversal :: the other half, and a fine card on its own for a big Urza turn.
+Basalt Monolith :: taps for three, untaps for three. On its own that is nothing; with either card below it is unlimited colourless mana.
+Power Artifact :: enchanted artifact's activated abilities cost {2} less. Basalt Monolith now untaps for {1} and taps for three.
+Forensic Gadgeteer :: the same reduction across ALL your artifacts, and it makes a Clue on every artifact spell.
+Rings of Brighthearth :: copies any nonmana activated ability for {2}, including Urza's {5}, Tezzeret's minus and Walking Ballista's ping.
 
-# Game Changers (3 of 3)
-Cyclonic Rift :: Return target nonland permanent you don't control to its owner's hand.
-Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
-The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
+# What unlimited mana buys
+Walking Ballista :: {4} for a counter, remove a counter to ping. With infinite mana it kills the table, and with none it is still a flexible removal creature.
+Urza, Lord High Artificer :: the {5} ability, over and over, casting your entire library for free.
+Whir of Invention :: instant speed, improvise, fetches any artifact — including the missing combo piece.
+Reshape :: the sorcery version, tutoring straight onto the battlefield.
+Transmute Artifact :: trades a big artifact for whatever you need.
+Tezzeret the Seeker :: the minus finds any artifact onto the battlefield; the plus untaps two.
 
-# Card advantage
-Mishra's Bauble :: {T}, Sacrifice this artifact: Look at the top card of target player's library. Draw a card at the beginning of the…
-Urza's Bauble :: {T}, Sacrifice this artifact: Look at a card at random in target player's hand. You draw a card at the beginning of…
-Aether Spellbomb :: {U}, Sacrifice this artifact: Return target creature to its owner's hand.
-Brainstorm :: Draw three cards, then put two cards from your hand on top of your library in any order.
-Mystic Remora :: Cumulative upkeep {1}
-Sensei's Divining Top :: {1}: Look at the top three cards of your library, then put them back in any order.
+# Winning without the combo
+This is the answer to "does it just run out of gas" — it does not, and it has a fair kill.
+Cyberdrive Awakener :: every noncreature artifact becomes a 4/4 AND they all fly. On a board of twelve artifacts that is a lethal alpha strike from nowhere.
+Tezzeret the Seeker :: the ultimate does the same for a turn.
+Urza's Construct :: it is as big as your artifact count, which by turn six is eight or ten power on a single body.
+Mechanized Production :: enchant an artifact you have several copies of — or one that copies itself — and it makes another every upkeep. At eight with the same name, you simply win.
+Sai, Master Thopterist :: a flying Thopter for every artifact spell, and a sacrifice outlet that draws.
 
-# Ramp
-Everflowing Chalice :: Multikicker {2}
-Jeweled Amulet :: {1}, {T}: Put a charge counter on this artifact. Note the type of mana spent to pay this activation cost. Activate…
-Lotus Petal :: {T}, Sacrifice this artifact: Add one mana of any color.
-Mox Opal :: Metalcraft — {T}: Add one mana of any color. Activate only if you control three or more artifacts.
-An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
-Sol Ring :: {T}: Add {C}{C}.
+# Card flow
+The One Ring :: a full turn of protection, then it draws an escalating pile — the single best card in the deck for a grindy game.
+Mystic Forge :: cast artifacts and colourless spells straight off the top of your library. With Sensei's Divining Top it never stops.
+Sensei's Divining Top :: sets your draws, and it is an artifact that taps for {U} under Urza.
+The Reality Chip :: attach it and you play everything off the top, lands included.
+Padeem, Consul of Innovation :: your artifacts get hexproof — which answers the artifact removal this deck folds to — and it draws most upkeeps.
+Rhystic Study :: their turns pay for yours.
+Mystic Remora :: the best card in the deck on turns one through four.
+Faerie Mastermind :: flash, flies, draws off the table's extra draws.
+Emry, Lurker of the Loch :: nearly free, mills four, and recasts an artifact from your graveyard every turn.
+Timetwister :: a fresh seven for everyone when you have emptied your hand.
+Windfall :: the same, and it hits hardest when someone is hoarding.
 
-# Protection
-Pact of Negation :: Counter target spell.
-Chain of Vapor :: Return target nonland permanent to its owner's hand. Then that permanent's controller may sacrifice a land of their…
-Mental Misstep :: Counter target spell with mana value 1.
-Counterspell :: Counter target spell.
-Lightning Greaves :: Equipped creature has haste and shroud.
-Mana Drain :: Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.
+# Making artifacts cheap
+Etherium Sculptor :: artifact spells cost one less.
+Foundry Inspector :: the second copy.
+Sapphire Medallion :: the blue half.
+Mox Opal :: metalcraft is immediate here.
+Lotus Petal :: free, and it is an artifact for Urza before it is sacrificed.
+Jeweled Amulet :: stores mana across turns.
+Everflowing Chalice :: scales to whatever you have spare.
+Mind Stone :: ramp early, a card later.
+Thought Vessel :: mana and no maximum hand size, which matters with The One Ring.
+Mishra's Bauble :: zero mana, an artifact, and a card next upkeep.
+Urza's Bauble :: the same.
+
+# Untaps, which are mana
+Voltaic Key :: untap any artifact.
+Manifold Key :: the same, and it makes a creature unblockable for the kill.
+Unwinding Clock :: untaps every artifact during each opponent's untap step. With Urza that is a full extra pool of blue mana on all three of their turns.
+Copy Artifact :: a second Basalt Monolith, Isochron Scepter or Mox Opal.
+Phyrexian Metamorph :: a copy of the best artifact or creature on the board.
+
+# Interaction
+Counterspell :: the clean two-mana answer.
+Mana Drain :: counter, and the mana pays for the combo turn.
+Force of Negation :: free on their turn.
+Pact of Negation :: free now, and the deck usually wins before the upkeep.
+Flusterstorm :: nearly unbeatable in a counter war.
+Swan Song :: one mana for a wrath or an enchantment.
+An Offer You Can't Refuse :: the same for anything noncreature.
+Mental Misstep :: two life for their turn-one accelerant.
+Mindbreak Trap :: free against a storm turn, and it exiles.
+Muddle the Mixture :: a counterspell, or transmute for Isochron Scepter, Basalt Monolith or Power Artifact — all mana value two.
+Solve the Equation :: any instant or sorcery, usually Dramatic Reversal.
+Merchant Scroll :: any blue instant.
+Fabricate :: any artifact, to hand.
+Spellskite :: redirects the removal spell aimed at Urza for two life.
+Chain of Vapor :: one mana to bounce anything.
+Pongify :: one mana, kills anything.
+Cyclonic Rift :: overloaded, the clear for a lethal artifact attack.
+Hullbreaker Horror :: uncounterable, flash, and every spell afterwards bounces something.
+Trinisphere :: a tax that hurts a fast table far more than a deck that generates its own mana.
+Tormod's Crypt :: free graveyard hate that is also an artifact for Urza.
+
+# What to keep in an opening hand
+Keep cheap artifacts and a land. Mox Opal, Lotus Petal, Mishra's Bauble and Sol Ring all make Urza a turn-three play and immediately turn into mana once he lands.
+Count Urza's mana correctly. Each untapped artifact is one blue, once. Tapping Sol Ring for its own two means it is no longer available for Urza — work out which use you need before you start.
+Muddle the Mixture :: remember it transmutes for exactly two. Isochron Scepter, Basalt Monolith and Power Artifact are all two, so it is a tutor for whichever combo half you are missing.
+Hold up interaction on the turn you go off. The deck's failure case is a single counterspell on Dramatic Reversal, and Force of Negation or Pact of Negation costs you nothing to keep available.

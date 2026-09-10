@@ -1,42 +1,98 @@
-Kinnan, Bonder Prodigy in GU, built to Bracket 5 rules. This guide is a starting point generated from the decklist — the sections below group what the deck actually contains by what each card is there to do.
+Kinnan doubles every nonland mana source you tap. That is a ramp effect on paper and a combo engine in practice: Basalt Monolith taps for three, Kinnan makes it four, and untapping costs three. One mana profit per cycle, repeated as many times as you like. This is a Bracket 5 deck, so the counterspells are free, the mana is fast, and the game is expected to end on a single turn.
 
 # The commander
-Kinnan, Bonder Prodigy :: Whenever you tap a nonland permanent for mana, add one mana of any type that permanent produced.
+Kinnan, Bonder Prodigy :: two mana. Every nonland permanent you tap for mana produces one extra of a type it made, and his {5}{G}{U} ability digs five deep and puts a non-Human creature straight onto the battlefield.
+The activated ability is the payoff, not a mana sink. With unlimited mana you activate it over and over, assembling every relevant creature in the deck.
+Delighted Halfling :: uncounterable mana for legendary spells, which is how Kinnan resolves through a table of blue decks.
 
-# Game Changers (12, uncapped)
-Ancient Tomb :: {T}: Add {C}{C}. This land deals 2 damage to you.
-Chrome Mox :: Imprint — When this artifact enters, you may exile a nonartifact, nonland card from your hand.
-Consecrated Sphinx :: Whenever an opponent draws a card, you may draw two cards.
-Fierce Guardianship :: If you control a commander, you may cast this spell without paying its mana cost.
-Force of Will :: You may pay 1 life and exile a blue card from your hand rather than pay this spell's mana cost.
-Gaea's Cradle :: {T}: Add {G} for each creature you control.
-Grim Monolith :: This artifact doesn't untap during your untap step.
-Mana Vault :: This artifact doesn't untap during your untap step.
-Mox Diamond :: If this artifact would enter, you may discard a land card instead. If you do, put this artifact onto the battlefield.…
-Rhystic Study :: Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.
-Seedborn Muse :: Untap all permanents you control during each other player's untap step.
-The One Ring :: When The One Ring enters, if you cast it, you gain protection from everything until your next turn.
+# The infinite mana
+Basalt Monolith :: taps for three, Kinnan makes it four, untaps for three. Net one per cycle, forever. Two cards, and the deck is built to find both.
+Nyxbloom Ancient :: triples what any permanent produces. Basalt Monolith alone becomes nine mana against a three-mana untap — a second, independent infinite.
+Grim Monolith :: mana-neutral with Kinnan rather than infinite, but it is still four mana off a two-drop and it fuels the turn you find the real piece.
+Mana Vault :: three mana on turn one.
+Dramatic Reversal :: untaps every nonland permanent. With Kinnan doubling a board of rocks and dorks it is an enormous one-shot ritual.
+Seedborn Muse :: untaps everything on all three opponents' turns, which with Kinnan is three extra full mana pools per round.
 
-# Card advantage
-Mystic Remora :: Cumulative upkeep {1}
-Veil of Summer :: Draw a card if an opponent has cast a blue or black spell this turn. Spells you control can't be countered this turn.…
-Borne Upon a Wind :: You may cast spells this turn as though they had flash.
-Faerie Mastermind :: Whenever an opponent draws their second card each turn, you draw a card.
-Thrasios, Triton Hero :: {4}: Scry 1, then reveal the top card of your library. If it's a land card, put it onto the battlefield tapped.…
-Wan Shi Tong, Librarian :: When Wan Shi Tong enters, put X +1/+1 counters on him. Then draw half X cards, rounded down.
+# Turning mana into a win
+Thrasios, Triton Hero :: {4} to scry and draw. With unlimited mana it draws your entire library, and it is a two-drop you can deploy on turn two.
+Kinnan, Bonder Prodigy :: the {5}{G}{U} ability, activated repeatedly, puts every non-Human creature in the deck onto the battlefield.
+Invasion of Ikoria :: fetches a non-Human creature from library OR graveyard onto the battlefield, and flips into Zilortha.
+Zilortha, Apex of Ikoria :: every non-Human creature you control assigns combat damage as though unblocked. After a Kinnan dig chain, that is lethal to the table.
+Hullbreaker Horror :: uncounterable, flash, and with unlimited spells it bounces every permanent your opponents control.
+Finale of Devastation :: at X of ten or more, a tutor and a lethal team pump on one card.
+Consecrated Sphinx :: two cards for every card any opponent draws — the fair game's engine.
 
-# Ramp
-Lotus Petal :: {T}, Sacrifice this artifact: Add one mana of any color.
-Mox Amber :: {T}: Add one mana of any color among legendary creatures and planeswalkers you control.
-Mox Opal :: Metalcraft — {T}: Add one mana of any color. Activate only if you control three or more artifacts.
-An Offer You Can't Refuse :: Counter target noncreature spell. Its controller creates two Treasure tokens.
-Birds of Paradise :: {T}: Add one mana of any color.
-Delighted Halfling :: {T}: Add {C}.
+# Finding the pieces
+Green Sun's Zenith :: any green creature onto the battlefield, and X can be zero for Dryad Arbor-style plays or high for the payoff.
+Chord of Calling :: instant speed, convoke, any creature.
+Nature's Rhythm :: the same on a sorcery, with harmonize to buy it back.
+Whir of Invention :: instant speed, improvise, any artifact — usually Basalt Monolith.
+Transmute Artifact :: trades a rock for exactly the rock you need.
+Trophy Mage :: fetches a three-mana artifact, which is Basalt Monolith.
+Drift of Phantasms :: transmute for three, which is also Basalt Monolith — and it blocks fliers while you wait.
+Formidable Speaker :: tutors a creature and untaps a permanent every turn.
 
-# Protection
-Pact of Negation :: Counter target spell.
-Chain of Vapor :: Return target nonland permanent to its owner's hand. Then that permanent's controller may sacrifice a land of their…
-Mental Misstep :: Counter target spell with mana value 1.
-Disrupting Shoal :: You may exile a blue card with mana value X from your hand rather than pay this spell's mana cost.
-Colossal Skyturtle :: Channel — {2}{G}, Discard this card: Return target card from your graveyard to your hand.
-Hullbreaker Horror :: This spell can't be countered.
+# The copy package
+Every one of these can become a second Basalt Monolith, a second Kinnan, or a copy of whatever an opponent just played.
+Copy Artifact :: cheap, and it copies their Sol Ring as happily as your Monolith.
+Mirrormade :: artifacts and enchantments.
+Phyrexian Metamorph :: two life instead of blue mana, and it copies creatures too.
+Clever Impersonator :: any nonland permanent.
+Flesh Duplicate :: two mana for a copy of any creature.
+Mockingbird :: scales, flies, and copies for exactly the mana you have.
+Mirage Mirror :: becomes anything on the board for {2}, repeatedly, at instant speed.
+Flash Photography :: a token copy of your own permanent at instant speed, twice with flashback.
+Gilded Drake :: two mana to take their commander.
+
+# Fast mana
+Sol Ring :: turn one, every time.
+Lotus Petal :: free, and Kinnan doubles it.
+Mox Amber :: live the moment Kinnan or Thrasios resolves.
+Mox Diamond :: a land for a Mox in a deck that does not need many lands.
+Mox Opal :: metalcraft comes quickly here.
+Chrome Mox :: fast, at the cost of a card.
+Elvish Spirit Guide :: a free green from hand on turn one.
+Birds of Paradise :: fixing that Kinnan doubles.
+Llanowar Elves :: two green under Kinnan.
+Elvish Mystic :: the second copy.
+Fyndhorn Elves :: the third.
+Springleaf Drum :: taps a summoning-sick dork for mana, doubled by Kinnan.
+Gene Pollinator :: taps any permanent for mana, doubled.
+Enduring Vitality :: every creature you control taps for any colour, and it comes back as an enchantment when it dies.
+Badgermole Cub :: an extra green for every creature you tap for mana.
+The Cabbage Merchant :: Food off their noncreature spells, and the Food taps for mana.
+
+# Interaction
+Force of Will :: the free counterspell that defines the format.
+Force of Negation :: free on their turn against noncreature spells.
+Pact of Negation :: free now; you win before the upkeep.
+Fierce Guardianship :: free with your commander out.
+Flusterstorm :: nearly unbeatable in a counter war.
+Swan Song :: one mana for a wrath, a removal spell or an enchantment.
+An Offer You Can't Refuse :: the same for anything noncreature.
+Mental Misstep :: two life for their turn-one accelerant.
+Disrupting Shoal :: free, and it names their exact mana value.
+Mindbreak Trap :: free against a storm turn, and it exiles.
+Misdirection :: free, and it turns their removal or tutor into yours.
+Commandeer :: free, and it steals their combo piece outright.
+Veil of Summer :: one mana that beats blue and black interaction and draws.
+Endurance :: free graveyard hate at instant speed, and a 3/4 reach blocker.
+Chain of Vapor :: one mana to bounce anything, including your own permanent in response to removal.
+Amphibian Downpour :: flash and storm — on a long turn it turns the table's commanders into 1/1 Frogs.
+
+# Card flow
+The One Ring :: a full turn of protection, then an escalating draw engine.
+Rhystic Study :: their turns pay for yours.
+Mystic Remora :: the strongest card in the deck on turns one through four.
+Faerie Mastermind :: flash, flies, and draws off the table's extra draws.
+Wan Shi Tong, Librarian :: scales, draws on entry, and punishes every tutor at the table.
+Valley Floodcaller :: noncreature spells gain flash, and it untaps your creatures on each one.
+High Fae Trickster :: everything gains flash, so the whole combo turn can happen on their end step.
+Borne Upon a Wind :: the cheap version of the same effect, and it cantrips.
+Agatha's Soul Cauldron :: exiles graveyards, hands out activated abilities, and lets you spend any colour on creature abilities.
+
+# What to keep in an opening hand
+Keep fast mana and interaction. A hand with Sol Ring or two Moxen plus a Force effect is a keep; a hand of value creatures is not. This deck expects to win around turn four and must survive somebody else trying to win on turn three.
+Kinnan is the whole deck, so protect the cast. Delighted Halfling makes him uncounterable; otherwise hold a Force effect rather than jamming him into open blue mana.
+Find Basalt Monolith, not a bigger creature. Trophy Mage, Drift of Phantasms, Whir of Invention and Transmute Artifact all point at the same three-mana rock, and it is the shortest path to unlimited mana.
+Once mana is infinite, activate Kinnan before you cast anything from hand. The dig puts creatures straight onto the battlefield, which sidesteps every counterspell at the table.

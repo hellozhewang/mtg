@@ -202,6 +202,16 @@
       img.decoding = 'async';
       img.alt = li.dataset.name || '';
       img.sizes = '(max-width: 560px) 46vw, 172px';
+      // At 2x the 172px tile needs 344px, so the browser picks the 488w
+      // candidate — which lives on cards.scryfall.io. When that host is
+      // unreachable the tile renders empty, because a failed srcset candidate
+      // does NOT fall back to src on its own. Drop srcset and keep the local
+      // thumbnail instead.
+      img.onerror = function () {
+        img.onerror = null;                                // never loop
+        img.removeAttribute('srcset');                     // stop re-picking it
+        img.src = li.dataset.thumb;
+      };
       if (li.dataset.img) {
         img.srcset = li.dataset.thumb + ' 146w, ' + li.dataset.img + ' 488w';
       }
@@ -238,6 +248,25 @@
     });
   }
 
+  /* ---- readable image, with a local fallback ------------------------------ */
+  // data-img points at cards.scryfall.io, a different host from the page. Some
+  // networks refuse that host outright (ERR_CONNECTION_REFUSED), and an <img>
+  // whose src fails renders as an empty frame with no hint why. The committed
+  // thumbnail is always on disk, so drop back to it: small and soft, but you
+  // can still see which card it is.
+  function localFallback(li) {
+    if (li.dataset.thumb) return li.dataset.thumb;       // list and gallery rows
+    var t = li.querySelector && li.querySelector('img.gthumb');
+    return t ? t.getAttribute('src') : '';               // guide rows
+  }
+  function loadWithFallback(img, remote, fallback) {
+    img.onerror = function () {
+      img.onerror = null;               // one retry only — never loop on failure
+      if (fallback && img.getAttribute('src') !== fallback) img.src = fallback;
+    };
+    img.src = remote;
+  }
+
   /* ---- hover preview ------------------------------------------------------ */
   // Returns { hide } so the lightbox can dismiss it without sharing a variable.
   function initPreview(cards) {
@@ -262,7 +291,9 @@
       if (cards.dataset.view === 'gallery') return;   // the image is already there
       var li = ev.target.closest('.card[data-img]');
       if (!li) return;
-      if (floater.getAttribute('src') !== li.dataset.img) floater.src = li.dataset.img;
+      if (floater.getAttribute('src') !== li.dataset.img) {
+        loadWithFallback(floater, li.dataset.img, localFallback(li));
+      }
       floater.classList.add('on');
       place(ev);
     });
@@ -296,12 +327,14 @@
     var flip = overlay.querySelector('.flip');
     var faces = [];
     var face = 0;
+    var fallback = '';
 
     function open(li) {
       faces = [li.dataset.img];
       if (li.dataset.back) faces.push(li.dataset.back);
       face = 0;
-      full.src = faces[0];
+      fallback = localFallback(li);
+      loadWithFallback(full, faces[0], fallback);
       full.alt = li.dataset.name || '';
       overlay.classList.toggle('two', faces.length > 1);
       overlay.classList.add('on');
@@ -321,7 +354,7 @@
     flip.addEventListener('click', function (ev) {
       ev.stopPropagation();                    // do not also close the overlay
       face = (face + 1) % faces.length;
-      full.src = faces[face];
+      loadWithFallback(full, faces[face], fallback);
     });
     overlay.addEventListener('click', close);
     document.addEventListener('keydown', function (ev) {

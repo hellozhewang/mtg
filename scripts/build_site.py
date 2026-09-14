@@ -111,10 +111,9 @@ SECTION_ORDER = ["Commander", "Creatures", "Planeswalkers", "Instants",
                  "Sorceries", "Artifacts", "Enchantments", "Battles",
                  "Lands", "Other"]
 
-# Byline for decks under private/. They are hand-built rather than written by a
-# Discord turn, so DeckAuthorStore has no row for them and the tile would carry no
-# author at all; this is the one place a name is stated rather than recorded.
-PRIVATE_AUTHOR = "zzwang-private"
+# Private decks are built locally for zzwang. Privacy has its own badge and does
+# not change the author's username; do not consult the public provenance keys.
+PRIVATE_AUTHOR = "zzwang"
 
 # Fallback for a PUBLIC deck with no recorded author — one that predates the
 # provenance database, or was added by hand rather than through a Discord turn.

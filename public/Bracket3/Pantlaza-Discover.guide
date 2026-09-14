@@ -1,0 +1,76 @@
+The biggest mistake is treating Pantlaza's discover limit as a limit on your whole turn. Each new Pantlaza after a blink has a fresh allowance. Spend your blink effects where they buy another discover, protect an important creature, or repeat a powerful enter trigger; keep enough mana to survive the table's response.
+This is a Bracket 3 Dinosaur combat deck with three Game Changers: Aura Shards, Smothering Tithe, and Teferi's Protection. It uses finite value engines and large combat finishes, with no built-in infinite loop, extra-turn chain, or mass land denial.
+
+# Turn Dinosaurs into more spells
+Pantlaza, Sun-Favored :: Discover uses the entering Dinosaur's toughness when the trigger resolves. You can decline a small discover and take a later, larger one. Blinking Pantlaza creates a new object with a fresh allowance; blinking another Dinosaur after you have already discovered does not reset the old Pantlaza.
+Ephemerate :: One white mana can save Pantlaza from targeted removal and give you another discover. Casting it from hand also gives you rebound on your next upkeep; casting it through discover does not give rebound.
+Cloudshift :: The second one-mana reset keeps the engine efficient. Target Pantlaza for another discover on a turn when its allowance is already used, or a value Dinosaur on an opponent's turn when the allowance is available.
+Emiel the Blessed :: Turns spare mana into repeatable blinks without tapping. Three mana resets Pantlaza, repeats a removal trigger, or protects another creature; it cannot blink itself. Its optional counter can increase a Dinosaur's discover value if that trigger resolves first.
+Teleportation Circle :: Blink Pantlaza at your end step for another discover even after using it earlier that turn. If the commander is absent, repeat another creature's enter ability or untap The Great Henge by blinking it.
+Airbender Ascension :: Early creature development charges its four-counter threshold, and Palani's Hatcher provides three creature entries by itself. Once active before your end step begins, it gives a free end-step blink. Its initial airbend is temporary disruption: the exiled creature can be recast for two mana.
+Restoration Angel :: Flash makes this an opponent-turn discover enabler and a surprise blocker. Its enter ability can blink Pantlaza or another non-Angel creature, and leaves you an additional flying body.
+Trumpeting Carnosaur :: Its discover 5 is independent of Pantlaza's allowance. An entry with an unused Pantlaza gives discover 5 plus discover 6, while later blinks still give its own discover. Discard it for removal when you cannot afford six mana.
+Ghalta, Primal Hunger :: Board power can reduce its casting cost to two green mana, but it still has mana value 12. Its 12 toughness gives a huge discover. Small discover effects cannot find it just because its casting cost would be discounted.
+Ghalta, Stampede Tyrant :: Turns a stocked hand into a threatening board. When its own entry triggers this and Pantlaza, you can resolve discover 12 first to find another creature before resolving the hand-dumping trigger. Keep some resources back when a wipe is likely.
+The Great Henge :: Large Dinosaurs reduce its casting cost, while blinks draw cards and add counters. Resolve its counter trigger before Pantlaza's trigger when you want the larger toughness to raise discover's ceiling.
+
+# Get ahead without emptying your hand
+Birds of Paradise :: Fixes all three colors and accelerates the commander. It is a good early play but a modest discover hit, so the deck does not rely on every discover producing a giant threat.
+Delighted Halfling :: Makes Pantlaza and your legendary finishers harder to counter. Its colored mana is restricted to legendary spells; it cannot provide colored mana for an ordinary Dinosaur or a blink activation.
+Utopia Sprawl :: Enchant a Forest, including an appropriate dual land, and choose the color your opening hand lacks. This survives creature wipes and helps deploy Pantlaza with protection sooner.
+Nature's Lore :: Along with Three Visits and Farseek, finds typed dual lands to repair your colors. Nature's Lore and Three Visits can find an untapped original dual; Farseek always puts its land in tapped.
+Skyshroud Claim :: Finds two Forest cards, including duals. Untapped targets can immediately help pay for another spell or interaction, making it a useful discover hit.
+Topiary Stomper :: Puts ramp on a Dinosaur body that can be blinked and draws from your power-based engines. The five basics provide search targets, but repeated blinks can exhaust them. It cannot block before you have seven lands.
+Otepec Huntmaster :: Discounts Dinosaur spells and gives one Dinosaur haste once it can tap. The discount does not pay colored costs, activate blink effects, or increase discover's ceiling.
+Hulking Raptor :: Supplies two green mana in your first main phase, helping you cast a large follow-up while saving lands for interaction. Blinking it after that phase does not generate another mana trigger immediately.
+Regal Behemoth :: Grants the monarchy and rewards defending it with extra mana from lands. Blink it to reclaim the crown, but opponents can steal it through combat and shut off the mana bonus.
+Smothering Tithe :: Your mana Game Changer funds expensive threats, Emiel activations, and a large Finale of Devastation. Treasures enter as artifacts, so they do not trigger Aura Shards.
+Esper Sentinel :: Pressures early noncreature spells while you develop mana. Opponents can pay, so treat it as an early advantage source rather than your only draw engine.
+Sylvan Library :: Improves draws and can leave a desirable discover hit on top for later that turn. Paying life for extra cards is easier after Vaultborn Tyrant gains life, but do not spend yourself into combat range.
+Guardian Project :: Blinking a nontoken creature normally draws again in this singleton list. It does not draw from tokens, including the replacement token from Vaultborn Tyrant.
+Garruk's Uprising :: Repeated large creature entries replenish your hand, and team trample makes your combat finishers much harder to chump-block.
+Vaultborn Tyrant :: Gains life and draws from itself and other large creature entries, including blinks. Its death replacement leaves another engine after a destroy wipe; exile removal bypasses that benefit.
+Greater Good :: Sacrifice a doomed large creature to draw before removal resolves, or cash in a creature that Sneak Attack will make you sacrifice. Discarding three makes small creatures poor sacrifices.
+Earthshaker Dreadmaw :: Refills your hand according to your other Dinosaurs, making it an excellent blink target on a developed board. It draws nothing when it is your only Dinosaur.
+Bonehoard Dracosaur :: Supplies upkeep card access, Treasure, and sometimes a Dinosaur body without depending on Pantlaza. Blinking it does not repeat its upkeep trigger.
+Runic Armasaur :: Draws when opponents use nonmana creature or land abilities, including fetchlands. It does not trigger from mana abilities or from activated abilities of noncreature artifacts.
+
+# Make the huge turns count
+Sneak Attack :: One red mana puts a creature from hand directly onto the battlefield with haste. Use it for enter triggers and an immediate attack; blink the creature before its sacrifice trigger resolves to keep the returned new object. That new object loses Sneak Attack's granted haste.
+Palani's Hatcher :: Gives other Dinosaurs haste and supplies Egg entries for Aura Shards and Airbender Ascension. Decline the Eggs' tiny discover opportunities if a better Dinosaur trigger is available.
+Rhythm of the Wild :: Protects creature spells from counters and lets nontoken creatures choose haste or a counter. Choose haste when a newly deployed or blinked threat needs to attack now.
+Etali, Primal Conqueror :: Each entry can cast a spell from each player's library, making it a premium blink target even without Pantlaza. The expensive transformation is a late-game poison finish, not the deck's required win condition.
+Etali, Primal Storm :: Needs to attack to steal spells, so pair it with a haste source. Blinking it does not trigger that ability and can prevent it attacking unless it gains haste again.
+Akroma's Will :: Converts an established board into evasive double-strike damage. With Pantlaza present as you cast it, choose both modes for protection and lifelink too; without a commander, you must choose which mode matters.
+Finale of Devastation :: Finds a needed creature from library or graveyard early, then becomes a team pump and haste finisher at X of ten or more. If discover finds it, usually put it into your hand: casting it for free forces X to zero.
+Kessig Wolf Run :: Converts excess mana into trample and power without using a spell slot. Keep the red and green available, and use it after blockers when that reveals the best target.
+
+# Keep opponents from dismantling the engine
+Aura Shards :: Every creature entry can destroy an artifact or enchantment, including Egg tokens and blinked creatures. This is your interaction Game Changer; it needs creature entries and does not answer opposing creatures or lands.
+Bronzebeak Foragers :: Removes up to one nonland permanent from each opponent. Blinking it returns its previous exiles before you choose new targets, potentially reusing opposing enter triggers. Pay its activation first to put a particularly dangerous exiled card into its owner's graveyard.
+Apex Altisaur :: Chains fights through an opposing creature board and makes a strong Sneak Attack target. Damage accumulates, so choose fights it can survive and stop when necessary; indestructible makes it much more reliable.
+Kogla and Yidaro :: Repeat its fight mode with blink when creatures are the problem. In hand, its discard ability instead answers an artifact or enchantment and replaces itself with a card.
+Zacama, Primal Calamity :: Casting it refunds your tapped lands and gives repeatable creature and artifact/enchantment interaction. A free cast from discover still counts as casting; Sneak Attack, Ghalta, and blink do not trigger the land untap.
+Kinjalli's Sunwing :: Opposing creatures entering tapped cannot immediately block your fresh attackers. It also interferes with haste-based attacks while leaving your own creatures unaffected.
+Swords to Plowshares :: Cheap exile removal handles a creature that would stop combat or the enter-trigger engine. Path to Exile adds redundancy, while Beast Within and Generous Gift cover other permanent types.
+Wrathful Raptors :: Turns damage dealt to your Dinosaurs into damage to legal non-Dinosaur targets. With Blasphemous Act, each damaged Dinosaur normally supplies a separate 13-damage trigger even if the Raptors die. This needs a developed board and does not automatically kill three opponents.
+Blasphemous Act :: Resets a dangerous creature board cheaply. It also kills your own creatures unless protected; with Wrathful Raptors, damage still triggers through indestructible but not through effects that prevent the damage.
+Boseiju, Who Endures :: A removal option from a land slot, with Pantlaza often reducing its channel cost. Eiganjo, Seat of the Empire similarly gives combat removal without needing a spell on the stack.
+
+# Preserve enough to rebuild
+Devil Dinosaur :: Gives other Dinosaurs hexproof and a toughness boost, increasing some discover values. It does not protect itself or stop untargeted wipes, so keep broader protection available.
+Eerie Interlude :: Exile selected creatures through a destroy or exile wipe, then recover their enter triggers at the next end step. Include Pantlaza when you want a fresh allowance. Tokens you exile do not return.
+Touch the Spirit Realm :: Channel it for temporary protection or to delay an opposing creature or artifact. Cast it as an enchantment when you need longer removal. The channeled creature returns at the next end step, not immediately.
+Teferi's Protection :: Preserves your whole board and life total through a catastrophic turn. Phasing does not cause creatures to enter again, so it does not itself generate discover triggers.
+Heroic Intervention :: Stops most targeted removal and destruction while also protecting noncreature engines. It does not stop an untargeted exile wipe or a toughness-reducing wipe.
+Deflecting Swat :: Protects a key spell or permanent by redirecting legal targets, often for free while Pantlaza is present. It does not counter a spell and cannot redirect a targetless board wipe.
+Eternal Witness :: Recovers a destroyed engine, spent blink, or finisher. Repeated blinks provide a recovery plan, but each activation still costs mana.
+Eladamri's Call :: Tutor for the actual bottleneck: Emiel for repeatable blink, Vaultborn Tyrant for cards, Bronzebeak Foragers for interaction, or Ghalta, Stampede Tyrant when a stocked hand needs deployment. It puts the creature in hand, making it useful with Sneak Attack.
+
+# What to keep and how to sequence it
+Keep three lands with access to green and a route to all three colors, early acceleration, and at least one useful follow-up. A hand full of expensive Dinosaurs and blink spells without early mana is a mulligan. Two lands can be acceptable with cheap acceleration and early draw, but it is a risk with a five-mana commander.
+A strong example is Windswept Heath, Taiga, Plains, Nature's Lore, Sylvan Library, Ephemerate, and Vaultborn Tyrant. The lands and ramp establish colors, the Library finds the next land or interaction, and Ephemerate remains useful once Pantlaza arrives.
+Prioritize turn-one acceleration when available, then colored mana and a draw engine. Cast Pantlaza when its immediate discover advances your board; in a removal-heavy pod, waiting to leave one white mana for a blink is often worth the delay.
+Cavern of Souls :: Usually name Dinosaur to protect Pantlaza and the largest threats. Its restricted colored mana cannot cast your non-Dinosaur support creatures or pay for blink spells, so keep unrestricted white sources available.
+With multiple Dinosaur entries, choose the discover trigger that best fits your board rather than automatically accepting the first. A bigger discover is a higher ceiling, not a guarantee of an expensive hit; put unwanted removal or an X spell into hand instead of casting it badly.
+On opponents' turns, use spare blink mana late unless you need an immediate answer. Keep one recovery card or creature in hand when your existing board is already threatening lethal. Repeated enter triggers can make long turns, so resolve each discover clearly and keep track of whether the current Pantlaza has used its allowance.

@@ -435,14 +435,21 @@ def render_guide(page: frontend.Template, d: "DeckInfo",
             data = img = ""
             if uris:
                 thumb = f"{up}img/{e(image_file(card, 0, THUMB, uris[0][THUMB]))}"
-                full = e(uris[0].get(FULL, ""))
                 # Small by choice: the guide is prose you read, and the card is
                 # there to identify what the sentence is about, not to be read
-                # itself. Click zooms it to full size. srcset still offers the
-                # 488px `normal` so a 2x display gets a sharp 88px rather than an
-                # upscaled thumbnail.
-                srcset = f' srcset="{thumb} 146w, {full} 488w" sizes="88px"' if full else ""
-                img = (f'<img class="gthumb" src="{thumb}"{srcset} alt="{e(name)}"'
+                # itself. Click zooms it to full size via the lightbox below.
+                #
+                # LOCAL THUMB ONLY, no srcset. An earlier version offered the
+                # 488px `normal` as a second candidate so a 2x display would get
+                # a sharp 88px image — but at DPR 2 the browser needs 176px, so
+                # it rejected the 146px thumb and fetched the 488px one from
+                # cards.scryfall.io for EVERY row, on page load. That is ~50
+                # hotlinked images per guide, and on any machine that cannot
+                # reach that host the whole guide renders as broken-image icons.
+                # It also contradicts the hosting split at the top of this file:
+                # external images are for hover and click, not first paint.
+                # 146px into an 88px box is mildly soft at 2x; that is the trade.
+                img = (f'<img class="gthumb" src="{thumb}" alt="{e(name)}"'
                        f' loading="lazy" decoding="async" width="88" height="123">')
                 # Same data-* the list view uses, so the existing hover preview
                 # and lightbox work here with no extra JavaScript.

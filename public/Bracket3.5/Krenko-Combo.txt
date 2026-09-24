@@ -34,6 +34,7 @@
 1 Goblin Warchief
 1 Great Furnace
 1 Hall of the Bandit Lord
+1 Hanweir Battlements
 1 Herald's Horn
 1 Hexing Squelcher
 1 Hobgoblin Bandit Lord
@@ -69,7 +70,6 @@
 1 Skullclamp
 1 Sokenzan, Crucible of Defiance
 1 Sol Ring
-1 Spinerock Knoll
 1 Swiftfoot Boots
 1 Thornbite Staff
 1 Thousand-Year Elixir

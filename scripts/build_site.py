@@ -188,6 +188,8 @@ def bracket_label(folder: str) -> str:
     Game Changer cap in validate_deck.py and the published URL — so it is never
     the thing that gets rewritten.
     """
+    if folder.lower() == "bracket3.5+4gc":
+        return "Bracket 3.5 + 4 GC"
     return re.sub(r"(?<=[A-Za-z])(?=\d)", " ", folder)
 
 

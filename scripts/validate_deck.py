@@ -67,6 +67,10 @@ def gc_cap(path: Path, override: int | None) -> int | None:
     if override is not None:
         return override
     folder = path.parent.name.lower()
+    # An explicitly named house exception changes only the GC allowance.
+    # Keep a finite cap so the existing mass-land-denial checks still apply.
+    if folder == "bracket3.5+4gc":
+        return 4
     if folder.startswith("bracket"):
         tier = folder.replace("bracket", "").strip()
         if tier.startswith(("4", "5")):

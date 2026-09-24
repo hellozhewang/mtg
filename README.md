@@ -60,6 +60,11 @@ Note this covers the COMBO rule only. Mass land denial stays out of 3.5 — Urza
 EDHREC seed arrived with `Back to Basics` and `Winter Orb` and both were cut,
 because that is a separate restriction, not the one this folder relaxes.
 
+For an **explicitly authorized four-Game-Changer exception**, use the separate
+folder `Bracket3.5+4GC/`. The validator and catalog recognize its cap of four.
+Ordinary `Bracket3.5/` stays capped at three; the exception does not allow mass
+land denial or extra-turn chains. This is a house rule, not an official bracket.
+
 Never silently exceed a bracket. If a requested card would break the cap, say so
 and offer the trade — e.g. adding Cyclonic Rift to a deck already at 3 Game
 Changers means cutting one of the existing three.

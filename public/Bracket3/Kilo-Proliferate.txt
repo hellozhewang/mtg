@@ -1,6 +1,7 @@
 1 Kilo, Apogee Mind
 1 Academy Ruins
 1 Adarkar Wastes
+1 Agatha's Soul Cauldron
 1 All Will Be One
 1 An Offer You Can't Refuse
 1 Ancient Den
@@ -39,7 +40,6 @@
 1 Jhoira, Weatherlight Captain
 1 Kappa Cannoneer
 1 Karn's Bastion
-1 Lux Cannon
 1 Mana Confluence
 1 Mana Drain
 1 Manifold Key

@@ -60,11 +60,11 @@ Gamble :: finds anything, and the random discard is usually survivable. Priority
 Goblin Lackey :: connects once and puts Muxus or Krenko onto the battlefield for free.
 Goblin Ringleader :: four cards deep in a deck that is mostly Goblins.
 Wheel of Fortune :: a fresh seven when you have emptied your hand, which this deck does by turn four.
-Faithless Looting :: cheap filtering, twice.
 Skullclamp :: your tokens are 1/1s, so every clamp is two cards.
 Goblin Engineer :: tutors an artifact into the graveyard and recurs cheap ones — Thornbite Staff and Skullclamp both qualify.
 
 # Interaction
+Hexing Squelcher :: an uncounterable Goblin that makes all your spells uncounterable while it stays on the battlefield, protecting Krenko and your combo pieces as you cast them. Goblin Matron and Goblin Recruiter can find it, and Ringleader or Muxus can pick it up. It and your other creatures have ward—pay 2 life; opponents can still pay to target them, and it does not protect activated abilities or stop untargeted board wipes.
 Deflecting Swat :: free with your commander out, and it saves Krenko mid-combo.
 Abrade :: three damage or an artifact.
 Chaos Warp :: mono-red's only answer to an enchantment.
@@ -77,6 +77,6 @@ Cavern of Souls :: name Goblin and Krenko cannot be countered.
 
 # What to keep in an opening hand
 Keep fast mana and a Goblin. Sol Ring, Mana Vault or Lotus Petal into a turn-two or three Krenko is the start that wins; a hand of five-drops is not.
-Do not tap Krenko into open blue mana without protection. Lightning Greaves first, or Cavern of Souls on the way down — losing him mid-activation costs you the game.
+Set up protection before committing Krenko. Hexing Squelcher makes your spells uncounterable, and Cavern of Souls protects Goblin spells cast with its restricted mana; neither stops an opponent countering Krenko's activated ability. Lightning Greaves or Swiftfoot Boots helps against targeted removal, while Squelcher's ward only makes opponents pay life. You have less hand filtering now, so keep enough mana and a real route to an engine or refill.
 Count the sacrifice outlet before you go off. Thornbite Staff on Krenko does nothing without something to kill a Goblin, and Skirk Prospector is both the outlet and the mana.
 Goblin Recruiter :: cast it with a plan, not on curve. It is the best card in the deck when you know which four or five cards you want and how you are going to reach them, and close to a blank when you do not.

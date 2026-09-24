@@ -18,7 +18,6 @@
 1 Deflecting Swat
 1 Den of the Bugbear
 1 Dragon Fodder
-1 Faithless Looting
 1 Fellwar Stone
 1 Gamble
 1 Ghitu Encampment
@@ -37,6 +36,7 @@
 1 Great Furnace
 1 Hall of the Bandit Lord
 1 Herald's Horn
+1 Hexing Squelcher
 1 Hobgoblin Bandit Lord
 1 Impact Tremors
 1 Imperial Recruiter

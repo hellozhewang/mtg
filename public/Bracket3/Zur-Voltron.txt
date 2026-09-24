@@ -22,6 +22,7 @@
 1 Diplomatic Immunity
 1 Dovin's Veto
 1 Eiganjo, Seat of the Empire
+1 Empyrial Armor
 1 Entity Tracker
 1 Esper Sentinel
 1 Estrid's Invocation
@@ -60,7 +61,6 @@
 1 Otawara, Soaring City
 1 Oubliette
 1 Out of Time
-1 Phyrexian Arena
 1 Plains
 1 Polluted Delta
 1 Prismatic Vista

@@ -27,8 +27,10 @@ Luminarch Ascension :: with Ghostly Prison out you rarely lose life, so it turns
 # The Voltron kill
 Ethereal Armor :: +1/+1 for every enchantment you control, plus first strike. In this deck it is routinely +6/+6 or more, and it is fetchable.
 All That Glitters :: the same count, including artifacts.
+Empyrial Armor :: Zur can fetch this three-mana Aura directly onto himself before blockers, even through shroud. It adds +1/+1 for every card in your hand, turning Necropotence, Rhystic Study and Mystic Remora into commander damage.
 Daybreak Coronet :: +3/+3, first strike, vigilance and lifelink for two mana — but it needs another Aura already attached, so it is the second thing you fetch, never the first.
-Zur is a flier, so the wall you fetched does not stop him. Twenty-one commander damage from a 1/4 is three attacks once two of the above are on.
+Necropotence puts the purchased cards into your hand at your next end step, so paying life during combat does not immediately grow Empyrial Armor. Build the hand on the previous turn; Reliquary Tower lets you retain more than seven cards. With seven cards in hand, Empyrial Armor alone makes Zur an 8/11. Recount before damage if you cast spells or discard cards.
+Zur flies over Moat. Count his actual power and each opponent's accumulated commander damage before committing to a lethal attack; twenty-one combat damage from Zur eliminates that opponent.
 
 # Making the enchantments count twice
 Archon of Sun's Grace :: a 2/2 flying lifelinking Pegasus for every enchantment that enters — which with Zur is one a turn, minimum.
@@ -36,7 +38,7 @@ Grim Guardian :: each opponent loses a life for every enchantment that enters.
 Entity Tracker :: flash, and a card for every enchantment that enters.
 Copy Enchantment :: a second Necropotence, Moat, Ghostly Prison or Greater Auramancy.
 Estrid's Invocation :: the same, and it can re-enter each upkeep to reset a constellation trigger.
-Academy Rector :: when it dies, it fetches ANY enchantment onto the battlefield — no mana value limit. This is how Moat and Approach of the Second Sun actually arrive.
+Academy Rector :: when it dies, you may exile it to fetch any enchantment onto the battlefield, with no mana value limit. This can find Moat; it cannot find Approach of the Second Sun, which is a sorcery.
 
 # Tutors and cards
 Idyllic Tutor :: any enchantment to hand, including the expensive ones Zur cannot reach.
@@ -52,7 +54,7 @@ Force of Negation :: free on their turn.
 Dovin's Veto :: uncounterable.
 Get Lost :: creature, enchantment or planeswalker at instant speed.
 Cyclonic Rift :: overloaded, the clear for a lethal Zur attack.
-Out of Time :: phases every creature out, including theirs, and vanishing gives you several turns of a completely empty board to attack into.
+Out of Time :: phases out every creature present, including Zur, until it leaves. Use it to reset a dangerous board before casting Zur, or accept losing your existing Zur for its duration; fetching it mid-attack removes him from combat too.
 Grand Abolisher :: nobody responds during your turn.
 Moat :: cast it, do not fetch it. Creatures without flying cannot attack at all, and Zur flies.
 
@@ -67,3 +69,4 @@ Keep four lands and a rock, or three lands and Land Tax. Zur costs four and the 
 Attack even when the board is bad. The fetch happens on the attack trigger, before blockers, so an attack that gets chump-blocked still gives you a free enchantment. The only reason not to attack is a removal spell you cannot answer.
 Fetch protection before value against an open table. A Zur that lives to attack four more times is worth more than any single Necropotence.
 Daybreak Coronet :: remember it needs another Aura attached first. Fetch Ethereal Armor or Diplomatic Immunity on the earlier attack so the Coronet is legal on the later one.
+Empyrial Armor :: fetch it when your existing hand makes the attack threatening. A Necropotence fetched on this attack fills your hand at the end step, setting up Armor on a later attack.

@@ -2,6 +2,7 @@
 1 Abrade
 1 Ancient Tomb
 1 Arcane Signet
+1 Arena of Glory
 1 Ashnod's Altar
 1 Battle Hymn
 1 Birgi, God of Storytelling
@@ -16,11 +17,9 @@
 1 Command Beacon
 1 Conspicuous Snoop
 1 Deflecting Swat
-1 Den of the Bugbear
 1 Dragon Fodder
 1 Fellwar Stone
 1 Gamble
-1 Ghitu Encampment
 1 Goblin Bombardment
 1 Goblin Chieftain
 1 Goblin Chirurgeon
@@ -77,5 +76,6 @@
 1 Torch Courier
 1 Umbral Mantle
 1 Vandalblast
+1 Warren Instigator
 1 Wheel of Fortune
 1 Zealous Conscripts

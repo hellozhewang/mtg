@@ -1,72 +1,81 @@
-Zur does not tutor to hand — he puts an enchantment of mana value three or less straight onto the BATTLEFIELD, for free, every time he attacks. So the deck is a toolbox with a three-mana ceiling, and most of the skill is knowing what to fetch on each attack. He also flies, which means the wall he fetches stops everyone else and not him.
+Protect Zur's first attack, then turn each attack into the enchantment the board actually calls for. Equip the pieces you want BEFORE giving him shroud: Zur can attach fetched Auras through shroud, but your Aura spells and equip abilities still target. This is a Bracket 3 Voltron-control list built around combat damage, with Luminarch Ascension as its independent backup.
 
-# The commander
-Zur the Enchanter :: 1/4 flier, and every attack finds an enchantment with mana value three or less and puts it into play. He is a tutor, a threat and a value engine on one card.
-Diplomatic Immunity :: shroud on Zur — and here is the trick that makes the deck work: his ability PUTS the aura onto the battlefield rather than targeting it, so you can keep suiting him up while he is completely untargetable. Fetch this first against any table with removal.
-Greater Auramancy :: shroud for your other enchantments AND for your enchanted creatures. Between this and Diplomatic Immunity, Zur becomes almost impossible to answer without a wrath.
-Lightning Greaves :: haste so he attacks the turn he lands, and shroud as a backup.
-Lavaspur Boots :: one mana for haste and ward, and it lets you still target him yourself.
-Flawless Maneuver :: free with a commander out, and it beats the wrath that is your only real out.
+# Get Zur onto the battlefield with protection available
+The deck has 34 lands, one additional spell/land card, and ten mana rocks costing one or two. The rocks accelerate Zur and leave mana for interaction and Vanishing on later turns. A turn-two rock can enable turn-three Zur, but an exposed commander into open removal is often worse than waiting a turn.
+Arcane Signet :: fixes all three commander colors. Sol Ring alone cannot supply Zur's white, blue and black requirements.
+Azorius Signet :: converts one mana into white and blue; with a black source and another mana, this gets Zur onto the battlefield. Its activation needs an input mana.
+Dimir Signet :: supplies blue and black together, complementing the white lands and spells in this list.
+Orzhov Signet :: supplies white and black together, leaving blue sources available for interaction when the mana permits.
+Thought Vessel :: early acceleration that later preserves a large Necropotence hand for Empyrial Armor. Its mana is colorless, so still check all three commander colors.
+Cavern of Souls :: choose Human to cover Zur and the other Humans in this list. Its colored mana is restricted to creatures of that type; it cannot pay for Auras or counters.
+Hall of the Bandit Lord :: can give a newly cast Zur haste, but enters tapped and charges three life for its mana. Develop it before the turn you need it.
+Sea of Clouds :: joins Morphic Pool and Vault of Champions as an untapped dual while you have at least two opponents. They enter tapped once the game becomes heads-up.
+Sink into Stupor :: an additional blue land when needed, or a three-mana answer to an opposing spell or nonland permanent. The land side can enter untapped for three life.
 
-# What to fetch, in rough order
-Mana value four or more is NOT fetchable. Moat, Archon of Sun's Grace and Approach of the Second Sun all have to be cast the hard way — a common misplay is attacking expecting Moat.
-Diplomatic Immunity :: protection first, always, if the table can kill Zur.
-Necropotence :: three mana, and it turns your life total into as many cards as you want. Zur finding this on turn five effectively ends the card-advantage game.
-Mystic Remora :: on an early attack, it draws more than anything else in the deck.
-Land Tax :: this deck is not land-hungry, but three basics a turn is fuel and deck-thinning for free.
-Ghostly Prison :: nobody attacks you profitably, which matters because Zur has to keep attacking.
-Grasp of Fate :: exiles a nonland permanent from EVERY opponent, on one fetch.
-Oubliette :: the cleanest answer to a commander — it phases out, so no death trigger, no exile trigger, nothing.
-Imprisoned in the Moon :: turns a commander, land or planeswalker into a colourless land it cannot recast.
-Darksteel Mutation :: two mana, turns a commander into a 0/1 Insect.
-Blind Obedience :: their creatures and artifacts arrive tapped, and extort drains on every spell.
-Aura of Silence :: taxes their artifacts and enchantments, and sacrifices to destroy one.
-Karmic Justice :: they cannot answer your enchantments without losing a permanent of their own.
-Luminarch Ascension :: with Ghostly Prison out you rarely lose life, so it turns on quickly and makes a 4/4 flier every turn.
+# Protect the attack and keep the Auras attached
+Lightning Greaves :: immediate haste and shroud with zero equip cost. Equip Wizard's Staff and any other desired Equipment first; moving Greaves off Zur later needs another legal creature to equip.
+Swiftfoot Boots :: haste and hexproof while preserving your ability to cast Auras targeting Zur. Unlike shroud, your own spells and abilities can still target him.
+Lavaspur Boots :: a cheap haste option with a small power boost. Ward one is only a tax, so do not treat it as complete removal protection.
+Diplomatic Immunity :: protects Zur from targeted effects and has shroud itself. You can still fetch Auras onto Zur, but cannot cast them targeting him or attach new Equipment with equip.
+Greater Auramancy :: gives other enchantments shroud and gives enchanted creatures shroud. Cast and equip deliberately before deploying it. It does not grant itself shroud unless another effect does so, and does not stop sweepers.
+Vanishing :: keep two blue mana available to phase Zur and his attached Auras and Equipment out of removal, exile sweepers, or sacrifice effects that would catch him. The ability does not target. Phasing him out during combat preserves the investment but ends his participation in that attack.
+Hyena Umbra :: adds first strike and absorbs one destruction event, preserving Zur and his other attachments. Umbra armor does not answer exile, sacrifice, or toughness reduced to zero.
+Kaya's Ghostform :: recovers Zur after death or exile if you leave him in that zone for the trigger to return him. Moving him to the command zone prevents that recovery. His old Auras still go away, and the returned Zur needs haste or a later turn to attack.
+Flawless Maneuver :: free while you control Zur and useful against destruction sweepers. Indestructible does not protect against exile, sacrifice, or enough negative toughness.
+Grand Abolisher :: shuts off opposing spells and activated abilities of artifacts, creatures and enchantments during your turn. Opposing triggered abilities and land abilities can still matter.
 
-# The Voltron kill
-Ethereal Armor :: +1/+1 for every enchantment you control, plus first strike. In this deck it is routinely +6/+6 or more, and it is fetchable.
-All That Glitters :: the same count, including artifacts.
-Empyrial Armor :: Zur can fetch this three-mana Aura directly onto himself before blockers, even through shroud. It adds +1/+1 for every card in your hand, turning Necropotence, Rhystic Study and Mystic Remora into commander damage.
-Daybreak Coronet :: +3/+3, first strike, vigilance and lifelink for two mana — but it needs another Aura already attached, so it is the second thing you fetch, never the first.
-Necropotence puts the purchased cards into your hand at your next end step, so paying life during combat does not immediately grow Empyrial Armor. Build the hand on the previous turn; Reliquary Tower lets you retain more than seven cards. With seven cards in hand, Empyrial Armor alone makes Zur an 8/11. Recount before damage if you cast spells or discard cards.
-Zur flies over Moat. Count his actual power and each opponent's accumulated commander damage before committing to a lethal attack; twenty-one combat damage from Zur eliminates that opponent.
+# Choose the right attack trigger
+Zur the Enchanter :: searches for an enchantment of mana value three or less and puts it directly onto the battlefield. This does not cast a spell, so it works through Rule of Law. An Aura entering this way does not target, but must still be legally attachable; protection and enchant restrictions still apply.
+Wizard's Staff :: costs two to cast and one to equip to Zur, a Wizard. While attached, it makes his attack ability trigger twice. Resolve those triggers separately: protection first and a draw engine second is a common line. It must already be attached when he attacks, and shroud blocks the equip ability.
+Choose protection if removal threatens Zur, a draw engine if your hand is running out, an answer if another player is about to win, and a damage Aura if it creates a useful clock. There is no compulsory first fetch. Moat is mana value four and cannot be found by Zur; Wizard's Staff is an artifact and also cannot be found by him.
+Rhystic Study :: the general-purpose engine when several opponents are casting spells. It helps find interaction while Zur spends subsequent attacks on defense or damage.
+Necropotence :: converts life into cards at your next end step and skips your draw step. Activate before that end step, keep enough life to survive, and plan the cards for later turns. Paying life in combat does not immediately grow Empyrial Armor.
+Entity Tracker :: draws when an enchantment enters under your control, including one fetched by Zur. This engine works with the commander's actual action. Its draw is mandatory, so watch your remaining library late in the game.
+Combat Research :: adds power and ward to legendary Zur and draws when he connects. With double strike, it can trigger in each combat-damage step; Wizard's Staff doubles each of these abilities granted to Zur as well.
+Black Market Connections :: choose the resources you can afford each first main phase. Treasure helps fund protection, cards replenish your hand, and a Shapeshifter can absorb an ordinary sacrifice effect. Choosing all modes costs six life; lifelink helps, but do not automatically take all three.
+Brainstorm :: puts Auras drawn into your hand back in the library for Zur to fetch. Cast it before the attack trigger resolves and keep Rule of Law's spell limit in mind.
+Copy Enchantment :: usually copies a useful draw engine, attack tax, or Greater Auramancy. Copying an Aura as it enters can also attach it without targeting. An extra Necropotence adds little because one already lets you activate repeatedly.
 
-# Making the enchantments count twice
-Archon of Sun's Grace :: a 2/2 flying lifelinking Pegasus for every enchantment that enters — which with Zur is one a turn, minimum.
-Grim Guardian :: each opponent loses a life for every enchantment that enters.
-Entity Tracker :: flash, and a card for every enchantment that enters.
-Copy Enchantment :: a second Necropotence, Moat, Ghostly Prison or Greater Auramancy.
-Estrid's Invocation :: the same, and it can re-enter each upkeep to reset a constellation trigger.
-Academy Rector :: when it dies, you may exile it to fetch any enchantment onto the battlefield, with no mana value limit. This can find Moat; it cannot find Approach of the Second Sun, which is a sorcery.
+# Make combat damage lethal
+Empyrial Armor :: turns the size of your existing hand into power and toughness. Seven cards make otherwise unmodified Zur an 8/11; ten cards make him an 11/14. Thought Vessel or Reliquary Tower lets you keep a larger hand through cleanup. Casting or discarding cards reduces the bonus immediately.
+All That Glitters :: counts both enchantments and artifacts, so the ten rocks and Equipment contribute to the same lethal attack. An artifact enchantment counts only once.
+Ethereal Armor :: scales with your enchantments and supplies first strike. Recount after every new enchantment, including itself; first strike and double strike do not create a third damage step.
+Twinblade Blessing :: gives double strike. Eleven power connecting in both damage steps deals twenty-two commander damage, enough to eliminate one opponent from zero. It can be fetched before blockers, or cast with flash if Zur can legally be targeted. Double strike gives no extra attack trigger.
+Steel of the Godhead :: Zur is both white and blue, so he gets +2/+2, lifelink, and cannot be blocked. This is the main route past flying blockers and the main way to repay life spent on cards.
+Unquestioned Authority :: another route past creature blockers, with an immediate card from its entry trigger. Protection from creatures does not strip the ordinary enchantment Auras or Equipment in this list.
+Daybreak Coronet :: adds +3/+3, vigilance and lifelink, but Zur must already have another Aura. If his last other Aura disappears, Coronet becomes illegally attached and goes to the graveyard. Multiple instances of lifelink do not multiply life gained.
+Track commander damage separately for each opponent. An eliminated player takes their cards out of the game, so reassess blockers, removal and resources before the next attack. Lifelink does not reduce commander damage already marked against someone.
 
-# Tutors and cards
-Idyllic Tutor :: any enchantment to hand, including the expensive ones Zur cannot reach.
-Open the Armory :: an Aura or Equipment.
-Beseech the Mirror :: bargain it and cast the tutored card free if it costs four or less.
-Necropotence :: as many cards as your life total allows.
-Esper Sentinel :: taxes their first noncreature spell each turn.
-Land Tax :: free basics and a thinner deck.
+# Stay alive while you work through three opponents
+Moat :: prevents creatures without flying from attacking anyone. Zur and Luminarch Ascension's Angels can still attack; opposing flyers can too. This is cast from hand, not fetched by Zur.
+Ghostly Prison :: makes each creature attacking you cost two mana. It discourages attacks but does not stop an opponent who can pay, and does not protect you from noncombat wins.
+Blind Obedience :: opposing creatures and artifacts enter tapped, slowing haste attackers, fresh blockers and many mana rocks. Extort requires an actual spell cast and an additional payment; Zur's fetched enchantments do not trigger it.
+Rule of Law :: limits every player, including you, to one spell each turn. Zur's triggers, Equipment activations and Angel creation remain available. Develop your rocks before deploying it, and do not spend your one spell on a cantrip if you need a counter later in the same turn. It cannot undo spells already on the stack.
+Solitary Confinement :: prevents damage to you and gives you shroud, but skips your draw step and requires a discard each upkeep. Establish Necropotence or another working engine first. Life loss, life payments and effects that say you lose the game still work. This is a defense you must maintain, not invulnerability.
+Luminarch Ascension :: the backup win if Zur is repeatedly removed. Once it has four quest counters, each two mana makes another flying 4/4, with no once-per-turn limit. An opponent's end step only adds a counter if you lost no life that turn; fetchlands, painlands, Talismans and Necropotence activations can spoil that condition even when no attack connects.
 
-# Interaction
-Mana Drain :: counter their answer, and the mana casts the next enchantment.
-Force of Negation :: free on their turn.
-Dovin's Veto :: uncounterable.
-Get Lost :: creature, enchantment or planeswalker at instant speed.
-Cyclonic Rift :: overloaded, the clear for a lethal Zur attack.
-Out of Time :: phases out every creature present, including Zur, until it leaves. Use it to reset a dangerous board before casting Zur, or accept losing your existing Zur for its duration; fetching it mid-attack removes him from combat too.
-Grand Abolisher :: nobody responds during your turn.
-Moat :: cast it, do not fetch it. Creatures without flying cannot attack at all, and Zur flies.
+# Answer the problem without disabling your own engine
+Grasp of Fate :: one fetched enchantment can exile a nonland permanent from each opponent. Its entry ability targets even though Zur's search ability does not; opposing hexproof can stop those targets. Removing Grasp returns the exiled permanents.
+Darksteel Mutation :: can be fetched onto a troublesome creature without targeting. The creature remains on the battlefield, so an opposing commander cannot simply choose the command zone, but its controller can still find ways to sacrifice it.
+Imprisoned in the Moon :: Zur can fetch this onto a creature, land or planeswalker without targeting it. The permanent stays on the battlefield as a colorless land with a colorless-mana ability and loses its other types and abilities. An opposing commander cannot simply move to the command zone, but its controller may still find a way to sacrifice or remove it.
+Oubliette :: phases out one creature and its attachments until Oubliette leaves. Its entry ability targets. It is useful against commanders and does not count as making the creature leave the battlefield.
+Sheltered by Ghosts :: combines removal of an opposing nonland permanent with lifelink, a power boost and ward for Zur. The removal trigger targets. If the Aura leaves, including because Zur dies, the exiled permanent returns; phasing is not leaving.
+Aura of Silence :: taxes opposing artifact and enchantment spells and can sacrifice itself for removal. Choose between preserving the tax and answering the immediate threat.
+Swords to Plowshares :: efficient creature exile when waiting for an attack is unsafe. Solitude supplies another answer that can be cast by pitching a white card when necessary.
+Mana Drain :: counters any spell, with delayed colorless mana for rocks, a commander recast, or other generic costs. The mana cannot pay Zur's three colored requirements.
+An Offer You Can't Refuse :: protects a key play or stops a noncreature win attempt for one blue mana. Its two Treasures are real resources for the opponent, so choose the exchange deliberately.
+Bilbo's Gambit :: returns a spell to its owner's hand, including a spell that cannot be countered. Promising the Treasure also prevents EVERY player, including you, from casting more spells that turn once it resolves. It needs a spell to target and does not remove other spells or abilities already on the stack.
+Dovin's Veto :: an uncounterable answer to a noncreature spell. Swan Song is a cheaper option for an instant, sorcery or enchantment, but gives the opponent a flying blocker.
+Cyclonic Rift :: its seven-mana overload clears opposing nonland permanents while preserving your board, opening a combat finish or buying a recovery turn.
+Toxic Deluge :: clears creatures with negative toughness, including indestructible ones. An enlarged Zur can survive a carefully chosen X, but Hyena Umbra and Flawless Maneuver do not save him if his toughness reaches zero.
+Out of Time :: a fetchable board reset that phases out every creature present, including Zur, until it leaves. Cast it before deploying Zur, or activate the Vanishing Aura for two blue in response to Out of Time's entry trigger. If Zur phases out first, that trigger misses him and he returns at your next untap while the other creatures remain phased out. Fetching this during an attack and then phasing Zur out ends his participation in that combat; plan it as a reset, not a lethal swing.
+Winds of Rath :: destroys unenchanted creatures while an Aura-covered Zur survives. Equipment alone does not qualify, and opponents' enchanted creatures survive too.
+Soul-Guide Lantern :: inexpensive graveyard interaction that can exile every opponent's graveyard at instant speed once on the battlefield. Its mass-exile mode preserves your own graveyard; drawing a card is a separate sacrifice mode.
+Replenish :: rebuilds enchantments lost to destruction or sacrificed, but cannot recover exiled cards. Have a legal creature available for the Auras. Daybreak Coronet cannot use another Aura entering at the same time to satisfy its attachment requirement.
+Necropotence exiles discarded cards from your graveyard. While it is on the battlefield, discarding enchantments during cleanup or to Solitary Confinement is not a reliable way to stock Replenish. Use Hall of Heliod's Generosity for enchantments that actually remain in the graveyard.
 
-# How you actually win
-Zur the Enchanter :: twenty-one commander damage in the air, behind a wall nobody can attack through.
-Approach of the Second Sun :: the backup, and Academy Rector is not how you get it — it must be CAST from hand, twice.
-Luminarch Ascension :: a 4/4 flier every turn once it is online.
-Archon of Sun's Grace :: a Pegasus per enchantment, and they all have lifelink.
-
-# What to keep in an opening hand
-Keep four lands and a rock, or three lands and Land Tax. Zur costs four and the deck does very little before he lands, so the priority is casting him on curve with a spare mana for protection.
-Attack even when the board is bad. The fetch happens on the attack trigger, before blockers, so an attack that gets chump-blocked still gives you a free enchantment. The only reason not to attack is a removal spell you cannot answer.
-Fetch protection before value against an open table. A Zur that lives to attack four more times is worth more than any single Necropotence.
-Daybreak Coronet :: remember it needs another Aura attached first. Fetch Ethereal Armor or Diplomatic Immunity on the earlier attack so the Coronet is legal on the later one.
-Empyrial Armor :: fetch it when your existing hand makes the attack threatening. A Necropotence fetched on this attack fills your hand at the end step, setting up Armor on a later attack.
+# Opening hands and sequencing
+Keep roughly three usable lands, a cheap rock, and interaction, haste, or an early draw engine. Check the actual white, blue and black sources; several utility lands plus a colorless rock can still fail to cast Zur. Two-land hands need a credible draw and mana plan. A hand of damage Auras without development is a mulligan.
+Develop mana, then land Zur with protection or haste when possible. Attach Wizard's Staff and other desired Equipment before shroud. On early attacks, stabilize the board and secure cards; then assemble a power Aura, evasion and double strike. Save two blue for Vanishing when a sweeper would otherwise erase several turns of investment.
+If Rule of Law is in play, choose your one spell per turn before spending it. Equip, activate Necropotence, create Angels, and fetch with Zur without consuming that spell. Under Solitary Confinement, verify that your next upkeep has a discard and your draw engine will still work.
+This list has three Game Changers: Necropotence, Rhystic Study and Cyclonic Rift. It contains no intended infinite combo, mass land denial, extra-turn chain, or paired spell lock. Its Bracket 3 plan is to establish resources and defenses before closing through combat; a strong draw is not a guarantee against three opponents' interaction.

@@ -19,7 +19,6 @@
 1 Deflecting Swat
 1 Dragon Fodder
 1 Fellwar Stone
-1 Fountainport
 1 Gamble
 1 Goblin Bombardment
 1 Goblin Chieftain
@@ -73,6 +72,7 @@
 1 Swiftfoot Boots
 1 Thornbite Staff
 1 Thousand-Year Elixir
+1 Three Tree City
 1 Torch Courier
 1 Umbral Mantle
 1 Vandalblast

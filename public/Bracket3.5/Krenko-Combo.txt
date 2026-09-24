@@ -19,6 +19,7 @@
 1 Deflecting Swat
 1 Dragon Fodder
 1 Fellwar Stone
+1 Fountainport
 1 Gamble
 1 Goblin Bombardment
 1 Goblin Chieftain
@@ -59,7 +60,6 @@
 1 Pashalik Mons
 1 Purphoros, God of the Forge
 1 Pyroblast
-1 Ramunap Ruins
 1 Red Elemental Blast
 1 Ruby Medallion
 1 Shared Animosity

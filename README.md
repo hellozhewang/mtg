@@ -405,6 +405,21 @@ typing an author filters the deck cards the same way typing a commander does.
 ./scripts/build_site.py --out /tmp/x # build elsewhere to look before publishing
 ```
 
+For the local catalog including private decks, run:
+
+```bash
+./scripts/start_private_server.py
+```
+
+It serves the generated `docs/private/` catalog at **http://localhost:5588/**,
+listening on `0.0.0.0:5588` so other devices on your local network can use
+`http://<server-ip>:5588/`. The server runs in the background and keeps running
+after the terminal closes. Repeated starts reuse an existing server serving the
+same catalog; an unrelated service on port 5588 is left alone. Logs and the server
+PID are stored under `private/server/`. Run `build_site.py` after deck changes;
+the server serves the updated files without restarting. This does not install a
+login or reboot service.
+
 Data comes from the decks; **markup, CSS and JS come from `frontend/`**, so a
 design change never means editing Python. The templating is two mechanisms and no
 dependency: `{{TOKEN}}` substitution, and `<template data-part="tile">` fragments

@@ -1,0 +1,103 @@
+Gishath does not cast anything. When it connects, it reveals one card per point of damage and puts every Dinosaur among them straight onto the battlefield. Every extra point of damage is another card revealed — so DOUBLE STRIKE on Gishath means two separate reveals, and a second creature carrying Gishath's trigger means two more. Nothing it puts in was cast, which matters for exactly one card here: Zacama only untaps your lands when it is cast.
+
+# The commander
+Gishath, Sun's Avatar :: 7/6 vigilance, trample and haste for eight. It attacks the turn it lands, it stays back as a blocker, and with 28 Dinosaurs in the ninety-nine a seven-card reveal averages two free ones.
+Devil Dinosaur :: other Dinosaurs get +1/+1 and HEXPROOF — and Gishath is a Dinosaur. Four mana makes your commander untargetable and pushes its hit to eight cards.
+Regal Imperiosaur :: the second anthem, three mana for a 5/4. With both out Gishath hits for nine and reveals nine cards.
+Sunfrill Imitator :: when it attacks, it becomes a copy of another Dinosaur you control — point it at Gishath and you have a second 7/6 trampler with the same reveal trigger. Its name stays Sunfrill Imitator, so the legend rule never applies. Three mana for a second Gishath every combat.
+Lightning Greaves :: shroud for the turn you cannot afford to lose Gishath to a removal spell.
+Cavern of Souls :: name Dinosaur and Gishath cannot be countered.
+Rhythm of the Wild :: no creature spell of yours can be countered, and every nontoken creature enters with haste or a counter.
+
+# Double strike is two reveals
+Gishath's trigger fires in every combat damage step where it damages a player, and first-strike damage and regular damage are two steps. The first reveal resolves before the second damage step.
+Goring Ceratops :: when it attacks, every other creature you control gains double strike — so Ceratops has to be attacking alongside Gishath. Revealing it mid-combat is too late for this combat.
+Boros Charm :: two mana for double strike on Gishath at instant speed, after blockers are declared.
+Akroma's Will :: with your commander out you take both halves — flying and double strike for two reveals, plus indestructible and protection from every colour. Coloured creatures cannot block it; colourless ones still can.
+
+# Making sure it connects
+Rogue's Passage :: {4} and Gishath cannot be blocked. The simplest way to guarantee the trigger.
+Triceraton Commander :: when it attacks, every other Dinosaur you control gets +1/+1 and FLYING. Revealed with X of zero it makes no tokens, but the attack trigger does not care about X — next turn it makes the whole team fly.
+Ghalta the Unstoppable :: costs {X} less where X is your biggest creature's power, so with Gishath out it is {1}{G}. Every other creature you control gains trample.
+Garruk's Uprising :: trample for the whole team, and a card for every creature with power four or more that enters — nearly every Dinosaur here.
+
+# Mana after combat
+Hunting Velociraptor :: once any Dinosaur deals combat damage to a player, every Dinosaur spell you cast that turn has prowl {2}{R}. Gishath connects, and in your second main phase Polyraptor, Apex Altisaur and Etali each cost three.
+Selvala, Heart of the Wilds :: {G} and a tap for X mana in any colours, where X is your biggest creature's power — seven with Gishath out. Its draw clause is symmetrical: whoever plays the new biggest creature may draw.
+
+# The combo — this is why the deck is Bracket 3.5
+Polyraptor :: whenever it is dealt damage, it makes a token copy of itself. Every copy has the same ability.
+Forerunner of the Empire :: whenever a Dinosaur enters, it MAY deal 1 damage to every creature. Each ping makes every Polyraptor copy itself, and each copy entering lets Forerunner ping again. Forerunner also puts a Dinosaur from your library on top when it enters, so it finds Polyraptor on its own.
+Unprotected, Forerunner is a 1/3 and dies to its own third ping. The best line gives exactly eight Polyraptors: when the second ping produces two copies, let the first copy enter, DECLINE the ping it offers, let the second copy enter, then take the third ping with four Polyraptors on the battlefield.
+Make Forerunner indestructible before you start and there is no ceiling: Heroic Intervention, Boros Charm's second mode, or cycling Agonasaur Rex onto it. Akroma's Will also works, but only if it resolves BEFORE Polyraptor enters — its protection from red would stop Forerunner's pings reaching anything already on the battlefield.
+Stop an unbounded loop well before your library runs low. Vaultborn Tyrant and Garruk's Uprising draw a card for every Polyraptor copy, and those draws are not optional.
+Regisaur Alpha :: every other Dinosaur has haste, so the army attacks the turn it is made. Eight hasty 5/5s is forty damage on an open board — one player dead, often two with the anthems, but not automatically the table.
+Terror of the Peaks :: each Polyraptor entering deals its power to any target, so the eight-Polyraptor line is forty damage before combat. Not a Dinosaur, but the best payoff in the deck.
+Wrathful Raptors :: whenever a Dinosaur you control is dealt damage, it deals that much to a target that isn't a Dinosaur. Every ping becomes a burn spell per Dinosaur. It CANNOT target Polyraptor, so it is a payoff, never a way to start the loop.
+Blasphemous Act :: thirteen damage to every creature, usually for one or two mana. With Wrathful Raptors out, every Dinosaur you control then deals thirteen damage to a target of your choice — four Dinosaurs is fifty-two damage to spread across the table. Each Polyraptor also leaves a fresh copy behind. Without Wrathful it is a reset that costs you your board too.
+Marauding Raptor is deliberately not in this deck. Its Polyraptor loop is mandatory, so it draws the game unless someone breaks it or a payoff is already out, and its entry damage kills your own mana creatures.
+
+# What the reveal wants to hit
+Etali, Primal Conqueror :: each player exiles cards until they hit a nonland, and you cast every one of them free. Put in by Gishath, it still triggers.
+Apex Altisaur :: fights a creature when it enters, and fights again every time it is dealt damage. On a single reveal it usually clears most of an opponent's board — and with Wrathful Raptors out, every fight also burns a face.
+Trumpeting Carnosaur :: discover 5 on entry — another free spell on top of the free creature.
+Earthshaker Dreadmaw :: a card for every other Dinosaur you control. Off a Gishath hit that is often five or more.
+Vaultborn Tyrant :: three life and a card whenever it or any creature with power four or more enters, and it comes back as an artifact copy the first time it dies.
+Pantlaza, Sun-Favored :: once per turn, a Dinosaur entering discovers X, where X is its toughness. A Gishath hit is a free spell as well as free creatures.
+Ghalta, Stampede Tyrant :: puts every creature card in your hand onto the battlefield when it enters.
+Etali, Primal Storm :: casts a free spell off every player's library each time it attacks.
+Zacama, Primal Calamity :: untaps all your lands only if it was CAST — from hand, or free off Etali. Revealed by Gishath it skips the untap, but its three abilities still work: three damage to a creature, destroy an artifact or enchantment, or three life.
+
+# Anthems and the alpha strike
+Dinosaurs on a Spaceship :: other Dinosaurs get +1/+1, vigilance and trample. Suspend it on turn five and it also makes a 2/2 flying, hasty Dinosaur on each of the next four upkeeps.
+Finale of Devastation :: a creature tutor straight onto the battlefield — and at X of ten or more, every creature you control gets +X/+X and haste. It searches your graveyard too.
+Agonasaur Rex :: an 8/8 trampler for five, or cycle it for a card and make any creature indestructible with two +1/+1 counters.
+
+# Getting to eight mana
+Birds of Paradise :: turn-one fixing into a turn-two three-drop.
+Llanowar Elves :: the green half.
+Elvish Mystic :: the second copy.
+Kinjalli's Caller :: every Dinosaur costs one less, and it is a 0/3 so it survives the Forerunner loop's first two pings.
+Otepec Huntmaster :: the second Dinosaur discount, and it taps to give any Dinosaur haste. With both reducers out, Gishath costs six.
+Hulking Raptor :: two green mana at the beginning of the first main phase of each of your turns, on a warded 5/3.
+Topiary Stomper :: a basic land on entry, and a 4/4 once you have seven lands.
+Ranging Raptors :: a basic land every time it is dealt damage — including every Forerunner ping.
+Regal Behemoth :: makes you the monarch, and while you are, every land taps for an extra mana.
+Gaea's Cradle :: a green mana for every creature you control. On this deck's board that is a whole second turn.
+Sol Ring :: the fastest start there is.
+Arcane Signet :: fixing all three colours.
+Nature's Lore :: an untapped Forest-typed dual, which this mana base has plenty of.
+Three Visits :: the second copy.
+Farseek :: fetches a shockland or original dual.
+Cultivate :: a land now and a land in hand.
+
+# Cards
+The Great Henge :: costs {X} less for your biggest creature's power — with Gishath out it is two green mana. Then every NONTOKEN creature that enters under your control gets a counter and draws you a card. Polyraptor copies are tokens and do not.
+Guardian Project :: a card whenever a nontoken creature with a new name enters. Every Dinosaur in the deck has a different name.
+Sylvan Library :: with this much life gain from Vaultborn Tyrant, paying four life for extra cards is usually right.
+Bonehoard Dracosaur :: two extra cards to play every upkeep, plus a 3/1 Dinosaur if either was a land and a Treasure if either was a nonland — at most one of each.
+Ripjaw Raptor :: a card every time it is dealt damage — every Forerunner ping, every blocked attack.
+Curious Altisaur :: a card for every Dinosaur that deals combat damage to a player.
+Mosswort Bridge :: once your creatures total ten power — Gishath plus almost anything — it plays the hidden card free.
+
+# Removal and protection
+Swords to Plowshares :: one mana, exile.
+Path to Exile :: the second copy.
+Chaos Warp :: the answer to an enchantment or planeswalker.
+Beast Within :: any permanent, at instant speed.
+Generous Gift :: the white copy.
+Eiganjo, Seat of the Empire :: a land that becomes four damage to an attacker, and costs less for every legend you control.
+Boseiju, Who Endures :: a land that destroys an artifact, enchantment or nonbasic land.
+Teferi's Protection :: phase out through a wrath, a combo kill or a lethal attack.
+Heroic Intervention :: hexproof and indestructible for everything — including Forerunner, mid-combo.
+Deflecting Swat :: free with your commander out, and it turns their removal back at them.
+Worldly Tutor :: any creature to the top — Forerunner of the Empire or Polyraptor for the combo, or whatever the board needs.
+Eladamri's Call :: the same, straight to hand, at instant speed.
+
+# What to keep in an opening hand
+Keep a mana creature or a land-fetch spell and at least three lands. Gishath costs eight; the deck is at its best when it lands on turn four or five, and every card in the opener should be pulling toward that.
+Cast Gishath before your other big threats. It is the engine — one connection puts free Dinosaurs in, which beats hard-casting one of them, and Hunting Velociraptor makes the rest cheap afterwards.
+Play Devil Dinosaur or Rhythm of the Wild before Gishath if you can. Hexproof and "can't be countered" answer the two ways an eight-drop commander gets stopped.
+Attack with Sunfrill Imitator alongside Gishath whenever you can. Two creatures carrying the reveal trigger is two reveals per damage step — four with double strike.
+Going for the combo: Forerunner first, indestructibility up, then Polyraptor. Without protection, still go — eight Polyraptors with Terror of the Peaks or Wrathful Raptors out is usually enough.
+Blasphemous Act is two different cards. With Wrathful Raptors out it is the kill; without it, only cast it when you are losing the board anyway.

@@ -1,0 +1,100 @@
+1 Hearthhull, the Worldseed
+1 Abrupt Decay
+1 Aftermath Analyst
+1 Amulet of Vigor
+1 Ancient Greenwarden
+1 Arcane Signet
+1 Arid Mesa
+1 Assassin's Trophy
+1 Azusa, Lost but Seeking
+1 Badlands
+1 Bayou
+1 Beast Within
+1 Blasphemous Act
+1 Blood Crypt
+1 Bloodstained Mire
+1 Bojuka Bog
+1 Boseiju, Who Endures
+1 Command Tower
+1 Commercial District
+1 Crop Rotation
+1 Crucible of Worlds
+1 Deadly Rollick
+1 Deflecting Swat
+1 Dryad Arbor
+1 Dryad of the Ilysian Grove
+1 Elvish Reclaimer
+1 Entish Restoration
+1 Exotic Orchard
+1 Exploration
+1 Fabled Passage
+1 Farseek
+1 Field of the Dead
+1 Forest
+1 Green Sun's Zenith
+1 Harrow
+1 Heroic Intervention
+1 Hexing Squelcher
+1 Horizon Explorer
+1 Icetill Explorer
+1 Korvold, Fae-Cursed King
+1 Life from the Loam
+1 Lotus Cobra
+1 Lotus Field
+1 Lumra, Bellow of the Woods
+1 Marsh Flats
+1 Mayhem Devil
+1 Mightform Harmonizer
+1 Misty Rainforest
+1 Mole Man, Moloid Master
+1 Moraug, Fury of Akoum
+1 Mountain
+1 Nature's Lore
+1 Nissa, Resurgent Animist
+1 Oracle of Mul Daya
+1 Overgrown Tomb
+1 Polluted Delta
+1 Ramunap Excavator
+1 Scalding Tarn
+1 Scapeshift
+1 Scute Swarm
+1 Seedborn Muse
+1 Shifting Woodland
+1 Six
+1 Snow-Covered Forest
+1 Snow-Covered Mountain
+1 Snow-Covered Swamp
+1 Sol Ring
+1 Soul of Windgrace
+1 Spelunking
+1 Spire Garden
+1 Splendid Reclamation
+1 Squandered Resources
+1 Stomping Ground
+1 Swamp
+1 Sylvan Library
+1 Sylvan Safekeeper
+1 Taiga
+1 Takenuma, Abandoned Mire
+1 Tamiyo's Safekeeping
+1 Tannuk, Memorial Ensign
+1 Tear Asunder
+1 The Gitrog Monster
+1 Three Visits
+1 Tireless Provisioner
+1 Titania, Protector of Argoth
+1 Toxic Deluge
+1 Underground Mortuary
+1 Undergrowth Stadium
+1 Urza's Saga
+1 Valakut Exploration
+1 Valakut, the Molten Pinnacle
+1 Vandalblast
+1 Veil of Summer
+1 Verdant Catacombs
+1 Windswept Heath
+1 Wooded Foothills
+1 Worldsoul's Rage
+1 Yavimaya, Cradle of Growth
+1 Ziatora's Proving Ground
+1 Zuran Orb

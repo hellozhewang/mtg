@@ -11,24 +11,25 @@
 1 Bulk Up
 1 Burning Earth
 1 Champion's Helm
-1 Chandra, Torch of Defiance
 1 Chandra's Incinerator
 1 Chaos Warp
 1 Commander's Plate
 1 Coruscation Mage
 1 Deflecting Swat
+1 Electro, Assaulting Battery
 1 End the Festivities
 1 Faithless Looting
+1 Fellwar Stone
 1 Fiery Confluence
-1 Fire Diamond
 1 Firebrand Archer
 1 Gamble
 1 Gandalf, Goblins' Bane
 1 Gleeful Arsonist
-1 Heraldic Banner
 1 Hexing Squelcher
 1 Jeska's Will
 1 Kessig Flamebreather
+1 Light Up the Stage
+1 Liquimetal Torque
 1 Longshot, Rebel Bowman
 1 Manabarbs
 1 Mind Stone
@@ -65,7 +66,6 @@
 1 Valakut Awakening
 1 Valakut Exploration
 1 Vandalblast
-1 Virtue of Courage
 1 War Room
 1 Weftstalker Ardent
 1 Wheel of Fortune

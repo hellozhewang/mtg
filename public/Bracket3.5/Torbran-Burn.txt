@@ -1,0 +1,73 @@
+1 Torbran, Thane of Red Fell
+1 Abrade
+1 Arcane Signet
+1 Arcbond
+1 Ashling the Pilgrim
+1 Birgi, God of Storytelling
+1 Blasphemous Act
+1 Brash Taunter
+1 Castle Embereth
+1 Chandra, Torch of Defiance
+1 Chaos Warp
+1 Deflecting Swat
+1 Descent into Avernus
+1 Dualcaster Mage
+1 Earthquake
+1 Faithless Looting
+1 Fated Firepower
+1 Fellwar Stone
+1 Fiendish Duo
+1 Fiery Confluence
+1 Flame Rift
+1 Gamble
+1 Goblin Bombardment
+1 Goblin Chainwhirler
+1 Goblin Matron
+1 Guttersnipe
+1 Hall of the Bandit Lord
+1 Heartless Hidetsugu
+1 Heat Shimmer
+1 Impact Tremors
+1 Imperial Recruiter
+1 Jeska's Will
+1 Kiki-Jiki, Mirror Breaker
+1 Light Up the Stage
+1 Lightning Bolt
+1 Lightning Greaves
+1 Manabarbs
+1 Mechanized Warfare
+1 Mind Stone
+28 Mountain
+1 Neheb, the Eternal
+1 Nykthos, Shrine to Nyx
+1 Ojer Axonil, Deepest Might
+1 Price of Progress
+1 Purphoros, God of the Forge
+1 Pyroblast
+1 Pyrohemia
+1 Razorkin Needlehead
+1 Roiling Vortex
+1 Rolling Earthquake
+1 Ruby Medallion
+1 Seething Song
+1 Slagstorm
+1 Sokenzan, Crucible of Defiance
+1 Sol Ring
+1 Solphim, Mayhem Dominus
+1 Sulfuric Vortex
+1 Swiftfoot Boots
+1 Terror of the Peaks
+1 The One Ring
+1 Themberchaud
+1 Thor, Asgard's Avenger
+1 Twinflame
+1 Twinflame Tyrant
+1 Valakut Awakening
+1 Valakut, the Molten Pinnacle
+1 Vandalblast
+1 Volcanic Fallout
+1 War Room
+1 Warstorm Surge
+1 Wheel of Fortune
+1 Wheel of Misfortune
+1 Zealous Conscripts

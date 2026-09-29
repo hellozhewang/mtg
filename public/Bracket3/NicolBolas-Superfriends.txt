@@ -1,0 +1,99 @@
+1 Nicol Bolas
+1 Arcane Denial
+1 Arcane Signet
+1 Archenemy's Charm
+1 Arid Mesa
+1 Badlands
+1 Blazemire Verge
+1 Blood Crypt
+1 Bloodstained Mire
+1 Bolas's Citadel
+1 Chromatic Lantern
+1 City of Brass
+1 Coalition Relic
+1 Command Beacon
+1 Command the Dreadhorde
+1 Command Tower
+1 Commence the Endgame
+1 Contagion Clasp
+1 Counterspell
+1 Cruel Ultimatum
+1 Crux of Fate
+1 Cyclonic Rift
+1 Damnation
+1 Dark Intimations
+1 Deepglow Skate
+1 Deliver Unto Evil
+1 Dimir Signet
+1 Disciple of Bolas
+1 Dreadhorde Invasion
+1 Enter the God-Eternals
+1 Exotic Orchard
+1 Feed the Swarm
+1 Fellwar Stone
+1 Flooded Strand
+1 Flux Channeler
+1 Gleaming Overseer
+1 Gloomlake Verge
+1 Hour of Devastation
+1 In Bolas's Clutches
+1 Interplanar Beacon
+2 Island
+1 Izzet Signet
+1 Karn's Bastion
+1 Lazotep Plating
+1 Liliana, Death's Majesty
+1 Luxury Suite
+1 Mana Confluence
+1 Marsh Flats
+1 Misty Rainforest
+1 Morphic Pool
+1 Mountain
+1 Nicol Bolas, Dragon-God
+1 Nicol Bolas, God-Pharaoh
+1 Nicol Bolas, Planeswalker
+1 Nicol Bolas, the Deceiver
+1 Nicol Bolas, the Ravager
+1 Night's Whisper
+1 Polluted Delta
+1 Rakdos Signet
+1 Raucous Theater
+1 Reflecting Pool
+1 Rhystic Study
+1 Ripples of Potential
+1 Sarkhan the Mad
+1 Scalding Tarn
+1 Slave of Bolas
+1 Sol Ring
+1 Soul Diviner
+1 Spark Double
+1 Steam Vents
+1 Sunken Ruins
+1 Swamp
+1 Swan Song
+1 Talisman of Creativity
+1 Talisman of Dominance
+1 Talisman of Indulgence
+1 Tezzeret, Agent of Bolas
+1 Tezzeret, Master of the Bridge
+1 Tezzeret's Gambit
+1 The Chain Veil
+1 The Elderspell
+1 The Eldest Reborn
+1 The Locust God
+1 The Scarab God
+1 The Scorpion God
+1 Thundering Falls
+1 Torment of Hailfire
+1 Training Center
+1 Undercity Sewers
+1 Underground Sea
+1 Urborg, Tomb of Yawgmoth
+1 Verdant Catacombs
+1 Visage of Bolas
+1 Vizier of the Scorpion
+1 Volcanic Island
+1 Watery Grave
+1 Widespread Brutality
+1 Wooded Foothills
+1 Xander's Lounge

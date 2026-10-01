@@ -54,38 +54,59 @@
     var rows = toArray(document.querySelectorAll('.card'));
     var items = tiles.length ? tiles : rows;
     if (!items.length) return;
+    var strategy = document.querySelector('.strategy-filter');
+    var clear = document.querySelector('.clear-filters');
+    var results = document.querySelector('.catalog-results');
 
     items.forEach(function (el) {
       el.setAttribute('data-key', fold(el.dataset.search || el.dataset.name || ''));
     });
 
-    var sections = toArray(document.querySelectorAll('main section'));
+    var sections = toArray(document.querySelectorAll(tiles.length
+      ? '.bracket-group, .strategy-group' : '.cards .cat'));
     var empty = document.createElement('p');
     empty.className = 'nomatch';
     (document.querySelector('main') || document.body).appendChild(empty);
 
     function apply() {
-      var q = fold(input.value);
+      var q = fold(input.value).trim();
+      var theme = strategy ? strategy.value : '';
       var shown = 0;
       items.forEach(function (el) {
-        var hit = !q || el.getAttribute('data-key').indexOf(q) !== -1;
+        var hit = (!q || el.getAttribute('data-key').indexOf(q) !== -1)
+          && (!theme || (el.dataset.themes || '').split(' ').indexOf(theme) !== -1);
         el.classList.toggle('is-filtered', !hit);
         if (hit) shown++;
       });
       // Hide a section once every child is gone, so the page does not turn into
       // a column of empty headings.
       sections.forEach(function (sec) {
-        sec.classList.toggle('is-filtered',
-          !sec.querySelector('.tile:not(.is-filtered), .card:not(.is-filtered)'));
+        var count = sec.querySelectorAll('.tile:not(.is-filtered), .card:not(.is-filtered)').length;
+        sec.classList.toggle('is-filtered', !count);
+        var label = sec.querySelector('[data-section-count]');
+        if (label) label.textContent = count;
       });
-      empty.textContent = 'Nothing matches “' + input.value + '”.';
-      empty.classList.toggle('on', Boolean(q) && !shown);
+      empty.textContent = tiles.length ? 'No decks match these filters.'
+        : 'Nothing matches “' + input.value + '”.';
+      empty.classList.toggle('on', !shown);
+      if (results) results.textContent = (q || theme ? shown + ' of ' : '')
+        + items.length + ' decks';
+      if (clear) clear.hidden = !q && !theme;
     }
 
     input.addEventListener('input', apply);
+    if (strategy) strategy.addEventListener('change', apply);
+    if (clear) clear.addEventListener('click', function () {
+      input.value = '';
+      if (strategy) strategy.value = '';
+      apply();
+      input.focus();
+    });
     // `/` focuses the box, Escape clears it — the two shortcuts people try.
     document.addEventListener('keydown', function (ev) {
-      if (ev.key === '/' && document.activeElement !== input) {
+      var target = ev.target;
+      var editing = target && (target.matches('input, textarea, select') || target.isContentEditable);
+      if (ev.key === '/' && !editing) {
         ev.preventDefault();
         input.focus();
         input.select();
@@ -95,6 +116,7 @@
         input.blur();
       }
     });
+    apply();
   }
 
   /* ---- tooltip placement ------------------------------------------------ */

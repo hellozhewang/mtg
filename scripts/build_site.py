@@ -78,6 +78,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import deckfile
 import deckguide
+import deckthemes
 from deckmeta import DeckAuthorStore
 import frontend
 import toollog
@@ -246,7 +247,8 @@ class DeckInfo:
 
     def __init__(self, path: Path, root: Path, q: CardQuery,
                  authors: dict[str, str], private: bool = False,
-                 created: int = 0):
+                 created: int = 0,
+                 theme_assignments: dict[str, tuple[str, ...]] | None = None):
         self.path = path
         self.created = created
         self.created_label = (datetime.fromtimestamp(created, timezone.utc)
@@ -270,6 +272,7 @@ class DeckInfo:
             self.bracket = "Unsorted"
         self.label = bracket_label(self.bracket)
         self.stem = path.stem
+        self.themes = deckthemes.classify(self.stem, theme_assignments or {})
         # Private pages live under their own path segment so a private deck and a
         # public one with the same bracket and name cannot resolve to one file and
         # silently overwrite each other in the output.
@@ -363,17 +366,14 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
                  repo: str, mana: Mana,
                  available_images: set[str] | None = None) -> str:
     index, layout = tpl["index"], tpl["layout"]
-    sections, bracket, tiles = [], None, []
-
-    def flush() -> None:
-        sections.append(index.part("section").render(
-            BRACKET=e(bracket_label(bracket)), N=len(tiles), TILES="".join(tiles)))
+    grouped: dict[str, dict[str, list[str]]] = {}
+    theme_counts = dict.fromkeys(deckthemes.THEMES, 0)
 
     for d in decks:
-        if d.bracket != bracket:
-            if bracket is not None:
-                flush()
-            bracket, tiles = d.bracket, []
+        groups = grouped.setdefault(d.bracket, {})
+        tiles = groups.setdefault(d.themes[0], [])
+        for theme in d.themes:
+            theme_counts[theme] += 1
         art_name = image_file(d.art_card, 0, ART, d.art_url) if d.art_url else ""
         # A transient CDN failure must not leave a dangling <img> in the
         # published catalog. `None` preserves the standalone renderer's old
@@ -385,6 +385,9 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
                if has_art else '<span class="art-blank"></span>')
         tiles.append(index.part("tile").render(
             HREF=e(d.href), ART=art, NAME=e(d.stem), COMMANDER=e(d.commander),
+            THEMES=e(" ".join(d.themes)),
+            THEME_TAGS="".join(index.part("theme-tag").render(
+                LABEL=e(deckthemes.THEMES[t].label)) for t in d.themes),
             TAG=index.part("tag").render() if d.private else "",
             AUTHOR=(f'        <span class="tile-author">by {e(d.author)}</span>\n'
                     if d.author else ""),
@@ -400,18 +403,35 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
             SEARCH=e(" ".join(x for x in
                               (d.stem, d.commander, d.label, d.author,
                                d.created_label,
-                               "private" if d.private else "") if x)),
+                               "private" if d.private else "",
+                               deckthemes.search_text(d.themes),
+                               d.art_card.get("type_line", "")) if x)),
             PIPS=mana.pips(d.colours, ""), TOTAL=d.total, LANDS=d.lands,
             MV=f"{d.avg_mv:.2f}",
             GC=f"{len(d.gcs)}/{d.cap}" if d.cap is not None else str(len(d.gcs))))
-    if bracket is not None:
-        flush()
+    sections = []
+    for bracket, groups in sorted(grouped.items()):
+        strategies = []
+        for key, theme in deckthemes.THEMES.items():
+            if key not in groups:
+                continue
+            strategies.append(index.part("strategy").render(
+                THEME=e(key), LABEL=e(theme.label), DESCRIPTION=e(theme.description),
+                N=len(groups[key]), TILES="".join(groups[key])))
+        sections.append(index.part("section").render(
+            BRACKET=e(bracket_label(bracket)),
+            N=sum(len(tiles) for tiles in groups.values()),
+            STRATEGIES="".join(strategies)))
+    options = "".join(index.part("theme-option").render(
+        VALUE=e(key), LABEL=e(theme.label), N=theme_counts[key])
+        for key, theme in deckthemes.THEMES.items() if theme_counts[key])
 
     return mirror_tips(layout.render(
         TITLE="Commander decks", UP="", REPO=e(repo),
         DESCRIPTION=f"{len(decks)} Magic: the Gathering Commander decklists.",
         PICKER=picker(layout, decks, None, ""),
-        MAIN=index.render(COUNT=len(decks), SECTIONS="".join(sections))))
+        MAIN=index.render(COUNT=len(decks), OPTIONS=options,
+                          SECTIONS="".join(sections))))
 
 
 def render_guide(page: frontend.Template, d: "DeckInfo",
@@ -662,6 +682,11 @@ def plan(root: Path, out_dir: Path, repo: str, q: CardQuery,
     """
     tpl = frontend.load(workspace.frontend_dir())
     fdir = workspace.frontend_dir()
+    # Private classifications are loaded only for the local catalog. A matching
+    # filename does not make its public and private versions the same strategy.
+    assignments = {False: deckthemes.load(fdir / "deck-themes.json")}
+    if private_root:
+        assignments[True] = deckthemes.load(private_root / "deck-themes.json")
     with DeckAuthorStore(workspace.deck_metadata_db()) as store:
         authors = store.all()
     dates = creation_dates(root)
@@ -676,7 +701,8 @@ def plan(root: Path, out_dir: Path, repo: str, q: CardQuery,
         found += [(p, private_root, True)
                   for p in deckfile.discover(sorted(private_root.glob("Bracket*")))]
     decks = sorted((DeckInfo(p, base, q, authors, private=priv,
-                             created=created_at(p, dates))
+                             created=created_at(p, dates),
+                             theme_assignments=assignments[priv])
                     for p, base, priv in found),
                    # Newest first WITHIN each bracket. The bracket grouping is
                    # what makes the catalog browsable, so date sorts inside it

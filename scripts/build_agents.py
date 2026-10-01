@@ -195,6 +195,7 @@ One level up — readable and runnable, NOT writable:
 
     ../scripts/                 the toolchain. Run these; never try to edit them.
     ../README.md                deckbuilding rules, file format, tool reference
+    ../deck-catalog-strategies.md    catalog placement and supported theme IDs
     ../commander-brackets-and-rules.md    bracket rules AND the definitions of
                                 Game Changers, Mass Land Denial, 2-Card Combos
     ../.cache/cards.db          Scryfall cache the tools read and write
@@ -219,6 +220,10 @@ if a task genuinely needs it, say so and stop.
 bracket including recent printings; ignore card prices and build for power, not
 budget), the assumed 4-player free-for-all context, the decklist format, and the
 required validation checks. Read it once, before your first real deck task.
+
+Also read `../deck-catalog-strategies.md` when building a new deck or changing an
+existing deck's plan. Catalog placement is part of finishing the work: choose a
+primary strategy and supported secondary themes from the actual list and guide.
 
 ## Tools
 
@@ -365,6 +370,9 @@ cutting basics safe.
    deck's guide" below. The site renders it as a Guide tab, and a deck without one
    has no tab at all, so this is part of finishing a deck rather than a bonus. Do
    it after validating, so the guide describes the list you actually shipped.
+8. **Review catalog placement.** Follow `../deck-catalog-strategies.md` and
+   "Placing the deck in the catalog" below. Check the existing assignment or
+   filename fallback, and give an exact-ID handoff if the map needs updating.
 
 **Steps 1, 3 and 4 are a floor, not a ceiling — do not stop at what they return.**
 They surface what's *popular*; the user's actual request is often narrower and
@@ -384,7 +392,7 @@ already built; they cannot index what hasn't been tried. Go looking.
 outside this bot, where Codex gives a genuinely independent read. You are already
 a Codex `exec` session — invoking it here would be asking yourself to review your
 own output: no independent model, no outside context, and a multi-minute nested
-`codex exec` call spent on a report with no real signal. Stop at step 7. If the
+`codex exec` call spent on a report with no real signal. Stop at step 8. If the
 user wants a second opinion, that is theirs to run outside this session, the same
 way `../bot/` itself is off-limits to you for the same reason.
 
@@ -445,6 +453,37 @@ too. The reader is about to play the deck, not buy it.
 
 **Tuning an existing deck means updating its guide.** If you cut a card the guide
 names, fix the guide in the same turn. Say so in your reply.
+
+## Placing the deck in the catalog
+
+The catalog groups decks by bracket, then primary strategy. A deck appears once;
+secondary tags match the strategy filter and search. Read
+`../deck-catalog-strategies.md` for the selection rules, supported IDs, examples,
+and how changes and renames affect placement.
+
+Choose the defining plan from the finished list and guide. Add only secondary
+themes with a real supporting package. Krenko-Combo is `tribal`, `tokens`,
+`combo`, `aristocrats`; Cloud-Attacks spreads Equipment across a team and is not
+Voltron, while Cloud-Equipment builds one lethal attacker. Ordinary mana rocks
+do not make every deck an artifact deck, and one recovery spell does not make it
+reanimator. Revisit tags when the plan changes; routine swaps need not retag it.
+
+Keep the `Bracket*/Commander-Theme.txt` layout. Strategy folders are not used.
+The public map is `../frontend/deck-themes.json`, keyed by exact filename stem:
+the first ID is the primary group, followed by secondary IDs. If no entry exists,
+the last filename word is matched against `HINTS` in `../scripts/deckthemes.py`;
+unknown words appear under Other Strategies. Fallbacks assign only one group.
+Choose a meaningful recognized filename theme for a new deck when possible;
+do not rename an existing deck merely to alter a catalog label.
+
+You can READ the map and classifier but cannot WRITE them from this public-only
+sandbox. Complete the deck and guide work you can do here. If a new or changed
+explicit assignment is needed, state the exact filename stem and ordered IDs
+in your handoff and say that a full-workspace maintainer must save the map entry.
+Do not claim tags were saved because you mentioned them in the guide or reply:
+neither is parsed as metadata. Do not bypass the workspace boundary or request
+authorization the user has already given. The bot's normal publication uses
+the existing assignment or fallback until the explicit map is updated.
 
 ## Other non-negotiables
 

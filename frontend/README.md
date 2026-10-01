@@ -1,5 +1,10 @@
 # Catalog strategies
 
+Builders: follow the [deck placement guide](../deck-catalog-strategies.md) when
+creating a deck or changing its plan. It covers primary/secondary selection,
+every supported ID, examples, renames, private metadata, and the Discord
+builder's access limits. This file is the short implementation reference.
+
 The index groups decks by bracket, then by their primary Commander strategy.
 Each deck appears once. Its secondary themes remain visible on the tile and
 match the strategy dropdown and text search in both Tiles and List views.

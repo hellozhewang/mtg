@@ -39,6 +39,12 @@ file format, what each tool does, and the order to use them in.
 
 ## Core rules
 
+**Catalog placement is part of finishing a deck.** Follow
+[Placing decks in the Commander catalog](deck-catalog-strategies.md) when creating
+a deck or changing its plan: choose its primary strategy, add supported secondary
+themes, and update the appropriate public/private assignment map. Brackets remain
+the deck folders; strategies are metadata, not another directory hierarchy.
+
 ### 1. Follow the bracket rules
 
 Every deck targets a specific Commander bracket and must obey that bracket's
@@ -399,6 +405,11 @@ and a copy-the-decklist button. Decks created through Discord also show the
 Discord user who requested them; the catalog search matches those usernames, so
 typing an author filters the deck cards the same way typing a commander does.
 
+The catalog subdivides each bracket by primary Commander strategy. Each deck
+appears once, with secondary theme tags and a strategy filter in both Tiles and
+List views. See the [placement guide](deck-catalog-strategies.md) for theme IDs,
+assignment rules, and the public/private metadata locations.
+
 ```bash
 ./scripts/build_site.py              # rebuild docs/ from public/  -- PUBLISHED
 ./scripts/build_site.py --check      # exit 1 if docs/ is stale, write nothing
@@ -513,7 +524,7 @@ Two schema details worth knowing:
 
 Each tool above does one job. This is the order they compose in, for a human or
 Claude session working in an editor or terminal — the Discord bot follows the same
-sequence minus the last step (see `AGENTS.md`, and why below).
+sequence without launching a separate reviewing agent (see `AGENTS.md` below).
 
 1. **Seed the shell.** `new_deck.py "<commander>" -o public/Bracket3/<file>.txt`
    gets you a real, importable 100 cards in one command instead of typing 99 lines
@@ -552,7 +563,17 @@ sequence minus the last step (see `AGENTS.md`, and why below).
    resolves, colour identity, the GC cap, singleton. A deck that hasn't passed
    this is not done.
 
-7. **Second opinion.** `ask_codex.py`, with the validator's result stated as
+7. **Write the guide.** Update the matching `.guide` to explain the finished
+   deck's engines, actual wins, weaknesses, opening hands, and sequencing.
+
+8. **Review catalog placement.** Follow [the placement guide](deck-catalog-strategies.md).
+   Choose one primary strategy and supported secondary themes, then save the
+   ordered IDs in `frontend/deck-themes.json` for a public deck or
+   `private/deck-themes.json` for a private deck. A full-workspace publisher then
+   rebuilds and checks the catalog. The Discord builder follows the guide's
+   sandbox handoff instructions when it cannot write the mapping itself.
+
+9. **Independent second opinion, when appropriate.** `ask_codex.py`, with the validator's result stated as
    settled fact in the prompt so Codex doesn't re-derive it — never ask it to
    count Game Changers, that's a 10-minute web-search detour for something
    `validate_deck.py` answers in milliseconds. Ask only for what no script can
@@ -560,11 +581,12 @@ sequence minus the last step (see `AGENTS.md`, and why below).
    own symmetric stax pieces hurt you more than the table, and rules judgment
    calls (MLD, lockouts) as a check against step 2.
 
-**The Discord bot's own instructions (`AGENTS.md`) stop at step 6, deliberately.**
+**The Discord bot also writes the guide and reviews catalog placement. It does
+not run the independent-review command in step 9.**
 The bot's working session *is* a Codex `exec` process. Having it invoke
 `ask_codex.py` would be Codex asking Codex to review Codex's own output — no
 independent model, no outside context, and a second multi-minute `codex exec` call
-burned for a report with no real signal. Step 7 is only meaningful when it comes
+burned for a report with no real signal. Step 9 is only meaningful when it comes
 from a genuinely separate reviewing context, which the bot never has.
 
 | step | who checks it | can a script verify it? |
@@ -574,6 +596,7 @@ from a genuinely separate reviewing context, which the bot never has.
 | named mass land denial | `validate_deck.py` | yes |
 | unlisted land denial, two-card lockouts | you, against `commander-brackets-and-rules.md` | no |
 | does each card's trigger match the theme | you | no |
+| catalog primary strategy and secondary themes | you, against `deck-catalog-strategies.md` | IDs/format only; strategy fit needs review |
 | whether the deck can actually win | you, or `ask_codex.py` (human sessions only) | no |
 | which symmetric stax hurts you more than the table | you, or `ask_codex.py` (human sessions only) | no |
 

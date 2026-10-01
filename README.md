@@ -405,8 +405,9 @@ and a copy-the-decklist button. Decks created through Discord also show the
 Discord user who requested them; the catalog search matches those usernames, so
 typing an author filters the deck cards the same way typing a commander does.
 
-The catalog defaults to **List**, with decks under individually collapsible
+The catalog initially opens in **List**, with decks under individually collapsible
 brackets. Brackets start open; click their label to collapse or expand them.
+Your browser remembers the chosen view, layout, and collapsed sections when you return.
 Switch to **Categories** for collapsible Commander strategy groups containing
 bracket subsections. Rows / Tiles controls layout separately. Each deck appears
 once, with secondary theme tags and filters in both views.

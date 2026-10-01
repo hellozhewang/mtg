@@ -47,7 +47,7 @@
   // One box, two jobs: on the index it filters deck tiles (including by author),
   // on a deck page it filters card rows. Same code — only the elements carrying
   // the text differ.
-  function initSearch() {
+  function initSearch(catalogState) {
     var input = document.querySelector('.search');
     if (!input) return;
     var tiles = toArray(document.querySelectorAll('.tile'));
@@ -74,6 +74,7 @@
       var q = fold(input.value).trim();
       var theme = strategy ? strategy.value : '';
       var filtering = Boolean(q || theme);
+      if (catalogState) catalogState.setFiltering(filtering);
       if (filtering && !beforeFilter) {
         beforeFilter = disclosures.map(function (section) { return section.open; });
       }
@@ -101,6 +102,7 @@
       if (results) results.textContent = (q || theme ? shown + ' of ' : '')
         + items.length + ' decks';
       if (clear) clear.hidden = !q && !theme;
+      if (catalogState) catalogState.save();
     }
 
     input.addEventListener('input', apply);
@@ -155,6 +157,62 @@
     });
   }
 
+  /* ---- remembered catalog state ---------------------------------------- */
+  function initCatalogState() {
+    var wrap = document.querySelector('.decks');
+    if (!wrap) return null;
+    // / and /index.html share a key. Separate catalog directories (including
+    // public and private) keep independent preferences on the same origin.
+    var key = 'mtg-catalog-state:' + new URL('.', location.href).pathname;
+    var saved = {};
+    var legacyLayout = null;
+    try {
+      legacyLayout = localStorage.getItem('mtg-catalog-layout');
+      var parsed = JSON.parse(localStorage.getItem(key));
+      if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) saved = parsed;
+    } catch (e) { /* Storage can be blocked, or an old value may be invalid. */ }
+    var sections = toArray(wrap.querySelectorAll('details'));
+    var openStates = {};
+    var filtering = false;
+    function sectionKey(section) {
+      return section.classList.contains('strategy-group')
+        ? 'category:' + section.dataset.theme : 'bracket:' + section.dataset.bracket;
+    }
+    sections.forEach(function (section) {
+      var id = sectionKey(section);
+      var open = saved.sections && saved.sections[id];
+      if (typeof open === 'boolean') section.open = open;
+      openStates[id] = section.open;
+    });
+    function captureSections() {
+      sections.forEach(function (section) { openStates[sectionKey(section)] = section.open; });
+    }
+    function save() {
+      // Search expands matching sections temporarily. Persist the states from
+      // before filtering, including when a deck is opened from search results.
+      if (!filtering) captureSections();
+      try {
+        localStorage.setItem(key, JSON.stringify({
+          grouping: wrap.dataset.grouping, layout: wrap.dataset.view, sections: openStates
+        }));
+      } catch (e) { /* The catalog still works without persistent storage. */ }
+    }
+    sections.forEach(function (section) { section.addEventListener('toggle', save); });
+    // Capture even a last-second toggle before navigation, without relying on
+    // the asynchronously dispatched details toggle event.
+    window.addEventListener('pagehide', save);
+    return {
+      grouping: saved.grouping === 'categories' ? 'categories' : 'list',
+      layout: (saved.layout === 'list' || saved.layout === 'tiles') ? saved.layout
+        : (legacyLayout === 'tiles' ? 'tiles' : 'list'),
+      save: save,
+      setFiltering: function (active) {
+        if (active && !filtering) captureSections();
+        filtering = active;
+      }
+    };
+  }
+
   /* ---- catalog grouping and layout -------------------------------------- */
   // Move the same deck links between bracket and category containers. This
   // preserves filters, tooltips, and one link per deck when switching views.
@@ -162,7 +220,7 @@
   // `data-decks`, not `data-view`: the deck page's own toggle claims
   // `.btn[data-view]`, and one selector matching both sets of buttons is exactly
   // the bug convention 2 exists to prevent.
-  function initCatalogView(refreshSearch) {
+  function initCatalogView(refreshSearch, state) {
     var wrap = document.querySelector('.decks');
     var buttons = toArray(document.querySelectorAll('.btn[data-decks]'));
     if (!wrap || !buttons.length) return;
@@ -198,6 +256,7 @@
         btn.setAttribute('aria-pressed', String(btn.dataset.grouping === view));
       });
       if (refreshSearch) refreshSearch();
+      state.save();
     }
     groupingButtons.forEach(function (btn) {
       btn.addEventListener('click', function () { groupBy(btn.dataset.grouping); });
@@ -207,30 +266,21 @@
         toArray(categories.querySelectorAll('.strategy-group')).forEach(function (category) {
           category.open = btn.dataset.categories === 'expand';
         });
+        state.save();
       });
     });
-    // Every visit starts with the original bracket view. Section disclosure
-    // states survive switching views within the page, but do not change this default.
-    groupBy('list');
+    // New visitors start in List; returning visitors resume their chosen view.
+    groupBy(state.grouping);
 
     function apply(view) {
       wrap.dataset.view = view;
       buttons.forEach(function (btn) {
         btn.setAttribute('aria-pressed', String(btn.dataset.decks === view));
       });
-      store(view);
-    }
-    // Wrapped: localStorage throws outright in some browsers on file://, which
-    // is how a local build of this site gets opened.
-    function store(view) {
-      try { localStorage.setItem('mtg-catalog-layout', view); } catch (e) { /* fine */ }
-    }
-    function restore() {
-      try { return localStorage.getItem('mtg-catalog-layout'); } catch (e) { return null; }
+      state.save();
     }
 
-    var saved = restore();
-    if (saved === 'list' || saved === 'tiles') apply(saved);
+    apply(state.layout);
     buttons.forEach(function (btn) {
       btn.addEventListener('click', function () { apply(btn.dataset.decks); });
     });
@@ -476,9 +526,10 @@
 
   /* ---- start --------------------------------------------------------------- */
   initDeckPicker();
-  var refreshSearch = initSearch();
+  var catalogState = initCatalogState();
+  var refreshSearch = initSearch(catalogState);
   initTooltips();
-  initCatalogView(refreshSearch);
+  initCatalogView(refreshSearch, catalogState);
   var decks = document.querySelector('.decks');
   if (decks) initPreview(decks, true);
 

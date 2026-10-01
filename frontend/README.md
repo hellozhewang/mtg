@@ -5,17 +5,21 @@ creating a deck or changing its plan. It covers primary/secondary selection,
 every supported ID, examples, renames, private metadata, and the Discord
 builder's access limits. This file is the short implementation reference.
 
-The catalog opens in **List**, with individually collapsible brackets, open by
-default. Click a bracket label or use Enter/Space to fold its decks. **Categories**
-groups decks by primary Commander strategy, then bracket, with each category
+On the first visit, the catalog opens in **List**, with individually collapsible
+brackets, open by default. Click a bracket label or use Enter/Space to fold its
+decks. **Categories** groups decks by primary Commander strategy, then bracket, with each category
 collapsible. Expand all / Collapse all controls appear in Categories. The
 separate Rows / Tiles layout applies to either view.
 
 Switching views moves the same deck links between containers, preserving one
 tile per deck, bracket/date ordering, filters, and bracket/category collapse states.
-Each visit defaults to List; only the Rows/Tiles layout is saved. Search opens
-matching brackets and categories temporarily and restores their prior collapse states when
-filters are cleared. Secondary themes match filters and text search in both views.
+The browser remembers List/Categories, Rows/Tiles, and each bracket/category's
+collapsed state when returning from a deck or reloading. Preferences are stored
+per catalog directory, so public and private catalogs stay independent. New
+sections start open. If browser storage is unavailable, the controls still work
+within the page. Search opens matching brackets and categories temporarily and
+restores their prior collapse states when filters are cleared. Secondary themes
+match filters and text search in both views.
 Category headings, bracket headings, and strategy options have no deck-count
 suffixes. The overall result total remains beside the filters. Main category
 titles and List bracket headings share large, bold lavender text (1.5rem), in

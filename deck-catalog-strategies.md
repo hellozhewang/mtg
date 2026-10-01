@@ -4,8 +4,9 @@ Every new deck needs a deliberate catalog placement. Revisit it when tuning
 changes the plan. Read the finished decklist and guide before choosing labels:
 a commander, filename, or single card does not establish a strategy.
 
-The catalog defaults to **List**, showing decks under individually collapsible
+The catalog initially opens in **List**, showing decks under individually collapsible
 brackets. Brackets start open; click their label to collapse or expand them.
+The browser remembers the chosen view, layout, and collapsed sections on return.
 Switch to **Categories** to group by **primary strategy, then bracket**, with
 collapsible strategy sections and Expand all / Collapse all controls. For example,
 Stax / Prison contains its own Bracket 3, Bracket 3.5, and Bracket 4 subsections

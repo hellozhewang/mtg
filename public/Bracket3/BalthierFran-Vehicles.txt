@@ -1,11 +1,11 @@
 1 Balthier and Fran
 1 Abrade
 1 Ancient Tomb
-1 Arcane Signet
 1 Arid Mesa
 1 Bala Ged Recovery
 1 Beast Within
 1 Bello, Bard of the Brambles
+1 Berserk
 1 Birds of Paradise
 1 Blasphemous Act
 1 Bloodstained Mire
@@ -28,42 +28,42 @@
 1 Eternal Witness
 1 Exotic Orchard
 1 Faithless Looting
-1 Fervor
+1 Fanatic of Rhonas
 1 Fire-Lit Thicket
 4 Forest
 1 Garruk's Uprising
 1 Gastal Thrillroller
 1 Goblin Engineer
 1 Goblin Welder
+1 Grand Warlord Radha
 1 Grove of the Burnwillows
-1 Hedge Shredder
 1 Heroic Intervention
 1 Hoard Hauler
 1 Hunter's Insight
-1 Intrepid Stablemaster
 1 Jeska's Will
 1 Karplusan Forest
 1 Kessig Wolf Run
-1 Kona, Rescue Beastie
-1 Krosan Grip
 1 Llanowar Elves
+1 Lumbering Worldwagon
 1 Mana Confluence
-1 Mech Hangar
 1 Mighty Servant of Leuk-o
 1 Misty Rainforest
 2 Mountain
-1 N'Yami-Class Mother Ship
 1 Nature's Claim
 1 Nature's Lore
+1 Ouroboroid
 1 Overwhelming Stampede
-1 Oviya, Automech Artisan
 1 Pinnacle Monk
+1 Prismatic Vista
+1 Professional Face-Breaker
 1 Reaver Titan
 1 Reckless Impulse
 1 Return of the Wildspeaker
+1 Rising of the Day
 1 Rocketeer Boostbuggy
 1 Rockfall Vale
 1 Rootbound Crag
+1 Rover Blades
 1 Samut, Hazoret's Champion
 1 Scalding Tarn
 1 Shadowspear
@@ -77,20 +77,20 @@
 1 Stomping Ground
 1 Sylvan Library
 1 Taiga
-1 Talisman of Impulse
-1 Tamiyo's Safekeeping
 1 Temur Battle Rage
 1 The One Ring
 1 The Regalia
-1 The Thanos-Copter
 1 Thornspire Verge
 1 Three Visits
 1 Thunderous Velocipede
 1 Toski, Bearer of Secrets
+1 Tyvar's Stand
 1 Unlicensed Hearse
-1 Unnatural Growth
+1 Utopia Sprawl
 1 Vandalblast
 1 Verdant Catacombs
+1 Wild Growth
 1 Windswept Heath
 1 Wooded Foothills
+1 Xenagos, God of Revels
 1 Yavimaya, Cradle of Growth

@@ -1,8 +1,8 @@
 <main>
 <h1>Commander decks</h1>
 <p class="lede">Explore Commander decks by strategy, from prison and Voltron to
-tribal armies and spell engines. Decks are grouped by their main strategy within
-each bracket. Filter by any theme to find decks that combine several plans.</p>
+tribal armies and spell engines. Each strategy is divided into brackets.
+Filter by any theme to find decks that combine several plans.</p>
 <div class="catalog-controls">
   <label class="strategy-label" for="strategy-filter">Strategy or theme
     <select id="strategy-filter" class="strategy-filter">
@@ -20,18 +20,18 @@ each bracket. Filter by any theme to find decks that combine several plans.</p>
 {{SECTIONS}}</div>
 </main>
 
-<template data-part="section">
-<section class="bracket-group">
-  <h2>{{BRACKET}} <span class="count" data-section-count>{{N}}</span></h2>
-{{STRATEGIES}}</section>
-</template>
-
 <template data-part="strategy">
 <section class="strategy-group" data-theme="{{THEME}}">
   <div class="strategy-heading">
-    <h3>{{LABEL}} <span class="count" data-section-count>{{N}}</span></h3>
+    <h2>{{LABEL}} <span class="count" data-section-count>{{N}}</span></h2>
     <p>{{DESCRIPTION}}</p>
   </div>
+{{BRACKETS}}</section>
+</template>
+
+<template data-part="bracket">
+<section class="bracket-group" data-bracket="{{BRACKET_ID}}">
+  <h3>{{BRACKET}} <span class="count" data-section-count>{{N}}</span></h3>
   <div class="tiles">
 {{TILES}}  </div>
 </section>

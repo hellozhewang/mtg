@@ -405,7 +405,7 @@ and a copy-the-decklist button. Decks created through Discord also show the
 Discord user who requested them; the catalog search matches those usernames, so
 typing an author filters the deck cards the same way typing a commander does.
 
-The catalog subdivides each bracket by primary Commander strategy. Each deck
+The catalog groups decks by primary Commander strategy, then by bracket. Each deck
 appears once, with secondary theme tags and a strategy filter in both Tiles and
 List views. See the [placement guide](deck-catalog-strategies.md) for theme IDs,
 assignment rules, and the public/private metadata locations.

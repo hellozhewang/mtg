@@ -370,8 +370,8 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
     theme_counts = dict.fromkeys(deckthemes.THEMES, 0)
 
     for d in decks:
-        groups = grouped.setdefault(d.bracket, {})
-        tiles = groups.setdefault(d.themes[0], [])
+        groups = grouped.setdefault(d.themes[0], {})
+        tiles = groups.setdefault(d.bracket, [])
         for theme in d.themes:
             theme_counts[theme] += 1
         art_name = image_file(d.art_card, 0, ART, d.art_url) if d.art_url else ""
@@ -410,18 +410,18 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
             MV=f"{d.avg_mv:.2f}",
             GC=f"{len(d.gcs)}/{d.cap}" if d.cap is not None else str(len(d.gcs))))
     sections = []
-    for bracket, groups in sorted(grouped.items()):
-        strategies = []
-        for key, theme in deckthemes.THEMES.items():
-            if key not in groups:
-                continue
-            strategies.append(index.part("strategy").render(
-                THEME=e(key), LABEL=e(theme.label), DESCRIPTION=e(theme.description),
-                N=len(groups[key]), TILES="".join(groups[key])))
-        sections.append(index.part("section").render(
-            BRACKET=e(bracket_label(bracket)),
+    for key, theme in deckthemes.THEMES.items():
+        if key not in grouped:
+            continue
+        groups = grouped[key]
+        brackets = [index.part("bracket").render(
+            BRACKET=e(bracket_label(bracket)), BRACKET_ID=e(bracket),
+            N=len(tiles), TILES="".join(tiles))
+            for bracket, tiles in sorted(groups.items())]
+        sections.append(index.part("strategy").render(
+            THEME=e(key), LABEL=e(theme.label), DESCRIPTION=e(theme.description),
             N=sum(len(tiles) for tiles in groups.values()),
-            STRATEGIES="".join(strategies)))
+            BRACKETS="".join(brackets)))
     options = "".join(index.part("theme-option").render(
         VALUE=e(key), LABEL=e(theme.label), N=theme_counts[key])
         for key, theme in deckthemes.THEMES.items() if theme_counts[key])
@@ -704,10 +704,9 @@ def plan(root: Path, out_dir: Path, repo: str, q: CardQuery,
                              created=created_at(p, dates),
                              theme_assignments=assignments[priv])
                     for p, base, priv in found),
-                   # Newest first WITHIN each bracket. The bracket grouping is
-                   # what makes the catalog browsable, so date sorts inside it
-                   # rather than replacing it. Name breaks ties so two decks
-                   # added in the same commit still have a stable order.
+                   # Bracket order also drives the deck picker. The index groups
+                   # by strategy, then bracket, preserving newest-first order
+                   # within each subgroup. Name breaks ties deterministically.
                    key=lambda d: (d.bracket, -d.created, d.stem.lower()))
     mana = Mana(sym.uris())
     image_files = collect_images(decks, img, out_dir)

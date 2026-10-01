@@ -4,7 +4,9 @@ Every new deck needs a deliberate catalog placement. Revisit it when tuning
 changes the plan. Read the finished decklist and guide before choosing labels:
 a commander, filename, or single card does not establish a strategy.
 
-The catalog groups decks by **bracket, then primary strategy**. Each deck appears
+The catalog groups decks by **primary strategy, then bracket**. For example,
+Stax / Prison contains its own Bracket 3, Bracket 3.5, and Bracket 4 subsections
+when those brackets have decks. Empty subsections are omitted. Each deck appears
 once. Secondary themes appear on its tile and match the strategy filter and text
 search. These rules apply to both the public and local catalogs.
 
@@ -171,9 +173,9 @@ For a full-workspace build or tune:
 3. Run `python3 scripts/build_site.py`, then
    `python3 scripts/build_site.py --check` from the repository root. The check
    covers the public build; inspect the local catalog too for private changes.
-4. Confirm the deck appears once in its primary section and remains discoverable
-   when selecting a secondary theme. Check bracket, author, and private badge,
-   plus Tiles, List, and search.
+4. Confirm the deck appears once under its primary strategy and correct bracket,
+   and remains discoverable when selecting a secondary theme. Check author and
+   private badge, plus Tiles, List, and search.
 5. Publish authorized public changes with the generated frontend. Keep `private/`
    and `docs/private/` out of the commit and preserve unrelated working-tree edits.
    Private-only assignments stay local.

@@ -456,7 +456,7 @@ names, fix the guide in the same turn. Say so in your reply.
 
 ## Placing the deck in the catalog
 
-The catalog groups decks by bracket, then primary strategy. A deck appears once;
+The catalog groups decks by primary strategy, then bracket. A deck appears once;
 secondary tags match the strategy filter and search. Read
 `../deck-catalog-strategies.md` for the selection rules, supported IDs, examples,
 and how changes and renames affect placement.

@@ -18,8 +18,9 @@ matching brackets and categories temporarily and restores their prior collapse s
 filters are cleared. Secondary themes match filters and text search in both views.
 Category headings, bracket headings, and strategy options have no deck-count
 suffixes. The overall result total remains beside the filters. Main category
-titles are large lavender text (1.5rem); bracket labels are smaller blue-gray
-text (.78rem) in both views. Theme chips use teal. Rows aligns deck identity, mana, themes, and stats
+titles and List bracket headings share large, bold lavender text (1.5rem), in
+normal title case. Bracket labels nested inside Categories use smaller blue-gray
+text (.78rem). Theme chips use teal. Rows aligns deck identity, mana, themes, and stats
 in columns, stacking them on smaller screens. Keep each theme a separate chip.
 
 In Categories, all Goblin decks use **Goblins** (`goblins` first), with

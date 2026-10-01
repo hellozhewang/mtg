@@ -23,6 +23,12 @@ normal title case. Bracket labels nested inside Categories use smaller blue-gray
 text (.78rem). Theme chips use teal. Rows aligns deck identity, mana, themes, and stats
 in columns, stacking them on smaller screens. Keep each theme a separate chip.
 
+Hover a deck name, commander name, or tile artwork to preview the commander's
+full card at up to 360px wide. Keyboard focus on a deck link also shows it;
+Escape, moving away, or scrolling dismisses it. Both groupings and layouts
+support the preview. Touch taps continue to open the deck. Readable images load
+on demand from Scryfall, with the local card thumbnail as a network fallback.
+
 In Categories, all Goblin decks use **Goblins** (`goblins` first), with
 brackets nested inside it. Keep their supported broader strategies as secondary
 tags. This includes Goblin hybrids and decks with non-Goblin commanders; a few

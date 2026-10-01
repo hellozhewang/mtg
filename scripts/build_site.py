@@ -382,8 +382,21 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
         art = (f'<img class="art" src="img/{e(art_name)}" alt=""'
                f' loading="lazy" decoding="async" width="626" height="457">'
                if has_art else '<span class="art-blank"></span>')
+        # Use the commander's full front face, not the cropped catalog art.
+        # URLs in data attributes load only on hover; the local thumbnail is
+        # a fallback when the readable CDN image cannot be reached.
+        faces = art_sets(d.art_card)
+        front = faces[0] if faces else {}
+        preview = ""
+        if front.get(FULL):
+            preview = f' data-name="{e(d.commander)}" data-img="{e(front[FULL])}"'
+            thumb_name = (image_file(d.art_card, 0, THUMB, front[THUMB])
+                          if front.get(THUMB) else "")
+            if thumb_name and (available_images is None or thumb_name in available_images):
+                preview += f' data-thumb="img/{e(thumb_name)}"'
         tile = index.part("tile").render(
             HREF=e(d.href), ART=art, NAME=e(d.stem), COMMANDER=e(d.commander),
+            PREVIEW=preview,
             BRACKET_ID=e(d.bracket),
             THEMES=e(" ".join(d.themes)),
             THEME_TAGS="".join(index.part("theme-tag").render(

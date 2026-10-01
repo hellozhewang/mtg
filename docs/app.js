@@ -346,41 +346,69 @@
 
   /* ---- hover preview ------------------------------------------------------ */
   // Returns { hide } so the lightbox can dismiss it without sharing a variable.
-  function initPreview(cards) {
+  function initPreview(root, catalog) {
+    // Touch taps should follow the deck link without downloading a popup.
+    if (!window.matchMedia('(hover: hover)').matches) return { hide: function () {} };
     var GAP = 18;
+    var selector = catalog ? '.tile[data-img]' : '.card[data-img]';
     var floater = document.createElement('img');
     floater.id = 'preview';
     floater.alt = '';
+    if (catalog) floater.className = 'commander-preview';
     document.body.appendChild(floater);
 
     function place(ev) {
-      var w = floater.offsetWidth || 244;
-      var h = floater.offsetHeight || 340;
+      var w = floater.offsetWidth || (catalog ? 360 : 244);
+      var h = floater.offsetHeight || (catalog ? 502 : 340);
       var x = ev.clientX + GAP;
       if (x + w > window.innerWidth - 8) x = ev.clientX - w - GAP;   // flip side
       var y = Math.min(Math.max(8, ev.clientY - h / 2), window.innerHeight - h - 8);
-      floater.style.left = x + 'px';
+      floater.style.left = Math.max(8, Math.min(x, window.innerWidth - w - 8)) + 'px';
       floater.style.top = Math.max(8, y) + 'px';
     }
     function hide() { floater.classList.remove('on'); }
-
-    cards.addEventListener('mouseover', function (ev) {
-      if (cards.dataset.view === 'gallery') return;   // the image is already there
-      var li = ev.target.closest('.card[data-img]');
+    function hoverTarget(node) {
+      if (!node || !node.closest) return null;
+      // Keep metadata tooltips clear. Only names and the art trigger a catalog preview.
+      if (catalog && !node.closest('.tile-name, .tile-cmd, .art')) return null;
+      var li = node.closest(selector);
+      return li && root.contains(li) ? li : null;
+    }
+    function show(li, ev) {
+      if (!catalog && root.dataset.view === 'gallery') return;
       if (!li) return;
+      floater.alt = li.dataset.name || '';
       if (floater.getAttribute('src') !== li.dataset.img) {
         loadWithFallback(floater, li.dataset.img, localFallback(li));
       }
       floater.classList.add('on');
       place(ev);
+    }
+    root.addEventListener('mouseover', function (ev) {
+      show(hoverTarget(ev.target), ev);
     });
-    cards.addEventListener('mousemove', function (ev) {
+    root.addEventListener('mousemove', function (ev) {
       if (floater.classList.contains('on')) place(ev);
     });
-    cards.addEventListener('mouseout', function (ev) {
-      var to = ev.relatedTarget;
-      if (!to || !to.closest || !to.closest('.card[data-img]')) hide();
+    root.addEventListener('mouseout', function (ev) {
+      if (hoverTarget(ev.relatedTarget) !== hoverTarget(ev.target)) hide();
     });
+    root.addEventListener('focusin', function (ev) {
+      var li = ev.target.closest(selector);
+      if (!li) return;
+      var rect = li.getBoundingClientRect();
+      show(li, {clientX: rect.right, clientY: rect.top + rect.height / 2});
+    });
+    root.addEventListener('focusout', hide);
+    document.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Escape') hide();
+    });
+    // A view/filter change or scrolling must not leave a detached card floating.
+    document.addEventListener('click', hide);
+    document.addEventListener('input', hide);
+    document.addEventListener('change', hide);
+    window.addEventListener('scroll', hide, true);
+    window.addEventListener('resize', hide);
 
     return { hide: hide };
   }
@@ -451,6 +479,8 @@
   var refreshSearch = initSearch();
   initTooltips();
   initCatalogView(refreshSearch);
+  var decks = document.querySelector('.decks');
+  if (decks) initPreview(decks, true);
 
   var cards = document.querySelector('.cards');
   if (!cards) return;                       // index page: nothing below applies

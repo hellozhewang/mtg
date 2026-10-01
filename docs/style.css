@@ -275,6 +275,8 @@ h2 .count{color:var(--line)}
 #preview{position:fixed;z-index:50;pointer-events:none;width:244px;
   border-radius:4.7%/3.4%;box-shadow:0 12px 34px #000a;display:none}
 #preview.on{display:block}
+#preview.commander-preview{width:min(360px,calc(100vw - 16px),calc(70vh - 12px));
+  aspect-ratio:488/680;object-fit:contain;background:var(--panel2)}
 
 /* ---- lightbox ---- */
 #lightbox{position:fixed;inset:0;z-index:60;background:#000d;display:none;

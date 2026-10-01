@@ -1,0 +1,97 @@
+Najeela turns every attack into more attackers. Each Warrior that attacks brings a new 1/1 Warrior with it, already attacking, and those tokens are Warriors too — so in the next combat they attack and bring their own. Her {W}{U}{B}{R}{G} ability untaps every attacker and adds another combat, so each activation roughly doubles the army. Pay for that ability over and over and the game ends; eight cards here pay for it again every combat.
+One timing rule matters all game: a creature that enters already attacking was never declared as an attacker, so it does not trigger Najeela, Winota or anything else that says "attacks" in the combat it arrives. It does from the next combat on.
+
+# The commander
+Najeela, the Blade-Blossom :: three mana, and a Warrior herself, so her first attack already makes a token. Her ability works only during combat: it untaps all attacking creatures, gives them trample, lifelink and haste, and adds a combat after this one. Activate it after combat damage, so everything that refills your mana on damage has already done it.
+Cavern of Souls :: name Warrior, and Najeela and your other Warriors can't be countered. It taps for any colour to cast them.
+Path of Ancestry :: any colour, and a scry whenever you cast a Human or a Warrior with its mana.
+
+# Infinite combats — why this is Bracket 3.5
+Each of these pays for Najeela's ability again every combat, so the combats never stop. With Najeela out, each one is a two-card combo.
+Nature's Will :: when your creatures deal combat damage to a player, all your lands untap and all of that player's lands tap. Activate Najeela with the untapped lands and go again.
+Druids' Repository :: a charge counter every time a creature of yours attacks, and each counter is one mana of any colour. Five attackers pay for the next combat, and the army is bigger every time.
+Bear Umbra :: the enchanted creature untaps all your lands whenever it attacks. Put it on something that attacks every combat. If that creature would be destroyed, the Umbra goes instead.
+Derevi, Empyrial Tactician :: every creature that deals combat damage to a player untaps one permanent of your choice. Five hits untap five lands.
+Sword of Feast and Famine :: when the equipped creature connects, you untap all your lands and that player discards. Protection from black and green helps it get through.
+Cryptolith Rite :: every creature you control taps for any colour. Najeela's ability gives all attackers haste, so once it resolves, five untapped attackers pay for the next activation — unlimited combats and unlimited mana.
+Faeburrow Elder :: taps for one mana of each colour among your permanents, so with all five colours on the battlefield it makes {W}{U}{B}{R}{G} alone. Attack with it — vigilance keeps it untapped — and each activation untaps it to pay for the next. Lands are colourless, so you need a blue and a black permanent: Derevi or Arcane Adaptation, and Chief of the Edge, Isshin or Grim Hireling.
+Bloom Tender :: the same trick without vigilance: it attacks, and each activation untaps it to tap for all five colours again. Same five-colour condition.
+Grim Hireling :: close to a combo on its own. It makes two Treasures for each player your creatures deal combat damage to, so a combat that hits all three opponents makes six — enough for the next activation. Once an opponent is dead it makes four, and you need one more mana from somewhere.
+
+# Growing the army
+Winota, Joiner of Forces :: every non-Human attacker — Najeela's Warrior tokens, Ainok's Goblins, Kutzil, Radha, most of the mana creatures — looks at your top six for a Human and puts it in attacking and indestructible. Fourteen Humans in the deck, so each trigger hits more often than not.
+Isshin, Two Heavens as One :: every attack trigger happens twice: two tokens from Najeela for each Warrior, two Winota looks, six Goblins from Ainok Strike Leader.
+Ainok Strike Leader :: whenever it or Najeela attacks, a 1/1 Goblin attacking each opponent. Sacrifice it in response to a sweeper and your tokens are indestructible.
+Adeline, Resplendent Cathar :: a 1/1 Human attacking each opponent every combat, and her power is your creature count.
+Hero of Bladehold :: two more attacking Soldiers each combat, and +1/+0 to every other attacker.
+Voice of Victory :: two attacking Warrior tokens each time it attacks (they're sacrificed at end of turn), and your opponents can't cast spells during your turn.
+Anointed Procession :: every token effect makes twice as many.
+Arcane Adaptation :: name Warrior. Every creature you control becomes a Warrior, so every attacker — mana creatures, Adeline's Humans, Ainok's Goblins — makes Najeela trigger.
+
+# Making the attack lethal
+Blade Historian :: every attacking creature has double strike.
+Champion of Lambholt :: gets a +1/+1 counter for every creature that enters, and creatures with less power than it can't block yours. A couple of combats in, nothing on their side can block.
+Beastmaster Ascension :: a quest counter for each attacker; at seven your creatures get +5/+5. One wide attack turns it on for good.
+Hellrider :: 1 damage for every creature that attacks, before blockers. Extra combats multiply it.
+Chief of the Edge :: other Warriors get +1/+0, so every Najeela token is a 2/1.
+Intangible Virtue :: tokens get +1/+1 and vigilance.
+Combat Celebrant :: exert it once a turn to untap your other creatures and add a combat, with no mana at all.
+Grand Warlord Radha :: red and green mana for every creature that attacks, and it lasts all turn. It pays the {R} and {G} of Najeela's ability.
+Akroma's Will :: with Najeela out you get both modes: flying, vigilance and double strike, plus lifelink, indestructible and protection from every colour. A finisher and sweeper insurance in one card.
+
+# Keeping the big turn safe
+Kutzil, Malamet Exemplar :: your opponents can't cast spells during your turn, and you draw when creatures with boosted power connect — Intangible Virtue boosts every token, Chief of the Edge every Warrior.
+Grand Abolisher :: during your turn, opponents can't cast spells or use abilities of artifacts, creatures or enchantments.
+Silence :: one mana and nobody else casts spells this turn. Cast it before combat on the turn you go for it.
+Ranger-Captain of Eos :: finds a one-drop when it enters; sacrifice it and your opponents can't cast noncreature spells this turn.
+Clever Concealment :: phases out any of your nonland permanents until your next turn. Convoke lets untapped creatures pay for it — white ones pay the {W} — so with a board out it is often free.
+Swan Song :: one mana to counter a sweeper or removal spell.
+Deflecting Swat :: free with Najeela out; point their removal somewhere harmless.
+Flawless Maneuver :: free with Najeela out; every creature you control becomes indestructible.
+Heroic Intervention :: hexproof and indestructible for everything you control.
+Boros Charm :: indestructible for everything, or 4 damage to finish a player.
+Teferi's Protection :: when nothing else will do: your whole board phases out until your next turn.
+
+# Finding the pieces
+Enlightened Tutor :: any artifact or enchantment to the top of your library — five of the combo pieces.
+Idyllic Tutor :: any enchantment to hand: Nature's Will, Druids' Repository, Bear Umbra or Cryptolith Rite.
+Open the Armory :: Bear Umbra or the Sword.
+Stoneforge Mystic :: finds the Sword or Skullclamp, then puts the Sword onto the battlefield for two mana.
+Eladamri's Call :: any creature at instant speed — usually Derevi or Winota.
+Green Sun's Zenith :: a green creature straight onto the battlefield: Derevi or Faeburrow Elder with X of 3, Bloom Tender with X of 2.
+Demonic Tutor :: anything.
+Diabolic Intent :: anything, for a token you'd lose anyway.
+
+# Mana
+Birds of Paradise :: any colour on turn one.
+Noble Hierarch :: {G}, {W} or {U}.
+Ignoble Hierarch :: {B}, {R} or {G}. The two Hierarchs between them cover all five colours.
+Delighted Halfling :: any colour for legendary spells — Najeela, Derevi, Winota, Isshin, Adeline, Kutzil, Radha. Only colourless for anything else, including Najeela's ability.
+Chromatic Lantern :: every land taps for any colour, which makes Nature's Will, Bear Umbra, Derevi and the Sword far easier to use.
+Sol Ring :: turn-one acceleration toward a turn-two Najeela.
+Lotus Petal :: a free mana for the same.
+Professional Face-Breaker :: a Treasure for each player your creatures deal combat damage to, and Treasures turn into cards.
+Ragavan, Nimble Pilferer :: a one-drop that makes a Treasure and steals a card every time it connects.
+Boseiju, Who Endures :: a land that doubles as removal for an artifact, enchantment or nonbasic land.
+
+# Cards
+Skullclamp :: equip it to a 1/1 token and the token dies: two cards for one mana, as often as you like.
+Mentor of the Meek :: pay {1} to draw whenever a creature with power 2 or less enters — every token counts.
+Esper Sentinel :: taxes each opponent's first noncreature spell each turn or draws you a card.
+Sylvan Library :: see three cards every turn, and pay life to keep the extras when you need them.
+
+# Answers
+Swords to Plowshares :: one mana, any creature.
+Path to Exile :: the second one.
+Deadly Rollick :: free with Najeela out.
+Assassin's Trophy :: any permanent an opponent controls, at instant speed.
+Anguished Unmaking :: any nonland permanent, for 3 life.
+Vindicate :: any permanent.
+Generous Gift :: any permanent at instant speed; they get a 3/3.
+Chaos Warp :: the red answer to anything.
+
+# What to keep in an opening hand
+Keep two lands and a one-mana creature, or three lands with Najeela castable. She should land on turn two or three and attack straight away — every early attack adds a token.
+Don't reach for the combo until the turn is safe. Have Grand Abolisher, Kutzil or Voice of Victory on the battlefield, or Silence in hand, then attack with everything, activate Najeela after damage, and repeat.
+The deck's real enemy is a sweeper. Hold one of Flawless Maneuver, Teferi's Protection, Heroic Intervention or Ainok Strike Leader's sacrifice whenever you have more on the table than you can rebuild.
+Without a combo piece, Najeela still wins: two or three activations with Blade Historian, Beastmaster Ascension or Champion of Lambholt out are often lethal on their own.

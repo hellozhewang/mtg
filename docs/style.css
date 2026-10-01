@@ -4,6 +4,7 @@
   --fg:#e7e9f0; --dim:#98a0b3; --accent:#c8a24a; --accent-bg:#2a2415;
   --accent-line:#4a3f24; --warn:#e0765a;
   --theme:#88d8cc; --theme-bg:#182c2c; --theme-line:#315652;
+  --category-title:#c4b5fd; --bracket-label:#91a6bf;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -104,18 +105,17 @@ h2 .count{color:var(--line)}
   margin-bottom:20px;cursor:pointer;list-style:none;position:relative;padding-right:28px}
 .strategy-heading::-webkit-details-marker{display:none}
 .strategy-heading::after{content:'›';position:absolute;right:4px;top:0;
-  color:var(--theme);font-size:1.5rem;line-height:1.2;transform:rotate(0deg)}
+  color:var(--category-title);font-size:1.5rem;line-height:1.2;transform:rotate(0deg)}
 .strategy-group[open]>.strategy-heading::after{transform:rotate(90deg)}
 .strategy-heading:focus-visible{outline:2px solid var(--theme);outline-offset:5px;border-radius:3px}
-.strategy-title{display:block;font-size:1.16rem;font-weight:600;margin:0 0 3px;
-  color:var(--theme);text-transform:none;letter-spacing:0}
+.strategy-title{display:block;font-size:1.5rem;font-weight:700;line-height:1.25;margin:0 0 6px;
+  color:var(--category-title);text-transform:none;letter-spacing:0}
 .catalog-list>.bracket-group{margin:0 0 38px}
-.catalog-list>.bracket-group>h2{font-size:1.16rem;color:var(--theme);
-  text-transform:none;letter-spacing:0;margin:0 0 14px;padding-bottom:12px;
+.catalog-list>.bracket-group>h2{padding-bottom:10px;
   border-bottom:1px solid var(--line)}
 .bracket-group{margin:20px 0 28px}
-.bracket-group>h3{font-size:.82rem;color:var(--dim);margin:0 0 12px;
-  text-transform:uppercase;letter-spacing:.09em;font-weight:600}
+.bracket-group>h2,.bracket-group>h3{font-size:.78rem;color:var(--bracket-label);margin:0 0 12px;
+  text-transform:uppercase;letter-spacing:.1em;font-weight:600}
 .strategy-description{display:block;font-size:.85rem;color:var(--dim);max-width:74ch}
 .tiles{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(272px,100%),1fr))}
 .tile{display:flex;flex-direction:column;text-decoration:none;overflow:hidden;

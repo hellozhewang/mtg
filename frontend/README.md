@@ -16,8 +16,9 @@ Each visit defaults to List; only the Rows/Tiles layout is saved. Search opens
 matching categories temporarily and restores their prior collapse states when
 filters are cleared. Secondary themes match filters and text search in both views.
 Category headings, bracket headings, and strategy options have no deck-count
-suffixes. The overall result total remains beside the filters. Category headings
-and theme chips use teal; Rows aligns deck identity, mana, themes, and stats
+suffixes. The overall result total remains beside the filters. Main category
+titles are large lavender text (1.5rem); bracket labels are smaller blue-gray
+text (.78rem) in both views. Theme chips use teal. Rows aligns deck identity, mana, themes, and stats
 in columns, stacking them on smaller screens. Keep each theme a separate chip.
 
 In Categories, all Goblin decks use **Goblins** (`goblins` first), with

@@ -64,7 +64,7 @@
 
     var sections = toArray(document.querySelectorAll(tiles.length
       ? '.bracket-group, .strategy-group' : '.cards .cat'));
-    var categories = toArray(document.querySelectorAll('details.strategy-group'));
+    var disclosures = toArray(document.querySelectorAll('.decks details'));
     var beforeFilter = null;
     var empty = document.createElement('p');
     empty.className = 'nomatch';
@@ -75,7 +75,7 @@
       var theme = strategy ? strategy.value : '';
       var filtering = Boolean(q || theme);
       if (filtering && !beforeFilter) {
-        beforeFilter = categories.map(function (category) { return category.open; });
+        beforeFilter = disclosures.map(function (section) { return section.open; });
       }
       var shown = 0;
       items.forEach(function (el) {
@@ -89,10 +89,10 @@
       sections.forEach(function (sec) {
         var count = sec.querySelectorAll('.tile:not(.is-filtered), .card:not(.is-filtered)').length;
         sec.classList.toggle('is-filtered', !count);
-        if (filtering && count && sec.matches('details.strategy-group')) sec.open = true;
+        if (filtering && count && sec.matches('details')) sec.open = true;
       });
       if (!filtering && beforeFilter) {
-        categories.forEach(function (category, i) { category.open = beforeFilter[i]; });
+        disclosures.forEach(function (section, i) { section.open = beforeFilter[i]; });
         beforeFilter = null;
       }
       empty.textContent = tiles.length ? 'No decks match these filters.'
@@ -209,7 +209,7 @@
         });
       });
     });
-    // Every visit starts with the original bracket view. Category disclosure
+    // Every visit starts with the original bracket view. Section disclosure
     // states survive switching views within the page, but do not change this default.
     groupBy('list');
 

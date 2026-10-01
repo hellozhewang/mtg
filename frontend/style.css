@@ -111,11 +111,19 @@ h2 .count{color:var(--line)}
 .strategy-title{display:block;font-size:1.5rem;font-weight:700;line-height:1.25;margin:0 0 6px;
   color:var(--category-title);text-transform:none;letter-spacing:0}
 .catalog-list>.bracket-group{margin:0 0 38px}
-.catalog-list>.bracket-group>h2{padding-bottom:10px;
-  border-bottom:1px solid var(--line)}
+.catalog-list>.bracket-group:not([open]){margin-bottom:16px}
+.bracket-heading{padding:0 26px 10px 0;border-bottom:1px solid var(--line);
+  margin-bottom:12px;cursor:pointer;list-style:none;position:relative}
+.bracket-heading::-webkit-details-marker{display:none}
+.bracket-heading::after{content:'›';position:absolute;right:4px;top:0;
+  color:var(--bracket-label);font-size:1rem;line-height:1.2}
+.bracket-group[open]>.bracket-heading::after{transform:rotate(90deg)}
+.bracket-heading:focus-visible{outline:2px solid var(--bracket-label);outline-offset:5px;border-radius:3px}
+.bracket-group:not([open])>.bracket-heading{margin-bottom:0}
 .bracket-group{margin:20px 0 28px}
-.bracket-group>h2,.bracket-group>h3{font-size:.78rem;color:var(--bracket-label);margin:0 0 12px;
+.bracket-heading>h2,.bracket-group>h3{font-size:.78rem;color:var(--bracket-label);margin:0 0 12px;
   text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+.bracket-heading>h2{margin:0}
 .strategy-description{display:block;font-size:.85rem;color:var(--dim);max-width:74ch}
 .tiles{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(272px,100%),1fr))}
 .tile{display:flex;flex-direction:column;text-decoration:none;overflow:hidden;

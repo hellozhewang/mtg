@@ -116,6 +116,7 @@ class DeckThemeTests(unittest.TestCase):
         for groups, attrs in catalog.tiles:
             self.assertEqual([group["class"] for group in groups],
                              ["bracket-group"])
+            self.assertIn("open", groups[0])
             self.assertEqual(groups[0]["data-bracket"], attrs["data-bracket"])
             placements.append((attrs["data-themes"].split()[0], groups[0]["data-bracket"],
                                attrs["href"]))
@@ -126,6 +127,7 @@ class DeckThemeTests(unittest.TestCase):
             ("combo", "Bracket5", "Bracket5/Fast-Combo.html"),
         ])
         self.assertEqual(len(catalog.sections), 8)  # three list brackets plus five category sections
+        self.assertEqual(page.count('<summary class="bracket-heading">'), 3)
 
     def test_private_names_and_assignments_never_enter_public_catalog(self):
         public = deck("Shared-Deck", ("voltron",))

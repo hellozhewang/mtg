@@ -44,11 +44,11 @@ groups in Categories. Filter by any theme to find decks that combine several pla
 </template>
 
 <template data-part="list-bracket">
-<section class="bracket-group" data-bracket="{{BRACKET_ID}}">
-  <h2>{{BRACKET}}</h2>
+<details class="bracket-group" data-bracket="{{BRACKET_ID}}" open>
+  <summary class="bracket-heading"><h2>{{BRACKET}}</h2></summary>
   <div class="tiles">
 {{TILES}}  </div>
-</section>
+</details>
 </template>
 
 <template data-part="bracket">

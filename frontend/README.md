@@ -5,15 +5,16 @@ creating a deck or changing its plan. It covers primary/secondary selection,
 every supported ID, examples, renames, private metadata, and the Discord
 builder's access limits. This file is the short implementation reference.
 
-The catalog opens in **List**, the original bracket-first view. **Categories**
+The catalog opens in **List**, with individually collapsible brackets, open by
+default. Click a bracket label or use Enter/Space to fold its decks. **Categories**
 groups decks by primary Commander strategy, then bracket, with each category
 collapsible. Expand all / Collapse all controls appear in Categories. The
 separate Rows / Tiles layout applies to either view.
 
 Switching views moves the same deck links between containers, preserving one
-tile per deck, bracket/date ordering, filters, and category collapse states.
+tile per deck, bracket/date ordering, filters, and bracket/category collapse states.
 Each visit defaults to List; only the Rows/Tiles layout is saved. Search opens
-matching categories temporarily and restores their prior collapse states when
+matching brackets and categories temporarily and restores their prior collapse states when
 filters are cleared. Secondary themes match filters and text search in both views.
 Category headings, bracket headings, and strategy options have no deck-count
 suffixes. The overall result total remains beside the filters. Main category

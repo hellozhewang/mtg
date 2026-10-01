@@ -456,7 +456,8 @@ names, fix the guide in the same turn. Say so in your reply.
 
 ## Placing the deck in the catalog
 
-The catalog defaults to List, with decks directly under each bracket. Categories
+The catalog defaults to List, with decks under individually collapsible brackets.
+Brackets start open. Categories
 groups by primary strategy, then bracket, with collapsible strategy sections.
 Rows / Tiles controls layout separately. A deck appears once in either view;
 secondary tags match the strategy filter and search in both. Read

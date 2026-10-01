@@ -4,7 +4,8 @@ Every new deck needs a deliberate catalog placement. Revisit it when tuning
 changes the plan. Read the finished decklist and guide before choosing labels:
 a commander, filename, or single card does not establish a strategy.
 
-The catalog defaults to **List**, showing decks directly under their brackets.
+The catalog defaults to **List**, showing decks under individually collapsible
+brackets. Brackets start open; click their label to collapse or expand them.
 Switch to **Categories** to group by **primary strategy, then bracket**, with
 collapsible strategy sections and Expand all / Collapse all controls. For example,
 Stax / Prison contains its own Bracket 3, Bracket 3.5, and Bracket 4 subsections
@@ -201,7 +202,7 @@ For a full-workspace build or tune:
 4. Confirm the deck appears once under its bracket in List and under its primary
    strategy and correct bracket in Categories,
    and remains discoverable when selecting a secondary theme. Check author and
-   private badge, plus both views, Rows/Tiles, category collapse, and search.
+   private badge, plus both views, Rows/Tiles, bracket/category collapse, and search.
 5. Publish authorized public changes with the generated frontend. Keep `private/`
    and `docs/private/` out of the commit and preserve unrelated working-tree edits.
    Private-only assignments stay local.

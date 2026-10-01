@@ -31,6 +31,7 @@ double-escaped apostrophes in `Urza's Saga` or an injection.
 """
 from __future__ import annotations
 
+import hashlib
 import re
 from pathlib import Path
 
@@ -86,10 +87,17 @@ class Template:
 def load(directory: Path) -> dict[str, Template]:
     """Every .html in `directory`, keyed by stem. Assets (.css/.js) are copied
     verbatim by the caller and never parsed — a CSS rule can legally contain
-    braces that are none of this module's business."""
+    braces that are none of this module's business. Layout asset URLs carry
+    content hashes so a new page cannot reuse an older cached stylesheet."""
     out: dict[str, Template] = {}
     for path in sorted(directory.glob("*.html")):
-        out[path.stem] = Template(path.read_text(encoding="utf-8"), path.name)
+        text = path.read_text(encoding="utf-8")
+        if path.stem == "layout":
+            for asset in ("style.css", "app.js"):
+                version = hashlib.sha256((directory / asset).read_bytes()).hexdigest()[:12]
+                text = text.replace(f'{{{{UP}}}}{asset}"',
+                                    f'{{{{UP}}}}{asset}?v={version}"')
+        out[path.stem] = Template(text, path.name)
     if not out:
         raise TemplateError(f"no templates found in {directory}")
     return out

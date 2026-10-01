@@ -84,9 +84,9 @@ class DeckThemeTests(unittest.TestCase):
         self.assertEqual(len(catalog.tiles), 2)
         self.assertEqual([groups[0]["data-theme"] for groups, _ in catalog.tiles],
                          ["goblins", "combo"])
-        self.assertIn('value="goblins">Goblins (1)</option>', page)
-        self.assertIn('value="tribal">Tribal / Kindred (1)</option>', page)
-        self.assertIn('value="combo">Combo (2)</option>', page)
+        self.assertIn('value="goblins">Goblins</option>', page)
+        self.assertIn('value="tribal">Tribal / Kindred</option>', page)
+        self.assertIn('value="combo">Combo</option>', page)
         goblins = catalog.tiles[0][1]
         self.assertEqual(goblins["data-themes"], "goblins tribal tokens combo")
         self.assertIn("Tokens / Go-wide", goblins["data-search"])

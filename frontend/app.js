@@ -83,8 +83,6 @@
       sections.forEach(function (sec) {
         var count = sec.querySelectorAll('.tile:not(.is-filtered), .card:not(.is-filtered)').length;
         sec.classList.toggle('is-filtered', !count);
-        var label = sec.querySelector('[data-section-count]');
-        if (label) label.textContent = count;
       });
       empty.textContent = tiles.length ? 'No decks match these filters.'
         : 'Nothing matches “' + input.value + '”.';

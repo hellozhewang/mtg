@@ -367,13 +367,12 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
                  available_images: set[str] | None = None) -> str:
     index, layout = tpl["index"], tpl["layout"]
     grouped: dict[str, dict[str, list[str]]] = {}
-    theme_counts = dict.fromkeys(deckthemes.THEMES, 0)
+    active_themes = set()
 
     for d in decks:
         groups = grouped.setdefault(d.themes[0], {})
         tiles = groups.setdefault(d.bracket, [])
-        for theme in d.themes:
-            theme_counts[theme] += 1
+        active_themes.update(d.themes)
         art_name = image_file(d.art_card, 0, ART, d.art_url) if d.art_url else ""
         # A transient CDN failure must not leave a dangling <img> in the
         # published catalog. `None` preserves the standalone renderer's old
@@ -416,15 +415,14 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
         groups = grouped[key]
         brackets = [index.part("bracket").render(
             BRACKET=e(bracket_label(bracket)), BRACKET_ID=e(bracket),
-            N=len(tiles), TILES="".join(tiles))
+            TILES="".join(tiles))
             for bracket, tiles in sorted(groups.items())]
         sections.append(index.part("strategy").render(
             THEME=e(key), LABEL=e(theme.label), DESCRIPTION=e(theme.description),
-            N=sum(len(tiles) for tiles in groups.values()),
             BRACKETS="".join(brackets)))
     options = "".join(index.part("theme-option").render(
-        VALUE=e(key), LABEL=e(theme.label), N=theme_counts[key])
-        for key, theme in deckthemes.THEMES.items() if theme_counts[key])
+        VALUE=e(key), LABEL=e(theme.label))
+        for key, theme in deckthemes.THEMES.items() if key in active_themes)
 
     return mirror_tips(layout.render(
         TITLE="Commander decks", UP="", REPO=e(repo),

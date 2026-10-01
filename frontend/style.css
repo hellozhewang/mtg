@@ -3,6 +3,7 @@
   --bg:#12141a; --panel:#1a1d26; --panel2:#222634; --line:#2e3242;
   --fg:#e7e9f0; --dim:#98a0b3; --accent:#c8a24a; --accent-bg:#2a2415;
   --accent-line:#4a3f24; --warn:#e0765a;
+  --theme:#88d8cc; --theme-bg:#182c2c; --theme-line:#315652;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -94,12 +95,10 @@ h2 .count{color:var(--line)}
 .strategy-heading{border-bottom:1px solid var(--line);padding-bottom:12px;
   margin-bottom:20px}
 .strategy-heading h2{font-size:1.16rem;font-weight:600;margin:0 0 3px;
-  color:var(--accent);text-transform:none;letter-spacing:0}
+  color:var(--theme);text-transform:none;letter-spacing:0}
 .bracket-group{margin:20px 0 28px}
 .bracket-group>h3{font-size:.82rem;color:var(--dim);margin:0 0 12px;
   text-transform:uppercase;letter-spacing:.09em;font-weight:600}
-.bracket-group>h3 .count,.strategy-heading .count{color:var(--dim);font-size:.78rem;
-  background:var(--panel2);border-radius:99px;padding:2px 8px;margin-left:5px}
 .strategy-heading p{font-size:.85rem;color:var(--dim);margin:0;max-width:74ch}
 .tiles{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(272px,100%),1fr))}
 .tile{display:flex;flex-direction:column;text-decoration:none;overflow:hidden;
@@ -112,15 +111,19 @@ h2 .count{color:var(--line)}
 .art{width:100%;height:116px;object-fit:cover;object-position:center 20%;
   display:block;background:var(--panel2)}
 .art-blank{height:116px;display:block;background:var(--panel2)}
-.tile-body{padding:11px 13px 13px}
+.tile-body{padding:11px 13px 13px;display:flex;flex-wrap:wrap;gap:10px}
+.tile-identity{flex-basis:100%;min-width:0;overflow-wrap:anywhere}
 .tile-name{display:block;font-weight:650}
 .tile-cmd{display:block;color:var(--dim);font-size:.87rem;margin-top:1px}
-.tile-author{display:block;color:var(--accent);font-size:.78rem;margin:2px 0 9px}
-.tile-themes{display:flex;flex-wrap:wrap;gap:5px;margin:9px 0 12px}
-.theme-tag{border:1px solid var(--accent-line);border-radius:5px;padding:2px 6px;
-  color:#d0ba82;background:var(--accent-bg);font-size:.7rem;line-height:1.4}
-.tile-cmd + .tile-meta{margin-top:9px}
-.tile-meta{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.tile-byline{display:flex;flex-wrap:wrap;gap:5px 8px;align-items:center;margin-top:5px}
+.tile-byline:empty{display:none}
+.tile-author{color:var(--accent);font-size:.78rem}
+.tile-colors{display:flex;gap:4px;align-items:center;align-self:center;order:2}
+.tile-colors .pip{margin:0}
+.tile-themes{display:flex;flex-wrap:wrap;gap:5px;flex-basis:100%;order:1;min-width:0}
+.theme-tag{border:1px solid var(--theme-line);border-radius:5px;padding:2px 6px;
+  color:var(--theme);background:var(--theme-bg);font-size:.7rem;line-height:1.4}
+.tile-meta{display:flex;flex-wrap:wrap;gap:5px;align-items:center;order:3}
 .chip{background:var(--panel2);border:1px solid var(--line);border-radius:99px;
   padding:2px 8px;font-size:.74rem;color:var(--dim);white-space:nowrap}
 .chip.gc{color:var(--accent);border-color:var(--accent-line)}
@@ -145,23 +148,23 @@ h2 .count{color:var(--line)}
   border-color:var(--line)}
 .decks[data-view="list"] .art,
 .decks[data-view="list"] .art-blank{display:none}
-/* Making the body a flex row turns its children into flex items, so their
-   display:block and stacking margins stop applying without being overridden
-   one by one. */
-.decks[data-view="list"] .tile-body{display:flex;align-items:center;
-  flex-wrap:wrap;gap:4px 12px;width:100%;padding:7px 11px}
-.decks[data-view="list"] .tile-name{min-width:15rem}
-.decks[data-view="list"] .tile-cmd,
-.decks[data-view="list"] .tile-author{margin:0}
-/* Only the TOP margin, which is the tile-view stacking gap. Using `margin:0`
-   here also cleared margin-left, and because the adjacent-sibling selector is
-   more specific than `.tile-meta` below it, that silently beat the auto margin —
-   but ONLY on rows with no author, since that is when .tile-meta directly
-   follows .tile-cmd. Those rows stopped right-aligning while every other row
-   looked fine. */
-.decks[data-view="list"] .tile-cmd + .tile-meta{margin-top:0}
-.decks[data-view="list"] .tile-meta{margin-left:auto}
-.decks[data-view="list"] .tile-themes{flex-basis:100%;margin:3px 0;order:2}
+/* Shared column widths keep one- and five-color decks aligned. Labels wrap
+   within their column; authorship and private badges stay with the deck name. */
+.decks[data-view="list"] .tile-body{display:grid;align-items:center;
+  grid-template-columns:minmax(180px,1fr) 111px minmax(180px,1.2fr) 283px;
+  grid-template-areas:"identity colors themes meta";
+  gap:12px 14px;width:100%;padding:12px 11px}
+.decks[data-view="list"] .tile-identity{grid-area:identity}
+.decks[data-view="list"] .tile-colors{grid-area:colors}
+.decks[data-view="list"] .tile-themes{grid-area:themes}
+.decks[data-view="list"] .tile-meta{grid-area:meta;display:grid;
+  grid-template-columns:72px 68px 64px 64px;gap:5px}
+.decks[data-view="list"] .tile-meta .chip{text-align:center;padding:2px 4px}
+@media (max-width:900px){
+  .decks[data-view="list"] .tile-body{
+    grid-template-columns:minmax(0,1fr) 111px;
+    grid-template-areas:"identity colors" "themes themes" "meta meta"}
+}
 
 /* ---- deck header ---- */
 .sub{display:flex;gap:9px;align-items:center;margin:0 0 18px;flex-wrap:wrap}
@@ -270,8 +273,10 @@ h2 .count{color:var(--line)}
   .strategy-label{max-width:none;flex-basis:100%}
   .catalog-results{font-size:.78rem}
   .catalog-views .btn{padding:7px 10px}
-  .decks[data-view="list"] .tile-name{min-width:0;flex-basis:100%;overflow-wrap:anywhere}
-  .decks[data-view="list"] .tile-meta{margin-left:0}
+  .decks[data-view="list"] .tile-body{grid-template-columns:minmax(0,1fr);
+    grid-template-areas:"identity" "colors" "themes" "meta"}
+  .decks[data-view="list"] .tile-meta{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .decks[data-view="list"] .tile-meta .chip{font-size:.7rem}
 }
 
 /* ---- deck guide ----

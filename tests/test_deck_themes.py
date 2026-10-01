@@ -57,11 +57,13 @@ class DeckThemeTests(unittest.TestCase):
         assignments = deckthemes.load(ROOT / "frontend/deck-themes.json")
         self.assertEqual(deckthemes.classify("Cloud-Equipment", assignments)[0], "voltron")
         self.assertNotIn("voltron", deckthemes.classify("Cloud-Attacks", assignments))
+        self.assertEqual(deckthemes.classify("Krenko-Combo", assignments)[0], "goblins")
         self.assertTrue({"tribal", "tokens", "combo"}.issubset(
             deckthemes.classify("Krenko-Combo", assignments)))
 
     def test_new_decks_have_safe_fallbacks(self):
         self.assertEqual(deckthemes.classify("NewCommander-Prison", {}), ("stax",))
+        self.assertEqual(deckthemes.classify("NewCommander-Goblins", {}), ("goblins",))
         self.assertEqual(deckthemes.classify("NewCommander-NewPlan", {}), ("other",))
 
     def test_invalid_assignments_fail_instead_of_hiding_decks(self):
@@ -74,30 +76,32 @@ class DeckThemeTests(unittest.TestCase):
                     deckthemes.load(path)
 
     def test_one_tile_per_deck_with_secondary_theme_filters(self):
-        decks = [deck("Goblins-Combo", ("tribal", "tokens", "combo")),
+        decks = [deck("Goblins-Combo", ("goblins", "tribal", "tokens", "combo")),
                  deck("Machine-Combo", ("combo", "artifacts"))]
         page = build_site.render_index(frontend.load(ROOT / "frontend"), decks,
                                        "https://example.test/repo", Mana())
         catalog = Catalog(page)
         self.assertEqual(len(catalog.tiles), 2)
         self.assertEqual([groups[0]["data-theme"] for groups, _ in catalog.tiles],
-                         ["tribal", "combo"])
+                         ["goblins", "combo"])
+        self.assertIn('value="goblins">Goblins (1)</option>', page)
+        self.assertIn('value="tribal">Tribal / Kindred (1)</option>', page)
         self.assertIn('value="combo">Combo (2)</option>', page)
         goblins = catalog.tiles[0][1]
-        self.assertEqual(goblins["data-themes"], "tribal tokens combo")
+        self.assertEqual(goblins["data-themes"], "goblins tribal tokens combo")
         self.assertIn("Tokens / Go-wide", goblins["data-search"])
         self.assertIn("Combo", goblins["data-search"])
 
     def test_brackets_are_nested_under_each_primary_strategy(self):
         decks = [deck("Fast-Combo", ("combo",), bracket="Bracket5"),
-                 deck("Goblins", ("tribal", "combo"), bracket="Bracket3.5"),
+                 deck("Goblins", ("goblins", "tribal", "combo"), bracket="Bracket3.5"),
                  deck("Engine-Combo", ("combo",), bracket="Bracket3"),
                  deck("Other-Combo", ("combo",), bracket="Bracket3")]
         page = build_site.render_index(frontend.load(ROOT / "frontend"), decks,
                                        "https://example.test/repo", Mana())
         catalog = Catalog(page)
         self.assertEqual([groups[0]["data-theme"] for groups in catalog.sections
-                          if len(groups) == 1], ["tribal", "combo"])
+                          if len(groups) == 1], ["goblins", "combo"])
         placements = []
         for groups, attrs in catalog.tiles:
             self.assertEqual([group["class"] for group in groups],
@@ -105,7 +109,7 @@ class DeckThemeTests(unittest.TestCase):
             placements.append((groups[0]["data-theme"], groups[1]["data-bracket"],
                                attrs["href"]))
         self.assertEqual(placements, [
-            ("tribal", "Bracket3.5", "Bracket3.5/Goblins.html"),
+            ("goblins", "Bracket3.5", "Bracket3.5/Goblins.html"),
             ("combo", "Bracket3", "Bracket3/Engine-Combo.html"),
             ("combo", "Bracket3", "Bracket3/Other-Combo.html"),
             ("combo", "Bracket5", "Bracket5/Fast-Combo.html"),

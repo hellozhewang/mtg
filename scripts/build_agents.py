@@ -462,11 +462,19 @@ secondary tags match the strategy filter and search. Read
 and how changes and renames affect placement.
 
 Choose the defining plan from the finished list and guide. Add only secondary
-themes with a real supporting package. Krenko-Combo is `tribal`, `tokens`,
-`combo`, `aristocrats`; Cloud-Attacks spreads Equipment across a team and is not
-Voltron, while Cloud-Equipment builds one lethal attacker. Ordinary mana rocks
+themes with a real supporting package. Krenko-Combo is `goblins`, `tribal`,
+`tokens`, `combo`, `aristocrats`; Cloud-Attacks spreads Equipment across a team
+and is not Voltron, while Cloud-Equipment builds one lethal attacker. Ordinary mana rocks
 do not make every deck an artifact deck, and one recovery spell does not make it
 reanimator. Revisit tags when the plan changes; routine swaps need not retag it.
+
+All Goblin decks belong in the dedicated **Goblins** category: put `goblins`
+first, ahead of broader strategies such as `tribal`, `tokens`, or `combo`.
+Keep those supported strategies as secondary tags. This includes Goblin hybrids
+and Goblin decks led by non-Goblin commanders. Incidental Goblin cards or a
+Goblin commander alone are not enough. Brackets sit inside Goblins; deck files
+stay in their existing bracket folders. A new `-Goblins` filename falls back to
+`goblins`; existing decks can keep their names through explicit assignments.
 
 Keep the `Bracket*/Commander-Theme.txt` layout. Strategy folders are not used.
 The public map is `../frontend/deck-themes.json`, keyed by exact filename stem:

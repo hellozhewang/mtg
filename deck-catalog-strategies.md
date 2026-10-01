@@ -27,7 +27,7 @@ the printed commander name. The value is a nonempty array of theme IDs:
 
 ```json
 {
-  "Krenko-Combo": ["tribal", "tokens", "combo", "aristocrats"],
+  "Krenko-Combo": ["goblins", "tribal", "tokens", "combo", "aristocrats"],
   "Cloud-Attacks": ["artifacts", "combat", "tokens"],
   "Cloud-Equipment": ["voltron", "artifacts"],
   "Kinnan-Infinite": ["combo", "ramp"]
@@ -49,7 +49,8 @@ sharing a stem also share an assignment; give genuinely different plans distinct
 1. Describe the deck's normal route to a win in one sentence. Check the guide's
    engines, finishers, opening hands, and sequencing against the actual cards.
 2. Choose the group a player seeking that experience would expect. Favor the
-   defining engine or plan over a secondary support package.
+   defining engine or plan over a secondary support package. Apply the Goblins
+   placement rule below before choosing a broader strategy.
 3. Add secondary themes when a meaningful package of cards supports them and the
    pilot regularly uses that plan. Most decks need two to four total labels;
    use fewer or more when the list warrants it.
@@ -59,8 +60,8 @@ sharing a stem also share an assignment; give genuinely different plans distinct
 
 Examples from this collection:
 
-- **Krenko-Combo:** `tribal` first because the Goblin engine defines the deck;
-  `tokens`, `combo`, and `aristocrats` describe its supporting plans and kills.
+- **Krenko-Combo:** `goblins` first for the dedicated Goblins category;
+  `tribal`, `tokens`, `combo`, and `aristocrats` remain secondary tags.
 - **Kinnan-Infinite:** `combo` first because assembling a mana loop is the main
   plan; `ramp` also applies.
 - **Shorikai-Prison:** `stax` first; the defensive wall and artifact engine also
@@ -89,6 +90,24 @@ Useful distinctions:
 - **Reanimator / recovery:** a sustained graveyard threat or copy plan supports
   `reanimator`; one recovery spell does not.
 
+## Special category: Goblins
+
+**All Goblin decks belong under Goblins, with `goblins` as the first theme ID.**
+This owner-requested category takes precedence over broader primary labels such
+as `tribal`, `tokens`, `combo`, `aristocrats`, or `counters`. It includes Goblin
+hybrids whose engines use counters, sacrifice, or tokens, and Goblin decks led
+by a non-Goblin commander. Keep each supported broader strategy as a secondary
+tag so those filters still find the deck. A few incidental Goblin cards or a
+Goblin commander without a Goblin plan do not establish a Goblin deck.
+
+The hierarchy is **Goblins → bracket → decks**, in both catalogs. Preserve the
+bracket folders and visibility; assign private decks only in the private map.
+Do not rename an existing deck to add the category: `Krenko-Combo`, for example,
+gets it through its explicit assignment. New `Commander-Goblins` filenames fall
+back to `goblins` when no explicit entry exists; builders with access to the
+map should still save the full reviewed set of tags. Other creature types stay
+in the existing strategy groups unless a separate category is requested.
+
 ## Supported theme IDs
 
 [`scripts/deckthemes.py`](scripts/deckthemes.py) defines accepted IDs, display
@@ -100,6 +119,7 @@ or invented synonyms.
 | `stax` | Stax / Prison | Taxes, hatebears, resource restrictions, or locks. |
 | `pillowfort` | Pillowfort | Making attacks against its pilot difficult or costly. |
 | `voltron` | Voltron | Turning one creature into a lethal attacker. |
+| `goblins` | Goblins | Any Goblin deck, including token, sacrifice, counter, and combo hybrids; always primary. |
 | `tribal` | Tribal / Kindred | A shared creature type and its payoffs. |
 | `tokens` | Tokens / Go-wide | A broad army of tokens or small creatures. |
 | `aristocrats` | Aristocrats | Sacrifices, death triggers, and related value engines. |
@@ -158,8 +178,8 @@ an explicit assignment takes precedence anyway.
 Complete the authorized decklist and guide work inside that workspace. If the
 intended placement needs a new or changed explicit entry, include the exact stem
 and ordered IDs in the handoff, for example:
-`Krenko-Combo: tribal, tokens, combo, aristocrats`. State that the map still needs
-a full-workspace update. Do not claim the tags were saved, bypass the sandbox,
+`Krenko-Combo: goblins, tribal, tokens, combo, aristocrats`. State that the map
+still needs a full-workspace update. Do not claim the tags were saved, bypass the sandbox,
 or ask the user to repeat authorization already given. The current bot publishes
 deck files using existing assignments/fallbacks; it does not parse theme proposals
 from the builder's reply.

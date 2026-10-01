@@ -9,6 +9,12 @@ The index groups decks by primary Commander strategy, then by bracket.
 Each deck appears once. Its secondary themes remain visible on the tile and
 match the strategy dropdown and text search in both Tiles and List views.
 
+All Goblin decks use the dedicated **Goblins** category (`goblins` first), with
+brackets nested inside it. Keep their supported broader strategies as secondary
+tags. This includes Goblin hybrids and decks with non-Goblin commanders; a few
+incidental Goblin cards are not enough. New `-Goblins` filenames fall back to
+this category. See the placement guide for the full rule.
+
 `deck-themes.json` maps **public deck filenames without extensions** to lists of
 theme IDs. The first ID is the primary group. Review the decklist and guide when
 assigning themes; the commander or filename alone can be misleading. Names stay

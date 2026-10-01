@@ -44,7 +44,7 @@
   "Korvold-Sacrifice": ["aristocrats", "artifacts", "tokens"],
   "Kotis-Theft": ["theft", "voltron"],
   "Kozilek-Annihilator": ["ramp", "tribal", "combat"],
-  "Krenko-Combo": ["tribal", "tokens", "combo", "aristocrats"],
+  "Krenko-Combo": ["goblins", "tribal", "tokens", "combo", "aristocrats"],
   "Lathril-Elves": ["tribal", "tokens"],
   "LimDul-Reanimator": ["reanimator", "theft", "aristocrats"],
   "Lorehold-Miracles": ["spellslinger", "toolbox"],

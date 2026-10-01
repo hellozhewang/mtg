@@ -410,6 +410,11 @@ appears once, with secondary theme tags and a strategy filter in both Tiles and
 List views. See the [placement guide](deck-catalog-strategies.md) for theme IDs,
 assignment rules, and the public/private metadata locations.
 
+All Goblin decks go in the dedicated **Goblins** category, with brackets inside
+it. Put `goblins` first in their theme assignments and keep supported strategies
+such as `tribal`, `tokens`, and `combo` as secondary tags. The placement guide
+applies this rule to new decks and existing Goblin hybrids in both catalogs.
+
 ```bash
 ./scripts/build_site.py              # rebuild docs/ from public/  -- PUBLISHED
 ./scripts/build_site.py --check      # exit 1 if docs/ is stale, write nothing

@@ -7,7 +7,9 @@ import http.client
 import socket
 import subprocess
 import sys
+import tempfile
 import time
+from pathlib import Path
 
 import workspace
 
@@ -15,6 +17,9 @@ HOST = "127.0.0.1"
 BIND_HOST = "0.0.0.0"
 PORT = 5588
 URL = f"http://localhost:{PORT}/"
+# Log and PID go to the temp dir, not private/: that folder is for decks, and a
+# server that doesn't survive a reboot doesn't need state that does.
+STATE_DIR = Path(tempfile.gettempdir()) / "mtg-private-catalog"
 
 
 def serving_catalog(index: bytes) -> bool:
@@ -52,7 +57,7 @@ def main() -> int:
     except OSError:
         pass
 
-    state = workspace.private_dir() / "server"
+    state = STATE_DIR
     state.mkdir(parents=True, exist_ok=True)
     log_path = state / f"catalog-{PORT}.log"
     with log_path.open("ab", buffering=0) as log:

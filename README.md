@@ -435,7 +435,8 @@ listening on `0.0.0.0:5588` so other devices on your local network can use
 `http://<server-ip>:5588/`. The server runs in the background and keeps running
 after the terminal closes. Repeated starts reuse an existing server serving the
 same catalog; an unrelated service on port 5588 is left alone. Logs and the server
-PID are stored under `private/server/`. Run `build_site.py` after deck changes;
+PID are stored in the system temp directory, under `mtg-private-catalog/` (the
+script prints the exact path). Run `build_site.py` after deck changes;
 the server serves the updated files without restarting. This does not install a
 login or reboot service.
 

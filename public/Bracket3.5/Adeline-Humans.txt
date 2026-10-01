@@ -3,15 +3,15 @@
 1 Esper Sentinel
 1 Mother of Runes
 1 Giver of Runes
-1 Champion of the Parish
+1 Aven Interrupter
 1 Coppercoat Vanguard
 1 Belladonna Took
 1 Charismatic Conqueror
 1 Voice of Victory
 1 Knight of the White Orchid
-1 Archivist of Oghma
+1 Heliod, Sun-Crowned
 1 Grand Abolisher
-1 Brimaz, King of Oreskos
+1 Search for Glory
 1 Enduring Innocence
 1 Welcoming Vampire
 1 Mentor of the Meek
@@ -25,10 +25,10 @@
 1 Goldnight Commander
 1 Beregond of the Guard
 1 Greymond, Avacyn's Stalwart
-1 Jazal Goldmane
+1 Silence
 1 Mondrak, Glory Dominus
 1 Roaming Throne
-1 Elesh Norn, Grand Cenobite
+1 Springleaf Drum
 1 Intangible Virtue
 1 Flowering of the White Tree
 1 Caretaker's Talent
@@ -36,15 +36,15 @@
 1 Wedding Announcement
 1 Anointed Procession
 1 Cathars' Crusade
-1 Divine Visitation
+1 Ranger of Eos
 1 Elspeth, Storm Slayer
 1 Elspeth, Sun's Champion
 1 Trouble in Pairs
 1 Land Tax
 1 Skullclamp
 1 Idol of Oblivion
-1 Horn of Gondor
-1 Dolmen Gate
+1 Recruiter of the Guard
+1 Walking Ballista
 1 The One Ring
 1 Smothering Tithe
 1 Sol Ring
@@ -58,7 +58,7 @@
 1 Akroma's Will
 1 Galadriel's Dismissal
 1 Flare of Fortitude
-1 Unbreakable Formation
+1 Idyllic Tutor
 1 Swords to Plowshares
 1 Path to Exile
 1 Winds of Abandon

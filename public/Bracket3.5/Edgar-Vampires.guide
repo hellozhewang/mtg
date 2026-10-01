@@ -1,23 +1,30 @@
-Edgar never has to be cast. His eminence works from the command zone: every other Vampire spell you cast brings a free 1/1 Vampire token with it. Thirty-nine Vampires here, all but two costing four mana or less, so from turn one every creature you cast is two bodies — and the lords pump the tokens too. Removal aimed at your commander does nothing, because the engine was never on the battlefield.
+Edgar never has to be cast. His eminence works from the command zone: every other Vampire spell you cast brings a free 1/1 Vampire token with it. Thirty-four Vampires here, all but three costing four mana or less, so from turn one every creature you cast is two bodies — and the lords pump the tokens too. Removal aimed at your commander does nothing, because the engine was never on the battlefield.
+The deck also wins on the spot with any of six two-card drain combos — see the combos.
 It only counts Vampires you CAST. Bloodghast returning from the graveyard, the Demonic Tutor copy from Emeritus of Woe and the Exsanguinate copy from Stensian Sanguinist make no token.
 
 # The commander
 Edgar Markov :: eminence makes a 1/1 black Vampire whenever you cast another Vampire, with Edgar on the battlefield or still in the command zone. Casting him is the late-game bonus: six mana for first strike, haste, and a +1/+1 counter on every Vampire each time he attacks.
-Cavern of Souls :: name Vampire: your creatures can't be countered, and it taps for any colour to cast them.
+Cavern of Souls :: name Vampire: Vampire spells cast with its coloured mana can't be countered, and it taps for any colour to cast them.
 Voldaren Estate :: pay 1 life for any colour to cast a Vampire; late game it turns spare mana into Blood tokens.
 Three Tree City :: name Vampire, then {2} and a tap makes one mana of a colour for every Vampire you control.
-Herald's Horn :: name Vampire: each one costs one less, and every upkeep a Vampire on top of your library goes to your hand.
+Herald's Horn :: name Vampire: each one costs one less, and each of your upkeeps a Vampire on top of your library goes to your hand.
 
 # Lords — the tokens get pumped too
 Legion Lieutenant :: two mana: other Vampires +1/+1.
 Stromkirk Captain :: other Vampires +1/+1 and first strike.
 Captivating Vampire :: other Vampires +1/+1, and tapping five Vampires steals any creature for good.
 Markov Baron :: other Vampires +1/+1. Convoke lets your tokens help cast it.
-Edgar, Charmed Groom :: other Vampires +1/+1. When it dies it returns as a coffin that makes a lifelink Vampire each upkeep and turns back into Edgar after three.
-Bloodline Keeper :: taps for a 2/2 flying Vampire every turn. With five Vampires out, {B} transforms it into Lord of Lineage: other Vampires +2/+2.
+Edgar, Charmed Groom :: other Vampires +1/+1. When it dies it returns as a coffin that makes a lifelink Vampire each of your upkeeps and turns back into Edgar after three.
 Shared Animosity :: every attacking Vampire gets +1/+0 for each OTHER attacking Vampire. Ten attackers each get +9/+0.
-Anointed Procession :: doubles every token — Edgar's, Bloodline Keeper's, Mavren Fein's.
 Drana, Liberator of Malakir :: a first-strike flier. When it connects, every attacking creature gets a +1/+1 counter before regular damage is dealt.
+
+# The combos — why this is Bracket 3.5
+Exquisite Blood :: whenever an opponent loses life, you gain that much. With Sanguine Bond, Vito or Marauding Blight-Priest out, every point you gain makes an opponent lose life and every point they lose makes you gain — one drain from anything kills the whole table.
+Bloodthirsty Conqueror :: the same ability as Exquisite Blood, on a 5/5 flying deathtouch Vampire, so casting it also makes an Edgar token.
+Sanguine Bond :: whenever you gain life, an opponent loses that much — the other half of the loop. Vito, Thorn of the Dusk Rose and Marauding Blight-Priest do the same job, so there are six pairs in all.
+Start the loop with any drain: Cruel Celebrant, Blood Artist, a Sanctum Seeker attack, Creeping Bloodsucker's upkeep ping or a lifelink hit. Forerunner of the Legion finds the Vampire halves; Emeritus of Woe's Demonic Tutor finds Exquisite Blood or Sanguine Bond.
+Diabolic Intent :: sacrifice a token to find whichever half you are missing.
+Beseech the Mirror :: any card. Bargain a token and a card costing 4 or less — Vito or Marauding Blight-Priest — is cast for free; Exquisite Blood, Sanguine Bond and Bloodthirsty Conqueror go to your hand.
 
 # Drain — how the games end
 Sanctum Seeker :: every Vampire that attacks makes each opponent lose 1 and you gain 1. Twelve attackers is 12 from everyone before blockers.
@@ -27,14 +34,14 @@ Marauding Blight-Priest :: whenever you gain life, each opponent loses 1. With S
 Cruel Celebrant :: whenever one of your creatures dies, each opponent loses 1 and you gain 1.
 Blood Artist :: whenever ANY creature dies, a player of your choice loses 1 and you gain 1.
 Malakir Bloodwitch :: when it enters, each opponent loses 1 life per Vampire you control, and you gain it all.
-Stensian Sanguinist :: whenever you attack, a creature gets deathtouch; if it connects, the Sanguinist becomes prepared and you can cast a copy of Exsanguinate — X from each opponent, all of it back to you.
-Creeping Bloodsucker :: 1 damage to each opponent every upkeep, and you gain it back.
-Twilight Prophet :: once you control ten permanents, each upkeep you take the top card and drain everyone for its mana value.
+Stensian Sanguinist :: whenever you attack, a creature gets deathtouch; if it connects, the Sanguinist becomes prepared and you can cast a copy of Exsanguinate for {X}{B}{B} — X from each opponent, all of it back to you.
+Creeping Bloodsucker :: 1 damage to each opponent each of your upkeeps, and you gain it back.
+Twilight Prophet :: once you control ten permanents, each of your upkeeps you take the top card and drain everyone for its mana value.
 Voldaren Epicure :: a one-drop that pings each opponent and leaves a Blood token.
 
 # Sacrifice — making sweepers pay you
-Viscera Seer :: a free sacrifice outlet. In response to a sweeper, sacrifice everything: Blood Artist, Cruel Celebrant, Cordial Vampire and Elenda turn the wipe into a drain.
-Cordial Vampire :: whenever one of your creatures dies, every Vampire you control gets a +1/+1 counter.
+Viscera Seer :: a free sacrifice outlet. In response to a sweeper, sacrifice everything: Blood Artist and Cruel Celebrant drain for every creature, so sacrifice them last; Cordial Vampire and Elenda grow whatever survives.
+Cordial Vampire :: whenever any creature dies, every Vampire you control gets a +1/+1 counter.
 Elenda, the Dusk Rose :: grows with every creature that dies, then leaves that many lifelink Vampires when it dies.
 Indulgent Aristocrat :: {2} and a sacrifice: a +1/+1 counter on every Vampire.
 Yahenni, Undying Partisan :: haste, grows as their creatures die, and sacrifices another creature to become indestructible.
@@ -43,15 +50,14 @@ Kalitas, Traitor of Ghet :: lifelink, and their nontoken creatures that die are 
 
 # Cards
 Necropotence :: skip your draw step, then pay 1 life for each card you want, delivered at end of turn. The drains pay it back.
-Skullclamp :: equip a 1/1 token and it dies: two cards for one mana.
+Skullclamp :: equip it to a creature with 1 toughness and it dies: two cards for one mana. A lord that adds toughness keeps your tokens alive, so pick an X/1.
 Black Market Connections :: each first main phase, pick any of: a Treasure for 1 life, a card for 2, a 3/2 changeling for 3. Changelings are every creature type, so the token counts as a Vampire for your lords and Sanctum Seeker.
-Welcoming Vampire :: once a turn, a card when creatures with power 2 or less enter — your tokens always do.
+Welcoming Vampire :: once a turn, a card when creatures with power 2 or less enter — most of your tokens do, until lords push them past 2 power.
 Champion of Dusk :: when it enters, draw a card and lose 1 life for each Vampire you control.
 Florian, Voldaren Scion :: after combat, look at one card per point of life your opponents lost this turn, and play one of them.
-Scheming Silvertongue :: a flying lifelinker. If you gained 2 life before your second main phase, it lets you cast a copy of Sign in Blood.
-Emeritus of Woe :: a 5/4 that enters with a free copy of Demonic Tutor ready to cast, and gets another whenever two creatures die in a turn.
+Scheming Silvertongue :: a flying lifelinker. If you gained 2 life before your second main phase, it lets you cast a copy of Sign in Blood for {B}{B}.
+Emeritus of Woe :: a 5/4 that enters prepared: you may cast a copy of Demonic Tutor for {1}{B} at sorcery speed. It prepares again at your end step if two or more creatures died that turn, but never holds more than one copy.
 Forerunner of the Legion :: puts any Vampire on top of your library, then pumps a creature whenever another Vampire enters.
-Mavren Fein, Dusk Apostle :: a 1/1 lifelink Vampire whenever your nontoken Vampires attack.
 Smothering Tithe :: every card an opponent draws is two mana from them or a Treasure for you.
 
 # Mana
@@ -60,31 +66,31 @@ Arcane Signet :: any of your three colours.
 Talisman of Hierarchy :: white or black.
 Talisman of Indulgence :: black or red.
 Talisman of Conviction :: red or white.
-Vault of the Archangel :: {2}{W}{B} gives your whole team deathtouch and lifelink — and with Vito or Marauding Blight-Priest out, every point of lifelink is a drain.
+Vault of the Archangel :: {2}{W}{B} gives your whole team deathtouch and lifelink — with Vito out, every lifelink hit drains the same amount again, and Marauding Blight-Priest adds 1 per hit.
 
 # Answers
 Swords to Plowshares :: one mana, any creature.
 Path to Exile :: the second one.
 Terminate :: two mana, no regeneration.
 Anguished Unmaking :: any nonland permanent for 3 life.
-Vindicate :: any permanent.
 Deadly Rollick :: exile a creature. Free only while Edgar is on the battlefield; four mana otherwise.
 Chaos Warp :: the red answer to anything.
 Bloodtithe Harvester :: a 3/2 for two that later sacrifices itself to shrink a creature by twice your Blood tokens.
-Olivia Voldaren :: {1}{R}: ping a creature and grow. Late game, {3}{B}{B} steals a Vampire.
 Olivia's Wrath :: a one-sided sweeper: every non-Vampire gets -X/-X, where X is how many Vampires you control.
-Charismatic Conqueror :: their creatures and artifacts enter tapped, or you get a lifelink Vampire.
 
 # Protection
 Teferi's Protection :: the whole board phases out until your next turn.
 Clever Concealment :: phases out any of your nonland permanents; convoke means your tokens pay for it.
 Flawless Maneuver :: your creatures are indestructible. Free only while Edgar is on the battlefield; three mana otherwise.
 Boros Charm :: indestructible for everything, or 4 damage to a player.
-Akroma's Will :: flying and double strike, or lifelink, indestructible and protection from every colour — both with Edgar on the battlefield.
+Akroma's Will :: flying, vigilance and double strike, or lifelink, indestructible and protection from every colour — both with Edgar on the battlefield.
 Sorin, Imperious Bloodlord :: deathtouch and lifelink each turn, or sacrifice a Vampire for 3 damage; −3 puts a Vampire from your hand straight onto the battlefield.
+Grand Abolisher :: during your turn, opponents can't cast spells or use abilities of artifacts, creatures or enchantments — the loop resolves in peace.
+Voice of Victory :: your opponents can't cast spells during your turn, and it brings two attacking Warriors when it attacks.
+Silence :: one mana and nobody else casts spells this turn. Cast it before you start the loop.
 
 # What to keep in an opening hand
-Keep two or three lands and at least two cheap Vampires. A one-drop on turn one is two bodies; two two-drops on turn three is four more.
+Keep two or three lands and at least two cheap Vampires. A one-drop on turn one is two bodies; a one-drop and a two-drop on turn three is four more.
 Don't cast Edgar until you need him. The tokens come from the command zone; cast him when six mana has nothing better to do, or when his attack counters win the game.
 Play around sweepers. Past five or six creatures, hold Viscera Seer, Teferi's Protection or Clever Concealment before adding more.
 Necropotence costs life, and so does Black Market Connections. Count your life against what the table can do to you before paying.

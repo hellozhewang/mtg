@@ -4,11 +4,15 @@ Every new deck needs a deliberate catalog placement. Revisit it when tuning
 changes the plan. Read the finished decklist and guide before choosing labels:
 a commander, filename, or single card does not establish a strategy.
 
-The catalog groups decks by **primary strategy, then bracket**. For example,
+The catalog defaults to **List**, showing decks directly under their brackets.
+Switch to **Categories** to group by **primary strategy, then bracket**, with
+collapsible strategy sections and Expand all / Collapse all controls. For example,
 Stax / Prison contains its own Bracket 3, Bracket 3.5, and Bracket 4 subsections
 when those brackets have decks. Empty subsections are omitted. Each deck appears
 once. Secondary themes appear on its tile and match the strategy filter and text
-search. These rules apply to both the public and local catalogs.
+search in either view. Rows / Tiles controls the layout separately. These rules
+apply to both the public and local catalogs; classification determines placement
+in Categories and filtering in both views.
 
 ## File placement and metadata
 
@@ -100,7 +104,8 @@ by a non-Goblin commander. Keep each supported broader strategy as a secondary
 tag so those filters still find the deck. A few incidental Goblin cards or a
 Goblin commander without a Goblin plan do not establish a Goblin deck.
 
-The hierarchy is **Goblins → bracket → decks**, in both catalogs. Preserve the
+In Categories, the hierarchy is **Goblins → bracket → decks**, in both catalogs.
+List still puts these decks directly under their brackets. Preserve the
 bracket folders and visibility; assign private decks only in the private map.
 Do not rename an existing deck to add the category: `Krenko-Combo`, for example,
 gets it through its explicit assignment. New `Commander-Goblins` filenames fall
@@ -193,9 +198,10 @@ For a full-workspace build or tune:
 3. Run `python3 scripts/build_site.py`, then
    `python3 scripts/build_site.py --check` from the repository root. The check
    covers the public build; inspect the local catalog too for private changes.
-4. Confirm the deck appears once under its primary strategy and correct bracket,
+4. Confirm the deck appears once under its bracket in List and under its primary
+   strategy and correct bracket in Categories,
    and remains discoverable when selecting a secondary theme. Check author and
-   private badge, plus Tiles, List, and search.
+   private badge, plus both views, Rows/Tiles, category collapse, and search.
 5. Publish authorized public changes with the generated frontend. Keep `private/`
    and `docs/private/` out of the commit and preserve unrelated working-tree edits.
    Private-only assignments stay local.

@@ -5,15 +5,22 @@ creating a deck or changing its plan. It covers primary/secondary selection,
 every supported ID, examples, renames, private metadata, and the Discord
 builder's access limits. This file is the short implementation reference.
 
-The index groups decks by primary Commander strategy, then by bracket.
-Each deck appears once. Its secondary themes remain visible on the tile and
-match the strategy dropdown and text search in both Tiles and List views.
+The catalog opens in **List**, the original bracket-first view. **Categories**
+groups decks by primary Commander strategy, then bracket, with each category
+collapsible. Expand all / Collapse all controls appear in Categories. The
+separate Rows / Tiles layout applies to either view.
+
+Switching views moves the same deck links between containers, preserving one
+tile per deck, bracket/date ordering, filters, and category collapse states.
+Each visit defaults to List; only the Rows/Tiles layout is saved. Search opens
+matching categories temporarily and restores their prior collapse states when
+filters are cleared. Secondary themes match filters and text search in both views.
 Category headings, bracket headings, and strategy options have no deck-count
 suffixes. The overall result total remains beside the filters. Category headings
-and theme chips use teal; List view aligns deck identity, mana, themes, and stats
+and theme chips use teal; Rows aligns deck identity, mana, themes, and stats
 in columns, stacking them on smaller screens. Keep each theme a separate chip.
 
-All Goblin decks use the dedicated **Goblins** category (`goblins` first), with
+In Categories, all Goblin decks use **Goblins** (`goblins` first), with
 brackets nested inside it. Keep their supported broader strategies as secondary
 tags. This includes Goblin hybrids and decks with non-Goblin commanders; a few
 incidental Goblin cards are not enough. New `-Goblins` filenames fall back to

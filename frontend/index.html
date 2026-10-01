@@ -1,8 +1,7 @@
 <main>
 <h1>Commander decks</h1>
-<p class="lede">Explore Commander decks by strategy, from prison and Voltron to
-tribal armies and spell engines. Each strategy is divided into brackets.
-Filter by any theme to find decks that combine several plans.</p>
+<p class="lede">Browse decks by bracket in List, or explore collapsible strategy
+groups in Categories. Filter by any theme to find decks that combine several plans.</p>
 <div class="catalog-controls">
   <label class="strategy-label" for="strategy-filter">Strategy or theme
     <select id="strategy-filter" class="strategy-filter">
@@ -12,21 +11,44 @@ Filter by any theme to find decks that combine several plans.</p>
   <button class="btn clear-filters" type="button" hidden>Clear filters</button>
   <span class="catalog-results" role="status" aria-live="polite" aria-atomic="true">{{COUNT}} decks</span>
 <div class="toolbar catalog-views" role="group" aria-label="Catalog view">
-  <button class="btn" data-decks="tiles" aria-pressed="true">Tiles</button>
-  <button class="btn" data-decks="list" aria-pressed="false">List</button>
+  <button class="btn" data-grouping="list" aria-pressed="true">List</button>
+  <button class="btn" data-grouping="categories" aria-pressed="false">Categories</button>
 </div>
 </div>
-<div class="decks" data-view="tiles">
-{{SECTIONS}}</div>
+<div class="catalog-display">
+  <div class="toolbar catalog-layout" role="group" aria-label="Deck layout">
+    <span class="control-label">Layout</span>
+    <button class="btn" data-decks="list" aria-pressed="true">Rows</button>
+    <button class="btn" data-decks="tiles" aria-pressed="false">Tiles</button>
+  </div>
+  <div class="category-actions" role="group" aria-label="Category sections" hidden>
+    <button class="btn" type="button" data-categories="expand">Expand all</button>
+    <button class="btn" type="button" data-categories="collapse">Collapse all</button>
+  </div>
+</div>
+<div class="decks" data-grouping="list" data-view="list">
+  <div class="catalog-list">
+{{BRACKETS}}  </div>
+  <div class="catalog-categories" hidden>
+{{CATEGORIES}}  </div>
+</div>
 </main>
 
 <template data-part="strategy">
-<section class="strategy-group" data-theme="{{THEME}}">
-  <div class="strategy-heading">
-    <h2>{{LABEL}}</h2>
-    <p>{{DESCRIPTION}}</p>
-  </div>
-{{BRACKETS}}</section>
+<details class="strategy-group" data-theme="{{THEME}}" open>
+  <summary class="strategy-heading">
+    <span class="strategy-title">{{LABEL}}</span>
+    <span class="strategy-description">{{DESCRIPTION}}</span>
+  </summary>
+{{BRACKETS}}</details>
+</template>
+
+<template data-part="list-bracket">
+<section class="bracket-group" data-bracket="{{BRACKET_ID}}">
+  <h2>{{BRACKET}}</h2>
+  <div class="tiles">
+{{TILES}}  </div>
+</section>
 </template>
 
 <template data-part="bracket">
@@ -38,7 +60,7 @@ Filter by any theme to find decks that combine several plans.</p>
 </template>
 
 <template data-part="tile">
-    <a class="tile" href="{{HREF}}" data-search="{{SEARCH}}" data-themes="{{THEMES}}">
+    <a class="tile" href="{{HREF}}" data-search="{{SEARCH}}" data-themes="{{THEMES}}" data-bracket="{{BRACKET_ID}}">
       {{ART}}
       <span class="tile-body">
         <span class="tile-identity">

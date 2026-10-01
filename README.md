@@ -405,12 +405,14 @@ and a copy-the-decklist button. Decks created through Discord also show the
 Discord user who requested them; the catalog search matches those usernames, so
 typing an author filters the deck cards the same way typing a commander does.
 
-The catalog groups decks by primary Commander strategy, then by bracket. Each deck
-appears once, with secondary theme tags and a strategy filter in both Tiles and
-List views. See the [placement guide](deck-catalog-strategies.md) for theme IDs,
+The catalog defaults to **List**, with decks directly under each bracket.
+Switch to **Categories** for collapsible Commander strategy groups containing
+bracket subsections. Rows / Tiles controls layout separately. Each deck appears
+once, with secondary theme tags and filters in both views.
+See the [placement guide](deck-catalog-strategies.md) for theme IDs,
 assignment rules, and the public/private metadata locations.
 
-All Goblin decks go in the dedicated **Goblins** category, with brackets inside
+In Categories, all Goblin decks go in **Goblins**, with brackets inside
 it. Put `goblins` first in their theme assignments and keep supported strategies
 such as `tribal`, `tokens`, and `combo` as secondary tags. The placement guide
 applies this rule to new decks and existing Goblin hybrids in both catalogs.

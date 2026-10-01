@@ -456,8 +456,10 @@ names, fix the guide in the same turn. Say so in your reply.
 
 ## Placing the deck in the catalog
 
-The catalog groups decks by primary strategy, then bracket. A deck appears once;
-secondary tags match the strategy filter and search. Read
+The catalog defaults to List, with decks directly under each bracket. Categories
+groups by primary strategy, then bracket, with collapsible strategy sections.
+Rows / Tiles controls layout separately. A deck appears once in either view;
+secondary tags match the strategy filter and search in both. Read
 `../deck-catalog-strategies.md` for the selection rules, supported IDs, examples,
 and how changes and renames affect placement.
 
@@ -472,7 +474,7 @@ All Goblin decks belong in the dedicated **Goblins** category: put `goblins`
 first, ahead of broader strategies such as `tribal`, `tokens`, or `combo`.
 Keep those supported strategies as secondary tags. This includes Goblin hybrids
 and Goblin decks led by non-Goblin commanders. Incidental Goblin cards or a
-Goblin commander alone are not enough. Brackets sit inside Goblins; deck files
+Goblin commander alone are not enough. In Categories, brackets sit inside Goblins; deck files
 stay in their existing bracket folders. A new `-Goblins` filename falls back to
 `goblins`; existing decks can keep their names through explicit assignments.
 

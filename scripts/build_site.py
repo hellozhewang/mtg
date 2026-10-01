@@ -366,12 +366,12 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
                  repo: str, mana: Mana,
                  available_images: set[str] | None = None) -> str:
     index, layout = tpl["index"], tpl["layout"]
-    grouped: dict[str, dict[str, list[str]]] = {}
+    grouped: dict[str, set[str]] = {}
+    by_bracket: dict[str, list[str]] = {}
     active_themes = set()
 
     for d in decks:
-        groups = grouped.setdefault(d.themes[0], {})
-        tiles = groups.setdefault(d.bracket, [])
+        grouped.setdefault(d.themes[0], set()).add(d.bracket)
         active_themes.update(d.themes)
         art_name = image_file(d.art_card, 0, ART, d.art_url) if d.art_url else ""
         # A transient CDN failure must not leave a dangling <img> in the
@@ -382,8 +382,9 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
         art = (f'<img class="art" src="img/{e(art_name)}" alt=""'
                f' loading="lazy" decoding="async" width="626" height="457">'
                if has_art else '<span class="art-blank"></span>')
-        tiles.append(index.part("tile").render(
+        tile = index.part("tile").render(
             HREF=e(d.href), ART=art, NAME=e(d.stem), COMMANDER=e(d.commander),
+            BRACKET_ID=e(d.bracket),
             THEMES=e(" ".join(d.themes)),
             THEME_TAGS="".join(index.part("theme-tag").render(
                 LABEL=e(deckthemes.THEMES[t].label)) for t in d.themes),
@@ -407,7 +408,8 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
                                d.art_card.get("type_line", "")) if x)),
             PIPS=mana.pips(d.colours, ""), TOTAL=d.total, LANDS=d.lands,
             MV=f"{d.avg_mv:.2f}",
-            GC=f"{len(d.gcs)}/{d.cap}" if d.cap is not None else str(len(d.gcs))))
+            GC=f"{len(d.gcs)}/{d.cap}" if d.cap is not None else str(len(d.gcs)))
+        by_bracket.setdefault(d.bracket, []).append(tile)
     sections = []
     for key, theme in deckthemes.THEMES.items():
         if key not in grouped:
@@ -415,21 +417,23 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
         groups = grouped[key]
         brackets = [index.part("bracket").render(
             BRACKET=e(bracket_label(bracket)), BRACKET_ID=e(bracket),
-            TILES="".join(tiles))
-            for bracket, tiles in sorted(groups.items())]
+            TILES="") for bracket in sorted(groups)]
         sections.append(index.part("strategy").render(
             THEME=e(key), LABEL=e(theme.label), DESCRIPTION=e(theme.description),
             BRACKETS="".join(brackets)))
     options = "".join(index.part("theme-option").render(
         VALUE=e(key), LABEL=e(theme.label))
         for key, theme in deckthemes.THEMES.items() if key in active_themes)
+    brackets = "".join(index.part("list-bracket").render(
+        BRACKET=e(bracket_label(bracket)), BRACKET_ID=e(bracket),
+        TILES="".join(tiles)) for bracket, tiles in sorted(by_bracket.items()))
 
     return mirror_tips(layout.render(
         TITLE="Commander decks", UP="", REPO=e(repo),
         DESCRIPTION=f"{len(decks)} Magic: the Gathering Commander decklists.",
         PICKER=picker(layout, decks, None, ""),
         MAIN=index.render(COUNT=len(decks), OPTIONS=options,
-                          SECTIONS="".join(sections))))
+                          BRACKETS=brackets, CATEGORIES="".join(sections))))
 
 
 def render_guide(page: frontend.Template, d: "DeckInfo",
@@ -702,9 +706,9 @@ def plan(root: Path, out_dir: Path, repo: str, q: CardQuery,
                              created=created_at(p, dates),
                              theme_assignments=assignments[priv])
                     for p, base, priv in found),
-                   # Bracket order also drives the deck picker. The index groups
-                   # by strategy, then bracket, preserving newest-first order
-                   # within each subgroup. Name breaks ties deterministically.
+                   # Bracket order also drives the deck picker. Both index views
+                   # preserve newest-first order within each bracket or category
+                   # subgroup. Name breaks ties deterministically.
                    key=lambda d: (d.bracket, -d.created, d.stem.lower()))
     mana = Mana(sym.uris())
     image_files = collect_images(decks, img, out_dir)

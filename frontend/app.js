@@ -64,6 +64,8 @@
 
     var sections = toArray(document.querySelectorAll(tiles.length
       ? '.bracket-group, .strategy-group' : '.cards .cat'));
+    var categories = toArray(document.querySelectorAll('details.strategy-group'));
+    var beforeFilter = null;
     var empty = document.createElement('p');
     empty.className = 'nomatch';
     (document.querySelector('main') || document.body).appendChild(empty);
@@ -71,6 +73,10 @@
     function apply() {
       var q = fold(input.value).trim();
       var theme = strategy ? strategy.value : '';
+      var filtering = Boolean(q || theme);
+      if (filtering && !beforeFilter) {
+        beforeFilter = categories.map(function (category) { return category.open; });
+      }
       var shown = 0;
       items.forEach(function (el) {
         var hit = (!q || el.getAttribute('data-key').indexOf(q) !== -1)
@@ -83,7 +89,12 @@
       sections.forEach(function (sec) {
         var count = sec.querySelectorAll('.tile:not(.is-filtered), .card:not(.is-filtered)').length;
         sec.classList.toggle('is-filtered', !count);
+        if (filtering && count && sec.matches('details.strategy-group')) sec.open = true;
       });
+      if (!filtering && beforeFilter) {
+        categories.forEach(function (category, i) { category.open = beforeFilter[i]; });
+        beforeFilter = null;
+      }
       empty.textContent = tiles.length ? 'No decks match these filters.'
         : 'Nothing matches “' + input.value + '”.';
       empty.classList.toggle('on', !shown);
@@ -115,6 +126,7 @@
       }
     });
     apply();
+    return apply;
   }
 
   /* ---- tooltip placement ------------------------------------------------ */
@@ -143,18 +155,63 @@
     });
   }
 
-  /* ---- catalog: tiles / list --------------------------------------------- */
-  // Restyles the tiles already on the page instead of rendering a second list,
-  // so the search filter, the tooltips and the private badge keep working with
-  // no knowledge of which view is on. Bracket sections stay in both.
+  /* ---- catalog grouping and layout -------------------------------------- */
+  // Move the same deck links between bracket and category containers. This
+  // preserves filters, tooltips, and one link per deck when switching views.
   //
   // `data-decks`, not `data-view`: the deck page's own toggle claims
   // `.btn[data-view]`, and one selector matching both sets of buttons is exactly
   // the bug convention 2 exists to prevent.
-  function initCatalogView() {
+  function initCatalogView(refreshSearch) {
     var wrap = document.querySelector('.decks');
     var buttons = toArray(document.querySelectorAll('.btn[data-decks]'));
     if (!wrap || !buttons.length) return;
+    var groupingButtons = toArray(document.querySelectorAll('.btn[data-grouping]'));
+    var list = wrap.querySelector('.catalog-list');
+    var categories = wrap.querySelector('.catalog-categories');
+    var actions = document.querySelector('.category-actions');
+    var tiles = toArray(wrap.querySelectorAll('.tile'));
+    var listTargets = new Map();
+    var categoryTargets = new Map();
+    toArray(list.querySelectorAll('.bracket-group')).forEach(function (group) {
+      listTargets.set(group.dataset.bracket, group.querySelector('.tiles'));
+    });
+    toArray(categories.querySelectorAll('.strategy-group')).forEach(function (category) {
+      toArray(category.querySelectorAll('.bracket-group')).forEach(function (group) {
+        categoryTargets.set(category.dataset.theme + ':' + group.dataset.bracket,
+          group.querySelector('.tiles'));
+      });
+    });
+
+    function groupBy(view) {
+      tiles.forEach(function (tile) {
+        var target = view === 'categories'
+          ? categoryTargets.get(tile.dataset.themes.split(' ')[0] + ':' + tile.dataset.bracket)
+          : listTargets.get(tile.dataset.bracket);
+        target.appendChild(tile);
+      });
+      wrap.dataset.grouping = view;
+      list.hidden = view !== 'list';
+      categories.hidden = view !== 'categories';
+      actions.hidden = view !== 'categories';
+      groupingButtons.forEach(function (btn) {
+        btn.setAttribute('aria-pressed', String(btn.dataset.grouping === view));
+      });
+      if (refreshSearch) refreshSearch();
+    }
+    groupingButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () { groupBy(btn.dataset.grouping); });
+    });
+    toArray(actions.querySelectorAll('[data-categories]')).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        toArray(categories.querySelectorAll('.strategy-group')).forEach(function (category) {
+          category.open = btn.dataset.categories === 'expand';
+        });
+      });
+    });
+    // Every visit starts with the original bracket view. Category disclosure
+    // states survive switching views within the page, but do not change this default.
+    groupBy('list');
 
     function apply(view) {
       wrap.dataset.view = view;
@@ -166,10 +223,10 @@
     // Wrapped: localStorage throws outright in some browsers on file://, which
     // is how a local build of this site gets opened.
     function store(view) {
-      try { localStorage.setItem('mtg-catalog-view', view); } catch (e) { /* fine */ }
+      try { localStorage.setItem('mtg-catalog-layout', view); } catch (e) { /* fine */ }
     }
     function restore() {
-      try { return localStorage.getItem('mtg-catalog-view'); } catch (e) { return null; }
+      try { return localStorage.getItem('mtg-catalog-layout'); } catch (e) { return null; }
     }
 
     var saved = restore();
@@ -391,9 +448,9 @@
 
   /* ---- start --------------------------------------------------------------- */
   initDeckPicker();
-  initSearch();
+  var refreshSearch = initSearch();
   initTooltips();
-  initCatalogView();
+  initCatalogView(refreshSearch);
 
   var cards = document.querySelector('.cards');
   if (!cards) return;                       // index page: nothing below applies

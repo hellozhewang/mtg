@@ -1,90 +1,80 @@
-Captain Sisay taps to fetch any legendary CARD — not just creatures. Lands, artifacts, enchantments, planeswalkers and even a sorcery are all on the table, so she is not a value engine, she is a toolbox that answers whatever the table is doing. Almost every game comes down to two questions: how fast can she untap, and do you know what to name.
+Sisay puts a legendary card into your HAND, not onto the battlefield. Every tutor needs a mana plan: develop cheap acceleration, fetch the resource or answer you can actually use, then turn the accumulated creatures into a protected combat finish. Do not spend several turns collecting expensive legends while the table develops.
+This revision lowers the curve and adds mana-producing Humans, two useful planeswalkers, and access to nonlegendary creatures through Eladamri's Call. The three Game Changers remain Gaea's Cradle, Seedborn Muse, and The One Ring. The plan is legendary toolbox into combat, with no planned infinite loop, extra-turn chain, or mass land denial.
 
-# The commander, and untapping her
-Captain Sisay :: {T}: search your library for a legendary card and put it in your HAND. Every activation is a card, so protecting her and untapping her is the whole game plan.
-Lightning Greaves :: equip for zero, tap her the turn she lands, and shroud stops the removal spell aimed at her. This is the single best card to see alongside her.
-Thousand-Year Elixir :: haste for the activation AND a repeatable untap. Two fetches a turn.
-Shang-Chi, Master of Kung Fu :: the same haste clause, plus two mana specifically for creature abilities — and Sisay is a creature ability.
-Seedborn Muse :: untaps everything on every opponent's untap step. Four Sisay activations per turn cycle, plus all your mana back to cast what she found.
-Hall of the Bandit Lord :: the land that gives her haste on the turn you cast her, at the cost of three life.
-Sigarda, Font of Blessings :: your OTHER permanents have hexproof, which includes Sisay. Fetch this the moment the table shows blue or black removal.
-Avacyn, Angel of Hope :: your other permanents are indestructible. Between Avacyn and Sigarda, Sisay effectively cannot be answered.
+# Develop mana before collecting payoffs
+Captain Sisay :: Searches for a legendary card, including a land, artifact, enchantment, planeswalker, or legendary sorcery. She does not find every powerful card in this deck: Seedborn Muse, Lightning Greaves, Thousand-Year Elixir, and Finale of Devastation are not legendary. Usually fetch mana or cards before a finisher unless you can already deploy and use that finisher.
+Fyndhorn Elves :: Adds another turn-one accelerator alongside Llanowar Elves, Birds of Paradise, Avacyn's Pilgrim, and Delighted Halfling. They develop Sisay early and later count for Cradle or become attackers under an anthem. Birds fixes either color; Pilgrim makes white; Halfling's colored mana is restricted to legendary spells and makes those spells uncounterable.
+Arbor Elf :: Untaps a Forest rather than directly producing mana. Enchant that Forest with Wild Growth or Utopia Sprawl to increase the value of each untap. Savannah and Temple Garden have the Forest type; Utopia Sprawl requires that type while Wild Growth can enchant any land. Cub does not trigger merely because Arbor Elf activates its untap ability.
+Badgermole Cub :: Earthbends a land and adds an extra green whenever you tap a creature for mana. That includes mana from the earthbent land and abilities granted by Katilda. Earthbending does not untap an already tapped land. Cub is not legendary, so find it with Eladamri's Call or Finale rather than Sisay.
+Katilda, Dawnhart Prime :: Turns your Humans into mana sources producing their own colors. She also taps for green or white herself once able. With Shang-Chi, newly entered Humans can use those abilities immediately. Tapping Sisay for mana uses the same tap resource as her tutor, so do it only when mana matters more or you have an untap ready. The six-mana counter ability is a late-game use for excess mana, not the reason to keep an opening hand.
+Gwenna, Eyes of Gaea :: Produces two mana for creature spells or creature-source abilities. She cannot fund Finale, equipment, planeswalkers, or protection instants with that restricted mana. Casting Kogla, Surrak and Goreclaw, or Kamahl can untap her; putting a creature directly onto the battlefield does not. Battlefield anthem bonuses do not increase a creature spell's power on the stack for this trigger.
+Bloom Tender :: With a green and white permanent such as Sisay present, taps for GW. Seedborn Muse and targeted untaps let you reuse it. It is not legendary and should not be treated as a Sisay target.
+Selvala, Heart of the Wilds :: Pay G and tap to produce mana equal to your greatest creature power, so subtract the activation cost when counting net mana. Kogla supplies seven power, and anthem effects can raise the amount. The draw trigger may help any creature's controller if the entering creature is uniquely largest; it is not a guaranteed one-sided draw engine.
+Bugenhagen, Wise Elder :: A searchable two-mana fixer that contributes immediately to the plan once it can tap. Its upkeep draw needs a creature with power seven or greater; Kogla or an appropriately boosted creature enables it. Do not assume ordinary five- or six-power threats satisfy that condition.
+Serah Farron :: Discounts the first legendary creature spell each turn by two generic mana. With Radagast and creatures to cast on other turns, this can be reused across a round. Transforming her is optional; the artifact face keeps the discount and adds +2/+2 to legendary creatures, but loses her creature body for Cradle, Katilda, and attacks.
+Nature's Lore :: Together with Three Visits, supplies land-based acceleration that survives creature wipes. Find Savannah untapped or Temple Garden if willing to pay two life. Lush Portico still enters tapped; the search spell does not override the land's own entry rule. These effects find Forest cards, not only basic Forests.
+The Mind Stone :: Two-mana indestructible white ramp, searchable by Sisay and preserved by Urza's Ruinous Blast. It cannot supply green for early green spells. Harnessing costs six mana and tapping it; save that for spare mana, then reuse Loran or Kogla at end steps, or reset a planeswalker for a later turn. Its blink does not let you activate loyalty abilities during the end step.
+Sol Ring :: Accelerates generic costs but not Sisay's colored symbols. Use it to deploy Elixir, Tezzeret, or other setup while preserving colored lands. The deck's mana acceleration includes bodies and cost reducers as well as rocks; an opening hand must still supply the actual colors its spells require.
 
-# What to fetch, and when
-Boseiju, Who Endures :: the answer nobody sees coming — Sisay fetches it as a LAND, and its channel destroys an artifact, enchantment or nonbasic land for less each legendary creature you control. Free interaction from a tutor.
-Eiganjo, Seat of the Empire :: the same trick pointed at an attacker. Four damage, discounted by your board.
-Talon Gates of Madara :: exiles a creature for four turns, again straight out of the mana base.
-Gaea's Cradle :: the fetch that turns a board of legends into ten mana. Get it early, not late.
-Nykthos, Shrine to Nyx :: the other big-mana land. With Elesh Norn or Karametra on board it doubles your turn.
-Plaza of Heroes :: fixes, protects a legend for {1} once, and it is fetchable.
-Yavimaya Hollow :: regenerates the creature they just tried to kill.
-Minas Tirith :: a card every turn you attacked with two creatures.
-Linvala, Keeper of Silence :: turns off their mana dorks, sac outlets and activated-ability combos. The fetch against a combo table.
-Thalia, Heretic Cathar :: everything of theirs enters tapped. The fetch against ramp and flash decks.
-Grand Abolisher :: the fetch you name before you go for the kill turn.
-Kutzil, Malamet Exemplar :: the second copy of that effect, and it draws off your pumped attackers.
-Boromir, Warden of the Tower :: counters anything cast for no mana — Force of Will, Fierce Guardianship, Deflecting Swat, evoked Elementals. The fetch against a blue table.
-Elesh Norn, Grand Cenobite :: +2/+2 to your team and -2/-2 to theirs. Against a token deck it is a wrath; against anyone it is an anthem.
-Urza's Ruinous Blast :: exiles every nonland permanent that is not legendary. Your board is legendary. This is a one-sided wrath you can tutor for, and it is why the deck plays so many legends over better nonlegendary cards.
+# Make developed mana produce a decisive turn
+Gaea's Cradle :: Usually the strongest Sisay target when creatures are established and you still have a land play. It counts every creature, not just legends, but makes no mana on an empty board. A tutored land does not grant an extra land play. Garruk can untap it for a second use in your main phase.
+Nykthos, Shrine to Nyx :: Count devotion before spending two mana and tapping the land. Early it may only be a colorless source; late it can generate a large colored burst. Choose one color per activation, and remember that tokens without copied mana costs add no devotion.
+Growing Rites of Itlimoc :: Finds a creature among the top four on entry and transforms at your end step if you have at least four creatures. Its land face becomes another creature-count mana source. It does not supply immediate ramp on an empty board and should not displace an early accelerator in your opening-hand evaluation.
+Garruk Wildspeaker :: A searchable four-mana planeswalker that immediately untaps two lands. Cradle, Nykthos, or an enchanted Forest make that especially valuable. After a +1 takes him from three to four loyalty, his -4 can pump the team and grant trample on a later turn. Normal loyalty limits prevent doing both that same turn without another enabling effect, which this list does not build around.
 
-# Making the legends cheap
-Serah Farron :: the first legendary creature each turn costs {2} less, and it flips into a permanent +2/+2 anthem for your legends once you have three of them.
-Radagast of Rhosgobel :: the first creature spell each turn costs {2} less and can be cast at instant speed. Fetch, then flash it in on their end step.
-Gandalf the White :: legendary and artifact spells all gain flash, AND every legendary or artifact enters-or-leaves trigger happens twice. Loran destroys two things, Kogla fights twice, Solitude exiles two creatures.
-Delighted Halfling :: taps for mana that legendary spells cannot be countered with. In a deck this legendary that is almost every spell.
-Cavern of Souls :: name Human for Sisay herself, or whatever you are about to jam through a counterspell.
-The Great Henge :: costs almost nothing with Ghalta or Kogla out, then it is two mana, two life, a counter and a card on every creature.
+# Get useful activations now and across the round
+Shang-Chi, Master of Kung Fu :: Lets your creatures activate abilities as though they had haste, enabling Sisay and new mana creatures immediately. This does not grant attack haste. His two mana can only activate creature-source abilities, such as Selvala, Eladamri, or Katilda; Sisay's tutor costs only tapping, so that mana does not directly pay for her activation. Katilda can give him a separate ordinary colored-mana ability.
+Sting, the Glinting Dagger :: Searchable activation haste and an untap at the beginning of EACH combat, including opponents' combats. It costs two to cast and two to equip. You can tap Sisay before your combat, untap her when combat begins, then tutor again. Additional cards still need mana to be useful. Move Greaves first if its shroud prevents equipping Sting.
+Thousand-Year Elixir :: Gives activation haste and one targeted untap per use of its own tap ability. It normally supports two Sisay activations on your turn; Seedborn can refresh it on opposing turns. It is not a legendary tutor target and cannot target a creature wearing Greaves.
+Lightning Greaves :: Zero-cost equip gives Sisay haste and shroud. Shroud also stops your own targeted untaps, Quick Reflexes, and other equip abilities from targeting her. Move Greaves to another creature during your main phase before using those effects. Protection decisions involve that tradeoff rather than keeping it attached automatically.
+Tezzeret, Cruel Captain :: Searchable repeatable untapping for Sisay, Selvala, a mana rock, or The One Ring. His 0 works immediately after he resolves but follows normal loyalty timing, usually once on your own turn. His -3 can find Sol Ring; it cannot find the two-mana equipment or The Mind Stone. The emblem is incidental, not the main plan.
+Seedborn Muse :: Untaps your permanents during every other player's untap step, refreshing Sisay, dorks, lands, and the Ring. It does not grant flash or extra loyalty activations. Sisay cannot find it directly; Eladamri's Call or Finale can. Pair it with Radagast to spend renewed mana on creatures during opposing turns instead of merely accumulating cards in hand.
+Radagast of Rhosgobel :: The first creature spell you cast each turn costs two generic less and can be cast as though it had flash. Once you have cast a creature that turn, later creatures do not retain that permission or discount from Radagast. It combines with Serah for a first legendary creature, but neither discount removes colored costs.
+Hall of the Bandit Lord :: A searchable legendary land whose mana grants haste when spent casting a creature. It enters tapped and costs three life each time you use its mana ability, so fetch it in advance rather than expecting same-turn haste from a fresh land. A creature put directly onto the battlefield did not use Hall mana to be cast.
 
-# Card advantage off being legendary
-Reki, the History of Kamigawa :: a card for every legendary spell. In this deck he draws two or three a turn and costs three mana.
-Venat, Heart of Hydaelyn :: the same trigger once a turn on a body that later exiles a permanent and flips into an indestructible engine.
-Elena, Turk Recruit :: returns a legendary or artifact card from the graveyard on entry and grows on every historic spell.
-Sylvan Library :: with this much tutoring you always know what the extra cards are worth paying for.
-The One Ring :: protection from everything for a turn, then it draws an escalating pile. It is legendary, so Sisay finds it.
-Loran of the Third Path :: destroys an artifact or enchantment on entry, twice with Gandalf, and taps for a symmetrical draw afterwards.
-Eladamri, Korvecdal :: cast creatures off the top, and tap two creatures to put a creature straight onto the battlefield — which cheats past counterspells and mana entirely.
-Selvala, Heart of the Wilds :: draws whenever anyone plays the biggest creature so far, and taps for mana equal to your largest creature. With Ghalta out that is twelve.
+# Keep functioning when Sisay is unavailable
+Reki, the History of Kamigawa :: Draws for every legendary spell you cast, including planeswalkers and legendary artifacts. Playing a legendary land is not casting a spell. Eladamri and Ascend put creatures onto the battlefield rather than casting them, so they do not trigger this draw.
+Venat, Heart of Hydaelyn :: Another legend-cast draw engine, limited to once each turn. Radagast can help obtain draws on opposing turns. The seven-mana sorcery-speed ability is a late answer to a nonland permanent and transforms Venat; it is not an early ramp or protection tool.
+The One Ring :: Searchable recovery when your hand lacks action. Its cast trigger protects you for a turn, not Sisay or the rest of your board. Tezzeret and Seedborn enable extra draws but also increase burden counters and the later life payment. Blink returns it without counters, but does not trigger its cast-based protection.
+The Great Henge :: A payoff, not dependable early acceleration: it needs a sufficiently powerful creature to reduce its generic cost. Kogla's seven power reduces it to GG. It then makes mana and life and rewards nontoken creature entries with counters and cards, including entries from Eladamri or Ascend. Its counters help Kutzil's combat draw condition.
+Sylvan Library :: Provides early card selection and optional extra cards for life. Sisay and fetchlands shuffle away unwanted cards left on top. Avoid spending life as though the deck had unlimited lifegain; Henge helps but may arrive late.
+Eladamri, Korvecdal :: Casts creatures from the top and can put one from your hand or the top directly onto the battlefield. The activated ability costs G, tapping Eladamri, AND tapping two other untapped creatures, and works only on your turn. It is useful when a large finisher is stuck in hand. Bypassing casting also bypasses Reki and Gwenna's cast triggers.
+Eladamri's Call :: Two-mana instant access to nonlegendary engines such as Seedborn, Badgermole Cub, and Aven Mindcensor, or a needed legendary creature. It puts the card into your hand, not onto the battlefield, and cannot retrieve Sisay from the command zone. Use it to fill a specific gap; it is not ramp by itself.
+Ascend from Avernus :: Recovers your creatures and planeswalkers after a wipe. At X=3 it costs six mana and rebuilds many cheap engines plus Tezzeret; X=4 costs seven and can also recover Sisay and Garruk if they are in your graveyard. You cannot recover Sisay from the command zone this way. It exiles itself and does not return artifacts or enchantments that are not also the specified card types.
 
-# Ramp
-Birds of Paradise :: turn-one acceleration into a turn-three Sisay.
-Avacyn's Pilgrim :: the white half of the same.
-Llanowar Elves :: and the green half.
-Arbor Elf :: untaps a Forest, which with Wild Growth or Utopia Sprawl on it is two or three mana.
-Wild Growth :: the enchantment that makes Arbor Elf a Sol Ring.
-Utopia Sprawl :: the same, and it fixes the white you need for the double-white cards.
-Bloom Tender :: taps for both colours once Sisay is down.
-Nature's Lore :: fetches Savannah or Canopy Vista untapped.
-Three Visits :: the second copy.
-Karametra, God of Harvests :: a land for every creature spell you cast, and an indestructible body once your devotion gets there.
-Badgermole Cub :: every creature you tap for mana adds an extra green. With four dorks out that is four extra mana a turn.
-Bugenhagen, Wise Elder :: fixes, and draws every upkeep once Ghalta or Kogla is on the battlefield.
+# Tutor the answer that matches the board
+Kutzil, Malamet Exemplar :: Searchable protection from opposing spells during your turn, plus cards when creatures with power above base power connect with players. Flowering, Serah, Henge counters, and team pumps enable that condition. Kutzil does not stop opposing activated or triggered abilities; resolve and protect it before relying on a safe finishing turn.
+Boromir, Warden of the Tower :: Counters opposing spells when no mana was spent casting them and can sacrifice to make your creatures indestructible. It answers many free spells, but an additional mana payment can mean the trigger does not counter them. Indestructible does not stop exile, sacrifice, or toughness reduction.
+Linvala, Keeper of Silence :: The legendary answer to opposing creature activated abilities, including mana abilities and sacrifice outlets printed on creatures. It does not stop abilities of noncreature artifacts or lands, nor creature triggered abilities. Find it when those activated abilities are the actual problem.
+Thalia, Heretic Cathar :: Makes opposing creatures and nonbasic lands enter tapped. It does not tap everything opponents play and does not keep lands tapped on future turns. This buys time against haste and nonbasic development while leaving your own mana available.
+Aven Mindcensor :: Flash interaction against opposing searches, limiting them to the top four cards. It is not legendary, so use Eladamri's Call or Finale to find it. It can miss if the needed card is in those four; it is disruption rather than an absolute search lock.
+Loran of the Third Path :: Searchable removal for an artifact or enchantment. Harnessed Mind Stone can repeat the entry trigger on your end steps. Her draw ability gives an opponent a card too, so use it politically or when the benefit to you outweighs feeding that player.
+Kogla, the Titan Ape :: Creature removal on entry, artifact/enchantment removal when attacking, and seven power for Selvala, Bugenhagen, and Henge. Paying 1G to return a Human can save Sisay or reuse Loran while granting Kogla indestructible. Returning Sisay means recasting her later; this is not a free protection effect.
+Boseiju, Who Endures :: A searchable land or a channel answer to an artifact, enchantment, or nonbasic land. Channel is discounted by legendary creatures, but costs at least its colored mana and gives the opponent a possible replacement land. You choose between playing it as a land and discarding it to answer something; one copy does not do both at once.
+Eiganjo, Seat of the Empire :: The analogous searchable channel answer deals four to an attacking or blocking creature. It cannot hit a creature outside combat just because it is dangerous. Its discount counts legendary creatures, not planeswalkers.
+Swords to Plowshares :: Efficient creature exile that leaves mana for development. Path to Exile supplies a second one-mana exile answer but can give the target's controller a basic land. Preserve these for creatures you cannot profitably manage with combat or tutorable effects; they do not answer arbitrary permanents.
+Beast Within :: The instant answer to any permanent at the cost of leaving a 3/3. Force of Vigor handles up to two artifacts/enchantments and can be cast by exiling a green card when it is not your turn. These cover targets that the cheaper creature-only removal cannot handle.
+Urza's Ruinous Blast :: A searchable exile reset that requires a legendary creature or planeswalker under your control to cast. It also exiles YOUR nonlegendary mana creatures, Seedborn, Greaves, Elixir, auras, and Library. It preserves legendary nonland permanents and all lands. Count the damage to your own engine before treating it as a favorable wipe.
+Austere Command :: Flexible mass removal when you need a different reset from Blast. Its modes can also destroy your ramp, legends, or enchantments. Choose the pair that actually leaves a workable board, rather than assuming small-creature or artifact modes are harmless to you.
 
-# Removal and protection
-Swords to Plowshares :: one mana, exiles anything.
-Solitude :: free if you need it to be, and it exiles at instant speed. Gandalf makes it exile two.
-Beast Within :: any permanent, at instant speed. The catch-all.
-Generous Gift :: the white copy, so you can find both.
-Austere Command :: pick the two halves that miss your own board. Against artifacts and small creatures it is a blowout.
-Force of Vigor :: free on their turn, kills two artifacts or enchantments. The answer to a stax lock or a Rest in Peace.
-Kogla, the Titan Ape :: fights on entry and destroys an artifact or enchantment every attack. Bounce a Human — Sisay is a Human — to save her from removal and give Kogla indestructible in the same breath.
-Aven Mindcensor :: flash him onto their fetchland or tutor.
-Flawless Maneuver :: free with a commander out. The answer to a wrath.
-Heroic Intervention :: hexproof and indestructible for everything, including the lands Kamahl animated.
-Veil of Summer :: one mana against blue and black, and it draws.
-Legolas's Quick Reflexes :: split second, so nothing can respond. It saves a creature, untaps it, and turns it into a removal spell.
-Spectacular Spider-Man :: flash blocker that sacrifices to give the whole board hexproof and indestructible.
+# Protect an active engine without spending the whole turn on insurance
+Sigarda, Font of Blessings :: Grants your other permanents hexproof and lets you cast Humans and Angels from the top of the library. It does not protect itself or stop nontargeting wipes and sacrifice effects. The top-deck access is an additional reason to deploy it when you need sustained action.
+Spectacular Spider-Man :: Flash it in and pay one to sacrifice it for creature hexproof and indestructible. From hand, that normally needs three total mana. It protects creatures rather than your entire board, and cannot save them from exile wipes or sufficient toughness reduction. It is a tutorable Human for Katilda and Kogla interactions.
+Legolas's Quick Reflexes :: One green untaps a creature and grants reach, hexproof, and a damage trigger when it becomes tapped that turn. On Sisay it can protect, enable another tutor, and shoot a creature when she taps again. Split second limits spells and nonmana activations while it is on the stack; it does not stop triggered abilities or all possible responses, and does not itself grant haste.
+Heroic Intervention :: Protects your permanents with hexproof and indestructible, including lands you animated with Kamahl. Flawless Maneuver is free with Sisay present but only grants indestructible to creatures. Veil of Summer is narrower protection against blue and black and draws only if an opponent cast a blue or black spell that turn. Choose protection for the actual removal type.
+Plaza of Heroes :: Legendary fixing and emergency protection. The protection ability costs THREE mana, tapping the land, and exiling it; that is a substantial resource commitment. Its unrestricted colored-mana mode needs a legendary permanent with that color, so it may not cast a turn-one green mana creature from an otherwise empty board.
+Talon Gates of Madara :: Its entry phases out up to one creature, which normally returns during its controller's next untap step. Paying four can put Gates from hand onto the battlefield at instant speed for protection or to temporarily remove a blocker. It is not legendary and Sisay cannot find it. Yavimaya Hollow is a searchable alternative against destruction, but regeneration does not stop exile or sacrifice.
 
-# How you actually win
-Akroma's Will :: with a commander out you take both halves. Flying, vigilance, double strike, lifelink, indestructible and protection from every colour on a board of pumped legends is lethal to the table, not just one player.
-Kamahl, Heart of Krosa :: +3/+3 and trample every combat, forever, plus he animates your lands so the attack is wider than the board looks.
-Ghalta, Stampede Tyrant :: costs almost nothing with a real board, and it empties your hand onto the battlefield when it lands.
-Finale of Devastation :: for X of ten or more it is a tutor and a lethal team pump on the same card.
-Surrak and Goreclaw :: trample for everything and a counter plus haste on every creature that enters — so the legends Sisay fetches attack the turn they arrive.
-Flowering of the White Tree :: +2/+1 and ward {1} on the whole legendary board. The ward is what makes their spot removal stop working.
-Sting, the Glinting Dagger :: haste and an untap each combat. On Sisay that is a free extra tutor every turn.
+# Convert the board into a protected combat finish
+Flowering of the White Tree :: Legendary creatures get +2/+1 and ward 1; other creatures get +1/+1. It turns mana creatures into meaningful attackers and can increase Selvala's output. Ward makes targeted opposing effects more costly but does not make spot removal impossible. Its WW cost needs deliberate early white sources.
+Surrak and Goreclaw :: Gives your other creatures trample and grants a counter and haste when another nontoken creature enters. It helps creatures found by Sisay or deployed by Eladamri attack or activate immediately. It does not grant haste to creatures already on the battlefield when Surrak enters, nor to tokens.
+Kamahl, Heart of Krosa :: Your searchable top-end finisher gives the creatures present at your beginning-of-combat trigger's resolution +3/+3 and trample for the turn. Animate your lands before that trigger resolves if they need the bonus; doing it in the main phase is simplest. Spending mana to animate lands may reduce the mana available for protection. Tokens and mana creatures contribute to the lethal attack.
+Akroma's Will :: With Sisay under your control, both modes give the current team flying, vigilance, double strike, lifelink, indestructible, and protection from each color. Without your commander, choose one mode. Count actual attackers and blockers; it is a powerful finisher but not automatically lethal to all three opponents from a small board.
+Finale of Devastation :: Finds a creature in your library and/or graveyard and puts it onto the battlefield. At X=10 or greater it also gives your creatures +X/+X and haste, making the developed mana board a finishing army. That requires at least twelve mana before discounts. Gwenna's creature-only mana cannot pay for it, and Sisay cannot tutor this nonlegendary sorcery.
 
-# What to keep in an opening hand
-Keep any hand with a one-mana dork and three lands. Sisay on turn three, with haste or protection available on turn four, is the strongest start the deck has.
-Do not fetch greedily. The first Sisay activation should usually be Lightning Greaves or Sigarda — something that keeps her alive — not the biggest legend in the library. A Sisay that survives two more turns finds four more cards.
-Sisay's fetch puts the card in your HAND, so count the mana before you tap. Fetching an eight-drop you cannot cast is a wasted turn; fetching Boseiju or Eiganjo gives you a land drop AND a removal spell.
-Urza's Ruinous Blast :: hold it. It is a legendary sorcery, so you need a legend already on board, and it exiles tokens, equipment and every nonlegendary creature at the table. Cast it when the pod has overcommitted, then attack into nothing.
+# What to keep and how to sequence
+Keep three functional lands, early acceleration, and a route to cards or a useful Sisay activation. A sample is Forest, Savannah, Command Tower, Birds of Paradise, Shang-Chi, Reki, and Veil of Summer. Turn-one Birds into turn-two Shang-Chi lets turn-three Sisay activate immediately; four available mana casts her, and a fifth source lets you also hold Veil. Without that fifth source, decide whether waiting is safer than tapping out.
+Prioritize green for turn-one setup, then white for Sisay and your protection spells. Razorverge Thicket is untapped among your first three lands but often tapped later. Mana Confluence fixes immediately at a life cost. Keep 36 lands rather than assuming a tutor commander makes land drops unnecessary; Cradle and several utility lands are weak opening sources without support.
+Fetch based on a concrete bottleneck. With creatures and a land play available, Cradle may fund the next turn. Without enough creature mana, Gwenna or Katilda can help. With mana but no action, Reki or the Ring is useful. With an exposed Sisay facing targeted interaction, a protection creature may matter most. Do not make the first tutor a fixed ritual regardless of the board.
+Decide whether Greaves or repeated targeted untaps matters more each turn. An attached Greaves stops Tezzeret and Elixir targeting Sisay. Sting's beginning-of-combat untap does not target, so it works while Greaves is attached if you equipped Sting beforehand. Do not leave mana unspent across phases expecting it to carry into a later combat or main phase.
+Once the engines are established, stop searching for more setup. Find the relevant disruption, then turn a wide board into damage with Garruk, Kamahl, Will, or Finale. Preserve recovery when opponents threaten a wipe; Ascend is most useful when you have not already spent it for minor value. The deck remains vulnerable to creature sweeps and graveyard exile, so retain land-based mana and avoid putting every resource into one unprotected board.

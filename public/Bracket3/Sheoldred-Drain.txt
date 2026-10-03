@@ -2,6 +2,7 @@
 1 Agadeem's Awakening
 1 Animate Dead
 1 Arcane Signet
+1 Archenemy's Charm
 1 Baleful Mastery
 1 Beseech the Mirror
 1 Black Market Connections
@@ -14,19 +15,17 @@
 1 Crypt Ghast
 1 Damnation
 1 Dark Deal
+1 Dark Ritual
 1 Dauthi Voidwalker
 1 Deadly Rollick
-1 Decorum Dissertation
 1 Dread Presence
 1 Erebos, God of the Dead
 1 Expedition Map
 1 Exsanguinate
-1 Fate Unraveler
 1 Feed the Swarm
-1 Gate to Phyrexia
+1 Fellwar Stone
 1 Geier Reach Sanitarium
 1 Gray Merchant of Asphodel
-1 Hedron Archive
 1 Imp's Mischief
 1 Jet Medallion
 1 Karn, the Great Creator
@@ -34,7 +33,6 @@
 1 Lightning Greaves
 1 Liquimetal Torque
 1 Malakir Rebirth
-1 Meteor Golem
 1 Mikokoro, Center of the Sea
 1 Mind Stone
 1 Mithril Coat
@@ -43,6 +41,7 @@
 1 Nykthos, Shrine to Nyx
 1 Opposition Agent
 1 Orcish Bowmasters
+1 Peer into the Abyss
 1 Phyrexian Arena
 1 Phyrexian Reclamation
 1 Psychosis Crawler
@@ -53,6 +52,7 @@
 1 Seizan, Perverter of Truth
 1 Sheoldred's Edict
 1 Sign in Blood
+1 Snuff Out
 1 Sol Ring
 1 Strip Mine
 1 Sudden Spoiling
@@ -70,7 +70,7 @@
 1 Underworld Dreams
 1 Urborg, Tomb of Yawgmoth
 1 Vilis, Broker of Blood
-1 Wayfarer's Bauble
+1 Vito, Thorn of the Dusk Rose
 1 Witch of the Moors
 1 Withering Boon
 1 Withering Torment

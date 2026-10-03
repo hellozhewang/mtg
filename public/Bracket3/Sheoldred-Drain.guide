@@ -1,68 +1,79 @@
-Sheoldred makes drawing cards asymmetrical: two life to you for every card you draw, two off them for every card they draw. So the deck does something that looks generous and is not — it hands opponents cards. Seizan, Scrawling Crawler and Sign in Blood are all "gifts" that kill, and with the other draw-punishers on board a single forced draw can cost an opponent five or six life.
+Establish a draw punisher before helping opponents draw, and keep protection available for Sheoldred. The revised list develops faster with Dark Ritual and Fellwar Stone, keeps Dread Presence for sustained value, and turns your own life gain into targeted damage through Vito. Peer into the Abyss is a turn-six-or-later finisher for this Bracket 3 plan, not a reason to race into an early two-card kill. The three Game Changers remain Opposition Agent, Orcish Bowmasters, and The One Ring.
 
-# The commander
-Sheoldred, the Apocalypse :: four mana, deathtouch on a 4/5, and the whole deck is built on her second and third lines. She blocks anything and she wins the game by herself if left alone.
+# Establish and protect the engine
+Sheoldred, the Apocalypse :: Four mana turns every opponent draw into two life lost and every one of your draws into two life gained. Her deathtouch discourages ground attacks, but does not stop flying threats or removal. Prioritize keeping her alive over adding a redundant slow engine.
 Roaming Throne :: name Phyrexian. Sheoldred is a Phyrexian Praetor, so BOTH her triggers double — four life gained per card you draw, four lost per card they draw. It also doubles Psychosis Crawler and Scrawling Crawler.
 Lightning Greaves :: shroud, because she eats a removal spell the turn she lands otherwise.
 Swiftfoot Boots :: hexproof and haste when you need to target her.
-Mithril Coat :: flash and indestructible, attached automatically to a legendary creature. Hold it as a counterspell for removal.
+Mithril Coat :: Flash it onto Sheoldred in response to destruction or lethal damage. Indestructible does not answer exile, bounce, sacrifice, or sufficient toughness reduction; it is protection for specific threats, not a universal counterspell.
 Kaya's Ghostform :: one mana of insurance that beats exile as well as destruction.
 
-# Making them draw
-Seizan, Perverter of Truth :: every player draws two and loses two each upkeep. With Sheoldred that is six life per opponent per round, and you are gaining four.
+# Make their cards cost life
+Seizan, Perverter of Truth :: On each player's upkeep, only that player loses two life and draws two. With Sheoldred, an opponent loses six from this trigger; you gain four after losing two, for a net gain of two. Their ordinary draw step is additional. The extra cards help opponents find removal, so deploy after a punisher.
 Scrawling Crawler :: everyone draws at your upkeep, and each of their draws costs an extra life on top.
 Sign in Blood :: point it at an opponent. Two cards and two life from them, plus four more from Sheoldred.
-Decorum Dissertation :: the same effect, and paradigm makes it repeat free at the beginning of every one of your main phases for the rest of the game.
-Scheming Silvertongue :: a lifelinking flier that prepares another Sign in Blood whenever you gained two life — which Sheoldred does constantly.
+Peer into the Abyss :: A seven-mana late-game knockout with Sheoldred: an opponent draws half their library, rounded up, and loses half their life, rounded up. The draw triggers resolve afterward. At 40 life and 70 cards in library, they fall to 20 and face 70 life loss from Sheoldred. Removal before Peer resolves can stop new Sheoldred triggers; removal after those triggers exist does not erase them. Hold this two-card kill until turn six or later for Bracket 3.
+Scheming Silvertongue :: A cheap flying blocker that prepares at the beginning of your second main phase if you gained at least two life that turn. You still pay BB to cast its prepared Sign in Blood copy. Sheoldred usually enables preparation, and Vito rewards using the draw on yourself.
 Dark Deal :: everyone dumps their hand and redraws one fewer. A pile of draw triggers, and it strips their held-up answers.
-Baleful Mastery :: exile a creature for two mana; the opponent drawing a card is a cost you WANT to pay.
+Baleful Mastery :: For two mana, exile a creature or planeswalker while an opponent draws. Choose the opponent receiving the card separately from the removal target. That draw fuels Sheoldred, but also gives them another card before the exile instruction finishes.
 
-# Punishing the draw
-Fate Unraveler :: one damage per card they draw.
-Orcish Bowmasters :: one damage and an Orc per card they draw past their first each draw step. A Seizan trigger fires it once for each opponent, every turn.
+# Turn both sides of the draw engine into damage
+Vito, Thorn of the Dusk Rose :: Every separate gain from Sheoldred triggers two life loss against a chosen opponent. Your own Ring draws become offensive, and Gray Merchant or Exsanguinate creates a much larger single trigger. You can choose different opponents for separate triggers, but cannot split one trigger's life loss among them. This is finite drain, not an infinite loop.
+Orcish Bowmasters :: Each opposing draw beyond the first in their draw step adds a damage trigger and amass. Seizan makes its active opponent draw twice in the upkeep, producing two Bowmasters triggers. Use the damage to clear small utility creatures while building an Army.
 Psychosis Crawler :: each opponent loses one for every card YOU draw, and its body scales with your hand.
 Bloodletter of Aclazotz :: opponents lose double during your turn. Stack it with everything above and a single main phase is lethal.
 Erebos, God of the Dead :: opponents cannot gain life at all, and he converts your life total into cards.
 
-# Devotion and drain
-Gray Merchant of Asphodel :: a full board of black permanents makes this six or more to each opponent, and you gain it all.
+# Build toward a finishing drain
+Gray Merchant of Asphodel :: Count devotion as the entry trigger resolves. In a four-player game, devotion six normally drains each opponent for six and gains you eighteen; Vito can then make one opponent lose another eighteen. Reanimation and Witch of the Moors let you reuse this finisher.
 Exsanguinate :: the clean X-drain finisher, and it refills your life for the next one.
 Crypt Ghast :: doubles every Swamp AND extorts on every spell you cast.
-Dread Presence :: every Swamp that enters is either a card or two damage and two life. In a mono-black deck with this many Swamps it is a full engine.
+Dread Presence :: Kept for repeatable value from Swamp entries: choose a draw and one life lost, or two damage and two life gained. Sheoldred turns the draw mode into a net life gain, while Vito converts either mode's resulting life gain into pressure. Urborg makes your other entering lands Swamps too. This is incremental value rather than burst ramp.
 Black Market Connections :: three effects a turn, paid in life you are gaining back.
 Phyrexian Arena :: a card a turn, and Sheoldred turns the life loss into a gain.
 Night's Whisper :: two cards for two mana.
 
-# Removal and protection
-Sheoldred's Edict :: each opponent sacrifices — pick the mode for the board. It answers hexproof commanders and token swarms alike.
+# Keep answers available while developing
+Sheoldred's Edict :: Each opponent sacrifices one permanent of the chosen category. The nontoken-creature mode bypasses token fodder and hexproof, but opponents still choose among their eligible creatures. The token mode removes one token per opponent, not entire armies.
 Deadly Rollick :: free with your commander out.
-Baleful Mastery :: instant-speed exile for two.
-Feed the Swarm :: mono-black's only clean enchantment answer.
+Baleful Mastery :: For two mana, exile a creature or planeswalker while an opponent draws. Choose the opponent receiving the card separately from the removal target. That draw fuels Sheoldred, but also gives them another card before the exile instruction finishes.
+Feed the Swarm :: A two-mana sorcery answer to an opposing creature or enchantment, paid for with life equal to its mana value. Withering Torment also covers enchantments; save these effects for permanents that shut down your engines.
 Damnation :: an unconditional wrath. Sheoldred is often the only creature you need.
-Sudden Spoiling :: split second, and it turns their whole board into 0/2s with no abilities — a fog, a combo answer and a blowout in combat.
-Imp's Mischief :: redirects the removal aimed at Sheoldred, or turns their tutor into yours.
-No Mercy :: anything that damages you dies. Combined with Sheoldred's deathtouch, attacking you is close to impossible.
-Gate to Phyrexia :: repeatable artifact destruction that costs only a creature.
-Meteor Golem :: destroys any nonland permanent.
-Karn, the Great Creator :: shuts off every activated ability on their artifacts, which blanks mana rocks and equipment decks.
+Sudden Spoiling :: Temporarily removes abilities and makes one player's creatures base 0/2. Combine it with blocking, Bowmasters damage, or Toxic Deluge. It is not a literal fog: counters and other power boosts can still let those creatures deal damage. Split second limits responses but does not remove abilities already on the stack.
+Imp's Mischief :: Redirect a spell that has exactly one target, such as targeted removal or a counterspell, to another legal target. It cannot steal ordinary untargeted tutors, change a spell's controller, or answer a nontargeting wipe. Account for the life payment.
+No Mercy :: Destroys a creature after it damages you. It discourages attacks but does not prevent damage, defeat indestructible creatures, or save you from a lethal hit. Sheoldred and your life gain help make surviving an attack possible.
+Archenemy's Charm :: Instant exile for a creature or planeswalker, or recover up to two creature/planeswalker cards to hand. The lifelink mode can turn a safe Sheoldred attack into life gain and a Vito trigger. BBB makes colorless utility lands a real sequencing constraint, and this does not remove artifacts or enchantments.
+Snuff Out :: With a Swamp, pay four life instead of mana to destroy a nonblack creature while holding mana for your engine or protection. It cannot kill black or indestructible creatures. The cheaper interaction gives up broad permanent coverage, so keep Zuko's Exile and Ugin available for difficult permanents.
+Karn, the Great Creator :: Disables activated abilities of opposing artifacts, including mana rocks and Equipment equip abilities. Liquimetal Torque can extend this to an opposing nonland permanent for the turn. His minus can retrieve an artifact you own in face-up exile; standard Commander does not supply an outside-the-game wishboard.
 Dauthi Voidwalker :: unblockable, exiles what they would bury, and steals their best card.
 Opposition Agent :: flash him onto a fetchland or tutor and keep what they find.
 
-# Mana and tutors
+# Deploy early and recover efficiently
 Sol Ring :: turn one.
-Jet Medallion :: a discount on every card in the deck.
+Jet Medallion :: Reduces the generic portion of black spells by one. It does not reduce artifact costs, colored symbols, Dark Ritual, or Archenemy's Charm. It helps cast Sheoldred and leaves more mana for follow-up plays.
 Arcane Signet :: fixing that this deck barely needs, and acceleration it does.
 Mind Stone :: ramp early, a card later.
-Hedron Archive :: two mana or two cards.
-Liquimetal Torque :: mana, and it turns any permanent into an artifact for Gate to Phyrexia or Karn.
+Dark Ritual :: One card supplies two net extra black mana immediately. Two Swamps plus Ritual can cast Sheoldred on turn two, but a turn-three deployment with an extra black mana for protection is often safer. It is one-shot acceleration, not a permanent mana source.
+Fellwar Stone :: Two-mana acceleration usable the turn it enters. It only produces colors an opposing land could produce, so do not assume it supplies black for Archenemy's Charm. Unlike a searched Swamp, it does not improve Coffers or trigger Dread Presence.
+Liquimetal Torque :: An early rock that also turns a nonland permanent into an artifact until end of turn. With Karn, that can shut off its activated abilities. It cannot target lands and does not itself remove anything.
 Expedition Map :: finds Cabal Coffers or whichever utility land matters.
-Beseech the Mirror :: bargain it and cast the tutored card free if it costs four or less. Usually Sheoldred herself, or Bloodletter of Aclazotz.
+Beseech the Mirror :: Bargain a spare token, artifact, or enchantment to find and cast a card of mana value four or less, such as Bloodletter, Roaming Throne, or The One Ring. It searches the library, so cannot retrieve Sheoldred from the command zone. Peer can be found but must go to hand and be paid for separately.
 Reanimate :: one mana for the best creature in any graveyard.
 Animate Dead :: the second copy.
-Phyrexian Reclamation :: buys Sheoldred back to hand for two mana and two life, over and over.
+Phyrexian Reclamation :: Buys back a creature card for two mana and two life. To recover Sheoldred this way, deliberately leave her in your graveyard instead of moving her to the command zone. That avoids commander tax on the later hand cast but exposes her to graveyard exile.
+
+# Convert accumulated resources into a win
+The One Ring :: Protection from everything lasts until your next turn when you cast it, protecting you rather than your permanents. Sheoldred gains two life per card you draw; Vito turns those gains into targeted loss. Burden-counter life loss still happens, so track it rather than assuming the engine is free.
+Torment of Hailfire :: Spend Coffers or Nykthos mana to pressure the entire table. Opponents can sacrifice nonland permanents or discard instead of losing life, so count their resources before treating an X value as lethal. Bloodletter doubles the life-loss choices during your turn.
+Teferi's Puzzle Box :: On each player's draw step, their hand goes to the bottom and they draw that many cards. Sheoldred and the Crawlers punish opponents' replacement hands. Players can respond to its trigger after their normal draw; it is pressure, not a lock, and your own carefully held answers can disappear into your library too.
+Witch of the Moors :: Sheoldred normally enables this end-step trigger with your draw. Each opponent sacrifices a creature and you recover a creature card, making Gray Merchant a repeatable threat. The trigger checks that you gained life both when it triggers and when it resolves.
+Zuko's Exile :: Five-mana instant exile covers an artifact, creature, or enchantment and gives its controller a Clue. Keep this broad coverage after trimming the slower artifact-answer package. Cracking an opposing Clue later feeds your draw punishers.
+Ugin, Eye of the Storms :: Expensive but broad coverage against colored permanents, with the initial exile triggering on cast. Later colorless spells repeat that exile trigger, while the mana ability helps fund your finishers. It cannot exile colorless permanents with those triggers.
+Vilis, Broker of Blood :: Keep as a reanimation payoff. Reanimate returns Vilis before you lose eight life, so Vilis sees that loss and draws eight cards. With Sheoldred those draws gain sixteen life after the draw trigger resolves. Avoid casually targeting yourself with Peer while Vilis is present: the extra draws from losing half your life can exhaust your library.
+Peer can instead target you with Psychosis Crawler to drain all opponents, but count your library, life total, and remaining draws first. Sheoldred's life-gain triggers do not resolve during the spell, so you must survive its life-loss instruction. With Vito, Sheoldred's separate gains provide further targeted drain. These are late-game lines that need established engines and protection.
 
 # What to keep in an opening hand
-Keep a rock and a cheap interaction spell. Sheoldred on turn three is the strongest thing this deck does, and she demands an answer immediately — so having Imp's Mischief or Mithril Coat up matters more than having a second threat.
-Do not force draws until the punishers are down. Seizan and Scrawling Crawler on an empty board just help the table. With Sheoldred, Fate Unraveler and Orcish Bowmasters out, the same cards kill everyone.
+Keep three lands, an early rock or Dark Ritual, and a draw engine or cheap interaction. Two Swamps are important for Sheoldred; an opening hand full of colorless utility lands is not equivalent. For example, three Swamps, Arcane Signet, Night's Whisper, Kaya's Ghostform, and Snuff Out offers setup, cards, and protection. Turn-two Signet into turn-three Sheoldred uses all four mana, so wait until turn four if attaching Ghostform immediately matters. Greaves grants shroud, which also stops your own targeting spells and Auras; move it before targeting Sheoldred yourself.
+Do not force draws until the punishers are down. Seizan and Scrawling Crawler on an empty board just help the table. With Sheoldred and Orcish Bowmasters out, those extra cards become much more dangerous. Vito makes drawing your own cards productive even when you do not want to refill opposing hands.
 Roaming Throne :: name Phyrexian, not Zombie. Doubling Sheoldred is worth more than any other line the card offers here.
 Bloodletter of Aclazotz :: the turn it lands, count the table's life. Doubling on your turn plus a Gray Merchant or an Exsanguinate frequently ends the game on the spot.

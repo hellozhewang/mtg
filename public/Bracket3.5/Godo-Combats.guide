@@ -1,0 +1,105 @@
+Godo tutors an Equipment onto the battlefield when he enters, and gives you an extra combat the first time he attacks each turn. The Equipment he fetches is Helm of the Host. Helm makes a hasty token copy of Godo at the start of every combat; that copy fetches another Equipment and grants yet another combat, so the combats never end. Two cards, and the commander finds the second one himself. A Dualcaster Mage package is the backup kill.
+
+# The commander
+Godo, Bandit Warlord :: six mana. When he enters, search your library for an Equipment and put it onto the battlefield. Whenever he attacks for the first time each turn, untap him and all your Samurai, and after this combat there is an additional combat phase.
+The fetched Equipment arrives UNATTACHED. Helm of the Host's equip costs {5}, so the deck runs ways to attach it for free: Hammer of Nazahn, Brass Squire and Magnetic Theft.
+Godo costs six. Fast mana and rituals cast him on turn three or four.
+
+# Infinite combos — why this is Bracket 3.5
+Godo, Bandit Warlord + Helm of the Host :: with Helm on Godo, at the beginning of combat you get a non-legendary token copy of Godo with haste. Its enters trigger fetches another Equipment; when it attacks, it grants another combat. Every new combat starts with Helm making another Godo. Unlimited combats and an army of hasty Godos.
+Dualcaster Mage + Twinflame :: cast Twinflame on a creature, then flash in Dualcaster Mage and copy Twinflame targeting Dualcaster. The token copy of Dualcaster copies Twinflame again, targeting itself. Unlimited hasty Dualcasters: attack for the win.
+Dualcaster Mage + Heat Shimmer :: the same.
+Dualcaster Mage + Molten Duplication :: the same.
+Dualcaster Mage + Electroduplicate :: the same.
+Dualcaster Mage + Devastating Onslaught :: the same, with X = 1.
+Hammer of Nazahn + Helm of the Host :: Hammer attaches every Equipment that enters for free, so Godo fetching Helm equips it on the spot. With Hammer out first, Godo's own trigger completes the combo.
+
+# Tutor lines — what to fetch, and when
+Godo, Bandit Warlord -> Helm of the Host :: his enters trigger. If Hammer of Nazahn is already out, Helm attaches for free. Otherwise attach it with Brass Squire or Magnetic Theft, or fetch Hammer first and Helm the next time he enters.
+Gamble -> Helm of the Host :: any card, then a random discard. Cast it with few cards in hand so the discard can't hit what you fetched. If Helm gets discarded, Goblin Welder or Abstergo Entertainment gets it back.
+Goblin Engineer -> Helm of the Host :: puts Helm in your graveyard, then Goblin Welder swaps it onto the battlefield for any artifact you control.
+Imperial Recruiter -> Dualcaster Mage :: any creature with power 2 or less.
+Inventors' Fair -> Hammer of Nazahn :: with three artifacts out, any artifact to hand.
+Moonsilver Key -> Basalt Monolith :: an artifact with a mana ability: speed to cast Godo early.
+Tezzeret, Cruel Captain -> Sol Ring :: −3 finds an artifact with mana value 1 or less; its 0 untaps an artifact for more mana.
+Command Beacon -> Godo, Bandit Warlord :: Godo to hand without commander tax, after he's been removed.
+
+# Attaching the Helm
+Hammer of Nazahn :: every Equipment that enters attaches for free, and the creature gets +2/+0 and indestructible.
+Brass Squire :: {T}: attach any Equipment to any creature you control.
+Magnetic Theft :: one mana, instant: attach an Equipment.
+Lightning Greaves :: equip {0}: haste so Godo attacks the turn he lands. Its shroud stops your own attach effects too (Hammer of Nazahn, Brass Squire and Magnetic Theft all target), so attach Helm first and Greaves last.
+Sting, the Glinting Dagger :: haste, and it untaps Godo at each combat.
+Conqueror's Flail :: opponents can't cast spells during your turn while it's attached: protects the combat turn.
+
+# Mana
+Sol Ring :: the usual.
+Arcane Signet :: the usual.
+Fellwar Stone :: the usual.
+Mind Stone :: the usual.
+Thran Dynamo :: three mana.
+Basalt Monolith :: three mana; it untaps for {3}.
+Throne of Eldraine :: four red mana for red spells.
+Honor-Worn Shaku :: untaps by tapping a legendary permanent.
+Krark-Clan Ironworks :: sacrifice an artifact for {C}{C}.
+Metalworker :: {C}{C} for each artifact card you reveal from your hand.
+Ruby Medallion :: red spells cost {1} less.
+Mox Opal :: live with three artifacts.
+Lotus Petal :: free.
+Voltaic Key :: untaps a rock.
+Manifold Key :: untaps a rock, or makes Godo unblockable.
+Pyretic Ritual :: {R}{R}{R} for two.
+Desperate Ritual :: the same.
+Seething Song :: five red for three.
+Rite of Flame :: {R}{R} for one.
+Simian Spirit Guide :: a free {R} from hand.
+Treasonous Ogre :: pay 3 life for {R}.
+Birgi, God of Storytelling :: {R} for every spell.
+Jeska's Will :: mana from an opponent's hand plus three cards.
+Ancient Tomb :: two mana from a land.
+City of Traitors :: two mana until your next land drop.
+Crystal Vein :: sacrifice for {C}{C}.
+Dwarven Ruins :: sacrifice for {R}{R}.
+Sandstone Needle :: {R}{R} twice.
+Treasure Vault :: cash in for Treasures.
+Great Furnace :: an artifact land for Mox Opal.
+Urza's Saga :: Constructs, then a one-mana artifact at chapter III.
+
+# Copies and value
+Peter Parker's Camera :: copy Godo's enters trigger (another Equipment) or Helm's combat trigger.
+Sculpting Steel :: becomes a copy of any artifact, such as a second rock.
+Cursed Mirror :: a rock, or a hasty copy of another creature for a turn. A copy of Godo would be legendary and die to the legend rule, so copy Dualcaster Mage or Metalworker.
+Jaxis, the Troublemaker :: discard a card to make a hasty token copy of a nonlegendary creature (a Godo copy dies to the legend rule); the token draws a card when it dies.
+Wandering Archaic :: copies their instants and sorceries unless they pay {2}.
+Flare of Duplication :: copy an instant or sorcery, for free by sacrificing a red creature.
+Pinnacle Monk :: returns an instant or sorcery from your graveyard to hand, or plays as a land.
+Unexpected Windfall :: two cards and two Treasures.
+Light Up the Stage :: two cards.
+Wheel of Fortune :: refill your hand.
+Party Thrasher :: discard to exile your top two and play one.
+Professional Face-Breaker :: Treasure on combat damage; sacrifice Treasure to impulse-draw.
+Anje's Ravager :: attacks every combat: a new hand each time. With unlimited combats, unlimited cards.
+Ragavan, Nimble Pilferer :: Treasure and a stolen card on every hit.
+
+# Protection and answers
+Deflecting Swat :: free while Godo is out: redirect removal.
+Redirect Lightning :: redirect a single-target spell.
+Ricochet Trap :: the same, for {R} against a blue player.
+Untimely Malfunction :: redirect, destroy an artifact, or stop two blockers.
+Tibalt's Trickery :: counter anything.
+Pyroblast :: counter a blue spell or destroy a blue permanent.
+Red Elemental Blast :: the same.
+Hexing Squelcher :: your spells can't be countered, and your creatures have ward (pay 2 life).
+Veilstone Amulet :: whenever you cast a spell, your creatures can't be targeted by opponents this turn.
+Defense Grid :: spells cost {3} more except on their caster's turn: opponents can't easily respond on yours.
+Vexing Bauble :: counters free spells.
+Lightning Bolt :: 3 damage.
+Chaos Warp :: shuffle away any permanent.
+Shatterskull Smashing :: split damage between two creatures, or play it as a land.
+Blasphemous Act :: 13 to every creature, usually for one mana.
+Talon Gates of Madara :: phase Godo out in response to removal.
+
+# What to keep in an opening hand
+Keep fast mana or rituals that cast Godo by turn four, plus one way to attach Helm (Hammer of Nazahn, Brass Squire, Magnetic Theft). Godo finds Helm himself.
+Combo turn: cast Godo with Hammer of Nazahn out, fetch Helm, and it attaches. Give him haste (Lightning Greaves before the Helm, or Sting) and go to combat.
+If Godo is answered, the Dualcaster package is a second win: Imperial Recruiter finds Dualcaster Mage, and Gamble finds a copy spell.

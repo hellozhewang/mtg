@@ -1,0 +1,92 @@
+Animar gets a +1/+1 counter for every creature spell you cast, and every counter makes your creature spells one mana cheaper. Ten creature spells in, your four-drops are free and Animar is a 12/12. Once creatures cost nothing, Ancestral Statue or Hullbreaker Horror can return them to hand and recast them forever: unlimited casts, unlimited counters, and a kill through Aetherflux Reservoir, Walking Ballista or a giant hasty Animar.
+
+# The commander
+Animar, Soul of Elements :: three mana, protection from white and from black. Whenever you cast a creature spell, put a +1/+1 counter on Animar. Creature spells you cast cost {1} less for each +1/+1 counter on him.
+The discount only cuts GENERIC mana. Coloured pips still have to be paid, so Peregrine Drake always costs at least {U}.
+Protection from white and black stops targeted removal and damage from those colours: Swords, Path, Doom Blade. It does NOT stop effects that hit everything (Toxic Deluge, Farewell), and blue bounce, red burn and green fights still reach him.
+
+# Infinite combos — why this is Bracket 3.5
+Animar, Soul of Elements + Ancestral Statue :: once Animar has four counters, the Statue costs {0}. Cast it (another counter), and its enters trigger returns itself to your hand. Recast, repeat: unlimited casts, unlimited counters on Animar, unlimited creature entries.
+Animar, Soul of Elements + Hullbreaker Horror :: with two free creatures (Ornithopter of Paradise, Spellskite, Cloud of Faeries), every creature you cast lets Hullbreaker return the other one to hand. Cast them back and forth forever.
+Hullbreaker Horror + Peregrine Drake + Cloud of Faeries :: casting each one with Hullbreaker out returns the other; the Drake untaps five lands and the Faeries two. Unlimited mana.
+Most lines here need Animar to have four or more counters first. That is what the first half of the game is for.
+
+# Turning the loop into a win
+Aetherflux Reservoir :: every spell you cast gains life equal to the number of spells cast this turn. Fifty-odd casts later, pay 50 life to deal 50 damage, once per opponent.
+Walking Ballista :: Ballista's cost is all generic, so after a Statue loop Animar makes it free at ANY X. Cast it for X = 60 and shoot the table.
+Rhythm of the Wild :: your creature spells can't be countered, and each creature you cast enters with haste or a +1/+1 counter. Animar was out before the loop, so he can already swing at loop size.
+Beast Whisperer :: a card for every creature spell. Careful: its draw is mandatory, so during a Statue loop stop before you draw your whole library.
+Kozilek, Butcher of Truth :: free at ten counters (all generic cost): draw four on cast, annihilator 4.
+Cloudstone Curio :: whenever a nonARTIFACT creature enters, return another creature you control. At ten counters Ulamog and Nulldrifter are both free, so they can bounce each other, but Nulldrifter's draw is mandatory, so stop before decking.
+Ulamog, the Ceaseless Hunger :: free with enough counters: exile two permanents on cast.
+Nulldrifter :: draw two on cast, annihilator 1; evoke it cheaply when you just need the cards.
+The Great Henge :: costs {X} less for your biggest creature's power: often free next to a big Animar. Taps for {G}{G}, and draws on every creature entering.
+
+# Building counters early
+Hardened Scales :: Animar gets one extra counter per cast.
+Forgotten Ancient :: grows on every spell any player casts, and moves its counters to Animar.
+Incubation Druid :: three mana a tap once it has a counter.
+Rattleclaw Mystic :: one mana of any of your colours.
+Bloom Tender :: one mana per colour among your permanents.
+Badgermole Cub :: an extra {G} whenever you tap a creature for mana.
+Enduring Vitality :: every creature taps for mana.
+Ornithopter of Paradise :: free once Animar has two counters, and taps for any colour.
+Birds of Paradise :: any colour.
+Llanowar Elves :: the usual.
+Elvish Mystic :: the second copy.
+Fyndhorn Elves :: the third.
+Fanatic of Rhonas :: four mana with a 4-power creature out: Animar counts.
+Delighted Halfling :: mana that makes Animar uncounterable.
+Tinder Wall :: sacrifice for {R}{R}.
+Elvish Spirit Guide :: a free {G}.
+Simian Spirit Guide :: a free {R}.
+Sol Ring :: the usual.
+Arcane Signet :: the usual.
+Lotus Petal :: free.
+Gaea's Cradle :: {G} per creature.
+
+# Tutor lines — what to fetch, and when
+Transit Mage -> Ancestral Statue :: an artifact of mana value 4 or 5: the Statue, or Aetherflux Reservoir once the loop is ready.
+Fierce Empath -> Hullbreaker Horror :: a creature of mana value 6 or more: Hullbreaker, Kozilek or Ulamog.
+Imperial Recruiter -> Peregrine Drake :: a creature with power 2 or less: the Drake, Walking Ballista or Cloud of Faeries.
+Survival of the Fittest -> Ancestral Statue :: discard any creature for any creature, at instant speed, every turn.
+Chord of Calling -> Peregrine Drake :: instant speed, convoked by your dorks.
+Green Sun's Zenith -> Fierce Empath :: X = 3, then the Empath finds the six-drop.
+Eldritch Evolution -> Hullbreaker Horror :: sacrifice a five-drop for a seven-drop.
+Neoform -> Woodland Bellower :: sacrifice a five-drop for a six-drop with a +1/+1 counter, which then fetches a three-drop.
+Formidable Speaker -> Ancestral Statue :: discard a card to tutor any creature.
+Woodland Bellower -> Incubation Druid :: any nonlegendary green creature with mana value 3 or less, onto the battlefield.
+Spellseeker -> Mana Drain :: an instant or sorcery with mana value 2 or less.
+Vizier of the Menagerie :: cast creatures off the top of your library.
+
+# Protection and answers
+Fierce Guardianship :: free while Animar is out: counter a noncreature spell.
+Pact of Negation :: free now; pay next upkeep. Use it on the turn you win.
+Mana Drain :: a counter that pays you back.
+Swan Song :: one mana against enchantments, instants and sorceries.
+Veil of Summer :: protection from blue and black for a turn.
+Deflecting Swat :: free while Animar is out: redirect removal.
+Heroic Intervention :: hexproof and indestructible for everything.
+Spellskite :: redirects removal to itself.
+Hexing Squelcher :: your spells can't be countered; your creatures have ward (pay 2 life).
+High Fae Trickster :: everything gains flash: loop at instant speed on an opponent's end step.
+Rapid Hybridization :: turn a threat into a 3/3.
+Phantasmal Image :: copy your best creature (or theirs) for two mana.
+Phyrexian Metamorph :: copy an artifact or creature.
+Wandering Archaic :: copies their instants and sorceries unless they pay {2}.
+Boseiju, Who Endures :: a land that destroys an artifact, enchantment or nonbasic land.
+Otawara, Soaring City :: a land that bounces a permanent.
+
+# Cards
+Mulldrifter :: two cards, evoked or cast.
+Guardian Project :: a card for every new creature with a fresh name.
+Sylvan Library :: pick the best of three every turn.
+Mystic Remora :: early card draw from their spells.
+Eternal Witness :: get back a combo piece.
+Wan Shi Tong, Librarian :: draw half of X, and grows on their tutors.
+Ragavan, Nimble Pilferer :: Treasure and a stolen card on every hit.
+
+# What to keep in an opening hand
+Keep Animar on turn two or three (dorks help) and a handful of cheap creatures. Every creature cast is a counter, so cheap creatures early ARE the ramp.
+Count counters. At four, Ancestral Statue is free and the combo is live; tutor the Statue (Transit Mage, Survival) and a win condition (Aetherflux Reservoir, Walking Ballista, Rhythm of the Wild).
+Fierce Guardianship and Pact of Negation are free, so hold one up on the combo turn.

@@ -1,0 +1,100 @@
+1 Nicol Bolas
+1 An Offer You Can't Refuse
+1 Ancient Copper Dragon
+1 Animate Dead
+1 Arcane Signet
+1 Archon of Cruelty
+1 Arid Mesa
+1 Badlands
+1 Balefire Dragon
+1 Bitter Reunion
+1 Black Mage's Rod
+1 Black Market Connections
+1 Blood Crypt
+1 Bloodstained Mire
+1 Bolt Bend
+1 Chandra's Ignition
+1 Chaos Warp
+1 City of Brass
+1 Command Beacon
+1 Command Tower
+1 Crux of Fate
+1 Cyclonic Rift
+1 Deflecting Swat
+1 Dimir Signet
+1 Dragon Tempest
+1 Exotic Orchard
+1 Fabricate
+1 Faithless Looting
+1 Feed the Swarm
+1 Fellwar Stone
+1 Fiery Emancipation
+1 Flooded Strand
+1 Hawkeye's Bow
+1 Hellkite Courser
+1 Hellkite Tyrant
+1 Island
+1 Izzet Signet
+1 Jeska's Will
+1 Kediss, Emberclaw Familiar
+1 Lightning Greaves
+1 Liliana's Caress
+1 Luxury Suite
+1 Malakir Rebirth
+1 Mana Confluence
+1 Mana Drain
+1 Marang River Regent
+1 Marsh Flats
+1 Minamo, School at Water's Edge
+1 Misty Rainforest
+1 Mithril Coat
+1 Morphic Pool
+1 Mountain
+1 Mystic Remora
+1 Necromancy
+1 Otawara, Soaring City
+1 Polluted Delta
+1 Rakdos Signet
+1 Raucous Theater
+1 Reanimate
+1 Relic of Legends
+1 Relic of Sauron
+1 Rhystic Study
+1 Scalding Tarn
+1 Shivan Reef
+1 Smaug, Wicked Worm
+1 Sneak Attack
+1 Sol Ring
+1 Soul-Guide Lantern
+1 Soul's Fire
+1 Steam Vents
+1 Stinging Study
+1 Sulfurous Springs
+1 Swamp
+1 Swan Song
+1 Swiftfoot Boots
+1 Takenuma, Abandoned Mire
+1 Talisman of Creativity
+1 Talisman of Dominance
+1 Talisman of Indulgence
+1 Temur Battle Rage
+1 Thassa, Deep-Dwelling
+1 The Reaver Cleaver
+1 Thundering Falls
+1 Tinybones, Bauble Burglar
+1 Tinybones, Trinket Thief
+1 Torment of Hailfire
+1 Toxic Deluge
+1 Training Center
+1 Undercity Sewers
+1 Underground River
+1 Underground Sea
+1 Vandalblast
+1 Verdant Catacombs
+1 Victimize
+1 Volcanic Island
+1 Waste Not
+1 Watery Grave
+1 Whip of Erebos
+1 Wooded Foothills
+1 Xander's Lounge

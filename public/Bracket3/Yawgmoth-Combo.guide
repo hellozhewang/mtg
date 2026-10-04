@@ -1,0 +1,107 @@
+Yawgmoth turns every creature you own into a card. Pay 1 life and sacrifice another creature: draw, and put a -1/-1 counter where it hurts. The deck is built out of creatures that come back when they die, so that loop never runs out of fodder, and out of drain effects that make every death cost the table life. Grind with it all game; when the right three cards line up, it loops until everyone else is dead. Every loop here takes three cards, so this stays a Bracket 3 deck.
+
+# The commander
+Yawgmoth, Thran Physician :: four mana, protection from Humans. Pay 1 life, sacrifice another creature: put a -1/-1 counter on up to one target creature and draw a card. {B}{B}, discard a card: proliferate.
+The -1/-1 counter is how undying and persist creatures loop. A +1/+1 counter and a -1/-1 counter on the same creature cancel, so aiming Yawgmoth at a creature that came back with a +1/+1 counter resets it to come back again.
+The draw is not optional. Count your library before a long loop: drain fast enough that the table dies before you deck yourself.
+Proliferate adds -1/-1 counters to their creatures (with Nest of Scarabs, Insects for you too) and grows Hancock.
+
+# Infinite combos — three cards each
+Yawgmoth, Thran Physician + Butcher Ghoul + Geralf's Messenger :: sacrifice the Ghoul and put the counter on the Messenger; the Ghoul returns with a +1/+1 counter. Then sacrifice the Messenger and put the counter on the Ghoul, cancelling its counter; the Messenger returns and drains an opponent for 2. Repeat: 1 life and one card per step, 2 damage every other step. Any two undying creatures loop; the Messenger is the one that also kills.
+Yawgmoth, Thran Physician + Butcher Ghoul + Sightless Ghoul :: the same loop with no damage built in. Add Blood Artist, Zulaport Cutthroat or Vengeful Bloodwitch and every step drains.
+Forsaken Miner + Phyrexian Altar + Blood Artist :: sacrifice the Miner for {B}. Blood Artist's trigger targets an opponent, which is a crime, so the Miner's trigger lets you pay that {B} to return it. Unlimited deaths and drains. Vengeful Bloodwitch or Susurian Voidborn work in place of Blood Artist, and Warren Soultrader in place of the Altar.
+Nether Traitor + Phyrexian Altar + Pawn of Ulamog :: sacrifice the Traitor for {B}; Pawn makes a Spawn. Sacrifice the Spawn for another mana, and the Traitor's trigger brings it back for {B}. One mana of profit and two deaths per loop. Add any drain card and it wins.
+Yawgmoth, Thran Physician + Nest of Scarabs + Blood Artist :: every -1/-1 counter you place makes an Insect, and every Insect is more fodder. Not unlimited, but it usually drains the table out.
+
+# Turning deaths into damage
+Blood Artist :: whenever any creature dies, a player loses 1 and you gain 1. The gain pays Yawgmoth's life cost.
+Zulaport Cutthroat :: each opponent loses 1 whenever one of your creatures dies.
+Vengeful Bloodwitch :: the same as Blood Artist, for your creatures.
+Susurian Voidborn :: the same, and artifacts dying count too.
+Bastion of Remembrance :: a Zulaport on an enchantment.
+Syr Konrad, the Grim :: 1 damage to each opponent whenever any creature dies or a creature card enters or leaves a graveyard.
+Sephiroth, Fabled SOLDIER :: another drain on every death, and it draws when you sacrifice to it.
+Geralf's Messenger :: 2 life every time it enters.
+Grave Pact :: every creature you sacrifice makes each opponent sacrifice one too. With Yawgmoth, their board disappears.
+
+# Fodder that comes back
+Butcher Ghoul :: undying, for two mana.
+Sightless Ghoul :: undying.
+Evernight Shade :: undying, and it pumps.
+Hancock, Ghoulish Mayor :: undying, and it pumps your other Zombies by its counters.
+Treacherous Pit-Dweller :: undying, but an opponent gets it back: sacrifice it to Yawgmoth after it returns, or skip the loop with it.
+Bloodghast :: returns from the graveyard whenever you play a land.
+Nether Traitor :: returns for {B} whenever another creature of yours dies.
+Forsaken Miner :: returns for {B} whenever you commit a crime, which every drain targeting an opponent does.
+Nested Shambler :: dies into Squirrels equal to its power.
+Infestation Sage :: dies into a flying Insect.
+Greedy Freebooter :: dies into a scry and a Treasure.
+Shambling Ghast :: dies into a Treasure or a -1/-1 on their creature.
+Ophiomancer :: a fresh deathtouch Snake every upkeep you have none.
+Memnite :: free bodies for Mox Opal and Yawgmoth.
+Ornithopter :: the same, and it flies.
+Phyrexian Walker :: the same.
+Shield Sphere :: the same.
+Genesis Chamber :: every nontoken creature entering makes its controller a 1/1 Myr. Yours are fodder.
+Blight Mound :: every nontoken creature that dies makes a Pest.
+Bridge from Below :: works from your GRAVEYARD: every nontoken creature of yours that dies makes a 2/2 Zombie. But an opponent's creature dying exiles it, so don't count on Bridge in the same turn as Grave Pact.
+
+# Sacrifice outlets
+Phyrexian Altar :: sacrifice a creature for one mana of any colour. The engine of two of the loops.
+Warren Soultrader :: pay 1 life and sacrifice for a Treasure.
+Viscera Seer :: free, and scry 1.
+Carrion Feeder :: free, and it grows.
+Phyrexian Tower :: a land that sacrifices for {B}{B}.
+Culling the Weak :: sacrifice for {B}{B}{B}{B}.
+Village Rites :: sacrifice for two cards.
+
+# Cards
+Necropotence :: pay life for cards. Blood Artist and the drains pay it back.
+Skullclamp :: equip a 1/1 or an X/1 and it dies into two cards.
+Midnight Reaper :: a card whenever a nontoken creature of yours dies, at 1 damage to you each time.
+Grim Haruspex :: a card whenever another nontoken creature of yours dies.
+Pitiless Plunderer :: a Treasure whenever another creature of yours dies.
+Pawn of Ulamog :: a Spawn whenever a nontoken creature of yours dies.
+Sheoldred, the Apocalypse :: 2 life for each of your draws, which pays for Yawgmoth; 2 damage for each of theirs.
+Orcish Bowmasters :: pings every extra card they draw and builds an Orc army: more fodder.
+
+# Answers
+Grave Pact :: makes the table sacrifice alongside you.
+Deadly Rollick :: free while Yawgmoth is out: exile a creature.
+Dismember :: up to four life instead of mana: -5/-5.
+Feed the Swarm :: a creature or an enchantment.
+Fell the Profane :: kills a creature or planeswalker, or plays as a land.
+Toxic Deluge :: pay X life, all creatures get -X/-X. Your undying creatures come back afterwards.
+Dauthi Voidwalker :: their cards are exiled instead of going to the graveyard, and it can steal one.
+Blast Zone :: a land that destroys every nonland permanent with a chosen mana value.
+
+# Tutor lines — what to fetch, and when
+Demonic Tutor -> Phyrexian Altar :: any card. The Altar when you already have Forsaken Miner or Nether Traitor and a drain card; otherwise the missing undying creature.
+Diabolic Intent -> Geralf's Messenger :: sacrifice a creature (feeding a drain on the way) for any card.
+Entomb -> Bridge from Below :: Bridge does its work from the graveyard, so putting it there IS casting it.
+Entomb -> Geralf's Messenger :: then Reanimate, Animate Dead or Unearth it back for an immediate 2-point drain.
+Unmarked Grave -> Forsaken Miner :: the Miner only needs to be in your graveyard; the next crime returns it.
+Unearth -> Butcher Ghoul :: returns a creature with mana value 3 or less, and cycles when there is nothing to get.
+
+# Mana
+Dark Ritual :: {B}{B}{B} for {B}.
+Cabal Ritual :: {B}{B}{B}, or five with seven cards in your graveyard.
+Songs of the Damned :: {B} for every creature card in your graveyard, often six or more.
+Priest of Gix :: enters with {B}{B}{B}: a free body.
+Jet Medallion :: black spells cost {1} less.
+Sol Ring :: the usual.
+Arcane Signet :: the usual.
+Lotus Petal :: free.
+Mox Opal :: live with three artifacts: the zero-drops make that easy.
+Mox Amber :: taps for black once Yawgmoth or another legend is out.
+Springleaf Drum :: taps a summoning-sick creature for mana.
+Cabal Coffers :: {B} for each Swamp. Urborg makes every land a Swamp.
+Lake of the Dead :: a land that sacrifices a Swamp for four black.
+Nykthos, Shrine to Nyx :: black mana equal to your devotion.
+City of Traitors :: two mana from one land until you play another.
+Urza's Saga :: fetches Sol Ring, Mox Opal, Mox Amber, Lotus Petal or a zero-drop creature at chapter III.
+
+# What to keep in an opening hand
+Keep mana, two or three fodder creatures, and a drain or draw engine. Yawgmoth on turn three or four with fodder ready draws three or four cards on the spot.
+Do not loop without a drain on the battlefield: Yawgmoth's draws are mandatory, and drawing twenty cards with nothing dying on their side only costs you life and library.
+Before a big loop, count: life you can pay, cards left in your library, and how much each step drains. Stop the moment the table is dead.

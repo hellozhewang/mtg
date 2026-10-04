@@ -1,0 +1,98 @@
+Feather recycles every instant and sorcery you aim at your own creature. Instead of going to the graveyard, the card is exiled and comes back to your hand at the end of the turn. So a one-mana cantrip on your own creature is a free card every single turn, and every spell you cast also triggers your spell payoffs (tokens, damage, counters). Fly over with Feather or the army, and pump for lethal with the same spells you replay every turn.
+
+# The commander
+Feather, the Redeemed :: three mana, a 3/4 flier. Whenever you cast an instant or sorcery that targets a creature you control, exile it as it resolves and return it to your hand at the beginning of the next end step.
+It must TARGET a creature you control and RESOLVE. A countered spell goes to the graveyard; a spell that also targets something else still comes back.
+The return happens at the next end step, yours or an opponent's. Cast a cantrip on their turn and it is back in your hand at their end step, ready again for your turn.
+
+# The engine — spells that come back
+Crimson Wisps :: one mana: haste and draw a card. With Feather, a card every turn for {R}.
+Expedite :: the same.
+Defiant Strike :: one mana: +1/+0 and draw a card.
+Might of the Meek :: one mana: trample and draw a card.
+Bandage :: one mana: prevent 1 damage and draw a card.
+Honor :: a sorcery: +1/+1 counter and draw a card.
+Shelter :: protection from a colour and draw a card.
+Gods Willing :: protection from a colour and scry 1.
+Boon of Safety :: a shield counter and scry 1.
+Fists of Flame :: draw a card, then trample and +1/+0 per card drawn this turn.
+Psychotic Fury :: double strike on a multicoloured creature (Feather is red and white) and draw a card.
+Titan's Strength :: +3/+1 and scry 1.
+Sudden Breakthrough :: +2/+0, first strike and a Treasure.
+Take Up the Shield :: a +1/+1 counter, lifelink and indestructible.
+Blacksmith's Skill :: hexproof and indestructible.
+Loran's Escape :: the same, and scry 1.
+Apostle's Blessing :: protection from a colour or artifacts, for two life and one mana.
+Cloudshift :: blink a creature. On Feather it dodges removal; on an enters-the-battlefield creature it repeats the trigger.
+Ephemerate :: the same, and it rebounds.
+Angelfire Ignition :: two counters and five keywords; it flashes back too.
+Legion Leadership :: doubles a creature's power and gives first strike.
+Temur Battle Rage :: double strike, and trample at 4 power.
+Explosive Entry :: destroy an artifact and put a counter on your creature.
+Reckless Rage :: 4 damage to their creature, 2 to yours. Target Feather and it comes back.
+Seize the Day :: untap a creature for an extra combat; flashback. On Feather, it returns to your hand.
+
+# Payoffs for every spell
+Monastery Mentor :: a prowess Monk for every noncreature spell.
+Young Pyromancer :: an Elemental for every instant or sorcery.
+Informed Inkwright :: a flying Inkling for every spell that targets a creature.
+Stirring Hopesinger :: +1/+1 on every creature for every spell that targets a creature.
+Graduation Day :: a +1/+1 counter for every spell that targets a creature.
+Guttersnipe :: 2 damage to each opponent per instant or sorcery. Three spells a turn is 18 damage across the table.
+Urabrask :: 1 damage to an opponent and {R} per instant or sorcery.
+Electro, Assaulting Battery :: {R} per instant or sorcery, and red mana carries between phases.
+Birgi, God of Storytelling :: {R} per spell, kept all turn.
+Storm-Kiln Artist :: a Treasure for every instant or sorcery cast or copied.
+Goldspan Dragon :: a Treasure whenever it attacks or is targeted, and Treasures make two mana.
+
+# Copying the spells
+Leyline of Resonance :: whenever you cast an instant or sorcery that targets only one creature you control, copy it. Free on turn zero if it's in your opening hand.
+Zada, Hedron Grinder :: a spell that targets only Zada is copied for every other creature you control. Crimson Wisps on Zada draws a card per creature.
+Mirrorwing Dragon :: the same for its controller, as a 4/5 flier.
+Leyline of Resonance + Crimson Wisps :: the copy draws a second card, and Feather still returns the original.
+Zada, Hedron Grinder + Defiant Strike :: with eight creatures out, eight cards and +8 power spread across the team.
+
+# Tutor lines — what to fetch, and when
+Sunforger -> Boros Charm :: unattach Sunforger for {R}{W} to cast any red or white instant with mana value 4 or less from your library, free. It's a sorcery-speed activation, so fetch Boros Charm for 4 damage to finish, not to answer a wipe.
+Sunforger -> Temur Battle Rage :: the same, before combat, for double strike on a pumped Feather. It targets your creature, so Feather returns it and Sunforger can be re-equipped for next turn.
+Sunforger -> Swords to Plowshares :: or exile their blocker.
+Enlightened Tutor -> Sunforger :: puts it on top for next turn.
+Enlightened Tutor -> Leyline of Resonance :: the copy engine.
+Imperial Recruiter -> Monastery Mentor :: any creature with power 2 or less: Mentor, Young Pyromancer, Guttersnipe or Informed Inkwright.
+Pinnacle Monk -> Temur Battle Rage :: returns an instant or sorcery from your graveyard to your hand, or plays as a land.
+Mavinda, Students' Advocate :: {0}: cast an instant or sorcery from your graveyard this turn, if it targets a creature you control.
+
+# Protection and answers
+Deflecting Swat :: free while Feather is out: redirect removal.
+Boros Charm :: indestructible for everything you control, or 4 damage to a player.
+Grand Abolisher :: nobody responds on your turn.
+Swiftfoot Boots :: hexproof and haste.
+Swords to Plowshares :: one mana, exile a creature.
+Path to Exile :: the same.
+Chaos Warp :: shuffle away any permanent.
+Witch Enchanter :: destroy an artifact or enchantment, or play it as a land.
+Blasphemous Act :: 13 damage to every creature, often for one mana. Protect Feather first.
+Chandra's Ignition :: Feather (or a pumped creature) deals its power to every other creature and each opponent.
+Esper Sentinel :: taxes their first noncreature spell each turn.
+
+# Mana
+Sol Ring :: the usual.
+Arcane Signet :: the usual.
+Boros Signet :: the usual.
+Talisman of Conviction :: the usual.
+Fellwar Stone :: the usual.
+Thought Vessel :: no maximum hand size.
+Bender's Waterskin :: untaps on every other player's turn: mana for instant-speed spells.
+Mox Amber :: taps for red or white with Feather out.
+Smothering Tithe :: Treasure whenever opponents draw.
+Jeska's Will :: mana from an opponent's hand and three cards to play.
+Land Tax :: three basics a turn when behind on lands.
+Arena of Glory :: exert for {R}{R} that gives a creature haste.
+Rugged Prairie :: filters into two of either colour.
+Sunbaked Canyon :: cash it in for a card later.
+Reliquary Tower :: no maximum hand size, on a land.
+
+# What to keep in an opening hand
+Keep Feather mana, two or three one-mana cantrips, and a payoff. Turn three Feather, then cast every cantrip on her each turn: by turn five you are drawing two or three extra cards a turn for one or two mana each.
+Cast cantrips on opponents' turns when you can, and keep protection for Feather. She is the engine and the evasive clock.
+Once Guttersnipe, Monastery Mentor or Stirring Hopesinger is out, every recycled spell is also damage or bodies. Win with fliers plus Temur Battle Rage, or Guttersnipe pings.

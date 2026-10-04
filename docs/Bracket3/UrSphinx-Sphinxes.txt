@@ -1,0 +1,99 @@
+1 The Ur-Sphinx
+1 Akroma's Will
+1 An Offer You Can't Refuse
+1 Anguished Unmaking
+1 Animate Dead
+1 Arcane Signet
+1 Archive Arbiter
+1 Arid Mesa
+1 Black Market Connections
+1 Bleachbone Verge
+1 Bloodline Bidding
+1 Bloodstained Mire
+1 Cavern of Souls
+1 Chronicle of Victory
+1 City of Brass
+1 Clever Concealment
+1 Command Tower
+1 Consecrated Sphinx
+1 Conspiracy Unraveler
+1 Curator of Destinies
+1 Curator of Mysteries
+1 Cyclonic Rift
+1 Defiler of Dreams
+1 Denzilore Fatehold
+1 Dovin's Veto
+1 Dream Eater
+1 Dream Trawler
+1 Enigma Thief
+1 Esper Sentinel
+1 Exotic Orchard
+1 Fellwar Stone
+1 Flawless Maneuver
+1 Flooded Strand
+1 Floodfarm Verge
+1 Gloomlake Verge
+1 Godless Shrine
+1 Hallowed Fountain
+1 Herald's Horn
+2 Island
+1 Kindred Discovery
+1 Lightning Greaves
+1 Magister Sphinx
+1 Mana Confluence
+1 Mana Drain
+1 Marsh Flats
+1 Meticulous Archive
+1 Mirror Entity
+1 Misty Rainforest
+1 Morphic Pool
+1 Mystic Remora
+1 Otawara, Soaring City
+1 Plains
+1 Polluted Delta
+1 Prognostic Sphinx
+1 Quantum Riddler
+1 Raffine, Scheming Seer
+1 Raffine's Tower
+1 Reanimate
+1 Reconnaissance
+1 Roaming Throne
+1 Sapphire Medallion
+1 Scalding Tarn
+1 Scholar of the Lost Trove
+1 Scrubland
+1 Sea of Clouds
+1 Shadowy Backstreet
+1 Smothering Tithe
+1 Sol Ring
+1 Soul-Guide Lantern
+1 Spark Double
+1 Sphinx of Enlightenment
+1 Sphinx of False Conclusions
+1 Sphinx of Foresight
+1 Sphinx of Forgotten Lore
+1 Sphinx of the Second Sun
+1 Sphinx Summoner
+1 Swamp
+1 Swan Song
+1 Swords to Plowshares
+1 Takenuma, Abandoned Mire
+1 Talisman of Dominance
+1 Talisman of Hierarchy
+1 Talisman of Progress
+1 The Water Crystal
+1 Three Tree City
+1 Tivit, Seller of Secrets
+1 Toxic Deluge
+1 Tundra
+1 Uldaros Theorix
+1 Undercity Sewers
+1 Underground Sea
+1 Unesh, Criosphinx Sovereign
+1 Urza's Incubator
+1 Vault of Champions
+1 Verdant Catacombs
+1 Victimize
+1 Watcher of the Spheres
+1 Watery Grave
+1 Windswept Heath

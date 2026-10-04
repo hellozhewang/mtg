@@ -1,0 +1,106 @@
+Muldrotha turns your graveyard into a second hand. Every turn you may play a land and cast one permanent of EACH type (artifact, creature, enchantment, planeswalker) from your graveyard. So the deck mills itself on purpose, fills the yard with permanents that do something every time they enter, and replays them turn after turn. Edicts, removal Seals and value creatures come back every turn until the table runs out of answers; Jarad and Golgari Grave-Troll close it.
+
+# The commander
+Muldrotha, the Gravetide :: six mana, a 6/6. During each of your turns, you may play a land and cast a permanent spell of each permanent type from your graveyard.
+An artifact creature uses EITHER the artifact or the creature slot, your choice. An enchantment creature the same.
+Muldrotha costs six. Ramp and fill the graveyard first; when she lands, she casts two or three spells the same turn.
+The allowance belongs to that Muldrotha. If she leaves and comes back (a blink, or Kaya's Ghostform returning her), the new one has a fresh set.
+
+# Infinite loops — three or four cards, never two
+Muldrotha, the Gravetide + Displacer Kitten + Lotus Petal :: cast Lotus Petal from your graveyard (the artifact slot). It's a noncreature spell, so the Kitten blinks Muldrotha, and the new Muldrotha has a fresh artifact slot. Sacrifice the Petal for mana and cast it again. Each loop nets one mana of any colour, and every cast is a spell for storm and Secrets of the Dead. Unlimited mana and draws: then Hydroid Krasis for a huge X, or Golgari Grave-Troll and Jarad.
+Muldrotha, the Gravetide + Kaya's Ghostform + Altar of Dementia + Lotus Petal :: sacrifice Muldrotha to the Altar to mill a player six; Ghostform returns her with fresh slots. Cast Lotus Petal from the graveyard for {B}, recast Ghostform on her with it, and repeat. Mills the whole table out.
+
+# Filling the graveyard
+Stitcher's Supplier :: mills three on entering AND on dying. Recast it every turn.
+Satyr Wayfinder :: mills four, keeps a land.
+Eccentric Farmer :: mills three, returns a land to hand.
+Aftermath Analyst :: mills three; later returns every land from your graveyard.
+World Shaper :: mills three per attack; returns all your lands when it dies.
+Six :: mills three per attack, keeps a land, and gives your nonland permanent cards retrace on your turn.
+Teval, the Balanced Scale :: mills three per attack and returns a land from the graveyard.
+Icetill Explorer :: an extra land a turn, lands from your graveyard, and a mill per landfall.
+Grisly Salvage :: reveal five, keep a creature or land, bin the rest.
+Golgari Grave-Troll :: dredge 6: replace a draw with six cards milled.
+Stinkweed Imp :: dredge 5, and a deathtouch blocker.
+Life from the Loam :: three lands back, or dredge 3.
+Mesmeric Orb :: every permanent that untaps mills its controller a card. Fuel for you, pressure on them.
+Entomb :: any card into the graveyard.
+Buried Alive :: three creatures into the graveyard.
+Gravebreaker Lamia :: Entomb on a body, and your graveyard spells cost {1} less.
+Survival of the Fittest :: discard a creature to tutor a creature: the best graveyard engine there is.
+
+# What Muldrotha replays
+Seal of Removal :: bounce a creature every turn.
+Seal of Primordium :: destroy an artifact or enchantment every turn.
+Haywire Mite :: exile a noncreature artifact or enchantment, and gain 2.
+Plaguecrafter :: everyone sacrifices a creature or planeswalker; you sacrifice something that comes back.
+Accursed Marauder :: everyone sacrifices a nontoken creature.
+Ravenous Chupacabra :: destroy a creature every turn.
+Baleful Strix :: a flying deathtouch blocker and a card, every turn.
+Mulldrifter :: evoke it for {2}{U} to draw two every turn.
+Eternal Witness :: return any card to hand every turn.
+Spore Frog :: sacrifice it to fog all combat damage; Muldrotha recasts it next turn. Use it to survive, not to stall a game out.
+Glen Elendra Archmage :: counters a noncreature spell, persists once, then comes back again via Muldrotha.
+Siren Stormtamer :: counters removal aimed at your creature.
+Sakura-Tribe Elder :: ramp every turn.
+Wood Elves :: a Forest every turn.
+Pernicious Deed :: a one-sided reset when you choose X carefully, then recast it.
+Animate Dead :: reanimate a creature from any graveyard, and recast the Aura later.
+Oko, Thief of Crowns :: turn their best threat into an Elk, again and again.
+Ashiok, Dream Render :: mills four and exiles their graveyards, and stops their library searches.
+Lightning Greaves :: haste for Muldrotha the turn she lands.
+
+# Draw and value
+Secrets of the Dead :: a card for every spell you cast from your graveyard.
+Doc Aurlock, Grizzled Genius :: spells from your graveyard cost {2} less.
+The Gitrog Monster :: an extra land each turn, and a card whenever a land goes to your graveyard. Its upkeep sacrifice is a land you can replay.
+Rhystic Study :: their spells pay you.
+Mystic Remora :: the early-game version.
+Windfall :: everyone refills; your discards are Muldrotha's targets.
+Hydroid Krasis :: half X cards and half X life when cast, and a flier.
+
+# Finishers
+Jarad, Golgari Lich Lord :: +1/+1 for each creature card in your graveyard. {1}{B}{G}, sacrifice another creature: each opponent loses life equal to its power. Sacrifice a big Grave-Troll and the table loses a lot.
+Golgari Grave-Troll :: enters with a +1/+1 counter for each creature card in your graveyard.
+Altar of Dementia :: sacrifice a creature to mill a player by its power. A big Grave-Troll mills an opponent out.
+Cyclonic Rift :: overloaded at seven mana before your swing.
+
+# Answers
+Counterspell :: the baseline.
+Mana Drain :: a counter that pays you back.
+Swan Song :: one mana against enchantments, instants and sorceries.
+Assassin's Trophy :: destroy any permanent.
+Toxic Deluge :: everything gets -X/-X; your creatures come back.
+Culling Ritual :: destroys every nonland permanent with mana value 2 or less and adds mana for each.
+Dauthi Voidwalker :: their cards are exiled instead of going to the graveyard.
+Boseiju, Who Endures :: a land that destroys an artifact, enchantment or nonbasic land.
+Otawara, Soaring City :: a land that bounces a permanent.
+
+# Tutor lines — what to fetch, and when
+Survival of the Fittest -> Displacer Kitten :: discard any creature (Muldrotha can recast it) to fetch the Kitten. With Lotus Petal in the graveyard, the loop is on.
+Entomb -> Lotus Petal :: Petal in the graveyard is the combo's second piece, and Muldrotha casts it from there anyway.
+Gravebreaker Lamia -> Stitcher's Supplier :: Lamia's Entomb goes in the graveyard, where Muldrotha can cast it.
+Buried Alive -> Golgari Grave-Troll :: three creatures in; with Muldrotha, any of them is castable next turn.
+
+# Mana
+Birds of Paradise :: any colour.
+Delighted Halfling :: mana that makes Muldrotha uncounterable.
+Deathrite Shaman :: mana from lands in graveyards.
+Bloom Tender :: one mana for each colour among your permanents.
+Sakura-Tribe Elder :: a basic land, and recastable.
+Wood Elves :: a Forest, untapped.
+Farseek :: a land, tapped.
+Exploration :: an extra land drop each turn.
+Ramunap Excavator :: play lands from the graveyard.
+Sol Ring :: the usual.
+Arcane Signet :: the usual.
+Lotus Petal :: free mana, and half of the infinite loop.
+Phyrexian Tower :: sacrifice a creature for {B}{B}.
+Command Beacon :: Muldrotha to hand without commander tax.
+Urborg, Tomb of Yawgmoth :: every land is a Swamp.
+Yavimaya, Cradle of Growth :: every land is a Forest.
+
+# What to keep in an opening hand
+Keep three lands in three colours, a ramp piece and a self-mill creature. Turn two Stitcher's Supplier or Satyr Wayfinder, turn three a two-drop ramp, turn five Muldrotha.
+The first Muldrotha turn should cast a land and at least one permanent from the graveyard: Sakura-Tribe Elder for mana, or a removal creature.
+Recast the cheap removal (Seals, Chupacabra, Plaguecrafter) every turn: the table runs out of permanents before you run out of graveyard.

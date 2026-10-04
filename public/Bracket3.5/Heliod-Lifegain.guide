@@ -1,0 +1,100 @@
+Heliod puts a +1/+1 counter on a creature every time you gain life, and for {1}{W} gives another creature lifelink. Give Walking Ballista lifelink and every ping gains a life, which puts the counter right back on Ballista: unlimited damage from two cards, one of which is your commander. The rest of the deck finds Ballista or Triskelion and stops the table from doing anything about it.
+
+# The commander
+Heliod, Sun-Crowned :: three mana, indestructible. Whenever you gain life, put a +1/+1 counter on target creature or enchantment you control. {1}{W}: another target creature gains lifelink until end of turn.
+Heliod is only a creature with five devotion to white, and the combo does not need him to be one. He just needs to be on the battlefield.
+He is indestructible, so exile, bounce and tuck effects are what stop him. Hold Mother of Runes, Giver of Runes or a counterspell-style stax piece for those.
+
+# Infinite combos — why this is Bracket 3.5
+Heliod, Sun-Crowned + Walking Ballista :: cast Ballista with X of at least 1, pay {1}{W} to give it lifelink, then remove a counter to ping. You gain 1, Heliod puts a counter back on Ballista, repeat. Unlimited damage and life. Seven mana across two turns: Heliod (3) one turn, then Ballista with X = 1 (2) and the activation (2).
+Heliod, Sun-Crowned + Triskelion :: the same loop with Triskelion, which enters with three counters already.
+Walking Ballista + Agatha's Soul Cauldron :: if Ballista is in your graveyard, exile it with the Cauldron. Every creature you control with a +1/+1 counter gains its abilities, so give one of them lifelink with Heliod and loop the same way.
+Two cards, with the commander as one of them, is exactly what Bracket 3 forbids and this Bracket 3.5 deck keeps.
+
+# Tutor lines — what to fetch, and when
+Every tutor in the deck can find Ballista. Pick the one that leaves mana for the activation the same turn.
+Ranger-Captain of Eos -> Walking Ballista :: Ballista has mana value 0 in your library, so it counts as a one-drop. Three mana for the Captain, and you can sacrifice it to stop opponents casting noncreature spells on the combo turn.
+Recruiter of the Guard -> Walking Ballista :: any creature with toughness 2 or less: Ballista (0) or Triskelion (1).
+Ranger of Eos -> Walking Ballista :: two creatures of mana value 1 or less: Ballista plus Mother of Runes or Esper Sentinel.
+Enlightened Tutor -> Walking Ballista :: it's an artifact, so Enlightened Tutor puts it on top. Cast it at an opponent's end step and draw it next turn.
+Scrapyard Recombiner -> Triskelion :: sacrifice an artifact to tutor any Construct: Ballista, Triskelion, or the Recombiner itself.
+Inventors' Fair -> Walking Ballista :: with three artifacts out, a land that tutors any artifact.
+Buried Ruin -> Walking Ballista :: returns an artifact from your graveyard to hand.
+
+# The stax shell — use it, but know it cuts both ways
+These slow the table down while you assemble two cards. Most are symmetric, so play them when they hurt the opponents more than you.
+Rule of Law :: one spell per turn for everyone. Your combo is one spell (Ballista) and an activation, so it still works.
+Eidolon of Rhetoric :: the same, on a creature.
+Archon of Emeria :: the same, and their nonbasic lands enter tapped.
+Phyrexian Censor :: one non-Phyrexian spell each per turn, and non-Phyrexian creatures enter tapped.
+Deafening Silence :: one noncreature spell per turn each.
+Ethersworn Canonist :: artifact spells are exempt, so Ballista still resolves after another spell.
+Thalia, Guardian of Thraben :: noncreature spells cost {1} more. Your combo pieces are creatures.
+Chalice of the Void :: counters every spell with a chosen mana value. Pick a number your opponents use more than you do; set to 1, it also counters your Swords and Path.
+Vexing Bauble :: counters spells cast with no mana. It also counters your own free Flawless Maneuver and an evoked Solitude.
+Boromir, Warden of the Tower :: counters opponents' free spells, and sacrifices to protect your board.
+Grand Abolisher :: nobody responds on your turn. The best card to have out on the combo turn.
+Voice of Victory :: opponents can't cast spells on your turn.
+Silence :: the one-turn version.
+Orim's Chant :: target player can't cast spells this turn; kicked, nobody attacks.
+Linvala, Keeper of Silence :: their creatures' activated abilities can't be used.
+Karn, the Great Creator :: their artifacts' activated abilities can't be used.
+Blind Obedience :: their artifacts and creatures enter tapped, and extort drains on every spell.
+Authority of the Consuls :: their creatures enter tapped, and you gain a life each time. Each of those life gains is a Heliod counter.
+Dauntless Dismantler :: their artifacts enter tapped; sacrifice it to destroy every artifact of a chosen mana value.
+Aven Mindcensor :: their searches only see the top four cards.
+Rest in Peace :: no graveyards. It also turns off your Agatha's Soul Cauldron line.
+Grafdigger's Cage :: no creatures from graveyards or libraries, and no casting from either.
+Weathered Runestone :: no permanents from graveyards or libraries.
+Soulless Jailer :: no permanents from graveyards, and no noncreature spells from graveyard or exile.
+Containment Priest :: creatures that weren't cast are exiled instead.
+Calamity's Wake :: exile every graveyard and stop noncreature spells for the rest of the turn. Your Ballista is a creature spell, so cast it after.
+
+# Answers and protection
+Swords to Plowshares :: one mana, exile a creature.
+Path to Exile :: the same.
+Winds of Abandon :: a sorcery Path; overloaded, it hits every opposing creature.
+Solitude :: flash, exile a creature; evoke it free by exiling a white card.
+March of Otherworldly Light :: exile an artifact, creature or enchantment.
+Generous Gift :: destroy any permanent.
+Witch Enchanter :: destroy an artifact or enchantment, or play it as a land.
+Aven Interrupter :: flash: exile a spell (it's plotted), and their graveyard and exile spells cost {2} more.
+Reprieve :: return a spell to its owner's hand and draw.
+Mother of Runes :: protection for a creature, at instant speed.
+Giver of Runes :: the same, including from colourless.
+Flawless Maneuver :: free while Heliod is out: your creatures are indestructible for the turn.
+Angel's Grace :: split second: you can't lose this turn.
+Talon Gates of Madara :: phase a creature out in response to removal.
+Eiganjo, Seat of the Empire :: a land that deals 4 to an attacker.
+
+# Cards and mana
+The One Ring :: protection for a turn, then a card every upkeep.
+Smothering Tithe :: Treasure whenever opponents draw.
+Esper Sentinel :: taxes their first noncreature spell each turn.
+Archivist of Oghma :: a card and a life whenever an opponent searches. The life is a Heliod counter.
+Welcoming Vampire :: a card when a small creature enters, once a turn.
+Mentor of the Meek :: pay {1} to draw when a small creature enters.
+Trouble in Pairs :: draws when opponents attack you with two creatures, draw extra, or cast a second spell.
+Serra Ascendant :: lifelink on turn one; a 6/6 flier at 30 life.
+Emeria's Call :: two 4/4 Angels, or a land.
+Land Tax :: three Plains a turn when behind on lands.
+Archaeomancer's Map :: two Plains, then lands when opponents get ahead.
+Weathered Wayfarer :: tutors any land when you're behind.
+Deep Gnome Terramancer :: a Plains whenever an opponent puts a land onto the battlefield without playing it.
+Sol Ring :: the usual.
+Arcane Signet :: the usual.
+Fellwar Stone :: the usual.
+Mind Stone :: a rock that cashes in for a card.
+Pearl Medallion :: white spells cost {1} less.
+Lotus Petal :: free.
+Mox Opal :: live with three artifacts.
+Nykthos, Shrine to Nyx :: white mana equal to your devotion.
+City of Traitors :: two mana until your next land drop.
+Monumental Henge :: digs for a historic card: Ballista, Triskelion and every legend count.
+Urza's Saga :: makes Construct tokens, then chapter III finds Sol Ring, Lotus Petal or Mox Opal.
+Emergence Zone :: everything has flash for a turn.
+
+# What to keep in an opening hand
+Keep a land count of three, some acceleration, and either a combo piece or a tutor for it. Turn three Heliod, turn four or five Ballista with {1}{W} up.
+Land one lock piece early (Rule of Law, Archon of Emeria, Grand Abolisher) to slow the table, but don't play two that also strangle you.
+On the combo turn: Grand Abolisher or Silence first, then Ballista, then the activation.

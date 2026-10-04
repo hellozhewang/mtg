@@ -1,0 +1,107 @@
+Every Aura you CAST pulls a second one out of your library for free. Light-Paws searches for an Aura with mana value no greater than the one you cast and a name you don't already have, and puts it straight onto her. So a two-mana Aura is really two Auras, and a four-mana one can fetch the best four-drop in the deck. Stack protection first, then damage, then swing with a commander nobody can touch.
+
+# The commander
+Light-Paws, Emperor's Voice :: two mana. Whenever an Aura you control enters, if you CAST it, search for an Aura with mana value less than or equal to it and a different name from every Aura you control, and put it onto the battlefield attached to Light-Paws. The fetched Aura was not cast, so it does not trigger her again: one cast, one fetch.
+The cast Aura can go anywhere. Cast Reprobation on an opponent's creature and the fetch still lands on Light-Paws. But the FETCHED Aura always goes on her, so never fetch Reprobation, Darksteel Mutation or Swift Reconfiguration: they would shut her off. On Thin Ice cannot be fetched at all; it can only enchant a snow land.
+Benevolent Blessing and Flickering Ward give protection from a colour you choose. Never choose white: protection from white stops your own new Auras attaching to her.
+
+# Aura chains — what to cast, and what it fetches
+Cast the most expensive Aura you can, because it sets the ceiling on the fetch.
+Angelic Destiny -> Sage's Reverie :: four into four. Destiny makes her a 6/6 flying first-striker, then Reverie draws a card for every Aura on a creature and pumps her again. With three or more Auras out, this is the best card-draw turn in the deck.
+Sage's Reverie -> Angelic Destiny :: the same pair the other way round, when Reverie is the one in hand.
+Battle Mastery -> Chains of Custody :: double strike now, and the fetched Chains exiles an opponent's best nonland permanent until it leaves. Removal without spending a card.
+Chains of Custody -> Battle Mastery :: cast Chains for the removal, fetch double strike onto her.
+Twinblade Blessing -> Timely Ward :: Twinblade has flash, so cast it in their end step or mid-combat, and fetch indestructible in response to nothing at all.
+Mantle of the Ancients -> Angelic Destiny :: Mantle returns every Aura and Equipment from your graveyard onto her, then fetches a four-drop. The rebuild after a wipe.
+Reprobation -> Ethereal Armor :: cast the removal Aura on THEIR creature; the fetch still goes on Light-Paws.
+Ethereal Armor -> Hyena Umbra :: the turn-two chain. First strike, plus umbra armor so the first removal spell misses.
+
+# Making her lethal
+Battle Mastery :: double strike. Every pump after this counts twice.
+Twinblade Blessing :: double strike with flash: the surprise version.
+Ethereal Armor :: +1/+1 for each enchantment you control, and first strike. With six Auras out it is +6/+6 on its own.
+All That Glitters :: +1/+1 for each artifact and enchantment you control.
+Daybreak Coronet :: needs another Aura already on her: +3/+3, first strike, vigilance and lifelink.
+Idolized :: when she attacks alone, +X/+X where X is your nonland permanents.
+Angelic Destiny :: +4/+4, flying and first strike, and it returns to your hand if she dies.
+Kor Spiritdancer :: the backup body: +2/+2 per Aura on IT, and a card every time you cast an Aura.
+Stoneskin + Solid Footing + Triclopean Sight :: Stoneskin gives +0/+10, Triclopean Sight gives vigilance, and Solid Footing makes a vigilant creature deal combat damage equal to its TOUGHNESS. With all three she is a 4/14 that hits for 14, or 28 with double strike.
+Rogue's Passage :: {4}, {T}: she can't be blocked this turn.
+Skrelv, Defector Mite :: gives her toxic 1 and makes her unblockable by a chosen colour; each hit is also poison.
+
+# Keeping her alive
+Mother of Runes :: protection from a colour at instant speed. Pick a colour that is NOT white if she is the target, or her Auras fall off.
+Giver of Runes :: the same, from colourless too.
+Swiftfoot Boots :: hexproof stops opponents only, so your own Auras still attach.
+Brilliant Wings :: flash, flying and hexproof.
+Shardmage's Rescue :: flash hexproof for the turn it enters. Cast it in response to removal; the fetch is a second Aura on top.
+Timely Ward :: indestructible, castable at instant speed because it targets your commander.
+Spirit Mantle :: protection from creatures: unblockable by creatures and immune to their abilities.
+Unquestioned Authority :: protection from creatures, and it draws a card.
+Mask of Law and Grace :: protection from black and red.
+Shield of Duty and Reason :: protection from green and blue.
+Benevolent Blessing :: flash protection from the chosen colour, never white.
+Flickering Ward :: protection from a colour, and {W} returns it to hand to recast for another fetch.
+Hyena Umbra :: umbra armor: the first destroy effect removes the Umbra instead of her.
+Loran's Escape :: one mana, hexproof and indestructible for the turn.
+Rebuff the Wicked :: counters a spell that targets your permanent.
+Galadriel's Dismissal :: phase her out in response to removal, or kick it to phase out a blocker's whole board.
+Teferi's Protection :: the reset button. Everything phases out, Auras included, and comes back attached.
+Plaza of Heroes :: exile it for hexproof and indestructible on her.
+Eiganjo Castle :: prevents 2 damage to a legendary creature each turn.
+Pariah :: all damage to you is dealt to her instead. On a Light-Paws with Stoneskin or Timely Ward, nobody can hurt you.
+
+# Removal that is also an Aura
+Every one of these is a cast Aura, so each also fetches something onto Light-Paws.
+Chains of Custody :: exiles a nonland permanent until Chains leaves, and gives her ward {2}.
+Sheltered by Ghosts :: the same exile, plus lifelink and ward {2}.
+Reprobation :: their creature becomes a 0/1 with no abilities.
+Darksteel Mutation :: their creature becomes a 0/1 indestructible artifact with no abilities: good against creatures that come back.
+Swift Reconfiguration :: turns a creature into a Vehicle that needs crew 5. Flash.
+On Thin Ice :: exiles a creature. It enchants one of your snow lands, which is why the basics are Snow-Covered Plains.
+Swords to Plowshares :: one mana, exile a creature.
+Path to Exile :: the same, for a basic land.
+Generous Gift :: destroys any permanent, for a 3/3 Elephant.
+
+# Cards and mana
+Sram, Senior Edificer :: draws on every Aura or Equipment you cast.
+Mesa Enchantress :: draws on every enchantment you cast.
+Pearl-Ear, Imperial Advisor :: enchantment spells cost {1} less for each Aura you control, and an Aura you cast on an enchanted Light-Paws draws a card.
+Esper Sentinel :: taxes their first noncreature spell each turn.
+Feather of Flight :: flash flying, and draws a card.
+Serra's Sanctum :: taps for {W} per enchantment you control. With five Auras out it is five mana from a land.
+Nykthos, Shrine to Nyx :: {2}, {T}: white mana equal to your devotion. Every Aura's {W} counts.
+Land Tax :: three basics a turn when an opponent has more lands.
+Archaeomancer's Map :: two Plains to hand, then lands when opponents get ahead.
+Pearl Medallion :: white spells cost {1} less.
+Sol Ring :: the usual.
+Arcane Signet :: the usual.
+Mind Stone :: a rock that cashes in for a card later.
+Lotus Petal :: a free white for a turn-one Light-Paws.
+Mox Amber :: taps for white once Light-Paws or another legend is out.
+Urza's Saga :: chapter III fetches Sol Ring, Mox Amber or Lotus Petal.
+
+# Locking the table
+Grand Abolisher :: on your turn nobody can respond to the attack or the Aura chain.
+Silence :: the one-turn version, cast before the big chain.
+Archon of Emeria :: one spell per turn for everyone. Light-Paws is the least affected: one Aura a turn is still two.
+Aven Mindcensor :: their searches only see the top four cards.
+Hushbringer :: stops creature enter and death triggers. Your Auras' triggers are not creatures, so they still work.
+
+# Getting it back
+Replenish :: every enchantment in your graveyard returns at once. Auras that can't attach to anything stay behind.
+Retether :: every Aura in your graveyard returns attached to creatures.
+Mantle of the Ancients :: returns Auras and Equipment onto the creature it enchants.
+Hall of Heliod's Generosity :: puts an enchantment from your graveyard on top of your library.
+Gryff's Boon :: comes back from the graveyard for {3}{W}.
+Sentinel's Eyes :: escapes from the graveyard for {W}.
+
+# Tutor lines — what to fetch, and when
+Open the Armory -> Battle Mastery :: any Aura to hand. Take Battle Mastery when she is already protected, a protection Aura when she is not.
+Enlightened Tutor -> Angelic Destiny :: puts any enchantment on top of your library. Take the biggest Aura you can cast next turn, because it fetches the biggest second Aura.
+
+# What to keep in an opening hand
+Keep Light-Paws mana, one cheap Aura and one way to protect her. A hand of four-mana Auras with no early play is a mulligan.
+Turn two Light-Paws, turn three cast a one-mana Aura to fetch Hyena Umbra or Shardmage's Rescue, then a damage Aura. Protection first, then damage.
+Before the big chain, play Grand Abolisher or Silence so nobody can respond.
+If she dies, Angelic Destiny comes back to your hand and Mantle of the Ancients or Retether rebuild the stack in one card.

@@ -1,0 +1,76 @@
+1 Baral, Chief of Compliance
+1 An Offer You Can't Refuse
+1 Arcane Denial
+1 Arcane Signet
+1 Archmage Emeritus
+1 Archmage of Runes
+1 Brainstorm
+1 Counterspell
+1 Cryptic Command
+1 Cyclonic Rift
+1 Delay
+1 Disallow
+1 Dispel
+1 Fact or Fiction
+1 Faerie Mastermind
+1 Fierce Guardianship
+1 Flooded Strand
+1 Flusterstorm
+1 Force of Negation
+1 Frantic Search
+1 Gitaxian Probe
+25 Island
+1 Jace, the Mind Sculptor
+1 Ledger Shredder
+1 Lotus Petal
+1 Lórien Revealed
+1 Mana Drain
+1 Mana Leak
+1 Memory Lapse
+1 Mental Misstep
+1 Merchant Scroll
+1 Mind Stone
+1 Mindbreak Trap
+1 Misty Rainforest
+1 Mox Amber
+1 Muddle the Mixture
+1 Murmuring Mystic
+1 Mystic Remora
+1 Mystic Sanctuary
+1 Narset's Reversal
+1 Negate
+1 Opt
+1 Otawara, Soaring City
+1 Pact of Negation
+1 Polluted Delta
+1 Ponder
+1 Pongify
+1 Preordain
+1 Reliquary Tower
+1 Rewind
+1 Rhystic Study
+1 Sapphire Medallion
+1 Scalding Tarn
+1 Sensei's Divining Top
+1 Shark Typhoon
+1 Sink into Stupor
+1 Snap
+1 Snapcaster Mage
+1 Sol Ring
+1 Solve the Equation
+1 Spell Pierce
+1 Spellseeker
+1 Stock Up
+1 Strix Serenade
+1 Swan Song
+1 Tale's End
+1 Talrand, Sky Summoner
+1 Teferi's Ageless Insight
+1 Thing in the Ice
+1 Thought Vessel
+1 Tishana's Tidebinder
+1 Tolarian Terror
+1 Unwind
+1 Urza's Saga
+1 Wavebreak Hippocamp
+1 Windfall

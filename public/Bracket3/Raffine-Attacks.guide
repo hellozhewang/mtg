@@ -1,0 +1,104 @@
+Every time you attack, Raffine makes one of your attackers connive once for each attacking creature: draw that many, discard that many, and a +1/+1 counter for each nonland card discarded. So the deck goes wide with token makers that attack, and every swing is card draw that also grows an evasive threat. The discards feed a reanimation package, so a discarded Archon of Cruelty comes straight back.
+
+# The commander
+Raffine, Scheming Seer :: three mana, a 1/4 flier with ward {1}. Whenever you attack, target attacking creature connives X, where X is the number of attacking creatures: draw X, discard X, and put a +1/+1 counter on it for each nonland card discarded.
+Raffine triggers when you attack with ANY creatures; she doesn't have to attack herself. Attack with five tokens and one of them draws and discards five.
+Target the creature that is hardest to block (a flier, Fallen Shinobi, a Sword carrier), since it keeps the counters.
+
+# Key pairs
+Raffine, Scheming Seer + Archfiend of Ifnir :: every card you discard to connive puts a -1/-1 counter on each creature your opponents control. Conniving five is five counters on every blocker they have.
+Raffine, Scheming Seer + Hero of Bladehold :: Hero makes two attacking Soldiers and battle cry pumps the team; each extra attacker is one more card.
+Raffine, Scheming Seer + Voice of Victory :: mobilize 2 adds two attacking Warriors, and opponents can't cast spells during your turn, so the attack and the connive resolve undisturbed.
+Raffine, Scheming Seer + Adeline, Resplendent Cathar :: a Human token per opponent every attack: three more attackers, three more cards.
+Entomb -> Archon of Cruelty :: put it in the graveyard, then Reanimate, Animate Dead, Dance of the Dead or Necromancy it back. Connive discards do the same job for free.
+
+# Going wide
+Bitterblossom :: a flying Faerie every upkeep.
+Hero of Bladehold :: two tapped-and-attacking Soldiers on each attack, plus battle cry.
+Adeline, Resplendent Cathar :: a token per opponent on each attack, and she's as big as your board.
+Voice of Victory :: two attacking Warriors per attack.
+Whirler Rogue :: two Thopters, and tapping two artifacts makes a creature unblockable.
+The Queen of Dale :: whenever an opponent casts their first noncreature spell each turn, you loot, and a nonland discard makes a 1/1 Soldier. Another discard outlet for reanimation targets.
+Delney, Streetwise Lookout :: your small creatures can't be blocked by big ones, and their triggered abilities trigger twice.
+Lurrus of the Dream-Den :: recast a permanent of mana value 2 or less from your graveyard each turn.
+Serra Ascendant :: a 6/6 lifelinking flier once you are at 30 life.
+Mockingbird :: a flying copy of your best creature.
+
+# Cards
+Wedding Announcement :: a card each end step you attacked with two or more creatures, then flips into an anthem.
+Bident of Thassa :: a card whenever a creature of yours deals combat damage to a player.
+Tymna the Weaver :: after combat, pay life to draw a card per opponent you damaged.
+Skullclamp :: a 1/1 token becomes two cards.
+Fallen Shinobi :: ninjutsu it in over an unblocked token: it exiles their top two cards for you to play free.
+Ledger Shredder :: connives whenever a player casts their second spell in a turn.
+Raffine's Informant :: connives on entering.
+Rhystic Study :: their spells pay you.
+Mystic Remora :: the early version.
+Faerie Mastermind :: draws when opponents draw extra.
+Esper Sentinel :: taxes their first noncreature spell.
+Archivist of Oghma :: a card whenever an opponent searches their library.
+Pollywog Prodigy :: grows by evolve, and draws off their cheap spells.
+Wan Shi Tong, Librarian :: flash, draw, and it grows on their tutors.
+Orcish Bowmasters :: pings for every extra card they draw, and an army token.
+Sheoldred, the Apocalypse :: drains them for every card they draw, and pays you for yours.
+Lotho, Corrupt Shirriff :: a Treasure when any player casts their second spell in a turn.
+
+# The reanimation package
+Discarded creatures are the targets; conniving puts them in the graveyard.
+Archon of Cruelty :: on entering and attacking, an opponent sacrifices a creature, discards and loses 3; you draw and gain 3.
+Razaketh, the Foulblooded :: sacrifice a token to tutor any card, as often as you have tokens.
+Archfiend of Ifnir :: the connive payoff above, and it cycles if you need it to.
+Reanimate :: one mana, life equal to the creature's mana value.
+Animate Dead :: two mana; the creature comes back with -1/-0.
+Dance of the Dead :: the same, +1/+1, and it untaps for {1}{B}.
+Necromancy :: flash it at instant speed; if cast at sorcery timing it stays.
+Sevinne's Reclamation :: returns a permanent of mana value 3 or less from the graveyard; flashback copies it.
+
+# Finishers
+Moonshaker Cavalry :: every creature gets flying and +X/+X, where X is your creature count.
+Akroma's Will :: with Raffine out, both modes: flying, vigilance, double strike, lifelink, indestructible and protection from every colour, for the whole team.
+Sword of Fire and Ice :: protection from red and blue; on a hit, 2 damage and a card.
+
+# Protecting the turn
+Grand Abolisher :: nobody responds on your turn.
+Silence :: the one-turn version.
+Counterspell :: the baseline.
+Force of Negation :: free on their turn.
+Swan Song :: one mana against enchantments, instants and sorceries.
+An Offer You Can't Refuse :: one mana against any noncreature spell.
+Flusterstorm :: wins counter wars.
+Mindbreak Trap :: free against a storm turn.
+Mausoleum Wanderer :: sacrifice it to counter an instant or sorcery with mana value up to its power.
+
+# Answers
+Swords to Plowshares :: one mana, exile a creature.
+Fatal Push :: a two-drop, or a four-drop with revolt.
+Vanishing Verse :: exile any monocoloured permanent.
+Anguished Unmaking :: exile any nonland permanent for 3 life.
+Deadly Rollick :: free while Raffine is out: exile a creature.
+Brazen Borrower :: bounce a nonland permanent, then cast the 3/1 flash flier.
+Toxic Deluge :: pay X life: everything gets -X/-X.
+Dauthi Voidwalker :: their cards go to exile instead of the graveyard, and it can steal one.
+Otawara, Soaring City :: a land that bounces a permanent.
+
+# Tutor lines — what to fetch, and when
+Entomb -> Razaketh, the Foulblooded :: then Reanimate it. With tokens out, Razaketh tutors once per token.
+Diabolic Intent -> Akroma's Will :: sacrifice a token for any card: the finisher when the board is wide, Reanimate when the yard is ready.
+Ranger-Captain of Eos -> Esper Sentinel :: any creature of mana value 1 or less: Esper Sentinel, Serra Ascendant or Mausoleum Wanderer. Sacrifice the Captain to stop opponents casting noncreature spells this turn.
+
+# Mana
+Sol Ring :: the usual.
+Arcane Signet :: the usual.
+Fellwar Stone :: the usual.
+Talisman of Dominance :: blue or black.
+Talisman of Hierarchy :: white or black.
+Talisman of Progress :: white or blue.
+Lotus Petal :: free.
+Mox Amber :: taps once Raffine or another legend is out.
+Dark Ritual :: {B}{B}{B} for a turn-two Raffine or a fast Reanimate.
+Smothering Tithe :: Treasure whenever they draw.
+
+# What to keep in an opening hand
+Keep three-colour mana, Raffine, and one cheap creature or token maker. Turn three Raffine, turn four attack with two creatures and connive two.
+Discard creatures you can reanimate, and lands once the board is set; nonland discards grow the conniver.
+When the board is wide, protect the alpha strike with Grand Abolisher or Silence, then Akroma's Will or Moonshaker Cavalry.

@@ -1,0 +1,102 @@
+Ghave turns +1/+1 counters into Saprolings and sacrificed creatures back into counters, so with any counter or token doubler on the battlefield the two halves feed each other forever. The deck is a pile of those doublers, sacrifice outlets and drain payoffs, plus four separate two-card combos built around Basking Broodscale. Assemble any loop and drain the table.
+
+# The commander
+Ghave, Guru of Spores :: five mana; enters with five +1/+1 counters. {1}, remove a +1/+1 counter from ANY creature you control: create a 1/1 Saproling. {1}, sacrifice a creature: put a +1/+1 counter on target creature.
+Ghave is a sacrifice outlet and a counter-mover on his own, and five counters means five Saprolings even with nothing else out.
+His abilities cost {1} each, so a loop with him needs a mana source in it: Ashnod's Altar or Phyrexian Altar.
+
+# Infinite combos — why this is Bracket 3.5
+Basking Broodscale + Cathars' Crusade :: whenever counters land on Broodscale it makes an Eldrazi Spawn. The Spawn entering makes Cathars' Crusade put a counter on every creature, Broodscale included, which makes another Spawn. Unlimited Spawns: sacrifice them for unlimited colourless mana.
+Basking Broodscale + Rosie Cotton of South Lane :: each Spawn is a token you created, so Rosie puts a +1/+1 counter on Broodscale, which makes another Spawn. The same unlimited Spawns and mana.
+Basking Broodscale + Mazirek, Kraul Death Priest :: sacrifice a Spawn for {C}; Mazirek puts a counter on every creature, so Broodscale makes another Spawn. Unlimited mana and sacrifices.
+Chatterfang, Squirrel General + Pitiless Plunderer :: a creature dies, Plunderer makes a Treasure, Chatterfang adds a Squirrel. Sacrifice the Squirrel to Chatterfang's own ability ({B} from the Treasure). Unlimited Treasures, Squirrels and deaths.
+Ghave, Guru of Spores + Ashnod's Altar + Doubling Season :: remove a counter for two Saprolings ({1}), sacrifice one to the Altar ({C}{C}), and pay {1} to sacrifice the other and put two counters on Ghave. That breaks even on mana and gains a counter. Spend the spare counters on more Saprolings for the Altar: unlimited mana, Saprolings and deaths.
+Ghave, Guru of Spores + Ashnod's Altar + Cathars' Crusade :: each new Saproling puts a counter back on Ghave, so remove one ({1}), sacrifice the Saproling ({C}{C}), and net {C} a loop. Ivy Lane Denizen works in place of the Crusade.
+Slimefoot, the Stowaway + Ashnod's Altar + Doubling Season :: Slimefoot's {4} makes two Saprolings; sacrificing both to the Altar pays the {4} back, and each Saproling dying drains every opponent 1. Unlimited damage, with or without Ghave.
+Every two-card line here is exactly what Bracket 3 forbids and this house Bracket 3.5 allows.
+
+# Turning the loop into a win
+Mirkwood Bats :: each opponent loses 1 whenever you create OR sacrifice a token: two damage per Spawn.
+Zulaport Cutthroat :: each opponent loses 1 per creature of yours that dies.
+Cruel Celebrant :: the same, and planeswalkers count.
+Blood Artist :: any creature dying drains a player 1.
+Slimefoot, the Stowaway :: each Saproling dying drains each opponent 1.
+Corpse Knight :: each creature entering drains each opponent 1.
+Elas il-Kor, Sadistic Pilgrim :: gain 1 when a creature enters, drain 1 when one dies.
+Grave Pact :: every creature you sacrifice costs each opponent a creature.
+
+# Counter and token doublers
+Doubling Season :: double tokens AND counters.
+Parallel Lives :: double tokens.
+Anointed Procession :: double tokens.
+Mondrak, Glory Dominus :: double tokens.
+Elspeth, Storm Slayer :: double tokens, and makes Soldiers.
+Hardened Scales :: one extra counter.
+Winding Constrictor :: one extra counter on creatures and artifacts.
+Kami of Whispered Hopes :: one extra counter; taps for mana equal to its power.
+Corpsejack Menace :: double counters.
+Cathars' Crusade :: a counter on every creature whenever one enters.
+Good-Fortune Unicorn :: a counter on each creature that enters.
+Ivy Lane Denizen :: a counter whenever another green creature enters. Saprolings are green.
+Rosie Cotton of South Lane :: a counter whenever you create a token.
+Mazirek, Kraul Death Priest :: a counter on every creature whenever a player sacrifices.
+
+# Token makers
+Bitterblossom :: a Faerie every upkeep.
+Mycoloth :: devour, then Saprolings every upkeep equal to its counters.
+Utopia Mycon :: a Saproling every three spore counters; sacrifice Saprolings for mana.
+Slimefoot, the Stowaway :: {4}: a Saproling.
+Young Wolf :: undying: comes back with a counter, which Ghave turns into a Saproling.
+Geralf's Messenger :: undying, and a 2-point drain each time it enters.
+Cryptic Trilobite :: enters with X counters; remove them for mana to activate abilities.
+
+# Sacrifice outlets and mana
+Ashnod's Altar :: a creature for {C}{C}.
+Phyrexian Altar :: a creature for one mana of any colour.
+Viscera Seer :: free, scry 1.
+Phyrexian Tower :: a land that sacrifices for {B}{B}.
+Pitiless Plunderer :: a Treasure whenever another creature of yours dies.
+Cryptolith Rite :: every creature taps for any colour.
+Earthcraft :: tap a creature to untap a basic land.
+Gaea's Cradle :: {G} per creature.
+Skullclamp :: a Saproling becomes two cards.
+Birds of Paradise :: any colour.
+Llanowar Elves :: the usual.
+Avacyn's Pilgrim :: white.
+Delighted Halfling :: mana that makes Ghave uncounterable.
+Bloom Tender :: one mana per colour among your permanents.
+Sol Ring :: the usual.
+Arcane Signet :: the usual.
+Dark Ritual :: {B}{B}{B}.
+Farseek :: a dual land, tapped.
+Nature's Lore :: a Forest-type dual, untapped.
+Three Visits :: the same.
+The Ozolith :: keeps the counters of creatures that die, and moves them back to a creature at combat.
+
+# Tutor lines — what to fetch, and when
+Count what you have, then fetch the missing half of the cheapest loop.
+Demonic Tutor -> Basking Broodscale :: with Cathars' Crusade, Rosie or Mazirek already out, Broodscale finishes it for two mana.
+Vampiric Tutor -> Ashnod's Altar :: instant speed, on top: with Ghave and a doubler out, the Altar is the last piece.
+Green Sun's Zenith -> Ivy Lane Denizen :: X = 4, straight onto the battlefield. Basking Broodscale is devoid (colourless), so Green Sun's Zenith cannot find it.
+Fauna Shaman -> Rosie Cotton of South Lane :: discard any creature to tutor any creature, every turn.
+Eladamri's Call -> Mazirek, Kraul Death Priest :: instant-speed creature tutor to hand.
+Finale of Devastation -> Pitiless Plunderer :: X = 4 onto the battlefield; with Chatterfang out, that's the combo.
+Diabolic Intent -> Cathars' Crusade :: sacrifice a Saproling for any card.
+
+# Protection and answers
+Grand Abolisher :: nobody responds on your turn.
+Flawless Maneuver :: free while Ghave is out: indestructible for your creatures.
+Heroic Intervention :: hexproof and indestructible for everything.
+Esper Sentinel :: taxes their first noncreature spell.
+Swords to Plowshares :: one mana, exile a creature.
+Path to Exile :: the same.
+Assassin's Trophy :: destroy any permanent.
+Anguished Unmaking :: exile any nonland permanent.
+Generous Gift :: destroy any permanent.
+Boseiju, Who Endures :: a land that destroys an artifact, enchantment or nonbasic land.
+Sylvan Library :: pick the best of three every turn.
+
+# What to keep in an opening hand
+Keep mana for a turn-four Ghave (dorks help), a doubler or outlet, and a tutor. Broodscale with Cathars' Crusade wins without Ghave at all.
+With Ghave out, every creature is a sacrifice outlet's fuel and every doubler is half a combo; take the line with the fewest pieces left.
+Protect the combo turn with Grand Abolisher or a free Flawless Maneuver against a wipe.

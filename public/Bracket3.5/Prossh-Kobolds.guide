@@ -1,0 +1,95 @@
+Prossh makes a 0/1 Kobold for every mana you spend casting it, so a six-mana Prossh is a dragon plus six sacrifice fodder. Every Kobold dying is damage, cards or mana in this deck. Food Chain turns that into an infinite loop: exile Prossh and the Kobolds for mana, recast Prossh for more Kobolds, and make more mana each time. With a damage payoff out, the table dies to Kobolds entering.
+
+# The commander
+Prossh, Skyraider of Kher :: six mana, flying. When you CAST him, create X 0/1 Kobolds named Kobolds of Kher Keep, where X is the mana spent. Sacrifice another creature: Prossh gets +1/+0.
+The Kobolds come from casting, not from entering, so a countered Prossh still leaves you the Kobolds. Commander tax raises X: the second cast makes eight, the third ten.
+Prossh is his own sacrifice outlet. Sacrificing Kobolds to pump him also triggers every death payoff below.
+
+# Infinite combos — why this is Bracket 3.5
+Prossh, Skyraider of Kher + Food Chain :: exile Prossh to Food Chain for 7 mana (his mana value 6, plus 1) and send him to the command zone. Recast him; the Kobolds equal everything you spent, tax included. Exile each Kobold for 1 mana. Each loop makes 5 more mana than it costs, so unlimited Kobolds and unlimited mana for creature spells. With Impact Tremors, Purphoros or Agate Instigator out, every Kobold entering damages each opponent; with Beast Whisperer, every Prossh cast draws.
+Squee, the Immortal + Food Chain :: exile Squee for 4 mana, recast him from exile for 3. One mana of profit per loop: unlimited creature mana and unlimited Squee entering.
+Chatterfang, Squirrel General + Pitiless Plunderer :: each death makes a Treasure, Chatterfang adds a Squirrel, and Chatterfang's own ability sacrifices the Squirrel for {B}. Unlimited deaths.
+Prossh, Skyraider of Kher + Phyrexian Altar + Purphoros, God of the Forge :: sacrifice Kobolds to the Altar to recast Prossh from the command zone; Purphoros deals 2 to each opponent for every Kobold that enters.
+Warren Soultrader + Chatterfang, Squirrel General + Zulaport Cutthroat :: Soultrader turns a Squirrel into a Treasure plus a Squirrel; every loop drains the table. Blood Artist works in place of the Cutthroat.
+Food Chain mana only casts creatures. That is all the loop needs (Prossh and Squee are creatures), but the damage has to come from triggers, not from spells.
+
+# Payoffs — what makes the Kobolds lethal
+Impact Tremors :: each creature entering deals 1 to each opponent.
+Purphoros, God of the Forge :: each other creature entering deals 2 to each opponent.
+Agate Instigator :: each other creature entering deals 1 to each opponent.
+Mirkwood Bats :: each token created or sacrificed drains each opponent 1.
+Goblin Bombardment :: sacrifice a creature: 1 damage to any target.
+Mayhem Devil :: every permanent ANY player sacrifices deals 1 damage. Treasures and Food count.
+Zulaport Cutthroat :: each creature of yours that dies drains each opponent 1.
+Blood Artist :: any creature dying drains a player 1.
+Grave Pact :: every creature you sacrifice costs each opponent a creature.
+Korvold, Fae-Cursed King :: every permanent you sacrifice is a card and a +1/+1 counter.
+Sephiroth, Fabled SOLDIER :: drains on every other creature's death, and draws on sacrifice.
+
+# Sacrifice outlets and mana
+Phyrexian Altar :: a creature for one mana of any colour.
+Ashnod's Altar :: a creature for {C}{C}.
+Viscera Seer :: free, scry 1.
+Warren Soultrader :: pay 1 life and sacrifice for a Treasure.
+Pitiless Plunderer :: a Treasure whenever another creature of yours dies.
+Phyrexian Tower :: a land that sacrifices for {B}{B}.
+Gaea's Cradle :: {G} per creature. After one Prossh, that is seven or more.
+Culling the Weak :: sacrifice for {B}{B}{B}{B}.
+Skullclamp :: a Kobold becomes two cards.
+Village Rites :: sacrifice for two cards.
+Fecundity :: every creature that dies draws its controller a card. It's symmetric, so your Kobolds draw you far more.
+Beast Whisperer :: a card for every creature spell you cast.
+
+# Tutor lines — what to fetch, and when
+Demonic Tutor -> Food Chain :: the missing half when Prossh is already castable.
+Vampiric Tutor -> Food Chain :: instant, on top: cast it at an opponent's end step and draw it.
+Beseech the Mirror -> Food Chain :: bargain a Kobold or Treasure to cast Food Chain free.
+Diabolic Intent -> Impact Tremors :: sacrifice a Kobold for any card; take a payoff if Food Chain is out.
+Chord of Calling -> Squee, the Immortal :: instant speed, convoked by Kobolds.
+Finale of Devastation -> Purphoros, God of the Forge :: Purphoros is an enchantment creature card, so Finale finds it: X = 4 puts it onto the battlefield (as an enchantment until you have five red devotion). X = 3 finds Squee instead.
+Eldritch Evolution -> Pitiless Plunderer :: sacrifice a two-drop for a four-drop.
+Noxious Revival -> Food Chain :: puts a destroyed Food Chain back on top of your library.
+Eternal Witness -> Food Chain :: returns it to hand.
+
+# Mana
+Llanowar Elves :: the usual.
+Elvish Mystic :: the second copy.
+Fyndhorn Elves :: the third.
+Elves of Deep Shadow :: black mana.
+Birds of Paradise :: any colour.
+Ignoble Hierarch :: black, red or green.
+Delighted Halfling :: mana that makes Prossh uncounterable.
+Deathrite Shaman :: mana from lands in graveyards.
+Elvish Spirit Guide :: a free {G}.
+Simian Spirit Guide :: a free {R}.
+Sakura-Tribe Elder :: a basic land, and fodder.
+Sol Ring :: the usual.
+Arcane Signet :: the usual.
+Talisman of Impulse :: red or green.
+Lotus Petal :: free.
+Dark Ritual :: {B}{B}{B}.
+Farseek :: a dual, tapped.
+Nature's Lore :: a Forest-type dual, untapped.
+Three Visits :: the same.
+Wheel of Fortune :: refill.
+Sylvan Library :: pick the best of three every turn.
+Phyrexian Arena :: a card every upkeep.
+
+# Protection and answers
+Lightning Greaves :: haste for Prossh to swing with a pumped flier.
+Hexing Squelcher :: your spells can't be countered; your creatures have ward (pay 2 life).
+Veil of Summer :: protection from blue and black for a turn.
+Deflecting Swat :: free while Prossh is out: redirect removal.
+Deadly Rollick :: free while Prossh is out: exile a creature.
+Pyroblast :: counter a blue spell or destroy a blue permanent.
+Red Elemental Blast :: the same.
+Abrupt Decay :: uncounterable removal for anything with mana value 3 or less.
+Assassin's Trophy :: destroy any permanent.
+Culling Ritual :: destroys every nonland permanent with mana value 2 or less, your Kobolds included, and adds a mana for each.
+Boseiju, Who Endures :: a land that destroys an artifact, enchantment or nonbasic land.
+Ragavan, Nimble Pilferer :: Treasure and a stolen card on every hit.
+
+# What to keep in an opening hand
+Keep mana dorks or rituals that cast Prossh by turn four, and one of Food Chain, a tutor, or a payoff. A turn-four Prossh is six Kobolds and a Gaea's Cradle that taps for seven.
+Without Food Chain, Prossh plus Impact Tremors and an Altar still deals a lot: every cast is a wave of damage, and every recast after removal makes more Kobolds.
+With Food Chain out, put a payoff down first, then go: the loop doesn't stop until the table is dead.

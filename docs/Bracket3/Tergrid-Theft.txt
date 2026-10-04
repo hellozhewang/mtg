@@ -1,0 +1,75 @@
+1 Tergrid, God of Fright
+1 Accursed Marauder
+1 Aclazotz, Deepest Betrayal
+1 Aetherflux Reservoir
+1 Agadeem's Awakening
+1 Animate Dead
+1 Arcane Signet
+1 Bandit's Talent
+1 Beseech the Mirror
+1 Black Market Connections
+1 Blasphemous Edict
+1 Blast Zone
+1 Bojuka Bog
+1 Bolas's Citadel
+1 Braids, Arisen Nightmare
+1 Bubbling Muck
+1 Burglar Rat
+1 Cabal Coffers
+1 Castle Locthwain
+1 Cavern of Souls
+1 Command Beacon
+1 Crypt Ghast
+1 Dark Deal
+1 Dark Ritual
+1 Deadly Dispute
+1 Deadly Rollick
+1 Delirium Skeins
+1 Diabolic Intent
+1 Feed the Swarm
+1 Fellwar Stone
+1 Flare of Malice
+1 Geth's Grimoire
+1 Gray Merchant of Asphodel
+1 Hopeless Nightmare
+1 Imp's Mischief
+1 Jet Medallion
+1 Kaya's Ghostform
+1 Lightning Greaves
+1 Liquimetal Torque
+1 Malakir Rebirth
+1 Mind Stone
+1 Momentum Breaker
+1 Night's Whisper
+1 Not Dead After All
+1 Nykthos, Shrine to Nyx
+1 Oppression
+1 Phyrexian Tower
+1 Plaguecrafter
+1 Rankle's Prank
+1 Rankle, Master of Pranks
+1 Reanimate
+1 Sangromancer
+1 Saw in Half
+1 Sensei's Divining Top
+1 Sheoldred's Edict
+1 Sheoldred, the Apocalypse
+1 Snuff Out
+1 Sol Ring
+1 Soul Shatter
+1 Soul-Guide Lantern
+26 Swamp
+1 Syphon Mind
+1 Takenuma, Abandoned Mire
+1 The One Ring
+1 The Soul Stone
+1 Thought Vessel
+1 Tinybones, Pocket Nuisance
+1 Tinybones, Trinket Thief
+1 Torment of Hailfire
+1 Toxic Deluge
+1 Urborg, Tomb of Yawgmoth
+1 Virus Beetle
+1 Vona's Hunger
+1 Waste Not
+1 Withering Torment

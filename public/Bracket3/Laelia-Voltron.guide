@@ -1,0 +1,103 @@
+Laelia grows every time a card leaves your library or graveyard for exile, and she makes some of that exile herself when she attacks. So every impulse-draw spell in this deck is two things at once: a card you can play this turn, and a +1/+1 counter on a hasty commander. Attack every turn, play what she flips, and let Kediss copy her damage to the whole table.
+
+# The commander
+Laelia, the Blade Reforged :: three mana, haste. Whenever she attacks, exile the top card of your library; you may play it this turn. Whenever ONE OR MORE cards are put into exile from your library and/or graveyard, put a +1/+1 counter on her.
+"One or more" means one counter per exile EVENT, not per card. Light Up the Stage exiling two cards is one counter; three separate exile effects are three counters. Cheap, repeated exile beats one big exile.
+She only counts exile from YOUR library and graveyard. Ragavan and Tibalt's Trickery exile from opponents' libraries and do not grow her.
+
+# Key pairs
+Laelia, the Blade Reforged + Kediss, Emberclaw Familiar :: whenever your commander deals combat damage to an opponent, Kediss deals that much damage to each other opponent. A 10-power Laelia connecting once is 30 damage across the table.
+Laelia, the Blade Reforged + Temur Battle Rage :: double strike, and trample once she has 4 power. Two hits means two Kediss triggers.
+Laelia, the Blade Reforged + Chandra's Ignition :: she deals damage equal to her power to each other creature and each opponent. With 15 power that is 15 to everyone and a cleared board.
+Underworld Breach + Grim Lavamancer :: both exile cards from your graveyard as a cost, and every escape and every Lavamancer shot is a counter on Laelia.
+Underworld Breach + Wheel of Fortune + Jeska's Will :: the big turn. Wheel gives every opponent seven cards, so Jeska's Will makes seven red mana; escape Wheel again from the graveyard (its {2}{R} plus three other cards exiled) and do it again. Each loop refills everyone, makes mana, and puts a counter on Laelia. A three-card line, so it fits Bracket 3; save it for a turn that ends the game.
+
+# Exile engines — every one is a counter
+Outpost Siege :: choose Khans: exile your top card every upkeep and play it this turn. A counter every turn, before combat.
+Tavern Brawler :: a Background your commander picks up: exile your top card every upkeep, and she gets +X/+0 equal to its mana value.
+Bonehoard Dracosaur :: exiles your top two every upkeep, and makes a Treasure or a Dinosaur depending on what they were.
+Urabrask, Heretic Praetor :: exiles your top card every upkeep; you may play it.
+Valakut Exploration :: every land you play exiles the top card for you to play.
+Chandra, Torch of Defiance :: +1 exiles your top card to cast, or deals 2 to each opponent.
+Light Up the Stage :: two cards for one or three mana.
+Reckless Impulse :: two cards.
+Wrenn's Resolve :: two cards.
+Glimpse the Impossible :: three cards this turn.
+Jeska's Will :: with Laelia out, both modes: mana from an opponent's hand AND exile your top three to play.
+Professional Face-Breaker :: combat damage makes Treasure; sacrifice Treasure to exile and play your top card.
+Party Thrasher :: discard a card in your first main phase to exile your top two and play one of them this turn. Noncreature spells you cast from exile also gain convoke.
+Tectonic Giant :: when it attacks, deal 3 to each opponent or exile your top two to play.
+Etali, Primal Storm :: when it attacks, exile the top card of every library and cast them free.
+Plargg and Nassari :: each upkeep, every player exiles cards down to a nonland card. An opponent vetoes one, and you cast up to two of the others free.
+Trumpeting Carnosaur :: discover 5 on entering.
+Geological Appraiser :: discover 3 when cast.
+Etali's Favor :: an Aura that discovers 3 and gives trample.
+Hidden Volcano :: a land that discovers 4.
+Throes of Chaos :: cascade, then retrace it from your graveyard by discarding a land: cascade again.
+Wild-Magic Sorcerer :: the first spell you cast from exile each turn cascades.
+Spinerock Knoll :: hideaway exiles four cards when it enters; play the hidden one free once an opponent took 7 damage this turn.
+Grim Lavamancer :: exile two cards from your graveyard for 2 damage. A counter every time.
+Mines of Moria :: exile three cards from your graveyard for two Treasures.
+Underworld Breach :: every nonland card in your graveyard gains escape, paid partly by exiling three other cards. Each escape is a counter.
+
+# Making each hit count
+Kediss, Emberclaw Familiar :: the reason one big hit kills three players.
+Commander's Plate :: +3/+3 and protection from every colour outside red, for {3} on your commander.
+Shadowspear :: trample and lifelink, and it strips hexproof and indestructible from their blockers.
+The Reaver Cleaver :: trample, and a Treasure for each point of combat damage to a player.
+Sword of Feast and Famine :: protection from black and green; on a hit, they discard and you untap all your lands for a second main phase.
+Inti, Seneschal of the Sun :: whenever you attack, discard a card to put a counter and trample on an attacker; whenever you discard, exile your top card to play.
+Passionate Archaeologist :: a Background: every spell you cast from exile deals its mana value to an opponent.
+Temur Battle Rage :: double strike.
+Rogue's Passage :: {4}: she can't be blocked.
+Shinka, the Bloodsoaked Keep :: first strike for a legendary attacker.
+Delayed Blast Fireball :: 2 to each opponent and their creatures, or 5 if cast from exile. Foretell it (exile it face down from your hand for {2}; that exile is from your hand, so no counter) or flip it off Laelia's attack.
+
+# Playing the cards you exiled
+Birgi, God of Storytelling :: {R} for every spell you cast, kept all turn. A turn of exiled cards pays for itself.
+Ruby Medallion :: red spells cost {1} less.
+Runaway Steam-Kin :: grows on red spells and cashes in for {R}{R}{R}.
+Neheb, the Eternal :: after combat, {R} for each point of life your opponents lost this turn. A big Laelia swing refunds a whole second main phase.
+Mana Geyser :: {R} for each tapped land your opponents control.
+Pyretic Ritual :: {R}{R}{R} for two.
+Seething Song :: {R}{R}{R}{R}{R} for three.
+Simian Spirit Guide :: a free {R} from your hand.
+Wheel of Fortune :: everyone discards and draws seven. Your discards feed Breach and Lavamancer.
+Unexpected Windfall :: two cards and two Treasures.
+The One Ring :: protection for a turn cycle, then a card every upkeep.
+
+# Keeping her swinging
+Lightning Greaves :: haste and shroud, equips for {0}. Move it off before casting your own targeted spells on her.
+Swiftfoot Boots :: hexproof keeps your own spells legal.
+Mithril Coat :: flash, attaches for free on entering: indestructible.
+The Ozolith :: if she leaves the battlefield, her counters move to The Ozolith, then onto a creature at your next combat. Recast her and they come home.
+Command Beacon :: put her back into your hand without paying commander tax.
+Deflecting Swat :: free while she is out: redirect the removal aimed at her.
+Bolt Bend :: costs {R} once she has 4 power: redirect a single-target spell.
+Untimely Malfunction :: redirect, destroy an artifact, or stop two blockers.
+Tibalt's Trickery :: counter anything; its controller mills a few and casts a random replacement.
+
+# Answers
+Lightning Bolt :: 3 damage for one mana.
+Abrade :: 3 to a creature or destroy an artifact.
+Chaos Warp :: shuffle away any permanent.
+Vandalblast :: one artifact, or all of theirs for five.
+Blasphemous Act :: 13 to every creature, usually for one or two mana. Laelia's counters come back via The Ozolith.
+Chandra's Ignition :: a one-sided wipe that also hits every opponent.
+Grim Lavamancer :: repeatable 2 damage.
+
+# Mana
+Sol Ring :: the usual.
+Arcane Signet :: the usual.
+Mind Stone :: a rock that cashes in for a card.
+Lotus Petal :: a free mana for a turn-two Laelia.
+Arena of Glory :: exert for {R}{R} that gives a creature haste.
+Nykthos, Shrine to Nyx :: red mana equal to your devotion.
+Valakut, the Molten Pinnacle :: with six Mountains out, each new Mountain deals 3.
+War Room :: pay 1 life and {3} for a card.
+Urza's Saga :: fetches Sol Ring, Lotus Petal, The Ozolith or Shadowspear at chapter III.
+
+# What to keep in an opening hand
+Keep Laelia's mana, a land, and one cheap exile spell or piece of equipment. Turn two or three Laelia, attack immediately, and play whatever she flips.
+Lay out an upkeep exile engine (Outpost Siege, Tavern Brawler, Bonehoard Dracosaur, Urabrask) early: they grow her every turn before she even attacks.
+Get Kediss down before the big swing, and hold Deflecting Swat for the removal.

@@ -1,0 +1,97 @@
+This is a draw-go control deck that wins with fliers. Baral makes every instant and sorcery one mana cheaper and loots whenever you counter something, so each counterspell digs you toward the next one. Hold up mana on their turns, answer only what matters, and let Talrand, Murmuring Mystic and Shark Typhoon turn the spells you were casting anyway into an air force.
+
+# The commander
+Baral, Chief of Compliance :: two mana. Instants and sorceries cost {1} less. Whenever a spell or ability you control counters a spell, you may draw a card, then discard one. The loot is optional, and it triggers on every successful counter.
+Baral's discount stacks with Archmage of Runes and Sapphire Medallion, but it only cuts GENERIC mana. Arcane Denial and Snap drop to {U}; Counterspell stays {U}{U} and Swan Song stays {U}, because they have no generic mana to remove.
+Baral is a 1/3. Protect him by countering the removal aimed at him; he is the engine, not the clock.
+
+# How the deck wins
+Nothing here goes infinite. The win is a flying army made out of the spells you cast to stay alive.
+Talrand, Sky Summoner :: a 2/2 flying Drake for every instant or sorcery you cast. Two counterspells on their turns is two Drakes.
+Murmuring Mystic :: a 1/1 flying Bird for every instant or sorcery. With Talrand out, one spell is two fliers.
+Shark Typhoon :: a flying Shark the size of each noncreature spell's mana value. Or cycle it at instant speed for an X/X Shark and a card, which dodges sorcery-speed removal.
+Thing in the Ice :: each instant or sorcery removes an ice counter. After four, it flips into a 7/8 and returns every non-Horror creature to its owner's hand: their board and your Drake tokens alike, so flip it on THEIR turn and attack with what is left.
+Tolarian Terror :: a 5/5 with ward {2} that costs {1} less per instant and sorcery in your graveyard. Often two or three mana by turn five.
+Ledger Shredder :: a flier that connives whenever any player casts their second spell in a turn, which in this deck is most turns.
+Jace, the Mind Sculptor :: card selection with 0, bounce with −1. His −12 exiles a player's whole library: a win against one opponent.
+Archmage of Runes :: another discount, and a card for every instant and sorcery.
+
+# Counter what matters
+You will not counter everything at a four-player table. Save hard counters for wincons, tutors for combo pieces, and board wipes that hit you. Let creature beats pass while the fliers grow.
+Counterspell :: the baseline.
+Mana Drain :: a counter that pays you back next main phase. Cast a fatty off it.
+Fierce Guardianship :: free while Baral is out: counters any noncreature spell.
+Force of Negation :: free on their turn for a noncreature spell.
+Pact of Negation :: free now. Pay {3}{U}{U} next upkeep or lose, so use it on the turn you win or when you can pay.
+Arcane Denial :: two mana, and each player who gets countered draws later.
+Mana Leak :: cheap early, weaker late.
+Memory Lapse :: puts the spell back on top of their library: they redraw it instead of a new card.
+Delay :: exiles the spell for three turns, which is often the rest of the game.
+Disallow :: counters spells, activated abilities AND triggered abilities.
+Rewind :: counters, then untaps up to four lands. With Baral it is often mana-positive.
+Unwind :: the same for noncreature spells, three lands.
+Negate :: noncreature spells.
+Dispel :: one mana against an instant, usually the removal spell aimed at your threat.
+Spell Pierce :: cheap tax on a noncreature spell.
+Flusterstorm :: unbeatable in a counter war.
+Mental Misstep :: free against a one-drop.
+Swan Song :: one mana against enchantments, instants and sorceries; they get a 2/2 bird.
+An Offer You Can't Refuse :: one mana against any noncreature spell; they get two Treasures.
+Strix Serenade :: one mana against an artifact, creature or planeswalker spell; they get a 2/2 bird.
+Muddle the Mixture :: counters instants and sorceries, or transmutes for a two-drop.
+Tale's End :: counters an ability or a legendary spell, usually a commander.
+Mindbreak Trap :: free against a player who cast three spells this turn; exiles a whole storm.
+Tishana's Tidebinder :: flash; counters an activated or triggered ability. If it was a creature's, artifact's or planeswalker's, that permanent loses all abilities while the Tidebinder stays.
+Narset's Reversal :: copies their instant or sorcery for you and bounces the original.
+Cryptic Command :: pick two: counter, bounce, tap their whole team, or draw. Counter-plus-draw is the default; tap-plus-draw ends a game on your swing turn.
+
+# Answers that are not counters
+Cyclonic Rift :: overloaded at seven mana it returns every nonland permanent they control to hand. Cast it in the end step before your fliers swing.
+Pongify :: one mana, destroy a creature for a 3/3 Ape.
+Snap :: bounce a creature and untap two lands. With Baral it costs one and untaps two.
+Sink into Stupor :: bounce a spell or permanent, or play it as an Island.
+Otawara, Soaring City :: a land that channels into a bounce.
+
+# Drawing and digging
+Rhystic Study :: their spells pay you.
+Mystic Remora :: the early-game version; drop it when the upkeep gets expensive.
+Archmage Emeritus :: draws for every instant and sorcery you cast or copy.
+Faerie Mastermind :: flash flier that draws when opponents draw extra.
+Wavebreak Hippocamp :: draws for the first spell you cast on each opponent's turn: every counterspell is a cantrip.
+Teferi's Ageless Insight :: every draw outside your draw step becomes two. Baral's loot becomes draw two, discard one.
+Fact or Fiction :: five cards, one pile.
+Stock Up :: the top five, keep two.
+Lórien Revealed :: draw three, or cycle it for an Island early.
+Frantic Search :: draw two, discard two, untap three lands. With Baral it costs two and untaps three, so it makes mana.
+Windfall :: refill everyone, but you get to counter what they draw.
+Brainstorm :: best with a shuffle effect or Sensei's Divining Top.
+Ponder :: the cheap dig.
+Preordain :: the same.
+Opt :: the same.
+Gitaxian Probe :: see their hand before you commit counters.
+Sensei's Divining Top :: arranges your top three every turn.
+
+# Tutor lines — what to fetch, and when
+Solve the Equation -> Cyclonic Rift :: any instant or sorcery. Take Rift when you are about to swing for lethal, a counterspell when you are not.
+Merchant Scroll -> Fierce Guardianship :: any blue instant to hand. A free counter is usually the right pick.
+Spellseeker -> Mana Drain :: an instant or sorcery with mana value 2 or less. On a body for a Talrand, Mystic or Shark trigger later.
+Muddle the Mixture -> Mana Drain :: transmute for any mana value two card: Mana Drain, Counterspell, Thing in the Ice or Ledger Shredder.
+Snapcaster Mage -> Counterspell :: flash it in to recast a counterspell from your graveyard at instant speed.
+Mystic Sanctuary :: entering untapped puts an instant or sorcery from your graveyard on top of your library.
+
+# Mana
+Sol Ring :: the usual.
+Arcane Signet :: the usual.
+Mind Stone :: a rock that turns into a card later.
+Thought Vessel :: no maximum hand size, which matters in a deck that draws this much.
+Reliquary Tower :: the same, on a land.
+Sapphire Medallion :: blue spells cost {1} less, creatures included.
+Lotus Petal :: a free blue for a turn-one or turn-two play.
+Mox Amber :: taps for blue once Baral or Talrand is out.
+Urza's Saga :: fetches Sol Ring or Sensei's Divining Top at chapter III.
+
+# What to keep in an opening hand
+Keep Baral, three or four lands and two cheap interaction spells. Card draw without interaction loses to early threats; interaction without draw runs out.
+Early game, develop: Baral, a rock, a draw engine. Counter only what would end the game or swing it hard.
+Mid game, land a flier engine (Talrand, Murmuring Mystic or Shark Typhoon) with counter mana held up, then cast at least one spell on every opponent's turn.
+Hold Cyclonic Rift for the turn your fliers are big enough to finish.

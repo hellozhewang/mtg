@@ -1,0 +1,100 @@
+1 Alela, Artful Provocateur
+1 Academy Ruins
+1 Akroma's Will
+1 Anointed Procession
+1 Arcane Denial
+1 Arcane Signet
+1 Arid Mesa
+1 Aura of Silence
+1 Authority of the Consuls
+1 Aven Mindcensor
+1 Azorius Signet
+1 Bitterbloom Bearer
+1 Bitterblossom
+1 Blind Obedience
+1 Bloodstained Mire
+1 Braids, Arisen Nightmare
+1 Brilliant Wings
+1 Champions from Beyond
+1 City of Brass
+1 Clever Concealment
+1 Command Tower
+1 Conqueror's Flail
+1 Counterspell
+1 Court of Grace
+1 Cursed Totem
+1 Cyclonic Rift
+1 Damn
+1 Darksteel Mutation
+1 Dimir Signet
+1 Disruptor Flute
+1 Dovin's Veto
+1 Drowned Catacomb
+1 Enduring Curiosity
+1 Esper Sentinel
+1 Exotic Orchard
+1 Fellwar Stone
+1 Flooded Strand
+1 Glacial Fortress
+1 Gleaming Splendor
+1 Godless Shrine
+1 Grave Pact
+1 Gravitational Shift
+1 Hall of Heliod's Generosity
+1 Hallowed Fountain
+1 High Fae Trickster
+1 Idol of Oblivion
+1 Imprisoned in the Moon
+1 Island
+1 Isolated Chapel
+1 Kindred Discovery
+1 Lightning Greaves
+1 Mana Confluence
+1 Mana Drain
+1 March of Swirling Mist
+1 Marsh Flats
+1 Meticulous Archive
+1 Misty Rainforest
+1 Moat
+1 Morphic Pool
+1 Mox Opal
+1 Mystic Remora
+1 No Mercy
+1 Nowhere to Run
+1 Orzhov Signet
+1 Otawara, Soaring City
+1 Oubliette
+1 Plains
+1 Polluted Delta
+1 Propaganda
+1 Raffine's Tower
+1 Reconnaissance Mission
+1 Rhystic Study
+1 Roaming Throne
+1 Scalding Tarn
+1 Scrubland
+1 Sea of Clouds
+1 Seal of Cleansing
+1 Seal of Removal
+1 Sensei's Divining Top
+1 Sephara, Sky's Blade
+1 Shadowy Backstreet
+1 Skullclamp
+1 Smothering Tithe
+1 Sol Ring
+1 Soul-Guide Lantern
+1 Spellstutter Sprite
+1 Swamp
+1 Swan Song
+1 Swords to Plowshares
+1 Talisman of Dominance
+1 Talisman of Hierarchy
+1 Talisman of Progress
+1 Tundra
+1 Undercity Sewers
+1 Underground Sea
+1 Urza's Saga
+1 Vault of Champions
+1 Verdant Catacombs
+1 Watery Grave
+1 Windswept Heath

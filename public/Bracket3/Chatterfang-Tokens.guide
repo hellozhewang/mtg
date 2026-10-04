@@ -1,0 +1,108 @@
+Chatterfang turns every token into two. Whenever you make Treasures, Food, Faeries, Saprolings or Orcs, you also get that many 1/1 Squirrels. Then sacrifice outlets turn the Squirrels into mana and cards, and drain payoffs make every death cost the table life. Go wide, sacrifice everything, and finish with one of three-card loops or a Craterhoof.
+
+# The commander
+Chatterfang, Squirrel General :: three mana, forestwalk. If one or more tokens would be created under your control, you get those tokens plus that many 1/1 green Squirrels. {B}, sacrifice X Squirrels: target creature gets +X/-X until end of turn.
+His ability is removal (point -X toughness at their creature) or a finisher (point +X power at an unblocked creature). It is also a free sacrifice outlet for every drain card in the deck.
+Token doublers stack with him: Doubling Season or Parallel Lives first doubles the tokens, then Chatterfang adds a Squirrel for each.
+
+# Infinite combos — three cards each
+Chatterfang, Squirrel General + Warren Soultrader + Zulaport Cutthroat :: pay 1 life and sacrifice a Squirrel to Soultrader for a Treasure; Chatterfang adds a Squirrel with it. Sacrifice that Squirrel, and repeat. Each loop drains every opponent 1 and gains you the 1 back. Blood Artist, Bastion of Remembrance or Nadier's Nightblade work in place of the Cutthroat.
+Chatterfang, Squirrel General + Warren Soultrader + Peregrin Took :: the same loop with no drain card: every Treasure also brings a Food and a Squirrel. Unlimited Treasure, Food and Squirrels; add Mirkwood Bats or any drain to finish.
+Chatterfang, Squirrel General + Warren Soultrader + Academy Manufactor :: the same: each Treasure becomes a Clue, Food and Treasure, each with a Squirrel.
+Camellia, the Seedmiser + Peregrin Took + Ashnod's Altar :: sacrifice a Squirrel to the Altar for {C}{C}, spend it on Camellia's forage by sacrificing a Food. Camellia makes a Squirrel, Took adds a Food. Unlimited Squirrels and +1/+1 counters on every other Squirrel.
+
+# Drain payoffs
+Zulaport Cutthroat :: each opponent loses 1 whenever one of your creatures dies.
+Blood Artist :: any creature dying drains a player 1.
+Bastion of Remembrance :: a Cutthroat on an enchantment.
+Nadier's Nightblade :: each opponent loses 1 whenever a TOKEN of yours leaves the battlefield. Treasures and Food count.
+Marionette Apprentice :: creatures AND artifacts you lose drain 1. Treasures and Food count.
+Mirkwood Bats :: each opponent loses 1 whenever you create OR sacrifice a token.
+Poison-Tip Archer :: any creature dying drains each opponent 1, and it has deathtouch.
+The Meathook Massacre :: a sweeper that sizes itself, then drains on every one of your creatures dying.
+Grave Pact :: every creature of yours that dies makes each opponent sacrifice one. With Squirrels to spare, their boards are gone.
+
+# Token makers
+Bitterblossom :: a flying Faerie every upkeep, plus a Squirrel.
+Tendershoot Dryad :: a Saproling every upkeep — EVERY player's upkeep — plus a Squirrel each time.
+Deep Forest Hermit :: four Squirrels on entering (eight with Chatterfang), and a Squirrel lord.
+Scurry Oak :: a Squirrel whenever it gets counters.
+Squirrel Nest :: a land that taps for a Squirrel, so two.
+Chitterspitter :: {G}, {T} for a Squirrel; sacrifice a token each upkeep to grow every Squirrel by 1.
+Tireless Provisioner :: Food or Treasure on every land drop, plus a Squirrel.
+Gilded Goose :: Food, and turns Food into mana.
+Peregrin Took :: every token creation adds a Food; sacrifice three Food to draw.
+Academy Manufactor :: every Treasure, Food or Clue becomes one of each.
+Hazel of the Rootbloom :: taps your tokens for mana, and copies a token every end step (two copies if it's a Squirrel).
+Hazel's Brewmaster :: Food on entering and attacking; Food gains the activated abilities of creatures it exiles.
+Camellia, the Seedmiser :: every Food you sacrifice makes a Squirrel, and Squirrels gain menace.
+The Cabbage Merchant :: Food whenever an opponent casts a noncreature spell; tap two Food for mana.
+Second Harvest :: copies every token you control, and Chatterfang adds a Squirrel for each copy.
+Doubling Season :: doubles tokens and counters.
+Parallel Lives :: doubles tokens.
+Liliana, Dreadhorde General :: a Zombie each turn, and a card whenever a creature of yours dies.
+Orcish Bowmasters :: an Orc army token and a ping, plus a Squirrel.
+
+# Sacrifice outlets
+Ashnod's Altar :: a creature for {C}{C}.
+Phyrexian Altar :: a creature for one mana of any colour.
+Warren Soultrader :: pay 1 life and sacrifice a creature for a Treasure (and a Squirrel).
+Phyrexian Tower :: a land that sacrifices for {B}{B}.
+Ravenous Squirrel :: grows whenever you sacrifice; {1}{B}{G} and a sacrifice: draw and gain 1.
+Deadly Dispute :: sacrifice for two cards and a Treasure.
+Culling the Weak :: sacrifice for {B}{B}{B}{B}.
+
+# Cards
+Skullclamp :: equip a 1/1 Squirrel: it becomes 2/0, dies at once, and you draw two. One mana per two cards.
+Black Market Connections :: Treasure, a card or a 3/2 each main phase, paid in life.
+Sylvan Library :: pick the best of three every turn.
+The One Ring :: protection, then a card every upkeep.
+Toski, Bearer of Secrets :: indestructible; a card whenever any of your creatures deals combat damage to a player.
+
+# Finishers
+Craterhoof Behemoth :: haste, trample, +X/+X for each creature you control. Twenty Squirrels is the game.
+Chatterfang, Squirrel General :: sacrifice ten Squirrels to give one unblocked creature +10.
+Culling Ritual :: destroys every nonland permanent with mana value 2 or less, YOUR tokens included, and adds a mana for each. With drain payoffs out, every token it kills drains the table, then you spend the mana.
+
+# Tutor lines — what to fetch, and when
+Beseech the Mirror -> Warren Soultrader :: bargain a Treasure or token to cast the fetched card free if it costs 4 or less. Soultrader completes the drain loop.
+Diabolic Intent -> Warren Soultrader :: sacrifice a Squirrel to tutor anything.
+Green Sun's Zenith -> Deep Forest Hermit :: X = 5 for eight Squirrels.
+Chord of Calling -> Zulaport Cutthroat :: any creature, at instant speed, convoked by tapping Squirrels: the missing drain piece straight onto the battlefield on an opponent's end step.
+Eldritch Evolution -> Deep Forest Hermit :: sacrifice a three-drop for a creature of mana value five or less, onto the battlefield. The deck has no six-drop to sacrifice, so this cannot reach Craterhoof.
+Finale of Devastation -> Craterhoof Behemoth :: X = 8 puts Hoof onto the battlefield; X of 10 or more pumps the team as well.
+Nature's Rhythm -> Warren Soultrader :: any creature onto the battlefield; harmonize casts it again from the graveyard.
+Reanimate -> Craterhoof Behemoth :: if Hoof was discarded or milled, one black mana and eight life.
+
+# Mana
+Llanowar Elves :: the usual.
+Elvish Mystic :: the second copy.
+Elves of Deep Shadow :: black mana, 1 damage each.
+Birds of Paradise :: any colour.
+Delighted Halfling :: mana that makes Chatterfang uncounterable.
+Deathrite Shaman :: mana from lands in graveyards.
+Elvish Spirit Guide :: a free {G} from hand.
+Sol Ring :: the usual.
+Arcane Signet :: the usual.
+Lotus Petal :: free.
+Dark Ritual :: {B}{B}{B} for {B}.
+Gaea's Cradle :: {G} for each creature you control. With a dozen Squirrels, a dozen mana.
+Swarmyard :: regenerates a Squirrel.
+Cavern of Souls :: name Squirrel and your Squirrels can't be countered.
+Urborg, Tomb of Yawgmoth :: every land is a Swamp.
+Yavimaya, Cradle of Growth :: every land on the battlefield is a Forest, opponents' included, so Chatterfang has forestwalk against everyone.
+
+# Interaction
+Abrupt Decay :: an uncounterable answer to any nonland permanent with mana value 3 or less.
+Assassin's Trophy :: destroys any permanent; they get a basic land.
+Deadly Rollick :: free while Chatterfang is out: exile a creature.
+Force of Vigor :: free on their turn: two artifacts or enchantments.
+Boseiju, Who Endures :: a land that destroys an artifact, enchantment or nonbasic land.
+Heroic Intervention :: hexproof and indestructible for your whole board.
+Veil of Summer :: protection from blue and black for a turn.
+Eternal Witness :: returns any card from your graveyard.
+
+# What to keep in an opening hand
+Keep Chatterfang mana, one token maker and either a sac outlet or a draw engine. Turn two Bitterblossom or Skullclamp, turn three Chatterfang, and the Squirrels pay for everything after.
+Count your drain before a big sacrifice turn: with Zulaport Cutthroat, Blood Artist and Mirkwood Bats out, twenty Squirrels is sixty damage across the table.
+Hold Heroic Intervention or a free Deadly Rollick when you overextend into an open-mana opponent.

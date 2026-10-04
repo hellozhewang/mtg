@@ -1,0 +1,104 @@
+Aesi gives you an extra land drop every turn and draws a card every time a land enters under your control. So the deck plays two, three or four lands a turn, draws that many cards, and turns land drops into Zombies, Beasts, Plants and stolen creatures. It wins by burying the table in landfall triggers, then a Craterhoof Behemoth or a Field of the Dead army.
+
+# The commander
+Aesi, Tyrant of Gyre Strait :: six mana, a 5/5. You may play an additional land each turn. Landfall: whenever a land you control enters, you may draw a card.
+Every land counts: land drops, fetched lands, lands from ramp spells, and lands returned and replayed. Ramp spells that put lands onto the battlefield are card draw here.
+Aesi costs six. Ramp hard in the first three turns so she lands on turn four with protection up.
+
+# Key pairs
+Scapeshift + Field of the Dead :: sacrifice your lands and fetch that many, Field included. They all enter at once, and with seven differently named lands each one makes a 2/2 Zombie, plus a card each from Aesi.
+Scapeshift + Avenger of Zendikar :: every land that enters puts a +1/+1 counter on each Plant. Six lands is six counters on every Plant.
+Ashaya, Soul of the Wild + Aesi, Tyrant of Gyre Strait :: your nontoken creatures become Forest lands, so every creature you cast is a landfall trigger and a card.
+Oboro, Palace in the Clouds + Aesi, Tyrant of Gyre Strait :: pay {1} to return Oboro to your hand, then replay it with your extra land drop for another landfall.
+Trade Routes + Aesi, Tyrant of Gyre Strait :: {1}: return a land to hand to replay it; {1} and discard an extra land: draw.
+Kodama of the East Tree + Aesi, Tyrant of Gyre Strait :: whenever another permanent you control enters, put a permanent with equal or lower mana value from your hand onto the battlefield. Lands have mana value 0, so every permanent you play drops a free land.
+Kodama of the East Tree + Simic Growth Chamber + Scute Swarm :: play the Growth Chamber and return it to hand with its own trigger; every Insect the Swarm makes is a permanent entering, so Kodama puts the Chamber back onto the battlefield, which is another landfall, another Insect and another bounce. Unlimited lands entering, Insects and Aesi draws. Rampaging Baloths, Field of the Dead or Springheart Nantuko work in place of the Swarm. A three-card loop, so it fits Bracket 3.
+Kodama of the East Tree + Oboro, Palace in the Clouds + Tireless Provisioner :: each landfall makes a Treasure that pays Oboro's {1} to return it, and each Treasure entering lets Kodama put Oboro back. Unlimited landfall.
+Cultivator Colossus + Scute Swarm :: the Colossus puts every land from your hand onto the battlefield and draws for each; with Scute Swarm out and six lands, each one also copies the Swarm.
+
+# Extra land drops
+Exploration :: one more land a turn for one mana.
+Burgeoning :: whenever an opponent plays a land, put one from your hand onto the battlefield. Three free lands a round.
+Azusa, Lost but Seeking :: two more lands a turn.
+Oracle of Mul Daya :: one more land a turn, played off the top of your library.
+Dryad of the Ilysian Grove :: one more land a turn, and every land is every basic type.
+Loot, Exuberant Explorer :: one more land a turn, and later digs six deep for a creature.
+Icetill Explorer :: one more land a turn, play lands from your graveyard, and mills on landfall.
+Traveling Chocobo :: play lands from the top of your library.
+Ramunap Excavator :: play lands from your graveyard: fetchlands every turn.
+Crucible of Worlds :: the same, on an artifact.
+Conduit of Worlds :: the same, and it recasts a permanent from your graveyard.
+Ancient Greenwarden :: lands from the graveyard, and every landfall trigger happens twice.
+
+# Landfall payoffs
+Field of the Dead :: once you have seven lands with different names, every land entering makes a 2/2 Zombie.
+Avenger of Zendikar :: a 0/1 Plant per land on entering; each landfall puts a +1/+1 counter on every Plant.
+Rampaging Baloths :: a 4/4 Beast per landfall.
+Scute Swarm :: an Insect per landfall; with six lands, a copy of the Swarm instead. It doubles every land drop.
+Tireless Provisioner :: a Food or Treasure per landfall.
+Lotus Cobra :: a mana per landfall.
+Nissa, Resurgent Animist :: a mana per landfall, and the second one each turn digs for an Elf or Elf card.
+Mossborn Hydra :: doubles its +1/+1 counters every landfall.
+Springheart Nantuko :: bestow it on a creature, and each landfall can copy that creature for {1}{G}.
+Roil Elemental :: steal a creature for every landfall while it stays.
+Retreat to Coralhelm :: tap or untap a creature, or scry 1, per landfall.
+Tatyova, Benthic Druid :: a second Aesi: draw and gain 1 per landfall.
+Cultivator Colossus :: power equal to your lands; puts lands from your hand onto the battlefield and draws for each.
+
+# Ramp — every one of these draws with Aesi out
+Sakura-Tribe Elder :: chump-block, then sacrifice for a basic land.
+Wood Elves :: a Forest onto the battlefield, untapped: fetch Breeding Pool or Tropical Island.
+Three Visits :: the same, for two mana.
+Nature's Lore :: the same.
+Farseek :: a Plains, Island, Swamp or Mountain card: Breeding Pool and Tropical Island count.
+Rampant Growth :: a basic, tapped.
+Harrow :: instant; sacrifice a land for two basics, untapped: two landfall triggers for one card.
+Cultivate :: a basic onto the battlefield, one to hand.
+Kodama's Reach :: the same.
+Growth Spiral :: draw a card and put a land onto the battlefield, at instant speed.
+Explore :: an extra land drop and a card.
+Spelunking :: draw a card and put a land onto the battlefield; lands you play enter untapped.
+Birds of Paradise :: any colour.
+Simic Growth Chamber :: taps for two, and returns a land to replay.
+Fabled Passage :: a fetch for a basic, untapped once you have four lands.
+Sol Ring :: the usual.
+Arcane Signet :: the usual.
+Thought Vessel :: no maximum hand size.
+Reliquary Tower :: the same, on a land.
+
+# Cards
+Sylvan Library :: choose from three cards every turn.
+Mystic Remora :: early-game card draw from their spells.
+Hydroid Krasis :: draws half of X when cast, and it's a big flier.
+Lórien Revealed :: three cards, or cycle it for an Island and a landfall.
+Eternal Witness :: get back whatever you need.
+Oko, Thief of Crowns :: turns their best creature or artifact into a 3/3 Elk.
+
+# Interaction
+Fierce Guardianship :: free while Aesi is out: counter a noncreature spell.
+Counterspell :: the baseline.
+Mana Drain :: a counter that pays you back.
+Swan Song :: one mana against enchantments, instants and sorceries.
+An Offer You Can't Refuse :: one mana against any noncreature spell.
+Cyclonic Rift :: overload at seven mana to clear their board before a big swing.
+Beast Within :: destroys any permanent.
+Heroic Intervention :: hexproof and indestructible for your whole board against a wipe.
+Boseiju, Who Endures :: a land that destroys an artifact, enchantment or nonbasic land.
+Otawara, Soaring City :: a land that bounces a permanent.
+
+# Tutor lines — what to fetch, and when
+Green Sun's Zenith -> Lotus Cobra :: X = 2 early for mana; X = 7 later for Avenger of Zendikar.
+Finale of Devastation -> Craterhoof Behemoth :: X = 8 puts Hoof onto the battlefield with haste: every creature gets +X/+X and trample. X of 10 or more pumps the team again.
+Wood Elves -> Breeding Pool :: Forest-type duals arrive untapped, so this is ramp AND a dual.
+Three Visits -> Tropical Island :: the same, for two mana.
+Scapeshift -> Field of the Dead :: with seven lands out and seven names among them, Scapeshift for Field and six others: six or seven Zombies on the spot.
+
+# Finishing
+Craterhoof Behemoth :: haste, trample, +X/+X where X is the number of creatures you control. After a turn of Zombies, Beasts, Plants and Insects, that is lethal.
+Avenger of Zendikar :: the board that Craterhoof wants.
+Field of the Dead :: an army that grows with every land you play, even from the graveyard.
+
+# What to keep in an opening hand
+Keep three or four lands, one two-mana ramp spell, and either an extra-land-drop card or a mana creature. Lands are your best cards, so a five-land hand is fine.
+Turn three Exploration or Azusa, turn four Aesi, and from then on two or three lands a turn means two or three cards.
+Save Scapeshift until Field of the Dead or Avenger can make it a game-winning turn.

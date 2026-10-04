@@ -32,13 +32,38 @@ h2 .count{color:var(--line)}
 .repo{margin-left:auto;color:var(--dim);text-decoration:none;
   white-space:nowrap;font-size:.9rem}
 .repo:hover{color:var(--fg)}
-/* Topbar button: same height as the picker beside it, never wraps its label. */
-.random-deck{padding:6px 11px;font-size:.85rem;white-space:nowrap}
-.random-deck:disabled{opacity:.6;cursor:progress}
+/* Random deck: the one playful control in the topbar, so it gets the accent
+   gold, a soft gradient, and a die that tilts on hover and spins while a deck is
+   being fetched. Motion is dropped for people who ask for less. */
+.random-deck{display:inline-flex;align-items:center;gap:7px;flex:none;
+  padding:6px 14px 6px 11px;border-radius:99px;border:1px solid var(--accent-line);
+  background:linear-gradient(135deg,var(--accent-bg),#231d33);color:var(--accent);
+  font:inherit;font-size:.86rem;font-weight:650;white-space:nowrap;cursor:pointer;
+  transition:border-color .15s ease,box-shadow .15s ease,transform .15s ease}
+.random-deck:hover{border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,162,74,.16);
+  transform:translateY(-1px)}
+.random-deck:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.random-deck:active{transform:translateY(0)}
+.random-deck .dice{flex:none;transition:transform .3s ease}
+.random-deck:hover .dice{transform:rotate(-18deg) scale(1.08)}
+.random-deck.rolling{cursor:progress}
+.random-deck.rolling .dice{animation:dice-roll .55s linear infinite}
+@keyframes dice-roll{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){
+  .random-deck,.random-deck .dice{transition:none}
+  .random-deck:hover,.random-deck:hover .dice{transform:none}
+  .random-deck.rolling .dice{animation:none}
+}
 /* Shown once on the deck a Random click landed on: did the copy work or not. */
 .random-notice{margin:0 0 16px;padding:9px 13px;border:1px solid var(--accent-line);
   border-radius:8px;background:var(--accent-bg);color:var(--fg);font-size:.88rem}
+/* A private-only category: its heading carries the private chip, and its tag on
+   each tile takes the same warn hue, dashed, so it never reads as a public one. */
+.strategy-title .chip.private{margin-left:12px;vertical-align:5px;font-size:.66rem}
+.theme-tag.private{color:var(--warn);border-color:var(--warn);border-style:dashed;
+  background:transparent}
 .random-notice.manual{border-color:var(--line);background:var(--panel)}
+.random-notice .btn{margin-left:6px;padding:3px 10px;font-size:.82rem;vertical-align:baseline}
 .search{flex:1;min-width:90px;max-width:260px;background:var(--panel2);
   color:var(--fg);border:1px solid var(--line);border-radius:7px;
   padding:6px 10px;font:inherit;font-size:.9rem}
@@ -340,8 +365,12 @@ h2 .count{color:var(--line)}
    showing one would mean it appears on tap and never goes away. */
 @media (hover:none){#preview{display:none!important}}
 @media (max-width:560px){
-  .topbar{flex-wrap:wrap}
+  /* The search box gives way first, so the Random button stays on the first row. */
+  .topbar{flex-wrap:wrap;gap:10px}
+  .search{flex:1 1 0;min-width:64px}
   .deckpicker{order:3;flex-basis:100%;max-width:none}
+  .random-label{display:none}
+  .random-deck{padding:7px 10px}
   .cardlist{grid-template-columns:1fr}
   .curve{max-width:none}
   .catalog-controls{padding:12px;gap:12px}

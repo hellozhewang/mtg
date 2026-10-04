@@ -1,0 +1,100 @@
+1 The First Sliver
+1 Akroma's Will
+1 Ancestral Vision
+1 Apex Devastator
+1 Arcane Signet
+1 Arid Mesa
+1 Assassin's Trophy
+1 Averna, the Chaos Bloom
+1 Badlands
+1 Basal Sliver
+1 Bayou
+1 Birds of Paradise
+1 Bloodstained Mire
+1 Bloom Tender
+1 Bonescythe Sliver
+1 Boseiju, Who Endures
+1 Call Forth the Tempest
+1 Cavern of Souls
+1 City of Brass
+1 Cloudshredder Sliver
+1 Command Tower
+1 Crystalline Sliver
+1 Cyclonic Rift
+1 Delighted Halfling
+1 Diffusion Sliver
+1 Exotic Orchard
+1 Farseek
+1 Fellwar Stone
+1 Flooded Strand
+1 Forest
+1 Galerider Sliver
+1 Gemhide Sliver
+1 Guardian Project
+1 Harmonic Sliver
+1 Heroic Intervention
+1 Hibernation Sliver
+1 Homing Sliver
+1 Inevitable Betrayal
+1 Island
+1 Kindred Discovery
+1 Lavabelly Sliver
+1 Leeching Sliver
+1 Lotus Bloom
+1 Maelstrom Nexus
+1 Maelstrom Wanderer
+1 Mana Confluence
+1 Manaweft Sliver
+1 Marsh Flats
+1 Misty Rainforest
+1 Morophon, the Boundless
+1 Mountain
+1 Mystic Remora
+1 Nalfeshnee
+1 Nature's Lore
+1 Necrotic Sliver
+1 Otawara, Soaring City
+1 Path of Ancestry
+1 Patriarch's Bidding
+1 Plains
+1 Plateau
+1 Polluted Delta
+1 Predatory Sliver
+1 Profane Tutor
+1 Quandrix, the Proof
+1 Quick Sliver
+1 Quintorius Kand
+1 Raise the Palisade
+1 Reflecting Pool
+1 Rhystic Study
+1 Root Sliver
+1 Savannah
+1 Scalding Tarn
+1 Scroll Rack
+1 Scrubland
+1 Shifting Sliver
+1 Sliver Gravemother
+1 Sliver Hive
+1 Sliver Hivelord
+1 Sliver Legion
+1 Sliver Overlord
+1 Sliver Queen
+1 Smothering Tithe
+1 Sol Ring
+1 Swamp
+1 Swan Song
+1 Swords to Plowshares
+1 Sylvan Library
+1 Taiga
+1 Three Tree City
+1 Three Visits
+1 Thrumming Hivepool
+1 Tropical Island
+1 Tundra
+1 Underground Sea
+1 Verdant Catacombs
+1 Virulent Sliver
+1 Volcanic Island
+1 Wild-Magic Sorcerer
+1 Windswept Heath
+1 Wooded Foothills

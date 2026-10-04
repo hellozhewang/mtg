@@ -1,0 +1,105 @@
+Selvala taps for mana equal to the greatest power among your creatures, so one big body turns her into a mana engine. The deck ramps with elves into a single huge creature, untaps Selvala to double the mana, and spends it on more huge creatures, each of which also draws a card off her. It ends with Craterhoof Behemoth or a team-wide pump the turn after everything lands.
+
+# The commander
+Selvala, Heart of the Wilds :: three mana. {G}, {T}: add X mana in any combination of colours, where X is the greatest power among creatures you control. Whenever another creature enters, its controller may draw a card if its power is greater than every other creature's.
+The draw is symmetric. Your 9/9 entering draws you a card; an opponent's creature that becomes the biggest on the battlefield draws THEM one. Keep the biggest creature on your side.
+With only Selvala out, X is 2: she needs a fatty or a pump to do anything big.
+
+# Big-mana lines
+Selvala, Heart of the Wilds + Bygone Colossus :: warp the Colossus for {3} and Selvala taps for 9 that turn. You draw a card as it enters as the biggest creature. Warp exiles it at end of turn, but you can cast it again later.
+Selvala, Heart of the Wilds + Quirion Ranger :: return a Forest to untap Selvala once a turn: the same big X twice.
+Selvala, Heart of the Wilds + Scryb Ranger :: the same untap, with flash and protection from blue.
+Selvala, Heart of the Wilds + Wirewood Symbiote :: return an Elf (Selvala is one) to untap a creature. Bounce a mana elf to untap Selvala, then replay the elf.
+Selvala, Heart of the Wilds + Zopandrel, Hunger Dominus :: Zopandrel doubles every creature's power at the beginning of each combat. Tap Selvala after combat starts and X doubles.
+Hyrax Tower Scout :: enters and untaps Selvala.
+Temur Sabertooth + Hyrax Tower Scout + Selvala, Heart of the Wilds :: pay {1}{G} to return the Scout and recast it for {2}{G} to untap Selvala; with her own {G}, a loop costs six. Once she taps for seven or more (one 7-power creature), every loop makes mana, as much as you like. Each recast is also a creature entering, which can draw off Selvala. A three-card loop, so it fits Bracket 3.
+Great Oak Guardian :: flash; your whole team gets +2/+2 and untaps. X goes up by 2 and Selvala taps again.
+Legolas's Quick Reflexes :: split second: untap Selvala with hexproof.
+Concordant Crossroads :: everything has haste, so this turn's fatty can attack and Selvala can tap the turn she arrives. Opponents' creatures get haste too.
+
+# Finishers
+Craterhoof Behemoth :: haste, and every creature gets trample and +X/+X, where X is the number of creatures you control. With eight creatures out that is usually lethal.
+Pathbreaker Ibex :: when it attacks, the team gets trample and +X/+X equal to your greatest power.
+Zopandrel, Hunger Dominus :: doubles every creature's power and toughness at each combat.
+Finale of Devastation :: with X of ten or more, fetch any creature and give the team +X/+X and haste.
+Ghalta, Primal Hunger :: costs {X} less for your creatures' total power: often two mana. A 12/12 trampler and a Selvala draw.
+Kogla, the Titan Ape :: fights a creature on entering, and destroys an artifact or enchantment on each attack.
+Elder Gargaroth :: a 6/6 that makes a Beast, gains 3 or draws whenever it attacks or blocks.
+Garruk, Primal Hunter :: 3/3 Beasts every turn, or −3 to draw equal to your greatest power.
+Invasion of Ikoria :: X sets the mana value it fetches from library or graveyard; defeat it in combat for Zilortha.
+
+# Drawing cards
+Beast Whisperer :: a card for every creature spell you cast.
+Guardian Project :: a card for every new creature with a fresh name.
+Regal Force :: a card for each green creature you control.
+Rishkar's Expertise :: draw equal to your greatest power, then cast a five-drop free.
+Return of the Wildspeaker :: draw equal to your greatest non-Human power, or +3/+3 to the team.
+Momentous Fall :: sacrifice a creature: draw cards equal to its power.
+Disciple of Freyalise :: sacrifice another creature on entering: draw and gain life equal to its power. It doubles as a land.
+Last March of the Ents :: draw equal to your greatest toughness, then put any number of creatures from your hand onto the battlefield.
+Sylvan Library :: pick the best of three every turn.
+The One Ring :: protection for a turn, then a card every upkeep. Collector Ouphe turns it off.
+
+# Tutor lines — what to fetch, and when
+Natural Order -> Craterhoof Behemoth :: sacrifice a green creature (a spent mana elf) and Hoof goes straight onto the battlefield with haste. With five or more other creatures out, swing for the game.
+Eldritch Evolution -> Craterhoof Behemoth :: sacrifice a six-drop (Kogla, Pathbreaker Ibex or Disciple of Freyalise) for a creature of mana value up to eight, straight onto the battlefield.
+Summoner's Pact -> Craterhoof Behemoth :: free now; pay {2}{G}{G} next upkeep or lose. Only when Selvala can cast the Hoof THIS turn.
+Fierce Empath -> Zopandrel, Hunger Dominus :: any creature of mana value 6 or more to hand.
+Survival of the Fittest -> Bygone Colossus :: discard any creature to fetch any creature. Discarded fatties come back with Finale of Devastation.
+Woodland Bellower -> Priest of Titania :: any nonlegendary green creature of mana value 3 or less, straight onto the battlefield: Priest for mana, Quirion Ranger or Hyrax Tower Scout for untaps.
+Green Sun's Zenith -> Quirion Ranger :: X = 1 for the untap engine, or a bigger X for a fatty.
+Chord of Calling -> Great Oak Guardian :: instant speed, convoked by your elves.
+Nature's Rhythm -> Beast Whisperer :: any creature onto the battlefield; harmonize lets you cast it again from the graveyard.
+Shared Summons -> Craterhoof Behemoth :: two creatures with different names to hand: Hoof plus an untap creature.
+Tooth and Nail :: entwined at nine mana, it puts Craterhoof and a second fatty straight onto the battlefield.
+Turntimber Symbiosis :: puts a creature from your top seven onto the battlefield.
+Growing Rites of Itlimoc :: digs four for a creature; with four creatures out at your end step it flips into a land that taps for {G} per creature.
+Formidable Speaker :: discard a card to tutor a creature to hand, and it untaps a permanent each turn.
+
+# Mana
+Llanowar Elves :: {G} on turn one.
+Elvish Mystic :: the second copy.
+Fyndhorn Elves :: the third.
+Birds of Paradise :: any colour, flying.
+Delighted Halfling :: mana that makes Selvala uncounterable.
+Arbor Elf :: untaps a Forest; with Utopia Sprawl or Wild Growth, that is two mana.
+Priest of Titania :: {G} for every Elf on the battlefield, Selvala included.
+Fanatic of Rhonas :: {G}{G}{G}{G} once you have a 4-power creature.
+Shang-Chi, Master of Kung Fu :: two mana for creature abilities, and it lets your creatures use tap abilities the turn they arrive.
+Elvish Spirit Guide :: a free {G} from your hand.
+Utopia Sprawl :: an extra mana from a Forest.
+Wild Growth :: the same.
+Carpet of Flowers :: free mana each main phase, equal to an opponent's Islands.
+Sol Ring :: the usual.
+Lotus Petal :: free.
+Castle Garenbrig :: six mana for creature spells and abilities.
+Nykthos, Shrine to Nyx :: green mana equal to your devotion.
+Wirewood Lodge :: untaps an Elf, Selvala included.
+Yavimaya, Cradle of Growth :: every land is a Forest, for Arbor Elf and the Rangers.
+Gemstone Caverns :: a free extra land when you're not first.
+Talon Gates of Madara :: phases a creature out in response to removal.
+Dryad Arbor :: a land that is also a green creature for Natural Order.
+Slumbering Trudge :: a big body for little mana; it enters stunned.
+Sheltering Ancient :: a 5/5 for two. Its upkeep gives counters to an opponent's creature, so it's a short-term Selvala battery.
+
+# Protection and answers
+Allosaurus Shepherd :: your green spells can't be countered.
+Cavern of Souls :: name your key creature type and it can't be countered.
+Autumn's Veil :: blanks blue and black counters and removal for a turn.
+Veil of Summer :: the same, and draws a card.
+Vines of Vastwood :: hexproof from their spells, or kicked for +4/+4.
+Temur Sabertooth :: return a creature to hand to save it (and re-trigger Selvala), and Sabertooth goes indestructible.
+Endurance :: flash, free, and shuffles a graveyard away.
+Beast Within :: destroys any permanent.
+Force of Vigor :: free on their turn: destroy two artifacts or enchantments.
+Bridgeworks Battle :: a fight, or a land.
+Boseiju, Who Endures :: a land that destroys an artifact, enchantment or nonbasic land.
+Collector Ouphe :: shuts off every artifact's activated abilities, your Sol Ring, Lotus Petal and One Ring included. Play it when theirs matter more.
+Homeward Path :: gets back creatures they stole.
+Emergence Zone :: everything has flash for a turn.
+Shifting Woodland :: with delirium, copies a permanent card in your graveyard.
+
+# What to keep in an opening hand
+Keep two lands, a mana elf or two, and Selvala. Turn two Selvala off a turn-one elf is the strongest start.
+Turn three or four, land one fatty (Bygone Colossus, Ghalta, a tutored six-drop) and Selvala's X jumps to five or more.
+Then find an untap creature, double the mana, and find Craterhoof Behemoth with Natural Order or Eldritch Evolution.

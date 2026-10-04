@@ -1,6 +1,5 @@
 1 Kinnan, Bonder Prodigy
 1 Agatha's Soul Cauldron
-1 Amphibian Downpour
 1 An Offer You Can't Refuse
 1 Arcane Signet
 1 Badgermole Cub
@@ -15,12 +14,10 @@
 1 Chain of Vapor
 1 Chord of Calling
 1 City of Brass
-1 Colossal Skyturtle
 1 Command Tower
 1 Copy Artifact
 1 Delay
 1 Delighted Halfling
-1 Devoted Druid
 1 Dispel
 1 Dramatic Reversal
 1 Drift of Phantasms
@@ -31,6 +28,7 @@
 1 Exotic Orchard
 1 Fabricate
 1 Faerie Mastermind
+1 Fierce Guardianship
 1 Finale of Devastation
 1 Flooded Grove
 1 Flooded Strand
@@ -65,13 +63,14 @@
 1 Nezahal, Primal Tide
 1 Otawara, Soaring City
 1 Pact of Negation
+1 Pemmin's Aura
 1 Phyrexian Metamorph
 1 Polluted Delta
 1 Pongify
+1 Power Artifact
 1 Rejuvenating Springs
 1 Rhystic Study
 1 Scalding Tarn
-1 Seedborn Muse
 1 Shang-Chi, Master of Kung Fu
 1 Simic Signet
 1 Sink into Stupor
@@ -81,6 +80,7 @@
 1 Swan Song
 1 Sylvan Library
 1 Talisman of Curiosity
+1 Tezzeret the Seeker
 1 Thrasios, Triton Hero
 1 Transmute Artifact
 1 Treasure Vault

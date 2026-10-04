@@ -1,71 +1,72 @@
-Kinnan doubles every nonland mana source you tap. That is a ramp effect on paper and a combo engine in practice: Basalt Monolith taps for three, Kinnan makes it four, and untapping costs three. One mana profit per cycle, repeated as many times as you like. This is a Bracket 5 deck, so the counterspells are free, the mana is fast, and the game is expected to end on a single turn.
+Kinnan adds one extra mana every time you tap a nonland permanent for mana. On paper that is ramp; in practice it is a combo engine. Basalt Monolith taps for three, Kinnan adds a fourth, and untapping costs three, so you gain one mana per cycle for as many cycles as you like. This is the Bracket 5 version: the counterspells are free, the mana is fast, the deck holds six independent infinite-mana combos, and the game is expected to end on a single turn around turn four.
 
 # The commander
-Kinnan, Bonder Prodigy :: two mana. Every nonland permanent you tap for mana produces one extra of a type it made, and his {5}{G}{U} ability digs five deep and puts a non-Human creature straight onto the battlefield.
-The activated ability is the payoff, not a mana sink. With unlimited mana you activate it over and over, assembling every relevant creature in the deck.
-Delighted Halfling :: uncounterable mana for legendary spells, which is how Kinnan resolves through a table of blue decks.
+Kinnan, Bonder Prodigy :: two mana. Whenever you tap a nonland permanent for mana, add one more mana of a type it made: Sol Ring makes three and a Mox makes two. Lands do not count. His {5}{G}{U} ability looks at the top five cards and puts a non-Human creature straight onto the battlefield.
+That ability needs real green and blue. Colourless from the Monoliths cannot pay the {G}{U} part unless Agatha's Soul Cauldron is out.
+Delighted Halfling :: its coloured mana makes a legendary spell uncounterable, which is how Kinnan and Thrasios resolve through a table of blue decks.
 
-# The infinite mana
-Basalt Monolith :: taps for three, Kinnan makes it four, untaps for three. Net one per cycle, forever. Two cards, and the deck is built to find both.
-Nyxbloom Ancient :: triples what any permanent produces. Basalt Monolith alone becomes nine mana against a three-mana untap — a second, independent infinite.
-Grim Monolith :: mana-neutral with Kinnan rather than infinite, but it is still four mana off a two-drop and it fuels the turn you find the real piece.
-Mana Vault :: three mana on turn one.
-Dramatic Reversal :: untaps every nonland permanent. With Kinnan doubling a board of rocks and dorks it is an enormous one-shot ritual.
-Seedborn Muse :: untaps everything on all three opponents' turns, which with Kinnan is three extra full mana pools per round.
+# Infinite combos
+Kinnan, Bonder Prodigy + Basalt Monolith :: tap for three, Kinnan adds one, untap for three: unlimited colourless. Two cards, and most of the tutors point at the Monolith.
+Basalt Monolith + Power Artifact :: the untap costs {1}, so the Monolith nets two colourless a cycle with no Kinnan. This line survives removal on the commander.
+Grim Monolith + Power Artifact :: the untap drops from {4} to {2} against three mana out, so it nets one a cycle (two with Kinnan). Grim Monolith with Kinnan alone is mana-neutral, not infinite: four in, four to untap.
+Nyxbloom Ancient + Basalt Monolith :: Nyxbloom triples what the Monolith makes, so it taps for nine against a three-mana untap. Grim Monolith does the same, nine against four. Kinnan's extra mana is not tripled; it does not come from tapping.
+Bloom Tender + Freed from the Real :: Freed is blue and Bloom Tender is green, so Bloom Tender taps for {G}{U} and untapping costs {U}: one green profit per cycle. With Kinnan each tap adds a third mana of green or blue, which makes unlimited green and blue: enough to pay Kinnan's dig, Finale and Thassa's Oracle directly.
+Isochron Scepter + Dramatic Reversal :: imprint Reversal. Pay {2} and tap the Scepter to cast a free copy, which untaps every nonland permanent you control, the Scepter included. Each loop makes everything your rocks and dorks produce, minus two; with Kinnan, Sol Ring alone makes three. Every copy is a spell cast: unlimited storm and cast triggers.
+Without the Scepter, Dramatic Reversal is still a huge ritual: with Kinnan out, every rock and dork untaps and pays again, each with Kinnan's extra mana.
 
-# Turning mana into a win
-Thrasios, Triton Hero :: {4} to scry and draw. With unlimited mana it draws your entire library, and it is a two-drop you can deploy on turn two.
-Kinnan, Bonder Prodigy :: the {5}{G}{U} ability, activated repeatedly, puts every non-Human creature in the deck onto the battlefield.
-Invasion of Ikoria :: fetches a non-Human creature from library OR graveyard onto the battlefield, and flips into Zilortha.
-Defeat the Siege and it flips into Zilortha, Apex of Ikoria — every non-Human creature you control then assigns combat damage as though unblocked, which after a Kinnan dig chain is lethal to the whole table.
-Hullbreaker Horror :: uncounterable, flash, and with unlimited spells it bounces every permanent your opponents control.
-Finale of Devastation :: at X of ten or more, a tutor and a lethal team pump on one card.
-Consecrated Sphinx :: two cards for every card any opponent draws — the fair game's engine.
+# Turning unlimited mana into a win
+Thrasios, Triton Hero -> Thassa's Oracle :: the cleanest kill. Pay {4} (colourless works) to Thrasios until your library is empty, with lands entering tapped and everything else drawn, then cast Thassa's Oracle for {U}{U}. With no cards left in your library, its trigger wins the game. Keep {U}{U} untapped first, because the lands Thrasios finds enter tapped. Stop activating once the library is empty: a Thrasios draw from an empty library loses.
+Walking Ballista :: the second kill. Cast it from your hand with X as large as you like and ping the table. Kinnan's dig, Chord, Finale, Nature's Rhythm and Whir put it onto the battlefield with X = 0, where it dies, so draw it or tutor it to hand instead.
+Walking Ballista -> Agatha's Soul Cauldron :: if Ballista is in your graveyard, including right after it died entering with X = 0, exile it with the Cauldron. The Cauldron then puts a +1/+1 counter on a creature you control, and every creature of yours with a counter gains Ballista's {4} and its ping.
+Kinnan, Bonder Prodigy + Basalt Monolith + Agatha's Soul Cauldron :: the Cauldron lets you spend mana as though it were any colour on creature abilities, so the Monolith's colourless pays Kinnan's {5}{G}{U}. Dig until every non-Human creature is on the battlefield. Thassa's Oracle is a non-Human too, so dig only AFTER Thrasios has emptied the library, or hold Oracle in hand; its trigger is wasted if it enters while you still have cards in your library.
+Finale of Devastation :: with X of ten or more it fetches any creature and gives your board +X/+X and haste. It needs {G}{G} of real green.
+Invasion of Ikoria :: with unlimited mana, X fetches any non-Human creature from your library or graveyard. Defeat the battle in combat and it becomes Zilortha, Apex of Ikoria, and your non-Humans can assign combat damage as though unblocked. It is a fallback for a turn without Oracle or Ballista.
+Isochron Scepter + Dramatic Reversal + Hullbreaker Horror :: every Reversal copy is a spell cast, so Hullbreaker returns one opposing nonland permanent to hand per loop. Run the Scepter until their boards are empty.
 
-# Finding the pieces
-Green Sun's Zenith :: any green creature onto the battlefield, and X can be zero for Dryad Arbor-style plays or high for the payoff.
-Chord of Calling :: instant speed, convoke, any creature.
-Nature's Rhythm :: the same on a sorcery, with harmonize to buy it back.
-Whir of Invention :: instant speed, improvise, any artifact — usually Basalt Monolith.
-Transmute Artifact :: trades a rock for exactly the rock you need.
-Trophy Mage :: fetches a three-mana artifact, which is Basalt Monolith.
-Drift of Phantasms :: transmute for three, which is also Basalt Monolith — and it blocks fliers while you wait.
-Formidable Speaker :: tutors a creature and untaps a permanent every turn.
+# Tutor lines — what to fetch, and when
+With Kinnan out, find Basalt Monolith. With Kinnan dead or under threat, find the Monolith and Power Artifact. Holding Freed from the Real? Find Bloom Tender. Holding Dramatic Reversal? Find Isochron Scepter. Once mana is unlimited, find Thrasios, then Thassa's Oracle or Walking Ballista.
+Whir of Invention -> Basalt Monolith :: instant speed, and improvise lets your rocks pay. Cast it on the end step before your turn or in response to artifact removal. X = 2 finds Isochron Scepter or Agatha's Soul Cauldron instead.
+Trophy Mage -> Basalt Monolith :: searches for a mana value three artifact to hand. It is a Human, so Kinnan cannot dig it out.
+Drift of Phantasms -> Basalt Monolith :: transmute for {1}{U}{U} at sorcery speed for any mana value three card: the Monolith, Freed from the Real or Whir of Invention.
+Transmute Artifact -> Basalt Monolith :: sacrifice a Talisman or Signet (mana value two) and pay {1}; the Monolith goes straight onto the battlefield. Sacrifice a spent Mana Vault (mana value one) and pay {2}.
+Formidable Speaker -> Thassa's Oracle :: discard a card to put any creature in your hand: Oracle or Walking Ballista for the kill, or Bloom Tender for the Aura loop.
+Green Sun's Zenith -> Bloom Tender :: X = 2 puts it onto the battlefield. It cannot tap for the loop until your next turn, so fetch it a turn ahead.
+Chord of Calling -> Thrasios, Triton Hero :: instant speed and convoke: fetch Thrasios on an opponent's end step so he can draw on your turn.
+Nature's Rhythm -> Nyxbloom Ancient :: X = 7 puts Nyxbloom onto the battlefield, where it triples your Monolith. Harmonize casts it once more from the graveyard.
+Finale of Devastation -> Thrasios, Triton Hero :: a small X is a tutor from library or graveyard. X = 2 finds Thrasios or Bloom Tender.
 
 # The copy package
-Every one of these can become a second Basalt Monolith, a second Kinnan, or a copy of whatever an opponent just played.
+Each of these can become a second Basalt Monolith (useful when the first is destroyed in response), a second Nyxbloom Ancient, or a copy of the best permanent an opponent controls. Do not copy Kinnan: the legend rule makes you keep only one.
 Copy Artifact :: cheap, and it copies their Sol Ring as happily as your Monolith.
-Mirrormade :: artifacts and enchantments.
 Phyrexian Metamorph :: two life instead of blue mana, and it copies creatures too.
 Clever Impersonator :: any nonland permanent.
-Flesh Duplicate :: two mana for a copy of any creature.
-Mockingbird :: scales, flies, and copies for exactly the mana you have.
-Mirage Mirror :: becomes anything on the board for {2}, repeatedly, at instant speed.
-Flash Photography :: a token copy of your own permanent at instant speed, twice with flashback.
+Mirage Mirror :: becomes anything on the battlefield for {2}, repeatedly, at instant speed. A Mirror copying Basalt Monolith is a second Monolith for the combo.
 Gilded Drake :: two mana to take their commander.
 
 # Fast mana
-Sol Ring :: turn one, every time.
-Lotus Petal :: free, and Kinnan doubles it.
+Sol Ring :: turn one, every time; three mana with Kinnan.
+Mana Vault :: three on turn one, four with Kinnan.
+Grim Monolith :: three on turn two, four with Kinnan, and half of a Power Artifact combo.
+Lotus Petal :: free, and Kinnan's extra mana comes with it.
 Mox Amber :: live the moment Kinnan or Thrasios resolves.
 Mox Diamond :: a land for a Mox in a deck that does not need many lands.
 Mox Opal :: metalcraft comes quickly here.
 Chrome Mox :: fast, at the cost of a card.
 Elvish Spirit Guide :: a free green from hand on turn one.
-Birds of Paradise :: fixing that Kinnan doubles.
+Birds of Paradise :: any colour, two mana with Kinnan.
 Llanowar Elves :: two green under Kinnan.
 Elvish Mystic :: the second copy.
 Fyndhorn Elves :: the third.
-Springleaf Drum :: taps a summoning-sick dork for mana, doubled by Kinnan.
-Gene Pollinator :: taps any permanent for mana, doubled.
+Springleaf Drum :: taps a summoning-sick creature for mana, plus one with Kinnan.
+Gene Pollinator :: taps any permanent for one mana of any colour, plus one with Kinnan.
 Enduring Vitality :: every creature you control taps for any colour, and it comes back as an enchantment when it dies.
-Badgermole Cub :: an extra green for every creature you tap for mana.
-The Cabbage Merchant :: Food off their noncreature spells, and the Food taps for mana.
+Badgermole Cub :: an extra green whenever you tap a creature for mana, including each Bloom Tender untap.
+Seedborn Muse :: untaps everything on all three opponents' turns, Basalt Monolith included, so you get three extra full mana pools per round.
 
 # Interaction
 Force of Will :: the free counterspell that defines the format.
 Force of Negation :: free on their turn against noncreature spells.
-Pact of Negation :: free now; you win before the upkeep.
+Pact of Negation :: free now. Win before your next upkeep, when its cost comes due.
 Fierce Guardianship :: free with your commander out.
 Flusterstorm :: nearly unbeatable in a counter war.
 Swan Song :: one mana for a wrath, a removal spell or an enchantment.
@@ -78,21 +79,21 @@ Commandeer :: free, and it steals their combo piece outright.
 Veil of Summer :: one mana that beats blue and black interaction and draws.
 Endurance :: free graveyard hate at instant speed, and a 3/4 reach blocker.
 Chain of Vapor :: one mana to bounce anything, including your own permanent in response to removal.
-Amphibian Downpour :: flash and storm — on a long turn it turns the table's commanders into 1/1 Frogs.
+Amphibian Downpour :: flash and storm. After a Scepter loop it turns every opposing creature into a 1/1 Frog.
 
 # Card flow
 The One Ring :: a full turn of protection, then an escalating draw engine.
 Rhystic Study :: their turns pay for yours.
 Mystic Remora :: the strongest card in the deck on turns one through four.
+Consecrated Sphinx :: two cards for every card an opponent draws: the fair game's engine.
 Faerie Mastermind :: flash, flies, and draws off the table's extra draws.
 Wan Shi Tong, Librarian :: scales, draws on entry, and punishes every tutor at the table.
-Valley Floodcaller :: noncreature spells gain flash, and it untaps your creatures on each one.
-High Fae Trickster :: everything gains flash, so the whole combo turn can happen on their end step.
-Borne Upon a Wind :: the cheap version of the same effect, and it cantrips.
-Agatha's Soul Cauldron :: exiles graveyards, hands out activated abilities, and lets you spend any colour on creature abilities.
+Valley Floodcaller :: your noncreature spells gain flash, and each one untaps your Birds. Birds of Paradise taps again for two with Kinnan.
+High Fae Trickster :: every spell gains flash, so the whole combo turn can happen on their end step.
+Borne Upon a Wind :: the cheap version of the same effect, and it draws a card.
 
 # What to keep in an opening hand
 Keep fast mana and interaction. A hand with Sol Ring or two Moxen plus a Force effect is a keep; a hand of value creatures is not. This deck expects to win around turn four and must survive somebody else trying to win on turn three.
-Kinnan is the whole deck, so protect the cast. Delighted Halfling makes him uncounterable; otherwise hold a Force effect rather than jamming him into open blue mana.
-Find Basalt Monolith, not a bigger creature. Trophy Mage, Drift of Phantasms, Whir of Invention and Transmute Artifact all point at the same three-mana rock, and it is the shortest path to unlimited mana.
-Once mana is infinite, activate Kinnan before you cast anything from hand. The dig puts creatures straight onto the battlefield, which sidesteps every counterspell at the table.
+Kinnan matters most, so protect the cast. Delighted Halfling makes him uncounterable; otherwise hold a Force effect rather than jamming him into open blue mana. If he dies anyway, the Monoliths with Power Artifact, Nyxbloom Ancient, and Bloom Tender with Freed all still go infinite.
+Find Basalt Monolith, not a bigger creature. Whir of Invention, Trophy Mage, Drift of Phantasms and Transmute Artifact all point at the same three-mana rock.
+With unlimited mana, the order is: Thrasios until the library is empty, then Thassa's Oracle. If Oracle is gone, cast Walking Ballista from hand. Dig with Kinnan only once the Oracle is safe in hand.

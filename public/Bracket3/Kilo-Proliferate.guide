@@ -1,82 +1,100 @@
-Kilo proliferates when it BECOMES TAPPED, not only when it attacks. Use a mana ability or station to tap it, then untap it to repeat. Proliferation cannot create the first counter, so seed your payoffs before starting a loop. This version keeps both poison starters and Thrummingbird, adds a multi-piece infinite engine, and supports a commander-independent damage loop.
+Kilo proliferates whenever it BECOMES TAPPED, not only when it attacks. Tap it for mana, tap it to station a Spacecraft, tap it to pay for a spell, then untap it and do it again. Proliferation cannot create a first counter, so the deck seeds counters (poison on opponents, charge counters on Darksteel Reactor, +1/+1 counters on artifacts) and then multiplies them. Its finishes are repeatable loops of three or four cards, never a two-card combo, which keeps it a Bracket 3 deck. Tell the table the loops exist.
 
-# Tap Kilo for more than an attack
-Kilo, Apogee Mind :: Haste makes the commander productive immediately. It is also an artifact creature, so artifact untappers work on it. An effect tapping an already-tapped Kilo does not trigger proliferation.
-Paradise Mantle :: Equip Kilo, then tap it for blue mana and a proliferate trigger. This is one of the two self-funding tap outlets for the Freed from the Real loop.
-Relic of Legends :: Its second ability taps an untapped legendary creature for mana without tapping Relic itself. Repeatedly tapping Kilo for blue with this ability funds Freed from the Real's untap cost.
-Springleaf Drum :: Provides a cheap tap outlet and fixing, but Drum itself also taps. It cannot replace Mantle or Relic in the basic Freed loop unless another effect repeatedly untaps Drum.
-Inspirit, Flagship Vessel :: A sorcery-speed tap outlet and counter seeder. At one charge counter, its beginning-of-combat trigger can put a +1/+1 counter or two charge counters on another artifact. This can seed Darksteel Reactor immediately instead of waiting for upkeep. At eight charge counters it becomes a flier and gives OTHER artifacts hexproof and indestructible; it does not protect itself.
-Station taps Kilo as a cost. Kilo's proliferate trigger resolves before the station ability adds its charge counters, so the first station activation on a counterless Spacecraft cannot proliferate that Spacecraft yet.
-Clock of Omens :: Tap Kilo and another untapped artifact to target Kilo with the untap ability. Kilo proliferates before the untap resolves, leaving it ready again at the cost of tapping the other artifact. Spare rocks and Mite tokens become additional activations; this is finite without a separate replenishing engine.
-Manifold Key :: Untaps Kilo, a charged mana rock, or Steel Overseer for one mana plus its tap. Its other ability can make an infect attacker unblockable. Voltaic Key provides another cheap artifact untap.
-Patriar's Seal :: Fixes mana or untaps Kilo for one mana and its tap. It is flexible development, but choosing the untap mode means it is not producing mana with that same tap.
-Drumbellower :: Untaps creatures during each other player's untap step. Pair with Mantle or Relic for off-turn Kilo activations, or reuse Steel Overseer. Station is sorcery speed, so station alone does not capitalize on these off-turn untaps.
-Unwinding Clock :: Untaps your artifacts during each opponent's untap step, including Kilo, your keys, mana rocks, and Insight Engine. It is a repeated resource engine, not an immediate infinite combo by itself.
+# The commander
+Kilo, Apogee Mind :: three mana, haste, and an artifact creature, so artifact untappers work on it. Every time it becomes tapped, proliferate. Tapping an already-tapped Kilo does nothing.
+Station taps Kilo as a cost, so stationing is a proliferate. The trigger resolves before the station adds its charge counters, so the first station on an empty Spacecraft cannot proliferate that Spacecraft yet.
 
-# The repeatable loops and what they actually produce
-Freed from the Real :: The principal combo addition. On Kilo, its blue untap ability lets Paradise Mantle or Relic of Legends pay for every repetition. On Crystalline Crawler, it enables the separate All Will Be One damage loop described below.
-Loop one needs Kilo enchanted by Freed from the Real and either Paradise Mantle attached or Relic of Legends on the battlefield. Start with Kilo untapped, or pay an initial blue mana to untap it. Tap Kilo for blue, resolve its proliferate trigger, spend the blue to untap Kilo, and repeat a chosen finite number of times. This produces arbitrarily many proliferations but no net mana from the base loop.
-Use that loop to increase poison already placed on opponents, charge a seeded Darksteel Reactor to twenty, grow an already-seeded Walking Ballista, or trigger All Will Be One from counters already present. If all relevant permanents and players have no counters, repeated proliferation creates none. Springleaf Drum alone is not the required reusable mana outlet.
-With Crystalline Crawler also present and carrying at least one +1/+1 counter, each Kilo proliferation adds another counter to Crawler. Remove only the extra counter for mana and leave one as a seed. The Kilo loop now also produces arbitrarily much mana of any color, allowing you to cast a large Ballista from hand.
-Crystalline Crawler :: The second loop does not require Kilo. Enchant a Crawler that can use its tap ability with Freed from the Real. Tap Crawler to add a +1/+1 counter, remove that counter for blue, and spend the blue to untap Crawler. Its base toughness is one, so it survives with no counters. There is no net mana or counter growth, but All Will Be One triggers every time the new counter is placed and deals one damage each repetition.
-Steel Overseer :: Seeds and grows every artifact creature you control, including Kilo and Ballista. It also enables a third loop: with Freed attached to an Overseer that can tap, and Crystalline Crawler present, tap Overseer to add counters to the team, remove Crawler's newly added counter for blue, and untap Overseer. Crawler breaks even while the other artifact creatures grow without bound. Ballista converts its added counters to damage; All Will Be One also kills through the placements.
-Summoning sickness matters on Crawler and Overseer. Kilo has haste; they normally do not. A return through Wake the Past gives artifact creatures haste that turn. Do not assume that enchanting a newly cast Crawler allows it to tap immediately.
-Agatha's Soul Cauldron adds another route if Crystalline Crawler is in a graveyard. Exile Crawler and put Cauldron's counter on Kilo. With Freed enchanting Kilo, activate Kilo's borrowed tap ability to put a +1/+1 counter on itself. Kilo's tap trigger proliferates first, then the borrowed ability adds another counter. Remove one counter through the borrowed mana ability for blue to untap Kilo with Freed. Each repetition grows Kilo by one net counter; remove that extra counter for additional mana if desired, always leaving at least one to retain the borrowed abilities. All Will Be One or a seeded proliferation payoff supplies a kill. If Cauldron also exiles Walking Ballista, Kilo can spend its growing counters directly for damage.
-These are multiple-piece engines. The list does not add a compact two-card instant win or extra fast mana. Its Bracket 3 intent is an interactive game with a developed board before the finish, not a race to assemble an early kill. Tell the table that repeatable combo finishes are present; the three-Game-Changer cap alone does not describe the deck's speed.
+# The loops — repeatable, never two cards
+Kilo, Apogee Mind + Freed from the Real + Paradise Mantle :: the main engine. Equip Mantle to Kilo, tap Kilo for {U} (proliferate), spend that {U} on Freed to untap Kilo, repeat. Mana-neutral, but it proliferates as many times as you like.
+Kilo, Apogee Mind + Freed from the Real + Relic of Legends :: the same loop without an equip cost. Relic's second ability taps Kilo, a legendary creature, for {U} without tapping Relic itself.
+Kilo, Apogee Mind + Freed from the Real + Paradise Mantle + Crystalline Crawler :: give Crawler one +1/+1 counter first. Each proliferate adds another, and Crawler removes it for one mana of any colour. The loop now makes unlimited mana as well. Relic of Legends works in place of the Mantle.
+Crystalline Crawler + Freed from the Real + All Will Be One :: the loop that needs no Kilo. Tap Crawler to put a +1/+1 counter on it, remove the counter for {U}, untap it with Freed. No mana or counters are gained, but every counter placed makes All Will Be One deal 1 damage. Crawler is a 1/1, so it survives with no counters.
+Steel Overseer + Freed from the Real + Crystalline Crawler :: Freed goes on Overseer. Tap Overseer to put a counter on every artifact creature, remove Crawler's new counter for {U}, untap Overseer. Crawler breaks even while every other artifact creature grows without limit, including Walking Ballista.
+Agatha's Soul Cauldron + Crystalline Crawler + Kilo, Apogee Mind + Freed from the Real :: with Crawler in your graveyard, the Cauldron exiles it and puts a +1/+1 counter on Kilo, which then has Crawler's abilities. Tap Kilo to add a counter to itself: proliferate adds another, you remove one for {U} and untap with Freed. Kilo grows by one each loop; remove the extras for mana. Keep one counter on Kilo or it loses the borrowed abilities.
+Crawler and Overseer have summoning sickness; Kilo does not. Do not plan on enchanting a Crawler cast this turn and looping immediately, unless Wake the Past gave it haste. Springleaf Drum is not a loop piece: Drum taps itself, so it cannot pay for the next repetition.
 
-# Win with the counters you accumulated
-Darksteel Reactor :: At twenty charge counters, its trigger wins the game for you against the whole table. It enters with no counters; seed it at upkeep, through Inspirit, or by moving charge counters with Resourceful Defense. It is indestructible but still vulnerable to exile, bounce, and effects that stop its trigger.
-Deepglow Skate :: Doubles counters on any number of target permanents. A Reactor already at ten charge counters reaches twenty. It also doubles charge counters on mana rocks, +1/+1 counters on Ballista, and loyalty on planeswalkers. It cannot double poison on players and cannot create a first counter.
-Resourceful Defense :: Saves the counters from any departing permanent by putting that many of each kind onto a surviving permanent you control. Its five-mana activation can move charge counters from a Spacecraft or mana rock to Reactor for an unexpected win, or move +1/+1 counters onto Ballista for damage. Counter types do not change: charge counters on Ballista do not fund its damage ability.
-If a wipe leaves Defense and a land alive, you can park recovered counters on that land and move them later. The transfer is not a resurrection or blanket protection. Moving away charge counters reduces the donor's mana output or station level, and moving every loyalty counter off a planeswalker will normally cause it to die.
-All Will Be One :: Each permanent or player receiving counters creates a separate damage trigger for the number placed there. Proliferating six permanents with one counter kind each produces six one-damage triggers. The Crawler and Overseer loops provide commander-independent damage, and Defense's counter placements or transfers can also generate a finishing burst.
-Walking Ballista :: Keep at least one +1/+1 counter on it during the Kilo proliferate loop, then remove newly added counters for damage. Removing its final counter normally kills it. Casting it for X=0 or putting it straight onto the battlefield without entering counters normally kills it before Overseer can help.
-Prologue to Phyresis :: Seeds one poison counter on each opponent and replaces itself with a card. One existing poison counter plus nine ordinary proliferations eliminates that player. Without poison already present, Kilo cannot manufacture it.
-Skrelv's Hive :: Kept as requested. Its Mites are artifact bodies for Clock of Omens and can deal combat damage to seed poison. They cannot block, and new Mites normally cannot attack immediately. The upkeep life loss is a real cost if the game stalls.
-Thrummingbird :: Kept as requested. A combat-damage proliferation source that works without Kilo, but must connect with a player. It is neither an artifact nor a free tap outlet.
-Inkmoth Nexus :: Another poison starter and a way to exploit stored +1/+1 counters. It must be animated before receiving creature-targeted effects, and mana for animation and protection competes with developing your engine. Ten poison counters, not ten damage from a single source, is the loss threshold.
-Kappa Cannoneer :: Retains a combat win route when graveyard hate or enchantment removal interrupts the combos. Artifact entries grow it and make it unblockable for that turn. Ward four taxes targeting but does not protect it from untargeted removal.
-Tezzeret the Seeker :: Its +1 untaps two artifacts for mana or more Kilo activations. Its minus finds artifacts with the appropriate mana value directly; its ultimate turns your artifacts into 5/5 creatures for a combat finish. A Ballista fetched directly normally enters with zero counters and dies.
+# Turning the loop into a win
+A loop with nothing to proliferate does nothing. Have a seed before you start, then pick the simplest payoff on the battlefield.
+Prologue to Phyresis :: the cheapest finish. Each opponent gets one poison counter and you draw a card; nine more proliferations eliminate everyone. Ten poison counters is the loss threshold.
+Darksteel Reactor :: needs one charge counter first: from its own upkeep trigger, or two at once from Inspirit at the beginning of combat. Nineteen more proliferations and you win.
+Walking Ballista :: keep at least one +1/+1 counter on it. Each proliferation adds one, and you remove the extras to ping. Ballista put directly onto the battlefield enters with X = 0 and dies, so cast it from your hand.
+All Will Be One :: every permanent or player that receives counters is a separate damage trigger. A proliferate touching six things deals six damage, so the loops kill without any other payoff.
+Deepglow Skate :: doubles every kind of counter on any number of permanents. A Reactor at ten charge counters becomes twenty and wins with no loop at all. It cannot double poison on players, and it cannot create a first counter.
+Resourceful Defense :: when a permanent with counters leaves the battlefield, its counters move to another of yours. For {4}{W} it moves counters at will: charge counters from a Spacecraft onto Reactor, or +1/+1 counters onto Ballista. Counter types never change.
+Inkmoth Nexus :: a land that becomes a 1/1 flying infect creature for {1}. One connection seeds poison.
+Skrelv's Hive :: kept as requested. A Mite each upkeep with toxic 1, so one connection seeds poison, and the Mites are artifacts for Clock of Omens. Mites cannot block, and the life loss adds up in a long game.
+Thrummingbird :: kept as requested. Proliferates when it deals combat damage to a player, with or without Kilo.
+Kappa Cannoneer :: the combat backup when graveyard hate or enchantment removal breaks the loops. Each artifact entering grows it and makes it unblockable that turn.
 
-# Build mana and a hand without relying on Kilo
-Astral Cornucopia :: Once it has a charge counter, proliferation improves its colored mana production. Cast it for at least X=1 unless another source can seed it. Moving counters off it through Defense reduces the amount it produces.
-Everflowing Chalice :: Cheap scalable colorless mana that grows with proliferation. It needs at least one charge counter to begin growing, and colorless mana cannot directly pay Freed's blue activation.
-Pentad Prism :: Fixes early colors and can turn proliferated charge counters into more mana. Leave one counter when you still need it as a proliferation target; spending the last one stops that growth until another effect seeds it.
-Insight Engine :: Pay two and tap it to add a charge counter, then draw equal to its total charge counters. Untappers let it draw repeatedly, but the activation costs mana and the draw is not optional once activated. Do not charge it to an enormous number through a loop and then accidentally draw your library.
-Tekuthal, Inquiry Dominus :: Replaces each proliferation with two separate proliferations. It does not double triggers, direct counter placements by Overseer, or Deepglow Skate's effect. It is powerful for finite development but unnecessary once a self-funding Freed loop is running.
-Flux Channeler :: Proliferates on noncreature casts, including most rocks, enchantments, and interaction. A creature that is also an artifact is still a creature spell and does not trigger it.
-Surge Conductor :: Proliferates when another nontoken artifact enters, including artifacts returned through Emry or Wake the Past. Hive's token entries do not trigger it.
-Patrolling Peacemaker :: Arrives with its own counters and proliferates when an opponent commits a crime. Targeting an opponent, that player's permanents, or cards in that player's graveyard qualifies; untargeted board wipes and effects targeting only their own things do not.
-Shuri, Wakandan Inventor :: Discounts artifact spells and temporarily copies an artifact onto another artifact without copying legendary status. Copy a useful mana or draw artifact; the recipient keeps its existing counters and tapped status. Copying an object does not itself cause it to enter the battlefield.
-Uthros Research Craft :: One station activation with Kilo supplies its three-charge threshold after Kilo's trigger resolves. It then draws from artifact casts and builds more charge counters, making it both a draw engine and a donor for Resourceful Defense.
-Jhoira, Weatherlight Captain :: Draws on historic casts: artifact, legendary, and Saga spells. Casting an artifact legendary spell still gives one trigger, not two. This draw is mandatory, so track library size on large engine turns.
-Rhystic Study :: A Game Changer that draws without needing counters or an artifact board. Mystic Remora provides early noncreature-spell pressure, while Esper Sentinel's tax grows if Overseer supplies it with counters.
-Pollywog Prodigy :: Evolve can seed a +1/+1 counter, then proliferation grows its power and broadens the opposing spells that draw cards. Overseer does not affect it because it is not an artifact creature.
-Thought Monitor :: Affinity can make this a cheap two-card refill and an artifact body for Clock of Omens. Keep enough artifacts on the field to exploit the discount rather than treating it as an unconditional one-mana spell.
+# Tutor lines — what to fetch, and when
+Find whichever piece is missing. Holding Freed from the Real with Kilo out: fetch Paradise Mantle or Relic of Legends. Holding the Mantle or Relic: fetch Freed. Loop ready but nothing to grow: fetch Prologue to Phyresis, Walking Ballista, Darksteel Reactor or All Will Be One. Kilo dead or taxed out: fetch Crawler and All Will Be One.
+Enlightened Tutor -> Freed from the Real :: the only tutor that finds an enchantment: Freed, All Will Be One or Resourceful Defense. It puts the card on top of your library, so cast it at the end of the turn before yours, or before drawing.
+Tezzeret the Seeker -> Paradise Mantle :: −0 puts the Mantle onto the battlefield and keeps every loyalty counter. −3 puts Relic of Legends onto the battlefield, and −2 puts out Steel Overseer. +1 untaps Kilo and a mana rock: one more proliferate and more mana.
+Tezzeret, Cruel Captain -> Walking Ballista :: −3 finds an artifact with mana value 1 or less to your hand. Walking Ballista counts as mana value 0 in your library, so it arrives in hand to cast for a real X; Paradise Mantle is the other pick. Its 0 untaps Kilo for another proliferate and gives Kilo a +1/+1 counter as a seed.
+Urza's Saga -> Paradise Mantle :: chapter III puts an artifact with mana cost {0} or {1} onto the battlefield. Mantle is the best pick, since one equip completes the loop.
+Fabricate -> Crystalline Crawler :: any artifact to your hand: Crawler for the mana loop, the Mantle or Relic, Darksteel Reactor, or Walking Ballista to cast for a real X.
+Inventors' Fair -> Darksteel Reactor :: with three artifacts out, {4}, tap and sacrifice the land for any artifact to hand. It is slow, but it is a land slot.
+The Seriema -> Tekuthal, Inquiry Dominus :: a legendary creature to hand when it enters. Tekuthal makes every proliferate happen twice, which carries an unlooped turn twice as far. At seven charge counters The Seriema also makes your other tapped legendary creatures indestructible, Kilo included.
+Sevinne's Reclamation -> Freed from the Real :: returns a permanent with mana value 3 or less from your graveyard to the battlefield. An Aura put back this way attaches to a creature you choose. Its flashback copy brings back a second piece, such as the Mantle or Relic.
 
-# Find, protect, and rebuild the engine
-Enlightened Tutor :: The second Game Changer can find Freed, Mantle, Relic, Reactor, All Will Be One, or Defense. It puts the card on top, so account for when you can actually draw and cast it. Find the missing job rather than automatically finding another multiplier.
-Fabricate :: Finds artifact pieces to hand, including the mana outlet, Crawler, Overseer, Ballista, or Reactor. It cannot find Freed or Defense. Unlike a direct battlefield tutor, it lets you cast Ballista with a chosen X.
-The Seriema :: Its entry tutor finds legendary creatures such as Tekuthal, Shuri, Jhoira, or Emry. Station is another way to tap Kilo. At its threshold it protects OTHER tapped legendary creatures, not every engine piece and not itself.
-Emry, Lurker of the Loch :: Recasts artifacts from the graveyard, but you must still pay their costs and obey casting timing. It does not recur Freed, Defense, or All Will Be One. Recasting Ballista through Emry lets you pay X properly.
-Sevinne's Reclamation :: Retrieves Freed, Defense, Mantle, Relic, Overseer, or another cheap permanent. Its graveyard cast can return two pieces through the copy. A directly returned Ballista normally has no counters and dies.
-Wake the Past :: The seven-mana recovery spell returns all your artifact cards and gives them haste, enabling immediate Crawler or Overseer activations. It does not recover the enchantment pieces. Ballista returns with zero counters and normally dies before you can activate Overseer.
-Grand Abolisher :: Protects your own-turn combo attempt from opponents' spells and activated abilities of artifacts, creatures, and enchantments. It does not stop triggered abilities or activated abilities of lands; do not describe it as preventing every possible response.
-Teferi, Time Raveler :: Restricts opponents' spells to sorcery timing, which protects spells and loop actions on your turn. It does not stop their activated abilities. Its bounce-and-draw mode also answers an obstacle or reuses a useful permanent.
-Ripples of Potential :: Proliferates, then can phase out your permanents that received counters that way. Seed Kilo and the relevant artifacts beforehand. Phasing Kilo out also phases an attached Freed out with it; counterless standalone support normally cannot be saved by this spell.
-Swords to Plowshares :: Efficient creature exile. Dispatch supplies a second exile effect when metalcraft is actually present; below three artifacts it only taps its target. Generous Gift and Wear // Tear cover other permanent problems.
-Mana Drain :: Counters a key spell and can finance a large Cornucopia or a high-cost recovery spell. Swan Song and An Offer You Can't Refuse are efficient protection for a combo turn, with their respective token or Treasure drawbacks.
-Deflecting Swat :: Redirects a targeted answer when a new legal target exists. It cannot fix an untargeted wipe or an ability without changeable targets.
-Cyclonic Rift :: The third Game Changer answers a hate piece cheaply or clears opponents' nonland boards when overloaded. Removing an obstacle is often more valuable here than using it solely to enable combat.
-Organic Extinction :: Improvise lets spare artifacts pay the generic cost, and tapping Kilo to help cast it triggers proliferation. It destroys your own nonartifact support too, including Tekuthal, Drumbellower, Emry, Shuri, and Grand Abolisher, unless something protects them. It spares opposing artifact creatures as well.
-Agatha's Soul Cauldron :: Repeatable graveyard interaction and a counter seeder. Exiling Walking Ballista gives its activated damage ability to every creature you control with a +1/+1 counter; exiling Crystalline Crawler shares its counter-to-mana and tap-to-add-a-counter abilities. Steel Overseer supplies counters across your artifact creatures so they can participate. This trades unrestricted permanent destruction for graveyard control and additional combo paths.
-Cauldron shares only activated abilities, not Kilo's proliferate trigger, static abilities, or entering counters. Keep at least one +1/+1 counter on a creature if it must retain the borrowed abilities. Cauldron's mana flexibility applies to creature abilities, not to Freed's abilities, which belong to an enchantment; Freed still needs actual blue mana. Removing Cauldron switches off the shared abilities, and exiling your own creature cards prevents Emry or Wake the Past from recovering those cards while they remain exiled. If you want both Crawler and Ballista exiled, Cauldron requires two activations, with an untap between them.
+# Untappers and extra proliferation
+These are finite. They squeeze more proliferates out of a turn when Freed from the Real is missing.
+Tekuthal, Inquiry Dominus :: if you would proliferate, proliferate twice instead. It does not double Overseer's or Skate's direct counter placements.
+Inspirit, Flagship Vessel :: station it with Kilo for a proliferate. At one charge counter, each beginning of combat puts two charge counters or a +1/+1 counter on another artifact: an instant seed for Reactor. At eight it gives your OTHER artifacts hexproof and indestructible.
+Clock of Omens :: tap two untapped artifacts to untap Kilo. Spare rocks and Mite tokens become extra proliferates.
+Manifold Key :: {1}, tap: untap Kilo, a mana rock, or Steel Overseer. Its other ability makes an infect attacker unblockable.
+Voltaic Key :: {1}, tap: untap target artifact. The second Key.
+Patriar's Seal :: mana early, then {1}, tap: untap Kilo.
+Drumbellower :: untaps your creatures in each other player's untap step: off-turn Kilo activations with the Mantle or Relic.
+Unwinding Clock :: the same for all your artifacts, Kilo, keys and rocks included.
+Flux Channeler :: proliferates on every noncreature spell you cast. An artifact creature is still a creature spell and does not count.
+Surge Conductor :: proliferates when another nontoken artifact enters, including artifacts returned by Emry or Wake the Past.
+Patrolling Peacemaker :: enters with two counters and proliferates whenever an opponent commits a crime, which means targeting an opponent or their things.
+Karn's Bastion :: a land that proliferates for {4}.
+Ripples of Potential :: proliferate at instant speed, then phase out the permanents that got counters, which protects a seeded board from a wipe.
+Springleaf Drum :: taps Kilo for mana, which is one proliferate. Drum taps itself too, so it is not a loop piece.
+
+# Mana and cards
+Astral Cornucopia :: enters with X charge counters and makes that much of one colour; every proliferate makes it bigger. Cast it for at least X = 1.
+Everflowing Chalice :: grows with proliferation once it has a counter. Its mana is colourless and cannot pay Freed.
+Pentad Prism :: fixing, and each proliferate refills it. Leave one counter if it still needs to grow.
+Sol Ring :: the usual.
+Mox Opal :: metalcraft is easy here.
+Arcane Signet :: fixing for three colours.
+Insight Engine :: {2}, tap: add a charge counter, then draw that many. Proliferation makes every activation larger, so stop charging it before it draws you out.
+Uthros Research Craft :: one station with Kilo reaches three charge counters, and then every artifact you cast draws a card.
+Uthros, Titanic Godcore :: a land that, at twelve charge counters, taps for {U} per artifact you control.
+Jhoira, Weatherlight Captain :: draws whenever you cast an artifact or legendary spell. The draw is mandatory, so watch your library on big turns.
+Rhystic Study :: draws without needing counters or artifacts.
+Mystic Remora :: the early noncreature-spell tax.
+Esper Sentinel :: taxes their first noncreature spell each turn, and its tax grows with the counters Overseer gives it.
+Pollywog Prodigy :: evolve seeds a +1/+1 counter, and proliferation widens which opposing spells draw you a card.
+Thought Monitor :: affinity makes it two cards for very little in a deck this full of artifacts.
+Shuri, Wakandan Inventor :: artifacts cost one less, and it can turn one of your artifacts into a copy of another (not legendary) for the turn.
+
+# Answers and protection
+Grand Abolisher :: on your turn, opponents cannot cast spells or activate abilities of artifacts, creatures or enchantments. Triggered abilities and land abilities still work.
+Teferi, Time Raveler :: opponents may cast spells only at sorcery speed, which protects your loop turn from instant-speed answers. Its −3 bounces an obstacle and draws.
+Mana Drain :: counters the key spell and pays for your next big turn.
+Swan Song :: one mana against an enchantment, instant or sorcery.
+An Offer You Can't Refuse :: one mana against any noncreature spell.
+Deflecting Swat :: free while Kilo is out. It redirects a targeted answer.
+Cyclonic Rift :: removes a hate piece for two mana, or resets the table when overloaded.
+Swords to Plowshares :: one mana, exile a creature.
+Dispatch :: exiles a creature once you have three artifacts; below that it only taps.
+Generous Gift :: destroys any permanent.
+Wear // Tear :: an artifact, an enchantment, or both.
+Organic Extinction :: improvise pays with your artifacts, and tapping Kilo to pay is a proliferate. It destroys all nonartifact creatures, including your own Tekuthal, Drumbellower, Emry, Shuri and Grand Abolisher.
+
+# Rebuilding after a wipe
+Emry, Lurker of the Loch :: mills four, then lets you cast an artifact from your graveyard each turn. You still pay its cost, which lets you cast Walking Ballista for a real X.
+Wake the Past :: returns every artifact in your graveyard to the battlefield with haste, so Crawler and Overseer loop the same turn. It does not return Freed, and Ballista comes back with no counters and dies.
+Academy Ruins :: puts an artifact from your graveyard on top of your library.
+Agatha's Soul Cauldron :: graveyard hate that also grants abilities. Exiling Crawler builds the Kilo loop above. Exiling Walking Ballista gives its ping to every creature of yours with a +1/+1 counter. Exiling your own cards means Emry and Wake the Past can no longer get them back.
 
 # What to keep and how to sequence it
-Keep three lands with a credible route to blue, red, and white, plus cheap development and a tap outlet or card engine. Do not keep a hand consisting only of finishers and multipliers. A two-land hand needs dependable early mana and card access, not merely expensive draw spells.
-Deploy a counter source before chasing multiple proliferations. Darksteel Reactor, Cornucopia, and Ballista need their first relevant counter; Kilo does not put it there from nothing.
-Mana from Mantle or Relic is available immediately, but Kilo's proliferate trigger still uses the stack. Allow necessary triggers to resolve and preserve the counter you need as a seed. Opponents can respond to the triggers and Freed activations unless your protection actually stops that response.
-Assemble protection before exposing the last combo piece when possible. Freed is an Aura and can be lost with its creature to removal; preserve Sevinne's Reclamation as a route back into the game rather than using it casually.
-For a Reactor finish, count both Reactor's charge counters and the charge counters available to move with Defense. Moving them is a five-mana activated ability, keeps their type, and reduces the donor. With ten on Reactor, Skate is sufficient without an infinite loop.
-Use the simplest available payoff. Prologue plus repeated proliferation usually needs fewer board objects than creating infinite mana and casting Ballista. The Crawler plus Freed plus All Will Be One line is valuable when Kilo has become too expensive or is disabled.
-Choose a finite number of repetitions and explain the repeated actions and payoff. The list retains 36 lands and its three original Game Changers; keeping the deck appropriate for its stated bracket also depends on its intended speed and the table's expectations.
+Keep three lands that make blue, red and white, plus cheap development and either a tap outlet or a draw engine. Do not keep a hand of finishers and multipliers.
+Seed before you multiply. Darksteel Reactor, Cornucopia and Ballista need their first counter, and poison needs Prologue, Inkmoth Nexus or a Mite to connect first.
+Kilo's proliferate trigger uses the stack. Opponents can respond to it and to each Freed activation unless Grand Abolisher or Teferi is out.
+Assemble protection before exposing the last loop piece. Freed is an Aura and dies with the creature it enchants, so keep Sevinne's Reclamation as your way back rather than casting it for value.
+Use the simplest payoff on the battlefield. Prologue plus the Kilo loop needs fewer pieces than making infinite mana for a Ballista, and the Crawler loop with All Will Be One wins when Kilo is gone. Choose a finite number of repetitions and announce it.

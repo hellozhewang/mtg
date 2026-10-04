@@ -2,21 +2,48 @@ Krenko doubles your Goblin count every time he taps, so the deck's only real que
 
 # The commander and the untaps
 Krenko, Mob Boss :: {T}: create a token for every Goblin you control. Four Goblins becomes eight, then sixteen. He needs haste or a turn, and then he needs to untap.
-Thornbite Staff :: equip it to Krenko. Now every Goblin that dies untaps him — so tap for Goblins, sacrifice one to any outlet, untap, tap again. This goes as far as you want.
-Umbral Mantle :: {3} and untap. With Skirk Prospector converting the new Goblins into red mana, each cycle pays for itself and then some.
 Thousand-Year Elixir :: haste for the activation and a separate untap.
-Marvin, Murderous Mimic :: has all activated abilities of your creatures, so Marvin taps for Krenko's ability as well.
 Lightning Greaves :: haste the turn he lands, and shroud against the removal that is absolutely coming.
 Swiftfoot Boots :: the version that still lets you equip him yourself.
 Arena of Glory :: the 21 Mountains help this enter untapped. Pay {R}, tap and exert it to make {R}{R}; spending any of that mana on Krenko, Conspicuous Snoop or Warren Instigator gives that creature haste for the turn. It skips your next untap after exerting, so use the ordinary red-mana ability when haste gains nothing. It does not give haste to Goblins put onto the battlefield by Instigator or Muxus, since you did not cast them with its mana.
 Hanweir Battlements :: enters untapped and gives one creature haste for {R} and a tap. Use it on a fresh Krenko or Conspicuous Snoop to activate immediately, including after Warren Instigator or Muxus puts that Goblin onto the battlefield. Giving Instigator haste before combat also enables a same-turn attack. The land produces only colourless mana, and you must leave it untapped plus have a separate red source for the haste ability; it cannot help pay Instigator's {R}{R}. Its meld ability has no partner in this deck.
 
-# The combos
-Kiki-Jiki, Mirror Breaker :: with Zealous Conscripts, Kiki copies the Conscripts, the copy untaps Kiki, and you repeat. Unlimited hasty 3/3s, and with Impact Tremors or Purphoros out it is unlimited damage without ever attacking.
-Zealous Conscripts :: the other half. It also steals a blocker or untaps your own Krenko when you just need one big turn.
-Conspicuous Snoop :: with Kiki-Jiki on top of your library, Snoop gains Kiki's ability, taps to copy ITSELF, and every token Snoop can do it again. Same unlimited result, and Goblin Recruiter sets it up on purpose.
-Thornbite Staff :: on Krenko with any free sacrifice outlet — Skirk Prospector, Goblin Bombardment, Ashnod's Altar — the Goblin you sacrifice untaps him, so the doubling never stops.
-Goblin Sharpshooter :: it untaps whenever ANY creature dies, so feeding Goblins to Goblin Bombardment untaps it for another ping each time. On an unlimited Goblin board that is unlimited damage.
+# Infinite combos — why this is Bracket 3.5
+Krenko, Mob Boss + Thornbite Staff + Skirk Prospector :: equip the Staff to Krenko ({4} — he's a Warrior, so it won't attach itself). Krenko taps for a Goblin per Goblin; sacrifice one to Skirk Prospector; the death untaps Krenko; tap again. The army doubles every lap. Win with Impact Tremors, Purphoros, Pashalik Mons or Goblin Bombardment.
+Krenko, Mob Boss + Umbral Mantle + Skirk Prospector :: Krenko taps for Goblins; sacrifice three to Skirk Prospector for {R}{R}{R}; pay the Mantle's {3} to untap Krenko. With four or more Goblins, every lap makes more than it spends — unlimited Goblins and red mana.
+Kiki-Jiki, Mirror Breaker + Zealous Conscripts :: Kiki copies Conscripts, and the copy's enter trigger untaps Kiki — target Kiki itself. Repeat for as many hasty 3/3s as you want, the same turn Kiki lands (it has haste). With Impact Tremors or Purphoros out it is unlimited damage without attacking. Never leave Lightning Greaves on Kiki: shroud stops the Conscripts copy targeting it.
+Kiki-Jiki, Mirror Breaker + Lightning Crafter + Goblin Bombardment :: Kiki copies the Crafter. The copy's champion trigger exiles Kiki; the hasty copy taps for 3 damage; sacrifice it to Goblin Bombardment; Kiki returns untapped — it has haste — and copies the Crafter again. Unlimited 3-damage shots, so this one kills on its own. Skirk Prospector and Ashnod's Altar work as the outlet too. The original Crafter must stay on the battlefield; when it enters you must exile another Goblin or Shaman (champion) or sacrifice it.
+Kiki-Jiki, Mirror Breaker + Thornbite Staff + Goblin Bombardment :: the Staff attaches itself to Kiki when Kiki enters after it (otherwise equip costs {4}). Kiki copies any nonlegendary creature, you sacrifice a creature to Goblin Bombardment, and the death untaps Kiki. Unlimited loops.
+Goblin Recruiter -> Kiki-Jiki, Mirror Breaker + Conspicuous Snoop :: Recruiter puts Kiki on TOP of your library. Snoop has every activated ability of the Goblin on top, so it copies itself with Kiki's ability — and every hasty copy does the same. Snoop needs haste or a turn in play to start, and most copies end up tapped, so finish with Impact Tremors, Purphoros or Goblin Bombardment. Outside the combo, Snoop lets you cast Goblins straight off the top of your library.
+Marvin, Murderous Mimic + Krenko, Mob Boss :: Marvin has every activated ability of your other creatures, so it taps as a second Krenko — and with Kiki-Jiki out, as a second Kiki.
+Goblin Sharpshooter + Goblin Bombardment :: every Goblin you sacrifice untaps Sharpshooter for another ping — two damage per Goblin, unlimited on an unlimited board.
+Zealous Conscripts :: outside the combo it steals a blocker, or untaps your own Krenko for one more activation when you just need one big turn.
+
+# Tutor lines — what to fetch, and when
+Goblin Matron -> Kiki-Jiki, Mirror Breaker :: when you already hold Zealous Conscripts, Lightning Crafter or the Staff — Kiki is the piece that turns half a combo into a kill.
+Goblin Matron -> Goblin Recruiter :: when you're missing two or more pieces. Matron gets Recruiter; Recruiter stacks the rest on top of your library.
+Goblin Matron -> Krenko, Mob Boss :: when Thornbite Staff or Umbral Mantle is already out, or when you simply need a board this turn.
+Goblin Matron -> Lightning Crafter :: when Kiki-Jiki is on the battlefield and you have a free outlet — the Crafter is the last piece.
+Goblin Matron -> Skirk Prospector :: when the combo is assembled but nothing will sacrifice for free.
+Imperial Recruiter -> Kiki-Jiki, Mirror Breaker :: power 2, so the one non-Goblin tutor that still finds Kiki. It also fetches Goblin Recruiter, Conspicuous Snoop or Skirk Prospector — take whichever piece you're missing.
+Gamble -> Thornbite Staff :: any card. Priority is roughly the Staff, then Goblin Recruiter, then Kiki-Jiki, then Umbral Mantle — the pieces with no redundancy. Cast it with a full hand: the random discard is then less likely to hit the card you just fetched.
+Goblin Engineer -> Thornbite Staff :: puts the Staff into your graveyard, then {R}, tap and sacrifice another artifact puts it onto the battlefield. Engineer needs a turn or haste before it can tap.
+Goblin Lackey -> Krenko, Mob Boss :: when it connects, Krenko or Muxus goes from your hand onto the battlefield for free.
+Warren Instigator -> Goblin Matron -> Muxus, Goblin Grandee :: an unblocked double-strike hit puts Matron in with the first damage; Matron finds Muxus; the second damage puts Muxus in. It needs Goblins in your hand, not the command zone, and blockers stop it.
+Goblin Ringleader :: four cards deep in a deck that is mostly Goblins.
+Wheel of Fortune :: a fresh seven when you have emptied your hand, which this deck does by turn four.
+Skullclamp :: your tokens are 1/1s, so every clamp is two cards.
+
+# Stacking with Goblin Recruiter
+Goblin Recruiter :: puts ANY number of Goblins from your library on top, in an order you choose. It is a tutor for your next several turns at once — but only if you have a way to reach the stack. There are three.
+Conspicuous Snoop :: casts Goblins straight off the top of your library. With Snoop out, a Recruiter stack is effectively your hand. This is the best access tool by a distance.
+Goblin Ringleader :: reveals the top four and puts every Goblin among them into your hand. Stack exactly four castable Goblins and it is a four-card draw.
+Muxus, Goblin Grandee :: reveals the top six and puts every Goblin creature with mana value five or less onto the BATTLEFIELD. Stack five cheap Goblins under whatever you draw and Muxus deploys all of them at once.
+Goblin Recruiter -> Skirk Prospector -> Goblin Warchief -> Krenko, Mob Boss -> Muxus, Goblin Grandee :: with Snoop already out: cast each off the top in order — Prospector makes mana from the Goblins you have, Warchief discounts and hastes the rest, Krenko taps the turn it lands, Muxus deploys what is left.
+Goblin Recruiter -> Kiki-Jiki, Mirror Breaker :: going for the combo: Kiki alone on top, then cast Conspicuous Snoop — it copies itself until Impact Tremors, Purphoros or Goblin Bombardment ends the game.
+Goblin Recruiter -> Kiki-Jiki, Mirror Breaker -> Lightning Crafter -> Skirk Prospector -> Goblin Warchief :: then cast Muxus: all four enter at once, the Crafter champions Recruiter, and Kiki starts copying the Crafter immediately.
+Goblin Recruiter -> Goblin Matron -> Krenko, Mob Boss -> Skirk Prospector -> Siege-Gang Commander :: without Snoop, four Goblins you can pay for this turn or next, then Goblin Ringleader puts all four in your hand.
+Anything that searches your library shuffles it and wrecks the stack — Goblin Matron, Imperial Recruiter, Gamble and Goblin Engineer. Use those before Recruiter, never after.
 
 # Turning Goblins into damage
 Impact Tremors :: one damage to each opponent per creature entering. This is the cheapest way to convert a doubling into a kill.
@@ -39,33 +66,13 @@ Ashnod's Altar :: two colourless per Goblin, and it is not a Goblin so it surviv
 Brightstone Ritual :: {R} for every Goblin ON THE BATTLEFIELD, including your opponents'. After one Krenko activation this is ten or more.
 Battle Hymn :: the same idea counting all your creatures.
 Birgi, God of Storytelling :: red mana on every spell, and it does not empty between phases.
-Ruby Medallion :: everything costs one less.
+Ruby Medallion :: red spells cost {1} less — generic mana only, so a one-mana {R} spell still costs {R}.
 Herald's Horn :: name Goblin — a discount and a free Goblin off the top most upkeeps.
 Nykthos, Shrine to Nyx :: your devotion to red is high; this is often five or six mana.
 Three Tree City :: choose Goblin as it enters. Pay {2} and tap it to make red mana equal to your Goblin creature count, including tokens. Activate Krenko first when possible so the larger swarm pays for Muxus, equipment costs or Umbral Mantle activations without sacrificing Goblins. With eight Goblins it produces eight red mana after you pay the two-mana activation cost. Keep a separate way to pay that cost; its ordinary tap ability makes only colourless mana, so it is not an unconditional early red source.
 Mana Vault :: three mana on turn one.
 Lotus Petal :: free acceleration.
 Simian Spirit Guide :: a red mana from your hand for nothing.
-
-# Stacking with Goblin Recruiter
-Goblin Recruiter :: puts ANY number of Goblins from your library on top, in an order you choose. It is a tutor for your next several turns at once — but only if you have a way to reach the stack. There are three.
-Conspicuous Snoop :: casts Goblins straight off the top of your library. With Snoop out, a Recruiter stack is effectively your hand. This is the best access tool by a distance.
-Goblin Ringleader :: reveals the top four and puts every Goblin among them into your hand. Stack exactly four castable Goblins and it is a four-card draw.
-Muxus, Goblin Grandee :: reveals the top six and puts every Goblin creature with mana value five or less onto the BATTLEFIELD. Stack five cheap Goblins under whatever you draw and Muxus deploys all of them at once.
-With Snoop already out, a good stack is Skirk Prospector, then Goblin Warchief, then Krenko, then Muxus — Prospector makes mana from the Goblins you already have, Warchief discounts and hastes the rest, and each one is cast off the top for free card advantage.
-Without Snoop, stack for Ringleader: four Goblins you can actually pay for this turn or next, cheapest first.
-Going for the combo, stack Kiki-Jiki on top and cast Conspicuous Snoop underneath it.
-
-# Tutors and refills
-Goblin Matron :: any Goblin to hand. Usually Skirk Prospector, Krenko or Muxus.
-Imperial Recruiter :: any creature with power 2 or less — Goblin Recruiter, Conspicuous Snoop, Skirk Prospector.
-Gamble :: finds anything, and the random discard is usually survivable. Priority is roughly Thornbite Staff, then Goblin Recruiter, then Kiki-Jiki, then Umbral Mantle — the pieces with no redundancy.
-Goblin Lackey :: connects once and puts Muxus or Krenko onto the battlefield for free.
-Warren Instigator :: an unblocked double-strike attack can put two Goblin creatures from your hand onto the battlefield. Put Goblin Matron in with the first damage trigger, tutor Muxus, then put Muxus in with the second. Arena of Glory can give Instigator haste when you cast it; blockers still stop the damage triggers, and it needs Goblins in hand, not the command zone.
-Goblin Ringleader :: four cards deep in a deck that is mostly Goblins.
-Wheel of Fortune :: a fresh seven when you have emptied your hand, which this deck does by turn four.
-Skullclamp :: your tokens are 1/1s, so every clamp is two cards.
-Goblin Engineer :: tutors an artifact into the graveyard and recurs cheap ones — Thornbite Staff and Skullclamp both qualify.
 
 # Interaction
 Hexing Squelcher :: an uncounterable Goblin that makes all your spells uncounterable while it stays on the battlefield, protecting Krenko and your combo pieces as you cast them. Goblin Matron and Goblin Recruiter can find it, and Ringleader or Muxus can pick it up. It and your other creatures have ward—pay 2 life; opponents can still pay to target them, and it does not protect activated abilities or stop untargeted board wipes.

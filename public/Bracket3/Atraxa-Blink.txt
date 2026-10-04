@@ -1,0 +1,100 @@
+1 Atraxa, Grand Unifier
+1 Anguished Unmaking
+1 Animate Dead
+1 Arcane Signet
+1 Archon of Cruelty
+1 Arid Mesa
+1 Assassin's Trophy
+1 Baleful Strix
+1 Bayou
+1 Birds of Paradise
+1 Bloodstained Mire
+1 Bloom Tender
+1 Blue Sun's Zenith
+1 Boseiju, Who Endures
+1 Breeding Pool
+1 Cavern of Souls
+1 City of Brass
+1 Clever Concealment
+1 Command Tower
+1 Craterhoof Behemoth
+1 Crib Swap
+1 Cyclonic Rift
+1 Delighted Halfling
+1 Displacer Kitten
+1 Dovin's Veto
+1 Eladamri's Call
+1 Elesh Norn, Mother of Machines
+1 Endurance
+1 Ephemerate
+1 Esper Sentinel
+1 Essence Flux
+1 Eternal Witness
+1 Exotic Orchard
+1 Faeburrow Elder
+1 Farseek
+1 Fellwar Stone
+1 Finale of Devastation
+1 Flawless Maneuver
+1 Flickering Hound
+1 Flooded Strand
+1 Flusterstorm
+1 Forest
+1 Ghostly Flicker
+1 Godless Shrine
+1 Hallowed Fountain
+1 Heroic Intervention
+1 Invasion of Zendikar
+1 Island
+1 Loran of the Third Path
+1 Mana Confluence
+1 Mana Drain
+1 Marsh Flats
+1 Misty Rainforest
+1 Mystic Remora
+1 Nature's Lore
+1 Necromancy
+1 Noble Hierarch
+1 Otawara, Soaring City
+1 Overgrown Tomb
+1 Overlord of the Hauntwoods
+1 Path to Exile
+1 Peregrine Drake
+1 Phelia, Exuberant Shepherd
+1 Phyrexian Metamorph
+1 Plains
+1 Polluted Delta
+1 Reanimate
+1 Reflecting Pool
+1 Rhystic Study
+1 Savannah
+1 Scalding Tarn
+1 Scrubland
+1 Sink into Stupor
+1 Smothering Tithe
+1 Sol Ring
+1 Solitude
+1 Soulherder
+1 Spara's Headquarters
+1 Swamp
+1 Swan Song
+1 Swords to Plowshares
+1 Sylvan Library
+1 Temple Garden
+1 Tezzeret, Cruel Captain
+1 Thassa, Deep-Dwelling
+1 Three Visits
+1 Touch the Spirit Realm
+1 Toxic Deluge
+1 Tropical Island
+1 Tundra
+1 Underground Sea
+1 Utopia Sprawl
+1 Veil of Summer
+1 Verdant Catacombs
+1 Watery Grave
+1 Wild Growth
+1 Windswept Heath
+1 Witch Enchanter
+1 Wooded Foothills
+1 Zagoth Triome

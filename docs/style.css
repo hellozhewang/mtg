@@ -312,7 +312,19 @@ h2 .count{color:var(--line)}
    gets its own layout rather than another `data-view` restyle of `.card`. */
 .guide{max-width:74ch}
 .gsec{margin:0 0 30px}
-.gsec h2{margin:1.6em 0 .8em}
+details.gsec:not([open]){margin-bottom:6px}
+/* Same disclosure pattern as the catalog's bracket groups: the h2 sits inside the
+   summary, the native marker is hidden, and a chevron turns when open. */
+.gsec-heading{margin:1.6em 0 .8em;padding-right:26px;cursor:pointer;list-style:none;position:relative}
+.gsec-heading::-webkit-details-marker{display:none}
+.gsec-heading::after{content:'›';position:absolute;right:4px;top:50%;margin-top:-.75em;
+  color:var(--dim);font-size:1.3rem;line-height:1.2}
+details.gsec[open]>.gsec-heading::after{transform:rotate(90deg)}
+.gsec-heading:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:3px}
+.gsec-heading>h2{margin:0}
+details.gsec:not([open])>.gsec-heading{margin-bottom:0}
+.guide-actions{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px}
+.guide-actions .btn{padding:5px 10px;font-size:.8rem}
 .gprose{color:var(--dim);margin:0 0 14px;line-height:1.6}
 .gcard{display:flex;gap:14px;align-items:flex-start;padding:11px 0;
   border-top:1px solid var(--line)}
@@ -326,3 +338,12 @@ h2 .count{color:var(--line)}
 .gcost{white-space:nowrap;vertical-align:-2px}
 .gnote{margin:5px 0 0;line-height:1.55}
 @media (max-width:560px){.gcard img.gthumb{width:64px;height:89px}}
+/* Combo and chain rows: the cards in a strip, then the explanation under them.
+   Side by side would squeeze the prose into a sliver once three cards are shown. */
+.gcombo{display:block}
+.gpieces{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;margin-bottom:6px}
+.gpiece{display:inline-flex;cursor:zoom-in;border-radius:5px}
+.gpiece:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.gcombo img.gthumb{width:72px;height:101px}
+.gjoin{font-size:1.35rem;font-weight:700;color:var(--dim);line-height:1}
+@media (max-width:560px){.gcombo img.gthumb{width:56px;height:78px}}

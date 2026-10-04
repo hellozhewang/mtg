@@ -286,6 +286,20 @@
     });
   }
 
+  /* ---- guide sections ----------------------------------------------------- */
+  // Every titled guide section is a <details open>; these two buttons set them all.
+  // No saved state: a guide is read top to bottom, so it always opens expanded.
+  function initGuideSections() {
+    toArray(document.querySelectorAll('[data-guide-sections]')).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var open = btn.dataset.guideSections === 'expand';
+        toArray(document.querySelectorAll('.guide details.gsec')).forEach(function (d) {
+          d.open = open;
+        });
+      });
+    });
+  }
+
   /* ---- list / gallery toggle --------------------------------------------- */
   function initViewToggle(cards) {
     var buttons = toArray(document.querySelectorAll('.btn[data-view]'));
@@ -468,7 +482,7 @@
   // child of it, and its rows are `.gcard` — so a lightbox bound to `.cards` and
   // looking for `.card` saw neither the container nor the class, and clicking a
   // guide card did nothing at all.
-  var ZOOMABLE = '.card[data-img], .gcard[data-img]';
+  var ZOOMABLE = '.card[data-img], .gcard[data-img], .gpiece[data-img]';
 
   function initLightbox(root, preview) {
     var overlay = document.createElement('div');
@@ -537,6 +551,7 @@
   if (!cards) return;                       // index page: nothing below applies
 
   initViewToggle(cards);
+  initGuideSections();
   initCopy();
   // Hover preview stays bound to `.cards`: a guide card is already rendered at
   // 200px, so a floating copy of the same image adds nothing there. Zoom binds

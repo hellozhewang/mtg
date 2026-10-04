@@ -1,6 +1,6 @@
 <main class="deck">
 <h1>{{NAME}}</h1>
-<p class="sub">{{PIPS}}<span class="cmd">{{COMMANDER}}</span><span class="bracket" data-tip="Power level the deck is built to. Higher brackets allow more Game Changers, land denial and fast combos.">{{BRACKET}}</span>{{TAG}}</p>
+<p class="sub">{{PIPS}}<span class="cmd">{{COMMANDER}}</span><span class="bracket" data-tip="Power level the deck is built to. Higher brackets allow more Game Changers, land denial and fast combos.">{{BRACKET}}</span>{{TIER}}{{TAG}}</p>
 <ul class="stats">
   <li data-tip="Every card in the deck, including the commander. Commander decks are exactly 100."><b>{{TOTAL}}</b>cards</li>
   <li data-tip="{{LANDNOTE}}"><b>{{LANDS}}</b>lands</li>
@@ -65,15 +65,27 @@
 
 <template data-part="guide">
 <article class="guide" hidden>
+  <div class="guide-actions" role="group" aria-label="Guide sections">
+    <button class="btn" type="button" data-guide-sections="expand">Expand all</button>
+    <button class="btn" type="button" data-guide-sections="collapse">Collapse all</button>
+  </div>
 {{SECTIONS}}</article>
 </template>
 
+<!-- Titled sections collapse like the catalog's bracket groups, open by default.
+     The untitled intro is a plain section: a <details> with no <summary> would
+     render the browser's own "Details" label. -->
 <template data-part="guide-section">
-  <section class="gsec">
-{{TITLE}}{{ROWS}}  </section>
+  <details class="gsec" open>
+{{TITLE}}{{ROWS}}  </details>
 </template>
 
-<template data-part="guide-title">    <h2>{{TEXT}}</h2>
+<template data-part="guide-intro">
+  <section class="gsec">
+{{ROWS}}  </section>
+</template>
+
+<template data-part="guide-title">    <summary class="gsec-heading"><h2>{{TEXT}}</h2></summary>
 </template>
 
 <template data-part="guide-prose">    <p class="gprose">{{TEXT}}</p>
@@ -81,3 +93,14 @@
 
 <template data-part="guide-card">    <div class="gcard" data-name="{{NAME}}"{{DATA}}>{{IMG}}<div class="gbody"><span class="gname">{{NAME}}</span><span class="gcost">{{COST}}</span><p class="gnote">{{NOTE}}</p></div></div>
 </template>
+
+<!-- A row naming several cards: "A + B" (a combo) or "A -> B" (a tutor line).
+     Each piece carries its own data-img, so hover and click show that card. -->
+<template data-part="guide-combo">    <div class="gcard gcombo"><div class="gpieces">{{PIECES}}</div><div class="gbody"><span class="gname">{{NAMES}}</span><p class="gnote">{{NOTE}}</p></div></div>
+</template>
+
+<template data-part="guide-piece"><span class="gpiece" data-name="{{NAME}}"{{DATA}} tabindex="0">{{IMG}}</span></template>
+
+<template data-part="guide-join"><span class="gjoin" aria-hidden="true">{{SIGN}}</span></template>
+
+<template data-part="tier-badge"><span class="tier tier-wide" data-tier="{{TIER}}" data-tip="{{TIP}}">{{LABEL}} tier</span></template>

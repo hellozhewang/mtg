@@ -5,6 +5,12 @@
   --accent-line:#4a3f24; --warn:#e0765a;
   --theme:#88d8cc; --theme-bg:#182c2c; --theme-line:#315652;
   --category-title:#c4b5fd; --bracket-label:#91a6bf;
+  /* Power tiers: the familiar tier-list ramp, hot at the top. Text on every
+     mark is --tier-ink, dark enough to read on all of them. */
+  --tier-ink:#15161b;
+  --tier-god:linear-gradient(135deg,#ffe58a 0%,#ffb3e6 50%,#a8dcff 100%);
+  --tier-ss:#ff5c8a; --tier-s:#ff7f7f; --tier-a:#ffbf7f; --tier-b:#ffdf7f;
+  --tier-c:#f2f28a; --tier-d:#bfef8f; --tier-trash:#8d93a3;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -26,6 +32,13 @@ h2 .count{color:var(--line)}
 .repo{margin-left:auto;color:var(--dim);text-decoration:none;
   white-space:nowrap;font-size:.9rem}
 .repo:hover{color:var(--fg)}
+/* Topbar button: same height as the picker beside it, never wraps its label. */
+.random-deck{padding:6px 11px;font-size:.85rem;white-space:nowrap}
+.random-deck:disabled{opacity:.6;cursor:progress}
+/* Shown once on the deck a Random click landed on: did the copy work or not. */
+.random-notice{margin:0 0 16px;padding:9px 13px;border:1px solid var(--accent-line);
+  border-radius:8px;background:var(--accent-bg);color:var(--fg);font-size:.88rem}
+.random-notice.manual{border-color:var(--line);background:var(--panel)}
 .search{flex:1;min-width:90px;max-width:260px;background:var(--panel2);
   color:var(--fg);border:1px solid var(--line);border-radius:7px;
   padding:6px 10px;font:inherit;font-size:.9rem}
@@ -125,6 +138,41 @@ h2 .count{color:var(--line)}
   text-transform:uppercase;letter-spacing:.1em;font-weight:600}
 .bracket-heading>h2{margin:0}
 .strategy-description{display:block;font-size:.85rem;color:var(--dim);max-width:74ch}
+
+/* ---- power tiers ----
+   One mark, two sizes: a small square before every deck name, and the large
+   row label in the Tiers view. Colour comes from data-tier alone, so a new tier
+   needs one rule here and nothing in the markup. */
+.tier,.tier-mark{display:inline-grid;place-items:center;color:var(--tier-ink);
+  font-weight:800;letter-spacing:.02em;background:var(--panel2)}
+.tier{min-width:2.1em;height:1.5em;padding:0 .35em;margin-right:7px;border-radius:5px;
+  font-size:.7rem;line-height:1;vertical-align:2px}
+.tier-wide{margin:0;font-size:.74rem;height:1.75em;padding:0 .6em;border-radius:99px}
+[data-tier="GOD"]:is(.tier,.tier-mark){background:var(--tier-god)}
+[data-tier="SS"]:is(.tier,.tier-mark){background:var(--tier-ss)}
+[data-tier="S"]:is(.tier,.tier-mark){background:var(--tier-s)}
+[data-tier="A"]:is(.tier,.tier-mark){background:var(--tier-a)}
+[data-tier="B"]:is(.tier,.tier-mark){background:var(--tier-b)}
+[data-tier="C"]:is(.tier,.tier-mark){background:var(--tier-c)}
+[data-tier="D"]:is(.tier,.tier-mark){background:var(--tier-d)}
+[data-tier="TRASH"]:is(.tier,.tier-mark){background:var(--tier-trash)}
+[data-tier="unrated"]:is(.tier,.tier-mark){background:transparent;color:var(--dim);
+  border:1px dashed var(--line)}
+.tier-group{margin:0 0 30px}
+.tier-group:not([open]){margin-bottom:12px}
+.tier-heading{display:flex;align-items:center;gap:16px;cursor:pointer;list-style:none;
+  position:relative;padding:0 28px 12px 0;margin-bottom:14px;border-bottom:1px solid var(--line)}
+.tier-group:not([open])>.tier-heading{margin-bottom:0}
+.tier-heading::-webkit-details-marker{display:none}
+.tier-heading::after{content:'›';position:absolute;right:4px;top:50%;margin-top:-1.05rem;
+  color:var(--category-title);font-size:1.5rem;line-height:1.2}
+.tier-group[open]>.tier-heading::after{transform:rotate(90deg)}
+.tier-heading:focus-visible{outline:2px solid var(--theme);outline-offset:5px;border-radius:3px}
+.tier-mark{flex:none;width:76px;height:56px;border-radius:9px;font-size:1.35rem}
+.tier-mark[data-tier="TRASH"],.tier-mark[data-tier="unrated"]{font-size:.95rem}
+.tier-text{min-width:0}
+.tier-title{display:block;font-size:1.25rem;font-weight:700;color:var(--category-title);
+  line-height:1.25;margin:0 0 3px}
 .tiles{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(272px,100%),1fr))}
 .tile{display:flex;flex-direction:column;text-decoration:none;overflow:hidden;
   background:var(--panel);border:1px solid var(--line);border-radius:11px;
@@ -298,6 +346,7 @@ h2 .count{color:var(--line)}
   .curve{max-width:none}
   .catalog-controls{padding:12px;gap:12px}
   .strategy-label{max-width:none;flex-basis:100%}
+  .tier-mark{width:56px;height:44px;font-size:1.1rem}
   .catalog-results{font-size:.78rem}
   .catalog-views .btn{padding:7px 10px}
   .decks[data-view="list"] .tile-body{grid-template-columns:minmax(0,1fr);
@@ -312,7 +361,19 @@ h2 .count{color:var(--line)}
    gets its own layout rather than another `data-view` restyle of `.card`. */
 .guide{max-width:74ch}
 .gsec{margin:0 0 30px}
-.gsec h2{margin:1.6em 0 .8em}
+details.gsec:not([open]){margin-bottom:6px}
+/* Same disclosure pattern as the catalog's bracket groups: the h2 sits inside the
+   summary, the native marker is hidden, and a chevron turns when open. */
+.gsec-heading{margin:1.6em 0 .8em;padding-right:26px;cursor:pointer;list-style:none;position:relative}
+.gsec-heading::-webkit-details-marker{display:none}
+.gsec-heading::after{content:'›';position:absolute;right:4px;top:50%;margin-top:-.75em;
+  color:var(--dim);font-size:1.3rem;line-height:1.2}
+details.gsec[open]>.gsec-heading::after{transform:rotate(90deg)}
+.gsec-heading:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:3px}
+.gsec-heading>h2{margin:0}
+details.gsec:not([open])>.gsec-heading{margin-bottom:0}
+.guide-actions{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px}
+.guide-actions .btn{padding:5px 10px;font-size:.8rem}
 .gprose{color:var(--dim);margin:0 0 14px;line-height:1.6}
 .gcard{display:flex;gap:14px;align-items:flex-start;padding:11px 0;
   border-top:1px solid var(--line)}
@@ -326,3 +387,12 @@ h2 .count{color:var(--line)}
 .gcost{white-space:nowrap;vertical-align:-2px}
 .gnote{margin:5px 0 0;line-height:1.55}
 @media (max-width:560px){.gcard img.gthumb{width:64px;height:89px}}
+/* Combo and chain rows: the cards in a strip, then the explanation under them.
+   Side by side would squeeze the prose into a sliver once three cards are shown. */
+.gcombo{display:block}
+.gpieces{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;margin-bottom:6px}
+.gpiece{display:inline-flex;cursor:zoom-in;border-radius:5px}
+.gpiece:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.gcombo img.gthumb{width:72px;height:101px}
+.gjoin{font-size:1.35rem;font-weight:700;color:var(--dim);line-height:1}
+@media (max-width:560px){.gcombo img.gthumb{width:56px;height:78px}}

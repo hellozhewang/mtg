@@ -57,6 +57,8 @@ user at the commands they have. Each one works TWO ways, and you should offer bo
 
     /deck-print deck: zur      or   !deck-print deck: zur
     /deck-list                 or   !deck-list
+    /deck-random               or   !deck-random
+    /deck-random filter: combo or   !deck-random combo
     /deck-repo                 or   !deck-repo
 
 `/` opens Discord's command picker. `!` is the same command typed as an ordinary
@@ -67,7 +69,10 @@ run identical code and return identical output; it is purely how you type it.
 Phrase it as a choice, e.g. "run `/deck-print deck: zur`, or paste
 `!deck-print deck: zur`". Quote the option name `deck:` exactly — it is required,
 and it takes a fragment, so "zur", "yuriko" and "winota" all resolve without the
-full filename. `/deck-list` and `/deck-repo` take no options.
+full filename. `/deck-random` picks a random public deck and prints its link and
+list; its optional `filter:` matches a name, bracket, category or tier (`kinnan`,
+`3.5`, `combo`, `s tier`), and the `!` form also takes the filter bare.
+`/deck-list` and `/deck-repo` take no options.
 
 **Never quote a bare `!deck` or `!decks` at a user.** Those look similar but are
 the internal wire format between the Discord app and this harness — no user
@@ -196,6 +201,8 @@ One level up — readable and runnable, NOT writable:
     ../scripts/                 the toolchain. Run these; never try to edit them.
     ../README.md                deckbuilding rules, file format, tool reference
     ../deck-catalog-strategies.md    catalog placement and supported theme IDs
+    ../deck-tiers.md            the power tiers (GOD, SS, S, A, B, C, D, TRASH),
+                                how to place a deck, and anchor decks per tier
     ../commander-brackets-and-rules.md    bracket rules AND the definitions of
                                 Game Changers, Mass Land Denial, 2-Card Combos
     ../.cache/cards.db          Scryfall cache the tools read and write
@@ -224,6 +231,7 @@ required validation checks. Read it once, before your first real deck task.
 Also read `../deck-catalog-strategies.md` when building a new deck or changing an
 existing deck's plan. Catalog placement is part of finishing the work: choose a
 primary strategy and supported secondary themes from the actual list and guide.
+Read `../deck-tiers.md` too: every deck also gets a power tier.
 
 ## Tools
 
@@ -373,6 +381,10 @@ cutting basics safe.
 8. **Review catalog placement.** Follow `../deck-catalog-strategies.md` and
    "Placing the deck in the catalog" below. Check the existing assignment or
    filename fallback, and give an exact-ID handoff if the map needs updating.
+9. **Place it in a power tier.** Every new deck goes in one of GOD, SS, S, A, B,
+   C, D or TRASH. Follow `../deck-tiers.md` and "Placing the deck in a power
+   tier" below. Tuning that adds or cuts combo pieces, tutors or fast mana means
+   checking the tier again.
 
 **Steps 1, 3 and 4 are a floor, not a ceiling — do not stop at what they return.**
 They surface what's *popular*; the user's actual request is often narrower and
@@ -424,6 +436,17 @@ renders as an intro paragraph with no heading. The parser is
     Prose lines need no card and render as a paragraph.
     Shorikai, Genesis Engine :: taps for two Pilots and two cards, every turn
 
+**Combo and chain rows.** One row can name several cards, and the page shows
+each card's picture with the joiner between them. ` + ` means the cards work
+together; ` -> ` means "finds" or "leads to". Keep the spaces around each joiner.
+
+    Kiki-Jiki, Mirror Breaker + Zealous Conscripts :: Kiki copies Conscripts, the copy untaps Kiki, repeat
+    Goblin Matron -> Krenko, Mob Boss :: when you need a board rather than a combo piece
+
+Use them for every infinite combo, and for tutor lines that say WHAT to fetch and
+WHEN: one row per sensible target, each with the situation that calls for it.
+Every card in such a row must be in the decklist, same as any other row.
+
 **Read `Bracket3.5/Shorikai-Prison.guide` before you write your first one.** It is
 the model, and these are its rules:
 
@@ -456,46 +479,66 @@ names, fix the guide in the same turn. Say so in your reply.
 
 ## Placing the deck in the catalog
 
-The catalog initially opens in List, with decks under individually collapsible brackets.
-Brackets start open. The browser remembers the view, layout, and collapsed sections
-when returning from a deck. Categories
-groups by primary strategy, then bracket, with collapsible strategy sections.
-Rows / Tiles controls layout separately. A deck appears once in either view;
-secondary tags match the strategy filter and search in both. Read
-`../deck-catalog-strategies.md` for the selection rules, supported IDs, examples,
-and how changes and renames affect placement.
+The catalog's categories are a FIXED set: seven plus an `other` catch-all. Use
+only these IDs, never invent or rename one, and pick the primary by how the deck
+wins:
 
-Choose the defining plan from the finished list and guide. Add only secondary
-themes with a real supporting package. Krenko-Combo is `goblins`, `tribal`,
-`tokens`, `combo`, `aristocrats`; Cloud-Attacks spreads Equipment across a team
-and is not Voltron, while Cloud-Equipment builds one lethal attacker. Ordinary mana rocks
-do not make every deck an artifact deck, and one recovery spell does not make it
-reanimator. Revisit tags when the plan changes; routine swaps need not retag it.
+    aggro      Aggro & Voltron       attacking: voltron, attack triggers, extra combats
+    gowide     Tokens & Aristocrats  an army of tokens, or sacrificing it
+    combo      Combo                 assembling a loop or alternate win IS the plan
+    control    Stax & Control        taxes, locks, hatebears, pillowfort, counters, theft, goad
+    graveyard  Graveyard             reanimation, recursion, self-mill, discard, wheels
+    spells     Spells & Burn         spellslinger, storm, burn, drain, punisher
+    value      Value & Ramp          ramp, lands, artifacts, enchantments, counters, blink, walkers
+    other      Other Strategies      catch-all, ONLY when a plan truly fits none of the seven
 
-All Goblin decks belong in the dedicated **Goblins** category: put `goblins`
-first, ahead of broader strategies such as `tribal`, `tokens`, or `combo`.
-Keep those supported strategies as secondary tags. This includes Goblin hybrids
-and Goblin decks led by non-Goblin commanders. Incidental Goblin cards or a
-Goblin commander alone are not enough. In Categories, brackets sit inside Goblins; deck files
-stay in their existing bracket folders. A new `-Goblins` filename falls back to
-`goblins`; existing decks can keep their names through explicit assignments.
+A deck's entry is its primary first, then any secondary categories with a real
+supporting package: `Krenko-Combo: combo, gowide, goblins`, `Najeela-Warriors:
+aggro, combo, gowide`. Creature types are not categories. The one exception is
+`goblins`: every Goblin deck adds it as a SECONDARY tag (never first), and only
+the owner's local catalog shows a Goblins section mirroring those decks.
+Read `../deck-catalog-strategies.md` for the definitions, distinctions and
+examples.
 
-Keep the `Bracket*/Commander-Theme.txt` layout. Strategy folders are not used.
-The public map is `../frontend/deck-themes.json`, keyed by exact filename stem:
-the first ID is the primary group, followed by secondary IDs. If no entry exists,
-the last filename word is matched against `HINTS` in `../scripts/deckthemes.py`;
-unknown words appear under Other Strategies. Fallbacks assign only one group.
-Choose a meaningful recognized filename theme for a new deck when possible;
-do not rename an existing deck merely to alter a catalog label.
+Keep the `Bracket*/Commander-Theme.txt` layout; category folders are not used.
+The public map is `../frontend/deck-themes.json`, keyed by exact filename stem.
+If no entry exists, the last filename word is matched against `HINTS` in
+`../scripts/deckthemes.py` (unknown words fall back to `other`). Choose a
+meaningful filename theme word for a new deck; do not rename an existing deck
+merely to alter a catalog label.
 
 You can READ the map and classifier but cannot WRITE them from this public-only
-sandbox. Complete the deck and guide work you can do here. If a new or changed
-explicit assignment is needed, state the exact filename stem and ordered IDs
-in your handoff and say that a full-workspace maintainer must save the map entry.
-Do not claim tags were saved because you mentioned them in the guide or reply:
-neither is parsed as metadata. Do not bypass the workspace boundary or request
-authorization the user has already given. The bot's normal publication uses
-the existing assignment or fallback until the explicit map is updated.
+sandbox. For every new deck, and whenever tuning changes the plan, end your
+reply with the exact stem and ordered IDs, for example
+`Categories: Krenko-Combo — combo, gowide, goblins`, and say that a
+full-workspace maintainer must save the map entry. Do not claim the categories
+were saved: neither the guide nor your reply is parsed as metadata.
+
+## Placing the deck in a power tier
+
+A bracket says what a deck may run; a tier says how hard the finished list
+actually hits at a four-player table. The catalog has a **Tiers** view that ranks
+every deck GOD, SS, S, A, B, C, D, TRASH, and a deck nobody placed shows up
+there as **Unrated** with a "?" mark. Placing a new deck is part of finishing it.
+
+Read `../deck-tiers.md` for what each tier means, the placement checklist, and
+the anchor decks per tier. In short: count the speed inputs (fast mana, tutors,
+free interaction), find the compact wins (two cards, or the commander plus one),
+estimate the kill turn, apply the ceilings (no compact win means A at most),
+then compare it with the anchors in neighbouring tiers. Judge the list you
+shipped, not the commander's reputation and not the bracket folder.
+
+The map is `../frontend/deck-tiers.json`, keyed by exact filename stem, and like
+the theme map you can READ it but not WRITE it from this sandbox. So end every
+new-deck reply with one line in exactly this form:
+
+    Tier: <TIER> — <the specific cards or lines that put it there>
+
+for example `Tier: S — Kiki-Jiki + Zealous Conscripts and Krenko + Thornbite
+Staff, five tutors that reach both, Ancient Tomb and Mana Vault for speed`. Say
+that a full-workspace maintainer must save it to the map; do not claim the tier
+was saved. When tuning moves a deck across a tier boundary, give the same line
+with the new tier.
 
 ## Other non-negotiables
 

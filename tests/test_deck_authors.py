@@ -25,7 +25,8 @@ class FakeDeck:
     bracket = "Bracket3"
     label = "Bracket 3"
     stem = "Test-Deck"
-    themes = ("other",)
+    themes = ("value",)
+    tier = None
     commander = "Test Commander"
     href = "Bracket3/Test-Deck.html"
     art_url = ""
@@ -110,7 +111,8 @@ class DeckAuthorTests(unittest.TestCase):
         )
         self.assertIn('<span class="tile-author">by alice</span>', page)
         self.assertIn(
-            'data-search="Test-Deck Test Commander Bracket 3 alice Other Strategies"', page
+            'data-search="Test-Deck Test Commander Bracket 3 alice Value &amp; Ramp ramp big mana lands '
+            'landfall artifacts enchantress counters proliferate blink superfriends toolbox unrated"', page
         )
 
     def test_index_does_not_reference_an_unavailable_art_file(self) -> None:

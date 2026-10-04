@@ -32,6 +32,13 @@ h2 .count{color:var(--line)}
 .repo{margin-left:auto;color:var(--dim);text-decoration:none;
   white-space:nowrap;font-size:.9rem}
 .repo:hover{color:var(--fg)}
+/* Topbar button: same height as the picker beside it, never wraps its label. */
+.random-deck{padding:6px 11px;font-size:.85rem;white-space:nowrap}
+.random-deck:disabled{opacity:.6;cursor:progress}
+/* Shown once on the deck a Random click landed on: did the copy work or not. */
+.random-notice{margin:0 0 16px;padding:9px 13px;border:1px solid var(--accent-line);
+  border-radius:8px;background:var(--accent-bg);color:var(--fg);font-size:.88rem}
+.random-notice.manual{border-color:var(--line);background:var(--panel)}
 .search{flex:1;min-width:90px;max-width:260px;background:var(--panel2);
   color:var(--fg);border:1px solid var(--line);border-radius:7px;
   padding:6px 10px;font:inherit;font-size:.9rem}

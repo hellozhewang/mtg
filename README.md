@@ -20,7 +20,7 @@ is what most of this document is about. The bracket rules themselves live in
 [commander-brackets-and-rules.md](commander-brackets-and-rules.md).
 
 **Browse the decks:** [public/](public/) — grouped by bracket, or in Discord via
-`/deck-list` and `/deck-print`.
+`/deck-list`, `/deck-print` and `/deck-random`.
 
 ```bash
 ./scripts/new_deck.py "Queen Marchesa" -o public/Bracket3/Marchesa-Pillowfort.txt
@@ -41,9 +41,10 @@ file format, what each tool does, and the order to use them in.
 
 **Catalog placement is part of finishing a deck.** Follow
 [Placing decks in the Commander catalog](deck-catalog-strategies.md) when creating
-a deck or changing its plan: choose its primary strategy, add supported secondary
-themes, and update the appropriate public/private assignment map. Brackets remain
-the deck folders; strategies are metadata, not another directory hierarchy.
+a deck or changing its plan: choose its primary category from the fixed set, add
+supported secondary categories, and update the appropriate public/private
+assignment map. Brackets remain the deck folders; categories are metadata, not
+another directory hierarchy.
 
 ### 1. Follow the bracket rules
 
@@ -401,23 +402,35 @@ Renders every deck into a browsable site at
 **<https://hellozhewang.github.io/mtg/>** — a menu of decks, then per-deck pages
 with the list grouped by card type, a mana curve, hover-to-preview card images, a
 click-to-enlarge view (with a flip button for double-faced cards), a gallery mode
-and a copy-the-decklist button. Decks created through Discord also show the
+and a copy-the-decklist button. The **Random** button in the top bar of every
+page picks a deck at random, copies its decklist to the clipboard, and opens its
+page with a note saying whether the copy worked (browsers refuse the clipboard on
+`file://`, so open the site over HTTP). Decks created through Discord also show the
 Discord user who requested them; the catalog search matches those usernames, so
 typing an author filters the deck cards the same way typing a commander does.
 
 The catalog initially opens in **List**, with decks under individually collapsible
 brackets. Brackets start open; click their label to collapse or expand them.
 Your browser remembers the chosen view, layout, and collapsed sections when you return.
-Switch to **Categories** for collapsible Commander strategy groups containing
-bracket subsections. Rows / Tiles controls layout separately. Each deck appears
-once, with secondary theme tags and filters in both views.
-See the [placement guide](deck-catalog-strategies.md) for theme IDs,
+Switch to **Categories** for seven fixed, collapsible categories, each with
+bracket subsections: Aggro & Voltron, Tokens & Aristocrats, Combo, Stax &
+Control, Graveyard, Spells & Burn, and Value & Ramp. Each is defined by how the
+deck wins. Other Strategies is the catch-all for a plan that fits none of them. Rows / Tiles controls layout separately. Each deck appears once, with
+secondary category tags and filters in every view.
+See the [placement guide](deck-catalog-strategies.md) for the definitions,
 assignment rules, and the public/private metadata locations.
 
-In Categories, all Goblin decks go in **Goblins**, with brackets inside
-it. Put `goblins` first in their theme assignments and keep supported strategies
-such as `tribal`, `tokens`, and `combo` as secondary tags. The placement guide
-applies this rule to new decks and existing Goblin hybrids in both catalogs.
+Switch to **Tiers** to rank the collection by power: GOD, SS, S, A, B, C, D
+and TRASH, strongest first. Every deck name carries its tier mark in all three
+views, and the search box finds a tier by name (`s tier`, `god tier`). A tier is
+not a bracket: the bracket is what a deck may run, the tier is how hard the
+finished list hits. [deck-tiers.md](deck-tiers.md) has the rubric, the anchor
+decks for each tier and how to place a new deck.
+
+**Goblins** is a private-only eighth category. Every Goblin deck keeps its
+canonical primary and carries `goblins` as a secondary tag. The local catalog
+mirrors those decks, public and private, into a Goblins section; the published
+catalog ignores the tag.
 
 ```bash
 ./scripts/build_site.py              # rebuild docs/ from public/  -- PUBLISHED
@@ -577,13 +590,21 @@ sequence without launching a separate reviewing agent (see `AGENTS.md` below).
    deck's engines, actual wins, weaknesses, opening hands, and sequencing.
 
 8. **Review catalog placement.** Follow [the placement guide](deck-catalog-strategies.md).
-   Choose one primary strategy and supported secondary themes, then save the
+   Choose one primary category from the fixed set and any supported secondary
+   categories (plus `goblins` for a Goblin deck), then save the
    ordered IDs in `frontend/deck-themes.json` for a public deck or
    `private/deck-themes.json` for a private deck. A full-workspace publisher then
    rebuilds and checks the catalog. The Discord builder follows the guide's
    sandbox handoff instructions when it cannot write the mapping itself.
 
-9. **Independent second opinion, when appropriate.** `ask_codex.py`, with the validator's result stated as
+9. **Place it in a power tier.** Every deck gets one of GOD, SS, S, A, B, C, D
+   or TRASH, following [deck-tiers.md](deck-tiers.md). Save it in
+   `frontend/deck-tiers.json` (public) or `private/deck-tiers.json` (private).
+   A deck with no entry shows as Unrated, `build_site.py` warns about it, and
+   the test suite fails for any public deck left out. Re-check the tier when
+   tuning adds or cuts combo pieces, tutors or fast mana.
+
+10. **Independent second opinion, when appropriate.** `ask_codex.py`, with the validator's result stated as
    settled fact in the prompt so Codex doesn't re-derive it — never ask it to
    count Game Changers, that's a 10-minute web-search detour for something
    `validate_deck.py` answers in milliseconds. Ask only for what no script can
@@ -591,8 +612,9 @@ sequence without launching a separate reviewing agent (see `AGENTS.md` below).
    own symmetric stax pieces hurt you more than the table, and rules judgment
    calls (MLD, lockouts) as a check against step 2.
 
-**The Discord bot also writes the guide and reviews catalog placement. It does
-not run the independent-review command in step 9.**
+**The Discord bot also writes the guide, reviews catalog placement and names a
+tier (its sandbox cannot save either map, so it hands both off). It does not run
+the independent-review command in step 10.**
 The bot's working session *is* a Codex `exec` process. Having it invoke
 `ask_codex.py` would be Codex asking Codex to review Codex's own output — no
 independent model, no outside context, and a second multi-minute `codex exec` call
@@ -606,7 +628,7 @@ from a genuinely separate reviewing context, which the bot never has.
 | named mass land denial | `validate_deck.py` | yes |
 | unlisted land denial, two-card lockouts | you, against `commander-brackets-and-rules.md` | no |
 | does each card's trigger match the theme | you | no |
-| catalog primary strategy and secondary themes | you, against `deck-catalog-strategies.md` | IDs/format only; strategy fit needs review |
+| catalog primary and secondary categories | you, against `deck-catalog-strategies.md` | fixed IDs, canonical primary and public coverage; fit needs review |
 | whether the deck can actually win | you, or `ask_codex.py` (human sessions only) | no |
 | which symmetric stax hurts you more than the table | you, or `ask_codex.py` (human sessions only) | no |
 

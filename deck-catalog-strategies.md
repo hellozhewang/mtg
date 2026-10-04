@@ -1,27 +1,54 @@
 # Placing decks in the Commander catalog
 
-Every new deck needs a deliberate catalog placement. Revisit it when tuning
-changes the plan. Read the finished decklist and guide before choosing labels:
-a commander, filename, or single card does not establish a strategy.
+Every new deck needs a deliberate catalog placement, and a power tier as well
+(see [deck-tiers.md](deck-tiers.md)). Revisit the placement when tuning changes
+the plan. Read the finished decklist and guide before choosing: a commander,
+filename, or single card does not establish a strategy.
+
+**The categories are fixed.** There are exactly seven canonical categories, an
+**Other Strategies** catch-all for a plan that genuinely fits none of them, and
+Goblins as a private-only extra. Builders choose from this set and never invent,
+rename or add a category; changing the set is the owner's decision (owner
+instruction, 2026-10-04).
 
 The catalog initially opens in **List**, showing decks under individually collapsible
 brackets. Brackets start open; click their label to collapse or expand them.
 The browser remembers the chosen view, layout, and collapsed sections on return.
-Switch to **Categories** to group by **primary strategy, then bracket**, with
-collapsible strategy sections and Expand all / Collapse all controls. For example,
-Stax / Prison contains its own Bracket 3, Bracket 3.5, and Bracket 4 subsections
-when those brackets have decks. Empty subsections are omitted. Each deck appears
-once. Secondary themes appear on its tile and match the strategy filter and text
-search in either view. Rows / Tiles controls the layout separately. These rules
-apply to both the public and local catalogs; classification determines placement
-in Categories and filtering in both views.
+Switch to **Categories** to group by **category, then bracket**, with collapsible
+category sections and Expand all / Collapse all controls. Empty subsections are
+omitted. **Tiers** groups by power tier instead. Secondary categories appear on a
+deck's tile and match the category filter and text search in every view.
+Rows / Tiles controls the layout separately.
+
+## The seven categories
+
+Each category is defined by **how the deck wins**, so every deck has one obvious
+primary.
+
+| ID | Catalog label | The deck wins by… |
+|---|---|---|
+| `aggro` | Aggro & Voltron | Attacking: one huge threat, attack triggers, extra combats, evasive or tribal beatdown. |
+| `gowide` | Tokens & Aristocrats | An army of tokens or small creatures, or sacrificing it for value and drain. |
+| `combo` | Combo | Assembling a loop or an alternate win condition. |
+| `control` | Stax & Control | Denying the table: taxes, locks, hatebears, pillowfort, counterspells, theft and goad. |
+| `graveyard` | Graveyard | Using the graveyard as a resource: reanimation, recursion, self-mill, discard and wheels. |
+| `spells` | Spells & Burn | Never needing combat: spellslinger and storm engines, burn, drain and punisher effects. |
+| `value` | Value & Ramp | Out-resourcing the table with engines: big mana, lands, artifacts, enchantments, counters, blink, planeswalkers. |
+| `other` | Other Strategies | The catch-all: a plan that genuinely fits none of the seven. Try every one first; a deck here should be rare. |
+
+| Private-only | Catalog label | Use |
+|---|---|---|
+| `goblins` | Goblins | A secondary tag on every Goblin deck. The local catalog mirrors those decks into a Goblins section; the published catalog ignores the tag. Never a primary. |
+
+[`scripts/deckthemes.py`](scripts/deckthemes.py) defines the IDs, labels, order
+and filename fallbacks. Use the IDs in JSON, not labels or synonyms.
 
 ## File placement and metadata
 
 Keep decklists and matching `.guide` files in `public/Bracket*/` or
 `private/Bracket*/`, following the [bracket rules](README.md#core-rules).
-**Do not create strategy directories or move a deck into another bracket to
-change its group.** Theme labels do not change legality or Game Changer caps.
+**Do not create category directories or move a deck into another bracket to
+change its group.** Categories do not change legality or Game Changer caps.
 
 | Deck visibility | Assignment file |
 |---|---|
@@ -29,190 +56,135 @@ change its group.** Theme labels do not change legality or Game Changer caps.
 | Private | `private/deck-themes.json` (ignored; local only) |
 
 The key is the **exact filename stem**, without a directory or extension, not
-the printed commander name. The value is a nonempty array of theme IDs:
+the printed commander name. The value is a nonempty array of category IDs:
 
 ```json
 {
-  "Krenko-Combo": ["goblins", "tribal", "tokens", "combo", "aristocrats"],
-  "Cloud-Attacks": ["artifacts", "combat", "tokens"],
-  "Cloud-Equipment": ["voltron", "artifacts"],
-  "Kinnan-Infinite": ["combo", "ramp"]
+  "Krenko-Combo": ["combo", "gowide", "goblins"],
+  "Cloud-Equipment": ["aggro", "value"],
+  "Greasefang-Vehicles": ["graveyard", "aggro", "value"],
+  "Kinnan-Infinite": ["combo", "value"]
 }
 ```
 
-**The first ID chooses the section; the remaining IDs are secondary filters.**
-Preserve that intentional order. Sort deck keys for readability, but do not
-alphabetize a deck's theme array or duplicate IDs.
+**The first ID is the primary category and must be one of the seven or `other`;
+the rest are secondary filters.** Keep that order. Sort deck keys for readability, but do
+not alphabetise a deck's array or repeat an ID. Every public deck needs an
+explicit entry; the test suite fails for one without.
 
 Public and private maps are independent. A private deck may share a filename
-with a public deck and have a different strategy. Never put private deck names
-or assignments in the public map. Because keys omit brackets, public versions
-sharing a stem also share an assignment; give genuinely different plans distinct
-`Commander-Theme` names when creating them.
+with a public deck and have a different category. Never put private deck names
+or assignments in the public map.
 
-## Choosing the primary strategy and secondary themes
+## Choosing the primary and secondary categories
 
-1. Describe the deck's normal route to a win in one sentence. Check the guide's
-   engines, finishers, opening hands, and sequencing against the actual cards.
-2. Choose the group a player seeking that experience would expect. Favor the
-   defining engine or plan over a secondary support package. Apply the Goblins
-   placement rule below before choosing a broader strategy.
-3. Add secondary themes when a meaningful package of cards supports them and the
-   pilot regularly uses that plan. Most decks need two to four total labels;
-   use fewer or more when the list warrants it.
-4. Keep the primary group when ordinary tuning preserves the deck's identity.
-   Reclassify when the main plan changes. Remove tags whose engines or win
-   conditions have been cut.
+1. Describe the deck's normal route to a win in one sentence, checked against
+   the guide's engines, finishers and the actual cards.
+2. The category that sentence describes is the primary. A deck whose combo is a
+   backup to an attacking plan is `aggro` with `combo` secondary; a deck built
+   to assemble the combo is `combo`.
+3. Add secondary categories only for a real supporting package the pilot uses.
+   Most decks need one to three in total.
+4. A Goblin deck adds `goblins` as a secondary tag (see below).
+5. Keep the primary when ordinary tuning preserves the deck's identity.
+   Reclassify when the main plan changes.
 
 Examples from this collection:
 
-- **Krenko-Combo:** `goblins` first for the dedicated Goblins category;
-  `tribal`, `tokens`, `combo`, and `aristocrats` remain secondary tags.
-- **Kinnan-Infinite:** `combo` first because assembling a mana loop is the main
-  plan; `ramp` also applies.
-- **Shorikai-Prison:** `stax` first; the defensive wall and artifact engine also
-  justify `pillowfort` and `artifacts`.
-- **Cloud-Attacks:** `artifacts` with `combat` and `tokens`; Equipment is spread
-  across a team. **Cloud-Equipment** is `voltron` with `artifacts` because it
-  builds one lethal attacker.
+- **Krenko-Combo:** `combo` (built to untap Krenko and loop), `gowide`, `goblins`.
+- **Najeela-Warriors:** `aggro` (the Warriors attack every turn), with `combo`
+  for the infinite-combat finish and `gowide`.
+- **Greasefang-Vehicles:** `graveyard`: the Vehicles come back from the graveyard
+  to attack, so the graveyard is the engine; `aggro` and `value` are secondary.
+- **Cloud-Attacks** and **Cloud-Equipment** are both `aggro`: one spreads
+  Equipment across a team, the other builds one lethal attacker.
 
 Useful distinctions:
 
-- **Stax / pillowfort:** taxing spells or disabling resources supports `stax`;
-  discouraging attacks supports `pillowfort`. A deck can do both.
-- **Tribal / tokens:** shared creature-type payoffs support `tribal`; building
-  a wide army supports `tokens`. Token production alone does not establish a
-  tribal plan.
-- **Combo / synergy:** use `combo` for an actual assembled win or decisive
-  engine. Ordinary synergy or one standalone alternate-win card is not enough.
-  The combo need not be infinite.
-- **Artifacts / enchantress:** ordinary mana rocks do not make an artifact
-  deck. A few strong enchantments do not make an enchantress deck.
-- **Spellslinger / storm:** the shared group includes spell-based engines;
-  only describe a deck as storm when casting many spells in a turn matters.
-- **Punisher / lifegain:** punishing opponents' actions or repeatedly damaging
-  the table supports `punisher`; a life-resource or lifegain-to-drain engine
-  supports `lifegain`. Check the actual triggers.
-- **Reanimator / recovery:** a sustained graveyard threat or copy plan supports
-  `reanimator`; one recovery spell does not.
+- **Aggro or go-wide:** a few strong attackers, attack triggers or extra combats
+  are `aggro`. A wide board of tokens whose number is the point, or sacrifice
+  engines, is `gowide`.
+- **Control or spells:** taxes, locks, counterspells and theft are `control`.
+  Damage to the table from spells or punisher triggers is `spells`, even in a
+  creature deck such as Ruric Thar.
+- **Combo:** use it as a primary only when assembling the win IS the plan, and as
+  a secondary for any deck with a real assembled win. One standalone alternate-win
+  card is not enough.
+- **Graveyard or value:** reanimation, recursion, discard and wheels are
+  `graveyard`. Engines that grind through ramp, artifacts, enchantments,
+  counters, blink or planeswalkers are `value`. Ordinary mana rocks make
+  nothing an artifact deck.
+- **Creature types are not categories.** An Elf or Vampire deck goes where its
+  plan puts it. Goblins is the one owner-requested exception, and only as a
+  private mirror.
 
-## Special category: Goblins
+## Goblins: the private-only eighth category
 
-**All Goblin decks belong under Goblins, with `goblins` as the first theme ID.**
-This owner-requested category takes precedence over broader primary labels such
-as `tribal`, `tokens`, `combo`, `aristocrats`, or `counters`. It includes Goblin
-hybrids whose engines use counters, sacrifice, or tokens, and Goblin decks led
-by a non-Goblin commander. Keep each supported broader strategy as a secondary
-tag so those filters still find the deck. A few incidental Goblin cards or a
-Goblin commander without a Goblin plan do not establish a Goblin deck.
+**Every Goblin deck carries `goblins` as a secondary tag, after its canonical
+primary.** That includes Goblin hybrids and Goblin decks led by a non-Goblin
+commander. A few incidental Goblin cards, or a Goblin commander without a Goblin
+plan, do not make a Goblin deck.
 
-In Categories, the hierarchy is **Goblins → bracket → decks**, in both catalogs.
-List still puts these decks directly under their brackets. Preserve the
-bracket folders and visibility; assign private decks only in the private map.
-Do not rename an existing deck to add the category: `Krenko-Combo`, for example,
-gets it through its explicit assignment. New `Commander-Goblins` filenames fall
-back to `goblins` when no explicit entry exists; builders with access to the
-map should still save the full reviewed set of tags. Other creature types stay
-in the existing strategy groups unless a separate category is requested.
+The tag works differently in the two catalogs:
 
-## Supported theme IDs
+- **Local (private) catalog:** each Goblin deck appears in its canonical category
+  AND in a Goblins section (Goblins → bracket → decks), for public and private
+  Goblin decks alike. The Goblins copy is a mirror: it is not moved between
+  views and does not add to the deck count. Goblins also appears in the filter.
+- **Published catalog:** the tag is ignored. No Goblins section, chip or filter
+  option; Krenko-Combo sits only under Combo.
 
-[`scripts/deckthemes.py`](scripts/deckthemes.py) defines accepted IDs, display
-labels, ordering, and filename fallbacks. Use IDs in JSON, not display labels
-or invented synonyms.
-
-| ID | Catalog label | Use when the deck is built around… |
-|---|---|---|
-| `stax` | Stax / Prison | Taxes, hatebears, resource restrictions, or locks. |
-| `pillowfort` | Pillowfort | Making attacks against its pilot difficult or costly. |
-| `voltron` | Voltron | Turning one creature into a lethal attacker. |
-| `goblins` | Goblins | Any Goblin deck, including token, sacrifice, counter, and combo hybrids; always primary. |
-| `tribal` | Tribal / Kindred | A shared creature type and its payoffs. |
-| `tokens` | Tokens / Go-wide | A broad army of tokens or small creatures. |
-| `aristocrats` | Aristocrats | Sacrifices, death triggers, and related value engines. |
-| `reanimator` | Reanimator | Returning or copying threats from the graveyard. |
-| `spellslinger` | Spellslinger / Storm | Instants, sorceries, noncreature spells, or spell chains. |
-| `punisher` | Group Slug / Punisher | Table-wide damage or punishing opponents' actions. |
-| `goad` | Goad / Forced Combat | Compelling attacks and directing opponents' combat. |
-| `combo` | Combo | Assembling interacting pieces for a decisive engine or win. |
-| `lands` | Lands / Landfall | Land drops, land recursion, or lands as an engine. |
-| `artifacts` | Artifacts / Vehicles | Artifact synergies, Equipment, Treasures, or Vehicles. |
-| `enchantress` | Enchantress | Enchantments as a sustained card and board engine. |
-| `counters` | Counters / Proliferate | Adding, manipulating, or multiplying counters. |
-| `lifegain` | Lifegain / Drain | Life as a resource or turning lifegain into life loss. |
-| `discard` | Discard / Wheels | Hand disruption, discarding for value, or replacing hands. |
-| `superfriends` | Superfriends | Protecting and repeatedly activating planeswalkers. |
-| `theft` | Theft / Gifts | Playing opponents' cards or giving away harmful permanents. |
-| `blink` | Blink / ETB | Repeating enter abilities through flicker or copies. |
-| `combat` | Combat / Attack Triggers | Attack triggers, combat abilities, or extra attacks. |
-| `ramp` | Ramp / Big Mana | Accelerating into expensive threats and spells. |
-| `toolbox` | Toolbox / Value | Flexible tutors, repeatable abilities, and adaptable engines. |
-| `other` | Other Strategies | A plan that genuinely does not fit an existing category. |
-
-Check for an existing fit before adding a category. A full-workspace maintainer
-adding an ID must update `THEMES`, this table, relevant assignments, and any
-appropriate filename fallback in `HINTS`, then rebuild and check the catalog.
-Do not use `other` merely to avoid reviewing a deck.
+A new `Commander-Goblins` filename falls back to `gowide` + `goblins`, but give it
+a reviewed explicit entry.
 
 ## New decks, changes, and fallbacks
 
 - **New deck:** add an explicit entry after validating the list and writing its
-  guide. Full-workspace builders should not rely on filename guesses as the
-  finished classification.
-- **Tuned deck:** review the assignment when engines, finishers, or supported
-  themes change. A routine land swap normally needs no tag change.
+  guide. Filename guesses are not a finished classification.
+- **Tuned deck:** review the assignment when engines or finishers change. A
+  routine card swap normally needs no change.
 - **Bracket move:** keep the key when the filename stem is unchanged.
-- **Rename:** move the entry to the new stem. Remove the old entry once no deck
-  in that visibility scope uses it.
-- **Delete:** remove the assignment only when no remaining deck in that scope
-  uses its stem.
+- **Rename:** move the entry to the new stem.
+- **Delete:** remove the entry when no remaining deck in that scope uses it.
 
-The renderer uses explicit assignments first. Without one, it checks the word
-after the last hyphen against `HINTS` in `scripts/deckthemes.py`; an unknown word
-becomes `other`. Fallbacks supply a primary group only. They do not infer secondary
-themes from card text or the guide. A statement in a `.guide` or chat message
-does not update JSON metadata. Invalid IDs, empty arrays, and duplicate tags fail
-the build.
+Without an explicit entry, the renderer matches the word after the last hyphen
+against `HINTS` in `scripts/deckthemes.py` (for example `-Prison` gives
+`control` and `-Reanimator` gives `graveyard`); an unknown word falls back to
+`other`, which is a reason to add a reviewed entry, not a placement. A statement in a `.guide` or a chat message does not update the map.
+Unknown IDs, a non-canonical primary, empty arrays and repeated IDs fail the build.
 
 ## Discord builder access
 
 The bot's builder works in `public/` and cannot write `frontend/` or `scripts/`.
-It can read this guide, the public map, and the classifier. Inspect the existing
-assignment, choose an honest filename theme for a new deck, and check its fallback
-before finishing. Do not rename an existing deck solely to manipulate a label;
-an explicit assignment takes precedence anyway.
-
-Complete the authorized decklist and guide work inside that workspace. If the
-intended placement needs a new or changed explicit entry, include the exact stem
-and ordered IDs in the handoff, for example:
-`Krenko-Combo: goblins, tribal, tokens, combo, aristocrats`. State that the map
-still needs a full-workspace update. Do not claim the tags were saved, bypass the sandbox,
-or ask the user to repeat authorization already given. The current bot publishes
-deck files using existing assignments/fallbacks; it does not parse theme proposals
-from the builder's reply.
+It can read this guide, the public map and the classifier. Choose an honest
+filename theme word for a new deck, and in the handoff give the exact stem and
+ordered IDs from the fixed set, for example:
+`Krenko-Combo: combo, gowide, goblins`. State that the map still needs a
+full-workspace update. Do not claim the categories were saved, and do not invent
+a category outside the fixed set.
 
 ## Finish and verify
 
 For a full-workspace build or tune:
 
 1. Validate the deck and update its `.guide`.
-2. Save the reviewed assignment in the correct public or private map.
+2. Save the reviewed assignment in the correct public or private map, and the
+   deck's tier in the matching `deck-tiers.json`.
 3. Run `python3 scripts/build_site.py`, then
    `python3 scripts/build_site.py --check` from the repository root. The check
    covers the public build; inspect the local catalog too for private changes.
-4. Confirm the deck appears once under its bracket in List and under its primary
-   strategy and correct bracket in Categories,
-   and remains discoverable when selecting a secondary theme. Check author and
-   private badge, plus both views, Rows/Tiles, bracket/category collapse, and search.
+4. Confirm the deck appears once under its bracket in List, under its primary
+   category and bracket in Categories (plus Goblins locally, for a Goblin deck),
+   and under its tier in Tiers, and that the filter finds it by each secondary
+   category.
 5. Publish authorized public changes with the generated frontend. Keep `private/`
    and `docs/private/` out of the commit and preserve unrelated working-tree edits.
-   Private-only assignments stay local.
 
 When changing classification or rendering code, also run
-`python3 -m unittest discover -s tests` and check filters in a browser. Tests cover
-metadata validation, fallback behavior, grouping, secondary tags, and
-public/private rendering separation. They do not judge whether a deck's cards
-support its labels; that review remains part of deckbuilding.
+`python3 -m unittest discover -s tests`. Tests cover the fixed set, map
+validation, fallbacks, grouping, the Goblins mirror and public/private
+separation. They do not judge whether a deck's cards support its labels; that
+review remains part of deckbuilding.
 
 Never hand-edit generated HTML to move a tile. Update source metadata and rebuild
 so the placement survives the next automated publication.

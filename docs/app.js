@@ -61,6 +61,7 @@
     items.forEach(function (el) {
       el.setAttribute('data-key', fold(el.dataset.search || el.dataset.name || ''));
     });
+    var total = items.filter(function (el) { return !el.classList.contains('mirror'); }).length;
 
     var sections = toArray(document.querySelectorAll(tiles.length
       ? '.bracket-group, .strategy-group, .tier-group' : '.cards .cat'));
@@ -83,7 +84,8 @@
         var hit = (!q || el.getAttribute('data-key').indexOf(q) !== -1)
           && (!theme || (el.dataset.themes || '').split(' ').indexOf(theme) !== -1);
         el.classList.toggle('is-filtered', !hit);
-        if (hit) shown++;
+        // A mirror is a second link to a deck already counted elsewhere.
+        if (hit && !el.classList.contains('mirror')) shown++;
       });
       // Hide a section once every child is gone, so the page does not turn into
       // a column of empty headings.
@@ -100,7 +102,7 @@
         : 'Nothing matches “' + input.value + '”.';
       empty.classList.toggle('on', !shown);
       if (results) results.textContent = (q || theme ? shown + ' of ' : '')
-        + items.length + ' decks';
+        + total + ' decks';
       if (clear) clear.hidden = !q && !theme;
       if (catalogState) catalogState.save();
     }
@@ -230,7 +232,9 @@
     var categories = wrap.querySelector('.catalog-categories');
     var tierList = wrap.querySelector('.catalog-tiers');
     var actions = document.querySelector('.category-actions');
-    var tiles = toArray(wrap.querySelectorAll('.tile'));
+    // Mirrors (the local catalog's Goblins section) are rendered in place and
+    // never move; only the real tile for each deck travels between views.
+    var tiles = toArray(wrap.querySelectorAll('.tile:not(.mirror)'));
     var listTargets = new Map();
     var categoryTargets = new Map();
     var tierTargets = new Map();
@@ -402,6 +406,76 @@
     });
   }
 
+  /* ---- random deck -------------------------------------------------------- */
+  // One button in the topbar of every page. It draws from the deck picker's own
+  // options (already on every page, hrefs already relative to it, the current
+  // deck excluded), copies that deck's list, then opens its page. The list comes
+  // from the destination's own .rawlist, fetched, so no page carries every
+  // decklist just in case.
+  //
+  // The copy has to START inside the click: Safari refuses a clipboard write
+  // that begins after an await. A ClipboardItem whose data is a promise keeps
+  // that permission while the fetch runs; writeText after the fetch is the
+  // fallback for browsers without it (Chrome still counts the click for a few
+  // seconds). Neither works on file://, so the page then says to copy by hand.
+  function initRandomDeck() {
+    var button = document.querySelector('.btn[data-random]');
+    var picker = document.querySelector('.deckpicker');
+    if (!button || !picker) return;
+    button.addEventListener('click', function () {
+      var choices = toArray(picker.options).filter(function (o) { return o.value && !o.selected; });
+      if (!choices.length) return;
+      var href = choices[Math.floor(Math.random() * choices.length)].value;
+      button.disabled = true;
+      var list = fetch(href).then(function (response) {
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        return response.text();
+      }).then(function (html) {
+        var raw = new DOMParser().parseFromString(html, 'text/html').querySelector('.rawlist');
+        if (!raw) throw new Error('no decklist on ' + href);
+        return raw.value;
+      });
+      copyWhenReady(list).then(function () { return 'copied'; }, function () { return 'manual'; })
+        .then(function (state) {
+          location.href = href + (href.indexOf('?') === -1 ? '?' : '&') + 'random=' + state;
+        });
+    });
+  }
+
+  function copyWhenReady(textPromise) {
+    function writeText(text) {
+      if (!navigator.clipboard) throw new Error('clipboard unavailable');
+      return navigator.clipboard.writeText(text);
+    }
+    if (window.ClipboardItem && navigator.clipboard && navigator.clipboard.write) {
+      try {
+        var item = new ClipboardItem({ 'text/plain': textPromise.then(function (text) {
+          return new Blob([text], { type: 'text/plain' });
+        }) });
+        return navigator.clipboard.write([item]).catch(function () { return textPromise.then(writeText); });
+      } catch (e) { /* a ClipboardItem that rejects promises: use the fallback */ }
+    }
+    return textPromise.then(writeText);
+  }
+
+  // On the page a Random click opened: say whether the list is on the clipboard,
+  // then drop the query so a reload or a shared link is just the deck.
+  function initRandomNotice() {
+    var match = /[?&]random=(copied|manual)/.exec(location.search);
+    var main = document.querySelector('main');
+    if (!match || !main) return;
+    var note = document.createElement('p');
+    note.className = 'random-notice' + (match[1] === 'manual' ? ' manual' : '');
+    note.setAttribute('role', 'status');
+    note.textContent = match[1] === 'copied'
+      ? '\uD83C\uDFB2 Random pick: the decklist is on your clipboard, ready to paste.'
+      : '\uD83C\uDFB2 Random pick. The browser blocked the copy, so use Copy decklist below.';
+    // Under the deck's title and commander line, where the eye lands first.
+    var sub = main.querySelector('.sub');
+    main.insertBefore(note, sub ? sub.nextSibling : main.firstChild);
+    try { history.replaceState(null, '', location.pathname + location.hash); } catch (e) { /* cosmetic */ }
+  }
+
   /* ---- readable image, with a local fallback ------------------------------ */
   // data-img points at cards.scryfall.io, a different host from the page. Some
   // networks refuse that host outright (ERR_CONNECTION_REFUSED), and an <img>
@@ -553,6 +627,8 @@
 
   /* ---- start --------------------------------------------------------------- */
   initDeckPicker();
+  initRandomDeck();
+  initRandomNotice();
   var catalogState = initCatalogState();
   var refreshSearch = initSearch(catalogState);
   initTooltips();

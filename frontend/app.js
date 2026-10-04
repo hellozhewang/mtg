@@ -61,9 +61,10 @@
     items.forEach(function (el) {
       el.setAttribute('data-key', fold(el.dataset.search || el.dataset.name || ''));
     });
+    var total = items.filter(function (el) { return !el.classList.contains('mirror'); }).length;
 
     var sections = toArray(document.querySelectorAll(tiles.length
-      ? '.bracket-group, .strategy-group' : '.cards .cat'));
+      ? '.bracket-group, .strategy-group, .tier-group' : '.cards .cat'));
     var disclosures = toArray(document.querySelectorAll('.decks details'));
     var beforeFilter = null;
     var empty = document.createElement('p');
@@ -83,7 +84,8 @@
         var hit = (!q || el.getAttribute('data-key').indexOf(q) !== -1)
           && (!theme || (el.dataset.themes || '').split(' ').indexOf(theme) !== -1);
         el.classList.toggle('is-filtered', !hit);
-        if (hit) shown++;
+        // A mirror is a second link to a deck already counted elsewhere.
+        if (hit && !el.classList.contains('mirror')) shown++;
       });
       // Hide a section once every child is gone, so the page does not turn into
       // a column of empty headings.
@@ -100,7 +102,7 @@
         : 'Nothing matches “' + input.value + '”.';
       empty.classList.toggle('on', !shown);
       if (results) results.textContent = (q || theme ? shown + ' of ' : '')
-        + items.length + ' decks';
+        + total + ' decks';
       if (clear) clear.hidden = !q && !theme;
       if (catalogState) catalogState.save();
     }
@@ -175,8 +177,9 @@
     var openStates = {};
     var filtering = false;
     function sectionKey(section) {
-      return section.classList.contains('strategy-group')
-        ? 'category:' + section.dataset.theme : 'bracket:' + section.dataset.bracket;
+      if (section.classList.contains('strategy-group')) return 'category:' + section.dataset.theme;
+      if (section.classList.contains('tier-group')) return 'tier:' + section.dataset.tier;
+      return 'bracket:' + section.dataset.bracket;
     }
     sections.forEach(function (section) {
       var id = sectionKey(section);
@@ -202,7 +205,7 @@
     // the asynchronously dispatched details toggle event.
     window.addEventListener('pagehide', save);
     return {
-      grouping: saved.grouping === 'categories' ? 'categories' : 'list',
+      grouping: ['categories', 'tiers'].indexOf(saved.grouping) !== -1 ? saved.grouping : 'list',
       layout: (saved.layout === 'list' || saved.layout === 'tiles') ? saved.layout
         : (legacyLayout === 'tiles' ? 'tiles' : 'list'),
       save: save,
@@ -214,8 +217,8 @@
   }
 
   /* ---- catalog grouping and layout -------------------------------------- */
-  // Move the same deck links between bracket and category containers. This
-  // preserves filters, tooltips, and one link per deck when switching views.
+  // Move the same deck links between bracket, category and tier containers.
+  // This preserves filters, tooltips, and one link per deck when switching views.
   //
   // `data-decks`, not `data-view`: the deck page's own toggle claims
   // `.btn[data-view]`, and one selector matching both sets of buttons is exactly
@@ -227,10 +230,14 @@
     var groupingButtons = toArray(document.querySelectorAll('.btn[data-grouping]'));
     var list = wrap.querySelector('.catalog-list');
     var categories = wrap.querySelector('.catalog-categories');
+    var tierList = wrap.querySelector('.catalog-tiers');
     var actions = document.querySelector('.category-actions');
-    var tiles = toArray(wrap.querySelectorAll('.tile'));
+    // Mirrors (the local catalog's Goblins section) are rendered in place and
+    // never move; only the real tile for each deck travels between views.
+    var tiles = toArray(wrap.querySelectorAll('.tile:not(.mirror)'));
     var listTargets = new Map();
     var categoryTargets = new Map();
+    var tierTargets = new Map();
     toArray(list.querySelectorAll('.bracket-group')).forEach(function (group) {
       listTargets.set(group.dataset.bracket, group.querySelector('.tiles'));
     });
@@ -240,18 +247,28 @@
           group.querySelector('.tiles'));
       });
     });
+    toArray(tierList.querySelectorAll('.tier-group')).forEach(function (group) {
+      tierTargets.set(group.dataset.tier, group.querySelector('.tiles'));
+    });
+    // The top-level sections Expand all / Collapse all act on in each grouping.
+    var collapsible = {
+      categories: toArray(categories.querySelectorAll('.strategy-group')),
+      tiers: toArray(tierList.querySelectorAll('.tier-group'))
+    };
 
     function groupBy(view) {
       tiles.forEach(function (tile) {
         var target = view === 'categories'
           ? categoryTargets.get(tile.dataset.themes.split(' ')[0] + ':' + tile.dataset.bracket)
+          : view === 'tiers' ? tierTargets.get(tile.dataset.tier)
           : listTargets.get(tile.dataset.bracket);
         target.appendChild(tile);
       });
       wrap.dataset.grouping = view;
       list.hidden = view !== 'list';
       categories.hidden = view !== 'categories';
-      actions.hidden = view !== 'categories';
+      tierList.hidden = view !== 'tiers';
+      actions.hidden = view === 'list';
       groupingButtons.forEach(function (btn) {
         btn.setAttribute('aria-pressed', String(btn.dataset.grouping === view));
       });
@@ -263,8 +280,8 @@
     });
     toArray(actions.querySelectorAll('[data-categories]')).forEach(function (btn) {
       btn.addEventListener('click', function () {
-        toArray(categories.querySelectorAll('.strategy-group')).forEach(function (category) {
-          category.open = btn.dataset.categories === 'expand';
+        (collapsible[wrap.dataset.grouping] || []).forEach(function (section) {
+          section.open = btn.dataset.categories === 'expand';
         });
         state.save();
       });
@@ -283,6 +300,20 @@
     apply(state.layout);
     buttons.forEach(function (btn) {
       btn.addEventListener('click', function () { apply(btn.dataset.decks); });
+    });
+  }
+
+  /* ---- guide sections ----------------------------------------------------- */
+  // Every titled guide section is a <details open>; these two buttons set them all.
+  // No saved state: a guide is read top to bottom, so it always opens expanded.
+  function initGuideSections() {
+    toArray(document.querySelectorAll('[data-guide-sections]')).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var open = btn.dataset.guideSections === 'expand';
+        toArray(document.querySelectorAll('.guide details.gsec')).forEach(function (d) {
+          d.open = open;
+        });
+      });
     });
   }
 
@@ -373,6 +404,76 @@
         selectAndCopy();
       }
     });
+  }
+
+  /* ---- random deck -------------------------------------------------------- */
+  // One button in the topbar of every page. It draws from the deck picker's own
+  // options (already on every page, hrefs already relative to it, the current
+  // deck excluded), copies that deck's list, then opens its page. The list comes
+  // from the destination's own .rawlist, fetched, so no page carries every
+  // decklist just in case.
+  //
+  // The copy has to START inside the click: Safari refuses a clipboard write
+  // that begins after an await. A ClipboardItem whose data is a promise keeps
+  // that permission while the fetch runs; writeText after the fetch is the
+  // fallback for browsers without it (Chrome still counts the click for a few
+  // seconds). Neither works on file://, so the page then says to copy by hand.
+  function initRandomDeck() {
+    var button = document.querySelector('.btn[data-random]');
+    var picker = document.querySelector('.deckpicker');
+    if (!button || !picker) return;
+    button.addEventListener('click', function () {
+      var choices = toArray(picker.options).filter(function (o) { return o.value && !o.selected; });
+      if (!choices.length) return;
+      var href = choices[Math.floor(Math.random() * choices.length)].value;
+      button.disabled = true;
+      var list = fetch(href).then(function (response) {
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        return response.text();
+      }).then(function (html) {
+        var raw = new DOMParser().parseFromString(html, 'text/html').querySelector('.rawlist');
+        if (!raw) throw new Error('no decklist on ' + href);
+        return raw.value;
+      });
+      copyWhenReady(list).then(function () { return 'copied'; }, function () { return 'manual'; })
+        .then(function (state) {
+          location.href = href + (href.indexOf('?') === -1 ? '?' : '&') + 'random=' + state;
+        });
+    });
+  }
+
+  function copyWhenReady(textPromise) {
+    function writeText(text) {
+      if (!navigator.clipboard) throw new Error('clipboard unavailable');
+      return navigator.clipboard.writeText(text);
+    }
+    if (window.ClipboardItem && navigator.clipboard && navigator.clipboard.write) {
+      try {
+        var item = new ClipboardItem({ 'text/plain': textPromise.then(function (text) {
+          return new Blob([text], { type: 'text/plain' });
+        }) });
+        return navigator.clipboard.write([item]).catch(function () { return textPromise.then(writeText); });
+      } catch (e) { /* a ClipboardItem that rejects promises: use the fallback */ }
+    }
+    return textPromise.then(writeText);
+  }
+
+  // On the page a Random click opened: say whether the list is on the clipboard,
+  // then drop the query so a reload or a shared link is just the deck.
+  function initRandomNotice() {
+    var match = /[?&]random=(copied|manual)/.exec(location.search);
+    var main = document.querySelector('main');
+    if (!match || !main) return;
+    var note = document.createElement('p');
+    note.className = 'random-notice' + (match[1] === 'manual' ? ' manual' : '');
+    note.setAttribute('role', 'status');
+    note.textContent = match[1] === 'copied'
+      ? '\uD83C\uDFB2 Random pick: the decklist is on your clipboard, ready to paste.'
+      : '\uD83C\uDFB2 Random pick. The browser blocked the copy, so use Copy decklist below.';
+    // Under the deck's title and commander line, where the eye lands first.
+    var sub = main.querySelector('.sub');
+    main.insertBefore(note, sub ? sub.nextSibling : main.firstChild);
+    try { history.replaceState(null, '', location.pathname + location.hash); } catch (e) { /* cosmetic */ }
   }
 
   /* ---- readable image, with a local fallback ------------------------------ */
@@ -468,7 +569,7 @@
   // child of it, and its rows are `.gcard` — so a lightbox bound to `.cards` and
   // looking for `.card` saw neither the container nor the class, and clicking a
   // guide card did nothing at all.
-  var ZOOMABLE = '.card[data-img], .gcard[data-img]';
+  var ZOOMABLE = '.card[data-img], .gcard[data-img], .gpiece[data-img]';
 
   function initLightbox(root, preview) {
     var overlay = document.createElement('div');
@@ -526,6 +627,8 @@
 
   /* ---- start --------------------------------------------------------------- */
   initDeckPicker();
+  initRandomDeck();
+  initRandomNotice();
   var catalogState = initCatalogState();
   var refreshSearch = initSearch(catalogState);
   initTooltips();
@@ -537,6 +640,7 @@
   if (!cards) return;                       // index page: nothing below applies
 
   initViewToggle(cards);
+  initGuideSections();
   initCopy();
   // Hover preview stays bound to `.cards`: a guide card is already rendered at
   // 200px, so a floating copy of the same image adds nothing there. Zoom binds

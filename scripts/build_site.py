@@ -79,6 +79,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import deckfile
 import deckguide
 import deckthemes
+import decktiers
 from deckmeta import DeckAuthorStore
 import frontend
 import toollog
@@ -248,7 +249,8 @@ class DeckInfo:
     def __init__(self, path: Path, root: Path, q: CardQuery,
                  authors: dict[str, str], private: bool = False,
                  created: int = 0,
-                 theme_assignments: dict[str, tuple[str, ...]] | None = None):
+                 theme_assignments: dict[str, tuple[str, ...]] | None = None,
+                 tier_assignments: dict[str, str] | None = None):
         self.path = path
         self.created = created
         self.created_label = (datetime.fromtimestamp(created, timezone.utc)
@@ -273,6 +275,8 @@ class DeckInfo:
         self.label = bracket_label(self.bracket)
         self.stem = path.stem
         self.themes = deckthemes.classify(self.stem, theme_assignments or {})
+        # None until someone places the deck; the catalog shows it as Unrated.
+        self.tier = decktiers.classify(self.stem, tier_assignments or {})
         # Private pages live under their own path segment so a private deck and a
         # public one with the same bracket and name cannot resolve to one file and
         # silently overwrite each other in the output.
@@ -364,15 +368,24 @@ def picker(layout: frontend.Template, decks: list[DeckInfo],
 
 def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
                  repo: str, mana: Mana,
-                 available_images: set[str] | None = None) -> str:
+                 available_images: set[str] | None = None,
+                 private_catalog: bool | None = None) -> str:
     index, layout = tpl["index"], tpl["layout"]
+    # Only the local catalog shows private-only categories (Goblins). It is the
+    # one build that contains private decks, so that is the default test.
+    if private_catalog is None:
+        private_catalog = any(d.private for d in decks)
     grouped: dict[str, set[str]] = {}
     by_bracket: dict[str, list[str]] = {}
+    # Private-only categories MIRROR decks that already sit in a canonical one:
+    # theme -> bracket -> copies of the tiles, rendered here and never moved.
+    mirrors: dict[str, dict[str, list[str]]] = {}
     active_themes = set()
 
     for d in decks:
-        grouped.setdefault(d.themes[0], set()).add(d.bracket)
-        active_themes.update(d.themes)
+        shown = deckthemes.visible(d.themes, private_catalog)
+        grouped.setdefault(shown[0], set()).add(d.bracket)
+        active_themes.update(shown)
         art_name = image_file(d.art_card, 0, ART, d.art_url) if d.art_url else ""
         # A transient CDN failure must not leave a dangling <img> in the
         # published catalog. `None` preserves the standalone renderer's old
@@ -394,13 +407,15 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
                           if front.get(THUMB) else "")
             if thumb_name and (available_images is None or thumb_name in available_images):
                 preview += f' data-thumb="img/{e(thumb_name)}"'
+        tier_id = d.tier or decktiers.UNRATED_ID
         tile = index.part("tile").render(
             HREF=e(d.href), ART=art, NAME=e(d.stem), COMMANDER=e(d.commander),
             PREVIEW=preview,
-            BRACKET_ID=e(d.bracket),
-            THEMES=e(" ".join(d.themes)),
+            BRACKET_ID=e(d.bracket), TIER=e(tier_id),
+            TIER_BADGE=tier_badge(index, d.tier),
+            THEMES=e(" ".join(shown)),
             THEME_TAGS="".join(index.part("theme-tag").render(
-                LABEL=e(deckthemes.THEMES[t].label)) for t in d.themes),
+                LABEL=e(deckthemes.THEMES[t].label)) for t in shown),
             TAG=index.part("tag").render() if d.private else "",
             AUTHOR=(f'        <span class="tile-author">by {e(d.author)}</span>\n'
                     if d.author else ""),
@@ -417,20 +432,35 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
                               (d.stem, d.commander, d.label, d.author,
                                d.created_label,
                                "private" if d.private else "",
-                               deckthemes.search_text(d.themes),
-                               d.art_card.get("type_line", "")) if x)),
+                               deckthemes.search_text(shown),
+                               d.art_card.get("type_line", ""),
+                               # Last, so the folded `stier` token cannot run
+                               # into a following word and match the wrong tier.
+                               decktiers.search_text(d.tier)) if x)),
             PIPS=mana.pips(d.colours, ""), TOTAL=d.total, LANDS=d.lands,
             MV=f"{d.avg_mv:.2f}",
             GC=f"{len(d.gcs)}/{d.cap}" if d.cap is not None else str(len(d.gcs)))
         by_bracket.setdefault(d.bracket, []).append(tile)
+        for t in shown:
+            if deckthemes.THEMES[t].private_only:
+                # A second link to the same deck. `mirror` keeps the script from
+                # moving it and keeps it out of the deck count.
+                mirrors.setdefault(t, {}).setdefault(d.bracket, []).append(
+                    tile.replace('<a class="tile"', '<a class="tile mirror"', 1))
     sections = []
     for key, theme in deckthemes.THEMES.items():
-        if key not in grouped:
+        if theme.private_only:
+            if key not in mirrors:
+                continue
+            brackets = [index.part("bracket").render(
+                BRACKET=e(bracket_label(bracket)), BRACKET_ID=e(bracket),
+                TILES="".join(tiles)) for bracket, tiles in sorted(mirrors[key].items())]
+        elif key in grouped:
+            brackets = [index.part("bracket").render(
+                BRACKET=e(bracket_label(bracket)), BRACKET_ID=e(bracket),
+                TILES="") for bracket in sorted(grouped[key])]
+        else:
             continue
-        groups = grouped[key]
-        brackets = [index.part("bracket").render(
-            BRACKET=e(bracket_label(bracket)), BRACKET_ID=e(bracket),
-            TILES="") for bracket in sorted(groups)]
         sections.append(index.part("strategy").render(
             THEME=e(key), LABEL=e(theme.label), DESCRIPTION=e(theme.description),
             BRACKETS="".join(brackets)))
@@ -440,13 +470,29 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
     brackets = "".join(index.part("list-bracket").render(
         BRACKET=e(bracket_label(bracket)), BRACKET_ID=e(bracket),
         TILES="".join(tiles)) for bracket, tiles in sorted(by_bracket.items()))
+    # Tiers view: empty destinations, strongest first, Unrated last. The script
+    # moves the same tiles in, as it does for Categories.
+    present = {d.tier or decktiers.UNRATED_ID for d in decks}
+    tiers = "".join(index.part("tier").render(
+        TIER=e(key), LABEL=e(t.label), TITLE=e(t.title), DESCRIPTION=e(t.description))
+        for key, t in [*decktiers.TIERS.items(), (decktiers.UNRATED_ID, decktiers.UNRATED)]
+        if key in present)
 
     return mirror_tips(layout.render(
         TITLE="Commander decks", UP="", REPO=e(repo),
         DESCRIPTION=f"{len(decks)} Magic: the Gathering Commander decklists.",
         PICKER=picker(layout, decks, None, ""),
         MAIN=index.render(COUNT=len(decks), OPTIONS=options,
-                          BRACKETS=brackets, CATEGORIES="".join(sections))))
+                          BRACKETS=brackets, CATEGORIES="".join(sections),
+                          TIERS=tiers)))
+
+
+def tier_badge(tpl: frontend.Template, tier: str | None) -> str:
+    """The coloured tier mark used on tiles and the deck header."""
+    t = decktiers.info(tier)
+    return tpl.part("tier-badge").render(
+        TIER=e(tier or decktiers.UNRATED_ID), LABEL=e(t.label),
+        TIP=e(f"{t.title}. {t.description}"))
 
 
 def render_guide(page: frontend.Template, d: "DeckInfo",
@@ -466,40 +512,73 @@ def render_guide(page: frontend.Template, d: "DeckInfo",
             if not name:
                 body.append(page.part("guide-prose").render(TEXT=e(note)))
                 continue
+            parts = deckguide.pieces(name)
+            if len(parts) > 1:
+                body.append(render_guide_combo(page, d, parts, note, up))
+                continue
             card = d.cards.get(name, {})
-            uris = art_sets(card)
-            data = img = ""
-            if uris:
-                thumb = f"{up}img/{e(image_file(card, 0, THUMB, uris[0][THUMB]))}"
-                # Small by choice: the guide is prose you read, and the card is
-                # there to identify what the sentence is about, not to be read
-                # itself. Click zooms it to full size via the lightbox below.
-                #
-                # LOCAL THUMB ONLY, no srcset. An earlier version offered the
-                # 488px `normal` as a second candidate so a 2x display would get
-                # a sharp 88px image — but at DPR 2 the browser needs 176px, so
-                # it rejected the 146px thumb and fetched the 488px one from
-                # cards.scryfall.io for EVERY row, on page load. That is ~50
-                # hotlinked images per guide, and on any machine that cannot
-                # reach that host the whole guide renders as broken-image icons.
-                # It also contradicts the hosting split at the top of this file:
-                # external images are for hover and click, not first paint.
-                # 146px into an 88px box is mildly soft at 2x; that is the trade.
-                img = (f'<img class="gthumb" src="{thumb}" alt="{e(name)}"'
-                       f' loading="lazy" decoding="async" width="88" height="123">')
-                # Same data-* the list view uses, so the existing hover preview
-                # and lightbox work here with no extra JavaScript.
-                data = f' data-img="{e(uris[0].get(FULL, ""))}"'
-                if len(uris) > 1:
-                    data += f' data-back="{e(uris[1].get(FULL, ""))}"'
+            img, data = guide_media(card, name, up)
             body.append(page.part("guide-card").render(
                 NAME=e(card.get("name", name)), DATA=data, IMG=img,
                 COST=mana.render(mana_cost(card), up), NOTE=e(note)))
-        out.append(page.part("guide-section").render(
-            TITLE=page.part("guide-title").render(TEXT=e(title)) if title else "",
-            ROWS="".join(body)))
+        if title:
+            out.append(page.part("guide-section").render(
+                TITLE=page.part("guide-title").render(TEXT=e(title)), ROWS="".join(body)))
+        else:
+            out.append(page.part("guide-intro").render(ROWS="".join(body)))
     return (page.part("guide").render(SECTIONS="".join(out)),
             page.part("guidebtn").render())
+
+
+def render_guide_combo(page: frontend.Template, d: "DeckInfo",
+                       parts: list[tuple[str, str]], note: str, up: str) -> str:
+    """A guide row naming several cards: `A + B` (a combo) or `A -> B` (a tutor
+    or sequencing line). Each card is its own zoomable piece — the lightbox looks
+    for the nearest element carrying data-img, so a click opens the card under
+    the pointer rather than the first card of the row."""
+    pics, names = [], []
+    for joiner, name in parts:
+        card = d.cards.get(name, {})
+        shown = card.get("name", name)
+        if joiner:
+            sign = "→" if joiner == "->" else "+"
+            pics.append(page.part("guide-join").render(SIGN=sign))
+            names.append(f" {sign} ")
+        img, data = guide_media(card, name, up)
+        pics.append(page.part("guide-piece").render(NAME=e(shown), DATA=data, IMG=img))
+        names.append(shown)
+    return page.part("guide-combo").render(
+        PIECES="".join(pics), NAMES=e("".join(names)), NOTE=e(note))
+
+
+def guide_media(card: dict, name: str, up: str) -> tuple[str, str]:
+    """(thumbnail <img>, data-* attributes) for one card in a guide row."""
+    uris = art_sets(card)
+    data = img = ""
+    if uris:
+        thumb = f"{up}img/{e(image_file(card, 0, THUMB, uris[0][THUMB]))}"
+        # Small by choice: the guide is prose you read, and the card is
+        # there to identify what the sentence is about, not to be read
+        # itself. Click zooms it to full size via the lightbox below.
+        #
+        # LOCAL THUMB ONLY, no srcset. An earlier version offered the
+        # 488px `normal` as a second candidate so a 2x display would get
+        # a sharp 88px image — but at DPR 2 the browser needs 176px, so
+        # it rejected the 146px thumb and fetched the 488px one from
+        # cards.scryfall.io for EVERY row, on page load. That is ~50
+        # hotlinked images per guide, and on any machine that cannot
+        # reach that host the whole guide renders as broken-image icons.
+        # It also contradicts the hosting split at the top of this file:
+        # external images are for hover and click, not first paint.
+        # 146px into an 88px box is mildly soft at 2x; that is the trade.
+        img = (f'<img class="gthumb" src="{thumb}" alt="{e(name)}"'
+               f' loading="lazy" decoding="async" width="88" height="123">')
+        # Same data-* the list view uses, so the existing hover preview
+        # and lightbox work here with no extra JavaScript.
+        data = f' data-img="{e(uris[0].get(FULL, ""))}"'
+        if len(uris) > 1:
+            data += f' data-back="{e(uris[1].get(FULL, ""))}"'
+    return img, data
 
 
 def render_deck(tpl: dict[str, frontend.Template], d: DeckInfo,
@@ -560,6 +639,7 @@ def render_deck(tpl: dict[str, frontend.Template], d: DeckInfo,
         MAIN=page.render(
             NAME=e(d.stem), PIPS=mana.pips(d.colours, up), COMMANDER=e(d.commander),
             BRACKET=e(d.label), TOTAL=d.total,
+            TIER=tier_badge(page, d.tier) if d.tier else "",
             TAG=page.part("tag").render() if d.private else "", LINKS=links,
             LANDS=f"{d.lands}" + (f" +{d.flex}" if d.flex else ""),
             # A modal DFC like Malakir Rebirth is `Instant // Land`: playable as a
@@ -700,8 +780,10 @@ def plan(root: Path, out_dir: Path, repo: str, q: CardQuery,
     # Private classifications are loaded only for the local catalog. A matching
     # filename does not make its public and private versions the same strategy.
     assignments = {False: deckthemes.load(fdir / "deck-themes.json")}
+    tiers = {False: decktiers.load(fdir / "deck-tiers.json")}
     if private_root:
         assignments[True] = deckthemes.load(private_root / "deck-themes.json")
+        tiers[True] = decktiers.load(private_root / "deck-tiers.json")
     with DeckAuthorStore(workspace.deck_metadata_db()) as store:
         authors = store.all()
     dates = creation_dates(root)
@@ -717,19 +799,27 @@ def plan(root: Path, out_dir: Path, repo: str, q: CardQuery,
                   for p in deckfile.discover(sorted(private_root.glob("Bracket*")))]
     decks = sorted((DeckInfo(p, base, q, authors, private=priv,
                              created=created_at(p, dates),
-                             theme_assignments=assignments[priv])
+                             theme_assignments=assignments[priv],
+                             tier_assignments=tiers[priv])
                     for p, base, priv in found),
                    # Bracket order also drives the deck picker. Both index views
                    # preserve newest-first order within each bracket or category
                    # subgroup. Name breaks ties deterministically.
                    key=lambda d: (d.bracket, -d.created, d.stem.lower()))
+    # Every deck is meant to have a tier (deck-tiers.md). Say which do not, once:
+    # the private build re-renders the public decks, so it reports only its own.
+    unrated = [d.stem for d in decks if not d.tier and (d.private or not private_root)]
+    if unrated:
+        print(f"warning: {len(unrated)} deck(s) have no power tier: "
+              f"{', '.join(unrated)} — see deck-tiers.md", file=sys.stderr)
     mana = Mana(sym.uris())
     image_files = collect_images(decks, img, out_dir)
     available_images = {path.name for path in image_files}
 
     files: dict[Path, str | bytes] = {
         out_dir / "index.html": render_index(
-            tpl, decks, repo, mana, available_images
+            tpl, decks, repo, mana, available_images,
+            private_catalog=private_root is not None,
         ),
         out_dir / "style.css": (fdir / "style.css").read_text(encoding="utf-8"),
         out_dir / "app.js": (fdir / "app.js").read_text(encoding="utf-8"),

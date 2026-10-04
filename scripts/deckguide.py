@@ -26,12 +26,28 @@ than in a `guides/` folder at the repo root that the sandbox cannot reach.
 
 `deckfile.discover()` globs `*.txt`, so a `.guide` file is never mistaken for a
 decklist.
+
+COMBO AND CHAIN ROWS
+--------------------
+One row can name several cards, so a combo or a tutor line reads as one thing
+with every card pictured:
+
+    Kiki-Jiki, Mirror Breaker + Zealous Conscripts :: Kiki copies Conscripts ...
+    Goblin Matron -> Krenko, Mob Boss :: when you need a board, not a combo piece
+    Goblin Recruiter -> Kiki-Jiki, Mirror Breaker + Conspicuous Snoop :: ...
+
+` + ` joins cards that work together; ` -> ` reads "finds" or "leads to". The
+spaces around each joiner are required, which is what keeps a card name like
+"+2 Mace" from splitting.
 """
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 SPLIT = "::"
+# Captures the joiner so pieces() can tell a combo (+) from a chain (->).
+JOINER = re.compile(r"\s+(\+|->|→)\s+")
 
 
 def guide_path(deck: Path) -> Path:
@@ -80,15 +96,31 @@ def load(deck: Path) -> list[tuple[str, list[tuple[str, str]]]]:
         return []
 
 
+def pieces(name: str) -> list[tuple[str, str]]:
+    """Split a row's card field into `[(joiner, card)]`, in order.
+
+    The first card's joiner is "". A plain single-card row returns one piece, so
+    callers can treat every row the same way. "→" is accepted as a spelling of
+    "->" and normalised to it.
+    """
+    parts = JOINER.split(name.strip())
+    out = [("", parts[0].strip())]
+    for i in range(1, len(parts) - 1, 2):
+        out.append(("->" if parts[i] in ("->", "→") else "+", parts[i + 1].strip()))
+    return [(j, c) for j, c in out if c]
+
+
 def card_names(sections) -> list[str]:
     """Every distinct card a guide references, in first-seen order.
 
     build_site needs this before rendering, to fetch the images the guide will
     show — the same reason the deck page collects its own card images up front.
+    Combo and chain rows contribute every card they name.
     """
     seen: list[str] = []
     for _, rows in sections:
         for name, _comment in rows:
-            if name and name not in seen:
-                seen.append(name)
+            for _joiner, card in pieces(name) if name else []:
+                if card not in seen:
+                    seen.append(card)
     return seen

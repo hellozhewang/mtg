@@ -155,6 +155,20 @@ def raw_url(deck: Path) -> str:
             + f"/main/{rel}")
 
 
+def site_url(deck: Path | None = None) -> str:
+    """The published catalog (GitHub Pages for this repo), or one deck's page on it.
+
+    `https://github.com/<owner>/<repo>` publishes at `https://<owner>.github.io/<repo>/`,
+    and a deck's page is its path under public/ with .txt swapped for .html — the
+    same rule build_site.py uses to write it."""
+    owner, _, name = repo_url().removeprefix("https://github.com/").partition("/")
+    base = f"https://{owner.lower()}.github.io/{name}/"
+    if deck is None:
+        return base
+    rel = deck.resolve().relative_to(deck_root().resolve()).with_suffix(".html")
+    return base + rel.as_posix()
+
+
 def log_dir() -> Path:
     """Where tool invocations and bot requests are logged. Repo root, OUTSIDE the
     deck workspace and NOT granted via --add-dir, so a sandboxed session cannot

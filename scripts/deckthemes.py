@@ -1,6 +1,13 @@
-"""Commander catalog themes, independent of brackets and card legality.
+"""Commander catalog categories: a FIXED vocabulary of seven, a catch-all, and Goblins.
 
-Curated assignments list the primary group first, then secondary filter tags.
+Every deck's assignment lists its primary category first, then any secondary
+categories. The seven canonical categories, plus the `other` catch-all for a
+plan that genuinely fits none of them, are the only IDs a builder may use;
+adding or renaming one is an owner decision, not a builder's. Goblins is an
+eighth, private-only category: a Goblin deck keeps a canonical primary and
+carries `goblins` as a secondary tag, and the LOCAL catalog mirrors it into a
+Goblins section. The published catalog ignores the tag entirely.
+
 Public assignments live in frontend/deck-themes.json; private assignments live
 only in private/deck-themes.json. Never merge the private mapping into the public
 one, even when a private deck has the same filename as a public deck.
@@ -17,68 +24,62 @@ class Theme:
     label: str
     description: str
     aliases: str = ""
+    # Shown only in the local (private) catalog, as a mirror of decks that
+    # already sit in a canonical category. Never a primary.
+    private_only: bool = False
 
 
-# Display order is stable across brackets, filters, and builds.
+# Display order is stable across brackets, filters, and builds. Each category is
+# defined by HOW THE DECK WINS, so every deck has one obvious primary.
 THEMES = {
-    "stax": Theme("Stax / Prison", "Tax actions, restrict resources, and shut down opposing engines.", "hatebears lockdown denial"),
-    "pillowfort": Theme("Pillowfort", "Make attacking you difficult while you develop a winning position.", "defensive defence defense"),
-    "voltron": Theme("Voltron", "Build one creature into a lethal attacker with Auras, Equipment, or other buffs.", "commander damage"),
-    "goblins": Theme("Goblins", "Build around Goblins, from swarms and combat to sacrifice engines and combos.", "goblin kindred typal"),
-    "tribal": Theme("Tribal / Kindred", "Build around a shared creature type and its synergies.", "typal creature type"),
-    "tokens": Theme("Tokens / Go-wide", "Create an army of tokens or small creatures and turn numbers into power.", "swarm go wide"),
-    "aristocrats": Theme("Aristocrats", "Sacrifice creatures and other permanents for cards, mana, and death triggers.", "sacrifice death drain"),
-    "reanimator": Theme("Reanimator", "Use the graveyard to bring back threats or make powerful copies.", "graveyard recursion resurrection"),
-    "spellslinger": Theme("Spellslinger / Storm", "Build engines around casting spells and chaining them into a decisive turn.", "instants sorceries cantrips"),
-    "punisher": Theme("Group Slug / Punisher", "Damage the table or punish opponents for drawing, casting, and other actions.", "burn pain pings drain"),
-    "goad": Theme("Goad / Forced Combat", "Make opponents attack and steer their creatures toward each other.", "forced attacks politics"),
-    "combo": Theme("Combo", "Assemble interacting pieces for a decisive loop or alternate win.", "infinite loops"),
-    "lands": Theme("Lands / Landfall", "Make land drops, land recursion, and land-based engines drive the deck.", "landfall lands matter"),
-    "artifacts": Theme("Artifacts / Vehicles", "Build around artifacts, Equipment, Treasures, or Vehicle crews.", "artifact equipment treasure crew"),
-    "enchantress": Theme("Enchantress", "Turn enchantments into a sustained engine of cards, protection, and threats.", "enchantments auras"),
-    "counters": Theme("Counters / Proliferate", "Build and multiply counters on creatures and other permanents.", "proliferation +1/+1 -1/-1"),
-    "lifegain": Theme("Lifegain / Drain", "Use life as a resource and turn life gain into damage or life loss.", "lifelink life gain"),
-    "discard": Theme("Discard / Wheels", "Empty or replace hands and turn discarded cards into an advantage.", "hand disruption wheel"),
-    "superfriends": Theme("Superfriends", "Protect planeswalkers and build toward their strongest loyalty abilities.", "planeswalkers loyalty"),
-    "theft": Theme("Theft / Gifts", "Use opponents' cards or give away permanents with dangerous drawbacks.", "steal stolen donate donation"),
-    "blink": Theme("Blink / ETB", "Repeat enter-the-battlefield abilities with flicker and copy effects.", "flicker enters etb"),
-    "combat": Theme("Combat / Attack Triggers", "Win through combat abilities, attack triggers, and extra attacks.", "aggro attacks keywords toughness defenders"),
-    "ramp": Theme("Ramp / Big Mana", "Accelerate mana into enormous creatures and spells.", "big mana stompy cascade discover"),
-    "toolbox": Theme("Toolbox / Value", "Use flexible tutors, draw engines, and repeatable abilities to outlast opponents.", "midrange control activations topdeck"),
-    "other": Theme("Other Strategies", "Explore decks with a different or newly added plan."),
+    "aggro": Theme("Aggro & Voltron", "Win by attacking: one huge threat, attack triggers, extra combats, evasive beatdown.",
+                   "combat voltron attacks equipment keywords tribal beatdown"),
+    "gowide": Theme("Tokens & Aristocrats", "Win with an army of tokens or small creatures, or by sacrificing it for value and drain.",
+                    "tokens go wide swarm aristocrats sacrifice death triggers"),
+    "combo": Theme("Combo", "Win by assembling a loop or an alternate win condition.",
+                   "infinite loops alt win"),
+    "control": Theme("Stax & Control", "Win by denying the table: taxes, locks, hatebears, pillowfort, counterspells, theft and goad.",
+                     "stax prison lockdown hatebears pillowfort theft goad counterspells"),
+    "graveyard": Theme("Graveyard", "Use the graveyard as a resource: reanimation, recursion, self-mill, discard and wheels.",
+                       "reanimator recursion discard wheels self-mill"),
+    "spells": Theme("Spells & Burn", "Win without combat: spellslinger and storm engines, burn, drain and punisher effects.",
+                    "spellslinger storm instants sorceries burn punisher drain group slug lifegain"),
+    "value": Theme("Value & Ramp", "Out-resource the table with engines: big mana, lands, artifacts, enchantments, counters, blink and planeswalkers.",
+                   "ramp big mana lands landfall artifacts enchantress counters proliferate blink superfriends toolbox"),
+    # The public catch-all. Only for a plan that genuinely fits none of the seven,
+    # and for decks nobody has placed yet (see FALLBACK).
+    "other": Theme("Other Strategies", "Plans that genuinely fit none of the seven categories above.",
+                   "misc unique"),
+    "goblins": Theme("Goblins", "Every Goblin deck, mirrored here from its own category. Local catalog only.",
+                     "goblin kindred typal", private_only=True),
 }
 
+# The categories a deck can have as its primary: the seven plus `other`.
+# Goblins is not one of them.
+CANONICAL = tuple(k for k, t in THEMES.items() if not t.private_only)
 
-# A conservative fallback for newly added decks. Curated assignments override
-# these hints: Cloud-Equipment and Cloud-Attacks, for example, play differently.
-HINTS = {
-    "prison": ("stax",), "lockdown": ("stax",), "hatebears": ("stax",),
-    "antisacrifice": ("stax",), "graveyardhate": ("stax",),
-    "pillowfort": ("pillowfort",), "voltron": ("voltron",),
-    "goblins": ("goblins",), "elves": ("tribal",), "rats": ("tribal",),
-    "vampires": ("tribal",), "ninjas": ("tribal",), "dragons": ("tribal",),
-    "dinosaurs": ("tribal",), "warriors": ("tribal",), "humans": ("tribal",),
-    "wizards": ("tribal",), "sphinxes": ("tribal",), "angels": ("tribal",),
-    "tokens": ("tokens",), "swarm": ("tokens",),
-    "aristocrats": ("aristocrats",), "sacrifice": ("aristocrats",),
-    "reanimator": ("reanimator",), "spells": ("spellslinger",),
-    "spellslinger": ("spellslinger",), "storm": ("spellslinger",),
-    "miracles": ("spellslinger",), "punisher": ("punisher",),
-    "burn": ("punisher",), "drain": ("punisher",), "goad": ("goad",),
-    "combo": ("combo",), "infinite": ("combo",), "lands": ("lands",),
-    "landfall": ("lands",), "artifacts": ("artifacts",),
-    "vehicles": ("artifacts",), "equipment": ("artifacts",),
-    "treasure": ("artifacts",), "enchantress": ("enchantress",),
-    "counters": ("counters",), "proliferate": ("counters",),
-    "superfriends": ("superfriends",), "theft": ("theft",),
-    "gifts": ("theft",), "blink": ("blink",), "attacks": ("combat",),
-    "keywords": ("combat",), "ramp": ("ramp",),
-    "toolbox": ("toolbox",), "activations": ("toolbox",),
+
+# A conservative fallback for decks without an explicit assignment, keyed on the
+# word after the hyphen. Curated assignments override these hints: Cloud-Equipment
+# and Cloud-Attacks, for example, are placed by their maps, not their names.
+_HINT_WORDS = {
+    "control": "prison lockdown hatebears antisacrifice graveyardhate stax pillowfort antistax "
+               "anticounters theft gifts goad tempo removal",
+    "aggro": "voltron attacks keywords equipment beats ninjas dinosaurs dragons angels warriors humans vehicles",
+    "gowide": "tokens swarm aristocrats sacrifice elves rats vampires myriad",
+    "graveyard": "reanimator discard refill graveyard wheels",
+    "spells": "spells spellslinger storm miracles punisher burn drain antispells",
+    "combo": "combo infinite",
+    "value": "lands landfall artifacts treasure enchantress counters proliferate superfriends blink "
+             "ramp toolbox activations topdeck cascade discover legends",
 }
+HINTS = {w: (cat,) for cat, words in _HINT_WORDS.items() for w in words.split()}
+HINTS["goblins"] = ("gowide", "goblins")
+FALLBACK = ("other",)
 
 
 def load(path: Path) -> dict[str, tuple[str, ...]]:
-    """Read optional assignments, failing clearly on misspelled theme IDs."""
+    """Read optional assignments, failing clearly on anything outside the fixed set."""
     if not path.exists():
         return {}
     raw = json.loads(path.read_text(encoding="utf-8"))
@@ -89,13 +90,22 @@ def load(path: Path) -> dict[str, tuple[str, ...]]:
         if (not isinstance(themes, list) or not themes
                 or any(not isinstance(t, str) or t not in THEMES for t in themes)
                 or len(set(themes)) != len(themes)):
-            raise ValueError(f"{path}: invalid themes for {stem!r}: {themes!r}")
+            raise ValueError(f"{path}: invalid themes for {stem!r}: {themes!r} "
+                             f"(allowed: {', '.join(THEMES)})")
+        if themes[0] not in CANONICAL:
+            raise ValueError(f"{path}: {stem!r} must start with one of the canonical "
+                             f"categories ({', '.join(CANONICAL)}), not {themes[0]!r}")
         result[stem] = tuple(themes)
     return result
 
 
 def classify(stem: str, assignments: dict[str, tuple[str, ...]]) -> tuple[str, ...]:
-    return assignments.get(stem) or HINTS.get(stem.rsplit("-", 1)[-1].lower(), ("other",))
+    return assignments.get(stem) or HINTS.get(stem.rsplit("-", 1)[-1].lower(), FALLBACK)
+
+
+def visible(themes: tuple[str, ...], private_catalog: bool) -> tuple[str, ...]:
+    """The tags a catalog shows: the published one drops private-only categories."""
+    return themes if private_catalog else tuple(t for t in themes if not THEMES[t].private_only)
 
 
 def search_text(themes: tuple[str, ...]) -> str:

@@ -11,14 +11,14 @@ users type.** Both layers use a `!` prefix, which is worth untangling:
     what reaches us        !deck zur                 (this module's wire format)
 
 The user-facing commands live in the sibling discord-bot project and are named
-after the slash commands: `deck-print`, `deck-list`, `deck-repo`. Any of them a
+after the slash commands: `deck-print`, `deck-list`, `deck-random`, `deck-repo`. Any of them a
 manifest marks `supportsChat: true` can also be invoked as plain text with `!`,
 running the identical `execute()` — that exists because Discord will not turn a
 pasted `/command` into a real interaction, so `!` gives people something they can
 copy, paste and share.
 
-Ours are the shorter `!deck` and `!decks`, which no user types and no chat
-command matches. So AGENTS.md should quote `/deck-print deck:` or
+Ours are the shorter `!deck`, `!decks` and `!random`, which no user types and no
+chat command matches. So AGENTS.md should quote `/deck-print deck:` or
 `!deck-print deck:` — never the bare `!deck`.
 
 These exist because listing and printing decks is pure file reading. Routing it
@@ -50,6 +50,7 @@ that nobody else needs to cut it.
 """
 from __future__ import annotations
 
+import random
 import re
 import sys
 from pathlib import Path
@@ -205,6 +206,67 @@ def cmd_deck(arg: str) -> list[str]:
     return [matches[0].read_text(encoding="utf-8").rstrip() + "\n"]
 
 
+def cmd_random(arg: str) -> list[str]:
+    """A random deck: its catalog link, then the exact decklist. Optional filter.
+
+    WIRE FORMAT, shared with the discord-bot repo's deck-random.ts: a header
+    (deck name, commander, bracket and tier, then its catalog page link), ONE
+    BLANK LINE, then the raw decklist exactly as `!deck` returns it. The Discord
+    side sends the header as text and fences only what follows the blank line,
+    so the list still pastes byte-for-byte. bot.py joins messages with a single
+    newline, which is why the header carries its own trailing newline. A reply
+    with no blank line (no match, empty catalog) is plain text to show as is.
+
+    The optional argument narrows the draw to decks whose filename, commander,
+    bracket folder, catalog category or power tier contains it, compared the same
+    forgiving way as `!deck`: `kinnan`, `3.5`, `combo`, `aggro`, `goblins`,
+    `s tier`.
+    """
+    decks = _decks()
+    q = _norm(arg)
+    if q:
+        decks = [p for p in decks if any(q in k for k in _filter_keys(p))]
+    if not decks:
+        return [f"no deck matching `{arg.strip()}`. Try `!deck-list`." if q
+                else f"No decks found under `{workspace.deck_root()}`."]
+    path = random.choice(decks)
+    try:
+        commander = deckfile.parse(path).commander
+    except Exception:                       # unreadable file: still give the link
+        commander = "?"
+    bracket = re.sub(r"(?<=[A-Za-z])(?=\d)", " ", _bracket_of(path))
+    tier = _tier(path.stem)
+    facts = bracket + (f", {tier} tier" if tier else "")
+    header = (f"🎲 Random pick: **{path.stem}** — {commander} ({facts})\n"
+              f"{workspace.site_url(path)}\n")
+    return [header, path.read_text(encoding="utf-8").rstrip() + "\n"]
+
+
+def _filter_keys(path: Path) -> set[str]:
+    """What `!random <filter>` matches: names, the bracket, categories and tier."""
+    keys = _keys(path) | {_norm(_bracket_of(path))}
+    try:
+        import deckthemes
+        for theme in deckthemes.classify(
+                path.stem, deckthemes.load(workspace.frontend_dir() / "deck-themes.json")):
+            keys |= {theme, _norm(deckthemes.THEMES[theme].label)}
+    except Exception:                       # a broken map must not break the draw
+        pass
+    tier = _tier(path.stem)
+    if tier:
+        keys.add(_norm(f"{tier} tier"))
+    return keys
+
+
+def _tier(stem: str) -> str | None:
+    """The deck's power tier from the public map, or None when unplaced/unreadable."""
+    try:
+        import decktiers
+        return decktiers.classify(stem, decktiers.load(workspace.frontend_dir() / "deck-tiers.json"))
+    except Exception:
+        return None
+
+
 def cmd_help(_arg: str) -> list[str]:
     """Show these commands."""
     body = "\n".join(
@@ -218,6 +280,7 @@ def cmd_help(_arg: str) -> list[str]:
 COMMANDS = {
     "decks": cmd_decks,
     "deck": cmd_deck,
+    "random": cmd_random,
     "help": cmd_help,
 }
 

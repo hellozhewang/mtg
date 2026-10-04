@@ -63,7 +63,7 @@
     });
 
     var sections = toArray(document.querySelectorAll(tiles.length
-      ? '.bracket-group, .strategy-group' : '.cards .cat'));
+      ? '.bracket-group, .strategy-group, .tier-group' : '.cards .cat'));
     var disclosures = toArray(document.querySelectorAll('.decks details'));
     var beforeFilter = null;
     var empty = document.createElement('p');
@@ -175,8 +175,9 @@
     var openStates = {};
     var filtering = false;
     function sectionKey(section) {
-      return section.classList.contains('strategy-group')
-        ? 'category:' + section.dataset.theme : 'bracket:' + section.dataset.bracket;
+      if (section.classList.contains('strategy-group')) return 'category:' + section.dataset.theme;
+      if (section.classList.contains('tier-group')) return 'tier:' + section.dataset.tier;
+      return 'bracket:' + section.dataset.bracket;
     }
     sections.forEach(function (section) {
       var id = sectionKey(section);
@@ -202,7 +203,7 @@
     // the asynchronously dispatched details toggle event.
     window.addEventListener('pagehide', save);
     return {
-      grouping: saved.grouping === 'categories' ? 'categories' : 'list',
+      grouping: ['categories', 'tiers'].indexOf(saved.grouping) !== -1 ? saved.grouping : 'list',
       layout: (saved.layout === 'list' || saved.layout === 'tiles') ? saved.layout
         : (legacyLayout === 'tiles' ? 'tiles' : 'list'),
       save: save,
@@ -214,8 +215,8 @@
   }
 
   /* ---- catalog grouping and layout -------------------------------------- */
-  // Move the same deck links between bracket and category containers. This
-  // preserves filters, tooltips, and one link per deck when switching views.
+  // Move the same deck links between bracket, category and tier containers.
+  // This preserves filters, tooltips, and one link per deck when switching views.
   //
   // `data-decks`, not `data-view`: the deck page's own toggle claims
   // `.btn[data-view]`, and one selector matching both sets of buttons is exactly
@@ -227,10 +228,12 @@
     var groupingButtons = toArray(document.querySelectorAll('.btn[data-grouping]'));
     var list = wrap.querySelector('.catalog-list');
     var categories = wrap.querySelector('.catalog-categories');
+    var tierList = wrap.querySelector('.catalog-tiers');
     var actions = document.querySelector('.category-actions');
     var tiles = toArray(wrap.querySelectorAll('.tile'));
     var listTargets = new Map();
     var categoryTargets = new Map();
+    var tierTargets = new Map();
     toArray(list.querySelectorAll('.bracket-group')).forEach(function (group) {
       listTargets.set(group.dataset.bracket, group.querySelector('.tiles'));
     });
@@ -240,18 +243,28 @@
           group.querySelector('.tiles'));
       });
     });
+    toArray(tierList.querySelectorAll('.tier-group')).forEach(function (group) {
+      tierTargets.set(group.dataset.tier, group.querySelector('.tiles'));
+    });
+    // The top-level sections Expand all / Collapse all act on in each grouping.
+    var collapsible = {
+      categories: toArray(categories.querySelectorAll('.strategy-group')),
+      tiers: toArray(tierList.querySelectorAll('.tier-group'))
+    };
 
     function groupBy(view) {
       tiles.forEach(function (tile) {
         var target = view === 'categories'
           ? categoryTargets.get(tile.dataset.themes.split(' ')[0] + ':' + tile.dataset.bracket)
+          : view === 'tiers' ? tierTargets.get(tile.dataset.tier)
           : listTargets.get(tile.dataset.bracket);
         target.appendChild(tile);
       });
       wrap.dataset.grouping = view;
       list.hidden = view !== 'list';
       categories.hidden = view !== 'categories';
-      actions.hidden = view !== 'categories';
+      tierList.hidden = view !== 'tiers';
+      actions.hidden = view === 'list';
       groupingButtons.forEach(function (btn) {
         btn.setAttribute('aria-pressed', String(btn.dataset.grouping === view));
       });
@@ -263,8 +276,8 @@
     });
     toArray(actions.querySelectorAll('[data-categories]')).forEach(function (btn) {
       btn.addEventListener('click', function () {
-        toArray(categories.querySelectorAll('.strategy-group')).forEach(function (category) {
-          category.open = btn.dataset.categories === 'expand';
+        (collapsible[wrap.dataset.grouping] || []).forEach(function (section) {
+          section.open = btn.dataset.categories === 'expand';
         });
         state.save();
       });

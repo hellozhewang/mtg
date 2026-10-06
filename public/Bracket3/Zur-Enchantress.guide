@@ -1,0 +1,81 @@
+Zur does not protect himself. Build a draw or mana engine first, protect your commander, and animate only the enchantments you actually need as attackers or blockers. Animation is permanent while that object stays on the battlefield: hexproof stops opposing targets, but making every engine a creature exposes all of them to creature sweepers.
+
+# Turn discounted enchantments into threats
+Zur, Eternal Schemer + Overlord of the Mistmoors :: Cast the Overlord for its four-mana impending cost and get two flying Insects immediately. Zur's later animation effect makes it a 7/7 despite the time counters, with deathtouch, lifelink and hexproof while Zur remains. It still needs to have been under your control since your turn began to attack, unless it has haste.
+Zur, Eternal Schemer + Overlord of the Floodpits :: Three mana buys an immediate draw-two, discard-one trigger. Animate it into a flying 5/5 and every attack repeats that selection, filling your hand and stocking enchantments for recovery.
+Overlord of the Balemurk + The Master of Keys :: The two-mana impending play mills four and can recover a non-Avatar creature. Later attacks stock the graveyard for escape; Balemurk cannot recover any of the three Overlords, because they are Avatars.
+Estrid's Invocation + Overlord of the Mistmoors :: A copy enters as a normal creature with no impending counters, makes Insects, and can blink on each upkeep for another entry trigger. It is a printed 6/6 until Zur changes its base size to seven. Upkeep blinking does reset its ability to attack that turn.
+Copy Enchantment + Overlord of the Floodpits :: Copies the full card rather than the impending payment. This is a three-mana flying threat with another draw-two, discard-one entry trigger. Copying does not target, so hexproof is no obstacle.
+Ondu Spiritdancer + Overlord of the Mistmoors :: An enchantment entry can make a fully active copy and another pair of Insects. This is limited to once each turn; choose the most important enchantment rather than spending the trigger on a small setup piece.
+Starfield Vocalist + Doomwake Giant :: Doubles the Giant's constellation triggers caused by enchantments entering. It also doubles Overlord entry triggers and Entity Tracker's entry draws, but not attack triggers, cast triggers, or Ondu Spiritdancer's once-per-turn copying allowance.
+Airbender Ascension + Overlord of the Mistmoors :: Creature entries, including tokens, build quest counters. With four counters, blink a creature at your end step for another entry trigger. An impending Overlord is not a legal blink target until Zur animates it or its counters expire; after blinking it returns as a normal creature.
+Touch the Spirit Realm :: Cast it as removal, or channel it to save a creature from removal and return it at the next end step. A still-noncreature impending Overlord cannot be its channel target. An animated Overlord can, and returns without impending counters.
+
+# Pay for both development and interaction
+Sol Ring + Arcane Signet :: Accelerate while fixing the WUB needed for Zur. Sol Ring alone does not supply any of his colored pips, so prioritize colored sources rather than keeping an otherwise uncastable hand.
+Talisman of Progress + Talisman of Hierarchy + Talisman of Dominance :: Each costs two and immediately taps without an activation payment. Alongside Fellwar Stone, these let you develop while preserving mana for a counterspell or animation.
+Inquisitive Glimmer + Starfield Mystic :: Reduce generic costs of enchantment spells, including impending payments and enchantments cast with escape. They do not reduce Zur's activation, and cannot erase colored pips.
+Serra's Sanctum :: A Game Changer slot dedicated to the deck's biggest bottleneck: enough white mana to develop and still animate or protect. It produces nothing without enchantments, so do not count it as a reliable opening colored source.
+Smothering Tithe :: Turns the other three players' draws into mana when they decline the tax. Spend Treasures to keep interaction available while casting threats; this is the second Game Changer.
+Gleaming Splendor :: A two-mana enchantment that rewards opponents drawing their second card each turn with Treasure. Its activated ability can draw you a card while pushing an opponent from one draw to two, but the three-mana activation is a late resource sink, not early acceleration.
+Black Market Connections :: Usually choose the card and Treasure for three life. Choose the Shapeshifter when you need a blocker, tutor sacrifice or more combat pressure; lifelink can repay the life later, but does not excuse spending down to an unsafe total.
+Demon of Fate's Design :: Converts one enchantment spell each of your turns from a mana payment into a life payment. That leaves mana for protection, and Zur gives this flying trampler lifelink to help replenish what you spent. This alternative cost cannot be combined with impending or escape.
+
+# Draw enough to function without the commander
+Rhystic Study :: The third Game Changer supplies sustained cards while you hold up interaction. It is usually more valuable as an unanimated draw engine than as a 3/3.
+Mystic Remora :: Punishes early noncreature development. Let it die when cumulative upkeep would prevent a productive turn; Hall of Heliod's Generosity can recycle it later.
+Entity Tracker + Replenish :: Tracker draws for each enchantment entering under your control, including token copies and mass recursion. Flash it in before a planned recovery turn when safe.
+Mesa Enchantress + Hallowed Haunting :: Both reward casting enchantments. They trigger on spells cast with escape, but not on enchantments returned directly by Replenish or created as token copies.
+Enduring Curiosity + Soaring Lightbringer :: Flying attackers and attacking Glimmer tokens connect to draw cards. Curiosity draws for each creature that deals combat damage to a player, so double strike can yield a second set of draws.
+Enduring Innocence :: The Insects, Pegasi, small utility creatures and Glimmer tokens help trigger its draw. It only triggers once each turn, and a large Overlord entering does not qualify merely because it is an enchantment.
+Enduring Curiosity + Zur, Eternal Schemer :: After the Cat dies as a creature, it returns as a noncreature enchantment. Zur can animate it again, preserving both the draw engine and a threat. Exile removal bypasses that death trigger.
+
+# Finish the table
+Hallowed Haunting :: Repeated enchantment casts grow a Spirit army. At seven enchantments it grants all your creatures flying and vigilance, turning accumulated value into a credible finish. Its Spirit tokens are not enchantments themselves.
+Archon of Sun's Grace :: Enchantment entries, including copies and Replenish, create flying lifelink Pegasi. Archon and its Pegasi are not enchantment creatures, so they do not automatically receive Zur's hexproof.
+Soaring Lightbringer :: Grants your enchantment creatures flying and makes an attacking enchantment Glimmer for each player you attack. Those tokens trigger your constellation engines, receive Zur's abilities and can help pay for Clever Concealment later.
+True Conviction + Enduring Tenacity :: Double strike creates two opportunities for lifelink damage. Tenacity turns each life-gain event into targeted life loss, so you can attack one opponent while draining another. Multiple instances of lifelink do not multiply life gained.
+Nykthos Paragon + True Conviction :: Use a substantial first-strike lifelink event to put that many counters on every creature before regular combat damage. Each lifelinking creature produces its own life-gain event; choose one strong event, rather than adding all damage together. Paragon's optional payoff can happen only once each turn.
+Nykthos Paragon + Blind Obedience :: With three opponents losing life to one extort trigger, you normally gain three life in one event, enough to put three counters on every creature before combat. Save Paragon's use for a larger combat event when that produces a better result.
+Demon of Fate's Design + Zur, Eternal Schemer :: Deathtouch and trample let the Demon assign just one damage to each ordinary blocker and send the rest through. True Conviction makes that threat substantially more lethal; the activated sacrifice pump is a mana-consuming finisher, not an infinite loop.
+Winds of Abandon :: Overload for six mana to exile opposing creatures and open a decisive combat while keeping your own attackers. It gives opponents replacement basics, so use it to stabilize an emergency or finish, not merely to gain a little tempo.
+This build wins through protected enchantment threats, growing evasive armies, double strike and lifegain-driven damage. It has no intentional infinite combo, extra-turn chain or mass land denial. A turn-seven-to-nine finish is a planning estimate for a developed board, not a goldfish result or guarantee.
+
+# Stop the play that matters
+Grasp of Fate :: Removes up to one nonland permanent from each opponent for three mana. Animating it can give it hexproof while Zur survives, but also exposes it to creature sweepers; removal of the Grasp returns everything beneath it.
+Darksteel Mutation + Imprisoned in the Moon :: Neutralize a creature commander without changing zones, so its owner does not automatically get a command-zone move. Opponents can still remove the Aura or sacrifice the affected permanent when they have a legal way to do so.
+Aura of Silence + Seal of Cleansing :: Searchable enchantment answers that can sit on the board until needed. Aura also taxes opposing artifacts and enchantments; sacrificing either clears the threat even when you have already tapped your lands.
+Doomwake Giant :: Turns each enchantment entry into a temporary opposing-board shrink. Multiple triggers can kill indestructible creatures by reducing toughness to zero, and flying token makers let you keep developing while clearing small blockers.
+Agent of Erebos :: Every enchantment entry can exile one player's graveyard, including its own entry. This leaves your recovery intact. It is triggered graveyard interaction, not a substitute for holding up a counter when someone attempts a combo immediately.
+Blind Obedience + Sphere of Safety :: The first delays opposing creatures and artifacts; the second taxes attacks based on your enchantment count. Together they buy development time without stopping lands from untapping. Neither answers a noncombat win.
+Swan Song + Dovin's Veto + An Offer You Can't Refuse :: Preserve these for a dangerous win attempt, an exile sweeper or removal that collapses your board. Offer's Treasures help its controller rebuild, so the exchange should matter.
+Mana Drain :: Covers creature spells as well as noncreature spells. Its delayed colorless mana helps cast a finisher but cannot pay Zur's WUB or the white pip in an animation.
+Swords to Plowshares + Anguished Unmaking :: Efficient instant answers when an enchantment cast at sorcery speed would be too late. Unmaking covers noncreature permanents at a three-life cost.
+Toxic Deluge :: The emergency reset scales to the problem. Your unanimated enchantments survive, but Zur and animated threats can die; indestructible does not protect them from lethal toughness reduction.
+
+# Keep the engine and recover after a wipe
+Swiftfoot Boots + Loran's Escape :: Protect Zur himself, whose own static ability does not give him hexproof. Boots also grants haste to a fresh attacker; Escape can protect a creature from destruction for one white mana.
+Clever Concealment :: Phases out selected nonland permanents through destroy, exile or bounce sweepers. Tokens and animated enchantments can convoke it even if they are summoning sick, as long as they are untapped.
+Flawless Maneuver :: Often free while Zur is present and protects your creatures against destruction. It does not stop exile, sacrifice or Toxic Deluge, and does not protect your unanimated enchantments.
+Malakir Rebirth :: Save Zur from a lethal destruction effect, keeping him in the graveyard so the delayed return can work. It does not stop exile; when mana is the immediate problem, play the tapped land face instead.
+Replenish + Doomwake Giant :: Rebuild all enchantments for four mana. Doomwake sees the other enchantments returning with it, often clearing opposing creatures immediately. Casting this does not trigger enchantment-cast rewards.
+Dance of the Manse :: Recovers rocks and non-Aura enchantments with mana value at most X. At X six or more, the returned permanents are also 4/4 creatures. Mistmoors still has mana value seven and requires X at least seven; its impending discount does not lower that requirement.
+The Master of Keys + Overlord of the Balemurk :: Mill supplies both enchantments to escape and cards to exile for their escape costs. Spend graveyard resources deliberately, since using them here reduces what a later Replenish returns.
+Heliod, the Radiant Dawn + Hall of Heliod's Generosity :: Heliod returns a non-God enchantment to hand on entry, while Hall puts one on top of the library. Transform Heliod only when the flash access and draw-based discounts justify the mana; Hall consumes a draw unless another engine supplies extra cards.
+
+# Tutor for the current problem
+Zur the Enchanter -> Rhystic Study :: Attack to put the draw engine straight onto the battlefield when your hand needs replenishing. This is the creature in the ninety-nine, not the commander; it needs an attack, but does not need to deal damage.
+Zur the Enchanter -> Grasp of Fate :: Choose this when several opponents have threatening permanents. Its entry trigger works immediately after the search resolves, before blockers.
+Zur the Enchanter -> Animate Dead :: When a worthwhile creature is already in a graveyard, fetch the Aura attached to that creature card and reanimate it. The resulting creature retains its normal types; Animate Dead does not make a nonenchantment creature into an enchantment.
+Zur the Enchanter -> Copy Enchantment :: With a strong enchantment already on the battlefield, copy it directly. An Overlord is a particularly good target because its copy arrives without impending.
+Idyllic Tutor -> Smothering Tithe :: When you have cards but insufficient mana to cast them and still protect Zur, search for the mana engine.
+Idyllic Tutor -> True Conviction :: With an established attacking board, find the effect that converts pressure into lethal damage rather than another incremental value card.
+Diabolic Intent -> Replenish :: Sacrifice an expendable token to find the recovery spell after trading resources. If Intent is countered, the sacrificed creature is still gone.
+Diabolic Intent -> Serra's Sanctum :: A developed enchantment board with a land play available can turn this tutor into a large mana burst. Without enchantments, search for a real setup piece instead.
+
+# Opening hands and sequencing
+Keep roughly three usable lands, a cheap ramp or draw card, and something that develops the enchantment plan or answers an opponent. Two lands can be acceptable with reliable colored acceleration and cheap draw; do not count Serra's Sanctum as guaranteed mana or keep a hand of expensive payoffs.
+Flooded Strand + Tundra + Underground Sea :: Fetch to secure WUB first, then double blue or white for the spells in hand. Nine fetchlands can reach the typed duals and shocks; use tapped surveil lands or Raffine's Tower on a turn where you do not need that mana.
+A typical opening is an untapped colored land and Mystic Remora, then a second land and a mana rock, then Zur with protection available if the mana permits. Alternatively, deploy a draw engine before Zur when it will generate more resources than an immediate animation.
+Do not animate everything on sight. Develop one protected Overlord, keep the card engine outside the creature wipe, and use your remaining mana on interaction. You can activate Zur immediately after casting him because the ability has no tap symbol.
+The three basics provide targets for opposing replacement effects without sacrificing the dual-heavy mana base. Hold a fresh fetchland when it is useful to shuffle after a known unwanted top card, but crack it before you need the colored mana.

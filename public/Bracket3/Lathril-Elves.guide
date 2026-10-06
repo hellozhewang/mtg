@@ -1,73 +1,79 @@
-Lathril's second ability is the real deck: tap ten Elves and every opponent loses ten life while you gain ten. It does not attack, so it ignores blockers, fogs, Ghostly Prison and every wrath they cast after you activate. Ten Elves sounds like a lot until you notice that this deck makes three or four a turn — and that tapping a creature as the COST of somebody else's ability ignores summoning sickness entirely, so Elves that arrived this turn count.
+Lathril's drain needs eleven untapped Elves: Lathril herself plus ten other Elves. New tokens can pay the tap-ten part immediately, but Lathril needs to have been under your control since your turn began, have haste, or have Tyvar's permission to activate as though she did. Build the board and the draw engine before spending cards on a finisher.
 
-# The commander
-Lathril, Blade of the Elves :: menace, makes an Elf token for each point of combat damage, and taps ten Elves to drain the whole table for ten. Two activations kill a pod from twenty.
-Dionus, Elvish Archdruid :: your Elves untap and get a +1/+1 counter the first time each of them becomes tapped during your turn. Tap ten for Lathril, they all untap with counters, and then you attack with them. This is the best card in the deck alongside her.
-Seedborn Muse :: untaps everything during EVERY opponent's untap step. Lathril's drain becomes four activations per turn cycle — forty life off each opponent.
-Lightning Greaves :: haste so she connects the turn she lands, and shroud against the removal spell coming for her.
+# Establish the Elf engine
+Llanowar Elves + Fyndhorn Elves + Elvish Mystic + Elves of Deep Shadow :: These are the clean turn-one accelerators. Green starts the Elf chain, while Deep Shadow provides black for the commander, removal and Necropotence.
+Arbor Elf + Overgrown Tomb :: Untap a Forest-typed dual to make green or black as needed. Fetch a Forest before casting Arbor Elf; a hand containing only non-Forest lands does not give it a working target.
+Deathrite Shaman :: Seven fetchlands help supply its mana ability, but it still needs a land card in a graveyard. Its creature-exile ability disrupts reanimation, and its instant/sorcery-exile mode drains every opponent when spare black mana is available.
+Heritage Druid + Birchlore Rangers :: Convert freshly made Elf tokens into mana without waiting a turn. Heritage needs three untapped Elves for three green; Birchlore needs two for one mana of any color. Neither activation uses the tap symbol, so the creatures tapped for it can be summoning sick.
+Priest of Titania + Elvish Archdruid + Circle of Dreams Druid :: These are the big mana engines. Priest counts all Elves on the battlefield, Archdruid only yours, and Circle all your creatures. Protect one rather than deploying every mana source into an obvious sweeper.
+Marwyn, the Nurturer + Woodland Weavemaster :: Elf entries increase their mana output. Marwyn keeps counters; Weavemaster's entry bonuses expire at end of turn, and its mana can only cast Elf spells or activate abilities of Elf sources. It cannot pay for Craterhoof, Finale or protection instants.
+Gaea's Cradle + Growing Rites of Itlimoc + Three Tree City :: Creature count becomes land-based mana. Rites needs four creatures at the beginning of your end step and again on resolution; Three Tree City chooses Elf and costs two mana to activate its scaling ability.
+Tyvar, Jubilant Brawler :: Lets new mana creatures and a fresh Lathril activate as though they had haste. It does not let them attack immediately. The plus untaps one creature; the minus can recover a two-mana engine after a removal spell.
+Dwynen's Elite + Elvish Warmaster :: The Elite makes a token if another Elf is present, while Warmaster adds one token from another Elf entering, once each turn. Multiple simultaneous Elf entries still produce only one Warmaster trigger.
+Lys Alana Huntmaster + Elvish Promenade :: Promenade is an Elf spell, so it triggers Huntmaster and Leaf-Crowned Visionary. The Huntmaster token enters before Promenade resolves and increases the number of tokens it makes. Promenade is not a creature spell.
+Elven Ambush :: Doubles your Elf count at instant speed. Cast it before your turn for attackers that will be ready to attack, or during a developed turn to reach ten other untapped Elves for Lathril. It does little on an empty board.
 
-# The mana Elves
-Priest of Titania :: green mana for every Elf on the battlefield, including your opponents'. On a normal board that is five or more from a two-drop.
-Elvish Archdruid :: the same count restricted to yours, plus an anthem.
-Circle of Dreams Druid :: green for every CREATURE you control, tokens included.
-Marwyn, the Nurturer :: grows on every Elf that enters and taps for her own power.
-Heritage Druid :: tap three untapped Elves for {G}{G}{G}. Summoning sickness does not apply to Elves tapped this way, so a fresh Elvish Promenade immediately makes mana.
-Elvish Guidance :: an aura on a land that adds green for every Elf on the battlefield.
-Llanowar Elves :: turn-one acceleration.
-Fyndhorn Elves :: the second copy.
-Elvish Mystic :: the third.
-Elves of Deep Shadow :: the black one, which matters for Necropotence and the removal suite.
-Farhaven Elf :: a land and a body.
-Elvish Harbinger :: fixes, and tutors the exact Elf you need to the top.
+# Turn tapping into more mana and damage
+Dionus, Elvish Archdruid + Lathril, Blade of the Elves :: On your turn, the first time each Elf taps it untaps and gets a counter. With all eleven first-tap triggers unused, one drain untaps the entire payment and allows a second drain. It is not infinite, does not work on opponents' turns, and Elves already tapped for mana that turn have spent their trigger.
+Dionus, Elvish Archdruid + Heritage Druid :: Tap three Elves for mana, resolve their individual untap triggers, then use them again. Each Elf only receives one such untap each turn, so count unused triggers before planning the turn.
+Vitalize + Mobilize :: Each costs one green and untaps your whole creature board for another mana burst or another Lathril activation. Vitalize is instant-speed; Mobilize is sorcery-speed. They do not untap lands and do not reset Dionus's once-per-turn limit.
+Lathril, Blade of the Elves + Dionus, Elvish Archdruid + Vitalize + Mobilize :: With eleven ready Elves including Dionus, all relevant Dionus triggers unused and two green mana available, drain twice using Dionus, then once after each untap spell. Four activations cost each opponent 40 life. This is a finite, board-dependent line with multiple response windows, not an infinite combo.
+Seedborn Muse + Lathril, Blade of the Elves :: Untap everything on each opponent's untap step. With the full Elf board intact, Lathril can drain once on your turn and once during each opponent's turn for 40 life lost per opponent across that cycle. Activate after the untap step when you receive priority, not during it.
+Quest for Renewal :: Four creatures becoming tapped create four separate quest triggers, so mana development can charge it quickly. Once active it supplies the creature untaps needed for Lathril on opponents' turns, but unlike Seedborn Muse it does not refresh lands.
+Quirion Ranger + Priest of Titania :: Return a Forest, including a typed dual, to untap a large mana producer. The ability is once each turn. Returning and replaying a land can help after missing a land drop, but consumes that turn's land play.
+Wirewood Symbiote + Elvish Visionary :: Return the Visionary to untap a creature, then recast it to draw again. Symbiote is an Insect, not an Elf, and its ability is once each turn; it cannot return itself. Returning an Elf can also rescue it from targeted removal.
+Formidable Speaker + Gaea's Cradle :: Speaker turns an expendable card into the creature needed next. Its separate one-mana tap ability untaps any other permanent, including Cradle, Three Tree City or a mana Elf. Without haste permission, that tap ability must wait.
+Wirewood Lodge :: A land-based untap for an Elf that produces enough mana to justify the cost. It can untap Lathril, but that alone does not untap the other ten Elves needed for another drain.
 
-# Going wide
-Elvish Promenade :: an Elf token for every Elf you control. It routinely doubles your board.
-Lys Alana Huntmaster :: a token for every Elf spell you cast.
-Elvish Warmaster :: a token whenever other Elves enter, and a deathtouch team pump for a mana sink.
-Imperious Perfect :: an anthem and a repeatable token maker.
-Dwynen's Elite :: two bodies for two mana.
-Freyalise, Llanowar's Fury :: a mana Elf every turn, artifact and enchantment removal on the minus, and a huge draw on the ultimate.
-Realmwalker :: name Elf and cast them straight off the top of your library.
+# Draw through the cheap creatures
+Leaf-Crowned Visionary + Beast Whisperer :: Visionary rewards Elf spells with a paid green draw; Whisperer rewards every creature spell without an extra payment. Neither draws for tokens entering or creatures returned directly from the graveyard.
+Champions of the Perfect :: A second creature-cast draw engine on an Elf body. Exile a spare Elf from hand, or an expendable Elf permanent, as its additional cost. If Champions is countered, it never enters and its leave trigger will not return that card, so avoid risking an essential piece.
+Realmwalker + Eladamri, Korvecdal :: Realmwalker names Elf and lets you cast Elf creature spells from the top; Eladamri permits all creature spells. A land on top stops the chain, so use a draw effect or an available fetchland to change the top card.
+Eladamri, Korvecdal + Craterhoof Behemoth :: With Eladamri able to tap, one green and two other untapped creatures put Craterhoof from hand or the revealed top of your library onto the battlefield during your turn. The tapped creatures still count for Craterhoof's bonus but need untapping to attack.
+Necropotence :: Trade life for a new hand at the beginning of your next end step, then repay the life through Lathril. It skips your draw step and normally exiles discarded cards, so it does not stock the graveyard for mass reanimation.
+Skullclamp :: Equip an unboosted 1/1 token to kill it and draw two cards. Anthems and counters can raise its toughness enough that equipping no longer kills it. Plan draws before increasing the entire team's toughness.
+Pact of the Serpent :: Name Elf to turn a developed board into a large hand. The life loss equals the number drawn, so check the total first; an opponent with many creatures of a shared type can also be a lethal target.
+Return of the Wildspeaker :: Draw from your largest non-Human creature, often Marwyn, or choose the team pump when it creates lethal combat damage. It remains useful when you have one large creature but no wide board.
 
-# Anthems
-Elvish Champion :: +1/+1 and FORESTWALK. Against any green deck at the table your whole board is unblockable.
-Leaf-Crowned Visionary :: +1/+1 and a card for every Elf spell you cast, for {G} apiece.
-Joraga Warcaller :: multikicked, it is a scaling anthem — kick it twice and every Elf gets +2/+2.
-Immaculate Magistrate :: taps to put a counter on a creature for each Elf you control. On Marwyn that is instantly lethal mana; on Lathril it is a much bigger token trigger.
-Beastmaster Ascension :: seven quest counters comes fast on a board this wide, and then everything gets +5/+5.
+# Finish without relying on the commander
+Craterhoof Behemoth + Finale of Devastation :: Finale with X eight can find Craterhoof but only the Behemoth itself inherently has haste. At X ten or more, Finale also gives the entire team haste and a large additional pump. Have enough bodies left untapped to attack.
+Ezuri, Renegade Leader + Allosaurus Shepherd :: Two scalable combat outlets for excess green mana. Ezuri grants a repeatable +3/+3 and trample; Shepherd sets your Elves' base size to 5/5, with counters and other bonuses applied afterward. Repeating Shepherd does not stack the base-size setting.
+Elvish Champion + Yavimaya, Cradle of Growth :: Yavimaya makes opposing lands Forests in addition to their other types, so Champion gives your other Elves forestwalk against those opponents. Champion also helps opposing Elves, and does not give itself forestwalk.
+Joraga Warcaller + Dionus, Elvish Archdruid :: A counter gained from tapping Warcaller increases every other Elf's bonus, even if Warcaller was cast without kicker. Counters from High Perfect Morcant's proliferate ability can increase that bonus further.
+Shaman of the Pack + Wirewood Symbiote :: Shaman drains one targeted opponent according to your Elf count on resolution. Returning and recasting it provides another trigger with additional mana. This is finite; Symbiote's once-per-turn limit remains.
+Skemfar Shadowsage :: Usually counts your Elves and drains every opponent without targeting. It provides an immediate finish through combat stalls; the alternate lifegain mode can replenish a depleted life total before another Necropotence refill.
+This list develops mana and cards before converting a wide board into combat damage or repeated drains. A turn-six-to-eight finish is an estimate for a strong developed game, not a playtest result. There are no intentional infinite loops, extra-turn chains or mass land denial effects.
 
-# Closing the game
-Craterhoof Behemoth :: the standard ending. On a board of twenty Elves it is not close.
-Overwhelming Stampede :: the same effect, cheaper, using your biggest creature's power.
-Ezuri, Renegade Leader :: a repeatable +3/+3 and trample for the whole team, and a regeneration outlet that beats spot removal and most wraths.
-Return of the Wildspeaker :: draw cards equal to your biggest non-Human's power — with Marwyn that is often ten — or pump the team by +3/+3 at instant speed.
-Poison-Tip Archer :: reach and deathtouch to hold the ground, and a drain for every creature that dies anywhere.
-Lathril, Blade of the Elves :: remember the drain is not damage and does not target. It goes through protection, fog, prison enchantments and blockers alike.
+# Remove the obstacle and preserve your board
+High Perfect Morcant :: Each Elf entry forces every opponent to put a -1/-1 counter on one creature they control. They choose the creature, so this is gradual board suppression rather than targeted removal. Its sorcery-speed proliferate activation can add your +1/+1 counters and their -1/-1 counters without adding unwanted counters elsewhere.
+Reclamation Sage + Wirewood Symbiote :: An Elf body with artifact/enchantment removal becomes reusable when you return and recast it. The bounce also untaps another important creature, but shroud can prevent that creature from being a legal target.
+Assassin's Trophy + Abrupt Decay + Beast Within :: Trophy and Beast Within cover almost any permanent; Decay handles cheap nonland problems without being countered. Prioritize effects that shut down creature abilities or prevent your next finishing turn.
+Tear Asunder + Boseiju, Who Endures :: Flexible artifact/enchantment answers supplement the Sage. Kicked Tear exiles any nonland permanent; Boseiju's channel also answers a nonbasic land and is an ability, not a spell.
+Deathrite Shaman + Bojuka Bog :: Graveyard interaction occupies a mana creature and a land slot. Deathrite needs the right card type, mana and a ready tap to interrupt a line; Bog is a one-time sorcery-speed land play.
+Heroic Intervention + Selfless Safewright :: Intervention protects all your permanents from targeting and destruction. Safewright names Elf and can be paid for with convoke, but protects only your other Elf permanents: it does not protect itself, Seedborn Muse, Craterhoof or Wirewood Symbiote.
+Tyvar's Stand + Revitalizing Repast :: Stand at X zero is cheap hexproof and indestructible; larger X can also make Lathril connect for more tokens. Repast provides indestructible and a counter, or becomes a tapped dual land when needed. Neither indestructibility effect defeats exile or lethal toughness reduction.
+Veil of Summer + Allosaurus Shepherd :: Veil protects spells from counters and shields you from blue/black targeting for the turn; Shepherd keeps your green spells uncounterable while it remains on the battlefield. Neither makes every possible interaction harmless.
+Lightning Greaves :: Gives immediate haste and shroud, useful for Lathril or a new mana engine. Shroud also blocks your own targeted pumps and untaps. Move Greaves during your main phase before using those effects; Vitalize and Mobilize do not target and work through shroud.
+Toxic Deluge :: An emergency answer to a creature board you cannot race. It can kill your own Elves and ignores indestructible, so use the smallest effective X or plan a recovery spell afterward. Once a Lathril drain is activated, killing her does not remove that ability from the stack.
 
-# Card advantage
-Beast Whisperer :: a card for every creature spell.
-Leaf-Crowned Visionary :: the second copy, on an anthem body.
-Elvish Visionary :: a body that replaces itself.
-Necropotence :: as many cards as your life total allows, and Lathril's drain gains you ten a pop.
-Phyrexian Arena :: a card every turn.
-Read the Bones :: two cards and a scry.
-Night's Whisper :: two cards for two mana.
+# Rebuild after removal
+Patriarch's Bidding :: Choose Elf to recover the tribe after a destroy-based wipe. It is symmetrical: every player returns creatures of every type chosen, so inspect opposing graveyards before casting. Shaman and Shadowsage can deliver immediate life-loss triggers from the rebuilt board.
+Agadeem's Awakening :: Recovers creatures with different mana values. At X four, choose at most one each at zero, one, two, three and four; it cannot return several one-mana Elves together. The land face is a black source that can enter untapped for three life.
+Tyvar, Jubilant Brawler + Priest of Titania :: Tyvar's minus can recover Priest after milling, and its static ability allows Priest to tap immediately. This is a small, efficient rebuild when a full mass-reanimation spell is unnecessary.
+Champions of the Perfect :: When it leaves the battlefield after resolving, its exiled card returns to hand, preserving an Elf for rebuilding. If you exiled an Elf token, that token ceased to exist and cannot be returned.
 
-# Removal and protection
-Assassin's Trophy :: two mana for any permanent.
-Abrupt Decay :: uncounterable, for the cheap problem permanent.
-Beast Within :: instant-speed answer to anything.
-Putrefy :: an artifact or a creature.
-Go for the Throat :: one of the cleanest black removal spells.
-Maelstrom Pulse :: kills a permanent and every copy of it, which is how you answer a token deck.
-Krosan Grip :: split second, so it beats the thing they were holding up.
-Reclamation Sage :: an artifact or enchantment on an Elf body.
-Damnation :: a wrath. You rebuild from an Elvish Promenade far faster than anyone else at the table.
-Heroic Intervention :: hexproof and indestructible for the whole board.
-Ezuri, Renegade Leader :: regenerate through targeted removal, one Elf at a time.
+# Tutor for what the board is missing
+Green Sun's Zenith -> Dryad Arbor :: X zero turns Zenith into one-mana acceleration. Arbor is a creature land, so it normally cannot tap on the turn it enters and is vulnerable to creature removal.
+Green Sun's Zenith -> Priest of Titania :: X two finds scalable mana when enough Elves are already present. For a missing card engine, X two can instead find Leaf-Crowned Visionary.
+Formidable Speaker -> Selfless Safewright :: Find protection before committing more creatures. Speaker can also find either drain Elf; Green Sun's Zenith can find the green Shaman of the Pack, but not the mono-black Skemfar Shadowsage.
+Chord of Calling -> Seedborn Muse :: With eleven ready Elves and the mana/convoke resources available, find Muse before an opponent's untap step to begin repeated drains. Creatures tapped for convoke are temporarily unavailable for paying Lathril's cost until untapped.
+Chord of Calling -> Skemfar Shadowsage :: Fetch the all-opponent drain at instant speed when your Elf count makes it lethal, including in response to a destroy spell that would otherwise remove the board.
+Finale of Devastation -> Craterhoof Behemoth :: Use Finale as a battlefield tutor when the army is ready, or as recovery from the graveyard when the target has already died. The X-ten pump is a separate finishing bonus, not a requirement for the search.
+Diabolic Intent -> Patriarch's Bidding :: Sacrifice an expendable token to find recovery. Intent can also reach Necropotence, a protection spell or Gaea's Cradle when the missing resource is not a creature; the sacrifice is still paid if Intent is countered.
 
-# What to keep in an opening hand
-Keep a one-mana Elf. Llanowar Elves, Fyndhorn Elves or Elvish Mystic on turn one is what makes a turn-two Priest of Titania and a turn-three Lathril possible.
-Count your Elves before you activate. Ten is the number, tokens count, and creatures that entered this turn count — tapping a creature to pay for ANOTHER permanent's ability has no summoning-sickness restriction. This catches people out constantly.
-Dionus, Elvish Archdruid :: with him out, the tap-ten activation costs you nothing at all. Tap ten, they untap with counters, and you still get a full attack. Find him before you commit to the drain plan.
-Craterhoof Behemoth :: hold it. This deck can already win by tapping Elves, and Craterhoof is the answer to a board stall or a table that has walled off the drain with lifegain.
+# Opening hands and sequencing
+Keep two or three reliable lands, an early accelerator, and a draw engine or a path to one. Three lands plus a one-mana Elf and Leaf-Crowned Visionary is much better than a hand of finishers with no way to keep drawing. Mulligan hands whose only mana depends on already controlling creatures.
+Do not count Gaea's Cradle as opening mana on an empty board, Dryad Arbor as immediately usable mana, or Cavern of Souls as black mana for Necropotence. The two land MDFCs help avoid missed land drops, but their spell faces compete with using them as lands.
+Fetch an untapped Forest-typed source early for Arbor Elf and Quirion Ranger. Secure black for Lathril and interaction, then build toward triple black only if Necropotence or Agadeem's Awakening is part of the plan. Two basic Forests and a Swamp provide replacement-effect targets alongside the fetchable duals.
+Sequence draw engines before the cheap Elf chain. With Dionus out, track each Elf's first tap carefully: spending its untap on mana means it will not untap again when used for Lathril later that turn.
+Lathril is not always the correct turn-three play. If she cannot connect or drain soon, a draw engine or untap engine can be more useful. When preparing a finishing turn, retain the mana and untapped bodies needed for protection rather than turning every resource into another attacker.

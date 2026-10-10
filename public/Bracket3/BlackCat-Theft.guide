@@ -1,0 +1,83 @@
+The key decision is whether Black Cat should stay in the graveyard. When a return-on-death spell is ready, leave her there so it can bring her back; moving her to the command zone breaks that return. Cards she already stole remain playable even when she leaves. This is a theft engine with finite sacrifice/reanimation lines and its own drain finishers, not a deck that needs opponents to supply a win.
+
+# Start stealing, then spend the loot
+Black Cat, Cunning Thief :: each entrance selects two cards from one opponent's top nine. Prefer affordable ramp, interaction, and engines before expensive finishers. Separate triggers can target different opponents.
+Playing stolen cards still obeys normal timing, land-play limits, additional costs, and activation costs. Black Cat fixes mana for casting her stolen spells, not for their activated abilities. Keep each face-down pile identified by owner and the effect that exiled it; only you may inspect your stolen face-down cards.
+Gonti, Lord of Luxury :: a backup theft creature and excellent deathtouch blocker when Black Cat is too expensive to recast. His permission casts spells, so do not choose a land.
+Gonti, Night Minister :: your stolen spells refund a Treasure, while connecting creatures steal more cards. This is symmetrical: opponents also receive Treasures for casting spells they do not own, and can steal by attacking your other opponents.
+Thieving Varmint :: turns one tap into two mana for stolen spells and deters attacks with deathtouch. Its mana cannot pay for Black Cat, your own reanimation spells, or activated abilities.
+Inside Information :: turns spare mana and life into a one-turn theft burst. Leave life for interaction and incoming attacks; these cards expire at turn's end, unlike Black Cat's cards. Normal timing still applies.
+
+# Make each entrance count
+Panharmonicon + Black Cat, Cunning Thief :: two theft triggers select four cards total. Resolve the searches separately; the first trigger changes the library before the next one resolves.
+Roaming Throne :: normally choose Rogue to double Black Cat, both Gontis, and Morbid Opportunist. With Panharmonicon, Black Cat triggers three times total, not four. Opportunist's once-per-turn restriction still applies, but Throne adds a second occurrence when it triggers.
+Conjurer's Closet :: turns each end step into another theft or Gray Merchant trigger. It can also blink a stolen creature and returns it under your control; do not use it on a token expecting that token to return.
+Sword of Hearth and Home :: connects to ramp a basic Swamp and blink a creature you OWN. A stolen creature can carry the Sword, but cannot be your blink target. Agent Venom's menace and Dauthi Voidwalker's shadow help it connect.
+Blade of Selves + Black Cat, Cunning Thief :: attacking in a four-player game makes two token copies and therefore two theft triggers. Keep the original through the legend rule; both tokens die before combat damage, but their entrance triggers remain. This yields four stolen cards without a doubler.
+Saw in Half + Black Cat, Cunning Thief :: destroys the original and creates two legendary 1/2 copies. Both trigger, then you keep only one token under the legend rule. The original can stay in the graveyard for reanimation or move to the command zone; the surviving token is not your commander.
+Mimic Vat :: imprint a dead nontoken theft or drain creature for repeated hasty copies. A token copy of Black Cat is not a commander. Imprinting the actual commander means deliberately leaving her in exile; removing the Vat can strand her there, so usually prefer another creature.
+Swiftfoot Boots :: protects a valuable body from targeted removal and gives newly cast creatures haste for Blade or Sword attacks. Your own spells can still target the equipped creature.
+
+# Turn removal into another heist
+Malakir Rebirth + Black Cat, Cunning Thief :: let Rebirth resolve before sacrificing her, then leave her in the graveyard. She returns tapped and steals again. The land face is valuable when your opening hand needs mana.
+Not Dead After All + Ashnod's Altar :: give Black Cat the death trigger, sacrifice her for two colorless mana, and return her with another theft trigger and a Wicked Role. Each spell buys one return; the returned creature does not retain the granted death ability.
+Feign Death + Phyrexian Altar :: sacrifice the protected creature for one mana of any color and get a fresh entrance. The mana can help pay for the stolen spell; the return spell must already have resolved before sacrificing.
+Undying Malice :: another one-mana protection/retrigger spell. An existing +1/+1 counter does not stop this spell's granted trigger; this is not the undying keyword.
+Kaya's Ghostform :: handles death or exile, including on an opponent-owned creature you control. It returns the card under YOUR control. Leave your commander in the relevant zone so the trigger can find her; Ghostform itself is consumed.
+Warren Soultrader :: turns an expendable creature into a Treasure at the cost of one life. It cannot sacrifice itself, and repeated activations require real creatures and enough life.
+Viscera Seer :: the cheapest repeatable sacrifice outlet; use it to deny exile removal after a death-return spell resolves, or to cash in a creature before a sweeper.
+Phyrexian Tower + High Market :: sacrifice outlets built into the manabase preserve spell slots. Tower supplies two black mana; Market gains one life. Both require tapping, so they are not unlimited outlets.
+Reanimate + Animate Dead :: cheap recovery for Black Cat or a finisher; both can also take a useful creature from an opponent's graveyard. Reanimate's life cost matters in this list.
+Necromancy :: flexible reanimation that can steal from any graveyard. Using its flash permission outside sorcery timing makes it temporary; secure the entrance trigger and sacrifice value before cleanup.
+Victimize :: turn one disposable body into two creatures already in your graveyard. Choose targets before sacrificing, so the creature you sacrifice cannot be one of those targets.
+Agadeem's Awakening :: flexible land early and a late rebuild. Black Cat and Gray Merchant both cost five, so a single Awakening cannot return both; pair one with bodies of other mana values.
+The Soul Stone :: early indestructible black mana comes first. Harness it only when seven spare mana and an expendable creature make recurring a finisher every upkeep worth the investment; exiling the creature does not trigger death abilities.
+
+# Keep enough mana and cards
+Sol Ring + Arcane Signet + Mind Stone + Fellwar Stone :: prioritize early permanent ramp so Black Cat arrives with mana left to exploit or protect her. Mind Stone becomes a card later; Fellwar Stone's colors depend on opponents' lands.
+Dark Ritual :: an early Black Cat or a burst of mana for a decisive turn. It is one-shot acceleration, so a hand with Ritual but insufficient lands still needs a mulligan.
+Jet Medallion :: discounts Black Cat, reanimation, and your black finishers. It reduces only generic costs and does not discount a stolen spell unless that spell is black.
+Wayfarer's Bauble + Solemn Simulacrum :: basic Swamp ramp builds toward Coffers and Ghast. Solemn is a useful alternate blink target, then a sacrifice for a card.
+Cabal Coffers + Urborg, Tomb of Yawgmoth :: turn the entire manabase into Swamps that Coffers counts. Urborg also gives Coffers a normal black-mana ability; without it, Coffers cannot simply tap for one mana.
+Cabal Coffers + Deserted Temple :: pay to untap Coffers and activate it again once you have enough Swamps to profit. This produces a finite mana burst, not an infinite loop.
+Cabal Stronghold + Crypt Ghast :: the 25 basic Swamps support both engines. Stronghold counts BASIC Swamps only; Ghast adds one black whenever you tap a Swamp for mana, not one extra for every mana that land produces.
+Black Market Connections :: the default modes are Treasure and a card for three life. Buy the creature when you need a blocker, attacker, or sacrifice body, rather than automatically paying six life every turn.
+The One Ring :: independent draw keeps the deck functioning without Black Cat and its cast trigger buys a protected turn. Protection does not prevent its upkeep life loss. Deadly Dispute can sacrifice it when the burden becomes dangerous.
+Agent Venom + Morbid Opportunist :: Venom draws for each OTHER nontoken creature of yours that dies, at one life per card. Opportunist also sees token and opposing deaths but normally draws only once each turn. Spread sacrifices across turns when useful.
+Nasty End + Deadly Dispute :: cash in a doomed or protected Black Cat for cards. Nasty End draws three because she is legendary; Dispute draws two plus a Treasure. Sacrifice is an additional cost, so respond with protection BEFORE casting either spell.
+Night's Whisper + War Room + Castle Locthwain :: draw that does not need a creature or a theft engine. Castle becomes expensive in life when your hand is already full; stolen cards in exile do not increase that hand size.
+
+# Keep opponents from taking over
+Orcish Bowmasters :: picks off small utility creatures, pressures extra draws, and supplies an Army for sacrifice or combat. Panharmonicon doubles its entrance trigger, not its opponent-draw triggers.
+Dauthi Voidwalker :: graveyard disruption that can convert a powerful exiled card into a free spell. It needs to be able to tap, and normal timing still applies to the chosen card. Its replacement effect can prevent your reanimation spells from having opposing graveyard targets.
+Boggart Trawler + Bojuka Bog :: flexible graveyard answers. Trawler is repeatable with your blink and reanimation tools; Bog is a tapped land, so sequence it before a turn where every mana matters.
+Feed the Swarm + Withering Torment :: essential enchantment answers in mono-black. Preserve one for an effect that stops entrances or graveyard returns; theft is a possible source of other answers, not a guarantee.
+Deadly Rollick + Fell the Profane + Soul Shatter :: Rollick exiles cheaply with your actual commander on the field, Fell is a land when needed, and Shatter pressures all opponents through hexproof and indestructible. A token copy of Black Cat does not enable free Rollick.
+Lich's Relic + Panharmonicon :: normally three mana total can destroy one creature or planeswalker from each opponent. Panharmonicon supplies a second entrance trigger, but you must pay another two mana to get the second removal batch.
+Toxic Deluge + Damnation :: reset creature-heavy boards, then rebuild with inexpensive reanimation. Death-return spells can recover Black Cat after either wipe; they do not help when a replacement effect exiles her instead.
+Imp's Mischief :: redirect a single-target removal spell, or retarget a suitable counterspell to Mischief while it is on the stack. New targets must be legal, and this does not counter a sweeper or change an activated ability.
+The Darkness Crystal :: turns opposing nontoken creature deaths into exile and life, then converts one exiled creature into your threat for six mana. Its theft ability needs colored black mana and the Crystal untapped. It competes with Voidwalker's replacement effect, so you cannot assume every dying creature ends up under this card.
+
+# Turn the engine into a finish
+Gray Merchant of Asphodel + Panharmonicon :: double the table drain, with devotion counted separately when each trigger resolves. Blink and reanimate Merchant once you have enough black permanents to make each entrance meaningful.
+Blade of Selves + Gray Merchant of Asphodel :: the original and two token copies contribute six devotion by themselves when the two token entrance triggers resolve. With all three still present, that is at least twelve life lost by EACH opponent, before other black permanents or entrance doublers.
+Saw in Half + Kokusho, the Evening Star :: the original dies for five life from each opponent; one of the two legendary token copies then dies to the legend rule for another five. Sacrifice the surviving copy for a third trigger: fifteen life from each opponent total, assuming all triggers resolve normally.
+Brainstealer Dragon :: converts stolen nonland permanents entering under your control into life loss for their OWNERS. It does not drain all opponents for every theft, and casting a stolen instant does not trigger that ability. Its end-step theft adds more options for later turns.
+Torment of Hailfire + Exsanguinate :: turn accumulated Coffers mana into a table finish. Exsanguinate gives a predictable drain; Torment lets opponents pay with cards and permanents, so count their resources before declaring it lethal.
+Mimic Vat + Kokusho, the Evening Star :: make a hasty copy and sacrifice it before the delayed exile. Exile alone would not trigger Kokusho. Gray Merchant instead drains on the token's entrance without needing a sacrifice.
+
+# Find what the position needs
+Expedition Map -> Cabal Coffers :: find Coffers when you already have enough Swamps to use it productively; this is not an automatic turn-two mana play.
+Expedition Map -> Urborg, Tomb of Yawgmoth :: choose Urborg when Coffers is already present but too few of your lands are Swamps.
+Demonic Tutor -> The One Ring :: reload when you have mana but no profitable engine, rather than searching for another expensive threat.
+Demonic Tutor -> Withering Torment :: break a problem enchantment before committing more creatures to an engine it shuts off.
+Diabolic Intent -> Gray Merchant of Asphodel :: turn a disposable or death-protected creature into the finisher when blink or reanimation is ready and devotion is established.
+Diabolic Intent -> Torment of Hailfire :: use the tutor to close a game only when your actual available mana and opponents' remaining resources make the spell decisive.
+
+# What to keep in an opening hand and how to sequence
+Keep three usable mana sources, an early ramp piece, and either draw or relevant interaction. A two-land hand needs dependable cheap acceleration and a realistic route to further lands. Coffers without enough Swamps is not a functional early land, and four expensive theft engines are not an opening plan.
+Spend turns one through three developing mana and a draw source. Aim to cast Black Cat around turn four or five, preferably with a black mana available for protection. Casting an entrance doubler first is worthwhile only when doing so will not leave you undefended.
+Resolve the return-on-death spell before sacrificing; leave the actual card in the graveyard for its trigger. Do not cast these owner-return spells on a stolen creature and expect to keep it. A token that dies cannot return, so use one-shot protection on the original card rather than a Saw or Vat token.
+Stolen cards are a second hand with different permissions. Record which effect granted access, take useful lands when you need them, and keep mana for the interaction you found. If a card leaves exile and later returns, the old permission does not follow it.
+Use life deliberately: lands, draw engines, reanimation, Soultrader, and Inside Information all spend it. Gray Merchant, Kokusho, and Exsanguinate can replenish it, but an unavailable finisher cannot save you from overpaying now.
+This list has no designed infinite combo, mass land denial, or extra-turn chain. Its expected finish is a developed mid-to-late game of stolen threats and repeated drains, usually around turns seven through nine rather than an early deterministic combo.

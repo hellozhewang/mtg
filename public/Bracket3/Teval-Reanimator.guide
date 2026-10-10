@@ -1,0 +1,85 @@
+The graveyard is both your second hand and your fuel. Keep a few creatures and lands worth recovering instead of exiling everything for an immediate burst. Teval creates one Zombie per event in which one or more cards leave your graveyard, not one Zombie for every card in a batch.
+
+# The art direction and printing choices
+This build uses a dark-fantasy direction: spirit dragons, graveyard creatures and overgrown landscapes. These are recommended physical printings, not artwork assignments encoded in the decklist. The card-name import and catalog can display different editions; use the set codes and collector numbers below when selecting artwork.
+Teval, the Balanced Scale :: TDC 8, borderless, illustrated by Chris Rahn. This is the visual centerpiece and the engine that turns recovered lands and creatures into an undead army.
+Teval, Arbiter of Virtue :: TDM 319, showcase, illustrated by Rafal Wechterowicz (Too Many Skulls), is the suggested alternate treatment. TDM 230 by Alexander Ostrowski is the standard-art alternative if you prefer a more consistent traditional-fantasy presentation.
+Junji, the Midnight Sky :: NEO 409, borderless, illustrated by Satoru Senda, gives the second spirit dragon a distinctive presentation. The standard Chase Stone illustration is also available on the TDC 183 reprint.
+The Ancient One :: LCI 319, showcase, illustrated by Clint Lockwood. This is a visual focal point that also becomes a huge low-cost creature once enough permanent cards have reached the graveyard.
+Zagoth Triome :: IKO 313, borderless showcase, illustrated by Robbie Trevino. Choose this edition as the standout landscape; mechanically it supplies all three colors and is fetchable by its basic land types.
+Life from the Loam :: TDC 96, illustrated by Carlos Palma Cruchaga, keeps a central recursion spell in the Tarkir: Dragonstorm Commander art direction.
+Forest + Island + Swamp :: Use the Eternal Night full-art basics from Innistrad: Midnight Hunt or Crimson Vow for the five basic-land slots. Their black-and-white horror style is a deliberate visual contrast to the colored showcase cards.
+The printing identifiers above were checked against Scryfall. Eternal Night basic-land treatment reference: https://magic.wizards.com/en/news/feature/innistrad-midnight-hunt-prerelease-primer
+
+# Feed the engine before deploying the largest creatures
+Teval, the Balanced Scale :: Attack to mill three and return any land from your graveyard tapped, not necessarily one of the three just milled. The land leaving the graveyard creates a Zombie. Paying life for a shockland cannot override Teval returning it tapped.
+Stitcher's Supplier + Hedron Crab :: Cheap ways to stock the graveyard before the commander arrives. Target yourself with Crab while you need resources; its trigger is mandatory, but you can target an opponent when your library is getting low.
+Satyr Wayfinder + Grisly Salvage :: Find a needed land or creature while putting the other revealed cards into the graveyard. The card selected for your hand comes from the library, not from the graveyard, so that selection does not trigger Teval.
+Aftermath Analyst + Primal Witchstalker :: Both fill the graveyard while helping recover lands. Witchstalker immediately returns one land after its mill; Analyst needs a later four-mana activation but returns every land card.
+Ripples of Undeath :: Mill at the start of your first main phase, then optionally pay one mana and three life to recover a card from that mill. Unlike simply drawing a revealed card, this recovery does take a card out of the graveyard and triggers Teval.
+Nyx Weaver :: Mills two each upkeep, blocks flyers and can exile itself to return any card from the graveyard. The returned card triggers Teval; Weaver moving from the battlefield to exile is not itself a graveyard-exit event.
+The Ancient One :: A two-mana 8/8 needs eight permanent cards in your graveyard before it can attack or block. Its paid draw/discard ability can place an expensive reanimation target in the graveyard and mill you further; you can activate it before descend eight is active.
+
+# Ramp through the same resources you plan to recover
+Sol Ring + Arcane Signet + Birds of Paradise :: Early acceleration helps cast the three-color commander with resources left for protection. A hand with only Sol Ring and colorless mana still cannot pay Teval's colored cost.
+Deathrite Shaman :: Fetchlands provide targets for the mana ability; it needs an actual land card in a graveyard. Exiling from your own graveyard also triggers Teval, while exiling an opponent's card does not.
+Nature's Lore + Three Visits + Farseek :: Find the typed duals needed for the next spells. Lore and Visits find Forest cards; Farseek finds an appropriate other basic land type and puts its selection tapped.
+Sakura-Tribe Elder + Fabled Passage :: Basic-search effects provide repeatable material for the graveyard engines. Five basics supply actual targets; do not assume they remain after repeated Passage recasts.
+Ramunap Excavator + Icetill Explorer :: Play lands from the graveyard to make Teval tokens. Excavator does not give additional land plays; Explorer gives one extra play on each of your turns and mills whenever a land enters.
+Life from the Loam :: Recover up to three lands to keep making land drops or pay Six's retrace costs. Returning several lands together gives one Teval trigger. Replacing a draw with dredge mills three and returns Loam, creating a separate graveyard-exit event.
+Field of the Dead + Splendid Reclamation :: Once seven differently named lands are present, returning several lands can generate a large Zombie army. Field counts both itself and other lands entering; repeated basics still count as only one name each.
+Lumra, Bellow of the Woods :: A large vigilance/reach threat that mills four and returns all graveyard lands tapped. With Field and Crab, its entry can generate tokens and further milling, so resolve the resulting triggers deliberately.
+Kheru Goldkeeper :: During your turn, each graveyard-exit event adds a Treasure alongside Teval's Zombie. The renew ability can give another creature flying later if Goldkeeper itself is in the graveyard. Multiple cards leaving together still create only one Treasure.
+
+# Turn recursion into cards, bodies and mana
+Teval's Judgment + Kishla Skimmer :: Judgment can give a draw, Treasure and Zombie across three separate exit events each turn, using each mode once. Skimmer draws only once on your own turn; it is not unlimited draw for every card recovered.
+Insidious Roots :: Creature cards leaving your graveyard grow a Plant army and give all your creature tokens a mana ability, including Teval's Zombies. New tokens normally cannot tap for mana immediately. Lands leaving the graveyard trigger Teval but do not trigger Roots.
+Titans' Nest + Teval, the Balanced Scale :: Exile cards individually to make one Zombie per activation and accumulate restricted colorless mana. That mana can pay only for colored spells without X in their mana costs, not abilities, colorless spells or colored pips. This is finite and consumes the graveyard.
+Teval, Arbiter of Virtue :: Delve reduces generic spell costs by exiling graveyard cards, while each spell cast costs life equal to its mana value. A discounted eight-mana spell still loses eight life. Keep useful recursion targets and attack with this Dragon's lifelink when safe.
+Phyrexian Reclamation :: Pay mana and life to recover a creature and make a Zombie with Teval. The ability costs more than a single Goldkeeper Treasure supplies, so repeated activations need real resources.
+Six + Life from the Loam :: Six grants retrace to nonland permanent cards in your graveyard during your turn. Loam replenishes lands to discard while recasting engines; you still pay the spell's normal costs.
+Muldrotha, the Gravetide :: Each turn, replay a land and cast a permanent of each permanent type from your graveyard. This does not grant an extra land play or let you cast instants and sorceries from there. Use different permanent types to maximize what you recover.
+Uro, Titan of Nature's Wrath :: Cast normally for life, a draw and a possible land drop, then sacrifice it. Escape later to keep the body. Escape exiles several cards as a payment; Teval counts the separate zone-change events, not each exiled card as its own event.
+Tatyova, Benthic Druid + Skullclamp :: Tatyova draws from the recurring land drops. Clamp gives value when an equipped creature dies, but a 2/2 Zombie becomes 3/1 and does not die just from equipping; sacrifice it to Jarad or let it trade in combat.
+Eternal Witness + Bala Ged Recovery :: Recover any key card, including interaction or Living Death, that was milled. Recovery's land face is an emergency green source when an opening hand needs another land.
+
+# Bring back the creatures that change the game
+Reanimate + Animate Dead :: Turn a milled expensive creature into an early threat. Reanimate loses life equal to the creature's mana value; Animate Dead links the creature to an Aura whose removal makes its controller sacrifice that creature.
+Victimize :: Exchange an expendable Zombie for two creature cards returned tapped. The sacrifice happens on resolution, not as an additional casting cost. The two cards return together, so Teval gets one exit-event trigger from them.
+Dread Return :: Flashback lets a milled copy sacrifice three creatures to reanimate a larger threat without paying mana. Casting it from the graveyard is itself a graveyard-exit event; the spell is then exiled after resolving, rather than returning to the graveyard.
+Colossal Grave-Reaver :: Its own entry or attack mills three; each event putting creature cards from your library into your graveyard returns one of those creatures directly to the battlefield. This can chain into more entry effects, but it is not permission to select any old creature from the graveyard.
+Junji, the Midnight Sky :: A flying, menacing threat whose death can recover a non-Dragon creature from any graveyard, including Muldrotha or Lord of Extinction. It cannot reanimate Teval or Colossal Grave-Reaver because they are Dragons.
+Living Death :: A recovery spell and sacrifice-based reset. It first exiles graveyard creatures, then sacrifices battlefield creatures, then returns the exiled cards. Opponents benefit too. Teval must already be on the battlefield to see that initial graveyard exit; returning him afterward does not create retroactive triggers.
+The Scarab God :: Exile a creature from a graveyard to make a 4/4 Zombie copy, and drain opponents at upkeep according to your Zombies. Exiling from your own graveyard adds Teval's token; taking an opponent's creature does not. Avoid exiling a card you planned to reanimate normally unless the copy is worth it.
+
+# Finish with the army or the graveyard
+Wonder + Craterhoof Behemoth :: Wonder in your graveyard grants your creatures flying while you control an Island; the typed blue duals qualify. Craterhoof turns a developed token army into a lethal attack with trample. The existing creatures still need to be able to attack; Craterhoof only has haste itself.
+Jarad, Golgari Lich Lord + Lord of Extinction :: In a developed game, count all cards in all graveyards to determine Lord's power, then sacrifice it to make each opponent lose that much life. You need one black, one green and one generic for the activation, and a sufficiently stocked set of graveyards for this to finish the table.
+Jarad, Golgari Lich Lord + The Ancient One :: The Ancient One remains 8/8 even when its descend restriction prevents attacking, so Jarad can still sacrifice it for eight life lost by each opponent. Recursion can repeat this later, but each cycle needs mana and another recovery effect.
+Syr Konrad, the Grim :: Milling creature cards, creatures dying and creature cards leaving your graveyard all turn resource development into damage to every opponent. His ability counts individual creature cards where Teval counts a batch, so resolving several cards together can produce different trigger totals.
+The Scarab God + Field of the Dead :: The land's Zombies and the commander's Zombie Druids both increase the God's upkeep drain. This provides a finish when attacking is difficult without needing to assemble an infinite loop.
+The normal aim is to develop through the early turns and threaten a decisive combat, graveyard-powered drain or reanimation swing around turns seven to nine. This is an estimate, not a playtest result. The list contains no intentional infinite combo, extra-turn chain or mass land denial; Jarad's large graveyard sacrifice is a late finite payoff, not a plan to rush an early two-card win.
+
+# Protect the graveyard and answer the relevant threat
+Assassin's Trophy + Abrupt Decay + Beast Within + Tear Asunder :: Flexible permanent removal prevents a single opposing engine or graveyard hoser from shutting down your plan. Use the cheapest answer that works, retaining the broader one when possible.
+Mana Drain + Swan Song + An Offer You Can't Refuse :: Reserve counters for a winning spell, exile sweeper or graveyard-exile effect that would destroy your recovery. These counter spells, not activated abilities; Swan Song and Offer cannot counter creature spells.
+Cyclonic Rift + Toxic Deluge :: Rift clears opposing nonland permanents for a finishing turn. Deluge is the emergency creature reset and ignores indestructible, but can kill your own creatures too; preserve a recovery plan before paying a large life total.
+Heroic Intervention + Swiftfoot Boots :: Intervention protects permanents from targeting and destruction, while Boots keeps Teval safer and can give a reanimated threat haste. Neither protects cards already in the graveyard.
+Malakir Rebirth :: Save a key creature from a destroy effect by returning it tapped after death. It does not answer exile. Play its tapped black land face instead when missing a land drop is the larger problem.
+Boseiju, Who Endures + Otawara, Soaring City + Takenuma, Abandoned Mire :: Lands provide interaction or recursion when drawn late. Channel is an ability rather than a spell, but normal target restrictions still apply.
+Bojuka Bog + Deathrite Shaman :: Clear dangerous opposing graveyards before committing to Living Death. Bog can be reused through the land-recursion package only after it actually reaches your graveyard; the deck does not have a repeatable land-bounce engine.
+
+# Find what the board actually needs
+Entomb -> Colossal Grave-Reaver :: With reanimation available, place the Dragon into your graveyard as a high-impact target. Entomb without a follow-up is setup, not a creature on the battlefield.
+Entomb -> Wonder :: With an Island and a token board, send Wonder directly to the graveyard for flying. Do not spend further resources reanimating it when the graveyard ability is the reason you searched.
+Entomb -> Life from the Loam :: When the problem is missed land drops or insufficient retrace fuel, set up dredge and land recovery rather than another expensive threat.
+Entomb -> Field of the Dead :: If Teval can attack and you are near seven land names, put Field in the graveyard so the attack can return it. Field enters tapped, but its landfall ability can still trigger immediately.
+Demonic Tutor -> Living Death :: After trading creatures, find the mass recovery spell when your graveyard is stronger than the other three. Check their available interaction and graveyard contents first.
+Demonic Tutor -> Craterhoof Behemoth :: Find the combat finisher once a large enough army is ready to attack and you can cast or reanimate it. With poor board development, search for a draw or recursion engine instead.
+
+# Opening hands and sequencing
+Keep three usable lands, an early ramp or self-mill card, and an engine or recovery spell. A hand of powerful eight-mana creatures without a way to put them into the graveyard and recover them should be sent back.
+Fetch untapped colors for the early play when needed; otherwise, a surveil dual at the end of the previous player's turn helps fill the graveyard. The five basics support Sakura-Tribe Elder and repeated Fabled Passage activations while the dual-heavy mana base fixes all three colors.
+Cast Teval once an attack is likely to generate both a land and a token, or when another graveyard-exit effect is already available. Do not attack into a losing block just to mill three if a recursion engine can develop safely instead.
+Exile spent fetchlands, redundant ramp and genuinely expendable cards first with Titans' Nest or delve. Keep Wonder, useful reanimation targets and the land engine unless spending them immediately wins or prevents a loss. Exiling cards also shrinks Lord of Extinction and can switch off The Ancient One's combat permission.
+Count triggers by event. Three lands returned together by Loam create one Teval trigger; three separate Titans' Nest activations create three. If an opponent removes Teval after an exit trigger is already on the stack, that trigger still resolves.

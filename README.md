@@ -96,6 +96,22 @@ budget reasons, and never mention price as a downside.
 
 ---
 
+## Goblin decks: keep the Recruiter package together
+
+**Owner preference (2026-10-10): every Goblin deck running Goblin Recruiter must
+also include Muxus, Goblin Grandee and Goblin Ringleader**, unless the owner
+explicitly requests an exception. Muxus as the commander already satisfies its
+slot; never add a second copy to the 99. Keep considering Krenko, Mob Boss as a
+supporting engine when another legend is the commander.
+
+Evaluate Ringleader and Muxus as payoffs for a deliberately arranged Recruiter
+pile, even when the deck has too few Goblins for reliable blind reveals. Keep
+enough mana and protection to execute it. The guide should give both a four-card
+Ringleader refill and a six-creature Muxus deployment using cards actually in that
+list, including a sacrifice outlet if its combo requires one. Account for the
+draw needed to reach a payoff in the library, intervening shuffles, and Muxus's
+restriction to Goblin creature cards with mana value five or less.
+
 ## Assumed play context
 
 **Games are 4-player free-for-all (1v1v1v1)** unless stated otherwise. This changes

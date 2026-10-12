@@ -1,0 +1,99 @@
+1 Surrak Dragonclaw
+1 Arcane Signet
+1 Archdruid's Charm
+1 Arid Mesa
+1 Balefire Dragon
+1 Beast Within
+1 Berserk
+1 Birds of Paradise
+1 Blasphemous Act
+1 Bloodstained Mire
+1 Bloom Tender
+1 Boseiju, Who Endures
+1 Breeding Pool
+1 Chord of Calling
+1 City of Brass
+1 Command Tower
+1 Craterhoof Behemoth
+1 Deflecting Swat
+1 Delighted Halfling
+1 Disciple of Freyalise
+1 Eldritch Evolution
+1 Elvish Mystic
+1 Embercleave
+1 Endurance
+1 Etali, Primal Conqueror
+1 Eternal Witness
+1 Exotic Orchard
+1 Fanatic of Rhonas
+1 Farseek
+1 Finale of Devastation
+1 Flooded Strand
+1 Force of Vigor
+2 Forest
+1 Gaea's Cradle
+1 Glasspool Mimic
+1 Goreclaw, Terror of Qal Sisma
+1 Green Sun's Zenith
+1 Guardian Project
+1 Gwenna, Eyes of Gaea
+1 Haywire Mite
+1 Hedge Maze
+1 Heroic Intervention
+1 Island
+1 Karlach, Fury of Avernus
+1 Karplusan Forest
+1 Ketria Triome
+1 Kogla, the Titan Ape
+1 Koma, World-Eater
+1 Legolas's Quick Reflexes
+1 Llanowar Elves
+1 Mana Confluence
+1 Mana Drain
+1 Misty Rainforest
+1 Mountain
+1 Nature's Lore
+1 Ohran Frostfang
+1 Old Gnawbone
+1 Otawara, Soaring City
+1 Pathbreaker Ibex
+1 Polluted Delta
+1 Pongify
+1 Quartzwood Crasher
+1 Radagast of Rhosgobel
+1 Rejuvenating Springs
+1 Return of the Wildspeaker
+1 Samut, Hazoret's Champion
+1 Scalding Tarn
+1 Seedborn Muse
+1 Selvala, Heart of the Wilds
+1 Sol Ring
+1 Spire Garden
+1 Starwinder
+1 Steam Vents
+1 Stomping Ground
+1 Stubborn Denial
+1 Survival of the Fittest
+1 Sylvan Library
+1 Taiga
+1 Temur Ascendancy
+1 Temur Battle Rage
+1 Terror of the Peaks
+1 The Great Henge
+1 The Unagi of Kyoshi Island
+1 Three Visits
+1 Tishana's Tidebinder
+1 Titan of Industry
+1 Training Center
+1 Tropical Island
+1 Tyvar's Stand
+1 Venser, Shaper Savant
+1 Verdant Catacombs
+1 Volcanic Island
+1 Winding Canyons
+1 Windswept Heath
+1 Wooded Foothills
+1 Xenagos, God of Revels
+1 Yavimaya Coast
+1 Yavimaya, Cradle of Growth
+1 Yeva, Nature's Herald

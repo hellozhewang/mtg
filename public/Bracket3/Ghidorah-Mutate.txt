@@ -1,98 +1,98 @@
-1 Illuna, Apex of Wishes
+1 Illuna, Apex of Wishes (IKO) 300
 1 Alchemist's Refuge
-1 An Offer You Can't Refuse
-1 Animar, Soul of Elements
-1 Arcane Signet
+1 An Offer You Can't Refuse (FDN) 160
+1 Animar, Soul of Elements (A25) 196
+1 Arcane Signet (FDC) 245
 1 Arid Mesa
-1 Auspicious Starrix
+1 Auspicious Starrix (IKO) 294
 1 Bala Ged Recovery
-1 Beast Whisperer
-1 Beast Within
-1 Birds of Paradise
-1 Blasphemous Act
+1 Beast Whisperer (CLU) 158
+1 Beast Within (FDC) 190
+1 Birds of Paradise (FDC) 191
+1 Blasphemous Act (FDC) 140
 1 Bloodstained Mire
 1 Boseiju, Who Endures
-1 Brainstorm
+1 Brainstorm (DSC) 113
 1 Breeding Pool
-1 Chaos Warp
-1 Cloudpiercer
+1 Chaos Warp (MBC) 72
+1 Cloudpiercer (IKO) 291
 1 Command Tower
 1 Commercial District
-1 Craterhoof Behemoth
-1 Cyclonic Rift
-1 Deflecting Swat
-1 Delighted Halfling
-1 Dreamtail Heron
-1 Etali, Primal Conqueror
+1 Craterhoof Behemoth (CMM) 280
+1 Cyclonic Rift (CMM) 84
+1 Deflecting Swat (CMM) 214
+1 Delighted Halfling (HOC) 65
+1 Dreamtail Heron (IKO) 284
+1 Etali, Primal Conqueror (MOM) 137
 1 Exotic Orchard
-1 Farseek
+1 Farseek (TDC) 255
 1 Flooded Strand
 2 Forest
 1 Frenzied Baloth
-1 Gemrazer
+1 Gemrazer (IKO) 295
 1 Gladecover Scout
 1 Hedge Maze
-1 Heroic Intervention
+1 Heroic Intervention (CMM) 295
 2 Island
-1 Ivy, Gleeful Spellthief
+1 Ivy, Gleeful Spellthief (DMU) 201
 1 Karplusan Forest
 1 Ketria Triome
-1 Koma, Cosmos Serpent
+1 Koma, Cosmos Serpent (MKC) 213
 1 Legolas's Quick Reflexes
-1 Lore Drakkis
-1 Mana Drain
-1 Migratory Greathorn
+1 Lore Drakkis (IKO) 301
+1 Mana Drain (2X2) 57
+1 Migratory Greathorn (IKO) 297
 1 Misty Rainforest
 1 Mountain
-1 Mystic Remora
-1 Nature's Lore
+1 Mystic Remora (DMR) 59
+1 Nature's Lore (SOC) 278
 1 Otawara, Soaring City
-1 Parcelbeast
+1 Parcelbeast (PLST) IKO-304
 1 Polluted Delta
-1 Pollywog Symbiote
-1 Pongify
-1 Porcuparrot
+1 Pollywog Symbiote (IKO) 63
+1 Pongify (TDC) 160
+1 Porcuparrot (IKO) 293
 1 Portal to Phyrexia
-1 Pouncing Shoreshark
+1 Pouncing Shoreshark (PLST) IKO-285
 1 Radagast of Rhosgobel
 1 Rejuvenating Springs
-1 Return of the Wildspeaker
-1 Rhystic Study
+1 Return of the Wildspeaker (ECC) 115
+1 Rhystic Study (JMP) 169
 1 Sawtusk Demolisher
 1 Scalding Tarn
-1 Scroll Rack
-1 Sea-Dasher Octopus
-1 Season of Growth
-1 Sensei's Divining Top
+1 Scroll Rack (CMR) 337
+1 Sea-Dasher Octopus (IKO) 286
+1 Season of Growth (M20) 191
+1 Sensei's Divining Top (2X2) 314
 1 Shivan Reef
-1 Skyshroud Claim
-1 Slip Out the Back
-1 Slippery Bogle
-1 Sol Ring
+1 Skyshroud Claim (BBD) 213
+1 Slip Out the Back (CLU) 99
+1 Slippery Bogle (EVE) 160
+1 Sol Ring (FDC) 286
 1 Spire Garden
 1 Steam Vents
 1 Stomping Ground
-1 Swan Song
-1 Swiftfoot Boots
-1 Sylvan Library
+1 Swan Song (C16) 98
+1 Swiftfoot Boots (MBC) 77
+1 Sylvan Library (LEG) 207
 1 Taiga
 1 Talon Gates of Madara
-1 Tamiyo's Safekeeping
+1 Tamiyo's Safekeeping (NEO) 211
 1 Temur Ascendancy
-1 Three Visits
-1 Titan of Industry
-1 Toski, Bearer of Secrets
+1 Three Visits (SOC) 289
+1 Titan of Industry (ECC) 117
+1 Toski, Bearer of Secrets (MKC) 191
 1 Training Center
 1 Tropical Island
-1 Utopia Sprawl
-1 Veil of Summer
+1 Utopia Sprawl (RVR) 159
+1 Veil of Summer (M20) 198
 1 Venomthrope
 1 Verdant Catacombs
 1 Vesuvan Duplimancy
 1 Volcanic Island
-1 Wild Growth
+1 Wild Growth (MKC) 195
 1 Willowrush Verge
 1 Windswept Heath
 1 Wooded Foothills
-1 Worldly Tutor
+1 Worldly Tutor (MIR) 255
 1 Yavimaya Coast

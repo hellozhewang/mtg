@@ -1,76 +1,76 @@
-1 Venser, Shaper Savant
-1 Aether Channeler
-1 An Offer You Can't Refuse
-1 Arcane Signet
-1 Archaeomancer
+1 Venser, Shaper Savant (2X2) 66
+1 Aether Channeler (DMU) 42
+1 An Offer You Can't Refuse (FDN) 160
+1 Arcane Signet (FDC) 245
+1 Archaeomancer (UMA) 45
 1 Archmage of Echoes
-1 Azami, Lady of Scrolls
+1 Azami, Lady of Scrolls (CMM) 74
 1 Barrin, Tolarian Archmage
 1 Blur
 1 Candlekeep Sage
 1 Castle Vantress
 1 Cavern of Souls
-1 Conjurer's Closet
-1 Counterspell
+1 Conjurer's Closet (INR) 259
+1 Counterspell (DSC) 114
 1 Cyclone Summoner
-1 Cyclonic Rift
+1 Cyclonic Rift (2XM) 339
 1 Displace
-1 Displacer Kitten
+1 Displacer Kitten (CLB) 63
 1 Docent of Perfection
-1 Dour Port-Mage
-1 Emeritus of Ideation
+1 Dour Port-Mage (BLB) 47
+1 Emeritus of Ideation (SOS) 45
 1 Essence Flux
-1 Fellwar Stone
+1 Fellwar Stone (MBC) 74
 1 Galecaster Colossus
-1 Glen Elendra Archmage
-1 Glen Elendra Guardian
-1 Herald's Horn
+1 Glen Elendra Archmage (WOC) 94
+1 Glen Elendra Guardian (ECL) 51
+1 Herald's Horn (LCC) 304
 25 Island
-1 Kindred Discovery
-1 Mana Drain
-1 Master of Waves
+1 Kindred Discovery (LCC) 159
+1 Mana Drain (J16) 2
+1 Master of Waves (DDT) 1
 1 Minamo, School at Water's Edge
-1 Mind Stone
-1 Mystic Remora
+1 Mind Stone (CLB) 325
+1 Mystic Remora (DMR) 420
 1 Mystic Sanctuary
-1 Naban, Dean of Iteration
+1 Naban, Dean of Iteration (DOM) 58
 1 Nykthos, Shrine to Nyx
 1 Otawara, Soaring City
-1 Panharmonicon
-1 Patchwork Banner
-1 Patron Wizard
+1 Panharmonicon (2X2) 310
+1 Patchwork Banner (FDC) 279
+1 Patron Wizard (ODY) 89
 1 Planar Incision
-1 Pongify
-1 Psychosis Crawler
+1 Pongify (TDC) 160
+1 Psychosis Crawler (MKC) 234
 1 Quistis Trepe
-1 Raise the Palisade
-1 Rapid Hybridization
+1 Raise the Palisade (LTC) 23
+1 Rapid Hybridization (SOC) 198
 1 Reliquary Tower
-1 Rhystic Study
+1 Rhystic Study (JMP) 169
 1 Riptide Laboratory
-1 Roaming Throne
-1 Sage of Fables
-1 Sapphire Medallion
-1 Sensei's Divining Top
-1 Sky Diamond
-1 Snapcaster Mage
-1 Sol Ring
-1 Soul-Guide Lantern
-1 Sower of Temptation
-1 Spellseeker
+1 Roaming Throne (LCI) 258
+1 Sage of Fables (MOR) 47
+1 Sapphire Medallion (MH3) 296
+1 Sensei's Divining Top (2X2) 314
+1 Sky Diamond (CLB) 337
+1 Snapcaster Mage (INR) 478
+1 Sol Ring (FDC) 286
+1 Soul-Guide Lantern (DRC) 139
+1 Sower of Temptation (BBD) 131
+1 Spellseeker (CMM) 120
 1 Step Through
-1 Stonybrook Banneret
-1 Swan Song
+1 Stonybrook Banneret (MOR) 51
+1 Swan Song (C16) 98
 1 Talon Gates of Madara
-1 Teferi, Mage of Zhalfir
-1 Thassa, Deep-Dwelling
-1 The One Ring
-1 Thought Vessel
+1 Teferi, Mage of Zhalfir (IMA) 75
+1 Thassa, Deep-Dwelling (THB) 71
+1 The One Ring (LTR) 246
+1 Thought Vessel (MBC) 78
 1 Three Tree City
-1 Thundertrap Trainer
-1 Tishana's Tidebinder
+1 Thundertrap Trainer (BLB) 78
+1 Tishana's Tidebinder (LCI) 81
 1 Transit Mage
-1 Trinket Mage
+1 Trinket Mage (DDU) 41
 1 Vedalken Aethermage
 1 War Room
 1 Watcher for Tomorrow

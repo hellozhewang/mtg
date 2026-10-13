@@ -1,95 +1,95 @@
-1 The Second Doctor
+1 The Second Doctor (WHO) 156
 1 Adarkar Wastes
-1 Akroma's Will
+1 Akroma's Will (LCC) 125
 1 Alandra, Sky Dreamer
-1 An Offer You Can't Refuse
-1 Approach of the Second Sun
-1 Arcane Denial
-1 Arcane Signet
-1 Archaeomancer's Map
+1 An Offer You Can't Refuse (FDN) 160
+1 Approach of the Second Sun (AKH) 4
+1 Arcane Denial (SOC) 187
+1 Arcane Signet (WHO) 830
+1 Archaeomancer's Map (SOC) 136
 1 Arid Mesa
-1 Azorius Signet
-1 Blue Sun's Zenith
-1 Brainstorm
-1 Chasm Skulker
+1 Azorius Signet (FRC) 53
+1 Blue Sun's Zenith (A25) 44
+1 Brainstorm (DSC) 113
+1 Chasm Skulker (MOC) 218
 1 City of Brass
-1 Clever Concealment
+1 Clever Concealment (ONC) 5
 1 Command Tower
-1 Consecrated Sphinx
-1 Counterspell
+1 Consecrated Sphinx (2X2) 43
+1 Counterspell (DSC) 114
 1 Demolition Field
 1 Deserted Beach
-1 Dovin's Veto
+1 Dovin's Veto (WAR) 193
 1 Eiganjo, Seat of the Empire
-1 Elspeth, Storm Slayer
-1 Esper Sentinel
+1 Elspeth, Storm Slayer (TDM) 11
+1 Esper Sentinel (MH2) 12
 1 Exotic Orchard
-1 Fact or Fiction
-1 Faerie Mastermind
-1 Fellwar Stone
-1 Flawless Maneuver
+1 Fact or Fiction (FRC) 41
+1 Faerie Mastermind (MOM) 58
+1 Fellwar Stone (MBC) 74
+1 Flawless Maneuver (FRC) 25
 1 Flooded Strand
 1 Floodfarm Verge
-1 Force of Negation
-1 Frantic Search
-1 Generous Gift
+1 Force of Negation (2X2) 50
+1 Frantic Search (TDC) 153
+1 Generous Gift (LCC) 128
 1 Glacial Fortress
-1 Gleaming Splendor
-1 Grand Abolisher
+1 Gleaming Splendor (HOB) 275
+1 Grand Abolisher (CMM) 27
 1 Hall of Heliod's Generosity
 1 Hallowed Fountain
 1 Hengegate Pathway
-1 Homunculus Horde
-1 Idyllic Tutor
+1 Homunculus Horde (FDN) 41
+1 Idyllic Tutor (THB) 24
 4 Island
-1 Loran of the Third Path
+1 Loran of the Third Path (MKC) 71
 1 Mana Confluence
-1 Mana Drain
-1 March of Swirling Mist
+1 Mana Drain (2X2) 57
+1 March of Swirling Mist (NEO) 61
 1 Marsh Flats
 1 Meticulous Archive
 1 Minamo, School at Water's Edge
-1 Mind Stone
+1 Mind Stone (WHO) 835
 1 Minn, Wily Illusionist
-1 Mirror Entity
-1 Mister Fantastic, Reed Richards
+1 Mirror Entity (OTC) 83
+1 Mister Fantastic, Reed Richards (MSH) 66
 1 Misty Rainforest
-1 Muddle the Mixture
+1 Muddle the Mixture (RVR) 50
 1 Mystic Gate
-1 Mystic Remora
+1 Mystic Remora (DMR) 59
 1 Mystic Sanctuary
 1 Ominous Seas
 1 Otawara, Soaring City
-1 Path to Exile
+1 Path to Exile (WHO) 801
 3 Plains
 1 Polluted Delta
-1 Ponder
+1 Ponder (WHO) 808
 1 Prairie Stream
-1 Psychosis Crawler
-1 Rhystic Study
+1 Psychosis Crawler (MKC) 234
+1 Rhystic Study (JMP) 169
 1 Romana II
 1 Scalding Tarn
 1 Sea Gate Restoration
 1 Sea of Clouds
 1 Seachrome Coast
-1 Selfless Spirit
-1 Shorikai, Genesis Engine
-1 Skullclamp
-1 Slip Out the Back
-1 Smothering Tithe
+1 Selfless Spirit (SOC) 167
+1 Shorikai, Genesis Engine (NEC) 4
+1 Skullclamp (BLC) 283
+1 Slip Out the Back (CLU) 99
+1 Smothering Tithe (CMM) 57
 1 Smuggler's Share
-1 Sol Ring
-1 Soul-Guide Lantern
-1 Supreme Verdict
-1 Swan Song
-1 Swords to Plowshares
-1 Talisman of Progress
-1 Tataru Taru
-1 Teferi's Ageless Insight
+1 Sol Ring (WHO) 836
+1 Soul-Guide Lantern (DRC) 139
+1 Supreme Verdict (CLU) 211
+1 Swan Song (C16) 98
+1 Swords to Plowshares (WHO) 803
+1 Talisman of Progress (WHO) 844
+1 Tataru Taru (FIC) 30
+1 Teferi's Ageless Insight (MKC) 119
 1 Tundra
-1 Voice of Victory
-1 Windfall
-1 Winds of Abandon
+1 Voice of Victory (TDM) 33
+1 Windfall (OTC) 123
+1 Winds of Abandon (MH1) 37
 1 Windswept Heath
-1 Witch Enchanter
+1 Witch Enchanter (MH3) 239
 1 Your Temple Is Under Attack

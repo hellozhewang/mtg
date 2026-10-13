@@ -1,76 +1,76 @@
-1 Black Cat, Cunning Thief
+1 Black Cat, Cunning Thief (SPM) 52
 1 Agadeem's Awakening
 1 Agent Venom
-1 Animate Dead
-1 Arcane Signet
-1 Ashnod's Altar
-1 Black Market Connections
-1 Blade of Selves
+1 Animate Dead (LEB) 93
+1 Arcane Signet (MSC) 193
+1 Ashnod's Altar (ATQ) 38
+1 Black Market Connections (MSC) 155
+1 Blade of Selves (CM2) 174
 1 Boggart Trawler
 1 Bojuka Bog
-1 Brainstealer Dragon
+1 Brainstealer Dragon (OTC) 127
 1 Cabal Coffers
 1 Cabal Stronghold
 1 Castle Locthwain
-1 Conjurer's Closet
-1 Crypt Ghast
-1 Damnation
-1 Dark Ritual
-1 Dauthi Voidwalker
-1 Deadly Dispute
-1 Deadly Rollick
-1 Demonic Tutor
+1 Conjurer's Closet (INR) 259
+1 Crypt Ghast (RVR) 70
+1 Damnation (SLD) 2000
+1 Dark Ritual (MSC) 793
+1 Dauthi Voidwalker (MAR) 63
+1 Deadly Dispute (SLD) 1985
+1 Deadly Rollick (CMM) 147
+1 Demonic Tutor (LEB) 105
 1 Deserted Temple
-1 Diabolic Intent
-1 Expedition Map
-1 Exsanguinate
-1 Feed the Swarm
+1 Diabolic Intent (BRO) 89
+1 Expedition Map (FDN) 724
+1 Exsanguinate (J25) 437
+1 Feed the Swarm (MAR) 16
 1 Feign Death
 1 Fell the Profane
-1 Fellwar Stone
-1 Gonti, Lord of Luxury
-1 Gonti, Night Minister
-1 Gray Merchant of Asphodel
+1 Fellwar Stone (MSC) 285
+1 Gonti, Lord of Luxury (OTC) 135
+1 Gonti, Night Minister (DFT) 87
+1 Gray Merchant of Asphodel (FDC) 105
 1 High Market
-1 Imp's Mischief
+1 Imp's Mischief (CMM) 167
 1 Inside Information
-1 Jet Medallion
+1 Jet Medallion (MH3) 292
 1 Kaya's Ghostform
-1 Kokusho, the Evening Star
-1 Lich's Relic
+1 Kokusho, the Evening Star (MMA) 89
+1 Lich's Relic (FRA) 57
 1 Malakir Rebirth
-1 Mimic Vat
-1 Mind Stone
-1 Morbid Opportunist
-1 Nasty End
-1 Necromancy
-1 Night's Whisper
+1 Mimic Vat (NCC) 372
+1 Mind Stone (MBC) 76
+1 Morbid Opportunist (SOC) 219
+1 Nasty End (LTR) 99
+1 Necromancy (VIS) 64
+1 Night's Whisper (MSC) 158
 1 Not Dead After All
-1 Orcish Bowmasters
-1 Panharmonicon
-1 Phyrexian Altar
+1 Orcish Bowmasters (LTR) 103
+1 Panharmonicon (2X2) 310
+1 Phyrexian Altar (2X2) 311
 1 Phyrexian Tower
-1 Reanimate
-1 Roaming Throne
-1 Saw in Half
-1 Sol Ring
-1 Solemn Simulacrum
+1 Reanimate (MAR) 20
+1 Roaming Throne (MAR) 99
+1 Saw in Half (MAR) 21
+1 Sol Ring (SLD) 1988
+1 Solemn Simulacrum (MSC) 215
 1 Soul Shatter
 25 Swamp
-1 Swiftfoot Boots
-1 Sword of Hearth and Home
+1 Swiftfoot Boots (MSC) 216
+1 Sword of Hearth and Home (MH2) 238
 1 Takenuma, Abandoned Mire
-1 The Darkness Crystal
-1 The One Ring
-1 The Soul Stone
+1 The Darkness Crystal (FIN) 96
+1 The One Ring (LTR) 246
+1 The Soul Stone (SPM) 243
 1 Thieving Varmint
-1 Torment of Hailfire
-1 Toxic Deluge
-1 Undying Malice
+1 Torment of Hailfire (HOU) 77
+1 Toxic Deluge (MSC) 161
+1 Undying Malice (FDN) 528
 1 Urborg, Tomb of Yawgmoth
-1 Victimize
-1 Viscera Seer
+1 Victimize (TDC) 198
+1 Viscera Seer (SOC) 229
 1 War Room
-1 Warren Soultrader
-1 Wayfarer's Bauble
-1 Withering Torment
+1 Warren Soultrader (MH3) 110
+1 Wayfarer's Bauble (WOC) 151
+1 Withering Torment (MSC) 162

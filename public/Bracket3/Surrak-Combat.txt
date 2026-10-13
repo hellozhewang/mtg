@@ -1,99 +1,99 @@
 1 Surrak Dragonclaw
-1 Arcane Signet
+1 Arcane Signet (FDC) 245
 1 Archdruid's Charm
 1 Arid Mesa
-1 Balefire Dragon
-1 Beast Within
-1 Berserk
-1 Birds of Paradise
-1 Blasphemous Act
+1 Balefire Dragon (INR) 479
+1 Beast Within (FDC) 190
+1 Berserk (SOA) 50
+1 Birds of Paradise (FDC) 191
+1 Blasphemous Act (FDC) 140
 1 Bloodstained Mire
-1 Bloom Tender
+1 Bloom Tender (2X2) 138
 1 Boseiju, Who Endures
 1 Breeding Pool
-1 Chord of Calling
+1 Chord of Calling (RVR) 134
 1 City of Brass
 1 Command Tower
-1 Craterhoof Behemoth
-1 Deflecting Swat
-1 Delighted Halfling
+1 Craterhoof Behemoth (CMM) 280
+1 Deflecting Swat (CMM) 698
+1 Delighted Halfling (HOC) 65
 1 Disciple of Freyalise
-1 Eldritch Evolution
-1 Elvish Mystic
-1 Embercleave
-1 Endurance
-1 Etali, Primal Conqueror
-1 Eternal Witness
+1 Eldritch Evolution (INR) 195
+1 Elvish Mystic (FDC) 202
+1 Embercleave (ELD) 120
+1 Endurance (MH2) 157
+1 Etali, Primal Conqueror (MOM) 137
+1 Eternal Witness (CMM) 286
 1 Exotic Orchard
 1 Fanatic of Rhonas
-1 Farseek
-1 Finale of Devastation
+1 Farseek (TDC) 255
+1 Finale of Devastation (CMM) 289
 1 Flooded Strand
-1 Force of Vigor
+1 Force of Vigor (MH1) 164
 2 Forest
 1 Gaea's Cradle
 1 Glasspool Mimic
-1 Goreclaw, Terror of Qal Sisma
-1 Green Sun's Zenith
-1 Guardian Project
+1 Goreclaw, Terror of Qal Sisma (CMM) 293
+1 Green Sun's Zenith (2X2) 150
+1 Guardian Project (RVR) 146
 1 Gwenna, Eyes of Gaea
 1 Haywire Mite
 1 Hedge Maze
-1 Heroic Intervention
+1 Heroic Intervention (CMM) 295
 1 Island
-1 Karlach, Fury of Avernus
+1 Karlach, Fury of Avernus (CLB) 186
 1 Karplusan Forest
 1 Ketria Triome
-1 Kogla, the Titan Ape
-1 Koma, World-Eater
+1 Kogla, the Titan Ape (SLD) 1274
+1 Koma, World-Eater (FDN) 121
 1 Legolas's Quick Reflexes
-1 Llanowar Elves
+1 Llanowar Elves (FDN) 227
 1 Mana Confluence
-1 Mana Drain
+1 Mana Drain (2X2) 57
 1 Misty Rainforest
 1 Mountain
-1 Nature's Lore
-1 Ohran Frostfang
-1 Old Gnawbone
+1 Nature's Lore (SOC) 278
+1 Ohran Frostfang (SOC) 279
+1 Old Gnawbone (AFR) 197
 1 Otawara, Soaring City
-1 Pathbreaker Ibex
+1 Pathbreaker Ibex (CMA) 132
 1 Polluted Delta
-1 Pongify
+1 Pongify (TDC) 160
 1 Quartzwood Crasher
 1 Radagast of Rhosgobel
 1 Rejuvenating Springs
-1 Return of the Wildspeaker
-1 Samut, Hazoret's Champion
+1 Return of the Wildspeaker (ECC) 115
+1 Samut, Hazoret's Champion (FRA) 251
 1 Scalding Tarn
-1 Seedborn Muse
-1 Selvala, Heart of the Wilds
-1 Sol Ring
+1 Seedborn Muse (TDC) 268
+1 Selvala, Heart of the Wilds (ECC) 116
+1 Sol Ring (FDC) 286
 1 Spire Garden
-1 Starwinder
+1 Starwinder (EOE) 79
 1 Steam Vents
 1 Stomping Ground
 1 Stubborn Denial
-1 Survival of the Fittest
-1 Sylvan Library
+1 Survival of the Fittest (EXO) 129
+1 Sylvan Library (LEG) 207
 1 Taiga
 1 Temur Ascendancy
 1 Temur Battle Rage
-1 Terror of the Peaks
-1 The Great Henge
-1 The Unagi of Kyoshi Island
-1 Three Visits
-1 Tishana's Tidebinder
-1 Titan of Industry
+1 Terror of the Peaks (M21) 164
+1 The Great Henge (CMM) 294
+1 The Unagi of Kyoshi Island (TLA) 77
+1 Three Visits (SOC) 289
+1 Tishana's Tidebinder (LCI) 81
+1 Titan of Industry (ECC) 117
 1 Training Center
 1 Tropical Island
 1 Tyvar's Stand
-1 Venser, Shaper Savant
+1 Venser, Shaper Savant (2X2) 66
 1 Verdant Catacombs
 1 Volcanic Island
 1 Winding Canyons
 1 Windswept Heath
 1 Wooded Foothills
-1 Xenagos, God of Revels
+1 Xenagos, God of Revels (LCC) 295
 1 Yavimaya Coast
 1 Yavimaya, Cradle of Growth
-1 Yeva, Nature's Herald
+1 Yeva, Nature's Herald (RVR) 162

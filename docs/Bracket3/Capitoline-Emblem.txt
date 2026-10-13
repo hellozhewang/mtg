@@ -1,60 +1,60 @@
-1 The Capitoline Triad
-1 Akroma's Memorial
-1 All Is Dust
-1 Altar of Dementia
+1 The Capitoline Triad (ACR) 1
+1 Akroma's Memorial (TSR) 262
+1 All Is Dust (CMM) 800
+1 Altar of Dementia (BRR) 66
 1 Ancient Stone Idol
 1 Blast Zone
 1 Bonders' Enclave
 1 Buried Ruin
-1 Buster Sword
+1 Buster Sword (FIN) 255
 1 Canoptek Scarab Swarm
-1 Cityscape Leveler
-1 Codex Shredder
+1 Cityscape Leveler (BRO) 233
+1 Codex Shredder (CMR) 304
 1 Collector's Vault
 1 Cradle of the Accursed
 1 Crystal Vein
-1 Currency Converter
+1 Currency Converter (FRC) 55
 1 Cybermen Squadron
 1 Darksteel Citadel
 1 Demolition Field
 1 Eden, Seat of the Sanctum
 1 Eldritch Immunity
-1 Everflowing Chalice
-1 Expedition Map
+1 Everflowing Chalice (EOC) 137
+1 Expedition Map (FDN) 724
 1 Field of the Dead
 1 Fomori Vault
 1 Forsaken Monument
-1 Foundry Inspector
+1 Foundry Inspector (BRR) 79
 1 Fountainport
 1 Geier Reach Sanitarium
 1 Glaring Fleshraker
 1 Grinding Station
 1 Guildless Commons
-1 Hangarback Walker
-1 Hedron Archive
+1 Hangarback Walker (SOC) 348
+1 Hedron Archive (SLD) 691
 1 Inventors' Fair
-1 Kozilek, the Great Distortion
-1 Kozilek's Command
-1 Krang, Utrom Warlord
+1 Kozilek, the Great Distortion (CMM) 2
+1 Kozilek's Command (MH3) 11
+1 Krang, Utrom Warlord (TMT) 290
 1 Kuldotha Forgemaster
-1 Liberator, Urza's Battlethopter
-1 Mask of Memory
+1 Liberator, Urza's Battlethopter (BRO) 237
+1 Mask of Memory (CMR) 324
 1 Matzalantli, the Great Door
-1 Mesmeric Orb
-1 Metalwork Colossus
-1 Meteor Golem
-1 Millikin
-1 Mind Stone
+1 Mesmeric Orb (BRR) 94
+1 Metalwork Colossus (CMM) 960
+1 Meteor Golem (FDC) 270
+1 Millikin (SOC) 351
+1 Mind Stone (MBC) 76
 1 Mirrex
 1 Mishra's Self-Replicator
 1 Mishra's Workshop
-1 Mox Opal
-1 Mycosynth Golem
-1 Myr Battlesphere
-1 Mystic Forge
+1 Mox Opal (2XM) 275
+1 Mycosynth Golem (5DN) 137
+1 Myr Battlesphere (TDC) 322
+1 Mystic Forge (BRR) 99
 1 Null Elemental Blast
-1 Ornithopter of Paradise
-1 Palantír of Orthanc
+1 Ornithopter of Paradise (CMM) 966
+1 Palantír of Orthanc (HOC) 85
 1 Palladium Myr
 1 Pentavus
 1 Perpetual Timepiece
@@ -63,28 +63,28 @@
 1 Sanctum of Ugin
 1 Scavenger Grounds
 1 Sequestered Stash
-1 Skullclamp
+1 Skullclamp (BLC) 283
 1 Sliversmith
 1 Sojourner's Companion
-1 Sol Ring
+1 Sol Ring (FDC) 286
 1 Spawning Bed
 1 Stridehangar Automaton
 1 The Mycosynth Gardens
-1 The One Ring
+1 The One Ring (LTR) 246
 1 The Warring Triad
 1 Thespian's Stage
-1 Thought Vessel
-1 Thran Dynamo
+1 Thought Vessel (MBC) 78
+1 Thran Dynamo (CMM) 415
 1 Threefold Thunderhulk
 1 Thrumming Hivepool
 1 Tomb of the Spirit Dragon
-1 Trading Post
+1 Trading Post (CM2) 225
 1 Treasure Vault
 1 Triplicate Titan
-1 Ugin, Eye of the Storms
-1 Ugin, the Ineffable
+1 Ugin, Eye of the Storms (TDM) 1
+1 Ugin, the Ineffable (CMM) 811
 1 Ugin's Labyrinth
-1 Unwinding Clock
+1 Unwinding Clock (BRR) 124
 1 Urza's Factory
 1 Urza's Mine
 1 Urza's Power Plant
@@ -92,8 +92,8 @@
 1 Urza's Tower
 1 Urza's Workshop
 1 War Room
-1 Warping Wail
+1 Warping Wail (CMM) 812
 2 Wastes
 1 Wondrous Crucible
-1 Wurmcoil Engine
+1 Wurmcoil Engine (BRR) 126
 1 Zhalfirin Void

@@ -1,93 +1,93 @@
-1 The First Sliver
-1 Akroma's Will
-1 Ancestral Vision
+1 The First Sliver (MH1) 200
+1 Akroma's Will (LCC) 125
+1 Ancestral Vision (TSR) 52
 1 Apex Devastator
-1 Arcane Signet
+1 Arcane Signet (FDC) 245
 1 Arid Mesa
-1 Assassin's Trophy
-1 Averna, the Chaos Bloom
+1 Assassin's Trophy (SOC) 294
+1 Averna, the Chaos Bloom (CMR) 269
 1 Badlands
 1 Basal Sliver
 1 Bayou
-1 Birds of Paradise
+1 Birds of Paradise (FDC) 191
 1 Bloodstained Mire
-1 Bloom Tender
-1 Bonescythe Sliver
+1 Bloom Tender (2X2) 138
+1 Bonescythe Sliver (CMM) 815
 1 Boseiju, Who Endures
-1 Call Forth the Tempest
+1 Call Forth the Tempest (LTC) 509
 1 Cavern of Souls
 1 City of Brass
 1 Cloudshredder Sliver
 1 Command Tower
 1 Crystalline Sliver
-1 Cyclonic Rift
-1 Delighted Halfling
-1 Diffusion Sliver
+1 Cyclonic Rift (CMM) 84
+1 Delighted Halfling (LTR) 158
+1 Diffusion Sliver (CMM) 845
 1 Exotic Orchard
-1 Farseek
-1 Fellwar Stone
+1 Farseek (TDC) 255
+1 Fellwar Stone (MBC) 74
 1 Flooded Strand
 1 Forest
-1 Galerider Sliver
-1 Gemhide Sliver
-1 Guardian Project
+1 Galerider Sliver (CMM) 849
+1 Gemhide Sliver (TSR) 205
+1 Guardian Project (RVR) 146
 1 Harmonic Sliver
-1 Heroic Intervention
+1 Heroic Intervention (CMM) 295
 1 Hibernation Sliver
 1 Homing Sliver
-1 Inevitable Betrayal
+1 Inevitable Betrayal (MH2) 47
 1 Island
-1 Kindred Discovery
+1 Kindred Discovery (LCC) 159
 1 Lavabelly Sliver
 1 Leeching Sliver
-1 Lotus Bloom
+1 Lotus Bloom (TSR) 270
 1 Maelstrom Nexus
-1 Maelstrom Wanderer
+1 Maelstrom Wanderer (CMM) 684
 1 Mana Confluence
-1 Manaweft Sliver
+1 Manaweft Sliver (M14) 184
 1 Marsh Flats
 1 Misty Rainforest
-1 Morophon, the Boundless
+1 Morophon, the Boundless (CMM) 3
 1 Mountain
-1 Mystic Remora
+1 Mystic Remora (DMR) 59
 1 Nalfeshnee
-1 Nature's Lore
+1 Nature's Lore (SOC) 278
 1 Necrotic Sliver
 1 Otawara, Soaring City
 1 Path of Ancestry
-1 Patriarch's Bidding
+1 Patriarch's Bidding (ONS) 161
 1 Plains
 1 Plateau
 1 Polluted Delta
 1 Predatory Sliver
 1 Profane Tutor
-1 Quandrix, the Proof
+1 Quandrix, the Proof (SOS) 218
 1 Quick Sliver
-1 Quintorius Kand
-1 Raise the Palisade
+1 Quintorius Kand (LCI) 238
+1 Raise the Palisade (LTC) 23
 1 Reflecting Pool
-1 Rhystic Study
+1 Rhystic Study (JMP) 169
 1 Root Sliver
 1 Savannah
 1 Scalding Tarn
-1 Scroll Rack
+1 Scroll Rack (CMR) 337
 1 Scrubland
 1 Shifting Sliver
 1 Sliver Gravemother
 1 Sliver Hive
-1 Sliver Hivelord
-1 Sliver Legion
-1 Sliver Overlord
+1 Sliver Hivelord (CMM) 937
+1 Sliver Legion (TSR) 261
+1 Sliver Overlord (SCG) 139
 1 Sliver Queen
-1 Smothering Tithe
-1 Sol Ring
+1 Smothering Tithe (CMM) 57
+1 Sol Ring (FDC) 286
 1 Swamp
-1 Swan Song
-1 Swords to Plowshares
-1 Sylvan Library
+1 Swan Song (C16) 98
+1 Swords to Plowshares (FRC) 37
+1 Sylvan Library (LEG) 207
 1 Taiga
 1 Three Tree City
-1 Three Visits
+1 Three Visits (SOC) 289
 1 Thrumming Hivepool
 1 Tropical Island
 1 Tundra
@@ -95,6 +95,6 @@
 1 Verdant Catacombs
 1 Virulent Sliver
 1 Volcanic Island
-1 Wild-Magic Sorcerer
+1 Wild-Magic Sorcerer (CLB) 816
 1 Windswept Heath
 1 Wooded Foothills

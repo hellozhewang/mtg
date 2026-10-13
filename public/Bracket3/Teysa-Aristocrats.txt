@@ -1,92 +1,92 @@
-1 Teysa Karlov
-1 Anguished Unmaking
-1 Anointed Procession
-1 Arcane Signet
-1 Ashnod's Altar
-1 Athreos, God of Passage
-1 Bartolomé del Presidio
-1 Bastion of Remembrance
-1 Bitterblossom
-1 Black Market Connections
+1 Teysa Karlov (CMM) 359
+1 Anguished Unmaking (SOC) 293
+1 Anointed Procession (AKH) 2
+1 Arcane Signet (SLD) 1492
+1 Ashnod's Altar (ATQ) 38
+1 Athreos, God of Passage (JOU) 146
+1 Bartolomé del Presidio (LCI) 224
+1 Bastion of Remembrance (TDC) 171
+1 Bitterblossom (2X2) 69
+1 Black Market Connections (LCC) 181
 1 Bleachbone Verge
-1 Blood Artist
+1 Blood Artist (SOC) 209
 1 Bloodstained Mire
 1 Bojuka Bog
-1 Bolas's Citadel
-1 Braids, Arisen Nightmare
+1 Bolas's Citadel (WAR) 79
+1 Braids, Arisen Nightmare (EOC) 82
 1 Brightclimb Pathway
 1 Cabal Coffers
-1 Carrion Feeder
+1 Carrion Feeder (MH1) 81
 1 Caves of Koilos
 1 Command Tower
 1 Concealed Courtyard
 1 Cruel Celebrant
-1 Damn
-1 Dark Ritual
-1 Deadly Dispute
-1 Diabolic Intent
-1 Dictate of Erebos
+1 Damn (LCC) 191
+1 Dark Ritual (LEB) 99
+1 Deadly Dispute (TDC) 177
+1 Diabolic Intent (BRO) 89
+1 Dictate of Erebos (JOU) 65
 1 Doomed Traveler
-1 Drivnod, Carnage Dominus
-1 Elas il-Kor, Sadistic Pilgrim
-1 Elenda, the Dusk Rose
-1 Esper Sentinel
+1 Drivnod, Carnage Dominus (ONE) 90
+1 Elas il-Kor, Sadistic Pilgrim (DMU) 198
+1 Elenda, the Dusk Rose (LCC) 268
+1 Esper Sentinel (MH2) 12
 1 Fetid Heath
-1 Funeral Room
+1 Funeral Room (DSK) 100
 1 Godless Shrine
-1 Grave Pact
-1 Grim Haruspex
+1 Grave Pact (CMM) 165
+1 Grim Haruspex (CLB) 754
 1 Hallowed Spiritkeeper
 1 High Market
 1 Hunted Witness
 1 Isolated Chapel
-1 Liliana, Dreadhorde General
-1 Luminous Broodmoth
+1 Liliana, Dreadhorde General (FDN) 176
+1 Luminous Broodmoth (IKO) 21
 1 Marionette Apprentice
 1 Marsh Flats
-1 Midnight Reaper
+1 Midnight Reaper (FDN) 609
 1 Ministrant of Obligation
-1 Mirkwood Bats
-1 Mondrak, Glory Dominus
-1 Ophiomancer
-1 Orcish Bowmasters
+1 Mirkwood Bats (LTR) 95
+1 Mondrak, Glory Dominus (ONE) 23
+1 Ophiomancer (CC2) 3
+1 Orcish Bowmasters (LTR) 103
 1 Orzhov Enforcer
-1 Orzhov Signet
-1 Path to Exile
+1 Orzhov Signet (TDC) 323
+1 Path to Exile (DCI) 24
 1 Pawn of Ulamog
-1 Phyrexian Altar
+1 Phyrexian Altar (INV) 306
 1 Phyrexian Tower
-1 Pitiless Plunderer
+1 Pitiless Plunderer (LCC) 208
 5 Plains
-1 Priest of Forgotten Gods
-1 Reanimate
-1 Reassembling Skeleton
+1 Priest of Forgotten Gods (SOC) 225
+1 Reanimate (DSC) 155
+1 Reassembling Skeleton (TDC) 195
 1 Scrubland
-1 Sephiroth, Fabled SOLDIER
+1 Sephiroth, Fabled SOLDIER (FIN) 115
 1 Shadowy Backstreet
 1 Shattered Sanctum
 1 Silent Clearing
-1 Skullclamp
-1 Smothering Tithe
-1 Sol Ring
-1 Solemn Simulacrum
+1 Skullclamp (BLC) 283
+1 Smothering Tithe (CMM) 57
+1 Sol Ring (SLD) 249
+1 Solemn Simulacrum (SOC) 355
 5 Swamp
-1 Swords to Plowshares
-1 Syr Konrad, the Grim
+1 Swords to Plowshares (FRC) 37
+1 Syr Konrad, the Grim (DSC) 158
 1 Tainted Field
 1 Takenuma, Abandoned Mire
-1 Talisman of Hierarchy
-1 Teysa, Orzhov Scion
-1 The Meathook Massacre
-1 The Soul Stone
-1 Toxic Deluge
+1 Talisman of Hierarchy (SOC) 431
+1 Teysa, Orzhov Scion (GPT) 134
+1 The Meathook Massacre (INR) 122
+1 The Soul Stone (SPM) 66
+1 Toxic Deluge (MH3) 277
 1 Turbulent Moor
 1 Urborg, Tomb of Yawgmoth
 1 Vault of Champions
-1 Victimize
-1 Village Rites
-1 Viscera Seer
-1 Warren Soultrader
+1 Victimize (TDC) 198
+1 Village Rites (INR) 137
+1 Viscera Seer (SOC) 229
+1 Warren Soultrader (MH3) 110
 1 Yahenni, Undying Partisan
-1 Yawgmoth, Thran Physician
-1 Zulaport Cutthroat
+1 Yawgmoth, Thran Physician (DMR) 110
+1 Zulaport Cutthroat (SOC) 233

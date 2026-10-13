@@ -1,98 +1,98 @@
-1 Glarb, Calamity's Augur
-1 Aesi, Tyrant of Gyre Strait
+1 Glarb, Calamity's Augur (BLB) 215
+1 Aesi, Tyrant of Gyre Strait (DSC) 210
 1 Alchemist's Refuge
-1 An Offer You Can't Refuse
-1 Animate Dead
-1 Arcane Signet
-1 Assassin's Trophy
+1 An Offer You Can't Refuse (FDN) 160
+1 Animate Dead (LEB) 93
+1 Arcane Signet (BLC) 127
+1 Assassin's Trophy (SOC) 294
 1 Bayou
-1 Bilbo, Thief in the Night
-1 Birds of Paradise
+1 Bilbo, Thief in the Night (HOB) 255
+1 Birds of Paradise (BLC) 81
 1 Bloodstained Mire
-1 Bloom Tender
+1 Bloom Tender (2X2) 138
 1 Boseiju, Who Endures
-1 Brainstorm
+1 Brainstorm (DSC) 113
 1 Breeding Pool
 1 Command Tower
-1 Counterspell
-1 Craterhoof Behemoth
-1 Cyclonic Rift
-1 Deadly Rollick
-1 Deathrite Shaman
-1 Delighted Halfling
-1 Dig Through Time
+1 Counterspell (DSC) 114
+1 Craterhoof Behemoth (CMM) 280
+1 Cyclonic Rift (CMM) 84
+1 Deadly Rollick (CMM) 147
+1 Deathrite Shaman (RVR) 175
+1 Delighted Halfling (LTR) 158
+1 Dig Through Time (SOC) 195
 1 Disciple of Freyalise
-1 Endurance
+1 Endurance (MH2) 157
 1 Exotic Orchard
-1 Exploration
-1 Fangkeeper's Familiar
+1 Exploration (2XM) 167
+1 Fangkeeper's Familiar (TDM) 183
 1 Fell the Profane
 1 Field of the Dead
-1 Finale of Devastation
+1 Finale of Devastation (CMM) 289
 1 Flooded Strand
-1 Force of Negation
-1 Force of Vigor
+1 Force of Negation (2X2) 50
+1 Force of Vigor (MH1) 164
 2 Forest
 1 Hedge Maze
-1 Hedge Shredder
-1 High Fae Trickster
-1 Icetill Explorer
+1 Hedge Shredder (DSK) 183
+1 High Fae Trickster (FDN) 40
+1 Icetill Explorer (EOE) 192
 1 Island
-1 Koma, Cosmos Serpent
+1 Koma, Cosmos Serpent (MKC) 213
 1 Legolas's Quick Reflexes
 1 Lórien Revealed
 1 Mana Confluence
-1 Mana Drain
+1 Mana Drain (2X2) 57
 1 Marsh Flats
 1 Minamo, School at Water's Edge
-1 Misdirection
+1 Misdirection (DDT) 15
 1 Misty Rainforest
 1 Morphic Pool
-1 Muldrotha, the Gravetide
-1 Mystic Remora
-1 Naga Fleshcrafter
-1 Nature's Lore
-1 Noxious Revival
+1 Muldrotha, the Gravetide (ECC) 128
+1 Mystic Remora (DMR) 59
+1 Naga Fleshcrafter (TDM) 52
+1 Nature's Lore (SOC) 278
+1 Noxious Revival (NPH) 118
 1 Nulldrifter
-1 Oracle of Mul Daya
+1 Oracle of Mul Daya (EOC) 102
 1 Otawara, Soaring City
 1 Overgrown Tomb
-1 Overlord of the Hauntwoods
+1 Overlord of the Hauntwoods (DSK) 194
 1 Planetarium of Wan Shi Tong
 1 Polluted Delta
 1 Radagast of Rhosgobel
-1 Reanimate
+1 Reanimate (DSC) 155
 1 Rejuvenating Springs
 1 Scalding Tarn
-1 Scroll Rack
-1 Seedborn Muse
-1 Sensei's Divining Top
+1 Scroll Rack (CMR) 337
+1 Seedborn Muse (TDC) 268
+1 Sensei's Divining Top (2X2) 314
 1 Shifting Woodland
 1 Sink into Stupor
-1 Six
-1 Snuff Out
-1 Sol Ring
-1 Subtlety
+1 Six (MH3) 169
+1 Snuff Out (GVL) 53
+1 Sol Ring (BLC) 129
+1 Subtlety (MH2) 67
 1 Swamp
-1 Swan Song
-1 Sylvan Library
+1 Swan Song (C16) 98
+1 Sylvan Library (LEG) 207
 1 Takenuma, Abandoned Mire
-1 Talion, the Kindly Lord
+1 Talion, the Kindly Lord (WOE) 215
 1 Tear Asunder
 1 Teval, the Balanced Scale
-1 The Gitrog Monster
-1 Three Visits
-1 Tireless Provisioner
-1 Titan of Industry
-1 Toxic Deluge
-1 Toxrill, the Corrosive
+1 The Gitrog Monster (BLC) 88
+1 Three Visits (SOC) 289
+1 Tireless Provisioner (MOC) 313
+1 Titan of Industry (ECC) 117
+1 Toxic Deluge (MH3) 277
+1 Toxrill, the Corrosive (VOW) 132
 1 Transcendent Dragon
 1 Tropical Island
 1 Undercity Sewers
 1 Underground Mortuary
 1 Underground Sea
 1 Undergrowth Stadium
-1 Veil of Summer
+1 Veil of Summer (M20) 198
 1 Verdant Catacombs
 1 Watery Grave
 1 Windswept Heath

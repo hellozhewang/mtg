@@ -1,100 +1,100 @@
 1 Felothar the Steadfast
-1 Akroma's Will
-1 Anguished Unmaking
-1 Animate Dead
+1 Akroma's Will (LCC) 125
+1 Anguished Unmaking (SOC) 293
+1 Animate Dead (SOC) 207
 1 Arbor Adherent
 1 Archon of Emeria
 1 Arid Mesa
-1 Assassin's Trophy
+1 Assassin's Trophy (SOC) 294
 1 Assault Formation
-1 Aven Mindcensor
+1 Aven Mindcensor (CLB) 688
 1 Axebane Guardian
-1 Baldin, Century Herdmaster
+1 Baldin, Century Herdmaster (TDC) 110
 1 Bayou
 1 Behind the Scenes
-1 Birds of Paradise
+1 Birds of Paradise (FDC) 191
 1 Bloodstained Mire
-1 Bloom Tender
+1 Bloom Tender (2X2) 138
 1 Boseiju, Who Endures
 1 Bountiful Promenade
 1 Brushland
-1 Buried Alive
+1 Buried Alive (SLD) 1673
 1 Cavern of Souls
 1 City of Brass
 1 Command Tower
 1 Crashing Drawbridge
-1 Dauthi Voidwalker
-1 Deathrite Shaman
-1 Delighted Halfling
-1 Drannith Magistrate
+1 Dauthi Voidwalker (TDC) 176
+1 Deathrite Shaman (RVR) 175
+1 Delighted Halfling (LTR) 158
+1 Drannith Magistrate (IKO) 11
 1 Eiganjo, Seat of the Empire
-1 Eladamri's Call
-1 Elesh Norn, Mother of Machines
-1 Esper Sentinel
+1 Eladamri's Call (MH1) 197
+1 Elesh Norn, Mother of Machines (ONE) 10
+1 Esper Sentinel (MH2) 12
 1 Exotic Orchard
-1 Fauna Shaman
+1 Fauna Shaman (UMA) 164
 1 Flooded Strand
 1 Forest
 1 Formidable Speaker
 1 Gaea's Cradle
 1 Godless Shrine
-1 Heroic Intervention
+1 Heroic Intervention (CMM) 295
 1 Horizon Canopy
-1 Ikra Shidiqi, the Usurper
+1 Ikra Shidiqi, the Usurper (CM2) 11
 1 Indatha Triome
 1 Legolas's Quick Reflexes
-1 Linvala, Keeper of Silence
-1 Living Death
-1 Lurrus of the Dream-Den
+1 Linvala, Keeper of Silence (JMP) 119
+1 Living Death (TDC) 185
+1 Lurrus of the Dream-Den (IKO) 226
 1 Lush Portico
 1 Mana Confluence
 1 Marsh Flats
 1 Misty Rainforest
-1 Nature's Lore
-1 Nethroi, Apex of Death
+1 Nature's Lore (SOC) 278
+1 Nethroi, Apex of Death (DMC) 163
 1 Nurturing Peatland
-1 Ohran Frostfang
+1 Ohran Frostfang (SOC) 279
 1 Overgrown Battlement
 1 Overgrown Tomb
 1 Phyrexian Tower
 1 Polluted Delta
-1 Reanimate
+1 Reanimate (DSC) 155
 1 Reunion of the House
 1 Reveillark
 1 Savannah
 1 Scrubland
-1 Seedborn Muse
-1 Shalai, Voice of Plenty
+1 Seedborn Muse (TDC) 268
+1 Shalai, Voice of Plenty (TDC) 130
 1 Shield Sphere
 1 Sidar Kondo of Jamuraa
 1 Silent Clearing
-1 Six
-1 Slaughter the Strong
-1 Smile at Death
-1 Sol Ring
-1 Sun Titan
+1 Six (MH3) 169
+1 Slaughter the Strong (TDC) 131
+1 Smile at Death (TDM) 24
+1 Sol Ring (CC2) 7
+1 Sun Titan (SOC) 178
 1 Surrak and Goreclaw
-1 Swords to Plowshares
-1 Sylvan Caryatid
-1 Sylvan Library
+1 Swords to Plowshares (FRC) 37
+1 Sylvan Caryatid (TDC) 272
+1 Sylvan Library (LEG) 207
 1 Takenuma, Abandoned Mire
 1 Temple Garden
-1 Thalia, Heretic Cathar
-1 The Walls of Ba Sing Se
-1 Three Visits
-1 Tower Defense
-1 Toxic Deluge
-1 Tree of Perdition
+1 Thalia, Heretic Cathar (INR) 44
+1 The Walls of Ba Sing Se (TLA) 261
+1 Three Visits (SOC) 289
+1 Tower Defense (TDC) 275
+1 Toxic Deluge (MH3) 277
+1 Tree of Perdition (EMN) 109
 1 Underground Mortuary
 1 Undergrowth Stadium
 1 Vault of Champions
-1 Veil of Summer
+1 Veil of Summer (M20) 198
 1 Verdant Catacombs
-1 Victimize
-1 Voice of Victory
+1 Victimize (TDC) 198
+1 Voice of Victory (TDM) 33
 1 Wall of Blossoms
-1 Wall of Omens
-1 Wall of Roots
+1 Wall of Omens (2X2) 344
+1 Wall of Roots (TDC) 278
 1 Weathered Sentinels
 1 Windswept Heath
 1 Wooded Foothills

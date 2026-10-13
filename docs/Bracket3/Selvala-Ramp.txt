@@ -1,84 +1,84 @@
-1 Selvala, Heart of the Wilds
-1 Allosaurus Shepherd
-1 Arbor Elf
+1 Selvala, Heart of the Wilds (ECC) 116
+1 Allosaurus Shepherd (2X2) 132
+1 Arbor Elf (A25) 160
 1 Autumn's Veil
-1 Beast Whisperer
-1 Beast Within
-1 Birds of Paradise
+1 Beast Whisperer (CLU) 158
+1 Beast Within (FDC) 190
+1 Birds of Paradise (FDC) 191
 1 Boseiju, Who Endures
 1 Bridgeworks Battle
 1 Bygone Colossus
-1 Carpet of Flowers
+1 Carpet of Flowers (USG) 240
 1 Castle Garenbrig
 1 Cavern of Souls
-1 Chord of Calling
-1 Collector Ouphe
-1 Concordant Crossroads
-1 Craterhoof Behemoth
-1 Delighted Halfling
+1 Chord of Calling (2XM) 158
+1 Collector Ouphe (MH1) 158
+1 Concordant Crossroads (LEG) 179
+1 Craterhoof Behemoth (CMM) 280
+1 Delighted Halfling (LTR) 158
 1 Disciple of Freyalise
 1 Dryad Arbor
 1 Elder Gargaroth
-1 Eldritch Evolution
-1 Elvish Mystic
-1 Elvish Spirit Guide
+1 Eldritch Evolution (INR) 195
+1 Elvish Mystic (FDC) 202
+1 Elvish Spirit Guide (DMR) 157
 1 Emergence Zone
-1 Endurance
-1 Eternal Witness
+1 Endurance (MH2) 157
+1 Eternal Witness (CMM) 286
 1 Fanatic of Rhonas
-1 Fierce Empath
-1 Finale of Devastation
-1 Force of Vigor
+1 Fierce Empath (CMD) 155
+1 Finale of Devastation (CMM) 289
+1 Force of Vigor (MH1) 164
 17 Forest
 1 Formidable Speaker
-1 Fyndhorn Elves
+1 Fyndhorn Elves (CMR) 228
 1 Garruk, Primal Hunter
 1 Gemstone Caverns
-1 Ghalta, Primal Hunger
-1 Great Oak Guardian
-1 Green Sun's Zenith
-1 Growing Rites of Itlimoc
-1 Guardian Project
+1 Ghalta, Primal Hunger (FDN) 222
+1 Great Oak Guardian (C19) 170
+1 Green Sun's Zenith (2X2) 150
+1 Growing Rites of Itlimoc (XLN) 191
+1 Guardian Project (RVR) 146
 1 Homeward Path
 1 Hyrax Tower Scout
 1 Invasion of Ikoria
-1 Invigorate
-1 Kogla, the Titan Ape
-1 Last March of the Ents
+1 Invigorate (CMD) 162
+1 Kogla, the Titan Ape (IKO) 162
+1 Last March of the Ents (LTR) 418
 1 Legolas's Quick Reflexes
-1 Llanowar Elves
-1 Lotus Petal
+1 Llanowar Elves (FDN) 227
+1 Lotus Petal (MB2) 226
 1 Momentous Fall
-1 Natural Order
-1 Nature's Rhythm
+1 Natural Order (EMA) 177
+1 Nature's Rhythm (TDM) 150
 1 Nykthos, Shrine to Nyx
-1 Pathbreaker Ibex
+1 Pathbreaker Ibex (CMA) 132
 1 Priest of Titania
-1 Quirion Ranger
-1 Regal Force
-1 Return of the Wildspeaker
-1 Rishkar's Expertise
+1 Quirion Ranger (VIS) 117
+1 Regal Force (DDU) 22
+1 Return of the Wildspeaker (ECC) 115
+1 Rishkar's Expertise (LCC) 254
 1 Scryb Ranger
-1 Shang-Chi, Master of Kung Fu
-1 Shared Summons
+1 Shang-Chi, Master of Kung Fu (MSH) 396
+1 Shared Summons (M20) 193
 1 Sheltering Ancient
 1 Shifting Woodland
 1 Slumbering Trudge
-1 Sol Ring
+1 Sol Ring (CC1) 7
 1 Summoner's Pact
-1 Survival of the Fittest
-1 Sylvan Library
+1 Survival of the Fittest (EXO) 129
+1 Sylvan Library (SPG) 155
 1 Talon Gates of Madara
-1 Temur Sabertooth
-1 The One Ring
-1 Tooth and Nail
+1 Temur Sabertooth (NCC) 315
+1 The One Ring (LTR) 246
+1 Tooth and Nail (MMA) 170
 1 Turntimber Symbiosis
-1 Utopia Sprawl
-1 Veil of Summer
+1 Utopia Sprawl (PF26) 9
+1 Veil of Summer (M20) 198
 1 Vines of Vastwood
-1 Wild Growth
+1 Wild Growth (MKC) 195
 1 Wirewood Lodge
-1 Wirewood Symbiote
+1 Wirewood Symbiote (EMA) 192
 1 Woodland Bellower
 1 Yavimaya, Cradle of Growth
-1 Zopandrel, Hunger Dominus
+1 Zopandrel, Hunger Dominus (ONE) 195

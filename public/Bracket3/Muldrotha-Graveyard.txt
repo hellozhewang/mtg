@@ -1,85 +1,85 @@
-1 Muldrotha, the Gravetide
+1 Muldrotha, the Gravetide (ECC) 128
 1 Accursed Marauder
 1 Aftermath Analyst
-1 Altar of Dementia
-1 Animate Dead
-1 Arcane Signet
-1 Ashiok, Dream Render
-1 Assassin's Trophy
-1 Baleful Strix
+1 Altar of Dementia (MH1) 218
+1 Animate Dead (SOC) 207
+1 Arcane Signet (SLD) 1492
+1 Ashiok, Dream Render (WAR) 228
+1 Assassin's Trophy (SLD) 139
+1 Baleful Strix (OTC) 215
 1 Bayou
-1 Birds of Paradise
-1 Bloom Tender
+1 Birds of Paradise (FDC) 191
+1 Bloom Tender (2X2) 138
 1 Boseiju, Who Endures
 1 Breeding Pool
-1 Buried Alive
+1 Buried Alive (SLD) 1673
 1 Command Beacon
 1 Command Tower
-1 Counterspell
-1 Culling Ritual
-1 Cyclonic Rift
-1 Dauthi Voidwalker
-1 Deathrite Shaman
-1 Delighted Halfling
-1 Displacer Kitten
+1 Counterspell (DSC) 114
+1 Culling Ritual (SOC) 302
+1 Cyclonic Rift (CMM) 84
+1 Dauthi Voidwalker (TDC) 176
+1 Deathrite Shaman (RVR) 175
+1 Delighted Halfling (LTR) 158
+1 Displacer Kitten (CLB) 63
 1 Doc Aurlock, Grizzled Genius
-1 Eccentric Farmer
-1 Entomb
-1 Eternal Witness
-1 Exploration
-1 Farseek
+1 Eccentric Farmer (INR) 194
+1 Entomb (DMR) 82
+1 Eternal Witness (CMM) 286
+1 Exploration (2XM) 167
+1 Farseek (TDC) 255
 1 Flooded Strand
 2 Forest
-1 Glen Elendra Archmage
-1 Golgari Grave-Troll
-1 Gravebreaker Lamia
-1 Grisly Salvage
+1 Glen Elendra Archmage (WOC) 94
+1 Golgari Grave-Troll (UMA) 167
+1 Gravebreaker Lamia (THB) 98
+1 Grisly Salvage (TDC) 290
 1 Haywire Mite
 1 Hedge Maze
-1 Hydroid Krasis
-1 Icetill Explorer
+1 Hydroid Krasis (SOC) 315
+1 Icetill Explorer (EOE) 192
 1 Island
-1 Jarad, Golgari Lich Lord
+1 Jarad, Golgari Lich Lord (TDC) 293
 1 Kaya's Ghostform
-1 Life from the Loam
-1 Lightning Greaves
-1 Lotus Petal
-1 Mana Drain
+1 Life from the Loam (RVR) 148
+1 Lightning Greaves (OTC) 260
+1 Lotus Petal (MB2) 226
+1 Mana Drain (2X2) 57
 1 Marsh Flats
-1 Mesmeric Orb
+1 Mesmeric Orb (2XM) 272
 1 Misty Rainforest
 1 Morphic Pool
-1 Mulldrifter
-1 Mystic Remora
-1 Oko, Thief of Crowns
+1 Mulldrifter (ECC) 67
+1 Mystic Remora (DMR) 59
+1 Oko, Thief of Crowns (ELD) 197
 1 Otawara, Soaring City
 1 Overgrown Tomb
-1 Pernicious Deed
+1 Pernicious Deed (G06) 4
 1 Phyrexian Tower
-1 Plaguecrafter
+1 Plaguecrafter (RVR) 89
 1 Polluted Delta
-1 Ramunap Excavator
-1 Ravenous Chupacabra
-1 Reanimate
+1 Ramunap Excavator (OTC) 202
+1 Ravenous Chupacabra (MKC) 136
+1 Reanimate (DSC) 155
 1 Rejuvenating Springs
-1 Rhystic Study
-1 Sakura-Tribe Elder
+1 Rhystic Study (JMP) 169
+1 Sakura-Tribe Elder (SOC) 285
 1 Satyr Wayfinder
 1 Seal of Primordium
 1 Seal of Removal
-1 Secrets of the Dead
+1 Secrets of the Dead (SLD) 7099
 1 Siren Stormtamer
-1 Six
-1 Sol Ring
-1 Spore Frog
-1 Stinkweed Imp
-1 Stitcher's Supplier
-1 Survival of the Fittest
+1 Six (MH3) 169
+1 Sol Ring (CC2) 7
+1 Spore Frog (MH1) 180
+1 Stinkweed Imp (DVD) 36
+1 Stitcher's Supplier (TDC) 196
+1 Survival of the Fittest (EXO) 129
 3 Swamp
-1 Swan Song
+1 Swan Song (C16) 98
 1 Teval, the Balanced Scale
-1 The Gitrog Monster
-1 Toxic Deluge
+1 The Gitrog Monster (EOC) 117
+1 Toxic Deluge (CC2) 6
 1 Tropical Island
 1 Undercity Sewers
 1 Underground Mortuary
@@ -88,10 +88,10 @@
 1 Urborg, Tomb of Yawgmoth
 1 Verdant Catacombs
 1 Watery Grave
-1 Windfall
+1 Windfall (OTC) 123
 1 Windswept Heath
-1 Wood Elves
+1 Wood Elves (CMA) 170
 1 Woodland Cemetery
-1 World Shaper
+1 World Shaper (OTC) 214
 1 Yavimaya, Cradle of Growth
 1 Zagoth Triome

@@ -1,55 +1,55 @@
-1 Atraxa, Praetors' Voice
+1 Atraxa, Praetors' Voice (2XM) 353
 1 Agatha's Soul Cauldron
-1 An Offer You Can't Refuse
-1 Anguished Unmaking
-1 Arcane Signet
+1 An Offer You Can't Refuse (FDN) 160
+1 Anguished Unmaking (SOC) 293
+1 Arcane Signet (FDC) 245
 1 Arid Mesa
-1 Assassin's Trophy
-1 Astral Cornucopia
+1 Assassin's Trophy (SOC) 294
+1 Astral Cornucopia (SOC) 342
 1 Bayou
-1 Birds of Paradise
+1 Birds of Paradise (FDC) 191
 1 Bloodstained Mire
-1 Bloom Tender
+1 Bloom Tender (2X2) 138
 1 Boseiju, Who Endures
 1 Bountiful Promenade
-1 Branching Evolution
+1 Branching Evolution (MH3) 285
 1 Breeding Pool
-1 Bristly Bill, Spine Sower
-1 Brokers Ascendancy
-1 Cankerbloom
-1 Champion of Lambholt
-1 Chord of Calling
+1 Bristly Bill, Spine Sower (OTJ) 157
+1 Brokers Ascendancy (SNC) 170
+1 Cankerbloom (ONE) 161
+1 Champion of Lambholt (MOC) 293
+1 Chord of Calling (RVR) 134
 1 City of Brass
 1 Command Tower
 1 Conclave Mentor
-1 Cyclonic Rift
-1 Damning Verdict
+1 Cyclonic Rift (CMM) 84
+1 Damning Verdict (NCC) 15
 1 Danny Pink
-1 Deepglow Skate
-1 Delighted Halfling
+1 Deepglow Skate (EOC) 70
+1 Delighted Halfling (HOC) 65
 1 Dreamtide Whale
 1 Dusk Legion Duelist
-1 Eladamri's Call
-1 Esper Sentinel
-1 Eternal Witness
+1 Eladamri's Call (MH1) 197
+1 Esper Sentinel (MH2) 12
+1 Eternal Witness (CMM) 286
 1 Evolution Sage
 1 Exotic Orchard
-1 Ezuri, Stalker of Spheres
-1 Farseek
-1 Fathom Mage
+1 Ezuri, Stalker of Spheres (ONE) 201
+1 Farseek (TDC) 255
+1 Fathom Mage (NCC) 339
 1 Flooded Strand
 1 Forest
-1 Forgotten Ancient
+1 Forgotten Ancient (SOC) 267
 1 Gavony Township
-1 Glen Elendra Archmage
+1 Glen Elendra Archmage (SLD) 2171
 1 Godless Shrine
 1 Hallowed Fountain
-1 Hardened Scales
+1 Hardened Scales (SOC) 272
 1 Herald of Secret Streams
-1 Heroic Intervention
-1 Incubation Druid
-1 Innkeeper's Talent
-1 Inspiring Call
+1 Heroic Intervention (CMM) 295
+1 Incubation Druid (MOC) 302
+1 Innkeeper's Talent (BLB) 180
+1 Inspiring Call (FDN) 226
 1 Island
 1 Kami of Whispered Hopes
 1 Mana Confluence
@@ -57,8 +57,8 @@
 1 Master Biomancer
 1 Metastatic Evangel
 1 Misty Rainforest
-1 Nature's Lore
-1 Noble Hierarch
+1 Nature's Lore (SOC) 278
+1 Noble Hierarch (2XM) 177
 1 Otawara, Soaring City
 1 Ouroboroid
 1 Overgrown Tomb
@@ -67,33 +67,33 @@
 1 Polluted Delta
 1 Rejuvenating Springs
 1 Retribution of the Ancients
-1 Rhystic Study
-1 Ripples of Potential
+1 Rhystic Study (JMP) 169
+1 Ripples of Potential (EOC) 77
 1 Rishkar, Peema Renegade
 1 Savannah
 1 Scalding Tarn
 1 Scrubland
 1 Sea of Clouds
-1 Shalai, Voice of Plenty
-1 Sol Ring
+1 Shalai, Voice of Plenty (TDC) 130
+1 Sol Ring (FDC) 286
 1 Spara's Headquarters
-1 Swan Song
-1 Swords to Plowshares
-1 Sylvan Library
-1 Teferi's Protection
-1 Tekuthal, Inquiry Dominus
+1 Swan Song (C16) 98
+1 Swords to Plowshares (FRC) 37
+1 Sylvan Library (LEG) 207
+1 Teferi's Protection (2X2) 32
+1 Tekuthal, Inquiry Dominus (EOC) 78
 1 Temple Garden
-1 Terrasymbiosis
-1 The Great Henge
-1 The Ozolith
-1 Three Visits
+1 Terrasymbiosis (EOE) 210
+1 The Great Henge (CMM) 294
+1 The Ozolith (SLD) 1741
+1 Three Visits (SOC) 289
 1 Tromell, Seymour's Butler
 1 Tropical Island
 1 Tundra
 1 Underground Sea
 1 Unnatural Restoration
 1 Verdant Catacombs
-1 Walking Ballista
+1 Walking Ballista (2XM) 306
 1 Watery Grave
 1 Windswept Heath
 1 Wooded Foothills

@@ -1,93 +1,93 @@
-1 Niv-Mizzet, Parun
-1 Aether Gust
-1 Aetherize
-1 An Offer You Can't Refuse
-1 Arcane Signet
-1 Archmage Emeritus
+1 Niv-Mizzet, Parun (RVR) 438
+1 Aether Gust (M20) 42
+1 Aetherize (SCD) 42
+1 An Offer You Can't Refuse (FDN) 160
+1 Arcane Signet (FDC) 245
+1 Archmage Emeritus (SOC) 188
 1 Arid Mesa
-1 Basilisk Collar
-1 Big Score
+1 Basilisk Collar (DSC) 241
+1 Big Score (SOC) 237
 1 Bloodstained Mire
-1 Blue Elemental Blast
-1 Brainstorm
+1 Blue Elemental Blast (LEB) 50
+1 Brainstorm (DSC) 113
 1 Cascade Bluffs
-1 Chaos Warp
+1 Chaos Warp (STA) 36
 1 Charisma
-1 Chromatic Lantern
+1 Chromatic Lantern (MBC) 73
 1 City of Brass
-1 Coldsteel Heart
+1 Coldsteel Heart (2X2) 301
 1 Command Tower
-1 Counterspell
-1 Cyclonic Rift
-1 Deflecting Swat
+1 Counterspell (DSC) 114
+1 Cyclonic Rift (CMM) 84
+1 Deflecting Swat (CMM) 698
 1 Desolate Lighthouse
-1 Desolation of Smaug
-1 Dispel
+1 Desolation of Smaug (HOB) 262
+1 Dispel (BFZ) 76
 1 Echoing Truth
 1 Exotic Orchard
-1 Fact or Fiction
-1 Faithless Looting
-1 Fellwar Stone
-1 Fierce Guardianship
+1 Fact or Fiction (FRC) 41
+1 Faithless Looting (SOC) 244
+1 Fellwar Stone (MBC) 74
+1 Fierce Guardianship (CMM) 94
 1 Fiery Islet
-1 Firemind Vessel
+1 Firemind Vessel (CMM) 383
 1 Flooded Strand
-1 Flusterstorm
+1 Flusterstorm (IMA) 55
 1 Forbidden Orchard
-1 Force of Negation
-1 Frantic Search
+1 Force of Negation (2X2) 50
+1 Frantic Search (TDC) 153
 1 Frostboil Snarl
-1 Gandalf, Goblins' Bane
+1 Gandalf, Goblins' Bane (HOB) 96
 1 Ghyrson Starn, Kelermorph
-1 Goblin Electromancer
-1 Guttersnipe
-1 Harmonic Prodigy
-1 High Tide
-1 Hydroblast
-1 Impulse
+1 Goblin Electromancer (OTC) 228
+1 Guttersnipe (CMM) 229
+1 Harmonic Prodigy (MH2) 132
+1 High Tide (DMR) 54
+1 Hydroblast (ICE) 72
+1 Impulse (BBD) 119
 4 Island
-1 Izzet Signet
-1 Lightning Bolt
-1 Lightning Greaves
+1 Izzet Signet (TDC) 320
+1 Lightning Bolt (SLD) 1879
+1 Lightning Greaves (OTC) 260
 1 Mana Confluence
-1 Mana Drain
+1 Mana Drain (2X2) 57
 1 Mana Sculpt
-1 Memory Deluge
+1 Memory Deluge (INR) 75
 1 Misty Rainforest
-1 Mizzium Mortars
+1 Mizzium Mortars (MM3) 101
 5 Mountain
-1 Mystic Remora
+1 Mystic Remora (DMR) 59
 1 Mystic Sanctuary
-1 Mystical Dispute
+1 Mystical Dispute (ELD) 58
 1 Otawara, Soaring City
-1 Pact of Negation
+1 Pact of Negation (TSR) 77
 1 Polluted Delta
-1 Pyroblast
-1 Red Elemental Blast
+1 Pyroblast (ICE) 213
+1 Red Elemental Blast (LEB) 170
 1 Reflecting Pool
-1 Rhystic Study
+1 Rhystic Study (JMP) 169
 1 Riverpyre Verge
 1 Rogue's Passage
 1 Scalding Tarn
 1 Shivan Reef
-1 Slip Out the Back
-1 Sol Ring
-1 Solphim, Mayhem Dominus
+1 Slip Out the Back (CLU) 99
+1 Sol Ring (SLD) 913
+1 Solphim, Mayhem Dominus (ONE) 150
 1 Spirebluff Canal
 1 Steam Vents
 1 Stern Scolding
 1 Stormcarved Coast
 1 Sulfur Falls
-1 Swan Song
+1 Swan Song (C16) 98
 1 Tale's End
-1 Talisman of Creativity
-1 Talrand, Sky Summoner
-1 Teferi's Ageless Insight
+1 Talisman of Creativity (FRC) 61
+1 Talrand, Sky Summoner (OTC) 116
+1 Teferi's Ageless Insight (MKC) 119
 1 Thundering Falls
-1 Torbran, Thane of Red Fell
+1 Torbran, Thane of Red Fell (ELD) 147
 1 Training Center
-1 Veyran, Voice of Duality
+1 Veyran, Voice of Duality (SOC) 337
 1 Volcanic Island
-1 Wash Away
+1 Wash Away (VOW) 87
 1 Wooded Foothills
-1 Young Pyromancer
+1 Young Pyromancer (J25) 618

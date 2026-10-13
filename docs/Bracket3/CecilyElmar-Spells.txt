@@ -1,97 +1,97 @@
-1 Cecily, Haunted Mage
-1 Abrupt Decay
-1 An Offer You Can't Refuse
-1 Arcane Denial
-1 Arcane Signet
-1 Archmage Emeritus
+1 Cecily, Haunted Mage (SLX) 3
+1 Abrupt Decay (SLD) 2468
+1 An Offer You Can't Refuse (FDN) 160
+1 Arcane Denial (SOC) 187
+1 Arcane Signet (FDC) 245
+1 Archmage Emeritus (SOC) 188
 1 Arid Mesa
-1 Assassin's Trophy
+1 Assassin's Trophy (SOC) 294
 1 Badlands
 1 Bala Ged Recovery
 1 Bayou
-1 Birds of Paradise
+1 Birds of Paradise (FDC) 191
 1 Blood Crypt
 1 Bloodstained Mire
-1 Bloom Tender
+1 Bloom Tender (2X2) 138
 1 Boseiju, Who Endures
-1 Brainstorm
-1 Brass's Bounty
-1 Breach the Multiverse
+1 Brainstorm (DSC) 113
+1 Brass's Bounty (FDN) 190
+1 Breach the Multiverse (MOM) 94
 1 Breeding Pool
 1 City of Brass
 1 Command Tower
-1 Consecrated Sphinx
-1 Crackle with Power
-1 Cyclonic Rift
-1 Deadly Rollick
-1 Deflecting Swat
-1 Delighted Halfling
-1 Dig Through Time
-1 Dolmen Gate
-1 Elmar, Ulvenwald Informant
-1 Emergent Ultimatum
+1 Consecrated Sphinx (2X2) 43
+1 Crackle with Power (STX) 95
+1 Cyclonic Rift (2XM) 339
+1 Deadly Rollick (CMM) 147
+1 Deflecting Swat (SLD) 1552
+1 Delighted Halfling (HOC) 65
+1 Dig Through Time (SOC) 195
+1 Dolmen Gate (SLD) 1806
+1 Elmar, Ulvenwald Informant (SLX) 4
+1 Emergent Ultimatum (IKO) 185
 1 Exotic Orchard
-1 Faerie Mastermind
-1 Farseek
-1 Fellwar Stone
-1 Flame of Anor
+1 Faerie Mastermind (MOM) 58
+1 Farseek (TDC) 255
+1 Fellwar Stone (MBC) 74
+1 Flame of Anor (HOC) 71
 1 Flooded Strand
 1 Forest
-1 Frantic Search
-1 Growth Spiral
-1 Harmonic Prodigy
-1 Heroic Intervention
-1 Hexing Squelcher
+1 Frantic Search (TDC) 153
+1 Growth Spiral (LCC) 270
+1 Harmonic Prodigy (MH2) 132
+1 Heroic Intervention (CMM) 295
+1 Hexing Squelcher (ECL) 145
 1 Irenicus's Vile Duplication
 1 Island
-1 Jori En, Ruin Diver
+1 Jori En, Ruin Diver (DDS) 23
 1 Ketria Triome
-1 Lightning Greaves
+1 Lightning Greaves (OTC) 260
 1 Mana Confluence
-1 Mana Drain
+1 Mana Drain (2X2) 57
 1 Marsh Flats
 1 Misty Rainforest
-1 Mizzix's Mastery
+1 Mizzix's Mastery (OTC) 175
 1 Mnemonic Deluge
 1 Morphic Pool
-1 Mystic Remora
-1 Nature's Claim
-1 Nature's Lore
+1 Mystic Remora (DMR) 420
+1 Nature's Claim (IMA) 177
+1 Nature's Lore (SOC) 278
 1 Otawara, Soaring City
 1 Overflowing Insight
 1 Overgrown Tomb
 1 Polluted Delta
-1 Ponder
-1 Preordain
-1 Psychosis Crawler
+1 Ponder (TDC) 159
+1 Preordain (TDC) 161
+1 Psychosis Crawler (MKC) 234
 1 Reflecting Pool
 1 Rejuvenating Springs
 1 Reliquary Tower
 1 Resonating Lute
-1 Rhystic Study
-1 Rise of the Dark Realms
-1 Rishkar's Expertise
+1 Rhystic Study (JMP) 169
+1 Rise of the Dark Realms (FDN) 183
+1 Rishkar's Expertise (LCC) 254
 1 Scalding Tarn
 1 Sea Gate Restoration
-1 Shark Typhoon
-1 Slip Through Space
-1 Sol Ring
-1 Soul-Guide Lantern
+1 Shark Typhoon (FRC) 44
+1 Slip Through Space (OGW) 47
+1 Sol Ring (FDC) 286
+1 Soul-Guide Lantern (DRC) 139
 1 Steam Vents
 1 Stomping Ground
-1 Storm-Kiln Artist
-1 Swan Song
-1 Swiftfoot Boots
-1 Sylvan Library
+1 Storm-Kiln Artist (SOC) 255
+1 Swan Song (C16) 98
+1 Swiftfoot Boots (MBC) 77
+1 Sylvan Library (LEG) 207
 1 Taiga
-1 Tamiyo's Safekeeping
-1 Teferi's Ageless Insight
-1 Three Visits
-1 Toxic Deluge
-1 Treasure Cruise
+1 Tamiyo's Safekeeping (NEO) 211
+1 Teferi's Ageless Insight (MKC) 119
+1 Three Visits (SOC) 289
+1 Toxic Deluge (MH3) 277
+1 Treasure Cruise (SOC) 205
 1 Tropical Island
 1 Underground Sea
-1 Vandalblast
+1 Vandalblast (OTC) 183
 1 Verdant Catacombs
 1 Volcanic Island
 1 Watery Grave

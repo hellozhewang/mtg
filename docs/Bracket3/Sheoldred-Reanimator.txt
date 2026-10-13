@@ -1,77 +1,77 @@
-1 Sheoldred, Whispering One
+1 Sheoldred, Whispering One (JMP) 278
 1 Accursed Marauder
 1 Agadeem's Awakening
-1 Animate Dead
-1 Arcane Signet
-1 Archon of Cruelty
-1 Ashnod's Altar
-1 Bitter Triumph
-1 Black Market Connections
+1 Animate Dead (SOC) 207
+1 Arcane Signet (SLD) 1492
+1 Archon of Cruelty (FRC) 47
+1 Ashnod's Altar (CMM) 368
+1 Bitter Triumph (TDC) 173
+1 Black Market Connections (LCC) 181
 1 Blast Zone
 1 Bojuka Bog
-1 Braids, Arisen Nightmare
-1 Buried Alive
+1 Braids, Arisen Nightmare (EOC) 82
+1 Buried Alive (SLD) 1673
 1 Buried Ruin
 1 Cabal Coffers
 1 Castle Locthwain
-1 Crypt Ghast
-1 Deadly Dispute
-1 Deadly Rollick
+1 Crypt Ghast (RVR) 70
+1 Deadly Dispute (TDC) 177
+1 Deadly Rollick (CMM) 147
 1 Emeritus of Woe
-1 Entomb
-1 Expedition Map
-1 Feed the Swarm
+1 Entomb (DMR) 82
+1 Expedition Map (FDN) 724
+1 Feed the Swarm (TDC) 180
 1 Gate to Phyrexia
-1 Grave Pact
+1 Grave Pact (CM2) 65
 1 Grave Researcher
-1 Grave Titan
-1 Gray Merchant of Asphodel
+1 Grave Titan (ECC) 74
+1 Gray Merchant of Asphodel (FDC) 105
 1 High Market
-1 Imp's Mischief
-1 Jet Medallion
-1 Junji, the Midnight Sky
+1 Imp's Mischief (CMM) 167
+1 Jet Medallion (MH3) 292
+1 Junji, the Midnight Sky (TDC) 183
 1 Kaya's Ghostform
-1 Kokusho, the Evening Star
-1 Lightning Greaves
-1 Liquimetal Torque
-1 Living Death
+1 Kokusho, the Evening Star (MMA) 89
+1 Lightning Greaves (OTC) 260
+1 Liquimetal Torque (MH2) 228
+1 Living Death (CM2) 68
 1 Malakir Rebirth
-1 Massacre Wurm
-1 Meteor Golem
-1 Mind Stone
-1 Morbid Opportunist
-1 Necromancy
-1 Night's Whisper
+1 Massacre Wurm (FDN) 754
+1 Meteor Golem (FDC) 270
+1 Mind Stone (MBC) 76
+1 Morbid Opportunist (SOC) 219
+1 Necromancy (VIS) 64
+1 Night's Whisper (5DN) 55
 1 Nykthos, Shrine to Nyx
-1 Opposition Agent
+1 Opposition Agent (CMR) 141
 1 Perpetual Timepiece
-1 Phyrexian Reclamation
+1 Phyrexian Reclamation (TDC) 194
 1 Phyrexian Tower
-1 Plaguecrafter
-1 Reanimate
-1 Sephiroth, Fabled SOLDIER
-1 Skullclamp
-1 Sol Ring
-1 Solemn Simulacrum
-1 Stonespeaker Crystal
+1 Plaguecrafter (RVR) 89
+1 Reanimate (DSC) 155
+1 Sephiroth, Fabled SOLDIER (FIN) 115
+1 Skullclamp (MOC) 379
+1 Sol Ring (CC2) 7
+1 Solemn Simulacrum (SOC) 355
+1 Stonespeaker Crystal (CLB) 338
 1 Strip Mine
 24 Swamp
-1 Swiftfoot Boots
-1 Syr Konrad, the Grim
+1 Swiftfoot Boots (MBC) 77
+1 Syr Konrad, the Grim (DSC) 158
 1 Takenuma, Abandoned Mire
 1 Talon Gates of Madara
-1 Tergrid, God of Fright
-1 The One Ring
-1 The Soul Stone
-1 Torment of Hailfire
-1 Toxic Deluge
-1 Troop of Ponies
-1 Twilight Diviner
+1 Tergrid, God of Fright (KHM) 112
+1 The One Ring (LTR) 246
+1 The Soul Stone (SPM) 66
+1 Torment of Hailfire (HOU) 77
+1 Toxic Deluge (MH3) 277
+1 Troop of Ponies (HOB) 199
+1 Twilight Diviner (ECL) 122
 1 Umbral Collar Zealot
 1 Urborg, Tomb of Yawgmoth
-1 Victimize
+1 Victimize (TDC) 198
 1 Vile Entomber
-1 Wayfarer's Bauble
+1 Wayfarer's Bauble (WOC) 151
 1 Withering Boon
-1 Withering Torment
+1 Withering Torment (FDC) 134
 1 Zuko's Exile

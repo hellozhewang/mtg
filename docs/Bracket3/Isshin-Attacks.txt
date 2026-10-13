@@ -1,100 +1,100 @@
-1 Isshin, Two Heavens as One
-1 Adeline, Resplendent Cathar
+1 Isshin, Two Heavens as One (NEO) 224
+1 Adeline, Resplendent Cathar (TDC) 108
 1 Adriana, Captain of the Guard
 1 Ainok Strike Leader
-1 Akroma's Will
-1 Anguished Unmaking
-1 Anim Pakal, Thousandth Moon
-1 Arcane Signet
+1 Akroma's Will (LCC) 125
+1 Anguished Unmaking (SOC) 293
+1 Anim Pakal, Thousandth Moon (LCI) 223
+1 Arcane Signet (FDC) 245
 1 Arid Mesa
-1 Aurelia, the Warleader
+1 Aurelia, the Warleader (GK1) 77
 1 Badlands
-1 Bastion of Remembrance
+1 Bastion of Remembrance (TDC) 171
 1 Battlefield Forge
-1 Bedevil
-1 Bitterblossom
+1 Bedevil (DMC) 144
+1 Bitterblossom (2X2) 69
 1 Blackcleave Cliffs
-1 Blade of Selves
-1 Blasphemous Act
+1 Blade of Selves (CM2) 174
+1 Blasphemous Act (FDC) 140
 1 Blazemire Verge
 1 Bleachbone Verge
 1 Blightstep Pathway
 1 Blood Crypt
 1 Bloodstained Mire
-1 Boros Charm
-1 Boros Signet
+1 Boros Charm (FDN) 721
+1 Boros Signet (CMM) 942
 1 Brightclimb Pathway
 1 Brutal Hordechief
 1 Canyon Slough
 1 Castle Ardenvale
-1 Cathars' Crusade
+1 Cathars' Crusade (INR) 17
 1 Caves of Koilos
-1 Chaos Warp
+1 Chaos Warp (MBC) 72
 1 Chivalric Alliance
 1 Clifftop Retreat
-1 Combat Celebrant
+1 Combat Celebrant (AKH) 125
 1 Command Tower
-1 Council's Judgment
+1 Council's Judgment (OTC) 79
 1 Curse of Opulence
-1 Deflecting Swat
+1 Deflecting Swat (CMM) 214
 1 Den of the Bugbear
-1 Dolmen Gate
+1 Dolmen Gate (LRW) 256
 1 Dragonskull Summit
 1 Eiganjo, Seat of the Empire
-1 Elenda, the Dusk Rose
+1 Elenda, the Dusk Rose (LCC) 268
 1 Exotic Orchard
-1 Fellwar Stone
+1 Fellwar Stone (MBC) 74
 1 Firemane Commando
-1 Flawless Maneuver
-1 Generous Gift
+1 Flawless Maneuver (FRC) 25
+1 Generous Gift (LCC) 128
 1 Godless Shrine
 1 Goldnight Commander
 1 Hanweir Garrison
 1 Hellrider
-1 Hero of Bladehold
-1 Iroas, God of Victory
+1 Hero of Bladehold (TDC) 119
+1 Iroas, God of Victory (C16) 205
 1 Isolated Chapel
-1 Krenko, Tin Street Kingpin
+1 Krenko, Tin Street Kingpin (DMC) 124
 1 Luxury Suite
 1 Mardu Ascendancy
 1 Marsh Flats
-1 Midnight Reaper
+1 Midnight Reaper (FDN) 609
 1 Mishra, Claimed by Gix
 1 Mountain
-1 Myrel, Shield of Argive
-1 Necropotence
+1 Myrel, Shield of Argive (BRO) 18
+1 Necropotence (ICE) 154
 1 Neyali, Suns' Vanguard
-1 Night's Whisper
+1 Night's Whisper (FDC) 119
 1 Nomad Outpost
-1 Orzhov Signet
+1 Orzhov Signet (TDC) 323
 1 Path of Ancestry
-1 Path to Exile
-1 Phyrexian Arena
+1 Path to Exile (SLD) 2227
+1 Phyrexian Arena (C15) 130
 1 Plains
 1 Rogue's Passage
 1 Sacred Foundry
 1 Savai Triome
 1 Shattered Sanctum
 1 Shinka, the Bloodsoaked Keep
-1 Skullclamp
-1 Smothering Tithe
+1 Skullclamp (BLC) 283
+1 Smothering Tithe (CMM) 57
 1 Sokenzan, Crucible of Defiance
-1 Sol Ring
+1 Sol Ring (FDC) 286
 1 Sulfurous Springs
-1 Sun Titan
+1 Sun Titan (SOC) 178
 1 Swamp
-1 Swords to Plowshares
-1 Talisman of Conviction
-1 Talisman of Hierarchy
-1 Talisman of Indulgence
+1 Swords to Plowshares (SLD) 1021
+1 Talisman of Conviction (TDC) 329
+1 Talisman of Hierarchy (SOC) 358
+1 Talisman of Indulgence (FRC) 63
 1 Tectonic Giant
-1 Teferi's Protection
-1 Terminate
-1 Thalia, Guardian of Thraben
-1 Tocasia's Welcome
-1 Vandalblast
-1 Vanquish the Horde
+1 Teferi's Protection (2X2) 32
+1 Terminate (SLD) 1427
+1 Thalia, Guardian of Thraben (A25) 36
+1 Tocasia's Welcome (SOC) 181
+1 Vandalblast (SLD) 404
+1 Vanquish the Horde (INR) 49
 1 Vault of the Archangel
-1 Voice of Victory
-1 Welcoming Vampire
-1 Windcrag Siege
+1 Voice of Victory (TDM) 33
+1 Welcoming Vampire (TDC) 140
+1 Windcrag Siege (TDM) 235

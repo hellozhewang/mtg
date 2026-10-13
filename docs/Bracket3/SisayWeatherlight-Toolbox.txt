@@ -1,99 +1,99 @@
-1 Sisay, Weatherlight Captain
-1 Abrupt Decay
-1 Aminatou, the Fateshifter
-1 An Offer You Can't Refuse
-1 Arcane Signet
+1 Sisay, Weatherlight Captain (MH1) 29
+1 Abrupt Decay (MM3) 146
+1 Aminatou, the Fateshifter (2X2) 169
+1 An Offer You Can't Refuse (FDN) 160
+1 Arcane Signet (FDC) 245
 1 Arid Mesa
 1 Badlands
 1 Bayou
 1 Bloodstained Mire
-1 Bloom Tender
+1 Bloom Tender (2X2) 138
 1 Boseiju, Who Endures
-1 Captain Sisay
+1 Captain Sisay (INV) 237
 1 City of Brass
 1 Command Tower
-1 Deflecting Swat
-1 Delighted Halfling
-1 Derevi, Empyrial Tactician
+1 Deflecting Swat (CMM) 214
+1 Delighted Halfling (LTR) 158
+1 Derevi, Empyrial Tactician (CMA) 176
 1 Dihada, Binder of Wills
 1 Eiganjo, Seat of the Empire
-1 Ertai Resurrected
-1 Esika, God of the Tree
-1 Esper Sentinel
+1 Ertai Resurrected (DMU) 339
+1 Esika, God of the Tree (KHM) 168
+1 Esper Sentinel (MH2) 12
 1 Exotic Orchard
-1 Faeburrow Elder
-1 Farseek
-1 Fellwar Stone
+1 Faeburrow Elder (TDC) 289
+1 Farseek (TDC) 255
+1 Fellwar Stone (MBC) 74
 1 Flooded Strand
-1 Flowering of the White Tree
+1 Flowering of the White Tree (LTR) 15
 1 Forbidden Orchard
-1 Force of Negation
-1 Hajar, Loyal Bodyguard
+1 Force of Negation (2X2) 50
+1 Hajar, Loyal Bodyguard (BRO) 211
 1 Ioreth of the Healing House
-1 Jegantha, the Wellspring
-1 Jennifer Walters
-1 Jhoira, Weatherlight Captain
-1 Jodah, the Unifier
+1 Jegantha, the Wellspring (ECC) 125
+1 Jennifer Walters (MSH) 388
+1 Jhoira, Weatherlight Captain (SLD) 1276
+1 Jodah, the Unifier (DMU) 343
 1 Kethis, the Hidden Hand
-1 King T'Challa
-1 Kinnan, Bonder Prodigy
-1 Kutzil, Malamet Exemplar
-1 Lavinia, Azorius Renegade
+1 King T'Challa (MSH) 399
+1 Kinnan, Bonder Prodigy (IKO) 192
+1 Kutzil, Malamet Exemplar (LCI) 232
+1 Lavinia, Azorius Renegade (RVR) 195
 1 Loki's Scepter
-1 Loran of the Third Path
-1 Lotho, Corrupt Shirriff
+1 Loran of the Third Path (MKC) 71
+1 Lotho, Corrupt Shirriff (LTR) 213
 1 Mana Confluence
-1 Mana Drain
+1 Mana Drain (2X2) 57
 1 Marsh Flats
 1 Minamo, School at Water's Edge
 1 Misty Rainforest
-1 Mox Amber
-1 Mystic Remora
-1 Nature's Lore
-1 Nature's Rhythm
-1 Niv-Mizzet Reborn
+1 Mox Amber (DOM) 224
+1 Mystic Remora (DMR) 59
+1 Nature's Lore (ICE) 255
+1 Nature's Rhythm (TDM) 150
+1 Niv-Mizzet Reborn (WAR) 208
 1 Oath of Nissa
-1 Omnath, Locus of Creation
+1 Omnath, Locus of Creation (ZNR) 232
 1 Otawara, Soaring City
 1 Plateau
 1 Plaza of Heroes
 1 Polluted Delta
-1 Primevals' Glorious Rebirth
-1 Ragavan, Nimble Pilferer
+1 Primevals' Glorious Rebirth (DOM) 201
+1 Ragavan, Nimble Pilferer (MH2) 138
 1 Reflecting Pool
-1 Reki, the History of Kamigawa
-1 Relic of Legends
-1 Rhystic Study
+1 Reki, the History of Kamigawa (SOK) 142
+1 Relic of Legends (DMU) 236
+1 Rhystic Study (JMP) 169
 1 Savannah
 1 Scalding Tarn
 1 Scrubland
-1 Shalai, Voice of Plenty
-1 Shang-Chi, Master of Kung Fu
+1 Shalai, Voice of Plenty (TDC) 130
+1 Shang-Chi, Master of Kung Fu (MSH) 396
 1 Shanid, Sleepers' Scourge
-1 Shorikai, Genesis Engine
-1 Skrelv, Defector Mite
-1 Smothering Tithe
+1 Shorikai, Genesis Engine (NEC) 4
+1 Skrelv, Defector Mite (ONE) 33
+1 Smothering Tithe (CMM) 57
 1 Sokenzan, Crucible of Defiance
-1 Sol Ring
+1 Sol Ring (FDC) 286
 1 Starting Town
-1 Swords to Plowshares
+1 Swords to Plowshares (FRC) 37
 1 Taiga
 1 Takenuma, Abandoned Mire
 1 Tam, Mindful First-Year
-1 Tamiyo, Inquisitive Student
+1 Tamiyo, Inquisitive Student (MH3) 242
 1 Tarnished Citadel
-1 Teferi, Time Raveler
-1 Teferi, Who Slows the Sunset
-1 The One Ring
+1 Teferi, Time Raveler (SLD) 526
+1 Teferi, Who Slows the Sunset (MID) 245
+1 The One Ring (LTR) 246
 1 The World Tree
-1 Three Visits
+1 Three Visits (SOC) 289
 1 Timeless Lotus
 1 Tropical Island
 1 Tundra
-1 Tyvar, Jubilant Brawler
+1 Tyvar, Jubilant Brawler (ONE) 218
 1 Underground Sea
-1 Urza's Ruinous Blast
-1 Venser, Shaper Savant
+1 Urza's Ruinous Blast (CMM) 842
+1 Venser, Shaper Savant (2X2) 66
 1 Verdant Catacombs
 1 Volcanic Island
 1 Windswept Heath

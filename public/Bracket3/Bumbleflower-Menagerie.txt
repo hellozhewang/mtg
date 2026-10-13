@@ -1,16 +1,16 @@
-1 Ms. Bumbleflower
+1 Ms. Bumbleflower (BLC) 3
 1 Aerial Extortionist
 1 Ancient Tomb
 1 Arbor Adherent
 1 Arid Mesa
 1 Aven Interrupter
-1 Aven Mindcensor
+1 Aven Mindcensor (CLB) 688
 1 Bast, Panther Goddess
-1 Birds of Paradise
+1 Birds of Paradise (BLC) 81
 1 Boseiju, Who Endures
 1 Bountiful Promenade
 1 Breeding Pool
-1 Brimaz, King of Oreskos
+1 Brimaz, King of Oreskos (BNG) 5
 1 Brushland
 1 Cavern of Souls
 1 City of Brass
@@ -23,77 +23,77 @@
 1 Dreamdew Entrancer
 1 Eiganjo, Seat of the Empire
 1 Emeritus of Truce
-1 Emiel the Blessed
-1 Enduring Curiosity
-1 Enduring Innocence
-1 Enduring Vitality
+1 Emiel the Blessed (2X2) 10
+1 Enduring Curiosity (DSK) 51
+1 Enduring Innocence (DSK) 6
+1 Enduring Vitality (DSK) 176
 1 Exotic Orchard
-1 Felidar Sovereign
-1 Finneas, Ace Archer
+1 Felidar Sovereign (BFZ) 26
+1 Finneas, Ace Archer (BLB) 212
 1 Flooded Strand
 1 Forest
 1 Gaea's Cradle
 1 Gavony Township
-1 Gilded Goose
-1 Good-Fortune Unicorn
+1 Gilded Goose (BLC) 83
+1 Good-Fortune Unicorn (FDN) 240
 1 Hallowed Fountain
 1 Harvestrite Host
 1 Hinterland Sanctifier
 1 Island
-1 Jackdaw Savior
+1 Jackdaw Savior (BLB) 18
 1 Jacked Rabbit
 1 Jazal Goldmane
 1 Kutzil's Flanker
-1 Kutzil, Malamet Exemplar
-1 Ledger Shredder
-1 Lion Sash
-1 Luminous Broodmoth
+1 Kutzil, Malamet Exemplar (LCI) 232
+1 Ledger Shredder (SPG) 55
+1 Lion Sash (NEO) 26
+1 Luminous Broodmoth (IKO) 21
 1 Mana Confluence
 1 Marsh Flats
 1 Minas Tirith
-1 Mirri, Weatherlight Duelist
+1 Mirri, Weatherlight Duelist (CMM) 347
 1 Misty Rainforest
 1 Mr. Foxglove
-1 Ocelot Pride
+1 Ocelot Pride (MH3) 38
 1 Otawara, Soaring City
 1 Pawpatch Recruit
-1 Phelia, Exuberant Shepherd
+1 Phelia, Exuberant Shepherd (MH3) 40
 1 Plains
 1 Plumecreed Escort
 1 Poison Dart Frog
-1 Pollen-Shield Hare
+1 Pollen-Shield Hare (WOE) 233
 1 Polluted Delta
 1 Pollywog Prodigy
 1 Prava of the Steel Legion
 1 Preston, the Vanisher
 1 Prowling Serpopard
-1 Qasali Pridemage
+1 Qasali Pridemage (2X2) 267
 1 Reflecting Pool
 1 Regal Bunnicorn
 1 Rejuvenating Springs
-1 Rigo, Streetwise Mentor
+1 Rigo, Streetwise Mentor (SNC) 215
 1 Savannah
 1 Scalding Tarn
 1 Sea of Clouds
-1 Selfless Savior
+1 Selfless Savior (M21) 36
 1 Skycoach Conductor
 1 Skyhunter Strike Force
-1 Sovereign Okinec Ahau
-1 Spore Frog
+1 Sovereign Okinec Ahau (LCI) 240
+1 Spore Frog (MH1) 180
 1 Studious First-Year
 1 Temple Garden
 1 The Goose Mother
 1 Thornvault Forager
 1 Three Tree City
-1 Toski, Bearer of Secrets
-1 Traveling Chocobo
+1 Toski, Bearer of Secrets (SPG) 60
+1 Traveling Chocobo (FIN) 210
 1 Tropical Island
 1 Tundra
 1 Twenty-Toed Toad
-1 Valley Questcaller
+1 Valley Questcaller (BLB) 36
 1 Verdant Catacombs
 1 Vryn Wingmare
-1 Warren Warleader
+1 Warren Warleader (BLB) 38
 1 Whitemane Lion
 1 Windswept Heath
 1 Wooded Foothills

@@ -1,78 +1,78 @@
-1 Light-Paws, Emperor's Voice
-1 All That Glitters
+1 Light-Paws, Emperor's Voice (NEO) 25
+1 All That Glitters (CMM) 9
 1 Angelic Destiny
-1 Arcane Signet
-1 Archaeomancer's Map
+1 Arcane Signet (TDC) 105
+1 Archaeomancer's Map (SOC) 136
 1 Archon of Emeria
-1 Aven Mindcensor
-1 Battle Mastery
+1 Aven Mindcensor (CLB) 688
+1 Battle Mastery (BBD) 89
 1 Benevolent Blessing
 1 Brilliant Wings
 1 Cavern of Souls
 1 Chains of Custody
-1 Darksteel Mutation
-1 Daybreak Coronet
+1 Darksteel Mutation (SOC) 142
+1 Daybreak Coronet (UMA) 14
 1 Eiganjo Castle
 1 Eiganjo, Seat of the Empire
-1 Enlightened Tutor
-1 Esper Sentinel
-1 Ethereal Armor
+1 Enlightened Tutor (MIR) 14
+1 Esper Sentinel (MH2) 12
+1 Ethereal Armor (PL23) 5
 1 Feather of Flight
-1 Flickering Ward
-1 Galadriel's Dismissal
+1 Flickering Ward (SOC) 109
+1 Galadriel's Dismissal (LTC) 500
 1 Gemstone Caverns
-1 Generous Gift
-1 Giver of Runes
-1 Grand Abolisher
+1 Generous Gift (LCC) 128
+1 Giver of Runes (MH1) 13
+1 Grand Abolisher (CMM) 27
 1 Gryff's Boon
 1 Hall of Heliod's Generosity
 1 Hushbringer
 1 Hyena Umbra
-1 Idolized
-1 Kor Spiritdancer
-1 Land Tax
+1 Idolized (PIP) 855
+1 Kor Spiritdancer (SOC) 152
+1 Land Tax (SOC) 153
 1 Loran's Escape
-1 Lotus Petal
-1 Mantle of the Ancients
+1 Lotus Petal (MB2) 226
+1 Mantle of the Ancients (AFC) 8
 1 Mask of Law and Grace
-1 Mesa Enchantress
-1 Mind Stone
-1 Mother of Runes
-1 Mox Amber
+1 Mesa Enchantress (CMM) 828
+1 Mind Stone (MBC) 76
+1 Mother of Runes (CLB) 702
+1 Mox Amber (DOM) 224
 1 Nykthos, Shrine to Nyx
 1 On Thin Ice
-1 Open the Armory
-1 Pariah
-1 Path to Exile
-1 Pearl Medallion
-1 Pearl-Ear, Imperial Advisor
+1 Open the Armory (CMR) 34
+1 Pariah (CN2) 95
+1 Path to Exile (CMM) 626
+1 Pearl Medallion (MH3) 294
+1 Pearl-Ear, Imperial Advisor (SOC) 160
 1 Plaza of Heroes
 1 Rebuff the Wicked
 1 Replenish
 1 Reprobation
 1 Retether
 1 Rogue's Passage
-1 Sage's Reverie
+1 Sage's Reverie (SOC) 165
 1 Sentinel's Eyes
 1 Serra's Sanctum
 1 Shardmage's Rescue
-1 Sheltered by Ghosts
+1 Sheltered by Ghosts (SOC) 171
 1 Shield of Duty and Reason
-1 Sigarda's Aid
-1 Silence
-1 Skrelv, Defector Mite
+1 Sigarda's Aid (CMR) 384
+1 Silence (M14) 35
+1 Skrelv, Defector Mite (ONE) 33
 23 Snow-Covered Plains
-1 Sol Ring
+1 Sol Ring (SOC) 128
 1 Solid Footing
-1 Spirit Mantle
-1 Sram, Senior Edificer
+1 Spirit Mantle (SOC) 175
+1 Sram, Senior Edificer (SOC) 176
 1 Stoneskin
 1 Swift Reconfiguration
-1 Swiftfoot Boots
-1 Swords to Plowshares
-1 Teferi's Protection
-1 Timely Ward
+1 Swiftfoot Boots (MBC) 77
+1 Swords to Plowshares (SLD) 1021
+1 Teferi's Protection (2X2) 32
+1 Timely Ward (DSC) 107
 1 Triclopean Sight
 1 Twinblade Blessing
-1 Unquestioned Authority
+1 Unquestioned Authority (J22) 260
 1 Urza's Saga

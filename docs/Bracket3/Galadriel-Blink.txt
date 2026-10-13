@@ -1,99 +1,99 @@
-1 Galadriel, Light of Valinor
-1 Aang, Swift Savior
+1 Galadriel, Light of Valinor (LTC) 498
+1 Aang, Swift Savior (TLA) 204
 1 Adarkar Wastes
-1 Akroma's Will
+1 Akroma's Will (LCC) 125
 1 Alchemist's Refuge
-1 Arcane Signet
+1 Arcane Signet (LTC) 273
 1 Arid Mesa
-1 Aura Shards
-1 Avacyn's Pilgrim
-1 Badgermole Cub
-1 Beast Within
-1 Birds of Paradise
-1 Bloom Tender
+1 Aura Shards (CMD) 182
+1 Avacyn's Pilgrim (MIC) 132
+1 Badgermole Cub (TLA) 167
+1 Beast Within (LTC) 234
+1 Birds of Paradise (LTC) 235
+1 Bloom Tender (2X2) 138
 1 Boseiju, Who Endures
 1 Bountiful Promenade
 1 Breeding Pool
 1 Brushland
 1 Chomping Changeling
-1 Chord of Calling
+1 Chord of Calling (RVR) 134
 1 City of Brass
-1 Clever Concealment
+1 Clever Concealment (ONC) 5
 1 Command Tower
-1 Craterhoof Behemoth
-1 Cyclonic Rift
+1 Craterhoof Behemoth (CMM) 280
+1 Cyclonic Rift (CMM) 84
 1 Danny Pink
-1 Delighted Halfling
-1 Dovin's Veto
+1 Delighted Halfling (LTR) 158
+1 Dovin's Veto (WAR) 193
 1 Eiganjo, Seat of the Empire
-1 Eladamri's Call
-1 Elesh Norn, Mother of Machines
-1 Elvish Mystic
-1 Emiel the Blessed
-1 Endurance
-1 Enduring Vitality
-1 Ephemerate
-1 Esper Sentinel
-1 Eternal Witness
+1 Eladamri's Call (MH1) 197
+1 Elesh Norn, Mother of Machines (ONE) 10
+1 Elvish Mystic (HOC) 205
+1 Emiel the Blessed (2X2) 10
+1 Endurance (MH2) 157
+1 Enduring Vitality (DSK) 176
+1 Ephemerate (MH1) 7
+1 Esper Sentinel (MH2) 12
+1 Eternal Witness (CMM) 286
 1 Exotic Orchard
-1 Faerie Mastermind
-1 Finale of Devastation
+1 Faerie Mastermind (MOM) 58
+1 Finale of Devastation (CMM) 289
 1 Flooded Strand
 1 Forest
 1 Formidable Speaker
-1 Galadriel's Dismissal
-1 Green Sun's Zenith
-1 Guardian Project
+1 Galadriel's Dismissal (LTC) 500
+1 Green Sun's Zenith (2X2) 150
+1 Guardian Project (RVR) 146
 1 Hallowed Fountain
 1 Hedge Maze
-1 Heroic Intervention
+1 Heroic Intervention (LTC) 249
 1 Island
-1 Koma, Cosmos Serpent
-1 Kutzil, Malamet Exemplar
-1 Llanowar Elves
+1 Koma, Cosmos Serpent (MKC) 213
+1 Kutzil, Malamet Exemplar (LCI) 232
+1 Llanowar Elves (FDN) 227
 1 Lush Portico
 1 Mana Confluence
-1 Mana Drain
-1 March of Swirling Mist
+1 Mana Drain (2X2) 57
+1 March of Swirling Mist (NEO) 61
 1 Marsh Flats
 1 Misty Rainforest
-1 Moonshaker Cavalry
-1 Mystic Remora
-1 Mystic Snake
-1 Nature's Lore
-1 Noble Hierarch
+1 Moonshaker Cavalry (WOE) 21
+1 Mystic Remora (DMR) 59
+1 Mystic Snake (A25) 208
+1 Nature's Lore (SOC) 278
+1 Noble Hierarch (2XM) 177
 1 Otawara, Soaring City
 1 Plains
 1 Polluted Delta
 1 Rejuvenating Springs
-1 Restoration Angel
-1 Riptide Gearhulk
+1 Restoration Angel (BLC) 150
+1 Riptide Gearhulk (DFT) 219
 1 Savannah
 1 Scalding Tarn
 1 Sea of Clouds
-1 Seedborn Muse
+1 Seedborn Muse (TDC) 268
 1 Sevinne's Reclamation
-1 Skyclave Apparition
-1 Sol Ring
-1 Solitude
-1 Soulherder
+1 Skyclave Apparition (SOC) 173
+1 Sol Ring (LTC) 284
+1 Solitude (MH2) 32
+1 Soulherder (KHC) 93
 1 Spara's Headquarters
 1 Springleaf Parade
-1 Swan Song
-1 Swords to Plowshares
+1 Swan Song (LTC) 197
+1 Swords to Plowshares (LTC) 178
 1 Temple Garden
-1 Tendershoot Dryad
-1 Thassa, Deep-Dwelling
-1 The Great Henge
-1 The Queen of Dale
-1 Three Visits
+1 Tendershoot Dryad (BLC) 242
+1 Thassa, Deep-Dwelling (THB) 71
+1 The Great Henge (LTC) 378
+1 The Queen of Dale (HOB) 253
+1 Three Visits (SOC) 289
 1 Tropical Island
 1 Tundra
-1 Venser, Shaper Savant
+1 Venser, Shaper Savant (2X2) 66
 1 Verdant Catacombs
 1 Whitemane Lion
 1 Winding Canyons
-1 Winds of Abandon
+1 Winds of Abandon (MH1) 37
 1 Windswept Heath
 1 Wolverine Riders
 1 Wooded Foothills

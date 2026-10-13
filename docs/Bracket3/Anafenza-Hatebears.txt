@@ -1,99 +1,99 @@
 1 Anafenza, the Foremost
-1 Abrupt Decay
-1 Alms Collector
-1 Anguished Unmaking
+1 Abrupt Decay (MM3) 146
+1 Alms Collector (CMM) 10
+1 Anguished Unmaking (SOC) 293
 1 Arid Mesa
-1 Assassin's Trophy
-1 Aura Shards
-1 Avacyn's Pilgrim
-1 Aven Mindcensor
+1 Assassin's Trophy (SOC) 294
+1 Aura Shards (CMD) 182
+1 Avacyn's Pilgrim (MIC) 132
+1 Aven Mindcensor (CLB) 688
 1 Bayou
-1 Beast Whisperer
-1 Birds of Paradise
-1 Black Market Connections
+1 Beast Whisperer (CLU) 158
+1 Birds of Paradise (FDC) 191
+1 Black Market Connections (LCC) 181
 1 Bloodstained Mire
-1 Bloom Tender
+1 Bloom Tender (2X2) 138
 1 Bojuka Bog
 1 Boseiju, Who Endures
 1 Bountiful Promenade
-1 Carpet of Flowers
+1 Carpet of Flowers (USG) 240
 1 Cavern of Souls
 1 City of Brass
 1 Command Tower
-1 Craterhoof Behemoth
-1 Damn
+1 Craterhoof Behemoth (TDM) 138
+1 Damn (LCC) 191
 1 Dauntless Scrapbot
-1 Dauthi Voidwalker
-1 Delighted Halfling
+1 Dauthi Voidwalker (TDC) 176
+1 Delighted Halfling (HOC) 65
 1 Destiny Spinner
 1 Eiganjo, Seat of the Empire
-1 Eladamri's Call
-1 Elesh Norn, Grand Cenobite
-1 Elesh Norn, Mother of Machines
-1 Elves of Deep Shadow
-1 Esper Sentinel
+1 Eladamri's Call (MH1) 197
+1 Elesh Norn, Grand Cenobite (IMA) 18
+1 Elesh Norn, Mother of Machines (ONE) 10
+1 Elves of Deep Shadow (DDJ) 47
+1 Esper Sentinel (MH2) 12
 1 Exotic Orchard
-1 Farseek
+1 Farseek (TDC) 255
 1 Flooded Strand
-1 Flowering of the White Tree
+1 Flowering of the White Tree (LTR) 15
 2 Forest
 1 Frenzied Baloth
-1 Gaddock Teeg
-1 Galadriel's Dismissal
-1 God-Eternal Rhonas
+1 Gaddock Teeg (UMA) 199
+1 Galadriel's Dismissal (LTC) 500
+1 God-Eternal Rhonas (WAR) 163
 1 Godless Shrine
-1 Grand Abolisher
+1 Grand Abolisher (CMM) 27
 1 Guardian of Faith
 1 Hallowed Moonlight
-1 Heroic Intervention
+1 Heroic Intervention (CMM) 295
 1 Indatha Triome
-1 Krosan Grip
+1 Krosan Grip (C21) 198
 1 Kunoros, Hound of Athreos
-1 Linvala, Keeper of Silence
-1 Llanowar Elves
-1 Loran of the Third Path
+1 Linvala, Keeper of Silence (JMP) 119
+1 Llanowar Elves (FDN) 227
+1 Loran of the Third Path (MKC) 71
 1 Lush Portico
 1 Mana Confluence
 1 Manglehorn
 1 Marsh Flats
 1 Misty Rainforest
-1 Nature's Lore
+1 Nature's Lore (SOC) 278
 1 Nowhere to Run
-1 Ohran Frostfang
-1 Orcish Bowmasters
+1 Ohran Frostfang (SOC) 279
+1 Orcish Bowmasters (LTR) 103
 1 Overgrown Tomb
-1 Path to Exile
+1 Path to Exile (FRC) 30
 1 Plains
 1 Polluted Delta
-1 Reprieve
-1 Rest in Peace
-1 Rhonas the Indomitable
+1 Reprieve (SOA) 9
+1 Rest in Peace (A25) 32
+1 Rhonas the Indomitable (AKH) 182
 1 Savannah
 1 Scrubland
-1 Shadowspear
+1 Shadowspear (THB) 236
 1 Shadowy Backstreet
-1 Sigarda, Font of Blessings
-1 Sol Ring
+1 Sigarda, Font of Blessings (MAT) 47
+1 Sol Ring (TDC) 106
 1 Solemnity
 1 Swamp
-1 Swords to Plowshares
-1 Sylvan Library
+1 Swords to Plowshares (FRC) 37
+1 Sylvan Library (LEG) 207
 1 Talon Gates of Madara
-1 Teferi's Protection
+1 Teferi's Protection (2X2) 32
 1 Temple Garden
-1 Thalia, Heretic Cathar
-1 Three Visits
-1 Tocasia's Welcome
-1 Toski, Bearer of Secrets
-1 Toxic Deluge
-1 Tymna the Weaver
+1 Thalia, Heretic Cathar (INR) 44
+1 Three Visits (SOC) 289
+1 Tocasia's Welcome (SOC) 181
+1 Toski, Bearer of Secrets (MKC) 191
+1 Toxic Deluge (MH3) 277
+1 Tymna the Weaver (C16) 48
 1 Underground Mortuary
 1 Undergrowth Stadium
 1 Urborg, Tomb of Yawgmoth
 1 Vault of Champions
-1 Veil of Summer
+1 Veil of Summer (M20) 198
 1 Verdant Catacombs
-1 Voice of Victory
-1 Wild Growth
+1 Voice of Victory (TDM) 33
+1 Wild Growth (MKC) 195
 1 Windswept Heath
 1 Wooded Foothills

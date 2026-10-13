@@ -1,92 +1,92 @@
-1 Heroes in a Half Shell
+1 Heroes in a Half Shell (TMC) 96
 1 Access Tunnel
 1 Ancient Ziggurat
 1 April O'Neil, Kunoichi Trainee
-1 Arcane Signet
+1 Arcane Signet (TMC) 57
 1 Arid Mesa
-1 Assassin's Trophy
+1 Assassin's Trophy (TMC) 55
 1 Badlands
 1 Bayou
-1 Bident of Thassa
-1 Birds of Paradise
+1 Bident of Thassa (LCC) 146
+1 Birds of Paradise (FDC) 191
 1 Bloodstained Mire
-1 Bloom Tender
+1 Bloom Tender (2X2) 138
 1 Boseiju, Who Endures
 1 Cavern of Souls
-1 Changeling Outcast
-1 Chromatic Lantern
+1 Changeling Outcast (OTC) 128
+1 Chromatic Lantern (TMC) 58
 1 City of Brass
 1 Command Tower
 1 Continue?
-1 Cover of Darkness
-1 Cyclonic Rift
-1 Dark Leo & Shredder
-1 Deflecting Swat
-1 Dolmen Gate
-1 Don & Raph, Hard Science
-1 Donatello, Gadget Master
+1 Cover of Darkness (ONS) 133
+1 Cyclonic Rift (CMM) 84
+1 Dark Leo & Shredder (TMT) 289
+1 Deflecting Swat (CMM) 214
+1 Dolmen Gate (LRW) 256
+1 Don & Raph, Hard Science (TMT) 243
+1 Donatello, Gadget Master (TMT) 283
 1 Exotic Orchard
-1 Faerie Seer
-1 Fallen Shinobi
-1 Farseek
-1 Fellwar Stone
+1 Faerie Seer (MH1) 51
+1 Fallen Shinobi (NCC) 338
+1 Farseek (TDC) 255
+1 Fellwar Stone (MBC) 74
 1 Flooded Strand
-1 Force of Negation
+1 Force of Negation (2X2) 50
 1 Gemstone Mine
-1 Heroic Intervention
-1 Higure, the Still Wind
+1 Heroic Intervention (CMM) 295
+1 Higure, the Still Wind (SLD) 2368
 1 Ingenious Infiltrator
-1 Inkrise Infiltrator
-1 Kappa Tech-Wrecker
-1 Leonardo, Cutting Edge
+1 Inkrise Infiltrator (PLST) NEO-341
+1 Kappa Tech-Wrecker (NEO) 198
+1 Leonardo, Cutting Edge (TMT) 281
 1 Mana Confluence
 1 Marsh Flats
-1 Michelangelo, Improviser
-1 Mikey & Don, Party Planners
-1 Mikey & Leo, Chaos & Order
+1 Michelangelo, Improviser (TMT) 304
+1 Mikey & Don, Party Planners (TMT) 246
+1 Mikey & Leo, Chaos & Order (TMT) 247
 1 Mistblade Shinobi
-1 Mist-Cloaked Herald
+1 Mist-Cloaked Herald (RIX) 43
 1 Misty Rainforest
-1 Moon-Circuit Hacker
+1 Moon-Circuit Hacker (NEO) 67
 1 Mothdust Changeling
-1 Nashi, Moon Sage's Scion
-1 Nature's Lore
-1 Ninja of the Deep Hours
-1 Ninja Pizza
-1 Ornithopter
+1 Nashi, Moon Sage's Scion (OTC) 143
+1 Nature's Lore (SOC) 278
+1 Ninja of the Deep Hours (C18) 95
+1 Ninja Pizza (TMC) 93
+1 Ornithopter (ATQ) 60
 1 Otawara, Soaring City
 1 Path of Ancestry
-1 Path to Exile
+1 Path to Exile (PZA) 1
 1 Plateau
 1 Polluted Delta
 1 Prehistoric Pet
-1 Prosperous Thief
-1 Raph & Leo, Sibling Rivals
-1 Raphael, the Nightwatcher
+1 Prosperous Thief (NEO) 73
+1 Raph & Leo, Sibling Rivals (TMT) 249
+1 Raphael, the Nightwatcher (TMT) 287
 1 Reflecting Pool
-1 Rhystic Study
-1 Roaming Throne
+1 Rhystic Study (JMP) 169
+1 Roaming Throne (LCI) 258
 1 Rogue's Passage
-1 Sakashima's Student
-1 Satoru, the Infiltrator
+1 Sakashima's Student (PCA) 24
+1 Satoru, the Infiltrator (OTJ) 230
 1 Savannah
 1 Scalding Tarn
 1 Scrubland
 1 Secluded Courtyard
-1 Shredder, Shadow Master
-1 Silver-Fur Master
+1 Shredder, Shadow Master (TMC) 88
+1 Silver-Fur Master (NEO) 236
 1 Slither Blade
 1 Smoke Shroud
-1 Sol Ring
+1 Sol Ring (TMC) 59
 1 Sphere Grid
 1 Splinter, Hamato Yoshi
-1 Splinter, Radical Rat
-1 Swords to Plowshares
+1 Splinter, Radical Rat (TMT) 251
+1 Swords to Plowshares (FRC) 37
 1 Taiga
 1 Takenuma, Abandoned Mire
-1 Teferi's Protection
-1 Thousand-Faced Shadow
-1 Three Visits
+1 Teferi's Protection (2X2) 32
+1 Thousand-Faced Shadow (NEO) 86
+1 Three Visits (SOC) 289
 1 Tropical Island
 1 Tundra
 1 Turtle Lair
@@ -94,7 +94,7 @@
 1 Underground Sea
 1 Verdant Catacombs
 1 Volcanic Island
-1 Whispersilk Cloak
+1 Whispersilk Cloak (DSC) 257
 1 Windswept Heath
 1 Wooded Foothills
-1 Yuriko, the Tiger's Shadow
+1 Yuriko, the Tiger's Shadow (CMM) 364

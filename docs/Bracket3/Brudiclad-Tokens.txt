@@ -1,77 +1,77 @@
-1 Brudiclad, Telchor Engineer
-1 Academy Manufactor
+1 Brudiclad, Telchor Engineer (SOC) 299
+1 Academy Manufactor (OTC) 251
 1 Academy Ruins
-1 An Offer You Can't Refuse
-1 Arcane Denial
-1 Arcane Signet
+1 An Offer You Can't Refuse (FDN) 160
+1 Arcane Denial (SOC) 187
+1 Arcane Signet (DRC) 52
 1 Arid Mesa
-1 Big Score
-1 Blasphemous Act
+1 Big Score (SOC) 237
+1 Blasphemous Act (FDC) 140
 1 Bloodstained Mire
 1 Cascade Bluffs
-1 Chaos Warp
+1 Chaos Warp (MBC) 72
 1 City of Brass
 1 Command Tower
 1 Curiosity Crafter
-1 Cyberdrive Awakener
-1 Cyclonic Rift
-1 Deflecting Swat
+1 Cyberdrive Awakener (EOC) 69
+1 Cyclonic Rift (CMM) 84
+1 Deflecting Swat (CMM) 214
 1 Enthusiastic Mechanaut
 1 Exotic Orchard
-1 Fable of the Mirror-Breaker
-1 Fabricate
-1 Fateful Discovery
+1 Fable of the Mirror-Breaker (NEO) 141
+1 Fabricate (M10) 52
+1 Fateful Discovery (HOB) 256
 1 Feldon of the Third Path
-1 Fellwar Stone
+1 Fellwar Stone (MBC) 74
 1 Fiery Islet
 1 Flooded Strand
-1 Goldspan Dragon
+1 Goldspan Dragon (SOC) 245
 1 Great Furnace
 1 Hellrider
 1 Idol of Oblivion
 1 Inventors' Fair
 1 Irenicus's Vile Duplication
 2 Island
-1 Izzet Signet
-1 Jeska's Will
-1 Lightning Greaves
-1 Loyal Apprentice
+1 Izzet Signet (SLD) 293
+1 Jeska's Will (MKC) 156
+1 Lightning Greaves (OTC) 260
+1 Loyal Apprentice (TDC) 222
 1 Mana Confluence
-1 Mana Drain
+1 Mana Drain (2X2) 57
 1 Master of Etherium
-1 Mechanized Production
-1 Mind Stone
+1 Mechanized Production (MKC) 109
+1 Mind Stone (MBC) 76
 1 Misty Rainforest
-1 Molten Duplication
+1 Molten Duplication (BIG) 14
 2 Mountain
-1 Mox Opal
-1 Myr Battlesphere
-1 Mystic Remora
+1 Mox Opal (2XM) 275
+1 Myr Battlesphere (TDC) 322
+1 Mystic Remora (DMR) 59
 1 Otawara, Soaring City
-1 Padeem, Consul of Innovation
+1 Padeem, Consul of Innovation (CMM) 109
 1 Perplexing Test
 1 Polluted Delta
-1 Pongify
-1 Professional Face-Breaker
+1 Pongify (TDC) 160
+1 Professional Face-Breaker (SNC) 116
 1 Quasiduplicate
-1 Resculpt
-1 Rhystic Study
-1 Rite of Replication
+1 Resculpt (SOC) 201
+1 Rhystic Study (JMP) 169
+1 Rite of Replication (SOC) 202
 1 Riverglide Pathway
 1 Riverpyre Verge
-1 Saheeli, Sublime Artificer
-1 Saheeli, the Sun's Brilliance
-1 Sai, Master Thopterist
+1 Saheeli, Sublime Artificer (CMM) 935
+1 Saheeli, the Sun's Brilliance (LCI) 239
+1 Sai, Master Thopterist (CMM) 118
 1 Scalding Tarn
 1 Seat of the Synod
-1 See Double
+1 See Double (MOM) 77
 1 Shivan Reef
 1 Silverbluff Bridge
-1 Simulacrum Synthesizer
-1 Skullclamp
-1 Sol Ring
-1 Soul-Guide Lantern
-1 Spellskite
+1 Simulacrum Synthesizer (BIG) 36
+1 Skullclamp (MOC) 379
+1 Sol Ring (DRC) 57
+1 Soul-Guide Lantern (DRC) 139
+1 Spellskite (CLB) 873
 1 Spire of Industry
 1 Spirebluff Canal
 1 Steam Vents
@@ -79,20 +79,20 @@
 1 Stormcarved Coast
 1 Stridehangar Automaton
 1 Sulfur Falls
-1 Swan Song
-1 Talisman of Creativity
-1 The Misty Mountains Cold
+1 Swan Song (C16) 98
+1 Talisman of Creativity (SLD) 1058
+1 The Misty Mountains Cold (HOB) 321
 1 Third Path Iconoclast
-1 Three Steps Ahead
+1 Three Steps Ahead (OTJ) 75
 1 Thundering Falls
 1 Training Center
 1 Treasure Vault
 1 Urza's Saga
-1 Urza, Lord High Artificer
+1 Urza, Lord High Artificer (CMM) 130
 1 Uthros, Titanic Godcore
-1 Vandalblast
+1 Vandalblast (OTC) 183
 1 Volcanic Island
-1 Whir of Invention
+1 Whir of Invention (AER) 49
 1 Wooded Foothills
-1 Worldwalker Helm
-1 Wurmcoil Engine
+1 Worldwalker Helm (BIG) 7
+1 Wurmcoil Engine (2XM) 308

@@ -1,84 +1,84 @@
-1 Cloud, Midgar Mercenary
+1 Cloud, Midgar Mercenary (FIN) 10
 1 Adaptive Omnitool
 1 Ancient Den
-1 Arcane Signet
-1 Archaeomancer's Map
-1 Archivist of Oghma
+1 Arcane Signet (FIC) 333
+1 Archaeomancer's Map (FIC) 230
+1 Archivist of Oghma (CLB) 4
 1 Ardenn, Intrepid Archaeologist
 1 Armored Skyhunter
-1 Boromir, Warden of the Tower
+1 Boromir, Warden of the Tower (LTR) 4
 1 Brotherhood Regalia
 1 Buried Ruin
-1 Buster Sword
+1 Buster Sword (FIN) 255
 1 Cavern of Souls
 1 Cid, Freeflier Pilot
-1 Clever Concealment
+1 Clever Concealment (FIC) 236
 1 Cloud's Limit Break
 1 Codsworth, Handy Helper
-1 Colossus Hammer
-1 Commander's Plate
-1 Dispatch
+1 Colossus Hammer (FIC) 338
+1 Commander's Plate (CMR) 305
+1 Dispatch (FIC) 241
 1 Eiganjo, Seat of the Empire
 1 Emeria, the Sky Ruin
-1 Esper Sentinel
+1 Esper Sentinel (MH2) 12
 1 Excalibur, Sword of Eden
-1 Forge Anew
-1 Galadriel's Dismissal
+1 Forge Anew (SLD) 7002
+1 Galadriel's Dismissal (LTC) 500
 1 Gemstone Caverns
-1 Generous Gift
+1 Generous Gift (LCC) 128
 1 Genji Glove
-1 Giver of Runes
-1 Grand Abolisher
-1 Halvar, God of Battle
-1 Hammer of Nazahn
+1 Giver of Runes (MH1) 13
+1 Grand Abolisher (CMM) 27
+1 Halvar, God of Battle (KHM) 15
+1 Hammer of Nazahn (CMM) 388
 1 Inventors' Fair
 1 Ishgard, the Holy See
-1 Land Tax
-1 Mantle of the Ancients
-1 Mask of Memory
+1 Land Tax (SOC) 153
+1 Mantle of the Ancients (AFC) 8
+1 Mask of Memory (FIC) 350
 1 Minas Tirith
-1 Mithril Coat
+1 Mithril Coat (LTR) 245
 1 Monumental Henge
-1 Mox Amber
-1 Mox Opal
+1 Mox Amber (DOM) 224
+1 Mox Opal (2XM) 275
 1 Nykthos, Shrine to Nyx
-1 Open the Armory
-1 Path to Exile
+1 Open the Armory (CMR) 34
+1 Path to Exile (FIC) 248
 1 Pip-Boy 3000
 17 Plains
 1 Plaza of Heroes
-1 Puresteel Paladin
-1 Ranger-Captain of Eos
-1 Recruiter of the Guard
-1 Reprieve
+1 Puresteel Paladin (FIC) 250
+1 Ranger-Captain of Eos (FCA) 2
+1 Recruiter of the Guard (CN2) 22
+1 Reprieve (SOA) 9
 1 Restoration Magic
 1 Rogue's Passage
-1 Shadowspear
-1 Sigarda's Aid
-1 Silence
-1 Single Combat
-1 Smothering Tithe
-1 Sol Ring
-1 Solitude
-1 Sram, Senior Edificer
-1 Steelshaper's Gift
-1 Stoneforge Mystic
-1 Stonehewer Giant
-1 Super-Soldier Serum
-1 Swiftfoot Boots
-1 Sword of Feast and Famine
-1 Sword of Fire and Ice
-1 Sword of Forge and Frontier
-1 Sword of Hearth and Home
-1 Sword of the Animist
-1 Swords to Plowshares
+1 Shadowspear (THB) 236
+1 Sigarda's Aid (CMR) 384
+1 Silence (M14) 35
+1 Single Combat (WAR) 30
+1 Smothering Tithe (CMM) 57
+1 Sol Ring (FIC) 358
+1 Solitude (MH2) 32
+1 Sram, Senior Edificer (FCA) 3
+1 Steelshaper's Gift (CMM) 59
+1 Stoneforge Mystic (2XM) 31
+1 Stonehewer Giant (2XM) 32
+1 Super-Soldier Serum (MSH) 299
+1 Swiftfoot Boots (FIC) 361
+1 Sword of Feast and Famine (2XM) 296
+1 Sword of Fire and Ice (2XM) 297
+1 Sword of Forge and Frontier (ONE) 244
+1 Sword of Hearth and Home (MH2) 238
+1 Sword of the Animist (FIC) 362
+1 Swords to Plowshares (FIC) 256
 1 Swordsman's Steel
-1 Teferi's Protection
-1 The Aetherspark
-1 The One Ring
-1 Trouble in Pairs
-1 Umezawa's Jitte
+1 Teferi's Protection (2X2) 32
+1 The Aetherspark (DFT) 231
+1 The One Ring (LTR) 246
+1 Trouble in Pairs (MKC) 15
+1 Umezawa's Jitte (SLD) 1865
 1 Urza's Saga
-1 Voice of Victory
+1 Voice of Victory (TDM) 33
 1 War Room
-1 Witch Enchanter
+1 Witch Enchanter (MH3) 239

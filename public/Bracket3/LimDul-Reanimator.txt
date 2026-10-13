@@ -1,78 +1,78 @@
 1 Lim-Dûl the Necromancer
 1 Accursed Marauder
 1 Agadeem's Awakening
-1 Animate Dead
-1 Arcane Signet
-1 Archon of Cruelty
-1 Ashnod's Altar
-1 Beseech the Mirror
-1 Black Market Connections
-1 Blasphemous Edict
+1 Animate Dead (MKC) 125
+1 Arcane Signet (SLD) 1492
+1 Archon of Cruelty (FRC) 47
+1 Ashnod's Altar (ATQ) 38
+1 Beseech the Mirror (WOE) 82
+1 Black Market Connections (LCC) 181
+1 Blasphemous Edict (FDN) 57
 1 Blast Zone
 1 Bojuka Bog
-1 Bolas's Citadel
-1 Braids, Arisen Nightmare
+1 Bolas's Citadel (WAR) 79
+1 Braids, Arisen Nightmare (EOC) 82
 1 Bubbling Muck
-1 Buried Alive
+1 Buried Alive (SLD) 1673
 1 Cabal Coffers
 1 Cabal Stronghold
 1 Castle Locthwain
-1 Crypt Ghast
-1 Dark Ritual
+1 Crypt Ghast (RVR) 70
+1 Dark Ritual (LEB) 99
 1 Deserted Temple
-1 Diabolic Intent
-1 Dictate of Erebos
-1 Entomb
-1 Expedition Map
-1 Feed the Swarm
-1 Flare of Malice
-1 Grave Pact
+1 Diabolic Intent (BRO) 89
+1 Dictate of Erebos (JOU) 65
+1 Entomb (DMR) 82
+1 Expedition Map (FDN) 724
+1 Feed the Swarm (TDC) 180
+1 Flare of Malice (MH3) 95
+1 Grave Pact (STH) 60
 1 Grave Researcher
-1 Grave Titan
-1 Gray Merchant of Asphodel
-1 Grim Hireling
-1 Imp's Mischief
-1 Jadar, Ghoulcaller of Nephalia
-1 Jet Medallion
+1 Grave Titan (ECC) 74
+1 Gray Merchant of Asphodel (FDC) 105
+1 Grim Hireling (CLB) 755
+1 Imp's Mischief (CMM) 167
+1 Jadar, Ghoulcaller of Nephalia (SOC) 217
+1 Jet Medallion (MH3) 292
 1 Lake of the Dead
-1 Lightning Greaves
-1 Living Death
+1 Lightning Greaves (OTC) 260
+1 Living Death (CM2) 68
 1 Malakir Rebirth
-1 Massacre Wurm
-1 Meteor Golem
-1 Mind Stone
-1 Morbid Opportunist
-1 Necromancy
-1 Night's Whisper
-1 Nirkana Revenant
+1 Massacre Wurm (FDN) 754
+1 Meteor Golem (FDC) 270
+1 Mind Stone (MBC) 76
+1 Morbid Opportunist (SOC) 219
+1 Necromancy (VIS) 64
+1 Night's Whisper (EOC) 85
+1 Nirkana Revenant (BBD) 150
 1 Not Dead After All
 1 Nykthos, Shrine to Nyx
-1 Ophiomancer
-1 Orcish Bowmasters
+1 Ophiomancer (CC2) 3
+1 Orcish Bowmasters (LTR) 103
 1 Phyrexian Tower
-1 Pitiless Plunderer
-1 Plaguecrafter
-1 Reanimate
-1 Saw in Half
-1 Sephiroth, Fabled SOLDIER
-1 Sepulchral Primordial
-1 Sheoldred
-1 Skullclamp
-1 Sol Ring
+1 Pitiless Plunderer (LCC) 208
+1 Plaguecrafter (RVR) 89
+1 Reanimate (DSC) 155
+1 Saw in Half (BLC) 113
+1 Sephiroth, Fabled SOLDIER (FIN) 115
+1 Sepulchral Primordial (ZNC) 54
+1 Sheoldred (MOM) 125
+1 Skullclamp (BLC) 283
+1 Sol Ring (CC2) 7
 1 Soul Shatter
-1 Soul-Guide Lantern
+1 Soul-Guide Lantern (DRC) 139
 23 Swamp
-1 Syr Konrad, the Grim
+1 Syr Konrad, the Grim (DSC) 158
 1 Takenuma, Abandoned Mire
-1 The One Ring
-1 The Soul Stone
+1 The One Ring (LTR) 246
+1 The Soul Stone (SPM) 66
 1 Thespian's Stage
-1 Torment of Hailfire
-1 Toxic Deluge
-1 Twilight Diviner
+1 Torment of Hailfire (HOU) 77
+1 Toxic Deluge (MH3) 277
+1 Twilight Diviner (ECL) 122
 1 Urborg, Tomb of Yawgmoth
 1 Vesuva
-1 Victimize
-1 Viscera Seer
-1 Withering Torment
-1 Yawgmoth, Thran Physician
+1 Victimize (TDC) 198
+1 Viscera Seer (SOC) 229
+1 Withering Torment (FDC) 134
+1 Yawgmoth, Thran Physician (DMR) 110

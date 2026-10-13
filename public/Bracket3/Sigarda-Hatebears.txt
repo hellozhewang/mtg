@@ -1,15 +1,15 @@
 1 Sigarda, Host of Herons
-1 Akroma's Will
-1 Arcane Signet
+1 Akroma's Will (SOA) 1
+1 Arcane Signet (FDC) 245
 1 Archon of Valor's Reach
 1 Arid Mesa
-1 Aura Shards
-1 Avacyn's Pilgrim
-1 Aven Mindcensor
-1 Beast Whisperer
-1 Birds of Paradise
-1 Blackblade Reforged
-1 Bloom Tender
+1 Aura Shards (CMD) 182
+1 Avacyn's Pilgrim (MIC) 132
+1 Aven Mindcensor (CLB) 688
+1 Beast Whisperer (CLU) 158
+1 Birds of Paradise (FDC) 191
+1 Blackblade Reforged (DMC) 178
+1 Bloom Tender (2X2) 138
 1 Boseiju, Who Endures
 1 Bountiful Promenade
 1 Branchloft Pathway
@@ -18,79 +18,79 @@
 1 Cavern of Souls
 1 City of Brass
 1 Command Tower
-1 Containment Priest
-1 Darksteel Mutation
-1 Delighted Halfling
+1 Containment Priest (M21) 13
+1 Darksteel Mutation (SOC) 142
+1 Delighted Halfling (LTR) 158
 1 Destiny Spinner
-1 Duelist's Heritage
+1 Duelist's Heritage (MKC) 60
 1 Eiganjo, Seat of the Empire
-1 Eladamri's Call
-1 Elesh Norn, Mother of Machines
-1 Enlightened Tutor
-1 Esper Sentinel
-1 Farseek
+1 Eladamri's Call (MH1) 197
+1 Elesh Norn, Mother of Machines (ONE) 10
+1 Enlightened Tutor (MIR) 14
+1 Esper Sentinel (MH2) 12
+1 Farseek (TDC) 255
 1 Flooded Strand
 3 Forest
 1 Frenzied Baloth
-1 Galadriel's Dismissal
-1 Generous Gift
-1 Grand Abolisher
-1 Grasp of Fate
+1 Galadriel's Dismissal (LTC) 500
+1 Generous Gift (LCC) 128
+1 Grand Abolisher (CMM) 27
+1 Grasp of Fate (C15) 3
 1 Guardian of Faith
-1 Guardian Project
+1 Guardian Project (RVR) 146
 1 Hallowed Moonlight
-1 Heroic Intervention
+1 Heroic Intervention (CMM) 295
 1 Horizon Canopy
 1 Hushwood Verge
-1 Karn, the Great Creator
-1 Krosan Grip
-1 Linvala, Keeper of Silence
-1 Lion Sash
-1 Llanowar Elves
-1 Loran of the Third Path
+1 Karn, the Great Creator (RVR) 1
+1 Krosan Grip (C21) 198
+1 Linvala, Keeper of Silence (JMP) 119
+1 Lion Sash (NEO) 26
+1 Llanowar Elves (FDN) 227
+1 Loran of the Third Path (MKC) 71
 1 Lush Portico
 1 Mana Confluence
 1 Manglehorn
-1 March of Otherworldly Light
+1 March of Otherworldly Light (NEO) 28
 1 Marsh Flats
 1 Misty Rainforest
-1 Nature's Lore
-1 Ohran Frostfang
+1 Nature's Lore (SOC) 278
+1 Ohran Frostfang (SOC) 279
 1 Overgrown Farmland
-1 Path to Exile
+1 Path to Exile (FRC) 30
 2 Plains
 1 Plaza of Heroes
 1 Razorverge Thicket
-1 Reprieve
-1 Rest in Peace
+1 Reprieve (SOA) 9
+1 Rest in Peace (PLST) SS2-4
 1 Sanctifier en-Vec
 1 Savannah
 1 Scattered Groves
-1 Shalai, Voice of Plenty
-1 Sigarda, Font of Blessings
-1 Sol Ring
-1 Solitude
-1 Song of the Dryads
+1 Shalai, Voice of Plenty (TDC) 130
+1 Sigarda, Font of Blessings (MAT) 47
+1 Sol Ring (FDC) 286
+1 Solitude (SPG) 49
+1 Song of the Dryads (CMM) 324
 1 Soulless Jailer
-1 Sterling Grove
+1 Sterling Grove (MH2) 293
 1 Strip Mine
 1 Sunfall
 1 Sunpetal Grove
 1 Surrak and Goreclaw
-1 Sword of Feast and Famine
-1 Swords to Plowshares
-1 Sylvan Library
+1 Sword of Feast and Famine (2XM) 296
+1 Swords to Plowshares (FRC) 37
+1 Sylvan Library (LEG) 207
 1 Talon Gates of Madara
-1 Teferi's Protection
+1 Teferi's Protection (2X2) 32
 1 Temple Garden
-1 Thalia, Heretic Cathar
-1 The Great Henge
-1 Three Visits
-1 Toski, Bearer of Secrets
-1 Utopia Sprawl
-1 Veil of Summer
+1 Thalia, Heretic Cathar (INR) 44
+1 The Great Henge (CMM) 294
+1 Three Visits (SOC) 289
+1 Toski, Bearer of Secrets (MKC) 191
+1 Utopia Sprawl (RVR) 159
+1 Veil of Summer (M20) 198
 1 Verdant Catacombs
-1 Wild Growth
+1 Wild Growth (MKC) 195
 1 Windswept Heath
 1 Wooded Bastion
 1 Wooded Foothills

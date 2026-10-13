@@ -2,99 +2,99 @@
 1 Academy Ruins
 1 Adarkar Wastes
 1 Agatha's Soul Cauldron
-1 All Will Be One
-1 An Offer You Can't Refuse
+1 All Will Be One (ONE) 118
+1 An Offer You Can't Refuse (FDN) 160
 1 Ancient Den
-1 Arcane Signet
+1 Arcane Signet (EOC) 53
 1 Arid Mesa
-1 Astral Cornucopia
+1 Astral Cornucopia (SOC) 342
 1 Battlefield Forge
 1 Bloodstained Mire
 1 City of Brass
-1 Clock of Omens
+1 Clock of Omens (M13) 202
 1 Command Tower
 1 Crystalline Crawler
-1 Cyclonic Rift
+1 Cyclonic Rift (CMM) 84
 1 Darksteel Reactor
-1 Deepglow Skate
-1 Deflecting Swat
-1 Dispatch
+1 Deepglow Skate (EOC) 70
+1 Deflecting Swat (CMM) 214
+1 Dispatch (EOC) 64
 1 Drumbellower
-1 Emry, Lurker of the Loch
-1 Enlightened Tutor
-1 Esper Sentinel
-1 Everflowing Chalice
+1 Emry, Lurker of the Loch (EOC) 71
+1 Enlightened Tutor (MIR) 14
+1 Esper Sentinel (MH2) 12
+1 Everflowing Chalice (EOC) 137
 1 Exotic Orchard
-1 Fabricate
+1 Fabricate (M10) 52
 1 Flooded Strand
 1 Flux Channeler
-1 Freed from the Real
-1 Generous Gift
-1 Grand Abolisher
+1 Freed from the Real (A25) 58
+1 Generous Gift (LCC) 128
+1 Grand Abolisher (CMM) 27
 1 Great Furnace
 1 Hallowed Fountain
 1 Inkmoth Nexus
 1 Insight Engine
 1 Inspirit, Flagship Vessel
 1 Inventors' Fair
-1 Jhoira, Weatherlight Captain
+1 Jhoira, Weatherlight Captain (EOC) 118
 1 Kappa Cannoneer
 1 Karn's Bastion
 1 Mana Confluence
-1 Mana Drain
-1 Manifold Key
+1 Mana Drain (2X2) 57
+1 Manifold Key (M20) 230
 1 Marsh Flats
 1 Minamo, School at Water's Edge
 1 Misty Rainforest
-1 Mox Opal
-1 Mystic Remora
+1 Mox Opal (2XM) 275
+1 Mystic Remora (DMR) 59
 1 Organic Extinction
 1 Otawara, Soaring City
-1 Paradise Mantle
+1 Paradise Mantle (MMA) 211
 1 Patriar's Seal
 1 Patrolling Peacemaker
-1 Pentad Prism
+1 Pentad Prism (EOC) 56
 1 Plateau
 1 Polluted Delta
 1 Pollywog Prodigy
 1 Prologue to Phyresis
-1 Relic of Legends
-1 Resourceful Defense
-1 Rhystic Study
-1 Ripples of Potential
+1 Relic of Legends (DMU) 236
+1 Resourceful Defense (EOC) 67
+1 Rhystic Study (JMP) 169
+1 Ripples of Potential (EOC) 77
 1 Sacred Foundry
 1 Scalding Tarn
 1 Sea of Clouds
 1 Seat of the Synod
 1 Sevinne's Reclamation
 1 Shivan Reef
-1 Shuri, Wakandan Inventor
+1 Shuri, Wakandan Inventor (MSH) 75
 1 Skrelv's Hive
-1 Sol Ring
+1 Sol Ring (EOC) 57
 1 Spire of Industry
-1 Springleaf Drum
+1 Springleaf Drum (2XM) 291
 1 Steam Vents
-1 Steel Overseer
+1 Steel Overseer (EOC) 144
 1 Surge Conductor
-1 Swan Song
-1 Swords to Plowshares
-1 Teferi, Time Raveler
-1 Tekuthal, Inquiry Dominus
-1 Tezzeret the Seeker
-1 Tezzeret, Cruel Captain
+1 Swan Song (EOC) 46
+1 Swords to Plowshares (EOC) 45
+1 Teferi, Time Raveler (RVR) 232
+1 Tekuthal, Inquiry Dominus (EOC) 78
+1 Tezzeret the Seeker (MM2) 62
+1 Tezzeret, Cruel Captain (EOE) 2
 1 The Seriema
-1 Thought Monitor
-1 Thrummingbird
+1 Thought Monitor (EOC) 79
+1 Thrummingbird (EOC) 80
 1 Training Center
 1 Tundra
-1 Unwinding Clock
+1 Unwinding Clock (C18) 228
 1 Urza's Saga
 1 Uthros Research Craft
 1 Uthros, Titanic Godcore
 1 Volcanic Island
-1 Voltaic Key
-1 Wake the Past
-1 Walking Ballista
-1 Wear // Tear
+1 Voltaic Key (USG) 314
+1 Wake the Past (EOC) 128
+1 Walking Ballista (2XM) 306
+1 Wear // Tear (MOC) 343
 1 Windswept Heath
 1 Wooded Foothills

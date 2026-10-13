@@ -1,97 +1,97 @@
-1 Raffine, Scheming Seer
-1 Adeline, Resplendent Cathar
-1 Akroma's Will
-1 An Offer You Can't Refuse
-1 Anguished Unmaking
-1 Animate Dead
-1 Arcane Signet
-1 Archfiend of Ifnir
-1 Archivist of Oghma
-1 Archon of Cruelty
+1 Raffine, Scheming Seer (SNC) 392
+1 Adeline, Resplendent Cathar (TDC) 108
+1 Akroma's Will (LCC) 125
+1 An Offer You Can't Refuse (FDN) 311
+1 Anguished Unmaking (SOC) 293
+1 Animate Dead (SOC) 207
+1 Arcane Signet (FDC) 245
+1 Archfiend of Ifnir (ECC) 70
+1 Archivist of Oghma (CLB) 4
+1 Archon of Cruelty (FRC) 47
 1 Arid Mesa
-1 Bident of Thassa
-1 Bitterblossom
+1 Bident of Thassa (LCC) 146
+1 Bitterblossom (2X2) 69
 1 Bloodstained Mire
-1 Brazen Borrower
+1 Brazen Borrower (SOC) 190
 1 City of Brass
 1 Command Tower
-1 Counterspell
-1 Dance of the Dead
-1 Dark Ritual
-1 Dauthi Voidwalker
-1 Deadly Rollick
-1 Delney, Streetwise Lookout
-1 Diabolic Intent
-1 Entomb
-1 Esper Sentinel
+1 Counterspell (DSC) 114
+1 Dance of the Dead (PF26) 14
+1 Dark Ritual (LEB) 99
+1 Dauthi Voidwalker (TDC) 176
+1 Deadly Rollick (CMM) 147
+1 Delney, Streetwise Lookout (MKM) 12
+1 Diabolic Intent (BRO) 89
+1 Entomb (DMR) 82
+1 Esper Sentinel (MH2) 12
 1 Exotic Orchard
-1 Faerie Mastermind
-1 Fallen Shinobi
-1 Fatal Push
-1 Fellwar Stone
+1 Faerie Mastermind (MOM) 58
+1 Fallen Shinobi (NCC) 338
+1 Fatal Push (2XM) 93
+1 Fellwar Stone (MBC) 74
 1 Flooded Strand
-1 Flusterstorm
-1 Force of Negation
+1 Flusterstorm (IMA) 55
+1 Force of Negation (2X2) 50
 1 Gemstone Caverns
 1 Godless Shrine
-1 Grand Abolisher
+1 Grand Abolisher (CMM) 27
 1 Hallowed Fountain
-1 Hero of Bladehold
+1 Hero of Bladehold (TDC) 119
 2 Island
-1 Ledger Shredder
-1 Lotho, Corrupt Shirriff
-1 Lotus Petal
-1 Lurrus of the Dream-Den
+1 Ledger Shredder (SNC) 46
+1 Lotho, Corrupt Shirriff (LTR) 213
+1 Lotus Petal (MB2) 226
+1 Lurrus of the Dream-Den (IKO) 226
 1 Mana Confluence
 1 Marsh Flats
-1 Mausoleum Wanderer
-1 Mindbreak Trap
+1 Mausoleum Wanderer (INR) 74
+1 Mindbreak Trap (ZEN) 57
 1 Misty Rainforest
-1 Mockingbird
-1 Moonshaker Cavalry
+1 Mockingbird (BLB) 61
+1 Moonshaker Cavalry (WOE) 21
 1 Morphic Pool
-1 Mox Amber
-1 Mystic Remora
-1 Necromancy
-1 Orcish Bowmasters
+1 Mox Amber (DOM) 224
+1 Mystic Remora (DMR) 59
+1 Necromancy (VIS) 64
+1 Orcish Bowmasters (LTR) 103
 1 Otawara, Soaring City
 2 Plains
 1 Polluted Delta
 1 Pollywog Prodigy
 1 Raffine's Informant
-1 Ranger-Captain of Eos
-1 Razaketh, the Foulblooded
-1 Reanimate
-1 Rhystic Study
+1 Ranger-Captain of Eos (MH1) 21
+1 Razaketh, the Foulblooded (CMM) 181
+1 Reanimate (DSC) 155
+1 Rhystic Study (JMP) 169
 1 Scalding Tarn
 1 Scrubland
 1 Sea of Clouds
-1 Serra Ascendant
+1 Serra Ascendant (M11) 28
 1 Sevinne's Reclamation
-1 Sheoldred, the Apocalypse
-1 Silence
-1 Skullclamp
-1 Smothering Tithe
-1 Sol Ring
+1 Sheoldred, the Apocalypse (DMU) 107
+1 Silence (M14) 35
+1 Skullclamp (BLC) 283
+1 Smothering Tithe (CMM) 57
+1 Sol Ring (FDC) 286
 2 Swamp
-1 Swan Song
-1 Sword of Fire and Ice
-1 Swords to Plowshares
-1 Talisman of Dominance
-1 Talisman of Hierarchy
-1 Talisman of Progress
-1 The Queen of Dale
-1 Toxic Deluge
+1 Swan Song (C16) 98
+1 Sword of Fire and Ice (2XM) 297
+1 Swords to Plowshares (SLD) 364
+1 Talisman of Dominance (FRC) 62
+1 Talisman of Hierarchy (SOC) 358
+1 Talisman of Progress (FRC) 64
+1 The Queen of Dale (HOB) 253
+1 Toxic Deluge (MH3) 277
 1 Tundra
-1 Tymna the Weaver
+1 Tymna the Weaver (C16) 48
 1 Undercity Sewers
 1 Underground Sea
-1 Vanishing Verse
+1 Vanishing Verse (SOC) 335
 1 Vault of Champions
 1 Verdant Catacombs
-1 Voice of Victory
-1 Wan Shi Tong, Librarian
+1 Voice of Victory (TDM) 33
+1 Wan Shi Tong, Librarian (TLA) 78
 1 Watery Grave
-1 Wedding Announcement
-1 Whirler Rogue
+1 Wedding Announcement (INR) 51
+1 Whirler Rogue (OTC) 122
 1 Windswept Heath

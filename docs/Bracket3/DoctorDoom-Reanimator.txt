@@ -1,100 +1,100 @@
-1 Doctor Doom, King of Latveria
+1 Doctor Doom, King of Latveria (MSC) 6
 1 Agadeem's Awakening
-1 An Offer You Can't Refuse
-1 Anger
-1 Animate Dead
-1 Arcane Signet
+1 An Offer You Can't Refuse (FDN) 160
+1 Anger (SLD) 2595
+1 Animate Dead (LEB) 93
+1 Arcane Signet (MSC) 193
 1 Arid Mesa
 1 Badlands
-1 Baleful Strix
-1 Baron Strucker, HYDRA Overlord
-1 Black Cat, Cunning Thief
-1 Black Market Connections
+1 Baleful Strix (OTC) 215
+1 Baron Strucker, HYDRA Overlord (MSH) 88
+1 Black Cat, Cunning Thief (SPM) 52
+1 Black Market Connections (MSC) 155
 1 Blazemire Verge
 1 Blood Crypt
 1 Bloodstained Mire
-1 Buried Alive
-1 Carnage, Crimson Chaos
+1 Buried Alive (MH3) 273
+1 Carnage, Crimson Chaos (SPM) 125
 1 Cavern of Souls
 1 Chainer, Nightmare Adept
 1 Chameleon, Master of Disguise
-1 Chaos Warp
+1 Chaos Warp (MSC) 164
 1 City of Brass
 1 Command Tower
-1 Cyclonic Rift
-1 Deadly Rollick
-1 Deflecting Swat
-1 Doctor Doom
-1 Doctor Octopus, Master Planner
-1 Entomb
+1 Cyclonic Rift (CMM) 84
+1 Deadly Rollick (CMM) 147
+1 Deflecting Swat (CMM) 214
+1 Doctor Doom (MSH) 394
+1 Doctor Octopus, Master Planner (SPM) 128
+1 Entomb (DMR) 82
 1 Exotic Orchard
-1 Faithless Looting
-1 Fellwar Stone
-1 Fierce Guardianship
+1 Faithless Looting (SOC) 244
+1 Fellwar Stone (MSC) 285
+1 Fierce Guardianship (CMM) 94
 1 Flooded Strand
-1 Force of Negation
-1 Frantic Search
+1 Force of Negation (2X2) 50
+1 Frantic Search (SLD) 1996
 1 Gloomlake Verge
 1 Iron Monger, Sadistic Tycoon
 1 Island
-1 Kardur, Doomscourge
+1 Kardur, Doomscourge (DSC) 223
 1 Kid Loki
-1 Leader, Super-Genius
-1 Living Death
-1 Loki, God of Mischief
+1 Leader, Super-Genius (MSH) 330
+1 Living Death (CM2) 68
+1 Loki, God of Mischief (PMEI) 2026-14
 1 Loki, Lord of Misrule
 1 Loki, the Deceiver
 1 Luxury Suite
 1 Mana Confluence
-1 Mana Drain
+1 Mana Drain (2X2) 57
 1 Marsh Flats
 1 Misty Rainforest
 1 Morbius the Living Vampire
 1 Morphic Pool
 1 Mountain
 1 Mysterio, Master of Illusion
-1 Mystic Remora
-1 Necromancy
+1 Mystic Remora (DMR) 59
+1 Necromancy (VIS) 64
 1 Otawara, Soaring City
-1 Patchwork Banner
+1 Patchwork Banner (MSC) 207
 1 Polluted Delta
 1 Prowler, Clawed Thief
 1 Puppet Master, String Puller
 1 Rakdos Charm
 1 Raucous Theater
-1 Reanimate
+1 Reanimate (MAR) 20
 1 Red Ghost, Intangible Genius
 1 Reflecting Pool
-1 Rhystic Study
-1 Roaming Throne
+1 Rhystic Study (JMP) 169
+1 Roaming Throne (MAR) 99
 1 Scalding Tarn
-1 Shared Animosity
-1 Sol Ring
-1 Soul-Guide Lantern
-1 Spark Double
+1 Shared Animosity (LCC) 231
+1 Sol Ring (MSC) 213
+1 Soul-Guide Lantern (DRC) 139
+1 Spark Double (MSC) 279
 1 Steam Vents
 1 Swamp
-1 Swan Song
+1 Swan Song (C16) 98
 1 Takenuma, Abandoned Mire
-1 Talisman of Creativity
-1 Talisman of Dominance
-1 Talisman of Indulgence
-1 The Soul Stone
+1 Talisman of Creativity (MSC) 218
+1 Talisman of Dominance (MSC) 219
+1 Talisman of Indulgence (MSC) 220
+1 The Soul Stone (SPM) 66
 1 The Squadron Sinister
 1 Thundering Falls
 1 Tombstone, Career Criminal
-1 Toxic Deluge
+1 Toxic Deluge (MSC) 161
 1 Training Center
 1 Tri-Sentinel, Act of Vengeance
 1 Ultron the Annihilator
 1 Undercity Sewers
 1 Underground Sea
 1 Urborg, Tomb of Yawgmoth
-1 Vandalblast
+1 Vandalblast (MSC) 168
 1 Verdant Catacombs
-1 Victimize
+1 Victimize (TDC) 198
 1 Volcanic Island
 1 Watery Grave
-1 Withering Torment
+1 Withering Torment (MSC) 162
 1 Wooded Foothills
 1 Xander's Lounge

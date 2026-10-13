@@ -1,100 +1,100 @@
-1 Atraxa, Grand Unifier
-1 Anguished Unmaking
-1 Animate Dead
-1 Arcane Signet
-1 Archon of Cruelty
+1 Atraxa, Grand Unifier (ONE) 196
+1 Anguished Unmaking (SOC) 293
+1 Animate Dead (LEB) 93
+1 Arcane Signet (FDC) 245
+1 Archon of Cruelty (FRC) 47
 1 Arid Mesa
-1 Assassin's Trophy
-1 Baleful Strix
+1 Assassin's Trophy (SOC) 294
+1 Baleful Strix (OTC) 215
 1 Bayou
-1 Birds of Paradise
+1 Birds of Paradise (FDC) 191
 1 Bloodstained Mire
-1 Bloom Tender
-1 Blue Sun's Zenith
+1 Bloom Tender (2X2) 138
+1 Blue Sun's Zenith (A25) 44
 1 Boseiju, Who Endures
 1 Breeding Pool
 1 Cavern of Souls
 1 City of Brass
-1 Clever Concealment
+1 Clever Concealment (ONC) 5
 1 Command Tower
-1 Craterhoof Behemoth
-1 Crib Swap
-1 Cyclonic Rift
-1 Delighted Halfling
-1 Displacer Kitten
-1 Dovin's Veto
-1 Eladamri's Call
-1 Elesh Norn, Mother of Machines
-1 Endurance
-1 Ephemerate
-1 Esper Sentinel
+1 Craterhoof Behemoth (CMM) 280
+1 Crib Swap (PLST) M3C-168
+1 Cyclonic Rift (CMM) 84
+1 Delighted Halfling (HOC) 65
+1 Displacer Kitten (CLB) 63
+1 Dovin's Veto (WAR) 193
+1 Eladamri's Call (MH1) 197
+1 Elesh Norn, Mother of Machines (ONE) 10
+1 Endurance (MH2) 157
+1 Ephemerate (MH1) 7
+1 Esper Sentinel (MH2) 12
 1 Essence Flux
-1 Eternal Witness
+1 Eternal Witness (CM2) 136
 1 Exotic Orchard
-1 Faeburrow Elder
-1 Farseek
-1 Fellwar Stone
-1 Finale of Devastation
-1 Flawless Maneuver
-1 Flickering Hound
+1 Faeburrow Elder (TDC) 289
+1 Farseek (TDC) 255
+1 Fellwar Stone (MBC) 74
+1 Finale of Devastation (CMM) 289
+1 Flawless Maneuver (FRC) 25
+1 Flickering Hound (FRA) 7
 1 Flooded Strand
-1 Flusterstorm
+1 Flusterstorm (IMA) 55
 1 Forest
-1 Ghostly Flicker
+1 Ghostly Flicker (CMM) 98
 1 Godless Shrine
 1 Hallowed Fountain
-1 Heroic Intervention
+1 Heroic Intervention (CMM) 295
 1 Invasion of Zendikar
 1 Island
-1 Loran of the Third Path
+1 Loran of the Third Path (MKC) 71
 1 Mana Confluence
-1 Mana Drain
+1 Mana Drain (2X2) 57
 1 Marsh Flats
 1 Misty Rainforest
-1 Mystic Remora
-1 Nature's Lore
-1 Necromancy
-1 Noble Hierarch
+1 Mystic Remora (DMR) 59
+1 Nature's Lore (SOC) 278
+1 Necromancy (VIS) 64
+1 Noble Hierarch (2XM) 177
 1 Otawara, Soaring City
 1 Overgrown Tomb
-1 Overlord of the Hauntwoods
-1 Path to Exile
-1 Peregrine Drake
-1 Phelia, Exuberant Shepherd
-1 Phyrexian Metamorph
+1 Overlord of the Hauntwoods (DSK) 194
+1 Path to Exile (FRC) 30
+1 Peregrine Drake (DMR) 65
+1 Phelia, Exuberant Shepherd (MH3) 40
+1 Phyrexian Metamorph (EOC) 75
 1 Plains
 1 Polluted Delta
-1 Reanimate
+1 Reanimate (DSC) 155
 1 Reflecting Pool
-1 Rhystic Study
+1 Rhystic Study (JMP) 169
 1 Savannah
 1 Scalding Tarn
 1 Scrubland
 1 Sink into Stupor
-1 Smothering Tithe
-1 Sol Ring
-1 Solitude
-1 Soulherder
+1 Smothering Tithe (CMM) 57
+1 Sol Ring (FDC) 286
+1 Solitude (MH2) 32
+1 Soulherder (KHC) 93
 1 Spara's Headquarters
 1 Swamp
-1 Swan Song
-1 Swords to Plowshares
-1 Sylvan Library
+1 Swan Song (C16) 98
+1 Swords to Plowshares (FRC) 37
+1 Sylvan Library (LEG) 207
 1 Temple Garden
-1 Tezzeret, Cruel Captain
-1 Thassa, Deep-Dwelling
-1 Three Visits
-1 Touch the Spirit Realm
-1 Toxic Deluge
+1 Tezzeret, Cruel Captain (EOE) 2
+1 Thassa, Deep-Dwelling (THB) 71
+1 Three Visits (SOC) 289
+1 Touch the Spirit Realm (GDY) 4
+1 Toxic Deluge (MH3) 277
 1 Tropical Island
 1 Tundra
 1 Underground Sea
-1 Utopia Sprawl
-1 Veil of Summer
+1 Utopia Sprawl (RVR) 159
+1 Veil of Summer (M20) 198
 1 Verdant Catacombs
 1 Watery Grave
-1 Wild Growth
+1 Wild Growth (MKC) 195
 1 Windswept Heath
-1 Witch Enchanter
+1 Witch Enchanter (MH3) 239
 1 Wooded Foothills
 1 Zagoth Triome

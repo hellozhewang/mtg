@@ -1,98 +1,98 @@
-1 Pantlaza, Sun-Favored
+1 Pantlaza, Sun-Favored (LCC) 4
 1 Airbender Ascension
-1 Akroma's Will
+1 Akroma's Will (LCC) 125
 1 Apex Altisaur
-1 Arcane Signet
+1 Arcane Signet (LCC) 104
 1 Arid Mesa
-1 Aura Shards
+1 Aura Shards (CMD) 182
 1 Battlefield Forge
-1 Beast Within
-1 Birds of Paradise
-1 Blasphemous Act
+1 Beast Within (FDC) 190
+1 Birds of Paradise (FDC) 191
+1 Blasphemous Act (FDC) 140
 1 Bloodstained Mire
-1 Bonehoard Dracosaur
+1 Bonehoard Dracosaur (LCI) 134
 1 Boseiju, Who Endures
 1 Bountiful Promenade
 1 Bronzebeak Foragers
 1 Brushland
 1 Cavern of Souls
-1 Cloudshift
+1 Cloudshift (JMP) 97
 1 Command Tower
-1 Deflecting Swat
-1 Delighted Halfling
+1 Deflecting Swat (CMM) 214
+1 Delighted Halfling (HOC) 65
 1 Devil Dinosaur
-1 Earthshaker Dreadmaw
-1 Eerie Interlude
+1 Earthshaker Dreadmaw (LCI) 183
+1 Eerie Interlude (KHC) 22
 1 Eiganjo, Seat of the Empire
-1 Eladamri's Call
-1 Emiel the Blessed
-1 Ephemerate
-1 Esper Sentinel
-1 Etali, Primal Conqueror
-1 Etali, Primal Storm
-1 Eternal Witness
+1 Eladamri's Call (MH1) 197
+1 Emiel the Blessed (2X2) 10
+1 Ephemerate (MH1) 7
+1 Esper Sentinel (MH2) 12
+1 Etali, Primal Conqueror (MOM) 137
+1 Etali, Primal Storm (FDN) 194
+1 Eternal Witness (CMM) 286
 1 Exotic Orchard
-1 Farseek
-1 Finale of Devastation
+1 Farseek (LCC) 242
+1 Finale of Devastation (CMM) 700
 1 Flooded Strand
 3 Forest
-1 Garruk's Uprising
-1 Generous Gift
-1 Ghalta, Primal Hunger
-1 Ghalta, Stampede Tyrant
-1 Greater Good
-1 Guardian Project
-1 Heroic Intervention
+1 Garruk's Uprising (ECC) 109
+1 Generous Gift (LCC) 128
+1 Ghalta, Primal Hunger (FDN) 222
+1 Ghalta, Stampede Tyrant (LCI) 185
+1 Greater Good (BLC) 223
+1 Guardian Project (RVR) 146
+1 Heroic Intervention (CMM) 295
 1 Horizon Canopy
-1 Hulking Raptor
+1 Hulking Raptor (LCI) 191
 1 Hunting Velociraptor
 1 Hushwood Verge
 1 Jetmir's Garden
 1 Karplusan Forest
 1 Kessig Wolf Run
 1 Kinjalli's Sunwing
-1 Kogla and Yidaro
+1 Kogla and Yidaro (MOM) 244
 1 Marsh Flats
 1 Misty Rainforest
 1 Mountain
-1 Nature's Lore
+1 Nature's Lore (SOC) 278
 1 Otepec Huntmaster
-1 Palani's Hatcher
-1 Path to Exile
+1 Palani's Hatcher (LCI) 237
+1 Path to Exile (FRC) 30
 1 Plains
 1 Plateau
-1 Regal Behemoth
-1 Restoration Angel
-1 Return of the Wildspeaker
-1 Rhythm of the Wild
+1 Regal Behemoth (LCC) 251
+1 Restoration Angel (BLC) 150
+1 Return of the Wildspeaker (ECC) 115
+1 Rhythm of the Wild (RVR) 217
 1 Runic Armasaur
 1 Sacred Foundry
 1 Savannah
 1 Scalding Tarn
-1 Skyshroud Claim
-1 Smothering Tithe
-1 Sneak Attack
-1 Sol Ring
+1 Skyshroud Claim (BBD) 213
+1 Smothering Tithe (CMM) 57
+1 Sneak Attack (DMR) 139
+1 Sol Ring (FDC) 286
 1 Spectator Seating
 1 Spire Garden
 1 Stomping Ground
 1 Sunbillow Verge
-1 Swords to Plowshares
-1 Sylvan Library
+1 Swords to Plowshares (FRC) 37
+1 Sylvan Library (LEG) 207
 1 Taiga
-1 Teferi's Protection
-1 Teleportation Circle
+1 Teferi's Protection (2X2) 32
+1 Teleportation Circle (AFR) 39
 1 Temple Garden
-1 The Great Henge
+1 The Great Henge (CMM) 294
 1 Thornspire Verge
-1 Three Visits
-1 Topiary Stomper
-1 Touch the Spirit Realm
-1 Trumpeting Carnosaur
-1 Utopia Sprawl
-1 Vaultborn Tyrant
+1 Three Visits (SOC) 289
+1 Topiary Stomper (LCC) 261
+1 Touch the Spirit Realm (GDY) 4
+1 Trumpeting Carnosaur (LCI) 171
+1 Utopia Sprawl (RVR) 159
+1 Vaultborn Tyrant (BIG) 20
 1 Verdant Catacombs
 1 Windswept Heath
 1 Wooded Foothills
 1 Wrathful Raptors
-1 Zacama, Primal Calamity
+1 Zacama, Primal Calamity (LCC) 296

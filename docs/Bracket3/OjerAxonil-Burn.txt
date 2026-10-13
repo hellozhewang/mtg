@@ -1,73 +1,73 @@
-1 Ojer Axonil, Deepest Might
-1 Abrade
-1 Arcane Signet
+1 Ojer Axonil, Deepest Might (LCI) 158
+1 Abrade (SOC) 234
+1 Arcane Signet (LCC) 104
 1 Arid Mesa
-1 Birgi, God of Storytelling
-1 Blackblade Reforged
-1 Blasphemous Act
+1 Birgi, God of Storytelling (KHM) 123
+1 Blackblade Reforged (DMC) 178
+1 Blasphemous Act (SOC) 238
 1 Bloodstained Mire
-1 Bolt Bend
-1 Bulk Up
+1 Bolt Bend (WAR) 115
+1 Bulk Up (FDN) 80
 1 Chandra's Incinerator
-1 Chaos Warp
-1 Commander's Plate
+1 Chaos Warp (MBC) 72
+1 Commander's Plate (CMR) 305
 1 Coruscation Mage
-1 Deflecting Swat
-1 Desperate Ritual
+1 Deflecting Swat (CMM) 214
+1 Desperate Ritual (MMA) 110
 1 Downhill Charge
 1 Electro, Assaulting Battery
 1 Electrostatic Field
-1 End the Festivities
+1 End the Festivities (VOW) 155
 1 Expedite
-1 Faithless Looting
-1 Fellwar Stone
-1 Fiery Confluence
+1 Faithless Looting (SOC) 244
+1 Fellwar Stone (MBC) 74
+1 Fiery Confluence (LCC) 226
 1 Firebrand Archer
-1 Fists of Flame
-1 Gamble
-1 Gandalf, Goblins' Bane
+1 Fists of Flame (J25) 550
+1 Gamble (DMR) 121
+1 Gandalf, Goblins' Bane (HOB) 96
 1 Grab the Prize
-1 Grapeshot
-1 Hexing Squelcher
-1 Jeska's Will
-1 Kessig Flamebreather
-1 Light Up the Stage
-1 Liquimetal Torque
+1 Grapeshot (DMR) 125
+1 Hexing Squelcher (ECL) 145
+1 Jeska's Will (MKC) 156
+1 Kessig Flamebreather (VOW) 164
+1 Light Up the Stage (DSC) 166
+1 Liquimetal Torque (MH2) 228
 1 Longshot, Rebel Bowman
-1 Mind Stone
-1 Mithril Coat
+1 Mind Stone (MBC) 76
+1 Mithril Coat (LTR) 245
 27 Mountain
 1 Nykthos, Shrine to Nyx
-1 Past in Flames
-1 Pyroblast
-1 Pyrohemia
-1 Rampaging Ferocidon
-1 Razorkin Needlehead
-1 Reckless Impulse
-1 Red Elemental Blast
-1 Roiling Vortex
-1 Ruby Medallion
+1 Past in Flames (C16) 131
+1 Pyroblast (MB2) 198
+1 Pyrohemia (CMA) 86
+1 Rampaging Ferocidon (SPG) 8
+1 Razorkin Needlehead (DSK) 153
+1 Reckless Impulse (J25) 589
+1 Red Elemental Blast (LEB) 170
+1 Roiling Vortex (ZNR) 156
+1 Ruby Medallion (MH3) 348
 1 Sabotender
 1 Scalding Tarn
-1 Seething Song
+1 Seething Song (C21) 179
 1 Shatterskull Smashing
 1 Sokenzan, Crucible of Defiance
-1 Sol Ring
-1 Soul-Guide Lantern
-1 Spear Spewer
-1 Sting, Bilbo's Sword
-1 Sting, the Glinting Dagger
-1 Storm-Kiln Artist
-1 Swiftfoot Boots
+1 Sol Ring (SLD) 2063
+1 Soul-Guide Lantern (DRC) 139
+1 Spear Spewer (RNA) 117
+1 Sting, Bilbo's Sword (HOB) 273
+1 Sting, the Glinting Dagger (LTR) 250
+1 Storm-Kiln Artist (SOC) 255
+1 Swiftfoot Boots (MBC) 77
 1 Tectonic Hazard
-1 The One Ring
-1 Thermo-Alchemist
-1 Tibalt's Trickery
+1 The One Ring (LTR) 246
+1 Thermo-Alchemist (INR) 174
+1 Tibalt's Trickery (KHM) 153
 1 Tyrite Sanctum
 1 Unruly Catapult
-1 Urabrask
+1 Urabrask (MOM) 169
 1 Valakut Awakening
-1 Vandalblast
+1 Vandalblast (OTC) 183
 1 Weftstalker Ardent
 1 Wheel of Fortune
 1 Wooded Foothills

@@ -1,76 +1,76 @@
 1 Feldon of the Third Path
-1 Abrade
-1 Altar of Dementia
-1 Ancient Copper Dragon
+1 Abrade (FDC) 136
+1 Altar of Dementia (BRR) 66
+1 Ancient Copper Dragon (CLB) 161
 1 Ancient Stone Idol
-1 Anger
-1 Arcane Signet
+1 Anger (SOC) 235
+1 Arcane Signet (DRC) 52
 1 Arena of Glory
-1 Balefire Dragon
+1 Balefire Dragon (INR) 479
 1 Battlemage's Bracers
 1 Bitter Reunion
-1 Blasphemous Act
+1 Blasphemous Act (FDC) 140
 1 Brass's Tunnel-Grinder
 1 Buried Ruin
-1 Chaos Warp
-1 Combustible Gearhulk
-1 Cursed Mirror
-1 Daretti, Rocketeer Engineer
+1 Chaos Warp (MBC) 72
+1 Combustible Gearhulk (DSC) 163
+1 Cursed Mirror (SOC) 242
+1 Daretti, Rocketeer Engineer (DFT) 120
 1 Daretti, Scrap Savant
 1 Dauntless Scrapbot
-1 Deflecting Swat
-1 Demand Answers
-1 Duplicant
-1 Fable of the Mirror-Breaker
-1 Faithless Looting
-1 Fear of Missing Out
-1 Fellwar Stone
+1 Deflecting Swat (CMM) 214
+1 Demand Answers (MKM) 122
+1 Duplicant (DRC) 54
+1 Fable of the Mirror-Breaker (NEO) 141
+1 Faithless Looting (SOC) 244
+1 Fear of Missing Out (DSK) 136
+1 Fellwar Stone (MBC) 74
 1 Fomori Vault
-1 Gamble
+1 Gamble (DMR) 121
 1 Geier Reach Sanitarium
-1 Goblin Bombardment
-1 Goblin Engineer
-1 Goblin Welder
+1 Goblin Bombardment (MH2) 279
+1 Goblin Engineer (MH1) 128
+1 Goblin Welder (CM2) 101
 1 Great Furnace
 1 Illusionist's Bracers
-1 Imperial Recruiter
+1 Imperial Recruiter (MH2) 281
 1 Inventors' Fair
-1 Jaxis, the Troublemaker
-1 Jeska's Will
-1 Lightning Greaves
-1 Liquimetal Torque
-1 Meteor Golem
-1 Mind Stone
+1 Jaxis, the Troublemaker (SNC) 112
+1 Jeska's Will (MKC) 156
+1 Lightning Greaves (OTC) 260
+1 Liquimetal Torque (MH2) 228
+1 Meteor Golem (FDC) 270
+1 Mind Stone (MBC) 76
 1 Molten Primordial
 1 Monument to Endurance
 25 Mountain
-1 Mox Opal
-1 Myr Battlesphere
+1 Mox Opal (2XM) 275
+1 Myr Battlesphere (TDC) 322
 1 Patriar's Seal
 1 Portal to Phyrexia
-1 Ruin Grinder
-1 Sandstone Oracle
+1 Ruin Grinder (C21) 57
+1 Sandstone Oracle (CMM) 406
 1 Scrap Mastery
 1 Shatterskull Smashing
-1 Skullclamp
-1 Sneak Attack
+1 Skullclamp (BLC) 283
+1 Sneak Attack (DMR) 139
 1 Sokenzan, Crucible of Defiance
-1 Sol Ring
-1 Solemn Simulacrum
-1 Sting, the Glinting Dagger
-1 Sundial of the Infinite
-1 Swiftfoot Boots
-1 Terror of the Peaks
-1 The One Ring
-1 Thousand-Year Elixir
-1 Tibalt's Trickery
+1 Sol Ring (DRC) 56
+1 Solemn Simulacrum (SOC) 355
+1 Sting, the Glinting Dagger (LTR) 250
+1 Sundial of the Infinite (M12) 218
+1 Swiftfoot Boots (BRR) 121
+1 Terror of the Peaks (M21) 164
+1 The One Ring (LTR) 246
+1 Thousand-Year Elixir (C21) 271
+1 Tibalt's Trickery (KHM) 153
 1 Triplicate Titan
 1 Untimely Malfunction
 1 Urza's Saga
 1 Valakut Awakening
 1 Valakut, the Molten Pinnacle
-1 Vandalblast
+1 Vandalblast (OTC) 183
 1 War Room
-1 Wheel of Fortune
-1 Wheel of Misfortune
-1 Wurmcoil Engine
+1 Wheel of Fortune (LEB) 184
+1 Wheel of Misfortune (CMR) 211
+1 Wurmcoil Engine (BRR) 126

@@ -1,46 +1,46 @@
-1 Greasefang, Okiba Boss
+1 Greasefang, Okiba Boss (NEO) 220
 1 Agadeem's Awakening
-1 Akroma's Will
+1 Akroma's Will (LCC) 125
 1 Ancient Den
-1 Anguished Unmaking
-1 Arcane Signet
-1 Arcbound Ravager
+1 Anguished Unmaking (SOC) 293
+1 Arcane Signet (FDC) 245
+1 Arcbound Ravager (PL23) 6
 1 Arid Mesa
-1 Bitter Triumph
-1 Black Market Connections
+1 Bitter Triumph (TDC) 173
+1 Black Market Connections (LCC) 181
 1 Bleachbone Verge
 1 Bloodstained Mire
-1 Braids, Arisen Nightmare
+1 Braids, Arisen Nightmare (EOC) 82
 1 Brightclimb Pathway
 1 Caves of Koilos
 1 City of Brass
-1 Clever Concealment
+1 Clever Concealment (ONC) 5
 1 Command Tower
 1 Concealed Courtyard
 1 Cynical Loner
-1 Damn
-1 Deadly Dispute
-1 Demonic Junker
-1 Dockside Chef
+1 Damn (LCC) 191
+1 Deadly Dispute (TDC) 177
+1 Demonic Junker (DFT) 83
+1 Dockside Chef (NEO) 93
 1 Eiganjo, Seat of the Empire
-1 Entomb
-1 Esper Sentinel
+1 Entomb (DMR) 82
+1 Esper Sentinel (MH2) 12
 1 Exotic Orchard
-1 Fellwar Stone
+1 Fellwar Stone (MBC) 74
 1 Fetid Heath
-1 Flawless Maneuver
+1 Flawless Maneuver (FRC) 25
 1 Flooded Strand
 1 Geier Reach Sanitarium
-1 Generous Gift
+1 Generous Gift (LCC) 128
 1 Godless Shrine
-1 Grand Abolisher
+1 Grand Abolisher (CMM) 27
 1 Hotshot Mechanic
 1 Imotekh the Stormlord
 1 Isolated Chapel
-1 Key to the City
-1 Liquimetal Torque
+1 Key to the City (C21) 248
+1 Liquimetal Torque (MH2) 228
 1 Lively Dirge
-1 Loran of the Third Path
+1 Loran of the Third Path (MKC) 71
 1 Malakir Rebirth
 1 Mana Confluence
 1 Marsh Flats
@@ -48,52 +48,52 @@
 1 Monument to Endurance
 1 Morbid Curiosity
 1 N'Yami-Class Mother Ship
-1 Nautiloid Ship
-1 Orzhov Signet
-1 Parhelion II
-1 Path to Exile
+1 Nautiloid Ship (CLB) 328
+1 Orzhov Signet (TDC) 323
+1 Parhelion II (NEC) 87
+1 Path to Exile (CMM) 626
 1 Phyrexia's Core
 1 Phyrexian Tower
 1 Plains
 1 Polluted Delta
 1 Putrid Imp
-1 Reanimate
+1 Reanimate (DSC) 155
 1 Reaver Titan
 1 Ripples of Undeath
-1 Salvation Engine
+1 Salvation Engine (DFT) 27
 1 Scrubland
 1 Sevinne's Reclamation
 1 Shadowy Backstreet
 1 Shattered Sanctum
 1 Silent Clearing
-1 Skullclamp
-1 Skysovereign, Consul Flagship
-1 Smothering Tithe
-1 Smuggler's Copter
-1 Sol Ring
-1 Soul-Guide Lantern
+1 Skullclamp (SLD) 1112
+1 Skysovereign, Consul Flagship (NEC) 159
+1 Smothering Tithe (CMM) 57
+1 Smuggler's Copter (NEC) 160
+1 Sol Ring (FDC) 286
+1 Soul-Guide Lantern (DRC) 139
 2 Swamp
-1 Swiftfoot Boots
-1 Swords to Plowshares
+1 Swiftfoot Boots (MBC) 77
+1 Swords to Plowshares (SLD) 1021
 1 Takenuma, Abandoned Mire
-1 Talisman of Hierarchy
-1 Teferi's Protection
-1 Teleportation Circle
-1 The One Ring
-1 The Queen of Dale
+1 Talisman of Hierarchy (SOC) 358
+1 Teferi's Protection (2X2) 32
+1 Teleportation Circle (AFR) 39
+1 The One Ring (LTR) 246
+1 The Queen of Dale (HOB) 253
 1 The Regalia
 1 The Thanos-Copter
 1 The Underworld Cookbook
 1 Thunderhawk Gunship
 1 Tireless Tribe
-1 Touch the Spirit Realm
-1 Toxic Deluge
+1 Touch the Spirit Realm (NEO) 40
+1 Toxic Deluge (MH3) 277
 1 Unmarked Grave
 1 Urza's Saga
-1 Valor's Flagship
+1 Valor's Flagship (DFT) 35
 1 Vault of Champions
 1 Vault of Whispers
 1 Verdant Catacombs
-1 Voice of Victory
+1 Voice of Victory (TDM) 33
 1 Windswept Heath
-1 Witch Enchanter
+1 Witch Enchanter (MH3) 239

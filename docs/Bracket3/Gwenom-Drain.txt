@@ -1,84 +1,84 @@
-1 Gwenom, Remorseless
-1 Aetherflux Reservoir
+1 Gwenom, Remorseless (SPM) 56
+1 Aetherflux Reservoir (KLD) 192
 1 Agadeem's Awakening
-1 Animate Dead
-1 Arcane Signet
-1 Beseech the Mirror
-1 Black Market Connections
-1 Blood Pet
-1 Bloodthirsty Conqueror
+1 Animate Dead (LEB) 93
+1 Arcane Signet (MSC) 194
+1 Beseech the Mirror (WOE) 82
+1 Black Market Connections (MSC) 155
+1 Blood Pet (TMP) 109
+1 Bloodthirsty Conqueror (FDN) 58
 1 Boggart Trawler
 1 Bojuka Bog
-1 Bolas's Citadel
+1 Bolas's Citadel (WAR) 79
 1 Cabal Coffers
-1 Cabal Ritual
+1 Cabal Ritual (MB2) 177
 1 Castle Locthwain
 1 Cavern of Souls
 1 Chain of Smog
 1 City of Traitors
-1 Crypt Ghast
+1 Crypt Ghast (RVR) 70
 1 Crystal Vein
-1 Culling the Weak
-1 Damnation
-1 Dark Ritual
-1 Dauthi Voidwalker
-1 Deadly Rollick
-1 Defense Grid
-1 Diabolic Intent
-1 Dismember
-1 Doom Whisperer
-1 Doomsday
-1 Exquisite Blood
-1 Exsanguinate
-1 Feed the Swarm
+1 Culling the Weak (EXO) 55
+1 Damnation (SLD) 2000
+1 Dark Ritual (MSC) 793
+1 Dauthi Voidwalker (MAR) 63
+1 Deadly Rollick (CMM) 147
+1 Defense Grid (9ED) 293
+1 Diabolic Intent (BRO) 89
+1 Dismember (MM2) 79
+1 Doom Whisperer (MKC) 128
+1 Doomsday (MSC) 796
+1 Exquisite Blood (LCC) 195
+1 Exsanguinate (J25) 437
+1 Feed the Swarm (MAR) 16
 1 Fell the Profane
 1 Gemstone Caverns
-1 Gray Merchant of Asphodel
-1 Grim Tutor
+1 Gray Merchant of Asphodel (FDC) 105
+1 Grim Tutor (M21) 103
 1 Hall of the Bandit Lord
-1 Imp's Mischief
-1 Infernal Grasp
+1 Imp's Mischief (CMM) 167
+1 Infernal Grasp (MAR) 18
 1 Insatiable Avarice
-1 Jet Medallion
-1 K'rrik, Son of Yawgmoth
+1 Jet Medallion (MH3) 292
+1 K'rrik, Son of Yawgmoth (MH3) 274
 1 Lavaspur Boots
-1 Lightning Greaves
-1 Lotus Petal
+1 Lightning Greaves (SLD) 1987
+1 Lotus Petal (MB2) 226
 1 Malakir Rebirth
-1 Mox Amber
-1 Mox Opal
-1 Necropotence
-1 Night's Whisper
-1 Ornithopter
-1 Peer into the Abyss
+1 Mox Amber (DOM) 224
+1 Mox Opal (2XM) 275
+1 Necropotence (ICE) 154
+1 Night's Whisper (MSC) 158
+1 Ornithopter (ATQ) 60
+1 Peer into the Abyss (SLD) 2002
 1 Phyrexian Tower
-1 Professor Onyx
-1 Rain of Filth
-1 Razaketh, the Foulblooded
-1 Reanimate
+1 Professor Onyx (DSC) 153
+1 Rain of Filth (USG) 151
+1 Razaketh, the Foulblooded (CMM) 181
+1 Reanimate (MAR) 20
 1 Reliquary Tower
 1 Rogue's Passage
-1 Scheming Symmetry
-1 Scroll Rack
-1 Sensei's Divining Top
-1 Sheoldred, the Apocalypse
+1 Scheming Symmetry (SLD) 1997
+1 Scroll Rack (CMR) 337
+1 Sensei's Divining Top (2X2) 314
+1 Sheoldred, the Apocalypse (DMU) 107
 1 Shizo, Death's Storehouse
-1 Snuff Out
-1 Sol Ring
+1 Snuff Out (GVL) 53
+1 Sol Ring (SLD) 1988
 16 Swamp
-1 Swiftfoot Boots
+1 Swiftfoot Boots (MSC) 216
 1 Takenuma, Abandoned Mire
-1 Tendrils of Agony
-1 The Soul Stone
-1 Toxic Deluge
+1 Tendrils of Agony (SLD) 2004
+1 The Soul Stone (SPM) 66
+1 Toxic Deluge (MSC) 161
 1 Umbral Collar Zealot
 1 Urborg, Tomb of Yawgmoth
 1 Urza's Saga
-1 Vampiric Tutor
+1 Vampiric Tutor (DMR) 108
 1 Vault of Whispers
-1 Vilis, Broker of Blood
-1 Viscera Seer
-1 Vito, Thorn of the Dusk Rose
+1 Vilis, Broker of Blood (M20) 122
+1 Viscera Seer (SOC) 229
+1 Vito, Thorn of the Dusk Rose (M21) 127
 1 War Room
 1 Wishclaw Talisman
 1 Witch's Cottage

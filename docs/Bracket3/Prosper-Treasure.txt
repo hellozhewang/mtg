@@ -1,92 +1,92 @@
-1 Prosper, Tome-Bound
-1 Academy Manufactor
-1 Arcane Signet
+1 Prosper, Tome-Bound (AFC) 2
+1 Academy Manufactor (OTC) 251
+1 Arcane Signet (FDC) 245
 1 Ash Barrens
-1 Bedevil
-1 Big Score
-1 Bitterblossom
-1 Blasphemous Act
+1 Bedevil (DMC) 144
+1 Big Score (SOA) 38
+1 Bitterblossom (2X2) 69
+1 Blasphemous Act (FDC) 140
 1 Blood Crypt
 1 Bloodstained Mire
 1 Bojuka Bog
-1 Bolas's Citadel
-1 Braids, Arisen Nightmare
+1 Bolas's Citadel (WAR) 79
+1 Braids, Arisen Nightmare (EOC) 82
 1 Canyon Slough
 1 Castle Locthwain
-1 Chandra, Torch of Defiance
-1 Chaos Warp
+1 Chandra, Torch of Defiance (CMM) 876
+1 Chaos Warp (MBC) 72
 1 Command Tower
-1 Commander's Sphere
+1 Commander's Sphere (ECC) 139
 1 Crime Novelist
-1 Damnation
-1 Deadly Dispute
-1 Deadly Rollick
+1 Damnation (2X2) 73
+1 Deadly Dispute (TDC) 177
+1 Deadly Rollick (CMM) 147
 1 Dragonskull Summit
-1 Dreadbore
-1 Etali, Primal Storm
+1 Dreadbore (RVR) 180
+1 Etali, Primal Storm (FDN) 194
 1 Exotic Orchard
-1 Feed the Swarm
-1 Fellwar Stone
-1 Goldspan Dragon
-1 Grim Hireling
+1 Feed the Swarm (TDC) 180
+1 Fellwar Stone (MBC) 74
+1 Goldspan Dragon (SLD) 1780
+1 Grim Hireling (CLB) 755
 1 Haunted Ridge
 1 Hellrider
-1 Infernal Grasp
-1 Jeska's Will
-1 Light Up the Night
-1 Lightning Greaves
+1 Infernal Grasp (SOC) 216
+1 Jeska's Will (MKC) 156
+1 Light Up the Night (MID) 146
+1 Lightning Greaves (SLD) 2558
 1 Luxury Suite
 1 Marionette Apprentice
 1 Marionette Master
-1 Mayhem Devil
-1 Mind Stone
-1 Mirkwood Bats
+1 Mayhem Devil (EOC) 121
+1 Mind Stone (MBC) 76
+1 Mirkwood Bats (LTR) 95
 4 Mountain
-1 Necropotence
-1 Night's Whisper
-1 Ob Nixilis, Captive Kingpin
+1 Necropotence (ICE) 154
+1 Night's Whisper (FDC) 119
+1 Ob Nixilis, Captive Kingpin (MAT) 41
 1 Outpost Siege
 1 Path of Ancestry
-1 Phyrexian Arena
-1 Pitiless Plunderer
+1 Phyrexian Arena (C15) 130
+1 Pitiless Plunderer (LCC) 208
 1 Prismatic Vista
-1 Professional Face-Breaker
+1 Professional Face-Breaker (SNC) 116
 1 Rakdos Charm
-1 Rakdos Signet
-1 Read the Bones
-1 Reckless Fireweaver
-1 Reckless Impulse
+1 Rakdos Signet (FRC) 60
+1 Read the Bones (DSC) 154
+1 Reckless Fireweaver (KLD) 126
+1 Reckless Impulse (J25) 589
 1 Reliquary Tower
-1 Revel in Riches
+1 Revel in Riches (XLN) 117
 1 Rogue's Passage
 1 Ruthless Technomancer
 1 Scalding Tarn
 1 Shadowblood Ridge
-1 Sign in Blood
-1 Skullclamp
+1 Sign in Blood (DSC) 156
+1 Skullclamp (BLC) 283
 1 Smoldering Marsh
 1 Sokenzan, Crucible of Defiance
-1 Sol Ring
-1 Solemn Simulacrum
-1 Storm-Kiln Artist
+1 Sol Ring (FDC) 286
+1 Solemn Simulacrum (SOC) 355
+1 Storm-Kiln Artist (SOC) 255
 1 Sulfurous Springs
 6 Swamp
-1 Swiftfoot Boots
+1 Swiftfoot Boots (MBC) 77
 1 Tainted Peak
 1 Takenuma, Abandoned Mire
-1 Talisman of Indulgence
+1 Talisman of Indulgence (FRC) 63
 1 Temple of Malice
-1 Terminate
+1 Terminate (SCD) 249
 1 Theater of Horrors
-1 Torment of Hailfire
-1 Toxic Deluge
-1 Treasure Nabber
-1 Underworld Dreams
-1 Unexpected Windfall
+1 Torment of Hailfire (HOU) 77
+1 Toxic Deluge (MH3) 277
+1 Treasure Nabber (CMM) 265
+1 Underworld Dreams (M10) 115
+1 Unexpected Windfall (AFR) 164
 1 Urborg, Tomb of Yawgmoth
 1 Vance's Blasting Cannons
-1 Vandalblast
+1 Vandalblast (OTC) 183
 1 Verdant Catacombs
-1 Wayfarer's Bauble
-1 Wild-Magic Sorcerer
-1 Xorn
+1 Wayfarer's Bauble (WOC) 151
+1 Wild-Magic Sorcerer (CLB) 816
+1 Xorn (AFR) 167

@@ -1,96 +1,96 @@
 1 Don Andres, the Renegade
-1 An Offer You Can't Refuse
-1 Animate Dead
-1 Arcane Heist
-1 Arcane Signet
+1 An Offer You Can't Refuse (FDN) 160
+1 Animate Dead (LEB) 93
+1 Arcane Heist (OTC) 13
+1 Arcane Signet (LCC) 104
 1 Arid Mesa
 1 Badlands
-1 Black Market Connections
-1 Black Widow, Super Spy
+1 Black Market Connections (LCC) 181
+1 Black Widow, Super Spy (MSH) 393
 1 Blackcleave Cliffs
-1 Blasphemous Act
+1 Blasphemous Act (FDC) 140
 1 Blood Crypt
 1 Bloodstained Mire
-1 Brainstealer Dragon
-1 Breeches, Brazen Plunderer
-1 Bribery
+1 Brainstealer Dragon (OTC) 127
+1 Breeches, Brazen Plunderer (LCC) 217
+1 Bribery (MMQ) 62
 1 Captivating Crew
 1 Cascade Bluffs
 1 Cavern of Souls
-1 Chaos Warp
+1 Chaos Warp (MBC) 72
 1 City of Brass
 1 Command Tower
-1 Cyclonic Rift
+1 Cyclonic Rift (CMM) 84
 1 Darkslick Shores
-1 Dauthi Voidwalker
-1 Deflecting Swat
-1 Dimir Signet
+1 Dauthi Voidwalker (TDC) 176
+1 Deflecting Swat (CMM) 214
+1 Dimir Signet (CLU) 221
 1 Dire Fleet Daredevil
 1 Ensnared by the Mara
-1 Etali, Primal Storm
+1 Etali, Primal Storm (FDN) 194
 1 Exotic Orchard
 1 Extract Power
-1 Feed the Swarm
-1 Fellwar Stone
+1 Feed the Swarm (TDC) 180
+1 Fellwar Stone (MBC) 74
 1 Flooded Strand
 1 Forbidden Orchard
-1 Force of Negation
-1 Gisa, Glorious Resurrector
-1 Gonti, Lord of Luxury
-1 Gonti, Night Minister
+1 Force of Negation (2X2) 50
+1 Gisa, Glorious Resurrector (MID) 103
+1 Gonti, Lord of Luxury (OTC) 135
+1 Gonti, Night Minister (DFT) 87
 1 Graven Cairns
-1 Grenzo, Havoc Raiser
-1 Gríma, Saruman's Footman
-1 Hostage Taker
+1 Grenzo, Havoc Raiser (TDC) 216
+1 Gríma, Saruman's Footman (LTC) 57
+1 Hostage Taker (OTC) 231
 1 Hurl Through Hell
 1 Inside Information
-1 Insurrection
-1 Izzet Signet
+1 Insurrection (CMM) 236
+1 Izzet Signet (TDC) 320
 1 Klaw, Master of Sound
-1 Laughing Jasper Flint
-1 Lightning Greaves
-1 Locke, Treasure Hunter
+1 Laughing Jasper Flint (OTJ) 215
+1 Lightning Greaves (LCC) 114
+1 Locke, Treasure Hunter (FIC) 87
 1 Luxury Suite
-1 Malcolm, Keen-Eyed Navigator
+1 Malcolm, Keen-Eyed Navigator (LCC) 161
 1 Mana Confluence
-1 Mana Drain
+1 Mana Drain (2X2) 57
 1 Marsh Flats
-1 Mass Mutiny
+1 Mass Mutiny (E02) 27
 1 Misty Rainforest
 1 Morphic Pool
 1 Nathan Drake, Treasure Hunter
-1 Nightscape Familiar
-1 Opposition Agent
+1 Nightscape Familiar (DMR) 94
+1 Opposition Agent (CMR) 141
 1 Otawara, Soaring City
-1 Plargg and Nassari
+1 Plargg and Nassari (SOC) 250
 1 Polluted Delta
-1 Praetor's Grasp
-1 Professional Face-Breaker
-1 Ragavan, Nimble Pilferer
-1 Rakdos Signet
+1 Praetor's Grasp (SLD) 1861
+1 Professional Face-Breaker (SNC) 116
+1 Ragavan, Nimble Pilferer (MH2) 138
+1 Rakdos Signet (FRC) 60
 1 Ramirez DePietro, Pillager
-1 Reanimate
+1 Reanimate (DSC) 155
 1 Reflecting Pool
-1 Rhystic Study
+1 Rhystic Study (JMP) 169
 1 Scalding Tarn
-1 Seize the Spotlight
-1 Siphon Insight
+1 Seize the Spotlight (OTC) 179
+1 Siphon Insight (OTC) 242
 1 Sokenzan, Crucible of Defiance
-1 Sol Ring
+1 Sol Ring (OTC) 267
 1 Spirebluff Canal
 1 Steam Vents
-1 Stolen Strategy
+1 Stolen Strategy (CLB) 807
 1 Sunken Ruins
 1 Takenuma, Abandoned Mire
-1 Talisman of Creativity
-1 Talisman of Dominance
-1 Talisman of Indulgence
-1 Tasha, the Witch Queen
+1 Talisman of Creativity (FRC) 61
+1 Talisman of Dominance (FRC) 62
+1 Talisman of Indulgence (FRC) 63
+1 Tasha, the Witch Queen (CLB) 294
 1 The Indomitable
 1 Thief of Sanity
 1 Training Center
 1 Underground Sea
-1 Vaan, Street Thief
+1 Vaan, Street Thief (FIN) 168
 1 Verdant Catacombs
 1 Volcanic Island
 1 Watery Grave

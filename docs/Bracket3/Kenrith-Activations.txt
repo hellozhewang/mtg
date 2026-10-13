@@ -1,99 +1,99 @@
-1 Kenrith, the Returned King
+1 Kenrith, the Returned King (PLST) ELD-303
 1 Agatha of the Vile Cauldron
-1 Anguished Unmaking
-1 Arcane Denial
-1 Arcane Signet
-1 Archivist of Oghma
+1 Anguished Unmaking (SOC) 293
+1 Arcane Denial (SOC) 187
+1 Arcane Signet (FDC) 245
+1 Archivist of Oghma (CLB) 4
 1 Arid Mesa
-1 Assassin's Trophy
-1 Austere Command
+1 Assassin's Trophy (SOC) 294
+1 Austere Command (FDC) 18
 1 Badlands
 1 Bayou
-1 Beast Within
+1 Beast Within (FDC) 190
 1 Bender's Waterskin
 1 Biomancer's Familiar
-1 Birds of Paradise
+1 Birds of Paradise (FDC) 191
 1 Bloodstained Mire
-1 Bloom Tender
+1 Bloom Tender (2X2) 138
 1 Boseiju, Who Endures
 1 Breeding Pool
 1 City of Brass
-1 Clever Concealment
+1 Clever Concealment (ONC) 5
 1 Command Tower
-1 Delighted Halfling
-1 Dovin's Veto
-1 Eladamri's Call
-1 Esper Sentinel
-1 Eternal Witness
-1 Fabricate
-1 Faeburrow Elder
-1 Faerie Mastermind
-1 Farseek
-1 Fellwar Stone
-1 Finale of Devastation
+1 Delighted Halfling (HOC) 65
+1 Dovin's Veto (WAR) 193
+1 Eladamri's Call (MH1) 197
+1 Esper Sentinel (MH2) 12
+1 Eternal Witness (CMM) 286
+1 Fabricate (M10) 52
+1 Faeburrow Elder (TDC) 289
+1 Faerie Mastermind (SOC) 114
+1 Farseek (TDC) 255
+1 Fellwar Stone (MBC) 74
+1 Finale of Devastation (CMM) 289
 1 Flooded Strand
 2 Forest
-1 Generous Gift
+1 Generous Gift (LCC) 128
 1 Godless Shrine
-1 Grand Abolisher
+1 Grand Abolisher (CMM) 27
 1 Hallowed Fountain
-1 Heliod, God of the Sun
-1 Heroic Intervention
-1 Idyllic Tutor
+1 Heliod, God of the Sun (CMM) 826
+1 Heroic Intervention (CMM) 295
+1 Idyllic Tutor (THB) 24
 1 Island
 1 Jetmir's Garden
-1 Krosan Grip
+1 Krosan Grip (C21) 198
 1 Lithoform Engine
-1 Loran of the Third Path
+1 Loran of the Third Path (MKC) 71
 1 Luminarch Ascension
 1 Mana Confluence
 1 Marsh Flats
-1 Mirari's Wake
+1 Mirari's Wake (CMM) 928
 1 Misty Rainforest
-1 Mystic Remora
-1 Nature's Lore
+1 Mystic Remora (DMR) 59
+1 Nature's Lore (SOC) 278
 1 Otawara, Soaring City
 1 Overgrown Tomb
-1 Path to Exile
+1 Path to Exile (FRC) 30
 1 Plains
 1 Plateau
 1 Polluted Delta
 1 Profane Procession
-1 Rings of Brighthearth
+1 Rings of Brighthearth (CMR) 335
 1 Sanctum Weaver
 1 Savannah
 1 Scalding Tarn
 1 Scrubland
-1 Seedborn Muse
-1 Shalai, Voice of Plenty
-1 Shorikai, Genesis Engine
-1 Smothering Tithe
-1 Sol Ring
+1 Seedborn Muse (TDC) 268
+1 Shalai, Voice of Plenty (TDC) 130
+1 Shorikai, Genesis Engine (NEC) 4
+1 Smothering Tithe (WOT) 13
+1 Sol Ring (FDC) 286
 1 Soul of New Phyrexia
-1 Soul-Guide Lantern
-1 Swan Song
-1 Swiftfoot Boots
-1 Swords to Plowshares
-1 Sylvan Library
+1 Soul-Guide Lantern (DRC) 139
+1 Swan Song (C16) 98
+1 Swiftfoot Boots (MBC) 77
+1 Swords to Plowshares (FRC) 37
+1 Sylvan Library (LEG) 207
 1 Taiga
-1 Teferi's Protection
+1 Teferi's Protection (2X2) 32
 1 Temple Garden
 1 The Enigma Jewel
-1 Thrasios, Triton Hero
-1 Three Visits
-1 Toxic Deluge
-1 Training Grounds
+1 Thrasios, Triton Hero (C16) 46
+1 Three Visits (SOC) 289
+1 Toxic Deluge (MH3) 277
+1 Training Grounds (MAT) 193
 1 Tropical Island
 1 Tundra
 1 Underground Sea
 1 Unstoppable Plan
-1 Unwinding Clock
-1 Veil of Summer
+1 Unwinding Clock (C18) 228
+1 Veil of Summer (M20) 198
 1 Verdant Catacombs
 1 Volcanic Island
-1 Walking Ballista
+1 Walking Ballista (2XM) 306
 1 Wilderness Reclamation
 1 Windswept Heath
 1 Wooded Foothills
 1 Zagoth Triome
-1 Zirda, the Dawnwaker
+1 Zirda, the Dawnwaker (IKO) 233

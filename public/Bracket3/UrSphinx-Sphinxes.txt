@@ -1,99 +1,99 @@
 1 The Ur-Sphinx
-1 Akroma's Will
-1 An Offer You Can't Refuse
-1 Anguished Unmaking
-1 Animate Dead
-1 Arcane Signet
+1 Akroma's Will (LCC) 125
+1 An Offer You Can't Refuse (FDN) 160
+1 Anguished Unmaking (SOC) 293
+1 Animate Dead (LEB) 93
+1 Arcane Signet (FDC) 245
 1 Archive Arbiter
 1 Arid Mesa
-1 Black Market Connections
+1 Black Market Connections (LCC) 181
 1 Bleachbone Verge
-1 Bloodline Bidding
+1 Bloodline Bidding (ECL) 91
 1 Bloodstained Mire
 1 Cavern of Souls
-1 Chronicle of Victory
+1 Chronicle of Victory (ECL) 253
 1 City of Brass
-1 Clever Concealment
+1 Clever Concealment (ONC) 5
 1 Command Tower
-1 Consecrated Sphinx
-1 Conspiracy Unraveler
-1 Curator of Destinies
+1 Consecrated Sphinx (2X2) 43
+1 Conspiracy Unraveler (MKM) 47
+1 Curator of Destinies (FDN) 34
 1 Curator of Mysteries
-1 Cyclonic Rift
+1 Cyclonic Rift (CMM) 84
 1 Defiler of Dreams
-1 Denzilore Fatehold
-1 Dovin's Veto
+1 Denzilore Fatehold (FRA) 128
+1 Dovin's Veto (WAR) 193
 1 Dream Eater
 1 Dream Trawler
 1 Enigma Thief
-1 Esper Sentinel
+1 Esper Sentinel (MH2) 12
 1 Exotic Orchard
-1 Fellwar Stone
-1 Flawless Maneuver
+1 Fellwar Stone (MBC) 74
+1 Flawless Maneuver (FRC) 25
 1 Flooded Strand
 1 Floodfarm Verge
 1 Gloomlake Verge
 1 Godless Shrine
 1 Hallowed Fountain
-1 Herald's Horn
+1 Herald's Horn (LCC) 304
 2 Island
-1 Kindred Discovery
-1 Lightning Greaves
+1 Kindred Discovery (LCC) 159
+1 Lightning Greaves (OTC) 260
 1 Magister Sphinx
 1 Mana Confluence
-1 Mana Drain
+1 Mana Drain (2X2) 57
 1 Marsh Flats
 1 Meticulous Archive
-1 Mirror Entity
+1 Mirror Entity (OTC) 83
 1 Misty Rainforest
 1 Morphic Pool
-1 Mystic Remora
+1 Mystic Remora (DMR) 59
 1 Otawara, Soaring City
 1 Plains
 1 Polluted Delta
-1 Prognostic Sphinx
-1 Quantum Riddler
-1 Raffine, Scheming Seer
+1 Prognostic Sphinx (DSC) 124
+1 Quantum Riddler (EOE) 72
+1 Raffine, Scheming Seer (SNC) 213
 1 Raffine's Tower
-1 Reanimate
-1 Reconnaissance
-1 Roaming Throne
-1 Sapphire Medallion
+1 Reanimate (DSC) 155
+1 Reconnaissance (EXO) 17
+1 Roaming Throne (LCI) 258
+1 Sapphire Medallion (MH3) 296
 1 Scalding Tarn
 1 Scholar of the Lost Trove
 1 Scrubland
 1 Sea of Clouds
 1 Shadowy Backstreet
-1 Smothering Tithe
-1 Sol Ring
-1 Soul-Guide Lantern
-1 Spark Double
+1 Smothering Tithe (CMM) 57
+1 Sol Ring (FDC) 286
+1 Soul-Guide Lantern (DRC) 139
+1 Spark Double (RVR) 62
 1 Sphinx of Enlightenment
-1 Sphinx of False Conclusions
+1 Sphinx of False Conclusions (FRA) 40
 1 Sphinx of Foresight
-1 Sphinx of Forgotten Lore
-1 Sphinx of the Second Sun
+1 Sphinx of Forgotten Lore (FDN) 51
+1 Sphinx of the Second Sun (MKC) 118
 1 Sphinx Summoner
 1 Swamp
-1 Swan Song
-1 Swords to Plowshares
+1 Swan Song (C16) 98
+1 Swords to Plowshares (FRC) 37
 1 Takenuma, Abandoned Mire
-1 Talisman of Dominance
-1 Talisman of Hierarchy
-1 Talisman of Progress
-1 The Water Crystal
+1 Talisman of Dominance (FRC) 62
+1 Talisman of Hierarchy (SOC) 358
+1 Talisman of Progress (FRC) 64
+1 The Water Crystal (FIN) 85
 1 Three Tree City
 1 Tivit, Seller of Secrets
-1 Toxic Deluge
+1 Toxic Deluge (MH3) 277
 1 Tundra
-1 Uldaros Theorix
+1 Uldaros Theorix (FRA) 159
 1 Undercity Sewers
 1 Underground Sea
 1 Unesh, Criosphinx Sovereign
-1 Urza's Incubator
+1 Urza's Incubator (CM2) 228
 1 Vault of Champions
 1 Verdant Catacombs
-1 Victimize
+1 Victimize (TDC) 198
 1 Watcher of the Spheres
 1 Watery Grave
 1 Windswept Heath

@@ -1,100 +1,100 @@
 1 Saruman, the White Hand
-1 An Offer You Can't Refuse
-1 Archmage Emeritus
+1 An Offer You Can't Refuse (FDN) 160
+1 Archmage Emeritus (SOC) 188
 1 Arid Mesa
-1 Ashiok, Dream Render
+1 Ashiok, Dream Render (WAR) 228
 1 Badlands
-1 Baral, Chief of Compliance
-1 Birgi, God of Storytelling
+1 Baral, Chief of Compliance (AER) 28
+1 Birgi, God of Storytelling (KHM) 123
 1 Blackcleave Cliffs
 1 Blazemire Verge
 1 Blightstep Pathway
 1 Blood Crypt
 1 Bloodstained Mire
-1 Brotherhood's End
+1 Brotherhood's End (BRO) 128
 1 Canyon Slough
 1 Cascade Bluffs
-1 Chaos Warp
+1 Chaos Warp (MBC) 72
 1 Choked Estuary
 1 City of Brass
 1 Clearwater Pathway
 1 Command Tower
-1 Counterspell
-1 Cyclonic Rift
-1 Dark Ritual
+1 Counterspell (DSC) 114
+1 Cyclonic Rift (CMM) 84
+1 Dark Ritual (LEB) 99
 1 Darkslick Shores
-1 Deathmark
+1 Deathmark (MM2) 77
 1 Debt to the Kami
-1 Deflecting Swat
-1 Demonic Tutor
+1 Deflecting Swat (CMM) 214
+1 Demonic Tutor (LEB) 105
 1 Dimir Machinations
 1 Dystopia
 1 Exotic Orchard
 1 Extract the Truth
-1 Feed the Swarm
-1 Filter Out
-1 Flame of Anor
+1 Feed the Swarm (LTC) 200
+1 Filter Out (MAT) 7
+1 Flame of Anor (LTR) 203
 1 Flooded Strand
 1 Forbidden Orchard
-1 Force of Negation
-1 Gloom
-1 Goblin Electromancer
-1 Grim Tutor
-1 Guttersnipe
-1 Hibernation
-1 Imprisoned in the Moon
-1 Impulse
+1 Force of Negation (2X2) 50
+1 Gloom (LEB) 111
+1 Goblin Electromancer (OTC) 228
+1 Grim Tutor (M21) 103
+1 Guttersnipe (CMM) 229
+1 Hibernation (8ED) 82
+1 Imprisoned in the Moon (INR) 69
+1 Impulse (BBD) 119
 1 Island
 1 Lazotep Plating
 1 Luxury Suite
-1 Mana Drain
+1 Mana Drain (2X2) 57
 1 Mana Sculpt
 1 Marsh Flats
-1 Merchant Scroll
+1 Merchant Scroll (8ED) 91
 1 Misty Rainforest
 1 Morphic Pool
 1 Mountain
-1 Muddle the Mixture
-1 Nightscape Familiar
-1 Opposition Agent
+1 Muddle the Mixture (RVR) 50
+1 Nightscape Familiar (DMR) 94
+1 Opposition Agent (CMR) 141
 1 Orcish Siegemaster
 1 Oscorp Industries
 1 Otawara, Soaring City
-1 Ovika, Enigma Goliath
+1 Ovika, Enigma Goliath (FDN) 663
 1 Perish
 1 Pharika's Libation
 1 Pieces of the Puzzle
 1 Polluted Delta
-1 Reality Shift
+1 Reality Shift (SOC) 199
 1 Reflecting Pool
 1 Ringsight
-1 Rite of Flame
+1 Rite of Flame (CSP) 96
 1 Rogue's Passage
 1 Rushing River
 1 Scalding Tarn
 1 Sedgemoor Witch
-1 Seething Song
-1 Slip Out the Back
-1 Solve the Equation
+1 Seething Song (C21) 179
+1 Slip Out the Back (CLU) 99
+1 Solve the Equation (STX) 54
 1 Soul Shatter
-1 Spell Snare
+1 Spell Snare (BBD) 132
 1 Steam Vents
 1 Stern Scolding
 1 Swamp
-1 Swan Song
-1 Talrand, Sky Summoner
-1 The Great Goblin
+1 Swan Song (LTC) 197
+1 Talrand, Sky Summoner (OTC) 116
+1 The Great Goblin (HOB) 158
 1 Third Path Iconoclast
 1 Training Center
 1 Unable to Scream
 1 Underground Sea
-1 Urabrask
+1 Urabrask (MOM) 169
 1 Verdant Catacombs
 1 Virtue's Ruin
 1 Volcanic Island
-1 Wash Away
+1 Wash Away (VOW) 87
 1 Watery Grave
 1 Witness Protection
 1 Wooded Foothills
 1 Xander's Lounge
-1 Young Pyromancer
+1 Young Pyromancer (J25) 618

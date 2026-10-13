@@ -1,0 +1,80 @@
+Copy the spell, not the finished creature. Lucea's copies keep X, enter with their own counters, and trigger Ravenous; copying or tutoring a creature directly onto the battlefield does not preserve a previously paid X. This upgrade keeps 17 Tyranids including its commander, but concentrates their support on mana, spell copies, card advantage, and decisive combat.
+
+# Getting several monsters from one spell
+Magus Lucea Kane :: tap before your next X spell to make two colorless mana and set up its copy. You need not spend that mana on the copied spell. Each activation sets up another copy of the NEXT qualifying spell or ability that turn; it does not copy every X spell that turn.
+Magus Lucea Kane + Unbound Flourishing :: with a permanent X spell, put Lucea's copy trigger below Flourishing's doubling trigger. Doubling resolves first, then the copy inherits the larger X. Paying for X=5 therefore produces two creatures with X=10. For an instant or sorcery, Flourishing adds a copy instead of doubling X.
+Magus Lucea Kane + Thousand-Year Elixir :: activate Lucea, pay one and tap Elixir to untap her, then activate her again. The next X spell gets two copies plus its original. Elixir lets a newly cast Lucea activate immediately, but does not let her attack immediately.
+Magus Lucea Kane + Twinning Staff :: each Lucea trigger would copy a spell once, so Staff makes that two copies. One Lucea activation produces three total spells; two activations produce five. Staff does not add copies of activated abilities.
+Owlin Spiralmancer :: copies your first X spell each turn without needing Lucea. This is the main backup engine when commander removal becomes expensive; its copy retains X just like Lucea's.
+Zimone, Infinite Analyst :: every first X spell of your turn grows the discount for later turns. Lucea's combat counter accelerates it. The two counters from casting the current spell arrive too late to discount that same spell.
+Branching Evolution :: doubles counters rather than X. It makes bigger attackers and bigger mana creatures, but cannot make Ravenous draw at X=3 or increase the damage number on Zoanthrope.
+Biophagus :: fixes Lucea's colors and adds a counter to the creature actually cast using its mana. Copies were not cast and did not spend that mana, so they do not inherit this bonus.
+
+# Making the mana match the appetite
+Birds of Paradise + Delighted Halfling :: one-mana acceleration helps cast Lucea on turn three. Halfling's colored mana is only for legendary spells; use its colorless mode for ordinary X creatures.
+Sol Ring + Arcane Signet :: establish mana before spending turns on multipliers. Signet supplies a missing commander color; Ring pays generic portions of large X spells.
+Nature's Lore + Three Visits + Farseek :: find typed dual lands to assemble green, blue, and red. Lore and Visits can find an untapped original dual; Farseek always puts its land in tapped.
+Bloom Tender :: with Lucea present, taps for green, blue, and red. Those colored pips complement Lucea's colorless mana instead of competing with it.
+Magus Lucea Kane + Incubation Druid :: put the beginning-of-combat counter on Druid to turn it into a three-mana source without paying to adapt. Cast your big X spell in the second main phase if this unlocks more mana.
+Kami of Whispered Hopes + Broodlord :: Broodlord's entry counters can build Kami into a substantial colored mana source. Copies give separate counter distributions, while Kami adds one counter to each affected permanent.
+Selvala, Heart of the Wilds :: turns a single enormous Tyranid into mana for the next wave. Her draw ability also benefits opponents and requires strictly greater power, so equal-sized copies usually do not draw from it.
+Kiora's Follower + Patriar's Seal :: additional Lucea activations are usually the goal. Follower can instead untap a productive land or Selvala; Seal must choose between making mana and untapping Lucea in that activation.
+Minamo, School at Water's Edge :: a blue land that also buys another Lucea activation. It costs another blue mana and Minamo's own tap, so include both in your turn's mana accounting.
+Sporocyst + Open the Way :: copied Sporocyst at X=2 can find four basics for five mana, but the deck has only seven basics total. Count remaining targets. Open the Way finds any lands and can ramp four lands from a copied X=2 spell without that restriction.
+Gaea's Cradle :: copied creatures and Tervigon's tokens convert into large green production. It is excellent after developing a board and produces nothing on an empty battlefield.
+
+# Drawing enough to keep deploying threats
+Terrasymbiosis :: a single large counter placement can refill your hand. Decline the draw on a small event if a bigger X creature is coming; the draw can only be taken once each turn. Counters a creature enters with count as being put on it.
+Temur Ascendancy + Garruk's Uprising :: both draw from sufficiently large token copies entering. Ascendancy supplies haste and Uprising supplies trample, converting the same engine into combat pressure.
+Rhystic Study :: provides cards while your mana is invested in Lucea and her support. It is one of the three Game Changers because it keeps the deck supplied before the first large Tyranid resolves.
+Hydroid Krasis :: its original cast draws cards and gains life even if the creature spell is countered. Lucea's copy adds another body, not another cast trigger. With Flourishing, resolve X doubling before the original draw trigger too.
+Wan Shi Tong, Librarian :: a flash threat and refill that can punish opponents' tutors. Copying the spell gives two entry triggers and their draws, but the legend rule leaves only one bird. Its counters arrive from a trigger, so it initially enters as a 1/1.
+The Great Henge :: large creatures make this cheap, and it then produces mana and cards through rebuilding turns. Only nontoken creatures trigger its draw ability; Lucea's token copies do not.
+Return of the Wildspeaker :: reload at instant speed from a large non-Human, or boost the non-Human swarm for combat. Lucea, Clamavus, and Biophagus are Humans and do not count for either mode.
+
+# Turning the swarm into a kill
+Winged Hive Tyrant + Deathleaper, Terror Weapon :: newly entered creatures with counters gain haste and flying from Hive Tyrant, then double strike from Deathleaper. Older creatures do not gain double strike from Deathleaper; new creatures still need haste from another source.
+Samut, Hazoret's Champion :: the cheapest team-wide haste source here, turning newly resolved copies and mana creatures into immediate action. Cast her before Lucea when you can use Lucea's activation the same turn.
+Old One Eye + Clamavus :: trample prevents small blockers from absorbing enormous counter-based threats, while Clamavus adds another point of power and toughness per counter. Clamavus adds a static bonus, not more counters.
+Tervigon :: copied trampling bodies convert actual player damage into another wave of Tyranids. Tokens made during combat do not join that attack; they fuel Cradle and a subsequent attack.
+Goldvein Hydra + Deathleaper, Terror Weapon :: Hydra already has haste and trample, so its copies can attack with double strike immediately. Dead Hydras leave tapped Treasures, which are recovery mana rather than mana available immediately that turn.
+Magus Lucea Kane + Finale of Devastation :: at X=10, the copy can find Old One Eye and give your existing army +10/+10 and haste; the original can then find Deathleaper and grant another +10/+10 and haste. The creature found by the second resolution gets only that second boost. No infinite mana is needed.
+Magus Lucea Kane + Crackle with Power :: at X=4 the spell costs fourteen mana and each of two resolutions deals twenty damage to all three opponents. At X=3 with Unbound Flourishing or Twinning Staff adding a third resolution, eleven mana deals forty-five to each. These are expensive closing plays, not an early infinite loop.
+Chandra's Ignition :: turns the power of your largest creature into damage to every opponent and every other creature. A Clamavus-boosted monster can finish the table without attacking. It also hits your own army; protect it if needed, and protect the targeted creature because removing that target counters the entire spell by the rules.
+Zoanthrope :: copies can remove separate blockers or aim their entry damage at opponents. The flying bodies remain afterward. Counter multipliers increase their bodies, but only increasing X itself increases Warp Blast.
+Exocrine :: a scalable creature sweeper and damage closer that also hits YOU. Copies trigger separately and can wipe your mana creatures and Lucea. Only commit after checking your life total; player damage is not prevented by giving your creatures indestructible.
+
+# Keeping opponents from breaking the engine
+Mawloc :: copied entries fight separate creatures and exile those creatures if they would die that turn. Choose optional targets carefully; deathtouch can kill your Mawloc, and larger blockers may win the fight.
+Kinetic Ooze + Aberrant :: Ooze answers artifacts or enchantments immediately and can draw at X=5; Aberrant supplies repeatable removal when its trample connects. These are useful threats rather than support cards that become dead after Lucea dies.
+Cyclonic Rift :: the reset that preserves your attacking army and clears blockers, prison pieces, and opposing engines together. Save its two-mana mode for emergencies when waiting for overload would lose the game.
+Beast Within + Boseiju, Who Endures :: broad permanent interaction and a channel answer that works through ordinary spell counters. Do not wait to build a large board if an opposing permanent shuts off your abilities.
+Malanthrope :: gives the deck a Tyranid answer to a stocked graveyard. It targets a player and exiles their whole graveyard; tutor for it proactively when sorcery-speed graveyard hate is your only available answer.
+Mana Drain + Swan Song + An Offer You Can't Refuse :: protect a crucial spell or stop an opposing win. Drain's delayed colorless mana helps fund X, while the one-mana counters are easier to hold up. Offer grants Treasures, so avoid using it on harmless setup.
+Deflecting Swat + Veil of Summer :: Swat redirects targeted interaction while Lucea is present; Veil handles blue or black targeting and protects spells from counters for the turn. Neither answers every sweeper, and Swat cannot redirect a spell that has no targets.
+Heroic Intervention + Inspiring Call :: Intervention covers your permanents against destruction and targeting; Call draws from creatures with +1/+1 counters and gives those creatures indestructible. Neither stops a nontargeting exile sweeper.
+Tyrant Guard :: copied Guards provide independent sacrifice shields for creatures with counters. Put Lucea's combat counter on an exposed engine before relying on this protection. A shield applies to the qualifying creatures currently present, not creatures entering later that turn.
+
+# Finding the right creature
+Do not tutor an X creature straight onto the battlefield expecting the tutor's X to become that creature's X. It does not: most of the deck's printed 0/0 X creatures die without another counter-adding effect. Use these tutors for fixed-cost engines and support.
+Green Sun's Zenith -> Bloom Tender :: X=2 turns a tutor into early acceleration; with Lucea copying the spell, the second search can find Incubation Druid or Biophagus as well.
+Green Sun's Zenith -> Selvala, Heart of the Wilds :: choose X=3 when you already have a large creature but need mana for another threat or a lethal X spell.
+Nature's Rhythm -> Owlin Spiralmancer :: X=4 finds the backup copy engine when Lucea is unavailable. Harmonize gives Rhythm a second use later, although its four green pips remain payable even when tapping a large creature covers the generic cost.
+Nature's Rhythm -> Winged Hive Tyrant :: X=5 finds haste and flying when you already have a counter-covered army. A copied Rhythm can find Deathleaper alongside it, but Deathleaper only doubles the strikes of creatures that entered this turn.
+Finale of Devastation -> Old One Eye :: before X=10, treat Finale as a utility tutor or graveyard recovery spell. Old One Eye supplies trample and two bodies when the issue is getting damage through blockers.
+Green Sun's Zenith -> Malanthrope :: X=3 finds the graveyard answer immediately. Keep green mana available if the opponent is about to untap with a graveyard engine.
+Nature's Rhythm -> Tyrant Guard :: X=3 can find Guard as protection despite the tutor warning: its printed 3/3 body survives without Ravenous counters. Its sacrifice shields your other counter-bearing creatures, even though Guard itself entered without counters.
+
+# Recovering after the first wave
+The Swarmlord + Termagant Swarm :: Swarmlord draws when your counter-bearing creatures die, including itself if it has a counter. Termagant leaves replacement bodies after a destruction wipe. Neither engine compensates for a nontargeting exile wipe in the same way.
+The Ozolith :: banks counters when your creatures leave, including token copies, then puts them on one creature at your next combat. With Branching Evolution, placing those counters onto a creature is doubled again. This preserves stats, not the lost creature cards.
+Lightning Greaves :: protects Lucea from targeting and grants actual haste. Shroud also stops your untappers and your own targeted counters, so move the equipment before using those effects. Opponents can respond while Lucea is exposed.
+
+# What to keep and how to sequence it
+Keep three lands that can reach all three colors, an early accelerator, and either a draw engine or an X threat. A two-land hand needs strong one- or two-mana acceleration and preferably a draw plan; a handful of expensive payoffs and multipliers is a mulligan.
+Misty Rainforest + Tropical Island + Steam Vents :: prioritize early green and access to blue/red for Lucea. There are nine fetchlands, six original/shock duals, and only one always-tapped land. Seven basics support Sporocyst; avoid fetching every basic away before using it.
+Magus Lucea Kane :: a normal plan is early acceleration, turn-three Lucea, then a copied threat or ramp spell on turn four. Develop toward a protected turn-six-to-eight finish; that is a construction target, not a goldfish guarantee.
+Unbound Flourishing :: deploy only when you still have an X payoff and enough mana to use it. Extra setup without cards to copy is how this deck loses tempo. Cast a draw engine before the large creature whenever the mana permits.
+Do not cast an incidental X spell or activate an X-cost ability after loading Lucea's copy effects if you intend to use them on another spell: the first qualifying action consumes all of those effects. Unspent mana empties between steps and phases, but Lucea's delayed copy effects last for the turn. They do not carry into an opponent's turn.
+Plan your main phase around combat counters: use the first main to add a haste enabler and new attackers, or use the second main when a counter on Incubation Druid or Kami creates more mana. Do not automatically spend the counter on Lucea if another creature produces a better turn.
+This is a Bracket 3 combat-and-X-spell deck with three Game Changers: Cyclonic Rift, Gaea's Cradle, and Rhystic Study. It has no intended infinite loop, mass land denial, or chained extra turns. Its chief weaknesses are repeated commander removal, ability suppression, and exile sweepers; keep interaction instead of committing every card to the board.

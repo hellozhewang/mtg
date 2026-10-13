@@ -13,7 +13,6 @@
 1 Bala Ged Recovery (ZNR) 180
 1 Battlefield Forge
 1 Beast Within (NPH) 103
-1 Berserk (SLD) 1738
 1 Birds of Paradise (FIC) 483
 1 Bloodstained Mire
 1 Bloom Tender (ECL) 390
@@ -88,6 +87,7 @@
 1 Swords to Plowshares (SLD) 1021
 1 Sylvan Library (SPG) 155
 1 Taiga
+1 Tamiyo's Safekeeping (SLD) 2320
 1 Temple Garden
 1 The Great Henge (ELD) 161
 1 Three Visits (CMR) 261

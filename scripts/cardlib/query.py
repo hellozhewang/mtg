@@ -57,9 +57,18 @@ class CardQuery:
         if not todo:
             return found, []
 
-        fetched, _ = self.api.collection(todo)
+        # Ask by FRONT FACE. Scryfall's bulk lookup does not know a card by both
+        # halves: "Wear // Tear", "Unholy Annex // Ritual Chamber" and "Malakir
+        # Rebirth // Malakir Mire" all come back not-found, while "Wear", "Unholy
+        # Annex" and "Malakir Rebirth" resolve (measured 2026-10-13). A list that
+        # spelled out both halves therefore validated only while the card was
+        # still in the cache, and failed as "unresolved" once that entry aged out.
+        fetched, _ = self.api.collection(
+            list(dict.fromkeys(n.split(" // ")[0] for n in todo)))
         # Scryfall echoes canonical names, which differ from the front-face names
         # decklists use, so match on both rather than assuming positional order.
+        # The match is still against what the list wrote, in full: asking by the
+        # front face must not let "Sol Ring // Nonsense" resolve to Sol Ring.
         by_name: dict[str, dict] = {}
         for c in fetched:
             by_name[c["name"].lower()] = c

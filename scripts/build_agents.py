@@ -562,7 +562,8 @@ front face only, exactly 100 cards counting the commander.
 
 A line may end with a pinned printing, `1 Sol Ring (SLD) 249`: the set code in
 parentheses, then the collector number. It only chooses which art Tabletop
-Simulator loads; the card is still `Sol Ring` to every rule and every tool. When
+Simulator and the catalog show; the card is still `Sol Ring` to every rule and
+every tool. Many decks here have art pinned to suit their theme. When
 you edit a deck that has pins, keep them on the lines you do not change, and never
 copy a pin onto a different card. Do not add pins of your own unless asked for
 specific art, and then take the set and number from `find_cards.py` output or

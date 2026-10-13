@@ -205,12 +205,8 @@ One `.txt` per deck, importable directly by a client that reads decklists.
 - Double-faced cards use the **front face only** (`Agadeem's Awakening`, not
   `Agadeem's Awakening // Agadeem, the Undercrypt`)
 - Exactly **100 cards** counting the commander
-- Optionally, a **pinned printing** at the end of a line: `1 Sol Ring (SLD) 249`
-  (set code in parentheses, then the collector number; the number may be left
-  off). This is the form Arena and Moxfield export, and the one Tabletop
-  Simulator's deck importer reads, so the pasted list loads that exact art. The
-  quantity in front is required by the importer. A pin never changes the card:
-  every tool reads the line as `Sol Ring`. The catalog still shows default art.
+- Optionally, a **pinned printing** at the end of a line: `1 Sol Ring (SLD) 249`.
+  It chooses the art and nothing else. See [Pinning art](#pinning-art) below.
 - Cards whose Oracle text permits any number of copies, such as **Rat Colony**
   and **Relentless Rats**, may repeat. Write them as one quantity line, such as
   `25 Rat Colony`; color identity and format legality still apply.
@@ -387,6 +383,65 @@ The windows disagree, and that is the useful part: `year` is dominated by
 accumulated volume (The Ur-Dragon, Edgar Markov), while `week` shows what people
 are building *today*. A commander high in both is genuinely rising rather than
 coasting.
+
+### Pinning art
+
+A card usually exists in many printings with different pictures: Sol Ring has
+more than seventy. A line that ends with a printing pins one of them:
+
+```
+1 Sol Ring (SLD) 249          <- that exact printing
+1 Sol Ring (CMM)              <- any printing from that set
+1 Sol Ring                    <- no pin: whatever the importer defaults to
+```
+
+The set code goes in parentheses, then the collector number. This is the form
+Arena and Moxfield export. A pin never changes the card: every tool here reads
+the line as `Sol Ring`, so legality, colour identity and the Game Changer count
+are unaffected.
+
+**Where a pin shows up**
+
+- **Tabletop Simulator.** Paste the list (`/deck-print`, or *Copy decklist* on the
+  deck's page) into the table's importer and each pinned card loads as that
+  printing.
+- **The catalog.** The deck's page, its gallery and its tile show the pinned
+  picture. Other decks running the same card keep their own art.
+
+**Finding the set code and number.** On a card's Scryfall page, open *Prints* and
+pick the one you want; its address ends in the two values, e.g.
+`scryfall.com/card/sld/249/sol-ring` is `(SLD) 249`. Collector numbers are not
+always plain numbers (`796★`, `52s`, `MH2-279`); copy them exactly.
+
+**What the importer does with a line** (measured against its server):
+
+- The quantity in front is required. `Sol Ring (SLD) 249` with no `1` is read as
+  one long card name and fails with "failed to find card".
+- Set codes are case-insensitive. `1 [CMM] Sol Ring` also picks a set.
+  `[set:number]` is another importer's syntax and is rejected.
+- **A wrong pin is not an error in the game.** A set the card was never printed
+  in, or a number that belongs to another card, silently loads different art.
+
+That last point is why `validate_deck.py` checks pins twice: the printing must
+exist and be that card (rule 7 below), and the importer must hand back exactly
+that printing when sent the list (rule 8).
+
+**How the art in these decks was chosen.** One artwork per card, in this order:
+
+1. A deck built on another universe (Final Fantasy, Marvel, Doctor Who, ...)
+   takes that universe's printing wherever a card has one.
+2. Otherwise art that shows the deck's own subject: its tribe, its commander,
+   its plan.
+3. Otherwise art from the commander's home plane or set, when that look is
+   distinct.
+4. Otherwise the classic picture, the illustration printed most often in ordinary
+   sets. Never a crossover or joke printing that clashes with the deck.
+
+The chosen picture is pinned in its plainest printing (no promo stamp, ordinary
+frame) unless the frame is the point, such as a wanted poster or a newspaper
+front page. Only nonland cards with two or more artworks are pinned; lands are
+left alone. When a deck is retuned, keep the pins on the lines that stay and
+never carry a pin over to a different card.
 
 ### Validating — `scripts/validate_deck.py`
 

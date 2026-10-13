@@ -70,5 +70,40 @@ class SplitNameTests(unittest.TestCase):
         self.assertEqual((found, missing), ({}, ["Sol Ring // Nonsense", "Wear // Tera"]))
 
 
+class FacesOnlyPrinting:
+    """A printing whose oracle ids live on its faces, as reversible cards have."""
+
+    calls = 0
+
+    def printings(self, pairs):
+        return [{"id": "p-1", "name": "Front // Back", "set": "sld", "collector_number": "9",
+                 "oracle_id": None, "image_uris": None,
+                 "card_faces": [{"oracle_id": "o-front", "image_uris": {"thumb": "t"}},
+                                {"oracle_id": "o-front"}]}]
+
+
+class NullPages:
+    def get(self, url):
+        return None
+
+    def put(self, url, payload):
+        pass
+
+
+class PrintingIdTests(unittest.TestCase):
+    def test_ids_carried_on_the_faces_do_not_crash_the_lookup(self):
+        # Measured while pinning Glarb-Topdeck: sorting {None, "o-..."} raised
+        # TypeError, so validation died on a deck with such a pin.
+        q = CardQuery(store=EmptyStore(), api=FacesOnlyPrinting())
+        q._printings = NullPages()
+        hit = q.printings([("SLD", "9")])[("SLD", "9")]
+        self.assertEqual(hit["oracle_ids"], ["o-front"])
+
+    def test_validator_ignores_a_missing_top_level_id(self):
+        import validate_deck
+        card = {"oracle_id": None, "card_faces": [{"oracle_id": "o-front"}, {}]}
+        self.assertEqual(validate_deck._oracle_ids(card), {"o-front"})
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -111,8 +111,10 @@ class CardQuery:
                 slim = {k: card.get(k) for k in ("id", "name", "oracle_id", "set", "collector_number")}
                 slim["v"] = PRINTING_FIELDS
                 # A reversible card's two faces are different cards under one printing.
-                slim["oracle_ids"] = sorted({card.get("oracle_id")} | {
-                    f.get("oracle_id") for f in card.get("card_faces") or []} - {None})
+                # Parenthesised on purpose: `-` binds tighter than `|`, and a card
+                # whose faces carry the ids has None at the top level.
+                slim["oracle_ids"] = sorted(({card.get("oracle_id")} | {
+                    f.get("oracle_id") for f in card.get("card_faces") or []}) - {None})
                 # The pictures, in the two shapes Scryfall uses: on the card, or one
                 # set per face for a card whose faces are separate images.
                 slim["image_uris"] = card.get("image_uris")

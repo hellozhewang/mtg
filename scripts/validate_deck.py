@@ -172,8 +172,8 @@ def check(deck: deckfile.Deck, cards: dict[str, dict], missing: list[str],
 
 def _oracle_ids(card: dict) -> set[str]:
     """A card's oracle id, or its faces' ids for the layouts that keep them there."""
-    return {card.get("oracle_id")} | {f.get("oracle_id")
-                                       for f in card.get("card_faces") or []} - {None}
+    return ({card.get("oracle_id")} | {f.get("oracle_id")
+                                        for f in card.get("card_faces") or []}) - {None}
 
 
 def printing_problems(deck: deckfile.Deck, cards: dict[str, dict],

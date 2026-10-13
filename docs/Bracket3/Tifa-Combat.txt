@@ -1,0 +1,100 @@
+1 Tifa, Martial Artist (FIC) 225
+1 Adeline, Resplendent Cathar (J25) 57
+1 Aerith, Last Ancient (FIC) 471
+1 Akroma's Will (FCA) 21
+1 Akroma, Vision of Ixidor (CMR) 2
+1 Annie Joins Up (OTJ) 191
+1 Arcane Signet (FIC) 333
+1 Arena of Glory
+1 Arid Mesa
+1 Aurelia, Exemplar of Justice (RVR) 436
+1 Aurelia, the Warleader (MUL) 35
+1 Austere Command (IMA) 10
+1 Bala Ged Recovery (ZNR) 180
+1 Battlefield Forge
+1 Beast Within (NPH) 103
+1 Berserk (SLD) 1738
+1 Birds of Paradise (FIC) 483
+1 Bloodstained Mire
+1 Bloom Tender (ECL) 390
+1 Boros Charm (GTC) 148
+1 Boseiju, Who Endures
+1 Bountiful Promenade
+1 Brushland
+1 Champion of Lambholt (AVR) 171
+1 City of Brass
+1 Command Tower
+1 Defense of the Heart (WOT) 80
+1 Deflecting Swat (CMM) 698
+1 Delighted Halfling (LTR) 402
+1 Duelist's Heritage (C16) 1
+1 Eiganjo, Seat of the Empire
+1 Eladamri's Call (PLS) 106
+1 Embercleave (SPG) 77
+1 Enlightened Tutor (EMA) 9
+1 Eternal Witness (5DN) 86
+1 Exotic Orchard
+1 Farseek (FCA) 45
+1 Finale of Devastation (SLD) 2680
+1 Flawless Maneuver (C20) 26
+1 Flooded Strand
+1 Forest
+1 Gaea's Cradle
+1 Garruk's Uprising (WOT) 53
+1 Generous Gift (SLD) 369
+1 Gisela, Blade of Goldnight (AVR) 209
+1 Guardian Project (RVR) 433
+1 Halana and Alena, Partners (VOW) 239
+1 Heroic Intervention (SLD) 1872
+1 Hunter's Insight (M12) 180
+1 Hushwood Verge
+1 Jetmir's Garden
+1 Joraga Treespeaker (ROE) 190
+1 Karlach, Fury of Avernus (SLD) 1802
+1 Karplusan Forest
+1 Kessig Wolf Run
+1 Laelia, the Blade Reforged (MH3) 368
+1 Lightning Greaves (FIC) 349
+1 Lightning, Army of One (FIN) 400
+1 Llanowar Elves (FDN) 429
+1 Mana Confluence
+1 Marsh Flats
+1 Misty Rainforest
+1 Mountain
+1 Myrel, Shield of Argive (BRO) 18
+1 Nature's Lore (FIC) 311
+1 Path to Exile (DCI) 24
+1 Plains
+1 Plateau
+1 Professional Face-Breaker (SNC) 426
+1 Reconnaissance (ACR) 179
+1 Rishkar's Expertise (AER) 123
+1 Sacred Foundry
+1 Samut, Hazoret's Champion (FRA) 311
+1 Samut, Voice of Dissent (SLD) 2788
+1 Saryth, the Viper's Fang (MID) 197
+1 Savannah
+1 Scalding Tarn
+1 Sejiri Shelter (ZNR) 37
+1 Selvala, Heart of the Wilds (CN2) 70
+1 Shadowspear (THB) 236
+1 Shalai, Voice of Plenty (SLD) 244
+1 Sigarda, Font of Blessings (MAT) 147
+1 Smothering Tithe (WOT) 67
+1 Sol Ring (FIC) 357
+1 Spectator Seating
+1 Spire Garden
+1 Stomping Ground
+1 Swords to Plowshares (SLD) 1021
+1 Sylvan Library (SPG) 155
+1 Taiga
+1 Temple Garden
+1 The Great Henge (ELD) 161
+1 Three Visits (CMR) 261
+1 Tifa Lockhart (FIN) 391
+1 Tifa's Limit Break (FIN) 207
+1 Unnatural Growth (WOT) 62
+1 Verdant Catacombs
+1 Wear // Tear (DGM) 135
+1 Windswept Heath
+1 Wooded Foothills

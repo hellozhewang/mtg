@@ -1,78 +1,80 @@
 1 Nicol Bolas, the Ravager (M19) 218
+1 Agent of Treachery
 1 An Offer You Can't Refuse (FDN) 160
 1 Animate Dead (LEB) 93
 1 Arcane Signet (FDC) 245
+1 Archon of Cruelty
+1 Arid Mesa
 1 Badlands
 1 Baleful Strix (OTC) 215
+1 Bitter Reunion
+1 Black Market Connections
+1 Blazemire Verge
 1 Blood Crypt
 1 Bloodstained Mire
+1 Bolas's Citadel
+1 Breach the Multiverse
 1 Buried Alive (SLD) 1673
-1 Cabal Coffers
-1 Cephalid Coliseum
-1 Chains of Mephistopheles
 1 Chaos Warp (PW24) 7
 1 City of Brass
 1 Command Tower
-1 Command the Dreadhorde
-1 Containment Construct (SOC) 344
-1 Counterspell (DSC) 114
 1 Cyclonic Rift (CMM) 84
-1 Damnation (MP2) 39
+1 Dance of the Dead
+1 Dark Intimations
 1 Dark Ritual (LEB) 99
 1 Deadly Rollick (CMM) 147
 1 Deflecting Swat (CMM) 698
-1 Diluvian Primordial
+1 Deliver Unto Evil
+1 Demonic Tutor
+1 Dimir Signet
+1 Disciple of Bolas
 1 Displacer Kitten (CLB) 63
 1 Entomb (DMR) 82
 1 Exotic Orchard
-1 Fact or Fiction (FRC) 41
+1 Fable of the Mirror-Breaker
 1 Faithless Looting (SOC) 244
 1 Feed the Swarm (TDC) 180
-1 Fell the Profane
 1 Fellwar Stone (MBC) 74
 1 Flooded Strand
 1 Force of Negation (2X2) 50
-1 Forced Fruition (LRW) 66
 1 Frantic Search (TDC) 153
-1 Geier Reach Sanitarium
-1 Glint-Horn Buccaneer
-1 Grave Researcher
-1 Howling Mine (LEB) 248
-1 Hullbreaker Horror (INR) 68
-1 Intuition
+1 Gloomlake Verge
+1 Gray Merchant of Asphodel
 1 Island
 1 Izzet Signet (TDC) 320
-1 Kaya's Ghostform
+1 Lightning Greaves
+1 Liliana, Death's Majesty
 1 Living Death (CM2) 68
 1 Luxury Suite
 1 Malakir Rebirth
 1 Mana Confluence
 1 Mana Drain (2X2) 57
 1 Marsh Flats
-1 Massacre Wurm (FDN) 754
-1 Memory Deluge (INR) 75
 1 Misty Rainforest
-1 Monument to Endurance
 1 Morphic Pool
+1 Mystic Remora
 1 Necromancy (VIS) 64
 1 Nicol Bolas, Dragon-God (RVR) 205
-1 Noxious Gearhulk (TDC) 191
-1 Orcish Bowmasters (LTR) 103
+1 Nicol Bolas, God-Pharaoh
 1 Otawara, Soaring City
+1 Overlord of the Balemurk
 1 Persist (ECC) 83
 1 Polluted Delta
+1 Rakdos Signet
 1 Raucous Theater
 1 Reanimate (DSC) 155
 1 Ripples of Undeath
+1 Saw in Half
 1 Scalding Tarn
+1 Sensei's Divining Top
 1 Sepulchral Primordial (ZNC) 54
-1 Sheoldred, the Apocalypse (DMU) 107
 1 Sink into Stupor
+1 Sneak Attack
 1 Sol Ring (SLD) 2560
-1 Spark Double (RVR) 62
+1 Soul-Guide Lantern
 1 Spellseeker (CMM) 120
 1 Steam Vents
-1 Stitch Together (C18) 119
+1 Sulfurous Springs
 1 Sunken Ruins
 1 Swamp
 1 Swan Song (C16) 98
@@ -80,21 +82,19 @@
 1 Talisman of Creativity (FRC) 61
 1 Talisman of Dominance (FRC) 62
 1 Talisman of Indulgence (FRC) 63
+1 The Eldest Reborn
 1 The Scarab God (CMM) 353
-1 Tomorrow, Azami's Familiar
-1 Torment of Hailfire (HOU) 77
 1 Toxic Deluge (MH3) 277
 1 Training Center
+1 Twilight Diviner
 1 Undercity Sewers
+1 Underground River
 1 Underground Sea
 1 Urborg, Tomb of Yawgmoth
-1 Vandalblast (OTC) 183
 1 Verdant Catacombs
 1 Victimize (TDC) 198
 1 Vilis, Broker of Blood (M20) 122
 1 Volcanic Island
-1 Waste Not (C16) 117
-1 Waterlogged Teachings
 1 Watery Grave
+1 Wooded Foothills
 1 Xander's Lounge
-1 Y'shtola Rhul (FIN) 86

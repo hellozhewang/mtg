@@ -1,95 +1,95 @@
-1 Alela, Artful Provocateur
+1 Alela, Artful Provocateur (NCC) 325
 1 Academy Ruins
-1 Akroma's Will
-1 Anointed Procession
-1 Arcane Denial
-1 Arcane Signet
+1 Akroma's Will (LCC) 125
+1 Anointed Procession (AKH) 2
+1 Arcane Denial (SOC) 187
+1 Arcane Signet (FDC) 245
 1 Arid Mesa
 1 Aura of Silence
-1 Authority of the Consuls
-1 Aven Mindcensor
-1 Azorius Signet
-1 Bitterbloom Bearer
-1 Bitterblossom
-1 Blind Obedience
+1 Authority of the Consuls (FDN) 137
+1 Aven Mindcensor (CLB) 688
+1 Azorius Signet (FRC) 53
+1 Bitterbloom Bearer (ECL) 88
+1 Bitterblossom (2X2) 69
+1 Blind Obedience (RVR) 9
 1 Bloodstained Mire
-1 Braids, Arisen Nightmare
+1 Braids, Arisen Nightmare (EOC) 82
 1 Brilliant Wings
 1 Champions from Beyond
 1 City of Brass
-1 Clever Concealment
+1 Clever Concealment (ONC) 5
 1 Command Tower
-1 Conqueror's Flail
-1 Counterspell
-1 Court of Grace
-1 Cursed Totem
-1 Cyclonic Rift
-1 Damn
-1 Darksteel Mutation
-1 Dimir Signet
+1 Conqueror's Flail (2X2) 302
+1 Counterspell (DSC) 114
+1 Court of Grace (CMR) 16
+1 Cursed Totem (MIR) 299
+1 Cyclonic Rift (CMM) 84
+1 Damn (LCC) 191
+1 Darksteel Mutation (CMM) 623
+1 Dimir Signet (CLU) 221
 1 Disruptor Flute
-1 Dovin's Veto
+1 Dovin's Veto (WAR) 193
 1 Drowned Catacomb
-1 Enduring Curiosity
-1 Esper Sentinel
+1 Enduring Curiosity (DSK) 51
+1 Esper Sentinel (MH2) 12
 1 Exotic Orchard
-1 Fellwar Stone
+1 Fellwar Stone (MBC) 74
 1 Flooded Strand
 1 Glacial Fortress
-1 Gleaming Splendor
+1 Gleaming Splendor (HOB) 15
 1 Godless Shrine
-1 Grave Pact
+1 Grave Pact (WOT) 29
 1 Gravitational Shift
 1 Hall of Heliod's Generosity
 1 Hallowed Fountain
-1 High Fae Trickster
+1 High Fae Trickster (FDN) 40
 1 Idol of Oblivion
-1 Imprisoned in the Moon
+1 Imprisoned in the Moon (INR) 69
 1 Island
 1 Isolated Chapel
-1 Kindred Discovery
-1 Lightning Greaves
+1 Kindred Discovery (WOT) 22
+1 Lightning Greaves (OTC) 260
 1 Mana Confluence
-1 Mana Drain
-1 March of Swirling Mist
+1 Mana Drain (2X2) 57
+1 March of Swirling Mist (NEO) 61
 1 Marsh Flats
 1 Meticulous Archive
 1 Misty Rainforest
 1 Moat
 1 Morphic Pool
-1 Mox Opal
-1 Mystic Remora
-1 No Mercy
+1 Mox Opal (2XM) 275
+1 Mystic Remora (ICE) 87
+1 No Mercy (DMR) 95
 1 Nowhere to Run
-1 Orzhov Signet
+1 Orzhov Signet (TDC) 323
 1 Otawara, Soaring City
-1 Oubliette
+1 Oubliette (2XM) 100
 1 Plains
 1 Polluted Delta
-1 Propaganda
+1 Propaganda (CMD) 55
 1 Raffine's Tower
-1 Reconnaissance Mission
-1 Rhystic Study
-1 Roaming Throne
+1 Reconnaissance Mission (WOC) 105
+1 Rhystic Study (WOT) 25
+1 Roaming Throne (LCI) 258
 1 Scalding Tarn
 1 Scrubland
 1 Sea of Clouds
-1 Seal of Cleansing
+1 Seal of Cleansing (MKC) 80
 1 Seal of Removal
-1 Sensei's Divining Top
+1 Sensei's Divining Top (2X2) 314
 1 Sephara, Sky's Blade
 1 Shadowy Backstreet
-1 Skullclamp
-1 Smothering Tithe
-1 Sol Ring
-1 Soul-Guide Lantern
-1 Spellstutter Sprite
+1 Skullclamp (BLC) 283
+1 Smothering Tithe (WOT) 13
+1 Sol Ring (FDC) 286
+1 Soul-Guide Lantern (DRC) 139
+1 Spellstutter Sprite (MMA) 65
 1 Swamp
-1 Swan Song
-1 Swords to Plowshares
-1 Talisman of Dominance
-1 Talisman of Hierarchy
-1 Talisman of Progress
+1 Swan Song (C16) 98
+1 Swords to Plowshares (SLD) 1627
+1 Talisman of Dominance (FRC) 62
+1 Talisman of Hierarchy (SOC) 358
+1 Talisman of Progress (FRC) 64
 1 Tundra
 1 Undercity Sewers
 1 Underground Sea

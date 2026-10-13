@@ -1,88 +1,88 @@
-1 Aesi, Tyrant of Gyre Strait
-1 An Offer You Can't Refuse
-1 Ancient Greenwarden
-1 Arcane Signet
-1 Ashaya, Soul of the Wild
-1 Avenger of Zendikar
-1 Azusa, Lost but Seeking
-1 Beast Within
-1 Birds of Paradise
+1 Aesi, Tyrant of Gyre Strait (DSC) 210
+1 An Offer You Can't Refuse (FDN) 160
+1 Ancient Greenwarden (OTC) 186
+1 Arcane Signet (FDC) 245
+1 Ashaya, Soul of the Wild (DSC) 170
+1 Avenger of Zendikar (ECC) 98
+1 Azusa, Lost but Seeking (CMM) 274
+1 Beast Within (FDC) 190
+1 Birds of Paradise (DMR) 151
 1 Boseiju, Who Endures
 1 Breeding Pool
-1 Burgeoning
+1 Burgeoning (STH) 102
 1 Command Tower
-1 Conduit of Worlds
-1 Counterspell
-1 Craterhoof Behemoth
-1 Crucible of Worlds
-1 Cultivate
-1 Cultivator Colossus
-1 Cyclonic Rift
-1 Dryad of the Ilysian Grove
-1 Eternal Witness
-1 Exploration
-1 Explore
+1 Conduit of Worlds (TDC) 251
+1 Counterspell (CMM) 81
+1 Craterhoof Behemoth (CMM) 280
+1 Crucible of Worlds (2X2) 303
+1 Cultivate (ECC) 103
+1 Cultivator Colossus (INR) 190
+1 Cyclonic Rift (CMM) 84
+1 Dryad of the Ilysian Grove (CMM) 891
+1 Eternal Witness (CMM) 286
+1 Exploration (USG) 250
+1 Explore (OTC) 192
 1 Fabled Passage
-1 Farseek
+1 Farseek (TDC) 255
 1 Field of the Dead
-1 Fierce Guardianship
-1 Finale of Devastation
+1 Fierce Guardianship (CMM) 94
+1 Finale of Devastation (CMM) 289
 1 Flooded Strand
 7 Forest
-1 Green Sun's Zenith
-1 Growth Spiral
-1 Harrow
+1 Green Sun's Zenith (2X2) 150
+1 Growth Spiral (LCC) 270
+1 Harrow (J25) 668
 1 Hedge Maze
-1 Heroic Intervention
+1 Heroic Intervention (CMM) 295
 1 Hinterland Harbor
-1 Hydroid Krasis
-1 Icetill Explorer
+1 Hydroid Krasis (SOC) 315
+1 Icetill Explorer (EOE) 192
 7 Island
 1 Kodama of the East Tree
-1 Kodama's Reach
-1 Loot, Exuberant Explorer
-1 Lotus Cobra
+1 Kodama's Reach (ECC) 113
+1 Loot, Exuberant Explorer (FDN) 106
+1 Lotus Cobra (ZNR) 193
 1 Lórien Revealed
-1 Mana Drain
+1 Mana Drain (2X2) 57
 1 Misty Rainforest
-1 Mossborn Hydra
-1 Mystic Remora
+1 Mossborn Hydra (FDN) 107
+1 Mystic Remora (DMR) 59
 1 Mystic Sanctuary
-1 Nature's Lore
-1 Nissa, Resurgent Animist
+1 Nature's Lore (SOC) 278
+1 Nissa, Resurgent Animist (MAT) 22
 1 Oboro, Palace in the Clouds
-1 Oko, Thief of Crowns
-1 Oracle of Mul Daya
+1 Oko, Thief of Crowns (ELD) 197
+1 Oracle of Mul Daya (EOC) 102
 1 Otawara, Soaring City
 1 Polluted Delta
 1 Prismatic Vista
-1 Rampaging Baloths
-1 Rampant Growth
-1 Ramunap Excavator
+1 Rampaging Baloths (EOC) 104
+1 Rampant Growth (TDC) 265
+1 Ramunap Excavator (OTC) 202
 1 Rejuvenating Springs
 1 Reliquary Tower
-1 Retreat to Coralhelm
-1 Roil Elemental
-1 Sakura-Tribe Elder
+1 Retreat to Coralhelm (DSC) 126
+1 Roil Elemental (ZEN) 62
+1 Sakura-Tribe Elder (CLB) 832
 1 Scalding Tarn
-1 Scapeshift
-1 Scute Swarm
+1 Scapeshift (M19) 201
+1 Scute Swarm (DSC) 197
 1 Simic Growth Chamber
-1 Sol Ring
+1 Sol Ring (OTC) 267
 1 Spelunking
-1 Springheart Nantuko
-1 Swan Song
-1 Sylvan Library
-1 Tatyova, Benthic Druid
-1 Thought Vessel
-1 Three Visits
-1 Tireless Provisioner
+1 Springheart Nantuko (MH3) 171
+1 Swan Song (C16) 98
+1 Sylvan Library (LEG) 207
+1 Tatyova, Benthic Druid (FDN) 247
+1 Thought Vessel (PLG22) 2
+1 Three Visits (SOC) 289
+1 Tireless Provisioner (MOC) 313
 1 Trade Routes
-1 Traveling Chocobo
+1 Traveling Chocobo (FIN) 210
 1 Tropical Island
 1 Verdant Catacombs
 1 Windswept Heath
-1 Wood Elves
+1 Wood Elves (CMA) 170
 1 Wooded Foothills
 1 Yavimaya Coast
 1 Yavimaya, Cradle of Growth

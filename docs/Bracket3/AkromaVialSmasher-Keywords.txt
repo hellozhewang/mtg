@@ -1,100 +1,100 @@
 1 Akroma, Vision of Ixidor
 1 Agadeem's Awakening
-1 Akroma's Will
+1 Akroma's Will (SOA) 1
 1 Angel of Indemnity
-1 Anguished Unmaking
-1 Arcane Signet
-1 Archivist of Oghma
+1 Anguished Unmaking (SOC) 293
+1 Arcane Signet (FDC) 245
+1 Archivist of Oghma (CLB) 4
 1 Arid Mesa
-1 Aurelia, the Law Above
-1 Aurelia, the Warleader
+1 Aurelia, the Law Above (MKM) 188
+1 Aurelia, the Warleader (FDN) 651
 1 Badlands
-1 Basilisk Collar
-1 Battle Angels of Tyr
+1 Basilisk Collar (DSC) 241
+1 Battle Angels of Tyr (CLB) 9
 1 Battlefield Forge
-1 Black Market Connections
-1 Blasphemous Act
+1 Black Market Connections (LCC) 181
+1 Blasphemous Act (FDC) 140
 1 Blood Crypt
 1 Blood for the Blood God!
 1 Bloodstained Mire
-1 Bolt Bend
-1 Boros Charm
-1 Boros Signet
+1 Bolt Bend (WAR) 115
+1 Boros Charm (FDN) 721
+1 Boros Signet (CMM) 942
 1 Cavern of Souls
 1 Caves of Koilos
-1 Chaos Warp
+1 Chaos Warp (MBC) 72
 1 City of Brass
-1 Clever Concealment
+1 Clever Concealment (ONC) 5
 1 Command Tower
-1 Deadly Rollick
-1 Deflecting Swat
-1 Drana and Linvala
+1 Deadly Rollick (CMM) 147
+1 Deflecting Swat (CMM) 214
+1 Drana and Linvala (MOM) 222
 1 Eiganjo, Seat of the Empire
 1 Elegant Parlor
-1 Ephemerate
-1 Esper Sentinel
+1 Ephemerate (STA) 5
+1 Esper Sentinel (MH2) 12
 1 Exotic Orchard
-1 Fable of the Mirror-Breaker
-1 Fellwar Stone
+1 Fable of the Mirror-Breaker (NEO) 141
+1 Fellwar Stone (MBC) 74
 1 Flooded Strand
-1 Fury
-1 Generous Gift
-1 Giada, Font of Hope
-1 Gisela, Blade of Goldnight
+1 Fury (MH2) 126
+1 Generous Gift (LCC) 128
+1 Giada, Font of Hope (SNC) 14
+1 Gisela, Blade of Goldnight (MKC) 211
 1 Godless Shrine
 1 Hellkite Courser
-1 Kediss, Emberclaw Familiar
+1 Kediss, Emberclaw Familiar (CMR) 188
 1 Knuckles the Echidna
-1 Liesa, Forgotten Archangel
-1 Lightning Greaves
+1 Liesa, Forgotten Archangel (INR) 243
+1 Lightning Greaves (OTC) 260
 1 Luxury Suite
-1 Lyra Dawnbringer
+1 Lyra Dawnbringer (FDN) 738
 1 Mana Confluence
 1 Marsh Flats
 1 Minas Tirith
 1 Mountain
-1 Odric, Lunarch Marshal
-1 Orzhov Signet
-1 Path to Exile
+1 Odric, Lunarch Marshal (INR) 36
+1 Orzhov Signet (TDC) 323
+1 Path to Exile (FRC) 30
 1 Plains
 1 Plateau
 1 Polluted Delta
-1 Professional Face-Breaker
-1 Rakdos Signet
+1 Professional Face-Breaker (SNC) 116
+1 Rakdos Signet (FRC) 60
 1 Raucous Theater
-1 Reanimate
-1 Reprieve
-1 Ruinous Ultimatum
+1 Reanimate (DSC) 155
+1 Reprieve (SOA) 9
+1 Ruinous Ultimatum (IKO) 204
 1 Sacred Foundry
 1 Savai Triome
 1 Scalding Tarn
 1 Scrubland
-1 Serra Ascendant
+1 Serra Ascendant (M11) 28
 1 Sevinne's Reclamation
 1 Shadowy Backstreet
-1 Smothering Tithe
-1 Snuff Out
-1 Sol Ring
-1 Solitude
+1 Smothering Tithe (CMM) 57
+1 Snuff Out (GVL) 53
+1 Sol Ring (SLD) 2783
+1 Solitude (SPG) 49
 1 Spectator Seating
-1 Stinging Study
+1 Stinging Study (C21) 44
 1 Swamp
-1 Swiftfoot Boots
-1 Swords to Plowshares
+1 Swiftfoot Boots (MBC) 77
+1 Swords to Plowshares (FRC) 37
 1 Takenuma, Abandoned Mire
-1 Talisman of Conviction
-1 Talisman of Hierarchy
-1 Talisman of Indulgence
-1 Teferi's Protection
-1 The One Ring
-1 The Vision
-1 Trouble in Pairs
-1 Tymna the Weaver
+1 Talisman of Conviction (TDC) 329
+1 Talisman of Hierarchy (SOC) 358
+1 Talisman of Indulgence (FRC) 63
+1 Teferi's Protection (2X2) 32
+1 The One Ring (LTR) 246
+1 The Vision (MSH) 255
+1 Trouble in Pairs (MKC) 15
+1 Tymna the Weaver (C16) 48
 1 Vault of Champions
 1 Vault of the Archangel
 1 Verdant Catacombs
-1 Vial Smasher the Fierce
-1 Victimize
+1 Vial Smasher the Fierce (DSC) 239
+1 Victimize (TDC) 198
 1 Windswept Heath
-1 Witch Enchanter
+1 Witch Enchanter (MH3) 239
 1 Wooded Foothills

@@ -84,7 +84,7 @@ from deckmeta import DeckAuthorStore
 import frontend
 import toollog
 import workspace
-from cardlib import CardQuery, ImageQuery, SymbolQuery, local_name
+from cardlib import CardQuery, ImageQuery, ScryfallError, SymbolQuery, local_name
 # Same policy as the validator, imported rather than restated: a bracket cap or a
 # land count or mana average that disagreed with the validator would mislead.
 from validate_deck import average_mana_value, gc_cap, land_counts
@@ -156,9 +156,61 @@ def image_file(card: dict, face: int, size: str, url: str) -> str:
 
     Oracle id identifies the card across printings; `id` is the per-printing
     fallback for the rare object that has no oracle id (art series, tokens).
+
+    A printing a decklist pins (see pinned_art) is the exception: it is filed
+    under that printing's own id. It has to be, because another deck shows the
+    same card in its default art and both pictures must exist; and it can be,
+    because a pin names one fixed printing, so the name cannot drift the way a
+    cached "whatever Scryfall returned" printing does.
     """
-    return local_name(card.get("oracle_id") or card.get("id") or "unknown",
-                      face, size, url)
+    return local_name(card.get(PINNED) or card.get("oracle_id") or card.get("id")
+                      or "unknown", face, size, url)
+
+
+PINNED = "pinned_printing_id"
+
+
+def pinned_art(deck: deckfile.Deck, cards: dict[str, dict], q: CardQuery) -> dict[str, dict]:
+    """Show the art of each printing a list pins, e.g. `1 Sol Ring (SLD) 249`.
+
+    Returns `cards` with a COPY of each pinned card carrying that printing's
+    pictures. Only the pictures change: rules text, cost and legality stay the
+    card's own, and the shared card object other decks render is untouched.
+
+    A pin that does not resolve or that names another card is left in default
+    art, as is every pin if Scryfall cannot be reached. Reporting a bad pin is
+    validate_deck.py's job; a cosmetic lookup must not fail a site build.
+    """
+    pins = {name: p for name, p in deck.printings.items() if p.number and name in cards}
+    if not pins:
+        return cards
+    try:
+        found = q.printings([(p.set, p.number) for p in pins.values()])
+    except ScryfallError as exc:
+        print(f"warning: pinned art not loaded for {deck.path.name} ({exc})", file=sys.stderr)
+        return cards
+    out = dict(cards)
+    for name, p in pins.items():
+        card, hit = cards[name], found.get((p.set, p.number))
+        ours = {card.get("oracle_id")} | {f.get("oracle_id") for f in card.get("card_faces") or []}
+        if not hit or not (ours - {None}) & set(hit["oracle_ids"]):
+            continue
+        if hit["id"] == card.get("id"):
+            # The pin IS the printing we already show. Leave the shared object
+            # alone: collect_images keeps one file per image URL, so filing the
+            # same picture under a second name would leave one of them unwritten.
+            continue
+        shown = {**card, PINNED: hit["id"]}
+        if hit["image_uris"]:
+            shown["image_uris"] = hit["image_uris"]
+        elif len(hit["face_images"]) == len(card.get("card_faces") or []):
+            shown.pop("image_uris", None)
+            shown["card_faces"] = [{**f, "image_uris": uris}
+                                   for f, uris in zip(card["card_faces"], hit["face_images"])]
+        else:
+            continue
+        out[name] = shown
+    return out
 
 
 def art_sets(card: dict) -> list[dict]:
@@ -253,8 +305,12 @@ class DeckInfo:
                  tier_assignments: dict[str, str] | None = None):
         self.path = path
         self.created = created
+        # Date AND time, so decks added the same day still read in order. Written
+        # in UTC so the build is the same on every machine; app.js rewrites it in
+        # each visitor's own timezone. Git records the time for every deck, so
+        # none needs a guessed 00:00.
         self.created_label = (datetime.fromtimestamp(created, timezone.utc)
-                              .strftime("%Y-%m-%d") if created else "")
+                              .strftime("%Y-%m-%d %H:%M") if created else "")
         self.rel = path.resolve().relative_to(root)
         self.private = private
         # DeckAuthorStore is keyed on the path relative to the deck root, so
@@ -285,6 +341,7 @@ class DeckInfo:
         self.depth = self.href.count("/")
         self.deck = deckfile.parse(path)
         self.cards, self.missing = q.cards(self.deck.names)
+        self.cards = pinned_art(self.deck, self.cards, q)
         self.raw = path.read_text(encoding="utf-8")
         self.guide = deckguide.load(path)
         # A guide may name a card the deck does not run — a card it beat, or one
@@ -415,7 +472,9 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
             TIER_BADGE=tier_badge(index, d.tier),
             THEMES=e(" ".join(shown)),
             THEME_TAGS="".join(index.part("theme-tag").render(
-                LABEL=e(deckthemes.THEMES[t].label)) for t in shown),
+                LABEL=e(deckthemes.THEMES[t].label),
+                CLASS=" private" if deckthemes.THEMES[t].private_only else "")
+                for t in shown),
             TAG=index.part("tag").render() if d.private else "",
             AUTHOR=(f'        <span class="tile-author">by {e(d.author)}</span>\n'
                     if d.author else ""),
@@ -423,8 +482,9 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
             # author makes a username a first-class filter with no second state.
             # "private" goes in as a word, which makes the search box a filter for
             # unpublished decks with no extra control to build.
-            CREATED=(f'<span class="chip date" data-tip="When this deck was '
-                     f'first added to the collection.">{e(d.created_label)}</span>'
+            CREATED=(f'<span class="chip date" data-ts="{d.created}" data-tip="When this '
+                     f'deck was first added to the collection, in your local time.">'
+                     f'{e(d.created_label)} UTC</span>'
                      if d.created_label else ""),
             # The date joins data-search too, so typing "2026-08" in the box
             # filters the catalog to that month at no extra cost.
@@ -463,9 +523,11 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
             continue
         sections.append(index.part("strategy").render(
             THEME=e(key), LABEL=e(theme.label), DESCRIPTION=e(theme.description),
+            # Private-only categories carry the same badge as private decks.
+            PRIVATE=index.part("category-private").render() if theme.private_only else "",
             BRACKETS="".join(brackets)))
     options = "".join(index.part("theme-option").render(
-        VALUE=e(key), LABEL=e(theme.label))
+        VALUE=e(key), LABEL=e(theme.label + (" (private)" if theme.private_only else "")))
         for key, theme in deckthemes.THEMES.items() if key in active_themes)
     brackets = "".join(index.part("list-bracket").render(
         BRACKET=e(bracket_label(bracket)), BRACKET_ID=e(bracket),
@@ -827,6 +889,9 @@ def plan(root: Path, out_dir: Path, repo: str, q: CardQuery,
     }
     for d in decks:
         files[out_dir / d.href] = render_deck(tpl, d, decks, repo, mana)
+        # The bare list beside each page, so the Random button can fetch ~2 KB
+        # ahead of the click instead of a whole deck page.
+        files[(out_dir / d.href).with_suffix(".txt")] = d.raw
     files.update(image_files)
     files.update(collect_symbols(mana, sym, out_dir))   # after render: needs .used
     return files

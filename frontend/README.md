@@ -28,11 +28,15 @@ text (.78rem). Theme chips use teal. Rows aligns deck identity, mana, themes, an
 in columns, stacking them on smaller screens. Keep each theme a separate chip.
 
 **Random** (topbar, every page) draws from the deck picker's own options, minus
-the current deck. It fetches the chosen page, copies its `.rawlist` with a
-promise-valued `ClipboardItem` started inside the click (Safari needs that;
-`writeText` after the fetch is the fallback), then opens the page with
-`?random=copied` or `?random=manual`. The page shows a one-line note and strips
-the query.
+the current deck, when the page loads, and prefetches that deck's bare `.txt`
+list, which the build writes beside every deck page. The click then copies
+synchronously, like Copy decklist: `writeText` in a secure context, otherwise
+`execCommand('copy')`, the only option on plain `http` from another device on
+the network. If the list is not back yet, a promise-valued `ClipboardItem` tries
+to keep the click's permission. The page opens with `?random=copied` or
+`?random=manual`. It shows a one-line note, with a one-click Copy decklist when
+the automatic copy failed (always on `file://`, where fetch is blocked), then
+strips the query.
 
 Hover a deck name, commander name, or tile artwork to preview the commander's
 full card at up to 360px wide. Keyboard focus on a deck link also shows it;
@@ -46,7 +50,9 @@ must be one of those eight.
 **Goblins** is a private-only eighth: Goblin decks carry `goblins` as a secondary
 tag, and only the local catalog renders a Goblins section. Its tiles are static
 copies with class `mirror`, which the script never moves and the result count
-skips; the real tile stays in the deck's canonical category. The published build
+skips; the real tile stays in the deck's canonical category. A private-only
+category is marked like a private deck: the `private` chip on its heading, a
+dashed warn-coloured `.theme-tag.private` on tiles, and "(private)" in the filter. The published build
 drops the tag from chips, filters and `data-themes`. See the placement guide for
 the full rule.
 

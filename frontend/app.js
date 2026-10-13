@@ -406,40 +406,82 @@
     });
   }
 
+  /* ---- local times ------------------------------------------------------- */
+  // The build writes creation times in UTC so its output is the same on every
+  // machine; show each visitor their own clock instead.
+  function initLocalTimes() {
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+    toArray(document.querySelectorAll('[data-ts]')).forEach(function (el) {
+      var when = new Date(Number(el.dataset.ts) * 1000);
+      if (isNaN(when.getTime())) return;
+      el.textContent = when.getFullYear() + '-' + pad(when.getMonth() + 1) + '-'
+        + pad(when.getDate()) + ' ' + pad(when.getHours()) + ':' + pad(when.getMinutes());
+    });
+  }
+
   /* ---- random deck -------------------------------------------------------- */
   // One button in the topbar of every page. It draws from the deck picker's own
   // options (already on every page, hrefs already relative to it, the current
-  // deck excluded), copies that deck's list, then opens its page. The list comes
-  // from the destination's own .rawlist, fetched, so no page carries every
-  // decklist just in case.
+  // deck excluded), copies that deck's list, then opens its page.
   //
-  // The copy has to START inside the click: Safari refuses a clipboard write
-  // that begins after an await. A ClipboardItem whose data is a promise keeps
-  // that permission while the fetch runs; writeText after the fetch is the
-  // fallback for browsers without it (Chrome still counts the click for a few
-  // seconds). Neither works on file://, so the page then says to copy by hand.
+  // The deck is drawn when the PAGE loads, and its list (a small .txt the build
+  // writes beside every deck page) is fetched in the background. That way the
+  // click can copy synchronously, exactly like Copy decklist does: a clipboard
+  // write that starts after an await is refused by Safari, and on plain http
+  // (the private catalog opened from another device on the network)
+  // navigator.clipboard does not exist at all, leaving only execCommand, which
+  // must run inside the click. If the list is not back yet when the click
+  // lands, a promise-valued ClipboardItem tries to keep the click's permission
+  // while the fetch finishes. When everything fails (file://, where fetch is
+  // blocked) the deck page offers a one-click copy instead.
   function initRandomDeck() {
-    var button = document.querySelector('.btn[data-random]');
+    var button = document.querySelector('[data-random]');
     var picker = document.querySelector('.deckpicker');
     if (!button || !picker) return;
-    button.addEventListener('click', function () {
-      var choices = toArray(picker.options).filter(function (o) { return o.value && !o.selected; });
-      if (!choices.length) return;
-      var href = choices[Math.floor(Math.random() * choices.length)].value;
-      button.disabled = true;
-      var list = fetch(href).then(function (response) {
-        if (!response.ok) throw new Error('HTTP ' + response.status);
-        return response.text();
-      }).then(function (html) {
-        var raw = new DOMParser().parseFromString(html, 'text/html').querySelector('.rawlist');
-        if (!raw) throw new Error('no decklist on ' + href);
-        return raw.value;
-      });
-      copyWhenReady(list).then(function () { return 'copied'; }, function () { return 'manual'; })
-        .then(function (state) {
-          location.href = href + (href.indexOf('?') === -1 ? '?' : '&') + 'random=' + state;
-        });
+    var choices = toArray(picker.options).filter(function (o) { return o.value && !o.selected; });
+    if (!choices.length) return;
+    var href = choices[Math.floor(Math.random() * choices.length)].value;
+    var ready = null;
+    var pending = fetch(href.replace(/\.html$/, '.txt')).then(function (response) {
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      return response.text();
     });
+    pending.then(function (text) { ready = text; }, function () { /* handled at click */ });
+
+    button.addEventListener('click', function () {
+      button.disabled = true;
+      button.classList.add('rolling');
+      var copied = ready !== null ? copyNow(ready) : copyWhenReady(pending);
+      copied.then(function () { return 'copied'; }, function () { return 'manual'; })
+        .then(function (state) { location.href = href + '?random=' + state; });
+    });
+  }
+
+  // Synchronous, inside the click: the async API where the page is a secure
+  // context, otherwise the same execCommand fallback Copy decklist uses.
+  function copyNow(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text).catch(function () {
+        if (!execCopy(text)) throw new Error('copy refused');
+      });
+    }
+    return execCopy(text) ? Promise.resolve() : Promise.reject(new Error('copy refused'));
+  }
+
+  function execCopy(text) {
+    var area = document.createElement('textarea');
+    area.value = text;
+    area.setAttribute('readonly', '');
+    area.style.position = 'fixed';
+    area.style.top = '-1000px';
+    area.style.opacity = '0';
+    document.body.appendChild(area);
+    area.select();
+    area.setSelectionRange(0, text.length);           // iOS ignores select() alone
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    document.body.removeChild(area);
+    return ok;
   }
 
   function copyWhenReady(textPromise) {
@@ -467,9 +509,24 @@
     var note = document.createElement('p');
     note.className = 'random-notice' + (match[1] === 'manual' ? ' manual' : '');
     note.setAttribute('role', 'status');
-    note.textContent = match[1] === 'copied'
-      ? '\uD83C\uDFB2 Random pick: the decklist is on your clipboard, ready to paste.'
-      : '\uD83C\uDFB2 Random pick. The browser blocked the copy, so use Copy decklist below.';
+    if (match[1] === 'copied') {
+      note.textContent = '🎲 Random pick: the decklist is on your clipboard, ready to paste.';
+    } else {
+      // The automatic copy was refused, but a click on this page is allowed to
+      // copy, so offer that click right here instead of pointing elsewhere.
+      note.appendChild(document.createTextNode('🎲 Random pick. The automatic copy was blocked here, so one more click: '));
+      var copy = document.createElement('button');
+      copy.type = 'button';
+      copy.className = 'btn';
+      copy.textContent = 'Copy decklist';
+      copy.addEventListener('click', function () {
+        var deckCopy = document.querySelector('.btn[data-copy]');
+        if (deckCopy) deckCopy.click();
+        note.className = 'random-notice';
+        note.textContent = '🎲 Random pick: the decklist is on your clipboard, ready to paste.';
+      });
+      note.appendChild(copy);
+    }
     // Under the deck's title and commander line, where the eye lands first.
     var sub = main.querySelector('.sub');
     main.insertBefore(note, sub ? sub.nextSibling : main.firstChild);
@@ -627,6 +684,7 @@
 
   /* ---- start --------------------------------------------------------------- */
   initDeckPicker();
+  initLocalTimes();
   initRandomDeck();
   initRandomNotice();
   var catalogState = initCatalogState();

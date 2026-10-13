@@ -11,10 +11,17 @@
     <option value="">Jump to a deck&hellip;</option>
     {{PICKER}}
   </select>
-  <button class="btn random-deck" type="button" data-random
-          aria-label="Open a random deck and copy its decklist">&#127922; Random</button>
   <input class="search" type="search" placeholder="Search&hellip;  /"
          aria-label="Filter decks and cards" autocomplete="off" spellcheck="false">
+  <button class="random-deck" type="button" data-random
+          aria-label="Open a random deck and copy its decklist">
+    <svg class="dice" viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="4.5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="8.2" cy="8.2" r="1.6" fill="currentColor"/><circle cx="15.8" cy="8.2" r="1.6" fill="currentColor"/>
+      <circle cx="12" cy="12" r="1.6" fill="currentColor"/>
+      <circle cx="8.2" cy="15.8" r="1.6" fill="currentColor"/><circle cx="15.8" cy="15.8" r="1.6" fill="currentColor"/>
+    </svg><span class="random-label">Random deck</span>
+  </button>
   <a class="repo" href="{{REPO}}" target="_blank" rel="noopener">Repo&nbsp;&#8599;</a>
 </header>
 {{MAIN}}

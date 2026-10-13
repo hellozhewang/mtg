@@ -29,6 +29,11 @@ DEFAULT_DB = Path(
 ).expanduser()
 
 
+# Bump when `CardQuery.printings` keeps a different set of fields, so entries
+# cached under the old shape are fetched again.
+PRINTING_FIELDS = 2
+
+
 class CardQuery:
     """Cache-aware card access. The single entry point for business logic."""
 
@@ -39,6 +44,8 @@ class CardQuery:
         self.store = store or CardStore(db_path, ttl_days)
         self.api = api or ScryfallAPI()
         self.hits = self.misses = 0
+        self.db_path = db_path
+        self._printings: PageStore | None = None
 
     # ---------- reads ----------
 
@@ -69,6 +76,45 @@ class CardQuery:
     def card(self, name: str) -> dict | None:
         found, _ = self.cards([name])
         return found.get(name)
+
+    def printings(self, pairs: list[tuple[str, str]]) -> dict[tuple[str, str], dict | None]:
+        """Look up exact printings by (SET, collector number); None if unknown.
+
+        Kept OUT of the card store on purpose. That store holds one object per
+        card, the printing every page and thumbnail is built from, so banking a
+        pinned printing there would quietly swap the art across the whole site.
+        A printing never changes once released, hence the year-long page cache;
+        an unknown pair is not cached, since the set may simply not be out yet.
+        """
+        if self._printings is None:
+            self._printings = PageStore(self.db_path, ttl_hours=24 * 365)
+        out: dict[tuple[str, str], dict | None] = {}
+        todo = []
+        for pair in dict.fromkeys((s.upper(), n) for s, n in pairs):
+            hit = self._printings.get(f"scryfall:printing/{pair[0]}/{pair[1]}")
+            if hit is None or hit.get("v") != PRINTING_FIELDS:
+                todo.append(pair)
+            else:
+                out[pair] = hit
+        if todo:
+            for card in self.api.printings(todo):
+                pair = (card["set"].upper(), card["collector_number"])
+                slim = {k: card.get(k) for k in ("id", "name", "oracle_id", "set", "collector_number")}
+                slim["v"] = PRINTING_FIELDS
+                # A reversible card's two faces are different cards under one printing.
+                slim["oracle_ids"] = sorted({card.get("oracle_id")} | {
+                    f.get("oracle_id") for f in card.get("card_faces") or []} - {None})
+                # The pictures, in the two shapes Scryfall uses: on the card, or one
+                # set per face for a card whose faces are separate images.
+                slim["image_uris"] = card.get("image_uris")
+                slim["face_images"] = [f["image_uris"] for f in card.get("card_faces") or []
+                                       if f.get("image_uris")]
+                out[pair] = slim
+                try:
+                    self._printings.put(f"scryfall:printing/{pair[0]}/{pair[1]}", slim)
+                except Exception:               # read-only cache: still answer
+                    pass
+        return {pair: out.get(pair) for pair in dict.fromkeys((s.upper(), n) for s, n in pairs)}
 
     def search(self, query: str, order: str = "edhrec",
                limit: int | None = None) -> tuple[list[dict], int, int]:

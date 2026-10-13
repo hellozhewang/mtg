@@ -130,7 +130,9 @@ The tag works differently in the two catalogs:
 - **Local (private) catalog:** each Goblin deck appears in its canonical category
   AND in a Goblins section (Goblins → bracket → decks), for public and private
   Goblin decks alike. The Goblins copy is a mirror: it is not moved between
-  views and does not add to the deck count. Goblins also appears in the filter.
+  views and does not add to the deck count. The category is marked private
+  everywhere: a private badge on its heading, a dashed warn-coloured chip on
+  each tile, and "Goblins (private)" in the filter.
 - **Published catalog:** the tag is ignored. No Goblins section, chip or filter
   option; Krenko-Combo sits only under Combo.
 
@@ -150,18 +152,22 @@ a reviewed explicit entry.
 Without an explicit entry, the renderer matches the word after the last hyphen
 against `HINTS` in `scripts/deckthemes.py` (for example `-Prison` gives
 `control` and `-Reanimator` gives `graveyard`); an unknown word falls back to
-`other`, which is a reason to add a reviewed entry, not a placement. A statement in a `.guide` or a chat message does not update the map.
+`other`, which is a reason to add a reviewed entry, not a placement. A statement in a `.guide` does not update the map; the one chat line that does is the Discord builder's `Categories:` line (below).
 Unknown IDs, a non-canonical primary, empty arrays and repeated IDs fail the build.
 
 ## Discord builder access
 
 The bot's builder works in `public/` and cannot write `frontend/` or `scripts/`.
 It can read this guide, the public map and the classifier. Choose an honest
-filename theme word for a new deck, and in the handoff give the exact stem and
-ordered IDs from the fixed set, for example:
-`Krenko-Combo: combo, gowide, goblins`. State that the map still needs a
-full-workspace update. Do not claim the categories were saved, and do not invent
-a category outside the fixed set.
+filename theme word for a new deck, and end the handoff with the exact stem and
+ordered IDs from the fixed set on a line of their own, for example
+`Categories: Krenko-Combo — combo, gowide, goblins`.
+
+`bot/bot.py` saves that line to `frontend/deck-themes.json` after the turn
+(`scripts/deckplacement.py`), but only for a deck whose `.txt` or `.guide` the
+turn wrote, and only when the IDs pass the same checks as the build. Anything
+else is logged as `PLACEMENT … ignored` in the bot log and left for a
+maintainer. Never invent a category outside the fixed set.
 
 ## Finish and verify
 

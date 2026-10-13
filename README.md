@@ -13,7 +13,8 @@ dependencies beyond the standard library:
 | [`new_deck.py`](scripts/new_deck.py) | seed a decklist from EDHREC's aggregate for a commander |
 | [`find_cards.py`](scripts/find_cards.py) | search Scryfall, or look cards up by name |
 | [`find_inspiration.py`](scripts/find_inspiration.py) | what other pilots of a commander run that yours doesn't |
-| [`validate_deck.py`](scripts/validate_deck.py) | 100 cards, real names, colour identity, bracket legality, singleton |
+| [`validate_deck.py`](scripts/validate_deck.py) | 100 cards, real names, colour identity, bracket legality, singleton, and that Tabletop Simulator's importer loads it |
+| [`ttsimport.py`](scripts/ttsimport.py) | ask the Tabletop Simulator deck importer what a pasted list loads as |
 
 Every deck targets a **Commander bracket** and has to obey its restrictions, which
 is what most of this document is about. The bracket rules themselves live in
@@ -204,6 +205,12 @@ One `.txt` per deck, importable directly by a client that reads decklists.
 - Double-faced cards use the **front face only** (`Agadeem's Awakening`, not
   `Agadeem's Awakening // Agadeem, the Undercrypt`)
 - Exactly **100 cards** counting the commander
+- Optionally, a **pinned printing** at the end of a line: `1 Sol Ring (SLD) 249`
+  (set code in parentheses, then the collector number; the number may be left
+  off). This is the form Arena and Moxfield export, and the one Tabletop
+  Simulator's deck importer reads, so the pasted list loads that exact art. The
+  quantity in front is required by the importer. A pin never changes the card:
+  every tool reads the line as `Sol Ring`. The catalog still shows default art.
 - Cards whose Oracle text permits any number of copies, such as **Rat Colony**
   and **Relentless Rats**, may repeat. Write them as one quantity line, such as
   `25 Rat Colony`; color identity and format legality still apply.
@@ -383,7 +390,8 @@ coasting.
 
 ### Validating — `scripts/validate_deck.py`
 
-**Required before calling any deck done.** Checks all six rules:
+**Required before calling any deck done.** Checks six rules, then two things
+about how the list loads in Tabletop Simulator:
 
 1. Exactly **100 cards** including the commander
 2. Every name **resolves on Scryfall** (catches typos that would fail import)
@@ -392,6 +400,17 @@ coasting.
 5. **Game Changer count** within the bracket cap (inferred from folder name)
 6. **Singleton** — nonbasic duplicates require the card's own Oracle permission
    for unlimited copies; no repeated lines
+7. Every **pinned printing** exists and is that card. A wrong pin does not error
+   in Tabletop Simulator, it silently loads other art, so it is an error here.
+8. **The Tabletop Simulator importer loads the whole deck.** Once 1–7 pass, the
+   list is sent to the importer the table uses (rikrassen's, via
+   [`ttsimport.py`](scripts/ttsimport.py)) and the reply is checked: no
+   "failed to find card", all 100 cards returned, and each pin loaded as the
+   printing asked for. The line `TTS import 100/100 cards, 52/52 pinned printings
+   load` reports it. Replies are cached by the exact text sent, so an unchanged
+   deck is not sent twice. If the importer's server cannot be reached the deck
+   still passes and the line says it was not checked. `--no-import` (or
+   `MTG_NO_IMPORT=1`) skips the step.
 
 Legality is read from each card's own `legalities.commander`, not from a list
 copied into this repo, so it tracks Wizards' updates the day Scryfall does. The
@@ -420,8 +439,8 @@ with the list grouped by card type, a mana curve, hover-to-preview card images, 
 click-to-enlarge view (with a flip button for double-faced cards), a gallery mode
 and a copy-the-decklist button. The **Random** button in the top bar of every
 page picks a deck at random, copies its decklist to the clipboard, and opens its
-page with a note saying whether the copy worked (browsers refuse the clipboard on
-`file://`, so open the site over HTTP). Decks created through Discord also show the
+page with a note saying so. It works over HTTPS, `localhost`, and plain `http` on
+the local network; from a `file://` page the note offers a one-click copy instead. Decks created through Discord also show the
 Discord user who requested them; the catalog search matches those usernames, so
 typing an author filters the deck cards the same way typing a commander does.
 
@@ -665,6 +684,26 @@ in the same colours, first try. Go looking; don't just rank what's already there
 
 ---
 
+## Builder usage
+
+Use **`/builder-usage`**, **`!builder-usage`**, or **`builder usage`** in Discord
+to see the builder's configured model, remaining account allowance, and reset
+times. The command works while a build is running and does not start a model turn.
+From the terminal:
+
+```bash
+python3 bot/bot.py --usage
+```
+
+Every builder chat reply includes a usage footer, including busy/error replies.
+The Discord deck commands show usage separately from the importable decklist.
+Allowance is read from the signed-in Codex account through
+[`account/rateLimits/read`](https://learn.chatgpt.com/docs/app-server#6-rate-limits-chatgpt),
+with separate percentages for the returned windows (typically five hours and a
+week). These are shared account limits, not a count of messages or tokens left
+for this bot alone. Discord renders resets in each reader's local time. If the
+lookup fails, the reply says usage is unavailable rather than guessing a number.
+
 ## Layout
 
 ```
@@ -677,14 +716,16 @@ mtg/
 │   │   ├── db.py                SQLite storage (CardStore + PageStore + ImageStore)
 │   │   └── query.py             orchestration (CardQuery + EdhrecQuery + ImageQuery)
 │   ├── workspace.py           owns all path policy (deck root, cache, metadata)
-│   ├── deckfile.py            .txt decklist format, read and write
+│   ├── deckfile.py            .txt decklist format (incl. pinned printings), read and write
 │   ├── deckmeta.py            trusted SQLite deck-author mapping
 │   ├── frontend.py            {{TOKEN}} + <template data-part> loader
 │   ├── toollog.py             tool-invocation log: API + CLI over SQLite
 │   ├── find_cards.py          Scryfall search with bracket rules applied
 │   ├── new_deck.py            seed a decklist from EDHREC's aggregate
 │   ├── find_inspiration.py    what other pilots run that yours doesn't
-│   ├── validate_deck.py       the five required checks
+│   ├── validate_deck.py       the required checks, including the TTS import
+│   ├── ttsimport.py           client for the Tabletop Simulator deck importer
+│   ├── deckplacement.py       saves the builder's Categories:/Tier: lines to the maps
 │   ├── build_site.py          renders frontend/ + public/ into docs/
 │   ├── cache.py               cache admin CLI
 │   ├── build_agents.py        HOLDS the agent's instructions (AGENTS_MD) and
@@ -704,6 +745,7 @@ mtg/
 ├── bot/                     the harness — OUTSIDE the workspace it drives
 │   ├── bot.py                 persistent Codex session the Discord app calls
 │   ├── commands.py            deterministic !decks / !deck / !help
+│   ├── usage.py               read-only Codex allowance lookup (no model turn)
 │   ├── .sessions/             one pinned session UUID per Discord channel
 │   └── .deck-metadata.db      generated trusted deck-author provenance
 ├── public/                  THE WORKSPACE — the only writable tree

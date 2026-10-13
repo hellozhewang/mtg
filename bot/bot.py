@@ -9,6 +9,7 @@ Or from a shell, for testing:
     ./bot.py --user discord_username "swap Moat out of Zur-Voltron for something legal"
     ./bot.py --reset            # start a fresh session
     ./bot.py --status
+    ./bot.py --usage            # account allowance; no model turn
 
 One long-lived Codex session is pinned PER CHANNEL. State lives in
 `.sessions/<channel>.json`; the first call for a channel records its session UUID
@@ -79,12 +80,14 @@ REPO = HERE.parent
 sys.path.insert(0, str(REPO / "scripts"))
 import build_agents
 import deckfile
+import deckplacement
 from deckmeta import DeckAuthorStore, created_paths
 import toollog
 import workspace
 
 import commands
 import postprocess
+import usage
 
 # Ask workspace.py; do NOT derive these from __file__. bot/ sits outside the tree
 # it drives, so `HERE.parent` is the repo root — using it as the workspace would
@@ -728,6 +731,14 @@ def _finish(chan: str, username: str, decks_before: dict[str, int | None], answe
             "AUTHOR-SYNC [%s/%s] skipped (%s: %s)",
             chan, username, type(exc).__name__, exc,
         )
+    # The sandbox cannot write the catalog maps, so the reply's `Categories:` and
+    # `Tier:` lines are saved here, before autopush rebuilds the site with them.
+    try:
+        touched = deckplacement.touched_stems(WORKSPACE, started)
+        for note in deckplacement.save(answer, touched, workspace.frontend_dir()):
+            log().info("PLACEMENT [%s] %s", chan, note)
+    except Exception as exc:                # never let bookkeeping eat the reply
+        log().warning("PLACEMENT [%s] skipped (%s: %s)", chan, type(exc).__name__, exc)
     _autopush(chan)
     # Expand [[card:Name]] tags into card images. Model replies ONLY -- the
     # deterministic commands return text a user pastes into a deck importer, and
@@ -797,7 +808,7 @@ def _run(args: list[str], out_file: Path, chan: str) -> tuple[str, str]:
 
 
 def send(message: str, username: str,
-         channel: str | int | None = DEFAULT_CHANNEL) -> str:
+         channel: str | int | None = DEFAULT_CHANNEL, *, discord: bool = False) -> str:
     """Send one message to `channel`'s pinned session and return Codex's reply.
 
     Each Discord channel (or thread) gets its own long-lived Codex session, so
@@ -816,6 +827,12 @@ def send(message: str, username: str,
     # Full prompt, newlines escaped so one request stays one greppable line.
     log().info("PROMPT [%s/%s] %s", chan, _oneline(username), _oneline(message))
 
+    if message.strip().lower() in usage.USAGE_COMMANDS:
+        return usage.report(SANDBOX_EXEC_PATH, MODEL, discord=discord)
+
+    def with_usage(reply: str) -> str:
+        return reply + "\n\n" + usage.report(SANDBOX_EXEC_PATH, MODEL, discord=discord)
+
     # Deterministic commands short-circuit the model: a decklist has to be
     # byte-exact to import cleanly, and listing files needs no inference.
     canned = commands.handle(message)
@@ -833,7 +850,7 @@ def send(message: str, username: str,
         busy = _claim_bot()
     except Busy:
         log().info("BUSY   [%s] refused; already busy", chan)
-        return BUSY_REPLY
+        return with_usage(BUSY_REPLY)
 
     changed, status = build_agents.build()  # redeploy AGENTS.md 0444 before codex reads
     log().log(logging.INFO if changed else logging.DEBUG, "agents.md: %s", status)
@@ -853,7 +870,7 @@ def send(message: str, username: str,
                        chan, sid, MODEL, EFFORT)
             args = _base_args() + ["-o", str(out_file), "resume", sid, "--", message]
             answer, combined = _run(args, out_file, chan)
-            return _finish(chan, username, decks_before, answer, combined, started)
+            return with_usage(_finish(chan, username, decks_before, answer, combined, started))
 
         # No session pinned yet. Take the lock, then re-check: a concurrent call
         # may have created and pinned one while we waited, in which case resume it
@@ -865,7 +882,7 @@ def send(message: str, username: str,
                            chan, sid)
                 args = _base_args() + ["-o", str(out_file), "resume", sid, "--", message]
                 answer, combined = _run(args, out_file, chan)
-                return _finish(chan, username, decks_before, answer, combined, started)
+                return with_usage(_finish(chan, username, decks_before, answer, combined, started))
 
             log().info("[%s] no pinned session; opening a new one (model=%s effort=%s)",
                        chan, MODEL, EFFORT)
@@ -886,7 +903,7 @@ def send(message: str, username: str,
         # Same tail as the two resume paths above — a fresh session is where a
         # deck is most likely to be CREATED, so skipping this skipped autopush
         # exactly when it mattered most.
-        return _finish(chan, username, decks_before, answer, combined, started)
+        return with_usage(_finish(chan, username, decks_before, answer, combined, started))
     except Exception as exc:                       # log the failure, then re-raise
         log().error("FAILED [%s] after %dms: %s: %s", chan,
                     int((time.time() - started) * 1000),
@@ -911,9 +928,15 @@ def main() -> int:
     ap.add_argument("--reset-all", action="store_true",
                     help="drop every channel's pinned session")
     ap.add_argument("--status", action="store_true", help="show all pinned sessions")
+    ap.add_argument("--usage", action="store_true", help="show remaining Codex allowance without a model turn")
+    ap.add_argument("--discord", action="store_true", help="format usage reset times for Discord")
     ap.add_argument("--tail", type=int, nargs="?", const=20, metavar="N",
                     help="print the last N log lines (default 20)")
     args = ap.parse_args()
+
+    if args.usage:
+        print(usage.report(SANDBOX_EXEC_PATH, MODEL, discord=args.discord))
+        return 0
 
     if args.reset_all:
         n = reset_all()
@@ -955,14 +978,15 @@ def main() -> int:
         return 0
 
     if not args.message:
-        ap.error("give a message, or use --status / --reset / --reset-all / --tail")
+        ap.error("give a message, or use --usage / --status / --reset / --reset-all / --tail")
     if not args.user:
         ap.error("--user is required when sending a message")
 
     try:
-        print(send(args.message, args.user, channel=args.channel))
+        print(send(args.message, args.user, channel=args.channel, discord=args.discord))
     except (CodexError, subprocess.TimeoutExpired) as exc:
         print(f"error: {exc}", file=sys.stderr)
+        print(usage.report(SANDBOX_EXEC_PATH, MODEL, discord=args.discord), file=sys.stderr)
         return 1
     return 0
 

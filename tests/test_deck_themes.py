@@ -114,7 +114,9 @@ class DeckThemeTests(unittest.TestCase):
                                         "https://example.test", Mana())
         catalog = Catalog(local)
         self.assertEqual(len(catalog.tiles), 3)            # one real tile per deck
-        self.assertIn('value="goblins">Goblins</option>', local)
+        self.assertIn('value="goblins">Goblins (private)</option>', local)
+        self.assertIn('<span class="theme-tag private">Goblins</span>', local)
+        self.assertEqual(local.count('data-tip="Local catalog only. This category is never published."'), 1)
         self.assertEqual(local.count('class="tile mirror"'), 2)
         goblins = [groups for groups in catalog.sections
                    if groups[0].get("data-theme") == "goblins"]

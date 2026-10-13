@@ -6,6 +6,7 @@
     ./validate_deck.py ../Bracket3/Zur*.txt  # specific files
     ./validate_deck.py --max-gc 0 ../Bracket1
     ./validate_deck.py --no-cache            # bypass SQLite, always hit the API
+    ./validate_deck.py --no-import           # skip the Tabletop Simulator importer
 
 Checks (all must pass, see README.md):
   1. exactly 100 cards including the commander
@@ -15,6 +16,9 @@ Checks (all must pass, see README.md):
   4. every card is inside the commander's colour identity
   5. Game Changer count within the bracket cap
   6. singleton, except Oracle text allowing unlimited copies; no repeated lines
+  7. a pinned printing (`1 Sol Ring (SLD) 249`) exists and is that card
+  8. Tabletop Simulator's deck importer loads the whole list, pins included --
+     asked of the importer itself (ttsimport.py), once the deck passes 1-7
 
 This module is business logic only: decklist parsing lives in deckfile.py and all
 card data access goes through cardlib.CardQuery.
@@ -28,8 +32,11 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+import os
+
 import deckfile
 import toollog
+import ttsimport
 import workspace
 from cardlib import CardQuery
 
@@ -163,8 +170,76 @@ def check(deck: deckfile.Deck, cards: dict[str, dict], missing: list[str],
     return problems, identity, gcs
 
 
+def _oracle_ids(card: dict) -> set[str]:
+    """A card's oracle id, or its faces' ids for the layouts that keep them there."""
+    return {card.get("oracle_id")} | {f.get("oracle_id")
+                                       for f in card.get("card_faces") or []} - {None}
+
+
+def printing_problems(deck: deckfile.Deck, cards: dict[str, dict],
+                      q: CardQuery) -> tuple[list[str], dict[str, str]]:
+    """Check the printings a list pins, e.g. `1 Sol Ring (SLD) 249`.
+
+    Returns (problems, {card name: Scryfall id of its pinned printing}). A pin is
+    only cosmetic, but a wrong one fails silently in Tabletop Simulator: the
+    importer loads some other art without a word. So a set and number that do not
+    exist, or that belong to a different card, are errors here.
+    """
+    pinned = [(e.name, e.printing) for e in deck.entries if e.printing and e.name in cards]
+    exact = [(name, p) for name, p in pinned if p.number]
+    found = q.printings([(p.set, p.number) for _, p in exact]) if exact else {}
+    unknown, wrong, ids = [], [], {}
+    for name, p in exact:
+        hit = found.get((p.set, p.number))
+        if hit is None:
+            unknown.append(f"{name} {p}")
+        elif not _oracle_ids(cards[name]) & set(hit["oracle_ids"]):
+            wrong.append(f"{name} {p} is {hit['name']}")
+        else:
+            ids[name] = hit["id"]
+    for name, p in pinned:
+        if p.number:
+            continue
+        # Set only: any printing of the card in that set will do. Straight to the
+        # API, because a banked search result would replace the card's stored art.
+        front = cards[name]["name"].split(" // ")[0]
+        hits, _ = q.api.search(f'!"{front}" set:{p.set.lower()}', unique="prints", limit=1)
+        if not hits:
+            unknown.append(f"{name} {p}")
+    problems = []
+    if unknown:
+        problems.append("unknown printing: " + ", ".join(unknown))
+    if wrong:
+        problems.append("printing is a different card: " + ", ".join(wrong))
+    return problems, ids
+
+
+def import_check(deck: deckfile.Deck, text: str,
+                 pinned: dict[str, str]) -> tuple[list[str], str]:
+    """Send the list to the Tabletop Simulator importer. Returns (problems, note).
+
+    An importer that cannot be reached is a note, never a failure: it is someone
+    else's service, and a deck does not become illegal because it is down.
+    """
+    try:
+        result = ttsimport.check(text)
+    except ttsimport.ImporterUnavailable as exc:
+        return [], f"TTS import not checked: importer unavailable ({exc})"
+    problems = [f"TTS importer: {err}" for err in result.errors]
+    if result.count != deck.total and not result.errors:
+        problems.append(f"TTS importer returned {result.count} of {deck.total} cards")
+    swapped = [name for name, want in pinned.items() if want not in result.printing_of(name)]
+    if swapped:
+        problems.append("TTS importer loads a different printing for: " + ", ".join(swapped))
+    note = f"TTS import {result.count}/{deck.total} cards"
+    if pinned:
+        note += f", {len(pinned) - len(swapped)}/{len(pinned)} pinned printings load"
+    return problems, note
+
+
 def report(deck: deckfile.Deck, cards: dict[str, dict], problems: list[str],
-           identity: set[str], gcs: list[str], cap: int | None) -> bool:
+           identity: set[str], gcs: list[str], cap: int | None,
+           notes: list[str] | tuple[str, ...] = ()) -> bool:
     lands, flex = land_counts(deck, cards)
     avg = average_mana_value(deck, cards)
 
@@ -181,6 +256,8 @@ def report(deck: deckfile.Deck, cards: dict[str, dict], problems: list[str],
     print(f"      Game Changers {len(gcs)}"
           f"{'/' + str(cap) if cap is not None else ' (uncapped)'}"
           f"{': ' + ', '.join(gcs) if gcs else ''}")
+    for note in notes:
+        print(f"      {note}")
     for p in problems:
         print(f"      !! {p}")
     print()
@@ -194,7 +271,10 @@ def main() -> int:
     ap.add_argument("--max-gc", type=int, help="override the Game Changer cap")
     ap.add_argument("--no-cache", action="store_true",
                     help="ignore the SQLite cache and re-fetch everything")
+    ap.add_argument("--no-import", action="store_true",
+                    help="do not ask the Tabletop Simulator importer (also MTG_NO_IMPORT=1)")
     args = ap.parse_args()
+    ask_importer = not (args.no_import or os.environ.get("MTG_NO_IMPORT"))
 
     targets = deckfile.discover([Path(p) for p in (args.paths or [ROOT])])
     if not targets:
@@ -208,7 +288,16 @@ def main() -> int:
         cards, missing = q.cards(deck.names)
         cap = gc_cap(path, args.max_gc)
         problems, identity, gcs = check(deck, cards, missing, cap)
-        results.append(report(deck, cards, problems, identity, gcs, cap))
+        pin_problems, pinned = printing_problems(deck, cards, q)
+        problems += pin_problems
+        notes = []
+        if ask_importer and problems:
+            notes.append("TTS import not checked until the problems below are fixed")
+        elif ask_importer:
+            import_problems, note = import_check(deck, path.read_text(encoding="utf-8"), pinned)
+            problems += import_problems
+            notes.append(note)
+        results.append(report(deck, cards, problems, identity, gcs, cap, notes))
 
     passed = sum(results)
     print(f"{passed}/{len(results)} decks pass   [{q.counters()}]")

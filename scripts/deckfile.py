@@ -7,7 +7,14 @@ Format (see README.md):
 
     1 Zur the Enchanter        <- line 1 is ALWAYS the commander
     1 Academy Rector
+    1 Sol Ring (SLD) 249       <- optional: pin one printing, for its art
     16 Swamp
+
+A printing is the set code in parentheses and then the collector number, the
+form Arena and Moxfield export and the one Tabletop Simulator's deck importer
+reads. The number may be left off to mean "any printing from this set". Nothing
+else in the pipeline cares which printing a card is: `Entry.name` is always the
+bare card name, so legality, colour identity and the catalog work as before.
 """
 from __future__ import annotations
 
@@ -16,14 +23,26 @@ from pathlib import Path
 from typing import NamedTuple
 
 LINE = re.compile(r"^(\d+)\s+(.+)$")
+# "(SLD) 249" or "(SLD)" at the end of a line. Scryfall set codes are three to six
+# letters and digits; collector numbers are not always numeric ("796★", "52s").
+PRINTING = re.compile(r"^(.*\S)\s+\(([A-Za-z0-9]{3,6})\)(?:\s+(\S+))?$")
 
 BASICS = {"Plains", "Island", "Swamp", "Mountain", "Forest", "Wastes"}
 BASICS |= {f"Snow-Covered {b}" for b in list(BASICS)}
 
 
+class Printing(NamedTuple):
+    set: str                    # upper-case set code, e.g. "SLD"
+    number: str | None          # collector number; None means any printing in the set
+
+    def __str__(self) -> str:
+        return f"({self.set})" + (f" {self.number}" if self.number else "")
+
+
 class Entry(NamedTuple):
     count: int
     name: str
+    printing: Printing | None = None
 
 
 class Deck(NamedTuple):
@@ -42,6 +61,11 @@ class Deck(NamedTuple):
     @property
     def total(self) -> int:
         return sum(e.count for e in self.entries)
+
+    @property
+    def printings(self) -> dict[str, Printing]:
+        """Card name -> the printing pinned for it, for the lines that pin one."""
+        return {e.name: e.printing for e in self.entries if e.printing}
 
     def duplicates(self) -> list[Entry]:
         """Entries with count > 1 that aren't basic lands (singleton violations)."""
@@ -62,8 +86,20 @@ def parse(path: Path) -> Deck:
         if not line:
             continue
         m = LINE.match(line)
-        entries.append(Entry(int(m.group(1)), m.group(2).strip())) if m else bad.append(line)
+        if not m:
+            bad.append(line)
+            continue
+        name, printing = split_printing(m.group(2).strip())
+        entries.append(Entry(int(m.group(1)), name, printing))
     return Deck(path, entries, bad)
+
+
+def split_printing(text: str) -> tuple[str, Printing | None]:
+    """Split "Sol Ring (SLD) 249" into the card name and its pinned printing."""
+    m = PRINTING.match(text)
+    if not m:
+        return text, None
+    return m.group(1), Printing(m.group(2).upper(), m.group(3))
 
 
 def render(commander: str, cards: dict[str, int]) -> str:

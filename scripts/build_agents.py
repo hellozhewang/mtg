@@ -264,7 +264,13 @@ Game Changers flagged `[GC]`, prices never shown. `--commander` derives colour
 identity for you. `--since YEAR` finds genuinely new printings, not reprints.
 
 `validate_deck.py` is the gate: exactly 100 cards, every name resolves on Scryfall,
-colour identity, the bracket's Game Changer cap, and singleton.
+colour identity, the bracket's Game Changer cap, and singleton. Once those pass it
+also sends the list to the Tabletop Simulator deck importer the players use and
+checks that every card comes back, printed as `TTS import 100/100 cards`. A
+`TTS importer:` problem means a player could not load the deck, so fix it like
+any other failure. `TTS import not checked: importer unavailable` only means the
+importer's server did not answer; the deck still passes, so say that it was not
+checked rather than claiming it imports.
 
 **Building a deck for a commander that has no file yet? Start with `new_deck.py`.**
 It pulls EDHREC's aggregate list so you begin from the consensus shell rather than
@@ -508,11 +514,12 @@ meaningful filename theme word for a new deck; do not rename an existing deck
 merely to alter a catalog label.
 
 You can READ the map and classifier but cannot WRITE them from this public-only
-sandbox. For every new deck, and whenever tuning changes the plan, end your
-reply with the exact stem and ordered IDs, for example
-`Categories: Krenko-Combo — combo, gowide, goblins`, and say that a
-full-workspace maintainer must save the map entry. Do not claim the categories
-were saved: neither the guide nor your reply is parsed as metadata.
+sandbox. Instead, for every new deck and whenever tuning changes the plan, end
+your reply with the exact stem and ordered IDs on a line of their own, for
+example `Categories: Krenko-Combo — combo, gowide, goblins`. The bot reads that
+line after your turn and saves it to the map, but only for a deck whose files you
+changed in that turn, and only with IDs from the list above. A misspelled stem or
+category is dropped, so copy the stem from the filename.
 
 ## Placing the deck in a power tier
 
@@ -530,15 +537,18 @@ shipped, not the commander's reputation and not the bracket folder.
 
 The map is `../frontend/deck-tiers.json`, keyed by exact filename stem, and like
 the theme map you can READ it but not WRITE it from this sandbox. So end every
-new-deck reply with one line in exactly this form:
+new-deck reply with one line in exactly this form, right after the
+`Categories:` line:
 
-    Tier: <TIER> — <the specific cards or lines that put it there>
+    Tier: <Stem> — <TIER> — <the specific cards or lines that put it there>
 
-for example `Tier: S — Kiki-Jiki + Zealous Conscripts and Krenko + Thornbite
-Staff, five tutors that reach both, Ancient Tomb and Mana Vault for speed`. Say
-that a full-workspace maintainer must save it to the map; do not claim the tier
-was saved. When tuning moves a deck across a tier boundary, give the same line
-with the new tier.
+for example `Tier: Krenko-Combo — S — Kiki-Jiki + Zealous Conscripts and Krenko
++ Thornbite Staff, five tutors that reach both, Ancient Tomb and Mana Vault for
+speed`. The bot saves it to the map after your turn, under the same rule as the
+categories: only for a deck whose files you changed in that turn. When tuning
+moves a deck across a tier boundary, give the same line with the new tier. To
+re-rate a deck without changing its list, say so in prose; a maintainer has to
+make that edit.
 
 ## Other non-negotiables
 
@@ -549,6 +559,15 @@ which is the entire reason validation exists.
 Decklist format: `<count> <exact card name>`, one per line, commander on line 1 with
 no blank line after it, alphabetised below that, no tokens, double-faced cards by
 front face only, exactly 100 cards counting the commander.
+
+A line may end with a pinned printing, `1 Sol Ring (SLD) 249`: the set code in
+parentheses, then the collector number. It only chooses which art Tabletop
+Simulator loads; the card is still `Sol Ring` to every rule and every tool. When
+you edit a deck that has pins, keep them on the lines you do not change, and never
+copy a pin onto a different card. Do not add pins of your own unless asked for
+specific art, and then take the set and number from `find_cards.py` output or
+Scryfall, never from memory: the validator rejects a printing that does not exist
+or that belongs to another card.
 
 ## Tone
 

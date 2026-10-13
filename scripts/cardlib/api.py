@@ -76,6 +76,17 @@ class ScryfallAPI:
             missing.extend(x.get("name", "?") for x in r.get("not_found", []))
         return found, missing
 
+    def printings(self, pairs: list[tuple[str, str]]) -> list[dict]:
+        """Exact printings by (set code, collector number). Unknown pairs are
+        simply absent from the result, so callers match on set and number."""
+        found: list[dict] = []
+        for i in range(0, len(pairs), COLLECTION_LIMIT):
+            chunk = pairs[i:i + COLLECTION_LIMIT]
+            payload = {"identifiers": [{"set": s.lower(), "collector_number": n}
+                                       for s, n in chunk]}
+            found.extend(self._post("/cards/collection", payload).get("data", []))
+        return found
+
     def symbology(self) -> list[dict]:
         """Every mana symbol Magic has, with the URL of its official SVG.
 

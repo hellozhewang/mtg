@@ -104,6 +104,12 @@ any map entry whose deck no longer exists). A typo in a tier fails the build.
 ## The Discord builder
 
 The bot's sandbox can read the map but cannot write it. It ends every new-deck
-reply with one line, `Tier: <TIER> — <the cards or lines that put it there>`, and
-a full-workspace maintainer saves that to `frontend/deck-tiers.json`, then
-rebuilds the site. Until then the deck shows as Unrated.
+reply with one line, `Tier: <Stem> — <TIER> — <the cards or lines that put it
+there>`, and `bot/bot.py` saves it to `frontend/deck-tiers.json` after the turn
+(`scripts/deckplacement.py`), before autopush rebuilds the site. It saves only
+for a deck whose `.txt` or `.guide` that turn wrote, so a chat answer about some
+other deck cannot re-rate it. A turn that dies before replying (a Codex quota
+error, say) saves nothing, and its deck stays Unrated until the next turn that
+finishes it, or a maintainer places it. Older replies omit the stem; the saver
+pairs those with the reply's one `Categories:` deck, or the turn's one changed
+deck, and skips them when that is ambiguous.

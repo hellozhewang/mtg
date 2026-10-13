@@ -1,7 +1,7 @@
 The crew only comes back if its creatures had +1/+1 counters when they died and Marchesa saw those deaths. Establish a sacrifice outlet and a reliable counter source before committing to a big theft turn.
 
 This is a mixed fictional street-crew and heist theme: eight cards keep their original Magic or official crossover characters, and the other 57 nonland cards have custom GTA character assignments below. Every custom art brief explicitly includes a visible character, even for mana rocks and spells. Lands are exempt.
-The import file keeps the real Magic card names and rules. The casting sheet is a complete reskin plan, not rendered proxy artwork; the catalog currently displays the original card images. Custom nicknames and pictures do not change colors, types, abilities, mana values, names used by game rules or commander identity. Token rules also stay unchanged.
+The import file keeps the real Magic card names and rules. The casting sheet is a complete reskin plan, not rendered proxy artwork. What the import file does carry is a real printing for 52 cards, written as a set code and collector number after the name, so Tabletop Simulator loads the official art closest to each brief. The catalog pages still show each card's default image. Custom nicknames and pictures do not change colors, types, abilities, mana values, names used by game rules or commander identity. Token rules also stay unchanged.
 
 # CJ leads the crew
 Marchesa, the Black Rose :: Custom character: CJ. Display nickname: CJ, Grove Street Boss. Art: CJ rallying the crew outside his neighborhood home. Dethrone supplies counters when you attack a player tied for highest life; a creature with a counter that dies under your control returns at the next end step, even if you do not own it.
@@ -45,6 +45,23 @@ An Offer You Can't Refuse + Plaguecrafter :: An Offer You Can't Refuse: Tommy Ve
 Soul-Guide Lantern + Agent of Treachery :: Soul-Guide Lantern: Lester Crest; nickname "Lester Wipes the Records"; art shows Lester visibly deleting a file from a computer. Agent of Treachery: Big Smoke; nickname "Big Smoke, Bought and Paid For"; art shows Big Smoke accepting payment for a betrayal.
 Flayer of the Hatebound + Sneak Attack :: Flayer of the Hatebound: Niko Bellic; nickname "Niko, Unfinished Business"; art shows Niko returning to confront an old enemy. Sneak Attack: Franklin and Lamar; nickname "Franklin and Lamar's Surprise Visit"; art shows Franklin and Lamar arriving together on an unexpected job.
 Lightning Greaves + Living Death :: Lightning Greaves: CJ; nickname "CJ's Fresh Kicks"; art shows CJ lacing his sneakers before joining the crew. Living Death: CJ and Sweet; nickname "The Whole Crew Respawns"; art shows CJ and Sweet greeting the returning crew in a deliberately game-like scene.
+
+# The art the import file pins
+No official card shows CJ or Franklin, so these are the nearest real printings: a street, a deal, a hood or a heist where one exists. Forty-six were picked for the theme; six more are pinned to their plain original art so they do not load as an unrelated crossover.
+Sol Ring :: (SLD) 249: a man wearing a broad gold collar, the closest official art to CJ's Gold Chain.
+An Offer You Can't Refuse :: (FDN) 311: a boss in an armchair making his offer across a desk.
+Lightning Greaves :: (SLD) 1992: red sneakers on a city street, for CJ's Fresh Kicks.
+Gray Merchant of Asphodel :: (DSC) 142: a merchant hauling a sack that spills coins, collecting the take.
+Yawgmoth, Thran Physician :: (DMR) 431: a man bent over a body in a candlelit room, for Tenpenny.
+Pitiless Plunderer :: (J25) 476: a captain counting the take in a back room.
+Black Market Connections :: (CLB) 669: a deal across a candlelit table.
+Imperial Recruiter :: (PTK) 113: a recruiter addressing a crowd at a notice board.
+Rhystic Study :: (J18) 7: a hooded planner over a map table, for Lester.
+Mayhem Devil :: (SLP) 28: a man in a black leather jacket, for Ryder.
+Arcane Signet :: (CLB) 298: a green signet ring on a hand. Grove Street's colour is green.
+Satoru, the Infiltrator + Dack Fayden :: wanted-poster frames, (OTJ) 298 and (SLD) 1689.
+Mana Drain + Reanimate :: newspaper front pages from the Breaking News sheet, (OTP) 67 and (OTP) 18.
+Skullclamp + Chaos Warp :: tattoo art on skin, (SLD) 1663 and (SLD) 823.
 
 # Keep the crew returning
 Unspeakable Symbol + Marchesa, the Black Rose :: pay three life to put a counter on a creature before it dies, including Marchesa herself. This works without attacking and can lower your life total enough to enable dethrone. Save life for removal and future activations rather than putting counters on everything automatically.

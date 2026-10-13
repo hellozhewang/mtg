@@ -1,94 +1,94 @@
-1 Ghave, Guru of Spores
-1 Anguished Unmaking
-1 Anointed Procession
-1 Arcane Signet
-1 Ashnod's Altar
-1 Assassin's Trophy
-1 Avacyn's Pilgrim
+1 Ghave, Guru of Spores (2X2) 216
+1 Anguished Unmaking (SOC) 293
+1 Anointed Procession (AKH) 2
+1 Arcane Signet (FDC) 245
+1 Ashnod's Altar (ATQ) 38
+1 Assassin's Trophy (SOC) 294
+1 Avacyn's Pilgrim (MIC) 132
 1 Basking Broodscale
 1 Bayou
-1 Birds of Paradise
-1 Bitterblossom
-1 Blood Artist
-1 Bloom Tender
+1 Birds of Paradise (FDC) 191
+1 Bitterblossom (2X2) 69
+1 Blood Artist (SOC) 209
+1 Bloom Tender (2X2) 138
 1 Boseiju, Who Endures
 1 Bountiful Promenade
-1 Cathars' Crusade
-1 Chatterfang, Squirrel General
+1 Cathars' Crusade (INR) 17
+1 Chatterfang, Squirrel General (MH2) 151
 1 City of Brass
 1 Command Tower
-1 Corpse Knight
-1 Corpsejack Menace
+1 Corpse Knight (MOC) 321
+1 Corpsejack Menace (CM2) 152
 1 Cruel Celebrant
 1 Cryptic Trilobite
-1 Cryptolith Rite
-1 Dark Ritual
-1 Delighted Halfling
-1 Demonic Tutor
-1 Diabolic Intent
-1 Doubling Season
+1 Cryptolith Rite (INR) 189
+1 Dark Ritual (LEB) 99
+1 Delighted Halfling (LTR) 158
+1 Demonic Tutor (LEB) 105
+1 Diabolic Intent (BRO) 89
+1 Doubling Season (RAV) 158
 1 Earthcraft
-1 Eladamri's Call
-1 Elas il-Kor, Sadistic Pilgrim
-1 Elspeth, Storm Slayer
-1 Esper Sentinel
+1 Eladamri's Call (MH1) 197
+1 Elas il-Kor, Sadistic Pilgrim (DMU) 198
+1 Elspeth, Storm Slayer (TDM) 11
+1 Esper Sentinel (MH2) 12
 1 Exotic Orchard
-1 Farseek
-1 Fauna Shaman
-1 Finale of Devastation
-1 Flawless Maneuver
+1 Farseek (TDC) 255
+1 Fauna Shaman (UMA) 164
+1 Finale of Devastation (CMM) 289
+1 Flawless Maneuver (FRC) 25
 4 Forest
 1 Gaea's Cradle
-1 Generous Gift
-1 Geralf's Messenger
+1 Generous Gift (LCC) 128
+1 Geralf's Messenger (DKA) 63
 1 Godless Shrine
-1 Good-Fortune Unicorn
-1 Grand Abolisher
-1 Grave Pact
-1 Green Sun's Zenith
-1 Hardened Scales
-1 Heroic Intervention
+1 Good-Fortune Unicorn (FDN) 240
+1 Grand Abolisher (CMM) 27
+1 Grave Pact (CM2) 65
+1 Green Sun's Zenith (2X2) 150
+1 Hardened Scales (SOC) 272
+1 Heroic Intervention (CMM) 295
 1 Indatha Triome
 1 Ivy Lane Denizen
 1 Kami of Whispered Hopes
-1 Llanowar Elves
+1 Llanowar Elves (FDN) 227
 1 Mana Confluence
 1 Marsh Flats
-1 Mazirek, Kraul Death Priest
-1 Mirkwood Bats
+1 Mazirek, Kraul Death Priest (SOC) 319
+1 Mirkwood Bats (LTR) 95
 1 Misty Rainforest
-1 Mondrak, Glory Dominus
-1 Mycoloth
-1 Nature's Lore
+1 Mondrak, Glory Dominus (ONE) 23
+1 Mycoloth (SOC) 276
+1 Nature's Lore (SOC) 278
 1 Overgrown Tomb
-1 Parallel Lives
-1 Path to Exile
-1 Phyrexian Altar
+1 Parallel Lives (ISD) 199
+1 Path to Exile (FRC) 30
+1 Phyrexian Altar (2X2) 311
 1 Phyrexian Tower
-1 Pitiless Plunderer
+1 Pitiless Plunderer (LCC) 208
 2 Plains
-1 Rosie Cotton of South Lane
+1 Rosie Cotton of South Lane (LTR) 27
 1 Savannah
 1 Scrubland
-1 Skullclamp
-1 Slimefoot, the Stowaway
-1 Sol Ring
+1 Skullclamp (BLC) 283
+1 Slimefoot, the Stowaway (CMM) 686
+1 Sol Ring (CC1) 7
 3 Swamp
-1 Swords to Plowshares
-1 Sylvan Library
+1 Swords to Plowshares (FRC) 37
+1 Sylvan Library (DMR) 441
 1 Temple Garden
-1 The Ozolith
-1 Three Visits
+1 The Ozolith (IKO) 237
+1 Three Visits (SOC) 289
 1 Undergrowth Stadium
 1 Urborg, Tomb of Yawgmoth
 1 Utopia Mycon
-1 Vampiric Tutor
+1 Vampiric Tutor (DMR) 108
 1 Vault of Champions
 1 Verdant Catacombs
-1 Viscera Seer
-1 Winding Constrictor
+1 Viscera Seer (SOC) 229
+1 Winding Constrictor (AER) 140
 1 Windswept Heath
 1 Wooded Foothills
 1 Yavimaya, Cradle of Growth
-1 Young Wolf
-1 Zulaport Cutthroat
+1 Young Wolf (INR) 227
+1 Zulaport Cutthroat (SOC) 233

@@ -1,97 +1,97 @@
-1 Prossh, Skyraider of Kher
-1 Abrupt Decay
+1 Prossh, Skyraider of Kher (A25) 214
+1 Abrupt Decay (MM3) 146
 1 Agate Instigator
-1 Arcane Signet
+1 Arcane Signet (FDC) 245
 1 Arid Mesa
-1 Ashnod's Altar
-1 Assassin's Trophy
+1 Ashnod's Altar (ATQ) 38
+1 Assassin's Trophy (SOC) 294
 1 Badlands
 1 Bayou
-1 Beast Whisperer
-1 Beseech the Mirror
-1 Birds of Paradise
-1 Blood Artist
+1 Beast Whisperer (CLU) 158
+1 Beseech the Mirror (WOE) 82
+1 Birds of Paradise (FDC) 191
+1 Blood Artist (SOC) 209
 1 Blood Crypt
 1 Bloodstained Mire
 1 Boseiju, Who Endures
-1 Chatterfang, Squirrel General
-1 Chord of Calling
+1 Chatterfang, Squirrel General (MH2) 151
+1 Chord of Calling (RVR) 134
 1 City of Brass
 1 Command Tower
-1 Culling Ritual
-1 Culling the Weak
-1 Dark Ritual
-1 Deadly Rollick
-1 Deathrite Shaman
-1 Deflecting Swat
-1 Delighted Halfling
-1 Demonic Tutor
-1 Diabolic Intent
-1 Eldritch Evolution
-1 Elves of Deep Shadow
-1 Elvish Mystic
-1 Elvish Spirit Guide
-1 Eternal Witness
-1 Farseek
-1 Fecundity
-1 Finale of Devastation
-1 Food Chain
+1 Culling Ritual (SOC) 302
+1 Culling the Weak (EXO) 55
+1 Dark Ritual (LEB) 99
+1 Deadly Rollick (CMM) 147
+1 Deathrite Shaman (RVR) 175
+1 Deflecting Swat (CMM) 698
+1 Delighted Halfling (HOC) 65
+1 Demonic Tutor (LEB) 105
+1 Diabolic Intent (BRO) 89
+1 Eldritch Evolution (INR) 195
+1 Elves of Deep Shadow (DDJ) 47
+1 Elvish Mystic (FDC) 202
+1 Elvish Spirit Guide (DMR) 157
+1 Eternal Witness (CMM) 286
+1 Farseek (TDC) 255
+1 Fecundity (C13) 145
+1 Finale of Devastation (CMM) 289
+1 Food Chain (MMQ) 246
 2 Forest
-1 Fyndhorn Elves
+1 Fyndhorn Elves (CMR) 228
 1 Gaea's Cradle
-1 Goblin Bombardment
-1 Grave Pact
-1 Hexing Squelcher
-1 Ignoble Hierarch
-1 Impact Tremors
-1 Korvold, Fae-Cursed King
-1 Lightning Greaves
-1 Llanowar Elves
-1 Lotus Petal
+1 Goblin Bombardment (MH2) 279
+1 Grave Pact (CM2) 65
+1 Hexing Squelcher (ECL) 145
+1 Ignoble Hierarch (MH2) 166
+1 Impact Tremors (WOT) 44
+1 Korvold, Fae-Cursed King (EOC) 120
+1 Lightning Greaves (OTC) 260
+1 Llanowar Elves (FDN) 227
+1 Lotus Petal (MB2) 226
 1 Luxury Suite
 1 Mana Confluence
 1 Marsh Flats
-1 Mayhem Devil
-1 Mirkwood Bats
+1 Mayhem Devil (EOC) 121
+1 Mirkwood Bats (LTR) 95
 1 Misty Rainforest
 2 Mountain
-1 Nature's Lore
-1 Noxious Revival
+1 Nature's Lore (SOC) 278
+1 Noxious Revival (NPH) 118
 1 Overgrown Tomb
-1 Parallel Lives
-1 Phyrexian Altar
-1 Phyrexian Arena
+1 Parallel Lives (ISD) 199
+1 Phyrexian Altar (2X2) 311
+1 Phyrexian Arena (C15) 130
 1 Phyrexian Tower
-1 Pitiless Plunderer
+1 Pitiless Plunderer (LCC) 208
 1 Polluted Delta
-1 Purphoros, God of the Forge
-1 Pyroblast
-1 Ragavan, Nimble Pilferer
-1 Red Elemental Blast
-1 Sakura-Tribe Elder
+1 Purphoros, God of the Forge (CMM) 246
+1 Pyroblast (ICE) 213
+1 Ragavan, Nimble Pilferer (MH2) 138
+1 Red Elemental Blast (LEB) 170
+1 Sakura-Tribe Elder (CLB) 832
 1 Scalding Tarn
-1 Sephiroth, Fabled SOLDIER
-1 Simian Spirit Guide
-1 Skullclamp
-1 Sol Ring
+1 Sephiroth, Fabled SOLDIER (FIN) 115
+1 Simian Spirit Guide (A25) 148
+1 Skullclamp (BLC) 283
+1 Sol Ring (SLD) 2560
 1 Spire Garden
-1 Squee, the Immortal
+1 Squee, the Immortal (NCC) 275
 1 Stomping Ground
 2 Swamp
-1 Sylvan Library
+1 Sylvan Library (LEG) 207
 1 Taiga
-1 Talisman of Impulse
-1 Three Visits
+1 Talisman of Impulse (TDC) 332
+1 Three Visits (SOC) 289
 1 Undergrowth Stadium
 1 Urborg, Tomb of Yawgmoth
-1 Vampiric Tutor
-1 Veil of Summer
+1 Vampiric Tutor (DMR) 108
+1 Veil of Summer (M20) 198
 1 Verdant Catacombs
-1 Village Rites
-1 Viscera Seer
-1 Warren Soultrader
-1 Wheel of Fortune
+1 Village Rites (SLD) 2248
+1 Viscera Seer (SOC) 229
+1 Warren Soultrader (MH3) 110
+1 Wheel of Fortune (LEB) 184
 1 Windswept Heath
 1 Wooded Foothills
 1 Yavimaya, Cradle of Growth
-1 Zulaport Cutthroat
+1 Zulaport Cutthroat (SOC) 233

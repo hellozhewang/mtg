@@ -1,96 +1,96 @@
-1 Zur the Enchanter
+1 Zur the Enchanter (DMR) 206
 1 Adarkar Wastes
-1 All That Glitters
-1 An Offer You Can't Refuse
-1 Arcane Signet
+1 All That Glitters (CMM) 9
+1 An Offer You Can't Refuse (FDN) 160
+1 Arcane Signet (FDC) 245
 1 Arid Mesa
 1 Aura of Silence
-1 Azorius Signet
+1 Azorius Signet (FRC) 53
 1 Bilbo's Gambit
-1 Black Market Connections
+1 Black Market Connections (LCC) 181
 1 Bleachbone Verge
-1 Blind Obedience
+1 Blind Obedience (RVR) 9
 1 Bloodstained Mire
-1 Brainstorm
+1 Brainstorm (ICE) 61
 1 Cavern of Souls
 1 Caves of Koilos
 1 Combat Research
 1 Command Tower
-1 Copy Enchantment
-1 Cyclonic Rift
-1 Darksteel Mutation
-1 Daybreak Coronet
-1 Dimir Signet
+1 Copy Enchantment (RVR) 39
+1 Cyclonic Rift (CMM) 84
+1 Darksteel Mutation (SOC) 142
+1 Daybreak Coronet (FUT) 21
+1 Dimir Signet (CLU) 221
 1 Diplomatic Immunity
-1 Dovin's Veto
+1 Dovin's Veto (WAR) 193
 1 Eiganjo, Seat of the Empire
 1 Empyrial Armor
-1 Entity Tracker
-1 Esper Sentinel
-1 Ethereal Armor
-1 Fellwar Stone
-1 Flawless Maneuver
+1 Entity Tracker (DSK) 53
+1 Esper Sentinel (MH2) 12
+1 Ethereal Armor (DSK) 7
+1 Fellwar Stone (MBC) 74
+1 Flawless Maneuver (CMM) 692
 1 Flooded Strand
-1 Get Lost
-1 Ghostly Prison
+1 Get Lost (LCI) 14
+1 Ghostly Prison (SOC) 146
 1 Gloomlake Verge
 1 Godless Shrine
-1 Grand Abolisher
-1 Grasp of Fate
-1 Greater Auramancy
+1 Grand Abolisher (CMM) 27
+1 Grasp of Fate (C15) 3
+1 Greater Auramancy (SHM) 7
 1 Hall of Heliod's Generosity
 1 Hall of the Bandit Lord
 1 Hallowed Fountain
 1 Hyena Umbra
-1 Imprisoned in the Moon
+1 Imprisoned in the Moon (INR) 69
 1 Island
 1 Kaya's Ghostform
 1 Lavaspur Boots
-1 Lightning Greaves
+1 Lightning Greaves (OTC) 260
 1 Luminarch Ascension
 1 Mana Confluence
-1 Mana Drain
+1 Mana Drain (2X2) 57
 1 Marsh Flats
 1 Misty Rainforest
 1 Moat
 1 Morphic Pool
-1 Mystic Remora
-1 Necropotence
-1 Open the Armory
-1 Orzhov Signet
+1 Mystic Remora (DMR) 420
+1 Necropotence (ICE) 154
+1 Open the Armory (CMR) 34
+1 Orzhov Signet (TDC) 323
 1 Otawara, Soaring City
-1 Oubliette
-1 Out of Time
+1 Oubliette (2XM) 100
+1 Out of Time (MH2) 23
 1 Plains
 1 Polluted Delta
 1 Raffine's Tower
 1 Reliquary Tower
-1 Replenish
-1 Rhystic Study
-1 Rule of Law
+1 Replenish (UDS) 15
+1 Rhystic Study (JMP) 169
+1 Rule of Law (M20) 35
 1 Scalding Tarn
 1 Scrubland
 1 Sea of Clouds
-1 Sheltered by Ghosts
+1 Sheltered by Ghosts (SOC) 171
 1 Sink into Stupor
-1 Sol Ring
+1 Sol Ring (FDC) 286
 1 Solitary Confinement
-1 Solitude
-1 Soul-Guide Lantern
+1 Solitude (MH2) 32
+1 Soul-Guide Lantern (DRC) 139
 1 Steel of the Godhead
 1 Swamp
-1 Swan Song
-1 Swiftfoot Boots
-1 Swords to Plowshares
-1 Talisman of Dominance
-1 Talisman of Hierarchy
-1 Talisman of Progress
-1 Thought Vessel
-1 Toxic Deluge
+1 Swan Song (C16) 98
+1 Swiftfoot Boots (MBC) 77
+1 Swords to Plowshares (FRC) 37
+1 Talisman of Dominance (FRC) 62
+1 Talisman of Hierarchy (SOC) 358
+1 Talisman of Progress (FRC) 64
+1 Thought Vessel (MBC) 78
+1 Toxic Deluge (MH3) 277
 1 Tundra
 1 Twinblade Blessing
 1 Underground Sea
-1 Unquestioned Authority
+1 Unquestioned Authority (CMR) 389
 1 Vanishing
 1 Vault of Champions
 1 Verdant Catacombs

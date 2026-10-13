@@ -1,73 +1,73 @@
-1 Torbran, Thane of Red Fell
-1 Abrade
-1 Arcane Signet
+1 Torbran, Thane of Red Fell (ELD) 147
+1 Abrade (FDC) 136
+1 Arcane Signet (FDC) 245
 1 Arcbond
 1 Ashling the Pilgrim
-1 Birgi, God of Storytelling
-1 Blasphemous Act
-1 Brash Taunter
+1 Birgi, God of Storytelling (KHM) 123
+1 Blasphemous Act (FDC) 140
+1 Brash Taunter (SCD) 125
 1 Castle Embereth
-1 Chandra, Torch of Defiance
-1 Chaos Warp
-1 Deflecting Swat
-1 Descent into Avernus
-1 Dualcaster Mage
-1 Earthquake
-1 Faithless Looting
-1 Fated Firepower
-1 Fellwar Stone
+1 Chandra, Torch of Defiance (CMM) 876
+1 Chaos Warp (MBC) 72
+1 Deflecting Swat (SLD) 1552
+1 Descent into Avernus (CLB) 169
+1 Dualcaster Mage (C21) 165
+1 Earthquake (7ED) 180★
+1 Faithless Looting (SOC) 244
+1 Fated Firepower (TLA) 297
+1 Fellwar Stone (MBC) 74
 1 Fiendish Duo
-1 Fiery Confluence
-1 Flame Rift
-1 Gamble
-1 Goblin Bombardment
+1 Fiery Confluence (LCC) 226
+1 Flame Rift (NEM) 80
+1 Gamble (DMR) 121
+1 Goblin Bombardment (MH2) 279
 1 Goblin Chainwhirler
-1 Goblin Matron
-1 Guttersnipe
+1 Goblin Matron (PLST) DMR-123
+1 Guttersnipe (CMM) 229
 1 Hall of the Bandit Lord
-1 Heartless Hidetsugu
-1 Heat Shimmer
-1 Impact Tremors
-1 Imperial Recruiter
-1 Jeska's Will
-1 Kiki-Jiki, Mirror Breaker
-1 Light Up the Stage
-1 Lightning Bolt
-1 Lightning Greaves
-1 Manabarbs
+1 Heartless Hidetsugu (CMM) 231
+1 Heat Shimmer (2XM) 130
+1 Impact Tremors (WOT) 44
+1 Imperial Recruiter (MH2) 281
+1 Jeska's Will (MKC) 156
+1 Kiki-Jiki, Mirror Breaker (IMA) 136
+1 Light Up the Stage (DSC) 166
+1 Lightning Bolt (FDC) 163
+1 Lightning Greaves (OTC) 260
+1 Manabarbs (LEB) 164
 1 Mechanized Warfare
-1 Mind Stone
+1 Mind Stone (MBC) 76
 28 Mountain
-1 Neheb, the Eternal
+1 Neheb, the Eternal (MKC) 158
 1 Nykthos, Shrine to Nyx
-1 Ojer Axonil, Deepest Might
-1 Price of Progress
-1 Purphoros, God of the Forge
-1 Pyroblast
-1 Pyrohemia
-1 Razorkin Needlehead
-1 Roiling Vortex
+1 Ojer Axonil, Deepest Might (LCI) 158
+1 Price of Progress (EMA) 141
+1 Purphoros, God of the Forge (CMM) 246
+1 Pyroblast (ICE) 213
+1 Pyrohemia (CMA) 86
+1 Razorkin Needlehead (DSK) 153
+1 Roiling Vortex (ZNR) 156
 1 Rolling Earthquake
-1 Ruby Medallion
-1 Seething Song
+1 Ruby Medallion (MH3) 295
+1 Seething Song (C21) 179
 1 Slagstorm
 1 Sokenzan, Crucible of Defiance
-1 Sol Ring
-1 Solphim, Mayhem Dominus
-1 Sulfuric Vortex
-1 Swiftfoot Boots
-1 Terror of the Peaks
-1 The One Ring
-1 Themberchaud
+1 Sol Ring (LEB) 270
+1 Solphim, Mayhem Dominus (ONE) 150
+1 Sulfuric Vortex (DMR) 144
+1 Swiftfoot Boots (MBC) 77
+1 Terror of the Peaks (M21) 164
+1 The One Ring (LTR) 246
+1 Themberchaud (SLD) 728
 1 Thor, Asgard's Avenger
-1 Twinflame
-1 Twinflame Tyrant
+1 Twinflame (SOC) 258
+1 Twinflame Tyrant (FDN) 395
 1 Valakut Awakening
 1 Valakut, the Molten Pinnacle
-1 Vandalblast
-1 Volcanic Fallout
+1 Vandalblast (OTC) 183
+1 Volcanic Fallout (CMR) 418
 1 War Room
-1 Warstorm Surge
-1 Wheel of Fortune
-1 Wheel of Misfortune
-1 Zealous Conscripts
+1 Warstorm Surge (CLB) 815
+1 Wheel of Fortune (LEB) 184
+1 Wheel of Misfortune (CMR) 211
+1 Zealous Conscripts (J25) 143

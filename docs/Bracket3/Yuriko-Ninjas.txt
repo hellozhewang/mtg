@@ -1,96 +1,96 @@
-1 Yuriko, the Tiger's Shadow
-1 An Offer You Can't Refuse
-1 Arcane Signet
+1 Yuriko, the Tiger's Shadow (PL22) 4
+1 An Offer You Can't Refuse (FDN) 160
+1 Arcane Signet (FDC) 245
 1 Azra Smokeshaper
-1 Baleful Strix
-1 Bitterblossom
+1 Baleful Strix (OTC) 215
+1 Bitterblossom (2X2) 69
 1 Bojuka Bog
-1 Brainstorm
-1 Changeling Outcast
+1 Brainstorm (DSC) 113
+1 Changeling Outcast (OTC) 128
 1 Choked Estuary
 1 Clearwater Pathway
 1 Command Tower
-1 Counterspell
-1 Cyclonic Rift
-1 Damnation
+1 Counterspell (DSC) 114
+1 Cyclonic Rift (CMM) 84
+1 Damnation (2X2) 73
 1 Darkslick Shores
-1 Dauthi Voidwalker
-1 Deadly Rollick
-1 Dig Through Time
-1 Dimir Signet
-1 Dokuchi Silencer
+1 Dauthi Voidwalker (TDC) 176
+1 Deadly Rollick (CMM) 147
+1 Dig Through Time (SOC) 195
+1 Dimir Signet (CLU) 221
+1 Dokuchi Silencer (NEO) 95
 1 Draco
 1 Drowned Catacomb
 1 Exotic Orchard
-1 Faerie Seer
-1 Fallen Shinobi
-1 Feed the Swarm
-1 Fellwar Stone
-1 Force of Negation
+1 Faerie Seer (MH1) 51
+1 Fallen Shinobi (NCC) 338
+1 Feed the Swarm (TDC) 180
+1 Fellwar Stone (MBC) 74
+1 Force of Negation (2X2) 50
 1 Gloomlake Verge
 1 Gudul Lurker
-1 Higure, the Still Wind
-1 Infernal Grasp
+1 Higure, the Still Wind (PCA) 18
+1 Infernal Grasp (SOC) 216
 1 Ingenious Infiltrator
-1 Ink-Eyes, Servant of Oni
+1 Ink-Eyes, Servant of Oni (SLD) 33
 3 Island
-1 Lightning Greaves
+1 Lightning Greaves (OTC) 260
 1 Marsh Flats
 1 Mask of Riddles
-1 Mind Stone
+1 Mind Stone (MBC) 76
 1 Mistblade Shinobi
 1 Misty Rainforest
-1 Moon-Circuit Hacker
+1 Moon-Circuit Hacker (NEO) 67
 1 Morphic Pool
 1 Mothdust Changeling
 1 Murderous Cut
 1 Nether Traitor
-1 Night's Whisper
+1 Night's Whisper (FDC) 119
 1 Oboro, Palace in the Clouds
 1 Okiba-Gang Shinobi
-1 Ophiomancer
-1 Ornithopter
+1 Ophiomancer (TDC) 193
+1 Ornithopter (ATQ) 60
 1 Otawara, Soaring City
 1 Path of Ancestry
-1 Phyrexian Arena
+1 Phyrexian Arena (C15) 130
 1 Polluted Delta
-1 Ponder
-1 Preordain
+1 Ponder (TDC) 159
+1 Preordain (TDC) 161
 1 Prismatic Vista
-1 Prosperous Thief
-1 Reanimate
+1 Prosperous Thief (NEO) 336
+1 Reanimate (DSC) 155
 1 Reliquary Tower
 1 Rogue's Passage
-1 Sakashima's Student
-1 Satoru Umezawa
-1 Scroll Rack
-1 Sensei's Divining Top
-1 Shadowmage Infiltrator
+1 Sakashima's Student (SLD) 2359
+1 Satoru Umezawa (NEO) 507
+1 Scroll Rack (CMR) 337
+1 Sensei's Divining Top (2X2) 314
+1 Shadowmage Infiltrator (NCC) 351
 1 Shipwreck Marsh
 1 Shizo, Death's Storehouse
 1 Silent-Blade Oni
 1 Slither Blade
-1 Snuff Out
-1 Sol Ring
+1 Snuff Out (GVL) 53
+1 Sol Ring (FDC) 286
 1 Sunken Hollow
 1 Sunken Ruins
 3 Swamp
-1 Swan Song
-1 Swiftfoot Boots
-1 Sword of Feast and Famine
+1 Swan Song (C16) 98
+1 Swiftfoot Boots (MBC) 77
+1 Sword of Feast and Famine (2XM) 296
 1 Takenuma, Abandoned Mire
-1 Talisman of Dominance
+1 Talisman of Dominance (FRC) 62
 1 Temple of Deceit
 1 Thief of Sanity
-1 Thousand-Faced Shadow
-1 Throat Slitter
-1 Tormented Soul
-1 Toxic Deluge
-1 Treasure Cruise
+1 Thousand-Faced Shadow (NEO) 86
+1 Throat Slitter (SLD) 2360
+1 Tormented Soul (PCA) 38
+1 Toxic Deluge (MH3) 277
+1 Treasure Cruise (SOC) 205
 1 Undercity Sewers
 1 Underground River
 1 Underground Sea
 1 Universal Automaton
-1 Vampiric Tutor
+1 Vampiric Tutor (DMR) 108
 1 Watery Grave
-1 Whispersilk Cloak
+1 Whispersilk Cloak (DSC) 257

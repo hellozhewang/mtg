@@ -1,60 +1,60 @@
-1 Megatron, Tyrant
+1 Megatron, Tyrant (BOT) 26
 1 Ancient Den
 1 Ancient Stone Idol
-1 Anger
-1 Animate Dead
-1 Arcane Signet
+1 Anger (SOC) 235
+1 Animate Dead (SOC) 207
+1 Arcane Signet (FDC) 245
 1 Arid Mesa
 1 Badlands
-1 Basilisk Collar
+1 Basilisk Collar (DSC) 241
 1 Blood Crypt
 1 Bloodstained Mire
-1 Boros Charm
-1 Buried Alive
+1 Boros Charm (FDN) 721
+1 Buried Alive (SLD) 1673
 1 Buried Ruin
 1 Bygone Colossus
 1 City of Brass
-1 Cityscape Leveler
-1 Clever Concealment
-1 Combustible Gearhulk
+1 Cityscape Leveler (BRO) 233
+1 Clever Concealment (ONC) 5
+1 Combustible Gearhulk (DSC) 163
 1 Command Tower
-1 Daretti, Rocketeer Engineer
+1 Daretti, Rocketeer Engineer (DFT) 120
 1 Daretti, Scrap Savant
 1 Darksteel Citadel
-1 Deflecting Swat
-1 Demonic Junker
-1 Demonic Tutor
-1 Enlightened Tutor
-1 Esper Sentinel
+1 Deflecting Swat (CMM) 214
+1 Demonic Junker (DFT) 83
+1 Demonic Tutor (LEB) 105
+1 Enlightened Tutor (MIR) 14
+1 Esper Sentinel (MH2) 12
 1 Excalibur, Sword of Eden
 1 Exotic Orchard
-1 Faithless Looting
-1 Fellwar Stone
+1 Faithless Looting (SOC) 244
+1 Fellwar Stone (MBC) 74
 1 Flooded Strand
 1 Fomori Vault
-1 Goblin Engineer
-1 Goblin Welder
+1 Goblin Engineer (MH1) 128
+1 Goblin Welder (CM2) 101
 1 Godless Shrine
-1 Grand Abolisher
+1 Grand Abolisher (CMM) 27
 1 Great Furnace
-1 Imskir Iron-Eater
+1 Imskir Iron-Eater (MH3) 189
 1 Inventors' Fair
-1 Isshin, Two Heavens as One
-1 Krang, Utrom Warlord
+1 Isshin, Two Heavens as One (NEO) 224
+1 Krang, Utrom Warlord (TMT) 290
 1 Kuldotha Forgemaster
-1 Lightning Greaves
+1 Lightning Greaves (OTC) 260
 1 Luxury Suite
 1 Mana Confluence
 1 Marsh Flats
-1 Metalwork Colossus
-1 Mishra, Tamer of Mak Fawa
+1 Metalwork Colossus (CMM) 960
+1 Mishra, Tamer of Mak Fawa (BRO) 217
 1 Morbid Curiosity
-1 Mox Opal
-1 Mycosynth Golem
-1 Necromancy
+1 Mox Opal (2XM) 275
+1 Mycosynth Golem (5DN) 137
+1 Necromancy (VIS) 64
 1 Organic Extinction
 1 Panther Robot
-1 Persist
+1 Persist (ECC) 83
 1 Phyrexian Tower
 1 Phyrexian Triniform
 1 Plateau
@@ -64,37 +64,37 @@
 1 Sacred Foundry
 1 Scalding Tarn
 1 Scrap Mastery
-1 Scrap Trawler
+1 Scrap Trawler (PAER) 175
 1 Scuttling Doom Engine
-1 Semblance Anvil
+1 Semblance Anvil (SOM) 201
 1 Shizo, Death's Storehouse
-1 Sneak Attack
-1 Sol Ring
-1 Solphim, Mayhem Dominus
+1 Sneak Attack (DMR) 139
+1 Sol Ring (FDC) 286
+1 Solphim, Mayhem Dominus (ONE) 150
 1 Spectator Seating
 1 Spine of Ish Sah
 1 Spire of Industry
 1 Su-Chi Cave Guard
-1 Swords to Plowshares
-1 Talisman of Conviction
-1 Talisman of Hierarchy
-1 Talisman of Indulgence
+1 Swords to Plowshares (FRC) 37
+1 Talisman of Conviction (TDC) 329
+1 Talisman of Hierarchy (SOC) 358
+1 Talisman of Indulgence (FRC) 63
 1 Takenuma, Abandoned Mire
-1 The One Ring
-1 The Ten Rings
-1 Torment of Hailfire
+1 The One Ring (LTR) 246
+1 The Ten Rings (MSH) 251
+1 Torment of Hailfire (SLD) 9992
 1 Trash for Treasure
 1 Treasure Vault
 1 Triplicate Titan
 1 Ugin's Nexus
-1 Ultron, Artificial Malevolence
+1 Ultron, Artificial Malevolence (MSH) 401
 1 Unmarked Grave
 1 Urborg, Tomb of Yawgmoth
 1 Urza's Saga
 1 Vault of Champions
 1 Vault of Whispers
 1 Verdant Catacombs
-1 Wake the Past
-1 Wear // Tear
+1 Wake the Past (EOC) 128
+1 Wear // Tear (MOC) 343
 1 Windswept Heath
 1 Wooded Foothills

@@ -1,54 +1,54 @@
-1 Marrow-Gnawer
-1 Altar of Dementia
-1 Arcane Signet
-1 Ashcoat of the Shadow Swarm
-1 Ashnod's Altar
-1 Beseech the Mirror
+1 Marrow-Gnawer (CHK) 124
+1 Altar of Dementia (MH1) 218
+1 Arcane Signet (FDC) 245
+1 Ashcoat of the Shadow Swarm (PZA) 6
+1 Ashnod's Altar (ATQ) 38
+1 Beseech the Mirror (WOE) 82
 1 Bontu's Monument
 1 Buried Ruin
 1 Cabal Coffers
-1 Cabal Ritual
+1 Cabal Ritual (MB2) 177
 1 Castle Locthwain
 1 Cavern of Souls
-1 Crypt Rats
-1 Culling the Weak
-1 Dark Ritual
-1 Deadly Dispute
-1 Deadly Rollick
-1 Demonic Tutor
-1 Diabolic Intent
-1 Eldrazi Monument
-1 Feed the Swarm
+1 Crypt Rats (MH1) 84
+1 Culling the Weak (EXO) 55
+1 Dark Ritual (LEB) 99
+1 Deadly Dispute (TDC) 177
+1 Deadly Rollick (CMM) 147
+1 Demonic Tutor (LEB) 105
+1 Diabolic Intent (BRO) 89
+1 Eldrazi Monument (CMA) 216
+1 Feed the Swarm (TDC) 180
 1 Gate to Phyrexia
 1 Grave Venerations
-1 Imp's Mischief
-1 Jet Medallion
-1 Karumonix, the Rat King
-1 Lightning Greaves
-1 Lord Skitter, Sewer King
+1 Imp's Mischief (CMM) 167
+1 Jet Medallion (MH3) 292
+1 Karumonix, the Rat King (ONE) 98
+1 Lightning Greaves (OTC) 260
+1 Lord Skitter, Sewer King (WOE) 97
 1 Malakir Rebirth
-1 Mithril Coat
-1 Necropotence
+1 Mithril Coat (LTR) 245
+1 Necropotence (ICE) 154
 1 Nykthos, Shrine to Nyx
-1 Pack Rat
-1 Patriarch's Bidding
+1 Pack Rat (RVR) 426
+1 Patriarch's Bidding (ONS) 161
 1 Phyrexian Tower
-25 Rat Colony
+25 Rat Colony (DOM) 101
 1 Rat King, Pale Piper
 1 Rat King, Verminister
-1 Reanimate
-1 Skullclamp
-1 Sol Ring
+1 Reanimate (DSC) 155
+1 Skullclamp (BLC) 283
+1 Sol Ring (FDC) 286
 23 Swamp
 1 Swarmyard
-1 Swiftfoot Boots
+1 Swiftfoot Boots (MBC) 77
 1 Takenuma, Abandoned Mire
-1 The Meathook Massacre
+1 The Meathook Massacre (INR) 122
 1 Thornbite Staff
-1 Thousand-Year Elixir
+1 Thousand-Year Elixir (C21) 271
 1 Three Tree City
 1 Thrumming Stone
-1 Toxic Deluge
+1 Toxic Deluge (MH3) 277
 1 Umbral Mantle
 1 Urborg, Tomb of Yawgmoth
-1 Vampiric Tutor
+1 Vampiric Tutor (DMR) 108

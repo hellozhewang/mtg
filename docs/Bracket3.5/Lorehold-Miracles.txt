@@ -1,54 +1,54 @@
-1 Lorehold, the Historian
+1 Lorehold, the Historian (SOS) 284
 1 Ancient Tomb
 1 Apex of Power
-1 Approach of the Second Sun
+1 Approach of the Second Sun (STA) 1
 1 Arcane Bombardment
-1 Arcane Signet
-1 Archivist of Oghma
+1 Arcane Signet (FDC) 245
+1 Archivist of Oghma (CLB) 4
 1 Arid Mesa
-1 Austere Command
+1 Austere Command (FDC) 18
 1 Battlefield Forge
 1 Bender's Waterskin
-1 Blasphemous Act
+1 Blasphemous Act (FDC) 140
 1 Bloodstained Mire
-1 Boros Signet
+1 Boros Signet (CMM) 942
 1 Brallin, Skyshark Rider
-1 Call Forth the Tempest
-1 Chaos Warp
+1 Call Forth the Tempest (LTC) 509
+1 Chaos Warp (STA) 36
 1 City of Brass
-1 Clever Concealment
+1 Clever Concealment (ONC) 5
 1 Clifftop Retreat
-1 Comet Storm
+1 Comet Storm (CMR) 411
 1 Command Tower
 1 Cool but Rude
-1 Deflecting Swat
-1 Dragon's Rage Channeler
-1 Dualcaster Mage
+1 Deflecting Swat (CMM) 214
+1 Dragon's Rage Channeler (MH2) 121
+1 Dualcaster Mage (C21) 165
 1 Electro, Assaulting Battery
 1 Elegant Parlor
 1 Emeria's Call
-1 Esper Sentinel
+1 Esper Sentinel (MH2) 12
 1 Everybody Lives!
 1 Exotic Orchard
-1 Fellwar Stone
+1 Fellwar Stone (MBC) 74
 1 Flooded Strand
 1 Geier Reach Sanitarium
-1 Generous Gift
-1 Grand Abolisher
+1 Generous Gift (LCC) 128
+1 Grand Abolisher (CMM) 27
 1 Hall of Heliod's Generosity
-1 Hexing Squelcher
-1 Improvisation Capstone
-1 Insurrection
-1 Land Tax
-1 Library of Leng
+1 Hexing Squelcher (ECL) 145
+1 Improvisation Capstone (SOS) 120
+1 Insurrection (CMM) 236
+1 Land Tax (SOC) 153
+1 Library of Leng (LEB) 258
 1 Longshot, Rebel Bowman
 1 Mana Confluence
-1 Mana Geyser
-1 Mana Vault
-1 Mangara, the Diplomat
+1 Mana Geyser (SOC) 247
+1 Mana Vault (LEB) 260
+1 Mangara, the Diplomat (SOC) 155
 1 Marsh Flats
 1 Mikokoro, Center of the Sea
-1 Mizzix's Mastery
+1 Mizzix's Mastery (STA) 43
 1 Monument to Endurance
 2 Mountain
 1 Needleverge Pathway
@@ -60,39 +60,39 @@
 1 Radiant Summit
 1 Reforge the Soul
 1 Reiterate
-1 Repercussion
-1 Reprieve
-1 Return the Favor
+1 Repercussion (UDS) 95
+1 Reprieve (SOA) 9
+1 Return the Favor (SOA) 47
 1 Rise of the Eldrazi
-1 Ruby Medallion
+1 Ruby Medallion (MH3) 295
 1 Rugged Prairie
 1 Sacred Foundry
 1 Scalding Tarn
-1 Scroll Rack
-1 Sensei's Divining Top
-1 Silence
+1 Scroll Rack (CMR) 337
+1 Sensei's Divining Top (2X2) 314
+1 Silence (M14) 35
 1 Smuggler's Share
-1 Sol Ring
+1 Sol Ring (FDC) 286
 1 Spectator Seating
 1 Storm Herd
-1 Storm-Kiln Artist
+1 Storm-Kiln Artist (SOC) 255
 1 Sunbaked Canyon
 1 Sunbillow Verge
 1 Surly Badgersaur
-1 Swords to Plowshares
+1 Swords to Plowshares (STA) 10
 1 Tablet of Discovery
-1 Talisman of Conviction
-1 The One Ring
-1 The Scarlet Witch
-1 Tibalt's Trickery
-1 Trouble in Pairs
-1 Twinflame
+1 Talisman of Conviction (SOC) 428
+1 The One Ring (LTR) 246
+1 The Scarlet Witch (MSH) 431
+1 Tibalt's Trickery (KHM) 153
+1 Trouble in Pairs (MKC) 15
+1 Twinflame (SOC) 258
 1 Urza's Saga
 1 Valakut Awakening
 1 Victory Chimes
-1 Volcanic Vision
+1 Volcanic Vision (C16) 137
 1 War Room
-1 Wheel of Fortune
+1 Wheel of Fortune (LEB) 184
 1 Windswept Heath
-1 Witch Enchanter
+1 Witch Enchanter (MH3) 239
 1 Wooded Foothills

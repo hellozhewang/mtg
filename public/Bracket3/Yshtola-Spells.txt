@@ -1,44 +1,44 @@
-1 Y'shtola, Night's Blessed
+1 Y'shtola, Night's Blessed (FIC) 7
 1 Adarkar Wastes
-1 Aetherflux Reservoir
+1 Aetherflux Reservoir (KLD) 192
 1 Alisaie Leveilleur
 1 Alphinaud Leveilleur
-1 Anguished Unmaking
-1 Approach of the Second Sun
-1 Arcane Signet
+1 Anguished Unmaking (SOC) 293
+1 Approach of the Second Sun (AKH) 4
+1 Arcane Signet (FIC) 332
 1 Arid Mesa
 1 Avatar's Wrath
-1 Beseech the Mirror
+1 Beseech the Mirror (WOE) 82
 1 Bloodstained Mire
 1 Caves of Koilos
 1 Circle of Power
 1 City of Brass
-1 Coalition Relic
+1 Coalition Relic (DMC) 180
 1 Command Tower
-1 Cryptic Command
-1 Curiosity
-1 Deadly Rollick
-1 Decorum Dissertation
-1 Dig Through Time
-1 Dismember
-1 Dovin's Veto
+1 Cryptic Command (FCA) 29
+1 Curiosity (A25) 52
+1 Deadly Rollick (CMM) 147
+1 Decorum Dissertation (SOS) 78
+1 Dig Through Time (FIC) 263
+1 Dismember (MM2) 79
+1 Dovin's Veto (FCA) 51
 1 Eiganjo, Seat of the Empire
-1 Elspeth, Sun's Champion
+1 Elspeth, Sun's Champion (FRC) 24
 1 Exotic Orchard
-1 Fellwar Stone
-1 Fierce Guardianship
+1 Fellwar Stone (MBC) 74
+1 Fierce Guardianship (CMM) 94
 1 Flooded Strand
-1 Frantic Search
+1 Frantic Search (TDC) 153
 1 Godless Shrine
-1 Grim Tutor
+1 Grim Tutor (M21) 103
 1 Hallowed Fountain
-1 Inkshield
+1 Inkshield (SOC) 316
 1 Ishgard, the Holy See
 1 Jidoor, Aristocratic Capital
-1 Jill, Shiva's Dominant
-1 Kaya, Intangible Slayer
+1 Jill, Shiva's Dominant (FIN) 58
+1 Kaya, Intangible Slayer (ONE) 205
 1 Krile Baldesion
-1 Lulu, Stern Guardian
+1 Lulu, Stern Guardian (FIC) 38
 1 Lyse Hext
 1 Mana Confluence
 1 Mana Sculpt
@@ -53,37 +53,37 @@
 1 Papalymo Totolymo
 1 Perch Protection
 1 Polluted Delta
-1 Professor Onyx
+1 Professor Onyx (DSC) 153
 1 Quistis Trepe
 1 Raffine's Tower
-1 Relic of Legends
-1 Rewind
-1 Rhystic Study
+1 Relic of Legends (FIC) 354
+1 Rewind (M21) 63
+1 Rhystic Study (FCA) 31
 1 Rosa, Resolute White Mage
-1 Sanguine Bond
+1 Sanguine Bond (C21) 153
 1 Scalding Tarn
 1 Scrubland
 1 Sea of Clouds
 1 Sedgemoor Witch
 1 Shadowy Backstreet
-1 Shark Typhoon
+1 Shark Typhoon (FRC) 44
 1 Sigil of Sleep
-1 Smothering Tithe
-1 Snuff Out
-1 Sol Ring
+1 Smothering Tithe (CMM) 57
+1 Snuff Out (FIC) 285
+1 Sol Ring (FIC) 359
 1 Soul Shatter
 1 Starting Town
 1 Stormscape Familiar
-1 Sublime Epiphany
-1 Supreme Verdict
-1 Swords to Plowshares
+1 Sublime Epiphany (FIC) 271
+1 Supreme Verdict (CLU) 211
+1 Swords to Plowshares (FIC) 256
 1 Takenuma, Abandoned Mire
-1 Talisman of Dominance
-1 Talisman of Hierarchy
-1 Talisman of Progress
-1 Tataru Taru
-1 The Wandering Emperor
-1 Toxic Deluge
+1 Talisman of Dominance (FIC) 364
+1 Talisman of Hierarchy (FIC) 365
+1 Talisman of Progress (FIC) 367
+1 Tataru Taru (FIC) 30
+1 The Wandering Emperor (NEO) 42
+1 Toxic Deluge (MH3) 277
 1 Transpose
 1 Tundra
 1 Undercity Sewers
@@ -93,8 +93,8 @@
 1 Valeria Richards, Precocious
 1 Vault of Champions
 1 Verdant Catacombs
-1 Void Rend
+1 Void Rend (FIC) 331
 1 Watery Grave
 1 White Auracite
 1 Windswept Heath
-1 Y'shtola Rhul
+1 Y'shtola Rhul (FIN) 86

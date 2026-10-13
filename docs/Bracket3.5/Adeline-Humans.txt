@@ -1,71 +1,71 @@
-1 Adeline, Resplendent Cathar
-1 Ocelot Pride
-1 Esper Sentinel
-1 Mother of Runes
-1 Giver of Runes
+1 Adeline, Resplendent Cathar (TDC) 108
+1 Ocelot Pride (MH3) 38
+1 Esper Sentinel (MH2) 12
+1 Mother of Runes (CLB) 702
+1 Giver of Runes (MH1) 13
 1 Aven Interrupter
-1 Coppercoat Vanguard
-1 Belladonna Took
+1 Coppercoat Vanguard (MAT) 1
+1 Belladonna Took (HOB) 250
 1 Charismatic Conqueror
-1 Voice of Victory
-1 Knight of the White Orchid
-1 Heliod, Sun-Crowned
-1 Grand Abolisher
+1 Voice of Victory (TDM) 33
+1 Knight of the White Orchid (MOC) 193
+1 Heliod, Sun-Crowned (CMM) 29
+1 Grand Abolisher (CMM) 27
 1 Search for Glory
-1 Enduring Innocence
-1 Welcoming Vampire
-1 Mentor of the Meek
-1 Boromir, Warden of the Tower
-1 Ranger-Captain of Eos
+1 Enduring Innocence (DSK) 6
+1 Welcoming Vampire (TDC) 140
+1 Mentor of the Meek (INR) 34
+1 Boromir, Warden of the Tower (LTR) 4
+1 Ranger-Captain of Eos (MH1) 21
 1 Thalia's Lieutenant
-1 Loran of the Third Path
-1 Mirror Entity
-1 Hero of Bladehold
-1 Myrel, Shield of Argive
+1 Loran of the Third Path (MKC) 71
+1 Mirror Entity (OTC) 83
+1 Hero of Bladehold (TDC) 119
+1 Myrel, Shield of Argive (BRO) 18
 1 Goldnight Commander
 1 Beregond of the Guard
-1 Greymond, Avacyn's Stalwart
-1 Silence
-1 Mondrak, Glory Dominus
-1 Roaming Throne
-1 Springleaf Drum
-1 Intangible Virtue
-1 Flowering of the White Tree
+1 Greymond, Avacyn's Stalwart (SLX) 18
+1 Silence (M14) 35
+1 Mondrak, Glory Dominus (ONE) 23
+1 Roaming Throne (LCI) 258
+1 Springleaf Drum (2XM) 291
+1 Intangible Virtue (INR) 29
+1 Flowering of the White Tree (LTR) 15
 1 Caretaker's Talent
-1 Tocasia's Welcome
-1 Wedding Announcement
-1 Anointed Procession
-1 Cathars' Crusade
-1 Ranger of Eos
-1 Elspeth, Storm Slayer
-1 Elspeth, Sun's Champion
-1 Trouble in Pairs
-1 Land Tax
-1 Skullclamp
+1 Tocasia's Welcome (SOC) 181
+1 Wedding Announcement (INR) 51
+1 Anointed Procession (AKH) 2
+1 Cathars' Crusade (INR) 17
+1 Ranger of Eos (MM3) 19
+1 Elspeth, Storm Slayer (TDM) 11
+1 Elspeth, Sun's Champion (FRC) 24
+1 Trouble in Pairs (MKC) 15
+1 Land Tax (LEG) 26
+1 Skullclamp (BLC) 283
 1 Idol of Oblivion
-1 Recruiter of the Guard
-1 Walking Ballista
-1 The One Ring
-1 Smothering Tithe
-1 Sol Ring
-1 Arcane Signet
-1 Mind Stone
-1 Pearl Medallion
-1 Lightning Greaves
-1 Teferi's Protection
-1 Flawless Maneuver
-1 Clever Concealment
-1 Akroma's Will
-1 Galadriel's Dismissal
-1 Flare of Fortitude
-1 Idyllic Tutor
-1 Swords to Plowshares
-1 Path to Exile
-1 Winds of Abandon
-1 Council's Judgment
-1 Generous Gift
+1 Recruiter of the Guard (MH3) 266
+1 Walking Ballista (2XM) 306
+1 The One Ring (LTR) 246
+1 Smothering Tithe (CMM) 57
+1 Sol Ring (FDC) 286
+1 Arcane Signet (FDC) 245
+1 Mind Stone (MBC) 76
+1 Pearl Medallion (MH3) 294
+1 Lightning Greaves (OTC) 260
+1 Teferi's Protection (2X2) 32
+1 Flawless Maneuver (CMM) 692
+1 Clever Concealment (ONC) 5
+1 Akroma's Will (LCC) 125
+1 Galadriel's Dismissal (LTC) 500
+1 Flare of Fortitude (MH3) 26
+1 Idyllic Tutor (THB) 24
+1 Swords to Plowshares (FRC) 37
+1 Path to Exile (FRC) 30
+1 Winds of Abandon (MH1) 37
+1 Council's Judgment (OTC) 79
+1 Generous Gift (LCC) 128
 1 Emeria's Call
-1 Witch Enchanter
+1 Witch Enchanter (MH3) 239
 1 Minas Tirith
 1 Three Tree City
 1 Castle Ardenvale

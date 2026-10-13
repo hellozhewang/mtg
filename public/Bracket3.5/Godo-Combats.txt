@@ -1,89 +1,89 @@
-1 Godo, Bandit Warlord
+1 Godo, Bandit Warlord (CMM) 227
 1 Abstergo Entertainment
 1 Ancient Tomb
 1 Anje's Ravager
-1 Arcane Signet
-1 Basalt Monolith
-1 Birgi, God of Storytelling
-1 Blasphemous Act
+1 Arcane Signet (TDC) 105
+1 Basalt Monolith (2XM) 232
+1 Birgi, God of Storytelling (KHM) 123
+1 Blasphemous Act (FDC) 140
 1 Brass Squire
 1 Cavern of Souls
-1 Chaos Warp
+1 Chaos Warp (MBC) 72
 1 City of Traitors
 1 Command Beacon
-1 Conqueror's Flail
+1 Conqueror's Flail (2X2) 302
 1 Crystal Vein
-1 Cursed Mirror
-1 Defense Grid
-1 Deflecting Swat
-1 Desperate Ritual
-1 Devastating Onslaught
-1 Dualcaster Mage
+1 Cursed Mirror (FRC) 49
+1 Defense Grid (9ED) 293
+1 Deflecting Swat (CMM) 214
+1 Desperate Ritual (MMA) 110
+1 Devastating Onslaught (EOE) 132
+1 Dualcaster Mage (SPG) 153
 1 Dwarven Ruins
-1 Electroduplicate
-1 Fellwar Stone
-1 Flare of Duplication
-1 Gamble
+1 Electroduplicate (FDN) 85
+1 Fellwar Stone (MBC) 74
+1 Flare of Duplication (MH3) 119
+1 Gamble (DMR) 121
 1 Gemstone Caverns
-1 Goblin Engineer
-1 Goblin Welder
+1 Goblin Engineer (MH1) 128
+1 Goblin Welder (CM2) 101
 1 Great Furnace
-1 Hammer of Nazahn
-1 Heat Shimmer
-1 Helm of the Host
-1 Hexing Squelcher
+1 Hammer of Nazahn (CMM) 388
+1 Heat Shimmer (2XM) 130
+1 Helm of the Host (BLC) 276
+1 Hexing Squelcher (ECL) 145
 1 Honor-Worn Shaku
-1 Imperial Recruiter
+1 Imperial Recruiter (PTK) 113
 1 Inventors' Fair
-1 Jaxis, the Troublemaker
-1 Jeska's Will
-1 Krark-Clan Ironworks
-1 Light Up the Stage
-1 Lightning Bolt
-1 Lightning Greaves
-1 Lotus Petal
+1 Jaxis, the Troublemaker (SNC) 112
+1 Jeska's Will (MKC) 156
+1 Krark-Clan Ironworks (5DN) 134
+1 Light Up the Stage (DSC) 166
+1 Lightning Bolt (SLD) 675
+1 Lightning Greaves (OTC) 260
+1 Lotus Petal (MB2) 226
 1 Magnetic Theft
-1 Manifold Key
+1 Manifold Key (M20) 230
 1 Metalworker
-1 Mind Stone
-1 Molten Duplication
-1 Moonsilver Key
+1 Mind Stone (MBC) 76
+1 Molten Duplication (BIG) 14
+1 Moonsilver Key (MID) 255
 12 Mountain
-1 Mox Opal
-1 Party Thrasher
+1 Mox Opal (2XM) 275
+1 Party Thrasher (MH3) 129
 1 Peter Parker's Camera
 1 Pinnacle Monk
-1 Professional Face-Breaker
-1 Pyretic Ritual
-1 Pyroblast
-1 Ragavan, Nimble Pilferer
-1 Red Elemental Blast
-1 Redirect Lightning
+1 Professional Face-Breaker (SNC) 116
+1 Pyretic Ritual (M11) 153
+1 Pyroblast (ICE) 213
+1 Ragavan, Nimble Pilferer (MH2) 138
+1 Red Elemental Blast (LEB) 170
+1 Redirect Lightning (TLA) 151
 1 Ricochet Trap
-1 Rite of Flame
-1 Ruby Medallion
+1 Rite of Flame (SLD) 2209
+1 Ruby Medallion (MH3) 295
 1 Sandstone Needle
-1 Sculpting Steel
-1 Seething Song
+1 Sculpting Steel (MOC) 374
+1 Seething Song (SLD) 7051
 1 Shatterskull Smashing
-1 Simian Spirit Guide
-1 Sol Ring
-1 Staff of Compleation
-1 Sting, the Glinting Dagger
+1 Simian Spirit Guide (A25) 148
+1 Sol Ring (FDC) 286
+1 Staff of Compleation (TDC) 326
+1 Sting, the Glinting Dagger (LTR) 250
 1 Talon Gates of Madara
-1 Tezzeret, Cruel Captain
-1 Thran Dynamo
+1 Tezzeret, Cruel Captain (EOE) 2
+1 Thran Dynamo (CMM) 415
 1 Throne of Eldraine
-1 Tibalt's Trickery
-1 Treasonous Ogre
+1 Tibalt's Trickery (KHM) 153
+1 Treasonous Ogre (CNS) 36
 1 Treasure Vault
-1 Twinflame
-1 Unexpected Windfall
+1 Twinflame (SOC) 258
+1 Unexpected Windfall (AFR) 164
 1 Untimely Malfunction
 1 Urza's Cave
 1 Urza's Saga
 1 Veilstone Amulet
 1 Vexing Bauble
-1 Voltaic Key
+1 Voltaic Key (USG) 314
 1 Wandering Archaic
-1 Wheel of Fortune
+1 Wheel of Fortune (G10) 7

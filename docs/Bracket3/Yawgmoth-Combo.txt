@@ -1,82 +1,82 @@
-1 Yawgmoth, Thran Physician
-1 Animate Dead
-1 Arcane Signet
-1 Bastion of Remembrance
+1 Yawgmoth, Thran Physician (DMR) 110
+1 Animate Dead (SOC) 207
+1 Arcane Signet (FDC) 245
+1 Bastion of Remembrance (TDC) 171
 1 Blast Zone
 1 Blight Mound
-1 Blood Artist
-1 Bloodghast
-1 Bridge from Below
+1 Blood Artist (SOC) 209
+1 Bloodghast (IMA) 82
+1 Bridge from Below (FUT) 81
 1 Butcher Ghoul
 1 Cabal Coffers
-1 Cabal Ritual
-1 Carrion Feeder
+1 Cabal Ritual (MB2) 177
+1 Carrion Feeder (MH1) 81
 1 Cavern of Souls
 1 City of Traitors
-1 Culling the Weak
-1 Dark Ritual
-1 Dauthi Voidwalker
-1 Deadly Rollick
+1 Culling the Weak (EXO) 55
+1 Dark Ritual (LEB) 99
+1 Dauthi Voidwalker (TDC) 176
+1 Deadly Rollick (CMM) 147
 1 Deathgreeter
-1 Demonic Tutor
-1 Diabolic Intent
-1 Dismember
-1 Entomb
+1 Demonic Tutor (LEB) 105
+1 Diabolic Intent (BRO) 89
+1 Dismember (SPG) 41
+1 Entomb (DMR) 82
 1 Evernight Shade
-1 Feed the Swarm
+1 Feed the Swarm (TDC) 180
 1 Fell the Profane
 1 Forsaken Miner
 1 Gemstone Caverns
-1 Genesis Chamber
-1 Geralf's Messenger
-1 Grave Pact
+1 Genesis Chamber (BBD) 235
+1 Geralf's Messenger (DKA) 63
+1 Grave Pact (CM2) 65
 1 Greedy Freebooter
-1 Grim Haruspex
+1 Grim Haruspex (CLB) 754
 1 Hancock, Ghoulish Mayor
 1 Infestation Sage
-1 Jet Medallion
+1 Jet Medallion (MH3) 292
 1 Lake of the Dead
-1 Lotus Petal
-1 Memnite
-1 Midnight Reaper
-1 Mox Amber
-1 Mox Opal
-1 Necropotence
+1 Lotus Petal (MB2) 226
+1 Memnite (MB2) 228
+1 Midnight Reaper (FDN) 609
+1 Mox Amber (DOM) 224
+1 Mox Opal (2XM) 275
+1 Necropotence (ICE) 154
 1 Nest of Scarabs
 1 Nested Shambler
 1 Nether Traitor
 1 Nykthos, Shrine to Nyx
-1 Ophiomancer
-1 Orcish Bowmasters
-1 Ornithopter
+1 Ophiomancer (CC2) 3
+1 Orcish Bowmasters (LTR) 103
+1 Ornithopter (ATQ) 60
 1 Pawn of Ulamog
-1 Phyrexian Altar
+1 Phyrexian Altar (INV) 306
 1 Phyrexian Tower
 1 Phyrexian Walker
-1 Pitiless Plunderer
-1 Priest of Gix
-1 Reanimate
-1 Sephiroth, Fabled SOLDIER
-1 Shambling Ghast
-1 Sheoldred, the Apocalypse
+1 Pitiless Plunderer (LCC) 208
+1 Priest of Gix (DDE) 7
+1 Reanimate (DSC) 155
+1 Sephiroth, Fabled SOLDIER (FIN) 115
+1 Shambling Ghast (AFR) 119
+1 Sheoldred, the Apocalypse (DMU) 107
 1 Shield Sphere
 1 Sightless Ghoul
-1 Skullclamp
-1 Sol Ring
-1 Songs of the Damned
-1 Springleaf Drum
+1 Skullclamp (MOC) 379
+1 Sol Ring (FDC) 286
+1 Songs of the Damned (UMA) 115
+1 Springleaf Drum (2XM) 291
 1 Susurian Voidborn
 19 Swamp
-1 Syr Konrad, the Grim
+1 Syr Konrad, the Grim (DSC) 158
 1 Talon Gates of Madara
-1 Toxic Deluge
+1 Toxic Deluge (MH3) 277
 1 Treacherous Pit-Dweller
-1 Unearth
+1 Unearth (2X2) 96
 1 Unmarked Grave
 1 Urborg, Tomb of Yawgmoth
 1 Urza's Saga
-1 Vengeful Bloodwitch
-1 Village Rites
-1 Viscera Seer
-1 Warren Soultrader
-1 Zulaport Cutthroat
+1 Vengeful Bloodwitch (FDN) 325
+1 Village Rites (INR) 137
+1 Viscera Seer (SOC) 229
+1 Warren Soultrader (MH3) 332
+1 Zulaport Cutthroat (SOC) 233

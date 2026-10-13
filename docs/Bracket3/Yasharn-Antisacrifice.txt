@@ -1,90 +1,90 @@
 1 Yasharn, Implacable Earth
-1 Archivist of Oghma
+1 Archivist of Oghma (CLB) 4
 1 Archon of Emeria
 1 Archon of Valor's Reach
 1 Arid Mesa
-1 Aura Shards
-1 Aven Mindcensor
-1 Blind Obedience
+1 Aura Shards (CMD) 182
+1 Aven Mindcensor (CLB) 688
+1 Blind Obedience (SLD) 1030
 1 Boseiju, Who Endures
 1 Bountiful Promenade
 1 Brushland
 1 Canopy Vista
 1 City of Brass
-1 Collector Ouphe
+1 Collector Ouphe (MH1) 158
 1 Command Tower
-1 Containment Priest
-1 Cultivate
-1 Cursed Totem
-1 Darksteel Mutation
-1 Drannith Magistrate
-1 Dryad of the Ilysian Grove
+1 Containment Priest (M21) 13
+1 Cultivate (ECC) 103
+1 Cursed Totem (MIR) 299
+1 Darksteel Mutation (CMM) 623
+1 Drannith Magistrate (IKO) 11
+1 Dryad of the Ilysian Grove (CMM) 891
 1 Eiganjo, Seat of the Empire
-1 Eladamri's Call
-1 Elesh Norn, Grand Cenobite
-1 Elesh Norn, Mother of Machines
-1 Enlightened Tutor
-1 Esper Sentinel
+1 Eladamri's Call (MH1) 197
+1 Elesh Norn, Grand Cenobite (IMA) 18
+1 Elesh Norn, Mother of Machines (ONE) 10
+1 Enlightened Tutor (MIR) 14
+1 Esper Sentinel (MH2) 12
 1 Exotic Orchard
-1 Exploration
+1 Exploration (2XM) 167
 1 Fabled Passage
-1 Farseek
-1 Fertile Ground
-1 Final Showdown
+1 Farseek (F13) 3
+1 Fertile Ground (INV) 188
+1 Final Showdown (OTJ) 11
 1 Flooded Strand
 6 Forest
-1 Gaddock Teeg
-1 Generous Gift
-1 Get Lost
-1 Grand Abolisher
-1 Grasp of Fate
+1 Gaddock Teeg (UMA) 199
+1 Generous Gift (LCC) 128
+1 Get Lost (LCI) 14
+1 Grand Abolisher (CMM) 625
+1 Grasp of Fate (C15) 3
 1 Hall of Heliod's Generosity
-1 Heroic Intervention
+1 Heroic Intervention (CMM) 295
 1 Horizon Canopy
 1 Hushbringer
 1 Kamahl, Heart of Krosa
-1 Karametra, God of Harvests
-1 Kodama's Reach
-1 Krosan Grip
-1 Linvala, Keeper of Silence
+1 Karametra, God of Harvests (C20) 218
+1 Kodama's Reach (ECC) 113
+1 Krosan Grip (C21) 198
+1 Linvala, Keeper of Silence (JMP) 119
 1 Manglehorn
 1 Marsh Flats
 1 Misty Rainforest
-1 Nature's Claim
-1 Nature's Lore
-1 Ohran Frostfang
-1 Oracle of Mul Daya
+1 Nature's Claim (IMA) 177
+1 Nature's Lore (SOC) 278
+1 Ohran Frostfang (SOC) 279
+1 Oracle of Mul Daya (EOC) 102
 1 Overgrown Farmland
 6 Plains
 1 Prismatic Vista
-1 Rampant Growth
+1 Rampant Growth (TDC) 265
 1 Razorverge Thicket
 1 Reflecting Pool
-1 Rest in Peace
-1 Root Maze
-1 Rule of Law
+1 Rest in Peace (A25) 32
+1 Root Maze (10E) 292
+1 Rule of Law (M20) 35
 1 Sanctifier en-Vec
 1 Savannah
-1 Shalai, Voice of Plenty
+1 Shalai, Voice of Plenty (TDC) 130
 1 Sigarda, Host of Herons
 1 Silverback Elder
 1 Solemnity
-1 Song of the Dryads
+1 Song of the Dryads (CMM) 324
 1 Spirit of the Labyrinth
-1 Sterling Grove
-1 Stony Silence
-1 Swords to Plowshares
+1 Sterling Grove (MH2) 293
+1 Stony Silence (MM3) 25
+1 Swords to Plowshares (FRC) 37
 1 Temple Garden
-1 Thalia, Heretic Cathar
-1 Three Visits
-1 Thunderfoot Baloth
-1 Titania's Song
-1 Touch the Spirit Realm
-1 Utopia Sprawl
-1 Veil of Summer
+1 Thalia, Heretic Cathar (INR) 44
+1 Three Visits (SOC) 289
+1 Thunderfoot Baloth (DSC) 201
+1 Titania's Song (ATQ) 35
+1 Touch the Spirit Realm (GDY) 4
+1 Utopia Sprawl (PF26) 9
+1 Veil of Summer (M20) 198
 1 Verdant Catacombs
-1 Wild Growth
-1 Winds of Abandon
+1 Wild Growth (MKC) 195
+1 Winds of Abandon (MH1) 37
 1 Windswept Heath
 1 Wooded Foothills
 1 Yavimaya, Cradle of Growth

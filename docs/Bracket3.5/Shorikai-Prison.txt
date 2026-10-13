@@ -1,96 +1,96 @@
-1 Shorikai, Genesis Engine
+1 Shorikai, Genesis Engine (NEC) 4
 1 Adarkar Wastes
-1 An Offer You Can't Refuse
+1 An Offer You Can't Refuse (FDN) 160
 1 Ancient Den
-1 Arcane Denial
-1 Arcane Laboratory
-1 Arcane Signet
+1 Arcane Denial (SOC) 187
+1 Arcane Laboratory (7ED) 60
+1 Arcane Signet (FDC) 245
 1 Aura of Silence
-1 Azorius Signet
+1 Azorius Signet (FRC) 53
 1 Bender's Waterskin
 1 Bilbo's Gambit
-1 Blind Obedience
-1 Chain of Vapor
+1 Blind Obedience (RVR) 9
+1 Chain of Vapor (MB2) 156
 1 City of Brass
-1 Clever Concealment
+1 Clever Concealment (ONC) 5
 1 Command Tower
-1 Counterspell
-1 Crawlspace
-1 Cursed Totem
+1 Counterspell (DSC) 114
+1 Crawlspace (DMR) 217
+1 Cursed Totem (MIR) 299
 1 Deserted Beach
-1 Dovin's Veto
+1 Dovin's Veto (WAR) 193
 1 Eiganjo, Seat of the Empire
 1 Energy Field
 1 Exotic Orchard
-1 Fabricate
-1 Fellwar Stone
+1 Fabricate (M10) 52
+1 Fellwar Stone (MBC) 74
 1 Flooded Strand
 1 Floodfarm Verge
 1 Fomori Vault
-1 Force of Negation
+1 Force of Negation (2X2) 50
 1 Gemstone Caverns
 1 Glacial Fortress
 1 Gleaming Bastion
-1 Grafdigger's Cage
-1 Greater Auramancy
+1 Grafdigger's Cage (M20) 227
+1 Greater Auramancy (SHM) 7
 1 Hallowed Fountain
 1 Hengegate Pathway
 1 Humility
-1 Idyllic Tutor
+1 Idyllic Tutor (SLD) 1020
 3 Island
-1 Karn, the Great Creator
+1 Karn, the Great Creator (RVR) 1
 1 Knowledge Pool
-1 Liquimetal Torque
+1 Liquimetal Torque (MH2) 228
 1 Mana Confluence
-1 Mana Drain
-1 Manifold Key
-1 March of Otherworldly Light
+1 Mana Drain (2X2) 57
+1 Manifold Key (M20) 230
+1 March of Otherworldly Light (NEO) 369
 1 Marsh Flats
 1 Maze of Ith
 1 Meticulous Archive
 1 Minamo, School at Water's Edge
-1 Mind Stone
+1 Mind Stone (MBC) 76
 1 Mirrormade
 1 Moat
 1 Monument to Endurance
-1 Mox Opal
+1 Mox Opal (2XM) 275
 1 Mystic Gate
-1 Mystic Remora
-1 Narset, Parter of Veils
+1 Mystic Remora (DMR) 59
+1 Narset, Parter of Veils (CMM) 853
 1 Otawara, Soaring City
-1 Out of Time
+1 Out of Time (MH2) 23
 3 Plains
 1 Polluted Delta
-1 Prismatic Lens
-1 Propaganda
-1 Rest in Peace
-1 Rhystic Study
-1 Rule of Law
-1 Sculpting Steel
+1 Prismatic Lens (OTC) 264
+1 Propaganda (FDC) 72
+1 Rest in Peace (A25) 32
+1 Rhystic Study (JMP) 169
+1 Rule of Law (M20) 35
+1 Sculpting Steel (MOC) 374
 1 Sea Gate Restoration
 1 Sea of Clouds
 1 Seachrome Coast
 1 Seat of the Synod
-1 Sensei's Divining Top
+1 Sensei's Divining Top (2X2) 314
 1 Sink into Stupor
 1 Skycloud Expanse
-1 Sol Ring
+1 Sol Ring (FDC) 286
 1 Spire of Industry
-1 Supreme Verdict
-1 Swan Song
-1 Swords to Plowshares
-1 Talisman of Progress
-1 Teferi, Time Raveler
-1 Teferi's Puzzle Box
-1 Tezzeret the Seeker
+1 Supreme Verdict (CLU) 211
+1 Swan Song (C16) 98
+1 Swords to Plowshares (SLD) 1021
+1 Talisman of Progress (FRC) 64
+1 Teferi, Time Raveler (RVR) 232
+1 Teferi's Puzzle Box (9ED) 312
+1 Tezzeret the Seeker (MM2) 62
 1 The Millennium Calendar
-1 Thought Vessel
-1 Torpor Orb
-1 Trinisphere
+1 Thought Vessel (MBC) 78
+1 Torpor Orb (MB2) 236
+1 Trinisphere (2XM) 303
 1 Tundra
 1 Unstoppable Plan
-1 Unwinding Clock
-1 Voltaic Key
-1 Whir of Invention
+1 Unwinding Clock (C18) 228
+1 Voltaic Key (USG) 314
+1 Whir of Invention (AER) 49
 1 Windswept Heath
-1 Witch Enchanter
+1 Witch Enchanter (MH3) 239

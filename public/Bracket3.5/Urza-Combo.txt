@@ -1,88 +1,88 @@
-1 Urza, Lord High Artificer
+1 Urza, Lord High Artificer (CMM) 130
 1 Academy Ruins
 1 Aether Spellbomb
-1 An Offer You Can't Refuse
-1 Arcane Signet
-1 Basalt Monolith
-1 Brainstorm
+1 An Offer You Can't Refuse (FDN) 160
+1 Arcane Signet (DRC) 52
+1 Basalt Monolith (2XM) 232
+1 Brainstorm (DSC) 113
 1 Cephalid Coliseum
-1 Chain of Vapor
+1 Chain of Vapor (MB2) 156
 1 City of Traitors
 1 Copy Artifact
-1 Counterspell
-1 Cyberdrive Awakener
-1 Cyclonic Rift
+1 Counterspell (DSC) 114
+1 Cyberdrive Awakener (EOC) 69
+1 Cyclonic Rift (CMM) 84
 1 Darksteel Citadel
-1 Displacer Kitten
-1 Dramatic Reversal
-1 Emry, Lurker of the Loch
-1 Etherium Sculptor
-1 Everflowing Chalice
-1 Fabricate
-1 Faerie Mastermind
+1 Displacer Kitten (CLB) 63
+1 Dramatic Reversal (KLD) 44
+1 Emry, Lurker of the Loch (EOC) 71
+1 Etherium Sculptor (EOC) 72
+1 Everflowing Chalice (EOC) 137
+1 Fabricate (HOP) 9
+1 Faerie Mastermind (MOM) 58
 1 Flooded Strand
-1 Flusterstorm
-1 Force of Negation
-1 Forensic Gadgeteer
-1 Foundry Inspector
+1 Flusterstorm (IMA) 55
+1 Force of Negation (2X2) 50
+1 Forensic Gadgeteer (MKM) 57
+1 Foundry Inspector (BRR) 79
 1 Gemstone Caverns
-1 Hullbreaker Horror
+1 Hullbreaker Horror (INR) 68
 1 Inventors' Fair
 13 Island
-1 Isochron Scepter
+1 Isochron Scepter (2XM) 264
 1 Jeweled Amulet
-1 Lightning Greaves
-1 Lotus Petal
-1 Mana Drain
-1 Manifold Key
-1 Mechanized Production
-1 Mental Misstep
-1 Merchant Scroll
+1 Lightning Greaves (OTC) 260
+1 Lotus Petal (MB2) 226
+1 Mana Drain (2X2) 57
+1 Manifold Key (M20) 230
+1 Mechanized Production (MKC) 109
+1 Mental Misstep (NPH) 38
+1 Merchant Scroll (8ED) 91
 1 Minamo, School at Water's Edge
-1 Mind Stone
-1 Mindbreak Trap
-1 Mishra's Bauble
+1 Mind Stone (MBC) 76
+1 Mindbreak Trap (ZEN) 57
+1 Mishra's Bauble (BRR) 97
 1 Misty Rainforest
-1 Mox Opal
-1 Muddle the Mixture
-1 Mystic Forge
-1 Mystic Remora
+1 Mox Opal (2XM) 275
+1 Muddle the Mixture (RVR) 50
+1 Mystic Forge (BRR) 99
+1 Mystic Remora (DMR) 59
 1 Otawara, Soaring City
-1 Pact of Negation
-1 Padeem, Consul of Innovation
-1 Phyrexian Metamorph
+1 Pact of Negation (TSR) 77
+1 Padeem, Consul of Innovation (CMM) 109
+1 Phyrexian Metamorph (EOC) 75
 1 Polluted Delta
-1 Pongify
+1 Pongify (TDC) 160
 1 Power Artifact
 1 Prismatic Vista
 1 Reshape
-1 Rhystic Study
-1 Rings of Brighthearth
-1 Sai, Master Thopterist
-1 Sapphire Medallion
+1 Rhystic Study (JMP) 169
+1 Rings of Brighthearth (CMR) 335
+1 Sai, Master Thopterist (CMM) 118
+1 Sapphire Medallion (MH3) 296
 1 Scalding Tarn
 1 Seat of the Synod
-1 Sensei's Divining Top
+1 Sensei's Divining Top (2X2) 314
 1 Sink into Stupor
-1 Sol Ring
-1 Solve the Equation
-1 Spellskite
-1 Swan Song
-1 Tezzeret the Seeker
-1 The One Ring
-1 The Reality Chip
-1 Thought Vessel
+1 Sol Ring (FDC) 286
+1 Solve the Equation (STX) 54
+1 Spellskite (CLB) 873
+1 Swan Song (C16) 98
+1 Tezzeret the Seeker (MM2) 62
+1 The One Ring (LTR) 246
+1 The Reality Chip (NEO) 74
+1 Thought Vessel (MBC) 78
 1 Timetwister
-1 Tormod's Crypt
+1 Tormod's Crypt (DMR) 235
 1 Transmute Artifact
-1 Trinisphere
-1 Unwinding Clock
-1 Urza's Bauble
+1 Trinisphere (2XM) 303
+1 Unwinding Clock (BRR) 124
+1 Urza's Bauble (ICE) 343
 1 Urza's Mine
 1 Urza's Power Plant
 1 Urza's Saga
 1 Urza's Tower
-1 Voltaic Key
-1 Walking Ballista
-1 Whir of Invention
-1 Windfall
+1 Voltaic Key (USG) 314
+1 Walking Ballista (2XM) 306
+1 Whir of Invention (AER) 49
+1 Windfall (CM2) 55

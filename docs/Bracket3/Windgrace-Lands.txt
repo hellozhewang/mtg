@@ -1,34 +1,34 @@
-1 Lord Windgrace
-1 Ancient Greenwarden
-1 Assassin's Trophy
-1 Avenger of Zendikar
-1 Azusa, Lost but Seeking
+1 Lord Windgrace (C18) 43
+1 Ancient Greenwarden (OTC) 186
+1 Assassin's Trophy (2X2) 372
+1 Avenger of Zendikar (ECC) 98
+1 Azusa, Lost but Seeking (CMM) 274
 1 Badlands
 1 Bayou
-1 Beast Within
+1 Beast Within (FDC) 190
 1 Blackcleave Cliffs
-1 Blasphemous Act
+1 Blasphemous Act (FDC) 140
 1 Blast Zone
 1 Blood Crypt
 1 Bloodstained Mire
 1 Blooming Marsh
 1 Bojuka Bog
 1 Boseiju, Who Endures
-1 Burgeoning
+1 Burgeoning (STH) 102
 1 Cabal Coffers
 1 Castle Locthwain
-1 Chaos Warp
+1 Chaos Warp (MBC) 72
 1 Command Tower
-1 Constant Mists
+1 Constant Mists (STH) 104
 1 Copperline Gorge
-1 Crop Rotation
-1 Crucible of Worlds
+1 Crop Rotation (2XM) 161
+1 Crucible of Worlds (PWOR) 2019
 1 Crystal Vein
-1 Cultivate
+1 Cultivate (ECC) 103
 1 Dragonskull Summit
 1 Exotic Orchard
-1 Exploration
-1 Farseek
+1 Exploration (2XM) 167
+1 Farseek (F13) 3
 1 Field of Ruin
 1 Field of the Dead
 1 Fire-Lit Thicket
@@ -36,62 +36,62 @@
 1 Ghost Quarter
 1 Graven Cairns
 1 Grove of the Burnwillows
-1 Harmonize
-1 Harrow
+1 Harmonize (FDC) 209
+1 Harrow (EOC) 98
 1 Karplusan Forest
-1 Kodama's Reach
-1 Life from the Loam
+1 Kodama's Reach (ECC) 113
+1 Life from the Loam (TDC) 96
 1 Llanowar Wastes
-1 Lotus Cobra
+1 Lotus Cobra (ZNR) 193
 1 Maze of Ith
 1 Misty Rainforest
 2 Mountain
-1 Multani, Yavimaya's Avatar
-1 Nature's Lore
+1 Multani, Yavimaya's Avatar (EOC) 100
+1 Nature's Lore (SOC) 278
 1 Nurturing Peatland
-1 Oracle of Mul Daya
+1 Oracle of Mul Daya (EOC) 102
 1 Overgrown Tomb
 1 Petrified Field
-1 Phyrexian Arena
+1 Phyrexian Arena (C15) 130
 1 Prismatic Vista
 1 Raging Ravine
-1 Ramunap Excavator
-1 Return of the Wildspeaker
+1 Ramunap Excavator (OTC) 202
+1 Return of the Wildspeaker (ECC) 115
 1 Riveteers Overlook
 1 Rogue's Passage
 1 Roiling Regrowth
 1 Rootbound Crag
-1 Scapeshift
-1 Scute Swarm
+1 Scapeshift (M19) 201
+1 Scute Swarm (DSC) 197
 1 Sheltered Thicket
-1 Skyshroud Claim
+1 Skyshroud Claim (EOC) 107
 1 Sokenzan, Crucible of Defiance
-1 Sol Ring
-1 Splendid Reclamation
+1 Sol Ring (ECC) 57
+1 Splendid Reclamation (EOC) 108
 1 Stomping Ground
 1 Sulfurous Springs
 2 Swamp
-1 Sylvan Library
+1 Sylvan Library (LEG) 207
 1 Taiga
 1 Takenuma, Abandoned Mire
-1 Terminate
-1 The Gitrog Monster
-1 The One Ring
+1 Terminate (SCD) 249
+1 The Gitrog Monster (EOC) 117
+1 The One Ring (LTR) 246
 1 Thespian's Stage
-1 Three Visits
-1 Titania, Protector of Argoth
-1 Torment of Hailfire
-1 Toxic Deluge
-1 Traveling Chocobo
+1 Three Visits (SOC) 289
+1 Titania, Protector of Argoth (EOC) 111
+1 Torment of Hailfire (HOU) 77
+1 Toxic Deluge (CC2) 6
+1 Traveling Chocobo (FIN) 210
 1 Twilight Mire
 1 Urborg, Tomb of Yawgmoth
-1 Vandalblast
+1 Vandalblast (OTC) 183
 1 Verdant Catacombs
 1 Vesuva
-1 Wayward Swordtooth
+1 Wayward Swordtooth (LCC) 263
 1 Windgrace's Judgment
 1 Wooded Foothills
 1 Woodland Cemetery
-1 World Shaper
+1 World Shaper (OTC) 214
 1 Yavimaya, Cradle of Growth
 1 Ziatora's Proving Ground

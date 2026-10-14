@@ -458,13 +458,21 @@ about how the list loads in Tabletop Simulator:
 7. Every **pinned printing** exists and is that card. A wrong pin does not error
    in Tabletop Simulator, it silently loads other art, so it is an error here.
 8. **The Tabletop Simulator importer loads the whole deck.** Once 1–7 pass, the
-   list is sent to the importer the table uses (rikrassen's, via
-   [`ttsimport.py`](scripts/ttsimport.py)) and the reply is checked: no
-   "failed to find card", all 100 cards returned, and each pin loaded as the
-   printing asked for. The line `TTS import 100/100 cards, 52/52 pinned printings
-   load` reports it. Replies are cached by the exact text sent, so an unchanged
-   deck is not sent twice. If the importer's server cannot be reached the deck
-   still passes and the line says it was not checked. `--no-import` (or
+   list is checked against the importer the table uses (rikrassen's, via
+   [`ttsimport.py`](scripts/ttsimport.py)): no "failed to find card", all 100
+   cards returned, and each pin loaded as the printing asked for. The line
+   `TTS import 100/100 cards, 52/52 pinned printings load` reports it.
+
+   The importer is someone's free service, so it is asked as little as possible.
+   **Every card line that loaded is remembered for 30 days** (in
+   `.cache/tts-import-cards.json`), and only lines not yet known to load are
+   sent. The note says which happened: `(all known good, importer not asked)`
+   for a deck with nothing new, `(asked the importer about 3)` when three cards
+   were new or changed. A pinned line is remembered only once it came back as
+   exactly that printing, and a line that failed is never remembered, so it is
+   asked again every time. If the importer cannot be reached and something
+   still needs asking, the deck passes anyway and the line says it was not
+   checked. `--recheck-import` asks about every card again; `--no-import` (or
    `MTG_NO_IMPORT=1`) skips the step.
 
 Legality is read from each card's own `legalities.commander`, not from a list

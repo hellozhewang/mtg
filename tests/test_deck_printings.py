@@ -90,6 +90,9 @@ class ImporterReplyTests(unittest.TestCase):
         self.assertEqual((result.count, result.tokens), (2, 1))
         self.assertNotIn("Warrior", result.faces)
 
+    def test_an_empty_pile_is_not_a_card(self):
+        self.assertEqual(ttsimport.parse(importer_reply()).count, 0)
+
     def test_error_lines_and_a_single_bare_card(self):
         card = {"Name": "Card", "CardID": 100, "Nickname": "Sol Ring\nArtifact 1CMC",
                 "CustomDeck": {"1": face(SOL)}}
@@ -182,6 +185,129 @@ class ImportCheckTests(unittest.TestCase):
         problems, note = self.run_check(error=ttsimport.ImporterUnavailable("timed out"))
         self.assertEqual(problems, [])
         self.assertEqual(note, "TTS import not checked: importer unavailable (timed out)")
+
+
+class FakeImporter:
+    """Answers `ttsimport.fetch` from a table of what each card loads as, and
+    records exactly which lines it was asked about."""
+
+    def __init__(self, loads: dict[str, str], unknown: tuple[str, ...] = ()):
+        self.loads, self.unknown, self.asked = loads, unknown, []
+
+    def __call__(self, text: str) -> ttsimport.Result:
+        lines = [l for l in text.splitlines() if l.strip()]
+        self.asked.append(lines)
+        cards, errors = [], []
+        for line in lines:
+            qty, rest = line.split(" ", 1)
+            name, _pin = deckfile.split_printing(rest)
+            if name in self.unknown:
+                errors.append({"error": f'failed to find card "{rest}"'})
+            else:
+                cards += [(name, self.loads[rest])] * int(qty)
+        if not cards:                                    # nothing loaded: only the complaints
+            return ttsimport.parse("\n".join(json.dumps(e) for e in errors))
+        return ttsimport.parse(importer_reply(*cards, extra=errors))
+
+
+class CardCacheTests(unittest.TestCase):
+    """The importer is asked only about lines not known to load."""
+
+    DECK = "1 Sol Ring (SLD) 249\n1 Mana Vault\n3 Swamp\n"
+    LOADS = {"Sol Ring (SLD) 249": SOL, "Mana Vault": VAULT, "Swamp": "id-swamp",
+             "Sol Ring": "id-sol-default", "Mox Opal": "id-opal", "Sol Ring (CMM) 410": "id-sol-cmm"}
+    EXPECT = {"Sol Ring": SOL}
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        path = Path(self.tmp.name) / "cards.json"
+        for patch in (mock.patch.object(ttsimport, "_cache_path", return_value=path),
+                      mock.patch.object(ttsimport, "POLITE_DELAY", 0)):
+            patch.start()
+            self.addCleanup(patch.stop)
+
+    def importer(self, **kw) -> FakeImporter:
+        fake = FakeImporter(self.LOADS, **kw)
+        patch = mock.patch.object(ttsimport, "fetch", fake)
+        patch.start()
+        self.addCleanup(patch.stop)
+        return fake
+
+    def test_an_unchanged_deck_is_not_sent_again(self):
+        fake = self.importer()
+        first = ttsimport.check(self.DECK, expect=self.EXPECT)
+        self.assertEqual((first.count, first.sent, first.cached), (5, 5, False))
+        again = ttsimport.check(self.DECK, expect=self.EXPECT)
+        self.assertEqual(len(fake.asked), 1)
+        self.assertEqual((again.count, again.sent, again.cached, again.errors), (5, 0, True, []))
+        # The remembered answer still says which printing each card is.
+        self.assertEqual(again.printing_of("Sol Ring"), [SOL])
+        self.assertEqual(again.printing_of("Swamp"), ["id-swamp"] * 3)
+
+    def test_only_the_changed_line_is_asked_about(self):
+        fake = self.importer()
+        ttsimport.check(self.DECK, expect=self.EXPECT)
+        result = ttsimport.check(self.DECK.replace("1 Mana Vault", "1 Mox Opal"), expect=self.EXPECT)
+        self.assertEqual(fake.asked[1], ["1 Mox Opal"])
+        self.assertEqual((result.count, result.sent, result.cached), (5, 1, False))
+
+    def test_a_different_pin_on_a_known_card_is_a_new_question(self):
+        fake = self.importer()
+        ttsimport.check(self.DECK, expect=self.EXPECT)
+        ttsimport.check(self.DECK.replace("(SLD) 249", "(CMM) 410"), expect={"Sol Ring": "id-sol-cmm"})
+        self.assertEqual(fake.asked[1], ["1 Sol Ring (CMM) 410"])
+
+    def test_a_pin_is_learned_only_when_it_loaded_as_the_expected_printing(self):
+        fake = self.importer()
+        ttsimport.check(self.DECK)                               # nobody said which printing is right
+        ttsimport.check(self.DECK, expect={"Sol Ring": "other"})  # the importer returned a different one
+        ttsimport.check(self.DECK, expect=self.EXPECT)            # verified: remembered from here on
+        ttsimport.check(self.DECK, expect=self.EXPECT)
+        self.assertEqual(fake.asked, [["1 Sol Ring (SLD) 249", "1 Mana Vault", "3 Swamp"],
+                                      ["1 Sol Ring (SLD) 249"], ["1 Sol Ring (SLD) 249"]])
+        # A remembered pin is not trusted for a different expected printing.
+        ttsimport.check(self.DECK, expect={"Sol Ring": "other"})
+        self.assertEqual(fake.asked[-1], ["1 Sol Ring (SLD) 249"])
+
+    def test_lines_that_fail_are_asked_again_and_the_rest_remembered(self):
+        fake = self.importer(unknown=("Mana Vault",))
+        first = ttsimport.check(self.DECK, expect=self.EXPECT)
+        self.assertEqual((first.count, first.errors), (4, ['failed to find card "Mana Vault"']))
+        second = ttsimport.check(self.DECK, expect=self.EXPECT)
+        self.assertEqual(fake.asked[1], ["1 Mana Vault"])
+        self.assertEqual((second.count, second.errors), (4, ['failed to find card "Mana Vault"']))
+
+    def test_remembered_lines_expire_and_refresh_asks_everything(self):
+        fake = self.importer()
+        ttsimport.check(self.DECK, expect=self.EXPECT)
+        later = ttsimport.time.time() + (ttsimport.CACHE_DAYS + 1) * 86400
+        with mock.patch.object(ttsimport.time, "time", return_value=later):
+            ttsimport.check(self.DECK, expect=self.EXPECT)
+        self.assertEqual(len(fake.asked[1]), 3)
+        ttsimport.check(self.DECK, expect=self.EXPECT, refresh=True)
+        self.assertEqual(len(fake.asked[2]), 3)
+
+    def test_a_known_deck_validates_while_the_importer_is_down(self):
+        self.importer()
+        ttsimport.check(self.DECK, expect=self.EXPECT)
+        down = mock.patch.object(ttsimport, "fetch", side_effect=ttsimport.ImporterUnavailable("timed out"))
+        down.start()
+        self.addCleanup(down.stop)
+        self.assertEqual(ttsimport.check(self.DECK, expect=self.EXPECT).count, 5)
+        with self.assertRaises(ttsimport.ImporterUnavailable):
+            ttsimport.check(self.DECK + "1 Mox Opal\n", expect=self.EXPECT)
+
+    def test_the_validator_note_says_how_much_was_asked(self):
+        self.importer()
+        deck = deck_of(Entry(1, "Sol Ring", Printing("SLD", "249")), Entry(1, "Mana Vault"), Entry(3, "Swamp"))
+        _, note = validate_deck.import_check(deck, self.DECK, self.EXPECT)
+        self.assertEqual(note, "TTS import 5/5 cards, 1/1 pinned printings load")
+        _, note = validate_deck.import_check(deck, self.DECK, self.EXPECT)
+        self.assertEqual(note, "TTS import 5/5 cards, 1/1 pinned printings load (all known good, importer not asked)")
+        changed = deck_of(Entry(1, "Sol Ring", Printing("SLD", "249")), Entry(1, "Mox Opal"), Entry(3, "Swamp"))
+        _, note = validate_deck.import_check(changed, self.DECK.replace("Mana Vault", "Mox Opal"), self.EXPECT)
+        self.assertEqual(note, "TTS import 5/5 cards, 1/1 pinned printings load (asked the importer about 1)")
 
 
 def uris(tag: str) -> dict:

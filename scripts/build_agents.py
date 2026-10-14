@@ -266,7 +266,10 @@ identity for you. `--since YEAR` finds genuinely new printings, not reprints.
 `validate_deck.py` is the gate: exactly 100 cards, every name resolves on Scryfall,
 colour identity, the bracket's Game Changer cap, and singleton. Once those pass it
 also sends the list to the Tabletop Simulator deck importer the players use and
-checks that every card comes back, printed as `TTS import 100/100 cards`. A
+checks that every card comes back, printed as `TTS import 100/100 cards`. Cards
+that loaded before are remembered for 30 days, so the line may end with
+`(all known good, importer not asked)` or `(asked the importer about 3)`; both
+mean the check passed. A
 `TTS importer:` problem means a player could not load the deck, so fix it like
 any other failure. `TTS import not checked: importer unavailable` only means the
 importer's server did not answer; the deck still passes, so say that it was not

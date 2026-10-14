@@ -7,6 +7,7 @@
     ./validate_deck.py --max-gc 0 ../Bracket1
     ./validate_deck.py --no-cache            # bypass SQLite, always hit the API
     ./validate_deck.py --no-import           # skip the Tabletop Simulator importer
+    ./validate_deck.py --recheck-import      # ask the importer about every card again
 
 Checks (all must pass, see README.md):
   1. exactly 100 cards including the commander
@@ -18,7 +19,8 @@ Checks (all must pass, see README.md):
   6. singleton, except Oracle text allowing unlimited copies; no repeated lines
   7. a pinned printing (`1 Sol Ring (SLD) 249`) exists and is that card
   8. Tabletop Simulator's deck importer loads the whole list, pins included --
-     asked of the importer itself (ttsimport.py), once the deck passes 1-7
+     asked of the importer itself (ttsimport.py), once the deck passes 1-7. A
+     card line that loaded is remembered for 30 days and not asked about again
 
 This module is business logic only: decklist parsing lives in deckfile.py and all
 card data access goes through cardlib.CardQuery.
@@ -214,15 +216,15 @@ def printing_problems(deck: deckfile.Deck, cards: dict[str, dict],
     return problems, ids
 
 
-def import_check(deck: deckfile.Deck, text: str,
-                 pinned: dict[str, str]) -> tuple[list[str], str]:
+def import_check(deck: deckfile.Deck, text: str, pinned: dict[str, str],
+                 refresh: bool = False) -> tuple[list[str], str]:
     """Send the list to the Tabletop Simulator importer. Returns (problems, note).
 
     An importer that cannot be reached is a note, never a failure: it is someone
     else's service, and a deck does not become illegal because it is down.
     """
     try:
-        result = ttsimport.check(text)
+        result = ttsimport.check(text, expect=pinned, refresh=refresh)
     except ttsimport.ImporterUnavailable as exc:
         return [], f"TTS import not checked: importer unavailable ({exc})"
     problems = [f"TTS importer: {err}" for err in result.errors]
@@ -234,6 +236,11 @@ def import_check(deck: deckfile.Deck, text: str,
     note = f"TTS import {result.count}/{deck.total} cards"
     if pinned:
         note += f", {len(pinned) - len(swapped)}/{len(pinned)} pinned printings load"
+    # Lines that loaded are remembered for 30 days; say how much was really asked.
+    if result.cached:
+        note += " (all known good, importer not asked)"
+    elif 0 < result.sent < deck.total:
+        note += f" (asked the importer about {result.sent})"
     return problems, note
 
 
@@ -273,6 +280,8 @@ def main() -> int:
                     help="ignore the SQLite cache and re-fetch everything")
     ap.add_argument("--no-import", action="store_true",
                     help="do not ask the Tabletop Simulator importer (also MTG_NO_IMPORT=1)")
+    ap.add_argument("--recheck-import", action="store_true",
+                    help="ask the importer about every card again, ignoring what is remembered")
     args = ap.parse_args()
     ask_importer = not (args.no_import or os.environ.get("MTG_NO_IMPORT"))
 
@@ -294,7 +303,8 @@ def main() -> int:
         if ask_importer and problems:
             notes.append("TTS import not checked until the problems below are fixed")
         elif ask_importer:
-            import_problems, note = import_check(deck, path.read_text(encoding="utf-8"), pinned)
+            import_problems, note = import_check(deck, path.read_text(encoding="utf-8"), pinned,
+                                                 refresh=args.recheck_import)
             problems += import_problems
             notes.append(note)
         results.append(report(deck, cards, problems, identity, gcs, cap, notes))

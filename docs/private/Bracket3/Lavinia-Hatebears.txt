@@ -1,0 +1,95 @@
+1 Lavinia, Azorius Renegade (PRNA) 189
+1 Adarkar Wastes
+1 An Offer You Can't Refuse (FDN) 160
+1 Approach of the Second Sun (AKH) 4
+1 Arcane Signet (FDC) 245
+1 Archivist of Oghma (CLB) 4
+1 Aura of Silence
+1 Austere Command (FDC) 18
+1 Aven Mindcensor (CLB) 688
+1 Castle Ardenvale
+1 Cavern of Souls
+1 Celestial Colonnade
+1 Clarion Conqueror (TDM) 5
+1 Command Tower
+1 Consign to Memory (MH3) 54
+1 Consult the Star Charts
+1 Containment Priest (M21) 13
+1 Counterspell (DSC) 114
+1 Cyclonic Rift (CMM) 84
+1 Deafening Silence (ELD) 10
+1 Deserted Beach
+1 Doorkeeper Thrull (MKM) 13
+1 Dovin's Veto (WAR) 193
+1 Drannith Magistrate (IKO) 11
+1 Eiganjo, Seat of the Empire
+1 Elesh Norn, Mother of Machines (ONE) 10
+1 Emeria's Call
+1 Enlightened Tutor (MIR) 14
+1 Esper Sentinel (MH2) 12
+1 Exotic Orchard
+1 Fact or Fiction (FRC) 41
+1 Floodfarm Verge
+1 Force of Negation (2X2) 50
+1 Get Lost (LCI) 14
+1 Glacial Fortress
+1 Gleaming Bastion
+1 Grafdigger's Cage (M20) 227
+1 Grand Abolisher (CMM) 27
+1 Grasp of Fate (C15) 3
+1 Greater Auramancy (SHM) 7
+1 Hall of Storm Giants
+1 Hallowed Fountain
+1 Heliod's Intervention
+1 Hushbringer
+1 Hushwing Gryff
+1 Idyllic Tutor (THB) 24
+1 Irrigated Farmland
+4 Island
+1 Karn, the Great Creator (RVR) 1
+1 Leonin Arbiter
+1 Linvala, Keeper of Silence (JMP) 119
+1 Luminarch Ascension
+1 Mana Confluence
+1 Mana Drain (2X2) 57
+1 March of Otherworldly Light (NEO) 28
+1 Meddling Mage (2XM) 355
+1 Memory Deluge (INR) 75
+1 Meticulous Archive
+1 Myrel, Shield of Argive (BRO) 18
+1 Mystic Gate
+1 Mystic Remora (DMR) 59
+1 No More Lies
+1 Null Rod
+1 Otawara, Soaring City
+1 Path to Exile (FRC) 30
+1 Phyrexian Revoker (CLB) 868
+1 Pithing Needle (2X2) 312
+3 Plains
+1 Plaza of Heroes
+1 Prairie Stream
+1 Rest in Peace (RVR) 446
+1 Sea of Clouds
+1 Seachrome Coast
+1 Shark Typhoon (FRC) 44
+1 Sink into Stupor
+1 Sol Ring (FDC) 286
+1 Stony Silence (MM3) 25
+1 Strip Mine
+1 Suppression Field
+1 Supreme Verdict (CLU) 211
+1 Swan Song (C16) 98
+1 Swords to Plowshares (FRC) 37
+1 Tale's End
+1 Talisman of Progress (FRC) 64
+1 Teferi, Time Raveler (RVR) 232
+1 The Immortal Sun
+1 Torpor Orb (MB2) 236
+1 Trouble in Pairs (MKC) 15
+1 Tundra
+1 Voice of Victory (TDM) 33
+1 Wash Away (VOW) 87
+1 Wasteland
+1 Weathered Runestone
+1 Winds of Abandon (MH1) 37
+1 Witch Enchanter (MH3) 239

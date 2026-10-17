@@ -42,6 +42,13 @@ class DeckTierTests(unittest.TestCase):
         self.assertEqual(sorted(stems - set(tiers)), [], "place these in deck-tiers.json")
         self.assertEqual(sorted(set(tiers) - stems), [], "these decks no longer exist")
 
+    def test_every_private_deck_has_a_tier(self):
+        # Published like the public ones, so held to the same rule, in their own map.
+        tiers = decktiers.load(ROOT / "private/deck-tiers.json")
+        stems = {p.stem for p in deckfile.discover_private(ROOT / "private")}
+        self.assertEqual(sorted(stems - set(tiers)), [], "place these in private/deck-tiers.json")
+        self.assertEqual(sorted(set(tiers) - stems), [], "these decks no longer exist")
+
     def test_tiers_view_has_one_section_per_used_tier_strongest_first(self):
         decks = [deck("Slow-Deck", ("value",), bracket="Bracket3", tier="C"),
                  deck("Fast-Combo", ("combo",), bracket="Bracket5", tier="GOD"),

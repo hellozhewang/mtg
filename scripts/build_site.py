@@ -1,34 +1,18 @@
 #!/usr/bin/env python3
 """Generate the static deck catalog that GitHub Pages publishes.
 
-    ./build_site.py                  # rebuild docs/, and docs/private/ if private/ has decks
+    ./build_site.py                  # rebuild docs/ from public/ and private/
     ./build_site.py --check          # exit 1 if docs/ is stale; write nothing
     ./build_site.py --out /tmp/site  # build elsewhere to look before publishing
 
-TWO OUTPUTS, AND ONLY ONE OF THEM IS PUBLIC.
+EVERY DECK IS PUBLISHED: public/ and the owner's decks in private/ alike. The
+two folders differ in who may change a deck, not in who may see it. The Discord
+builder's sandbox can write only public/, so a deck in private/ is the owner's
+alone to edit; the catalog shows it with a `private` badge and the owner's byline.
 
-    docs/         public/ only.        Committed, and served by GitHub Pages.
-    docs/private/   public/ + private/.  Gitignored, so Pages never sees it.
-
-No flag. Drop a deck in `private/` and the next build picks it up; the folder is
-gitignored, so nothing about it can reach GitHub. That is the whole mechanism:
-Pages serves the COMMITTED contents of `docs/`, so a directory git never records
-cannot be served, even sitting inside the published tree.
-
-Why two indexes rather than one catalog with private decks marked in it: the
-published `docs/index.html` lists and links every deck it knows about. A single
-index containing private decks would put their names on the web and link to pages
-that 404 there — so the private view gets its own index alongside the public one.
-It lives inside `docs/` so both resolve `style.css` and `img/` the same relative
-way, and the public build never depends on whether `private/` exists.
-
-Two consequences worth knowing before editing this file:
-
-  * the public build must never prune `docs/private/` — it walks its whole output
-    directory deleting anything it did not generate, and the local site is exactly
-    that. Hence `sync(keep=...)`, and the same exclusion in `--check`;
-  * a private deck's pages carry NO GitHub links. `raw.githubusercontent.com` for
-    a file that was never pushed is a 404 dressed up as a working button.
+A private deck's page goes under its own `private/` path segment
+(`docs/private/Bracket3/Foo.html`), so a private deck and a public one with the
+same bracket and filename cannot resolve to one file and overwrite each other.
 
 Data comes from here, markup comes from `frontend/`:
 
@@ -113,8 +97,8 @@ SECTION_ORDER = ["Commander", "Creatures", "Planeswalkers", "Instants",
                  "Sorceries", "Artifacts", "Enchantments", "Battles",
                  "Lands", "Other"]
 
-# Private decks are built locally for zzwang. Privacy has its own badge and does
-# not change the author's username; do not consult the public provenance keys.
+# Every deck in private/ is the owner's. Its badge says so; the byline is the
+# owner's username, never a provenance row (see DeckInfo for why).
 PRIVATE_AUTHOR = "zzwang"
 
 # Fallback for a PUBLIC deck with no recorded author — one that predates the
@@ -425,22 +409,14 @@ def picker(layout: frontend.Template, decks: list[DeckInfo],
 
 def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
                  repo: str, mana: Mana,
-                 available_images: set[str] | None = None,
-                 private_catalog: bool | None = None) -> str:
+                 available_images: set[str] | None = None) -> str:
     index, layout = tpl["index"], tpl["layout"]
-    # Only the local catalog shows private-only categories (Goblins). It is the
-    # one build that contains private decks, so that is the default test.
-    if private_catalog is None:
-        private_catalog = any(d.private for d in decks)
     grouped: dict[str, set[str]] = {}
     by_bracket: dict[str, list[str]] = {}
-    # Private-only categories MIRROR decks that already sit in a canonical one:
-    # theme -> bracket -> copies of the tiles, rendered here and never moved.
-    mirrors: dict[str, dict[str, list[str]]] = {}
     active_themes = set()
 
     for d in decks:
-        shown = deckthemes.visible(d.themes, private_catalog)
+        shown = d.themes
         grouped.setdefault(shown[0], set()).add(d.bracket)
         active_themes.update(shown)
         art_name = image_file(d.art_card, 0, ART, d.art_url) if d.art_url else ""
@@ -472,9 +448,7 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
             TIER_BADGE=tier_badge(index, d.tier),
             THEMES=e(" ".join(shown)),
             THEME_TAGS="".join(index.part("theme-tag").render(
-                LABEL=e(deckthemes.THEMES[t].label),
-                CLASS=" private" if deckthemes.THEMES[t].private_only else "")
-                for t in shown),
+                LABEL=e(deckthemes.THEMES[t].label)) for t in shown),
             TAG=index.part("tag").render() if d.private else "",
             AUTHOR=(f'        <span class="tile-author">by {e(d.author)}</span>\n'
                     if d.author else ""),
@@ -501,33 +475,18 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
             MV=f"{d.avg_mv:.2f}",
             GC=f"{len(d.gcs)}/{d.cap}" if d.cap is not None else str(len(d.gcs)))
         by_bracket.setdefault(d.bracket, []).append(tile)
-        for t in shown:
-            if deckthemes.THEMES[t].private_only:
-                # A second link to the same deck. `mirror` keeps the script from
-                # moving it and keeps it out of the deck count.
-                mirrors.setdefault(t, {}).setdefault(d.bracket, []).append(
-                    tile.replace('<a class="tile"', '<a class="tile mirror"', 1))
     sections = []
     for key, theme in deckthemes.THEMES.items():
-        if theme.private_only:
-            if key not in mirrors:
-                continue
-            brackets = [index.part("bracket").render(
-                BRACKET=e(bracket_label(bracket)), BRACKET_ID=e(bracket),
-                TILES="".join(tiles)) for bracket, tiles in sorted(mirrors[key].items())]
-        elif key in grouped:
-            brackets = [index.part("bracket").render(
-                BRACKET=e(bracket_label(bracket)), BRACKET_ID=e(bracket),
-                TILES="") for bracket in sorted(grouped[key])]
-        else:
+        if key not in grouped:
             continue
+        brackets = [index.part("bracket").render(
+            BRACKET=e(bracket_label(bracket)), BRACKET_ID=e(bracket),
+            TILES="") for bracket in sorted(grouped[key])]
         sections.append(index.part("strategy").render(
             THEME=e(key), LABEL=e(theme.label), DESCRIPTION=e(theme.description),
-            # Private-only categories carry the same badge as private decks.
-            PRIVATE=index.part("category-private").render() if theme.private_only else "",
             BRACKETS="".join(brackets)))
     options = "".join(index.part("theme-option").render(
-        VALUE=e(key), LABEL=e(theme.label + (" (private)" if theme.private_only else "")))
+        VALUE=e(key), LABEL=e(theme.label))
         for key, theme in deckthemes.THEMES.items() if key in active_themes)
     brackets = "".join(index.part("list-bracket").render(
         BRACKET=e(bracket_label(bracket)), BRACKET_ID=e(bracket),
@@ -647,17 +606,12 @@ def render_deck(tpl: dict[str, frontend.Template], d: DeckInfo,
                 decks: list[DeckInfo], repo: str, mana: Mana) -> str:
     page, layout = tpl["deck"], tpl["layout"]
     up = "../" * d.depth
-    # No GitHub links for a private deck: the file was never pushed, so both URLs
-    # would 404 — a broken button is worse than an absent one. Copy and Plain-text
-    # still work, because those read the decklist embedded in the page.
-    if d.private:
-        links = page.part("private-note").render()
-    else:
-        links = page.part("links").render(
-            RAW=e(repo.replace("https://github.com/",
-                               "https://raw.githubusercontent.com/")
-                  + f"/main/public/{d.rel.as_posix()}"),
-            BLOB=e(f"{repo}/blob/main/public/{d.rel.as_posix()}"))
+    # Both folders are committed, so a private deck links to its file like any other.
+    source = f"{'private' if d.private else 'public'}/{d.rel.as_posix()}"
+    links = page.part("links").render(
+        RAW=e(repo.replace("https://github.com/", "https://raw.githubusercontent.com/")
+              + f"/main/{source}"),
+        BLOB=e(f"{repo}/blob/main/{source}"))
 
     gclist = page.part("gclist").render(NAMES="".join(
         page.part("gcname").render(NAME=e(n)) for n in d.gcs)) if d.gcs else ""
@@ -734,9 +688,11 @@ def creation_dates(root: Path) -> dict[Path, int]:
       * git log prints newest first, so a file that was removed and re-added
         (Krenko) appears twice. We keep overwriting, which leaves the EARLIEST
         add — the date the deck was actually created, not republished.
-      * a private deck is not in git at all, so it falls back to the file's own
-        birth time. That is machine-local, but private decks never reach docs/,
-        so the published build stays byte-deterministic.
+      * only public/ is read, so a private deck always takes the file's own birth
+        time. That is when the owner actually made it; the commit that first
+        tracked private/ came much later and would date every one of them alike.
+        It is machine-local, but the published build only ever runs here, where
+        the bot runs, and editing a file in place keeps its birth time.
     """
     dates: dict[Path, int] = {}
     try:
@@ -833,14 +789,13 @@ def plan(root: Path, out_dir: Path, repo: str, q: CardQuery,
     Building the whole thing in memory first is what makes `--check` possible and
     what lets sync() write only real differences.
 
-    `private_root` adds a second tree of decks, badged and linked but never
-    published. It defaults to None so the published build cannot include them by
-    forgetting a flag — the unsafe case has to be asked for explicitly.
+    `private_root` is the owner's deck folder (workspace.private_dir()). Its decks
+    are rendered alongside the public ones, badged `private`.
     """
     tpl = frontend.load(workspace.frontend_dir())
     fdir = workspace.frontend_dir()
-    # Private classifications are loaded only for the local catalog. A matching
-    # filename does not make its public and private versions the same strategy.
+    # Private decks have their own maps. A matching filename does not make a
+    # public deck and a private one the same strategy or the same tier.
     assignments = {False: deckthemes.load(fdir / "deck-themes.json")}
     tiers = {False: decktiers.load(fdir / "deck-tiers.json")}
     if private_root:
@@ -850,15 +805,8 @@ def plan(root: Path, out_dir: Path, repo: str, q: CardQuery,
         authors = store.all()
     dates = creation_dates(root)
     found = [(p, root, False) for p in deckfile.discover([root])]
-    if private_root and private_root.is_dir():
-        # ONLY the bracket folders, not the whole tree. private/ is a personal
-        # scratch directory as well as a deck directory — notes, tool inputs and
-        # anything else live alongside the decks — and `discover()` would happily
-        # turn every .txt in there into a "deck". It did: four showcards input
-        # files rendered as decklists, one of them a 51-card "commander".
-        # The bracket folder is what marks a file as a deck, here and in gc_cap().
-        found += [(p, private_root, True)
-                  for p in deckfile.discover(sorted(private_root.glob("Bracket*")))]
+    if private_root:
+        found += [(p, private_root, True) for p in deckfile.discover_private(private_root)]
     decks = sorted((DeckInfo(p, base, q, authors, private=priv,
                              created=created_at(p, dates),
                              theme_assignments=assignments[priv],
@@ -868,9 +816,8 @@ def plan(root: Path, out_dir: Path, repo: str, q: CardQuery,
                    # preserve newest-first order within each bracket or category
                    # subgroup. Name breaks ties deterministically.
                    key=lambda d: (d.bracket, -d.created, d.stem.lower()))
-    # Every deck is meant to have a tier (deck-tiers.md). Say which do not, once:
-    # the private build re-renders the public decks, so it reports only its own.
-    unrated = [d.stem for d in decks if not d.tier and (d.private or not private_root)]
+    # Every deck is meant to have a tier (deck-tiers.md). Say which do not.
+    unrated = [d.stem for d in decks if not d.tier]
     if unrated:
         print(f"warning: {len(unrated)} deck(s) have no power tier: "
               f"{', '.join(unrated)} — see deck-tiers.md", file=sys.stderr)
@@ -879,10 +826,7 @@ def plan(root: Path, out_dir: Path, repo: str, q: CardQuery,
     available_images = {path.name for path in image_files}
 
     files: dict[Path, str | bytes] = {
-        out_dir / "index.html": render_index(
-            tpl, decks, repo, mana, available_images,
-            private_catalog=private_root is not None,
-        ),
+        out_dir / "index.html": render_index(tpl, decks, repo, mana, available_images),
         out_dir / "style.css": (fdir / "style.css").read_text(encoding="utf-8"),
         out_dir / "app.js": (fdir / "app.js").read_text(encoding="utf-8"),
         out_dir / ".nojekyll": "",
@@ -908,13 +852,7 @@ def _same(path: Path, body: str | bytes) -> bool:
         return False
 
 
-def _under(path: Path, parent: Path | None) -> bool:
-    """Is `path` inside `parent`? False when there is no parent to be inside of."""
-    return parent is not None and parent in path.parents
-
-
-def sync(files: dict[Path, str | bytes], out_dir: Path,
-         keep: Path | None = None) -> tuple[int, int]:
+def sync(files: dict[Path, str | bytes], out_dir: Path) -> tuple[int, int]:
     """Write what changed, delete what no longer belongs. Returns (written, removed).
 
     Writing only on difference is what keeps `git status` quiet between real deck
@@ -926,11 +864,6 @@ def sync(files: dict[Path, str | bytes], out_dir: Path,
     to undo: restoring the .txt and rebuilding costs zero downloads, because the
     bytes were never thrown away. Measured — remove a deck, rebuild, restore,
     rebuild: `images 937 hit / 0 miss, 0 downloads`.
-
-    `keep` is a subtree pruning skips. The local catalog is generated INTO the
-    published one (docs/private/), so without this the public build would delete it
-    wholesale on the next Discord message — every file under there is, correctly,
-    something this build did not produce.
     """
     written = 0
     for path, body in sorted(files.items()):
@@ -946,8 +879,6 @@ def sync(files: dict[Path, str | bytes], out_dir: Path,
     removed = 0
     if out_dir.exists():
         for path in sorted(out_dir.rglob("*"), reverse=True):
-            if keep is not None and (path == keep or _under(path, keep)):
-                continue
             if path.is_file() and path not in files:
                 path.unlink()
                 removed += 1
@@ -958,7 +889,7 @@ def sync(files: dict[Path, str | bytes], out_dir: Path,
 
 def report(files: dict[Path, str | bytes], out_dir: Path,
            written: int, removed: int) -> None:
-    """One line per output tree. Both builds print the same shape."""
+    """One line summarising the build."""
     pages = sum(1 for p in files if p.suffix == ".html")
     mb = sum(len(b) for b in files.values() if isinstance(b, bytes)) / 1048576
     print(f"{pages - 1} decks -> {out_dir}  "
@@ -978,27 +909,16 @@ def main() -> int:
 
     root = workspace.deck_root()
     out_dir = args.out.expanduser().resolve() if args.out else workspace.site_dir()
-    # The local catalog is a subdirectory of whatever we are building, so it
-    # follows --out. The published build must leave it alone.
-    private_site = out_dir / workspace.PRIVATE_SITE_NAME
-    keep = private_site
     private_root = workspace.private_dir()
-    # Same rule as plan(): bracket folders only. These two scans must agree, or
-    # the build reports a deck count it did not render.
-    private_decks = (deckfile.discover(sorted(private_root.glob("Bracket*")))
-                     if private_root.is_dir() else [])
     q = CardQuery(db_path=workspace.cache_db())
     img = ImageQuery(db_path=workspace.cache_db())
     sym = SymbolQuery(db_path=workspace.cache_db())
-    # The published site is built from public/ ALONE, unconditionally. Nothing
-    # about what is on GitHub should vary with what happens to be in private/.
-    files = plan(root, out_dir, workspace.repo_url(), q, img, sym)
+    files = plan(root, out_dir, workspace.repo_url(), q, img, sym, private_root=private_root)
 
     if args.check:
         stale = [p for p, body in files.items() if not _same(p, body)]
         orphan = [p for p in out_dir.rglob("*")
-                  if p.is_file() and p not in files
-                  and not _under(p, keep)] if out_dir.exists() else []
+                  if p.is_file() and p not in files] if out_dir.exists() else []
         for p in sorted(stale):
             print(f"stale:  {p}")
         for p in sorted(orphan):
@@ -1009,30 +929,15 @@ def main() -> int:
             print(f"{out_dir} is up to date ({len(files)} files)")
         return 0
 
-    written, removed = sync(files, out_dir, keep=keep)
+    written, removed = sync(files, out_dir)
     if img.failed:
         print(f"warning: {len(img.failed)} image(s) unavailable, "
               f"first: {img.failed[0]}", file=sys.stderr)
     if not args.quiet:
         report(files, out_dir, written, removed)
-
-    # The local catalog, only when there is something private to show. No flag:
-    # the folder being present IS the request, and the folder being gitignored is
-    # what keeps the result off the web.
-    if private_decks:
-        pfiles = plan(root, private_site, workspace.repo_url(), q, img, sym,
-                      private_root=private_root)
-        pwritten, premoved = sync(pfiles, private_site)
-        if not args.quiet:
-            print(f"+ {len(private_decks)} private deck(s) from {private_root}")
-            report(pfiles, private_site, pwritten, premoved)
-    elif not args.quiet and private_site.exists():
-        # private/ emptied but the local catalog is still on disk, listing decks
-        # that are gone. Say so; deleting someone's local tree unasked is worse.
-        print(f"note: {private_site} still exists but private/ has no decks — "
-              f"remove it by hand if you are done with it")
-
-    if not args.quiet:
+        private = len(deckfile.discover_private(private_root))
+        if private:
+            print(f"  including {private} private deck(s) from {private_root}")
         print(f"# {q.counters()}   {img.counters()}")
     return 0
 

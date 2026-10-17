@@ -87,10 +87,10 @@ Game Changers but sits in A, because its planeswalker wins take turns to set up.
 
 ## Where tiers are stored
 
-| Deck visibility | Tier map |
+| Deck folder | Tier map |
 |---|---|
-| Public | [`frontend/deck-tiers.json`](frontend/deck-tiers.json) |
-| Private | `private/deck-tiers.json` (ignored; local only) |
+| `public/` | [`frontend/deck-tiers.json`](frontend/deck-tiers.json) |
+| `private/` | [`private/deck-tiers.json`](private/deck-tiers.json) |
 
 The key is the exact filename stem; the value is one of `GOD`, `SS`, `S`, `A`,
 `B`, `C`, `D`, `TRASH`. Keep one deck per line, keys sorted. As with themes, the
@@ -98,8 +98,8 @@ two maps are independent: never put a private deck in the public map.
 
 There is no filename fallback. A deck with no entry shows as **Unrated** with a
 "?" mark, `build_site.py` prints a warning naming it, and
-`tests/test_deck_tiers.py` fails for any public deck missing from the map (or
-any map entry whose deck no longer exists). A typo in a tier fails the build.
+`tests/test_deck_tiers.py` fails for any deck missing from its map (or any map
+entry whose deck no longer exists). A typo in a tier fails the build.
 
 ## The Discord builder
 

@@ -1,0 +1,66 @@
+This is the hard-lock version of Arbiter, and the difference from a normal prison deck is that it is trying to stop the game entirely rather than slow it down. Knowledge Pool plus any one-spell-per-turn effect means nobody casts anything ever again, and Helm of Obedience with Rest in Peace exiles a library at instant speed. Every tax in the deck is one-sided because Arbiter refunds you.
+
+# The commander and the refund
+Grand Arbiter Augustin IV :: your white and blue spells each cost {1} less; theirs all cost {1} more. Nearly every card in the deck is white or blue, so every symmetrical tax below becomes free for you and doubled for them.
+Sphere of Resistance :: everything costs {1} more. With Arbiter out your spells are back at printed cost and theirs are up two.
+Thalia, Guardian of Thraben :: the same, aimed at noncreature spells, on a first-striking body.
+Trinisphere :: everything costs at least three. It is brutal against the cheap interaction that would otherwise answer the lock.
+Aura of Silence :: their artifacts and enchantments cost two more, and it sacrifices to destroy one.
+
+# The lock itself
+Knowledge Pool :: every spell cast from hand is exiled and its caster may instead cast a card exiled with the Pool. On its own that is chaos; with any of the three cards below, it is a full stop.
+Rule of Law :: one spell per turn each. They cast from hand, it gets exiled, and the one-spell limit means the free replacement cannot be cast. Nobody plays a spell again.
+Arcane Laboratory :: the second copy.
+Eidolon of Rhetoric :: the third, on a 1/4 that blocks.
+Archon of Emeria :: the fourth, on a flier, and their nonbasics arrive tapped.
+Deploy the one-spell effect BEFORE Knowledge Pool. The other order gives everyone one free turn to empty their hands through the Pool.
+Sanctum Prelate :: name the number the table is built around. Most of the format's interaction is two or three.
+Lavinia, Azorius Renegade :: they cannot cast noncreature spells above their land count, and anything cast for free is countered outright.
+Drannith Magistrate :: no casting from graveyards, exile or the command zone — which also stops Knowledge Pool's replacement casts, if you want the Pool to be purely a prison.
+Cursed Totem :: no creature activated abilities.
+Torpor Orb :: no enters triggers, which is how a table usually escapes a lock.
+Grafdigger's Cage :: nothing enters from a graveyard or a library.
+Containment Priest :: anything entering without being cast is exiled.
+Disruptor Flute :: flash, name a card, and it taxes both casting and activating it.
+
+# How you actually win
+Helm of Obedience :: with Rest in Peace on the battlefield, activate for one and the target opponent's ENTIRE library is exiled. Repeat for each opponent. Under a full lock, nobody can respond.
+Rest in Peace :: the other half, and it is not a dead card on its own — it blanks every graveyard deck at the table and makes Energy Field permanent.
+Energy Field :: no damage to you at all from sources you do not control, and with Rest in Peace out it never gets sacrificed.
+Luminarch Ascension :: behind the wall you rarely lose life, so it turns on quickly and makes a 4/4 flier every turn as a backup plan.
+Court of Grace :: a flier every upkeep and the monarch's card, which is how a locked-down game still produces card advantage.
+
+# The wall
+Moat :: creatures without flying cannot attack at all.
+Ghostly Prison :: taxes what Moat does not stop.
+Crawlspace :: caps any swing at two creatures.
+Blind Obedience :: their creatures and artifacts enter tapped, and extort drains on every spell you cast.
+Dáin, Lord of the Iron Hills :: another attack tax once you control three artifacts or legends, which is immediate.
+Clever Concealment :: usually free with convoke, and it phases the whole lock out of a wrath.
+
+# Interaction
+Mana Drain :: counter their answer, and the mana deploys two more lock pieces.
+Dovin's Veto :: uncounterable.
+Force of Negation :: free on their turn.
+Swan Song :: one mana for a wrath or an enchantment.
+Bilbo's Gambit :: bounces a spell, and gifted it stops everyone casting for the rest of the turn.
+Swords to Plowshares :: one mana, exile.
+Generous Gift :: any permanent, at instant speed.
+Supreme Verdict :: uncounterable, and your board is mostly enchantments and artifacts.
+Heliod's Intervention :: X artifacts and enchantments — the answer to somebody else's prison.
+Aven Mindcensor :: flash him onto a fetchland or tutor.
+Archivist of Oghma :: a card and a life every time anyone searches.
+
+# Finding the pieces
+Idyllic Tutor :: any enchantment — Rule of Law, Rest in Peace, Moat.
+Fabricate :: any artifact — Knowledge Pool, Helm of Obedience, Torpor Orb.
+Esper Sentinel :: taxes their first noncreature spell each turn.
+Rhystic Study :: nobody pays the {1} while they are already paying for everything else.
+Mystic Remora :: the best card in the deck on turns one through four.
+Gleaming Splendor :: Treasures off their draws, and it can force draws itself.
+
+# What to keep in an opening hand
+Keep a rock and a tax piece. Sol Ring or a Signet into Thalia or Sphere of Resistance on turn two is what buys the turns to assemble the real lock.
+Sequence taxes first, hard locks second. Sphere of Resistance and Thalia hurt everyone a little; Rule of Law and Knowledge Pool hurt them completely — and if you land the hard lock first, they untap and remove it with mana the taxes would have eaten.
+Helm of Obedience :: it is the kill, but it is also a lightning rod. Hold it until Rest in Peace is already down and the lock is up, then activate all three opponents in one turn.
+Remember the lock binds you too. Once Knowledge Pool and Rule of Law are both out, you get one spell a turn as well — so deploy everything you need first, and win with an activated ability rather than a spell.

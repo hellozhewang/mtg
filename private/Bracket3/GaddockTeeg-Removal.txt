@@ -1,0 +1,86 @@
+1 Gaddock Teeg (UMA) 199
+1 Acidic Slime (CMM) 270
+1 Adeline, Resplendent Cathar (TDC) 108
+1 Archivist of Oghma (CLB) 4
+1 Archon of Emeria
+1 Aura Shards (CMD) 182
+1 Aura of Silence
+1 Avacyn's Pilgrim (MIC) 132
+1 Aven Mindcensor (CLB) 688
+1 Avenger of Zendikar (ECC) 98
+1 Bane of Progress (ECC) 99
+1 Beast Whisperer (CLU) 158
+1 Beast Within (FDC) 190
+1 Birds of Paradise (FDC) 191
+1 Bloom Tender (ECL) 324
+1 Blossoming Sands
+1 Branchloft Pathway
+1 Brushland
+1 City of Solitude
+1 Collector Ouphe (MH1) 158
+1 Command Tower
+1 Conqueror's Flail (2X2) 302
+1 Containment Priest (M21) 13
+1 Craterhoof Behemoth (CMM) 280
+1 Cultivate (ECC) 103
+1 Delighted Halfling (HOC) 65
+1 Dosan the Falling Leaf (CHK) 205
+1 Drannith Magistrate (IKO) 11
+1 Duplicant (CMM) 946
+1 Elesh Norn, Grand Cenobite (IMA) 18
+1 Elesh Norn, Mother of Machines (ONE) 10
+1 Elvish Mystic (HOC) 205
+1 End-Raze Forerunners
+1 Esper Sentinel (MH2) 12
+1 Flooded Strand
+9 Forest
+1 Fortified Village
+1 Gavony Township
+1 Generous Gift (LCC) 128
+1 Get Lost (LCI) 14
+1 Ghostly Prison (SOC) 146
+1 Grafdigger's Cage (M20) 227
+1 Grand Abolisher (CMM) 27
+1 Horizon Canopy
+1 Kataki, War's Wage
+1 Knight of Autumn
+1 Krosan Grip (C21) 198
+1 Krosan Verge
+1 Linvala, Keeper of Silence (JMP) 119
+1 Llanowar Elves (FDN) 227
+1 Meteor Golem (FDC) 270
+1 Misty Rainforest
+1 Nature's Claim (IMA) 177
+1 Nature's Lore (POR) 178
+1 Overgrown Farmland
+1 Path to Exile (FRC) 30
+1 Pithing Needle (M10) 217
+7 Plains
+1 Prismatic Vista
+1 Rampant Growth (TDC) 265
+1 Ranger-Captain of Eos (MH1) 21
+1 Razorverge Thicket
+1 Reclamation Sage (FDN) 231
+1 Remorseful Cleric
+1 Sakura-Tribe Elder (CLB) 832
+1 Savannah
+1 Scavenging Ooze (FDN) 232
+1 Seal of Cleansing (MKC) 80
+1 Skyclave Apparition (SOC) 173
+1 Sol Ring (FDC) 286
+1 Stony Silence (MM3) 25
+1 Sunpetal Grove
+1 Swords to Plowshares (FRC) 37
+1 Sylvan Library (LEG) 207
+1 Temple Garden
+1 Thalia, Guardian of Thraben (A25) 36
+1 Thorn of Amethyst (LRW) 262
+1 Three Visits (SOC) 289
+1 Toski, Bearer of Secrets (MKC) 191
+1 Tribute to the World Tree
+1 Trinisphere (2XM) 303
+1 Vryn Wingmare
+1 Wasteland
+1 Winds of Abandon (MH1) 37
+1 Windswept Heath
+1 Wood Elves (CMA) 170

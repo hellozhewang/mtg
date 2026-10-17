@@ -1,0 +1,67 @@
+Gaddock Teeg turns off the top half of every noncreature card in the format: no wrath, no Cyclonic Rift, no Torment of Hailfire, no big X draw spell, no Approach of the Second Sun. The deck is built so that constraint is entirely one-sided — every removal effect here is either stapled to a creature or costs three or less, so you keep answering things while the table cannot.
+
+# The commander
+Gaddock Teeg :: two mana. No noncreature spell with mana value four or more can be cast by anyone, and no noncreature spell with {X} in its cost at all. He is a 2/2, so protect him; he is also the single most warping card the deck has.
+Note what he does NOT stop: creature spells of any size, and permanents already on the battlefield. That is why the deck's own threats are all creatures.
+Conqueror's Flail :: opponents cannot cast spells during your turn at all while it is attached. Teeg stops the expensive answers; the Flail stops the cheap ones.
+Grand Abolisher :: the same lockout on a body.
+Dosan the Falling Leaf :: players can cast spells only during their own turns. With Teeg out, an opponent's window to answer anything shrinks to their own main phase, at three mana or less.
+City of Solitude :: the enchantment version, harder to remove.
+
+# Removal that survives your own lock
+Every one of these is a creature or costs three or less, which is the whole design constraint.
+Aura Shards :: the engine. Every creature you play destroys an artifact or enchantment, and Teeg means they cannot wrath your creatures away to stop it.
+Acidic Slime :: an artifact, enchantment OR land, on a deathtouch blocker.
+Bane of Progress :: destroys EVERY artifact and enchantment on the board and grows for each. Your own board is creatures, so it is close to one-sided.
+Knight of Autumn :: removal, life, or a 4/3 — pick what the board needs.
+Duplicant :: exiles a creature permanently and becomes it.
+Meteor Golem :: destroys any nonland permanent. Seven mana, but it is a creature, so Teeg lets you cast it.
+Path to Exile :: one mana, exile.
+Get Lost :: two mana for a creature, enchantment or planeswalker.
+Generous Gift :: three mana for literally any permanent.
+Beast Within :: the instant-speed version.
+Krosan Grip :: split second, so it beats the response.
+Nature's Claim :: one mana for any artifact or enchantment.
+Aura of Silence :: taxes their artifacts and enchantments, then eats one.
+
+# The rest of the lock
+Archon of Emeria :: one spell per turn each, and their nonbasics enter tapped.
+Drannith Magistrate :: no casting from graveyards, exile or the command zone.
+Linvala, Keeper of Silence :: their creature abilities stop working.
+Collector Ouphe :: their artifact abilities stop working.
+Kataki, War's Wage :: every artifact costs its controller {1} a turn to keep. Against an artifact deck it is a slow Armageddon.
+Containment Priest :: anything entering without being cast is exiled — reanimation, blink and cheat-into-play all stop.
+Grafdigger's Cage :: nothing comes back from graveyards or libraries.
+Aven Mindcensor :: flash him onto a fetchland or tutor.
+Archivist of Oghma :: a card and a life every time anyone searches.
+Esper Sentinel :: taxes their first noncreature spell each turn.
+Ghostly Prison :: they pay per attacker, which matters because Teeg is a 2/2 and the deck is slow to block.
+
+# Cards
+Beast Whisperer :: a card for every creature spell, which is most of the deck.
+Elesh Norn, Mother of Machines :: your enter triggers happen twice and theirs do not happen at all. It doubles Aura Shards, Acidic Slime, Bane of Progress, Knight of Autumn and Craterhoof simultaneously.
+Archivist of Oghma :: cards off their tutors.
+
+# Mana
+Birds of Paradise :: turn-one fixing.
+Avacyn's Pilgrim :: the white half.
+Llanowar Elves :: the green half.
+Elvish Mystic :: the second copy.
+Bloom Tender :: two colours off one tap.
+Delighted Halfling :: uncounterable mana for legendary spells, which covers Teeg himself.
+Nature's Lore :: an untapped dual with a basic type.
+Cultivate :: a land down and a land in hand.
+
+# How you actually win
+This is the question a Teeg deck has to answer, and the answer is that everything lethal here is a creature.
+Craterhoof Behemoth :: the standard ending on a board of hatebears.
+End-Raze Forerunners :: the second copy, with vigilance and haste for the whole team.
+Avenger of Zendikar :: a Plant for every land you control, then counters on all of them per landfall.
+Adeline, Resplendent Cathar :: a body per opponent on every attack, and her power counts the whole board.
+Elesh Norn, Grand Cenobite :: +2/+2 to yours and -2/-2 to theirs, which is a one-sided wrath that keeps attacking afterwards.
+
+# What to keep in an opening hand
+Keep a mana dork and Teeg. Turn-one acceleration into a turn-two Teeg is the strongest start in the deck, and every turn he is out is a turn the table cannot cast its best cards.
+Protect him over developing. Teeg is a 2/2 that every opponent wants dead, and the lock is worth far more than one extra hatebear on the battlefield.
+Aura Shards :: prioritise it. Teeg already stops them casting the wrath that would clear your creatures, so Aura Shards becomes a removal spell on every single creature you play for the rest of the game.
+Remember Teeg binds you too. There are no X spells and no expensive noncreature cards in the deck on purpose — if you ever want one, it has to be a creature.

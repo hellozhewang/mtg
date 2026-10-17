@@ -1,0 +1,71 @@
+A deck built for one job: making graveyards not exist. Anafenza's static ability exiles every creature card an opponent would put in a graveyard from ANY zone — milled, discarded, countered, wrathed — and behind her sit four more layers of redundant hate, each of which catches something the others miss. Against a reanimator or a Underworld Breach table this is close to unwinnable for them; against a fair table it is a hatebear deck with a Craterhoof.
+
+# The commander and the layers
+Anafenza, the Foremost :: a 4/4 for three that exiles opponents' creature cards headed for a graveyard from anywhere. One-sided, permanent, and it costs them nothing to play around only if they never use creatures.
+Leyline of the Void :: everything of theirs is exiled instead, not just creatures — and it can start the game on the battlefield.
+Relic of Progenitus :: chips away at one graveyard a turn, then exiles them all and draws you a card.
+Grafdigger's Cage :: the second layer. Even if a card reaches their graveyard, it cannot come back — and nothing enters from a library either, which turns off tutor-to-battlefield effects.
+Containment Priest :: the third layer, and the one that catches what the others miss: anything entering without being CAST is exiled, including reanimation from exile, blink effects and cheat-into-play.
+Dauthi Voidwalker :: unblockable, exiles what they would bury, and cashes itself in to cast their best card for free.
+Farewell :: pick "exile all graveyards" alone if that is all you need, or add creatures and artifacts for a full reset that your enchantment-light board survives.
+Deploy in this order against a graveyard deck: Anafenza or Leyline first, then Cage, then Priest. Each one closes a different escape route, and a reanimator pilot who is stopped by only one of them will find the other.
+
+# Hatebears around the hate
+Archon of Emeria :: one spell per turn each, and their nonbasics arrive tapped.
+Drannith Magistrate :: they cannot cast from graveyards, exile or the command zone at all.
+Aven Mindcensor :: flash him onto a fetchland or a tutor.
+Opposition Agent :: flash, and you control their search — everything they find becomes yours.
+Archivist of Oghma :: a card and a life every time anyone searches.
+Linvala, Keeper of Silence :: their creature abilities all stop.
+Collector Ouphe :: their artifact abilities all stop.
+Grand Abolisher :: nobody acts during your turn.
+Mangara, the Diplomat :: draws when they attack you in force and when they double-spell.
+Esper Sentinel :: taxes their first noncreature spell each turn.
+
+# Removal
+Path to Exile :: one mana, exile — and exile is what this deck wants anyway.
+Get Lost :: two mana at instant speed for a creature, enchantment OR planeswalker — the most flexible removal in the deck.
+Despark :: two mana for anything expensive.
+Anguished Unmaking :: instant-speed exile for any nonland permanent.
+Assassin's Trophy :: two mana for any permanent.
+Beast Within :: the instant-speed catch-all.
+Generous Gift :: the white copy.
+Damn :: a removal spell early and a wrath late.
+Duplicant :: exiles a creature permanently and keeps its stats.
+Acidic Slime :: an artifact, enchantment or land, on a deathtouch body.
+Reclamation Sage :: the cheap version.
+Knight of Autumn :: flexible — removal, life, or a 4/3.
+Heroic Intervention :: hexproof and indestructible through their wrath.
+
+# The two Elesh Norns
+Elesh Norn, Mother of Machines :: your enter triggers happen twice and theirs do not happen at all. It doubles Knight of Autumn, Acidic Slime, Reclamation Sage and Duplicant while blanking every value creature they play.
+Elesh Norn, Grand Cenobite :: +2/+2 to yours and -2/-2 to theirs, which is a one-sided wrath against token and hatebear boards that then stays on the battlefield.
+
+# Card advantage
+Guardian Project :: a card for every differently named nontoken creature, doubled by Elesh Norn, Mother of Machines.
+Beast Whisperer :: the same trigger without the name clause.
+Phyrexian Arena :: a card a turn.
+Relic of Progenitus :: cantrips on its way out.
+
+# Mana
+Birds of Paradise :: turn-one fixing.
+Avacyn's Pilgrim :: the white half.
+Llanowar Elves :: the green half.
+Nature's Lore :: an untapped dual with a basic type.
+Rampant Growth :: the cheap one.
+Cultivate :: a land down and a land in hand.
+Kodama's Reach :: the second copy.
+Arcane Signet :: fixing three colours.
+Fellwar Stone :: usually taps for what you need.
+Lightning Greaves :: haste and shroud for Anafenza, who is the card they most want to kill.
+
+# How you actually win
+Craterhoof Behemoth :: the ending. A board of hatebears that has been holding the table hostage is wide enough that this is lethal to one player and usually two.
+Elesh Norn, Grand Cenobite :: the +2/+2 turns the same board into a real clock without needing a finisher.
+Anafenza, the Foremost :: a 4/4 that grows your tapped attackers is a genuine beater in a deck full of two-drops.
+
+# What to keep in an opening hand
+Keep Leyline of the Void if you have it. It is free in your opening hand and it is the single most effective card in the deck against the matchup it is built for.
+Read the pod before committing the hate. Against a table with no graveyard decks, Grafdigger's Cage and Relic of Progenitus are close to blank — deploy the taxing creatures instead and hold the hate for whoever reveals a fetchland or a looter.
+Anafenza, the Foremost :: cast her on turn three whenever you can. Her exile clause only matters if it is already on the battlefield when they try, and she is a 4/4 body regardless.
+Containment Priest :: hold her up rather than casting her on curve when you can afford to. Flashing her in response to a reanimation spell is a two-for-one; casting her precombat is just a 2/2.

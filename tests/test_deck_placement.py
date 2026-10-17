@@ -47,11 +47,11 @@ def changed_lines(before: str, after: str) -> list[str]:
 class ParseTests(unittest.TestCase):
     def test_reads_new_and_old_forms_through_markdown(self):
         declared = deckplacement.parse(
-            "- **Categories:** `Krenko-Combo — combo, gowide, goblins`\n"
+            "- **Categories:** `Krenko-Combo — combo, gowide`\n"
             "**Tier:** Krenko-Combo — SS — Kiki-Jiki + Zealous Conscripts\n"
             "Tier: S — Smothering Tithe and four tutors\n"
             "Tier: A — Sol Ring early\n")
-        self.assertEqual(declared.categories, {"Krenko-Combo": ("combo", "gowide", "goblins")})
+        self.assertEqual(declared.categories, {"Krenko-Combo": ("combo", "gowide")})
         self.assertEqual(declared.tiers, [("Krenko-Combo", "SS"), (None, "S"), (None, "A")])
 
     def test_prose_mentioning_tiers_is_not_a_declaration(self):
@@ -82,9 +82,10 @@ class SaveTests(unittest.TestCase):
 
     def test_bad_categories_are_dropped_but_the_tier_still_saves(self):
         with Maps() as fdir:
+            # `goblins` was a category once; a builder still declaring it is dropped.
             reply = "Categories: Test-Newdeck — goblins, value\nTier: Test-Newdeck — A — x\n"
             notes = deckplacement.save(reply, {"Test-Newdeck"}, fdir)
-            self.assertIn("primary 'goblins'", notes[0])
+            self.assertIn("unknown categories ['goblins']", notes[0])
             self.assertIn('"Test-Newdeck": "A"', (fdir / "deck-tiers.json").read_text())
             self.assertNotIn("Test-Newdeck", (fdir / "deck-themes.json").read_text())
 

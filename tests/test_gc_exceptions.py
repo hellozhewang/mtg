@@ -45,7 +45,7 @@ class GameChangerExceptionTests(unittest.TestCase):
                 errors = check(trial, {**cards, name: card(name, gc)}, [], gc_cap(path, None))[0]
                 self.assertTrue(any(expected in error for error in errors), errors)
 
-    def test_private_catalog_uses_the_same_cap(self):
+    def test_private_deck_uses_the_same_cap(self):
         cards = {n: card(n, True) for n in ["Engine", "Threat A", "Threat B", "Threat C"]}
         cards["Wastes"] = {**card("Wastes"), "type_line": "Basic Land", "cmc": 0}
 

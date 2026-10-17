@@ -1,0 +1,114 @@
+Baylen turns tokens into everything. Tap two untapped tokens for a mana of any colour, three to draw a card, four to put three +1/+1 counters on Baylen and give it trample — as often as you have tokens, with no once-a-turn limit. Tapping a token to pay Baylen isn't the token's own {T} ability, so a Goblin made this turn can pay straight away. Every Goblin maker here is therefore also a ramp spell and a draw spell — except tokens that enter tapped, like Ainok Strike Leader's and General Kreat's, which wait for your next untap.
+Food, Treasure and other non-creature tokens count too. A Treasure tapped for Baylen can't be cashed in until it untaps, so tap Food and spare Goblins first.
+The deck has several infinite lines — see the combos — and Baylen enables the Mantle/Krenko loop. Recruiter can also arrange a Muxus combo or a Ringleader refill, so there is a plan that works without Baylen.
+
+# The commander
+Baylen, the Haymaker :: three mana. Two tokens are a mana, three are a card, four are three +1/+1 counters and trample. A big turn of Goblins becomes a pile of mana and a hand full of cards.
+Drumbellower :: untaps all your creatures during each OPPONENT'S untap step. Tap your Goblins for Baylen on your turn, and they untap to do it again on every other turn — cards and mana at instant speed, all the way round the table.
+Lightning Greaves :: shroud for Baylen, and haste for Krenko the turn it lands. Never equip it to Kiki-Jiki — shroud stops Zealous Conscripts or Restoration Angel from targeting Kiki.
+
+# Infinite combos — why this is Bracket 3.5
+Krenko, Mob Boss + Umbral Mantle :: with Baylen out, tap six of the new tokens to Baylen for {3}, untap Krenko with the Mantle, and go again. Every activation makes more Goblins than it spends — unlimited Goblins, and through Baylen unlimited mana and cards. Krenko needs six Goblins and haste to start; Skirk Prospector can pay the {3} instead.
+Kiki-Jiki, Mirror Breaker + Zealous Conscripts :: Kiki copies Conscripts, and the copy's enter trigger untaps Kiki — target Kiki itself. Repeat for as many hasty 3/3s as you want, the same turn Kiki lands (it has haste). Impact Tremors and General Kreat turn every copy into damage, and Goblin Bombardment throws them. Never leave Lightning Greaves on Kiki: shroud stops the Conscripts copy targeting it.
+Kiki-Jiki, Mirror Breaker + Restoration Angel :: Kiki copies the Angel; the copy blinks Kiki, which comes back untapped with haste. Flash: start it in an opponent's end step and the copies last until the end of your next turn.
+Kiki-Jiki, Mirror Breaker + Lightning Crafter + Goblin Bombardment :: Kiki copies the Crafter. The copy's champion trigger exiles Kiki; the hasty copy taps for 3 damage; sacrifice it to Goblin Bombardment; Kiki returns untapped — it has haste — and copies the Crafter again. Unlimited 3-damage shots, so this one kills on its own. Skirk Prospector work as the outlet too. The original Crafter must stay on the battlefield; when it enters you must exile another Goblin or Shaman (champion) or sacrifice it.
+Kiki-Jiki, Mirror Breaker + Thornbite Staff + Goblin Bombardment :: the Staff attaches itself to Kiki when Kiki enters after it (otherwise equip costs {4}). Kiki copies any nonlegendary creature, you sacrifice a creature to Goblin Bombardment, and the death untaps Kiki. Unlimited loops.
+Krenko, Mob Boss + Thornbite Staff + Skirk Prospector :: equip the Staff to Krenko ({4} — he's a Warrior, so it won't attach itself). Krenko taps for a Goblin per Goblin; sacrifice one to Skirk Prospector; the death untaps Krenko; tap again. The army doubles every lap. Win with Impact Tremors or General Kreat.
+Every one of these also wins through Halo Fountain: tap fifteen of the new creatures to Baylen, then untap them with the Fountain.
+
+# Tutor lines — what to fetch, and when
+Goblin Matron -> Kiki-Jiki, Mirror Breaker :: when you already hold Zealous Conscripts, Restoration Angel, Lightning Crafter or the Staff — Kiki is the piece that turns half a combo into a kill.
+Goblin Matron -> Goblin Recruiter :: when you're missing two or more pieces. Matron gets Recruiter; Recruiter stacks the rest on top of your library.
+Goblin Matron -> Krenko, Mob Boss :: when Umbral Mantle or Thornbite Staff is already out, or when you simply need a board this turn.
+Goblin Matron -> Lightning Crafter :: when Kiki-Jiki is on the battlefield and you have a free outlet — the Crafter is the last piece.
+Goblin Matron -> Skirk Prospector :: when the combo is assembled but nothing will sacrifice for free.
+Imperial Recruiter -> Kiki-Jiki, Mirror Breaker :: power 2, so the one non-Goblin tutor that still finds Kiki. It also fetches Goblin Recruiter or Skirk Prospector — take whichever piece you're missing.
+Eladamri's Call -> Zealous Conscripts :: instant speed, at the end of the opponent's turn before yours — the non-Goblin half that Matron can't find.
+Chord of Calling -> Restoration Angel :: with Kiki already out, Chord the Angel in at the end of an opponent's turn and go off right there. Convoke lets your Goblins pay the generic part.
+Goblin Recruiter -> Goblin Ringleader + Muxus, Goblin Grandee :: choose a four-card hand refill or a six-creature deployment. The exact piles and draw sequencing are below; either payoff works without the commander.
+Green Sun's Zenith :: a green creature onto the battlefield — Drumbellower can't be found this way, but Tireless Provisioner and Enduring Vitality can. Muxus and Ringleader are red, so Zenith cannot find either.
+
+# Goblin Recruiter setups — what to stack, top card first
+Goblin Recruiter -> Goblin Ringleader :: TOP to BOTTOM: Goblin Ringleader; Kiki-Jiki, Mirror Breaker; Lightning Crafter; Skirk Prospector; Goblin Warchief. Draw or otherwise reach Ringleader, then cast it: its entry trigger puts the next four selected Goblins into your hand. Those creatures still need to be cast; Ringleader does not deploy them. If Ringleader is already in hand, start the pile with the four targets instead.
+Goblin Recruiter -> Muxus, Goblin Grandee :: TOP to BOTTOM: Muxus, Goblin Grandee; Kiki-Jiki, Mirror Breaker; Lightning Crafter; Skirk Prospector; Goblin Warchief; Goblin Ringleader; Krenko, Mob Boss. Reach and cast Muxus; all six following cards are Goblin creatures with mana value five or less, so its entry trigger puts them onto the battlefield. If Muxus is already in hand, omit it from the pile and reveal the six immediately.
+Goblin Ringleader :: Put these four cards immediately UNDER the six-card Muxus package: Goblin Matron; Siege-Gang Commander; Goblin Chieftain; Howlsquad Heavy. When Muxus deploys Ringleader, the entry trigger puts this backup package into your hand. Resolve Ringleader before any other draw triggers and before the original Lightning Crafter's champion trigger. Only stack cards still in your library; substitute useful Goblins for pieces already in hand or on the battlefield.
+Kiki-Jiki, Mirror Breaker + Lightning Crafter + Skirk Prospector :: The original Crafter champions the Recruiter that made the pile, or the Ringleader AFTER its refill resolves. Keep Kiki and Prospector on the battlefield. Tap Kiki to copy Crafter; the hasty copy champions Kiki, taps for 3 damage, then is sacrificed to Prospector for {R}. Kiki returns untapped with haste. Repeat for lethal damage and red mana. No combat or commander is required, but removal or effects that stop the entry triggers/activated abilities can interrupt it.
+Goblin Warchief :: Included on the Muxus board to give your other Goblins haste and reduce the generic cost of backup Goblin spells. Kiki and its copies already have haste; Warchief is for Krenko and the wider recovery plan.
+Baylen can tap three untapped tokens to draw just the top payoff immediately. Without Baylen, use the next natural draw or another draw effect whose card count you have accounted for.
+Guardian Project :: Order the Muxus entry trigger ABOVE Project's draw trigger so Muxus reveals its intended six first. When those creatures enter, put Ringleader's trigger above their Project draws so it gets the intended four. Mandatory draws also limit how many Kiki loops you can safely repeat; finish before your library empties.
+Searches that shuffle undo the pile: use fetch lands and other tutors BEFORE Recruiter. Any extra draw, mill or exile also changes the positions; account for it before committing. Muxus only puts eligible Goblin CREATURES onto the battlefield: Goblin-typed instants/enchantments and Muxus itself are not hits. Recruiter does not put the payoff in your hand for free.
+
+# Making Goblins
+Krenko, Mob Boss :: taps for a 1/1 per Goblin you control — the army doubles every activation. With Drumbellower it untaps on every opponent's turn too, so it activates four times a round.
+Krenko, Tin Street Kingpin :: each attack puts a +1/+1 counter on it, then makes Goblins equal to its power — two the first time, three the next.
+Siege-Gang Commander :: three Goblins when it enters; {1}{R} and a sacrifice deal 2 damage.
+Siege-Gang Lieutenant :: two hasty Goblins each of your combats while Baylen is on the battlefield.
+Legion Warboss :: a hasty Goblin each of your combats.
+Howlsquad Heavy :: a Goblin each of your combats; your other Goblins have haste.
+General Kreat, the Boltbringer :: a Goblin whenever your Goblins attack, and 1 damage to each opponent whenever another creature enters.
+Ainok Strike Leader :: whenever it or Baylen attacks, a 1/1 Goblin attacking each opponent. Sacrifice it to make your tokens indestructible against a sweeper.
+Mogg War Marshal :: a Goblin when it enters and another when it dies.
+Hordeling Outburst :: three Goblins for three.
+Fable of the Mirror-Breaker :: a Goblin that makes Treasure when it attacks, then a card filter, then Reflection of Kiki-Jiki — a copy maker that costs {1} each use and needs a turn before it can tap.
+Kiki-Jiki, Mirror Breaker :: taps each turn for a hasty copy — Siege-Gang Commander is four creatures every turn.
+
+# More tokens per token
+Anointed Procession :: every token effect makes twice as many.
+Parallel Lives :: the same.
+Mondrak, Glory Dominus :: the same on a 4/4 creature.
+
+# Turning Goblins into damage
+Impact Tremors :: 1 to each opponent for every creature that enters.
+Wildfire Awakener :: X Elemental tokens that each deal 1 damage to a player whenever they become tapped — so paying Baylen with them is also burn. Convoke means your tokens help cast it.
+Goblin Bombardment :: sacrifice a creature for 1 damage anywhere.
+Goblin Chieftain :: other Goblins +1/+1 and haste.
+Goblin Warchief :: Goblins cost one less and have haste.
+
+# Finishers
+Jetmir, Nexus of Revels :: with nine creatures, your team gets +3/+0, vigilance, trample and double strike.
+Halo Fountain :: {W}{W}{W}{W}{W}, tap it and untap fifteen tapped creatures: you win the game. Baylen taps your tokens, and so does attacking — fifteen is easier to reach than it sounds.
+Akroma's Will :: with Baylen out, both modes: flying, vigilance and double strike, plus lifelink, indestructible and protection from every colour.
+
+# Mana
+Gaea's Cradle :: a green mana for every creature you control.
+Smothering Tithe :: every card an opponent draws is two mana from them or a Treasure for you.
+Tireless Provisioner :: a Food or Treasure for every land you play.
+Enduring Vitality :: every creature you control taps for any colour. When it dies it returns as an enchantment and keeps doing it.
+Birds of Paradise :: a one-mana source of any colour.
+Llanowar Elves :: a one-mana green source.
+Avacyn's Pilgrim :: a one-mana white source.
+Nature's Lore :: a Forest — any dual with the Forest type — onto the battlefield.
+Three Visits :: the same.
+Farseek :: a Plains or Mountain dual onto the battlefield tapped.
+Sol Ring :: the fastest start.
+Arcane Signet :: any of your three colours.
+Three Tree City :: name Goblin: {2} and a tap make a mana for every Goblin you control.
+Cavern of Souls :: name Goblin: they can't be countered.
+
+# Cards
+Skullclamp :: equip it to a creature with 1 toughness and it dies: two cards for one mana. A lord that adds toughness keeps your tokens alive, so pick an X/1.
+Guardian Project :: a card whenever a nontoken creature with a new name enters.
+Caretaker's Talent :: a card the first time tokens enter each turn. Level 2 copies a token; level 3 gives creature tokens +2/+2.
+Sylvan Library :: see three cards every turn.
+
+# Protection
+Teferi's Protection :: the whole board phases out until your next turn.
+Heroic Intervention :: hexproof and indestructible for everything.
+Flawless Maneuver :: free with Baylen out; your creatures become indestructible.
+Clever Concealment :: phase out any of your nonland permanents; convoke lets your tokens pay.
+Boros Charm :: indestructible for everything, or 4 damage to a player.
+Silence :: one mana and nobody else casts spells this turn. Cast it before you start a combo.
+Voice of Victory :: your opponents can't cast spells during your turn, and it brings two attacking Warriors when it attacks.
+
+# Answers
+Swords to Plowshares :: one mana, any creature.
+Path to Exile :: the second one.
+Beast Within :: any permanent; they get a 3/3.
+Generous Gift :: the same, in white.
+Chaos Warp :: the red answer to anything.
+Boseiju, Who Endures :: a land that destroys an artifact, enchantment or nonbasic land.
+
+# What to keep in an opening hand
+Keep a mana creature or a ramp spell and Baylen castable by turn three. Then every Goblin maker is mana and cards.
+With Drumbellower out, tap your tokens again at the end of each opponent's turn to draw cards or grow Baylen. Only take the mana if you have an instant to spend it on.
+Once the board is wide, decide how to win: a Recruiter/Muxus combo, Jetmir or Halo Fountain. Jetmir and Halo Fountain use the existing army; the Muxus line deploys its own combo pieces.

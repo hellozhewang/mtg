@@ -1,0 +1,97 @@
+1 Valgavoth, Harrower of Souls
+1 Arcane Signet (SLD) 1492
+1 Arid Mesa
+1 Avalanche of Sector 7
+1 Badlands
+1 Basilisk Collar (DSC) 241
+1 Black Market Connections (LCC) 181
+1 Blackcleave Cliffs
+1 Blasphemous Act (SLD) 322
+1 Blazemire Verge
+1 Blightstep Pathway
+1 Blood Crypt
+1 Blood Seeker (M12) 81
+1 Bloodchief Ascension (CMM) 139
+1 Bloodstained Mire
+1 Bloodthirsty Conqueror (FDN) 58
+1 Boggart Trawler
+1 Cavern of Souls
+1 Chandra's Ignition (LCC) 220
+1 Chaos Warp (MBC) 72
+1 Command Beacon
+1 Command Tower
+1 Crawlspace (C13) 240
+1 Dark Fortress
+1 Deadly Rollick (CMM) 695
+1 Deflecting Swat (CMM) 214
+1 Demonic Tutor (CMM) 150
+1 Dragonskull Summit
+1 Enduring Tenacity (DSK) 95
+1 Exotic Orchard
+1 Exquisite Blood (SLD) 206
+1 Fate Unraveler
+1 Fellwar Stone (MBC) 74
+1 Forcefield
+1 Gleeful Arsonist
+1 Graven Cairns
+1 Harsh Mentor (DSC) 165
+1 Haunted Ridge
+1 Hexing Squelcher (ECL) 145
+1 Jeska's Will (MKC) 156
+1 Kardur, Doomscourge (DSC) 223
+1 Kederekt Parasite
+1 Koskun Falls
+1 Lasting Tarfire
+1 Lightning Greaves (OTC) 260
+1 Liquimetal Torque (MH2) 228
+1 Luxury Suite
+1 Malakir Rebirth
+1 Marsh Flats
+1 Maze of Ith
+1 Mind Stone (MBC) 76
+1 Mithril Coat (LTR) 245
+1 Mount Doom
+2 Mountain
+1 No Mercy (DMR) 95
+1 Ojer Axonil, Deepest Might (LCI) 158
+1 Ophiomancer (CC2) 3
+1 Polluted Bonds (SHM) 74
+1 Polluted Delta
+1 Prismatic Vista
+1 Pyrostatic Pillar
+1 Rakdos Charm
+1 Rakdos Signet (CMA) 226
+1 Raucous Theater
+1 Razorkin Needlehead (DSK) 153
+1 Reanimate (DSC) 155
+1 Reflecting Pool
+1 Revenge of Ravens (ELD) 104
+1 Roiling Vortex (ZNR) 156
+1 Scalding Tarn
+1 Scrawling Crawler (FDN) 415
+1 Shadowspear (THB) 236
+1 Sheoldred, the Apocalypse (DMU) 107
+1 Silent Arbiter
+1 Smoldering Marsh
+1 Sol Ring (CC2) 7
+1 Solphim, Mayhem Dominus (ONE) 150
+1 Spellshock
+1 Sulfurous Springs
+3 Swamp
+1 Tainted Peak
+1 Takenuma, Abandoned Mire
+1 Talisman of Indulgence (FRC) 63
+1 The Frightful Four
+1 The One Ring (LTR) 246
+1 The Soul Stone (SPM) 66
+1 Thought Vessel (LCC) 118
+1 Toxic Deluge (MH3) 277
+1 Tunnel Ignus
+1 Urborg, Tomb of Yawgmoth
+1 Valakut Awakening
+1 Vandalblast (OTC) 183
+1 Verdant Catacombs
+1 Vito, Thorn of the Dusk Rose (M21) 127
+1 Witch's Clinic
+1 Withering Torment (FDC) 134
+1 Wooded Foothills

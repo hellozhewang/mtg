@@ -20,8 +20,16 @@ Every deck targets a **Commander bracket** and has to obey its restrictions, whi
 is what most of this document is about. The bracket rules themselves live in
 [commander-brackets-and-rules.md](commander-brackets-and-rules.md).
 
-**Browse the decks:** [public/](public/) — grouped by bracket, or in Discord via
-`/deck-list`, `/deck-print` and `/deck-random`.
+**Browse the decks:** [public/](public/) and the owner's [private/](private/) —
+grouped by bracket, or in Discord via `/deck-list`, `/deck-print` and
+`/deck-random`.
+
+**Private decks are visible to people, not to the builder.** `private/` holds
+the owner's own decks. They are published, listed and printed like every other
+deck, marked **private**. The Discord builder works only from `public/`: its
+sandbox cannot write `private/`, and its instructions tell it to treat those
+decks as nonexistent, so it never tunes, copies or compares against them, and
+may build its own deck for a commander that already has a private one.
 
 ```bash
 ./scripts/new_deck.py "Queen Marchesa" -o public/Bracket3/Marchesa-Pillowfort.txt
@@ -525,24 +533,19 @@ not a bracket: the bracket is what a deck may run, the tier is how hard the
 finished list hits. [deck-tiers.md](deck-tiers.md) has the rubric, the anchor
 decks for each tier and how to place a new deck.
 
-**Goblins** is a private-only eighth category. Every Goblin deck keeps its
-canonical primary and carries `goblins` as a secondary tag. The local catalog
-mirrors those decks, public and private, into a Goblins section; the published
-catalog ignores the tag.
-
 ```bash
-./scripts/build_site.py              # rebuild docs/ from public/  -- PUBLISHED
+./scripts/build_site.py              # rebuild docs/ from public/ and private/ -- PUBLISHED
 ./scripts/build_site.py --check      # exit 1 if docs/ is stale, write nothing
 ./scripts/build_site.py --out /tmp/x # build elsewhere to look before publishing
 ```
 
-For the local catalog including private decks, run:
+To see a build before it is pushed, or from another device on your network, run:
 
 ```bash
 ./scripts/start_private_server.py
 ```
 
-It serves the generated `docs/private/` catalog at **http://localhost:5588/**,
+It serves the generated `docs/` catalog at **http://localhost:5588/**,
 listening on `0.0.0.0:5588` so other devices on your local network can use
 `http://<server-ip>:5588/`. The server runs in the background and keeps running
 after the terminal closes. Repeated starts reuse an existing server serving the
@@ -689,7 +692,7 @@ sequence without launching a separate reviewing agent (see `AGENTS.md` below).
 
 8. **Review catalog placement.** Follow [the placement guide](deck-catalog-strategies.md).
    Choose one primary category from the fixed set and any supported secondary
-   categories (plus `goblins` for a Goblin deck), then save the
+   categories, then save the
    ordered IDs in `frontend/deck-themes.json` for a public deck or
    `private/deck-themes.json` for a private deck. A full-workspace publisher then
    rebuilds and checks the catalog. The Discord builder follows the guide's
@@ -726,7 +729,7 @@ from a genuinely separate reviewing context, which the bot never has.
 | named mass land denial | `validate_deck.py` | yes |
 | unlisted land denial, two-card lockouts | you, against `commander-brackets-and-rules.md` | no |
 | does each card's trigger match the theme | you | no |
-| catalog primary and secondary categories | you, against `deck-catalog-strategies.md` | fixed IDs, canonical primary and public coverage; fit needs review |
+| catalog primary and secondary categories | you, against `deck-catalog-strategies.md` | fixed IDs and coverage of every deck; fit needs review |
 | whether the deck can actually win | you, or `ask_codex.py` (human sessions only) | no |
 | which symmetric stax hurts you more than the table | you, or `ask_codex.py` (human sessions only) | no |
 
@@ -816,6 +819,10 @@ mtg/
 │   ├── Bracket3.5/            deliberately breaks Bracket 3, by request
 │   └── AGENTS.md              GENERATED, 0444 — edit AGENTS_MD in
 │                              scripts/build_agents.py, never this file
+├── private/                 the owner's decks: published, NOT writable by the bot
+│   ├── Bracket3/ ...          same bracket folders as public/
+│   ├── deck-themes.json       their categories (independent of frontend/'s)
+│   └── deck-tiers.json        their power tiers
 ├── logs/<utc-date>.log      request + debug log, outside the writable tree
 ├── .cache/cards.db          generated; granted to the bot via --add-dir
 ├── commander-brackets-and-rules.md
@@ -825,7 +832,9 @@ mtg/
 Folder name states the bracket. File name is `Commander-Theme` — see
 [Deck file naming](#deck-file-naming).
 
-`public/` is the published collection and the bot's writable tree.
+`public/` is the bot's writable tree and the whole of its collection. `private/`
+is published just the same, but sits outside that tree: only the owner changes
+it, and the builder leaves it alone.
 
 **`scripts/` and `bot/` both sit deliberately outside `public/`.** The Discord-driven
 Codex session is rooted at `public/` with `-s workspace-write`, so it can edit decks

@@ -1,0 +1,95 @@
+1 Shorikai, Genesis Engine (NEC) 4
+1 Adarkar Wastes
+1 An Offer You Can't Refuse (FDN) 160
+1 Ancient Den
+1 Approach of the Second Sun (STA) 1
+1 Arcane Laboratory (USG) 60
+1 Arcane Signet (DRC) 52
+1 Aura of Silence
+1 Azorius Signet (FRC) 53
+1 Bender's Waterskin
+1 Bilbo's Gambit
+1 Blind Obedience (RVR) 9
+1 City of Brass
+1 Clever Concealment (ONC) 5
+1 Command Tower
+1 Counterspell (SLD) 2497
+1 Cursed Totem (MIR) 299
+1 Deserted Beach
+1 Dovin's Veto (WAR) 193
+1 Eiganjo, Seat of the Empire
+1 Energy Field
+1 Exotic Orchard
+1 Fellwar Stone (MBC) 74
+1 Flooded Strand
+1 Floodfarm Verge
+1 Fomori Vault
+1 Force of Negation (2X2) 50
+1 Forcefield
+1 Gemstone Caverns
+1 Ghostly Prison (SOC) 146
+1 Glacial Fortress
+1 Gleaming Bastion
+1 Grafdigger's Cage (MB2) 222
+1 Greater Auramancy (SHM) 7
+1 Hallowed Fountain
+1 Helm of Obedience
+1 Hengegate Pathway
+1 Humility
+1 Idyllic Tutor (SLD) 1020
+3 Island
+1 Liquimetal Torque (MH2) 228
+1 Mana Confluence
+1 Mana Drain (2X2) 57
+1 Manifold Key (M20) 230
+1 March of Otherworldly Light (NEO) 28
+1 Marsh Flats
+1 Maze of Ith
+1 Mechanized Production (MKC) 109
+1 Meticulous Archive
+1 Minamo, School at Water's Edge
+1 Mind Stone (MBC) 76
+1 Mindlock Orb
+1 Moat
+1 Monument to Endurance
+1 Mox Opal (2XM) 275
+1 Mystic Gate
+1 Mystic Remora (DMR) 59
+1 Otawara, Soaring City
+1 Out of Time (MH2) 23
+1 Padeem, Consul of Innovation (J25) 62
+4 Plains
+1 Polluted Delta
+1 Prismatic Lens (OTC) 264
+1 Propaganda (CMD) 55
+1 Rest in Peace (A25) 32
+1 Rhystic Study (JMP) 169
+1 Rule of Law (M20) 35
+1 Sea Gate Restoration
+1 Sea of Clouds
+1 Seachrome Coast
+1 Seat of the Synod
+1 Sensei's Divining Top (2X2) 314
+1 Sink into Stupor
+1 Sol Ring (DRC) 56
+1 Solitary Confinement
+1 Spire of Industry
+1 Supreme Verdict (CLU) 211
+1 Swan Song (C16) 98
+1 Swords to Plowshares (FRC) 37
+1 Talisman of Progress (FRC) 64
+1 Teferi, Time Raveler (RVR) 232
+1 Tezzeret the Seeker (MM2) 62
+1 Luminarch Ascension
+1 The Millennium Calendar
+1 The Tabernacle at Pendrell Vale
+1 Thought Vessel (SLD) 1665
+1 Torpor Orb (MB2) 236
+1 Tundra
+1 Unstoppable Plan
+1 Unwinding Clock (C18) 228
+1 Vanquish the Horde (INR) 49
+1 Voltaic Key (USG) 314
+1 Whir of Invention (AER) 49
+1 Windswept Heath
+1 Witch Enchanter (MH3) 239

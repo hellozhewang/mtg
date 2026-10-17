@@ -1,0 +1,99 @@
+1 Ziatora, the Incinerator (SNC) 231
+1 Sol Ring (SLD) 2560
+1 Arcane Signet (FDC) 245
+1 Thornbite Staff
+1 Birds of Paradise (FDC) 191
+1 Llanowar Elves (FDN) 227
+1 Ignoble Hierarch (MH2) 166
+1 Nature's Lore (SOC) 278
+1 Three Visits (SOC) 289
+1 Farseek (TDC) 255
+1 Tireless Provisioner (MOC) 313
+1 Krenko, Mob Boss (RVR) 114
+1 Hexing Squelcher (ECL) 145
+1 Siege-Gang Commander (PLST) DMR-136
+1 Beetleback Chief (JMP) 294
+1 Lightning Crafter
+1 Goblin Instigator
+1 Mogg War Marshal (PLST) DMR-131
+1 Siege-Gang Lieutenant
+1 Howlsquad Heavy (DFT) 134
+1 General Kreat, the Boltbringer
+1 Nim Deathmantle
+1 Sling-Gang Lieutenant
+1 Kiki-Jiki, Mirror Breaker (IMA) 136
+1 Goblin Matron (PLST) DMR-123
+1 Goblin Chieftain (JMP) 324
+1 Goblin Warchief (DOM) 130
+1 Skirk Prospector (DMR) 137
+1 Pashalik Mons (DMR) 133
+1 Boggart Cursecrafter (ECL) 331
+1 Boggart Mischief
+1 Conspicuous Snoop (M21) 139
+1 Fable of the Mirror-Breaker (SCH) 44
+1 Eldritch Evolution (INR) 195
+1 Goblin Bombardment (C13) 110
+1 Mayhem Devil (EOC) 121
+1 Blood Artist (SOC) 209
+1 Zulaport Cutthroat (SOC) 233
+1 Pitiless Plunderer (LCC) 208
+1 Korvold, Fae-Cursed King (EOC) 120
+1 Professional Face-Breaker (SNC) 116
+1 Shared Animosity (LCC) 231
+1 Impact Tremors (WOT) 44
+1 Muxus, Goblin Grandee (JMP) 24
+1 Goblin Ringleader (APC) 62
+1 Chord of Calling (RVR) 134
+1 Necropotence (ICE) 154
+1 Skullclamp (SLD) 2416
+1 Goblin Recruiter (6ED) 186
+1 Deadly Dispute (TDC) 177
+1 Black Market Connections (LCC) 181
+1 Sylvan Library (LEG) 207
+1 Zealous Conscripts (INR) 183
+1 Demonic Tutor (LEB) 105
+1 Diabolic Intent (BRO) 89
+1 Veil of Summer (M20) 198
+1 Terminate (DMC) 172
+1 Assassin's Trophy (SOC) 294
+1 Feed the Swarm (TDC) 180
+1 Deadly Rollick (CMM) 147
+1 Chaos Warp (MBC) 72
+1 Beast Within (FDC) 190
+1 Heroic Intervention (CMM) 295
+1 Lightning Greaves (OTC) 260
+1 Deflecting Swat (CMM) 698
+1 Ashnod's Altar (ATQ) 38
+1 Command Tower
+1 Gaea's Cradle
+1 Ziatora's Proving Ground
+1 Badlands
+1 Bayou
+1 Taiga
+1 Blood Crypt
+1 Overgrown Tomb
+1 Stomping Ground
+1 Bloodstained Mire
+1 Verdant Catacombs
+1 Wooded Foothills
+1 Polluted Delta
+1 Misty Rainforest
+1 Scalding Tarn
+1 Marsh Flats
+1 Windswept Heath
+1 Luxury Suite
+1 Spire Garden
+1 Undergrowth Stadium
+1 Raucous Theater
+1 Underground Mortuary
+1 Commercial District
+1 Mana Confluence
+1 City of Brass
+1 Exotic Orchard
+1 Three Tree City
+1 Phyrexian Tower
+1 Cavern of Souls
+1 Boseiju, Who Endures
+1 Swamp
+1 Mountain
+2 Forest

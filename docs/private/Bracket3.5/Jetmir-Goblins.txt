@@ -1,0 +1,99 @@
+1 Jetmir, Nexus of Revels (SNC) 377
+1 Sol Ring (FDC) 286
+1 Arcane Signet (FDC) 245
+1 Birds of Paradise (FDC) 191
+1 Llanowar Elves (FDN) 227
+1 Elvish Mystic (FDC) 202
+1 Avacyn's Pilgrim (MIC) 132
+1 Circle of Dreams Druid
+1 Nature's Lore (SOC) 278
+1 Three Visits (SOC) 289
+1 Krenko, Mob Boss (RVR) 114
+1 Krenko, Tin Street Kingpin (DMC) 124
+1 Siege-Gang Commander (PLST) DMR-136
+1 Imperial Recruiter (MH2) 281
+1 Legion Warboss
+1 Goblin Rabblemaster (J25) 558
+1 Skirk Prospector (DMR) 137
+1 Mogg War Marshal (PLST) DMR-131
+1 Siege-Gang Lieutenant
+1 Howlsquad Heavy (DFT) 134
+1 General Kreat, the Boltbringer
+1 Ainok Strike Leader
+1 Thornbite Staff
+1 Goblin Recruiter (6ED) 186
+1 Kiki-Jiki, Mirror Breaker (IMA) 136
+1 Goblin Matron (PLST) DMR-123
+1 Goblin Chieftain (JMP) 324
+1 Goblin Warchief (DOM) 130
+1 Fable of the Mirror-Breaker (SCH) 44
+1 Eladamri's Call (MH1) 197
+1 Restoration Angel (BLC) 150
+1 Zealous Conscripts (INR) 183
+1 Lightning Crafter
+1 March of the Multitudes
+1 Secure the Wastes (FRC) 31
+1 Voice of Victory (TDM) 33
+1 Formidable Speaker
+1 Village Bell-Ringer (MOC) 216
+1 Shared Animosity (LCC) 231
+1 Silence (M14) 35
+1 Warleader's Call (MKM) 242
+1 Muxus, Goblin Grandee (JMP) 24
+1 Goblin Ringleader (APC) 62
+1 Akroma's Will (LCC) 125
+1 Rhythm of the Wild (RVR) 217
+1 Beastmaster Ascension (NCC) 283
+1 Lightning Greaves (OTC) 260
+1 The Fire Crystal (FIN) 135
+1 Skullclamp (BLC) 283
+1 Guardian Project (RVR) 146
+1 Sylvan Library (LEG) 207
+1 Esper Sentinel (MH2) 12
+1 Tocasia's Welcome (SOC) 181
+1 Impact Tremors (FDN) 717
+1 Goblin Bombardment (SCH) 45
+1 Teferi's Protection (2X2) 32
+1 Heroic Intervention (CMM) 295
+1 Flawless Maneuver (FRC) 25
+1 Boros Charm (FDN) 721
+1 Clever Concealment (ONC) 5
+1 Swords to Plowshares (FRC) 37
+1 Path to Exile (FRC) 30
+1 Beast Within (FDC) 190
+1 Generous Gift (LCC) 128
+1 Chaos Warp (MBC) 72
+1 Jeska's Will (MKC) 156
+1 Chord of Calling (RVR) 134
+1 Command Tower
+1 Gaea's Cradle
+1 Jetmir's Garden
+1 Plateau
+1 Savannah
+1 Taiga
+1 Sacred Foundry
+1 Stomping Ground
+1 Temple Garden
+1 Arid Mesa
+1 Windswept Heath
+1 Wooded Foothills
+1 Bloodstained Mire
+1 Verdant Catacombs
+1 Spire Garden
+1 Bountiful Promenade
+1 Spectator Seating
+1 Copperline Gorge
+1 Razorverge Thicket
+1 Inspiring Vantage
+1 Rockfall Vale
+1 Overgrown Farmland
+1 Sundown Pass
+1 Mana Confluence
+1 City of Brass
+1 Three Tree City
+1 Castle Embereth
+1 Cavern of Souls
+1 Kessig Wolf Run
+1 Mountain
+1 Plains
+2 Forest

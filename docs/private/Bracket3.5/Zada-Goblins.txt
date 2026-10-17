@@ -1,0 +1,76 @@
+1 Zada, Hedron Grinder (CMM) 268
+1 Ragavan, Nimble Pilferer (MH2) 138
+1 Skirk Prospector (DMR) 137
+1 Young Pyromancer (J25) 618
+1 Runaway Steam-Kin
+1 Goblin Instigator
+1 Mogg War Marshal (PLST) DMR-131
+1 Hexing Squelcher (ECL) 145
+1 Goblin Recruiter (6ED) 186
+1 Dualcaster Mage (C21) 165
+1 Electro, Assaulting Battery
+1 Birgi, God of Storytelling (KHM) 123
+1 Conspicuous Snoop (M21) 139
+1 Goblin Matron (PLST) DMR-123
+1 Defense Grid (9ED) 293
+1 Imperial Recruiter (MH2) 281
+1 General Kreat, the Boltbringer
+1 Storm-Kiln Artist (SOC) 255
+1 Krenko, Mob Boss (RVR) 114
+1 Rally at the Hornburg
+1 Lightning Crafter
+1 Mox Amber (DOM) 224
+1 Kiki-Jiki, Mirror Breaker (IMA) 136
+1 Zealous Conscripts (INR) 183
+1 Simian Spirit Guide (A25) 148
+1 Sol Ring (FDC) 286
+1 Rite of Flame (CSP) 96
+1 Lotus Petal (MB2) 226
+1 Ruby Medallion (MH3) 295
+1 Skullclamp (SLD) 2416
+1 Swiftfoot Boots (MBC) 77
+1 Impact Tremors (FDN) 717
+1 Goblin Bombardment (C13) 110
+1 Frontline Heroism
+1 Underworld Breach (THB) 161
+1 Expedite
+1 Crimson Wisps
+1 Impolite Entrance
+1 Might of the Meek
+1 Renegade Tactics
+1 Ancestral Anger (INR) 141
+1 Grinning Ignus (TSR) 168
+1 Fists of Flame (J25) 550
+1 Accelerate
+1 Reckless Ransacking
+1 Sudden Breakthrough
+1 Ancestors' Aid
+1 Haste Magic
+1 Goblin Ringleader (APC) 62
+1 Twinflame (SOC) 258
+1 Muxus, Goblin Grandee (JMP) 24
+1 Molten Duplication (BIG) 14
+1 Temur Battle Rage
+1 Battle Hymn (AVR) 128
+1 Brightstone Ritual (ONS) 191
+1 Gamble (DMR) 433
+1 Jeska's Will (MKC) 156
+1 Past in Flames (C16) 131
+1 Empty the Warrens (PLST) DDS-15
+1 Hordeling Outburst (A25) 134
+1 Deflecting Swat (CMM) 214
+1 Pyroblast (ICE) 213
+1 Red Elemental Blast (LEB) 170
+1 Untimely Malfunction
+1 Chaos Warp (MBC) 72
+1 Valakut Awakening
+1 Pinnacle Monk
+1 Reliquary Tower
+1 Cavern of Souls
+1 Three Tree City
+1 Arena of Glory
+1 Kher Keep
+1 Sokenzan, Crucible of Defiance
+1 Nykthos, Shrine to Nyx
+1 Urza's Saga
+25 Mountain

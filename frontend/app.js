@@ -61,7 +61,7 @@
     items.forEach(function (el) {
       el.setAttribute('data-key', fold(el.dataset.search || el.dataset.name || ''));
     });
-    var total = items.filter(function (el) { return !el.classList.contains('mirror'); }).length;
+    var total = items.length;
 
     var sections = toArray(document.querySelectorAll(tiles.length
       ? '.bracket-group, .strategy-group, .tier-group' : '.cards .cat'));
@@ -84,8 +84,7 @@
         var hit = (!q || el.getAttribute('data-key').indexOf(q) !== -1)
           && (!theme || (el.dataset.themes || '').split(' ').indexOf(theme) !== -1);
         el.classList.toggle('is-filtered', !hit);
-        // A mirror is a second link to a deck already counted elsewhere.
-        if (hit && !el.classList.contains('mirror')) shown++;
+        if (hit) shown++;
       });
       // Hide a section once every child is gone, so the page does not turn into
       // a column of empty headings.
@@ -163,8 +162,8 @@
   function initCatalogState() {
     var wrap = document.querySelector('.decks');
     if (!wrap) return null;
-    // / and /index.html share a key. Separate catalog directories (including
-    // public and private) keep independent preferences on the same origin.
+    // / and /index.html share a key. Separate catalog directories keep
+    // independent preferences on the same origin.
     var key = 'mtg-catalog-state:' + new URL('.', location.href).pathname;
     var saved = {};
     var legacyLayout = null;
@@ -232,9 +231,7 @@
     var categories = wrap.querySelector('.catalog-categories');
     var tierList = wrap.querySelector('.catalog-tiers');
     var actions = document.querySelector('.category-actions');
-    // Mirrors (the local catalog's Goblins section) are rendered in place and
-    // never move; only the real tile for each deck travels between views.
-    var tiles = toArray(wrap.querySelectorAll('.tile:not(.mirror)'));
+    var tiles = toArray(wrap.querySelectorAll('.tile'));
     var listTargets = new Map();
     var categoryTargets = new Map();
     var tierTargets = new Map();
@@ -428,7 +425,7 @@
   // writes beside every deck page) is fetched in the background. That way the
   // click can copy synchronously, exactly like Copy decklist does: a clipboard
   // write that starts after an await is refused by Safari, and on plain http
-  // (the private catalog opened from another device on the network)
+  // (the catalog served from this machine to another device on the network)
   // navigator.clipboard does not exist at all, leaving only execCommand, which
   // must run inside the click. If the list is not back yet when the click
   // lands, a promise-valued ClipboardItem tries to keep the click's permission

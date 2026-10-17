@@ -132,3 +132,16 @@ def discover(paths: list[Path]) -> list[Path]:
         p = Path(p).resolve()
         out.extend(sorted(p.rglob("*.txt")) if p.is_dir() else [p])
     return [f for f in out if f.is_file()]
+
+
+def discover_private(root: Path) -> list[Path]:
+    """The owner's decks in `root` (private/): its bracket folders ONLY.
+
+    private/ also holds the owner's tools and scratch files, and `discover()` on
+    the whole tree would turn every .txt among them into a "deck". It did once:
+    four showcards input files rendered as decklists, one of them a 51-card
+    "commander". The bracket folder is what marks a file as a deck, here and in
+    validate_deck's gc_cap(). The site and the Discord commands both call this,
+    so they always agree on which decks exist.
+    """
+    return discover(sorted(root.glob("Bracket*"))) if root.is_dir() else []

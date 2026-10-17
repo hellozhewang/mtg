@@ -82,7 +82,18 @@ def _fence(body: str, lang: str = "") -> str:
 # ---------- deck discovery ----------
 
 def _decks() -> list[Path]:
-    return sorted(deckfile.discover([workspace.deck_root()]))
+    """Every deck: public ones, then the owner's from private/.
+
+    These commands are for people, who see every deck. They never reach the
+    builder, which works from public/ alone and is told private decks do not
+    exist; listing and printing only read files, so nothing here can change one.
+    """
+    return (sorted(deckfile.discover([workspace.deck_root()]))
+            + deckfile.discover_private(workspace.private_dir()))
+
+
+def _is_private(path: Path) -> bool:
+    return workspace.private_dir() in path.resolve().parents
 
 
 def _bracket_of(path: Path) -> str:
@@ -116,11 +127,13 @@ def _keys(path: Path) -> set[str]:
 
 
 def _label(path: Path) -> str:
-    """`Stem — Commander`, for a disambiguation list."""
+    """`Stem — Commander`, for a disambiguation list. A public and a private deck
+    can share a stem, so the private one says so."""
+    mark = " (private)" if _is_private(path) else ""
     try:
-        return f"{path.stem} — {deckfile.parse(path).commander}"
+        return f"{path.stem} — {deckfile.parse(path).commander}{mark}"
     except Exception:
-        return path.stem
+        return path.stem + mark
 
 
 def _match(query: str) -> tuple[list[Path], str | None]:
@@ -175,6 +188,8 @@ def cmd_decks(_arg: str) -> list[str]:
             row = f"  {deckfile.parse(path).commander}"
         except Exception as exc:                        # unreadable/malformed file
             row = f"  {path.stem} — unreadable ({exc.__class__.__name__})"
+        if _is_private(path):
+            row += " (private)"
         groups.setdefault(_bracket_of(path), []).append(row)
     if not groups:
         return [f"No decks found under `{workspace.deck_root()}`."]
@@ -219,8 +234,8 @@ def cmd_random(arg: str) -> list[str]:
 
     The optional argument narrows the draw to decks whose filename, commander,
     bracket folder, catalog category or power tier contains it, compared the same
-    forgiving way as `!deck`: `kinnan`, `3.5`, `combo`, `aggro`, `goblins`,
-    `s tier`.
+    forgiving way as `!deck`: `kinnan`, `3.5`, `combo`, `aggro`, `s tier`,
+    `private`.
     """
     decks = _decks()
     q = _norm(arg)
@@ -235,34 +250,44 @@ def cmd_random(arg: str) -> list[str]:
     except Exception:                       # unreadable file: still give the link
         commander = "?"
     bracket = re.sub(r"(?<=[A-Za-z])(?=\d)", " ", _bracket_of(path))
-    tier = _tier(path.stem)
-    facts = bracket + (f", {tier} tier" if tier else "")
+    tier = _tier(path)
+    facts = (bracket + (f", {tier} tier" if tier else "")
+             + (", private" if _is_private(path) else ""))
     header = (f"🎲 Random pick: **{path.stem}** — {commander} ({facts})\n"
               f"{workspace.site_url(path)}\n")
     return [header, path.read_text(encoding="utf-8").rstrip() + "\n"]
 
 
 def _filter_keys(path: Path) -> set[str]:
-    """What `!random <filter>` matches: names, the bracket, categories and tier."""
+    """What `!random <filter>` matches: names, the bracket, categories, tier, and
+    `private` for the owner's decks."""
     keys = _keys(path) | {_norm(_bracket_of(path))}
+    if _is_private(path):
+        keys.add("private")
     try:
         import deckthemes
         for theme in deckthemes.classify(
-                path.stem, deckthemes.load(workspace.frontend_dir() / "deck-themes.json")):
+                path.stem, deckthemes.load(_maps(path) / "deck-themes.json")):
             keys |= {theme, _norm(deckthemes.THEMES[theme].label)}
     except Exception:                       # a broken map must not break the draw
         pass
-    tier = _tier(path.stem)
+    tier = _tier(path)
     if tier:
         keys.add(_norm(f"{tier} tier"))
     return keys
 
 
-def _tier(stem: str) -> str | None:
-    """The deck's power tier from the public map, or None when unplaced/unreadable."""
+def _maps(path: Path) -> Path:
+    """Where this deck's category and tier maps live: frontend/ for a public deck,
+    private/ for the owner's. The two are independent even for a shared stem."""
+    return workspace.private_dir() if _is_private(path) else workspace.frontend_dir()
+
+
+def _tier(path: Path) -> str | None:
+    """The deck's power tier from its map, or None when unplaced/unreadable."""
     try:
         import decktiers
-        return decktiers.classify(stem, decktiers.load(workspace.frontend_dir() / "deck-tiers.json"))
+        return decktiers.classify(path.stem, decktiers.load(_maps(path) / "deck-tiers.json"))
     except Exception:
         return None
 

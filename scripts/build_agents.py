@@ -220,6 +220,13 @@ Writing anywhere outside your working directory fails with "operation not
 permitted". That is deliberate. Do not retry, work around it, or try to escalate —
 if a task genuinely needs it, say so and stop.
 
+**Your collection is the decks in your working directory, and nothing else.**
+The catalog and the Discord deck commands also show the owner's private decks,
+which live outside your workspace. For your work they do not exist: never look
+for them, read them, compare against them, or count one as an existing deck.
+If someone asks about a deck you cannot find here, it may be one of those: say
+you cannot work on it, and point them at `/deck-print deck: <name>` to see it.
+
 ## Read this early
 
 `../README.md` is the authority on how decks are built here: the three core rules
@@ -502,10 +509,8 @@ wins:
     other      Other Strategies      catch-all, ONLY when a plan truly fits none of the seven
 
 A deck's entry is its primary first, then any secondary categories with a real
-supporting package: `Krenko-Combo: combo, gowide, goblins`, `Najeela-Warriors:
-aggro, combo, gowide`. Creature types are not categories. The one exception is
-`goblins`: every Goblin deck adds it as a SECONDARY tag (never first), and only
-the owner's local catalog shows a Goblins section mirroring those decks.
+supporting package: `Krenko-Combo: combo, gowide`, `Najeela-Warriors:
+aggro, combo, gowide`. Creature types are not categories.
 Read `../deck-catalog-strategies.md` for the definitions, distinctions and
 examples.
 
@@ -519,7 +524,7 @@ merely to alter a catalog label.
 You can READ the map and classifier but cannot WRITE them from this public-only
 sandbox. Instead, for every new deck and whenever tuning changes the plan, end
 your reply with the exact stem and ordered IDs on a line of their own, for
-example `Categories: Krenko-Combo — combo, gowide, goblins`. The bot reads that
+example `Categories: Krenko-Combo — combo, gowide`. The bot reads that
 line after your turn and saves it to the map, but only for a deck whose files you
 changed in that turn, and only with IDs from the list above. A misspelled stem or
 category is dropped, so copy the stem from the filename.

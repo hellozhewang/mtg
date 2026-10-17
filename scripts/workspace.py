@@ -67,20 +67,19 @@ def deck_metadata_db() -> Path:
 
 
 def private_dir() -> Path:
-    """Decks that are NOT published: work in progress, and anything kept back.
-    Repo root, OUTSIDE the deck workspace — so the sandboxed session cannot reach
-    it at all, and `_autopush`, which stages only `public/` and `docs/`, cannot
-    sweep it up. Gitignored, so nothing in here reaches GitHub either.
+    """The owner's decks. Published and committed like the ones in `deck_root()`;
+    what sets them apart is that the Discord builder does not work on them.
 
-    The race this closes is human-versus-bot, not bot-versus-bot: bot turns are
-    already serialised by a whole-bot lock. But autopush commits everything under
-    `public/` at the end of a turn, so a deck someone is editing there, 40 cards
-    in, would get published half-written the moment a Discord user asks an
-    unrelated question — under a "Deck update via Discord" message nobody wrote.
+    Repo root, OUTSIDE the deck workspace. The builder's sandbox allows writes
+    only under `public/`, so it cannot change these. It CAN read them (the
+    sandbox does not bound reads), so keeping them out of its deckbuilding, so
+    that it never tunes, copies or dedupes against them, rests on its
+    instructions (AGENTS_MD in build_agents.py), which never name this folder.
 
-    Being outside `public/` is what makes that structural rather than careful.
-    Mirror the bracket folders in here (`private/Bracket3/Foo.txt`) and the
-    bracket rules apply as usual; `private_site_dir()` renders these decks too."""
+    Mirror the bracket folders in here (`private/Bracket3/Foo.txt`); the bracket
+    folder is what marks a file as a deck (see `deckfile.discover_private`), and
+    the bracket rules apply as usual. Nothing else in here is a deck: the owner
+    keeps tools and scratch files alongside."""
     return Path(os.environ.get("MTG_PRIVATE") or _REPO / "private").expanduser().resolve()
 
 
@@ -92,30 +91,6 @@ def site_dir() -> Path:
     It sits at the repo root, OUTSIDE the deck workspace, so the sandboxed session
     cannot write it. Publishing is bot.py's job, from outside the sandbox."""
     return Path(os.environ.get("MTG_SITE") or _REPO / "docs").expanduser().resolve()
-
-
-PRIVATE_SITE_NAME = "private"
-
-
-def private_site_dir() -> Path:
-    """The same catalog plus the decks in `private_dir()`, for local browsing only.
-
-    A subdirectory of the published site, and gitignored — which is the whole
-    trick. GitHub Pages serves the *committed* contents of `docs/`, so a folder
-    git never records is a folder Pages can never publish, no matter that it sits
-    inside the published tree. `git add -- public docs` in `_autopush` honours
-    .gitignore for untracked paths, so the bot cannot stage it by accident either.
-
-    Being inside `docs/` is what makes it browsable with the same relative asset
-    paths; being ignored is what keeps it local. Both properties are load-bearing.
-
-    It exists because `docs/index.html` IS published: one catalog cannot both list
-    a private deck and be served to the world. So the private decks get their own
-    index next to the public one, rather than a flag that changes what `docs/`
-    contains — nothing about the published site should depend on how it was built.
-
-    The public build must not prune this — see `sync(keep=...)` in build_site.py."""
-    return site_dir() / PRIVATE_SITE_NAME
 
 
 def frontend_dir() -> Path:
@@ -160,13 +135,19 @@ def site_url(deck: Path | None = None) -> str:
 
     `https://github.com/<owner>/<repo>` publishes at `https://<owner>.github.io/<repo>/`,
     and a deck's page is its path under public/ with .txt swapped for .html — the
-    same rule build_site.py uses to write it."""
+    same rule build_site.py uses to write it. An owner's deck in `private_dir()`
+    gets a `private/` prefix, so it cannot share a page with a public deck of the
+    same bracket and name."""
     owner, _, name = repo_url().removeprefix("https://github.com/").partition("/")
     base = f"https://{owner.lower()}.github.io/{name}/"
     if deck is None:
         return base
-    rel = deck.resolve().relative_to(deck_root().resolve()).with_suffix(".html")
-    return base + rel.as_posix()
+    path = deck.resolve()
+    if private_dir() in path.parents:
+        rel = "private/" + path.relative_to(private_dir()).with_suffix(".html").as_posix()
+    else:
+        rel = path.relative_to(deck_root().resolve()).with_suffix(".html").as_posix()
+    return base + rel
 
 
 def log_dir() -> Path:

@@ -64,8 +64,6 @@ def _themes_error(ids: tuple[str, ...]) -> str | None:
         return f"unknown categories {unknown}"
     if len(set(ids)) != len(ids):
         return "repeated category"
-    if ids[0] not in deckthemes.CANONICAL:
-        return f"primary {ids[0]!r} is not one of {', '.join(deckthemes.CANONICAL)}"
     return None
 
 

@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Start the private catalog for local-network access, always on port 5588."""
+"""Serve the catalog (docs/) on the local network, always on port 5588.
+
+The same site GitHub Pages publishes, private decks included, but straight from
+this machine: it shows a build the moment `build_site.py` writes it, without
+waiting for a push to go live. The name predates private decks being published,
+when this was the only place to see them."""
 from __future__ import annotations
 
 import argparse
@@ -37,16 +42,16 @@ def serving_catalog(index: bytes) -> bool:
 
 def main() -> int:
     argparse.ArgumentParser(description=__doc__).parse_args()
-    site = workspace.private_site_dir().resolve()
+    site = workspace.site_dir().resolve()
     try:
         index = (site / "index.html").read_bytes()
     except OSError as error:
-        print(f"Cannot read the private catalog: {error}\n"
+        print(f"Cannot read the catalog: {error}\n"
               "Build it first with: python3 scripts/build_site.py", file=sys.stderr)
         return 1
 
     if serving_catalog(index):
-        print(f"Private catalog already running: {URL}")
+        print(f"Catalog already running: {URL}")
         return 0
 
     try:
@@ -74,7 +79,7 @@ def main() -> int:
             break
         if serving_catalog(index) and server.poll() is None:
             (state / f"catalog-{PORT}.pid").write_text(f"{server.pid}\n")
-            print(f"Private catalog running: {URL}\n"
+            print(f"Catalog running: {URL}\n"
                   f"PID: {server.pid} | Log: {log_path}")
             return 0
         time.sleep(0.1)
@@ -86,7 +91,7 @@ def main() -> int:
         except subprocess.TimeoutExpired:
             server.kill()
             server.wait()
-    print(f"Could not start the private catalog on port {PORT}. "
+    print(f"Could not start the catalog on port {PORT}. "
           f"See {log_path}", file=sys.stderr)
     return 1
 

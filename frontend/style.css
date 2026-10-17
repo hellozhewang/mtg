@@ -57,11 +57,6 @@ h2 .count{color:var(--line)}
 /* Shown once on the deck a Random click landed on: did the copy work or not. */
 .random-notice{margin:0 0 16px;padding:9px 13px;border:1px solid var(--accent-line);
   border-radius:8px;background:var(--accent-bg);color:var(--fg);font-size:.88rem}
-/* A private-only category: its heading carries the private chip, and its tag on
-   each tile takes the same warn hue, dashed, so it never reads as a public one. */
-.strategy-title .chip.private{margin-left:12px;vertical-align:5px;font-size:.66rem}
-.theme-tag.private{color:var(--warn);border-color:var(--warn);border-style:dashed;
-  background:transparent}
 .random-notice.manual{border-color:var(--line);background:var(--panel)}
 .random-notice .btn{margin-left:6px;padding:3px 10px;font-size:.82rem;vertical-align:baseline}
 .search{flex:1;min-width:90px;max-width:260px;background:var(--panel2);
@@ -228,9 +223,10 @@ h2 .count{color:var(--line)}
 /* Creation date. Muted on purpose: it is context for ordering, not a stat you
    compare decks on, so it must not compete with the card/land/MV chips. */
 .chip.date{font-variant-numeric:tabular-nums;opacity:.75}
-/* Unpublished. Deliberately the warn hue rather than the gold accent: gold means
-   "notable card" everywhere else on the page, and this means "do not expect to
-   find this on GitHub". Used on tiles and in the deck header alike. */
+/* The owner's own deck, which the Discord builder does not work on. Deliberately
+   the warn hue rather than the gold accent: gold means "notable card" everywhere
+   else on the page, and this means "ask the owner, not the builder". Used on
+   tiles and in the deck header alike. */
 .chip.private{color:var(--warn);border-color:var(--warn);background:transparent;
   text-transform:uppercase;letter-spacing:.06em;font-size:.68rem}
 
@@ -296,10 +292,6 @@ h2 .count{color:var(--line)}
   border-radius:8px;padding:7px 13px;font:inherit;font-size:.85rem;
   cursor:pointer;text-decoration:none;display:inline-block}
 .btn:hover{border-color:var(--accent)}
-/* Sits in the toolbar where the GitHub links would be, and states why they are
-   not there. Not a <button> and not a link, so it must not offer either affordance. */
-.btn-off{color:var(--dim);border-style:dashed;cursor:default}
-.btn-off:hover{border-color:var(--line)}
 .btn[aria-pressed="true"]{background:var(--panel2);border-color:var(--accent);
   color:var(--accent)}
 /* Off-screen rather than display:none — a hidden textarea cannot be selected,

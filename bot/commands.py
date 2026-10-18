@@ -82,18 +82,12 @@ def _fence(body: str, lang: str = "") -> str:
 # ---------- deck discovery ----------
 
 def _decks() -> list[Path]:
-    """Every deck: public ones, then the owner's from private/.
-
-    These commands are for people, who see every deck. They never reach the
-    builder, which works from public/ alone and is told private decks do not
-    exist; listing and printing only read files, so nothing here can change one.
-    """
-    return (sorted(deckfile.discover([workspace.deck_root()]))
-            + deckfile.discover_private(workspace.private_dir()))
+    """Every deck, every owner's: `public/<user>/<Bracket>/<Deck>.txt`."""
+    return deckfile.discover_collection(workspace.deck_root())
 
 
-def _is_private(path: Path) -> bool:
-    return workspace.private_dir() in path.resolve().parents
+def _owner(path: Path) -> str:
+    return workspace.owner_of(path)
 
 
 def _bracket_of(path: Path) -> str:
@@ -127,23 +121,32 @@ def _keys(path: Path) -> set[str]:
 
 
 def _label(path: Path) -> str:
-    """`Stem — Commander`, for a disambiguation list. A public and a private deck
-    can share a stem, so the private one says so."""
-    mark = " (private)" if _is_private(path) else ""
+    """`owner/Stem — Commander`, for a disambiguation list: owners can share a
+    deck name, and `owner/stem` is also what to type to pick one."""
+    name = f"{_owner(path)}/{path.stem}"
     try:
-        return f"{path.stem} — {deckfile.parse(path).commander}{mark}"
+        return f"{name} — {deckfile.parse(path).commander}"
     except Exception:
-        return path.stem + mark
+        return name
 
 
-def _match(query: str) -> tuple[list[Path], str | None]:
+def _match(query: str, user: str | None = None) -> tuple[list[Path], str | None]:
     """Resolve a user-typed deck name, case- and punctuation-insensitively.
+
+    `owner/name` limits the search to one owner's decks. Without an owner, every
+    owner's decks are searched, and when several match, the asker's own deck
+    wins: `/deck-print deck: giada` from ratdos means ratdos's Giada even if
+    zzwang has one too. Otherwise the reply lists them as `owner/stem`.
 
     Error text names `!deck-list`, never `!decks`. The latter is this module's
     internal wire format and matches no user-facing command, so telling someone
     to type it sends them somewhere that does nothing.
     """
     decks = _decks()
+    owner, slash, rest = query.partition("/")
+    if slash and _norm(owner):
+        decks = [p for p in decks if _owner(p) == owner.strip().lower()]
+        query = rest
     q = _norm(query)
     if not q:
         return [], "give a deck name — try `!deck-list` to see them"
@@ -156,6 +159,9 @@ def _match(query: str) -> tuple[list[Path], str | None]:
         exact = [p for p, keys in keyed if any(q in k for k in keys)]
     if not exact:
         return [], f"no deck matching `{query}`. Try `!deck-list`."
+    mine = [p for p in exact if user and _owner(p) == (workspace.owner_name(user) or "")]
+    if len(exact) > 1 and len(mine) == 1:
+        return mine, None
     if len(exact) > 1:
         # One per line, and none of them on the sentence's line. Run together
         # after a colon, the first match reads as part of the prose and the list
@@ -183,14 +189,13 @@ def cmd_decks(_arg: str) -> list[str]:
     # commander name landing on the boundary.
     BUDGET = 1500
     groups: dict[str, list[str]] = {}
-    for path in _decks():
+    # By bracket, then by name across owners: how people read the list.
+    for path in sorted(_decks(), key=lambda p: (_bracket_of(p), p.stem.lower(), _owner(p))):
         try:
             row = f"  {deckfile.parse(path).commander}"
         except Exception as exc:                        # unreadable/malformed file
             row = f"  {path.stem} — unreadable ({exc.__class__.__name__})"
-        if _is_private(path):
-            row += " (private)"
-        groups.setdefault(_bracket_of(path), []).append(row)
+        groups.setdefault(_bracket_of(path), []).append(f"{row} ({_owner(path)})")
     if not groups:
         return [f"No decks found under `{workspace.deck_root()}`."]
     out: list[str] = []
@@ -207,7 +212,7 @@ def cmd_decks(_arg: str) -> list[str]:
     return out
 
 
-def cmd_deck(arg: str) -> list[str]:
+def cmd_deck(arg: str, user: str | None = None) -> list[str]:
     """The decklist, raw — `1 Card Name` lines separated by newlines, nothing else.
 
     No fence, no header, no splitting. Whatever this returns is what someone
@@ -215,13 +220,13 @@ def cmd_deck(arg: str) -> list[str]:
     have to strip back out. Presentation is the Discord layer's job: it knows the
     2000-character limit and where a fence may legally be cut, and this does not.
     """
-    matches, err = _match(arg)
+    matches, err = _match(arg, user)
     if err:
         return [err]
     return [matches[0].read_text(encoding="utf-8").rstrip() + "\n"]
 
 
-def cmd_random(arg: str) -> list[str]:
+def cmd_random(arg: str, user: str | None = None) -> list[str]:
     """A random deck: its catalog link, then the exact decklist. Optional filter.
 
     WIRE FORMAT, shared with the discord-bot repo's deck-random.ts: a header
@@ -235,7 +240,7 @@ def cmd_random(arg: str) -> list[str]:
     The optional argument narrows the draw to decks whose filename, commander,
     bracket folder, catalog category or power tier contains it, compared the same
     forgiving way as `!deck`: `kinnan`, `3.5`, `combo`, `aggro`, `s tier`,
-    `private`.
+    or an owner's name (`ratdos`).
     """
     decks = _decks()
     q = _norm(arg)
@@ -251,23 +256,22 @@ def cmd_random(arg: str) -> list[str]:
         commander = "?"
     bracket = re.sub(r"(?<=[A-Za-z])(?=\d)", " ", _bracket_of(path))
     tier = _tier(path)
-    facts = (bracket + (f", {tier} tier" if tier else "")
-             + (", private" if _is_private(path) else ""))
+    facts = bracket + (f", {tier} tier" if tier else "") + f", by {_owner(path)}"
     header = (f"🎲 Random pick: **{path.stem}** — {commander} ({facts})\n"
               f"{workspace.site_url(path)}\n")
     return [header, path.read_text(encoding="utf-8").rstrip() + "\n"]
 
 
 def _filter_keys(path: Path) -> set[str]:
-    """What `!random <filter>` matches: names, the bracket, categories, tier, and
-    `private` for the owner's decks."""
-    keys = _keys(path) | {_norm(_bracket_of(path))}
-    if _is_private(path):
-        keys.add("private")
+    """What `!random <filter>` matches: names, the bracket, categories, tier and
+    owner. A local-only category (Goblins) is not shown to anyone here, so it does
+    not match either."""
+    keys = _keys(path) | {_norm(_bracket_of(path)), _norm(_owner(path))}
     try:
         import deckthemes
-        for theme in deckthemes.classify(
-                path.stem, deckthemes.load(_maps(path) / "deck-themes.json")):
+        themes = deckthemes.classify(
+            _map_key(path), deckthemes.load(workspace.frontend_dir() / "deck-themes.json"))
+        for theme in deckthemes.visible(themes, local=False):
             keys |= {theme, _norm(deckthemes.THEMES[theme].label)}
     except Exception:                       # a broken map must not break the draw
         pass
@@ -277,17 +281,18 @@ def _filter_keys(path: Path) -> set[str]:
     return keys
 
 
-def _maps(path: Path) -> Path:
-    """Where this deck's category and tier maps live: frontend/ for a public deck,
-    private/ for the owner's. The two are independent even for a shared stem."""
-    return workspace.private_dir() if _is_private(path) else workspace.frontend_dir()
+def _map_key(path: Path) -> str:
+    """How the category and tier maps name a deck: `<owner>/<Deck>`."""
+    return f"{_owner(path)}/{path.stem}"
 
 
 def _tier(path: Path) -> str | None:
-    """The deck's power tier from its map, or None when unplaced/unreadable."""
+    """The deck's published power tier, or None when unplaced/unreadable."""
     try:
         import decktiers
-        return decktiers.classify(path.stem, decktiers.load(_maps(path) / "deck-tiers.json"))
+        tier = decktiers.classify(
+            _map_key(path), decktiers.load(workspace.frontend_dir() / "deck-tiers.json"))
+        return decktiers.visible(tier, local=False)
     except Exception:
         return None
 
@@ -312,8 +317,11 @@ COMMANDS = {
 
 # ---------- entry point ----------
 
-def handle(text: str) -> list[str] | None:
-    """Run a command, or return None so bot.py forwards the text to Codex."""
+def handle(text: str, user: str | None = None) -> list[str] | None:
+    """Run a command, or return None so bot.py forwards the text to Codex.
+
+    `user` is the asker's Discord username; `!deck` prefers their own deck when a
+    name matches several owners'."""
     text = (text or "").strip()
     if not text.startswith(PREFIX):
         return None
@@ -322,4 +330,4 @@ def handle(text: str) -> list[str] | None:
     if fn is None:
         known = ", ".join(f"`{PREFIX}{k}`" for k in COMMANDS)
         return [f"Unknown command `{PREFIX}{head}`. Known: {known}"]
-    return fn(arg)
+    return fn(arg, user) if fn in (cmd_deck, cmd_random) else fn(arg)

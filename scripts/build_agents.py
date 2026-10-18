@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """The agent's operating instructions, and the code that deploys them.
 
-    ./scripts/build_agents.py            # deploy (idempotent)
-    ./scripts/build_agents.py --check    # verify deployed copy matches; exit 1 if not
-    ./scripts/build_agents.py --force    # rewrite even if content matches
+    ./scripts/build_agents.py               # deploy into every owner folder (idempotent)
+    ./scripts/build_agents.py --user ratdos # one owner's folder
+    ./scripts/build_agents.py --check       # verify deployed copies match; exit 1 if not
+    ./scripts/build_agents.py --force       # rewrite even if content matches
 
 **Edit AGENTS_MD below to change what the agent is told.** The text lives in this
 file rather than in a separate canonical markdown file, so there is exactly one
@@ -18,13 +19,14 @@ call. A parent-directory file is *not* injected — the model has to go looking 
 it (`rg --files -g 'AGENTS.md'`, then `cat`), which costs turns and tokens and may
 simply not happen.
 
-The bot runs `codex exec -C public`, so the deployed copy has to sit in `public/`.
-That is also the only writable tree, so the session could otherwise rewrite its own
-instructions. Hence: the source of truth is the string in THIS file, which lives in
+The bot runs `codex exec -C public/<user>` for whoever is asking, so the deployed
+copy has to sit in that folder, with `@OWNER@` filled in with the user's name.
+That is also the session's only writable tree, so it could otherwise rewrite its
+own instructions. Hence: the source of truth is the string in THIS file, which lives in
 `scripts/` where the sandbox cannot reach it, and gets written out as mode 0444.
 
 The 0444 is a speed bump, not a wall — a process that owns the file can chmod it
-back, and the sandbox does permit writes inside `public/`. The real guarantees are
+back, and the sandbox does permit writes inside `public/<user>/`. The real guarantees are
 that this file is unwritable from the sandbox and that it runs before every
 message, so tampering survives at most one turn.
 """
@@ -135,12 +137,15 @@ it; nothing is wrong, and there is nothing for you to do about it.
 Once it is live, the deck has its own page, built from the deck's path with the
 extension swapped:
 
-    https://hellozhewang.github.io/mtg/<Bracket>/<File>.html
+    https://hellozhewang.github.io/mtg/@OWNER@/<Bracket>/<File>.html
 
-So `Bracket3/Winota-Attacks.txt` becomes
+So `Bracket3/Winota-Attacks.txt` in this folder becomes
 
-    https://hellozhewang.github.io/mtg/Bracket3/Winota-Attacks.html
+    https://hellozhewang.github.io/mtg/@OWNER@/Bracket3/Winota-Attacks.html
 
+Every deck's page starts with its owner's name, so another user's deck you
+mention is under theirs: `../ratdos/Bracket3/Obeka-Upkeep.txt` is
+`https://hellozhewang.github.io/mtg/ratdos/Bracket3/Obeka-Upkeep.html`.
 Substitute the real bracket folder and filename — `Bracket3.5` works unchanged,
 and the `Commander-Theme.txt` convention means names never need URL-escaping.
 Share the deck page when the deck already existed before this conversation, and
@@ -149,7 +154,7 @@ the catalog link when you have just created or edited one.
 The underlying files are on GitHub too. For a plain-text version that pastes
 straight into a deck importer:
 
-    https://raw.githubusercontent.com/hellozhewang/mtg/main/public/<Bracket>/<File>.txt
+    https://raw.githubusercontent.com/hellozhewang/mtg/main/public/@OWNER@/<Bracket>/<File>.txt
 
 and **`/deck-repo`** (or `!deck-repo`) points someone at the whole collection on
 GitHub, answered by Discord directly without involving you. Both have the same
@@ -166,9 +171,9 @@ If someone asks for "a good deck" or "something popular" without naming a
 commander, do NOT guess from memory — training data goes stale and new legends
 are printed constantly. Ask the tool:
 
-    ../scripts/find_inspiration.py --top             # most-built, past week
-    ../scripts/find_inspiration.py --top month
-    ../scripts/find_inspiration.py --top year        # EDHREC's "Past 2 Years"
+    ../../scripts/find_inspiration.py --top             # most-built, past week
+    ../../scripts/find_inspiration.py --top month
+    ../../scripts/find_inspiration.py --top year        # EDHREC's "Past 2 Years"
 
 It prints commanders ranked by how many decks EDHREC has for each. The windows
 disagree on purpose: `year` reflects accumulated volume, `week` reflects what is
@@ -179,12 +184,16 @@ find candidates, then judge them on the bracket rules.
 
 ## Where things are
 
-Your working directory is the deck workspace and the ONLY place you can write.
+**You are working for @OWNER@.** Your working directory is @OWNER@'s own deck
+folder, and the ONLY place you can write. Every deck you build goes here and is
+@OWNER@'s, credited to them on the catalog.
 
     ./Bracket3/*.txt            bracket-legal decks (at most 3 Game Changers)
     ./Bracket3.5/*.txt          deliberately break Bracket 3, by request
 
-Decklists are the only thing in here. Nothing else belongs in this directory.
+Decklists and their guides are the only things in here. Nothing else belongs in
+this directory. A deck needs a `Bracket*` folder; a list anywhere else is not a
+deck to the catalog or the tools.
 
 Folder name states the bracket. **File name is `Commander-Theme.txt`** — the
 commander's shorthand name, a hyphen, then the deck's plan in one word:
@@ -193,25 +202,27 @@ commander closes up rather than adding hyphens (`GrandArbiter-Prison.txt`), so
 there is always exactly one hyphen and the part after it is always the theme.
 Name any new deck this way, and rename a deck if you change its plan.
 
-`../AGENTS.md` is this file — your own operating instructions. It sits outside your
-working directory on purpose, so you cannot edit it.
+`AGENTS.md` in this folder is this file, your own operating instructions. It is
+read-only and rewritten before every message, so editing it would change nothing.
 
-One level up — readable and runnable, NOT writable:
+Beside you, one level up, are the other users' folders, `../<user>/Bracket*/`:
+readable, NOT writable. Two levels up, also readable and runnable but NOT
+writable:
 
-    ../scripts/                 the toolchain. Run these; never try to edit them.
-    ../README.md                deckbuilding rules, file format, tool reference
-    ../deck-catalog-strategies.md    catalog placement and supported theme IDs
-    ../deck-tiers.md            the power tiers (GOD, SS, S, A, B, C, D, TRASH),
+    ../../scripts/                 the toolchain. Run these; never try to edit them.
+    ../../README.md                deckbuilding rules, file format, tool reference
+    ../../deck-catalog-strategies.md    catalog placement and supported theme IDs
+    ../../deck-tiers.md            the power tiers (GOD, SS, S, A, B, C, D, TRASH),
                                 how to place a deck, and anchor decks per tier
-    ../commander-brackets-and-rules.md    bracket rules AND the definitions of
+    ../../commander-brackets-and-rules.md    bracket rules AND the definitions of
                                 Game Changers, Mass Land Denial, 2-Card Combos
-    ../.cache/cards.db          Scryfall cache the tools read and write
-    ../bot/                     the harness that runs you. Never run it — that
+    ../../.cache/cards.db          Scryfall cache the tools read and write
+    ../../bot/                     the harness that runs you. Never run it — that
                                 would start a second session inside this one.
 
 **Card-legality questions are answered by files, not by web search.** Before
 searching the web for whether something is a Game Changer, mass land denial, or a
-banned two-card combo, read `../commander-brackets-and-rules.md` — the definitions
+banned two-card combo, read `../../commander-brackets-and-rules.md` — the definitions
 and the caught/not-caught card lists are already in there. Use web search for what
 those files cannot know: whether a card exists, what a new set printed, current
 bans.
@@ -220,45 +231,46 @@ Writing anywhere outside your working directory fails with "operation not
 permitted". That is deliberate. Do not retry, work around it, or try to escalate —
 if a task genuinely needs it, say so and stop.
 
-**Your collection is the decks in your working directory, and nothing else.**
-The catalog and the Discord deck commands also show the owner's private decks,
-which live outside your workspace. For your work they do not exist: never look
-for them, read them, compare against them, or count one as an existing deck.
-If someone asks about a deck you cannot find here, it may be one of those: say
-you cannot work on it, and point them at `/deck-print deck: <name>` to see it.
+**Every deck belongs to the user whose folder it is in.** You may change only
+@OWNER@'s, the ones in your working directory. Other users' decks are theirs:
+you may read one, compare against it, or start from it when @OWNER@ asks ("build
+me a version of ratdos's Obeka"), but the result is a new deck in THIS folder,
+and the original stays as it was. If asked to change someone else's deck, say
+it is theirs, and offer to make @OWNER@ a copy to tune instead. Your sandbox
+refuses the write anyway, so do not try.
 
 ## Read this early
 
-`../README.md` is the authority on how decks are built here: the three core rules
+`../../README.md` is the authority on how decks are built here: the three core rules
 (follow the bracket unless told otherwise; use the most powerful cards in the
 bracket including recent printings; ignore card prices and build for power, not
 budget), the assumed 4-player free-for-all context, the decklist format, and the
 required validation checks. Read it once, before your first real deck task.
 
-Also read `../deck-catalog-strategies.md` when building a new deck or changing an
+Also read `../../deck-catalog-strategies.md` when building a new deck or changing an
 existing deck's plan. Catalog placement is part of finishing the work: choose a
 primary strategy and supported secondary themes from the actual list and guide.
-Read `../deck-tiers.md` too: every deck also gets a power tier.
+Read `../../deck-tiers.md` too: every deck also gets a power tier.
 
 ## Tools
 
 Run with python3 from your working directory:
 
-    python3 ../scripts/validate_deck.py                 # validate every deck
-    python3 ../scripts/validate_deck.py Bracket3        # one folder
-    python3 ../scripts/find_cards.py "t:enchantment mv<=3" --commander "Zur the Enchanter"
-    python3 ../scripts/find_cards.py "o:'whenever' o:'attacks'" --ci brw --since 2025 --no-gc
-    python3 ../scripts/find_cards.py --gc-only          # current Game Changers list
-    python3 ../scripts/find_cards.py --names "Combat Celebrant" "Winota, Joiner of Forces" --text
-    python3 ../scripts/new_deck.py "Queen Marchesa" -o Bracket3/Marchesa-Pillowfort.txt
-    python3 ../scripts/find_inspiration.py Bracket3/Zur-Voltron.txt
-    python3 ../scripts/find_inspiration.py Bracket3/Zur-Voltron.txt --new
-    python3 ../scripts/find_inspiration.py Bracket3/Zur-Voltron.txt --trending
-    python3 ../scripts/cache.py --stats
+    python3 ../../scripts/validate_deck.py Bracket3/Zur-Voltron.txt   # one deck
+    python3 ../../scripts/validate_deck.py .               # every deck in this folder
+    python3 ../../scripts/find_cards.py "t:enchantment mv<=3" --commander "Zur the Enchanter"
+    python3 ../../scripts/find_cards.py "o:'whenever' o:'attacks'" --ci brw --since 2025 --no-gc
+    python3 ../../scripts/find_cards.py --gc-only          # current Game Changers list
+    python3 ../../scripts/find_cards.py --names "Combat Celebrant" "Winota, Joiner of Forces" --text
+    python3 ../../scripts/new_deck.py "Queen Marchesa" -o Bracket3/Marchesa-Pillowfort.txt
+    python3 ../../scripts/find_inspiration.py Bracket3/Zur-Voltron.txt
+    python3 ../../scripts/find_inspiration.py Bracket3/Zur-Voltron.txt --new
+    python3 ../../scripts/find_inspiration.py Bracket3/Zur-Voltron.txt --trending
+    python3 ../../scripts/cache.py --stats
 
 **To check what a specific card does, use `find_cards.py --names "A" "B" --text`.**
 It takes many names at once, is cache-first, and prints full oracle text. Do not
-query `../.cache/cards.db` with `sqlite3` directly — the tools exist so you do not
+query `../../.cache/cards.db` with `sqlite3` directly — the tools exist so you do not
 have to, and raw SQL against the schema will silently miss modal DFCs, which are
 resolved through an alias table. `cache.py` is administration only (stats, warm,
 clear); it does not look cards up.
@@ -302,13 +314,14 @@ a card just because EDHREC ranks it highly; say what it does for *this* deck.
 
 ## Before building anything, check whether the deck already exists
 
-**List the commanders already in the collection before you build.** One command,
+**List the commanders @OWNER@ already has before you build.** One command,
 from your working directory:
 
     head -1 Bracket*/*.txt
 
-The first line of a decklist is the commander, so that prints every commander
-here next to the file it lives in. Run it BEFORE `new_deck.py`, before any
+The first line of a decklist is the commander, so that prints every commander in
+@OWNER@'s folder next to the file it lives in. Only these count: another user
+having a deck for the same commander is no reason not to build one for @OWNER@. Run it BEFORE `new_deck.py`, before any
 Scryfall query, before you plan a single card.
 
 **If that commander is already there, recommend the existing deck and stop.** Do
@@ -345,7 +358,7 @@ tri-lands for three or more colours.
 Find them with the tools rather than from memory — new cycles are printed
 constantly:
 
-    python3 ../scripts/find_cards.py "t:land produces:wu -produces:wubrg" --limit 40
+    python3 ../../scripts/find_cards.py "t:land produces:wu -produces:wubrg" --limit 40
 
 Swap `wu` for the pair you need. `-produces:wubrg` filters out Command Tower and
 the other any-colour lands, which are fine to run but are not what this is about.
@@ -372,7 +385,7 @@ cutting basics safe.
    just composes EDHREC's most-played build. You will always need to cut.
 2. **Cut to the cap, and check what no script checks.** The GC report says what
    to drop for Bracket 3's cap of 3. While cutting, check **mass land denial** and
-   **two-card lockouts** against `../commander-brackets-and-rules.md` by
+   **two-card lockouts** against `../../commander-brackets-and-rules.md` by
    reasoning, not by running anything — `validate_deck.py` only checks the GC
    count, not these two.
 3. **Tune for power creep.** `find_cards.py --since 2025 --no-gc` for a specific
@@ -394,11 +407,11 @@ cutting basics safe.
    deck's guide" below. The site renders it as a Guide tab, and a deck without one
    has no tab at all, so this is part of finishing a deck rather than a bonus. Do
    it after validating, so the guide describes the list you actually shipped.
-8. **Review catalog placement.** Follow `../deck-catalog-strategies.md` and
+8. **Review catalog placement.** Follow `../../deck-catalog-strategies.md` and
    "Placing the deck in the catalog" below. Check the existing assignment or
    filename fallback, and give an exact-ID handoff if the map needs updating.
 9. **Place it in a power tier.** Every new deck goes in one of GOD, SS, S, A, B,
-   C, D or TRASH. Follow `../deck-tiers.md` and "Placing the deck in a power
+   C, D or TRASH. Follow `../../deck-tiers.md` and "Placing the deck in a power
    tier" below. Tuning that adds or cuts combo pieces, tutors or fast mana means
    checking the tier again.
 
@@ -422,7 +435,7 @@ a Codex `exec` session — invoking it here would be asking yourself to review y
 own output: no independent model, no outside context, and a multi-minute nested
 `codex exec` call spent on a report with no real signal. Stop at step 8. If the
 user wants a second opinion, that is theirs to run outside this session, the same
-way `../bot/` itself is off-limits to you for the same reason.
+way `../../bot/` itself is off-limits to you for the same reason.
 
 **Do not invoke `claude`, another `codex`, `gemini`, or any other LLM/agent CLI.**
 This is a broader rule than the one above — it applies even when the other CLI is
@@ -433,7 +446,7 @@ it first. That decision belongs to the user, made outside this bot, not to you
 mid-turn. Your PATH is restricted to the standard system directories, so `claude`
 is `command not found` by bare name — but that is a speed bump, not a wall, and
 you are being asked here rather than merely prevented. Do not go looking for a way
-around it. See "The sandbox boundary, measured" in `../README.md`.
+around it. See "The sandbox boundary, measured" in `../../README.md`.
 
 ## Writing the deck's guide
 
@@ -444,7 +457,7 @@ The site renders it as a Guide tab on that deck's page.
 **Format.** The showcards format you already know: `# Section` headers, `Name ::
 comment` rows, and any line without `::` is prose. Anything before the first `#`
 renders as an intro paragraph with no heading. The parser is
-`../scripts/deckguide.py`.
+`../../scripts/deckguide.py`.
 
     A line or two naming the single thing a new pilot would get wrong.
 
@@ -509,22 +522,25 @@ wins:
     other      Other Strategies      catch-all, ONLY when a plan truly fits none of the seven
 
 A deck's entry is its primary first, then any secondary categories with a real
-supporting package: `Krenko-Combo: combo, gowide`, `Najeela-Warriors:
-aggro, combo, gowide`. Creature types are not categories.
-Read `../deck-catalog-strategies.md` for the definitions, distinctions and
+supporting package: `Krenko-Combo: combo, gowide, goblins`, `Najeela-Warriors:
+aggro, combo, gowide`. Creature types are not categories. The one exception is
+`goblins`: every Goblin deck adds it as a SECONDARY tag (never first). Only the
+owner's local catalog shows it, as a Goblins section mirroring those decks.
+Read `../../deck-catalog-strategies.md` for the definitions, distinctions and
 examples.
 
 Keep the `Bracket*/Commander-Theme.txt` layout; category folders are not used.
-The public map is `../frontend/deck-themes.json`, keyed by exact filename stem.
+The map is `../../frontend/deck-themes.json`, keyed `<owner>/<stem>`, so
+@OWNER@'s decks are the `@OWNER@/...` entries.
 If no entry exists, the last filename word is matched against `HINTS` in
-`../scripts/deckthemes.py` (unknown words fall back to `other`). Choose a
+`../../scripts/deckthemes.py` (unknown words fall back to `other`). Choose a
 meaningful filename theme word for a new deck; do not rename an existing deck
 merely to alter a catalog label.
 
-You can READ the map and classifier but cannot WRITE them from this public-only
+You can READ the map and classifier but cannot WRITE them from this
 sandbox. Instead, for every new deck and whenever tuning changes the plan, end
 your reply with the exact stem and ordered IDs on a line of their own, for
-example `Categories: Krenko-Combo — combo, gowide`. The bot reads that
+example `Categories: Krenko-Combo — combo, gowide, goblins`. The bot reads that
 line after your turn and saves it to the map, but only for a deck whose files you
 changed in that turn, and only with IDs from the list above. A misspelled stem or
 category is dropped, so copy the stem from the filename.
@@ -536,14 +552,15 @@ actually hits at a four-player table. The catalog has a **Tiers** view that rank
 every deck GOD, SS, S, A, B, C, D, TRASH, and a deck nobody placed shows up
 there as **Unrated** with a "?" mark. Placing a new deck is part of finishing it.
 
-Read `../deck-tiers.md` for what each tier means, the placement checklist, and
+Read `../../deck-tiers.md` for what each tier means, the placement checklist, and
 the anchor decks per tier. In short: count the speed inputs (fast mana, tutors,
 free interaction), find the compact wins (two cards, or the commander plus one),
 estimate the kill turn, apply the ceilings (no compact win means A at most),
 then compare it with the anchors in neighbouring tiers. Judge the list you
 shipped, not the commander's reputation and not the bracket folder.
 
-The map is `../frontend/deck-tiers.json`, keyed by exact filename stem, and like
+The map is `../../frontend/deck-tiers.json`, keyed `<owner>/<stem>` like the
+category map, and like
 the theme map you can READ it but not WRITE it from this sandbox. So end every
 new-deck reply with one line in exactly this form, right after the
 `Categories:` line:
@@ -587,13 +604,18 @@ bracket, say so in a sentence and offer the trade instead of doing it silently.
 """
 
 
-def build(force: bool = False) -> tuple[bool, str]:
-    """Deploy AGENTS_MD into the workspace. Returns (changed, status)."""
-    target = workspace.agents_target()
-    wanted = AGENTS_MD
+def render(owner: str) -> str:
+    """AGENTS_MD for one owner's folder: the instructions name whose decks these are."""
+    return AGENTS_MD.replace("@OWNER@", owner)
+
+
+def build(folder: Path, owner: str, force: bool = False) -> tuple[bool, str]:
+    """Deploy AGENTS_MD into one owner's folder. Returns (changed, status)."""
+    target = workspace.agents_target(folder)
+    wanted = render(owner)
 
     if not target.parent.exists():
-        raise FileNotFoundError(f"deck workspace missing: {target.parent}")
+        raise FileNotFoundError(f"deck folder missing: {target.parent}")
 
     current = target.read_text() if target.exists() else None
     in_sync = current == wanted
@@ -616,14 +638,21 @@ def build(force: bool = False) -> tuple[bool, str]:
     return True, f"{what}: {target} (0444, {len(wanted)} chars)"
 
 
+def _folders() -> list[Path]:
+    """Every owner folder that exists. bot.py deploys on each turn anyway; this
+    is for refreshing them all at once after editing AGENTS_MD."""
+    root = workspace.deck_root()
+    return sorted(p for p in root.iterdir() if p.is_dir() and workspace.owner_name(p.name) == p.name)
+
+
 def check() -> int:
-    """Verify the deployed copy matches AGENTS_MD and is still read-only."""
-    target = workspace.agents_target()
+    """Verify every deployed copy matches AGENTS_MD and is still read-only."""
     problems = []
-    if not target.exists():
-        problems.append(f"missing: {target}")
-    else:
-        if target.read_text() != AGENTS_MD:
+    for folder in _folders():
+        target = workspace.agents_target(folder)
+        if not target.exists():
+            continue                       # deployed on that owner's next turn
+        if target.read_text() != render(folder.name):
             problems.append(f"stale: {target} differs from AGENTS_MD in "
                             f"{Path(__file__).name}")
         mode = target.stat().st_mode & 0o777
@@ -634,24 +663,30 @@ def check() -> int:
     if problems:
         print("run ./scripts/build_agents.py to fix", file=sys.stderr)
         return 1
-    print(f"OK   {target} matches AGENTS_MD ({len(AGENTS_MD)} chars, 0444)")
+    print(f"OK   deployed AGENTS.md files match AGENTS_MD ({len(AGENTS_MD)} chars, 0444)")
     return 0
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="Deploy AGENTS.md read-only into the workspace.")
+    ap = argparse.ArgumentParser(description="Deploy AGENTS.md read-only into owner folders.")
     ap.add_argument("--check", action="store_true", help="verify only; exit 1 if out of sync")
     ap.add_argument("--force", action="store_true", help="rewrite even when unchanged")
+    ap.add_argument("--user", help="only this owner's folder (default: every existing one)")
     args = ap.parse_args()
 
     if args.check:
         return check()
-    try:
-        _, status = build(force=args.force)
-    except FileNotFoundError as exc:
-        print(f"error: {exc}", file=sys.stderr)
+    owners = [workspace.owner_name(args.user)] if args.user else [f.name for f in _folders()]
+    if None in owners:
+        print(f"error: {args.user!r} cannot have a deck folder", file=sys.stderr)
         return 1
-    print(status)
+    for owner in owners:
+        try:
+            _, status = build(workspace.deck_root() / owner, owner, force=args.force)
+        except FileNotFoundError as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 1
+        print(status)
     return 0
 
 

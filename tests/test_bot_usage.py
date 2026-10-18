@@ -148,7 +148,7 @@ class BuilderTests(unittest.TestCase):
             with self.subTest(sid=sid), contextlib.ExitStack() as stack:
                 for name, value in {
                     "_claim_bot": Mock(), "_release_bot": None,
-                    "_deck_snapshot": {}, "session_id": sid,
+                    "session_id": sid,
                     "_run": ("answer", "session id: 11111111-1111-1111-1111-111111111111"),
                     "_finish": "answer",
                 }.items():
@@ -157,9 +157,20 @@ class BuilderTests(unittest.TestCase):
                 stack.enter_context(patch.object(bot, "_creation_lock", return_value=contextlib.nullcontext()))
                 tmp = stack.enter_context(tempfile.TemporaryDirectory())
                 stack.enter_context(patch.object(bot, "SESSIONS", Path(tmp)))
+                stack.enter_context(patch.dict(os.environ, {"MTG_DECKS": tmp}))
                 self.assertEqual(bot.send("build a deck", "zzwang", discord=True), "answer\n\nUSAGE")
+                # The session runs in the asker's own folder, which it creates.
+                self.assertTrue((Path(tmp) / "zzwang").is_dir())
         self.assertEqual(self.report.call_count, 2)
         self.assertTrue(self.report.call_args.kwargs["discord"])
+
+    def test_a_username_that_cannot_have_a_folder_never_reaches_the_model(self):
+        with patch.object(self.bot, "_claim_bot") as claim, patch.object(self.bot, "_run") as run:
+            for name in ("../zzwang", "img", "Bracket3", "a/b"):
+                with self.subTest(name=name):
+                    self.assertIn("can't build decks", self.bot.send("build a deck", name))
+            claim.assert_not_called()
+            run.assert_not_called()
 
     def test_cli_usage_needs_no_username(self):
         with patch.object(sys, "argv", ["bot.py", "--usage"]), contextlib.redirect_stdout(io.StringIO()) as output:

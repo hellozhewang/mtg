@@ -123,9 +123,9 @@ def write(path: Path, commander: str, cards: dict[str, int]) -> int:
 def discover(paths: list[Path]) -> list[Path]:
     """Expand a mix of files and folders into a sorted list of decklist files.
 
-    No exclusions are needed: `private/` lives at the repo root, outside the deck
-    workspace, so expanding the deck root never reaches it — while naming a
-    private file explicitly still works, which is how you validate one in progress.
+    For explicit arguments (`validate_deck.py public/ratdos`). Listing the whole
+    collection goes through `discover_collection()`, which only counts decks in
+    bracket folders.
     """
     out: list[Path] = []
     for p in paths:
@@ -134,14 +134,13 @@ def discover(paths: list[Path]) -> list[Path]:
     return [f for f in out if f.is_file()]
 
 
-def discover_private(root: Path) -> list[Path]:
-    """The owner's decks in `root` (private/): its bracket folders ONLY.
+def discover_collection(root: Path) -> list[Path]:
+    """Every deck in the collection: `<root>/<user>/<Bracket>/*.txt`, and nothing else.
 
-    private/ also holds the owner's tools and scratch files, and `discover()` on
-    the whole tree would turn every .txt among them into a "deck". It did once:
-    four showcards input files rendered as decklists, one of them a 51-card
-    "commander". The bracket folder is what marks a file as a deck, here and in
-    validate_deck's gc_cap(). The site and the Discord commands both call this,
-    so they always agree on which decks exist.
+    `discover()` on the whole root would also count any stray .txt in a user's
+    folder (notes, a scratch list the builder left behind) as a deck. The bracket
+    folder under an owner folder is what marks a file as a deck, here and in
+    validate_deck's gc_cap(). The site, the validator and the Discord commands
+    all call this, so they always agree on which decks exist.
     """
-    return discover(sorted(root.glob("Bracket*"))) if root.is_dir() else []
+    return [p for p in sorted(root.glob("*/Bracket*/*.txt")) if p.is_file()]

@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Validate decklists against Commander rules and this repo's bracket conventions.
 
-    ./validate_deck.py                       # every .txt under the deck root
-    ./validate_deck.py ../Bracket3           # one folder
-    ./validate_deck.py ../Bracket3/Zur*.txt  # specific files
-    ./validate_deck.py --max-gc 0 ../Bracket1
+    ./validate_deck.py                       # every deck, every owner
+    ./validate_deck.py ../public/zzwang      # one owner
+    ./validate_deck.py ../public/zzwang/Bracket3/Zur*.txt  # specific files
+    ./validate_deck.py --max-gc 0 ../public/zzwang/Bracket1
     ./validate_deck.py --no-cache            # bypass SQLite, always hit the API
     ./validate_deck.py --no-import           # skip the Tabletop Simulator importer
     ./validate_deck.py --recheck-import      # ask the importer about every card again
@@ -285,7 +285,9 @@ def main() -> int:
     args = ap.parse_args()
     ask_importer = not (args.no_import or os.environ.get("MTG_NO_IMPORT"))
 
-    targets = deckfile.discover([Path(p) for p in (args.paths or [ROOT])])
+    # No paths: every deck in the collection, every owner's.
+    targets = (deckfile.discover([Path(p) for p in args.paths]) if args.paths
+               else deckfile.discover_collection(ROOT))
     if not targets:
         sys.exit("no .txt decklists found")
 

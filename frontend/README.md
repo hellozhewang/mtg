@@ -2,7 +2,7 @@
 
 Builders: follow the [deck placement guide](../deck-catalog-strategies.md) when
 creating a deck or changing its plan. It covers primary/secondary selection,
-every supported ID, examples, renames, private metadata, and the Discord
+every supported ID, examples, renames, map keys, and the Discord
 builder's access limits. This file is the short implementation reference.
 
 On the first visit, the catalog opens in **List**, with individually collapsible
@@ -46,25 +46,32 @@ on demand from Scryfall, with the local card thumbnail as a network fallback.
 
 Categories are a fixed set of seven (`aggro`, `gowide`, `combo`, `control`,
 `graveyard`, `spells`, `value`) plus the `other` catch-all; a deck's first ID
-is its primary.
+must be one of those eight.
+**Goblins** is a local-only extra: Goblin decks carry `goblins` as a secondary
+tag, and only the owner's local index (`docs/index.local.html`, gitignored, the
+LAN server's home page) renders a Goblins section. Its tiles are static copies
+with class `mirror`, which the script never moves and the result count skips;
+the real tile stays in the deck's canonical category. The category is marked
+`local`: a `.chip.local` on its heading, a dashed `.theme-tag.local` on tiles,
+and "(local)" in the filter. The published index drops the tag from chips,
+filters and `data-themes`. See the placement guide for the full rule.
 
-The owner's decks from `private/` share the one catalog, each with a `private`
-chip (`.chip.private`, the warn hue) on its tile and deck header. The chip means
-the Discord builder cannot change the deck; it does not mean hidden.
+Every deck shows its owner, the folder it lives in (`public/<owner>/`), as the
+tile's byline; deck pages are at `<owner>/<Bracket>/<Deck>.html`, and each
+pre-2026-10-18 page path holds a redirect built from `redirects.json` and
+`redirect.html`.
 
-`deck-themes.json` maps **public deck filenames without extensions** to lists of
-theme IDs. The first ID is the primary group. Review the decklist and guide when
+`deck-themes.json` maps **`<owner>/<filename stem>`** to lists of theme IDs. The first ID is the primary group. Review the decklist and guide when
 assigning themes; the commander or filename alone can be misleading. Names stay
 the same when a deck moves to another bracket.
 
 Category labels, descriptions, and conservative filename fallbacks are defined
 in `scripts/deckthemes.py`. A deck with no entry and an unrecognised filename word
-falls back to Other Strategies. Unknown IDs and duplicate tags fail the build,
-and the tests fail for any deck without an entry.
+falls back to Other Strategies. Unknown IDs, a non-canonical first ID and
+duplicate tags fail the build, and the tests fail for any deck without an entry.
 
-Private decks' assignments belong in `private/deck-themes.json`. They are
-independent of public assignments, even when two decks share a filename. Never
-add private deck names to the public map.
+Two owners' decks of the same name have separate keys, and so separate
+categories and tiers.
 
 ## Power tiers
 
@@ -75,8 +82,8 @@ Every deck name carries a small coloured tier mark in all views and on its deck
 page; the colour comes from `data-tier` alone (`--tier-*` tokens in style.css).
 Search finds a tier by its folded `S-tier` token.
 
-`deck-tiers.json` maps public filename stems to a tier ID; the private map is
-`private/deck-tiers.json`, kept separate the same way as themes. Tier IDs
+`deck-tiers.json` maps the same `<owner>/<filename stem>` keys to a tier ID. A
+tier, like a category, can be `local_only`, shown only on the local index. Tier IDs
 and their one-line descriptions are defined in `scripts/decktiers.py`. There is
 no filename fallback: an unplaced deck renders as Unrated ("?"), the build warns,
 and `tests/test_deck_tiers.py` fails for any deck missing from its map.
@@ -84,6 +91,6 @@ How to choose a tier is in [deck-tiers.md](../deck-tiers.md).
 
 Run `python3 scripts/build_site.py` to regenerate the catalog, then
 `python3 scripts/build_site.py --check`. Generated files in `docs/` must not be
-edited by hand. Private decks' pages are under `docs/private/`.
+edited by hand.
 The template loader versions stylesheet and script URLs by content hash, so
 browsers refresh changed assets while repeated builds stay deterministic.

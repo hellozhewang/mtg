@@ -45,7 +45,7 @@ class GameChangerExceptionTests(unittest.TestCase):
                 errors = check(trial, {**cards, name: card(name, gc)}, [], gc_cap(path, None))[0]
                 self.assertTrue(any(expected in error for error in errors), errors)
 
-    def test_private_deck_uses_the_same_cap(self):
+    def test_the_catalog_uses_the_same_cap(self):
         cards = {n: card(n, True) for n in ["Engine", "Threat A", "Threat B", "Threat C"]}
         cards["Wastes"] = {**card("Wastes"), "type_line": "Basic Land", "cmc": 0}
 
@@ -59,17 +59,17 @@ class GameChangerExceptionTests(unittest.TestCase):
 
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp).resolve()
-            path = root / "Bracket3.5+4GC" / "Test-Deck.txt"
-            path.parent.mkdir()
+            path = root / "alice" / "Bracket3.5+4GC" / "Test-Deck.txt"
+            path.parent.mkdir(parents=True)
             path.write_text("1 Engine\n1 Threat A\n1 Threat B\n1 Threat C\n96 Wastes\n")
-            info = build_site.DeckInfo(path, root, Query(), {}, private=True)
+            info = build_site.DeckInfo(path, root, Query())
             self.assertEqual(info.gc_label, "4/4")
             self.assertEqual(info.label, "Bracket 3.5 + 4 GC")
             page = build_site.render_index(frontend.load(ROOT / "frontend"), [info],
                                            "https://example.test/repo", Mana())
             self.assertIn("GC 4/4", page)
             self.assertIn("Bracket 3.5 + 4 GC", page)
-            self.assertIn("private/Bracket3.5+4GC/Test-Deck.html", page)
+            self.assertIn("alice/Bracket3.5+4GC/Test-Deck.html", page)
 
 
 if __name__ == "__main__":

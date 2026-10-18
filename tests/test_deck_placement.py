@@ -63,41 +63,50 @@ class SaveTests(unittest.TestCase):
     def test_old_reply_places_the_one_categorised_deck(self):
         with Maps() as fdir:
             before = {n: (fdir / n).read_text() for n in ("deck-tiers.json", "deck-themes.json")}
-            notes = deckplacement.save(OLD_REPLY, {"Test-Gifts"}, fdir)
+            notes = deckplacement.save(OLD_REPLY, {"Test-Gifts"}, fdir, "tester")
             self.assertEqual(len(notes), 2, notes)
             # One added line per map, nothing reformatted around it.
             self.assertEqual(changed_lines(before["deck-tiers.json"], (fdir / "deck-tiers.json").read_text()),
-                             ['+   "Test-Gifts": "B",'])
+                             ['+   "tester/Test-Gifts": "B",'])
             self.assertEqual(changed_lines(before["deck-themes.json"], (fdir / "deck-themes.json").read_text()),
-                             ['+   "Test-Gifts": ["control", "aggro"],'])
+                             ['+   "tester/Test-Gifts": ["control", "aggro"],'])
 
     def test_untouched_decks_are_never_rerated(self):
         with Maps() as fdir:
             before = (fdir / "deck-tiers.json").read_text()
             notes = deckplacement.save(
                 "Categories: Krenko-Combo — spells\nTier: Krenko-Combo — TRASH — ugh\n",
-                {"Test-Gifts"}, fdir)
+                {"Test-Gifts"}, fdir, "tester")
             self.assertTrue(all("not changed this turn" in n for n in notes), notes)
             self.assertEqual((fdir / "deck-tiers.json").read_text(), before)
 
     def test_bad_categories_are_dropped_but_the_tier_still_saves(self):
         with Maps() as fdir:
-            # `goblins` was a category once; a builder still declaring it is dropped.
             reply = "Categories: Test-Newdeck — goblins, value\nTier: Test-Newdeck — A — x\n"
-            notes = deckplacement.save(reply, {"Test-Newdeck"}, fdir)
-            self.assertIn("unknown categories ['goblins']", notes[0])
-            self.assertIn('"Test-Newdeck": "A"', (fdir / "deck-tiers.json").read_text())
+            notes = deckplacement.save(reply, {"Test-Newdeck"}, fdir, "tester")
+            self.assertIn("primary 'goblins'", notes[0])
+            self.assertIn('"tester/Test-Newdeck": "A"', (fdir / "deck-tiers.json").read_text())
             self.assertNotIn("Test-Newdeck", (fdir / "deck-themes.json").read_text())
 
     def test_stemless_tier_with_two_candidates_is_skipped(self):
         with Maps() as fdir:
-            notes = deckplacement.save("Tier: B — fine\n", {"Test-Gifts", "Test-Newdeck"}, fdir)
+            notes = deckplacement.save("Tier: B — fine\n", {"Test-Gifts", "Test-Newdeck"}, fdir, "tester")
             self.assertEqual(notes, ["tier B ignored: no stem and 2 candidate decks"])
+
+    def test_a_placement_lands_on_the_asking_owners_deck_only(self):
+        # zzwang owns a Krenko-Combo; tester building their own must not re-rate it.
+        with Maps() as fdir:
+            before = (fdir / "deck-tiers.json").read_text()
+            deckplacement.save("Categories: Krenko-Combo — gowide\nTier: Krenko-Combo — C — x\n",
+                               {"Krenko-Combo"}, fdir, "tester")
+            after = (fdir / "deck-tiers.json").read_text()
+            self.assertIn('"tester/Krenko-Combo": "C"', after)
+            self.assertEqual(before.count('"zzwang/Krenko-Combo"'), after.count('"zzwang/Krenko-Combo": "S"'))
 
     def test_resaving_the_same_placement_writes_nothing(self):
         with Maps() as fdir:
-            deckplacement.save(OLD_REPLY, {"Test-Gifts"}, fdir)
-            self.assertEqual(deckplacement.save(OLD_REPLY, {"Test-Gifts"}, fdir), [])
+            deckplacement.save(OLD_REPLY, {"Test-Gifts"}, fdir, "tester")
+            self.assertEqual(deckplacement.save(OLD_REPLY, {"Test-Gifts"}, fdir, "tester"), [])
 
 
 class TouchedTests(unittest.TestCase):

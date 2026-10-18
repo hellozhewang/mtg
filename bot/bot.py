@@ -11,17 +11,18 @@ Or from a shell, for testing:
     ./bot.py --status
     ./bot.py --usage            # account allowance; no model turn
 
-One long-lived Codex session is pinned PER CHANNEL. State lives in
-`.sessions/<channel>.json`; the first call for a channel records its session UUID
-and every later call uses `codex exec resume <uuid>`, so each Discord channel or
-thread keeps its own conversation context. Pass the channel id:
+One long-lived Codex session is pinned PER CHANNEL AND USER. State lives in
+`.sessions/<channel>-<user>.json`; the first call records its session UUID and
+every later call uses `codex exec resume <uuid>`, so each person in each Discord
+channel or thread keeps their own conversation context. Per user, because each
+user's session runs in that user's own deck folder (below). Pass the channel id:
 
     reply = send("...", message.author.username, channel=message.channel.id)
 
 Omitting it uses the "cli" channel, which is what the command line uses.
 
 Operating instructions: edit the AGENTS_MD string in `scripts/build_agents.py`,
-which deploys it to `public/AGENTS.md` as mode 0444 before every send, because
+which deploys it to `public/<user>/AGENTS.md` as mode 0444 before every send, because
 codex auto-injects AGENTS.md only from its working directory — under an
 `# AGENTS.md instructions for <dir>` / `<INSTRUCTIONS>` header, on every invocation
 including resumes. So the rules cost no turn, apply to fresh sessions, and take
@@ -33,20 +34,20 @@ automatically — see `_autopush`. Detection is scoped to that directory only; w
 something there did change, `docs/` (the published catalog) is regenerated from
 it and staged in the same commit, so the site never lags the decks.
 
-The caller also supplies the Discord username. `send()` snapshots the deck paths
-before the model runs, and `_finish()` attributes any paths that appeared during
-that turn to that user in the trusted deck-metadata database before rebuilding
-the site. This is derived from filesystem state, never from what the model claims
-it created in prose.
+The caller also supplies the Discord username, and it decides where the session
+works: `public/<user>/`, that user's own deck folder, created on first use. The
+folder is the deck's owner, so authorship needs no record of its own and cannot
+be wrong: a deck is credited to whoever's folder it is in.
 
 Codex has no flag to name a session, so the UUID is scraped from the startup
 banner (`session id: <uuid>`) and persisted here. Note `codex exec resume` filters
-by cwd, so every invocation must run from the same directory — hence the fixed
-`-C WORKSPACE`.
+by cwd, so every invocation of one session must run from the same directory —
+one more reason sessions are per user: each always runs in its own user folder.
 
-Sandbox: `-s workspace-write -C <public/>` confines writes to the deck workspace.
-`../scripts`, `../logs`, and the docs are readable and runnable but
-not writable. The cache lives at `<repo>/.cache`, outside the workspace, so it is
+Sandbox: `-s workspace-write -C <public/<user>/>` confines writes to the asking
+user's decks. Other users' decks, `../../scripts`, `../../logs` and the docs are
+readable and runnable but not writable. Reads are not bounded, so "start from
+ratdos's Giada" works; writing someone else's deck does not. The cache lives at `<repo>/.cache`, outside the workspace, so it is
 granted explicitly with `--add-dir` — without that the tools would still run but
 could not bank Scryfall results.
 """
@@ -79,9 +80,7 @@ REPO = HERE.parent
 # session cannot edit the thing that writes its own instructions.
 sys.path.insert(0, str(REPO / "scripts"))
 import build_agents
-import deckfile
 import deckplacement
-from deckmeta import DeckAuthorStore, created_paths
 import toollog
 import workspace
 
@@ -92,10 +91,9 @@ import usage
 # Ask workspace.py; do NOT derive these from __file__. bot/ sits outside the tree
 # it drives, so `HERE.parent` is the repo root — using it as the workspace would
 # silently hand the Codex session write access to scripts/, docs/ and logs/.
-WORKSPACE = workspace.deck_root()                    # public/ — the writable root
+WORKSPACE = workspace.deck_root()                    # public/ — every owner's folder
 CACHE_DIR = workspace.cache_dir()                    # outside WORKSPACE; needs --add-dir
-METADATA_DB = workspace.deck_metadata_db()           # trusted parent state; never granted
-SESSIONS = HERE / ".sessions"                        # one JSON per Discord channel
+SESSIONS = HERE / ".sessions"                        # one JSON per channel and user
 LEGACY_STATE = HERE / ".session.json"                # pre-per-channel; migrated on load
 LOG_DIR = REPO / "logs"                              # one text log per UTC day
 
@@ -389,9 +387,12 @@ def _creation_lock(channel: str | int | None):
 
 
 def reset(channel: str | int | None = DEFAULT_CHANNEL) -> str | None:
-    """Forget one channel's session. Returns the id that was dropped."""
+    """Forget one channel's sessions, every user's. Returns an id that was dropped."""
     old = session_id(channel)
     _state_path(channel).unlink(missing_ok=True)
+    for f in sorted(SESSIONS.glob(f"{_key(channel)}-*.json")) if SESSIONS.exists() else []:
+        old = old or _load(f.stem).get("session_id")
+        f.unlink(missing_ok=True)
     return old
 
 
@@ -456,12 +457,12 @@ def log() -> logging.Logger:
 
 # ---------- codex invocation ----------
 
-def _base_args() -> list[str]:
+def _base_args(folder: Path) -> list[str]:
     return [
         SANDBOX_EXEC_PATH, "exec",     # absolute; see the exec lockdown block
         "--skip-git-repo-check",       # this tree is not a git repo
         "-s", "workspace-write",       # writes confined to -C, plus --add-dir
-        "-C", str(WORKSPACE),
+        "-C", str(folder),             # the asking user's own deck folder
         "--add-dir", str(CACHE_DIR),   # let the tools write the Scryfall cache
         "-m", MODEL,
         "-c", f'model_reasoning_effort="{EFFORT}"',
@@ -589,10 +590,7 @@ def _autopush(chan: str) -> None:
             if not _git("status", "--porcelain", "--", rel).stdout.strip():
                 return                                  # no deck changed
             site = _build_site()
-            # public/ and docs/, nothing else. private/ is deliberately absent: the
-            # builder cannot write it, so any change there is the owner's own
-            # work in progress, for the owner to commit.
-            paths = [rel, *([site] if site else [])]
+            paths = [rel, *([site] if site else [])]     # public/ and docs/, nothing else
             add = _git("add", "--", *paths)
             if add.returncode:
                 log().warning("autopush: git add failed: %s", add.stderr.strip()[:200])
@@ -627,44 +625,7 @@ def _autopush(chan: str) -> None:
         log().warning("autopush: skipped (%s: %s)", type(exc).__name__, exc)
 
 
-def _created_at_ns(path: Path) -> int | None:
-    """Filesystem birth timestamp in nanoseconds, when the OS exposes one.
-
-    macOS provides `st_birthtime` as fractional epoch seconds. Do not fall back
-    to mtime or ctime: both change during an ordinary edit, which would transfer
-    authorship from the creator to whoever merely tuned the deck.
-    """
-    birth = getattr(path.stat(), "st_birthtime", None)
-    return round(birth * 1_000_000_000) if birth is not None else None
-
-
-def _deck_snapshot(root: Path) -> dict[str, int | None]:
-    """Workspace-relative deck path -> filesystem birth timestamp."""
-    root = root.resolve()
-    return {
-        path.resolve().relative_to(root).as_posix(): _created_at_ns(path)
-        for path in deckfile.discover([root])
-    }
-
-
-def _reconcile_deck_authors(
-    username: str, before: dict[str, int | None], root: Path, db_path: Path,
-) -> tuple[list[str], list[str], dict[str, int | None]]:
-    """Persist new authors and remove rows for paths that no longer exist.
-
-    The path-set difference is the authority. The model's answer is deliberately
-    not parsed: it can omit a file it wrote or say it created one when it did not.
-    The database represents live decks only, so deleting and later recreating the
-    same path cannot leak the old author's attribution onto the new deck.
-    """
-    after = _deck_snapshot(root)
-    created = created_paths(before, after)
-    with DeckAuthorStore(db_path) as authors:
-        deleted = authors.sync(after, created, username)
-    return created, deleted, after
-
-
-def _finish(chan: str, username: str, decks_before: dict[str, int | None], answer: str,
+def _finish(chan: str, owner: str, folder: Path, answer: str,
             combined: str, started: float) -> str:
     """Everything that happens after ANY model turn, in one place.
 
@@ -672,37 +633,12 @@ def _finish(chan: str, username: str, decks_before: dict[str, int | None], answe
     turns — the overwhelmingly common case — recorded nothing.
     """
     _log_tool_usage(chan, combined, started)
-    try:
-        created, deleted, decks_after = _reconcile_deck_authors(
-            username, decks_before, WORKSPACE, METADATA_DB
-        )
-        log().info(
-            "AUTHOR-SYNC [%s/%s] before=%d after=%d created=%d deleted=%d",
-            chan, username, len(decks_before), len(decks_after),
-            len(created), len(deleted),
-        )
-        for deck in created:
-            log().info(
-                "AUTHOR [%s/%s] %s birth_ns=%s",
-                chan, username, deck, decks_after[deck],
-            )
-        for deck in deleted:
-            log().info(
-                "AUTHOR-DELETE [%s/%s] %s prior_birth_ns=%s",
-                chan, username, deck, decks_before.get(deck),
-            )
-    except Exception as exc:
-        # As with git publishing, provenance failure must not discard a reply the
-        # model already produced. Keep it loud in the trusted parent log.
-        log().warning(
-            "AUTHOR-SYNC [%s/%s] skipped (%s: %s)",
-            chan, username, type(exc).__name__, exc,
-        )
     # The sandbox cannot write the catalog maps, so the reply's `Categories:` and
     # `Tier:` lines are saved here, before autopush rebuilds the site with them.
+    # The maps key decks `<owner>/<Deck>`; the session only ever wrote `owner`'s.
     try:
-        touched = deckplacement.touched_stems(WORKSPACE, started)
-        for note in deckplacement.save(answer, touched, workspace.frontend_dir()):
+        touched = deckplacement.touched_stems(folder, started)
+        for note in deckplacement.save(answer, touched, workspace.frontend_dir(), owner):
             log().info("PLACEMENT [%s] %s", chan, note)
     except Exception as exc:                # never let bookkeeping eat the reply
         log().warning("PLACEMENT [%s] skipped (%s: %s)", chan, type(exc).__name__, exc)
@@ -780,8 +716,9 @@ def send(message: str, username: str,
 
     Each Discord channel (or thread) gets its own long-lived Codex session, so
     separate conversations keep separate context. `username` is the Discord
-    username used to attribute decks created during this turn. Opens a session
-    if none is pinned. Instructions arrive via AGENTS.md, not a turn.
+    username, which picks the folder the session works in and so owns whatever
+    it builds. Opens a session if none is pinned. Instructions arrive via
+    AGENTS.md, not a turn.
     """
     if not message.strip():
         raise ValueError("empty message")
@@ -802,13 +739,21 @@ def send(message: str, username: str,
 
     # Deterministic commands short-circuit the model: a decklist has to be
     # byte-exact to import cleanly, and listing files needs no inference.
-    canned = commands.handle(message)
+    canned = commands.handle(message, username)
     if canned is not None:
         reply = "\n".join(canned)
         log().info("REPLY  [%s/command] %d msg(s) %d chars %dms",
                    chan, len(canned), len(reply), int((time.time() - started) * 1000))
         log().debug("REPLY-BODY %s", _oneline(reply))
         return reply
+
+    owner = workspace.owner_name(username)
+    if owner is None:
+        log().info("REFUSED [%s] username %r cannot have a deck folder", chan, username)
+        return ("I can't build decks for this Discord username: it has characters a "
+                "deck folder cannot use, or it matches one of the site's own folders.")
+    folder = workspace.owner_dir(owner)
+    conv = f"{chan}-{owner}"            # this user's conversation in this channel
 
     # One model turn at a time, bot-wide. Taken AFTER the deterministic commands
     # above so /deck-print and /deck-list keep answering while a build runs —
@@ -819,46 +764,42 @@ def send(message: str, username: str,
         log().info("BUSY   [%s] refused; already busy", chan)
         return with_usage(BUSY_REPLY)
 
-    changed, status = build_agents.build()  # redeploy AGENTS.md 0444 before codex reads
+    folder.mkdir(parents=True, exist_ok=True)
+    # Redeploy AGENTS.md 0444 into the user's folder before codex reads it.
+    changed, status = build_agents.build(folder, owner)
     log().log(logging.INFO if changed else logging.DEBUG, "agents.md: %s", status)
-    decks_before = _deck_snapshot(WORKSPACE)
-    timestamped = sum(stamp is not None for stamp in decks_before.values())
-    log().debug(
-        "AUTHOR-SNAPSHOT [%s/%s] decks=%d birth_timestamps=%d metadata=%s",
-        chan, username, len(decks_before), timestamped, METADATA_DB,
-    )
 
     # pid in the name: two calls in the same millisecond would otherwise collide
     out_file = HERE / f".reply-{int(time.time() * 1000)}-{os.getpid()}.txt"
-    sid = session_id(channel)
+    sid = session_id(conv)
     try:
         if sid:
             log().info("[%s] resuming session %s (model=%s effort=%s)",
                        chan, sid, MODEL, EFFORT)
-            args = _base_args() + ["-o", str(out_file), "resume", sid, "--", message]
+            args = _base_args(folder) + ["-o", str(out_file), "resume", sid, "--", message]
             answer, combined = _run(args, out_file, chan)
-            return with_usage(_finish(chan, username, decks_before, answer, combined, started))
+            return with_usage(_finish(chan, owner, folder, answer, combined, started))
 
         # No session pinned yet. Take the lock, then re-check: a concurrent call
         # may have created and pinned one while we waited, in which case resume it
         # instead of opening a second, orphaned session.
-        with _creation_lock(channel):
-            sid = session_id(channel)
+        with _creation_lock(conv):
+            sid = session_id(conv)
             if sid:
                 log().info("[%s] another process pinned %s while waiting; resuming it",
                            chan, sid)
-                args = _base_args() + ["-o", str(out_file), "resume", sid, "--", message]
+                args = _base_args(folder) + ["-o", str(out_file), "resume", sid, "--", message]
                 answer, combined = _run(args, out_file, chan)
-                return with_usage(_finish(chan, username, decks_before, answer, combined, started))
+                return with_usage(_finish(chan, owner, folder, answer, combined, started))
 
             log().info("[%s] no pinned session; opening a new one (model=%s effort=%s)",
                        chan, MODEL, EFFORT)
-            args = _base_args() + ["-o", str(out_file), "--", message]
+            args = _base_args(folder) + ["-o", str(out_file), "--", message]
             answer, combined = _run(args, out_file, chan)
 
             found = SESSION_RE.search(combined)
             if found:
-                _save(channel, {"session_id": found.group(1),
+                _save(conv, {"session_id": found.group(1),
                                 "model": MODEL, "effort": EFFORT})
                 log().info("[%s] pinned new session %s", chan, found.group(1))
             else:
@@ -870,7 +811,7 @@ def send(message: str, username: str,
         # Same tail as the two resume paths above — a fresh session is where a
         # deck is most likely to be CREATED, so skipping this skipped autopush
         # exactly when it mattered most.
-        return with_usage(_finish(chan, username, decks_before, answer, combined, started))
+        return with_usage(_finish(chan, owner, folder, answer, combined, started))
     except Exception as exc:                       # log the failure, then re-raise
         log().error("FAILED [%s] after %dms: %s: %s", chan,
                     int((time.time() - started) * 1000),
@@ -920,9 +861,8 @@ def main() -> int:
             return 0
 
     if args.status:
-        print(f"workspace : {WORKSPACE}")
+        print(f"decks     : {WORKSPACE}/<user>/  (each session writes only its own)")
         print(f"cache     : {CACHE_DIR}  (granted via --add-dir)")
-        print(f"metadata  : {METADATA_DB}  (trusted parent only)")
         print(f"sessions  : {SESSIONS}")
         print(f"defaults  : model={MODEL} effort={EFFORT}")
         rows = channels()

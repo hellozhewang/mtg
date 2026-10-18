@@ -4,6 +4,7 @@ import json
 import sys
 import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -14,7 +15,7 @@ import build_site
 import deckfile
 import decktiers
 import frontend
-from test_deck_themes import Catalog, Mana, deck
+from test_deck_themes import Catalog, Mana, collection_keys, deck
 
 
 class DeckTierTests(unittest.TestCase):
@@ -36,18 +37,24 @@ class DeckTierTests(unittest.TestCase):
         self.assertEqual(decktiers.info(None).title, "Unrated")
         self.assertEqual(decktiers.search_text("GOD"), "GOD-tier")
 
-    def test_every_public_deck_has_a_tier(self):
+    def test_every_deck_has_a_tier(self):
         tiers = decktiers.load(ROOT / "frontend/deck-tiers.json")
-        stems = {p.stem for p in deckfile.discover(sorted((ROOT / "public").glob("Bracket*")))}
-        self.assertEqual(sorted(stems - set(tiers)), [], "place these in deck-tiers.json")
-        self.assertEqual(sorted(set(tiers) - stems), [], "these decks no longer exist")
+        keys = collection_keys()
+        self.assertEqual(sorted(keys - set(tiers)), [], "place these in deck-tiers.json")
+        self.assertEqual(sorted(set(tiers) - keys), [], "these decks no longer exist")
 
-    def test_every_private_deck_has_a_tier(self):
-        # Published like the public ones, so held to the same rule, in their own map.
-        tiers = decktiers.load(ROOT / "private/deck-tiers.json")
-        stems = {p.stem for p in deckfile.discover_private(ROOT / "private")}
-        self.assertEqual(sorted(stems - set(tiers)), [], "place these in private/deck-tiers.json")
-        self.assertEqual(sorted(set(tiers) - stems), [], "these decks no longer exist")
+    def test_a_local_only_tier_shows_only_on_the_local_index(self):
+        local_d = decktiers.Tier("D", "D tier", "Weak.", local_only=True)
+        decks = [deck("Weak-Deck", ("value",), tier="D"), deck("Good-Deck", ("value",), tier="B")]
+        templates = frontend.load(ROOT / "frontend")
+        with mock.patch.dict(decktiers.TIERS, {"D": local_d}):
+            published = build_site.render_index(templates, decks, "https://example.test", Mana())
+            local = build_site.render_index(templates, decks, "https://example.test", Mana(),
+                                            local=True)
+        tiles = {a["href"]: a["data-tier"] for _, a in Catalog(published).tiles}
+        self.assertEqual(tiles["alice/Bracket3.5/Weak-Deck.html"], decktiers.UNRATED_ID)
+        self.assertNotIn('data-tier="D"', published)
+        self.assertIn('data-tier="D"', local)
 
     def test_tiers_view_has_one_section_per_used_tier_strongest_first(self):
         decks = [deck("Slow-Deck", ("value",), bracket="Bracket3", tier="C"),
@@ -63,9 +70,9 @@ class DeckTierTests(unittest.TestCase):
         self.assertIn('class="catalog-tiers" hidden', page)
         self.assertIn('data-grouping="tiers"', page)
         by_name = {attrs["href"]: attrs for _, attrs in catalog.tiles}
-        self.assertEqual(by_name["Bracket5/Fast-Combo.html"]["data-tier"], "GOD")
-        self.assertEqual(by_name["Bracket3/New-Deck.html"]["data-tier"], "unrated")
-        self.assertTrue(by_name["Bracket5/Fast-Combo.html"]["data-search"].endswith("GOD-tier"))
+        self.assertEqual(by_name["alice/Bracket5/Fast-Combo.html"]["data-tier"], "GOD")
+        self.assertEqual(by_name["alice/Bracket3/New-Deck.html"]["data-tier"], "unrated")
+        self.assertTrue(by_name["alice/Bracket5/Fast-Combo.html"]["data-search"].endswith("GOD-tier"))
         self.assertIn('<span class="tier" data-tier="GOD"', page)
 
 

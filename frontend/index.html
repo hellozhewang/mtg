@@ -41,7 +41,7 @@ plans.</p>
 <template data-part="strategy">
 <details class="strategy-group" data-theme="{{THEME}}" open>
   <summary class="strategy-heading">
-    <span class="strategy-title">{{LABEL}}</span>
+    <span class="strategy-title">{{LABEL}}{{LOCAL}}</span>
     <span class="strategy-description">{{DESCRIPTION}}</span>
   </summary>
 {{BRACKETS}}</details>
@@ -84,7 +84,7 @@ plans.</p>
         <span class="tile-identity">
           <span class="tile-name">{{TIER_BADGE}}{{NAME}}</span>
           <span class="tile-cmd">{{COMMANDER}}</span>
-          <span class="tile-byline">{{AUTHOR}}{{TAG}}{{CREATED}}</span>
+          <span class="tile-byline">{{AUTHOR}}{{CREATED}}{{UPDATED}}</span>
         </span>
         <span class="tile-colors" aria-label="Color identity">{{PIPS}}</span>
         <span class="tile-themes" aria-label="Deck categories">{{THEME_TAGS}}</span>
@@ -94,8 +94,8 @@ plans.</p>
 </template>
 
 <template data-part="tier-badge"><span class="tier" data-tier="{{TIER}}" data-tip="{{TIP}}">{{LABEL}}</span></template>
-<template data-part="theme-tag"><span class="theme-tag">{{LABEL}}</span></template>
+<template data-part="theme-tag"><span class="theme-tag{{CLASS}}">{{LABEL}}</span></template>
+<template data-part="category-local"><span class="chip local" data-tip="Only on your local catalog. This category is never published.">local</span></template>
 <template data-part="theme-option">      <option value="{{VALUE}}">{{LABEL}}</option>
 </template>
 
-<template data-part="tag"><span class="chip private" data-tip="The owner's own deck. The Discord builder does not work on it.">private</span></template>

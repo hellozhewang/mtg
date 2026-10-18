@@ -20,20 +20,19 @@ Every deck targets a **Commander bracket** and has to obey its restrictions, whi
 is what most of this document is about. The bracket rules themselves live in
 [commander-brackets-and-rules.md](commander-brackets-and-rules.md).
 
-**Browse the decks:** [public/](public/) and the owner's [private/](private/) —
-grouped by bracket, or in Discord via `/deck-list`, `/deck-print` and
-`/deck-random`.
+**Browse the decks:** [public/](public/), one folder per owner — or in Discord
+via `/deck-list`, `/deck-print` and `/deck-random`.
 
-**Private decks are visible to people, not to the builder.** `private/` holds
-the owner's own decks. They are published, listed and printed like every other
-deck, marked **private**. The Discord builder works only from `public/`: its
-sandbox cannot write `private/`, and its instructions tell it to treat those
-decks as nonexistent, so it never tunes, copies or compares against them, and
-may build its own deck for a commander that already has a private one.
+**Every deck belongs to someone.** Decks live in `public/<user>/<Bracket>/`, and
+the folder is the owner: their name is the deck's byline, and the start of its
+page URL. When someone asks the Discord builder for a deck, it works in that
+person's folder and nowhere else, so its sandbox can only ever write their own
+decks. Two people can each have a deck for the same commander; the builder only
+checks for duplicates within the asker's own folder.
 
 ```bash
-./scripts/new_deck.py "Queen Marchesa" -o public/Bracket3/Marchesa-Pillowfort.txt
-./scripts/validate_deck.py public/Bracket3/Marchesa-Pillowfort.txt
+./scripts/new_deck.py "Queen Marchesa" -o public/zzwang/Bracket3/Marchesa-Pillowfort.txt
+./scripts/validate_deck.py public/zzwang/Bracket3/Marchesa-Pillowfort.txt
 ./scripts/build_site.py                                      # refresh the catalog
 ```
 
@@ -51,8 +50,7 @@ file format, what each tool does, and the order to use them in.
 **Catalog placement is part of finishing a deck.** Follow
 [Placing decks in the Commander catalog](deck-catalog-strategies.md) when creating
 a deck or changing its plan: choose its primary category from the fixed set, add
-supported secondary categories, and update the appropriate public/private
-assignment map. Brackets remain the deck folders; categories are metadata, not
+supported secondary categories, and update the assignment map. Brackets remain the deck folders; categories are metadata, not
 another directory hierarchy.
 
 ### 1. Follow the bracket rules
@@ -172,14 +170,15 @@ own file as the reason it sits closest to Bracket 4.
 
 ## Deck file naming
 
-**`<Commander>-<Theme>.txt`**, inside a folder named for the bracket.
+**`<Commander>-<Theme>.txt`**, inside a folder named for the bracket, inside the
+owner's folder.
 
 ```
-Bracket3/Zur-Voltron.txt
-Bracket3/Lathril-Elves.txt
-Bracket3/GrandArbiter-Prison.txt
-Bracket3.5/Krenko-Combo.txt
-Bracket3.5/Urza-Combo.txt
+zzwang/Bracket3/Zur-Voltron.txt
+zzwang/Bracket3/Lathril-Elves.txt
+zzwang/Bracket3.5/Krenko-Combo.txt
+ratdos/Bracket3/Obeka-Upkeep.txt
+digitalstealth/Bracket3.5/Shorikai-Prison.txt
 ```
 
 The commander part is a short recognisable form of the name — first word usually
@@ -191,7 +190,9 @@ actually does: `Voltron`, `Elves`, `Enchantress`, `Ninjas`, `Attacks`, `Treasure
 **Exactly one hyphen**, so everything after it is unambiguously the theme. That
 matters because `commands.py` resolves `!deck <name>` by folding away case and
 punctuation — `!deck zurvoltron`, `!deck Zur-Voltron` and `!deck zur` all hit the
-same file. Rename the file if a deck's plan changes; the name is documentation.
+same file. Names only need to be unique per owner. When several owners' decks
+match, the asker's own wins, and `!deck ratdos/obeka` names an owner outright.
+Rename the file if a deck's plan changes; the name is documentation.
 
 ## Deck file format
 
@@ -301,7 +302,7 @@ shell instead of typing 99 lines from memory.
 
 ```bash
 ./scripts/new_deck.py "Queen Marchesa"                       # preview to stdout
-./scripts/new_deck.py "Queen Marchesa" -o public/Bracket3/Marchesa-Pillowfort.txt
+./scripts/new_deck.py "Queen Marchesa" -o public/zzwang/Bracket3/Marchesa-Pillowfort.txt
 ./scripts/new_deck.py "Queen Marchesa" --lands 38            # force a land count
 ./scripts/new_deck.py "Queen Marchesa" --flavour average     # the popular build
 ```
@@ -329,10 +330,10 @@ game chg  : 5 — Demonic Tutor, Enlightened Tutor, Farewell, Smothering Tithe, 
 Diffs a decklist against what other pilots of that commander run.
 
 ```bash
-./scripts/find_inspiration.py public/Bracket3/Sythis-Enchantress.txt
-./scripts/find_inspiration.py public/Bracket3/Zur-Voltron.txt --new     # EDHREC's New Cards section
-./scripts/find_inspiration.py public/Bracket3/Zur-Voltron.txt --trending # rising adoption, any age
-./scripts/find_inspiration.py public/Bracket3/GrandArbiter-Prison.txt --mine
+./scripts/find_inspiration.py public/zzwang/Bracket3/Sythis-Enchantress.txt
+./scripts/find_inspiration.py public/zzwang/Bracket3/Zur-Voltron.txt --new     # EDHREC's New Cards section
+./scripts/find_inspiration.py public/zzwang/Bracket3/Zur-Voltron.txt --trending # rising adoption, any age
+./scripts/find_inspiration.py public/zzwang/Bracket3/GrandArbiter-Prison.txt --mine
 ./scripts/find_inspiration.py --commander "Queen Marchesa"              # no deck yet
 ```
 
@@ -490,7 +491,7 @@ readable list is in
 
 ```bash
 ./scripts/validate_deck.py                  # every deck in public/
-./scripts/validate_deck.py public/Bracket3  # one folder
+./scripts/validate_deck.py public/ratdos    # one owner's decks
 ./scripts/validate_deck.py --max-gc 0 ...   # override the cap
 ```
 
@@ -511,9 +512,22 @@ click-to-enlarge view (with a flip button for double-faced cards), a gallery mod
 and a copy-the-decklist button. The **Random** button in the top bar of every
 page picks a deck at random, copies its decklist to the clipboard, and opens its
 page with a note saying so. It works over HTTPS, `localhost`, and plain `http` on
-the local network; from a `file://` page the note offers a one-click copy instead. Decks created through Discord also show the
-Discord user who requested them; the catalog search matches those usernames, so
-typing an author filters the deck cards the same way typing a commander does.
+the local network; from a `file://` page the note offers a one-click copy instead. Every deck shows its
+owner, the folder it lives in; the catalog search matches those usernames, so
+typing an owner filters the deck cards the same way typing a commander does.
+
+Deck pages live at `<owner>/<Bracket>/<Deck>.html`. Until 2026-10-18 they were
+`<Bracket>/<Deck>.html` (and the owner's then-private decks
+`private/<Bracket>/<Deck>.html`); [frontend/redirects.json](frontend/redirects.json)
+maps each old path to its deck's new one, and the build writes a tiny redirect
+page at every old path, so links already shared keep working.
+
+Every deck shows when it was **added**, and once it has been edited, when it was
+**updated**: the last change to its list or its guide, by anyone. Nothing has to
+remember to set it. A committed edit dates from its commit; an uncommitted one
+from the file's own modified time, so the bot's autopush (which builds before it
+commits) publishes the new date along with the edit. Adding a deck is not an
+edit, and edits within an hour of a deck first appearing count as building it.
 
 The catalog initially opens in **List**, with decks under individually collapsible
 brackets. Brackets start open; click their label to collapse or expand them.
@@ -524,7 +538,7 @@ Control, Graveyard, Spells & Burn, and Value & Ramp. Each is defined by how the
 deck wins. Other Strategies is the catch-all for a plan that fits none of them. Rows / Tiles controls layout separately. Each deck appears once, with
 secondary category tags and filters in every view.
 See the [placement guide](deck-catalog-strategies.md) for the definitions,
-assignment rules, and the public/private metadata locations.
+assignment rules, and the metadata locations.
 
 Switch to **Tiers** to rank the collection by power: GOD, SS, S, A, B, C, D
 and TRASH, strongest first. Every deck name carries its tier mark in all three
@@ -534,7 +548,7 @@ finished list hits. [deck-tiers.md](deck-tiers.md) has the rubric, the anchor
 decks for each tier and how to place a new deck.
 
 ```bash
-./scripts/build_site.py              # rebuild docs/ from public/ and private/ -- PUBLISHED
+./scripts/build_site.py              # rebuild docs/ from public/ -- PUBLISHED
 ./scripts/build_site.py --check      # exit 1 if docs/ is stale, write nothing
 ./scripts/build_site.py --out /tmp/x # build elsewhere to look before publishing
 ```
@@ -545,8 +559,11 @@ To see a build before it is pushed, or from another device on your network, run:
 ./scripts/start_private_server.py
 ```
 
-It serves the generated `docs/` catalog at **http://localhost:5588/**,
-listening on `0.0.0.0:5588` so other devices on your local network can use
+It serves the generated `docs/` catalog at **http://localhost:5588/**, with one
+difference from the published site: its home page is the local index, which
+adds a **Goblins** section mirroring every Goblin deck. That category is for the
+owner alone and is never published. The server listens on `0.0.0.0:5588`, so
+other devices on your local network can use
 `http://<server-ip>:5588/`. The server runs in the background and keeps running
 after the terminal closes. Repeated starts reuse an existing server serving the
 same catalog; an unrelated service on port 5588 is left alone. Logs and the server
@@ -564,17 +581,11 @@ that live next to the page repeating them.
 anywhere. `bot.py` regenerates the site after every model turn and commits what
 changed, so a build timestamp would mean an empty commit on every Discord message.
 
-Authorship is deterministic too. `bot.py` snapshots the set of deck paths before
-a model turn, compares it after the turn, and records each newly appeared path
-against the requesting Discord username in `bot/.deck-metadata.db`. At the same
-point it deletes every metadata row whose path no longer exists, so recreating a
-deleted path starts with the new requester's authorship. The row also stores the
-file's OS birth timestamp; if a deck is deleted and recreated at the exact same
-path within one turn, the changed timestamp still identifies it as a new file and
-updates the author. The site builder reads that mapping before rendering. This
-provenance database is separate
-from `.cache/cards.db`: the latter is writable by the sandboxed model and can be
-cleared, while authorship must be written only by the trusted bot parent.
+Authorship is the folder. A deck in `public/ratdos/` is ratdos's, because the
+builder only ever writes in the folder of whoever asked, and nothing else records
+it. Until 2026-10-18 the bot instead kept a database of who requested each deck
+(`bot/.deck-metadata.db`, now retired and never read); the move into owner
+folders used it to put each deck where it belonged.
 
 Card images are split by size, because a public git repo keeps every version of a
 binary forever:
@@ -693,16 +704,16 @@ sequence without launching a separate reviewing agent (see `AGENTS.md` below).
 8. **Review catalog placement.** Follow [the placement guide](deck-catalog-strategies.md).
    Choose one primary category from the fixed set and any supported secondary
    categories, then save the
-   ordered IDs in `frontend/deck-themes.json` for a public deck or
-   `private/deck-themes.json` for a private deck. A full-workspace publisher then
+   ordered IDs in `frontend/deck-themes.json` under `<owner>/<Deck>`. A
+   full-workspace publisher then
    rebuilds and checks the catalog. The Discord builder follows the guide's
    sandbox handoff instructions when it cannot write the mapping itself.
 
 9. **Place it in a power tier.** Every deck gets one of GOD, SS, S, A, B, C, D
    or TRASH, following [deck-tiers.md](deck-tiers.md). Save it in
-   `frontend/deck-tiers.json` (public) or `private/deck-tiers.json` (private).
+   `frontend/deck-tiers.json` under `<owner>/<Deck>`.
    A deck with no entry shows as Unrated, `build_site.py` warns about it, and
-   the test suite fails for any public deck left out. Re-check the tier when
+   the test suite fails for any deck left out. Re-check the tier when
    tuning adds or cuts combo pieces, tutors or fast mana.
 
 10. **Independent second opinion, when appropriate.** `ask_codex.py`, with the validator's result stated as
@@ -783,7 +794,6 @@ mtg/
 │   │   └── query.py             orchestration (CardQuery + EdhrecQuery + ImageQuery)
 │   ├── workspace.py           owns all path policy (deck root, cache, metadata)
 │   ├── deckfile.py            .txt decklist format (incl. pinned printings), read and write
-│   ├── deckmeta.py            trusted SQLite deck-author mapping
 │   ├── frontend.py            {{TOKEN}} + <template data-part> loader
 │   ├── toollog.py             tool-invocation log: API + CLI over SQLite
 │   ├── find_cards.py          Scryfall search with bracket rules applied
@@ -795,7 +805,7 @@ mtg/
 │   ├── build_site.py          renders frontend/ + public/ into docs/
 │   ├── cache.py               cache admin CLI
 │   ├── build_agents.py        HOLDS the agent's instructions (AGENTS_MD) and
-│   │                          deploys them to public/AGENTS.md as 0444
+│   │                          deploys them to public/<user>/AGENTS.md as 0444
 │   └── ask_codex.py           one-off second opinion
 ├── frontend/                the catalog's source — markup, CSS and JS
 │   ├── layout.html            page shell and the deck menu on every page
@@ -812,17 +822,14 @@ mtg/
 │   ├── bot.py                 persistent Codex session the Discord app calls
 │   ├── commands.py            deterministic !decks / !deck / !help
 │   ├── usage.py               read-only Codex allowance lookup (no model turn)
-│   ├── .sessions/             one pinned session UUID per Discord channel
-│   └── .deck-metadata.db      generated trusted deck-author provenance
-├── public/                  THE WORKSPACE — the only writable tree
-│   ├── Bracket3/              bracket-legal decks (≤3 Game Changers)
-│   ├── Bracket3.5/            deliberately breaks Bracket 3, by request
-│   └── AGENTS.md              GENERATED, 0444 — edit AGENTS_MD in
-│                              scripts/build_agents.py, never this file
-├── private/                 the owner's decks: published, NOT writable by the bot
-│   ├── Bracket3/ ...          same bracket folders as public/
-│   ├── deck-themes.json       their categories (independent of frontend/'s)
-│   └── deck-tiers.json        their power tiers
+│   └── .sessions/             one pinned session UUID per Discord channel and user
+├── public/                  every deck, one folder per owner
+│   └── <user>/                that user's decks; the builder's only writable tree
+│       ├── Bracket3/            while it works for them
+│       ├── Bracket3.5/
+│       └── AGENTS.md            GENERATED, 0444 — edit AGENTS_MD in
+│                                scripts/build_agents.py, never this file
+├── frontend/redirects.json  old deck URLs -> where each deck lives now
 ├── logs/<utc-date>.log      request + debug log, outside the writable tree
 ├── .cache/cards.db          generated; granted to the bot via --add-dir
 ├── commander-brackets-and-rules.md
@@ -832,22 +839,19 @@ mtg/
 Folder name states the bracket. File name is `Commander-Theme` — see
 [Deck file naming](#deck-file-naming).
 
-`public/` is the bot's writable tree and the whole of its collection. `private/`
-is published just the same, but sits outside that tree: only the owner changes
-it, and the builder leaves it alone.
-
 **`scripts/` and `bot/` both sit deliberately outside `public/`.** The Discord-driven
-Codex session is rooted at `public/` with `-s workspace-write`, so it can edit decks
-but cannot modify its own toolchain, its own harness, its own session state, its own
-or its own logs. `public/` holds decklists and the generated `AGENTS.md`,
+Codex session is rooted at `public/<user>/`, the asker's own folder, with
+`-s workspace-write`, so it can edit that user's decks but not anyone else's, and
+cannot modify its own toolchain, its own harness, its own session state or its own
+logs. A user folder holds decklists, guides and the generated `AGENTS.md`,
 nothing else — the workspace boundary is only worth anything if the code that
 enforces it lives on the other side of it.
 
 That is also why the agent's instructions are a **string inside
 `scripts/build_agents.py`** rather than a markdown file of their own. There is one
 copy under version control, so a canonical file and a deployed copy cannot drift
-apart, and the source sits in a directory the sandbox cannot write. `public/AGENTS.md`
-is generated output — editing it is pointless, since it is overwritten before every
+apart, and the source sits in a directory the sandbox cannot write. Each
+`public/<user>/AGENTS.md` is generated output — editing it is pointless, since it is overwritten before every
 message.
 
 Because both trees live outside the workspace they operate on, neither may infer

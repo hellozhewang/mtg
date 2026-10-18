@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import sqlite3
 import sys
 import tempfile
 import unittest
@@ -10,7 +9,6 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import build_site
-from deckmeta import DeckAuthorStore, created_paths
 import frontend
 
 
@@ -20,15 +18,17 @@ class FakeMana:
 
 
 class FakeDeck:
-    private = False
     created_label = ""
+    modified = 0
+    modified_label = ""
     bracket = "Bracket3"
     label = "Bracket 3"
     stem = "Test-Deck"
     themes = ("value",)
     tier = None
     commander = "Test Commander"
-    href = "Bracket3/Test-Deck.html"
+    href = "alice/Bracket3/Test-Deck.html"
+    key = "alice/Test-Deck"
     art_url = ""
     art_card: dict = {}
     author = "alice"
@@ -41,68 +41,26 @@ class FakeDeck:
 
 
 class DeckAuthorTests(unittest.TestCase):
-    def test_changed_birth_timestamp_means_same_path_was_recreated(self) -> None:
-        self.assertEqual(
-            created_paths(
-                {"Bracket3/Same-Deck.txt": 100},
-                {"Bracket3/Same-Deck.txt": 200},
-            ),
-            ["Bracket3/Same-Deck.txt"],
-        )
-        self.assertEqual(
-            created_paths(
-                {"Bracket3/Same-Deck.txt": 100},
-                {"Bracket3/Same-Deck.txt": 100},
-            ),
-            [],
-        )
+    """The folder a deck is in is its owner; nothing else records authorship."""
 
-    def test_old_schema_migrates_and_backfills_birth_timestamp(self) -> None:
-        with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp) / "metadata.db"
-            with sqlite3.connect(path) as conn:
-                conn.execute(
-                    "CREATE TABLE deck_authors ("
-                    "deck TEXT PRIMARY KEY, author TEXT NOT NULL, "
-                    "attributed_at REAL NOT NULL)"
-                )
-                conn.execute(
-                    "INSERT INTO deck_authors VALUES (?,?,?)",
-                    ("Bracket3/Old-Deck.txt", "alice", 1.0),
-                )
-            with DeckAuthorStore(path) as store:
-                self.assertEqual(
-                    store.timestamps(), {"Bracket3/Old-Deck.txt": None}
-                )
-                store.sync({"Bracket3/Old-Deck.txt": 123}, [], "unused")
-                self.assertEqual(
-                    store.timestamps(), {"Bracket3/Old-Deck.txt": 123}
-                )
+    def test_the_owner_folder_is_the_byline_and_the_map_key(self) -> None:
+        class Query:
+            def cards(self, names):
+                return {n: {"name": n, "type_line": "Creature", "cmc": 1} for n in names}, []
 
-    def test_store_round_trip_and_replace(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp) / "metadata.db"
-            with DeckAuthorStore(path) as store:
-                store.set("Bracket3/Test-Deck.txt", "alice", 100)
-                self.assertEqual(store.get("Bracket3/Test-Deck.txt"), "alice")
-                store.set("Bracket3/Test-Deck.txt", "bob", 200)
-                self.assertEqual(
-                    store.all(), {"Bracket3/Test-Deck.txt": "bob"}
-                )
-                self.assertEqual(
-                    store.timestamps(), {"Bracket3/Test-Deck.txt": 200}
-                )
-                store.set("Bracket4/Keep-Deck.txt", "carol")
-                removed = store.sync(
-                    {"Bracket4/Keep-Deck.txt": 300}, [], "unused"
-                )
-                self.assertEqual(removed, ["Bracket3/Test-Deck.txt"])
-                self.assertEqual(
-                    store.all(), {"Bracket4/Keep-Deck.txt": "carol"}
-                )
-                self.assertEqual(
-                    store.timestamps(), {"Bracket4/Keep-Deck.txt": 300}
-                )
+            root = Path(tmp).resolve()
+            path = root / "ratdos" / "Bracket3" / "Obeka-Upkeep.txt"
+            path.parent.mkdir(parents=True)
+            path.write_text("1 Obeka, Splitter of Seconds\n99 Island\n")
+            info = build_site.DeckInfo(path, root, Query(),
+                                       tier_assignments={"ratdos/Obeka-Upkeep": "A",
+                                                         "Obeka-Upkeep": "D"})
+            self.assertEqual(info.author, "ratdos")
+            self.assertEqual(info.bracket, "Bracket3")
+            self.assertEqual(info.key, "ratdos/Obeka-Upkeep")
+            self.assertEqual(info.tier, "A")
+            self.assertEqual(info.href, "ratdos/Bracket3/Obeka-Upkeep.html")
 
     def test_index_displays_author_and_includes_it_in_search(self) -> None:
         templates = frontend.load(ROOT / "frontend")

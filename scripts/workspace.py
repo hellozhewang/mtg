@@ -1,16 +1,17 @@
 """Where the decks live — the single owner of path policy.
 
-The scripts sit OUTSIDE the workspace they operate on:
+The scripts sit OUTSIDE the decks they operate on:
 
     mtg/
-    ├── scripts/     <- here. Codex reads and executes these; it cannot write them.
-    └── public/      <- the workspace. Codex's working root, and the only writable tree.
+    ├── scripts/            <- here. Codex reads and executes these; it cannot write them.
+    └── public/             <- every deck, one folder per owner:
+        └── <user>/           the Discord builder runs here for that user, so its
+            └── Bracket3/     sandbox can write that user's decks and nobody else's.
 
 That layout means a script must NOT derive the deck root from its own location
 (`__file__`) — doing so would point at `mtg/`, which would make Codex's writable
 root the whole repo. The deck root is therefore explicit here. Other writable
-state is explicit too: the card cache is separately granted to the sandbox, while
-trusted deck provenance is kept outside both writable locations.
+state is explicit too: the card cache is separately granted to the sandbox.
 
 Override with MTG_DECKS to point the tools at a different workspace:
 
@@ -19,6 +20,7 @@ Override with MTG_DECKS to point the tools at a different workspace:
 from __future__ import annotations
 
 import os
+import re
 import subprocess
 from pathlib import Path
 
@@ -28,8 +30,41 @@ _DEFAULT_ROOT = _REPO / "public"
 
 
 def deck_root() -> Path:
-    """The workspace: where decklists live and where writes are allowed."""
+    """Every deck, in one folder per owner: `<root>/<user>/<Bracket>/<Deck>.txt`."""
     return Path(os.environ.get("MTG_DECKS") or _DEFAULT_ROOT).expanduser().resolve()
+
+
+# Owner folders sit beside the site's own top-level names once rendered into
+# docs/, so a Discord user called `img` or `Bracket3` must not get a folder.
+# `Bracket*` is also where every pre-2026-10-18 deck URL lived; those paths now
+# hold redirects (see build_site.redirect_pages).
+_RESERVED = {"img", "mana", "tts", "private", "docs", "index.html", "index.local.html"}
+_USERNAME = re.compile(r"[a-z0-9_][a-z0-9_.]{0,31}")
+
+
+def owner_name(username: str) -> str | None:
+    """The folder name for a Discord username, or None if it cannot have one.
+
+    Discord usernames are already lowercase letters, digits, `_` and `.`, at most
+    32 long. Anything else (a legacy name, a path trick like `..`) is refused
+    rather than folded, because two people must never map to one folder."""
+    name = (username or "").strip().lower()
+    if (not _USERNAME.fullmatch(name) or ".." in name or name in _RESERVED
+            or name.startswith("bracket")):
+        return None
+    return name
+
+
+def owner_dir(username: str) -> Path | None:
+    """`public/<user>/`: that user's decks, and the builder's only writable folder
+    while it works for them. None for a username that cannot have a folder."""
+    name = owner_name(username)
+    return deck_root() / name if name else None
+
+
+def owner_of(deck: Path) -> str:
+    """Whose deck this is: the folder directly under the deck root."""
+    return deck.resolve().relative_to(deck_root()).parts[0]
 
 
 def cache_dir() -> Path:
@@ -48,39 +83,6 @@ def cache_db() -> Path:
     if override:
         return Path(override).expanduser().resolve()
     return cache_dir() / "cards.db"
-
-
-def deck_metadata_db() -> Path:
-    """Trusted metadata written by the bot parent, currently deck authorship.
-
-    This deliberately does NOT live in `.cache/`: that whole directory is
-    granted to the sandboxed model so card tools can bank Scryfall results. An
-    author attribution is provenance, not a cache entry, and the model must not
-    be able to forge it or erase it with `cache.py --clear`.
-
-    `MTG_DECK_METADATA` exists for tests and alternate deployments.
-    """
-    override = os.environ.get("MTG_DECK_METADATA")
-    if override:
-        return Path(override).expanduser().resolve()
-    return _REPO / "bot" / ".deck-metadata.db"
-
-
-def private_dir() -> Path:
-    """The owner's decks. Published and committed like the ones in `deck_root()`;
-    what sets them apart is that the Discord builder does not work on them.
-
-    Repo root, OUTSIDE the deck workspace. The builder's sandbox allows writes
-    only under `public/`, so it cannot change these. It CAN read them (the
-    sandbox does not bound reads), so keeping them out of its deckbuilding, so
-    that it never tunes, copies or dedupes against them, rests on its
-    instructions (AGENTS_MD in build_agents.py), which never name this folder.
-
-    Mirror the bracket folders in here (`private/Bracket3/Foo.txt`); the bracket
-    folder is what marks a file as a deck (see `deckfile.discover_private`), and
-    the bracket rules apply as usual. Nothing else in here is a deck: the owner
-    keeps tools and scratch files alongside."""
-    return Path(os.environ.get("MTG_PRIVATE") or _REPO / "private").expanduser().resolve()
 
 
 def site_dir() -> Path:
@@ -135,19 +137,12 @@ def site_url(deck: Path | None = None) -> str:
 
     `https://github.com/<owner>/<repo>` publishes at `https://<owner>.github.io/<repo>/`,
     and a deck's page is its path under public/ with .txt swapped for .html — the
-    same rule build_site.py uses to write it. An owner's deck in `private_dir()`
-    gets a `private/` prefix, so it cannot share a page with a public deck of the
-    same bracket and name."""
+    same rule build_site.py uses to write it: `<user>/<Bracket>/<Deck>.html`."""
     owner, _, name = repo_url().removeprefix("https://github.com/").partition("/")
     base = f"https://{owner.lower()}.github.io/{name}/"
     if deck is None:
         return base
-    path = deck.resolve()
-    if private_dir() in path.parents:
-        rel = "private/" + path.relative_to(private_dir()).with_suffix(".html").as_posix()
-    else:
-        rel = path.relative_to(deck_root().resolve()).with_suffix(".html").as_posix()
-    return base + rel
+    return base + deck.resolve().relative_to(deck_root()).with_suffix(".html").as_posix()
 
 
 def log_dir() -> Path:
@@ -159,13 +154,14 @@ def log_dir() -> Path:
     return _REPO / "logs"
 
 
-def agents_target() -> Path:
-    """Generated AGENTS.md inside the workspace. Codex auto-injects AGENTS.md only
-    from its working directory, so the deployed copy must live here even though
-    that is the writable root — hence the 0444 mode and the rebuild-before-send.
+def agents_target(folder: Path) -> Path:
+    """Generated AGENTS.md inside an owner's folder, the builder's working
+    directory for that user. Codex auto-injects AGENTS.md only from its working
+    directory, so the deployed copy must live there even though that is the
+    writable root — hence the 0444 mode and the rebuild-before-send.
 
     Its source is the AGENTS_MD string in build_agents.py, not another file."""
-    return deck_root() / "AGENTS.md"
+    return folder / "AGENTS.md"
 
 
 def rel(path: Path) -> Path | str:

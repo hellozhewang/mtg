@@ -37,14 +37,22 @@ class Catalog(HTMLParser):
             self.stack.pop()
 
 
-def deck(stem, themes, private=False, bracket="Bracket3.5", tier=None):
+def deck(stem, themes, owner="alice", bracket="Bracket3.5", tier=None):
     return SimpleNamespace(
-        stem=stem, themes=themes, private=private, created_label="", tier=tier,
+        stem=stem, themes=themes, created_label="", tier=tier,
+        modified=0, modified_label="", key=f"{owner}/{stem}",
         bracket=bracket, label=build_site.bracket_label(bracket), commander="Test Commander",
-        href=("private/" if private else "") + f"{bracket}/{stem}.html",
-        art_url="", art_card={}, author="zzwang", colours=[], total=100,
+        href=f"{owner}/{bracket}/{stem}.html",
+        art_url="", art_card={}, author=owner, colours=[], total=100,
         lands=35, avg_mv=2.4, gcs=[], cap=3,
     )
+
+
+def collection_keys():
+    """`<owner>/<Deck>` for every deck in the repo."""
+    import deckfile
+    return {f"{p.parent.parent.name}/{p.stem}"
+            for p in deckfile.discover_collection(ROOT / "public")}
 
 
 class Mana:
@@ -53,34 +61,28 @@ class Mana:
 
 
 class DeckThemeTests(unittest.TestCase):
-    def test_seven_fixed_categories_plus_a_catch_all(self):
-        self.assertEqual(tuple(deckthemes.THEMES), ("aggro", "gowide", "combo", "control",
-                                                    "graveyard", "spells", "value", "other"))
+    def test_seven_fixed_categories_plus_a_catch_all_and_local_goblins(self):
+        self.assertEqual(deckthemes.CANONICAL, ("aggro", "gowide", "combo", "control",
+                                                "graveyard", "spells", "value", "other"))
+        self.assertEqual([k for k, t in deckthemes.THEMES.items() if t.local_only], ["goblins"])
 
     def test_curated_plans(self):
         assignments = deckthemes.load(ROOT / "frontend/deck-themes.json")
-        self.assertEqual(deckthemes.classify("Cloud-Equipment", assignments)[0], "aggro")
-        self.assertEqual(deckthemes.classify("Kinnan-Infinite", assignments)[0], "combo")
-        self.assertEqual(deckthemes.classify("Krenko-Combo", assignments), ("combo", "gowide"))
+        self.assertEqual(deckthemes.classify("zzwang/Kinnan-Infinite", assignments)[0], "combo")
+        self.assertEqual(deckthemes.classify("zzwang/Krenko-Combo", assignments),
+                         ("combo", "gowide", "goblins"))
+        # Keyed by owner: the bare stem is not an entry.
+        self.assertEqual(deckthemes.classify("Krenko-Combo", assignments), ("combo",))
 
-    def test_every_private_deck_has_an_explicit_entry(self):
-        # Published like the public ones, so held to the same rule, in their own map.
-        assignments = deckthemes.load(ROOT / "private/deck-themes.json")
-        import deckfile
-        stems = {p.stem for p in deckfile.discover_private(ROOT / "private")}
-        self.assertEqual(sorted(stems - set(assignments)), [], "add these to private/deck-themes.json")
-        self.assertEqual(sorted(set(assignments) - stems), [], "these decks no longer exist")
-
-    def test_every_public_deck_has_an_explicit_entry(self):
+    def test_every_deck_has_an_explicit_entry(self):
         assignments = deckthemes.load(ROOT / "frontend/deck-themes.json")
-        import deckfile
-        stems = {p.stem for p in deckfile.discover(sorted((ROOT / "public").glob("Bracket*")))}
-        self.assertEqual(sorted(stems - set(assignments)), [], "add these to deck-themes.json")
-        self.assertEqual(sorted(set(assignments) - stems), [], "these decks no longer exist")
+        keys = collection_keys()
+        self.assertEqual(sorted(keys - set(assignments)), [], "add these to deck-themes.json")
+        self.assertEqual(sorted(set(assignments) - keys), [], "these decks no longer exist")
 
     def test_new_decks_have_safe_fallbacks(self):
         self.assertEqual(deckthemes.classify("NewCommander-Prison", {}), ("control",))
-        self.assertEqual(deckthemes.classify("NewCommander-Goblins", {}), ("gowide",))
+        self.assertEqual(deckthemes.classify("NewCommander-Goblins", {}), ("gowide", "goblins"))
         self.assertEqual(deckthemes.classify("NewCommander-NewPlan", {}), ("other",))
 
     def test_anything_outside_the_fixed_set_fails_the_build(self):
@@ -106,21 +108,15 @@ class DeckThemeTests(unittest.TestCase):
         self.assertIn('value="combo">Combo</option>', page)
         self.assertIn("Tokens & Aristocrats", catalog.tiles[0][1]["data-search"])
 
-    def test_private_decks_share_the_one_catalog_with_a_badge(self):
-        public = deck("Krenko-Combo", ("combo", "gowide"))
-        private = deck("Wort-Goblins", ("gowide", "combo"), private=True)
-        page = build_site.render_index(frontend.load(ROOT / "frontend"), [public, private],
+    def test_the_owner_is_the_byline_and_a_search_term(self):
+        page = build_site.render_index(frontend.load(ROOT / "frontend"),
+                                       [deck("Krenko-Combo", ("combo",), owner="ratdos")],
                                        "https://example.test", Mana())
-        catalog = Catalog(page)
-        self.assertEqual(len(catalog.tiles), 2)
-        hrefs = {attrs["href"]: attrs for _, attrs in catalog.tiles}
-        self.assertIn("Bracket3.5/Krenko-Combo.html", hrefs)
-        self.assertIn("private/Bracket3.5/Wort-Goblins.html", hrefs)
-        # One badge, on the owner's deck, and the search box finds it by the word.
-        self.assertEqual(page.count('class="chip private"'), 1)
-        self.assertIn("private", hrefs["private/Bracket3.5/Wort-Goblins.html"]["data-search"])
-        self.assertNotIn("private", hrefs["Bracket3.5/Krenko-Combo.html"]["data-search"])
-        self.assertNotIn("goblins", page.lower().replace("wort-goblins", ""))
+        (_, attrs), = Catalog(page).tiles
+        self.assertEqual(attrs["href"], "ratdos/Bracket3.5/Krenko-Combo.html")
+        self.assertIn("ratdos", attrs["data-search"])
+        self.assertIn('<span class="tile-author">by ratdos</span>', page)
+        self.assertNotIn("private", page.lower())
 
     def test_default_bracket_list_and_collapsible_category_destinations(self):
         decks = [deck("Fast-Combo", ("combo",), bracket="Bracket5"),
@@ -150,23 +146,46 @@ class DeckThemeTests(unittest.TestCase):
             placements.append((attrs["data-themes"].split()[0], groups[0]["data-bracket"],
                                attrs["href"]))
         self.assertEqual(placements, [
-            ("combo", "Bracket3", "Bracket3/Engine-Combo.html"),
-            ("combo", "Bracket3", "Bracket3/Other-Combo.html"),
-            ("gowide", "Bracket3.5", "Bracket3.5/Goblin-Swarm.html"),
-            ("combo", "Bracket5", "Bracket5/Fast-Combo.html"),
+            ("combo", "Bracket3", "alice/Bracket3/Engine-Combo.html"),
+            ("combo", "Bracket3", "alice/Bracket3/Other-Combo.html"),
+            ("gowide", "Bracket3.5", "alice/Bracket3.5/Goblin-Swarm.html"),
+            ("combo", "Bracket5", "alice/Bracket5/Fast-Combo.html"),
         ])
         # three list brackets, five category sections, one Unrated tier section
         self.assertEqual(len(catalog.sections), 9)
         self.assertEqual(page.count('<summary class="bracket-heading">'), 3)
 
-    def test_a_public_and_a_private_deck_can_share_a_name(self):
-        public = deck("Shared-Deck", ("aggro",))
-        private = deck("Shared-Deck", ("control",), private=True)
-        page = build_site.render_index(frontend.load(ROOT / "frontend"), [public, private],
+    def test_goblins_only_on_the_local_index(self):
+        krenko = deck("Krenko-Combo", ("combo", "gowide", "goblins"))
+        wort = deck("Wort-Goblins", ("gowide", "combo", "goblins"), owner="zzwang")
+        other = deck("Fair-Deck", ("aggro",), bracket="Bracket3")
+        templates = frontend.load(ROOT / "frontend")
+        decks = [krenko, wort, other]
+        published = build_site.render_index(templates, decks, "https://example.test", Mana())
+        self.assertNotIn('data-theme="goblins"', published)
+        self.assertNotIn(">Goblins<", published)
+        self.assertNotIn("tile mirror", published)
+        local = build_site.render_index(templates, decks, "https://example.test", Mana(),
+                                        local=True)
+        catalog = Catalog(local)
+        self.assertEqual(len(catalog.tiles), 3)            # one real tile per deck
+        self.assertIn('value="goblins">Goblins (local)</option>', local)
+        self.assertIn('<span class="theme-tag local">Goblins</span>', local)
+        self.assertEqual(local.count('class="chip local"'), 1)
+        self.assertEqual(local.count('class="tile mirror"'), 2)
+        self.assertTrue([g for g in catalog.sections if g[0].get("data-theme") == "goblins"])
+        # The goblin decks keep their canonical homes as well.
+        primaries = sorted(attrs["data-themes"].split()[0] for _, attrs in catalog.tiles)
+        self.assertEqual(primaries, ["aggro", "combo", "gowide"])
+
+    def test_two_owners_can_each_have_a_deck_of_the_same_name(self):
+        mine = deck("Shared-Deck", ("aggro",), owner="alice")
+        theirs = deck("Shared-Deck", ("control",), owner="bob")
+        page = build_site.render_index(frontend.load(ROOT / "frontend"), [mine, theirs],
                                        "https://example.test", Mana())
         tiles = {attrs["href"]: attrs["data-themes"] for _, attrs in Catalog(page).tiles}
-        self.assertEqual(tiles, {"Bracket3.5/Shared-Deck.html": "aggro",
-                                 "private/Bracket3.5/Shared-Deck.html": "control"})
+        self.assertEqual(tiles, {"alice/Bracket3.5/Shared-Deck.html": "aggro",
+                                 "bob/Bracket3.5/Shared-Deck.html": "control"})
 
 
 if __name__ == "__main__":

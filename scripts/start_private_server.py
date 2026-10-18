@@ -3,12 +3,16 @@
 
 The same site GitHub Pages publishes, private decks included, but straight from
 this machine: it shows a build the moment `build_site.py` writes it, without
-waiting for a push to go live. The name predates private decks being published,
-when this was the only place to see them."""
+waiting for a push to go live. One page differs: the home page is the owner's
+local index (docs/index.local.html), which shows local-only categories such as
+Goblins and is never published. The name predates private decks being
+published, when this was the only place to see them."""
 from __future__ import annotations
 
 import argparse
+import functools
 import http.client
+import http.server
 import socket
 import subprocess
 import sys
@@ -40,11 +44,37 @@ def serving_catalog(index: bytes) -> bool:
         connection.close()
 
 
+LOCAL_INDEX = "index.local.html"          # build_site.LOCAL_INDEX
+
+
+class CatalogHandler(http.server.SimpleHTTPRequestHandler):
+    """Serves docs/, except that the index is the owner's local one. Every deck
+    page links home as `index.html`, so this keeps the whole visit local."""
+
+    def translate_path(self, path):
+        bare = path.split("?", 1)[0].split("#", 1)[0]
+        if bare in ("/", "/index.html") and (Path(self.directory) / LOCAL_INDEX).is_file():
+            path = "/" + LOCAL_INDEX + path[len(bare):]
+        return super().translate_path(path)
+
+
+def serve(site: Path) -> None:
+    handler = functools.partial(CatalogHandler, directory=str(site))
+    http.server.ThreadingHTTPServer((BIND_HOST, PORT), handler).serve_forever()
+
+
 def main() -> int:
-    argparse.ArgumentParser(description=__doc__).parse_args()
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--serve", type=Path, help=argparse.SUPPRESS)   # the detached child
+    args = ap.parse_args()
+    if args.serve:
+        serve(args.serve)
+        return 0
     site = workspace.site_dir().resolve()
     try:
-        index = (site / "index.html").read_bytes()
+        # What the home page should be: the local index once a build wrote one.
+        index = ((site / LOCAL_INDEX) if (site / LOCAL_INDEX).is_file()
+                 else (site / "index.html")).read_bytes()
     except OSError as error:
         print(f"Cannot read the catalog: {error}\n"
               "Build it first with: python3 scripts/build_site.py", file=sys.stderr)
@@ -67,8 +97,7 @@ def main() -> int:
     log_path = state / f"catalog-{PORT}.log"
     with log_path.open("ab", buffering=0) as log:
         server = subprocess.Popen(
-            [sys.executable, "-u", "-m", "http.server", str(PORT),
-             "--bind", BIND_HOST, "--directory", str(site)],
+            [sys.executable, "-u", str(Path(__file__).resolve()), "--serve", str(site)],
             stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT,
             start_new_session=True, close_fds=True,
         )

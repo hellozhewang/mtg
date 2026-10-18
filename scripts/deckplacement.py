@@ -1,8 +1,8 @@
 """Save the category and tier a deck-builder reply declares for a deck it changed.
 
-The deck builder runs sandboxed to public/, so it can read but not write
-frontend/deck-themes.json and frontend/deck-tiers.json. AGENTS.md therefore has
-it end every new-deck or retuning reply with two lines:
+The deck builder runs sandboxed to the asking user's folder, public/<user>/, so it
+can read but not write frontend/deck-themes.json and frontend/deck-tiers.json.
+AGENTS.md therefore has it end every new-deck or retuning reply with two lines:
 
     Categories: Blim-Gifts — control, aggro
     Tier: Blim-Gifts — B — double strike and extra combats multiply donations
@@ -11,7 +11,9 @@ For a long time nothing read them, so every deck built over Discord showed as
 Unrated until someone copied the lines into the maps by hand. bot.py runs
 outside the sandbox and calls `save()` after each model turn.
 
-Only decks whose files changed during the turn are placed. A reply that merely
+The builder names decks by stem; the maps key them `<owner>/<Deck>`, and the
+owner is always the user the turn worked for, since that is the only folder it
+could write. Only decks whose files changed during the turn are placed. A reply that merely
 discusses another deck ("Krenko is S tier") must not re-rate it: re-rating a deck
 nobody touched is a maintainer's edit, not a side effect of a chat answer.
 
@@ -64,6 +66,8 @@ def _themes_error(ids: tuple[str, ...]) -> str | None:
         return f"unknown categories {unknown}"
     if len(set(ids)) != len(ids):
         return "repeated category"
+    if ids[0] not in deckthemes.CANONICAL:
+        return f"primary {ids[0]!r} is not one of {', '.join(deckthemes.CANONICAL)}"
     return None
 
 
@@ -83,8 +87,8 @@ def _dump_themes(d: dict[str, list[str]]) -> str:
     return "{\n" + rows + "\n}\n"
 
 
-def save(answer: str, touched: set[str], frontend: Path) -> list[str]:
-    """Write the reply's declarations for `touched` decks. Returns log lines."""
+def save(answer: str, touched: set[str], frontend: Path, owner: str) -> list[str]:
+    """Write the reply's declarations for `owner`'s `touched` decks. Returns log lines."""
     declared = parse(answer)
     notes: list[str] = []
     tiers_path, themes_path = frontend / "deck-tiers.json", frontend / "deck-themes.json"
@@ -97,9 +101,9 @@ def save(answer: str, touched: set[str], frontend: Path) -> list[str]:
             notes.append(f"categories for {stem} ignored: deck not changed this turn")
         elif error := _themes_error(ids):
             notes.append(f"categories for {stem} ignored: {error}")
-        elif tuple(themes.get(stem, ())) != ids:
-            notes.append(f"categories {stem}: {themes.get(stem, 'none')} -> {list(ids)}")
-            themes[stem] = list(ids)
+        elif tuple(themes.get(key := f"{owner}/{stem}", ())) != ids:
+            notes.append(f"categories {key}: {themes.get(key, 'none')} -> {list(ids)}")
+            themes[key] = list(ids)
             themes_changed = True
 
     for stem, tier in declared.tiers:
@@ -111,9 +115,9 @@ def save(answer: str, touched: set[str], frontend: Path) -> list[str]:
             stem = next(iter(candidates))
         if stem not in touched:
             notes.append(f"tier for {stem} ignored: deck not changed this turn")
-        elif tiers.get(stem) != tier:
-            notes.append(f"tier {stem}: {tiers.get(stem, 'unrated')} -> {tier}")
-            tiers[stem] = tier
+        elif tiers.get(key := f"{owner}/{stem}") != tier:
+            notes.append(f"tier {key}: {tiers.get(key, 'unrated')} -> {tier}")
+            tiers[key] = tier
             tiers_changed = True
 
     if tiers_changed:
@@ -124,7 +128,8 @@ def save(answer: str, touched: set[str], frontend: Path) -> list[str]:
 
 
 def touched_stems(root: Path, since: float) -> set[str]:
-    """Stems of decks whose list or guide was written at or after `since` (epoch s)."""
+    """Stems of decks in `root`, one owner's folder, whose list or guide was
+    written at or after `since` (epoch s)."""
     since_ns = int(since * 1_000_000_000)
     return {
         path.stem

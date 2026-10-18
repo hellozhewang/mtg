@@ -57,6 +57,13 @@ h2 .count{color:var(--line)}
 /* Shown once on the deck a Random click landed on: did the copy work or not. */
 .random-notice{margin:0 0 16px;padding:9px 13px;border:1px solid var(--accent-line);
   border-radius:8px;background:var(--accent-bg);color:var(--fg);font-size:.88rem}
+/* A local-only category: its heading carries a `local` chip, and its tag on each
+   tile takes the same warn hue, dashed, so it never reads as a published one. */
+.strategy-title .chip.local{margin-left:12px;vertical-align:5px;font-size:.66rem}
+.chip.local{color:var(--warn);border-color:var(--warn);background:transparent;
+  text-transform:uppercase;letter-spacing:.06em;font-size:.68rem}
+.theme-tag.local{color:var(--warn);border-color:var(--warn);border-style:dashed;
+  background:transparent}
 .random-notice.manual{border-color:var(--line);background:var(--panel)}
 .random-notice .btn{margin-left:6px;padding:3px 10px;font-size:.82rem;vertical-align:baseline}
 .search{flex:1;min-width:90px;max-width:260px;background:var(--panel2);
@@ -223,16 +230,10 @@ h2 .count{color:var(--line)}
 /* Creation date. Muted on purpose: it is context for ordering, not a stat you
    compare decks on, so it must not compete with the card/land/MV chips. */
 .chip.date{font-variant-numeric:tabular-nums;opacity:.75}
-/* The owner's own deck, which the Discord builder does not work on. Deliberately
-   the warn hue rather than the gold accent: gold means "notable card" everywhere
-   else on the page, and this means "ask the owner, not the builder". Used on
-   tiles and in the deck header alike. */
-.chip.private{color:var(--warn);border-color:var(--warn);background:transparent;
-  text-transform:uppercase;letter-spacing:.06em;font-size:.68rem}
 
 /* List view for the catalog. The SAME tiles, re-laid-out as rows — not a second
    markup structure. The search filter, the section-empty rule, the tooltips and
-   the private badge all key off `.tile`, so a parallel DOM would mean teaching
+   the byline all key off `.tile`, so a parallel DOM would mean teaching
    every one of them about it, and keeping the two in sync forever. The row/tiles
    layout applies independently of bracket/category grouping. */
 .decks[data-view="list"] .tiles{display:flex;flex-direction:column;gap:0}
@@ -243,7 +244,7 @@ h2 .count{color:var(--line)}
 .decks[data-view="list"] .art,
 .decks[data-view="list"] .art-blank{display:none}
 /* Shared column widths keep one- and five-color decks aligned. Labels wrap
-   within their column; authorship and private badges stay with the deck name. */
+   within their column; the byline stays with the deck name. */
 .decks[data-view="list"] .tile-body{display:grid;align-items:center;
   grid-template-columns:minmax(180px,1fr) 111px minmax(180px,1.2fr) 283px;
   grid-template-areas:"identity colors themes meta";

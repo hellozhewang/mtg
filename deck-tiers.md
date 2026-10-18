@@ -57,7 +57,7 @@ the folder it sits in.
 5. **Compare with the anchors** below. Put the deck in the tier whose anchors it
    would trade evenly with: it should beat most of the tier beneath it and lose
    to most of the tier above.
-6. **Save it.** Add `"Stem": "TIER"` to the map (below).
+6. **Save it.** Add `"<owner>/<Stem>": "TIER"` to the map (below).
 
 Re-check the tier whenever tuning adds or cuts combo pieces, tutors or fast
 mana, when a deck changes bracket, or when its plan changes. Ordinary card swaps
@@ -87,25 +87,27 @@ Game Changers but sits in A, because its planeswalker wins take turns to set up.
 
 ## Where tiers are stored
 
-| Deck folder | Tier map |
-|---|---|
-| `public/` | [`frontend/deck-tiers.json`](frontend/deck-tiers.json) |
-| `private/` | [`private/deck-tiers.json`](private/deck-tiers.json) |
+Every deck's tier is in [`frontend/deck-tiers.json`](frontend/deck-tiers.json).
+The key is `<owner>/<filename stem>` (`ratdos/Obeka-Upkeep`), because two owners
+may each have a deck of the same name; the value is one of `GOD`, `SS`, `S`, `A`,
+`B`, `C`, `D`, `TRASH`. Keep one deck per line, keys sorted.
 
-The key is the exact filename stem; the value is one of `GOD`, `SS`, `S`, `A`,
-`B`, `C`, `D`, `TRASH`. Keep one deck per line, keys sorted. As with themes, the
-two maps are independent: never put a private deck in the public map.
+A tier can be made **local-only**, like the Goblins category: set
+`local_only=True` on it in `scripts/decktiers.py`, and it shows only on the
+owner's local index, while the published catalog treats its decks as unplaced.
+None is local-only today.
 
 There is no filename fallback. A deck with no entry shows as **Unrated** with a
 "?" mark, `build_site.py` prints a warning naming it, and
-`tests/test_deck_tiers.py` fails for any deck missing from its map (or any map
+`tests/test_deck_tiers.py` fails for any deck missing from the map (or any map
 entry whose deck no longer exists). A typo in a tier fails the build.
 
 ## The Discord builder
 
 The bot's sandbox can read the map but cannot write it. It ends every new-deck
 reply with one line, `Tier: <Stem> — <TIER> — <the cards or lines that put it
-there>`, and `bot/bot.py` saves it to `frontend/deck-tiers.json` after the turn
+there>`, and `bot/bot.py` saves it to `frontend/deck-tiers.json`, under the
+asking user's `<user>/<Stem>`, after the turn
 (`scripts/deckplacement.py`), before autopush rebuilds the site. It saves only
 for a deck whose `.txt` or `.guide` that turn wrote, so a chat answer about some
 other deck cannot re-rate it. A turn that dies before replying (a Codex quota

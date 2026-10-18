@@ -61,7 +61,7 @@
     items.forEach(function (el) {
       el.setAttribute('data-key', fold(el.dataset.search || el.dataset.name || ''));
     });
-    var total = items.length;
+    var total = items.filter(function (el) { return !el.classList.contains('mirror'); }).length;
 
     var sections = toArray(document.querySelectorAll(tiles.length
       ? '.bracket-group, .strategy-group, .tier-group' : '.cards .cat'));
@@ -84,7 +84,8 @@
         var hit = (!q || el.getAttribute('data-key').indexOf(q) !== -1)
           && (!theme || (el.dataset.themes || '').split(' ').indexOf(theme) !== -1);
         el.classList.toggle('is-filtered', !hit);
-        if (hit) shown++;
+        // A mirror is a second link to a deck already counted elsewhere.
+        if (hit && !el.classList.contains('mirror')) shown++;
       });
       // Hide a section once every child is gone, so the page does not turn into
       // a column of empty headings.
@@ -231,7 +232,9 @@
     var categories = wrap.querySelector('.catalog-categories');
     var tierList = wrap.querySelector('.catalog-tiers');
     var actions = document.querySelector('.category-actions');
-    var tiles = toArray(wrap.querySelectorAll('.tile'));
+    // Mirrors (the local index's Goblins section) are rendered in place and
+    // never move; only the real tile for each deck travels between views.
+    var tiles = toArray(wrap.querySelectorAll('.tile:not(.mirror)'));
     var listTargets = new Map();
     var categoryTargets = new Map();
     var tierTargets = new Map();

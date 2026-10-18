@@ -5,11 +5,14 @@ what the finished list does at a four-player table: how fast it wins, how
 reliably, and through how much interaction. Two Bracket 3.5 decks can sit tiers
 apart, and a Bracket 3 deck can outrank a 3.5 one.
 
-The rubric, anchor decks and placement checklist live in deck-tiers.md. Public
-assignments live in frontend/deck-tiers.json; private assignments live only in
-private/deck-tiers.json. As with themes, never merge the private mapping into
-the public one. There is no filename fallback: a deck without an assignment is
-shown as Unrated until someone places it.
+The rubric, anchor decks and placement checklist live in deck-tiers.md. Every
+deck's tier lives in frontend/deck-tiers.json, keyed `<owner>/<Deck>`. There is
+no filename fallback: a deck without an assignment is shown as Unrated until
+someone places it.
+
+A tier can be marked `local_only`, like a category: it then shows only on the
+owner's local index, and the published catalog treats its decks as unplaced.
+None is today; flip the flag on one below to make it so.
 """
 from __future__ import annotations
 
@@ -23,6 +26,9 @@ class Tier:
     label: str
     title: str
     description: str
+    # Shown only on the owner's local index (docs/index.local.html). Deck pages
+    # are shared with the published site, so they never show it.
+    local_only: bool = False
 
 
 # Strongest first. Display order everywhere follows this dict.
@@ -72,9 +78,14 @@ def load(path: Path) -> dict[str, str]:
     return dict(raw)
 
 
-def classify(stem: str, assignments: dict[str, str]) -> str | None:
+def classify(key: str, assignments: dict[str, str]) -> str | None:
     """The deck's tier ID, or None when nobody has placed it yet."""
-    return assignments.get(stem)
+    return assignments.get(key)
+
+
+def visible(tier: str | None, local: bool) -> str | None:
+    """The tier a page may show: a local-only one only on the local index."""
+    return tier if tier is None or local or not TIERS[tier].local_only else None
 
 
 def info(tier: str | None) -> Tier:

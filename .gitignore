@@ -23,7 +23,7 @@ bot/.sandbox-bin/
 # GENERATED — the source of truth is AGENTS_MD in scripts/build_agents.py, and
 # this copy is overwritten before every message. Committing it would invite
 # editing the wrong one.
-public/AGENTS.md
+public/*/AGENTS.md
 
 # Internal notes, deliberately NOT published. Implementation detail, the measured
 # sandbox boundary, and known security gaps including machine-local absolute
@@ -41,19 +41,19 @@ __pycache__/
 bot/.busy.db*
 bot/.locks.db*
 
-# Trusted deck provenance written by bot.py after a model turn. Machine-local
-# SQLite state; the generated catalog carries the author text that gets published.
+# Retired: who requested each deck, from before decks lived in owner folders
+# (public/<user>/ is the owner now). Kept on disk for the record, never read.
 bot/.deck-metadata.db*
 
-# private/ holds the owner's decks. They are published like everything else; they
-# live outside public/ only so the Discord builder, whose sandbox can write
-# nothing but public/, cannot change them. The decks, their guides and their two
-# placement maps are source. Anything else kept beside them (the owner's
-# cardsearch/ and showcards/ tools, scratch files) is not.
-/private/*
-!/private/Bracket*/
-!/private/deck-themes.json
-!/private/deck-tiers.json
+# The owner's personal tools (cardsearch/, showcards/) and scratch files. Decks
+# never live here: every deck is under public/<user>/, and private/ held the
+# owner's decks only until 2026-10-18.
+/private/
+
+# The owner's copy of the catalog index, with local-only categories (Goblins).
+# build_site.py writes it beside the published index; start_private_server.py
+# serves it as the LAN catalog's home page. Ignored so Pages never serves it.
+/docs/index.local.html
 
 # VS Code workspace settings, which are machine-local and not source.
 .vscode/

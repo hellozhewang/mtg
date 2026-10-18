@@ -1,13 +1,18 @@
-"""Commander catalog categories: a FIXED vocabulary of seven and a catch-all.
+"""Commander catalog categories: a FIXED vocabulary of seven, a catch-all, and Goblins.
 
 Every deck's assignment lists its primary category first, then any secondary
-categories. The seven categories, plus the `other` catch-all for a plan that
-genuinely fits none of them, are the only IDs a builder may use; adding or
-renaming one is an owner decision, not a builder's.
+categories. The seven canonical categories, plus the `other` catch-all for a
+plan that genuinely fits none of them, are the only IDs a builder may use as a
+primary; adding or renaming one is an owner decision, not a builder's. Goblins
+is a local-only extra: a Goblin deck keeps a canonical primary and carries
+`goblins` as a secondary tag, and only the owner's LOCAL index
+(docs/index.local.html, never published) mirrors it into a Goblins section.
+The published catalog ignores the tag entirely.
 
-Public assignments live in frontend/deck-themes.json; the owner's decks in
-private/ have their own map, private/deck-themes.json. Never merge the two, even
-when a private deck has the same filename as a public deck.
+Every deck's assignment lives in frontend/deck-themes.json, keyed
+`<owner>/<Deck>` because two owners may each have a deck of the same name.
+Whether a category is local-only is the `local_only` flag below; any category can
+carry it, and decktiers.Tier has the same switch.
 """
 from __future__ import annotations
 
@@ -21,6 +26,9 @@ class Theme:
     label: str
     description: str
     aliases: str = ""
+    # Shown only on the owner's local index, as a mirror of decks that already
+    # sit in a canonical category. Never a primary, never published.
+    local_only: bool = False
 
 
 # Display order is stable across brackets, filters, and builds. Each category is
@@ -44,7 +52,13 @@ THEMES = {
     # and for decks nobody has placed yet (see FALLBACK).
     "other": Theme("Other Strategies", "Plans that genuinely fit none of the seven categories above.",
                    "misc unique"),
+    "goblins": Theme("Goblins", "Every Goblin deck, mirrored here from its own category. Local catalog only.",
+                     "goblin kindred typal", local_only=True),
 }
+
+# The categories a deck can have as its primary: the seven plus `other`.
+# Goblins is not one of them.
+CANONICAL = tuple(k for k, t in THEMES.items() if not t.local_only)
 
 
 # A conservative fallback for decks without an explicit assignment, keyed on the
@@ -54,7 +68,7 @@ _HINT_WORDS = {
     "control": "prison lockdown hatebears antisacrifice graveyardhate stax pillowfort antistax "
                "anticounters theft gifts goad tempo removal",
     "aggro": "voltron attacks keywords equipment beats ninjas dinosaurs dragons angels warriors humans vehicles",
-    "gowide": "tokens swarm aristocrats sacrifice elves goblins rats vampires myriad",
+    "gowide": "tokens swarm aristocrats sacrifice elves rats vampires myriad",
     "graveyard": "reanimator discard refill graveyard wheels",
     "spells": "spells spellslinger storm miracles punisher burn drain antispells",
     "combo": "combo infinite",
@@ -62,6 +76,7 @@ _HINT_WORDS = {
              "ramp toolbox activations topdeck cascade discover legends",
 }
 HINTS = {w: (cat,) for cat, words in _HINT_WORDS.items() for w in words.split()}
+HINTS["goblins"] = ("gowide", "goblins")
 FALLBACK = ("other",)
 
 
@@ -79,12 +94,21 @@ def load(path: Path) -> dict[str, tuple[str, ...]]:
                 or len(set(themes)) != len(themes)):
             raise ValueError(f"{path}: invalid themes for {stem!r}: {themes!r} "
                              f"(allowed: {', '.join(THEMES)})")
+        if themes[0] not in CANONICAL:
+            raise ValueError(f"{path}: {stem!r} must start with one of the canonical "
+                             f"categories ({', '.join(CANONICAL)}), not {themes[0]!r}")
         result[stem] = tuple(themes)
     return result
 
 
-def classify(stem: str, assignments: dict[str, tuple[str, ...]]) -> tuple[str, ...]:
-    return assignments.get(stem) or HINTS.get(stem.rsplit("-", 1)[-1].lower(), FALLBACK)
+def classify(key: str, assignments: dict[str, tuple[str, ...]]) -> tuple[str, ...]:
+    """`key` is `<owner>/<Deck>`; with no entry, the theme word after the hyphen."""
+    return assignments.get(key) or HINTS.get(key.rsplit("-", 1)[-1].lower(), FALLBACK)
+
+
+def visible(themes: tuple[str, ...], local: bool) -> tuple[str, ...]:
+    """The tags an index shows: the published one drops local-only categories."""
+    return themes if local else tuple(t for t in themes if not THEMES[t].local_only)
 
 
 def search_text(themes: tuple[str, ...]) -> str:

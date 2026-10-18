@@ -777,13 +777,22 @@ in the same colours, first try. Go looking; don't just rank what's already there
 ## Tabletop Simulator table
 
 **MTG 6 player Cactuar Ver** is the scripted 6-player table from the Workshop
-("MTG 6 player table - scripted", 2293586471) with a deck browser added. Every
-seated player has a **Cactuar decks** button; it opens their own browser, which
+("MTG 6 player table - scripted", 2293586471, by Oops I Baked a Pie) with a deck
+browser added. Get it on the Steam Workshop:
+**https://steamcommunity.com/sharedfiles/filedetails/?id=3822623414**
+
+Two **Cactuar decks** tiles sit on the table, one beside each side's deck
+importer. Clicking one opens the clicker's own browser, which
 searches, sorts (tier, name, newest, owner) and filters (bracket, tier, category,
 owner) the whole collection, and **Load into my seat** puts the chosen deck in
 that player's seat: the library face down and shuffled in their library zone,
 the commander (or both partners) on their Commander Zones, the tokens beside them.
 Everything the table already did is untouched.
+
+New and retuned decks reach the table without a new upload: it reads the deck list
+live. A change to the table itself (the browser's code or panel, or the tiles) needs
+the Workshop item updated: load the save, then **Modding → Workshop Upload** to item
+3822623414.
 
 The data comes from the catalog build. `build_site.py` writes `docs/tts/`
 ([ttsdecks.py](scripts/ttsdecks.py)):
@@ -792,13 +801,15 @@ The data comes from the catalog build. `build_site.py` writes `docs/tts/`
 |---|---|
 | `tts/decks.json` | the index the browser lists |
 | `tts/<owner>/<Bracket>/<Deck>.ndjson` | one deck: a header line, then the library, commander(s) and tokens as ready-to-spawn Tabletop Simulator objects, built the way rikrassen's importer builds them |
+| `tts/cactuar-tile.jpg` | the picture on the Cactuar tiles |
 
 so a deck built or tuned through Discord shows up at the table once Pages has
 published it, with no change to the table.
 
 The table itself is built from the Workshop file, which is someone else's work and
 is never committed; only what we add is: [tts/cactuar.lua](tts/cactuar.lua),
-[tts/cactuar.xml](tts/cactuar.xml) and [build_tts_table.py](scripts/build_tts_table.py).
+[tts/cactuar.xml](tts/cactuar.xml), [tts/cactuar_tile.lua](tts/cactuar_tile.lua) and
+[build_tts_table.py](scripts/build_tts_table.py).
 
 ```bash
 ./scripts/build_tts_table.py 2293586471.json -o "MTG 6 player Cactuar Ver.json"

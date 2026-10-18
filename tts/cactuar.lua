@@ -3,10 +3,14 @@
   scripts/build_tts_table.py (source: github.com/hellozhewang/mtg, tts/).
 
   Each seated player gets their own browser panel (tts/cactuar.xml, one copy
-  per seat colour). It lists the decks published at CZ.base, sorts and filters
-  them, and loads the chosen one into the clicking player's seat: the library
-  face down and shuffled in their library zone, the commander(s) on their
-  Commander Zone(s), the tokens beside them.
+  per seat colour), opened by clicking a Cactuar tile on the table
+  (tts/cactuar_tile.lua). It lists the decks published at CZ.base, sorts and
+  filters them, and loads the chosen one into the clicking player's seat: the
+  library face down and shuffled in their library zone, the commander(s) on
+  their Commander Zone(s), the tokens beside them.
+
+  Labels: UI.setValue for <Text>, UI.setAttribute(id, "text", ...) for
+  <Button>. Tabletop Simulator ignores setValue on a Button.
 
   Everything here is prefixed `cz`/`CZ` so it cannot collide with the table's
   own script, and nothing runs until a player opens the browser: the table's
@@ -208,7 +212,7 @@ function czRender(color)
     local id = "cz_row_" .. i .. "_" .. color
     if d then
       local text, bg = czRow(d, s.selected and s.selected.id == d.id)
-      UI.setValue(id, text)
+      UI.setAttribute(id, "text", text)
       UI.setAttribute(id, "color", bg)
       UI.setAttribute(id, "active", "True")
     else
@@ -221,7 +225,7 @@ function czRender(color)
       s.sort == key and "rgba(0.25,0.45,0.30,1)" or "rgba(0.22,0.23,0.28,1)")
   end
   for _, key in ipairs(CZ_FILTERS) do
-    UI.setValue("cz_f_" .. key .. "_" .. color, czFilterLabel(key, s.filter[key]))
+    UI.setAttribute("cz_f_" .. key .. "_" .. color, "text", czFilterLabel(key, s.filter[key]))
   end
   UI.setValue("cz_detail_" .. color, czDetail(s.selected))
 end
@@ -271,6 +275,11 @@ function czOpen(player)
     czStatus(color, "Loading the deck list…")
     czFetchIndex()
   end
+end
+
+-- The Cactuar tiles call this: Global.call("czOpenFor", {color = <clicker>}).
+function czOpenFor(params)
+  czOpen({color = params.color})
 end
 
 function czClose(player)

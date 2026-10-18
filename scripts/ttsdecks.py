@@ -4,6 +4,7 @@ build_site.py calls `files()` and publishes what it returns under docs/tts/:
 
     tts/decks.json                          the index a table's deck browser lists
     tts/<owner>/<Bracket>/<Deck>.ndjson     one deck, ready to spawn
+    tts/cactuar-tile.jpg                    the picture on the table's Cactuar tiles
 
 A deck file is one JSON value per line:
 
@@ -34,6 +35,8 @@ from pathlib import Path
 
 import decktiers
 import deckthemes
+
+TILE_IMAGE = Path(__file__).resolve().parent.parent / "tts" / "cactuar-tile.jpg"
 
 # Scryfall's standard Magic card back.
 CARD_BACK = "https://backs.scryfall.io/large/0/a/0aeebaf5-8c7d-4636-9e82-8c27447861f7.jpg"
@@ -223,7 +226,7 @@ def index(decks: list, paths: dict[str, str]) -> dict:
     }
 
 
-def files(decks: list, out_dir: Path, q) -> dict[Path, str]:
+def files(decks: list, out_dir: Path, q) -> dict[Path, str | bytes]:
     """Every docs/tts/ file for `decks` (build_site.DeckInfo objects)."""
     wanted = token_ids([c for d in decks for n in d.deck.names
                         if (c := d.cards.get(n)) is not None])
@@ -232,7 +235,7 @@ def files(decks: list, out_dir: Path, q) -> dict[Path, str]:
     except Exception:                       # tokens are a convenience: build without them
         tokens = {}
     root = out_dir / "tts"
-    out: dict[Path, str] = {}
+    out: dict[Path, str | bytes] = {root / TILE_IMAGE.name: TILE_IMAGE.read_bytes()}
     paths: dict[str, str] = {}
     for d in decks:
         rel = Path(d.href).with_suffix(".ndjson").as_posix()   # <owner>/<Bracket>/<Deck>.ndjson

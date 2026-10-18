@@ -76,9 +76,25 @@ local function read(path)
 end
 
 -- ---------- stand-ins for the Tabletop Simulator API ----------
+-- Tabletop Simulator ignores UI.setValue on a <Button>: its label is the "text"
+-- attribute. So setValue on any Button id in tts/cactuar.xml is a failure.
+local buttons = {}
+for id in read("tts/cactuar.xml"):gmatch('<Button id="([^"]+)"') do
+  buttons[#buttons + 1] = "^" .. id:gsub("{C}", "%%a+"):gsub("{I}", "%%d+") .. "$"
+end
+check(#buttons >= 9, "the stub knows the Buttons (" .. #buttons .. ")")
+local function isButton(id)
+  for _, pattern in ipairs(buttons) do
+    if id:match(pattern) then return true end
+  end
+  return false
+end
 local attrs, values = {}, {}
 UI = {
-  setValue = function(id, v) values[id] = v end,
+  setValue = function(id, v)
+    check(not isButton(id), "setValue on Button " .. id .. ": label it with setAttribute text")
+    values[id] = v
+  end,
   setAttribute = function(id, k, v) attrs[id] = attrs[id] or {}; attrs[id][k] = v end,
   getAttribute = function(id, k) return (attrs[id] or {})[k] end,
 }
@@ -117,18 +133,18 @@ assert(load(source, "cactuar.lua"))()
 local white, grey = {color = "White", steam_name = "zz"}, {color = "Grey", steam_name = "spectator"}
 
 -- A spectator cannot open it: decks load into your own seat.
-czOpen(grey)
+czOpenFor({color = "Grey"})
 check(broadcasts[1] and broadcasts[1]:find("Take a seat"), "spectator is told to sit")
 check(attrs["cz_panel_Grey"] == nil, "no panel for a spectator")
 
--- Opening fetches the index and fills the rows, strongest tier first.
-czOpen(white)
+-- Clicking a Cactuar tile fetches the index and fills the rows, strongest tier first.
+czOpenFor({color = "White"})
 check(attrs["cz_panel_White"].active == "True", "panel opens")
 check(CZ.index and #CZ.index.decks > 100, "index loaded")
 local s = CZ.state.White
 check(#s.list == #CZ.index.decks, "every deck listed")
 check(s.list[1].tier == "GOD", "tier sort puts GOD first (got " .. tostring(s.list[1].tier) .. ")")
-check(values["cz_row_1_White"]:find(s.list[1].name, 1, true), "row 1 shows the first deck")
+check(attrs["cz_row_1_White"].text:find(s.list[1].name, 1, true), "row 1 shows the first deck")
 check(attrs["cz_row_12_White"].active == "True", "a full first page")
 check(values["cz_page_White"]:find("^Page 1 /"), "pager text")
 
@@ -141,7 +157,7 @@ czCycle(white, "owner")
 local owner = s.filter.owner
 check(owner == "digitalstealth", "first owner alphabetically (got " .. tostring(owner) .. ")")
 for _, d in ipairs(s.list) do check(d.owner == owner, "owner filter keeps only " .. owner) end
-check(values["cz_f_owner_White"] == owner, "owner button shows the value")
+check(attrs["cz_f_owner_White"].text == owner, "owner button shows the value")
 czClear(white)
 check(next(s.filter) == nil and #s.list == #CZ.index.decks, "Clear resets filters")
 
@@ -163,6 +179,12 @@ check(decode(commander.json).Nickname:find("^Giada, Font of Hope"), "the command
 check(tokens.position[3] > -13.4, "tokens beyond the Commander Zones")
 check(broadcasts[#broadcasts]:find("zz loaded Giada%-Angels"), "the table is told")
 check(attrs["cz_panel_White"].active == "False", "panel closes after loading")
+
+-- The tile toggles: a second click closes an open panel.
+czOpenFor({color = "White"})
+check(attrs["cz_panel_White"].active == "True", "tile opens the panel")
+czOpenFor({color = "White"})
+check(attrs["cz_panel_White"].active == "False", "a second click closes it")
 
 -- A partner pair takes both Commander Zones.
 spawned = {}

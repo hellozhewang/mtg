@@ -1,10 +1,7 @@
 <!-- Cactuar deck browser (tts/cactuar.lua). scripts/build_tts_table.py appends
-     this to the table's Global UI: the open button once, and the panel once per
-     seat colour with {C} replaced, so each player has a panel only they see. -->
-<!-- @OPEN@ -->
-<Button id="cz_open" onClick="czOpen" visibility="White|Red|Yellow|Green|Blue|Purple"
-        rectAlignment="LowerRight" offsetXY="-20 170" width="150" height="38"
-        fontSize="16" fontStyle="Bold" color="rgba(0.18,0.42,0.25,0.95)" textColor="#ffffff">Cactuar decks</Button>
+     this to the table's Global UI: the panel once per seat colour with {C}
+     replaced, so each player has a panel only they see. The Cactuar tiles on
+     the table open it (tts/cactuar_tile.lua). -->
 <!-- @PANEL@ -->
 <Panel id="cz_panel_{C}" visibility="{C}" active="False"
        width="620" height="720" rectAlignment="MiddleRight" offsetXY="-30 0"

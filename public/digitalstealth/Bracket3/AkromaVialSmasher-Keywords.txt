@@ -1,4 +1,5 @@
 1 Akroma, Vision of Ixidor
+1 Vial Smasher the Fierce (DSC) 239
 1 Agadeem's Awakening
 1 Akroma's Will (SOA) 1
 1 Angel of Indemnity
@@ -93,7 +94,6 @@
 1 Vault of Champions
 1 Vault of the Archangel
 1 Verdant Catacombs
-1 Vial Smasher the Fierce (DSC) 239
 1 Victimize (TDC) 198
 1 Windswept Heath
 1 Witch Enchanter (MH3) 239

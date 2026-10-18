@@ -37,8 +37,9 @@ checks for duplicates within the asker's own folder.
 ```
 
 A deck is not real until `validate_deck.py` passes it: exactly 100 cards, every
-name resolving on Scryfall, one colour identity, the bracket's Game Changer cap,
-singleton, format legality, and no mass land denial below Bracket 4.
+name resolving on Scryfall, one colour identity (two, for a partner pair), the
+bracket's Game Changer cap, singleton, format legality, and no mass land denial
+below Bracket 4.
 
 The rest of this file is the deckbuilding guide: the rules a deck must follow, the
 file format, what each tool does, and the order to use them in.
@@ -53,35 +54,35 @@ a deck or changing its plan: choose its primary category from the fixed set, add
 supported secondary categories, and update the assignment map. Brackets remain the deck folders; categories are metadata, not
 another directory hierarchy.
 
-### 1. Follow the bracket rules
+### 1. Follow the house rules
 
-Every deck targets a specific Commander bracket and must obey that bracket's
-restrictions. The full rules are in [commander-brackets-and-rules.md](commander-brackets-and-rules.md).
+Decks are Bracket 3 unless they sit in a `Bracket4/` or `Bracket5/` folder. **Our
+hard rules are only the ones a script can check every time**, and
+`validate_deck.py` checks both:
 
-**Exception: the user can explicitly say a deck may break its bracket.** When that
-happens, put the deck in its own folder and name the folder honestly — see
-`Bracket3.5/`, whose decks respect Bracket 3's Game Changer cap of 3 but
-deliberately keep two-card infinite combos that Bracket 3 forbids.
+- **0 to 3 Game Changers** (Bracket 4 and 5: uncapped).
+- **No mass land denial**: none of the cards named in
+  [commander-brackets-and-rules.md](commander-brackets-and-rules.md) (Bracket 4
+  and 5: allowed).
 
-Use it when stripping the combos would gut the deck's identity rather than tune
-it. `Urza-Combo` is the clearest case: Urza, Lord High Artificer taps artifacts
-for mana, so Basalt Monolith with Power Artifact or Rings of Brighthearth, and
-Isochron Scepter with Dramatic Reversal, are what the commander is *for*. Cutting
-them leaves a generic artifact-value pile wearing Urza's name. `Krenko-Combo` is
-the same argument for Kiki-Jiki and Zealous Conscripts.
+Everything else in the official bracket text is about how a game is played, not
+what a list may contain, so it is not a deckbuilding rule here:
 
-Note this covers the COMBO rule only. Mass land denial stays out of 3.5 — Urza's
-EDHREC seed arrived with `Back to Basics` and `Winter Orb` and both were cut,
-because that is a separate restriction, not the one this folder relaxes.
+- **Two-card combos are allowed**, infinite or lock. The table expectation is that
+  nobody uses one before turn 6, and a deck's guide says so when it has one.
+  `Urza-Combo` is the clearest case of why: Urza, Lord High Artificer taps
+  artifacts for mana, so Basalt Monolith with Power Artifact, and Isochron Scepter
+  with Dramatic Reversal, are what the commander is *for*.
+- **Extra-turn effects are allowed**, chained or not.
 
-For an **explicitly authorized four-Game-Changer exception**, use the separate
-folder `Bracket3.5+4GC/`. The validator and catalog recognize its cap of four.
-Ordinary `Bracket3.5/` stays capped at three; the exception does not allow mass
-land denial or extra-turn chains. This is a house rule, not an official bracket.
+There is no Bracket 3.5 any more (removed 2026-10-18). It existed to keep combos
+that the official Bracket 3 text discourages; under these rules those decks are
+simply Bracket 3, and they moved there. The four-Game-Changer exception went with it.
 
-Never silently exceed a bracket. If a requested card would break the cap, say so
-and offer the trade — e.g. adding Cyclonic Rift to a deck already at 3 Game
-Changers means cutting one of the existing three.
+Never silently exceed the cap. If a requested card would break it, say so and
+offer the trade — e.g. adding Cyclonic Rift to a deck already at 3 Game Changers
+means cutting one of the existing three. The same goes for a card on the mass
+land denial list: say it is out, and why.
 
 ### 2. Use the most powerful cards in the bracket — including the newest ones
 
@@ -134,13 +135,18 @@ evaluation a lot:
 
 ## Bracket quick reference
 
-| | B1 Exhibition | B2 Core | B3 Upgraded | B4 Optimized | B5 cEDH |
-|---|---|---|---|---|---|
-| Game Changers | 0 | 0 | **≤3** | ∞ | ∞ |
-| Mass Land Denial | no | no | no | yes | yes |
-| Chaining Extra Turns | no | no | no | yes | yes |
-| 2-Card Combos | no | no | **not before turn 6** | yes | yes |
-| Turns before a win | 9+ | 8+ | 6+ | 4+ | any |
+What this repo enforces, against the official guidance it comes from:
+
+| | Bracket 3 (ours) | Bracket 4 | Bracket 5 | Official Bracket 3 |
+|---|---|---|---|---|
+| Game Changers | **0-3, enforced** | ∞ | ∞ | ≤3 |
+| Mass Land Denial | **no, enforced** | yes | yes | no |
+| Chaining Extra Turns | allowed | yes | yes | no |
+| 2-Card Combos | allowed; use from turn 6 | yes | yes | not before turn 6 |
+| Turns before a win | 6+ | 4+ | any | 6+ |
+
+Brackets 1 and 2 are not used here. The full official text is in
+[commander-brackets-and-rules.md](commander-brackets-and-rules.md).
 
 **Game Changers are defined by Scryfall's `is:gamechanger` query** — that is the
 authoritative source, not any blog post. Currently **53 cards, last updated
@@ -176,9 +182,9 @@ owner's folder.
 ```
 zzwang/Bracket3/Zur-Voltron.txt
 zzwang/Bracket3/Lathril-Elves.txt
-zzwang/Bracket3.5/Krenko-Combo.txt
+zzwang/Bracket3/Krenko-Combo.txt
 ratdos/Bracket3/Obeka-Upkeep.txt
-digitalstealth/Bracket3.5/Shorikai-Prison.txt
+digitalstealth/Bracket3/Shorikai-Prison.txt
 ```
 
 The commander part is a short recognisable form of the name — first word usually
@@ -208,7 +214,12 @@ One `.txt` per deck, importable directly by a client that reads decklists.
 
 - `<count> <exact card name>`, one per line
 - Commander on line 1, **no blank line** after it
-- Alphabetised after the commander line
+- **Two commanders** (Partner, Partner with, Partner—Friends forever and other
+  `Partner—` qualities, Choose a Background, Doctor's companion): both go first,
+  on lines 1 and 2. Line 2 counts as a commander only when it is a legal partner
+  for line 1, so the validator and catalog never guess from the rest of the list
+  (a deck can run other partner-capable cards in its 98).
+- Alphabetised after the commander line(s)
 - **No tokens** — they are generated automatically, and token names don't resolve
   against a card database
 - Double-faced cards use the **front face only** (`Agadeem's Awakening`, not
@@ -460,7 +471,9 @@ about how the list loads in Tabletop Simulator:
 1. Exactly **100 cards** including the commander
 2. Every name **resolves on Scryfall** (catches typos that would fail import)
 3. Every card is **legal in Commander** — the 83 banned cards fail the deck
-4. Every card is inside the commander's **colour identity**
+4. Every card is inside the commanders' **colour identity**: line 1's, or
+   the union of a partner pair on lines 1 and 2. A partner left among the 98
+   gets a hint to move it to line 2
 5. **Game Changer count** within the bracket cap (inferred from folder name)
 6. **Singleton** — nonbasic duplicates require the card's own Oracle permission
    for unlimited copies; no repeated lines
@@ -661,16 +674,17 @@ Each tool above does one job. This is the order they compose in, for a human or
 Claude session working in an editor or terminal — the Discord bot follows the same
 sequence without launching a separate reviewing agent (see `AGENTS.md` below).
 
-1. **Seed the shell.** `new_deck.py "<commander>" -o public/Bracket3/<file>.txt`
+1. **Seed the shell.** `new_deck.py "<commander>" -o public/<owner>/Bracket3/<file>.txt`
    gets you a real, importable 100 cards in one command instead of typing 99 lines
    from memory. Expect it to land 4-11 Game Changers, not 3 — it has no bracket
    awareness, it just composes EDHREC's most-played build.
 
-2. **Cut to the cap — then audit the judgment calls.** The GC report tells you
-   what to drop for the Bracket 3 cap of 3. `validate_deck.py` rejects the mass
-   land-denial cards explicitly named in `commander-brackets-and-rules.md`, but
-   the list is only a floor: check unlisted denial patterns and **two-card
-   lockouts** by hand against the same rules.
+2. **Cut to the cap.** The GC report tells you what to drop for the Bracket 3
+   cap of 3, and `validate_deck.py` rejects any mass land denial named in
+   `commander-brackets-and-rules.md` that the seed brought along. Those are the
+   only two hard rules. Keep the combos; the guide says to use them from turn 6.
+   A card that denies lands like the listed ones but is not on the list goes on
+   the list, not quietly into or out of a deck.
 
 3. **Tune for power creep.** `find_cards.py "<query>" --since 2025 --no-gc` for a
    specific mechanic you're hunting; `find_inspiration.py <deck> --new` or
@@ -721,8 +735,7 @@ sequence without launching a separate reviewing agent (see `AGENTS.md` below).
    count Game Changers, that's a 10-minute web-search detour for something
    `validate_deck.py` answers in milliseconds. Ask only for what no script can
    decide: does the deck deliver the brief, can it actually win, which of your
-   own symmetric stax pieces hurt you more than the table, and rules judgment
-   calls (MLD, lockouts) as a check against step 2.
+   own symmetric stax pieces hurt you more than the table.
 
 **The Discord bot also writes the guide, reviews catalog placement and names a
 tier (its sandbox cannot save either map, so it hands both off). It does not run
@@ -738,7 +751,7 @@ from a genuinely separate reviewing context, which the bot never has.
 | 100 cards, names resolve, colour identity, GC cap, singleton | `validate_deck.py` | yes |
 | inclusion, synergy, new printings | `find_inspiration.py`, `find_cards.py` | yes |
 | named mass land denial | `validate_deck.py` | yes |
-| unlisted land denial, two-card lockouts | you, against `commander-brackets-and-rules.md` | no |
+| a combo's turn-6 note in the guide | you | no |
 | does each card's trigger match the theme | you | no |
 | catalog primary and secondary categories | you, against `deck-catalog-strategies.md` | fixed IDs and coverage of every deck; fit needs review |
 | whether the deck can actually win | you, or `ask_codex.py` (human sessions only) | no |
@@ -815,7 +828,7 @@ mtg/
 │   └── app.js                 hover preview, lightbox, gallery, copy button
 ├── docs/                    GENERATED SITE — published, do not hand-edit
 │   ├── index.html             rebuilt by build_site.py from the two above
-│   ├── <Bracket>/<Deck>.html
+│   ├── <owner>/<Bracket>/<Deck>.html
 │   ├── img/*.webp             committed card thumbnails
 │   └── mana/*.svg             Scryfall's official mana symbols
 ├── bot/                     the harness — OUTSIDE the workspace it drives
@@ -826,7 +839,7 @@ mtg/
 ├── public/                  every deck, one folder per owner
 │   └── <user>/                that user's decks; the builder's only writable tree
 │       ├── Bracket3/            while it works for them
-│       ├── Bracket3.5/
+│       ├── Bracket4/ Bracket5/   only where a deck is uncapped
 │       └── AGENTS.md            GENERATED, 0444 — edit AGENTS_MD in
 │                                scripts/build_agents.py, never this file
 ├── frontend/redirects.json  old deck URLs -> where each deck lives now

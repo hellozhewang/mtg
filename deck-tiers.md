@@ -7,8 +7,8 @@ and every deck name carries its tier mark.
 **A tier is not a bracket.** The bracket folder is a rules ceiling: what the deck
 is allowed to run. The tier is a judgment of what the finished list actually does
 at a four-player table: how fast it wins, how reliably, and through how much
-interaction. Two Bracket 3.5 decks can be tiers apart, and a Bracket 3 deck can
-outrank a 3.5 one.
+interaction. Two Bracket 3 decks can be tiers apart, and a Bracket 3 deck can
+outrank a Bracket 4 one.
 
 ## The tiers
 
@@ -16,7 +16,7 @@ outrank a 3.5 one.
 |---|---|---|
 | **GOD** | cEDH. Full fast mana (moxen, Mana Vault, rituals), free counterspells, a deep tutor suite and compact wins, led by a recognised cEDH commander. Built for Bracket 5. | turns 1-4, through interaction |
 | **SS** | Fringe cEDH. Uncapped Game Changers: fast mana (Chrome Mox, Mox Diamond, Mana Vault) plus 8 or more tutors aimed at redundant game-ending lines or a hard lock. Bracket 4 or 5. | turns 3-6 |
-| **S** | The ceiling of a three-Game-Changer deck. The commander is a combo piece or a must-answer engine; several compact wins; four or more tutors that reach them. A cEDH commander's core combo kept inside the cap lands here. | turns 5-7 |
+| **S** | The ceiling of a three-Game-Changer deck. The commander is a combo piece or a must-answer engine; several compact wins; four or more tutors that reach them. A cEDH commander's core combo kept inside the cap lands here. | turns 6-7: assembled by 5, used from 6 |
 | **A** | Strong. A combo deck with less redundancy, fewer tutors or a slower shell, or a top engine deck without combos that still kills reliably. The table's archenemy. | turns 6-8 |
 | **B** | Solid Bracket 3. A coherent plan with enough ramp, draw and answers, and a good commander, but no compact win. | turns 7-9 |
 | **C** | Fair. Works, but slow, commander-dependent, top-heavy or light on interaction; folds to one sweeper or one removal spell on the commander. | turn 9 or later |
@@ -45,7 +45,7 @@ the folder it sits in.
      as compact wins only when the lock actually stops the table.
    - **GOD** needs Bracket 5 construction: fast mana, free counterspells and
      compact wins together.
-   - A deck capped at three Game Changers (Bracket 3 or 3.5) tops out at **S**.
+   - A deck capped at three Game Changers (Bracket 3) tops out at **S**.
      **SS** needs uncapped fast mana and many tutors behind redundant compact
      wins or a hard lock.
    - Fewer than about four tutors that reach the wins usually means **A**

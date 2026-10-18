@@ -13,8 +13,11 @@ Checks (all must pass, see README.md):
   1. exactly 100 cards including the commander
   2. every name resolves on Scryfall  -- catches typos that would fail import
   3. every card is LEGAL in Commander -- catches the 83 banned cards
-  3b. no NAMED mass land denial in Brackets 1-3 (see commander-brackets-and-rules.md)
-  4. every card is inside the commander's colour identity
+  3b. no NAMED mass land denial below Bracket 4 (see commander-brackets-and-rules.md)
+  4. every card is inside the commanders' colour identity. A deck has one
+     commander on line 1, or two when line 2 is a legal partner for it
+     (Partner, Partner with, Partner—<quality>, Friends forever, Choose a
+     Background, Doctor's companion); the pair's identity is the union
   5. Game Changer count within the bracket cap
   6. singleton, except Oracle text allowing unlimited copies; no repeated lines
   7. a pinned printing (`1 Sol Ring (SLD) 249`) exists and is that card
@@ -53,7 +56,7 @@ def denial_cards() -> set[str]:
     across these cards is genuinely un-matchable by pattern: Winter Orb says
     "more than one LAND", Static Orb says "more than two PERMANENTS", Blood Moon
     says nothing about untapping at all. A regex that caught the first missed the
-    second -- which is exactly how Static Orb reached a Bracket 3.5 deck.
+    second -- which is exactly how Static Orb once reached a Bracket 3 list.
 
     The file calls these "named examples", so this is a floor, not a ceiling. It
     catches the ones that actually turn up in EDHREC seeds.
@@ -76,10 +79,6 @@ def gc_cap(path: Path, override: int | None) -> int | None:
     if override is not None:
         return override
     folder = path.parent.name.lower()
-    # An explicitly named house exception changes only the GC allowance.
-    # Keep a finite cap so the existing mass-land-denial checks still apply.
-    if folder == "bracket3.5+4gc":
-        return 4
     if folder.startswith("bracket"):
         tier = folder.replace("bracket", "").strip()
         if tier.startswith(("4", "5")):
@@ -125,11 +124,79 @@ def allows_unlimited_copies(card: dict) -> bool:
                 in (card.get("oracle_text") or ""))
 
 
+# ---------- commanders: one, or a legal pair ----------
+
+_PARTNER_WITH = re.compile(r"^Partner with ([^(]+?)\s*(?:\(|$)")
+_PARTNER_QUALITY = re.compile(r"^Partner\s*—\s*([^(]+?)\s*(?:\(|$)")
+
+
+def pairing(card: dict) -> tuple[str, str] | None:
+    """The card's two-commander ability as (kind, detail), or None.
+
+    Read from the Oracle text, one ability per line, because Scryfall's
+    `keywords` tags every variety simply "Partner" ("Partner with" and
+    "Partner—Friends forever" alike) and cannot say which cards may pair. A
+    card can also merely mention the word: Akroma, Vision of Ixidor's combat
+    ability lists partner among the keywords it rewards, and only her own
+    "Partner" line makes her a partner.
+    """
+    faces = card.get("card_faces") or []
+    text = card.get("oracle_text") or (faces[0].get("oracle_text", "") if faces else "")
+    for line in (l.strip() for l in text.split("\n")):
+        if line == "Partner" or line.startswith("Partner ("):
+            return "partner", ""
+        if m := _PARTNER_WITH.match(line):
+            return "with", m.group(1).strip()
+        if m := _PARTNER_QUALITY.match(line):
+            return "quality", m.group(1).strip().lower()
+        if line == "Friends forever" or line.startswith("Friends forever ("):
+            return "quality", "friends forever"             # the older printing
+        if line.startswith("Choose a Background"):
+            return "background", ""
+        if line.startswith("Doctor's companion"):
+            return "companion", ""
+    return None
+
+
+def _subtypes(card: dict) -> str:
+    front = (card.get("type_line") or "").split(" // ")[0]
+    return front.split("—", 1)[1] if "—" in front else ""
+
+
+def partners(a: dict, b: dict) -> bool:
+    """Can `a` and `b` be a deck's two commanders? (Comprehensive Rules 702.124)"""
+    pa, pb = pairing(a), pairing(b)
+    if pa and pb and pa[0] == pb[0] and pa[0] in ("partner", "quality"):
+        return pa[1] == pb[1]
+    if pa and pb and pa[0] == pb[0] == "with":
+        # Each must name the other: Pir pairs with Toothy and nothing else.
+        return (pa[1] == (b.get("name") or "").split(" // ")[0]
+                and pb[1] == (a.get("name") or "").split(" // ")[0])
+    for x, px, y in ((a, pa, b), (b, pb, a)):
+        if px and px[0] == "background" and "Background" in _subtypes(y):
+            return True
+        if (px and px[0] == "companion" and "Legendary" in (y.get("type_line") or "")
+                and {"Time", "Lord", "Doctor"} <= set(_subtypes(y).split())):
+            return True
+    return False
+
+
+def commanders(deck: deckfile.Deck, cards: dict[str, dict]) -> list[str]:
+    """The deck's commanders: line 1, plus line 2 when it is a legal partner for
+    line 1. A partner deck lists both commanders first, then the rest
+    alphabetised, so line 2 of an ordinary deck is just its first card."""
+    names = [e.name for e in deck.entries[:2]]
+    if (len(names) == 2 and names[0] in cards and names[1] in cards
+            and partners(cards[names[0]], cards[names[1]])):
+        return names
+    return names[:1]
+
+
 def check(deck: deckfile.Deck, cards: dict[str, dict], missing: list[str],
           cap: int | None) -> tuple[list[str], set[str], list[str]]:
     """Return (problems, colour_identity, game_changers)."""
-    cmd = cards.get(deck.commander)
-    identity = set(cmd.get("color_identity", [])) if cmd else set()
+    leaders = commanders(deck, cards)
+    identity = {c for name in leaders for c in cards.get(name, {}).get("color_identity", [])}
 
     # Legality comes from each card's own `legalities.commander`, not a list
     # transcribed into this repo. Wizards updates the ban list a few times a year
@@ -161,6 +228,14 @@ def check(deck: deckfile.Deck, cards: dict[str, dict], missing: list[str],
     if off_colour:
         problems.append("off-colour: " + ", ".join(
             f"{n}[{''.join(c['color_identity'])}]" for n, c in off_colour))
+        # The usual cause in a partner deck: the second commander sits among the
+        # 98 instead of on line 2, so only line 1's colours were counted.
+        lead = cards.get(deck.commander)
+        if len(leaders) == 1 and lead and pairing(lead):
+            mates = [n for n in deck.names[1:] if n in cards and partners(lead, cards[n])]
+            if mates:
+                problems.append(f"{' or '.join(mates)} can partner {deck.commander}: "
+                                f"if it is the second commander, put it on line 2")
     if dupes := [e for e in deck.duplicates()
                  if not allows_unlimited_copies(cards.get(e.name, {}))]:
         problems.append("illegal duplicates: " +
@@ -257,7 +332,7 @@ def report(deck: deckfile.Deck, cards: dict[str, dict], problems: list[str],
 
     ok = not problems
     print(f"{'PASS' if ok else 'FAIL'}  {label}")
-    print(f"      {deck.commander}  |  identity {''.join(sorted(identity)) or 'colourless'}"
+    print(f"      {' + '.join(commanders(deck, cards))}  |  identity {''.join(sorted(identity)) or 'colourless'}"
           f"  |  {deck.total} cards  |  {lands} lands"
           f"{f' (+{flex} MDFC)' if flex else ''}  |  avg MV {avg:.2f}")
     print(f"      Game Changers {len(gcs)}"

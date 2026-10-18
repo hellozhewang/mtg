@@ -239,7 +239,7 @@ def cmd_random(arg: str, user: str | None = None) -> list[str]:
 
     The optional argument narrows the draw to decks whose filename, commander,
     bracket folder, catalog category or power tier contains it, compared the same
-    forgiving way as `!deck`: `kinnan`, `3.5`, `combo`, `aggro`, `s tier`,
+    forgiving way as `!deck`: `kinnan`, `bracket 4`, `combo`, `aggro`, `s tier`,
     or an owner's name (`ratdos`).
     """
     decks = _decks()

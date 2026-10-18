@@ -72,8 +72,9 @@ Phrase it as a choice, e.g. "run `/deck-print deck: zur`, or paste
 `!deck-print deck: zur`". Quote the option name `deck:` exactly — it is required,
 and it takes a fragment, so "zur", "yuriko" and "winota" all resolve without the
 full filename. `/deck-random` picks a random public deck and prints its link and
-list; its optional `filter:` matches a name, bracket, category or tier (`kinnan`,
-`3.5`, `combo`, `s tier`), and the `!` form also takes the filter bare.
+list; its optional `filter:` matches a name, bracket, category, tier or owner
+(`kinnan`, `bracket 4`, `combo`, `s tier`, `ratdos`), and the `!` form also takes
+the filter bare.
 `/deck-list` and `/deck-repo` take no options.
 
 **Never quote a bare `!deck` or `!decks` at a user.** Those look similar but are
@@ -146,8 +147,8 @@ So `Bracket3/Winota-Attacks.txt` in this folder becomes
 Every deck's page starts with its owner's name, so another user's deck you
 mention is under theirs: `../ratdos/Bracket3/Obeka-Upkeep.txt` is
 `https://hellozhewang.github.io/mtg/ratdos/Bracket3/Obeka-Upkeep.html`.
-Substitute the real bracket folder and filename — `Bracket3.5` works unchanged,
-and the `Commander-Theme.txt` convention means names never need URL-escaping.
+Substitute the real bracket folder and filename; the `Commander-Theme.txt`
+convention means names never need URL-escaping.
 Share the deck page when the deck already existed before this conversation, and
 the catalog link when you have just created or edited one.
 
@@ -188,8 +189,8 @@ find candidates, then judge them on the bracket rules.
 folder, and the ONLY place you can write. Every deck you build goes here and is
 @OWNER@'s, credited to them on the catalog.
 
-    ./Bracket3/*.txt            bracket-legal decks (at most 3 Game Changers)
-    ./Bracket3.5/*.txt          deliberately break Bracket 3, by request
+    ./Bracket3/*.txt            every deck you build: 0-3 Game Changers, no mass
+                                land denial (see "The house rules" below)
 
 Decklists and their guides are the only things in here. Nothing else belongs in
 this directory. A deck needs a `Bracket*` folder; a list anywhere else is not a
@@ -214,18 +215,34 @@ writable:
     ../../deck-catalog-strategies.md    catalog placement and supported theme IDs
     ../../deck-tiers.md            the power tiers (GOD, SS, S, A, B, C, D, TRASH),
                                 how to place a deck, and anchor decks per tier
-    ../../commander-brackets-and-rules.md    bracket rules AND the definitions of
-                                Game Changers, Mass Land Denial, 2-Card Combos
+    ../../commander-brackets-and-rules.md    the house rules, the official bracket
+                                text, and the named mass land denial list
     ../../.cache/cards.db          Scryfall cache the tools read and write
     ../../bot/                     the harness that runs you. Never run it — that
                                 would start a second session inside this one.
 
 **Card-legality questions are answered by files, not by web search.** Before
-searching the web for whether something is a Game Changer, mass land denial, or a
-banned two-card combo, read `../../commander-brackets-and-rules.md` — the definitions
-and the caught/not-caught card lists are already in there. Use web search for what
-those files cannot know: whether a card exists, what a new set printed, current
-bans.
+searching the web for whether something is a Game Changer or mass land denial,
+read `../../commander-brackets-and-rules.md` — the house rules and the
+caught/not-caught card lists are already in there, and `find_cards.py --gc-only`
+lists the Game Changers. Use web search for what those files cannot know: whether
+a card exists, what a new set printed, current bans.
+
+## The house rules
+
+Every deck you build is Bracket 3, and Bracket 3 here has exactly two hard rules,
+both checked by `validate_deck.py` on every run:
+
+  * **0 to 3 Game Changers.**
+  * **No mass land denial**: none of the cards the rules file names.
+
+Nothing else is a deckbuilding restriction. **Two-card combos are welcome**,
+infinite or lock: the only expectation is that a player does not use one before
+turn 6, which is about how the game is played, not what the list contains. Say
+so in the deck's guide whenever it has one. Extra-turn effects are allowed too.
+There is no Bracket 3.5 any more; a deck that "breaks Bracket 3" with combos is
+simply a Bracket 3 deck. If a card denies lands the way the listed ones do but is
+missing from the list, do not add it: say so, so the list can be updated.
 
 Writing anywhere outside your working directory fails with "operation not
 permitted". That is deliberate. Do not retry, work around it, or try to escalate —
@@ -383,11 +400,9 @@ cutting basics safe.
    the section above.) Seed one: `new_deck.py "<commander>" -o
    <path>.txt`. Expect 4-11 Game Changers, not 3 — it has no bracket awareness, it
    just composes EDHREC's most-played build. You will always need to cut.
-2. **Cut to the cap, and check what no script checks.** The GC report says what
-   to drop for Bracket 3's cap of 3. While cutting, check **mass land denial** and
-   **two-card lockouts** against `../../commander-brackets-and-rules.md` by
-   reasoning, not by running anything — `validate_deck.py` only checks the GC
-   count, not these two.
+2. **Cut to the cap.** The GC report says what to drop for Bracket 3's cap of 3,
+   and `validate_deck.py` rejects any named mass land denial the seed brought
+   along. Combos stay: see "The house rules" above.
 3. **Tune for power creep.** `find_cards.py --since 2025 --no-gc` for a specific
    mechanic, `find_inspiration.py <deck> --new`/`--trending` for a lower-effort
    pass on what's already catching on with this commander.
@@ -476,8 +491,8 @@ Use them for every infinite combo, and for tutor lines that say WHAT to fetch an
 WHEN: one row per sensible target, each with the situation that calls for it.
 Every card in such a row must be in the decklist, same as any other row.
 
-**Read `Bracket3.5/Shorikai-Prison.guide` before you write your first one.** It is
-the model, and these are its rules:
+**Read `../zzwang/Bracket3/Shorikai-Prison.guide` before you write your first
+one.** It is the model, and these are its rules:
 
   * Open with the ONE thing that decides games and that a new pilot gets wrong.
     Shorikai's is that the commander is a Vehicle, not a creature, so the
@@ -491,6 +506,8 @@ the model, and these are its rules:
   * Name real interactions between specific cards, and only cards that are both
     actually in the ninety-nine.
   * Always end with an opening-hand and sequencing section.
+  * If the deck has a two-card combo, say in that section that it waits until
+    turn 6, and what the deck does before then.
   * Roughly 30 to 60 rows — long enough to cover the plan, short enough to read.
 
 **Every card you name must be in the decklist.** Check the `.txt` before writing
@@ -582,7 +599,9 @@ with `find_cards.py` instead of guessing — a hallucinated name fails to import
 which is the entire reason validation exists.
 
 Decklist format: `<count> <exact card name>`, one per line, commander on line 1 with
-no blank line after it, alphabetised below that, no tokens, double-faced cards by
+no blank line after it; with two commanders (Partner, Partner with, a `Partner—`
+quality, Choose a Background, Doctor's companion), the second goes on line 2.
+Everything else alphabetised below that, no tokens, double-faced cards by
 front face only, exactly 100 cards counting the commander.
 
 A line may end with a pinned printing, `1 Sol Ring (SLD) 249`: the set code in

@@ -37,11 +37,11 @@ class Catalog(HTMLParser):
             self.stack.pop()
 
 
-def deck(stem, themes, owner="alice", bracket="Bracket3.5", tier=None):
+def deck(stem, themes, owner="alice", bracket="Bracket4", tier=None):
     return SimpleNamespace(
         stem=stem, themes=themes, created_label="", tier=tier,
         modified=0, modified_label="", key=f"{owner}/{stem}",
-        bracket=bracket, label=build_site.bracket_label(bracket), commander="Test Commander",
+        bracket=bracket, label=build_site.bracket_label(bracket), commander="Test Commander", commanders=["Test Commander"],
         href=f"{owner}/{bracket}/{stem}.html",
         art_url="", art_card={}, author=owner, colours=[], total=100,
         lands=35, avg_mv=2.4, gcs=[], cap=3,
@@ -113,14 +113,14 @@ class DeckThemeTests(unittest.TestCase):
                                        [deck("Krenko-Combo", ("combo",), owner="ratdos")],
                                        "https://example.test", Mana())
         (_, attrs), = Catalog(page).tiles
-        self.assertEqual(attrs["href"], "ratdos/Bracket3.5/Krenko-Combo.html")
+        self.assertEqual(attrs["href"], "ratdos/Bracket4/Krenko-Combo.html")
         self.assertIn("ratdos", attrs["data-search"])
         self.assertIn('<span class="tile-author">by ratdos</span>', page)
         self.assertNotIn("private", page.lower())
 
     def test_default_bracket_list_and_collapsible_category_destinations(self):
         decks = [deck("Fast-Combo", ("combo",), bracket="Bracket5"),
-                 deck("Goblin-Swarm", ("gowide",), bracket="Bracket3.5"),
+                 deck("Goblin-Swarm", ("gowide",), bracket="Bracket4"),
                  deck("Engine-Combo", ("combo",), bracket="Bracket3"),
                  deck("Other-Combo", ("combo",), bracket="Bracket3")]
         page = build_site.render_index(frontend.load(ROOT / "frontend"), decks,
@@ -136,7 +136,7 @@ class DeckThemeTests(unittest.TestCase):
         self.assertTrue(all("open" in groups[0] for groups in category_groups))
         self.assertEqual([(groups[0]["data-theme"], groups[1]["data-bracket"])
                           for groups in category_groups if len(groups) == 2],
-                         [("gowide", "Bracket3.5"), ("combo", "Bracket3"),
+                         [("gowide", "Bracket4"), ("combo", "Bracket3"),
                           ("combo", "Bracket5")])
         placements = []
         for groups, attrs in catalog.tiles:
@@ -148,7 +148,7 @@ class DeckThemeTests(unittest.TestCase):
         self.assertEqual(placements, [
             ("combo", "Bracket3", "alice/Bracket3/Engine-Combo.html"),
             ("combo", "Bracket3", "alice/Bracket3/Other-Combo.html"),
-            ("gowide", "Bracket3.5", "alice/Bracket3.5/Goblin-Swarm.html"),
+            ("gowide", "Bracket4", "alice/Bracket4/Goblin-Swarm.html"),
             ("combo", "Bracket5", "alice/Bracket5/Fast-Combo.html"),
         ])
         # three list brackets, five category sections, one Unrated tier section
@@ -184,8 +184,8 @@ class DeckThemeTests(unittest.TestCase):
         page = build_site.render_index(frontend.load(ROOT / "frontend"), [mine, theirs],
                                        "https://example.test", Mana())
         tiles = {attrs["href"]: attrs["data-themes"] for _, attrs in Catalog(page).tiles}
-        self.assertEqual(tiles, {"alice/Bracket3.5/Shared-Deck.html": "aggro",
-                                 "bob/Bracket3.5/Shared-Deck.html": "control"})
+        self.assertEqual(tiles, {"alice/Bracket4/Shared-Deck.html": "aggro",
+                                 "bob/Bracket4/Shared-Deck.html": "control"})
 
 
 if __name__ == "__main__":

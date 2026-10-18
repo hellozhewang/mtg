@@ -1,4 +1,5 @@
 1 Virtus the Veiled
+1 Gorm the Great
 1 Abrupt Decay
 1 Access Tunnel
 1 Arcane Signet
@@ -33,7 +34,6 @@
 1 Formidable Speaker
 1 Glissa Sunslayer
 1 Gonti, Night Minister
-1 Gorm the Great
 1 Guardian Augmenter
 1 Heroic Intervention
 1 Hooded Blightfang

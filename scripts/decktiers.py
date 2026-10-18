@@ -2,8 +2,8 @@
 
 A bracket is a rules ceiling (what the deck may run). A tier is a judgment of
 what the finished list does at a four-player table: how fast it wins, how
-reliably, and through how much interaction. Two Bracket 3.5 decks can sit tiers
-apart, and a Bracket 3 deck can outrank a 3.5 one.
+reliably, and through how much interaction. Two Bracket 3 decks can sit tiers
+apart, and a Bracket 3 deck can outrank a Bracket 4 one.
 
 The rubric, anchor decks and placement checklist live in deck-tiers.md. Every
 deck's tier lives in frontend/deck-tiers.json, keyed `<owner>/<Deck>`. There is
@@ -41,7 +41,7 @@ TIERS = {
                "with fast mana and many tutors aimed at redundant game-ending lines."),
     "S": Tier("S", "S tier",
               "The ceiling of a three-Game-Changer deck. Several compact wins, enough "
-              "tutors to find them, and a kill on turns 5-7."),
+              "tutors to find them; assembled by turn 5 and used from turn 6."),
     "A": Tier("A", "A tier",
               "Strong. A combo deck with less redundancy, or a top engine deck that "
               "reliably kills on turns 6-8. The table's archenemy."),

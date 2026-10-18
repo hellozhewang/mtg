@@ -1,3 +1,29 @@
+# Commander brackets and our house rules
+
+## House rules — what this repo enforces
+
+**Our hard rules are only the ones a script can check every time** (owner
+decision, 2026-10-18). `validate_deck.py` checks both on every deck:
+
+| | Bracket 3 (every deck, unless its folder says otherwise) | Bracket 4 / 5 |
+|---|---|---|
+| **Game Changers** | **0–3** | uncapped |
+| **Mass Land Denial** | **none of the cards named under "Caught by it" below** | allowed |
+
+Nothing else in the official text below is a deckbuilding rule here:
+
+- **2-Card Combos are allowed**, infinite or lock. The table expectation is that
+  nobody uses one before turn 6; a deck that has one says so in its guide.
+- **Chaining Extra Turns is allowed.**
+
+There is no Bracket 3.5 (it held combo decks until 2026-10-18; under these rules
+they are plain Bracket 3) and no four-Game-Changer exception.
+
+The rest of this file is WotC's official bracket text and the definitions behind
+it, kept for reference and for the land denial list the validator reads.
+
+---
+
 # Commander Brackets `beta` (Oct 25)
 
 **This is a communication tool to guide pregame conversations about game expectations and player intent.**
@@ -110,8 +136,9 @@
 
 ## Definitions
 
-The table above says what is restricted. This section says what the restricted
-categories actually **mean**, so no card judgement needs a web search.
+The official table above says what WotC restricts; the house rules at the top say
+which of those this repo enforces. This section says what the categories actually
+**mean**, so no card judgement needs a web search.
 
 ### Game Changers
 
@@ -136,7 +163,10 @@ WotC's definition — cards that
 > produced by four or more lands per player** without replacing them.
 
 Named examples: **Armageddon, Ruination, Sunder, Winter Orb, Blood Moon.**
-Banned in Brackets 1–3. Note this is broader than land *destruction*: the
+Banned in Brackets 1–3, and **enforced here**: `validate_deck.py` rejects every
+card in the "Caught by it" list below (it reads the list from this file, so keep
+its format). A card that belongs on the list goes on the list; that is how the
+rule stays deterministic. Note this is broader than land *destruction*: the
 "keep lands tapped" and "change what mana is produced" clauses pull in whole
 stax and prison staples that read as fair.
 
@@ -161,20 +191,24 @@ Armageddon · Ravages of War · Ruination · Sunder · Obliterate ·
 
 Taking repeated or looped extra turns — Time Warp plus a way to recur it, or any
 Nexus-of-Fate-style engine. A single extra turn effect is fine; a deck built to
-take them back to back is not. Banned in Brackets 1–3.
+take them back to back is not. Banned in Brackets 1–3 officially; **allowed by our
+house rules**.
 
 ### 2-Card Combos
 
 Two cards that together **end the game, lock the table out, or go infinite**.
-Bracket 2 forbids them outright; Bracket 3 forbids ones that come together
-"cheaply and in about the first six or so turns." Intent matters — a loop nobody
+Officially, Bracket 2 forbids them outright and Bracket 3 forbids ones that come
+together "cheaply and in about the first six or so turns." **Our house rules allow
+them in any deck; just do not use one before turn 6.** The lockouts below are
+listed so a guide can name them, not to keep them out. Intent matters — a loop nobody
 built toward that emerges mid-game is not a violation.
 
 **Lockout counts, not just infinite kills.** Prison decks trip this most often:
 
 - Knowledge Pool + any one-spell-per-turn effect (Rule of Law, Arcane
   Laboratory, Eidolon of Rhetoric, Archon of Emeria) — nobody casts anything
-  again, ever. This is why Knowledge Pool stays out of a Bracket 3 prison deck.
+  again, ever. Allowed by our house rules; assemble it from turn 6, and expect
+  the table to treat you as the archenemy once it is on the board.
 - Knowledge Pool + Teferi, Mage of Zhalfir — same lock.
 - Possibility Storm + Rule of Law — same lock.
 

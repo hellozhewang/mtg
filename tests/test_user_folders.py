@@ -37,7 +37,7 @@ class Collection:
         self.public, self.frontend = base / "public", base / "frontend"
         write(self.public / "alice" / "Bracket3" / "Zur-Voltron.txt", "1 Zur the Enchanter\n99 Island\n")
         write(self.public / "alice" / "Bracket3" / "Shared-Deck.txt", "1 Alice Commander\n99 Island\n")
-        write(self.public / "bob" / "Bracket3.5" / "Wort-Goblins.txt", "1 Wort, Boggart Auntie\n99 Mountain\n")
+        write(self.public / "bob" / "Bracket4" / "Wort-Goblins.txt", "1 Wort, Boggart Auntie\n99 Mountain\n")
         write(self.public / "bob" / "Bracket3" / "Shared-Deck.txt", "1 Bob Commander\n99 Swamp\n")
         # Not decks: a list outside any bracket folder, and the builder's instructions.
         write(self.public / "alice" / "notes.txt", "1 Not A Deck\n")
@@ -63,7 +63,7 @@ class FolderTests(unittest.TestCase):
             found = deckfile.discover_collection(c.public)
             self.assertEqual([p.relative_to(c.public).as_posix() for p in found],
                              ["alice/Bracket3/Shared-Deck.txt", "alice/Bracket3/Zur-Voltron.txt",
-                              "bob/Bracket3/Shared-Deck.txt", "bob/Bracket3.5/Wort-Goblins.txt"])
+                              "bob/Bracket3/Shared-Deck.txt", "bob/Bracket4/Wort-Goblins.txt"])
 
     def test_a_decks_page_starts_with_its_owner(self):
         with Collection() as c:
@@ -75,7 +75,7 @@ class FolderTests(unittest.TestCase):
         self.assertEqual(workspace.owner_name("RatDos"), "ratdos")
         self.assertEqual(workspace.owner_name("em0k1ller"), "em0k1ller")
         for name in ("", "../x", "a/b", ".hidden", "img", "mana", "tts", "private",
-                     "Bracket3", "bracket3.5", "x" * 33, "two words"):
+                     "Bracket3", "bracket4", "x" * 33, "two words"):
             with self.subTest(name=name):
                 self.assertIsNone(workspace.owner_name(name))
 
@@ -113,7 +113,7 @@ class CommandTests(unittest.TestCase):
                 self.assertIn("by bob)", header)
                 self.assertIn("/bob/Bracket", header)
             header, _ = commands.handle("!random wort")
-            self.assertIn("Bracket 3.5, S tier, by bob", header)
+            self.assertIn("Bracket 4, S tier, by bob", header)
 
     def test_a_local_only_category_is_not_a_filter(self):
         # Zur-Voltron is tagged goblins; only Wort-Goblins matches, by its name.
@@ -137,12 +137,12 @@ class PageTests(unittest.TestCase):
                 return ""
 
         with Collection() as c:
-            path = c.public / "bob" / "Bracket3.5" / "Wort-Goblins.txt"
+            path = c.public / "bob" / "Bracket4" / "Wort-Goblins.txt"
             info = build_site.DeckInfo(path, c.public, Query())
             page = build_site.render_deck(frontend.load(ROOT / "frontend"), info, [info],
                                           "https://github.com/owner/repo", Mana())
             self.assertIn("https://raw.githubusercontent.com/owner/repo/main/public/bob/"
-                          "Bracket3.5/Wort-Goblins.txt", page)
+                          "Bracket4/Wort-Goblins.txt", page)
             self.assertIn("../../style.css", page)
 
     def test_old_urls_redirect_to_the_owner_folder(self):
@@ -150,7 +150,7 @@ class PageTests(unittest.TestCase):
             out, mapping = Path(tmp) / "docs", Path(tmp) / "redirects.json"
             mapping.write_text(json.dumps({
                 "Bracket3/Zur-Voltron.html": "alice/Bracket3/Zur-Voltron.html",
-                "private/Bracket3.5/Gone.html": "alice/Bracket3.5/Gone.html",
+                "private/Bracket4/Gone.html": "alice/Bracket4/Gone.html",
                 "alice/Bracket3/Taken.html": "alice/Bracket3/Zur-Voltron.html"}))
             live = [type("D", (), {"href": "alice/Bracket3/Zur-Voltron.html", "stem": "Zur-Voltron"})]
             taken = {out / "alice/Bracket3/Taken.html": "a real page"}
@@ -167,7 +167,7 @@ class GitignoreTests(unittest.TestCase):
                               capture_output=True).returncode == 0
 
     def test_decks_are_tracked(self):
-        for path in ("public/alice/Bracket3/Foo.txt", "public/alice/Bracket3.5/Foo.guide",
+        for path in ("public/alice/Bracket3/Foo.txt", "public/alice/Bracket4/Foo.guide",
                      "frontend/deck-themes.json", "frontend/redirects.json"):
             with self.subTest(path=path):
                 self.assertFalse(self.ignored(path))

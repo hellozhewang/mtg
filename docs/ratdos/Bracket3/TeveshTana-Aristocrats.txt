@@ -1,4 +1,5 @@
 1 Tevesh Szat, Doom of Fools
+1 Tana, the Bloodsower
 1 Abrupt Decay
 1 Anger
 1 Arcane Signet
@@ -81,7 +82,6 @@
 1 Sylvan Library
 1 Taiga
 1 Takenuma, Abandoned Mire
-1 Tana, the Bloodsower
 1 Tendershoot Dryad
 1 Thornspire Verge
 1 Three Visits

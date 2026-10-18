@@ -1,0 +1,109 @@
+Krenko, Tin Street Kingpin makes Goblins equal to its POWER every time it attacks — after it gets its +1/+1 counter. So every lord, equipment and pump in this deck is also a token spell: Stoneforge Masterwork alone adds +1 for every other Goblin you control, and ten Goblins become ten more each attack. Attack with Krenko every turn, and give it extra combats.
+Two rules decide most games. Krenko has to attack to do anything, so haste and protection come before payoffs. And Lightning Greaves gives shroud, which stops YOUR equip abilities too — put Swiftfoot Boots on Krenko, and save Greaves for creatures you won't need to target.
+
+# The commander
+Krenko, Tin Street Kingpin :: three mana. Each attack: a +1/+1 counter, then Goblins equal to its power. Order your attack triggers so Shared Animosity resolves first — its bonus counts toward the Goblins Krenko makes.
+Swiftfoot Boots :: hexproof and haste for Krenko. Hexproof only stops opponents, so you can still equip everything else onto it.
+Mithril Coat :: flash, indestructible, and it attaches itself to Krenko when it enters — the answer to a destroy spell or lethal damage in response. It does nothing against exile, bounce or sacrifice.
+Commander's Plate :: +3/+3 and protection from every colour except red: three more Goblins per attack, and most blockers can't touch it.
+Goblin Chirurgeon :: sacrifice a Goblin to regenerate Krenko through a destroy effect — and a free sacrifice outlet for the combos.
+
+# Infinite combos — from turn 6
+Aggravated Assault + Sword of Feast and Famine :: the equipped creature connects, the Sword untaps your lands, and five of that mana activates Assault for another combat. Unlimited combats — and Krenko grows and makes more Goblins in every one. Put the Sword on something that will get through: Krenko wearing Commander's Plate is ideal.
+Aggravated Assault + Krenko, Tin Street Kingpin + Skirk Prospector :: no Sword needed. Each extra combat Krenko makes Goblins; in the main phase after it, sacrifice five to Skirk Prospector for {R}{R}{R}{R}{R} and activate Assault again. Once Krenko's power is 5 or more, every combat pays for the next. Phyrexian Altar works too; Ashnod's Altar can't pay the {R}{R} on its own. Combat mana empties, so sacrifice in the main phase.
+Kiki-Jiki, Mirror Breaker + Combat Celebrant :: Kiki copies Celebrant; the hasty copy attacks and exerts, untapping Kiki and adding a combat; in that combat Kiki copies Celebrant again. Unlimited combats, and Krenko attacks in each.
+Kiki-Jiki, Mirror Breaker + Zealous Conscripts :: Kiki copies Conscripts, and the copy untaps Kiki — target Kiki itself. Unlimited hasty 3/3s; Impact Tremors, Purphoros and General Kreat turn them into damage.
+Kiki-Jiki, Mirror Breaker + Lightning Crafter + Goblin Bombardment :: Kiki copies the Crafter; the copy champions Kiki, taps for 3 damage, and is sacrificed to Goblin Bombardment; Kiki returns untapped with haste and repeats. Unlimited 3-damage shots. Skirk Prospector, Goblin Chirurgeon and both Altars also work as the outlet. When the original Crafter enters you must exile another Goblin or Shaman (champion) or sacrifice it.
+Kiki-Jiki, Mirror Breaker + Thornbite Staff + Goblin Bombardment :: the Staff attaches itself to Kiki when Kiki enters after it (equip costs {4} otherwise). Copy any nonlegendary creature, sacrifice a creature, and the death untaps Kiki.
+Goblin Recruiter -> Kiki-Jiki, Mirror Breaker + Conspicuous Snoop :: Recruiter puts Kiki on top of your library, and Snoop — which has every activated ability of the Goblin on top — copies itself over and over, each copy hasty. Snoop needs haste or a turn first, and the copies end up tapped, so finish with Impact Tremors, Purphoros, General Kreat or Goblin Bombardment.
+Conspicuous Snoop + Goblin Recruiter + Mogg Fanatic :: the clean finish for the Snoop loop with no payoff out. Make the last copy a copy of Goblin Recruiter; its trigger puts Mogg Fanatic on top, and now every Snoop has Fanatic's ability — sacrifice each one for 1 damage.
+Krenko, Mob Boss + Thornbite Staff + Skirk Prospector :: equip the Staff to Mob Boss ({4}); it taps for a Goblin per Goblin; sacrifice one to Skirk Prospector, the death untaps it, repeat.
+Krenko, Mob Boss + Umbral Mantle + Skirk Prospector :: Mob Boss taps for Goblins; sacrifice three to Skirk Prospector for {R}{R}{R}; the Mantle's {3} untaps it. Four Goblins to start and every lap grows.
+
+# Tutor lines — what to fetch, and when
+Goblin Matron -> Kiki-Jiki, Mirror Breaker :: when you already hold Zealous Conscripts, Combat Celebrant, Lightning Crafter or the Staff.
+Goblin Matron -> Goblin Recruiter :: when you are two pieces short. Matron gets Recruiter; Recruiter stacks the rest.
+Goblin Matron -> Krenko, Mob Boss :: when Thornbite Staff or Umbral Mantle is out, or you want a second token engine.
+Goblin Matron -> Skirk Prospector :: when Aggravated Assault or a Kiki loop is ready but nothing sacrifices for free.
+Imperial Recruiter -> Kiki-Jiki, Mirror Breaker :: power 2, so it finds Kiki — or Goblin Recruiter, Conspicuous Snoop, Skirk Prospector or Mogg Fanatic.
+Gamble -> Aggravated Assault :: the non-Goblin pieces — Assault, the Sword or the Staff (Goblin Engineer also finds the two artifacts). Cast it with a full hand, so the random discard is less likely to hit what you fetched.
+Goblin Engineer -> Sword of Feast and Famine :: puts the Sword, Staff or Mantle into your graveyard, then {R}, tap and sacrifice another artifact to put it onto the battlefield. Engineer needs a turn or haste first.
+Urza's Saga -> Stoneforge Masterwork :: its last chapter puts an artifact with mana cost {0} or {1} onto the battlefield — Masterwork for a huge Krenko, or Sol Ring or Skullclamp.
+Goblin Recruiter -> Kiki-Jiki, Mirror Breaker + Lightning Crafter + Skirk Prospector :: without Snoop, stack the missing pieces with the first one you need on top. Recruiter only arranges your library — unless Snoop or Muxus reaches it this turn, cast it the turn before you go off.
+Muxus, Goblin Grandee :: six mana: every Goblin creature costing five or less in your top six goes onto the battlefield. Arrange those six with Goblin Recruiter first and it becomes a combo.
+Goblin Ringleader :: every Goblin in your top four goes to your hand — the way to cash in a Recruiter stack without Snoop.
+Goblin Lackey :: a one-drop that, when it connects, puts a Goblin from your hand onto the battlefield — Muxus or Kiki-Jiki on turn two.
+
+# Goblin Recruiter setups — what to stack, top card first
+Goblin Recruiter -> Kiki-Jiki, Mirror Breaker :: with Conspicuous Snoop able to tap, the Snoop combo; finish it with Mogg Fanatic as described above.
+Goblin Recruiter -> Kiki-Jiki, Mirror Breaker -> Lightning Crafter -> Skirk Prospector -> Goblin Warchief :: then cast Muxus: all four go onto the battlefield, the Crafter champions Recruiter, and Kiki starts the loop at once.
+Goblin Recruiter -> Skirk Prospector -> Goblin Warchief -> Krenko, Mob Boss :: with Snoop out, cast them off the top in order — mana, then haste, then a second token engine that taps immediately.
+Goblin Recruiter -> Goblin Chieftain -> Goblin King -> Hobgoblin Bandit Lord :: three lords: every one is another Goblin each time Krenko attacks.
+Anything that searches your library shuffles it and wrecks the stack — Goblin Matron, Imperial Recruiter, Gamble and Goblin Engineer. Use those before Recruiter, never after.
+
+# Every pump is more Goblins
+Stoneforge Masterwork :: one mana: +1/+1 for every other Goblin you control. On a board of ten, Krenko attacks as an 11-power creature and makes eleven more.
+Embercleave :: double strike, trample and +1/+1, cheaper for every attacker, at flash speed.
+Shared Animosity :: +1/+0 for each other attacking Goblin — and it resolves before Krenko's trigger if you put it on the stack second.
+Goblin Chieftain :: other Goblins +1/+1 and haste.
+Goblin King :: Goblins +1/+1 and mountainwalk — opponents' Goblins too, and your own Mountains make theirs unblockable against you.
+Goblin Trashmaster :: other Goblins +1/+1, and a sacrifice outlet that destroys artifacts.
+Hobgoblin Bandit Lord :: other Goblins +1/+1; {R} and a tap deal damage equal to the Goblins that entered this turn.
+Castle Embereth :: {1}{R}{R} and a tap: your creatures get +1/+0, Krenko included.
+
+# Haste
+Goblin Warchief :: Goblins cost one less and have haste — Krenko attacks the turn it lands.
+Howlsquad Heavy :: your other Goblins have haste, and it makes a Goblin at the start of each of your combats.
+Goro-Goro, Disciple of Ryusei :: {R}: every creature you control gains haste, and with a modified attacker — Krenko, once it has attacked and has a counter — {3}{R}{R} makes a 5/5 flying Dragon.
+Arena of Glory :: {R}, tap and exert it for {R}{R} — one extra mana — and a creature spell cast with that mana gains haste.
+Hall of the Bandit Lord :: pay 3 life for colourless mana that gives a creature spell haste.
+Lightning Greaves :: haste and shroud. Shroud stops your own equip and attach abilities too, so equip everything else first or keep Greaves off Krenko. On Kiki-Jiki it blocks Zealous Conscripts' untap; the Celebrant and Crafter loops never target Kiki.
+
+# Turning Goblins into damage
+Impact Tremors :: 1 to each opponent for every creature that enters under your control.
+Purphoros, God of the Forge :: 2 to each opponent for every other creature that enters.
+General Kreat, the Boltbringer :: 1 to each opponent for every other creature entering under your control, and another Goblin whenever your Goblins attack.
+Goblin Bombardment :: sacrifice a creature for 1 damage — the outlet and the finisher.
+Mogg Fanatic :: sacrifice it for 1 damage; mostly here to finish the Snoop loop.
+
+# Making Goblins
+Legion Warboss :: a hasty Goblin at each of your combats.
+Goblin Rabblemaster :: a hasty Goblin at each of your combats; your other Goblins must attack, which suits a deck that attacks anyway.
+Mogg War Marshal :: a Goblin now and another when it dies.
+
+# Mana
+Ancient Tomb :: two colourless on turn one for 2 life.
+Sol Ring :: the fastest start.
+Lotus Petal :: a free mana for a turn-two Krenko.
+Simian Spirit Guide :: exile it from your hand for {R}.
+Arcane Signet :: red.
+Fellwar Stone :: a two-mana rock.
+Ruby Medallion :: red spells cost {1} less — generic mana only, so a one-mana {R} spell still costs {R}.
+Jeska's Will :: with Krenko out, both halves: red mana per card in an opponent's hand, and the top three cards to play.
+Brightstone Ritual :: a red mana for every Goblin on the battlefield — after a Krenko attack, that's a lot.
+Battle Hymn :: a red mana for every creature you control.
+Treasonous Ogre :: pay 3 life for {R}, as often as you can afford.
+Three Tree City :: name Goblin: {2} and a tap make a red mana per Goblin.
+Nykthos, Shrine to Nyx :: mono-red devotion into a pile of red mana.
+Cursed Mirror :: taps for {R}, or enters as a hasty copy of any creature for the turn — a second Krenko, Mob Boss activation or a Kiki-Jiki that goes off immediately.
+
+# Cards
+Skullclamp :: two cards per 1/1 that dies — but your lords make tokens 2/2, so pair it with a sacrifice outlet.
+Wheel of Fortune :: a fresh seven when your hand is empty, which this deck manages by turn four.
+War Room :: {3}, tap it and pay 1 life: draw a card.
+Valakut Awakening :: a land, or a new hand.
+
+# Protection and answers
+Hexing Squelcher :: your spells can't be countered, and your other creatures have ward — pay 2 life.
+Defense Grid :: every spell costs {3} more except on its caster's turn, so opponents struggle to answer you mid-combo. It taxes your own Pyroblast and Deflecting Swat on their turns too.
+Deflecting Swat :: free with Krenko out; send a removal spell elsewhere.
+Pyroblast :: one mana against the blue answer.
+Red Elemental Blast :: the second copy.
+Untimely Malfunction :: redirect a removal spell aimed at Krenko, destroy an artifact, or stop two blockers.
+Lightning Bolt :: 3 damage for one mana.
+Chaos Warp :: the red answer to anything.
+
+# What to keep in an opening hand
+Keep fast mana, a land or two and a way to give Krenko haste or protect it. A turn-two Krenko with Swiftfoot Boots, attacking every turn after, wins games by itself.
+Equip before attacking: Masterwork and Plate first, then attack — the tokens use Krenko's power at the moment the trigger resolves.
+Go for a combo when the board is answered or stalled. Aggravated Assault is the one to look for: with Krenko already attacking, it usually only needs Skirk Prospector or the Sword.

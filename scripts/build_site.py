@@ -74,7 +74,7 @@ import workspace
 from cardlib import CardQuery, ImageQuery, ScryfallError, SymbolQuery, local_name
 # Same policy as the validator, imported rather than restated: a bracket cap or a
 # land count or mana average that disagreed with the validator would mislead.
-from validate_deck import average_mana_value, gc_cap, land_counts
+from validate_deck import average_mana_value, commanders, gc_cap, land_counts
 
 THUMB = "thumb"        # webp, 146x204, ~9 KB — committed
 FULL = "normal"        # jpg, 488x680, ~96 KB — hotlinked
@@ -216,14 +216,12 @@ def mirror_tips(page: str) -> str:
 
 
 def bracket_label(folder: str) -> str:
-    """`Bracket3` -> `Bracket 3`, `Bracket3.5` -> `Bracket 3.5`.
+    """`Bracket3` -> `Bracket 3`, `Bracket4` -> `Bracket 4`.
 
     Display only. The folder name itself is the bracket's identity — it drives the
     Game Changer cap in validate_deck.py and the published URL — so it is never
     the thing that gets rewritten.
     """
-    if folder.lower() == "bracket3.5+4gc":
-        return "Bracket 3.5 + 4 GC"
     return re.sub(r"(?<=[A-Za-z])(?=\d)", " ", folder)
 
 
@@ -322,9 +320,14 @@ class DeckInfo:
             found, _missing = q.cards(extra)
             self.cards = {**self.cards, **found}
 
+        # One commander, or a partner pair on lines 1 and 2 (validate_deck rules).
+        # The pair's names read together; line 1 supplies the art and preview.
+        self.commanders = commanders(self.deck, self.cards)
+        self.commander = " & ".join(self.commanders)
         cmd = self.cards.get(self.deck.commander)
-        self.commander = self.deck.commander
-        self.colours = list((cmd or {}).get("color_identity") or [])
+        self.colours = sorted({c for name in self.commanders
+                               for c in self.cards.get(name, {}).get("color_identity") or []},
+                              key="WUBRG".index)
         arts = art_sets(cmd or {})
         self.art_url = arts[0].get(ART, "") if arts else ""
         self.art_card = cmd or {}
@@ -349,10 +352,10 @@ class DeckInfo:
         buckets: dict[str, list] = {}
         for i, entry in enumerate(self.deck.entries):
             card = self.cards.get(entry.name, {})
-            # Line 1 is the commander by format definition -- keyed on position,
-            # not on a name match, so a deck that (illegally) repeats the name
-            # cannot pull a second card into the Commander section.
-            bucket = "Commander" if i == 0 else category(card)
+            # Line 1 is the commander by format definition, and line 2 too when it
+            # is a legal partner -- keyed on position, not on a name match, so a
+            # deck that (illegally) repeats a name cannot pull a third card in.
+            bucket = "Commander" if i < len(self.commanders) else category(card)
             buckets.setdefault(bucket, []).append((entry.count, entry.name, card))
         for rows in buckets.values():
             rows.sort(key=lambda r: (r[2].get("cmc", 0) or 0, r[1].lower()))
@@ -426,7 +429,7 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
         front = faces[0] if faces else {}
         preview = ""
         if front.get(FULL):
-            preview = f' data-name="{e(d.commander)}" data-img="{e(front[FULL])}"'
+            preview = f' data-name="{e(d.commanders[0])}" data-img="{e(front[FULL])}"'
             thumb_name = (image_file(d.art_card, 0, THUMB, front[THUMB])
                           if front.get(THUMB) else "")
             if thumb_name and (available_images is None or thumb_name in available_images):
@@ -653,7 +656,7 @@ def render_deck(tpl: dict[str, frontend.Template], d: DeckInfo,
                 if len(uris) > 1:
                     data += f' data-back="{e(uris[1].get(FULL, ""))}"'
             rendered.append(page.part("card").render(
-                CLASS="card cmdr" if cardname == d.commander else "card",
+                CLASS="card cmdr" if cardname in d.commanders else "card",
                 NAME=e(cardname), DATA=data, QTY=count,
                 GCFLAG='<span class="gcflag" data-tip="Game Changer — on '
                        'Wizards\' list of the format\'s most powerful cards">GC</span>'

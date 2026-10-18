@@ -1,0 +1,103 @@
+Kilo proliferates whenever it BECOMES TAPPED, not only when it attacks. Tapping it for mana, tapping it to station a Spacecraft, tapping it to pay for improvise or for Aura of Dominion all count. This version can also win without Kilo: Heliod with Walking Ballista, or Isochron Scepter with Dramatic Reversal, repeatable mana rocks and Ballista as the outlet. Padeem protects the artifact engine from opposing targeted removal. Tell the table the combos are in the deck.
+
+# The commander
+Kilo, Apogee Mind :: three mana, haste, and an artifact creature, so artifact untappers and Tezzeret work on it. Every time it becomes tapped, proliferate. Proliferation cannot create a first counter, so something must be seeded before the loop does anything.
+Unwinding Clock :: Kilo is an artifact, so Clock untaps it in every opponent's untap step. With Paradise Mantle, Relic of Legends or Springleaf Drum you tap Kilo again on each of their turns: three more proliferates a round without assembling any combo. It also untaps your mana rocks and The One Ring, giving you mana for interaction and optional extra Ring draws. Each Ring activation adds another burden counter; stop drawing before the next upkeep's life loss becomes unsafe.
+Station taps Kilo as its cost, and Kilo's power of 3 puts three charge counters on the Spacecraft. The proliferate resolves before the station does, so the first station on an empty Spacecraft cannot proliferate that Spacecraft yet.
+
+# Infinite proliferate with Kilo
+Kilo, Apogee Mind + Freed from the Real + Paradise Mantle :: equip Mantle to Kilo, tap Kilo for {U} (proliferate), spend that {U} on Freed to untap it, repeat. Mana-neutral, as many proliferates as you like, at instant speed.
+Kilo, Apogee Mind + Freed from the Real + Relic of Legends :: the same loop with no equip cost. Relic taps Kilo, a legendary creature, for mana without tapping itself.
+Kilo, Apogee Mind + Pemmin's Aura + Paradise Mantle :: Pemmin's Aura is the second copy of Freed. Its {U} untap works the same way, with either Mantle or Relic. Do not give Kilo shroud before you equip it: shroud stops your own equip and keys too.
+Kilo, Apogee Mind + Aura of Dominion + Pentad Prism :: a different loop. Aura of Dominion's cost taps Kilo itself, which proliferates Prism, and one of Prism's counters pays the next {1}. You pay before the proliferate happens, so pay the first {1} from a land: if Prism's only counter pays it, there is nothing left to proliferate. Crystalline Crawler with a counter works in Prism's place, with the same caution.
+Kilo, Apogee Mind + Freed from the Real + Pentad Prism + Uthros Research Craft :: when Mantle and Relic are missing, station is the free tap. Each station proliferates Prism, and Prism pays Freed's {U}. Station works only at sorcery speed. The Seriema, Inspirit and Uthros, Titanic Godcore station too.
+Agatha's Soul Cauldron + Crystalline Crawler + Kilo, Apogee Mind + Freed from the Real :: with Crawler in your graveyard, the Cauldron exiles it and puts a +1/+1 counter on Kilo, which then has Crawler's abilities. Tap Kilo to add a counter, proliferate adds another, remove one for {U} and untap with Freed. You get unlimited mana and proliferates. Keep one counter on Kilo or it loses the borrowed abilities.
+
+# Other combo lines
+Isochron Scepter + Dramatic Reversal :: imprint Reversal. Pay {2} and tap Scepter to cast a free copy, which untaps every nonland permanent you control, Scepter included. Mana Vault alone makes three per untap, enough for unlimited colourless mana. Sol Ring plus a Talisman also nets mana each cycle. Use Walking Ballista to turn that mana into a win.
+Isochron Scepter + Dramatic Reversal + Kilo, Apogee Mind + Paradise Mantle :: Reversal also untaps Kilo. Tap Kilo for mana once per cycle and the same loop gives unlimited proliferates. Relic of Legends and Springleaf Drum work in the Mantle's place, because Reversal untaps them too.
+Heliod, Sun-Crowned + Walking Ballista :: give Ballista lifelink for {1}{W}. Each ping gains 1 life, and Heliod puts the counter straight back. Ballista needs TWO counters to start: removing its only counter kills it before Heliod's trigger can replace it. One Kilo proliferate turns a one-counter Ballista into two.
+Emry, Lurker of the Loch + Lotus Petal + Freed from the Real :: Emry lets you cast Petal from the graveyard. Sacrifice Petal for {U}, untap Emry with Freed, repeat. It is mana-neutral and casts an artifact every time, so Jhoira or a stationed Uthros Research Craft draws as many cards as you like. Jhoira's draw is mandatory, so stop before your library runs out. Emry must have started the turn on the battlefield.
+
+# Turning the loops into a win
+Seed before you multiply. A loop with nothing to proliferate does nothing.
+Prologue to Phyresis :: the cheapest finish. Each opponent gets one poison counter and you draw. Nine more proliferates and everyone is at ten.
+Walking Ballista :: the sink for unlimited mana. Cast it for a huge X, or pay {4} for each extra counter, then ping. Proliferation also grows it once it has a counter. Put onto the battlefield by Whir or Tezzeret, it enters with no counters and dies at once, so always cast it from your hand.
+
+# Tutors: what to fetch, and when
+Find whichever piece is missing. Holding Kilo plus Mantle or Relic: fetch Freed or Pemmin's Aura. Holding an untap Aura: fetch Mantle or Relic. Holding Scepter or Reversal: fetch the other half. Ballista on board: fetch Heliod.
+Enlightened Tutor -> Freed from the Real :: finds the artifact and enchantment pieces: the Auras, Mantle, Relic, Scepter, Heliod, Ballista, or The One Ring for cards and a protection turn. It goes on top of your library, so cast it at the end of the turn before yours.
+Open the Armory -> Paradise Mantle :: finds an Aura or an Equipment, so either half of the main loop: Mantle, Freed, Pemmin's Aura or Aura of Dominion.
+Idyllic Tutor -> Heliod, Sun-Crowned :: any enchantment to hand: Heliod, an untap Aura, Propaganda or Ghostly Prison against a combat deck, or Mystic Remora for cards.
+Muddle the Mixture -> Dramatic Reversal :: transmute finds any mana value 2 card: Reversal, Isochron Scepter, Prologue, Aura of Dominion or Pentad Prism. Otherwise it counters an instant or sorcery.
+Spellseeker -> Dramatic Reversal :: an instant or sorcery with mana value 2 or less: Reversal, Prologue, Enlightened Tutor, Silence or Pact of Negation.
+Drift of Phantasms -> Freed from the Real :: transmute for mana value 3: Freed, Pemmin's Aura, Relic, Heliod, Whir of Invention, or one of the tutor creatures.
+Recruiter of the Guard -> Walking Ballista :: any creature with toughness 2 or less: Ballista, Crawler, Spellseeker, Trinket Mage or Grand Abolisher.
+Ranger-Captain of Eos -> Walking Ballista :: finds Ballista or Esper Sentinel, then stays back as protection (below).
+Trinket Mage -> Paradise Mantle :: an artifact with mana value 1 or less: Mantle, Ballista, Mana Vault or Sol Ring.
+Whir of Invention -> Relic of Legends :: instant speed, straight onto the battlefield. Tapping Kilo for improvise proliferates, but improvise pays only generic mana, so you still need {U}{U}{U}. Never Whir for Ballista.
+Tezzeret the Seeker -> Paradise Mantle :: −0 puts Mantle out and keeps every loyalty counter. −2 puts out Isochron Scepter, which still imprints as it enters. −3 puts out Relic. Its +1 untaps Kilo and a rock for one more proliferate.
+Tezzeret, Cruel Captain -> Walking Ballista :: −3 puts an artifact with mana value 1 or less into your hand: Ballista to cast for a real X, or Mantle. Its 0 untaps Kilo and gives it a +1/+1 counter, which is a seed. It gains loyalty whenever an artifact of yours enters.
+Fabricate -> Isochron Scepter :: any artifact to hand.
+Urza's Saga -> Paradise Mantle :: chapter III puts out an artifact with mana cost {0} or {1}: Mantle, Mana Vault, Sol Ring or Lotus Petal. It cannot find Ballista, whose mana cost is {X}{X}.
+The Seriema -> Heliod, Sun-Crowned :: a legendary creature card to hand. Heliod counts, and so do Jhoira, Emry and Padeem. Find Padeem when repeated targeted removal is stopping your artifact engine.
+Inventors' Fair -> Isochron Scepter :: with three artifacts out, {4}, tap and sacrifice it for any artifact. Slow, but it is a land slot.
+Sevinne's Reclamation -> Freed from the Real :: returns a permanent with mana value 3 or less from your graveyard. An Aura returned this way attaches to a creature you choose. The flashback copy brings back a second piece.
+
+# Protecting the engine and the turn you go off
+Padeem, Consul of Innovation :: all your artifacts have hexproof, including Kilo, Mana Vault, The One Ring and Isochron Scepter. Your own Auras, Equipment and Keys can still target Kilo. Padeem is not an artifact and does not protect itself; it also does not protect your enchantments or stop untargeted board wipes. At your upkeep, draw if you control an artifact with the greatest mana value among artifacts on the battlefield, including ties; that condition must still hold when the trigger resolves. The Ring has mana value 4 and Thought Monitor has 7, while Ballista's X is 0 on the battlefield.
+Grand Abolisher :: on your turn, opponents cannot cast spells or activate abilities of artifacts, creatures or enchantments. Triggered abilities and land abilities still work.
+Silence :: one mana: opponents cannot cast spells this turn. Cast it before the first combo piece. Imprinting it on Scepter instead of Reversal protects every win turn. Do not combine that with Unwinding Clock: Clock untaps Scepter in every opponent's untap step, so Silence on each of their turns locks them out, which the house rules forbid.
+Ranger-Captain of Eos :: sacrifice it and opponents cannot cast noncreature spells this turn. Creature-based answers still work.
+Propaganda :: each creature attacking you costs its controller {2}, which buys the turns the engine needs against combat decks. It taxes attacks on you only, not on your Tezzerets, and it does nothing against a combo or a board wipe. Enlightened Tutor and Idyllic Tutor can find it.
+Ghostly Prison :: the same {2} tax as Propaganda, and the two stack: with both out, each creature attacking you costs {4}. Like Propaganda, it does not protect your Tezzerets.
+Boros Charm :: two mana at instant speed: your permanents gain indestructible until end of turn. That saves the artifact board from a destroy wipe, though not from exile, bounce or -X/-X. Its other modes deal 4 damage to a player or give a creature double strike.
+Inspirit, Flagship Vessel :: each Kilo station is a proliferate that also puts three charge counters on it, and later proliferates add more, so it reaches eight in a turn or two. At eight your OTHER artifacts, Kilo included, have hexproof and indestructible, which survives destroy wipes but not exile or bounce. Inspirit does not protect itself; Padeem gives it hexproof. From one counter on, each of your combats puts a +1/+1 counter or two charge counters on another artifact: a free seed for Ballista, Prism or Chalice.
+Force of Negation :: on an opponent's turn, exile a blue card from your hand to cast it for free. It counters a noncreature spell, so it is your answer to a board wipe or a hate piece while you are tapped out. On your own turn it costs {1}{U}{U}.
+Pact of Negation :: free on the turn you win. If the game continues, pay {3}{U}{U} in your next upkeep or lose.
+Mana Drain :: counters anything and pays for your next turn.
+Swan Song :: one mana against an enchantment, instant or sorcery.
+An Offer You Can't Refuse :: one mana against any noncreature spell.
+Deflecting Swat :: free while Kilo is out. It redirects a targeted answer.
+
+# Answers
+Swords to Plowshares :: one mana, exile a creature.
+Dispatch :: exiles a creature once you have three artifacts. Below that it only taps.
+Wear // Tear :: an artifact, an enchantment, or both.
+Otawara, Soaring City :: a land that bounces an artifact, creature, enchantment or planeswalker. Cheaper for each legendary creature you control.
+
+# Mana, untaps and cards
+Mana Vault :: three mana for one. It does not untap in your own untap step, but Unwinding Clock untaps it in each opponent's, and Reversal and both keys untap it too.
+Sol Ring :: two mana for one, and Scepter fuel.
+Lotus Petal :: a turn-one jump, and the artifact Emry recasts in the Petal loop.
+Mox Opal :: metalcraft is easy here. Minamo can untap it because it is legendary.
+Talisman of Creativity :: two-mana rock for blue and red, and it stays untapped for Scepter.
+Talisman of Progress :: the same for white and blue.
+Pentad Prism :: fixing early. Each proliferate refills it, so it powers the Dominion and station loops.
+Everflowing Chalice :: grows with every proliferate once it has a counter. Colourless only, so it cannot pay Freed.
+Astral Cornucopia :: enters with X charge counters and taps for that much of one colour. Every proliferate makes it bigger. Cast it for at least X = 1.
+Springleaf Drum :: taps Kilo for mana, which is one proliferate. Drum taps itself, so it loops only under Dramatic Reversal.
+Shuri, Wakandan Inventor :: artifacts cost one less, and it can copy one of your artifacts until end of turn.
+Voltaic Key :: {1} and tap: untap an artifact, such as Kilo, Mana Vault, Scepter or The One Ring. Untapping the Ring allows another draw activation; it does not renew the protection from its enters ability.
+Manifold Key :: the second Key.
+Minamo, School at Water's Edge :: a land that untaps a legendary permanent for {U}. It can untap Kilo or The One Ring.
+Uthros, Titanic Godcore :: a land that enters tapped and is a station outlet for Kilo. At twelve charge counters it taps for {U} per artifact you control.
+The One Ring :: four mana, indestructible, and the third Game Changer alongside Mana Vault and Enlightened Tutor. When it enters after being cast, it gives YOU protection from everything until your next turn; Kilo and your other permanents are not protected by that ability. Casting it with Emry's permission also qualifies. Find it with Fabricate or Enlightened Tutor and cast it for the protection: putting it straight onto the battlefield with Whir or Tezzeret does not qualify. Its tap ability adds a burden counter and draws for each burden counter on it. Both Keys, Minamo, Unwinding Clock and Dramatic Reversal enable extra activations. At your upkeep you lose life for every burden counter; that is life loss, not damage. Normally leave the Ring out when choosing what to proliferate. Adding burden counters can increase a later draw, but also increases the life loss, and excessive draws can empty your library.
+Mystic Remora :: a tax on noncreature spells in the early turns.
+Esper Sentinel :: a one-mana tax on each opponent's first noncreature spell.
+Jhoira, Weatherlight Captain :: draws whenever you cast an artifact or a legendary spell.
+Uthros Research Craft :: one Kilo station reaches three charge counters. After that, every artifact you cast draws a card.
+Thought Monitor :: affinity often makes it two cards for two or three mana.
+Insight Engine :: {2} and tap: a charge counter, then draw that many. Proliferation makes it bigger, so stop before it decks you.
+
+# Rebuilding after a wipe
+Emry, Lurker of the Loch :: mills four, then lets you cast an artifact from your graveyard each turn. You still pay its cost, so it can recast Ballista for a real X.
+Academy Ruins :: puts an artifact from your graveyard on top of your library.
+Agatha's Soul Cauldron :: graveyard hate that also lends abilities. Exiling Crawler builds the Cauldron loop above. Anything you exile is gone for Emry and Academy Ruins.
+
+# What to keep and how to sequence it
+Keep two or three lands, fast mana, and either a combo piece with a tutor or a draw engine. Thirty-four lands works because the deck runs Mana Vault, Lotus Petal, Sol Ring, Mox Opal and two Talismans.
+Seed before you multiply. Ballista needs a counter, Prism and Chalice need their first, and poison starts with Prologue.
+Deploy protection before the last piece. Grand Abolisher or Silence first, then the piece. Kilo's trigger and every Freed activation use the stack, so opponents can respond unless Abolisher or Silence is stopping them.
+Freed and Pemmin's Aura die with the creature they enchant. Keep Sevinne's Reclamation for getting one back rather than casting it for value. If Scepter is removed, the imprinted Reversal is gone too.
+Use the shortest line you have. Heliod and Ballista beat assembling three Kilo pieces. Choose a finite number of loop repetitions and announce it.

@@ -3,8 +3,8 @@
 A guide is a plain text file living beside its decklist, same name, `.guide`
 instead of `.txt`:
 
-    public/Bracket3.5/Shorikai-Prison.txt
-    public/Bracket3.5/Shorikai-Prison.guide
+    public/zzwang/Bracket3/Shorikai-Prison.txt
+    public/zzwang/Bracket3/Shorikai-Prison.guide
 
 **The format is the showcards format**, deliberately: `# Section` headers and
 `Name :: comment` lines. That syntax already exists in this repo, it is already

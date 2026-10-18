@@ -1,4 +1,5 @@
 1 Cecily, Haunted Mage (SLX) 3
+1 Elmar, Ulvenwald Informant (SLX) 4
 1 Abrupt Decay (SLD) 2468
 1 An Offer You Can't Refuse (FDN) 160
 1 Arcane Denial (SOC) 187
@@ -28,7 +29,6 @@
 1 Delighted Halfling (HOC) 65
 1 Dig Through Time (SOC) 195
 1 Dolmen Gate (SLD) 1806
-1 Elmar, Ulvenwald Informant (SLX) 4
 1 Emergent Ultimatum (IKO) 185
 1 Exotic Orchard
 1 Faerie Mastermind (MOM) 58

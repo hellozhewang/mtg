@@ -27,6 +27,7 @@ class FakeDeck:
     themes = ("value",)
     tier = None
     commander = "Test Commander"
+    commanders = ["Test Commander"]
     href = "alice/Bracket3/Test-Deck.html"
     key = "alice/Test-Deck"
     art_url = ""

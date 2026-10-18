@@ -52,7 +52,7 @@ class DeckTierTests(unittest.TestCase):
             local = build_site.render_index(templates, decks, "https://example.test", Mana(),
                                             local=True)
         tiles = {a["href"]: a["data-tier"] for _, a in Catalog(published).tiles}
-        self.assertEqual(tiles["alice/Bracket3.5/Weak-Deck.html"], decktiers.UNRATED_ID)
+        self.assertEqual(tiles["alice/Bracket4/Weak-Deck.html"], decktiers.UNRATED_ID)
         self.assertNotIn('data-tier="D"', published)
         self.assertIn('data-tier="D"', local)
 

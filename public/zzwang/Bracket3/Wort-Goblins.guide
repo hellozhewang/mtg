@@ -1,0 +1,122 @@
+Wort gives you a card every turn. At each of your upkeeps it returns a Goblin card from your graveyard to your hand — and "Goblin card" is wider than it sounds. Goblin-typed spells count (Tarfire, Boggart Mischief), and so does anything with changeling, which is every creature type: Nameless Inversion is removal you get back every single turn. So the deck never minds losing a Goblin. It sacrifices them for mana, damage and cards, drains the table as they die, and Wort hands the best one back.
+Wort itself has fear: only artifact and black creatures can block it. And the deck has four ways to go infinite — see the combos. Wort returns Kiki-Jiki or Conspicuous Snoop from the graveyard every upkeep, so killing a combo piece only delays it.
+
+# The commander
+Wort, Boggart Auntie :: four mana; at the start of each of your turns, a Goblin card from the graveyard back to your hand. Protect it and the deck out-grinds anything.
+Lightning Greaves :: shroud the turn Wort lands. Never equip it to Kiki-Jiki — shroud stops Zealous Conscripts or Restoration Angel from targeting Kiki.
+Deflecting Swat :: free while Wort is on the battlefield; send their removal elsewhere.
+Hexing Squelcher :: your spells can't be countered, and every other creature you control has "ward — pay 2 life." It protects the combo turn.
+Pyroblast :: one mana to counter the blue spell aimed at your combo, or destroy a blue permanent.
+Untimely Malfunction :: redirect a removal spell aimed at a combo piece, destroy an artifact, or stop two blockers.
+Torch Courier :: sacrifice it to give Conspicuous Snoop or Krenko haste the turn it lands.
+
+# Infinite combos — from turn 6
+Kiki-Jiki, Mirror Breaker + Zealous Conscripts :: Kiki copies Conscripts, and the copy's enter trigger untaps Kiki — target Kiki itself. Repeat for as many hasty 3/3s as you want, the same turn Kiki lands (it has haste). Impact Tremors makes every copy 1 damage to each opponent; otherwise sacrifice them to Goblin Bombardment. Never leave Lightning Greaves on Kiki: shroud stops the Conscripts copy targeting it.
+Kiki-Jiki, Mirror Breaker + Lightning Crafter + Goblin Bombardment :: Kiki copies the Crafter. The copy's champion trigger exiles Kiki; the hasty copy taps for 3 damage; sacrifice it to Goblin Bombardment; Kiki returns untapped — it has haste — and copies the Crafter again. Unlimited 3-damage shots, so this one kills on its own. Ashnod's Altar, Phyrexian Altar and Skirk Prospector work as the outlet too. The original Crafter must stay on the battlefield; when it enters you must exile another Goblin or Shaman (champion) or sacrifice it.
+Kiki-Jiki, Mirror Breaker + Thornbite Staff + Goblin Bombardment :: the Staff attaches itself to Kiki when Kiki enters after it (otherwise equip costs {4}). Kiki copies any nonlegendary creature, you sacrifice a creature to Goblin Bombardment, and the death untaps Kiki. Unlimited loops. With Skirk Prospector as the outlet, copy a Goblin and the loop makes unlimited red mana as well.
+Goblin Recruiter -> Kiki-Jiki, Mirror Breaker + Conspicuous Snoop :: Recruiter puts Kiki on TOP of your library (Vampiric Tutor and Boggart Harbinger do the same). Snoop has every activated ability of the Goblin on top, so it copies itself with Kiki's ability — and every hasty copy does the same. Snoop needs haste or a turn in play to start, and most copies end up tapped, so finish with Impact Tremors or Goblin Bombardment. Outside the combo, Snoop lets you cast Goblins straight off the top of your library.
+Krenko, Mob Boss + Thornbite Staff + Skirk Prospector :: equip the Staff to Krenko ({4} — he's a Warrior, so it won't attach itself). Krenko taps for a Goblin per Goblin; sacrifice one to Skirk Prospector; the death untaps Krenko; tap again. The army doubles every lap. Win with Impact Tremors, Goblin Bombardment, Zulaport Cutthroat or Blood Artist.
+Nim Deathmantle + Ashnod's Altar + Beetleback Chief :: whenever a nontoken creature dies, pay {4} to return it wearing the Deathmantle. Beetleback comes back with two Goblins; sacrifice all three to the Altar for six mana, and four of it pays for the next lap. Siege-Gang Commander nets more, Mogg War Marshal nets two (let its death token arrive first), Goblin Instigator breaks even and still loops. The returned creature is a black Zombie, not a Goblin, so it goes to the Altar. Every lap is three deaths for Blood Artist, Zulaport Cutthroat and Mayhem Devil, and Beetleback's Goblins feed Boggart Mischief and Boggart Cursecrafter.
+Wort returns Kiki-Jiki, Conspicuous Snoop, Lightning Crafter or Goblin Matron from your graveyard every upkeep, so a combo piece that gets killed is back in your hand next turn.
+
+# Tutor lines — what to fetch, and when
+Wort, Boggart Auntie -> Goblin Matron :: return Matron every upkeep and cast it again — a Goblin tutor each turn once the game goes long.
+Goblin Matron -> Kiki-Jiki, Mirror Breaker :: when you already hold Zealous Conscripts, Lightning Crafter or the Staff — Kiki is the piece that turns half a combo into a kill.
+Goblin Matron -> Goblin Recruiter :: when you're missing two or more pieces. Matron gets Recruiter; Recruiter stacks the rest on top of your library.
+Goblin Matron -> Krenko, Mob Boss :: when Thornbite Staff is already out, or when you simply need a board this turn.
+Goblin Matron -> Lightning Crafter :: when Kiki-Jiki is on the battlefield and you have a free outlet — the Crafter is the last piece.
+Goblin Matron -> Skirk Prospector :: when the combo is assembled but nothing will sacrifice for free.
+Vampiric Tutor -> Kiki-Jiki, Mirror Breaker :: at instant speed, straight to the top. With Snoop out that IS the combo; otherwise you draw it next turn — unless Necropotence is skipping your draw, in which case pay 1 life to Necro to take it.
+Boggart Harbinger -> Kiki-Jiki, Mirror Breaker :: puts Kiki on top for Snoop, and Wort returns Harbinger to do it again.
+Demonic Tutor -> Nim Deathmantle :: the combo piece no Goblin tutor can find; take Ashnod's Altar instead if the Deathmantle is already out.
+Grim Tutor -> Zealous Conscripts :: Conscripts is a Human, so Matron can't get it — this can.
+Diabolic Intent -> Thornbite Staff :: sacrifice a token for whichever artifact or enchantment you are missing.
+Goblin Recruiter -> Goblin Ringleader + Muxus, Goblin Grandee :: choose a four-card hand refill or a six-creature deployment. The exact piles and draw sequencing are below; either payoff works without the commander.
+Goblin Ringleader :: every Goblin in the top four to your hand.
+
+# Goblin Recruiter setups — what to stack, top card first
+Goblin Recruiter -> Goblin Ringleader :: TOP to BOTTOM: Goblin Ringleader; Kiki-Jiki, Mirror Breaker; Lightning Crafter; Skirk Prospector; Goblin Warchief. Draw or otherwise reach Ringleader, then cast it: its entry trigger puts the next four selected Goblins into your hand. Those creatures still need to be cast; Ringleader does not deploy them. If Ringleader is already in hand, start the pile with the four targets instead.
+Goblin Recruiter -> Muxus, Goblin Grandee :: TOP to BOTTOM: Muxus, Goblin Grandee; Kiki-Jiki, Mirror Breaker; Lightning Crafter; Skirk Prospector; Goblin Warchief; Goblin Ringleader; Hexing Squelcher. Reach and cast Muxus; all six following cards are Goblin creatures with mana value five or less, so its entry trigger puts them onto the battlefield. If Muxus is already in hand, omit it from the pile and reveal the six immediately.
+Goblin Ringleader :: Put these four cards immediately UNDER the six-card Muxus package: Krenko, Mob Boss; Goblin Matron; Siege-Gang Commander; Sling-Gang Lieutenant. When Muxus deploys Ringleader, the entry trigger puts this backup package into your hand. Resolve Ringleader before any other draw triggers and before the original Lightning Crafter's champion trigger. Only stack cards still in your library; substitute useful Goblins for pieces already in hand or on the battlefield.
+Kiki-Jiki, Mirror Breaker + Lightning Crafter + Skirk Prospector :: The original Crafter champions the Recruiter that made the pile, or the Ringleader AFTER its refill resolves. Keep Kiki and Prospector on the battlefield. Tap Kiki to copy Crafter; the hasty copy champions Kiki, taps for 3 damage, then is sacrificed to Prospector for {R}. Kiki returns untapped with haste. Repeat for lethal damage and red mana. No combat or commander is required, but removal or effects that stop the entry triggers/activated abilities can interrupt it.
+Goblin Warchief :: Included on the Muxus board to give your other Goblins haste and reduce the generic cost of backup Goblin spells. Kiki and its copies already have haste; Warchief is for Krenko and the wider recovery plan.
+Hexing Squelcher :: The Muxus pile supplies ward for the other creatures and makes later spells uncounterable. Entering with Muxus does not protect the Muxus spell retroactively; when you need that protection, cast Squelcher before Muxus.
+Conspicuous Snoop can cast the top Goblin payoff directly. Necropotence skips the normal draw: one activation can exile the top payoff for your hand at the next end step, leaving the package underneath. Do not exile more of the arranged pile by accident.
+Goblin Recruiter -> Kiki-Jiki, Mirror Breaker :: The existing Snoop line remains: with Conspicuous Snoop able to tap and a damage/sacrifice payoff available, leave Kiki on top to grant Snoop the copy ability. Choose this pile instead of the Muxus/Ringleader pile when Snoop already has the win.
+Searches that shuffle undo the pile: use fetch lands and other tutors BEFORE Recruiter. Any extra draw, mill or exile also changes the positions; account for it before committing. Muxus only puts eligible Goblin CREATURES onto the battlefield: Goblin-typed instants/enchantments and Muxus itself are not hits. Recruiter does not put the payoff in your hand for free.
+
+# What Wort gets back
+Nameless Inversion :: +3/−3 at instant speed — and changeling makes it a Goblin card, so it comes back every upkeep. Removal every turn.
+Tarfire :: 2 damage anywhere, every turn.
+Gempalm Incinerator :: cycle it for {1}{R}: draw a card and deal damage to a creature equal to the Goblins on the battlefield. Wort returns it, and you cycle it again.
+Siege-Gang Commander :: three Goblins when it enters, and {1}{R} sacrifices one for 2 damage.
+Munitions Expert :: flash; when it enters, damage to a creature equal to the Goblins you control.
+Kiki-Jiki, Mirror Breaker :: taps each turn for a hasty copy of a creature — Goblin Ringleader, Siege-Gang Commander or Munitions Expert, every turn.
+
+# Sacrifice outlets
+Goblin Bombardment :: sacrifice a creature: 1 damage anywhere.
+Skirk Prospector :: sacrifice a Goblin: {R}.
+Ashnod's Altar :: sacrifice a creature: {C}{C}.
+Phyrexian Altar :: sacrifice a creature: one mana of any colour.
+Phyrexian Tower :: a land that sacrifices a creature for {B}{B}.
+Sling-Gang Lieutenant :: two Goblins when it enters; sacrifice a Goblin to drain a player for 1.
+Warren Soultrader :: 1 life and a creature for a Treasure.
+Pashalik Mons :: 1 damage whenever one of your Goblins dies; {3}{R} and a sacrifice make two new Goblins.
+Village Rites :: sacrifice a creature: two cards.
+Deadly Dispute :: sacrifice a creature or artifact: two cards and a Treasure.
+
+# Every death drains
+Boggart Mischief :: two Goblins when it enters (you put a −1/−1 counter on one of your creatures); after that, each Goblin of yours that dies drains every opponent for 1.
+Boggart Cursecrafter :: deathtouch, and each of your other Goblins that dies deals 1 to each opponent.
+Zulaport Cutthroat :: each of your creatures that dies drains every opponent for 1.
+Blood Artist :: ANY creature that dies drains a player of your choice for 1.
+Mayhem Devil :: 1 damage whenever ANY player sacrifices a permanent — your Goblins, your Treasures, their fetch lands.
+Impact Tremors :: 1 to each opponent for every creature that enters under your control.
+With all of these out, one sacrificed Goblin costs every opponent 3 life and deals 3 more wherever you point it.
+
+# Making Goblins
+Krenko, Mob Boss :: taps for a 1/1 per Goblin you control — the army doubles each turn.
+Beetleback Chief :: two Goblins when it enters.
+Legion Warboss :: a hasty Goblin each of your combats.
+Goblin Instigator :: two bodies for two.
+Mogg War Marshal :: a Goblin when it enters and another when it dies.
+Fable of the Mirror-Breaker :: a Goblin that makes Treasure when it attacks, then a card filter, then Reflection of Kiki-Jiki — a copy maker that costs {1} each use and needs a turn before it can tap.
+
+# Lords
+Goblin Chieftain :: other Goblins +1/+1 and haste.
+Goblin Trashmaster :: other Goblins +1/+1; sacrifice a Goblin to destroy an artifact.
+Goblin Warchief :: Goblin spells cost one less, and your Goblins have haste.
+
+# Cards
+Necropotence :: skip your draw, pay 1 life per card; the drains pay it back.
+Skullclamp :: equip it to a creature with 1 toughness and it dies: two cards for one mana. A lord that adds toughness keeps your tokens alive, so pick an X/1.
+Black Market Connections :: each first main phase: a Treasure for 1 life, a card for 2, a 3/2 changeling for 3 — and changelings are Goblins.
+Castle Locthwain :: a land that draws a card.
+Takenuma, Abandoned Mire :: a land that mills three and returns a creature to your hand.
+
+# Bringing them back
+Reanimate :: any creature from any graveyard, for life equal to its mana value.
+Patriarch's Bidding :: name Goblin and every Goblin in your graveyard returns. Every other player names a type too, and every player gets back all creatures of every named type — so cast it when your graveyard is the biggest.
+
+# Answers
+Terminate :: two mana, no regeneration.
+Infernal Grasp :: any creature for 2 life.
+Feed the Swarm :: a creature or enchantment; you lose life equal to its mana value.
+Deadly Rollick :: free with Wort on the battlefield.
+Chaos Warp :: the red answer to anything.
+Blasphemous Act :: 13 damage to every creature, usually for one mana; indestructible ones survive. Sacrifice your Goblins in response for value, then Wort starts rebuilding.
+Boggart Trawler :: exiles a graveyard when it enters, or plays as a land.
+
+# Mana
+Sol Ring :: the fastest start.
+Arcane Signet :: black or red.
+Talisman of Indulgence :: black or red.
+Dark Ritual :: three black for one — a turn-one Necropotence.
+Three Tree City :: name Goblin: {2} and a tap make a mana for every Goblin you control.
+Cavern of Souls :: name Goblin: they can't be countered.
+
+# What to keep in an opening hand
+Keep lands, a two-drop and Wort castable by turn four. From then on, every upkeep is a free card.
+Set up a sacrifice outlet and a death payoff before you go wide: Goblin Bombardment with Boggart Cursecrafter or Zulaport Cutthroat turns every token into damage.
+Get Nameless Inversion or Tarfire into the graveyard early — once Wort is out, they come back every turn.
+Protect Wort. The deck still works without it, but the recursion is what wins long games.

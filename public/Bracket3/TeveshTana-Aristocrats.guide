@@ -1,0 +1,71 @@
+Spend tokens to gain an advantage; do not preserve every Saproling as if this were a pure combat deck. Tevesh turns expendable bodies into cards, while Tana supplies more bodies when combat is safe. Both partners start in the command zone, with 98 cards in the library.
+
+# Choosing which partner to cast
+Tevesh Szat, Doom of Fools :: Usually the first commander when opponents have blockers. His +2 builds a defensive board; his +1 turns one expendable creature into two cards. You normally activate only one loyalty ability per turn, so he cannot make Thrulls and sacrifice one himself on the same turn.
+Tana, the Bloodsower :: Cast her first when an opponent is open and you can increase her power or give haste. Only combat damage to a player makes Saprolings; hitting a planeswalker or dealing other damage does not.
+Ignoble Hierarch + Tana, the Bloodsower :: Exalted makes an unblocked solo Tana attack produce three Saprolings instead of two. Once the army is large, stop attacking alone just to preserve exalted.
+Rancor + Tana, the Bloodsower :: One mana increases her unblocked output from two tokens to four. Trample is redundant here, but the power and recurring Aura are excellent; move it to another attacker when Tana is unavailable.
+Lich's Relic + Tana, the Bloodsower :: Casting it and paying the entry cost can destroy a creature or planeswalker belonging to each opponent. Equip afterward for +2/+1, clearing blockers and increasing Tana's next harvest with one card.
+Lightning Greaves :: Haste makes Tana useful immediately and allows fresh mana creatures to work. Move the boots away before targeting their wearer with your Aura, equipment, or protection spells; shroud stops your targeting too.
+
+# Feed the engine without needing combat
+Bitterblossom :: Supplies flying blockers for Tevesh and disposable bodies for draw. The life loss is manageable with the drain package, but the trigger is mandatory.
+Jadar, Ghoulcaller of Nephalia + Braids, Arisen Nightmare :: Spend an existing decayed Zombie before your end step so Jadar can trigger. With no decayed creature as the step begins, resolve Jadar first to create a Zombie, then let Braids consume it. If you already had a decayed creature when the step began, Jadar never triggered.
+Ophiomancer + Goblin Bombardment :: Sacrifice the Snake before the next upkeep begins to receive another. Four upkeeps can mean four Snakes per round, but leaving one alive switches the next trigger off.
+Tendershoot Dryad :: Makes a Saproling every upkeep. The city's blessing usually arrives quickly, and the +2/+2 applies to Tana's Saprolings too; it does not strengthen Thrulls or Squirrels.
+Scute Swarm + Verdant Catacombs :: Six lands unlock copy tokens. A fetchland gives two landfall events, so resolve the first set of triggers before sacrificing it when you want new Swarms to see the second land enter.
+Chatterfang, Squirrel General :: Adds Squirrels alongside every token batch, including Thrulls and the Jace token. His black activation converts Squirrels into creature removal; its toughness reduction can kill indestructible creatures.
+Orcish Bowmasters + Goblin Bombardment :: Flash in to punish extra draws and kill small engines. Sacrifice the Army between amass events when you want a new expendable creature instead of growing the same Army.
+
+# Turn bodies into cards and mana
+Skullclamp :: A one-toughness token normally dies immediately when equipped, drawing two. Counters and team bonuses can raise toughness enough to stop this shortcut; then use a sacrifice outlet.
+Yawgmoth, Thran Physician + Zulaport Cutthroat :: Each sacrificed creature draws a card and can shrink an opposing creature. Cutthroat offsets the life paid and drains the table. This is finite: it needs another creature for every activation.
+Braids, Arisen Nightmare :: Sacrifice a spare creature at your end step. Each opponent chooses between losing a creature and giving you a card plus two life lost; your draw is not guaranteed.
+Korvold, Fae-Cursed King :: Turns all sacrifices, including fetchlands and creatures, into cards and counters. He supplies an independent flying finisher but demands another permanent on entry and attack.
+Idol of Oblivion :: Reliable low-cost draw after making a token. Without a way to untap it, making tokens on opponents' turns does not grant multiple activations in one turn cycle.
+Toski, Bearer of Secrets :: Converts attacks spread across opponents into cards. An indestructible draw engine survives destroy sweepers, but must attack if able and still dies to enough toughness reduction.
+Sylvan Library :: Finds the missing ramp or payoff without requiring either commander. The drain creatures help pay for extra cards; do not pay eight life automatically into an aggressive table.
+Jaheira, Friend of the Forest + Cryptolith Rite :: Alternative ways to convert the army into mana. They do not double the mana from one creature tapping. Creature tokens need haste or a full turn under your control before using these tap abilities.
+Ashnod's Altar :: Every body represents two colorless mana toward a payoff or commander recast. Preserve colored sources for the green-heavy finishers.
+Gaea's Cradle + Formidable Speaker :: Speaker can untap Cradle for a second large burst after paying one mana. It must be able to tap, and this is one additional activation rather than an infinite loop.
+Anger + Formidable Speaker :: Discard Anger to Speaker's creature tutor, then keep a Mountain on the battlefield. Typed dual lands count. Haste lets fresh tokens use the mana engine and join attacks.
+Phyrexian Tower :: A land-based sacrifice outlet that accelerates Tevesh and pays black costs. It is only one activation per untap, not an unrestricted outlet.
+Nature's Lore + Three Visits :: Find untapped original duals with the Forest type, or shocklands if you pay life. This keeps three-color hands moving without relying on basic lands.
+
+# How the deck actually ends a game
+Purphoros, God of the Forge + Chatterfang, Squirrel General :: Each creature token batch creates extra Squirrels, and each entering creature hits every opponent for two. Tevesh's +2 with both present makes four creatures and deals eight to each opponent.
+Mirkwood Bats + Goblin Bombardment :: Every creature token created drains each opponent once; sacrificing it drains them again and deals one targeted damage from Bombardment. The token supply is finite.
+Nadier's Nightblade + Cauldron of Essence :: Sacrificed creature tokens produce two life-loss triggers per opponent and two life for you. Nightblade also notices tokens exiled or bounced; Cauldron requires a creature to die.
+Mayhem Devil :: Your sacrifice outlets, your fetchlands, and opponents' Treasures all supply damage. Use it to remove utility creatures first when that opens a safe finishing turn.
+Mazirek, Kraul Death Priest + Goblin Bombardment :: Each sacrificed body grows the survivors. Sacrifice spare creatures before combat, resolve the counters, then attack with the army you kept.
+Beastmaster Ascension :: Seven attacking creatures can activate its bonus during that combat. It provides no trample, so count blockers rather than assuming a large team kills everyone.
+Finale of Devastation -> Craterhoof Behemoth :: With X at least ten, Finale grants haste and a huge bonus as well as finding the trample finisher. At X eight it can find Behemoth, but only Behemoth has haste unless another effect supplies it.
+Craterhoof Behemoth :: Count creatures when the entry trigger resolves. Sacrificing the army to pay for it can leave too little power to win; Cradle and token-tapping mana are often better than Altar here.
+Way of the Necromancer + Tevesh Szat, Doom of Fools + Goblin Bombardment :: Every creature you control that dies adds loyalty to Tevesh. Build to ten, then use his ultimate before using another loyalty ability that turn. This steals battlefield commanders and puts command-zone commanders under your control; it does not retrieve commanders from other zones.
+Tevesh Szat, Doom of Fools :: If the ultimate reduces him to zero, he dies before it resolves. You may move him to the command zone, then the resolving ultimate brings him back as a new permanent. He can activate again, but that sequence is not an infinite engine.
+There are no built-in infinite loops or extra-turn chains. The target is a developed turn-six-or-later finish, with a resilient turn-seven-to-nine game when the table interacts. This is a construction estimate, not a measured goldfish result.
+
+# Find the missing function
+Demonic Tutor -> Skullclamp :: Get the cheap draw engine when the hand has bodies but little follow-up; do not spend every tutor on an expensive finisher.
+Diabolic Intent -> Goblin Bombardment :: Trade an expendable token for an outlet when drain pieces are ready but the army has no reliable way to die.
+Chord of Calling -> Yawgmoth, Thran Physician :: Use spare tokens to convoke at the end step before yours when you need draw and creature control. Summoning-sick creatures can convoke.
+Chord of Calling -> Scavenging Ooze :: Find graveyard interaction before the opposing reanimation spell resolves, keeping green mana available to activate it.
+Formidable Speaker -> Tendershoot Dryad :: Rebuild the token supply after a wipe; discard a redundant land or Anger.
+# Recover and protect the board
+Cauldron of Essence + Eternal Witness :: Reanimate Witness to recover a spent answer or payoff. Select a creature already in the graveyard before sacrificing the activation's creature; you cannot target the creature you are about to sacrifice.
+Bala Ged Recovery + Takenuma, Abandoned Mire :: Recovery retrieves any card; Takenuma retrieves a creature or planeswalker and can rebuild after Tevesh or another threat dies. Use the land face early if missing land drops is the alternative.
+Heroic Intervention :: Protects Tevesh, engines, and creatures from targeted destruction and destroy sweepers. It does not stop sacrifice, exile sweepers, or toughness reduction.
+Deflecting Swat + Deadly Rollick :: Either partner on the battlefield enables the free costs, including Tevesh as a planeswalker. Swat needs a useful target change; it is not a universal counterspell.
+Veil of Summer :: Hold green mana against blue counters and black targeted answers. It does not answer every removal color or protect against untargeted sweepers.
+Culling Ritual :: Destroys your tokens, mana creatures, and cheap engines too. Count both sides before casting; drain triggers and the resulting mana can turn the reset into a winning turn while Tevesh survives.
+Toxic Deluge :: The emergency creature reset leaves Tevesh intact. Your own indestructible creatures still die if their toughness falls to zero.
+Artifact Mutation + Force of Vigor :: Mutation destroys an artifact and supplies Saprolings. Force handles two artifacts or enchantments and can be cast for a green card on an opponent's turn.
+Assassin's Trophy + Abrupt Decay :: Trophy reaches any opposing permanent; Decay efficiently removes small hate pieces through counters. Save these for effects that shut down your draw, sacrifice, or token plan.
+Malakir Rebirth + Revitalizing Repast :: Protect a crucial creature when drawn as spells; both can instead make a land drop. Neither protects the planeswalker commander.
+
+# Opening hands and sequencing
+Keep two or three functional lands, an early accelerator, and either a draw engine or a token producer. The list has 35 lands plus three modal land spells. A hand of finishers and sacrifice outlets without creatures is a mulligan even if it has powerful cards.
+Birds of Paradise + Delighted Halfling :: Prioritize an untapped green source on turn one. Halfling makes either commander uncounterable when its restricted colored mana pays for that legendary spell; its colored mode cannot cast ordinary interaction.
+Fetch green plus black first, then red for Tana and interaction. Use tapped modal lands and the triome on turns where they do not delay a spell. The three basics provide alternative fetch targets and insurance against effects that specifically search for basics.
+Cast Tevesh into protection or expendable blockers; cast Tana into a realistic connection. Keep one engine or token maker in reserve when opponents represent a wipe.
+Before a finishing turn, choose whether the army is mana, attackers, or sacrifice fuel. Count that resource only once. Clear the hate piece, secure the payoff, then commit the bodies.

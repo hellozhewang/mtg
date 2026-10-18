@@ -87,6 +87,16 @@ class ScryfallAPI:
             found.extend(self._post("/cards/collection", payload).get("data", []))
         return found
 
+    def by_ids(self, ids: list[str]) -> list[dict]:
+        """Exact printings by Scryfall id, e.g. the tokens a card's `all_parts`
+        names. Unknown ids are simply absent, so callers match on `id`."""
+        found: list[dict] = []
+        for i in range(0, len(ids), COLLECTION_LIMIT):
+            chunk = ids[i:i + COLLECTION_LIMIT]
+            payload = {"identifiers": [{"id": x} for x in chunk]}
+            found.extend(self._post("/cards/collection", payload).get("data", []))
+        return found
+
     def symbology(self) -> list[dict]:
         """Every mana symbol Magic has, with the URL of its official SVG.
 

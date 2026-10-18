@@ -32,6 +32,10 @@ DEFAULT_DB = Path(
 # Bump when `CardQuery.printings` keeps a different set of fields, so entries
 # cached under the old shape are fetched again.
 PRINTING_FIELDS = 2
+# The same, for `CardQuery.by_ids`.
+ID_FIELDS = 1
+_FACE_FIELDS = ("name", "type_line", "oracle_text", "power", "toughness", "loyalty",
+                "defense", "image_uris")
 
 
 class CardQuery:
@@ -126,6 +130,38 @@ class CardQuery:
                 except Exception:               # read-only cache: still answer
                     pass
         return {pair: out.get(pair) for pair in dict.fromkeys((s.upper(), n) for s, n in pairs)}
+
+    def by_ids(self, ids: list[str]) -> dict[str, dict]:
+        """Printings by Scryfall id, trimmed to what a card on a table needs:
+        name, type, rules text, P/T or loyalty, and pictures. For tokens, which a
+        card's `all_parts` names by id only.
+
+        Cached like `printings`, and for the same reason kept out of the card
+        store: a token printing is fixed once released, and must not stand in
+        for the card object every page is built from.
+        """
+        if self._printings is None:
+            self._printings = PageStore(self.db_path, ttl_hours=24 * 365)
+        out: dict[str, dict] = {}
+        todo = []
+        for i in dict.fromkeys(ids):
+            hit = self._printings.get(f"scryfall:id/{i}")
+            if hit is None or hit.get("v") != ID_FIELDS:
+                todo.append(i)
+            else:
+                out[i] = hit
+        if todo:
+            for card in self.api.by_ids(todo):
+                slim = {k: card.get(k) for k in ("id", "cmc", "layout", *_FACE_FIELDS)}
+                slim["card_faces"] = [{k: f.get(k) for k in _FACE_FIELDS}
+                                      for f in card.get("card_faces") or []]
+                slim["v"] = ID_FIELDS
+                out[card["id"]] = slim
+                try:
+                    self._printings.put(f"scryfall:id/{card['id']}", slim)
+                except Exception:               # read-only cache: still answer
+                    pass
+        return out
 
     def search(self, query: str, order: str = "edhrec",
                limit: int | None = None) -> tuple[list[dict], int, int]:

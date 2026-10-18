@@ -1,0 +1,55 @@
+<!-- Cactuar deck browser (tts/cactuar.lua). scripts/build_tts_table.py appends
+     this to the table's Global UI: the open button once, and the panel once per
+     seat colour with {C} replaced, so each player has a panel only they see. -->
+<!-- @OPEN@ -->
+<Button id="cz_open" onClick="czOpen" visibility="White|Red|Yellow|Green|Blue|Purple"
+        rectAlignment="LowerRight" offsetXY="-20 170" width="150" height="38"
+        fontSize="16" fontStyle="Bold" color="rgba(0.18,0.42,0.25,0.95)" textColor="#ffffff">Cactuar decks</Button>
+<!-- @PANEL@ -->
+<Panel id="cz_panel_{C}" visibility="{C}" active="False"
+       width="620" height="720" rectAlignment="MiddleRight" offsetXY="-30 0"
+       allowDragging="true" returnToOriginalPositionWhenReleased="false"
+       color="rgba(0.07,0.08,0.11,0.97)" outline="#4a5a78" outlineSize="2 2">
+  <VerticalLayout padding="14 14 12 12" spacing="6" childForceExpandHeight="false" childForceExpandWidth="true">
+    <HorizontalLayout preferredHeight="34" spacing="6" childForceExpandWidth="false">
+      <Text flexibleWidth="1" fontSize="21" fontStyle="Bold" color="#ffffff" alignment="MiddleLeft">Cactuar decks</Text>
+      <Button onClick="czRefresh" preferredWidth="84" fontSize="13" color="rgba(0.22,0.23,0.28,1)" textColor="#ffffff">Refresh</Button>
+      <Button onClick="czClose" preferredWidth="36" fontSize="16" color="rgba(0.35,0.18,0.18,1)" textColor="#ffffff">X</Button>
+    </HorizontalLayout>
+    <HorizontalLayout preferredHeight="32" spacing="6" childForceExpandWidth="false">
+      <InputField id="cz_search_{C}" flexibleWidth="1" fontSize="15" onEndEdit="czSearch"
+                  color="rgba(0.18,0.19,0.23,1)" textColor="#ffffff" caretColor="#ffffff"
+                  placeholder="Search a name, commander, owner or category, then Enter"/>
+      <Button onClick="czClear" preferredWidth="70" fontSize="13" color="rgba(0.22,0.23,0.28,1)" textColor="#ffffff">Clear</Button>
+    </HorizontalLayout>
+    <HorizontalLayout preferredHeight="28" spacing="4">
+      <Text preferredWidth="46" fontSize="13" color="#9aa3b5" alignment="MiddleLeft">Sort</Text>
+      <Button id="cz_sort_tier_{C}" onClick="czSort(tier)" fontSize="13" textColor="#ffffff">Tier</Button>
+      <Button id="cz_sort_name_{C}" onClick="czSort(name)" fontSize="13" textColor="#ffffff">Name</Button>
+      <Button id="cz_sort_newest_{C}" onClick="czSort(newest)" fontSize="13" textColor="#ffffff">Newest</Button>
+      <Button id="cz_sort_owner_{C}" onClick="czSort(owner)" fontSize="13" textColor="#ffffff">Owner</Button>
+    </HorizontalLayout>
+    <HorizontalLayout preferredHeight="28" spacing="4">
+      <Button id="cz_f_bracket_{C}" onClick="czCycle(bracket)" fontSize="13" color="rgba(0.22,0.23,0.28,1)" textColor="#ffffff">Bracket: All</Button>
+      <Button id="cz_f_tier_{C}" onClick="czCycle(tier)" fontSize="13" color="rgba(0.22,0.23,0.28,1)" textColor="#ffffff">Tier: All</Button>
+      <Button id="cz_f_theme_{C}" onClick="czCycle(theme)" fontSize="13" color="rgba(0.22,0.23,0.28,1)" textColor="#ffffff">Category: All</Button>
+      <Button id="cz_f_owner_{C}" onClick="czCycle(owner)" fontSize="13" color="rgba(0.22,0.23,0.28,1)" textColor="#ffffff">Owner: All</Button>
+    </HorizontalLayout>
+    <VerticalLayout preferredHeight="384" spacing="2" childForceExpandHeight="false">
+@ROWS@
+    </VerticalLayout>
+    <HorizontalLayout preferredHeight="28" spacing="6" childForceExpandWidth="false">
+      <Button onClick="czPage(prev)" preferredWidth="44" fontSize="15" color="rgba(0.22,0.23,0.28,1)" textColor="#ffffff">&lt;</Button>
+      <Text id="cz_page_{C}" flexibleWidth="1" fontSize="13" color="#9aa3b5" alignment="MiddleCenter">Page 1 / 1</Text>
+      <Button onClick="czPage(next)" preferredWidth="44" fontSize="15" color="rgba(0.22,0.23,0.28,1)" textColor="#ffffff">&gt;</Button>
+      <Button onClick="czRandom" preferredWidth="90" fontSize="13" color="rgba(0.22,0.23,0.28,1)" textColor="#ffffff">Random</Button>
+    </HorizontalLayout>
+    <Text id="cz_detail_{C}" preferredHeight="132" fontSize="14" color="#e6e9f0" alignment="UpperLeft">Pick a deck from the list.</Text>
+    <Button onClick="czLoad" preferredHeight="40" fontSize="17" fontStyle="Bold"
+            color="rgba(0.18,0.42,0.25,1)" textColor="#ffffff">Load into my seat</Button>
+    <Text id="cz_status_{C}" preferredHeight="20" fontSize="12" color="#9aa3b5" alignment="MiddleLeft"></Text>
+  </VerticalLayout>
+</Panel>
+<!-- @ROW@ -->
+      <Button id="cz_row_{I}_{C}" onClick="czPick({I})" preferredHeight="30" fontSize="14"
+              textAlignment="MiddleLeft" color="rgba(0.16,0.17,0.21,1)" textColor="#ffffff" active="False"></Button>

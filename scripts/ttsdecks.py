@@ -1,0 +1,243 @@
+"""Tabletop Simulator objects for every deck, so a table can spawn one in a click.
+
+build_site.py calls `files()` and publishes what it returns under docs/tts/:
+
+    tts/decks.json                          the index a table's deck browser lists
+    tts/<owner>/<Bracket>/<Deck>.ndjson     one deck, ready to spawn
+
+A deck file is one JSON value per line:
+
+    {"v": 1, "name": "Giada-Angels", "commanders": 1, "tokens": true}    header
+    <the library pile>
+    <commander>                  one line per commander: one, or two for partners
+    <the tokens>                 a pile, or a single card; absent when none
+
+The table decodes only the header. Every other line goes to `spawnObjectJSON`
+exactly as written: decoding objects into Lua tables and encoding them again would
+turn CustomDeck's numeric keys ("1", "2") into an array, and the cards would lose
+their pictures. One object per line, rather than strings inside one JSON value,
+also saves the escaping on every quote.
+
+The objects match what rikrassen's importer builds (measured against its server,
+2026-10-16), so the table's own scripts treat our cards like any imported card:
+each card is a one-card sheet, listed once in the pile's CustomDeck; its Nickname is `Name\\nType line NCMC`, its
+Description the rules text with `[b]P/T[/b]` or `[b]loyalty[/b]` after it; a
+double-faced card keeps its back as state 2. Differences: pictures come from
+Scryfall's CDN rather than the importer's host, pinned printings are used as the
+catalog shows them, and the commanders and tokens are separate objects so the
+table can put each in its own zone.
+"""
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+import decktiers
+import deckthemes
+
+# Scryfall's standard Magic card back.
+CARD_BACK = "https://backs.scryfall.io/large/0/a/0aeebaf5-8c7d-4636-9e82-8c27447861f7.jpg"
+IMAGE_SIZES = ("large", "normal")       # first one present wins
+TRANSFORM = {"posX": 0, "posY": 0, "posZ": 0, "rotX": 0, "rotY": 180, "rotZ": 0,
+             "scaleX": 1, "scaleY": 1, "scaleZ": 1}
+INDEX_VERSION = 1
+
+# Mirrors the --tier-* colours in frontend/style.css, so a tier reads the same on
+# the table as in the catalog. GOD's gradient is represented by its first stop.
+TIER_COLOURS = {"GOD": "#ffe58a", "SS": "#ff5c8a", "S": "#ff7f7f", "A": "#ffbf7f",
+                "B": "#ffdf7f", "C": "#f2f28a", "D": "#bfef8f", "TRASH": "#8d93a3"}
+
+
+# ---------- one card ----------
+
+def _image(uris: dict | None) -> str:
+    uris = uris or {}
+    return next((uris[s] for s in IMAGE_SIZES if uris.get(s)), "")
+
+
+def _cmc(card: dict) -> str:
+    value = card.get("cmc") or 0
+    return f"{value:g}"
+
+
+def _stats(face: dict) -> str:
+    if face.get("power") is not None and face.get("toughness") is not None:
+        return f"{face['power']}/{face['toughness']}"
+    return face.get("loyalty") or face.get("defense") or ""
+
+
+def _face(name: str, type_line: str, cmc: str, oracle: str, stats: str, image: str) -> dict:
+    return {"nickname": f"{name}\n{type_line} {cmc}CMC",
+            "description": oracle + (f"\n[b]{stats}[/b]" if stats else ""),
+            "image": image}
+
+
+def faces(card: dict) -> list[dict]:
+    """The card as one face, or two when its sides have separate pictures.
+
+    Split, adventure and flip cards print both halves on one picture, so they are
+    one face carrying both halves' text. Transforming and modal double-faced cards
+    have a picture per side: those become a front and a flip-to back.
+    """
+    halves = card.get("card_faces") or []
+    cmc = _cmc(card)
+    if len(halves) >= 2 and all(h.get("image_uris") for h in halves[:2]):
+        return [_face(h.get("name", ""), h.get("type_line", ""), cmc,
+                      h.get("oracle_text") or "", _stats(h), _image(h["image_uris"]))
+                for h in halves[:2]]
+    oracle = card.get("oracle_text")
+    if oracle is None:
+        oracle = "\n//\n".join(h.get("oracle_text") or "" for h in halves)
+    stats = _stats(card) or next((_stats(h) for h in halves if _stats(h)), "")
+    return [_face(card.get("name", ""), card.get("type_line", ""), cmc, oracle, stats,
+                  _image(card.get("image_uris")))]
+
+
+class Sheets:
+    """One single-card sheet per distinct picture. Thirty Swamps share one sheet,
+    so a pile's CustomDeck stays as small as the number of different pictures."""
+
+    def __init__(self):
+        self.ids: dict[str, int] = {}
+        self.images: dict[int, str] = {}
+
+    def key(self, image: str) -> int:
+        if image not in self.ids:
+            self.ids[image] = len(self.ids) + 1
+            self.images[self.ids[image]] = image
+        return self.ids[image]
+
+    @staticmethod
+    def sheet(image: str) -> dict:
+        return {"FaceURL": image, "BackURL": CARD_BACK, "NumWidth": 1, "NumHeight": 1,
+                "BackIsHidden": True, "UniqueBack": False, "Type": 0}
+
+
+def card_object(card: dict, sheets: Sheets) -> dict:
+    """One Tabletop Simulator card, with its back face as state 2 when it has one.
+
+    The front carries no CustomDeck of its own: `pile` lists every front's sheet
+    once, as the importer does, and gives a lone card its sheet back. A back face
+    always carries its own, since the pile's list covers fronts only."""
+    front, *back = faces(card)
+
+    def obj(face: dict, own_sheet: bool) -> dict:
+        k = sheets.key(face["image"])
+        out = {"Name": "Card", "Nickname": face["nickname"], "Description": face["description"],
+               "CardID": k * 100, "Transform": dict(TRANSFORM), "HideWhenFaceDown": True}
+        if own_sheet:
+            out["CustomDeck"] = {str(k): Sheets.sheet(face["image"])}
+        return out
+
+    out = obj(front, own_sheet=False)
+    if back:
+        out["States"] = {"2": obj(back[0], own_sheet=True)}
+    return out
+
+
+def pile(name: str, cards: list[dict], sheets: Sheets) -> dict:
+    """A deck of `cards`, or the card itself when there is only one: Tabletop
+    Simulator has no one-card deck."""
+    fronts = {c["CardID"] // 100 for c in cards}
+    custom = {str(k): Sheets.sheet(sheets.images[k]) for k in sorted(fronts)}
+    if len(cards) == 1:
+        return {**cards[0], "CustomDeck": custom}
+    return {"Name": "DeckCustom", "Nickname": name, "Transform": dict(TRANSFORM),
+            "DeckIDs": [c["CardID"] for c in cards], "CustomDeck": custom,
+            "ContainedObjects": cards, "HideWhenFaceDown": True}
+
+
+# ---------- tokens ----------
+
+def token_ids(cards: list[dict]) -> list[str]:
+    """Scryfall ids of what the deck's cards make: tokens and emblems.
+
+    `all_parts` also lists the card itself, its meld partner and the set's
+    checklist card, so only the `token` component and emblems are taken. (Scryfall
+    files Elspeth's emblem as a combo piece, which is why emblems are matched by
+    type.)"""
+    ids: list[str] = []
+    for card in cards:
+        own = card.get("id")
+        for part in card.get("all_parts") or []:
+            if part.get("id") == own:
+                continue
+            if part.get("component") == "token" or "Emblem" in (part.get("type_line") or ""):
+                ids.append(part["id"])
+    return list(dict.fromkeys(ids))
+
+
+def distinct_tokens(tokens: list[dict]) -> list[dict]:
+    """One of each token: printings of the same 1/1 Soldier collapse into one."""
+    seen, out = set(), []
+    for t in tokens:
+        key = (t.get("name"), t.get("type_line"), t.get("oracle_text"), _stats(t))
+        if key not in seen:
+            seen.add(key)
+            out.append(t)
+    return out
+
+
+# ---------- one deck, and the index ----------
+
+def deck_file(d, tokens: dict[str, dict]) -> str:
+    """The spawnable objects for DeckInfo `d`: header, library, commanders, tokens."""
+    library_sheets, side_sheets = Sheets(), Sheets()
+    leaders = set(d.commanders)
+    library = []
+    for entry in d.deck.entries:
+        if entry.name in leaders or entry.name not in d.cards:
+            continue
+        library += [card_object(d.cards[entry.name], library_sheets)] * entry.count
+    commanders = [pile(n, [card_object(d.cards[n], side_sheets)], side_sheets)
+                  for n in d.commanders if n in d.cards]
+    made = distinct_tokens([tokens[i] for i in token_ids([d.cards[n] for n in d.deck.names
+                                                          if n in d.cards]) if i in tokens])
+    token_objs = [card_object(t, side_sheets) for t in made]
+    header = {"v": INDEX_VERSION, "name": d.stem, "commanders": len(commanders),
+              "tokens": bool(token_objs)}
+    lines = [header, pile(d.stem, library, library_sheets), *commanders]
+    if token_objs:
+        lines.append(pile("Tokens", token_objs, side_sheets))
+    return "".join(json.dumps(o, ensure_ascii=False, separators=(",", ":")) + "\n" for o in lines)
+
+
+def index_entry(d, path: str) -> dict:
+    themes = deckthemes.visible(d.themes, local=False)
+    tier = decktiers.visible(d.tier, local=False)
+    return {"id": d.key, "name": d.stem, "owner": d.author, "commander": d.commander,
+            "bracket": d.bracket, "bracketLabel": d.label, "tier": tier or "",
+            "themes": list(themes), "colors": "".join(d.colours), "gc": len(d.gcs),
+            "cap": d.cap, "mv": round(d.avg_mv, 2), "lands": d.lands,
+            "added": d.created, "updated": d.modified, "file": path}
+
+
+def index(decks: list, paths: dict[str, str]) -> dict:
+    return {
+        "v": INDEX_VERSION,
+        "tiers": [{"id": k, "label": t.label, "title": t.title, "color": TIER_COLOURS.get(k, "#cccccc")}
+                  for k, t in decktiers.TIERS.items() if not t.local_only],
+        "themes": [{"id": k, "label": t.label} for k, t in deckthemes.THEMES.items()
+                   if not t.local_only],
+        "decks": [index_entry(d, paths[d.key]) for d in decks],
+    }
+
+
+def files(decks: list, out_dir: Path, q) -> dict[Path, str]:
+    """Every docs/tts/ file for `decks` (build_site.DeckInfo objects)."""
+    wanted = token_ids([c for d in decks for n in d.deck.names
+                        if (c := d.cards.get(n)) is not None])
+    try:
+        tokens = q.by_ids(wanted) if wanted else {}
+    except Exception:                       # tokens are a convenience: build without them
+        tokens = {}
+    root = out_dir / "tts"
+    out: dict[Path, str] = {}
+    paths: dict[str, str] = {}
+    for d in decks:
+        rel = Path(d.href).with_suffix(".ndjson").as_posix()   # <owner>/<Bracket>/<Deck>.ndjson
+        paths[d.key] = rel
+        out[root / rel] = deck_file(d, tokens)
+    out[root / "decks.json"] = json.dumps(index(decks, paths), ensure_ascii=False,
+                                          separators=(",", ":")) + "\n"
+    return out

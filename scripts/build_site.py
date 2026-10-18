@@ -70,6 +70,7 @@ import deckthemes
 import decktiers
 import frontend
 import toollog
+import ttsdecks
 import workspace
 from cardlib import CardQuery, ImageQuery, ScryfallError, SymbolQuery, local_name
 # Same policy as the validator, imported rather than restated: a bracket cap or a
@@ -919,6 +920,8 @@ def plan(root: Path, out_dir: Path, repo: str, q: CardQuery,
         # ahead of the click instead of a whole deck page.
         files[(out_dir / d.href).with_suffix(".txt")] = d.raw
     files.update(redirect_pages(tpl, decks, out_dir, fdir / "redirects.json", files))
+    # What a Tabletop Simulator table loads: an index and one spawnable file per deck.
+    files.update(ttsdecks.files(decks, out_dir, q))
     files.update(image_files)
     files.update(collect_symbols(mana, sym, out_dir))   # after render: needs .used
     return files

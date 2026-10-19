@@ -1,0 +1,100 @@
+1 Bruce Banner
+1 Abrade
+1 An Offer You Can't Refuse
+1 Arcane Signet
+1 Arid Mesa
+1 Badgermole Cub
+1 Basalt Monolith
+1 Beast Within
+1 Birds of Paradise
+1 Bloom Tender
+1 Boseiju, Who Endures
+1 Breeding Pool
+1 Caltrops
+1 Chain of Vapor
+1 Chord of Calling
+1 City of Brass
+1 Command Tower
+1 Deflecting Swat
+1 Delay
+1 Delighted Halfling
+1 Eldritch Evolution
+1 Elvish Mystic
+1 Endurance
+1 Eternal Witness
+1 Exotic Orchard
+1 Fabricate
+1 Faerie Mastermind
+1 Fierce Guardianship
+1 Finale of Devastation
+1 Flooded Strand
+1 Flusterstorm
+1 Force of Negation
+1 Force of Vigor
+1 Forest
+1 Gemstone Caverns
+1 Green Sun's Zenith
+1 Hawkeye's Bow
+1 Hedge Maze
+1 Heroic Intervention
+1 Hexing Squelcher
+1 Island
+1 Karplusan Forest
+1 Ketria Triome
+1 Kinnan, Bonder Prodigy
+1 Legolas's Quick Reflexes
+1 Lightning Greaves
+1 Llanowar Elves
+1 Lotus Petal
+1 Mana Confluence
+1 Minamo, School at Water's Edge
+1 Misty Rainforest
+1 Moonmist
+1 Mountain
+1 Mox Amber
+1 Muddle the Mixture
+1 Mystic Remora
+1 Nature's Claim
+1 Nature's Lore
+1 Nature's Rhythm
+1 Noxious Revival
+1 Otawara, Soaring City
+1 Pact of Negation
+1 Polluted Delta
+1 Pongify
+1 Power Artifact
+1 Rejuvenating Springs
+1 Resculpt
+1 Rhystic Study
+1 Samut, Hazoret's Champion
+1 Scalding Tarn
+1 Shang-Chi, Master of Kung Fu
+1 Shivan Reef
+1 Sol Ring
+1 Spellseeker
+1 Spellskite
+1 Spire Garden
+1 Steam Vents
+1 Stomping Ground
+1 Swan Song
+1 Swiftfoot Boots
+1 Sylvan Library
+1 Taiga
+1 Tamiyo's Safekeeping
+1 The One Ring
+1 Three Visits
+1 Thundering Falls
+1 Training Center
+1 Training Grounds
+1 Transmute Artifact
+1 Trophy Mage
+1 Tropical Island
+1 Veil of Summer
+1 Verdant Catacombs
+1 Volcanic Island
+1 Walking Ballista
+1 Whir of Invention
+1 Wild Growth
+1 Windswept Heath
+1 Wooded Foothills
+1 Yavimaya Coast

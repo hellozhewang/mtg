@@ -25,8 +25,8 @@ def snapshot(used=80):
 class FormatTests(unittest.TestCase):
     def test_account_windows_and_discord_resets(self):
         text = usage.format_limits(snapshot(), "test-model", discord=True)
-        self.assertIn("test-model", text)
-        self.assertIn("shared account", text)
+        self.assertNotIn("test-model", text)          # players never see the model
+        self.assertNotIn("Codex", text)
         self.assertIn("5h: 20% left (resets <t:1791528082:R>)", text)
         self.assertIn("weekly: 59% left", text)
         self.assertIn("2026-10-09 06:41 UTC", usage.format_limits(snapshot(), "test"))
@@ -38,8 +38,9 @@ class FormatTests(unittest.TestCase):
             "other": {"limitName": "Other model", "primary": {"usedPercent": 25}},
         }
         text = usage.format_limits(data, "test")
-        self.assertEqual(text.count("shared account"), 1)
-        self.assertIn("Other model — primary: 75% left", text)
+        self.assertEqual(len(text.splitlines()), 3)    # header + one line per bucket, no duplicate
+        self.assertIn("primary: 75% left", text)
+        self.assertNotIn("Other model", text)
 
     def test_unknown_or_exhausted_usage_is_not_fabricated(self):
         for used in (None, "80", float("nan"), True, -1):
@@ -117,6 +118,53 @@ time.sleep(30)
                 self.assertNotIn("private account detail", text)
 
 
+AGY_USAGE = {"groups": [
+    {"name": "Gemini Models", "buckets": [
+        {"window": "weekly", "remaining_fraction": 0.9661, "reset_time": "2026-10-26T01:01:47Z"},
+        {"window": "5h", "remaining_fraction": 0.9346, "reset_time": "2026-10-19T15:06:08Z"}]},
+    {"name": "Claude and GPT models", "buckets": [
+        {"window": "weekly", "remaining_fraction": 1, "reset_time": "2026-10-26T10:48:08Z"},
+        {"window": "5h", "remaining_fraction": 1, "reset_time": "2026-10-19T15:48:08Z"}]},
+    {"name": "Gemini 4 Argon", "buckets": [
+        {"window": "weekly", "remaining_fraction": 0.6785, "reset_time": "2026-10-26T00:47:19Z"}]}]}
+
+
+class AgyUsageTests(unittest.TestCase):
+    def test_the_footer_matches_the_codex_shape_for_the_models_group(self):
+        text = usage.format_agy(AGY_USAGE, "gemini-3.8-flash-high")
+        self.assertEqual(text, "Usage remaining\n"
+                               "5h: 93% left (resets 2026-10-19 15:06 UTC) · "
+                               "weekly: 97% left (resets 2026-10-26 01:01 UTC)")
+
+    def test_each_model_reads_its_own_group(self):
+        self.assertEqual(usage.format_agy(AGY_USAGE, "gemini-4-argon-high").splitlines()[1],
+                         "weekly: 68% left (resets 2026-10-26 00:47 UTC)")
+        self.assertIn("5h: 100% left", usage.format_agy(AGY_USAGE, "claude-opus-5-5-high"))
+        self.assertIn("5h: 93% left", usage.format_agy(AGY_USAGE, "gemini-3.8-flash-high"))
+        self.assertEqual(len(usage.format_agy(AGY_USAGE, "mystery").splitlines()), 2)  # one group
+
+    def test_no_model_harness_or_vendor_is_named(self):
+        for model in ("gemini-3.8-flash-high", "gemini-4-argon-high", "claude-opus-5-5-high"):
+            text = usage.format_agy(AGY_USAGE, model, discord=True)
+            for word in ("gemini", "argon", "claude", "gpt", "codex", "antigravity", "agy", model):
+                self.assertNotIn(word, text.lower(), (model, word))
+
+    def test_discord_gets_relative_timestamps(self):
+        self.assertIn("(resets <t:1792422368:R>)", usage.format_agy(AGY_USAGE, "gemini-3.8-flash-high", discord=True))
+
+    def test_reads_the_usage_panel_from_agy_and_never_invents_a_quota(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            fake = Path(tmp) / "agy"
+            reply = {"conversation_id": "", "status": "SUCCESS", "response": "table",
+                     "command": {"name": "usage", "data": AGY_USAGE}}
+            fake.write_text(f"#!/usr/bin/env python3\nimport sys, os\nassert sys.argv[1:] == ['--print=/usage', '--output-format', 'json']\n"
+                            f"assert os.environ['HOME'] == {tmp!r}\nprint({json.dumps(json.dumps(reply))})\n")
+            fake.chmod(0o755)
+            self.assertIn("5h: 93% left", usage.agy_report(str(fake), tmp, "gemini-3.8-flash-high"))
+            fake.write_text("#!/bin/sh\necho not-json\n")
+            self.assertIn("Unavailable", usage.agy_report(str(fake), tmp, "gemini-3.8-flash-high"))
+
+
 class BuilderTests(unittest.TestCase):
     def setUp(self):
         import bot
@@ -124,10 +172,10 @@ class BuilderTests(unittest.TestCase):
         self.stack = contextlib.ExitStack()
         self.addCleanup(self.stack.close)
         self.stack.enter_context(patch.object(bot, "log", return_value=Mock()))
-        self.report = self.stack.enter_context(patch.object(bot.usage, "report", return_value="USAGE"))
+        self.report = self.stack.enter_context(patch.object(bot.HARNESS, "usage", return_value="USAGE"))
 
     def test_usage_command_bypasses_the_busy_lock_and_model(self):
-        with patch.object(self.bot, "_claim_bot") as claim, patch.object(self.bot, "_run") as run:
+        with patch.object(self.bot, "_claim_bot") as claim, patch.object(self.bot, "_turn") as run:
             for message in usage.USAGE_COMMANDS:
                 self.assertEqual(self.bot.send(message.upper(), "zzwang"), "USAGE")
             claim.assert_not_called()
@@ -149,7 +197,7 @@ class BuilderTests(unittest.TestCase):
                 for name, value in {
                     "_claim_bot": Mock(), "_release_bot": None,
                     "session_id": sid,
-                    "_run": ("answer", "session id: 11111111-1111-1111-1111-111111111111"),
+                    "_turn": bot.harness.Turn("answer", "11111111-1111-1111-1111-111111111111", ""),
                     "_finish": "answer",
                 }.items():
                     stack.enter_context(patch.object(bot, name, return_value=value))
@@ -165,12 +213,60 @@ class BuilderTests(unittest.TestCase):
         self.assertTrue(self.report.call_args.kwargs["discord"])
 
     def test_a_username_that_cannot_have_a_folder_never_reaches_the_model(self):
-        with patch.object(self.bot, "_claim_bot") as claim, patch.object(self.bot, "_run") as run:
+        with patch.object(self.bot, "_claim_bot") as claim, patch.object(self.bot, "_turn") as run:
             for name in ("../zzwang", "img", "Bracket3", "a/b"):
                 with self.subTest(name=name):
                     self.assertIn("can't build decks", self.bot.send("build a deck", name))
             claim.assert_not_called()
             run.assert_not_called()
+
+    def test_a_harness_without_usage_adds_no_footer(self):
+        bot = self.bot
+        with contextlib.ExitStack() as stack:
+            stack.enter_context(patch.object(bot.HARNESS, "usage", return_value=""))
+            stack.enter_context(patch.object(bot, "_claim_bot", side_effect=bot.Busy))
+            self.assertEqual(bot.send("build a deck", "zzwang"), bot.BUSY_REPLY)
+            self.assertEqual(bot.send("usage", "zzwang"), "Usage remaining\nUnavailable right now.")
+
+    def test_a_new_session_is_pinned_with_its_harness_and_model(self):
+        bot = self.bot
+        with contextlib.ExitStack() as stack:
+            for name, value in {"_claim_bot": Mock(), "_release_bot": None, "_finish": "answer",
+                                "_turn": bot.harness.Turn("answer", "conv-1", "")}.items():
+                stack.enter_context(patch.object(bot, name, return_value=value))
+            stack.enter_context(patch.object(bot.build_agents, "build", return_value=(False, "ok")))
+            stack.enter_context(patch.object(bot, "_creation_lock", return_value=contextlib.nullcontext()))
+            tmp = stack.enter_context(tempfile.TemporaryDirectory())
+            stack.enter_context(patch.object(bot, "SESSIONS", Path(tmp)))
+            stack.enter_context(patch.dict(os.environ, {"MTG_DECKS": tmp}))
+            bot.send("build a deck", "zzwang")
+            saved = json.loads(next(Path(tmp).glob("*.json")).read_text())
+            self.assertEqual((saved["session_id"], saved["harness"], saved["model"]),
+                             ("conv-1", bot.HARNESS.name, bot.MODEL))
+            # Another harness's session (or one saved before harnesses: Codex's) is not resumed.
+            key = next(Path(tmp).glob("*.json")).stem
+            self.assertEqual(bot.session_id(key), "conv-1")
+            other = {**saved, "harness": "elsewhere"}
+            (Path(tmp) / f"{key}.json").write_text(json.dumps(other))
+            self.assertIsNone(bot.session_id(key))
+            legacy = {k: v for k, v in saved.items() if k != "harness"}
+            (Path(tmp) / f"{key}.json").write_text(json.dumps(legacy))
+            if bot.HARNESS.name != "codex":
+                self.assertIsNone(bot.session_id(key))
+
+    def test_running_out_of_allowance_is_one_neutral_line(self):
+        footer = ("Usage remaining\n5h: 40% left (resets <t:1792422368:R>) · "
+                  "weekly: 0% left (resets <t:1792976507:R>)")
+        argv = ["bot.py", "--discord", "--user", "zzwang", "--", "build a deck"]
+        quota = self.bot.harness.QuotaExhausted("You have exhausted your quota on this model. (gemini)")
+        with patch.object(sys, "argv", argv), patch.object(self.bot, "send", side_effect=quota), \
+                patch.object(self.bot.HARNESS, "usage", return_value=footer), \
+                contextlib.redirect_stderr(io.StringIO()) as err, contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(self.bot.main(), 1)
+        # The spent weekly window decides when to come back, not the 5-hour one.
+        self.assertEqual(err.getvalue(), "deck builder usage limit reached; try again at <t:1792976507:R>.\n")
+        for leak in ("gemini", "agy", "codex", self.bot.MODEL):
+            self.assertNotIn(leak.lower(), err.getvalue().lower())
 
     def test_cli_usage_needs_no_username(self):
         with patch.object(sys, "argv", ["bot.py", "--usage"]), contextlib.redirect_stdout(io.StringIO()) as output:

@@ -1,12 +1,17 @@
-"""Read the signed-in Codex account's allowance without starting a model turn.
+"""Read the builder harness's allowance without starting a model turn.
 
-Protocol: https://learn.chatgpt.com/docs/app-server#6-rate-limits-chatgpt
+Codex: https://learn.chatgpt.com/docs/app-server#6-rate-limits-chatgpt
 Only initialize + account/rateLimits/read are sent. Credentials stay in Codex.
+
+Antigravity (agy): `agy --print=/usage --output-format json`, its own usage panel as
+data: groups of models that share a weekly and a 5-hour limit, each bucket with the
+fraction remaining and the reset time. No model turn is run.
 """
 from __future__ import annotations
 
 import json
 import math
+import re
 import os
 import selectors
 import signal
@@ -50,7 +55,7 @@ def read_limits(codex: str, *, timeout: float = TIMEOUT) -> dict:
                             break
                         chunk = os.read(proc.stdout.fileno(), 65536)
                         if not chunk:
-                            raise UsageUnavailable("Codex exited before reporting usage")
+                            raise UsageUnavailable("usage lookup ended early")
                         received += len(chunk)
                         if received > 1_000_000:
                             raise UsageUnavailable("unexpected usage response")
@@ -62,7 +67,7 @@ def read_limits(codex: str, *, timeout: float = TIMEOUT) -> dict:
                         continue  # notifications are not our RPC response
                     if "error" in message:
                         # Never forward an upstream error containing account/auth details.
-                        raise UsageUnavailable("Codex could not read the account allowance")
+                        raise UsageUnavailable("the allowance could not be read")
                     result = message.get("result")
                     if not isinstance(result, dict):
                         raise UsageUnavailable("unexpected usage response")
@@ -119,9 +124,14 @@ def _window(window: dict, name: str, discord: bool) -> str:
     return text
 
 
+# What players see names no model, harness or vendor: the owner alone picks those,
+# and the builder is just "the builder" to everyone else.
+HEADER = "Usage remaining"
+
+
 def format_limits(result: dict, model: str, *, discord: bool = False) -> str:
-    """Label account buckets honestly; a model name is not a separate quota."""
-    header = f"Usage remaining · {model}"
+    """Codex's account buckets, unlabelled: a model name is not a separate quota."""
+    header = HEADER
     buckets = result.get("rateLimitsByLimitId")
     buckets = dict(buckets) if isinstance(buckets, dict) else {}
     legacy = result.get("rateLimits")
@@ -142,11 +152,10 @@ def format_limits(result: dict, model: str, *, discord: bool = False) -> str:
             elif credits.get("hasCredits") is True and credits.get("balance") is not None:
                 parts.append(f"credits: {credits['balance']}")
         if parts:
-            label = "Codex (shared account)" if key == "codex" else bucket.get("limitName") or key
-            lines.append(f"{label} — " + " · ".join(parts))
+            lines.append(" · ".join(parts))
     if result.get("ordinaryUsageAllowed") is False:
-        lines.append("Codex reports that account usage is currently blocked.")
-    return header + "\n" + ("\n".join(lines) if lines else "Unavailable: Codex returned no allowance windows.")
+        lines.append("Usage is currently blocked.")
+    return header + "\n" + ("\n".join(lines) if lines else "Unavailable: no allowance windows were returned.")
 
 
 def report(codex: str, model: str, *, discord: bool = False) -> str:
@@ -154,5 +163,94 @@ def report(codex: str, model: str, *, discord: bool = False) -> str:
     try:
         return format_limits(read_limits(codex), model, discord=discord)
     except (UsageUnavailable, OSError, ValueError) as exc:
-        reason = str(exc) if isinstance(exc, UsageUnavailable) else "could not read Codex usage"
-        return f"Usage remaining · {model}\nUnavailable: {reason}."
+        reason = str(exc) if isinstance(exc, UsageUnavailable) else "could not read usage"
+        return f"{HEADER}\nUnavailable: {reason}."
+
+
+# ---------- Antigravity (agy) ----------
+
+AGY_WINDOWS = {"5h": 0, "weekly": 1}      # 5-hour first, then weekly, as Codex shows them
+
+
+def read_agy(exe: str, home: str, *, timeout: float = 20.0) -> dict:
+    """agy's /usage data. Run with the bot's own agy home, which holds its sign-in."""
+    try:
+        proc = subprocess.run([exe, "--print=/usage", "--output-format", "json"],
+                              capture_output=True, text=True, timeout=timeout,
+                              env={**os.environ, "HOME": home}, stdin=subprocess.DEVNULL)
+    except subprocess.TimeoutExpired as exc:
+        raise UsageUnavailable("usage lookup timed out") from exc
+    for line in reversed((proc.stdout or "").splitlines()):
+        line = line.strip()
+        if line.startswith("{"):
+            try:
+                data = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            command = data.get("command") if isinstance(data, dict) else None
+            if isinstance(command, dict) and isinstance(command.get("data"), dict):
+                return command["data"]
+    raise UsageUnavailable("no usage data was returned")
+
+
+def _agy_group(groups: list, model: str) -> list:
+    """The quota group the model draws from: a group named for the model (Argon), else
+    Claude/GPT for those, else the Gemini group; the first group if none matches."""
+    words = model.lower()
+    named = [g for g in groups if isinstance(g, dict) and any(
+        w in str(g.get("name", "")).lower() for w in ("argon",) if w in words)]
+    if named:
+        return named
+    if words.startswith(("claude", "gpt")):
+        wanted = "claude"
+    elif words.startswith("gemini"):
+        wanted = "gemini models"
+    else:
+        wanted = None
+    match = [g for g in groups if isinstance(g, dict) and wanted and wanted in str(g.get("name", "")).lower()]
+    return match or [g for g in groups if isinstance(g, dict)][:1]
+
+
+def _agy_bucket(bucket: dict, discord: bool) -> str:
+    window = str(bucket.get("window") or bucket.get("name") or "limit")
+    fraction = bucket.get("remaining_fraction")
+    remaining = f"{max(0, min(100, round(fraction * 100)))}% left" if _number(fraction) else "unavailable"
+    text = f"{window}: {remaining}"
+    reset = bucket.get("reset_time")
+    if isinstance(reset, str) and reset:
+        try:
+            when = datetime.fromisoformat(reset.replace("Z", "+00:00")).astimezone(timezone.utc)
+            text += " (resets " + (f"<t:{int(when.timestamp())}:R>" if discord
+                                   else when.strftime("%Y-%m-%d %H:%M UTC")) + ")"
+        except ValueError:
+            pass
+    return text
+
+
+def format_agy(data: dict, model: str, *, discord: bool = False) -> str:
+    """The same shape as the Codex footer, for the group the model draws from, with
+    no group or model name (players don't see which model runs)."""
+    lines = []
+    for group in _agy_group(data.get("groups") or [], model):
+        buckets = [b for b in group.get("buckets") or [] if isinstance(b, dict)]
+        buckets.sort(key=lambda b: AGY_WINDOWS.get(str(b.get("window")), 9))
+        parts = [_agy_bucket(b, discord) for b in buckets]
+        if parts:
+            lines.append(" · ".join(parts))
+    return HEADER + "\n" + ("\n".join(lines) if lines else "Unavailable: no limits were returned.")
+
+
+def exhausted_reset(text: str) -> str | None:
+    """When the emptiest window in a footer resets, for "try again at": a spent weekly
+    window outlasts the 5-hour one, so the lowest "N% left" decides."""
+    found = re.findall(r"(\d+(?:\.\d+)?)% left \(resets ([^)]+)\)", text or "")
+    return min(found, key=lambda f: float(f[0]))[1] if found else None
+
+
+def agy_report(exe: str, home: str, model: str, *, discord: bool = False) -> str:
+    """Usage failure must never discard a deckbuilding reply or invent a quota."""
+    try:
+        return format_agy(read_agy(exe, home), model, discord=discord)
+    except (UsageUnavailable, OSError, ValueError) as exc:
+        reason = str(exc) if isinstance(exc, UsageUnavailable) else "could not read usage"
+        return f"{HEADER}\nUnavailable: {reason}."

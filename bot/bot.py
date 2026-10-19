@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Persistent Codex session for the Discord bot to talk to.
+"""Persistent deck-builder session for the Discord bot to talk to.
+
+The model runs on a swappable harness (bot/harness.py): Antigravity (`agy`, Gemini by
+default) or Codex. MTG_BOT_HARNESS / MTG_BOT_MODEL pick it. What follows describes the
+mechanics in Codex terms where they started; the harness module has each one's details.
 
     from bot import send, reset, session_id
     reply = send("Which Game Changers is Zur-Voltron running?", "discord_username")
@@ -59,7 +63,6 @@ import json
 import logging
 import os
 import re
-import shutil
 import sqlite3
 import subprocess
 import sys
@@ -85,6 +88,7 @@ import toollog
 import workspace
 
 import commands
+import harness
 import postprocess
 import usage
 
@@ -101,124 +105,12 @@ LOG_DIR = REPO / "logs"                              # one text log per UTC day
 # the channel or thread id so each conversation gets its own Codex session.
 DEFAULT_CHANNEL = "cli"
 
-MODEL = os.environ.get("MTG_BOT_MODEL", "gpt-6-astra")
-# Discord users are waiting on this, so default below the ceiling. `ultra`/`max`
-# can push a single turn into minutes.
-EFFORT = os.environ.get("MTG_BOT_EFFORT", "high")
+# The harness and model: MTG_BOT_HARNESS (default agy), MTG_BOT_MODEL, MTG_BOT_EFFORT.
+# Discord users are waiting on this, so the defaults sit below the ceiling.
+HARNESS = harness.from_env()
+MODEL = HARNESS.model
+EFFORT = HARNESS.effort
 TIMEOUT = int(os.environ.get("MTG_BOT_TIMEOUT", "600"))
-
-# ---------- exec lockdown ----------
-#
-# AGENTS.md tells the session never to invoke another LLM/agent CLI. That is
-# advisory; this is the enforcement. `claude` is installed on this machine, on
-# the PATH a naive subprocess would inherit whole, and runs as the same OS user
-# with the same working ~/.claude credentials — so "don't" is not sufficient.
-#
-# This is a curated PATH, and it is the WEAK form of this control: it blocks
-# bare command names (`claude`) but NOT absolute paths (`/opt/homebrew/bin/claude`).
-#
-# The sibling discord-bot project does this properly in src/infra/execSandbox.ts,
-# wrapping codex in a macOS Seatbelt profile that denies `process-exec` at the
-# kernel level, which absolute paths cannot bypass. That was tried here and does
-# NOT work for this workspace. Measured, not assumed:
-#
-#   codex applies its OWN Seatbelt profile per shell tool-call, and macOS denies
-#   a nested sandbox_apply. Under an outer sandbox-exec wrapper, codex starts and
-#   answers fine, but every tool call fails with:
-#       "sandbox-exec: sandbox_apply: Operation not permitted"
-#   Confirmed on BOTH -s read-only and -s workspace-write, so it is not a
-#   workspace-write quirk.
-#
-# That is exactly why it works over there and not here: that project locks down
-# its CHAT backend, which must never run a shell command at all. This workspace
-# is the privileged agent — running python3/grep/diff IS its job — so wrapping it
-# in Seatbelt would break the tools rather than protect them.
-#
-# codex does expose a native `execpolicy` .rules mechanism (see `--ignore-rules`)
-# which would not conflict, being inside codex rather than wrapped around it. It
-# is undocumented in --help and its parser is unstable, so it is not used here.
-# That is the thing to revisit if this ever needs to be a real boundary.
-
-CODEX_BIN = shutil.which("codex")
-if CODEX_BIN is None:
-    raise RuntimeError("codex not found on PATH")
-_NODE_BIN = shutil.which("node")
-if _NODE_BIN is None:
-    raise RuntimeError("node not found on PATH (required by codex)")
-
-# Directories whose contents the session may exec. Standard system paths only:
-# python3, git, bash/zsh, cat, grep, sed, awk, diff, curl all live here. What is
-# deliberately absent is the homebrew prefix — which is where `claude`, the
-# `codex` npm shim, `gh` and `npx` are installed.
-EXEC_ALLOWED_DIRS = ("/usr/bin", "/bin", "/usr/sbin", "/sbin", "/usr/libexec")
-
-
-def _native_codex(shim: str) -> str | None:
-    """Find the compiled binary the npm `codex` shim spawns internally.
-
-    Worth the trouble because the shim is a `#!/usr/bin/env node` script that
-    execs the native binary as a child — two extra execs (node, then the binary)
-    that the seatbelt allowlist would otherwise have to name, one of which lives
-    in the homebrew prefix we are trying not to open up. Going straight to the
-    native binary keeps the allowlist to system directories plus one path.
-
-    Reads the installed package layout rather than hardcoding a platform triple,
-    so a codex upgrade keeping the same structure needs no change here.
-    """
-    try:
-        pkg_root = Path(os.path.realpath(shim)).parent.parent   # .../@openai/codex
-        scope = pkg_root / "node_modules" / "@openai"
-        for entry in scope.iterdir():
-            if not entry.name.startswith("codex-"):
-                continue
-            vendor = entry / "vendor"
-            if not vendor.is_dir():
-                continue
-            for triple in vendor.iterdir():
-                candidate = triple / "bin" / "codex"
-                if candidate.is_file():
-                    return str(candidate)
-    except OSError:
-        pass                                    # caller logs and degrades
-    return None
-
-
-def _build_sandbox() -> tuple[str, str]:
-    """Returns (exec_path, PATH) for launching codex.
-
-    NOTE: no sandbox-exec wrapper, deliberately. See the module doc above — a
-    Seatbelt wrapper is incompatible with a codex session that runs commands.
-    """
-    native = _native_codex(CODEX_BIN)
-    if native:
-        # Exec the compiled binary, not the npm `#!/usr/bin/env node` shim. That
-        # removes node from the picture entirely, which matters here: node lives
-        # in the homebrew prefix alongside `claude`, so the shim would force
-        # either that whole directory onto PATH or a symlink workaround.
-        return native, ":".join(EXEC_ALLOWED_DIRS)
-
-    # Shim fallback: needs node, which is NOT in EXEC_ALLOWED_DIRS. Expose it
-    # via a directory containing only that one symlink rather than adding the
-    # homebrew prefix, which would also re-expose `claude`.
-    sandbox_bin = HERE / ".sandbox-bin"
-    sandbox_bin.mkdir(exist_ok=True)
-    link = sandbox_bin / "node"
-    if not link.is_symlink() or os.path.realpath(link) != os.path.realpath(_NODE_BIN):
-        link.unlink(missing_ok=True)
-        link.symlink_to(_NODE_BIN)
-    print("WARNING [exec-sandbox] could not resolve the native codex binary; "
-          "falling back to the npm shim and exposing node.", file=sys.stderr)
-    return CODEX_BIN, ":".join((str(sandbox_bin),) + EXEC_ALLOWED_DIRS)
-
-
-SANDBOX_EXEC_PATH, SANDBOX_PATH = _build_sandbox()
-
-SESSION_RE = re.compile(r"session id:\s*([0-9a-fA-F-]{32,40})")
-
-
-class CodexError(RuntimeError):
-    pass
-
 
 # ---------- session state (per channel) ----------
 
@@ -288,10 +180,13 @@ def session_id(channel: str | int | None = DEFAULT_CHANNEL) -> str | None:
     sid = state.get("session_id")
     if not sid:
         return None
-    was, now = (state.get("model"), state.get("effort")), (MODEL, EFFORT)
+    # A session belongs to the harness that made it; sessions saved before harnesses
+    # existed are Codex's.
+    was = (state.get("harness", "codex"), state.get("model"), state.get("effort"))
+    now = (HARNESS.name, MODEL, EFFORT)
     if state.get("model") and was != now:
-        log().info("[%s] pinned under %s/%s but running %s/%s; starting fresh",
-                   _key(channel), was[0], was[1], now[0], now[1])
+        log().info("[%s] pinned under %s/%s/%s but running %s/%s/%s; starting fresh",
+                   _key(channel), *was, *now)
         return None
     return sid
 
@@ -455,24 +350,7 @@ def log() -> logging.Logger:
     return lg
 
 
-# ---------- codex invocation ----------
-
-def _base_args(folder: Path) -> list[str]:
-    return [
-        SANDBOX_EXEC_PATH, "exec",     # absolute; see the exec lockdown block
-        "--skip-git-repo-check",       # this tree is not a git repo
-        "-s", "workspace-write",       # writes confined to -C, plus --add-dir
-        "-C", str(folder),             # the asking user's own deck folder
-        "--add-dir", str(CACHE_DIR),   # let the tools write the Scryfall cache
-        "-m", MODEL,
-        "-c", f'model_reasoning_effort="{EFFORT}"',
-        "-c", "tools.web_search=true",  # NOT --search; that flag is top-level only
-        # workspace-write blocks network by default, which breaks find_cards.py
-        # (Scryfall) with a DNS error rather than a permission error. This grants
-        # egress; it is what makes live card search work at all.
-        "-c", "sandbox_workspace_write.network_access=true",
-    ]
-
+# ---------- turns ----------
 
 # Fallback only. Tools record themselves through toollog, which writes to the
 # cache database the sandbox can reach; this regex recovers a call from codex's
@@ -675,39 +553,29 @@ def _log_tool_usage(chan: str, combined: str, started: float) -> None:
         log().info("TOOL   [%s] (none)", chan)
 
 
-def _run(args: list[str], out_file: Path, chan: str) -> tuple[str, str]:
-    """Run codex, returning (final_message, combined_output).
+def _turn(folder: Path, message: str, sid: str | None, chan: str) -> harness.Turn:
+    """One model turn on the configured harness, in `folder`, resuming `sid` if given.
 
-    Note the `--` the callers put before the message. Without it, a Discord user
-    starting a line with a dash — "- give me the list" — makes codex's argument
-    parser read it as a flag and exit 2 before the model ever sees it. Measured
-    in the wild; the user retried without the dash and it worked, which is the
-    kind of failure nobody reports as a bug.
+    The deck folder and the shared card cache are the only places it may write; the
+    harness enforces that its own way (see harness.py).
     """
-    log().debug("exec: %s", " ".join(args))
+    log().debug("turn: %s in %s (resume=%s)", HARNESS.describe(), folder, sid)
     t0 = time.time()
-    # SANDBOX_PATH restricts what the codex PROCESS sees as its own PATH, hence
-    # what any shell tool-call it makes internally can find — args[0] is already
-    # an absolute path (CODEX_BIN), so this does not affect launching codex itself.
-    # MTG_TOOL_CHANNEL tags each tool record in the spool so the drain after
-    # this turn takes only its own lines. See scripts/toollog.py.
-    env = {**os.environ, "PATH": SANDBOX_PATH, "MTG_TOOL_CHANNEL": chan}
-    proc = subprocess.run(
-        args, stdin=subprocess.DEVNULL, capture_output=True, text=True,
-        timeout=TIMEOUT, env=env,
-    )
-    ms = int((time.time() - t0) * 1000)
-    combined = (proc.stdout or "") + (proc.stderr or "")
-    log().debug("codex rc=%s in %dms, %d chars of output",
-                proc.returncode, ms, len(combined))
-    if proc.returncode != 0:
-        log().error("codex rc=%s; stderr tail: %s",
-                    proc.returncode, (proc.stderr or "")[-400:].replace("\n", " "))
-        raise CodexError(f"codex exited {proc.returncode}\n{combined[-2000:]}")
-    answer = out_file.read_text().strip() if out_file.exists() else ""
-    if not answer:
-        log().warning("codex produced no final message (-o file empty or missing)")
-    return answer or "(no output)", combined
+    turn = HARNESS.run(folder, message, sid, chan=chan, timeout=TIMEOUT, writable=[CACHE_DIR])
+    log().debug("%s turn in %dms, %d chars of output", HARNESS.name,
+                int((time.time() - t0) * 1000), len(turn.output))
+    if turn.answer == "(no output)":
+        log().warning("%s produced no final message", HARNESS.name)
+    return turn
+
+
+def _usage(discord: bool = False) -> str:
+    """The harness's allowance line, or "" when it has none to report."""
+    try:
+        return HARNESS.usage(discord=discord)
+    except Exception as exc:                 # a footer must never cost the reply
+        log().warning("usage: skipped (%s: %s)", type(exc).__name__, exc)
+        return ""
 
 
 def send(message: str, username: str,
@@ -732,10 +600,11 @@ def send(message: str, username: str,
     log().info("PROMPT [%s/%s] %s", chan, _oneline(username), _oneline(message))
 
     if message.strip().lower() in usage.USAGE_COMMANDS:
-        return usage.report(SANDBOX_EXEC_PATH, MODEL, discord=discord)
+        return _usage(discord) or usage.HEADER + "\nUnavailable right now."
 
     def with_usage(reply: str) -> str:
-        return reply + "\n\n" + usage.report(SANDBOX_EXEC_PATH, MODEL, discord=discord)
+        footer = _usage(discord)
+        return reply + ("\n\n" + footer if footer else "")
 
     # Deterministic commands short-circuit the model: a decklist has to be
     # byte-exact to import cleanly, and listing files needs no inference.
@@ -765,20 +634,16 @@ def send(message: str, username: str,
         return with_usage(BUSY_REPLY)
 
     folder.mkdir(parents=True, exist_ok=True)
-    # Redeploy AGENTS.md 0444 into the user's folder before codex reads it.
+    # Redeploy AGENTS.md 0444 into the user's folder before the harness reads it.
     changed, status = build_agents.build(folder, owner)
     log().log(logging.INFO if changed else logging.DEBUG, "agents.md: %s", status)
 
-    # pid in the name: two calls in the same millisecond would otherwise collide
-    out_file = HERE / f".reply-{int(time.time() * 1000)}-{os.getpid()}.txt"
     sid = session_id(conv)
     try:
         if sid:
-            log().info("[%s] resuming session %s (model=%s effort=%s)",
-                       chan, sid, MODEL, EFFORT)
-            args = _base_args(folder) + ["-o", str(out_file), "resume", sid, "--", message]
-            answer, combined = _run(args, out_file, chan)
-            return with_usage(_finish(chan, owner, folder, answer, combined, started))
+            log().info("[%s] resuming session %s (%s)", chan, sid, HARNESS.describe())
+            turn = _turn(folder, message, sid, chan)
+            return with_usage(_finish(chan, owner, folder, turn.answer, turn.output, started))
 
         # No session pinned yet. Take the lock, then re-check: a concurrent call
         # may have created and pinned one while we waited, in which case resume it
@@ -788,44 +653,38 @@ def send(message: str, username: str,
             if sid:
                 log().info("[%s] another process pinned %s while waiting; resuming it",
                            chan, sid)
-                args = _base_args(folder) + ["-o", str(out_file), "resume", sid, "--", message]
-                answer, combined = _run(args, out_file, chan)
-                return with_usage(_finish(chan, owner, folder, answer, combined, started))
+                turn = _turn(folder, message, sid, chan)
+                return with_usage(_finish(chan, owner, folder, turn.answer, turn.output, started))
 
-            log().info("[%s] no pinned session; opening a new one (model=%s effort=%s)",
-                       chan, MODEL, EFFORT)
-            args = _base_args(folder) + ["-o", str(out_file), "--", message]
-            answer, combined = _run(args, out_file, chan)
-
-            found = SESSION_RE.search(combined)
-            if found:
-                _save(conv, {"session_id": found.group(1),
-                                "model": MODEL, "effort": EFFORT})
-                log().info("[%s] pinned new session %s", chan, found.group(1))
+            log().info("[%s] no pinned session; opening a new one (%s)", chan, HARNESS.describe())
+            turn = _turn(folder, message, None, chan)
+            if turn.session_id:
+                _save(conv, {"session_id": turn.session_id, "harness": HARNESS.name,
+                             "model": MODEL, "effort": EFFORT})
+                log().info("[%s] pinned new session %s", chan, turn.session_id)
             else:
                 # Session ran but could not be pinned, so the next call would start
                 # a new one and lose this conversation's context. Surface it.
-                print("warning: could not parse session id from codex output; "
-                      "session not pinned", file=sys.stderr)
-                log().warning("could not parse session id; next call will start over")
+                print("warning: the harness reported no session id; session not pinned",
+                      file=sys.stderr)
+                log().warning("no session id from %s; next call will start over", HARNESS.name)
         # Same tail as the two resume paths above — a fresh session is where a
         # deck is most likely to be CREATED, so skipping this skipped autopush
         # exactly when it mattered most.
-        return with_usage(_finish(chan, owner, folder, answer, combined, started))
+        return with_usage(_finish(chan, owner, folder, turn.answer, turn.output, started))
     except Exception as exc:                       # log the failure, then re-raise
         log().error("FAILED [%s] after %dms: %s: %s", chan,
                     int((time.time() - started) * 1000),
                     exc.__class__.__name__, _oneline(str(exc))[:300])
         raise
     finally:
-        out_file.unlink(missing_ok=True)
         _release_bot(busy)
 
 
 # ---------- cli ----------
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="Talk to the pinned Codex deck session.")
+    ap = argparse.ArgumentParser(description="Talk to the pinned deck-builder session.")
     ap.add_argument("message", nargs="?", help="message to send")
     ap.add_argument("-c", "--channel", default=DEFAULT_CHANNEL,
                     help=f"channel/thread id (default: {DEFAULT_CHANNEL})")
@@ -836,14 +695,14 @@ def main() -> int:
     ap.add_argument("--reset-all", action="store_true",
                     help="drop every channel's pinned session")
     ap.add_argument("--status", action="store_true", help="show all pinned sessions")
-    ap.add_argument("--usage", action="store_true", help="show remaining Codex allowance without a model turn")
+    ap.add_argument("--usage", action="store_true", help="show the harness's remaining allowance without a model turn")
     ap.add_argument("--discord", action="store_true", help="format usage reset times for Discord")
     ap.add_argument("--tail", type=int, nargs="?", const=20, metavar="N",
                     help="print the last N log lines (default 20)")
     args = ap.parse_args()
 
     if args.usage:
-        print(usage.report(SANDBOX_EXEC_PATH, MODEL, discord=args.discord))
+        print(_usage(args.discord) or usage.HEADER + "\nUnavailable right now.")
         return 0
 
     if args.reset_all:
@@ -862,17 +721,17 @@ def main() -> int:
 
     if args.status:
         print(f"decks     : {WORKSPACE}/<user>/  (each session writes only its own)")
-        print(f"cache     : {CACHE_DIR}  (granted via --add-dir)")
+        print(f"cache     : {CACHE_DIR}  (writable by the session)")
         print(f"sessions  : {SESSIONS}")
-        print(f"defaults  : model={MODEL} effort={EFFORT}")
+        print(f"harness   : {HARNESS.describe()}")
         rows = channels()
         if not rows:
             print("\n(no pinned sessions yet — the next send starts one)")
             return 0
-        print(f"\n{'channel':<24} {'session':<38} model / effort")
+        print(f"\n{'channel':<24} {'session':<38} harness / model / effort")
         for name, st in rows:
             print(f"{name:<24} {st.get('session_id','?'):<38} "
-                  f"{st.get('model','?')} / {st.get('effort','?')}")
+                  f"{st.get('harness','codex')} / {st.get('model','?')} / {st.get('effort','?')}")
         return 0
 
     if args.tail is not None:
@@ -891,9 +750,19 @@ def main() -> int:
 
     try:
         print(send(args.message, args.user, channel=args.channel, discord=args.discord))
-    except (CodexError, subprocess.TimeoutExpired) as exc:
+    except harness.QuotaExhausted as exc:
+        # One neutral line the Discord app recognises (deckBuilder.ts quotaError): no
+        # model or harness name, whichever ran out. The details go to the owner's log.
+        log().warning("QUOTA  %s %s: %s", HARNESS.name, MODEL, str(exc)[-500:])
+        when = usage.exhausted_reset(_usage(args.discord))
+        print("deck builder usage limit reached" + (f"; try again at {when}." if when else "."),
+              file=sys.stderr)
+        return 1
+    except (harness.HarnessError, subprocess.TimeoutExpired) as exc:
         print(f"error: {exc}", file=sys.stderr)
-        print(usage.report(SANDBOX_EXEC_PATH, MODEL, discord=args.discord), file=sys.stderr)
+        footer = _usage(args.discord)
+        if footer:
+            print(footer, file=sys.stderr)
         return 1
     return 0
 

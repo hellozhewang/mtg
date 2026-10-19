@@ -741,10 +741,10 @@ sequence without launching a separate reviewing agent (see `AGENTS.md` below).
 **The Discord bot also writes the guide, reviews catalog placement and names a
 tier (its sandbox cannot save either map, so it hands both off). It does not run
 the independent-review command in step 10.**
-The bot's working session *is* a Codex `exec` process. Having it invoke
-`ask_codex.py` would be Codex asking Codex to review Codex's own output — no
-independent model, no outside context, and a second multi-minute `codex exec` call
-burned for a report with no real signal. Step 9 is only meaningful when it comes
+The bot's working session *is* an agent harness process (see
+[The builder's harness](#the-builders-harness)). Having it invoke `ask_codex.py`
+would start a nested agent run from inside its own turn, with no outside context
+and minutes spent on a report nobody asked for. Step 9 is only meaningful when it comes
 from a genuinely separate reviewing context, which the bot never has.
 
 | step | who checks it | can a script verify it? |
@@ -869,12 +869,58 @@ python3 bot/bot.py --usage
 
 Every builder chat reply includes a usage footer, including busy/error replies.
 The Discord deck commands show usage separately from the importable decklist.
-Allowance is read from the signed-in Codex account through
+On `agy` it comes from Antigravity's own usage panel (`agy --print=/usage
+--output-format json`), for the quota group the model draws from (Gemini Flash and
+Pro share one, Gemini 4 Argon has its own, Claude and GPT-OSS share another).
+Players never see which model or harness runs the builder: the footer reads just
+`Usage remaining` / `5h: 93% left · weekly: 97% left`, and the builder's
+instructions forbid it to name itself. Only the owner chooses the model.
+When the allowance runs out, `bot.py` prints only `deck builder usage limit
+reached; try again at <t:…:R>.` (the emptiest window's reset), which the Discord
+app turns into "The deck builder is out of usage for now. Try again …"; the
+harness's own error, with its model name, goes to the bot log only.
+Codex's allowance is read from the signed-in Codex account through
 [`account/rateLimits/read`](https://learn.chatgpt.com/docs/app-server#6-rate-limits-chatgpt),
 with separate percentages for the returned windows (typically five hours and a
 week). These are shared account limits, not a count of messages or tokens left
 for this bot alone. Discord renders resets in each reader's local time. If the
 lookup fails, the reply says usage is unavailable rather than guessing a number.
+
+## The builder's harness
+
+The Discord builder's model runs inside an agent CLI, its **harness**
+([bot/harness.py](bot/harness.py)), chosen by environment variables the Discord app
+passes to `bot/bot.py`:
+
+| variable | default | meaning |
+|---|---|---|
+| `MTG_BOT_HARNESS` | `agy` | `agy` (Google Antigravity CLI) or `codex` (OpenAI Codex CLI) |
+| `MTG_BOT_MODEL` | the harness's own | e.g. `gemini-3.8-flash-high` (agy's default), `gemini-4-argon-high`, `claude-opus-5-5-high`, `gpt-6-astra` (codex's default) |
+| `MTG_BOT_EFFORT` | the harness's own | Codex reasoning effort; agy models carry it in their id |
+
+Switching needs no restart (the bot runs once per message) but starts every Discord
+conversation afresh once: a session id belongs to the harness and model that made it.
+Each harness reads the deployed `AGENTS.md` from the deck folder and keeps the
+conversation itself; the bot stores only its id.
+
+**How each is confined:**
+- **codex** confines itself: `-s workspace-write -C public/<user>`, plus the card cache.
+- **agy** runs in turbo (`--dangerously-skip-permissions`: no prompts, which a headless
+  turn could not answer; a denied prompt would end the turn with no reply) inside a
+  macOS sandbox profile from [bot/sandbox.py](bot/sandbox.py) that the kernel enforces
+  on agy and everything it starts. Writes: only `public/<user>/`, the card cache,
+  agy's own home (`bot/.harness/agy/`) and temp space. Reads: anything but credential
+  stores (`~/.ssh`, cloud and GitHub tokens, the other agent CLIs' sign-ins). Exec:
+  `claude`, `codex`, `gh` and `npx` are refused. Network: open, so it can search
+  Scryfall and the web. A blocked action fails as "Operation not permitted", which
+  the model works around, and the reply still arrives. `tests/test_harness.py` checks
+  each of these by trying to escape the real sandbox.
+- agy has its own home, `bot/.harness/agy/` (gitignored), so the bot's settings and
+  conversations never mix with the owner's own Antigravity. It copies the owner's
+  Antigravity sign-in there when that is newer.
+
+To add a harness, subclass `Harness` in `bot/harness.py` (`run`, and `usage` if it
+reports an allowance) and register it in `HARNESSES`.
 
 ## Layout
 
@@ -915,10 +961,13 @@ mtg/
 │   ├── img/*.webp             committed card thumbnails
 │   └── mana/*.svg             Scryfall's official mana symbols
 ├── bot/                     the harness — OUTSIDE the workspace it drives
-│   ├── bot.py                 persistent Codex session the Discord app calls
+│   ├── bot.py                 persistent builder session the Discord app calls
+│   ├── harness.py             the agent CLI it runs on: agy (Gemini) or codex
+│   ├── sandbox.py             the macOS sandbox profile around agy
 │   ├── commands.py            deterministic !decks / !deck / !help
 │   ├── usage.py               read-only Codex allowance lookup (no model turn)
-│   └── .sessions/             one pinned session UUID per Discord channel and user
+│   ├── .harness/agy/          agy's own home: settings, conversations, sign-in copy
+│   └── .sessions/             one pinned session id per Discord channel and user
 ├── public/                  every deck, one folder per owner
 │   └── <user>/                that user's decks; the builder's only writable tree
 │       ├── Bracket3/            while it works for them
@@ -927,7 +976,7 @@ mtg/
 │                                scripts/build_agents.py, never this file
 ├── frontend/redirects.json  old deck URLs -> where each deck lives now
 ├── logs/<utc-date>.log      request + debug log, outside the writable tree
-├── .cache/cards.db          generated; granted to the bot via --add-dir
+├── .cache/cards.db          generated; writable by the builder
 ├── commander-brackets-and-rules.md
 └── README.md
 ```
@@ -936,8 +985,8 @@ Folder name states the bracket. File name is `Commander-Theme` — see
 [Deck file naming](#deck-file-naming).
 
 **`scripts/` and `bot/` both sit deliberately outside `public/`.** The Discord-driven
-Codex session is rooted at `public/<user>/`, the asker's own folder, with
-`-s workspace-write`, so it can edit that user's decks but not anyone else's, and
+builder session is rooted at `public/<user>/`, the asker's own folder, confined by
+its harness's sandbox (below), so it can edit that user's decks but not anyone else's, and
 cannot modify its own toolchain, its own harness, its own session state or its own
 logs. A user folder holds decklists, guides and the generated `AGENTS.md`,
 nothing else — the workspace boundary is only worth anything if the code that

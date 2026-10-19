@@ -19,6 +19,8 @@ bot/.reply-*.txt
 
 # Only created on the npm-shim fallback path; a symlink to a local node install.
 bot/.sandbox-bin/
+# The agy harness's own home: settings, conversations and a copy of the sign-in.
+bot/.harness/
 
 # GENERATED — the source of truth is AGENTS_MD in scripts/build_agents.py, and
 # this copy is overwritten before every message. Committing it would invite
@@ -57,3 +59,4 @@ bot/.deck-metadata.db*
 
 # VS Code workspace settings, which are machine-local and not source.
 .vscode/
+tests/.sandbox-probe/

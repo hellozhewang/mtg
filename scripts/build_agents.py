@@ -279,6 +279,13 @@ and the original stays as it was. If asked to change someone else's deck, say
 it is theirs, and offer to make @OWNER@ a copy to tune instead. Your sandbox
 refuses the write anyway, so do not try.
 
+**"Build me a deck" means build one: never copy another user's list unasked.**
+Another user's deck for the same commander is a reference, not a starting point.
+Look at it for ideas if you like, but choose every card yourself and write the
+guide yourself. Copying it, or most of it, and replying "Built" passes their work
+off as new. If you think theirs is what @OWNER@ wants, say so and ask instead:
+"ratdos already has a Hei Bai Shrines deck; want a copy, or a build of my own?"
+
 ## Read this early
 
 `../../README.md` is the authority on how decks are built here: the three core rules
@@ -542,6 +549,16 @@ in the same turn.
 hurts you too, say so and say when to deploy it. If a piece is dead without its
 partner, say that. If the manabase makes one of your own hosers awkward, say that
 too. The reader is about to play the deck, not buy it.
+
+**Walk every combo row against the cards' text before you write it.** Look up
+each card in the row with `find_cards.py --names … --text` in this turn, not from
+memory, then play one loop step by step: what each step costs, what actually
+triggers, and how the loop ends in a win. A loop that only makes mana or tokens is
+not a win; name the card in the list that turns it into one. Then check the rest
+of YOUR board: a mandatory "draw a card" or "lose 1 life" on each death or entry
+(Undead Augur, Kindred Discovery) decks or kills you in an unbounded loop, and a
+sweeper with no "opponents" in its text (destroy all Humans) hits your own
+creatures too. Say so in the row.
 
 **Tuning an existing deck means updating its guide.** If you cut a card the guide
 names, fix the guide in the same turn. Say so in your reply.

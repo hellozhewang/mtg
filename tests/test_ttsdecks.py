@@ -3,10 +3,12 @@ builds for the same cards (its server's reply for Sol Ring, Delver of Secrets an
 Elspeth, Sun's Champion, captured 2026-10-16)."""
 from __future__ import annotations
 
+import io
 import json
 import sys
 import tempfile
 import unittest
+from contextlib import redirect_stderr
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -159,6 +161,43 @@ class CardBackTests(unittest.TestCase):
 
     def test_the_repo_ships_the_cactuar_back(self):
         self.assertTrue((ROOT / "tts" / "backs" / "cactuar.jpg").is_file())
+
+
+class TournamentTests(unittest.TestCase):
+    def test_pool_keeps_file_order_and_skips_missing_decks_with_a_warning(self):
+        from types import SimpleNamespace
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        f = Path(tmp.name) / "tournament.json"
+        f.write_text(json.dumps({"decks": ["b/Two", "gone/Deck", "a/One", "b/Two"]}))
+        original = ttsdecks.TOURNAMENT_FILE
+        ttsdecks.TOURNAMENT_FILE = f
+        self.addCleanup(setattr, ttsdecks, "TOURNAMENT_FILE", original)
+        decks = [SimpleNamespace(key="a/One"), SimpleNamespace(key="b/Two")]
+        err = io.StringIO()
+        with redirect_stderr(err):
+            self.assertEqual(ttsdecks.tournament(decks), ["b/Two", "a/One"])
+        self.assertIn("gone/Deck", err.getvalue())
+        self.assertEqual(ttsdecks.tournament_keys(), {"b/Two", "gone/Deck", "a/One"})
+
+    def test_the_repo_pool_is_24_distinct_bracket_3_decks_in_the_catalog(self):
+        index = json.loads((ROOT / "docs" / "tts" / "decks.json").read_text())
+        listed = json.loads(ttsdecks.TOURNAMENT_FILE.read_text())["decks"]
+        self.assertEqual(len(listed), 24)
+        self.assertEqual(len(set(listed)), 24)
+        decks = {d["id"]: d for d in index["decks"]}
+        for key in listed:
+            self.assertIn(key, decks)
+            self.assertEqual(decks[key]["bracket"], "Bracket3", key)
+        self.assertEqual(index["tournament"], listed)
+
+    def test_the_catalog_tags_every_tournament_deck(self):
+        html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
+        self.assertEqual(html.count('class="theme-tag tournament"'), 24)
+        page = (ROOT / "docs" / "zzwang" / "Bracket3" / "Baral-Control.html").read_text(encoding="utf-8")
+        self.assertIn('class="chip tournament"', page)
+        other = (ROOT / "docs" / "zzwang" / "Bracket5" / "Kinnan-Combo.html").read_text(encoding="utf-8")
+        self.assertNotIn('class="chip tournament"', other)
 
 
 class DeckFileTests(unittest.TestCase):

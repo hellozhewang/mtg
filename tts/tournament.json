@@ -1,0 +1,29 @@
+{
+  "_about": "The Cactuar table's tournament pool: honest, fair Bracket 3 decks with variety. No combo, prison, stax, lockdown or theft decks, and no tier S or D. Chosen for archetype, strategy, colour and owner spread. Ids are <owner>/<Deck>; the catalog build publishes them in docs/tts/decks.json under \"tournament\" and warns about any it can't find.",
+  "decks": [
+    "zzwang/LightPaws-Auras",
+    "zzwang/Yuriko-Ninjas",
+    "kupo7/BalthierFran-Vehicles",
+    "kupo7/Hakbal-Merfolk",
+    "em0k1ller/Ghidorah-Mutate",
+    "zzwang/Teysa-Aristocrats",
+    "zzwang/Lathril-Elves",
+    "zzwang/TheFirstSliver-Cascade",
+    "ratdos/Brudiclad-Tokens",
+    "ratdos/Niko-Blink",
+    "ratdos/Meren-Reanimator",
+    "digitalstealth/Hashaton-Reanimator",
+    "ratdos/Rakdos-Demons",
+    "ratdos/Feldon-Reanimator",
+    "kupo7/OjerAxonil-Burn",
+    "em0k1ller/NivMizzet-Antispells",
+    "zzwang/Feather-Spells",
+    "digitalstealth/CecilyElmar-Spells",
+    "zzwang/Selvala-Ramp",
+    "em0k1ller/Pantlaza-Discover",
+    "kupo7/Atraxa-Counters",
+    "digitalstealth/Ureni-Dragons",
+    "zzwang/Baral-Control",
+    "kupo7/Alela-Tempo"
+  ]
+}

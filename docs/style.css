@@ -230,6 +230,7 @@ h2 .count{color:var(--line)}
 /* Creation date. Muted on purpose: it is context for ordering, not a stat you
    compare decks on, so it must not compete with the card/land/MV chips. */
 .chip.date{font-variant-numeric:tabular-nums;opacity:.75}
+.theme-tag.tournament,.chip.tournament{color:#e8c25a;border-color:#8a7330;background:rgba(232,194,90,.10);font-weight:600}
 
 /* List view for the catalog. The SAME tiles, re-laid-out as rows — not a second
    markup structure. The search filter, the section-empty rule, the tooltips and

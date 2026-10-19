@@ -34,6 +34,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import sys
 from pathlib import Path, PurePosixPath
 from urllib.parse import urlsplit
 
@@ -47,6 +48,8 @@ BACKS_DIR = TILE_IMAGE.parent / "backs"
 BACK_TYPES = (".jpg", ".jpeg", ".png")
 # Clips the table plays through Tabletop Simulator's music player (cactuar_turns.lua).
 SOUNDS_DIR = TILE_IMAGE.parent / "sounds"
+# The tournament pool the browser's Tournament mode offers (curated by hand).
+TOURNAMENT_FILE = TILE_IMAGE.parent / "tournament.json"
 SOUND_TYPES = (".wav", ".mp3", ".ogg")
 
 # Scryfall's standard Magic card back.
@@ -253,6 +256,28 @@ def backs() -> list[dict]:
     return out
 
 
+def tournament_keys() -> set[str]:
+    """Deck ids tts/tournament.json lists; the catalog tags these decks."""
+    if not TOURNAMENT_FILE.is_file():
+        return set()
+    return set(json.loads(TOURNAMENT_FILE.read_text(encoding="utf-8")).get("decks", []))
+
+
+def tournament(decks: list) -> list[str]:
+    """The curated tournament pool, as deck ids, in the file's order. A listed deck the
+    catalog doesn't have (renamed or deleted) is left out with a warning, rather than
+    failing every build."""
+    if not TOURNAMENT_FILE.is_file():
+        return []
+    wanted = json.loads(TOURNAMENT_FILE.read_text(encoding="utf-8")).get("decks", [])
+    have = {d.key for d in decks}
+    for key in wanted:
+        if key not in have:
+            print(f"warning: {TOURNAMENT_FILE.name} lists {key}, which isn't in the catalog",
+                  file=sys.stderr)
+    return [k for k in dict.fromkeys(wanted) if k in have]
+
+
 def index(decks: list, paths: dict[str, str]) -> dict:
     return {
         "v": INDEX_VERSION,
@@ -261,6 +286,7 @@ def index(decks: list, paths: dict[str, str]) -> dict:
         "themes": [{"id": k, "label": t.label} for k, t in deckthemes.THEMES.items()
                    if not t.local_only],
         "backs": backs(),
+        "tournament": tournament(decks),
         "decks": [index_entry(d, paths[d.key]) for d in decks],
     }
 

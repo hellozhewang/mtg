@@ -137,16 +137,48 @@ class BuildValidationTests(unittest.TestCase):
         proof = {"format": "png", "size": len(png()), "etag": '"v1"'}
         with tempfile.TemporaryDirectory() as tmp:
             checker = Mock(return_value=(proof, False))
-            report = ttsimages.validate(files, Path(tmp) / "cache.db", checker=checker)
+            report = ttsimages.validate(files, Path(tmp) / "cache.db", checker=checker, recheck_days=0)
             self.assertEqual(checker.call_count, 2)
             self.assertEqual((report.checked, report.downloaded, report.unchanged), (2, 2, 0))
             self.assertTrue(all(call.args[1] is None for call in checker.call_args_list))
             checker.reset_mock()
             checker.return_value = proof, True
-            report = ttsimages.validate(files, Path(tmp) / "cache.db", checker=checker)
+            report = ttsimages.validate(files, Path(tmp) / "cache.db", checker=checker, recheck_days=0)
             self.assertEqual(checker.call_count, 2)
-            self.assertTrue(all(call.args[1] == proof for call in checker.call_args_list))
+            self.assertTrue(all(call.args[1]["etag"] == proof["etag"] for call in checker.call_args_list))
             self.assertEqual((report.checked, report.downloaded, report.unchanged), (2, 0, 2))
+
+    def test_recent_checks_skip_the_network_until_they_expire(self):
+        files = {Path("a.ndjson"): export(sheet(), sheet())}
+        proof = {"format": "webp", "size": 10, "etag": '"v1"'}
+        day = 86400
+        with tempfile.TemporaryDirectory() as tmp:
+            db = Path(tmp) / "cache.db"
+            checker = Mock(return_value=(proof, False))
+            ttsimages.validate(files, db, checker=checker, recheck_days=7, now=1000 * day)
+            self.assertEqual(checker.call_count, 2)                       # new: downloaded
+            checker.reset_mock()
+            report = ttsimages.validate(files, db, checker=checker, recheck_days=7, now=1006 * day)
+            self.assertEqual(checker.call_count, 0)                       # 6 days: trusted
+            self.assertEqual((report.checked, report.cached), (2, 2))
+            checker.return_value = proof, True
+            report = ttsimages.validate(files, db, checker=checker, recheck_days=7, now=1008 * day)
+            self.assertEqual(checker.call_count, 2)                       # 8 days: rechecked
+            self.assertEqual((report.checked, report.unchanged, report.cached), (2, 2, 0))
+            checker.reset_mock()
+            ttsimages.validate(files, db, checker=checker, recheck_days=7, now=1009 * day)
+            self.assertEqual(checker.call_count, 0)                       # the recheck renewed it
+
+    def test_a_new_url_is_always_checked_even_beside_cached_ones(self):
+        proof = {"format": "webp", "size": 10}
+        with tempfile.TemporaryDirectory() as tmp:
+            db = Path(tmp) / "cache.db"
+            checker = Mock(return_value=(proof, False))
+            ttsimages.validate({Path("a.ndjson"): export(sheet())}, db, checker=checker, now=100)
+            checker.reset_mock()
+            new = sheet(front="https://example.org/new.webp")
+            ttsimages.validate({Path("a.ndjson"): export(sheet(), new)}, db, checker=checker, now=200)
+            self.assertEqual([c.args[0] for c in checker.call_args_list], ["https://example.org/new.webp"])
 
     def test_failed_urls_are_not_cached_and_include_deck_and_role(self):
         files = {Path("owner/Bad.ndjson"): export(sheet(), sheet("https://example.org/missing"))}

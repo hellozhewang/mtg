@@ -9,6 +9,8 @@
   <VerticalLayout padding="16 16 16 16" spacing="8" childForceExpandHeight="false" childForceExpandWidth="true">
     <HorizontalLayout preferredHeight="36" spacing="8" childForceExpandWidth="false">
       <Text flexibleWidth="1" fontSize="24" fontStyle="Bold" color="#E6E9EE" alignment="MiddleLeft" text="Cactuar decks"/>
+      <Button id="cz_tour_{C}" onClick="czTournament" preferredWidth="130" fontSize="13" color="#FFFFFF"
+              colors="#243244|#34485F|#1C2938|#1B2533" textColor="#E2E5EA" text="Tournament"/>
       <Button id="cz_refresh_{C}" onClick="czRefresh" preferredWidth="94" fontSize="13" color="#FFFFFF"
               colors="#243244|#34485F|#1C2938|#1B2533" textColor="#E2E5EA" text="Refresh"/>
       <Button id="cz_close_{C}" onClick="czClose" preferredWidth="36" fontSize="18" color="#FFFFFF"
@@ -22,11 +24,18 @@
       <Button id="cz_reset_{C}" onClick="czClear" preferredWidth="78" fontSize="13" color="#FFFFFF"
               colors="#243244|#34485F|#1C2938|#1B2533" textColor="#E2E5EA" text="Reset"/>
     </HorizontalLayout>
-    <HorizontalLayout preferredHeight="34" spacing="6">
+    <HorizontalLayout id="cz_filters_{C}" preferredHeight="34" spacing="6">
       <Button id="cz_f_bracket_{C}" onClick="czFilter(bracket)" fontSize="13" color="#FFFFFF" colors="#243244|#34485F|#1C2938|#1B2533" textColor="#E2E5EA" text="Bracket: All ▾"/>
       <Button id="cz_f_tier_{C}" onClick="czFilter(tier)" fontSize="13" color="#FFFFFF" colors="#243244|#34485F|#1C2938|#1B2533" textColor="#E2E5EA" text="Tier: All ▾"/>
       <Button id="cz_f_theme_{C}" onClick="czFilter(theme)" fontSize="12" color="#FFFFFF" colors="#243244|#34485F|#1C2938|#1B2533" textColor="#E2E5EA" text="Strategy: All ▾"/>
       <Button id="cz_f_owner_{C}" onClick="czFilter(owner)" fontSize="13" color="#FFFFFF" colors="#243244|#34485F|#1C2938|#1B2533" textColor="#E2E5EA" text="Owner: All ▾"/>
+    </HorizontalLayout>
+    <!-- Tournament mode replaces the filter row with its modes. -->
+    <HorizontalLayout id="cz_tourbar_{C}" preferredHeight="34" spacing="6" active="False">
+      <Button id="cz_tmode_all_{C}" onClick="czTourMode(all)" fontSize="13" color="#FFFFFF" colors="#243244|#34485F|#1C2938|#1B2533" textColor="#E2E5EA" text="All pick"/>
+      <Button id="cz_tmode_draft_{C}" onClick="czTourMode(draft)" fontSize="13" color="#FFFFFF" colors="#243244|#34485F|#1C2938|#1B2533" textColor="#E2E5EA" text="Draft"/>
+      <Button id="cz_tmode_random_{C}" onClick="czTourMode(random)" fontSize="13" color="#FFFFFF" colors="#243244|#34485F|#1C2938|#1B2533" textColor="#E2E5EA" text="Random"/>
+      <Button id="cz_tredraw_{C}" onClick="czTourRedraw" fontSize="13" active="False" color="#FFFFFF" colors="#3B2F24|#5A4530|#2C2219|#1B2533" textColor="#E2E5EA" text="Reroll"/>
     </HorizontalLayout>
     <HorizontalLayout preferredHeight="28" spacing="4" childForceExpandWidth="false">
       <Text preferredWidth="32" fontSize="12" color="#C0C8D2" alignment="MiddleLeft" text="Sort"/>

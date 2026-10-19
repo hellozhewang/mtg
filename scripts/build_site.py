@@ -6,7 +6,7 @@
     ./build_site.py --out /tmp/site  # build elsewhere to look before publishing
 
 Every invocation verifies exported TTS image URLs before any output is written.
-Even warm builds contact the image host using conditional GETs (see ttsimages).
+Images verified within a week are trusted; older ones get a conditional GET (see ttsimages).
 
 EVERY DECK IS PUBLISHED, from one folder per owner: public/<user>/<Bracket>/.
 A deck's page mirrors its file (`docs/<user>/<Bracket>/<Deck>.html`), so two
@@ -407,6 +407,7 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
     """The catalog index. `local` renders the owner's copy (index.local.html),
     the only one that shows local-only categories such as Goblins."""
     index, layout = tpl["index"], tpl["layout"]
+    pool = ttsdecks.tournament_keys()
     grouped: dict[str, set[str]] = {}
     by_bracket: dict[str, list[str]] = {}
     # Local-only categories MIRROR decks that already sit in a canonical one:
@@ -446,7 +447,8 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
             BRACKET_ID=e(d.bracket), TIER=e(tier or decktiers.UNRATED_ID),
             TIER_BADGE=tier_badge(index, tier),
             THEMES=e(" ".join(shown)),
-            THEME_TAGS="".join(index.part("theme-tag").render(
+            THEME_TAGS=(index.part("theme-tag").render(LABEL="Tournament", CLASS=" tournament")
+                        if d.key in pool else "") + "".join(index.part("theme-tag").render(
                 LABEL=e(deckthemes.THEMES[t].label),
                 CLASS=" local" if deckthemes.THEMES[t].local_only else "")
                 for t in shown),
@@ -464,6 +466,7 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
             SEARCH=e(" ".join(x for x in
                               (d.stem, d.commander, d.label, d.author,
                                d.created_label, d.modified_label,
+                               "tournament" if d.key in pool else "",
                                deckthemes.search_text(shown),
                                d.art_card.get("type_line", ""),
                                # Last, so the folded `stier` token cannot run
@@ -680,7 +683,10 @@ def render_deck(tpl: dict[str, frontend.Template], d: DeckInfo,
             BRACKET=e(d.label), TOTAL=d.total,
             # Deck pages are shared by the published site and the local index,
             # so they show only a tier that is not local-only.
-            TIER=tier_badge(page, tier) if (tier := decktiers.visible(d.tier, False)) else "",
+            TIER=(tier_badge(page, tier) if (tier := decktiers.visible(d.tier, False)) else "")
+                 + ('<span class="chip tournament" data-tip="In the tournament pool of the '
+                    'Cactuar Tabletop Simulator table (tts/tournament.json).">Tournament</span>'
+                    if d.key in ttsdecks.tournament_keys() else ""),
             LINKS=links,
             DATES=(f'<span class="chip date" data-tip="When this deck was first added '
                    f'to the collection, in your local time.">added <span data-ts="{d.created}">'

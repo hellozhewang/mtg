@@ -792,6 +792,20 @@ that player's seat: the library face down and shuffled in their library zone,
 the commander (or both partners) on their Commander Zones, the tokens beside them.
 Everything the table already did is untouched.
 
+**Tournament** mode (a button beside Refresh, per player) narrows the browser to a curated
+pool of 24 honest, fair Bracket 3 decks with variety, listed in
+[tts/tournament.json](tts/tournament.json) and tagged *Tournament* in the catalog. It offers:
+- **All pick:** any pool deck.
+- **Draft:** 5 random pool decks; pick one.
+- **Random:** one pool deck.
+
+Nothing is restricted: redraws and rerolls are allowed. Instead, everything a player does
+in Tournament mode is printed to chat with their name, seat and the time.
+
+The table also shows each seat's **total turn time** for the game under its turn timer
+(the "Who goes first?" roll resets it). An **announcer** mocks a turn that reaches 5 and
+then 10 minutes ([tts/cactuar_turns.lua](tts/cactuar_turns.lua); chat `announcer off`).
+
 Players can also pick a **card back** for the deck they load. The backs are the pictures in
 [tts/backs/](tts/backs/); its [README](tts/backs/README.md) gives the image specs. Add one
 by dropping a picture there, running the catalog build and pushing.

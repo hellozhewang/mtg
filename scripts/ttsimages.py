@@ -1,9 +1,12 @@
 """Check the exact image URLs in TTS exports before publishing them.
 
-Every build makes a GET with TTS's UnityPlayer User-Agent. Previously verified
-images can return HTTP 304 using a stored ETag/Last-Modified value; a local cache
-entry alone never counts as an availability check. Only successful image checks
-are stored, separately from Scryfall's card metadata and thumbnail bytes.
+A new URL is downloaded with TTS's UnityPlayer User-Agent and its bytes checked.
+A URL verified within RECHECK_DAYS (default 7) is trusted without contacting the
+host: rechecking all ~4,300 on every build hammered the community's image server
+until it reset connections. An older verification is renewed with a conditional
+GET (HTTP 304 via the stored ETag/Last-Modified). Set MTG_TTS_IMAGE_RECHECK_DAYS=0
+to check everything now. Only successful checks are stored, separately from
+Scryfall's card metadata and thumbnail bytes.
 """
 from __future__ import annotations
 
@@ -11,6 +14,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 import http.client
 import json
+import os
 from pathlib import Path
 import struct
 import time
@@ -24,6 +28,7 @@ TIMEOUT = 15
 WORKERS = 4
 MAX_BYTES = 16 * 1024 * 1024
 CACHE_PREFIX = "tts:image-check:v1:"
+RECHECK_DAYS = float(os.environ.get("MTG_TTS_IMAGE_RECHECK_DAYS", "7"))
 
 
 class ImageError(ValueError):
@@ -50,10 +55,17 @@ class Report:
     checked: int = 0
     downloaded: int = 0
     unchanged: int = 0
+    cached: int = 0           # verified recently: no request made
 
     def __str__(self):
         return (f"TTS images: {self.checked} unique URLs verified "
-                f"({self.downloaded} downloaded, {self.unchanged} unchanged)")
+                f"({self.downloaded} downloaded, {self.unchanged} unchanged, "
+                f"{self.cached} recently verified)")
+
+
+def _verified(metadata: dict | None) -> bool:
+    return bool(metadata) and metadata.get("format") in ("jpeg", "png", "webp") \
+        and metadata.get("size", 0) > 0
 
 
 def image_urls(files: dict[Path, str | bytes]) -> dict[str, set[str]]:
@@ -150,16 +162,22 @@ def check_url(url: str, previous: dict | None = None, opener=None) -> tuple[dict
 
 
 def validate(files: dict[Path, str | bytes], db_path: Path, progress=None,
-             checker=None) -> Report:
+             checker=None, recheck_days: float | None = None, now: float | None = None) -> Report:
     """Validate every unique URL; fail before publication if any image fails.
 
-    SQLite is used only on the caller thread. Successful downloads are committed
-    as they finish, so an interrupted cold build resumes with conditional checks.
+    URLs verified within `recheck_days` are trusted without a request. SQLite is
+    used only on the caller thread. Successful checks are committed as they
+    finish, so an interrupted cold build resumes where it stopped.
     """
     uses = image_urls(files)
     store = PageStore(db_path, ttl_hours=24 * 365)
     report, failures = Report(), {}
+    now = time.time() if now is None else now
+    window = (RECHECK_DAYS if recheck_days is None else recheck_days) * 86400
     previous = {url: store.get(CACHE_PREFIX + url) for url in uses}
+    fresh = {url for url, meta in previous.items()
+             if _verified(meta) and now - (meta.get("checked_at") or 0) < window}
+    report.cached = report.checked = len(fresh)
 
     def check(url):
         try:
@@ -171,12 +189,12 @@ def validate(files: dict[Path, str | bytes], db_path: Path, progress=None,
         if progress:
             progress(report, len(uses))
         with ThreadPoolExecutor(max_workers=WORKERS) as pool:
-            pending = {pool.submit(check, url): url for url in sorted(uses)}
+            pending = {pool.submit(check, url): url for url in sorted(uses) if url not in fresh}
             for future in as_completed(pending):
                 url = pending[future]
                 try:
                     metadata, unchanged = future.result()
-                    store.put(CACHE_PREFIX + url, metadata)
+                    store.put(CACHE_PREFIX + url, {**metadata, "checked_at": now})
                     report.unchanged += unchanged
                     report.downloaded += not unchanged
                 except ImageError as exc:

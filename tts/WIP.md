@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-18 (Claude): everything through v13 is committed and pushed (93748154); Pages serves the card backs.
+Last updated 2026-10-18 (Claude): v15 adds Tournament mode with full chat logging and Tournament tags on the website; image checks are now cached for 7 days. Not pushed.
 
 ## Current status
 
@@ -40,7 +40,101 @@ Last updated 2026-10-18 (Claude): everything through v13 is committed and pushed
   and full live loading across all six occupied seats. Automated placement tests cover
   all six; do not confuse those with six separate live playtests.
 
-## Consolidated issues encountered
+## v15: Tournament mode, catalog tags, cached image checks (delivered, not pushed)
+
+What the owner asked for:
+- A **Tournament** button beside Refresh, which became per player.
+- Three modes: **All pick** (any pool deck), **Draft** (offered 5, pick 1) and **Random**.
+- A pool of 24 "most honest and fair" Bracket 3 decks, of any tier, with variety.
+- "We're not restricting anything besides just seeing the logs": log everything a player in
+  Tournament mode does.
+- A Tournament tag on the website.
+
+- **Pool:** `tts/tournament.json` (24 ids + `_about`).
+  - Rules: no combo-tagged decks, no tier S/D, no prison/stax/lockdown/theft/hatebear decks.
+  - Variety: 19 archetypes (auras, ninjas, vehicles, merfolk, mutate, aristocrats, elves,
+    slivers, tokens, blink, reanimator, demons, burn, spells, ramp, discover, counters,
+    dragons, control), all colours and all five owners.
+  - Mix: tiers B13 A6 C5, average MV 2.91.
+  - `ttsdecks.tournament()` publishes it in `decks.json` `tournament`. A missing id prints a
+    warning, and the build doesn't fail. `tournament_keys()` drives the catalog tags.
+- **Browser** (`tts/cactuar.lua`):
+  - `s.tour = {mode, offer, random, redraws, rerolls}`. `czTournament`, `czTourMode(all|draft|random)`
+    and `czTourRedraw` (Redraw 5 / Reroll) are always allowed and always logged.
+  - The XML has `cz_tour_{C}` beside Refresh. `cz_filters_{C}` is hidden and `cz_tourbar_{C}`
+    shown in Tournament mode; filters are ignored there.
+  - Search and sort apply to All pick only. A draft offer persists until redrawn.
+- **Logging:** `czLog` uses `printToAll` with `[Tournament HH:MM:SS] Name (Seat): …`, in the seat
+  colour, and only while that player is in Tournament mode. It covers:
+  - entering and leaving; mode switches with the dealt or standing offer or roll;
+  - redraws and rerolls, with counts;
+  - search (debounced 1.5 s via `Wait.time`), reset, sort, page, select, Surprise me;
+  - card back and filter choices;
+  - opening, closing and refresh;
+  - load pressed, LOADED (with back), and load refused or failed.
+  The broadcast line for a load uses `czPlayerName` when the player has no `steam_name`.
+- **Website:**
+  - Tiles get a gold `theme-tag tournament`, and "tournament" is added to `data-search`.
+  - Deck pages get `chip tournament`. The CSS is `.theme-tag.tournament, .chip.tournament`.
+- **Image checks cached** (owner: "we should cache img.klr"). Earlier, a build failed on
+  "Connection reset by peer" from img.klrmngr.com; a retry passed.
+  - `ttsimages.validate` now trusts a URL verified within `RECHECK_DAYS` (7; env
+    `MTG_TTS_IMAGE_RECHECK_DAYS`, 0 = check all) and makes no request for it.
+  - Older checks renew with a conditional GET; new URLs are always downloaded.
+  - Records gain `checked_at`, so the first build after this checks everything once.
+  - The report adds "recently verified".
+- **Tests:** suite OK. `tests/test_cactuar.lua` 643 checks, including tournament and logs.
+  `test_ttsdecks` covers the pool, the warning, the repo pool and the site tags.
+  `test_ttsimages` covers the cache window, expiry and new URLs.
+- **Saved table:** `MTG 6 player Cactuar Ver_v15` + thumbnail in Saves, SHA-256
+  `6be6ca42589461ce`. It reads Pages, so **the Tournament button stays disabled until the
+  push** puts `tournament` in the published `decks.json`.
+- **Not pushed:** everything from v14 and v15. Owner's choice is still open: push the v14
+  voice clips as they are, or leave them out.
+
+## v14: turn totals and the slow-turn announcer (delivered, live-applied, not pushed)
+
+The owner asked for two things:
+- Under each seat's turn timer, that player's total time across all turns, reset by the new-game
+  die roll.
+- A mocking announcer at 5 minutes ("C'mon bro, what's taking so long?") and 10 minutes
+  ("Bruh, wake me up when you're done") of a single turn.
+
+- **Code:** `tts/cactuar_turns.lua`, appended to Global after `cactuar.lua`
+  (`build_tts_table.GLOBAL_SCRIPTS`).
+  - It wraps Global `onPlayerTurn`, `onObjectRandomize` and `onChat`. The base defines only
+    `onChat`. The originals are captured once in `CZT_BASE`, so a live re-run doesn't
+    double-wrap them.
+  - It adds button index 7 ("total m:ss") to each base "Timer" object (description = seat colour),
+    only after that object's own 7 buttons exist, so their indexes don't move.
+  - A `Wait.time` ticker runs every second.
+  - Totals reset on `onObjectRandomize` of the "Who goes first?" die (0rganics; name
+    "Who goes first?"/"goes first!", description "Who goes first dice…").
+  - Chat: `announcer off|on|test`. `timers off|on` also hides our totals.
+- **Audio:** `tts/sounds/slow-5min.wav` and `slow-10min.wav`, made by
+  `tts/sounds/make_announcer.py` (macOS `say` Ralph, a bass boom, echo, tanh limiter). They play
+  through `MusicPlayer.setCurrentAudioclip`, which replaces whatever music is playing.
+  `CZT.soundBase` overrides `CZ.base` for testing. **The owner heard it and wants a clearer,
+  more in-character "radio announcer"** voice. Options were researched: ElevenLabs (needs an
+  account/key), OpenAI gpt-4o-mini-tts (needs an API key; none set), Chatterbox (local, MIT,
+  M4), Kokoro (local, clean but calm). The owner will handle the voice later (2026-10-18). Don't regenerate the clips unasked. When it's redone, drop the distortion.
+- **MoonSharp gotcha (found live):** a bare `local index` inside a loop isn't reset to nil in
+  TTS. It held `getAllObjects()`'s list. Always initialise locals; `tests/test_cactuar_turns.lua`
+  fails on any bare `local x` in the tts/*.lua files. Also, TTS's `os.time()` returns
+  fractional seconds, so elapsed time is floored.
+- **Live:** applied to the running game with `CZT.soundBase` pointing at the Mac. Totals
+  attach to all six timers ("total 2:05" verified). One test clip was played. Afterwards
+  `getCurrentAudioclip` still reported the table's playlist track, but the owner did hear the clip.
+- **Saved table:** `MTG 6 player Cactuar Ver_v14` + thumbnail in Saves, SHA-256 `fe28622701045efc`.
+- **Not pushed:** `tts/cactuar_turns.lua`, `tts/sounds/`, `docs/tts/sounds/`,
+  `tests/test_cactuar_turns.lua`, and the edits to `build_tts_table.py` and `test_cactuar_lua.py`.
+  **Caveat:** commit 7ba98621 (made outside this session) already pushed the sound-publishing
+  part of `ttsdecks.py` and its test `test_announcer_clips_are_published`. That test fails in a
+  clean checkout until `tts/sounds/` is pushed.
+- Tests: whole suite OK; `lua tests/test_cactuar_turns.lua` reports 826 checks, 0 failed (incl. the
+  bare-local scan).
+
+
 
 This is the current resolution index. The version sections below preserve the original
 investigation and evidence; their older “pending” notes describe that point in time.
@@ -165,13 +259,13 @@ category, owner). **Load into my seat** spawns the chosen deck into that player'
 python3 -m unittest discover tests          # whole suite (155 tests at v13; Lua harness 562 checks)
 lua tests/test_cactuar.lua                   # the browser alone: "N checks, 0 failed"
 python3 scripts/build_site.py                # rebuilds docs/, including docs/tts/
-python3 scripts/build_tts_table.py BASE.json -o "OUT.json" --name "MTG 6 player Cactuar Ver_v14"
+python3 scripts/build_tts_table.py BASE.json -o "OUT.json" --name "MTG 6 player Cactuar Ver_v16"
 ```
 
 - `BASE.json` is the Workshop file `2293586471.json`. It isn't in the repo: get it from the
   owner's PC (see `INTERNALS.md`, gitignored) into a temp dir.
 - The owner wants a version suffix on each delivered build so they can tell builds apart:
-  `_v13` was the last one, so the next is `_v14`.
+  `_v15` was the last one, so the next is `_v16`.
 - Deliver to the owner's PC TTS Saves folder, with a `.png` thumbnail of the same name
   (`~/Downloads/cactuar-mtg.png`). Send a copy of this file to their Desktop as
   `Cactuar table WIP.md`. Host, paths and the copy method are in `INTERNALS.md`.

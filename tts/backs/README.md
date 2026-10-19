@@ -41,10 +41,9 @@ Custom Deck dialog. The table finds backs from the published deck list. So:
 Things that trip people up:
 - **Decks already on the table keep their old back.** The back is applied as a deck spawns,
   so delete the deck and load it again.
-- **TTS caches pictures by URL.** If you replace a picture but keep the file name, players
-  may keep seeing the old one. Give the new version a new name (`dragon_fire_2.png`); that's
-  the reliable fix, because otherwise every player has to delete the cached copy from their
-  own `Documents/My Games/Tabletop Simulator/Mods/Images/` folder.
+- **Replacing a picture under the same name is fine.** TTS caches pictures by URL, so the
+  build adds a content hash to each back's URL (`backs/<file>?v=<hash>`); a changed picture
+  gets a new URL and is downloaded again.
 - **The table must be one built from this repo** (`MTG 6 player Cactuar Ver_v12` or later,
   or the Workshop item once a v12+ save is uploaded). Older builds have no Card back menu.
 - **Nothing appears and Refresh doesn't help:** the table reads from Pages, so the back

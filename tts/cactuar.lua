@@ -9,6 +9,11 @@
   library face down and shuffled in their library zone, the commander(s) on
   their Commander Zone(s), the tokens beside them.
 
+  Tournament mode (per player, the Tournament button) shows only the curated
+  pool (decks.json "tournament", from tts/tournament.json) as All pick, Draft
+  (5 offered, pick one) or Random, and logs everything that player does to
+  chat. It restricts nothing: redraws and rerolls are allowed, and logged.
+
   Labels: always UI.setAttribute(id, "text", ...). setValue on a Button does
   nothing; on Text it stores raw rich-text markup that breaks the importer's
   getXmlTable/setXmlTable round-trip. Text attributes are XML-escaped instead.
@@ -27,6 +32,7 @@ CZ = {
   fetching = false,
   state = {},         -- per seat colour: sort, filters, search, page, selection
   busy = {},          -- per seat colour: a deck is being loaded
+  draftSize = 5,      -- decks offered in a tournament Draft
 }
 
 local CZ_SORTS = {"tier", "name", "newest"}
@@ -225,6 +231,63 @@ local function czBackJSON(text, back)
   return (text:gsub('("BackURL"%s*:%s*")[^"]*"', function(prefix) return prefix .. url .. '"' end))
 end
 
+-- ---------- tournament mode ----------
+
+local CZ_TOUR_MODES = {"all", "draft", "random"}
+local CZ_TOUR_LABEL = {all = "All pick", draft = "Draft", random = "Random"}
+
+-- The curated pool, in the order tts/tournament.json lists it.
+local function czPool()
+  local byId, out = {}, {}
+  for _, d in ipairs((CZ.index and CZ.index.decks) or {}) do byId[d.id] = d end
+  for _, id in ipairs((CZ.index and CZ.index.tournament) or {}) do
+    if byId[id] then out[#out + 1] = byId[id] end
+  end
+  return out
+end
+
+local function czPlayerName(color)
+  local name = nil
+  pcall(function() name = Player[color].steam_name end)
+  return name or color
+end
+
+-- Everything a player does in Tournament mode goes to chat, timestamped and in
+-- their seat colour, so the table can see every pick, redraw and reroll.
+local function czLog(color, text)
+  if not czState(color).tour then return end
+  local ok, clock = pcall(os.date, "%H:%M:%S")
+  local rgb = {1, 1, 1}
+  pcall(function() rgb = Color.fromString(color) end)
+  printToAll(string.format("[Tournament %s] %s (%s): %s", ok and clock or "", czPlayerName(color), color, text), rgb)
+end
+
+-- n different decks from the pool, at random.
+local function czDeal(n)
+  local pool = czPool()
+  for i = #pool, 2, -1 do
+    local j = math.random(i)
+    pool[i], pool[j] = pool[j], pool[i]
+  end
+  local out = {}
+  for i = 1, math.min(n, #pool) do out[i] = pool[i] end
+  return out
+end
+
+local function czNames(decks)
+  local out = {}
+  for _, d in ipairs(decks) do out[#out + 1] = d.name end
+  return table.concat(out, ", ")
+end
+
+-- What a player in Tournament mode chooses from: the pool, their draft offer, or
+-- their random deck.
+local function czTourList(s)
+  if s.tour.mode == "draft" then return s.tour.offer or {} end
+  if s.tour.mode == "random" then return s.tour.random and {s.tour.random} or {} end
+  return czPool()
+end
+
 local function czShort(text, limit)
   local out = text:match("^" .. string.rep("[\1-\127\194-\244][\128-\191]*", limit))
   return out and #out < #text and (out .. "…") or text
@@ -234,10 +297,20 @@ function czRender(color)
   local s = czState(color)
   if not CZ.index then return end
   local list = {}
-  for _, d in ipairs(CZ.index.decks) do
-    if czMatches(d, s) then list[#list + 1] = d end
+  if s.tour then
+    -- Filters are hidden in Tournament mode; search and sort apply to All pick.
+    local all = s.tour.mode == "all"
+    local match = {filter = {}, query = all and s.query or ""}
+    for _, d in ipairs(czTourList(s)) do
+      if czMatches(d, match) then list[#list + 1] = d end
+    end
+    if all then table.sort(list, czCompare(s.sort)) end
+  else
+    for _, d in ipairs(CZ.index.decks) do
+      if czMatches(d, s) then list[#list + 1] = d end
+    end
+    table.sort(list, czCompare(s.sort))
   end
-  table.sort(list, czCompare(s.sort))
   s.list = list
   if s.selected then
     local selected = nil
@@ -263,8 +336,30 @@ function czRender(color)
     end
   end
   czText("cz_page_" .. color, string.format("Page %d / %d", s.page, pages))
-  czText("cz_count_" .. color, #list == #CZ.index.decks and (#list .. " decks")
-    or (#list .. " of " .. #CZ.index.decks .. " decks"))
+  if s.tour then
+    local pool = #czPool()
+    czText("cz_count_" .. color, s.tour.mode == "draft" and ("Draft: pick 1 of " .. #list)
+      or s.tour.mode == "random" and "Random deck"
+      or (#list == pool and (pool .. " tournament decks") or (#list .. " of " .. pool .. " tournament decks")))
+  else
+    czText("cz_count_" .. color, #list == #CZ.index.decks and (#list .. " decks")
+      or (#list .. " of " .. #CZ.index.decks .. " decks"))
+  end
+  local tour = s.tour
+  czButton("cz_tour_" .. color, tour and "Leave tournament" or "Tournament")
+  UI.setAttribute("cz_tour_" .. color, "colors", tour and CZ_ACTIVE or CZ_NORMAL)
+  czEnabled("cz_tour_" .. color, tour ~= nil or #czPool() > 0)
+  UI.setAttribute("cz_filters_" .. color, "active", tour and "False" or "True")
+  UI.setAttribute("cz_tourbar_" .. color, "active", tour and "True" or "False")
+  if tour then
+    for _, m in ipairs(CZ_TOUR_MODES) do
+      local id = "cz_tmode_" .. m .. "_" .. color
+      czButton(id, CZ_TOUR_LABEL[m])
+      UI.setAttribute(id, "colors", tour.mode == m and CZ_ACTIVE or CZ_NORMAL)
+    end
+    UI.setAttribute("cz_tredraw_" .. color, "active", tour.mode ~= "all" and "True" or "False")
+    czButton("cz_tredraw_" .. color, tour.mode == "draft" and "Redraw 5" or "Reroll")
+  end
   UI.setAttribute("cz_empty_" .. color, "active", #list == 0 and "True" or "False")
   czEnabled("cz_prev_" .. color, s.page > 1)
   czEnabled("cz_next_" .. color, s.page < pages)
@@ -400,9 +495,11 @@ function czOpen(player)
   local id = "cz_panel_" .. color
   if UI.getAttribute(id, "active") == "True" then
     UI.setAttribute(id, "active", "False")
+    czLog(color, "closed the browser")
     return
   end
   UI.setAttribute(id, "active", "True")
+  czLog(color, "opened the browser")
   if CZ.index then
     czRender(color)
   else
@@ -419,10 +516,12 @@ end
 function czClose(player)
   czDismiss(player)
   UI.setAttribute("cz_panel_" .. player.color, "active", "False")
+  czLog(player.color, "closed the browser")
 end
 
 function czRefresh(player)
   czDismiss(player)
+  czLog(player.color, "refreshed the deck list")
   czStatus(player.color, "Loading the deck list…")
   czFetchIndex()
 end
@@ -435,6 +534,18 @@ function czSearch(player, value)
   s.query = value or ""
   s.page = 1
   czRender(player.color)
+  -- Typing calls this per keystroke: log the search once it settles.
+  if s.tour then
+    local color = player.color
+    s.searchSeq = (s.searchSeq or 0) + 1
+    local seq = s.searchSeq
+    local function settle()
+      if s.searchSeq ~= seq or s.loggedQuery == s.query then return end
+      s.loggedQuery = s.query
+      czLog(color, s.query == "" and "cleared the search" or ('searched "' .. s.query .. '"'))
+    end
+    if Wait then Wait.time(settle, 1.5) else settle() end
+  end
 end
 
 function czSort(player, key)
@@ -443,6 +554,7 @@ function czSort(player, key)
   local s = czState(player.color)
   s.sort = key
   s.page = 1
+  czLog(player.color, "sorted by " .. CZ_SORT_LABEL[key])
   czRender(player.color)
 end
 
@@ -482,9 +594,11 @@ function czChoose(player, row)
   if n > #choices then return end
   if s.menu == "back" then
     s.back = choices[n].value                -- applies to the next deck loaded
+    czLog(player.color, "chose card back " .. choices[n].label)
   else
     s.filter[s.menu] = choices[n].value      -- All (first choice) is nil
     s.page = 1
+    czLog(player.color, "filtered " .. choices[n].label)
   end
   czDismiss(player)
   czStatus(player.color, "")
@@ -514,6 +628,8 @@ function czClear(player)
   czStatus(player.color, "")
   s.filter, s.query, s.page = {}, "", 1
   UI.setAttribute("cz_search_" .. player.color, "text", "")
+  czLog(player.color, "reset the search")
+  s.loggedQuery = ""
   czRender(player.color)
 end
 
@@ -521,12 +637,14 @@ function czPage(player, direction)
   local s = czState(player.color)
   s.page = s.page + (direction == "next" and 1 or -1)
   czRender(player.color)
+  czLog(player.color, "turned to page " .. s.page)
 end
 
 function czPick(player, row)
   local s = czState(player.color)
   czStatus(player.color, "")
   s.selected = s.list[(s.page - 1) * CZ.rows + tonumber(row)]
+  if s.selected then czLog(player.color, "selected " .. s.selected.name .. " (" .. s.selected.commander .. ")") end
   czRender(player.color)
 end
 
@@ -538,7 +656,66 @@ function czRandom(player)
   for i, d in ipairs(s.list) do
     if d.id == s.selected.id then s.page = math.ceil(i / CZ.rows) end
   end
+  czLog(player.color, "Surprise me selected " .. s.selected.name)
   czRender(player.color)
+end
+
+-- ---------- tournament handlers ----------
+
+function czTournament(player)
+  local color = player.color
+  local s = czState(color)
+  czDismiss(player)
+  czStatus(color, "")
+  if s.tour then
+    czLog(color, "left tournament mode")
+    s.tour = nil
+  else
+    if #czPool() == 0 then return end
+    s.tour, s.page = {mode = "all", redraws = 0, rerolls = 0}, 1
+    czLog(color, "entered tournament mode: All pick from " .. #czPool() .. " decks")
+  end
+  czRender(color)
+end
+
+function czTourMode(player, mode)
+  local color = player.color
+  local s = czState(color)
+  if not s.tour or not CZ_TOUR_LABEL[mode] then return end
+  czDismiss(player)
+  czStatus(color, "")
+  s.tour.mode, s.page = mode, 1
+  local note = ""
+  if mode == "draft" then
+    local fresh = not s.tour.offer
+    s.tour.offer = s.tour.offer or czDeal(CZ.draftSize)
+    note = (fresh and ", dealt " or ", offer: ") .. czNames(s.tour.offer)
+  elseif mode == "random" then
+    local fresh = not s.tour.random
+    s.tour.random = s.tour.random or czDeal(1)[1]
+    s.selected = s.tour.random
+    note = s.tour.random and ((fresh and ", rolled " or ", deck: ") .. s.tour.random.name) or ""
+  end
+  czLog(color, "switched to " .. CZ_TOUR_LABEL[mode] .. note)
+  czRender(color)
+end
+
+-- Draft: deal a new offer. Random: roll a new deck. Allowed, and logged.
+function czTourRedraw(player)
+  local color = player.color
+  local s = czState(color)
+  if not s.tour then return end
+  czDismiss(player)
+  czStatus(color, "")
+  if s.tour.mode == "draft" then
+    s.tour.offer, s.tour.redraws, s.selected = czDeal(CZ.draftSize), s.tour.redraws + 1, nil
+    czLog(color, "REDREW the draft (redraw #" .. s.tour.redraws .. "), dealt " .. czNames(s.tour.offer))
+  elseif s.tour.mode == "random" then
+    s.tour.random, s.tour.rerolls = czDeal(1)[1], s.tour.rerolls + 1
+    s.selected = s.tour.random
+    czLog(color, "REROLLED (reroll #" .. s.tour.rerolls .. "), rolled " .. (s.tour.random and s.tour.random.name or "nothing"))
+  end
+  czRender(color)
 end
 
 -- ---------- loading a deck into a seat ----------
@@ -586,6 +763,7 @@ local function czSpawn(player, d, text, zone)
   local ok, header = pcall(JSON.decode, lines[1] or "")
   if not ok or type(header) ~= "table" or not lines[2] then
     czStatus(player.color, "That deck file did not read correctly.", "error")
+    czLog(player.color, "load of " .. d.name .. " failed: the deck file did not read correctly")
     return
   end
   local back = czBack(czState(player.color))
@@ -612,7 +790,8 @@ local function czSpawn(player, d, text, zone)
       rotation = {0, yaw, 0},
     })
   end
-  broadcastToAll(string.format("%s loaded %s (%s)", player.steam_name, d.name, d.commander), {0.6, 0.9, 0.6})
+  broadcastToAll(string.format("%s loaded %s (%s)", player.steam_name or czPlayerName(player.color), d.name, d.commander), {0.6, 0.9, 0.6})
+  czLog(player.color, "LOADED " .. d.name .. " (" .. d.commander .. ") with card back " .. czBackLabel(czState(player.color)))
   czStatus(player.color, "Loaded " .. d.name .. (header.tokens and "." or ". It makes no tokens."), "success")
   UI.setAttribute("cz_panel_" .. player.color, "active", "False")
 end
@@ -624,6 +803,7 @@ function czLoad(player)
     czStatus(color, "Pick a deck first.", "error")
     return
   end
+  czLog(color, "pressed Load into my seat for " .. d.name)
   local seat = data and data[color]
   local zone = seat and seat["libraryZone"]
   if not zone then
@@ -633,6 +813,7 @@ function czLoad(player)
   for _, obj in ipairs(zone.getObjects()) do
     if obj.type == "Deck" or obj.type == "Card" then
       czStatus(color, "Your library zone is not empty: move that deck away first.", "error")
+      czLog(color, "load refused: library zone not empty")
       return
     end
   end
@@ -644,6 +825,7 @@ function czLoad(player)
     CZ.busy[color] = nil
     if req.is_error then
       czStatus(color, "Could not load " .. d.name .. ": " .. tostring(req.error), "error")
+      czLog(color, "load of " .. d.name .. " failed: " .. tostring(req.error))
       czRender(color)
       return
     end

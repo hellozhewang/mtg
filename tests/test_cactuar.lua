@@ -161,6 +161,19 @@ for _, seat in ipairs(seats) do
   }}
 end
 
+-- Chat log, seat colours and player names for Tournament mode.
+local logs = {}
+function printToAll(msg) logs[#logs + 1] = msg end
+Color = {fromString = function() return {r = 1, g = 1, b = 1} end}
+Player = setmetatable({}, {__index = function(_, c) return {color = c, steam_name = c .. "Name"} end})
+local waits = {}
+Wait = {time = function(f) waits[#waits + 1] = f end}
+local function settle() local w = waits; waits = {}; for _, f in ipairs(w) do f() end end
+local function logged(pattern)
+  for _, l in ipairs(logs) do if l:find(pattern, 1, true) then return l end end
+  return nil
+end
+
 -- ---------- load the browser ----------
 local source = read("tts/cactuar.lua"):gsub("@BASE_URL@", "test://tts/")
 assert(load(source, "cactuar.lua"))()
@@ -405,6 +418,101 @@ check(attrs["cz_back_White"].interactable == "False", "no back list: the button 
 czFilter(white, "back")
 check(s.menu == nil and attrs["cz_menu_White"].active == "False", "no back list: the menu stays shut")
 CZ.index.backs = withBacks
+
+-- ---------- Tournament mode ----------
+spawned, inZone = {}, {}
+czOpen(white); czClear(white)
+logs = {}
+czSearch(white, "zzz")
+check(#logs == 0 and #waits == 0, "nothing is logged outside Tournament mode")
+czClear(white)
+local pool = CZ.index.tournament
+check(#pool == 24, "the index carries the 24-deck tournament pool (" .. #pool .. ")")
+check(attrs["cz_tour_White"].interactable == "True", "Tournament button enabled when there is a pool")
+czTournament(white)
+check(s.tour and s.tour.mode == "all", "Tournament mode starts on All pick")
+check(logged("(White): entered tournament mode: All pick from 24 decks"), "entering is logged")
+check(logged("[Tournament ") and logged("WhiteName (White)"), "log lines carry the tag, name and seat")
+check(attrs["cz_filters_White"].active == "False" and attrs["cz_tourbar_White"].active == "True", "the mode row replaces the filters")
+check(attrs["cz_tour_White"].text:find("Leave tournament", 1, true), "the button offers to leave")
+check(#s.list == 24, "All pick lists exactly the pool (" .. #s.list .. ")")
+local inPool = {}
+for _, id in ipairs(pool) do inPool[id] = true end
+for _, d in ipairs(s.list) do check(inPool[d.id], "only pool decks listed: " .. d.id) end
+check(values["cz_count_White"] == "24 tournament decks", "count says tournament decks")
+s.filter.owner = "kupo7"; czRender("White")
+check(#s.list == 24, "hidden filters don't apply in Tournament mode")
+s.filter = {}
+
+-- Every action is logged: search (once it settles), sort, page, select, card back.
+czSearch(white, "r"); czSearch(white, "re"); czSearch(white, "reanimator")
+check(not logged('searched "re'), "typing isn't logged per keystroke")
+settle()
+check(logged('searched "reanimator"') and not logged('searched "re"'), "the settled search is logged once")
+check(#s.list >= 1 and #s.list < 24, "search narrows All pick")
+czClear(white)
+check(logged("reset the search"), "reset logged")
+czSort(white, "name"); check(logged("sorted by Name"), "sort logged")
+czPage(white, "next"); check(logged("turned to page 2"), "paging logged")
+czPage(white, "prev")
+czPick(white, "1"); check(s.selected and logged("selected " .. s.selected.name), "selection logged")
+czFilter(white, "back"); czChoose(white, "2")
+check(logged("chose card back " .. CZ.index.backs[2].label), "card back choice logged")
+czFilter(white, "back"); czChoose(white, "1")
+
+-- Draft: 5 different pool decks; Redraw deals again, logged with a count.
+czTourMode(white, "draft")
+local offer = s.tour.offer
+check(#offer == 5 and #s.list == 5, "Draft offers 5")
+local seen = {}
+for _, d in ipairs(offer) do check(inPool[d.id] and not seen[d.id], "draft offer is distinct pool decks"); seen[d.id] = true end
+check(logged("switched to Draft, dealt " .. offer[1].name), "the dealt offer is logged with its decks")
+check(values["cz_count_White"] == "Draft: pick 1 of 5", "count explains the draft")
+check(attrs["cz_tredraw_White"].active == "True" and attrs["cz_tredraw_White"].text:find("Redraw", 1, true), "Redraw shown in Draft")
+czTourMode(white, "all"); czTourMode(white, "draft")
+check(s.tour.offer == offer, "switching away and back keeps the same offer")
+check(logged("switched to Draft, offer: "), "returning to Draft logs the standing offer")
+czTourRedraw(white)
+check(s.tour.offer ~= offer and #s.tour.offer == 5 and s.tour.redraws == 1, "Redraw deals a new offer")
+check(logged("REDREW the draft (redraw #1)"), "redraws are logged and counted")
+czPick(white, "3")
+check(s.selected and s.selected.id == s.tour.offer[3].id, "pick one from the offer")
+
+-- Random: one pool deck, selected; Reroll allowed and logged.
+czTourMode(white, "random")
+check(s.tour.random and inPool[s.tour.random.id] and s.selected == s.tour.random, "Random rolls and selects a pool deck")
+check(#s.list == 1 and values["cz_count_White"] == "Random deck", "Random shows just that deck")
+check(logged("switched to Random, rolled " .. s.tour.random.name), "the roll is logged")
+check(attrs["cz_tredraw_White"].text:find("Reroll", 1, true), "Reroll shown in Random")
+czTourRedraw(white)
+check(s.tour.rerolls == 1 and logged("REROLLED (reroll #1), rolled " .. s.tour.random.name), "rerolls are logged and counted")
+
+-- Loading is logged, success and refusal.
+local rolled = s.tour.random
+spawned = {}
+czLoad(white)
+check(logged("pressed Load into my seat for " .. rolled.name), "the load is logged")
+check(logged("LOADED " .. rolled.name), "the result is logged")
+check(#spawned >= 2, "and the deck spawns: nothing is restricted")
+czOpen(white)
+check(logged("opened the browser"), "opening is logged")
+inZone = {{type = "Deck"}}
+czLoad(white)
+check(logged("load refused: library zone not empty"), "a refused load is logged")
+inZone = {}
+czRefresh(white)
+check(logged("refreshed the deck list"), "refresh is logged")
+-- Another player can pick the same deck: no restrictions, and their log is their own.
+local red = {color = "Red", steam_name = "RedName"}
+czOpen(red); czTournament(red); czTourMode(red, "all")
+check(logged("RedName (Red): entered tournament mode"), "each player's log names them")
+czTournament(red)
+check(logged("RedName (Red): left tournament mode"), "leaving is logged")
+local before = #logs
+czSort(red, "tier")
+check(#logs == before, "after leaving, nothing more is logged")
+check(attrs["cz_filters_Red"].active == "True", "filters come back")
+czTournament(white)
 
 -- A library zone that already holds a deck is left alone.
 spawned, inZone = {}, {{type = "Deck"}}

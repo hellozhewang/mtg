@@ -8,7 +8,7 @@
 BASE is the Workshop table "MTG 6 player table - scripted" (2293586471), as Tabletop
 Simulator stores it under Mods/Workshop/. It is someone else's work, so neither it
 nor the output is committed: this script is, along with what it adds, tts/cactuar.lua,
-tts/cactuar.xml and tts/cactuar_tile.lua. Everything the table already does is left
+tts/cactuar_turns.lua, tts/cactuar.xml and tts/cactuar_tile.lua. Everything the table already does is left
 exactly as it was: the browser is appended to its Global script and Global UI, and two
 Cactuar tiles that open it are added beside the deck importers, one per side.
 
@@ -61,8 +61,13 @@ def browser_xml() -> str:
     return "\n".join(out)
 
 
+# Appended to Global in this order: the browser, then the turn totals and
+# announcer, which use the browser's CZ.seats and CZ.base.
+GLOBAL_SCRIPTS = ("cactuar.lua", "cactuar_turns.lua")
+
+
 def browser_lua(base_url: str) -> str:
-    lua = (SOURCE / "cactuar.lua").read_text(encoding="utf-8")
+    lua = "\n\n".join((SOURCE / name).read_text(encoding="utf-8") for name in GLOBAL_SCRIPTS)
     return f"\n\n{MARKER} (appended by scripts/build_tts_table.py) ====\n" + \
         lua.replace("@BASE_URL@", base_url)
 

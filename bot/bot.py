@@ -90,6 +90,7 @@ import workspace
 import commands
 import harness
 import postprocess
+import sleever
 import usage
 
 # Ask workspace.py; do NOT derive these from __file__. bot/ sits outside the tree
@@ -451,9 +452,10 @@ def _release_bot(con: sqlite3.Connection) -> None:
         con.close()
 
 
-def _autopush(chan: str) -> None:
-    """Commit and push decklist changes. Never raises — a git failure must not
-    lose the user's reply, which has already been produced by this point."""
+def _autopush(chan: str, source: Path | None = None, what: str = "Deck") -> None:
+    """Commit and push decklist changes (or, for sleever, `source` = tts/sleeves/).
+    Never raises — a git failure must not lose the user's reply, which has already
+    been produced by this point."""
     if not AUTOPUSH:
         return
     try:
@@ -464,9 +466,9 @@ def _autopush(chan: str) -> None:
             # up whatever else is in flight in the repo — someone editing
             # scripts/ in another window, say — into a commit attributed to a
             # Discord turn.
-            rel = str(WORKSPACE.relative_to(REPO))
+            rel = str((source or WORKSPACE).relative_to(REPO))
             if not _git("status", "--porcelain", "--", rel).stdout.strip():
-                return                                  # no deck changed
+                return                                  # nothing changed
             site = _build_site()
             paths = [rel, *([site] if site else [])]     # public/ and docs/, nothing else
             add = _git("add", "--", *paths)
@@ -474,7 +476,7 @@ def _autopush(chan: str) -> None:
                 log().warning("autopush: git add failed: %s", add.stderr.strip()[:200])
                 return
 
-            msg = f"Deck update via Discord ({chan})"
+            msg = f"{what} update via Discord ({chan})"
             # `--` PATHS is what actually bounds the commit. Without it, `git
             # commit` records the WHOLE index, so anything a human had staged in
             # another window — a half-finished script — would be swept into a
@@ -486,7 +488,7 @@ def _autopush(chan: str) -> None:
                 log().warning("autopush: git commit failed: %s",
                               commit.stderr.strip()[:200])
                 return
-            log().info("autopush: committed deck changes (%s)", chan)
+            log().info("autopush: committed %s changes (%s)", what.lower(), chan)
 
             if not _git("remote").stdout.strip():
                 log().info("autopush: no remote configured; committed only")
@@ -681,6 +683,74 @@ def send(message: str, username: str,
         _release_bot(busy)
 
 
+def send_sleever(message: str, username: str, channel: str | int | None = DEFAULT_CHANNEL,
+                 *, refs: list[str] | None = None, discord: bool = False) -> str:
+    """One sleever request: paint a sleeve on the configured harness, then install,
+    attach and publish it (see sleever.py). Shares the builder's bot-wide lock, so
+    the two never run at once."""
+    if not message.strip():
+        raise ValueError("empty message")
+    username = username.strip()
+    started = time.time()
+    chan = _key(channel)
+    log().info("PROMPT [%s/%s] sleever: %s (%d ref(s))", chan, _oneline(username),
+               _oneline(message), len(refs or []))
+
+    if message.strip().lower() in usage.USAGE_COMMANDS:
+        return _usage(discord) or usage.HEADER + "\nUnavailable right now."
+
+    def with_usage(reply: str) -> str:
+        footer = _usage(discord)
+        return reply + ("\n\n" + footer if footer else "")
+
+    owner = workspace.owner_name(username)
+    if owner is None:
+        return "sleever can't make sleeves for this Discord username."
+    if not HARNESS.images:
+        log().info("SLEEVER [%s] the harness has no image tool", chan)
+        return with_usage(sleever.UNAVAILABLE)
+    try:
+        busy = _claim_bot()
+    except Busy:
+        log().info("BUSY   [%s] refused; already busy", chan)
+        return with_usage(BUSY_REPLY)
+    conv = f"{chan}-{owner}-sleever"
+    try:
+        folder = sleever.prepare(owner)
+        notes = sleever.fetch_refs(refs or [], folder / "refs")
+        for note in notes:
+            log().info("SLEEVER [%s] %s", chan, note)
+        state = _load(conv)
+        sid = session_id(conv)
+        prompt = message
+        if notes:
+            prompt += "\n\n(Note from the bot: " + "; ".join(notes) + ".)"
+        turn = HARNESS.run(folder, prompt, sid, chan=chan, timeout=TIMEOUT, writable=[])
+        if turn.session_id and turn.session_id != sid:
+            state = {**state, "session_id": turn.session_id, "harness": HARNESS.name,
+                     "model": MODEL, "effort": EFFORT}
+            log().info("[%s] pinned new sleever session %s", chan, turn.session_id)
+        reply, slug = sleever.publish(folder, turn.answer, owner, state.get("sleeve"), started)
+        if slug:
+            state["sleeve"] = slug
+            log().info("SLEEVER [%s] installed tts/sleeves/%s.jpg", chan, slug)
+            _autopush(chan, sleever.SLEEVES_DIR, "Sleeves")
+        else:
+            log().warning("SLEEVER [%s] no picture this turn", chan)
+        if state:
+            _save(conv, state)
+        log().info("REPLY  [%s/sleever] %d chars %dms", chan, len(reply),
+                   int((time.time() - started) * 1000))
+        return with_usage(reply)
+    except Exception as exc:
+        log().error("FAILED [%s] sleever after %dms: %s: %s", chan,
+                    int((time.time() - started) * 1000),
+                    exc.__class__.__name__, _oneline(str(exc))[:300])
+        raise
+    finally:
+        _release_bot(busy)
+
+
 # ---------- cli ----------
 
 def main() -> int:
@@ -697,6 +767,10 @@ def main() -> int:
     ap.add_argument("--status", action="store_true", help="show all pinned sessions")
     ap.add_argument("--usage", action="store_true", help="show the harness's remaining allowance without a model turn")
     ap.add_argument("--discord", action="store_true", help="format usage reset times for Discord")
+    ap.add_argument("--sleever", action="store_true",
+                    help="make sleeves (card backs) instead of talking to the deck builder")
+    ap.add_argument("--ref", action="append", default=[], metavar="URL",
+                    help="sleever: a reference picture to download (repeatable)")
     ap.add_argument("--tail", type=int, nargs="?", const=20, metavar="N",
                     help="print the last N log lines (default 20)")
     args = ap.parse_args()
@@ -749,7 +823,11 @@ def main() -> int:
         ap.error("--user is required when sending a message")
 
     try:
-        print(send(args.message, args.user, channel=args.channel, discord=args.discord))
+        if args.sleever:
+            print(send_sleever(args.message, args.user, channel=args.channel,
+                               refs=args.ref, discord=args.discord))
+        else:
+            print(send(args.message, args.user, channel=args.channel, discord=args.discord))
     except harness.QuotaExhausted as exc:
         # One neutral line the Discord app recognises (deckBuilder.ts quotaError): no
         # model or harness name, whichever ran out. The details go to the owner's log.

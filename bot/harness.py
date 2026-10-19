@@ -74,6 +74,9 @@ class Harness:
     default_model = ""
     default_effort: str | None = None
     label = ""
+    # Whether a turn can make pictures (sleever needs it). A harness without an image
+    # tool gets a neutral "can't make pictures" reply instead of a turn.
+    images = False
 
     def __init__(self, model: str | None = None, effort: str | None = None):
         self.model = model or self.default_model
@@ -194,6 +197,7 @@ class AgyHarness(Harness):
     default_model = "gemini-3.8-flash-high"
     default_effort = None              # the model id carries the thinking level
     label = "Antigravity"
+    images = True                      # its built-in generate_image tool, headless too
 
     # The owner's own Antigravity sign-in, copied into the bot's home when newer.
     SIGN_IN = (Path(".gemini") / "antigravity-cli" / "antigravity-oauth-token",

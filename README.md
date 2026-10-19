@@ -806,9 +806,14 @@ The table also shows each seat's **total turn time** for the game under its turn
 (the "Who goes first?" roll resets it). An **announcer** mocks a turn that reaches 5 and
 then 10 minutes ([tts/cactuar_turns.lua](tts/cactuar_turns.lua); chat `announcer off`).
 
-Players can also pick a **card back** for the deck they load. The backs are the pictures in
-[tts/backs/](tts/backs/); its [README](tts/backs/README.md) gives the image specs. Add one
-by dropping a picture there, running the catalog build and pushing.
+Players can also pick **sleeves** (a custom card back) for the deck they load. The
+sleeves are the pictures in [tts/sleeves/](tts/sleeves/); its
+[README](tts/sleeves/README.md) gives the image specs. Add one by dropping a picture
+there, running the catalog build and pushing, or ask **sleever** in Discord
+(`sleever make me sailor moon sleeves`, with pictures attached or links pasted for
+reference). sleever paints it on the builder's harness, then
+[bot/sleever.py](bot/sleever.py) crops it to spec, saves it, attaches it to the reply and
+autopushes it.
 
 New and retuned decks reach the table without a new upload: it reads the deck list
 live. A change to the table itself (the browser's code or panel, or the tiles) needs
@@ -920,7 +925,9 @@ conversation itself; the bot stores only its id.
   Antigravity sign-in there when that is newer.
 
 To add a harness, subclass `Harness` in `bot/harness.py` (`run`, and `usage` if it
-reports an allowance) and register it in `HARNESSES`.
+reports an allowance) and register it in `HARNESSES`. Set `images = True` if its turns
+can make pictures; sleever needs that, and on a harness without it replies that it
+can't make pictures right now, without running a turn.
 
 ## Layout
 
@@ -963,10 +970,12 @@ mtg/
 ├── bot/                     the harness — OUTSIDE the workspace it drives
 │   ├── bot.py                 persistent builder session the Discord app calls
 │   ├── harness.py             the agent CLI it runs on: agy (Gemini) or codex
+│   ├── sleever.py             sleever: sleeves from Discord, cropped and published
 │   ├── sandbox.py             the macOS sandbox profile around agy
 │   ├── commands.py            deterministic !decks / !deck / !help
 │   ├── usage.py               read-only Codex allowance lookup (no model turn)
 │   ├── .harness/agy/          agy's own home: settings, conversations, sign-in copy
+│   ├── .sleever/<user>/       sleever's per-user workspace (+ owners.json); not in git
 │   └── .sessions/             one pinned session id per Discord channel and user
 ├── public/                  every deck, one folder per owner
 │   └── <user>/                that user's decks; the builder's only writable tree

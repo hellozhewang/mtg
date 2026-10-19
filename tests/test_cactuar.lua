@@ -379,50 +379,50 @@ czOpen(white); czClear(white); czSearch(white, "beamtown"); czPick(white, "1"); 
 check(#spawned == 2, "library and commander only, no token pile (got " .. #spawned .. ")")
 check(values["cz_status_White"]:find("makes no tokens", 1, true), "the player is told there are no tokens")
 
--- The card back menu: Standard first, then the repo's backs; the choice applies on load.
+-- The sleeves menu: Standard first, then the repo's sleeves; the choice applies on load.
 spawned = {}
 czOpen(white); czClear(white)
-check(attrs["cz_back_White"].text:find("Card back: Standard", 1, true), "back button starts on Standard")
-check(attrs["cz_back_White"].interactable == "True", "back menu enabled when the repo has backs")
-czFilter(white, "back")
-check(s.menu == "back" and attrs["cz_menu_White"].active == "True", "back menu opens")
-check(values["cz_menu_title_White"] == "Choose a card back", "back menu title")
+check(attrs["cz_sleeve_White"].text:find("Sleeves: Standard", 1, true), "sleeves button starts on Standard")
+check(attrs["cz_sleeve_White"].interactable == "True", "sleeves menu enabled when the repo has sleeves")
+czFilter(white, "sleeve")
+check(s.menu == "sleeve" and attrs["cz_menu_White"].active == "True", "back menu opens")
+check(values["cz_menu_title_White"] == "Choose sleeves", "sleeves menu title")
 check(values["cz_choice_1_White"]:find("Standard", 1, true) and values["cz_choice_1_White"]:find("✓", 1, true), "Standard listed first and ticked")
 local cactuarRow
-for i, b in ipairs(CZ.index.backs) do
+for i, b in ipairs(CZ.index.sleeves) do
   check(values["cz_choice_" .. i .. "_White"]:find(b.label, 1, true), "back " .. b.label .. " listed in order")
   if b.id == "cactuar" then cactuarRow = i end
 end
-check(attrs["cz_choice_" .. (#CZ.index.backs + 1) .. "_White"].active == "False", "only the published backs are listed")
+check(attrs["cz_choice_" .. (#CZ.index.sleeves + 1) .. "_White"].active == "False", "only the published backs are listed")
 check(cactuarRow, "the repo's Cactuar back is published")
 czChoose(white, tostring(cactuarRow))
-check(s.back == "cactuar" and attrs["cz_menu_White"].active == "False", "choosing a back closes the menu")
-check(attrs["cz_back_White"].text:find("Card back: Cactuar", 1, true), "button shows the chosen back")
+check(s.sleeve == "cactuar" and attrs["cz_menu_White"].active == "False", "choosing a back closes the menu")
+check(attrs["cz_sleeve_White"].text:find("Sleeves: Cactuar", 1, true), "button shows the chosen sleeves")
 check(next(s.filter) == nil and #s.list == #CZ.index.decks, "choosing a back leaves the filters alone")
 czSearch(white, "giada"); czPick(white, "1"); czLoad(white)
 local backs, faces = 0, 0
 for i, o in ipairs(spawned) do
   for url in o.json:gmatch('"BackURL":"([^"]*)"') do
     backs = backs + 1
-    check(url:match("^test://tts/backs/cactuar%.jpg%?v=%x+$") ~= nil, "every card gets the chosen back (" .. url .. ")")
+    check(url:match("^test://tts/sleeves/cactuar%.jpg%?v=%x+$") ~= nil, "every card gets the chosen back (" .. url .. ")")
   end
   local standard = o.json:gsub('"BackURL":"[^"]*"', '"BackURL":"https://backs.scryfall.io/large/0/a/0aeebaf5-8c7d-4636-9e82-8c27447861f7.jpg"')
   check(standard == expectedObjects[i + 1], "only BackURL changes in object " .. i)
 end
 check(backs > 50, "library, commander and token backs all swapped (" .. backs .. ")")
-czOpen(white); czFilter(white, "back"); czChoose(white, "1")
-check(s.back == "standard" and attrs["cz_back_White"].text:find("Standard", 1, true), "Standard can be chosen again")
+czOpen(white); czFilter(white, "sleeve"); czChoose(white, "1")
+check(s.sleeve == "standard" and attrs["cz_sleeve_White"].text:find("Standard", 1, true), "Standard can be chosen again")
 spawned = {}
 czLoad(white)
 for i, o in ipairs(spawned) do check(o.json == expectedObjects[i + 1], "Standard leaves object " .. i .. " untouched") end
-check(CZ.state.Red == nil or CZ.state.Red.back == nil, "each player has their own back")
-local withBacks = CZ.index.backs
-CZ.index.backs = nil                       -- a deck list published before card backs
+check(CZ.state.Red == nil or CZ.state.Red.sleeve == nil, "each player has their own back")
+local withBacks = CZ.index.sleeves
+CZ.index.sleeves = nil                     -- a deck list published before sleeves
 czRender("White")
-check(attrs["cz_back_White"].interactable == "False", "no back list: the button is disabled")
-czFilter(white, "back")
+check(attrs["cz_sleeve_White"].interactable == "False", "no sleeves list: the button is disabled")
+czFilter(white, "sleeve")
 check(s.menu == nil and attrs["cz_menu_White"].active == "False", "no back list: the menu stays shut")
-CZ.index.backs = withBacks
+CZ.index.sleeves = withBacks
 
 -- A new player in a seat gets a fresh browser, not the last player's leftovers.
 local whoIn = {}
@@ -465,7 +465,7 @@ s.filter.owner = "kupo7"; czRender("White")
 check(#s.list == 24, "hidden filters don't apply in Tournament mode")
 s.filter = {}
 
--- Every action is logged: search (once it settles), sort, page, select, card back.
+-- Every action is logged: search (once it settles), sort, page, select, sleeves.
 czSearch(white, "r"); czSearch(white, "re"); czSearch(white, "reanimator")
 check(not logged('searched "re'), "typing isn't logged per keystroke")
 settle()
@@ -479,9 +479,9 @@ czSort(white, "name"); check(logged("sorted by Name"), "sort logged")
 czPage(white, "next"); check(logged("turned to page 2"), "paging logged")
 czPage(white, "prev")
 czPick(white, "1"); check(s.selected and logged("selected a deck") and not logged(s.selected.name), "selection logged without the deck")
-czFilter(white, "back"); czChoose(white, "2")
-check(logged("chose card back " .. CZ.index.backs[2].label), "card back choice logged")
-czFilter(white, "back"); czChoose(white, "1")
+czFilter(white, "sleeve"); czChoose(white, "2")
+check(logged("chose sleeves " .. CZ.index.sleeves[2].label), "sleeves choice logged")
+czFilter(white, "sleeve"); czChoose(white, "1")
 
 -- Draft: 5 different pool decks; Redraw deals again, logged with a count.
 czTourMode(white, "draft")
@@ -515,7 +515,7 @@ local rolled = s.tour.random
 spawned = {}
 czLoad(white)
 check(logged("pressed Load into my seat"), "the load is logged")
-check(logged("LOADED a deck (card back"), "the result is logged")
+check(logged("LOADED a deck (sleeves"), "the result is logged")
 -- Hidden information: no log line or broadcast names any pool deck or commander.
 for _, d in ipairs(CZ.index.decks) do
   if inPool[d.id] then

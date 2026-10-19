@@ -5,7 +5,7 @@ build_site.py calls `files()` and publishes what it returns under docs/tts/:
     tts/decks.json                          the index a table's deck browser lists
     tts/<owner>/<Bracket>/<Deck>.ndjson     one deck, ready to spawn
     tts/cactuar-tile.jpg                    the picture on the table's Cactuar tiles
-    tts/backs/<name>.jpg                    card backs a player can pick, from the repo's tts/backs/
+    tts/sleeves/<name>.jpg                  sleeves (card backs) a player can pick, from the repo's tts/sleeves/
     tts/sounds/<name>.wav                   the slow-turn announcer's clips, from the repo's tts/sounds/
 
 A deck file is one JSON value per line:
@@ -42,10 +42,10 @@ import decktiers
 import deckthemes
 
 TILE_IMAGE = Path(__file__).resolve().parent.parent / "tts" / "cactuar-tile.jpg"
-# Every picture here is a card back players can choose in the table's browser.
-# Adding one needs only a catalog build and a push: the menu lists decks.json's "backs".
-BACKS_DIR = TILE_IMAGE.parent / "backs"
-BACK_TYPES = (".jpg", ".jpeg", ".png")
+# Every picture here is a sleeve (card back) players can choose in the table's browser.
+# Adding one needs only a catalog build and a push: the menu lists decks.json's "sleeves".
+SLEEVES_DIR = TILE_IMAGE.parent / "sleeves"
+SLEEVE_TYPES = (".jpg", ".jpeg", ".png")
 # Clips the table plays through Tabletop Simulator's music player (cactuar_turns.lua).
 SOUNDS_DIR = TILE_IMAGE.parent / "sounds"
 # The tournament pool the browser's Tournament mode offers (curated by hand).
@@ -238,21 +238,21 @@ def index_entry(d, path: str) -> dict:
             "added": d.created, "updated": d.modified, "file": path}
 
 
-def back_files() -> list[Path]:
-    if not BACKS_DIR.is_dir():
+def sleeve_files() -> list[Path]:
+    if not SLEEVES_DIR.is_dir():
         return []
-    return sorted(p for p in BACKS_DIR.iterdir() if p.suffix.lower() in BACK_TYPES)
+    return sorted(p for p in SLEEVES_DIR.iterdir() if p.suffix.lower() in SLEEVE_TYPES)
 
 
-def backs() -> list[dict]:
-    """The card backs a player can pick: Magic's own first, then tts/backs/ by name.
+def sleeves() -> list[dict]:
+    """The sleeves a player can pick: Magic's own back first, then tts/sleeves/ by name.
     `url` is absolute; `file` is relative to decks.json (with a content hash so TTS
     fetches updated art instead of serving a stale cached image for the same name)."""
     out = [{"id": "standard", "label": "Standard", "url": CARD_BACK}]
-    for p in back_files():
+    for p in sleeve_files():
         label = p.stem.replace("-", " ").replace("_", " ").title()
         v = hashlib.sha256(p.read_bytes()).hexdigest()[:8]
-        out.append({"id": p.stem, "label": label, "file": f"backs/{p.name}?v={v}"})
+        out.append({"id": p.stem, "label": label, "file": f"sleeves/{p.name}?v={v}"})
     return out
 
 
@@ -285,7 +285,7 @@ def index(decks: list, paths: dict[str, str]) -> dict:
                   for k, t in decktiers.TIERS.items() if not t.local_only],
         "themes": [{"id": k, "label": t.label} for k, t in deckthemes.THEMES.items()
                    if not t.local_only],
-        "backs": backs(),
+        "sleeves": sleeves(),
         "tournament": tournament(decks),
         "decks": [index_entry(d, paths[d.key]) for d in decks],
     }
@@ -301,14 +301,14 @@ def files(decks: list, out_dir: Path, q) -> dict[Path, str | bytes]:
         tokens = {}
     root = out_dir / "tts"
     out: dict[Path, str | bytes] = {root / TILE_IMAGE.name: TILE_IMAGE.read_bytes()}
-    for p in back_files():
-        out[root / "backs" / p.name] = p.read_bytes()
+    for p in sleeve_files():
+        out[root / "sleeves" / p.name] = p.read_bytes()
     if SOUNDS_DIR.is_dir():
         for p in sorted(SOUNDS_DIR.iterdir()):
             if p.suffix.lower() in SOUND_TYPES:
                 out[root / "sounds" / p.name] = p.read_bytes()
-    if (BACKS_DIR / "README.md").is_file():                    # the specs, beside the pictures
-        out[root / "backs" / "README.md"] = (BACKS_DIR / "README.md").read_text(encoding="utf-8")
+    if (SLEEVES_DIR / "README.md").is_file():                  # the specs, beside the pictures
+        out[root / "sleeves" / "README.md"] = (SLEEVES_DIR / "README.md").read_text(encoding="utf-8")
     paths: dict[str, str] = {}
     for d in decks:
         rel = Path(d.href).with_suffix(".ndjson").as_posix()   # <owner>/<Bracket>/<Deck>.ndjson

@@ -222,31 +222,31 @@ end
 
 -- Unity's single-line Text clips overflow. Keep the owner visible even with long
 -- partner names; the details panel always contains the complete commander text.
--- ---------- card backs ----------
+-- ---------- sleeves ----------
 
--- decks.json lists them: Magic's standard back first, then the repo's tts/backs/.
-local function czBacks()
-  return (CZ.index and CZ.index.backs) or {}
+-- decks.json lists them: Magic's standard back first, then the repo's tts/sleeves/.
+local function czSleeves()
+  return (CZ.index and CZ.index.sleeves) or {}
 end
 
--- The player's chosen back, or nil for the standard one.
-local function czBack(s)
-  for _, b in ipairs(czBacks()) do
-    if b.id == s.back and b.id ~= "standard" then return b end
+-- The player's chosen sleeves, or nil for the standard back.
+local function czSleeve(s)
+  for _, b in ipairs(czSleeves()) do
+    if b.id == s.sleeve and b.id ~= "standard" then return b end
   end
   return nil
 end
 
-local function czBackLabel(s)
-  local b = czBack(s)
+local function czSleeveLabel(s)
+  local b = czSleeve(s)
   return b and b.label or "Standard"
 end
 
 -- Every card's BackURL becomes the chosen back. Like czImageJSON, this edits the
 -- string values only: decoding and re-encoding would break CustomDeck.
-local function czBackJSON(text, back)
-  if not back then return text end
-  local url = back.url or (CZ.base .. back.file)
+local function czSleeveJSON(text, sleeve)
+  if not sleeve then return text end
+  local url = sleeve.url or (CZ.base .. sleeve.file)
   return (text:gsub('("BackURL"%s*:%s*")[^"]*"', function(prefix) return prefix .. url .. '"' end))
 end
 
@@ -407,18 +407,18 @@ function czRender(color)
   if d and czDate(d.added) then dates[#dates + 1] = "Added " .. czDate(d.added) end
   if d and czDate(d.updated) then dates[#dates + 1] = "Updated " .. czDate(d.updated) end
   czText("cz_dates_" .. color, table.concat(dates, "\n"))
-  czButton("cz_back_" .. color, "Card back: " .. czBackLabel(czState(color)) .. " ▾")
-  czEnabled("cz_back_" .. color, #czBacks() > 1)
+  czButton("cz_sleeve_" .. color, "Sleeves: " .. czSleeveLabel(czState(color)) .. " ▾")
+  czEnabled("cz_sleeve_" .. color, #czSleeves() > 1)
   czEnabled("cz_load_" .. color, d ~= nil and not CZ.busy[color])
   czButton("cz_load_" .. color, CZ.busy[color] and "Loading…" or d and "Load into my seat" or "Select a deck")
 end
 
--- A menu's choices in order: a filter's All and its values, or the card backs.
+-- A menu's choices in order: a filter's All and its values, or the sleeves.
 local function czMenuChoices(color, key)
   local s, out = czState(color), {}
-  if key == "back" then
-    for _, b in ipairs(czBacks()) do
-      out[#out + 1] = {value = b.id, label = b.label, selected = (czBack(s) and czBack(s).id or "standard") == b.id}
+  if key == "sleeve" then
+    for _, b in ipairs(czSleeves()) do
+      out[#out + 1] = {value = b.id, label = b.label, selected = (czSleeve(s) and czSleeve(s).id or "standard") == b.id}
     end
     return out
   end
@@ -449,12 +449,12 @@ local function czRenderMenu(color)
       UI.setAttribute(id, "colors", choice.selected and CZ_ACTIVE or "#202F42|#344D66|#275B4B|#182331")
     end
   end
-  local positions = {bracket = 16, tier = 230, theme = 444, owner = 620, back = 620}
+  local positions = {bracket = 16, tier = 230, theme = 444, owner = 620, sleeve = 620}
   UI.setAttribute("cz_menu_" .. color, "offsetXY", positions[s.menu] .. " -146")
   UI.setAttribute("cz_menu_" .. color, "height", tostring(53 + visible * 33 + (pages > 1 and 31 or 0)))
   UI.setAttribute("cz_menu_" .. color, "active", "True")
   UI.setAttribute("cz_scrim_" .. color, "active", "True")
-  czText("cz_menu_title_" .. color, "Choose " .. (s.menu == "back" and "a card back" or string.lower(CZ_FILTER_LABEL[s.menu])))
+  czText("cz_menu_title_" .. color, "Choose " .. (s.menu == "sleeve" and "sleeves" or string.lower(CZ_FILTER_LABEL[s.menu])))
   UI.setAttribute("cz_menu_pager_" .. color, "active", pages > 1 and "True" or "False")
   czText("cz_menu_page_" .. color, s.menuPage .. " / " .. pages)
   czEnabled("cz_menu_prev_" .. color, s.menuPage > 1)
@@ -581,8 +581,8 @@ function czDismiss(player)
 end
 
 function czFilter(player, key)
-  if not CZ.index or not (CZ_FILTER_LABEL[key] or key == "back") then return end
-  if key == "back" and #czBacks() < 2 then return end     -- an index from before card backs
+  if not CZ.index or not (CZ_FILTER_LABEL[key] or key == "sleeve") then return end
+  if key == "sleeve" and #czSleeves() < 2 then return end     -- an index from before sleeves
   local s = czState(player.color)
   if s.menu == key then czDismiss(player); return end
   s.menu, s.menuPage = key, 1
@@ -608,9 +608,9 @@ function czChoose(player, row)
   local choices = czMenuChoices(player.color, s.menu)
   local n = ((s.menuPage or 1) - 1) * CZ.menuRows + i
   if n > #choices then return end
-  if s.menu == "back" then
-    s.back = choices[n].value                -- applies to the next deck loaded
-    czLog(player.color, "chose card back " .. choices[n].label)
+  if s.menu == "sleeve" then
+    s.sleeve = choices[n].value                -- applies to the next deck loaded
+    czLog(player.color, "chose sleeves " .. choices[n].label)
   else
     s.filter[s.menu] = choices[n].value      -- All (first choice) is nil
     s.page = 1
@@ -782,8 +782,8 @@ local function czSpawn(player, d, text, zone)
     czLog(player.color, "load failed: the deck file did not read correctly")
     return
   end
-  local back = czBack(czState(player.color))
-  for i = 2, #lines do lines[i] = czBackJSON(czImageJSON(lines[i]), back) end
+  local sleeve = czSleeve(czState(player.color))
+  for i = 2, #lines do lines[i] = czSleeveJSON(czImageJSON(lines[i]), sleeve) end
   local zp, yaw = zone.getPosition(), zone.getRotation().y + 180
   spawnObjectJSON({
     json = lines[2],
@@ -813,7 +813,7 @@ local function czSpawn(player, d, text, zone)
     })
   end
   broadcastToAll(string.format("%s loaded a deck.", player.steam_name or czPlayerName(player.color)), {0.6, 0.9, 0.6})
-  czLog(player.color, "LOADED a deck (card back " .. czBackLabel(czState(player.color)) .. ")")
+  czLog(player.color, "LOADED a deck (sleeves " .. czSleeveLabel(czState(player.color)) .. ")")
   czStatus(player.color, "Loaded " .. d.name .. (header.tokens and "." or ". It makes no tokens."), "success")
   UI.setAttribute("cz_panel_" .. player.color, "active", "False")
 end

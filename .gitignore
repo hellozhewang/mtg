@@ -21,6 +21,7 @@ bot/.reply-*.txt
 bot/.sandbox-bin/
 # The agy harness's own home: settings, conversations and a copy of the sign-in.
 bot/.harness/
+bot/.sleever/
 
 # GENERATED — the source of truth is AGENTS_MD in scripts/build_agents.py, and
 # this copy is overwritten before every message. Committing it would invite

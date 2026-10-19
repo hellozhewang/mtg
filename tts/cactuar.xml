@@ -71,8 +71,8 @@
             <Text id="cz_lands_{C}" fontSize="12" color="#E2E5EA" text=""/>
           </HorizontalLayout>
           <Text id="cz_dates_{C}" preferredHeight="26" fontSize="11" color="#C0C8D2" alignment="UpperLeft" text=""/>
-          <Button id="cz_back_{C}" onClick="czFilter(back)" preferredHeight="30" fontSize="12" interactable="False"
-                  color="#FFFFFF" colors="#243244|#34485F|#1C2938|#1B2533" textColor="#E2E5EA" text="Card back: Standard ▾"/>
+          <Button id="cz_sleeve_{C}" onClick="czFilter(sleeve)" preferredHeight="30" fontSize="12" interactable="False"
+                  color="#FFFFFF" colors="#243244|#34485F|#1C2938|#1B2533" textColor="#E2E5EA" text="Sleeves: Standard ▾"/>
           <Button id="cz_load_{C}" onClick="czLoad" preferredHeight="40" fontSize="15" fontStyle="Bold" interactable="False"
                   color="#FFFFFF" colors="#173B30|#1A3F32|#123127|#202C39" textColor="#E2E5EA" text="Select a deck"/>
         </VerticalLayout>

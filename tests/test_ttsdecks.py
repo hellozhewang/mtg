@@ -117,41 +117,41 @@ class ObjectTests(unittest.TestCase):
         self.assertEqual(ttsdecks.distinct_tokens([SOLDIER, SOLDIER_REPRINT, EMBLEM]), [SOLDIER, EMBLEM])
 
 
-class CardBackTests(unittest.TestCase):
+class SleeveTests(unittest.TestCase):
     def setUp(self):
         tmp = tempfile.TemporaryDirectory()
         self.addCleanup(tmp.cleanup)
         self.dir = Path(tmp.name)
-        original = ttsdecks.BACKS_DIR
-        ttsdecks.BACKS_DIR = self.dir
-        self.addCleanup(setattr, ttsdecks, "BACKS_DIR", original)
+        original = ttsdecks.SLEEVES_DIR
+        ttsdecks.SLEEVES_DIR = self.dir
+        self.addCleanup(setattr, ttsdecks, "SLEEVES_DIR", original)
 
     def test_standard_first_then_the_folder_by_name(self):
         (self.dir / "zebra_stripes.png").write_bytes(b"png")
         (self.dir / "cactuar.jpg").write_bytes(b"jpg")
         (self.dir / "notes.txt").write_text("not a picture")
-        self.assertEqual(ttsdecks.backs(), [
+        self.assertEqual(ttsdecks.sleeves(), [
             {"id": "standard", "label": "Standard", "url": ttsdecks.CARD_BACK},
-            {"id": "cactuar", "label": "Cactuar", "file": "backs/cactuar.jpg?v=f8146b6c"},
-            {"id": "zebra_stripes", "label": "Zebra Stripes", "file": "backs/zebra_stripes.png?v=8f8cbb7d"},
+            {"id": "cactuar", "label": "Cactuar", "file": "sleeves/cactuar.jpg?v=f8146b6c"},
+            {"id": "zebra_stripes", "label": "Zebra Stripes", "file": "sleeves/zebra_stripes.png?v=8f8cbb7d"},
         ])
 
-    def test_backs_are_published_and_listed(self):
+    def test_sleeves_are_published_and_listed(self):
         (self.dir / "cactuar.jpg").write_bytes(b"jpg-bytes")
         out = ttsdecks.files([], Path("/site"), None)
-        self.assertEqual(out[Path("/site/tts/backs/cactuar.jpg")], b"jpg-bytes")
+        self.assertEqual(out[Path("/site/tts/sleeves/cactuar.jpg")], b"jpg-bytes")
         index = json.loads(out[Path("/site/tts/decks.json")])
-        self.assertEqual([b["id"] for b in index["backs"]], ["standard", "cactuar"])
+        self.assertEqual([b["id"] for b in index["sleeves"]], ["standard", "cactuar"])
 
-    def test_the_readme_is_published_but_is_not_a_back(self):
-        (self.dir / "README.md").write_text("# Card backs")
+    def test_the_readme_is_published_but_is_not_a_sleeve(self):
+        (self.dir / "README.md").write_text("# Sleeves")
         out = ttsdecks.files([], Path("/site"), None)
-        self.assertEqual(out[Path("/site/tts/backs/README.md")], "# Card backs")
-        self.assertEqual([b["id"] for b in ttsdecks.backs()], ["standard"])
+        self.assertEqual(out[Path("/site/tts/sleeves/README.md")], "# Sleeves")
+        self.assertEqual([b["id"] for b in ttsdecks.sleeves()], ["standard"])
 
     def test_no_folder_means_only_the_standard_back(self):
-        ttsdecks.BACKS_DIR = self.dir / "missing"
-        self.assertEqual([b["id"] for b in ttsdecks.backs()], ["standard"])
+        ttsdecks.SLEEVES_DIR = self.dir / "missing"
+        self.assertEqual([b["id"] for b in ttsdecks.sleeves()], ["standard"])
 
     def test_announcer_clips_are_published(self):
         out = ttsdecks.files([], Path("/site"), None)
@@ -159,8 +159,8 @@ class CardBackTests(unittest.TestCase):
             self.assertTrue(out[Path("/site/tts/sounds") / name].startswith(b"RIFF"), name)
         self.assertNotIn(Path("/site/tts/sounds/make_announcer.py"), out)
 
-    def test_the_repo_ships_the_cactuar_back(self):
-        self.assertTrue((ROOT / "tts" / "backs" / "cactuar.jpg").is_file())
+    def test_the_repo_ships_the_cactuar_sleeve(self):
+        self.assertTrue((ROOT / "tts" / "sleeves" / "cactuar.jpg").is_file())
 
 
 class TournamentTests(unittest.TestCase):

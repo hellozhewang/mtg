@@ -855,6 +855,24 @@ is never committed; only what we add is: [tts/cactuar.lua](tts/cactuar.lua),
 [tts/cactuar.xml](tts/cactuar.xml), [tts/cactuar_tile.lua](tts/cactuar_tile.lua) and
 [build_tts_table.py](scripts/build_tts_table.py).
 
+**Releasing a new table version** is one command, after the change is committed and pushed:
+
+```bash
+python3 scripts/release_tts.py --notes "what changed" --notes "and what else"
+python3 scripts/release_tts.py --current      # the version we're at
+python3 scripts/release_tts.py --dry-run      # build into .cache/release/ only
+```
+
+It builds the next `MTG 6 player Cactuar Ver_vN` from HEAD, not the working tree. It
+refuses until HEAD is pushed and Pages serves its clips and tile picture, because TTS
+caches by URL. It delivers the save and thumbnail to the PC's TTS Saves folder, checks
+their SHA-256, removes the previous version, copies the WIP and changelog to the Desktop,
+and adds the version's patch notes to [tts/CHANGELOG.md](tts/CHANGELOG.md). Commit and
+push the changelog afterwards. The PC's address is in the gitignored
+`tts/deploy.local.json` (see `INTERNALS.md`).
+
+The lower-level build, for experiments:
+
 ```bash
 ./scripts/build_tts_table.py 2293586471.json -o "MTG 6 player Cactuar Ver.json"
 ./scripts/build_tts_table.py 2293586471.json -o test.json --base-url http://192.168.0.100:5588/tts/

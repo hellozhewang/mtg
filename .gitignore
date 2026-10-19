@@ -61,3 +61,5 @@ bot/.deck-metadata.db*
 # VS Code workspace settings, which are machine-local and not source.
 .vscode/
 tests/.sandbox-probe/
+
+tts/deploy.local.json

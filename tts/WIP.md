@@ -4,9 +4,75 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-19 (Claude): v27 = v26 + the owner's new tile art (f7a5b02a), with the tile URL versioned by content hash so TTS doesn't show the cached old picture. v15 and earlier are pushed; the v16–v27 code is not.
+Last updated 2026-10-19 (Claude): louder announcer clips for v28 (below). v16–v27 code is committed locally (41e63ae3), not pushed.
 
 ## TODO (Codex): replace the announcer voice
+
+**Read `tts/sounds/README.md` first:** it covers how to generate and measure clips, the loudness targets, and the order for publishing them.
+
+### Latest audio revision: deeper radio voice — 2026-10-19
+
+After the first neural pair, the owner asked for a more radio-like sound and clarified
+that the voice should be **a little deeper**. The source WAVs and neural generator now
+apply a two-semitone pitch reduction with tempo compensation, warm 180 Hz EQ, light
+presence and an 8.5 kHz roll-off. Echo is reduced to one very quiet reflection; the
+low hit is quieter. The base voice is still the same local Kokoro preset blend below.
+Words, file names, PCM format, loudness targets and playback/off-switch code are unchanged.
+
+| Source WAV | Duration | Project meter | Independent EBU | True peak |
+|---|---|---|---|---|
+| `slow-5min.wav` | 2.96 s | -12.5 LUFS | -12.45 LUFS | -1.15 dBTP |
+| `slow-10min.wav` | 3.11 s | -12.6 LUFS | -12.63 LUFS | -0.55 dBTP |
+
+SHA-256: 5-minute `f25b95f561bcb4bc33e466283df2a1084d6446d2b49967502e8118e3607a379b`;
+10-minute `c7478eff3387d07bae0a6030f2f4a038c2d4e1589c81b4c01fb63cdc15f954c9`.
+Validation: 192 unit tests pass; WAV format/duration, the project meter and independent
+EBU loudness/true-peak checks pass. Owner audition/in-game approval remain.
+
+Listening copies are supplied separately in **Cactuar announcer (radio)** on the PC
+Desktop and under Downloads, preserving the earlier **Cactuar announcer (neural)**
+pair for comparison. Earlier source audio is backed up outside git at
+`~/.cache/mtg-announcer/previous-neural-20261019/`. Claude still owns the next table
+build and publishing. No game/table code, save, `docs/` audio, commit or push changed.
+The earlier neural handoff below records the first pair; its hashes are historical.
+
+### First neural audio handoff from Codex — 2026-10-19 (superseded by radio revision)
+
+The owner asked Codex to **generate the sounds only**; Claude will create the next
+table version. The two source WAVs are now generated with local **Kokoro-82M v1.0**,
+`kokoro-onnx 0.6.1`, blending **70% `am_michael` / 30% `am_fenrir`**. No account,
+paid service, API key, reference recording or voice cloning was used.
+
+- `slow-5min.wav`: 3.02 s, project meter -12.5 LUFS; independent EBU -12.74 LUFS,
+  true peak -0.90 dBTP. SHA-256 `d4c27e9f789f61a5ff82e7a063f5d2c11ccd92a3ea1ce632dfc004bc78ad6f6d`.
+- `slow-10min.wav`: 3.17 s, project meter -12.9 LUFS; independent EBU -13.03 LUFS,
+  true peak -0.55 dBTP. SHA-256 `5fdc2f5e732136b67722d86a4ac24f03c4ee2085382d2cd13383efc4d0e49a3d`.
+- Same spoken words and filenames, 22050 Hz mono PCM16 WAV. The second line's
+  exclamation mark only steers delivery; the displayed wording need not change.
+- Regenerator: `tts/sounds/make_neural_announcer.py`, using the existing
+  `make_announcer.clarity()` and `master()`, lighter reflections, quiet bass accent,
+  measured loudness trim and an independent true-peak guard. The old Ralph generator
+  is preserved; **do not run its default recording command** over these new clips.
+- Runtime/model environment is outside the repo at `~/.cache/mtg-announcer/`; use
+  `~/.cache/mtg-announcer/venv/bin/python tts/sounds/make_neural_announcer.py`.
+  Model SHA-256 `7d5df8ecf7d4b1878015a32686053fd0eebe2bc377234608764cc0ef3636a6c5`;
+  voice-bank SHA-256 `bca610b8308e8d99f32e6fe4197e7ec01679264efed0cac9140fe9c29f1fbf7d`.
+- Previous uncommitted Ralph clips were backed up outside git at
+  `~/.cache/mtg-announcer/previous-ralph-20261019/` before replacement.
+
+Owner audition and in-game testing remain; these measurements do not establish the
+owner's preferred voice character. Listening copies go on the PC Desktop in
+`Cactuar announcer (neural)`. No table/game scripts, saved table, timer/off-switch,
+`docs/` audio, commit, push or Workshop upload changed. Claude should copy the source
+clips to the published sounds folder, get approval, and follow the README's
+publish-before-loading-new-URL order for the next build.
+
+Validation: **192 unit tests pass**, both files have valid mono PCM16/22050 Hz WAV
+headers and roughly three-second durations; the existing `--measure` and independent
+FFmpeg EBU/true-peak measurements pass the brief. Listening copies are also supplied
+under the PC Downloads folder, with SHA-256 checked against the source files.
+
+The original brief and earlier placeholder notes below are retained for context.
 
 **Asked by the owner on 2026-10-18.** The slow-turn announcer works, but its voice clips
 are placeholders, and the owner found them hard to understand. Make them clear and in
@@ -93,6 +159,34 @@ Also worth fixing while there:
 - **Remaining manual checks:** Workshop publication, tile click/size/facing feedback,
   and full live loading across all six occupied seats. Automated placement tests cover
   all six; do not confuse those with six separate live playtests.
+
+## v28: louder announcer clips (TEST build delivered; final build after the push)
+
+**v28 as delivered is a test build.** The owner wanted to test before any push, so
+`CZT.soundBase` is set to the Mac's catalog server (`http://192.168.0.100:5588/tts/`) in the
+saved Lua. That edit was made by hand to the built JSON, not in the repo. The clips play only on
+the owner's LAN; decks still come from Pages. After the push, build the next version (v29) with
+no soundBase, so every player hears the clips from Pages.
+
+
+The owner found the announcer too quiet with every TTS volume slider (Game, MP3) at maximum,
+so the clips themselves were the problem. A peak normalise left the voice at about -18.6 LUFS
+(K-weighted, gated), because the sub-bass boom set the peak. `tts/sounds/make_announcer.py`
+now:
+- turns the boom down to sit under the voice;
+- high-passes the voice at 140 Hz and adds a +6 dB shelf above 2.2 kHz for clarity;
+- compresses (4:1 from -26 dB);
+- runs a 4 ms look-ahead limiter with 18 dB of drive into a -0.5 dBFS ceiling.
+
+The result is about -12.5 LUFS, 6 LU louder, with no clipping. More drive gains little: 24 dB
+measured only 0.4 LU louder. The voice is still the placeholder `say` Ralph; the Codex TODO
+above still stands, and its new clips should go through the same `master()`.
+
+`build_tts_table.py` now adds `?v=<sha256[:8]>` to each `sounds/<clip>` URL in the Lua,
+because TTS caches audio by URL as it does pictures.
+
+**Order matters:** push the new clips to Pages BEFORE anyone loads v28. Loading it first would
+cache the old clip under the new URL.
 
 ## v27: new tile art, versioned tile URL (delivered)
 

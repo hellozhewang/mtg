@@ -73,6 +73,12 @@ GLOBAL_SCRIPTS = ("cactuar.lua", "cactuar_turns.lua")
 
 def browser_lua(base_url: str) -> str:
     lua = "\n\n".join((SOURCE / name).read_text(encoding="utf-8") for name in GLOBAL_SCRIPTS)
+    # TTS caches audio by URL too: a content hash on each announcer clip makes a
+    # re-recorded clip a new URL, so tables built after it play the new one.
+    for clip in sorted((SOURCE / "sounds").glob("*")):
+        if clip.suffix.lower() in (".wav", ".mp3", ".ogg"):
+            version = hashlib.sha256(clip.read_bytes()).hexdigest()[:8]
+            lua = lua.replace(f'"sounds/{clip.name}"', f'"sounds/{clip.name}?v={version}"')
     return f"\n\n{MARKER} (appended by scripts/build_tts_table.py) ====\n" + \
         lua.replace("@BASE_URL@", base_url)
 

@@ -38,6 +38,11 @@ class TableBuild(unittest.TestCase):
             self.assertIn('Global.call("czOpenFor"', t["LuaScript"])
         self.assertIn("function czOpenFor(", table["LuaScript"])
 
+    def test_announcer_clips_carry_a_content_version(self):
+        lua = build_tts_table.build(json.loads(json.dumps(BASE)), URL)["LuaScript"]
+        for name in ("slow-5min.wav", "slow-10min.wav"):
+            self.assertRegex(lua, r'"sounds/' + name.replace(".", r"\.") + r'\?v=[0-9a-f]{8}"')
+
     def test_no_screen_button(self):
         table = build_tts_table.build(json.loads(json.dumps(BASE)), URL)
         self.assertNotIn("cz_open", table["XmlUI"])

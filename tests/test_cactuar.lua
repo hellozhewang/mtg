@@ -307,12 +307,15 @@ check(library.position[1] == 41.8 and library.position[3] == -20.1, "library in 
 check(library.rotation[3] == 180 and library.rotation[2] == 180, "library face down, facing the seat")
 check(shuffled == 1, "library shuffled")
 check(decode(library.json).Name == "DeckCustom" and #decode(library.json).ContainedObjects == 99, "99-card library")
-check(commander.position[3] == -9.6 and commander.rotation[3] == 0, "single commander face up in the first (upper) slot")
+check(commander.position[3] == -9.6 and commander.rotation[3] == 180, "single commander face down (hidden) in the first (upper) slot")
+check(tokens.rotation[3] == 180, "tokens face down too")
 check(decode(commander.json).Nickname:find("^Giada, Font of Hope"), "the commander is Giada")
-check(tokens.position[3] == -9.6 and tokens.position[1] < 41.8 - 3, "tokens in the battlefield beside the first slot")
+-- The table's mulligan refuses while a card or deck is in the play area, which is
+-- the mat left of the column: tokens stay in the column, on the free second slot.
+check(tokens.position[1] == 41.8 and tokens.position[3] == -13.4, "a single commander's tokens go on the free second slot")
 check((tokens.position[1] - 41.8) ^ 2 + (tokens.position[3] + 5.7) ^ 2 > 9, "tokens clear of the Life Tracker")
 check(values["cz_status_White"] == "Loaded Giada-Angels.", "status for a deck with tokens")
-check(broadcasts[#broadcasts]:find("zz loaded Giada%-Angels"), "the table is told")
+check(broadcasts[#broadcasts] == "zz loaded a deck.", "the table is told a deck was loaded, not which (got " .. tostring(broadcasts[#broadcasts]) .. ")")
 check(attrs["cz_panel_White"].active == "False", "panel closes after loading")
 
 -- The tile toggles: a second click closes an open panel.
@@ -352,8 +355,9 @@ for _, seat in ipairs(seats) do
     seat.color .. ": second commander in second slot")
   check(decode(spawned[3].json).Nickname:find("^Vial Smasher"), seat.color .. ": second stays Vial Smasher")
   local t = spawned[#spawned].position
-  check(t[3] == -9.6 * seat.forward and (seat.x - t[1]) * seat.forward > 3,
-    seat.color .. ": tokens in the battlefield beside the first slot")
+  check(t[1] == seat.x, seat.color .. ": tokens stay in the column, out of the play area")
+  check(math.abs(t[3] - (-13.4 - 20.1) / 2 * seat.forward) < 0.001,
+    seat.color .. ": partners fill both slots, so tokens go on the exile spot")
   check((t[1] - seat.x) ^ 2 + (t[3] + 5.7 * seat.forward) ^ 2 > 9, seat.color .. ": tokens clear of the Life Tracker")
 end
 
@@ -364,8 +368,9 @@ spawned = {}
 czLoad(white)
 check(math.abs(spawned[2].position[3] - (-20.1 + 10.5)) < 0.001, "fallback first slot")
 check(math.abs(spawned[3].position[3] - (-20.1 + 6.8)) < 0.001, "fallback second slot")
-check(spawned[#spawned].position[3] == spawned[2].position[3] and spawned[#spawned].position[1] < 41.8 - 3,
-  "fallback tokens beside the first slot")
+local t = spawned[#spawned].position
+check(t[1] == 41.8 and t[3] < spawned[3].position[3] and t[3] > -20.1,
+  "fallback tokens stay in the column, between the second slot and the library")
 getAllObjects = originalObjects
 
 -- A deck whose cards make no tokens spawns none, and says so.
@@ -419,6 +424,22 @@ czFilter(white, "back")
 check(s.menu == nil and attrs["cz_menu_White"].active == "False", "no back list: the menu stays shut")
 CZ.index.backs = withBacks
 
+-- A new player in a seat gets a fresh browser, not the last player's leftovers.
+local whoIn = {}
+Player = setmetatable({}, {__index = function(_, c) return {color = c, steam_name = c .. "Name", steam_id = whoIn[c]} end})
+whoIn.Purple = "kupo"
+local purple = {color = "Purple", steam_name = "Kupo"}
+czOpen(purple); czSearch(purple, "sheoldred"); czPick(purple, "1")
+check(CZ.state.Purple.selected ~= nil and CZ.state.Purple.query == "sheoldred", "Kupo searched and picked in Purple")
+czClose(purple)
+whoIn.Purple = "em0k1ller"                                     -- Kupo moved; Em0k1ller sat down
+czOpen({color = "Purple", steam_name = "Em0k1ller"})
+check(CZ.state.Purple.selected == nil and CZ.state.Purple.query == "", "the new player starts with a clean browser")
+check(attrs["cz_search_Purple"].text == "" and values["cz_status_Purple"] == "", "search box and status cleared")
+czClose({color = "Purple"})
+whoIn.Purple = nil
+Player = setmetatable({}, {__index = function(_, c) return {color = c, steam_name = c .. "Name"} end})
+
 -- ---------- Tournament mode ----------
 spawned, inZone = {}, {}
 czOpen(white); czClear(white)
@@ -448,14 +469,16 @@ s.filter = {}
 czSearch(white, "r"); czSearch(white, "re"); czSearch(white, "reanimator")
 check(not logged('searched "re'), "typing isn't logged per keystroke")
 settle()
-check(logged('searched "reanimator"') and not logged('searched "re"'), "the settled search is logged once")
+local searches = 0
+for _, l in ipairs(logs) do if l:find("searched the list", 1, true) then searches = searches + 1 end end
+check(searches == 1 and not logged("reanimator"), "the settled search is logged once, without the search text")
 check(#s.list >= 1 and #s.list < 24, "search narrows All pick")
 czClear(white)
 check(logged("reset the search"), "reset logged")
 czSort(white, "name"); check(logged("sorted by Name"), "sort logged")
 czPage(white, "next"); check(logged("turned to page 2"), "paging logged")
 czPage(white, "prev")
-czPick(white, "1"); check(s.selected and logged("selected " .. s.selected.name), "selection logged")
+czPick(white, "1"); check(s.selected and logged("selected a deck") and not logged(s.selected.name), "selection logged without the deck")
 czFilter(white, "back"); czChoose(white, "2")
 check(logged("chose card back " .. CZ.index.backs[2].label), "card back choice logged")
 czFilter(white, "back"); czChoose(white, "1")
@@ -466,15 +489,15 @@ local offer = s.tour.offer
 check(#offer == 5 and #s.list == 5, "Draft offers 5")
 local seen = {}
 for _, d in ipairs(offer) do check(inPool[d.id] and not seen[d.id], "draft offer is distinct pool decks"); seen[d.id] = true end
-check(logged("switched to Draft, dealt " .. offer[1].name), "the dealt offer is logged with its decks")
+check(logged("switched to Draft (5 decks dealt)"), "the dealt offer is logged, without its decks")
 check(values["cz_count_White"] == "Draft: pick 1 of 5", "count explains the draft")
 check(attrs["cz_tredraw_White"].active == "True" and attrs["cz_tredraw_White"].text:find("Redraw", 1, true), "Redraw shown in Draft")
 czTourMode(white, "all"); czTourMode(white, "draft")
 check(s.tour.offer == offer, "switching away and back keeps the same offer")
-check(logged("switched to Draft, offer: "), "returning to Draft logs the standing offer")
+check(logged("switched to Draft (5 decks on offer)"), "returning to Draft logs the standing offer")
 czTourRedraw(white)
 check(s.tour.offer ~= offer and #s.tour.offer == 5 and s.tour.redraws == 1, "Redraw deals a new offer")
-check(logged("REDREW the draft (redraw #1)"), "redraws are logged and counted")
+check(logged("REDREW the draft (redraw #1, 5 new decks dealt)"), "redraws are logged and counted")
 czPick(white, "3")
 check(s.selected and s.selected.id == s.tour.offer[3].id, "pick one from the offer")
 
@@ -482,17 +505,26 @@ check(s.selected and s.selected.id == s.tour.offer[3].id, "pick one from the off
 czTourMode(white, "random")
 check(s.tour.random and inPool[s.tour.random.id] and s.selected == s.tour.random, "Random rolls and selects a pool deck")
 check(#s.list == 1 and values["cz_count_White"] == "Random deck", "Random shows just that deck")
-check(logged("switched to Random, rolled " .. s.tour.random.name), "the roll is logged")
+check(logged("switched to Random (rolled a deck)"), "the roll is logged, not the deck")
 check(attrs["cz_tredraw_White"].text:find("Reroll", 1, true), "Reroll shown in Random")
 czTourRedraw(white)
-check(s.tour.rerolls == 1 and logged("REROLLED (reroll #1), rolled " .. s.tour.random.name), "rerolls are logged and counted")
+check(s.tour.rerolls == 1 and logged("REROLLED (reroll #1)"), "rerolls are logged and counted")
 
 -- Loading is logged, success and refusal.
 local rolled = s.tour.random
 spawned = {}
 czLoad(white)
-check(logged("pressed Load into my seat for " .. rolled.name), "the load is logged")
-check(logged("LOADED " .. rolled.name), "the result is logged")
+check(logged("pressed Load into my seat"), "the load is logged")
+check(logged("LOADED a deck (card back"), "the result is logged")
+-- Hidden information: no log line or broadcast names any pool deck or commander.
+for _, d in ipairs(CZ.index.decks) do
+  if inPool[d.id] then
+    for _, l in ipairs(logs) do
+      check(not l:find(d.name, 1, true) and not l:find(d.commander, 1, true), "log never reveals " .. d.name)
+    end
+  end
+end
+for _, b in ipairs(broadcasts) do check(not b:find(rolled.name, 1, true), "broadcasts never reveal the deck") end
 check(#spawned >= 2, "and the deck spawns: nothing is restricted")
 czOpen(white)
 check(logged("opened the browser"), "opening is logged")

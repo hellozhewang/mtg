@@ -18,6 +18,7 @@ docs/tts/ (see ttsdecks.py), from GitHub Pages by default.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import sys
@@ -37,6 +38,10 @@ TILE_SCALE = 2.2
 # seats' side, above rikrassen's importer on the north side. Each faces its seats.
 TILES = (("c4c7a1", -48.2, -24.5, 180.0),   # GUID, x, z, rotY
          ("c4c7a2", 48.2, 24.5, 0.0))
+# The base's turn clocks ("Timer", z ±2.86) sit right above each seat's Life Tracker,
+# which leaves no room for the total turn time cactuar_turns.lua shows beneath them.
+# Move them toward the middle strip (clear at every seat) by this much.
+TIMER_Z = 1.96
 
 
 def _section(xml: str, name: str) -> str:
@@ -83,7 +88,10 @@ def _guids(objects: list) -> set[str]:
 def tiles(base_url: str, taken: set[str]) -> list[dict]:
     """The Cactuar tiles: a click opens the clicker's own browser panel."""
     lua = (SOURCE / "cactuar_tile.lua").read_text(encoding="utf-8")
-    image = base_url + TILE_IMAGE
+    # TTS caches pictures by URL: a content hash makes a new tile picture a new URL,
+    # so players see it instead of the cached old one.
+    version = hashlib.sha256((SOURCE / TILE_IMAGE).read_bytes()).hexdigest()[:8]
+    image = f"{base_url}{TILE_IMAGE}?v={version}"
     out = []
     for guid, x, z, rot_y in TILES:
         if guid in taken:
@@ -109,11 +117,25 @@ def tiles(base_url: str, taken: set[str]) -> list[dict]:
     return out
 
 
+def _make_room_under_timers(objects: list) -> list:
+    out = []
+    for o in objects:
+        if o.get("Name") == "BlockSquare" and o.get("Nickname") == "Timer":
+            o = dict(o)
+            t = dict(o.get("Transform") or {})
+            t["posZ"] = TIMER_Z if t.get("posZ", 0) > 0 else -TIMER_Z   # absolute: rebuilds agree
+            o["Transform"] = t
+            o["LuaScriptState"] = "0"      # turn 0: cactuar_turns.lua reads >0 as a game in progress
+        out.append(o)
+    return out
+
+
 def build(base: dict, base_url: str, name: str = NAME) -> dict:
     table = dict(base)
     ours = {guid for guid, *_ in TILES}
-    objects = [o for o in table.get("ObjectStates") or []
-               if o.get("GUID") not in ours]  # rebuilding from an earlier output
+    objects = _make_room_under_timers(
+        [o for o in table.get("ObjectStates") or []
+         if o.get("GUID") not in ours])       # rebuilding from an earlier output
     lua = table.get("LuaScript") or ""
     if MARKER in lua:                       # rebuilding from an earlier output
         lua = lua[:lua.index(MARKER)].rstrip()

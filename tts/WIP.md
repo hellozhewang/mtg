@@ -4,7 +4,61 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-18 (Claude): v15 adds Tournament mode with full chat logging and Tournament tags on the website; image checks are now cached for 7 days. Not pushed.
+Last updated 2026-10-19 (Claude): v27 = v26 + the owner's new tile art (f7a5b02a), with the tile URL versioned by content hash so TTS doesn't show the cached old picture. v15 and earlier are pushed; the v16–v27 code is not.
+
+## TODO (Codex): replace the announcer voice
+
+**Asked by the owner on 2026-10-18.** The slow-turn announcer works, but its voice clips
+are placeholders, and the owner found them hard to understand. Make them clear and in
+character: a real radio or arena announcer, like the "Double kill!" voice in shooters.
+
+What exists (pushed in 0fe29d2f):
+- **Lines.** Keep the meaning, and keep the on-screen text in `CZT.lines` in sync:
+  - `tts/sounds/slow-5min.wav`: "C'mon bro, what's taking so long?"
+  - `tts/sounds/slow-10min.wav`: "Bruh, wake me up when you're done."
+- **Generator:** `tts/sounds/make_announcer.py`. It's macOS `say`, the classic voice Ralph
+  pitched down, at 22 kHz mono, with a sub-bass boom, three echo taps and a `tanh` limiter. The
+  low-quality voice and the distortion are what make it muddy, so don't build on them.
+- **Playback:** `tts/cactuar_turns.lua`, function `cztAnnounce`, plays
+  `CZ.base .. "sounds/<file>"` through `MusicPlayer.setCurrentAudioclip` + `play()`.
+  `CZT.soundBase` overrides the base for testing from the Mac's catalog server
+  (`http://192.168.0.100:5588/tts/`). In chat, `announcer test` plays the 5-minute line.
+
+What to do:
+1. **Pick a voice engine. Ask the owner before anything that needs an account or costs money.**
+   Researched options:
+   - **ElevenLabs:** the most character, with announcer and commentator voices in its library.
+     It needs a free account plus an API key. `ELEVENLABS_API_KEY` isn't set.
+   - **OpenAI `gpt-4o-mini-tts`:** steerable with `instructions` ("hype esports announcer,
+     booming, mocking"). It needs an OpenAI API key, which a ChatGPT login doesn't provide.
+     `OPENAI_API_KEY` isn't set.
+   - **Chatterbox:** local and MIT-licensed, with an expressiveness or exaggeration control.
+     It runs on the M4 through MPS, but needs Python 3.10+ (the system has 3.9.6) and PyTorch.
+   - **Kokoro:** local, Apache-licensed, very clean but calm.
+   - Don't clone a real person's or a game's announcer voice.
+2. **Make clean clips.** No distortion; at most a light arena reverb. Use 44.1 kHz, normalised,
+   about 2–4 s each, with a short silence at the start. Keep the file names, or update
+   `CZT.lines`.
+3. **Format:** WAV is proven: the owner heard the current clip in game. If you switch to
+   `.mp3`/`.ogg` to save size, test it in game first. `ttsdecks.SOUND_TYPES` already publishes
+   all three.
+4. **Replace the generator,** or add a new script beside it, so the clips can be regenerated.
+   Commit no API keys, and print the voice/model used.
+5. **Rebuild and check:** `python3 scripts/build_site.py`, which copies the clips to
+   `docs/tts/sounds/`. Run `python3 -m unittest discover tests`; `test_announcer_clips_are_published`
+   expects both `.wav` names and `RIFF` headers, so update it if names or format change.
+6. **Test in the owner's game, then hand them the files to judge.** Set `CZT.soundBase` to the
+   Mac (see `INTERNALS.md` for the External Editor client) and type `announcer test`.
+   Also put both clips in the PC's Downloads so the owner can listen.
+7. **Publish:** clips are fetched at runtime, so a push is enough, with no table rebuild or
+   Workshop upload. Commit and push only when the owner says so.
+
+Also worth fixing while there:
+- **The clip replaces whatever music the table is playing.** Capture
+  `MusicPlayer.getCurrentAudioclip()` before playing and restore it afterwards. In a test,
+  `getCurrentAudioclip()` reported the table's playlist track right after
+  `setCurrentAudioclip`, yet the owner heard the clip; check how the player behaves.
+- **Totals reset when a save is reloaded:** `CZT` isn't saved. Optional; ask the owner.
 
 ## Current status
 
@@ -39,6 +93,280 @@ Last updated 2026-10-18 (Claude): v15 adds Tournament mode with full chat loggin
 - **Remaining manual checks:** Workshop publication, tile click/size/facing feedback,
   and full live loading across all six occupied seats. Automated placement tests cover
   all six; do not confuse those with six separate live playtests.
+
+## v27: new tile art, versioned tile URL (delivered)
+
+The owner replaced `tts/cactuar-tile.jpg` with painted art in a gold frame ("CACTUAR DECKS";
+f7a5b02a, already pushed and on Pages). TTS caches images by URL, so tables built with the
+plain `…/tts/cactuar-tile.jpg` would keep the old picture. `build_tts_table.tiles` now
+appends `?v=<sha256[:8]>` of the source image (currently `?v=15a4e1b1`, HTTP 200 on Pages),
+the same scheme the card backs use. The test checks the pattern. **MTG 6 player Cactuar
+Ver_v27** delivered; v26 removed. It also carries everything from v26.
+
+## v26: restore after the objects exist (delivered, not live-applied)
+
+v25 still showed 0 after a rewind, even with cards moved in between. Live: the tile memo
+held fresh state (written every 10 s), but `noSavedState` was true at load.
+
+`cztSaved()` ran at the script's top level. After a load or rewind that's before the
+objects exist, so `getObjectFromGUID("c4c7a1")` was nil. The fallback
+`Global.script_state` is empty after a rewind, so the game looked new. The earlier probe
+"survived" only because it was read later, over the External Editor API.
+
+- `cztRestore()` now runs once, at attach. By then the six Timers have their buttons and
+  the tiles exist. It does all the restoring: started, totals, turn numbers, and the
+  running turn continued.
+- `onPlayerTurn` doesn't run the first-turn reset until `CZT.restored`.
+- The live-patch path sets `restored = true`.
+- Test: with objects unavailable at load, nothing is decided; once the tile exists the state
+  is restored. The old code fails this. `tests/test_cactuar_turns.lua` 1348 checks.
+- **Still unverified in game:** load v26, start, play about 30 s, rewind one step.
+
+**MTG 6 player Cactuar Ver_v26** delivered; v25 removed.
+
+## v25: the timer state lives in the tile's memo (delivered, not live-applied)
+
+v24 still reset after rewinds ("always resets to 0", "my turn timer went back to 0").
+
+**Experiment:**
+1. Started the timers in the owner's solo session and confirmed `Global.script_state` was
+   written.
+2. Wrote `probe-1792403552` to tile `c4c7a1`'s `memo` and GM notes.
+3. The owner rewound.
+
+**Result:** the memo and GM notes kept the probe; `Global.script_state` was empty
+(`noSavedState = true`). The base Timers' own `turnN` looked reset too.
+
+**Changes:**
+- `cztState()` stores: `cactuar_started`, `cactuar_turn_totals`, `cactuar_turn_numbers`
+  (every seat's base `turnN`), and `cactuar_turn = {color, elapsed}` (the running turn).
+- `cztPersist()` writes that to the tile's memo, and to `Global.script_state`.
+  `cztSaved()` reads the memo first.
+- **On load or rewind:**
+  - If the saved running turn is the current one, `CZT.start = now - elapsed`, and
+    `elapsed` comes out of that seat's stored total so it counts once.
+  - Lines already announced this turn are marked.
+  - At attach, the base `turnN` values are restored. After `cztStartTableClock`, the
+    current Timer's `tdiff` is set to `elapsed`, so the base clock continues.
+- The old probe text in the live session's tile memo is harmless. A fresh v25 table's tiles
+  have no memo.
+
+Tests: `tests/test_cactuar_turns.lua` 1335 checks. A tile stand-in's memo now carries the saved
+state (`setSaved`). Reload continues the turn at 0:20, the total isn't double-counted and the
+base clock `tdiff` is 20. The full suite has 2 failures that aren't ours:
+`ratdos/Kwia-Lifegain` is a Discord build in progress, with no theme or tier yet.
+**MTG 6 player Cactuar Ver_v25** delivered; v24 removed from Saves.
+
+## v24: timers survive rewinds (delivered, not live-applied)
+
+After a rewind the group "ended up in turn 1 again". Live (v23): `Global.script_state` was
+empty. Rewind snapshots don't call Global `onSave`, so `cactuar_started` was lost. The
+table loaded as "waiting", and the next turn change ran `cztFirstTurn`, which resets
+everything to turn 1.
+
+- `cztPersist()` writes the same JSON as `onSave` (now `cztState()`) to
+  `Global.script_state`. It runs on every turn switch, first turn, new game, resume and
+  roll reset, and every 10 ticks while started.
+- **Safety net:** when a loaded table has no `cactuar_started` key (`CZT.noSavedState`) and
+  any base Timer's `turnN` > 0 (`cztTurnsPlayed`), attaching runs `cztResume()` instead of
+  waiting. The base Timers persist `turnN` in their own `script_state`. The build sets
+  every Timer's `LuaScriptState` to "0", so a fresh table always waits.
+- The rewound game's real turn numbers weren't recoverable. Each seat's turn number can be
+  corrected with the base Timer's turn button (click +1, right-click −1).
+- Tests: suite OK; `tests/test_cactuar_turns.lua` 1279 checks (state written without a save;
+  a no-state snapshot with counted turns resumes and keeps `turnN`; a fresh table waits).
+  **MTG 6 player Cactuar Ver_v24** delivered.
+
+## v23: timers start on the first player's turn (delivered, not live-applied)
+
+v22 waited for a counted die roll. In practice the group just started playing (the turn
+passed to Red), so nothing ever started. The owner: "timer should start as soon as its
+first players turn".
+
+- `onPlayerTurn`: when the game isn't started and the turn goes to a seated colour more
+  than 5 s after load (guarding against load-time events), `cztFirstTurn(color)` runs.
+  It zeroes every total and every base `turnN`, re-enables the base clocks and times this
+  turn.
+  - The Timer object's own `onPlayerTurn` may run before or after Global's, so a
+    `Wait.frames(…, 1)` then sets that Timer's `turnN` to 1, starts its clock if needed, and
+    shows "turn 1".
+  - It broadcasts "X takes the first turn. Timers started."
+- Later turns just switch. The die roll (`cztStartGame`) is still a new-game reset, and
+  `timers on` still resumes a waiting game.
+- Tests: `tests/test_cactuar_turns.lua` 1241 checks: no start from a load-time event; first
+  turn = turn 1 even after setup turns; other seats at 0; later turns switch.
+  **MTG 6 player Cactuar Ver_v23** delivered.
+
+## v22: the die rebuilding itself is not a roll (delivered, not live-applied)
+
+The owner loaded v20 for a new game and saw "turn 1 / 0:22 / total 0:25" before anyone
+rolled. Live: started=true, starting about 3 s after the script loaded, with empty
+script_state.
+
+Cause: the "Who goes first?" die script (0rganics) calls `setCustomObject` +
+`self.reload()` on load and on every `onPlayerChangeColor`, to put seated names on its
+faces. TTS reports that as `onObjectRandomize`, and `cztRolled` treated it as a roll and
+started turn 1. Mid-game, a seat change could therefore restart the game.
+
+Fix: `onObjectRandomize` starts a game only if the randomizing `color` is one of the six
+seats, and only more than 10 s after the script loaded (`CZT.loadedAt`, kept across live
+patches). Tests: a rebuild with no player, a Grey roll and a roll in the first seconds all
+start nothing. `tests/test_cactuar_turns.lua` 1197 checks. **MTG 6 player Cactuar Ver_v22**
+delivered.
+
+## v21: resume timers without a roll (delivered; the running match was resumed live, on request)
+
+- **Rewind lost the timers.** TTS Rewind restored a snapshot from just after Claude's
+  mistaken "waiting for the roll" reset, where `cactuar_started` was false, so every clock
+  went idle. Rolling would restart the game at turn 1 and pass the turn.
+- **Fix:** `cztResume()`, run by the chat command `timers on`. When the game isn't started,
+  it starts timing the current turn, re-enables the base clocks, starts the current player's
+  clock and keeps its `turnN`. It broadcasts "Timers resumed from the current turn." and
+  does nothing if the game is already started.
+- **Live:** the owner asked "did you fix it?", and the same resume ran in the match. White
+  showed `0:04`, turn 1, and every seat's total.
+- **Open issue, not fixed:** other players' clicks on the base's Global-owned buttons fail
+  on the host. The errors are `Error Network Remote LuaObject/ClickButtonRPC … Exception has
+  been thrown by the target of an invocation`, and `Lua Error <playerScry>: Index was out of
+  range … Parameter name: index`.
+  - Hover + typing a number works, the host's own clicks work, and Life Tracker buttons
+    (object-owned) work.
+  - It started after this session's live patching. That's the suspected cause, unproven.
+  - Recommended fix: save the match, upgrade that save's scripts with `build_tts_table.py`
+    (it re-appends v21 and keeps the objects and state), and load it.
+  - A recorder wraps `playerDraw`/`draw1` in that session (`CZ_DEBUG`, `CZ_ORIG`). It
+    disappears on reload.
+- Tests: suite OK; `tests/test_cactuar_turns.lua` 1188 checks. **MTG 6 player Cactuar Ver_v21**
+  delivered.
+
+## v20: hidden information (delivered, not live-applied, not pushed)
+
+The owner: "change the logging so … other players can't see what they loaded and also put
+the commanders face down; just say player loaded a deck in the chat."
+
+- The load broadcast is "<name> loaded a deck." It used to name the deck and commander.
+- Tournament logs keep every action and count, without deck names, commanders, draft
+  offers, rolls or search text. For example: "switched to Draft (5 decks dealt)",
+  "REDREW the draft (redraw #1, 5 new decks dealt)", "REROLLED (reroll #1)",
+  "selected a deck", "searched the list", "LOADED a deck (card back X)". `czNames` was removed.
+- Commander(s) and the token pile spawn face down (rotation z 180); the library already did.
+- Tests: suite OK; `tests/test_cactuar.lua` 1100 checks.
+- **MTG 6 player Cactuar Ver_v20** delivered. NOT applied to the running match: per the
+  live-game rule, waiting for the owner.
+
+Also answered: the owner's Tundra is unpinned (`1 Tundra`), so it's Scryfall's default,
+Vintage Masters 322. The website shows the same printing; pin a printing to change it.
+
+## v19: fixes from the first live game (delivered, live-applied, not pushed)
+
+The owner's first real game: EggRolls, Digitalstealth, Kupo, Ratdos and Em0k1ller.
+
+- **"Purple couldn't mulligan" / "clicked the Cactuar thing and it didn't load".**
+  1. Kupo, in Purple, loaded Sheoldred-Drain. v11–v18 put the token pile into the
+     battlefield, inside `data.Purple.playmat`.
+  2. The base `playerMulligan` refuses on a single click while any Card or Deck is in the play
+     area, so the mulligan failed.
+  3. Kupo moved to Yellow and loaded again; the Purple copy was deleted. The other seats had
+     dragged their tokens onto commander slot two by hand.
+
+  Fix: tokens go to slot two, or the exile spot for partner decks. The playmat zones were
+  checked live: they end left of the column at every seat.
+- **A seat's browser carried the last player's state.** Em0k1ller saw Kupo's selection and
+  "Loaded Sheoldred-Drain". `czState` now records the seat's `steam_id` and starts fresh
+  when a different player sits there. `czOpen` clears a stale search box and status.
+- **Timers auto-started on load.** The owner wants nothing to run until the "Who goes first?"
+  roll.
+  - `CZT.started`, saved as `cactuar_started`. Before the roll: nothing is timed, there's no
+    announcer, no totals are shown, and the base Timers are kept quiet (`timerOn = false`,
+    blank labels).
+  - `cztRolled(die)` resets everything and waits for the die to rest (`Wait.condition`, 15 s).
+    It reads `getRotationValue()`, a Steam name or an empty seat's colour (`cztDieColor`).
+    "Roll again…" starts nothing.
+  - `cztStartGame(color)` zeroes every base `turnN`, re-enables the clocks and sets
+    `Turns.turn_color`, or starts both clocks by hand if it's already that player's turn.
+    The broadcast reads "New game! X goes first. Turn 1."
+  - A started game, loaded or live-patched, switches the base clocks back on and re-shows
+    the running clock's turn number (`cztStartTableClock`).
+- **Live incident (Claude):** while live-applying the "wait for the roll" change I reset the
+  running game, which had four players. That cleared the totals and switched the base clocks
+  off. Resuming then switched nothing on, because the new `CZT.timers` was still empty, so
+  "the turn number is not showing". It was fixed by the attach-time re-enable above, applied
+  live. Green (Em0k1ller) showed `1:10`, turn 1, with a total; earlier totals were lost.
+  **Before any live patch that changes game state, check whether a game is in progress
+  (`Player.getPlayers()`, decks on the table) and ask the owner.**
+- Tests: suite OK; `tests/test_cactuar.lua` 652 checks (token spots, seat change);
+  `tests/test_cactuar_turns.lua` 1168 checks (roll start, roll again, saves, clock re-enable).
+  **MTG 6 player Cactuar Ver_v19** delivered to Saves.
+
+## v18: the total label is actually drawn (delivered, live-applied, screenshot-verified)
+
+After v17 the owner reset and rolled, reached turn 2, and still saw no total. Live state:
+the White Timer's button 7 held "total 0:39", yet nothing was drawn.
+
+Screenshots of the TTS window (method below) settled it:
+- Moving the label above "turn" with alpha 100 made it visible.
+- Back below the clock with alpha 100: visible ("total 2:36" under "2:37").
+
+So the alpha was the problem; the position was fine. `CZT_LABEL.alpha = 100` is used for
+create and restyle, and the test checks `font_color[4] == 100`. Applied live to all seats;
+the screenshot shows "turn 2 / 3:18 / total 3:16". **MTG 6 player Cactuar Ver_v18**
+delivered. Not pushed.
+
+**Screenshot method** (no tooling kept in the repo):
+1. A PowerShell `PrintWindow(hwnd, hdc, 3)` of the window whose title matches
+   "Tabletop Simulator" saves a PNG to `%TEMP%`.
+2. It must run in the logged-on session: create a one-off
+   `schtasks /Create /TN cz_shot /TR "powershell … -File …" /SC ONCE /ST 23:59 /IT /F`,
+   then `/Run` and `/Delete`. Give every `schtasks.exe` call `< /dev/null`, or it swallows
+   the rest of the SSH stdin script.
+3. Stream the PNG back with `cat` (3440×1440) and crop with `sips -c H W --cropOffset Y X`.
+
+## v17: the total sits under the clock, always, and survives reloads (delivered and live-applied)
+
+Owner feedback:
+- A v16 screenshot of the Red seat showed "turn 1 / 0:02" but no total.
+- "the total timer should just stick on the table until you reset".
+
+Causes and fixes:
+- **Hidden under the Life Tracker.** The base clock ("Timer", z ±2.86) sits right above
+  the heart. Our label at local z +0.95 landed on the heart, whose XML overlay covers it.
+  `build_tts_table.TIMER_Z = 1.96` moves all six Timers toward the middle strip, which
+  was checked clear at every seat. It's absolute, so rebuilds agree. The label stays at
+  local z +0.95, directly under the digits.
+- **Always visible:** every seated player's total shows, from "total 0:00", whether or not
+  it's their turn. Seats with banked time show it even when empty. `cztShowAll` runs
+  every 5 ticks to follow players sitting and standing.
+- **Saved:** Global `onSave` (the base defines none; `CZT_BASE.save` is captured anyway)
+  writes `{"cactuar_turn_totals": {...}}`, with the running turn included. A fresh load
+  restores it from `Global.script_state`; an unreadable state starts empty. Only the
+  "Who goes first?" roll resets it.
+
+Live: Timers moved with `setPosition` and the script re-run. The Red seat showed clock
+` 2:33`, turn 1, "total 2:33". Tests: suite OK, including the timers moving and staying
+put on rebuild; `lua tests/test_cactuar_turns.lua` 1056 checks (seated 0:00, save
+round trip, bad save). **MTG 6 player Cactuar Ver_v17** delivered. Not pushed.
+
+## v16: both turn timers visible after a load (delivered and live-applied)
+
+The owner loaded v15 and saw neither timer. Causes:
+1. **The base Timer's own clock starts only in its `onPlayerTurn`.** A game loaded mid-turn
+   (turns on, the turn already White's) never gets that event, so the digits stay blank
+   until the turn passes.
+2. **The total label was there** ("total 0:32") but small (font 240, alpha 0.85), and the
+   owner's hover tooltip covered it.
+
+Fixes in `tts/cactuar_turns.lua`:
+- `cztStartTableClock()` runs once after attaching. If the current player's Timer has no
+  `timerID`, it calls the Timer's own `onPlayerTurn` with `Player[color]`. When the
+  saved `turnN` was above 0, it then restores `turnN`, calls `updateSave` and relabels
+  button 6, so a reload doesn't count an extra turn.
+- The label is now `CZT_LABEL` (font 320, alpha 1). An existing label from an older
+  version is restyled with `editButton`.
+
+Live: applied; the White Timer showed ` 0:04`, "turn 1", "total 2:10". The total had
+counted from the load, and the base clock from the patch. Tests: suite OK;
+`lua tests/test_cactuar_turns.lua` 1023 checks. **MTG 6 player Cactuar Ver_v16** delivered to
+Saves. Not pushed.
 
 ## v15: Tournament mode, catalog tags, cached image checks (delivered, not pushed)
 
@@ -235,6 +563,27 @@ category, owner). **Load into my seat** spawns the chosen deck into that player'
   The decoded `<` value becomes `<Button ...><</Button>` and breaks XML. Use the
   literal Unicode arrows `‹`/`›`, as v3 does. The build test checks decoded text
   remains valid when reinserted as markup.
+- **Button labels on the base Timer blocks need font_color alpha 100**, as the Timer's own
+  labels use. With alpha 1 (or 0.85) the label exists, `getButtons` shows its text, and
+  nothing is drawn. Found 2026-10-18 by A/B screenshots: the same label became visible
+  only when the alpha changed.
+- **Nothing spawned by the loader may land in a play area** (`data[color].playmat`, the mat
+  left of the column). The base mulligan refuses while any Card/Deck is in it ("accidental
+  mulligan press", double-click to override). Tokens therefore go on commander slot two,
+  or on the exile spot for partner decks.
+- **After a load or rewind, Global's script runs before the objects exist.** At top level,
+  `getObjectFromGUID` returns nil for the tile, so anything read from objects must wait
+  until they're there (the attach tick; `cztRestore`).
+- **A TTS rewind wipes scripts' saved data and keeps object fields.** Tested 2026-10-19 with
+  probe values: `Global.script_state` came back empty, while a tile's `memo` and GM notes
+  survived. Rewinds don't call `onSave` either. So state that must survive a rewind goes
+  in an object's `memo`. Ours is the Cactuar tile `c4c7a1` (then `c4c7a2`), written by
+  `cztPersist` on every change and every 10 s. `Global.script_state` is kept as a fallback.
+- **Hidden information:** nothing the table sees may name a player's deck, commander or
+  search. That covers broadcasts, tournament logs and face-up spawns. Logs describe actions only
+  ("selected a deck", "REROLLED (reroll #2)"). Commanders and tokens spawn face down
+  (rotZ 180). The player's own panel may show their deck. `tests/test_cactuar.lua` checks
+  that no log line contains any pool deck's name or commander.
 - **Leave the base table's behaviour alone.** Don't redefine its `onload` or other globals;
   only append. Its seats are `data[color].libraryZone` (a ScriptingTrigger), plus two objects
   named "Commander Zone" per seat (≤20 units from the library zone).
@@ -244,8 +593,9 @@ category, owner). **Load into my seat** spawns the chosen deck into that player'
   second is toward the library. Find the nearest two Commander Zones first, then reverse
   their distance order. A lone commander also goes in slot one. The fallback offsets are
   10.5, then 6.8, along the library's forward.
-- **Tokens go beside slot one, into the battlefield:** `slot1 - getTransformRight() * 4.2`.
-  Never along the column past slot one: that's the Life Tracker (v1–v10 did this).
+- **Tokens stay in the column:** slot two for a single commander, the exile spot (midway
+  between slot two and the library) for partners. Never past slot one (the Life Tracker,
+  v1–v10), and never into the battlefield (v11–v18, which blocked the mulligan).
 - **Tile GUIDs** `c4c7a1`/`c4c7a2` must not exist in the base; the build exits if they do.
   A rebuild from an earlier output replaces our tiles and appended script/UI, never doubling them.
 - **Never commit the base table or any built table JSON.** They're someone else's mod.
@@ -259,15 +609,20 @@ category, owner). **Load into my seat** spawns the chosen deck into that player'
 python3 -m unittest discover tests          # whole suite (155 tests at v13; Lua harness 562 checks)
 lua tests/test_cactuar.lua                   # the browser alone: "N checks, 0 failed"
 python3 scripts/build_site.py                # rebuilds docs/, including docs/tts/
-python3 scripts/build_tts_table.py BASE.json -o "OUT.json" --name "MTG 6 player Cactuar Ver_v16"
+python3 scripts/build_tts_table.py BASE.json -o "OUT.json" --name "MTG 6 player Cactuar Ver_v28"
 ```
 
 - `BASE.json` is the Workshop file `2293586471.json`. It isn't in the repo: get it from the
   owner's PC (see `INTERNALS.md`, gitignored) into a temp dir.
 - The owner wants a version suffix on each delivered build so they can tell builds apart:
-  `_v15` was the last one, so the next is `_v16`.
-- Deliver to the owner's PC TTS Saves folder, with a `.png` thumbnail of the same name
-  (`~/Downloads/cactuar-mtg.png`). Send a copy of this file to their Desktop as
+  `_v27` was the last one, so the next is `_v28`.
+- Keep only the latest build in the owner's Saves folder. On 2026-10-19 the owner asked to
+  clean it up, and v1–v23 were deleted. When delivering a new version, delete the previous
+  `MTG 6 player Cactuar Ver_vN.json/.png`. Never touch `Saved Objects/` (the decks),
+  `TS_AutoSave*`, `SaveFileInfos.json` or `steam_autocloud.vdf`.
+- Deliver to the owner's PC TTS Saves folder, with a `.png` thumbnail of the same name:
+  the current tile art, `tts/cactuar-tile.jpg` converted to PNG (`sips -s format png`). The
+  owner asked on 2026-10-19 for the thumbnail to match the new tile. Send a copy of this file to their Desktop as
   `Cactuar table WIP.md`. Host, paths and the copy method are in `INTERNALS.md`.
 
 ## State at v2

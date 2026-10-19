@@ -33,7 +33,7 @@ class TableBuild(unittest.TestCase):
         sides = sorted((t["Transform"]["posX"] > 0, t["Transform"]["rotY"]) for t in placed)
         self.assertEqual(sides, [(False, 180.0), (True, 0.0)])     # each faces its seats
         for t in placed:
-            self.assertEqual(t["CustomImage"]["ImageURL"], URL + "cactuar-tile.jpg")
+            self.assertRegex(t["CustomImage"]["ImageURL"], r"^" + URL + r"cactuar-tile\.jpg\?v=[0-9a-f]{8}$")
             self.assertTrue(t["Locked"])
             self.assertIn('Global.call("czOpenFor"', t["LuaScript"])
         self.assertIn("function czOpenFor(", table["LuaScript"])
@@ -82,6 +82,20 @@ class TableBuild(unittest.TestCase):
         once = build_tts_table.build(json.loads(json.dumps(BASE)), URL)
         twice = build_tts_table.build(json.loads(json.dumps(once)), URL)
         self.assertEqual(once, twice)
+
+    def test_turn_clocks_move_toward_the_middle_to_make_room_for_totals(self):
+        base = json.loads(json.dumps(BASE))
+        base["ObjectStates"] += [
+            {"GUID": "809133", "Name": "BlockSquare", "Nickname": "Timer", "Transform": {"posX": 41.77, "posZ": -2.86}},
+            {"GUID": "8a13cc", "Name": "BlockSquare", "Nickname": "Timer", "Transform": {"posX": -41.75, "posZ": 2.86}},
+            {"GUID": "0457c5", "Name": "BlockSquare", "Nickname": "Hand Counter", "Transform": {"posZ": -31.0}}]
+        table = build_tts_table.build(base, URL)
+        z = {o["GUID"]: o["Transform"]["posZ"] for o in table["ObjectStates"] if "Transform" in o}
+        self.assertEqual((z["809133"], z["8a13cc"]), (-1.96, 1.96))
+        self.assertEqual(z["0457c5"], -31.0)                       # other blocks stay put
+        again = build_tts_table.build(json.loads(json.dumps(table)), URL)
+        self.assertEqual([o.get("Transform") for o in again["ObjectStates"]],
+                         [o.get("Transform") for o in table["ObjectStates"]])
 
     def test_tile_guids_are_new(self):
         taken = build_tts_table._guids(BASE["ObjectStates"])

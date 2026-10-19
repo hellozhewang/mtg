@@ -4,13 +4,57 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-19 (Claude): louder announcer clips for v28 (below). v16–v27 code is committed locally (41e63ae3), not pushed.
+Last updated 2026-10-19 (Codex): preparing v30 with the substantially deeper radio announcer. v29 is the latest delivered version; see `tts/CHANGELOG.md` for released versions.
 
-## TODO (Codex): replace the announcer voice
+## v30 release: deeper radio announcer (preparing)
+
+The owner asked Codex to integrate the latest clips and deliver a new build for testing,
+using the updated release instructions. Both source WAVs use the deep radio revision
+below (-5 semitones from the neural voice, three below v29), with the same words and
+timing. The audio generators now live in `scripts/`; assets remain in `tts/sounds/`.
+
+Release order: rebuild and check the catalog, commit and push sources and generated
+audio, wait for matching bytes on Pages, then run `scripts/release_tts.py`. The release
+tool builds from HEAD, delivers v30 and its thumbnail, verifies the copies, removes
+earlier Cactuar saves and copies this WIP and the changelog to the Desktop. Commit and
+push the changelog afterwards. No running game or Workshop upload is part of delivery.
+Owner listening and in-game testing remain.
+
+## Announcer voice revisions
 
 **Read `tts/sounds/README.md` first:** it covers how to generate and measure clips, the loudness targets, and the order for publishing them.
 
-### Latest audio revision: deeper radio voice — 2026-10-19
+### Audio generators moved to scripts — 2026-10-19
+
+Per the owner’s convention, both audio generators now live in `scripts/`:
+`make_neural_announcer.py` and the legacy `make_announcer.py`. Default generation
+and measurement still use `tts/sounds/`, resolved from the repository location
+regardless of the working directory. Generator commands and references below and
+in the audio README are updated.
+
+### Latest audio revision: substantially deeper radio voice — 2026-10-19
+
+The owner said the first radio voice was still not deep enough. The generator now
+uses **-5 semitones from the neural voice**, three semitones deeper than the preceding
+radio pair, with tempo preserved. Body EQ is +3.5 dB at 160 Hz. Everything else stays
+the same: words, preset blend, minimal reflection, file names, PCM format and level checks.
+
+| Source WAV | Duration | Project meter | Independent EBU | True peak |
+|---|---|---|---|---|
+| `slow-5min.wav` | 2.96 s | -12.5 LUFS | -12.45 LUFS | -0.75 dBTP |
+| `slow-10min.wav` | 3.10 s | -12.8 LUFS | -12.95 LUFS | -0.55 dBTP |
+
+SHA-256: 5-minute `a4d85e5eb6c373c987e1f8e2cb23fe5d6391b398f1058099a23c3abe1ccdf301`;
+10-minute `e1ddc60198d5cea49ddde1269bc9433755c2d0550366fc83fcf2e74ef63ecdd9`.
+Validation: 201 unit tests pass; both WAVs meet duration/format/loudness/true-peak checks.
+
+Listening copies: **Cactuar announcer (deep radio)** on the PC Desktop and under
+Downloads. The earlier radio and neural folders remain for comparison; the preceding
+source WAVs are backed up at `~/.cache/mtg-announcer/previous-radio-20261019/`.
+Owner audition still determines the preferred depth. Claude handles the next table
+version; no game/table code, `docs/` audio, save, commit or push changed.
+
+### First radio revision — 2026-10-19 (superseded)
 
 After the first neural pair, the owner asked for a more radio-like sound and clarified
 that the voice should be **a little deeper**. The source WAVs and neural generator now
@@ -49,12 +93,12 @@ paid service, API key, reference recording or voice cloning was used.
   true peak -0.55 dBTP. SHA-256 `5fdc2f5e732136b67722d86a4ac24f03c4ee2085382d2cd13383efc4d0e49a3d`.
 - Same spoken words and filenames, 22050 Hz mono PCM16 WAV. The second line's
   exclamation mark only steers delivery; the displayed wording need not change.
-- Regenerator: `tts/sounds/make_neural_announcer.py`, using the existing
+- Regenerator: `scripts/make_neural_announcer.py`, using the existing
   `make_announcer.clarity()` and `master()`, lighter reflections, quiet bass accent,
   measured loudness trim and an independent true-peak guard. The old Ralph generator
   is preserved; **do not run its default recording command** over these new clips.
 - Runtime/model environment is outside the repo at `~/.cache/mtg-announcer/`; use
-  `~/.cache/mtg-announcer/venv/bin/python tts/sounds/make_neural_announcer.py`.
+  `~/.cache/mtg-announcer/venv/bin/python scripts/make_neural_announcer.py`.
   Model SHA-256 `7d5df8ecf7d4b1878015a32686053fd0eebe2bc377234608764cc0ef3636a6c5`;
   voice-bank SHA-256 `bca610b8308e8d99f32e6fe4197e7ec01679264efed0cac9140fe9c29f1fbf7d`.
 - Previous uncommitted Ralph clips were backed up outside git at
@@ -82,7 +126,7 @@ What exists (pushed in 0fe29d2f):
 - **Lines.** Keep the meaning, and keep the on-screen text in `CZT.lines` in sync:
   - `tts/sounds/slow-5min.wav`: "C'mon bro, what's taking so long?"
   - `tts/sounds/slow-10min.wav`: "Bruh, wake me up when you're done."
-- **Generator:** `tts/sounds/make_announcer.py`. It's macOS `say`, the classic voice Ralph
+- **Generator:** `scripts/make_announcer.py`. It's macOS `say`, the classic voice Ralph
   pitched down, at 22 kHz mono, with a sub-bass boom, three echo taps and a `tanh` limiter. The
   low-quality voice and the distortion are what make it muddy, so don't build on them.
 - **Playback:** `tts/cactuar_turns.lua`, function `cztAnnounce`, plays
@@ -171,7 +215,7 @@ no soundBase, so every player hears the clips from Pages.
 
 The owner found the announcer too quiet with every TTS volume slider (Game, MP3) at maximum,
 so the clips themselves were the problem. A peak normalise left the voice at about -18.6 LUFS
-(K-weighted, gated), because the sub-bass boom set the peak. `tts/sounds/make_announcer.py`
+(K-weighted, gated), because the sub-bass boom set the peak. `scripts/make_announcer.py`
 now:
 - turns the boom down to sit under the voice;
 - high-passes the voice at 140 Hz and adds a +6 dB shelf above 2.2 kHz for clarity;
@@ -534,7 +578,7 @@ The owner asked for two things:
     "Who goes first?"/"goes first!", description "Who goes first dice…").
   - Chat: `announcer off|on|test`. `timers off|on` also hides our totals.
 - **Audio:** `tts/sounds/slow-5min.wav` and `slow-10min.wav`, made by
-  `tts/sounds/make_announcer.py` (macOS `say` Ralph, a bass boom, echo, tanh limiter). They play
+  `scripts/make_announcer.py` (macOS `say` Ralph, a bass boom, echo, tanh limiter). They play
   through `MusicPlayer.setCurrentAudioclip`, which replaces whatever music is playing.
   `CZT.soundBase` overrides `CZ.base` for testing. **The owner heard it and wants a clearer,
   more in-character "radio announcer"** voice. Options were researched: ElevenLabs (needs an
@@ -700,16 +744,21 @@ category, owner). **Load into my seat** spawns the chosen deck into that player'
 ## Build, test, deliver
 
 ```sh
-python3 -m unittest discover tests          # whole suite (155 tests at v13; Lua harness 562 checks)
-lua tests/test_cactuar.lua                   # the browser alone: "N checks, 0 failed"
+python3 -m unittest discover tests
 python3 scripts/build_site.py                # rebuilds docs/, including docs/tts/
-python3 scripts/build_tts_table.py BASE.json -o "OUT.json" --name "MTG 6 player Cactuar Ver_v28"
+# Commit and push the changes; allow Pages to publish before delivery.
+python3 scripts/release_tts.py --notes "what changed"
+# Commit and push the new tts/CHANGELOG.md entry afterwards.
 ```
 
-- `BASE.json` is the Workshop file `2293586471.json`. It isn't in the repo: get it from the
-  owner's PC (see `INTERNALS.md`, gitignored) into a temp dir.
-- The owner wants a version suffix on each delivered build so they can tell builds apart:
-  `_v27` was the last one, so the next is `_v28`.
+- Use `scripts/release_tts.py` for releases (see the root README). It reads the current
+  version from `tts/CHANGELOG.md`, checks that HEAD is pushed and its audio/tile bytes
+  are live on Pages, then builds the next version from HEAD, never the working tree.
+- The release tool fetches Workshop file `2293586471.json` from the owner's PC. It and
+  the generated save stay out of the repo. Deployment details live in the gitignored
+  `tts/deploy.local.json` and `INTERNALS.md`.
+- For a local experiment, use `python3 scripts/release_tts.py --dry-run`; this does not
+  deliver or advance the changelog. Never bypass publication checks for a normal release.
 - Keep only the latest build in the owner's Saves folder. On 2026-10-19 the owner asked to
   clean it up, and v1–v23 were deleted. When delivering a new version, delete the previous
   `MTG 6 player Cactuar Ver_vN.json/.png`. Never touch `Saved Objects/` (the decks),

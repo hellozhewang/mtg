@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Record the slow-turn announcer lines as WAV files beside this script.
+"""Record the slow-turn announcer lines as WAV files in tts/sounds/.
 
-    python3 tts/sounds/make_announcer.py              # re-record every clip
-    python3 tts/sounds/make_announcer.py --measure    # loudness of the clips here (or named files)
+    python3 scripts/make_announcer.py              # re-record every clip
+    python3 scripts/make_announcer.py --measure    # loudness of the clips (or named files)
 
-See README.md beside this script for the loudness targets and how clips reach the table.
+See tts/sounds/README.md for the loudness targets and how clips reach the table.
 
 macOS only: the voice is `say`. Each clip is a low "boom", then the line spoken deep
 and slow, with an arena-style echo, normalised loud: the "Double kill!" announcer of a
 shooter. The table (tts/cactuar_turns.lua) plays them through Tabletop Simulator's
-music player, so everyone hears them. The catalog build publishes this folder's .wav
+music player, so everyone hears them. The catalog build publishes tts/sounds/*.wav
 files to docs/tts/sounds/.
 """
 from __future__ import annotations
@@ -22,7 +22,7 @@ import tempfile
 import wave
 from pathlib import Path
 
-HERE = Path(__file__).resolve().parent
+SOUNDS_DIR = Path(__file__).resolve().parents[1] / "tts" / "sounds"
 RATE = 22050
 VOICE = "Ralph"                     # a deep classic voice that honours [[pbas]]/[[rate]]
 LINES = {
@@ -184,8 +184,8 @@ def loudness(path: Path) -> float:
 
 def main() -> int:
     if sys.argv[1:2] == ["--measure"]:
-        for name in sys.argv[2:] or sorted(p.name for p in HERE.glob("*.wav")):
-            path = Path(name) if Path(name).exists() else HERE / name
+        for name in sys.argv[2:] or sorted(p.name for p in SOUNDS_DIR.glob("*.wav")):
+            path = Path(name) if Path(name).exists() else SOUNDS_DIR / name
             with wave.open(str(path)) as w:
                 pcm = w.readframes(w.getnframes())
             print(f"{path.name}: {loudness(path):.1f} LUFS, {level(pcm)}")
@@ -193,7 +193,7 @@ def main() -> int:
     for name, text in LINES.items():
         clip = boom() + array.array("f", [0.0] * int(RATE * 0.08)) + arena(clarity(speak(text)))
         pcm = master(clip)
-        with wave.open(str(HERE / name), "wb") as w:
+        with wave.open(str(SOUNDS_DIR / name), "wb") as w:
             w.setnchannels(1)
             w.setsampwidth(2)
             w.setframerate(RATE)

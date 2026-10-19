@@ -1,6 +1,6 @@
 # Announcer clips
 
-## Current audio: deeper radio voice (2026-10-19)
+## Current audio: deep radio voice, second revision (2026-10-19)
 
 The two WAVs now use **Kokoro-82M v1.0**, through `kokoro-onnx==0.6.1`, with an
 original preset blend: **70% `am_michael` + 30% `am_fenrir`**. Generated locally,
@@ -11,12 +11,13 @@ Model and voice files come from the
 Regenerate with the new generator, not the legacy Ralph command below:
 
 ```sh
-~/.cache/mtg-announcer/venv/bin/python tts/sounds/make_neural_announcer.py
-python3 tts/sounds/make_announcer.py --measure
+~/.cache/mtg-announcer/venv/bin/python scripts/make_neural_announcer.py
+python3 scripts/make_announcer.py --measure
 ```
 
-At the owner's request the voice is now slightly deeper: a **two-semitone pitch drop
-with tempo compensation**, warm 180 Hz body, light presence EQ and a restrained upper
+The owner asked for a deeper voice again. The current pair uses a **five-semitone pitch
+drop with tempo compensation** (three semitones below the first radio pair), stronger
+160 Hz body, light presence EQ and a restrained upper
 roll-off. A single quiet room reflection replaces the arena echoes. The bass accent
 is quieter too. This is a full, warm radio-host voice rather than a narrow telephone
 effect. The existing `clarity()` / `master()` chain, loudness trim and independent
@@ -24,12 +25,13 @@ FFmpeg true-peak check remain. Model/voice hashes are printed on regeneration.
 
 | Clip | Duration | Project meter | Independent EBU loudness | True peak |
 |---|---|---|---|---|
-| `slow-5min.wav` | 2.96 s | -12.5 LUFS | -12.45 LUFS | -1.15 dBTP |
-| `slow-10min.wav` | 3.11 s | -12.6 LUFS | -12.63 LUFS | -0.55 dBTP |
+| `slow-5min.wav` | 2.96 s | -12.5 LUFS | -12.45 LUFS | -0.75 dBTP |
+| `slow-10min.wav` | 3.10 s | -12.8 LUFS | -12.95 LUFS | -0.55 dBTP |
 
-Both remain mono PCM16 WAV, 22050 Hz, with the same filenames and words. Owner listening
-and in-game approval remain. Claude will handle the next table version. These new audio
-bytes have **not** been copied into `docs/tts/sounds/`, published or live-tested.
+Both remain mono PCM16 WAV, 22050 Hz, with the same filenames and words. These are the
+v30 source clips. Publish them through the catalog build, then use
+`scripts/release_tts.py` to verify Pages and deliver the new table, as described below.
+Owner listening and in-game approval remain.
 
 The Cactuar table's slow-turn announcer plays these clips when one player's turn reaches
 5 and then 10 minutes.
@@ -57,9 +59,9 @@ consequences:
 
 ## Legacy placeholder generator
 
-    python3 tts/sounds/make_announcer.py              # re-record both clips into this folder
-    python3 tts/sounds/make_announcer.py --measure    # check their loudness
-    python3 tts/sounds/make_announcer.py --measure some/other.wav
+    python3 scripts/make_announcer.py              # re-record both clips into this folder
+    python3 scripts/make_announcer.py --measure    # check their loudness
+    python3 scripts/make_announcer.py --measure some/other.wav
 
 This older generator overwrites the neural WAVs with macOS `say` using Ralph. The owner wants a
 clearer, in-character arena or radio announcer; see the TODO at the top of `tts/WIP.md`.
@@ -82,8 +84,8 @@ Check every new clip with `--measure` before you commit it.
 
 | | Target | First clips (too quiet) | Current |
 |---|---|---|---|
-| Loudness | about **-12 to -13 LUFS** | -18.6 LUFS | -12.5 / -12.6 LUFS |
-| Peak | -0.5 dBFS ceiling, never above | -0.1 dBFS | -2.4 / -1.5 dBFS sample peaks; -1.15 / -0.55 dBTP |
+| Loudness | about **-12 to -13 LUFS** | -18.6 LUFS | -12.5 / -12.8 LUFS |
+| Peak | -0.5 dBFS ceiling, never above | -0.1 dBFS | -2.4 / -1.9 dBFS sample peaks; -0.75 / -0.55 dBTP |
 
 The neural clips leave sample-peak headroom so inter-sample true peaks also stay
 below the ceiling. Loudness is matched to the target independently of peak height.
@@ -104,8 +106,11 @@ Do the steps in this order.
 3. Copy them to `docs/tts/sounds/`. A site build (`scripts/build_site.py`) does this too.
 4. Run `python3 -m unittest discover tests`.
 5. Commit, and push **only when the owner says so**: the repo is public.
-6. **After** the push is live on Pages, rebuild the table with `scripts/build_tts_table.py`
-   and deliver the next `_vN` save (see `tts/WIP.md`).
+6. **After** the push is live on Pages, run
+   `python3 scripts/release_tts.py --notes "Updated announcer clips"`. It verifies
+   the published bytes, builds the next `_vN` save from HEAD, delivers it and records
+   the version. Commit and push the resulting `tts/CHANGELOG.md` entry afterwards
+   (see the root README and `tts/WIP.md`).
 
 The build adds `?v=<sha256[:8]>` to each clip URL, because TTS caches audio by URL. If someone
 loads the new table before the push is live, TTS caches the old clip under the new URL.

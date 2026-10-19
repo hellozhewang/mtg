@@ -3,7 +3,7 @@
 
 Run in a Python 3.12 environment with kokoro-onnx==0.6.1, numpy, scipy,
 imageio-ffmpeg==0.6.0:
-    ~/.cache/mtg-announcer/venv/bin/python tts/sounds/make_neural_announcer.py
+    ~/.cache/mtg-announcer/venv/bin/python scripts/make_neural_announcer.py
 
 Download kokoro-v1.0.onnx and voices-v1.0.bin from the project's model release
 to ~/.cache/mtg-announcer/ first (or pass --models). No automatic downloads.
@@ -106,7 +106,7 @@ def finish(samples: np.ndarray, rate: int) -> bytes:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--models", type=Path, default=Path.home() / ".cache/mtg-announcer")
-    parser.add_argument("--out", type=Path, default=Path(__file__).resolve().parent)
+    parser.add_argument("--out", type=Path, default=dsp.SOUNDS_DIR)
     args = parser.parse_args()
     model, voices = args.models / "kokoro-v1.0.onnx", args.models / "voices-v1.0.bin"
     kokoro = Kokoro(str(model), str(voices))

@@ -562,7 +562,7 @@ decks for each tier and how to place a new deck.
 
 ```bash
 ./scripts/build_site.py              # rebuild docs/ from public/ -- PUBLISHED
-./scripts/build_site.py --check      # exit 1 if docs/ is stale, write nothing
+./scripts/build_site.py --check      # verify TTS images and docs/, write nothing
 ./scripts/build_site.py --out /tmp/x # build elsewhere to look before publishing
 ```
 
@@ -577,13 +577,13 @@ difference from the published site: its home page is the local index, which
 adds a **Goblins** section mirroring every Goblin deck. That category is for the
 owner alone and is never published. The server listens on `0.0.0.0:5588`, so
 other devices on your local network can use
-`http://<server-ip>:5588/`. The server runs in the background and keeps running
-after the terminal closes. Repeated starts reuse an existing server serving the
-same catalog; an unrelated service on port 5588 is left alone. Logs and the server
-PID are stored in the system temp directory, under `mtg-private-catalog/` (the
-script prints the exact path). Run `build_site.py` after deck changes;
-the server serves the updated files without restarting. This does not install a
-login or reboot service.
+`http://<server-ip>:5588/`. On macOS it installs and bootstraps a `launchd`
+`LaunchAgent` (`~/Library/LaunchAgents/com.cholo.mtg-catalog.plist` with
+`RunAtLoad` and `KeepAlive`), so it starts automatically on login/boot and
+restarts if it exits; pass `--stop` to unload it. Repeated starts reuse an
+existing server serving the same catalog, and an unrelated service on port 5588
+is left alone. Logs go to `logs/catalog-5588.log`. Run `build_site.py` after
+deck changes; the server serves the updated files without restarting.
 
 Data comes from the decks; **markup, CSS and JS come from `frontend/`**, so a
 design change never means editing Python. The templating is two mechanisms and no
@@ -646,6 +646,7 @@ cached cards that cost ~14 Scryfall round trips to rebuild:
 |---|---|---|---|---|
 | `cards` + `aliases` | `CardStore` | `oracle_id` | 30 days | Scryfall |
 | `pages` | `PageStore` | URL | 24 hours | EDHREC |
+| `pages` (`tts:image-check:v1:` prefix) | `PageStore` | exact image URL | validators kept 1 year; availability rechecked every build | TTS image hosts |
 | `images` | `ImageStore` | URL | **never** | Scryfall image CDN |
 | `toolcalls` | `ToolLogStore` | rowid | **never** | our own tools |
 
@@ -783,11 +784,17 @@ browser added. Get it on the Steam Workshop:
 
 Two **Cactuar decks** tiles sit on the table, one beside each side's deck
 importer. Clicking one opens the clicker's own browser, which
-searches, sorts (tier, name, newest, owner) and filters (bracket, tier, category,
-owner) the whole collection, and **Load into my seat** puts the chosen deck in
+searches as you type, sorts (newest first by default, or tier or name) and offers filter menus
+(bracket, tier, strategy, owner). A separate details panel shows the selected deck's
+commander, strategy and stats; filtered counts also show the collection total.
+**Load into my seat** puts the chosen deck in
 that player's seat: the library face down and shuffled in their library zone,
 the commander (or both partners) on their Commander Zones, the tokens beside them.
 Everything the table already did is untouched.
+
+Players can also pick a **card back** for the deck they load. The backs are the pictures in
+[tts/backs/](tts/backs/); its [README](tts/backs/README.md) gives the image specs. Add one
+by dropping a picture there, running the catalog build and pushing.
 
 New and retuned decks reach the table without a new upload: it reads the deck list
 live. A change to the table itself (the browser's code or panel, or the tiles) needs
@@ -803,7 +810,25 @@ The data comes from the catalog build. `build_site.py` writes `docs/tts/`
 | `tts/<owner>/<Bracket>/<Deck>.ndjson` | one deck: a header line, then the library, commander(s) and tokens as ready-to-spawn Tabletop Simulator objects, built the way rikrassen's importer builds them |
 | `tts/cactuar-tile.jpg` | the picture on the Cactuar tiles |
 
-so a deck built or tuned through Discord shows up at the table once Pages has
+Card faces use the same image cache as rikrassen's importer (`img.klrmngr.com`),
+preserving each printing and its front/back faces. Direct Scryfall card-image
+URLs reject Tabletop Simulator's default UnityPlayer client.
+The browser also replaces direct Scryfall face URLs in older exports when loading them.
+
+Every catalog build (including `--check`) verifies the exact exported image URLs with
+Tabletop Simulator's UnityPlayer User-Agent before writing `docs/`. This covers library
+cards, both commanders, tokens, double-faced states and card backs, deduplicated across
+decks. HTTP errors, error pages and incomplete or unsupported image bodies fail the
+build with the affected deck and URL. Existing published files stay intact on failure.
+
+Successful checks store image format, size and HTTP validators under
+`tts:image-check:v1:` in the `pages` table of `.cache/cards.db`. Subsequent builds still
+contact the image host: an ETag or Last-Modified conditional GET can return 304 instead
+of downloading the image again. This verifies availability at build time; the image
+service is third-party and can change afterward. The checks inspect image signatures
+and container boundaries rather than running TTS's image decoder.
+
+A deck built or tuned through Discord shows up at the table once Pages has
 published it, with no change to the table.
 
 The table itself is built from the Workshop file, which is someone else's work and
@@ -857,6 +882,7 @@ mtg/
 │   ├── find_inspiration.py    what other pilots run that yours doesn't
 │   ├── validate_deck.py       the required checks, including the TTS import
 │   ├── ttsimport.py           client for the Tabletop Simulator deck importer
+│   ├── ttsimages.py           checks exported image URLs before catalog publication
 │   ├── deckplacement.py       saves the builder's Categories:/Tier: lines to the maps
 │   ├── build_site.py          renders frontend/ + public/ into docs/
 │   ├── cache.py               cache admin CLI

@@ -2,8 +2,11 @@
 """Generate the static deck catalog that GitHub Pages publishes.
 
     ./build_site.py                  # rebuild docs/ from public/
-    ./build_site.py --check          # exit 1 if docs/ is stale; write nothing
+    ./build_site.py --check          # verify images and docs/; write nothing
     ./build_site.py --out /tmp/site  # build elsewhere to look before publishing
+
+Every invocation verifies exported TTS image URLs before any output is written.
+Even warm builds contact the image host using conditional GETs (see ttsimages).
 
 EVERY DECK IS PUBLISHED, from one folder per owner: public/<user>/<Bracket>/.
 A deck's page mirrors its file (`docs/<user>/<Bracket>/<Deck>.html`), so two
@@ -71,6 +74,7 @@ import decktiers
 import frontend
 import toollog
 import ttsdecks
+import ttsimages
 import workspace
 from cardlib import CardQuery, ImageQuery, ScryfallError, SymbolQuery, local_name
 # Same policy as the validator, imported rather than restated: a bracket cap or a
@@ -1013,7 +1017,7 @@ def main() -> int:
     ap.add_argument("--out", type=Path,
                     help="output directory (default: docs/)")
     ap.add_argument("--check", action="store_true",
-                    help="exit 1 if the published site is stale; write nothing")
+                    help="verify TTS images and published files; write nothing")
     ap.add_argument("--quiet", action="store_true", help="only report problems")
     args = ap.parse_args()
 
@@ -1023,6 +1027,18 @@ def main() -> int:
     img = ImageQuery(db_path=workspace.cache_db())
     sym = SymbolQuery(db_path=workspace.cache_db())
     files = plan(root, out_dir, workspace.repo_url(), q, img, sym)
+
+    def image_progress(report, total):
+        if not args.quiet:
+            print(f"TTS images: checking {report.checked}/{total}", file=sys.stderr, flush=True)
+
+    try:
+        image_report = ttsimages.validate(files, workspace.cache_db(), progress=image_progress)
+    except ttsimages.ValidationError as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    if not args.quiet:
+        print(image_report)
 
     if args.check:
         stale = [p for p, body in files.items() if not _same(p, body)]

@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import sys
 import unittest
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -41,6 +42,34 @@ class TableBuild(unittest.TestCase):
         table = build_tts_table.build(json.loads(json.dumps(BASE)), URL)
         self.assertNotIn("cz_open", table["XmlUI"])
         self.assertIn("cz_panel_Purple", table["XmlUI"])
+
+    def test_browser_text_survives_the_importers_xml_roundtrip(self):
+        # The base table's importer reads Global UI with getXmlTable(), then
+        # writes it back with setXmlTable(). Entity text is decoded, then
+        # inserted as markup: &lt; becomes <Button ...><</Button>, breaking UI.
+        root = ET.fromstring("<root>" + build_tts_table.browser_xml() + "</root>")
+        for element in root.iter():
+            if element.text and element.text.strip():
+                with self.subTest(tag=element.tag, id=element.get("id"), text=element.text):
+                    ET.fromstring("<Text>" + element.text + "</Text>")
+
+    def test_browser_controls_survive_shared_ui_defaults(self):
+        root = ET.fromstring("<root>" + build_tts_table.browser_xml() + "</root>")
+        ids = [node.get("id") for node in root.iter() if node.get("id")]
+        self.assertEqual(len(ids), len(set(ids)))
+        self.assertNotIn("@CHOICES@", build_tts_table.browser_xml())
+        # Defaults belong to the table/importer; our controls explicitly style
+        # themselves and must not inject changes into another object's UI.
+        self.assertIsNone(root.find("Defaults"))
+        for color in build_tts_table.SEATS:
+            search = root.find(f".//*[@id='cz_search_{color}']")
+            self.assertEqual(search.get("onValueChanged"), "czSearch")
+            for i in range(1, build_tts_table.ROWS + 1):
+                row = root.find(f".//*[@id='cz_row_{i}_{color}']")
+                self.assertEqual(row.get("onClick"), f"czPick({i})")
+                for label in row.iter("Text"):
+                    self.assertEqual(label.get("raycastTarget"), "false")
+                    self.assertEqual(label.get("text"), "")
 
     def test_base_table_is_kept(self):
         table = build_tts_table.build(json.loads(json.dumps(BASE)), URL, "Cactuar_v2")

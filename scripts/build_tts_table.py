@@ -28,7 +28,8 @@ SOURCE = REPO / "tts"
 NAME = "MTG 6 player Cactuar Ver"
 DEFAULT_BASE_URL = "https://hellozhewang.github.io/mtg/tts/"
 SEATS = ("White", "Red", "Yellow", "Green", "Blue", "Purple")
-ROWS = 12                                   # must match CZ.rows in cactuar.lua
+ROWS = 10                                   # must match CZ.rows in cactuar.lua
+CHOICES = 10                                # paged filter menu; matches CZ.menuRows
 MARKER = "-- ==== Cactuar deck browser"     # how a second build recognises the first
 TILE_IMAGE = "cactuar-tile.jpg"             # published beside decks.json (ttsdecks.py)
 TILE_SCALE = 2.2
@@ -49,11 +50,14 @@ def _section(xml: str, name: str) -> str:
 def browser_xml() -> str:
     template = (SOURCE / "cactuar.xml").read_text(encoding="utf-8")
     row = _section(template, "ROW")
+    choice = _section(template, "CHOICE")
     panel = _section(template, "PANEL")
     out = ["<!-- Cactuar deck browser: github.com/hellozhewang/mtg, tts/ -->"]
     for color in SEATS:
         rows = "".join(row.replace("{I}", str(i)) for i in range(1, ROWS + 1))
-        out.append(panel.replace("@ROWS@", rows.rstrip("\n")).replace("{C}", color))
+        choices = "".join(choice.replace("{I}", str(i)) for i in range(1, CHOICES + 1))
+        out.append(panel.replace("@ROWS@", rows.rstrip("\n"))
+                   .replace("@CHOICES@", choices.rstrip("\n")).replace("{C}", color))
     return "\n".join(out)
 
 

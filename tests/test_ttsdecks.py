@@ -72,6 +72,16 @@ class ImporterFormatTests(unittest.TestCase):
     def test_token_with_no_text(self):
         self.assertEqual(self.nick_desc(SOLDIER), [("Soldier\nToken Creature — Soldier 0CMC", "\n[b]1/1[/b]")])
 
+    def test_image_size_fallback_and_non_scryfall_images(self):
+        path = "front/4/e/4e4b6e22-93b2-4896-bba5-0ceaa5d8ea3c"
+        expected = f"https://img.klrmngr.com/display/{path}.webp"
+        for size in ("large", "normal"):
+            with self.subTest(size=size):
+                self.assertEqual(ttsdecks._image({size: f"https://cards.scryfall.io/{size}/{path}.jpg?1783926791"}), expected)
+        custom = "https://cards.example/custom.jpg?version=2"
+        self.assertEqual(ttsdecks._image({"large": custom}), custom)
+        self.assertEqual(ttsdecks._image(None), "")
+
 
 class ObjectTests(unittest.TestCase):
     def test_a_double_faced_card_flips_to_its_back_as_state_two(self):
@@ -103,6 +113,46 @@ class ObjectTests(unittest.TestCase):
     def test_tokens_and_emblems_but_not_the_card_itself_or_its_checklist(self):
         self.assertEqual(ttsdecks.token_ids([ELSPETH]), ["emblem", "soldier"])
         self.assertEqual(ttsdecks.distinct_tokens([SOLDIER, SOLDIER_REPRINT, EMBLEM]), [SOLDIER, EMBLEM])
+
+
+class CardBackTests(unittest.TestCase):
+    def setUp(self):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        self.dir = Path(tmp.name)
+        original = ttsdecks.BACKS_DIR
+        ttsdecks.BACKS_DIR = self.dir
+        self.addCleanup(setattr, ttsdecks, "BACKS_DIR", original)
+
+    def test_standard_first_then_the_folder_by_name(self):
+        (self.dir / "zebra_stripes.png").write_bytes(b"png")
+        (self.dir / "cactuar.jpg").write_bytes(b"jpg")
+        (self.dir / "notes.txt").write_text("not a picture")
+        self.assertEqual(ttsdecks.backs(), [
+            {"id": "standard", "label": "Standard", "url": ttsdecks.CARD_BACK},
+            {"id": "cactuar", "label": "Cactuar", "file": "backs/cactuar.jpg"},
+            {"id": "zebra_stripes", "label": "Zebra Stripes", "file": "backs/zebra_stripes.png"},
+        ])
+
+    def test_backs_are_published_and_listed(self):
+        (self.dir / "cactuar.jpg").write_bytes(b"jpg-bytes")
+        out = ttsdecks.files([], Path("/site"), None)
+        self.assertEqual(out[Path("/site/tts/backs/cactuar.jpg")], b"jpg-bytes")
+        index = json.loads(out[Path("/site/tts/decks.json")])
+        self.assertEqual([b["id"] for b in index["backs"]], ["standard", "cactuar"])
+
+    def test_the_readme_is_published_but_is_not_a_back(self):
+        (self.dir / "README.md").write_text("# Card backs")
+        out = ttsdecks.files([], Path("/site"), None)
+        self.assertEqual(out[Path("/site/tts/backs/README.md")], "# Card backs")
+        self.assertEqual([b["id"] for b in ttsdecks.backs()], ["standard"])
+
+    def test_no_folder_means_only_the_standard_back(self):
+        ttsdecks.BACKS_DIR = self.dir / "missing"
+        self.assertEqual([b["id"] for b in ttsdecks.backs()], ["standard"])
+
+    def test_the_repo_ships_the_cactuar_back(self):
+        self.assertTrue((ROOT / "tts" / "backs" / "cactuar.jpg").is_file())
 
 
 class DeckFileTests(unittest.TestCase):
@@ -143,6 +193,32 @@ class DeckFileTests(unittest.TestCase):
         self.assertEqual(entry["themes"], ["gowide"])
         self.assertEqual((entry["id"], entry["owner"], entry["tier"]), ("alice/Elspeth-Tokens", "alice", "B"))
         self.assertNotIn("goblins", json.dumps(ttsdecks.index([d], {d.key: "x"})))
+
+    def test_all_card_faces_use_the_tts_image_cache(self):
+        # Real Scryfall URL shapes, including the scan-version query that the
+        # old fixtures omitted. Direct requests from UnityPlayer get HTTP 400.
+        def image(name, face="front"):
+            return {"large": f"https://cards.scryfall.io/large/{face}/a/b/{name}.jpg?1783926791"}
+
+        commander = {**ELSPETH, "image_uris": image("commander")}
+        sol = {**SOL, "image_uris": image("library")}
+        delver = {**DELVER, "card_faces": [
+            {**DELVER["card_faces"][0], "image_uris": image("delver")},
+            {**DELVER["card_faces"][1], "image_uris": image("delver", "back")},
+        ]}
+        soldier = {**SOLDIER, "image_uris": image("token")}
+        d = self.deck_info("1 Elspeth, Sun's Champion\n98 Sol Ring\n1 Delver of Secrets // Insectile Aberration\n",
+                           {c["name"]: c for c in (commander, sol, delver)})
+        text = ttsdecks.deck_file(d, {"soldier": soldier})
+        self.assertNotIn("cards.scryfall.io", text)
+        _, library, leader, token = map(json.loads, text.splitlines())
+        expected = "https://img.klrmngr.com/display/"
+        self.assertEqual(library["CustomDeck"]["1"]["FaceURL"], expected + "front/a/b/library.webp")
+        back = library["ContainedObjects"][-1]["States"]["2"]
+        self.assertEqual(next(iter(back["CustomDeck"].values()))["FaceURL"], expected + "back/a/b/delver.webp")
+        self.assertEqual(leader["CustomDeck"]["1"]["FaceURL"], expected + "front/a/b/commander.webp")
+        self.assertEqual(token["CustomDeck"]["2"]["FaceURL"], expected + "front/a/b/token.webp")
+        self.assertEqual(commander["image_uris"], image("commander"))  # catalog keeps its original URL
 
 
 if __name__ == "__main__":

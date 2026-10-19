@@ -5,6 +5,7 @@ build_site.py calls `files()` and publishes what it returns under docs/tts/:
     tts/decks.json                          the index a table's deck browser lists
     tts/<owner>/<Bracket>/<Deck>.ndjson     one deck, ready to spawn
     tts/cactuar-tile.jpg                    the picture on the table's Cactuar tiles
+    tts/backs/<name>.jpg                    card backs a player can pick, from the repo's tts/backs/
 
 A deck file is one JSON value per line:
 
@@ -23,24 +24,30 @@ The objects match what rikrassen's importer builds (measured against its server,
 2026-10-16), so the table's own scripts treat our cards like any imported card:
 each card is a one-card sheet, listed once in the pile's CustomDeck; its Nickname is `Name\\nType line NCMC`, its
 Description the rules text with `[b]P/T[/b]` or `[b]loyalty[/b]` after it; a
-double-faced card keeps its back as state 2. Differences: pictures come from
-Scryfall's CDN rather than the importer's host, pinned printings are used as the
-catalog shows them, and the commanders and tokens are separate objects so the
-table can put each in its own zone.
+double-faced card keeps its back as state 2. Pictures use the same image cache as
+the importer: Scryfall rejects TTS's default UnityPlayer User-Agent. Pinned
+printings are used as the catalog shows them, and the commanders and tokens are
+separate objects so the table can put each in its own zone.
 """
 from __future__ import annotations
 
 import json
-from pathlib import Path
+from pathlib import Path, PurePosixPath
+from urllib.parse import urlsplit
 
 import decktiers
 import deckthemes
 
 TILE_IMAGE = Path(__file__).resolve().parent.parent / "tts" / "cactuar-tile.jpg"
+# Every picture here is a card back players can choose in the table's browser.
+# Adding one needs only a catalog build and a push: the menu lists decks.json's "backs".
+BACKS_DIR = TILE_IMAGE.parent / "backs"
+BACK_TYPES = (".jpg", ".jpeg", ".png")
 
 # Scryfall's standard Magic card back.
 CARD_BACK = "https://backs.scryfall.io/large/0/a/0aeebaf5-8c7d-4636-9e82-8c27447861f7.jpg"
 IMAGE_SIZES = ("large", "normal")       # first one present wins
+IMAGE_BASE = "https://img.klrmngr.com"
 TRANSFORM = {"posX": 0, "posY": 0, "posZ": 0, "rotX": 0, "rotY": 180, "rotZ": 0,
              "scaleX": 1, "scaleY": 1, "scaleZ": 1}
 INDEX_VERSION = 1
@@ -55,7 +62,15 @@ TIER_COLOURS = {"GOD": "#ffe58a", "SS": "#ff5c8a", "S": "#ff7f7f", "A": "#ffbf7f
 
 def _image(uris: dict | None) -> str:
     uris = uris or {}
-    return next((uris[s] for s in IMAGE_SIZES if uris.get(s)), "")
+    url = next((uris[s] for s in IMAGE_SIZES if uris.get(s)), "")
+    parts = urlsplit(url)
+    if parts.hostname != "cards.scryfall.io":
+        return url
+    # Same printing UUID and front/back face, on the importer's image cache.
+    # Its display images are WebP; Scryfall's size and scan-version query do
+    # not apply. This covers commanders, tokens and double-faced backs too.
+    face = PurePosixPath(parts.path.split("/", 2)[2]).with_suffix(".webp")
+    return f"{IMAGE_BASE}/display/{face}"
 
 
 def _cmc(card: dict) -> str:
@@ -215,6 +230,22 @@ def index_entry(d, path: str) -> dict:
             "added": d.created, "updated": d.modified, "file": path}
 
 
+def back_files() -> list[Path]:
+    if not BACKS_DIR.is_dir():
+        return []
+    return sorted(p for p in BACKS_DIR.iterdir() if p.suffix.lower() in BACK_TYPES)
+
+
+def backs() -> list[dict]:
+    """The card backs a player can pick: Magic's own first, then tts/backs/ by name.
+    `url` is absolute; `file` is relative to decks.json."""
+    out = [{"id": "standard", "label": "Standard", "url": CARD_BACK}]
+    for p in back_files():
+        label = p.stem.replace("-", " ").replace("_", " ").title()
+        out.append({"id": p.stem, "label": label, "file": f"backs/{p.name}"})
+    return out
+
+
 def index(decks: list, paths: dict[str, str]) -> dict:
     return {
         "v": INDEX_VERSION,
@@ -222,6 +253,7 @@ def index(decks: list, paths: dict[str, str]) -> dict:
                   for k, t in decktiers.TIERS.items() if not t.local_only],
         "themes": [{"id": k, "label": t.label} for k, t in deckthemes.THEMES.items()
                    if not t.local_only],
+        "backs": backs(),
         "decks": [index_entry(d, paths[d.key]) for d in decks],
     }
 
@@ -236,6 +268,10 @@ def files(decks: list, out_dir: Path, q) -> dict[Path, str | bytes]:
         tokens = {}
     root = out_dir / "tts"
     out: dict[Path, str | bytes] = {root / TILE_IMAGE.name: TILE_IMAGE.read_bytes()}
+    for p in back_files():
+        out[root / "backs" / p.name] = p.read_bytes()
+    if (BACKS_DIR / "README.md").is_file():                    # the specs, beside the pictures
+        out[root / "backs" / "README.md"] = (BACKS_DIR / "README.md").read_text(encoding="utf-8")
     paths: dict[str, str] = {}
     for d in decks:
         rel = Path(d.href).with_suffix(".ndjson").as_posix()   # <owner>/<Bracket>/<Deck>.ndjson

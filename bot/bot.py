@@ -496,10 +496,10 @@ TOOL_LINE = re.compile(r"\[mtg-tool\]\s*(.+)")
 # attributable to a bot turn rather than to the model's discretion.
 AUTOPUSH = not os.environ.get("MTG_BOT_NO_PUSH")
 
-# Generous, because the first build after a NEW deck downloads a card image for
-# each card it introduced. Steady state is a fraction of a second — every image
-# is already in the SQLite cache — so this ceiling is for the cold case only.
-SITE_TIMEOUT = int(os.environ.get("MTG_SITE_TIMEOUT", "180"))
+# Catalog builds also recheck every exported TTS image with the remote host.
+# Conditional GETs save bandwidth, but thousands of URLs still take minutes;
+# leave room for both those checks and new card-thumbnail downloads.
+SITE_TIMEOUT = int(os.environ.get("MTG_SITE_TIMEOUT", "600"))
 
 
 def _git(*args: str, timeout: int = 120) -> subprocess.CompletedProcess:

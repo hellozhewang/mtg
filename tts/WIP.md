@@ -1,56 +1,538 @@
-# WIP: Cactuar table
+# WIP: Cactuar table (hand-off)
 
-Status notes for the table work. The README's "Tabletop Simulator table" section is the
-lasting description; this file tracks what is in flight.
+Living status doc for the Tabletop Simulator table work. Whoever picks this up (Claude or
+Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
+table" section is the lasting description; this file tracks what is in flight.
 
-## Where things are (2026-10-18)
+Last updated 2026-10-18 (Claude): v13 fixes the card back menu doing nothing when the deck list has no backs. v12 added the menu (pictures in `tts/backs/`).
 
-- Steam Workshop item: **https://steamcommunity.com/sharedfiles/filedetails/?id=3822623414**
-  (private). The upload is still the first test build, which read decks from a LAN address.
-- The current build is **MTG 6 player Cactuar Ver_v2**, in the owner's Tabletop Simulator
-  Saves. It isn't uploaded yet. To update the Workshop item: load the save, then
-  **Modding → Workshop Upload**, update item 3822623414.
-- Deck data is live from GitHub Pages (`docs/tts/`). New or retuned decks need no upload.
+## Current status
 
-## v2 (this round)
+- **Current build: v13** = v12 plus a guard: when the deck list has no `backs` (Pages
+  before the push), the Card back button is disabled and a click is ignored.
+- **The running game currently reads everything from the Mac:** `CZ.base` was set live to
+  `http://192.168.0.100:5588/tts/` so the card backs survive a Refresh. If the Mac or
+  its catalog server is off, that session's browser can't load; reload a save to go back to Pages.
+- v12 = v11 plus a **Card back** menu in the details column. Pick
+  Standard or any picture in `tts/backs/` (ships with `cactuar.jpg`); the choice is per
+  player and applies to the next deck loaded. **Needs a push to work from the saved
+  table**: until then Pages has no back list and the button stays disabled. The running
+  game was patched to serve the Cactuar back from the Mac's catalog server for testing.
+- v11 = v10 (off-white `#E2E5EA` text, regular-weight names, v7 layout)
+  plus three changes. Tokens spawn in the battlefield beside the first commander slot;
+  v1–v10 dropped them on the Life Tracker. New panels sort newest first. The sort row is
+  Tier / Name / Newest, with no Owner button; the Owner *filter* stays. Applied to the
+  running game, and a versioned save and thumbnail were delivered to the owner's PC.
+- **Two agents, one set of files.** On 2026-10-18 Codex (v9, v10) and Claude (v11) worked
+  on `tts/` at the same time. Nothing was lost, because Claude's edits landed after
+  Codex's, but don't run both on this work at once. Re-read this file and
+  `git status` before editing.
+- **149 decks**, with an index of about 51 KB. The previously reported 54 was a filter
+  result, not a download cap or an oversized JSON file.
+- **Image host: third-party `img.klrmngr.com`**, the cache used by the other importer.
+  We pin printing UUIDs and faces; we do not own that host or freeze its image bytes.
+  Our SQLite verification records support conditional requests, not offline availability.
+  The full build-time scan passed 4,272 URLs, and its repeat passed 4,272 HTTP 304s.
+- **Publication still pending:** no commit, push or Workshop upload performed during
+  these repairs. Current sessions have the runtime URL repair, so older Pages exports
+  work. The Workshop item's last recorded upload is v1; the owner must upload a newer
+  save for subscribers to get the table/UI changes.
+- **Remaining manual checks:** Workshop publication, tile click/size/facing feedback,
+  and full live loading across all six occupied seats. Automated placement tests cover
+  all six; do not confuse those with six separate live playtests.
 
-1. **Blank deck rows, fixed.** The panel listed 149 decks, but every row button was empty.
-   Tabletop Simulator ignores `UI.setValue` on a `<Button>`: a button's label is its `text`
-   attribute. The EDH precon browser mod (2782327534) does it the same way. Rows and filter
-   buttons now use `UI.setAttribute(id, "text", ...)`. `tests/test_cactuar.lua` now fails on
-   `setValue` against any Button id in `tts/cactuar.xml`; the old code trips it 96 times.
-2. **Tiles on the table instead of the screen button.** There are two locked
-   "Cactuar decks" tiles (`tts/cactuar_tile.lua`, picture `tts/cactuar-tile.jpg`), placed
-   where the owner marked:
+## Consolidated issues encountered
 
-   | tile | side | position | notes |
-   |---|---|---|---|
-   | `c4c7a1` | south seats | x -48.2, z -24.5, rotY 180 | below the Card Importer |
-   | `c4c7a2` | north seats | x 48.2, z 24.5, rotY 0 | above rikrassen's importer tile |
+This is the current resolution index. The version sections below preserve the original
+investigation and evidence; their older “pending” notes describe that point in time.
 
-   A click calls `Global.call("czOpenFor", {color})`, which opens the clicker's own panel;
-   a second click closes it.
-3. The Workshop link is in the README.
+| Issue / symptom | Cause and resolution | Verification / remaining work |
+|---|---|---|
+| Refresh appeared to load only 54 decks | Bracket 3 + Aggro & Voltron filters matched 54 of 149; refresh retained those filters. Reset clears them; v7 shows filtered and total counts together. | Complete 149-entry index read; filter/count regression checks pass. |
+| Blank deck rows and button labels in v1 | `UI.setValue` does not label a Button. Use `UI.setAttribute(id, "text", ...)`. | Browser harness rejects `setValue` on Buttons; rows confirmed in game. |
+| “Load image failed unsupported format: UNKNOWN” | Direct Scryfall card-image URLs return HTTP 400 JSON (`generic_user_agent`) to UnityPlayer. GitHub delivered valid deck data; the later image requests failed. Removing query strings does not fix this. Exporter and runtime repair use the importer's WebP cache with the same printing UUID and face. | Failing UUIDs and DFC backs served HTTP 200 images to UnityPlayer; the full build scan passed. Standard `backs.scryfall.io` card back also verified separately. |
+| Card-name/printing validation did not prove images would load | Importer validation checks card JSON, not picture responses. Every catalog build and `--check` now GETs the exact exported front/back URLs with TTS headers, deduplicating library, commanders, tokens and DFC states. Failures stop publication before writing/pruning files. | 4,272 downloads passed, then 4,272 conditional 304s passed. Errors, bad bodies and publication gate covered by tests. Availability is verified at build time, not guaranteed forever. |
+| Lua re-encoding can break otherwise valid card images | Numeric-keyed `CustomDeck` maps become arrays after Lua `JSON.decode` / `JSON.encode`. Spawn object lines stay raw NDJSON; URL repair only replaces `FaceURL` strings. | Full spawned JSON comparisons preserve every property except repaired URLs; current exports pass through unchanged. |
+| Global XML error at line 181, position 130 | The importer decoded `&lt;` and reinserted the previous-page label as raw `<`, producing malformed XML. Use Unicode `‹` / `›`. | Decoded-text regression check and actual importer round-trips pass. |
+| Another XML error at line 186, position 115; browser stretched across the screen | The arrow fix was incomplete: raw rich text such as `<size=17>` and `&` in Text element values also broke importer rebuilding. Store all dynamic text in attributes, with empty inner values. Stretching was a failed UI rebuild symptom. | Rich text and ampersands verified in the running game; panel and importer dimensions remain intact after rebuilding shared UI. |
+| Fixes seemed absent after a new local build | A copied save is not automatically the loaded game; local generated exports are not Pages until pushed, and the Workshop upload is separate. Inspect actual running Global source/XML via External Editor API and apply runtime repair where needed. | Current source and UI verified live; v8 save delivered. GitHub and Workshop publication remain outstanding. |
+| First commander landed in the second slot | Nearest-to-library order is opposite the owner's slot numbering. Select the nearest two own zones, then return the farther/life-tracker slot first. Partners use slot two; tokens remain beyond slot one. Fallback offsets use the same order. | All-six-seat, single/paired, unrelated-zone and token/fallback tests pass; live White Captain Sisay was safely moved into slot one. |
+| Dark/black names and controls under importer styles | Shared importer Defaults can affect nested text when controls are updated. Rows now use separate Text labels; dynamic Button labels use explicit rich-text colours, including paging/Random/Reset controls. | Real screenshots caught the remaining paging/Random case; corrected and covered by a regression check. Do not remove explicit colouring while tuning brightness. |
+| Cycling filters, crowded details, empty results and stale actions | v7 added direct filter menus, live search, a separate details column, total counts, empty-state help and correct page bounds. Filtering a selected deck out disables Load; pending requests cannot duplicate; errors permit retry. | Tests cover choices/All/dismissal, menu overflow pages, separate players, stale selections and loading errors. Actual game layout inspected. |
+| "Tokens are not loading" (owner had loaded Beamtown-Gifts) | Two things. Beamtown-Gifts is the only deck of 149 whose cards make no tokens (`"tokens":false`), so it correctly spawns none. Every other deck's token pile was aimed 3.8 units past the first commander slot along the column, exactly where each seat's Life Tracker sits (z ±5.7), so the pile landed on its heart under its overlay. v11 spawns tokens 4.2 units into the battlefield from the first slot (`slot1 - getTransformRight() * 4.2`), and the status says "It makes no tokens." when there are none. | The Lua stand-ins now put a Life Tracker at every seat (the old stand-in was at a wrong spot, z -12, which is why the tests never caught this). They check tokens clear it and land beside slot one at all six seats, and cover the no-token deck. The new spots were checked clear in the live game. A real token load still needs an in-game look. |
+| Owner wanted newest first and no Owner sort | v11: new panels default to `newest`; `CZ_SORTS` is tier/name/newest. The XML has no `cz_sort_owner_*`, and `czSort(owner)` is ignored. In the live game, existing panels were switched to Newest and the old Owner buttons hidden. | Harness checks the default order, the active button, the missing button and the ignored key. Live UI verified through the External Editor API. |
+| Owner wanted to pick card back art, committed to the repo | v12: `tts/backs/*.jpg/.jpeg/.png` are published to `docs/tts/backs/`, and `decks.json` gets `backs` with Standard (Scryfall's back, absolute `url`) first and the rest by name (relative `file`). The browser's details column has a **Card back** button opening the same menu component as the filters (`czMenuChoices`; `s.back` per player). On load, `czBackJSON` replaces only `"BackURL"` string values, after `czImageJSON`, never decoding objects. | Python: listing order, file types, publishing, missing folder. Lua: menu, choice, label, filters untouched, every BackURL swapped with nothing else changed, Standard restores the original objects. Live: 6 buttons inserted with a fresh child list (in-place `table.insert` on `getXmlTable()` children fails in MoonSharp), UI reloads, the arrow survives, the panel stays open. |
+| "I can't click into" the Card back button (v12, live) | A Refresh re-fetched `decks.json` from Pages, which has no `backs` yet, replacing the list set by hand. The menu then had no choices and never showed. Fix: set the live `CZ.base` to the Mac's catalog (which has `backs`) and refresh; v13 also disables the button and ignores the click when there are fewer than two backs. Also: `UI.getAttribute` read in the same frame as a click can show stale menu state; read in a separate External Editor call. | Live: click in one call, read in the next. Menu active, title "Choose a card back", Standard ✓, Cactuar, no third row. Lua: 562 checks, including the no-backs case. |
+| v7 text was too bright and heavy | Owner requested a softer appearance. v8 replaces near-white `#EDF4FC` with `#686C72`, uses muted secondary text/accent colours and darker green controls, and changes row names from Bold to Normal. Live screenshot pixel checks showed the first lighter-grey attempt still clipped to white; the final native values render grey. Both XML defaults and Lua label wrappers use the palette. | v8 checked in game and after shared UI rebuild; owner can judge the softer rendering. |
+| v8 grey text became too dark | Owner feedback showed the dimming went too far, especially in commander/owner captions. v9 raises primary text to `#76797D`, headings to `#7B7D80`, captions to `#646B75` and muted labels to `#5D6672`. This is an intermediate grey rather than returning to v7's clipped white. Static XML and Lua wrappers change together. | Applied live and checked after a shared UI round-trip. Keep the v8 feedback in the history; pixel measurements alone do not establish comfortable readability. |
+| v9 was still dark grey; remote capture brightness misled tuning | The owner's screenshot showed dark text despite the brighter remote `PrintWindow` capture. Earlier capture pixel values were not a reliable representation of the owner's displayed brightness; do not infer a universal TTS colour correction from them. The owner explicitly requested white, only slightly less bright. v10 restores near-white `#E2E5EA`, title `#E6E9EE`, captions `#CDD3DC` and muted labels `#C0C8D2`. | Follow the owner's screenshots and preference, not remote capture histograms. Preserve regular row weight and explicit XML/Lua colours. |
+| Warm catalog builds no longer finish almost instantly | Every build now makes thousands of real image-host checks; local metadata is never proof of current availability. Conditional GETs save bandwidth. Bot timeout increased from 180 to 600 seconds. | Full warm `--check` took 1m57s; all 4,775 catalog files were up to date. |
 
-## Check in-game (untested in Tabletop Simulator)
+### Operational debugging pitfalls
 
-- The tiles: size (scale 2.2), position and facing. The whole-tile button is transparent
-  with a hover tint, sized 1000x1000 like rikrassen's tile button.
-- The rows show deck names, with tier colours in rich text.
-- **Load into my seat**:
-  - the library lands face down in the library zone and gets shuffled;
-  - the commander goes on the Commander Zone, partners on both;
-  - the tokens go beyond them.
-- The user reported "nothing loads" with v1. That's probably the blank rows, which left
-  nothing to pick, but loading itself has never run in-game.
+- **Windows SSH uses WSL bash:** command arguments can arrive as one word; send commands
+  through stdin. `scp` closes the connection, so stream files into `cat` and compare
+  SHA-256. Keep host/key/path details in `INTERNALS.md`.
+- **External Editor API replies are not EOF-framed:** use a Windows dual-stack listener,
+  keep the request socket open, parse a complete JSON message and match the return ID.
+  Ignore autosave messages. Large Lua requests belong in a temp request file, avoiding
+  PowerShell command-line limits.
+- **UI changes are asynchronous:** wait until UI loading completes before rendering
+  restored state or inspecting a rebuild. Reading and rewriting `getXmlTable()` in the
+  same frame as new labels can capture stale values; verify across separate frames.
+- **Screenshot capture is session-sensitive:** SSH's noninteractive session reports no
+  game window. A short-lived hidden task in the logged-in session, using the actual
+  Windows user SID, can capture only the TTS window with `PrintWindow` while it is in the
+  background. Wait for the PNG writer to release its file; clean up tasks/temp files.
+  A cleanup-only PowerShell nonzero exit can coexist with a valid PNG on stdout.
 
-## Open options
+## What this is
 
-- **Self-updating table.** The tile would fetch its script from Pages, then run
-  `self.setLuaScript` and `self.reload()` when the version changes, the way the Card
-  Importer updates itself. It would add its panels to the Global UI (`UI.setXmlTable`,
-  `onClick="<guid>/fn"`). After that, the Workshop item would only need uploading when
-  objects move. Not built: every copy of the table would then run whatever is on Pages.
-- Put the Workshop link on the catalog page too.
-- Take a real in-game screenshot with the browser open for the Workshop page. The current
-  screenshots are the base mod's.
+**MTG 6 player Cactuar Ver** is someone else's Workshop table with a deck browser added.
+The base is "MTG 6 player table - scripted", Workshop 2293586471, by Oops I Baked a Pie.
+A player clicks a Cactuar tile on the table and gets their own panel. The panel lists every
+deck in this repo, with search, sort (tier, name, newest, owner) and filters (bracket, tier,
+category, owner). **Load into my seat** spawns the chosen deck into that player's seat.
+
+- Steam Workshop item **3822623414**: https://steamcommunity.com/sharedfiles/filedetails/?id=3822623414
+  It's private and owned by the repo owner, and still holds the first build (v1, broken).
+  Only the owner can update it, in TTS: load the save → **Modding → Workshop Upload** →
+  update item 3822623414.
+- Deck data is live: the table fetches `https://hellozhewang.github.io/mtg/tts/decks.json`
+  and the deck files at runtime. Deck changes never need a table rebuild or an upload.
+- Table code or layout changes need a rebuild, a fresh copy on the owner's PC, and later a
+  Workshop upload.
+
+## Files
+
+| file | role |
+|---|---|
+| `tts/cactuar.lua` | the browser, appended to the table's Global script. Everything is prefixed `cz`/`CZ`. Entry points: `czOpenFor` (from tiles), `czOpen`, `czRender`, `czLoad` → `czSpawn` |
+| `tts/cactuar.xml` | the panel template: `@PANEL@` once per seat colour (`{C}`), `@ROW@` × 10 and `@CHOICE@` × 10 (`{I}`), appended to the Global UI |
+| `tts/cactuar_tile.lua` | the script on each tile: a transparent whole-tile button that runs `Global.call("czOpenFor", {color = clicker})` |
+| `tts/backs/` | card back pictures players can choose (cactuar, girly_pop so far). Specs and flow are in its `README.md`, which the build also publishes to `docs/tts/backs/README.md`. Never drop pictures in `docs/`: the build prunes them. |
+| `tts/cactuar-tile.jpg` | the tile picture. `ttsdecks.files()` publishes it at `docs/tts/cactuar-tile.jpg` |
+| `scripts/build_tts_table.py` | base save JSON → our table. `TILES` holds the tile GUIDs, positions and facing; `TILE_SCALE`; `--name`, `--base-url` |
+| `scripts/ttsdecks.py` | builds `docs/tts/` (`decks.json` and one `.ndjson` per deck) during `build_site.py` |
+| `scripts/ttsimages.py` | verifies every exact exported image URL with UnityPlayer headers before catalog publication; conditional GETs reuse verified image metadata |
+| `tests/test_cactuar.lua` | runs the browser against TTS stand-ins and the real `docs/tts/`. `tests/test_cactuar_lua.py` runs it in the suite when `lua` is installed |
+| `tests/test_build_tts_table.py`, `tests/test_ttsdecks.py` | the build and the deck-object format |
+| `tests/test_ttsimages.py` | image download failures, conditional rechecks, all exported roles and the publication failure gate |
+
+## Rules that bite
+
+- **All dynamic labels use `UI.setAttribute(id, "text", ...)`, including Text.**
+  `setValue` does nothing on Button (v1's blank rows). On Text, it stores raw Unity
+  rich-text markup in the element value; the importer emits that as XML and fails
+  on `<size=17>`/`<color=...>` or unescaped `&`. Text attributes are XML-escaped and
+  survive the rebuild. All dynamic Text nodes have no inner values in the
+  template. The Lua test rejects raw XML metacharacters in any `setValue` call.
+- **Never decode and re-encode a TTS object in Lua.** `JSON.encode` turns CustomDeck's numeric
+  keys into an array, and the cards lose their pictures. Only the header line is decoded.
+  Deck-object lines stay raw JSON: v4 only substitutes direct Scryfall `FaceURL` string
+  values before passing them to `spawnObjectJSON`.
+- **Don't use direct Scryfall URLs for card faces.** Its CDN returns HTTP 400 JSON
+  (`generic_user_agent`) to TTS's default UnityPlayer client, which TTS reports as
+  "Load image failed unsupported format: UNKNOWN". `ttsdecks._image` maps the printing
+  and front/back face to the importer's cache, `https://img.klrmngr.com/display/...webp`.
+  Removing Scryfall's query string does not fix the client rejection. The standard back
+  at `backs.scryfall.io` was tested separately and still returns a JPEG to UnityPlayer.
+- **Don't use `&lt;`/`&gt;` as page-button labels.** The base table's importer reads
+  the shared Global UI through `UI.getXmlTable()` and rebuilds it with `UI.setXmlTable()`.
+  The decoded `<` value becomes `<Button ...><</Button>` and breaks XML. Use the
+  literal Unicode arrows `‹`/`›`, as v3 does. The build test checks decoded text
+  remains valid when reinserted as markup.
+- **Leave the base table's behaviour alone.** Don't redefine its `onload` or other globals;
+  only append. Its seats are `data[color].libraryZone` (a ScriptingTrigger), plus two objects
+  named "Commander Zone" per seat (≤20 units from the library zone).
+- **Facing.** South seats are White, Red, Yellow (library zone rotY 0). North seats are Green,
+  Blue, Purple (rotY 180). Face-up rotY = zone rotY + 180, with rotZ 0. Face down adds rotZ 180.
+- **Commander slot order:** first is toward the life tracker, farther from the library;
+  second is toward the library. Find the nearest two Commander Zones first, then reverse
+  their distance order. A lone commander also goes in slot one. The fallback offsets are
+  10.5, then 6.8, along the library's forward.
+- **Tokens go beside slot one, into the battlefield:** `slot1 - getTransformRight() * 4.2`.
+  Never along the column past slot one: that's the Life Tracker (v1–v10 did this).
+- **Tile GUIDs** `c4c7a1`/`c4c7a2` must not exist in the base; the build exits if they do.
+  A rebuild from an earlier output replaces our tiles and appended script/UI, never doubling them.
+- **Never commit the base table or any built table JSON.** They're someone else's mod.
+  Only commit our sources.
+- **Commits:** don't commit or push unless the owner asks. The repo is public. Pages
+  publishes `docs/` on push, so the table can't see new data or a new tile picture until then.
+
+## Build, test, deliver
+
+```sh
+python3 -m unittest discover tests          # whole suite (155 tests at v13; Lua harness 562 checks)
+lua tests/test_cactuar.lua                   # the browser alone: "N checks, 0 failed"
+python3 scripts/build_site.py                # rebuilds docs/, including docs/tts/
+python3 scripts/build_tts_table.py BASE.json -o "OUT.json" --name "MTG 6 player Cactuar Ver_v14"
+```
+
+- `BASE.json` is the Workshop file `2293586471.json`. It isn't in the repo: get it from the
+  owner's PC (see `INTERNALS.md`, gitignored) into a temp dir.
+- The owner wants a version suffix on each delivered build so they can tell builds apart:
+  `_v13` was the last one, so the next is `_v14`.
+- Deliver to the owner's PC TTS Saves folder, with a `.png` thumbnail of the same name
+  (`~/Downloads/cactuar-mtg.png`). Send a copy of this file to their Desktop as
+  `Cactuar table WIP.md`. Host, paths and the copy method are in `INTERNALS.md`.
+
+## State at v2
+
+Done in c0acd73:
+1. Deck rows and filter buttons are labelled with `setAttribute(..., "text", ...)`. v1 showed
+   149 decks but blank rows.
+2. The screen button is gone. Two locked "Cactuar decks" tiles (scale 2.2) sit where the owner
+   drew arrows, beside the deck importers:
+   - `c4c7a1` at x -48.2, z -24.5, rotY 180: south side, below the Card Importer model.
+   - `c4c7a2` at x 48.2, z 24.5, rotY 0: north side, above rikrassen's importer tile.
+3. The README links the Workshop item. `tests/test_build_tts_table.py` is new.
+
+Delivered to the owner's PC as **MTG 6 player Cactuar Ver_v2**. Not uploaded to the Workshop yet.
+
+## v3: Global XML rebuild fix (delivered)
+
+The next screenshot showed "Error Building Xml UI on Global: Name cannot begin with
+the '<' character ... Line 181, position 130". The delivered v2 and the owner's autosave
+both contain valid saved XML. The importer's Global UI table round-trip decodes the
+previous-page button's `&lt;` and reinserts it as markup. A local reproduction against
+the complete v2 XML produced `<Button ...><</Button>` at exactly line 181, character 130.
+
+`tts/cactuar.xml` now uses `‹` and `›`. A regression test checks all browser text after
+entity decoding; the complete v3 Global UI (including the base table) also passes this
+check. All 139 unit tests pass. The base table's script and original 282 objects are
+preserved. **MTG 6 player Cactuar Ver_v3** and its thumbnail were delivered to the owner's
+Saves folder and SHA-256 verified. Load v3 for this UI fix; in-game confirmation is pending.
+
+V3 still fetches from Pages. The separate image-source fix below is only in the local
+exports until the owner authorizes commit/push. No Workshop upload has been performed.
+
+## v4: load-time image fix (delivered)
+
+The owner continued seeing Scryfall image errors because v3 still read the old exports
+on Pages. V4 now fixes those URLs in the table itself: `czImageJSON` changes only
+`FaceURL` string values from `cards.scryfall.io/<size>/...jpg` to
+`img.klrmngr.com/display/...webp`. It preserves the printing UUID and front/back side,
+drops scan-version queries, and works on library cards, commanders, tokens and nested
+double-faced states. It never decodes or re-encodes object JSON. Corrected exports
+already using the cache pass through unchanged.
+
+**MTG 6 player Cactuar Ver_v4** and its thumbnail were delivered to the owner's Saves
+folder and SHA-256 verified. Load v4, then load a deck: this fix works with the currently
+published data and does not require a GitHub push first. V4 includes v3's XML fix.
+The new Lua regression cases failed seven object comparisons before the fix and now
+pass: 273 checks, 0 failed. All 139 unit tests pass. Three image UUIDs from the latest
+screenshot were also checked at the cache with UnityPlayer headers: HTTP 200 WebP.
+In-game confirmation is pending. No commit, push or Workshop upload has been performed.
+
+## v5: formatted Text survives the importer's UI rebuild (delivered and live-tested)
+
+After loading v4, the importer still stretched the browser over the screen. Its error
+had moved to line 186, position 115: `<size=17>` in the selected deck's detail Text.
+The arrow fix was necessary but incomplete. This time the running script was checked
+through TTS's External Editor API: v4's image repair and both Unicode arrows were active.
+
+All dynamic Text updates (details, pager, status) now use `UI.setAttribute(..., "text", ...)`,
+just like the working row buttons. The template also stores their initial text in
+attributes with no inner value. Regression checks failed six times on the old detail
+updates and now pass. All 139 unit tests pass; the Lua session reports 227 checks,
+0 failed.
+
+Applied the new browser functions and clean UI to the running game without reloading
+or moving table objects, preserving CZ's state and selected deck. Also updated the
+Global script source. Opened the Cactuar browser and invoked the actual `ddf5de`
+importer's `click_show_import(self, "White")`, then performed another full Global UI
+table round-trip. The resulting live XML parses: Cactuar remains 620×720, the importer
+modal is 600×600, importer defaults are present, and the object count stays 275.
+The selected Animar detail includes both rich text and "Value & Ramp", exercising the
+previously failing content. This verifies the real importer interaction, beyond stubs.
+
+**MTG 6 player Cactuar Ver_v5** and its thumbnail were delivered to Saves and SHA-256
+verified. The repair is also active in the current session. Use v5 for future loads.
+No commit, push or Workshop upload has been performed.
+
+### External Editor API debugging
+
+The owner's PC exposes the local TTS API described at
+https://api.tabletopsimulator.com/externaleditorapi/ . A Windows-side dual-stack TCP
+listener on localhost:39998 receives responses; keep the client to localhost:39999
+open until the response arrives. Execute messages need `messageID: 3`, `guid: "-1"`
+(or an object's GUID), `script`, and a nonzero `returnID` to receive message 5. Read a
+complete JSON message rather than waiting for EOF: TTS can keep the socket open.
+Ignore unrelated notifications such as autosave (`messageID: 6`); wait for the return
+message whose `returnID` matches the request.
+Large requests should be read from a Windows temp file rather than put in an encoded
+PowerShell command, which has a command-line length limit. Host details stay in
+`INTERNALS.md`. Read-only probes of `Global.getLuaScript()`, `UI.getXml()` and
+`UI.getXmlTable()` are useful for distinguishing an old loaded save from a new bug.
+
+## v6: first commander in first slot, second in second (delivered and live-applied)
+
+The owner marked the first Commander Zone in a screenshot: above the other commander
+slot, toward the life tracker. The loader had ordered zones nearest-to-library first,
+so even a single commander went into slot two. `czCommanderSpots` now selects the
+nearest two zones, then returns the farther one first. This works on both sides of the
+table and avoids choosing a farther unrelated zone merely because it is in the radius.
+Tokens still anchor beyond the outer slot. Fallback positions use the same slot order.
+
+Regression cases failed 16 placement checks before the fix and now pass. They cover a
+single commander, partner order, all six seats, north/south facing, an unrelated zone,
+tokens beyond both slots and fallback positions. All 139 unit tests pass; the Lua
+session reports 260 checks, 0 failed.
+
+Applied the new functions to the live game while preserving CZ state, and updated the
+Global script source. Checked both zone coordinates for all six seats using the actual
+objects. Moved the already-loaded Captain Sisay (`33c8de`) from White's second slot to
+the empty first slot, with a guard against moving it if it was no longer in slot two.
+No other card was moved. The verified slot GUIDs are:
+
+| seat | first slot | second slot |
+|---|---|---|
+| White | `40584f` | `9d380e` |
+| Red | `9cb4b6` | `f9be00` |
+| Yellow | `48daef` | `ba751d` |
+| Green | `2fa3e2` | `206ce5` |
+| Blue | `399da3` | `144ccc` |
+| Purple | `47e079` | `2af6c5` |
+
+**MTG 6 player Cactuar Ver_v6** and its thumbnail were delivered to Saves and SHA-256
+verified. The change is active in the current session; use v6 for future loads.
+No commit, push or Workshop upload has been performed.
+
+## Build-time image validation (local)
+
+The owner requested image verification during the catalog build. Card-name/printing
+validation in `ttsimport.py` only checks importer JSON; it does not prove the picture
+host will serve a usable image to TTS.
+
+`build_site.py`, including `--check`, now calls `ttsimages.validate` after planning the
+output and before writing or pruning anything. It recursively collects exact `FaceURL`
+and `BackURL` values from the generated NDJSON, including both commanders, tokens and
+double-faced states. URLs are checked once across all decks, with four workers and
+bounded downloads/timeouts. Requests use TTS's UnityPlayer User-Agent. HTTP failures,
+HTML/JSON responses and incomplete/unsupported image containers fail the entire build
+and identify affected deck paths, roles and URLs. This checks signatures and container
+boundaries; it does not run Unity's pixel decoder or guarantee future service uptime.
+
+Successful verification metadata lives in `.cache/cards.db`'s `pages` table under
+`tts:image-check:v1:`. This stores format, byte count, ETag and Last-Modified, not image
+bytes. Every build still contacts the image host: HTTP 304 is accepted only after a
+previously successful byte check and a conditional request. Failed checks are never
+cached as successes. `cache.py --clear pages` also clears this metadata safely.
+
+The bot's default catalog timeout is now ten minutes (`MTG_SITE_TIMEOUT` can override),
+allowing time for thousands of remote image checks instead of assuming instant warm
+builds. Image validation itself required no table change; v7 below changes the browser UI.
+
+Verification: all 150 unit tests pass, including all image roles, HTTP/network
+failures, invalid bodies, conditional rechecks and keeping published files intact when
+either normal or `--check` builds fail. The first real build passed all 4,272 unique URLs
+across all 149 decks (4,272 downloaded, zero failed). It wrote or removed no catalog
+files. A full subsequent `--check` also passed: zero downloads, 4,272 unchanged (HTTP
+304), all 4,775 catalog files up to date. That warm check took 1 minute 57 seconds on
+the owner's Mac, so remote checks now account for most build time even with warm caches.
+`git diff --check` and Python compilation checks passed. Nothing committed or pushed.
+
+## v7: browser layout and usability (delivered and live-applied)
+
+The owner requested a more usable, modern browser. The panel is now 880×656 with
+ten readable rows and a separate details column, instead of a narrow list stacked
+above the details. Deck names and commander/owner captions use separate Text elements
+with explicit light colours. Selected rows and active controls use a teal accent;
+buttons have hover/pressed/disabled styles. No custom image assets are required.
+
+- Search filters as the user types; Enter is no longer required.
+- Each filter opens a menu with direct choices and All, instead of cycling values.
+  Clicking outside dismisses it. Menus paginate if future owners/options exceed ten,
+  and reopen on the page containing the current value. They use static Button slots
+  and text attributes, so labels containing ampersands survive importer UI rebuilds.
+- Filtered results say e.g. `54 of 149 decks`; Reset clears both search and filters.
+- Empty searches explain how to recover. Previous/Next respect page bounds; Surprise
+  me selects a matching deck and navigates to its page.
+- The details panel shows commander(s), tier, bracket, owner, strategies, three stats
+  and dates. Load stays disabled without a selection or while fetching. Filtering a
+  selected deck out clears it; refresh replaces selected metadata with the latest entry.
+- Load errors are red and allow retry. Choosing a new deck clears an older status.
+  Panels, menus, selections and filters remain separate for each player.
+
+Verification: 151 unit tests pass; the Lua browser harness reports 290 checks, zero
+failures. It exercises menu choices/All/dismissal, overflow menu pages, separate player
+state, result totals, empty results, stale-selection prevention and pending-load retries,
+alongside all existing commander, token and image-source checks. Changed files pass
+`git diff --check`.
+
+Applied to the running game without reloading or changing any objects (282 objects
+before/after). Captured the actual TTS window to inspect the layout, text contrast,
+selected row and open strategy menu. The real importer reopened successfully beside
+the browser; a subsequent full `getXmlTable`/`setXmlTable` round-trip preserved the open
+menu and `Aggro & Voltron` label, the deck rows, selection and Load control. The visual
+check caught dark paging/Random labels after importer styling; those labels now use the
+same explicit rich-text colour protection as the dynamic filter and sort controls. XML parses,
+UI loading completed, the browser remains 880×656 and the importer 600×600.
+
+The running Global script is updated, with the current browser state preserved.
+**MTG 6 player Cactuar Ver_v7** and its thumbnail are delivered to Saves; the Desktop
+handoff is refreshed. No commit, push or Workshop upload has been performed.
+
+## v8: softer text (delivered and live-applied)
+
+The owner found v7's white text too bright. Main labels and body text now use
+`#686C72`; the title uses `#6E7278`, secondary captions `#515861`, muted labels
+`#48515D` and the desaturated accent `#3D6554`. Deck names use regular weight, with
+bold reserved for hierarchy such as headings, tier markers and stat values.
+Live screenshot sampling found that the first grey attempt (`#BAC4D1`) still rendered
+solid white in this Windows TTS session. The final lower native colour values avoid
+that clipping: the same first-row text region has zero pure-white pixels, with common
+glyph colours around RGB 201/208/219. Green active/load controls were darkened to keep
+the softer text readable. Static XML and runtime rich-text colour wrappers were updated
+together so the importer cannot silently restore near-white labels. Refresh/Close also
+receive runtime colouring.
+
+All 151 unit tests and 290 Lua harness checks pass. The change was applied in the
+running game while preserving the browser state and other UI. After opening the actual
+importer, live XML still parses, palette and regular row weight are preserved, UI loading
+completes, and all 282 objects remain. The final game screenshot was inspected.
+Versioned v8 save and
+matching thumbnail delivered and SHA-256 verified; the Desktop WIP copy was updated.
+No commit, push or Workshop upload performed.
+
+## v9: brighter intermediate grey (delivered and live-applied)
+
+The owner found v8's grey text too dark. Primary text is now `#76797D`, the title
+`#7B7D80`, commander/owner captions `#646B75`, and muted labels `#5D6672`. Secondary
+text received a larger brightness increase so it is easier to scan. The regular font
+weight and darker green controls from v8 remain. Both static XML colours and runtime
+rich-text wrappers use the new palette.
+
+All 151 unit tests and 290 Lua harness checks pass. The update preserves the current
+browser state and the current session's 272 objects. Live XML is checked after the
+shared UI table round-trip, and the rendered game window is inspected before delivery.
+Versioned v9 save and matching thumbnail delivered with SHA-256 verification; Desktop
+WIP copy refreshed. Nothing committed, pushed or uploaded to the Workshop.
+
+Temporary debugging helpers from the preceding session were gone. The v8 save was
+recovered from the owner's PC and used as the rebuild input, which the builder supports
+without duplicating our scripts/UI/tiles. The External Editor bridge and window-capture
+helper were recreated outside the repository; do not depend on temp helpers surviving
+between sessions.
+
+## v10: restore white, slightly softened (delivered and live-applied)
+
+The owner said v9 was still too dark and explicitly requested white with slightly less
+brightness. Primary text is now off-white `#E2E5EA` (v7 was `#EDF4FC`), the title
+`#E6E9EE`, secondary captions `#CDD3DC` and muted labels `#C0C8D2`. The regular row
+font weight remains. This is a small reduction from the original white, reversing the
+overly dark grey palettes in v8/v9.
+
+The earlier remote screenshot measurements did not match the owner's screenshots and
+should not have driven native colours down so far. Treat the pixel/clipping discussion
+in v8 as historical debugging evidence, not a proven display transfer function or a
+reason to darken the text again. Owner feedback is the readability criterion.
+
+All 151 unit tests pass. Source/template and runtime label wrappers use the same
+off-white palette. Applied live while preserving browser state and game objects;
+versioned v10 save, matching thumbnail and Desktop WIP delivered with SHA-256 checks.
+Nothing committed, pushed or uploaded to the Workshop.
+
+## v12: card back menu (delivered and live-applied; needs a push)
+
+The owner asked for a small menu to change the card back art, with the art committed to
+the repo and pulled from there.
+
+- **Art:** `tts/backs/cactuar.jpg` (745×1040). A sunset oval with the Cactuar, five mana
+  pips and "CACTUAR", drawn as SVG and rendered with headless Chrome; the generator isn't
+  kept. Add more backs by dropping pictures into `tts/backs/`: the label comes from the
+  file name (`zebra_stripes.png` → "Zebra Stripes"). They need a catalog build and a push,
+  but no table rebuild.
+- **Code:** `ttsdecks.backs()` and `back_files()`, `decks.json` `backs`, published files.
+  In the browser: `czBacks`/`czBack`/`czBackLabel`/`czBackJSON`, and `czMenuChoices`
+  generalises the filter menu (filters keep All first; the back menu has no All).
+  `cz_back_{C}` sits above Load.
+- **Live apply:** the browser source was re-run keeping state. `CZ.index.backs` was set by
+  hand with the Cactuar back at `http://192.168.0.100:5588/tts/backs/cactuar.jpg` (the
+  Mac's LaunchAgent catalog server; HTTP 200 from the PC). The Card back buttons were
+  added to the live UI. The first attempt failed at `kids[at].attributes` (in-place
+  insert), before `setXmlTable`; the second rebuilt the children as new tables and added 6.
+- **Saved table:** **MTG 6 player Cactuar Ver_v12** + thumbnail in Saves, SHA-256
+  `565c8ab35d003ce1`. It reads backs from Pages, so the menu lists only Standard until
+  the push.
+- Verification: 155 unit tests pass; the Lua harness reports 560 checks, 0 failed.
+  Catalog rebuilt (2 files written: `decks.json`, `backs/cactuar.jpg`; image check
+  4,272 verified).
+
+## v11: tokens beside the commander, newest first (delivered and live-applied)
+
+The owner's v8 screenshot: basics work; "tokens are not loading"; default the sort to
+newest; no Owner tab in the sort row.
+
+- **Tokens.** See the issue table. The pile spawns at `slot1 - right * 4.2`:
+  - White (37.57, -9.58), Red (8.16, -9.59), Yellow (-21.24, -9.59);
+  - Green (-37.55, 9.57), Blue (-8.14, 9.57), Purple (21.26, 9.57).
+  Each spot had nothing within 3 units in the live game. A deck without tokens reports
+  "It makes no tokens."
+- **Sort.** Newest is the default for new panels, and Owner is gone from the sort row. The
+  owner filter menu is unchanged. README updated.
+- **Live apply.** Ran the browser source in the running game through the External Editor
+  API. It already included v10's colours, because Codex's edits were in the files first.
+  Kept `CZ.index` and every seat's state, switched every panel to Newest and hid the old
+  `cz_sort_owner_*` buttons (`active=False`). Verified through `UI.getAttribute`: Newest is
+  active, Owner hidden, and the list starts with Obeka-Upkeep. The Global script *source* in
+  that session wasn't rewritten, so a later save of that session reloads older code: use
+  the v11 save.
+- **Tooling.** The External Editor client this round was a PowerShell script (listener on
+  39998, request to 39999, match `returnID`). It was streamed to the PC's temp folder and
+  deleted after each run, and isn't in the repo.
+
+Verification: 151 unit tests pass; the Lua harness reports 452 checks, 0 failed. **MTG 6
+player Cactuar Ver_v11** and its thumbnail were delivered to Saves and SHA-256 verified
+(`79a9397f65d2f570`). Nothing committed or pushed; no Workshop upload.
+
+Still to see in-game: load a deck that has tokens (e.g. Giada-Angels) and check where the
+pile lands.
+
+## In-game feedback on v2 and unpublished export fix (historical)
+
+The owner's screenshots confirm the tiles open the browser and the rows, tier colours,
+filters and detail panel render. Refresh loaded all 149 decks; the pager's 54 was the
+Bracket 3 + Aggro & Voltron filter result. Clear resets those filters.
+
+Loading a deck produced image errors for direct `cards.scryfall.io` URLs. Reproduced
+with the exact first failing URL: an application User-Agent gets HTTP 200 `image/jpeg`,
+while UnityPlayer gets HTTP 400 JSON, both with and without the scan-version query.
+The importer's backend currently returns `img.klrmngr.com/display/...webp` card faces.
+That cache returned HTTP 200 images to UnityPlayer for the four failing pictures and
+a double-faced back checked during diagnosis.
+
+Local fix: `scripts/ttsdecks.py` now uses that cache for all Scryfall card faces,
+including library cards, commanders, tokens and double-faced backs. Printing UUIDs and
+front/back sides stay the same. Regression tests cover those roles, normal-size fallback,
+custom URLs and leaving the catalog's Scryfall URLs unchanged. No table rebuild is needed:
+once the regenerated `docs/tts/` is published, remove the failed deck and load it again.
+The fix has not been published yet; commit/push needs the owner's request.
+
+Verification: 138 unit tests pass, the Lua browser harness reports 258 checks with no
+failures, and `build_site.py --check` passes. All 149 deck exports were regenerated;
+the only object changes are 15,246 face URLs, with printing UUIDs and front/back sides
+preserved. In-game confirmation of the corrected image source is still pending.
+
+Still check in-game:
+- **Tiles:** size, position and facing. The button is 1000×1000, sized like rikrassen's tile
+  button (1000×750 on a 4:3 tile). If clicks miss, adjust width/height in `cactuar_tile.lua`.
+- **Load into my seat**, after publishing the image fix:
+  - the library spawns face down at the library zone and gets shuffled;
+  - commanders land on the nearest Commander Zones (partners take both);
+  - tokens land 3.8 units beyond them;
+  - loading is refused when the library zone already holds a Deck or Card.
+
+## Open options (not started; ask the owner first)
+
+- **Self-updating table:** the tile fetches its script from Pages, then runs
+  `self.setLuaScript(new)` and `self.reload()` when its version changes, like the Card
+  Importer. The panels go into the Global UI with `UI.setXmlTable` and
+  `onClick="<guid>/czFn"`. After that the Workshop item only needs uploads when objects
+  move. Trade-off: every copy of the table runs whatever is on Pages.
+- A Workshop link on the catalog page (`frontend/index.html`).
+- A real screenshot with the browser open for the Workshop page. The current screenshots
+  are the base mod's, credited.
+- The discord-bot repo's `/deck-random` description still mentions Bracket 3.5. It's a
+  separate repo, unrelated to TTS.

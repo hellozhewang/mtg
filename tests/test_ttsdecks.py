@@ -131,7 +131,8 @@ class SleeveTests(unittest.TestCase):
         (self.dir / "cactuar.jpg").write_bytes(b"jpg")
         (self.dir / "notes.txt").write_text("not a picture")
         self.assertEqual(ttsdecks.sleeves(), [
-            {"id": "standard", "label": "Standard", "url": ttsdecks.CARD_BACK},
+            {"id": "standard", "label": "Standard", "url": ttsdecks.CARD_BACK,
+             "thumb_url": ttsdecks.CARD_BACK_THUMB},
             {"id": "cactuar", "label": "Cactuar", "file": "sleeves/cactuar.jpg?v=f8146b6c"},
             {"id": "zebra_stripes", "label": "Zebra Stripes", "file": "sleeves/zebra_stripes.png?v=8f8cbb7d"},
         ])
@@ -152,6 +153,22 @@ class SleeveTests(unittest.TestCase):
     def test_no_folder_means_only_the_standard_back(self):
         ttsdecks.SLEEVES_DIR = self.dir / "missing"
         self.assertEqual([b["id"] for b in ttsdecks.sleeves()], ["standard"])
+
+    @unittest.skipUnless(ttsdecks.SIPS.exists(), "macOS sips only")
+    def test_real_pictures_get_a_small_published_thumbnail(self):
+        cache = tempfile.TemporaryDirectory()
+        self.addCleanup(cache.cleanup)
+        original = ttsdecks.THUMB_CACHE
+        ttsdecks.THUMB_CACHE = Path(cache.name)
+        self.addCleanup(setattr, ttsdecks, "THUMB_CACHE", original)
+        (self.dir / "cactuar.jpg").write_bytes((ROOT / "tts" / "sleeves" / "cactuar.jpg").read_bytes())
+        entry = ttsdecks.sleeves()[1]
+        self.assertRegex(entry["thumb"], r"^sleeves/thumbs/cactuar\.jpg\?v=[0-9a-f]{8}$")
+        out = ttsdecks.files([], Path("/site"), None)
+        thumb = out[Path("/site/tts/sleeves/thumbs/cactuar.jpg")]
+        self.assertTrue(thumb.startswith(b"\xff\xd8\xff"))
+        self.assertLess(len(thumb), 40_000)
+        self.assertEqual(ttsdecks.files([], Path("/site"), None)[Path("/site/tts/sleeves/thumbs/cactuar.jpg")], thumb)
 
     def test_announcer_clips_are_published(self):
         out = ttsdecks.files([], Path("/site"), None)

@@ -705,6 +705,7 @@ def send_sleever(message: str, username: str, channel: str | int | None = DEFAUL
 
     owner = workspace.owner_name(username)
     if owner is None:
+        log().info("REFUSED [%s] sleever: username %r cannot have a folder", chan, username)
         return "sleever can't make sleeves for this Discord username."
     if not HARNESS.images:
         log().info("SLEEVER [%s] the harness has no image tool", chan)
@@ -741,6 +742,7 @@ def send_sleever(message: str, username: str, channel: str | int | None = DEFAUL
             _save(conv, state)
         log().info("REPLY  [%s/sleever] %d chars %dms", chan, len(reply),
                    int((time.time() - started) * 1000))
+        log().debug("REPLY-BODY %s", _oneline(reply))
         return with_usage(reply)
     except Exception as exc:
         log().error("FAILED [%s] sleever after %dms: %s: %s", chan,

@@ -6,6 +6,7 @@ build_site.py calls `files()` and publishes what it returns under docs/tts/:
     tts/<owner>/<Bracket>/<Deck>.ndjson     one deck, ready to spawn
     tts/cactuar-tile.jpg                    the picture on the table's Cactuar tiles
     tts/sleeves/<name>.jpg                  sleeves (card backs) a player can pick, from the repo's tts/sleeves/
+    tts/sleeves/thumbs/<name>.jpg           146 x 204 previews of them for the Sleeves menu
     tts/sounds/<name>.wav                   the slow-turn announcer's clips, from the repo's tts/sounds/
 
 A deck file is one JSON value per line:
@@ -34,6 +35,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import subprocess
 import sys
 from pathlib import Path, PurePosixPath
 from urllib.parse import urlsplit
@@ -46,14 +48,22 @@ TILE_IMAGE = Path(__file__).resolve().parent.parent / "tts" / "cactuar-tile.jpg"
 # Adding one needs only a catalog build and a push: the menu lists decks.json's "sleeves".
 SLEEVES_DIR = TILE_IMAGE.parent / "sleeves"
 SLEEVE_TYPES = (".jpg", ".jpeg", ".png")
+# Small previews for the table's Sleeves grid. Every player's table downloads all of
+# them when the deck list loads, so they are tiny. Made with macOS `sips`; elsewhere
+# the menu shows names only. Cached by the source picture's hash, so a rebuild writes
+# byte-identical files.
+THUMB_W, THUMB_H = 146, 204
+THUMB_CACHE = TILE_IMAGE.parent.parent / ".cache" / "sleeve-thumbs"
+SIPS = Path("/usr/bin/sips")
 # Clips the table plays through Tabletop Simulator's music player (cactuar_turns.lua).
 SOUNDS_DIR = TILE_IMAGE.parent / "sounds"
 # The tournament pool the browser's Tournament mode offers (curated by hand).
 TOURNAMENT_FILE = TILE_IMAGE.parent / "tournament.json"
 SOUND_TYPES = (".wav", ".mp3", ".ogg")
 
-# Scryfall's standard Magic card back.
+# Scryfall's standard Magic card back, and its small size for the Sleeves grid.
 CARD_BACK = "https://backs.scryfall.io/large/0/a/0aeebaf5-8c7d-4636-9e82-8c27447861f7.jpg"
+CARD_BACK_THUMB = CARD_BACK.replace("/large/", "/small/")
 IMAGE_SIZES = ("large", "normal")       # first one present wins
 IMAGE_BASE = "https://img.klrmngr.com"
 TRANSFORM = {"posX": 0, "posY": 0, "posZ": 0, "rotX": 0, "rotY": 180, "rotZ": 0,
@@ -244,15 +254,38 @@ def sleeve_files() -> list[Path]:
     return sorted(p for p in SLEEVES_DIR.iterdir() if p.suffix.lower() in SLEEVE_TYPES)
 
 
+def sleeve_thumb(p: Path) -> bytes | None:
+    """A THUMB_W x THUMB_H JPEG of sleeve `p`, or None where it can't be made."""
+    data = p.read_bytes()
+    cached = THUMB_CACHE / f"{hashlib.sha256(data).hexdigest()[:16]}.jpg"
+    if cached.is_file():
+        return cached.read_bytes()
+    if not SIPS.exists():
+        return None
+    THUMB_CACHE.mkdir(parents=True, exist_ok=True)
+    tmp = cached.with_suffix(".tmp.jpg")
+    r = subprocess.run([str(SIPS), "-z", str(THUMB_H), str(THUMB_W), "-s", "format", "jpeg",
+                        "-s", "formatOptions", "80", str(p), "--out", str(tmp)],
+                       capture_output=True, timeout=60)
+    if r.returncode or not tmp.is_file():
+        tmp.unlink(missing_ok=True)
+        return None
+    tmp.replace(cached)
+    return cached.read_bytes()
+
+
 def sleeves() -> list[dict]:
     """The sleeves a player can pick: Magic's own back first, then tts/sleeves/ by name.
     `url` is absolute; `file` is relative to decks.json (with a content hash so TTS
     fetches updated art instead of serving a stale cached image for the same name)."""
-    out = [{"id": "standard", "label": "Standard", "url": CARD_BACK}]
+    out = [{"id": "standard", "label": "Standard", "url": CARD_BACK, "thumb_url": CARD_BACK_THUMB}]
     for p in sleeve_files():
         label = p.stem.replace("-", " ").replace("_", " ").title()
         v = hashlib.sha256(p.read_bytes()).hexdigest()[:8]
-        out.append({"id": p.stem, "label": label, "file": f"sleeves/{p.name}?v={v}"})
+        entry = {"id": p.stem, "label": label, "file": f"sleeves/{p.name}?v={v}"}
+        if sleeve_thumb(p) is not None:
+            entry["thumb"] = f"sleeves/thumbs/{p.stem}.jpg?v={v}"
+        out.append(entry)
     return out
 
 
@@ -303,6 +336,9 @@ def files(decks: list, out_dir: Path, q) -> dict[Path, str | bytes]:
     out: dict[Path, str | bytes] = {root / TILE_IMAGE.name: TILE_IMAGE.read_bytes()}
     for p in sleeve_files():
         out[root / "sleeves" / p.name] = p.read_bytes()
+        thumb = sleeve_thumb(p)
+        if thumb is not None:
+            out[root / "sleeves" / "thumbs" / f"{p.stem}.jpg"] = thumb
     if SOUNDS_DIR.is_dir():
         for p in sorted(SOUNDS_DIR.iterdir()):
             if p.suffix.lower() in SOUND_TYPES:

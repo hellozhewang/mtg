@@ -101,7 +101,13 @@ UI = {
     if k == "text" then values[id] = v end
   end,
   getAttribute = function(id, k) return (attrs[id] or {})[k] end,
+  -- Custom assets: the base table's own, which setCustomAssets must keep.
+  assets = {{name = "base_logo", url = "https://example.test/logo.png"}},
+  assetCalls = 0,
+  loading = false,
 }
+function UI.getCustomAssets() return UI.assets end
+function UI.setCustomAssets(list) UI.assets = list; UI.assetCalls = UI.assetCalls + 1 end
 local requests = 0
 local legacySize, legacyQuery, expectedObjects, rewrittenImages
 WebRequest = {get = function(url, cb)
@@ -167,7 +173,8 @@ function printToAll(msg) logs[#logs + 1] = msg end
 Color = {fromString = function() return {r = 1, g = 1, b = 1} end}
 Player = setmetatable({}, {__index = function(_, c) return {color = c, steam_name = c .. "Name"} end})
 local waits = {}
-Wait = {time = function(f) waits[#waits + 1] = f end}
+Wait = {time = function(f) waits[#waits + 1] = f end,
+        condition = function(f, ready) if ready() then f() else waits[#waits + 1] = f end end}
 local function settle() local w = waits; waits = {}; for _, f in ipairs(w) do f() end end
 local function logged(pattern)
   for _, l in ipairs(logs) do if l:find(pattern, 1, true) then return l end end
@@ -379,26 +386,57 @@ czOpen(white); czClear(white); czSearch(white, "beamtown"); czPick(white, "1"); 
 check(#spawned == 2, "library and commander only, no token pile (got " .. #spawned .. ")")
 check(values["cz_status_White"]:find("makes no tokens", 1, true), "the player is told there are no tokens")
 
--- The sleeves menu: Standard first, then the repo's sleeves; the choice applies on load.
+-- The sleeves grid: Standard first, then the repo's sleeves as thumbnails; the choice
+-- applies on load.
 spawned = {}
 czOpen(white); czClear(white)
 check(attrs["cz_sleeve_White"].text:find("Sleeves: Standard", 1, true), "sleeves button starts on Standard")
 check(attrs["cz_sleeve_White"].interactable == "True", "sleeves menu enabled when the repo has sleeves")
+-- Thumbnails are registered once, next to the base table's own assets.
+local names = {}
+for _, a in ipairs(UI.assets) do names[a.name] = a.url end
+check(names.base_logo, "the base table's assets are kept")
+check(names.czsl_standard and names.czsl_standard:find("backs.scryfall.io/small/", 1, true), "Standard's thumbnail is Scryfall's small back")
+check(names.czsl_cactuar and names.czsl_cactuar:match("^test://tts/sleeves/thumbs/cactuar%.jpg%?v=%x+$"), "repo sleeves use their published thumbnail")
+local calls = UI.assetCalls
+czRefresh(white)
+check(UI.assetCalls == calls, "an unchanged list doesn't reload the UI")
 czFilter(white, "sleeve")
-check(s.menu == "sleeve" and attrs["cz_menu_White"].active == "True", "back menu opens")
-check(values["cz_menu_title_White"] == "Choose sleeves", "sleeves menu title")
-check(values["cz_choice_1_White"]:find("Standard", 1, true) and values["cz_choice_1_White"]:find("✓", 1, true), "Standard listed first and ticked")
-local cactuarRow
+check(s.menu == "sleeve" and attrs["cz_sleeves_White"].active == "True", "the sleeves grid opens")
+check(attrs["cz_menu_White"].active ~= "True", "not the text menu")
+check(values["cz_sl_name_1_White"] == "✓ Standard", "Standard listed first and ticked")
+check(attrs["cz_sl_img_1_White"].image == "czsl_standard", "cells show their thumbnail")
+local cactuarCell
 for i, b in ipairs(CZ.index.sleeves) do
-  check(values["cz_choice_" .. i .. "_White"]:find(b.label, 1, true), "back " .. b.label .. " listed in order")
-  if b.id == "cactuar" then cactuarRow = i end
+  if i > CZ.sleeveCells then break end
+  check(values["cz_sl_name_" .. i .. "_White"]:find(b.label, 1, true), "sleeve " .. b.label .. " in order")
+  if b.id == "cactuar" then cactuarCell = i end
 end
-check(attrs["cz_choice_" .. (#CZ.index.sleeves + 1) .. "_White"].active == "False", "only the published backs are listed")
-check(cactuarRow, "the repo's Cactuar back is published")
-czChoose(white, tostring(cactuarRow))
-check(s.sleeve == "cactuar" and attrs["cz_menu_White"].active == "False", "choosing a back closes the menu")
+local pages = math.ceil(#CZ.index.sleeves / CZ.sleeveCells)
+check(attrs["cz_sleeves_pager_White"].active == (pages > 1 and "True" or "False"), "the pager shows only with more than one page")
+check(values["cz_sleeves_page_White"] == "1 / " .. pages, "page count")
+check(cactuarCell, "the repo's Cactuar sleeve is on page 1")
+czSleevePick(white, tostring(cactuarCell))
+check(s.sleeve == "cactuar" and attrs["cz_sleeves_White"].active == "False", "picking a thumbnail closes the grid")
 check(attrs["cz_sleeve_White"].text:find("Sleeves: Cactuar", 1, true), "button shows the chosen sleeves")
-check(next(s.filter) == nil and #s.list == #CZ.index.decks, "choosing a back leaves the filters alone")
+check(next(s.filter) == nil and #s.list == #CZ.index.decks, "picking sleeves leaves the filters alone")
+-- Paging: with more sleeves than one page, the grid pages and opens on the chosen one.
+local realSleeves = CZ.index.sleeves
+local many = {realSleeves[1]}
+for i = 1, 19 do many[#many + 1] = {id = "s" .. i, label = "S" .. i, file = "sleeves/s" .. i .. ".jpg"} end
+CZ.index.sleeves = many
+czFilter(white, "sleeve")
+check(values["cz_sleeves_page_White"] == "1 / 3" and attrs["cz_sleeves_pager_White"].active == "True", "20 sleeves are 3 pages")
+check(attrs["cz_sl_img_2_White"].image == "", "a sleeve without a thumbnail shows its name only")
+czMenuPage(white, "next"); czMenuPage(white, "next")
+check(values["cz_sleeves_page_White"] == "3 / 3" and attrs["cz_sl_4_White"].active == "True" and attrs["cz_sl_5_White"].active == "False", "the last page holds the rest")
+czSleevePick(white, "4")
+check(s.sleeve == "s19", "picking on a later page picks that sleeve")
+czFilter(white, "sleeve")
+check(values["cz_sleeves_page_White"] == "3 / 3", "the grid reopens on the chosen sleeve's page")
+czDismiss(white)
+CZ.index.sleeves = realSleeves
+czOpen(white); czFilter(white, "sleeve"); czSleevePick(white, tostring(cactuarCell)); czOpen(white)
 czSearch(white, "giada"); czPick(white, "1"); czLoad(white)
 local backs, faces = 0, 0
 for i, o in ipairs(spawned) do
@@ -410,7 +448,7 @@ for i, o in ipairs(spawned) do
   check(standard == expectedObjects[i + 1], "only BackURL changes in object " .. i)
 end
 check(backs > 50, "library, commander and token backs all swapped (" .. backs .. ")")
-czOpen(white); czFilter(white, "sleeve"); czChoose(white, "1")
+czOpen(white); czFilter(white, "sleeve"); czSleevePick(white, "1")
 check(s.sleeve == "standard" and attrs["cz_sleeve_White"].text:find("Standard", 1, true), "Standard can be chosen again")
 spawned = {}
 czLoad(white)
@@ -421,7 +459,7 @@ CZ.index.sleeves = nil                     -- a deck list published before sleev
 czRender("White")
 check(attrs["cz_sleeve_White"].interactable == "False", "no sleeves list: the button is disabled")
 czFilter(white, "sleeve")
-check(s.menu == nil and attrs["cz_menu_White"].active == "False", "no back list: the menu stays shut")
+check(s.menu == nil and attrs["cz_sleeves_White"].active ~= "True", "no sleeves list: the grid stays shut")
 CZ.index.sleeves = withBacks
 
 -- A new player in a seat gets a fresh browser, not the last player's leftovers.
@@ -479,9 +517,9 @@ czSort(white, "name"); check(logged("sorted by Name"), "sort logged")
 czPage(white, "next"); check(logged("turned to page 2"), "paging logged")
 czPage(white, "prev")
 czPick(white, "1"); check(s.selected and logged("selected a deck") and not logged(s.selected.name), "selection logged without the deck")
-czFilter(white, "sleeve"); czChoose(white, "2")
+czFilter(white, "sleeve"); czSleevePick(white, "2")
 check(logged("chose sleeves " .. CZ.index.sleeves[2].label), "sleeves choice logged")
-czFilter(white, "sleeve"); czChoose(white, "1")
+czFilter(white, "sleeve"); czSleevePick(white, "1")
 
 -- Draft: 5 different pool decks; Redraw deals again, logged with a count.
 czTourMode(white, "draft")

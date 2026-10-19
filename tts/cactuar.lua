@@ -33,6 +33,7 @@ CZ = {
   seats = {"White", "Red", "Yellow", "Green", "Blue", "Purple"},
   rows = 10,
   menuRows = 10,
+  sleeveCells = 8,     -- the Sleeves grid's page size; matches SLEEVE_CELLS in build_tts_table.py
   index = nil,        -- decks.json, once fetched
   fetching = false,
   state = {},         -- per seat colour: sort, filters, search, page, selection
@@ -240,6 +241,46 @@ end
 local function czSleeveLabel(s)
   local b = czSleeve(s)
   return b and b.label or "Standard"
+end
+
+-- Thumbnails. TTS's UI shows pictures only as named custom assets, so each sleeve's
+-- thumbnail is registered as "czsl_<id>". setCustomAssets REPLACES the whole list, so
+-- the base table's own assets are kept, and it only runs when the list changed: a
+-- change makes TTS reload the UI, after which the open panels are drawn again.
+local function czThumbAsset(b)
+  local url = b.thumb_url or (b.thumb and (CZ.base .. b.thumb))
+  return url and {name = "czsl_" .. b.id, url = url} or nil
+end
+
+local czRenderSleeves = nil   -- assigned after czRenderMenu
+
+local function czRedrawOpen()
+  for _, c in ipairs(CZ.seats) do
+    if UI.getAttribute("cz_panel_" .. c, "active") == "True" then
+      czRender(c)
+      if czState(c).menu == "sleeve" then czRenderSleeves(c) end
+    end
+  end
+end
+
+local function czRegisterThumbs()
+  local ours, sig = {}, ""
+  for _, b in ipairs(czSleeves()) do
+    local a = czThumbAsset(b)
+    if a then ours[#ours + 1] = a; sig = sig .. a.name .. "=" .. a.url .. ";" end
+  end
+  if sig == "" or sig == CZ.thumbSig then return end
+  local ok = pcall(function()
+    local merged = {}
+    for _, a in ipairs(UI.getCustomAssets() or {}) do
+      if type(a.name) ~= "string" or a.name:sub(1, 5) ~= "czsl_" then merged[#merged + 1] = a end
+    end
+    for _, a in ipairs(ours) do merged[#merged + 1] = a end
+    UI.setCustomAssets(merged)
+  end)
+  if not ok then return end
+  CZ.thumbSig = sig
+  Wait.condition(czRedrawOpen, function() return not UI.loading end, 30, czRedrawOpen)
 end
 
 -- Every card's BackURL becomes the chosen back. Like czImageJSON, this edits the
@@ -463,6 +504,39 @@ local function czRenderMenu(color)
   czButton("cz_menu_next_" .. color, "›")
 end
 
+-- The Sleeves grid: CZ.sleeveCells thumbnails a page, the chosen one ticked. A sleeve
+-- without a thumbnail (or before its asset has loaded) shows its name alone.
+czRenderSleeves = function(color)
+  local s = czState(color)
+  if s.menu ~= "sleeve" then return end
+  local choices = czMenuChoices(color, "sleeve")
+  local sleeves = czSleeves()
+  local count, size = #choices, CZ.sleeveCells
+  local pages = math.max(1, math.ceil(count / size))
+  s.menuPage = math.max(1, math.min(s.menuPage or 1, pages))
+  for i = 1, size do
+    local n = (s.menuPage - 1) * size + i
+    local id = "cz_sl_" .. i .. "_" .. color
+    UI.setAttribute(id, "active", n <= count and "True" or "False")
+    if n <= count then
+      local choice, b = choices[n], sleeves[n]
+      local asset = CZ.thumbSig and b and czThumbAsset(b)
+      UI.setAttribute("cz_sl_img_" .. i .. "_" .. color, "image", asset and asset.name or "")
+      UI.setAttribute("cz_sl_img_" .. i .. "_" .. color, "color", asset and "#FFFFFF" or "#FFFFFF00")
+      czText("cz_sl_name_" .. i .. "_" .. color, (choice.selected and "✓ " or "") .. choice.label)
+      UI.setAttribute(id, "colors", choice.selected and CZ_ACTIVE or "#202F42|#344D66|#275B4B|#182331")
+    end
+  end
+  UI.setAttribute("cz_sleeves_" .. color, "active", "True")
+  UI.setAttribute("cz_scrim_" .. color, "active", "True")
+  UI.setAttribute("cz_sleeves_pager_" .. color, "active", pages > 1 and "True" or "False")
+  czText("cz_sleeves_page_" .. color, s.menuPage .. " / " .. pages)
+  czEnabled("cz_sleeves_prev_" .. color, s.menuPage > 1)
+  czEnabled("cz_sleeves_next_" .. color, s.menuPage < pages)
+  czButton("cz_sleeves_prev_" .. color, "‹")
+  czButton("cz_sleeves_next_" .. color, "›")
+end
+
 -- ---------- fetching ----------
 
 local function czFetchIndex(then_)
@@ -488,6 +562,7 @@ local function czFetchIndex(then_)
       return
     end
     CZ.index = index
+    czRegisterThumbs()
     for _, c in ipairs(CZ.seats) do
       czStatus(c, "")
       czRender(c)
@@ -577,6 +652,7 @@ end
 function czDismiss(player)
   czState(player.color).menu = nil
   UI.setAttribute("cz_menu_" .. player.color, "active", "False")
+  UI.setAttribute("cz_sleeves_" .. player.color, "active", "False")
   UI.setAttribute("cz_scrim_" .. player.color, "active", "False")
 end
 
@@ -586,18 +662,34 @@ function czFilter(player, key)
   local s = czState(player.color)
   if s.menu == key then czDismiss(player); return end
   s.menu, s.menuPage = key, 1
-  -- Open the menu page containing the currently selected value.
+  -- Open the page containing the currently selected value.
+  local size = key == "sleeve" and CZ.sleeveCells or CZ.menuRows
   for i, choice in ipairs(czMenuChoices(player.color, key)) do
-    if choice.selected then s.menuPage = math.ceil(i / CZ.menuRows) end
+    if choice.selected then s.menuPage = math.ceil(i / size) end
   end
-  czRenderMenu(player.color)
+  if key == "sleeve" then czRenderSleeves(player.color) else czRenderMenu(player.color) end
 end
 
 function czMenuPage(player, direction)
   local s = czState(player.color)
   if not s.menu then return end
   s.menuPage = (s.menuPage or 1) + (direction == "next" and 1 or -1)
-  czRenderMenu(player.color)
+  if s.menu == "sleeve" then czRenderSleeves(player.color) else czRenderMenu(player.color) end
+end
+
+-- A thumbnail in the Sleeves grid was clicked.
+function czSleevePick(player, cell)
+  local s = czState(player.color)
+  local i = tonumber(cell)
+  if s.menu ~= "sleeve" or not i or i < 1 or i > CZ.sleeveCells then return end
+  local choices = czMenuChoices(player.color, "sleeve")
+  local n = ((s.menuPage or 1) - 1) * CZ.sleeveCells + i
+  if n > #choices then return end
+  s.sleeve = choices[n].value                  -- applies to the next deck loaded
+  czLog(player.color, "chose sleeves " .. choices[n].label)
+  czDismiss(player)
+  czStatus(player.color, "")
+  czRender(player.color)
 end
 
 function czChoose(player, row)
@@ -608,14 +700,9 @@ function czChoose(player, row)
   local choices = czMenuChoices(player.color, s.menu)
   local n = ((s.menuPage or 1) - 1) * CZ.menuRows + i
   if n > #choices then return end
-  if s.menu == "sleeve" then
-    s.sleeve = choices[n].value                -- applies to the next deck loaded
-    czLog(player.color, "chose sleeves " .. choices[n].label)
-  else
-    s.filter[s.menu] = choices[n].value      -- All (first choice) is nil
-    s.page = 1
-    czLog(player.color, "changed a filter")
-  end
+  s.filter[s.menu] = choices[n].value        -- All (first choice) is nil
+  s.page = 1
+  czLog(player.color, "changed a filter")
   czDismiss(player)
   czStatus(player.color, "")
   czRender(player.color)

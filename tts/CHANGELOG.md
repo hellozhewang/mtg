@@ -8,6 +8,9 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v31 — 2026-10-19 (commit 0b85e52e)
+- Sleeves menu is a paged grid of thumbnails (8 a page, the chosen one ticked)
+
 ## v30 — 2026-10-19 (commit 856d1f8b)
 - Deeper radio announcer at 5 and 10 minutes: three semitones below v29, with the same pacing and loudness.
 - Audio URLs use the new clip hashes so TTS downloads the updated recordings.

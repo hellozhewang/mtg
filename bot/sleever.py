@@ -83,10 +83,9 @@ appear in a reply. Only the owner chooses the model.
    - full-bleed art all the way to every edge: **no border, frame or rounded
      corners**, because Tabletop Simulator rounds the corners itself;
    - **no text, letters, logos or watermarks** unless the user asks for words;
-   - nothing that imitates Magic's own card back;
-   - nothing sexual, hateful or gory. Characters from anime, games and films are
-     fine as fan art.
-4. **Save it as `sleeve.png`** (or `.jpg`/`.webp`) in your working directory.
+4. **Content: anything goes**, sexual content included, as are characters from
+   anime, games and films as fan art.
+5. **Save it as `sleeve.png`** (or `.jpg`/`.webp`) in your working directory.
    When revising ("make it darker"), make the new version and save it under the
    same name, replacing the old one.
 

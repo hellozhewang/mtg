@@ -24,8 +24,8 @@ sleever paints the picture with whichever model the owner has set for the builde
 - crops it to these specs and saves `<name>.jpg` here;
 - never overwrites a hand-made sleeve or another player's;
 - attaches the sleeve to the Discord reply;
-- autopushes this folder and `docs/`, so it shows in the Sleeves menu a few minutes later,
-  after **Refresh**.
+- autopushes this folder and `docs/`, so it shows in the Sleeves menu a few minutes later
+  (reopen the browser, or press **Refresh** in an open one).
 
 The model works in `bot/.sleever/<user>/`, which isn't in git. Uploads are downloaded to
 `refs/` there. Who made which sleeve is kept in `bot/.sleever/owners.json`.
@@ -53,9 +53,10 @@ Custom Deck dialog. The table finds sleeves in the published deck list. So:
    `docs/tts/decks.json` under `sleeves`, and copy it to `docs/tts/sleeves/`.
 3. **Publish**: commit and push. GitHub Pages serves it a minute or so later at
    `https://hellozhewang.github.io/mtg/tts/sleeves/<file>`. Check that URL opens the picture.
-4. **In the game**: open the Cactuar browser (click a Cactuar tile) and press **Refresh**,
-   because the browser keeps the deck list it fetched when it first opened. The new sleeve is
-   now in **Sleeves ▾**, a paged grid of thumbnails (8 a page). Pick it, then **Load into my seat**.
+4. **In the game**: open the Cactuar browser (click a Cactuar tile). From v32 it fetches the
+   list again when the copy it has is over 2 minutes old; in an open browser, press
+   **Refresh**. The new sleeve is now in **Sleeves ▾**, a paged grid of thumbnails (8 a
+   page). Pick it, then **Load into my seat**.
 
 Things that trip people up:
 - **Decks already on the table keep their old sleeves.** Sleeves are applied as a deck spawns,

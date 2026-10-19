@@ -203,6 +203,14 @@ for k = 2, #s.list do
 end
 check(attrs["cz_sort_newest_White"].colors ~= attrs["cz_sort_tier_White"].colors, "Newest shows as the active sort")
 check(not read("tts/cactuar.xml"):find("cz_sort_owner", 1, true), "no Owner sort button")
+-- Reopening uses the list it has while it's fresh, and re-fetches an old one.
+local before = requests
+czOpenFor({color = "White"}); czOpenFor({color = "White"})       -- close, open
+check(requests == before, "a fresh list isn't fetched again on open")
+CZ.indexAt = os.time() - CZ.staleAfter - 1
+czOpenFor({color = "White"}); czOpenFor({color = "White"})
+check(requests == before + 1 and CZ.indexAt >= os.time() - 1, "an old list is fetched again on open")
+check(attrs["cz_panel_White"].active == "True", "the panel is open after the re-fetch")
 czSort(white, "owner")
 check(s.sort == "newest", "an unknown sort is ignored")
 czSort(white, "tier")

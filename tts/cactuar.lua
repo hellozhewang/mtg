@@ -35,6 +35,8 @@ CZ = {
   menuRows = 10,
   sleeveCells = 8,     -- the Sleeves grid's page size; matches SLEEVE_CELLS in build_tts_table.py
   index = nil,        -- decks.json, once fetched
+  indexAt = 0,        -- os.time() it arrived
+  staleAfter = 120,   -- seconds: opening the browser after this re-fetches it
   fetching = false,
   state = {},         -- per seat colour: sort, filters, search, page, selection
   busy = {},          -- per seat colour: a deck is being loaded
@@ -561,7 +563,7 @@ local function czFetchIndex(then_)
       for _, c in ipairs(CZ.seats) do czStatus(c, "The deck list did not read as JSON.", "error") end
       return
     end
-    CZ.index = index
+    CZ.index, CZ.indexAt = index, os.time()
     czRegisterThumbs()
     for _, c in ipairs(CZ.seats) do
       czStatus(c, "")
@@ -593,6 +595,9 @@ function czOpen(player)
   czLog(color, "opened the browser")
   if CZ.index then
     czRender(color)
+    -- New decks and sleever's sleeves appear without pressing Refresh: an old list
+    -- shows at once and is replaced when the fresh one arrives.
+    if os.time() - (CZ.indexAt or 0) > CZ.staleAfter then czFetchIndex() end
   else
     czStatus(color, "Loading the deck list…")
     czFetchIndex()

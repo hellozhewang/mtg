@@ -306,8 +306,9 @@ def publish(f: Path, answer: str, owner: str, previous: str | None, since: float
     record_owner(slug, owner)
     label = slug.replace("-", " ").replace("_", " ").title()
     lines = [body or f"Made **{label}** sleeves.",
-             f"In the table: open the Cactuar deck browser, press **Refresh**, then pick "
-             f"**Sleeves: {label}** before loading a deck. It goes live in a few minutes.",
+             f"In the table it's **Sleeves: {label}** in the Cactuar deck browser, a few "
+             f"minutes from now: open the browser (or press **Refresh** if it's open), then "
+             f"pick it before loading a deck.",
              ATTACH.format(dest)]
     return "\n\n".join(lines), slug
 

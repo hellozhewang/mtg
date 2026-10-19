@@ -8,6 +8,10 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v30 — 2026-10-19 (commit 856d1f8b)
+- Deeper radio announcer at 5 and 10 minutes: three semitones below v29, with the same pacing and loudness.
+- Audio URLs use the new clip hashes so TTS downloads the updated recordings.
+
 ## v29 — 2026-10-19 (commit 44402762)
 - Card back menu renamed Sleeves; reads the site's new sleeves list, including sleeves made with sleever in Discord
 - Codex's clearer, deeper announcer voice at about -12.5 LUFS, played from the site (v28 played from the Mac)

@@ -4,21 +4,27 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-19 (Codex): preparing v30 with the substantially deeper radio announcer. v29 is the latest delivered version; see `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-19 (Codex): v30 delivered with the substantially deeper radio announcer. See `tts/CHANGELOG.md` for released versions.
 
-## v30 release: deeper radio announcer (preparing)
+## v30 release: deeper radio announcer (delivered)
 
 The owner asked Codex to integrate the latest clips and deliver a new build for testing,
 using the updated release instructions. Both source WAVs use the deep radio revision
 below (-5 semitones from the neural voice, three below v29), with the same words and
 timing. The audio generators now live in `scripts/`; assets remain in `tts/sounds/`.
 
-Release order: rebuild and check the catalog, commit and push sources and generated
-audio, wait for matching bytes on Pages, then run `scripts/release_tts.py`. The release
-tool builds from HEAD, delivers v30 and its thumbnail, verifies the copies, removes
-earlier Cactuar saves and copies this WIP and the changelog to the Desktop. Commit and
-push the changelog afterwards. No running game or Workshop upload is part of delivery.
-Owner listening and in-game testing remain.
+Released from commit `856d1f8b` using `scripts/release_tts.py`, after publishing and
+verifying the exact audio and tile bytes on Pages. **MTG 6 player Cactuar Ver_v30**
+and its thumbnail are in the owner's TTS Saves folder, with matching SHA-256 checks.
+The tool removed v29's save and thumbnail and copied this WIP and the changelog to
+the Desktop. The release notes are recorded in `tts/CHANGELOG.md`.
+
+Validation: **204 unit tests pass**; the catalog build and `--check` pass with 4,344
+image URLs accepted by the verifier. Generated audio equals the source WAVs. The
+save's versioned audio URLs end in `a4d85e5e` (5-minute) and `e1ddc601` (10-minute),
+and it uses Pages with no LAN audio override. No running game or Workshop upload was
+changed. Load v30 to test; chat `announcer test` plays the 5-minute clip. Owner listening
+and in-game approval remain.
 
 ## Announcer voice revisions
 

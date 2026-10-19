@@ -10,6 +10,7 @@ to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
 ## v32 — 2026-10-19 (commit 413a5e2d)
 - Opening the deck browser fetches the list again when it's over 2 minutes old, so new decks and sleeves show without Refresh
+- Uploaded programmatically to Workshop item 3822623414; Steam confirmed success (EResult 1).
 
 ## v31 — 2026-10-19 (commit 0b85e52e)
 - Sleeves menu is a paged grid of thumbnails (8 a page, the chosen one ticked)

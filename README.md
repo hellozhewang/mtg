@@ -871,6 +871,32 @@ and adds the version's patch notes to [tts/CHANGELOG.md](tts/CHANGELOG.md). Comm
 push the changelog afterwards. The PC's address is in the gitignored
 `tts/deploy.local.json` (see `INTERNALS.md`).
 
+`--workshop` also updates the Steam Workshop item through Steam's legacy
+RemoteStorage API. A TTS Workshop item is one BSON file, `WorkshopUpload`
+([scripts/tts_bson.py](scripts/tts_bson.py)), plus its preview. SteamCMD cannot update
+this kind of item ("no workshop depot found"). Instead, the release script stages the
+files, then launches [scripts/tts_workshop.ps1](scripts/tts_workshop.ps1) in the
+owner's logged-in Windows session using a temporary task with ordinary user privileges.
+It uses TTS's `steam_api64.dll` and the running Steam client, keeps the existing
+PowerShell execution policy, waits for Steam's result, and removes the task afterward.
+The title, description and visibility set on Steam are kept.
+
+Steam must be running, signed in and connected to its servers on the PC. A blocking
+PowerShell policy is reported rather than changed. The `workshop_id` comes from the
+local deployment config; optional `steam_dll` and `workshop_dir` override DLL discovery
+and the staging folder. No Steam password or SteamCMD login is needed.
+
+```bash
+python3 scripts/release_tts.py --workshop --notes "what changed"
+python3 scripts/release_tts.py --workshop-only  # upload the current delivered save, no new version
+```
+
+`--workshop-only` reads the current version's save and thumbnail from TTS Saves,
+validates its name, and uploads those exact bytes; it never rebuilds under the same
+version number. Upload results are kept in `.cache/workshop/`. An upload is only
+reported successful after Steam confirms EResult 1 for the requested item without
+an outstanding Workshop agreement. Load the item in TTS to confirm it end to end.
+
 The lower-level build, for experiments:
 
 ```bash

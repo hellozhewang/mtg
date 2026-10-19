@@ -4,7 +4,87 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-19 (Codex): v30 delivered with the substantially deeper radio announcer. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-19 (Codex): v32 uploaded successfully to Workshop item 3822623414 using the programmatic legacy uploader; Steam confirmed EResult 1. See `tts/CHANGELOG.md` for released versions.
+
+## v32 Workshop automation: uploaded successfully
+
+**Goal:** update Workshop item **3822623414** (`workshop_id` in the gitignored
+`tts/deploy.local.json`) programmatically, including v32. The owner authorized uploading
+to this existing item and chose **automatic launch with a temporary task** on 2026-10-19.
+The PC's effective PowerShell policy is already **RemoteSigned**. No execution-policy
+bypass or policy change is needed or used; tasks run with ordinary user privileges.
+
+### Current implementation
+
+- `scripts/tts_bson.py` encodes the save as BSON, including int64 `OwnerSteamID`.
+  Earlier investigation re-encoded the real base Workshop file byte for byte.
+- `scripts/tts_workshop.ps1` uses TTS's own `steam_api64.dll` and the legacy
+  ISteamRemoteStorage API. It waits for `BLoggedOn` before writing the cloud files,
+  uploads `WorkshopUpload` and its preview, commits the update and polls callback 1316.
+  It validates EResult, returned item ID and legal-agreement status, writes its JSON
+  result atomically and shuts down Steam's API.
+- `scripts/release_tts.py --workshop` replaces the failed SteamCMD path. It discovers
+  TTS's DLL, stages and checksums the payload, validates PowerShell syntax, then uses
+  a uniquely named, on-demand **InteractiveToken / LeastPrivilege** task. No password,
+  elevation, persistent trigger, encoded command or execution-policy change is used.
+  It checks Steam's result and removes the task in `finally`; staged files remain for
+  diagnosis. Results are also saved under `.cache/workshop/`.
+- `--workshop-only` uploads the **existing delivered save and thumbnail** for the current
+  version. It does not rebuild from a newer HEAD, deliver new files, increment the
+  version or edit the changelog. The next attempt is:
+
+  ```sh
+  python3 scripts/release_tts.py --workshop-only
+  ```
+
+### Live attempts and resolution
+
+1. SteamCMD `workshop_build_item` failed with **"no workshop depot found"**. TTS's
+   legacy single-file Workshop format needs the RemoteStorage API instead.
+2. `schtasks /Create /XML` rejected UTF-8 task XML as **"unable to switch the encoding"**.
+   Writing UTF-16 XML with its matching declaration and BOM fixed task registration.
+3. The task successfully ran the native Steam API uploader in the logged-in session.
+   Steam returned **EResult 21 (not logged on)** for item 3822623414; no success was claimed.
+4. Added a 60-second callback/connection wait before any cloud writes. The subsequent
+   attempt still reported **Steam client is not connected to Steam servers** and
+   stopped before uploading. Its temporary task was removed.
+
+5. Owner confirmed desktop Steam looked online. Its `connection_log.txt` showed
+   **Session Replaced at 14:28:56**, followed by **not auto reconnecting**. SteamCMD's
+   successful login did not reconnect the desktop client's session.
+6. After the owner closed SteamCMD and restarted desktop Steam, the exact same
+   programmatic command succeeded: **Steam EResult 1**, returned item **3822623414**.
+   The temporary task was removed. Success result:
+   `.cache/workshop/3822623414-201907b61d3a4f5e9552ec49332d98b1-result.json`.
+
+**Released:** v32's existing delivered save and thumbnail were uploaded to item
+3822623414 with its v32 changelog note. No v33 was created; no local save was rebuilt
+or changed. The original table source is still commit `413a5e2d` (recorded by
+`e9e1f8b8`). Only the release helper and its documentation/tests are being changed.
+**Remaining manual check:** load the subscribed Workshop item in TTS and confirm v32
+and its browser refresh behavior. Steam's successful response confirms the upload;
+it does not replace an in-game test.
+
+Validation: **213 unit tests pass**, including failure-result validation, task cleanup,
+unchanged policy, and uploading the exact delivered bytes without rebuilding or
+advancing the version. PowerShell parsed successfully and the uploader ran on Windows.
+
+### Notes for recovery
+
+- `.cache/workshop/3822623414-before.json` is the backup from before the first attempts.
+  Encode it with `tts_bson.encode()` to restore the earlier item if needed.
+- `.cache/workshop/*-result.json` holds each completed live uploader result. Staged PC
+  folders are under the deployment config's `workshop_dir` (default `C:\cactuar-workshop`).
+- EResult **15** means access denied; **21** means Steam isn't logged on/connected.
+- Public `GetPublishedFileDetails` returned **9 (file not found)** before and after
+  the upload, so unauthenticated metadata cannot currently verify this item. The
+  authenticated Steam API confirmed its update. Do not change the target automatically.
+- Claude's earlier approval check rejected a launch including `ExecutionPolicy Bypass`.
+  The owner subsequently chose the temporary task; the implementation respects the
+  existing policy instead of bypassing it.
+- `C:\steamcmd` is left in place; it is no longer used by the release tool.
+- PC address, account and paths stay in `INTERNALS.md` / `tts/deploy.local.json`, never
+  in committed code.
 
 ## v30 release: deeper radio announcer (delivered)
 

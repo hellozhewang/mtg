@@ -8,6 +8,9 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v32 — 2026-10-19 (commit 413a5e2d)
+- Opening the deck browser fetches the list again when it's over 2 minutes old, so new decks and sleeves show without Refresh
+
 ## v31 — 2026-10-19 (commit 0b85e52e)
 - Sleeves menu is a paged grid of thumbnails (8 a page, the chosen one ticked)
 

@@ -130,8 +130,8 @@ class CardBackTests(unittest.TestCase):
         (self.dir / "notes.txt").write_text("not a picture")
         self.assertEqual(ttsdecks.backs(), [
             {"id": "standard", "label": "Standard", "url": ttsdecks.CARD_BACK},
-            {"id": "cactuar", "label": "Cactuar", "file": "backs/cactuar.jpg"},
-            {"id": "zebra_stripes", "label": "Zebra Stripes", "file": "backs/zebra_stripes.png"},
+            {"id": "cactuar", "label": "Cactuar", "file": "backs/cactuar.jpg?v=f8146b6c"},
+            {"id": "zebra_stripes", "label": "Zebra Stripes", "file": "backs/zebra_stripes.png?v=8f8cbb7d"},
         ])
 
     def test_backs_are_published_and_listed(self):
@@ -150,6 +150,12 @@ class CardBackTests(unittest.TestCase):
     def test_no_folder_means_only_the_standard_back(self):
         ttsdecks.BACKS_DIR = self.dir / "missing"
         self.assertEqual([b["id"] for b in ttsdecks.backs()], ["standard"])
+
+    def test_announcer_clips_are_published(self):
+        out = ttsdecks.files([], Path("/site"), None)
+        for name in ("slow-5min.wav", "slow-10min.wav"):
+            self.assertTrue(out[Path("/site/tts/sounds") / name].startswith(b"RIFF"), name)
+        self.assertNotIn(Path("/site/tts/sounds/make_announcer.py"), out)
 
     def test_the_repo_ships_the_cactuar_back(self):
         self.assertTrue((ROOT / "tts" / "backs" / "cactuar.jpg").is_file())

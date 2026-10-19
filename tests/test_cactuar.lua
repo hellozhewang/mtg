@@ -386,7 +386,7 @@ local backs, faces = 0, 0
 for i, o in ipairs(spawned) do
   for url in o.json:gmatch('"BackURL":"([^"]*)"') do
     backs = backs + 1
-    check(url == "test://tts/backs/cactuar.jpg", "every card gets the chosen back (" .. url .. ")")
+    check(url:match("^test://tts/backs/cactuar%.jpg%?v=%x+$") ~= nil, "every card gets the chosen back (" .. url .. ")")
   end
   local standard = o.json:gsub('"BackURL":"[^"]*"', '"BackURL":"https://backs.scryfall.io/large/0/a/0aeebaf5-8c7d-4636-9e82-8c27447861f7.jpg"')
   check(standard == expectedObjects[i + 1], "only BackURL changes in object " .. i)

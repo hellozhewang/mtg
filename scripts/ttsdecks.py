@@ -6,6 +6,7 @@ build_site.py calls `files()` and publishes what it returns under docs/tts/:
     tts/<owner>/<Bracket>/<Deck>.ndjson     one deck, ready to spawn
     tts/cactuar-tile.jpg                    the picture on the table's Cactuar tiles
     tts/backs/<name>.jpg                    card backs a player can pick, from the repo's tts/backs/
+    tts/sounds/<name>.wav                   the slow-turn announcer's clips, from the repo's tts/sounds/
 
 A deck file is one JSON value per line:
 
@@ -31,6 +32,7 @@ separate objects so the table can put each in its own zone.
 """
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path, PurePosixPath
 from urllib.parse import urlsplit
@@ -43,6 +45,9 @@ TILE_IMAGE = Path(__file__).resolve().parent.parent / "tts" / "cactuar-tile.jpg"
 # Adding one needs only a catalog build and a push: the menu lists decks.json's "backs".
 BACKS_DIR = TILE_IMAGE.parent / "backs"
 BACK_TYPES = (".jpg", ".jpeg", ".png")
+# Clips the table plays through Tabletop Simulator's music player (cactuar_turns.lua).
+SOUNDS_DIR = TILE_IMAGE.parent / "sounds"
+SOUND_TYPES = (".wav", ".mp3", ".ogg")
 
 # Scryfall's standard Magic card back.
 CARD_BACK = "https://backs.scryfall.io/large/0/a/0aeebaf5-8c7d-4636-9e82-8c27447861f7.jpg"
@@ -238,11 +243,13 @@ def back_files() -> list[Path]:
 
 def backs() -> list[dict]:
     """The card backs a player can pick: Magic's own first, then tts/backs/ by name.
-    `url` is absolute; `file` is relative to decks.json."""
+    `url` is absolute; `file` is relative to decks.json (with a content hash so TTS
+    fetches updated art instead of serving a stale cached image for the same name)."""
     out = [{"id": "standard", "label": "Standard", "url": CARD_BACK}]
     for p in back_files():
         label = p.stem.replace("-", " ").replace("_", " ").title()
-        out.append({"id": p.stem, "label": label, "file": f"backs/{p.name}"})
+        v = hashlib.sha256(p.read_bytes()).hexdigest()[:8]
+        out.append({"id": p.stem, "label": label, "file": f"backs/{p.name}?v={v}"})
     return out
 
 
@@ -270,6 +277,10 @@ def files(decks: list, out_dir: Path, q) -> dict[Path, str | bytes]:
     out: dict[Path, str | bytes] = {root / TILE_IMAGE.name: TILE_IMAGE.read_bytes()}
     for p in back_files():
         out[root / "backs" / p.name] = p.read_bytes()
+    if SOUNDS_DIR.is_dir():
+        for p in sorted(SOUNDS_DIR.iterdir()):
+            if p.suffix.lower() in SOUND_TYPES:
+                out[root / "sounds" / p.name] = p.read_bytes()
     if (BACKS_DIR / "README.md").is_file():                    # the specs, beside the pictures
         out[root / "backs" / "README.md"] = (BACKS_DIR / "README.md").read_text(encoding="utf-8")
     paths: dict[str, str] = {}

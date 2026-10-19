@@ -4,15 +4,16 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-18 (Claude): v13 fixes the card back menu doing nothing when the deck list has no backs. v12 added the menu (pictures in `tts/backs/`).
+Last updated 2026-10-18 (Claude): everything through v13 is committed and pushed (93748154); Pages serves the card backs.
 
 ## Current status
 
+- **Published 2026-10-18 in 93748154** (all of Codex's v3–v10 work and Claude's v11–v13).
+  Pages serves `decks.json` with 3 backs (standard, cactuar, girly_pop), and TTS's client
+  gets HTTP 200 for the pictures. The running game was switched back to the Pages
+  `CZ.base`. Left to do: upload the v13 save to Workshop item 3822623414 (still v1).
 - **Current build: v13** = v12 plus a guard: when the deck list has no `backs` (Pages
   before the push), the Card back button is disabled and a click is ignored.
-- **The running game currently reads everything from the Mac:** `CZ.base` was set live to
-  `http://192.168.0.100:5588/tts/` so the card backs survive a Refresh. If the Mac or
-  its catalog server is off, that session's browser can't load; reload a save to go back to Pages.
 - v12 = v11 plus a **Card back** menu in the details column. Pick
   Standard or any picture in `tts/backs/` (ships with `cactuar.jpg`); the choice is per
   player and applies to the next deck loaded. **Needs a push to work from the saved
@@ -33,10 +34,8 @@ Last updated 2026-10-18 (Claude): v13 fixes the card back menu doing nothing whe
   We pin printing UUIDs and faces; we do not own that host or freeze its image bytes.
   Our SQLite verification records support conditional requests, not offline availability.
   The full build-time scan passed 4,272 URLs, and its repeat passed 4,272 HTTP 304s.
-- **Publication still pending:** no commit, push or Workshop upload performed during
-  these repairs. Current sessions have the runtime URL repair, so older Pages exports
-  work. The Workshop item's last recorded upload is v1; the owner must upload a newer
-  save for subscribers to get the table/UI changes.
+- **Publication:** committed and pushed in 93748154. The Workshop item still holds v1; the
+  owner must upload a v13 save for subscribers.
 - **Remaining manual checks:** Workshop publication, tile click/size/facing feedback,
   and full live loading across all six occupied seats. Automated placement tests cover
   all six; do not confuse those with six separate live playtests.

@@ -1,0 +1,98 @@
+1 Aloy, Savior of Meridian
+1 Academy Ruins
+1 An Offer You Can't Refuse
+1 Arcane Signet
+1 Archway of Innovation
+1 Auton Soldier
+1 Bala Ged Recovery
+1 Barkchannel Pathway
+1 Basalt Monolith
+1 Beast Within
+1 Blightsteel Colossus
+1 Boseiju, Who Endures
+1 Botanical Sanctum
+1 Breeding Pool
+1 Buried Ruin
+1 Chimil, the Inner Sun
+1 Cityscape Leveler
+1 Command Tower
+1 Counterspell
+1 Cyberdrive Awakener
+1 Cybermen Squadron
+1 Cyclonic Rift
+1 Darksteel Citadel
+1 Darksteel Colossus
+1 Darksteel Forge
+1 Desynchronization
+1 Dreamroot Cascade
+1 Emry, Lurker of the Loch
+1 Etherium Sculptor
+1 Exotic Orchard
+1 Fabricate
+1 Farseek
+1 Fierce Guardianship
+1 Flooded Grove
+1 Forsaken Monument
+1 Foundry Inspector
+1 Garruk's Uprising
+1 Genji Glove
+1 Hedge Maze
+1 Heroic Intervention
+1 Hinterland Harbor
+1 Inventors' Fair
+1 Iron Spider, Stark Upgrade
+1 Kappa Cannoneer
+1 Karn, Legacy Reforged
+1 Krang, Utrom Warlord
+1 Lightning Greaves
+1 Mana Drain
+1 Master Transmuter
+1 Master of Etherium
+1 Metalwork Colossus
+1 Misty Rainforest
+1 Mox Opal
+1 Mycosynth Golem
+1 Mystic Forge
+1 Mystic Remora
+1 Nature's Lore
+1 Ornithopter of Paradise
+1 Otawara, Soaring City
+1 Padeem, Consul of Innovation
+1 Phyrexian Metamorph
+1 Portal to Phyrexia
+1 Prismatic Vista
+1 Rejuvenating Springs
+1 Roaming Throne
+1 Seat of the Synod
+1 Sensei's Divining Top
+1 Shuri, Wakandan Inventor
+1 Simulacrum Synthesizer
+1 Sink into Stupor
+1 Sol Ring
+1 Spire of Industry
+1 Swiftfoot Boots
+1 Talisman of Curiosity
+1 Tanglepool Bridge
+1 Tezzeret, Cruel Captain
+1 The Great Henge
+1 The One Ring
+1 Thopter Spy Network
+1 Thought Monitor
+1 Three Visits
+1 Traxos, Scourge of Kroog
+1 Tree of Tales
+1 Triplicate Titan
+1 Tropical Island
+1 Ultron, Artificial Malevolence
+1 Unwinding Clock
+1 Urza's Saga
+1 Urza, Lord High Artificer
+1 Walking Ballista
+1 Waterlogged Grove
+1 Whir of Invention
+1 Willowrush Verge
+1 Wurmcoil Engine
+1 Yavimaya Coast
+1 Yavimaya, Cradle of Growth
+2 Forest
+2 Island

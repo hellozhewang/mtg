@@ -102,6 +102,52 @@ class TableBuild(unittest.TestCase):
         self.assertEqual([o.get("Transform") for o in again["ObjectStates"]],
                          [o.get("Transform") for o in table["ObjectStates"]])
 
+    def test_a_second_clock_start_never_leaves_a_loop_running(self):
+        # A stand-in shaped like the base Timer's onPlayerTurn (CRLF, as the base is).
+        timer = "\r\n".join([
+            "owner='Blue'", "turnN=0", "function updateSave() end", "function updateButtons(s) end",
+            "self={editButton=function() end}",
+            "function onPlayerTurn(player)",
+            "  if player~=nil and player.color==owner then",
+            "    tdiff=0",
+            "    timerID=Wait.time(function() end,1,5999)",
+            "    turnN=turnN+1",
+            "  else",
+            "    if timerID~=nil then",
+            "      pcall(function() Wait.stop(timerID) end)",
+            "    end",
+            "    updateButtons('     ')",
+            "  end",
+            "end", ""])
+        harness = """
+local live, n = {}, 0
+Wait = {time = function() n = n + 1; live[n] = true; return n end,
+        stop = function(id) live[id] = nil end}
+dofile(arg[1])
+onPlayerTurn({color = "Blue"}); onPlayerTurn({color = "Blue"})   -- started twice
+onPlayerTurn({color = "Green"})                                  -- the turn passes
+local left = 0
+for _ in pairs(live) do left = left + 1 end
+print(left, timerID == nil)
+"""
+        import shutil, subprocess, tempfile
+        if not shutil.which("lua"):
+            self.skipTest("lua is not installed")
+        with tempfile.TemporaryDirectory() as tmp:
+            run = Path(tmp) / "run.lua"
+            run.write_text(harness)
+            results = []
+            for script in (timer, build_tts_table.fix_timer_script(timer)):
+                (Path(tmp) / "timer.lua").write_bytes(script.encode())
+                out = subprocess.run(["lua", str(run), str(Path(tmp) / "timer.lua")],
+                                     capture_output=True, text=True, timeout=20)
+                self.assertEqual(out.returncode, 0, out.stderr)
+                results.append(out.stdout.split())
+        self.assertEqual(results[0], ["1", "false"])     # the bug: one loop keeps counting
+        self.assertEqual(results[1], ["0", "true"])      # fixed: none, and stopped reads as stopped
+        fixed = build_tts_table.fix_timer_script(timer)
+        self.assertEqual(build_tts_table.fix_timer_script(fixed), fixed)
+
     def test_tile_guids_are_new(self):
         taken = build_tts_table._guids(BASE["ObjectStates"])
         self.assertIn("bbbbbb", taken)                              # nested objects count

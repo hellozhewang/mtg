@@ -127,6 +127,28 @@ def tiles(base_url: str, taken: set[str]) -> list[dict]:
     return out
 
 
+def fix_timer_script(lua: str) -> str:
+    """The base turn clock keeps one `timerID` and never stops a running loop before
+    starting another. A second start for the same seat (a turn event plus our own
+    start, or a solo player's consecutive turns) orphaned the first loop, which went
+    on counting through everyone else's turns. Stop any running loop first, and clear
+    the id once stopped, so `timerID ~= nil` means "running"."""
+    nl = "\r\n" if "\r\n" in lua else "\n"
+    stop = nl.join(["    if timerID~=nil then",
+                    "      pcall(function() Wait.stop(timerID) end)",
+                    "    end",
+                    "    updateButtons('     ')"])
+    start = nl.join(["    tdiff=0", "    timerID=Wait.time("])
+    if not lua.strip() or "-- Cactuar: one loop per clock" in lua:
+        return lua                                              # no script, or already fixed
+    if lua.count(stop) != 1 or lua.count(start) != 1:
+        sys.exit("the base table's Timer script changed: review fix_timer_script()")
+    lua = lua.replace(stop, stop.replace("    end", "      timerID=nil" + nl + "    end", 1))
+    return lua.replace(start, nl.join([
+        "    -- Cactuar: one loop per clock. A second start replaces the running loop.",
+        "    if timerID~=nil then pcall(function() Wait.stop(timerID) end) end", start]))
+
+
 def _make_room_under_timers(objects: list) -> list:
     out = []
     for o in objects:
@@ -136,6 +158,7 @@ def _make_room_under_timers(objects: list) -> list:
             t["posZ"] = TIMER_Z if t.get("posZ", 0) > 0 else -TIMER_Z   # absolute: rebuilds agree
             o["Transform"] = t
             o["LuaScriptState"] = "0"      # turn 0: cactuar_turns.lua reads >0 as a game in progress
+            o["LuaScript"] = fix_timer_script(o.get("LuaScript") or "")
         out.append(o)
     return out
 

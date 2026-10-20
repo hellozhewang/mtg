@@ -251,6 +251,24 @@ local function cztDieColor(value)
   return nil
 end
 
+-- Turn 1 on `color`'s table clock, a frame from now: by then the clock's own
+-- onPlayerTurn has run if TTS fired one. Start the clock only if it isn't running
+-- (timerID is cleared when it stops; see fix_timer_script in build_tts_table.py), so
+-- it never gets two loops, and the count is 1 however many starts there were.
+local function cztSettleTurnOne(color)
+  Wait.frames(function()
+    local t = CZT.timers[color]
+    if not t then return end
+    pcall(function()
+      if t.obj.getVar("timerID") == nil then t.obj.call("onPlayerTurn", Player[color]) end
+      t.obj.setVar("turnN", 1)
+      t.obj.call("updateSave")
+      t.obj.editButton({index = 5, label = "turn"})
+      t.obj.editButton({index = 6, width = 400, height = 400, label = 1})
+    end)
+  end, 1)
+end
+
 -- Turn 1: zero every total and the table's turn counters, and give the turn to
 -- the player the die picked. Their clock and total start now.
 function cztStartGame(color)
@@ -265,13 +283,13 @@ function cztStartGame(color)
   CZT.started = true
   if not Turns.enable then Turns.enable = true end
   if Turns.turn_color == color then
-    -- Already their turn, so no turn event fires: start both clocks here.
+    -- Already their turn: maybe no turn event fires (switching turns on may fire
+    -- one). Start our total here and settle the table clock a frame later.
     cztSwitch(color)
-    local t = CZT.timers[color]
-    if t then pcall(function() t.obj.call("onPlayerTurn", Player[color]) end) end
   else
     Turns.turn_color = color             -- fires onPlayerTurn: turn 1 on both clocks
   end
+  cztSettleTurnOne(color)
   cztShowAll()
   cztPersist()
   local who = color
@@ -292,17 +310,7 @@ function cztFirstTurn(color)
     end)
   end
   cztSwitch(color)
-  Wait.frames(function()
-    local t = CZT.timers[color]
-    if not t then return end
-    pcall(function()
-      if t.obj.getVar("timerID") == nil then t.obj.call("onPlayerTurn", Player[color]) end
-      t.obj.setVar("turnN", 1)
-      t.obj.call("updateSave")
-      t.obj.editButton({index = 5, label = "turn"})
-      t.obj.editButton({index = 6, width = 400, height = 400, label = 1})
-    end)
-  end, 1)
+  cztSettleTurnOne(color)
   cztShowAll()
   cztPersist()
   local who = color

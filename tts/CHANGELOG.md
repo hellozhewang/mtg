@@ -8,6 +8,10 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v33 — 2026-10-20 (commit b8c5b02b)
+- Turn clocks no longer keep running after a double start (a seat's clock could count through other players' turns)
+- Workshop item 3822623414 updated.
+
 ## v32 — 2026-10-19 (commit 413a5e2d)
 - Opening the deck browser fetches the list again when it's over 2 minutes old, so new decks and sleeves show without Refresh
 - Uploaded programmatically to Workshop item 3822623414; Steam confirmed success (EResult 1).

@@ -1,0 +1,80 @@
+Vaevictis Asmadi's attack trigger is not a chaotic coin flip. A new pilot assumes you are giving opponents free permanents at random, but this deck rigs the odds completely. You sacrifice cheap tokens, utility elves, or expendable fodder while targeting opponents' commanders, key combo pieces, or essential lands. More importantly, topdeck manipulation ensures you always know and control what you flip: use Sylvan Library, Scroll Rack, Cream of the Crop, or Vampiric Tutor before combat so you cheat an Eldrazi, Dragon, or bomb onto the battlefield every swing, while Lantern of Insight lets you inspect opposing topdecks before choosing targets.
+Bracket 3: the Game Changer cap is three, filled by Demonic Tutor, Tergrid, God of Fright, and Vampiric Tutor. No mass land denial. Savage Ventmaw plus Aggravated Assault forms an infinite combat loop that waits until turn 6 under house rules.
+
+# The engine: Vaevictis and topdeck manipulation
+Vaevictis Asmadi, the Dire :: whenever it attacks, each player sacrifices a chosen permanent and reveals their top card, putting it onto the battlefield if it is a permanent. You choose all targets, so destroy their best engines while sacrificing your own fodder.
+Lantern of Insight :: reveals the top card of every player's library at all times. You know exactly what each opponent will reveal before selecting their sacrificed permanent, and you can tap and sacrifice Lantern to force an opponent to shuffle if they reveal a dangerous bomb.
+Scroll Rack :: pay {1} and tap to exchange cards in your hand with the top of your library. Tuck high-cost behemoths like It That Betrays, Portal to Phyrexia, or Terror of the Peaks on top right before declaring attackers so Vaevictis cheats them into play.
+Sensei's Divining Top :: inspects and reorders the top three cards for {1}, guaranteeing you flip a permanent. If needed, tap it to draw a card and put Top on top of your library so Vaevictis immediately puts Top back onto the battlefield.
+Sylvan Library :: draws two extra cards each upkeep and lets you choose cards from hand to place on top of your library, seamlessly stacking your next Vaevictis flip.
+Cream of the Crop :: whenever a creature enters, look at the top X cards where X is its power. Vaevictis entering digs six cards deep; flipping an 8/8 or 11/11 digs eleven cards deep, permanently locking in consecutive powerhouse hits.
+Mirri's Guile :: reorders the top three cards on your upkeep for zero mana.
+Hua Tuo, Honored Physician :: taps during your turn before attackers are declared to put any dead creature from your graveyard on top of your library, letting Vaevictis resurrect it directly into combat.
+Haunted Crossroads :: pay {B} to put a creature card from your graveyard on top of your library at instant speed.
+Volrath's Stronghold :: land that pays {1}{B} and taps to return any creature from graveyard to top of library.
+Mortuary Mire :: enters tapped and puts target creature card from your graveyard on top of your library.
+
+# Stealing and sacrifice payoffs
+Tergrid, God of Fright :: whenever an opponent sacrifices a nontoken permanent, put it onto the battlefield under your control. Every attack with Vaevictis steals up to three opposing permanents while you flip another from your own deck.
+It That Betrays :: an 11/11 annihilator Eldrazi that steals every nontoken permanent an opponent sacrifices. Flipping this into play alongside Vaevictis's attack immediately takes over the table.
+Mayhem Devil :: deals 1 damage to any target whenever ANY player sacrifices a permanent. Four permanents sacrificed each attack triggers four pings to burn life totals or clear small creatures.
+Mazirek, Kraul Death Priest :: puts a +1/+1 counter on all your creatures whenever any player sacrifices a permanent, pumping your entire board by four counters on every swing.
+Korvold, Fae-Cursed King :: draws a card and gains +1/+1 whenever you sacrifice a permanent to Vaevictis, fetchlands, or Treasures.
+Grave Betrayal :: steals every opposing creature that dies, returning them to your side with +1/+1 counters at each end step.
+Riveteers Ascendancy :: whenever you sacrifice a creature, return a creature with lesser mana value from your graveyard to the battlefield.
+
+# Infinite combat loop and finishers
+Aggravated Assault + Savage Ventmaw :: Savage Ventmaw attacks and adds {R}{R}{R}{G}{G}{G}; in the postcombat main phase, pay {3}{R}{R} to activate Aggravated Assault, untapping all creatures for infinite combat phases, infinite green mana, and infinite Vaevictis sacrifice triggers
+Aggravated Assault + Old Gnawbone :: connecting with creatures creates massive Treasure pools that fund infinite activations of Aggravated Assault
+Wulfgar of Icewind Dale :: doubles all attack triggers, causing Vaevictis to force two rounds of sacrifices and two topdeck flips per attack.
+Roaming Throne :: name Dragon or Elder. Doubles Vaevictis's attack trigger and ward {2} makes it difficult to remove.
+Moraug, Fury of Akoum :: extra combats on landfall let Vaevictis attack multiple times per turn.
+Rhythm of the Wild :: makes creature spells uncounterable and gives entering creatures Riot for immediate haste.
+Anger :: gives all creatures haste from your graveyard while you control a Mountain.
+Arena of Glory :: land that taps to grant haste to two creatures.
+Under Bracket 3 rules, the Savage Ventmaw and Aggravated Assault combo must wait until turn 6 or later. Use turns 1 through 5 to deploy mana dorks, cast Vaevictis, and establish board control.
+
+# The giant permanents to flip
+Portal to Phyrexia :: nine-mana artifact that forces each opponent to sacrifice three creatures on entry and reanimates a creature from any graveyard every upkeep.
+Avacyn, Angel of Horror :: an 8/8 flying deathtouch Angel that returns any nontoken creature you control that died to the battlefield at the next end step, negating the cost of your own sacrifices.
+Terror of the Peaks :: deals damage equal to power to any target whenever another creature enters, turning high-power topdeck flips into direct face damage.
+Etali, Primal Conqueror :: enters and casts a free spell from the top of each player's library, often chaining multiple extra spells in one turn.
+Etali, Primal Storm :: attacks and casts the top nonland card of each player's library for free.
+Sheoldred, Whispering One :: forces opponents to sacrifice creatures on their upkeeps while reanimating your creatures every upkeep.
+Old Gnawbone :: creates a Treasure for every point of combat damage dealt to opponents.
+Ziatora, the Incinerator :: flings a creature for direct damage on end step and creates three Treasures.
+Doors of Durin :: attacks and reveals the top two cards, cheating an attacking creature with trample into play.
+Lurking Predators :: reveals the top card whenever an opponent casts a spell, putting any creature revealed directly onto the battlefield.
+The Great Henge :: enters cheaply off Vaevictis's 6 power, provides two green mana, life gain, and card draw on every creature entry.
+
+# Tutors and what to fetch
+Demonic Tutor -> Aggravated Assault :: when Savage Ventmaw or Old Gnawbone is on board to assemble the infinite combat finish
+Demonic Tutor -> Tergrid, God of Fright :: when Vaevictis is ready to attack to steal all sacrificed permanents
+Demonic Tutor -> Portal to Phyrexia :: when the board needs an immediate reset against opposing creature swarms
+Vampiric Tutor -> It That Betrays :: cast before combat to put It That Betrays on top of your library for Vaevictis to flip into play immediately
+Vampiric Tutor -> Portal to Phyrexia :: instant-speed placement on top to cheat nine mana worth of removal and recursion
+Vampiric Tutor -> Tergrid, God of Fright :: ensures Tergrid enters before attackers finish resolving
+Varragoth, Bloodsky Sire -> Savage Ventmaw :: boast ability searches any card to the top of your library when Varragoth attacks
+
+# Fodder, ramp and recursion
+Awakening Zone :: creates an Eldrazi Spawn token each upkeep for free ramp or sacrifice fodder.
+Beledros Witherbloom :: creates Pest tokens on each upkeep to feed Vaevictis and can untap all lands for ten life.
+Black Market Connections :: yields Shapeshifters, Treasures, and extra card draw every precombat main phase.
+Mahadi, Emporium Master :: creates Treasures on end step for each creature that died that turn.
+Wood Elves :: fetches a Forest onto the battlefield untapped and leaves behind a 1/1 body to sacrifice.
+Sakura-Tribe Elder :: ramps a basic land and dies at will.
+Birds of Paradise :: provides any color mana and serves as an early dork or late-game sacrifice.
+Delighted Halfling :: taps for colorless or uncounterable mana for legendary spells like Vaevictis.
+Ignoble Hierarch :: taps for Jund colors and gives exalted buffs when Vaevictis attacks alone.
+Phyrexian Tower :: land that sacrifices fodder for {B}{B} to accelerate out Vaevictis on turn 4.
+High Market :: land sacrifice outlet to trigger death triggers or preserve life total.
+Eternal Witness :: returns any card from graveyard to hand while providing a creature body to sacrifice.
+Bala Ged Recovery :: MDFC that recurs any key card from graveyard, or plays as a tapped green land.
+Fell the Profane :: MDFC that provides instant removal for creatures or planeswalkers, or plays as an untapped land.
+
+# Opening hand and sequencing
+A solid opening hand contains two to three lands, early ramp (Sol Ring, Birds of Paradise, Ignoble Hierarch, Nature's Lore, or Farseek), and a topdeck setup piece (Sensei's Divining Top, Scroll Rack, Sylvan Library, or Cream of the Crop).
+Turn 1-2: Establish mana acceleration and color fixing across Black, Red, and Green. Deploy early dorks or topdeck manipulation artifacts.
+Turn 3-4: Deploy a haste enabler (Rhythm of the Wild, Arena of Glory, Greaves) or sacrifice engine (Black Market Connections, Awakening Zone). Cast Vaevictis Asmadi on turn 4 or 5 with haste.
+Turn 5+: Declare attacks with Vaevictis. Sacrifice an expendable dork or token and target the most threatening permanent each opponent controls. Use Top, Scroll Rack, or Vampiric Tutor before the trigger resolves to flip a massive bomb into play.
+Turn 6+: If opponents stabilize or mount a defense, tutor and assemble Savage Ventmaw + Aggravated Assault to take infinite combats, sacrifice all opposing permanents, and close out the table.

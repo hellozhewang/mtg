@@ -8,6 +8,12 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v37 — 2026-10-20 (commit 72be2e47)
+- Inspect now matches the native Search layout with a narrow dark window, one search field, and four continuously scrolling columns.
+- Inspect reads live decks and bags alphabetically without revealing positions or changing their order; larger containers expand the view automatically.
+- Fixed missing cards from imports with empty GUIDs and blank WebP thumbnails; anonymous objects support safe preview, with retrieval disabled.
+- Workshop item 3822623414 updated.
+
 ## v36 — 2026-10-20 (commit 53bb0a1f)
 - Renamed the alphabetical deck browser to Inspect in the right-click menu and window title.
 - Workshop item 3822623414 updated.

@@ -4,9 +4,9 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-20 (Codex): v37 Inspect revision in progress; matching the native Search layout within Workshop Lua. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-20 (Codex): v37 delivered and uploaded; Inspect now matches the narrow scrolling Search layout within Workshop Lua. See `tts/CHANGELOG.md` for released versions.
 
-## v37: scrolling Inspect (release in progress)
+## v37: scrolling Inspect (released)
 
 Owner clarified that Inspect should match the native Search screenshot: a narrow dark
 window with the container name, one live search field, and four columns of continuously
@@ -58,7 +58,17 @@ four clipped scrolling columns, real card faces, soft-white labels and the dark
 layout. Live filtering for `swan` produces one match and a byte-for-byte comparison
 of the physical deck metadata stays unchanged. All **41 pre-existing UI assets**
 are preserved, alongside 99 named faces. The temporary preview was closed after
-validation; no physical cards were moved. Workshop delivery details follow below.
+validation; no physical cards were moved. Combined Global Lua from the real table
+and complete shared XML parse successfully.
+
+Released from `72be2e47`: **MTG 6 player Cactuar Ver_v37** and its thumbnail delivered
+to Saves with matching checksums; v36's canonical save and thumbnail removed.
+Workshop item **3822623414** updated with **Steam EResult 1**; temporary upload task
+removed. Result: `.cache/workshop/3822623414-e0e4900b44fc49f28d1ac85d3044f143-result.json`.
+The delivered save was read back, its six private scrolling panels and combined Lua
+validated, and its encoded Workshop payload checked against the staged upload.
+WIP and changelog copied to the PC Desktop. Load v37 for the persistent revision;
+the running game's physical objects were not replaced or reordered.
 
 ## v36: Inspect naming (released)
 
@@ -835,6 +845,10 @@ investigation and evidence; their older “pending” notes describe that point 
 
 | Issue / symptom | Cause and resolution | Verification / remaining work |
 |---|---|---|
+| Inspect looked unlike native Search | v35/v36 used a wide, six-column paged gallery. v37 replaces it with a narrow dark four-column scrolling view and a single live search field, reading actual deck/bag contents. | Live screenshot and 99-card Yuna view checked. Exact native-menu placement/window reuse is unavailable; owner chose Workshop compatibility. |
+| Inspect showed no cards in an imported deck | All 99 contained GUIDs in the live Yuna deck were empty; the earlier code skipped them. v37 uses serialized metadata and stable preview identities without taking cards out or exposing positions. | All 99 display A–Z, including duplicates. Entries without physical GUIDs are preview-only; unsafe retrieval callbacks are rejected. |
+| Inspect WebP thumbnails were white boxes | Direct UI URL decoding did not display the cache's WebP; registering the same URL as a named custom asset did. v37 merges named faces while preserving existing assets. | Real card faces verified in the running game; all 41 previous UI assets retained. Asset sets stay bounded to open views on registration. |
+| Inspect scrolling area overflowed as a white rectangle | ScrollView's implicit sizing did not fill its intended parent. v37 explicitly sizes it to 100% of the viewport and anchors the header/search/count. | Full-window capture confirms clipping and placement; large-container pool growth and asynchronous close privacy covered by the harness. |
 | Refresh appeared to load only 54 decks | Bracket 3 + Aggro & Voltron filters matched 54 of 149; refresh retained those filters. Reset clears them; v7 shows filtered and total counts together. | Complete 149-entry index read; filter/count regression checks pass. |
 | Blank deck rows and button labels in v1 | `UI.setValue` does not label a Button. Use `UI.setAttribute(id, "text", ...)`. | Browser harness rejects `setValue` on Buttons; rows confirmed in game. |
 | “Load image failed unsupported format: UNKNOWN” | Direct Scryfall card-image URLs return HTTP 400 JSON (`generic_user_agent`) to UnityPlayer. GitHub delivered valid deck data; the later image requests failed. Removing query strings does not fix this. Exporter and runtime repair use the importer's WebP cache with the same printing UUID and face. | Failing UUIDs and DFC backs served HTTP 200 images to UnityPlayer; the full build scan passed. Standard `backs.scryfall.io` card back also verified separately. |

@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): live v42 check caught commander sizing and blank-image issues; fixes are being prepared as a separate local test build. Owner says prepare the build and upload later: **hold further Workshop uploads**. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-21 (Codex): live v42 check caught commander sizing and blank-image issues; fixes are delivered as a separate local test build. Owner says prepare the build and upload later: **hold further Workshop uploads**. See `tts/CHANGELOG.md` for released versions.
 
 ## Commander layout follow-up (local test build; upload on hold)
 
@@ -31,8 +31,19 @@ mouse-wheel/scrollbar probes did not move the view, so actual scrolling and the 
 paragraph still need an owner mouse check. No physical deck was loaded or reordered.
 
 Regression checks cover delayed painting, closed windows, UI reloads, seat changes
-and stale sprite retries. The existing browser, Inspect, timer and table-build checks
-also pass. Delivery details will be added after the local test save is copied.
+and stale sprite retries: **33 preview checks** pass. The existing browser, Inspect,
+timer and all **12 table-build tests** also pass.
+
+Delivered **MTG 6 player Cactuar - Commander Guide Preview** JSON and PNG to the
+PC's TTS Saves folder, with matching SHA-256 checks. Built from local committed
+source `e8a64390`; combined Global Lua compiles, XML parses, and all six fixed panels
+and both v42 audio hashes are verified. The canonical v42 save remains available.
+Save SHA-256: `5d1ea2f6f3538cac47bdef03e8c52e1fb625a60ecf4baffae5e4f1a02d29ff18`.
+Manifest: `.cache/commander-live/build.json`; local artifacts:
+`.cache/commander-layout-jmj65_il/`. No new Workshop upload or version increment.
+The running browser has the layout/sprite fixes for immediate viewing; load the
+separate preview save for the persistent build. Source/docs commits remain local
+pending the owner's release decision.
 
 ## v42: commander preview, guide and updated slow-turn audio (released)
 

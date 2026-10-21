@@ -5,15 +5,43 @@ local function check(condition, message)
   if not condition then failures = failures + 1; print("FAIL: " .. message) end
 end
 local attrs = {}
+local file = assert(io.open("tts/cactuar_search.xml")); local template = file:read("*a"); file:close()
+local cell = assert(template:match("<!%-%- @CARD@ %-%->\n(.*)"))
+local xml = '<Panel id="unrelated" text="A &amp; B"/><GridLayout id="czs_grid_White"></GridLayout>'
+local rebuilds, assetLoads = 0, 0
+local assets = {{name = "base", url = "https://example.test/base.png"}}
+local function imageURL(id)
+  local name = (attrs[id] or {}).image
+  for _, asset in ipairs(assets) do if asset.name == name then return asset.url end end
+  return ""
+end
+local function loadInspect()
+  local f = assert(io.open("tts/cactuar_search.lua")); local source = f:read("*a"); f:close()
+  source = source:gsub("@INSPECT_CELL@", function() return cell end)
+  assert(load(source, "cactuar_search.lua"))()
+end
 UI = {
+  getXml = function() return xml end,
+  getCustomAssets = function() return assets end,
+  setCustomAssets = function(value)
+    check(value[1].name == "base", "registering Inspect faces preserves the base table's assets")
+    assets, assetLoads = value, assetLoads + 1
+  end,
+  setXml = function(value, assets)
+    check(assets == nil, "expanding the grid preserves the shared custom assets")
+    xml, rebuilds = value, rebuilds + 1
+  end,
   setAttribute = function(id, key, value)
     attrs[id] = attrs[id] or {}; attrs[id][key] = value
   end,
   getAttribute = function(id, key) return (attrs[id] or {})[key] end,
 }
-local ticks, nextTick = {}, 0
+local ticks, nextTick, conditions = {}, 0, {}
 Wait = {
   frames = function(fn) fn() end,
+  condition = function(fn, condition)
+    if condition() then fn() else conditions[#conditions + 1] = fn end
+  end,
   time = function(fn) nextTick = nextTick + 1; ticks[nextTick] = fn; return nextTick end,
   stop = function(id) ticks[id] = nil end,
 }
@@ -25,11 +53,15 @@ for _, c in ipairs(CZ.seats) do
   end}
 end
 local taken, dealt, objects = {}, {}, {}
+function Vector(x, y, z) return setmetatable({x = x, y = y, z = z}, {
+  __add = function(a, b) return Vector(a.x + b.x, a.y + b.y, a.z + b.z) end}) end
 function getObjectFromGUID(guid) return objects[guid] end
 function getAllObjects() local out = {}; for _, obj in pairs(objects) do out[#out + 1] = obj end; return out end
 local function deck(guid, contents)
   local obj = {type = "Deck", menus = {"Existing item"}, contents = contents}
   obj.getGUID = function() return guid end
+  obj.getName = function() return "Live " .. guid end
+  obj.getPosition = function() return Vector(10, 1, 20) end
   obj.getObjects = function() return obj.contents end -- deliberately returns the actual array
   obj.addContextMenuItem = function(label, callback) obj.menus[#obj.menus + 1] = label; obj.open = callback end
   obj.getData = function()
@@ -67,7 +99,7 @@ local a = deck("deck-a", {
   {guid = "p", name = "100% [Fun]", index = 4},
 })
 objects.notDeck = {type = "Card"}
-dofile("tts/cactuar_search.lua")
+loadInspect()
 local function tick() ticks[CZS.ticker]() end
 check(#a.menus == 2 and a.menus[1] == "Existing item" and a.menus[2] == "Inspect", "existing menus survive; Inspect attached")
 onObjectSpawn(a)
@@ -80,16 +112,17 @@ check(s.cards[1].name == "100% [Fun]" and s.cards[2].name == "Alpha" and s.cards
 check(s.cards[3].guid == "b1" and s.cards[4].guid == "b2", "equal names break ties by GUID, not library index")
 check(a.contents[1].guid == "z" and a.contents[5].guid == "p" and #taken == 0, "opening doesn't change order or take any card")
 for _, card in ipairs(s.cards) do check(card.index == nil, "no library indexes retained in UI metadata") end
-check(attrs.czs_image_1_White.image == "https://example.test/card.jpg", "single-card textures can be previewed")
+check(imageURL("czs_image_1_White") == "https://example.test/card.jpg", "single-card textures can be previewed")
 czsSearch(white, "BETA", "czs_query_White")
 check(#s.shown == 2 and s.shown[1] == "b1", "live, case-insensitive name filter")
+check(assetLoads == 1, "typing does not reload shared UI assets")
 czsSearch(white, "% [", "czs_query_White")
 check(#s.shown == 1 and s.shown[1] == "p", "Lua pattern characters are literal search text")
 czsSearch(white, "nothing", "czs_query_White")
 check(attrs.czs_empty_White.active == "True" and #s.shown == 0, "no matches has an empty state")
 check(attrs.czs_image_1_White.image == "" and attrs.czs_name_1_White.text == "", "stale pictures and names are cleared")
 czsClear(white)
-check(s.query == "" and s.page == 1, "clear restores all cards and page one")
+check(s.query == "" and #s.shown == 5, "clear restores all objects")
 -- A shuffle reorders only the real deck, never the alphabetical display.
 a.contents[1], a.contents[3] = a.contents[3], a.contents[1]
 tick()
@@ -114,23 +147,38 @@ for i, card in ipairs(a.contents) do if card.guid == "z" then table.remove(a.con
 local old = #taken
 czsTake(red)
 check(#taken == old and CZS.state.Red.selected == nil, "a removed selected GUID can't turn into a different draw")
--- Paging clamps after a shrinking deck and resets after filtering.
+-- Every entry is in one scrolling view; larger containers expand the pool.
 local many = {}
-for i = 1, 28 do many[#many + 1] = {guid = string.format("g%03d", i), name = string.format("Card %02d", i), index = 28 - i} end
+for i = 1, 257 do many[#many + 1] = {guid = string.format("g%03d", i), name = string.format("Card %03d", i), index = 257 - i} end
 local big = deck("big", many)
 onObjectSpawn(big); big.open("White"); s = CZS.state.White
-czsPage(white, "next"); czsPage(white, "next")
-check(s.page == 3 and #s.shown == 4, "gallery pages through the full deck")
-local lateGuid = s.shown[1]
-czsPage(white, "prev")
-czsPick(white, lateGuid, "czs_card_1_White")
-check(s.selected == nil, "a late callback from another page cannot select the new slot occupant")
-czsPage(white, "next")
+check(#s.shown == 257 and s.shown[257] == "g257", "the scrolling view includes every object beyond the initial cell pool")
+check(CZS.capacity.White == 320 and rebuilds == 1, "a large container grows the pool once instead of truncating")
+check(#assets == 2, "Inspect assets are bounded to open views instead of accumulating past containers")
+check(xml:find('id="unrelated" text="A &amp; B"', 1, true) ~= nil, "pool expansion preserves unrelated XML and entity escaping")
+check(xml:find('id="czs_card_320_White"', 1, true) ~= nil, "new cells come from the build's shared template")
+check(attrs.czs_title_White.text == "Live big", "window title uses the live container name")
+local lateGuid = s.shown[257]
+czsSearch(white, "Card 001")
+czsPick(white, lateGuid, "czs_card_257_White")
+check(s.selected == nil, "a late callback from a filtered-out object cannot select a new occupant")
+czsSearch(white, "")
 for i = #many, 8, -1 do table.remove(many, i) end
 tick()
-check(s.page == 1 and #s.shown == 7, "drawing cards clamps a now-empty final page")
-czsSearch(white, "Card 0")
-check(s.page == 1, "search resets the page")
+check(#s.shown == 7 and attrs.czs_card_257_White.active == "False", "membership refresh hides removed objects throughout the scrolling view")
+czsSearch(white, "Card 00")
+check(#s.shown == 7 and rebuilds == 1, "typing filters the entire view without rebuilding the shared UI")
+-- Closing/changing seats while Global UI is rebuilding must not reopen a stale
+-- private panel when the engine finishes loading the new tree.
+local huge = {}
+for i = 1, 400 do huge[i] = {guid = "h" .. i, name = "Object " .. i} end
+local delayed = deck("delayed", huge); onObjectSpawn(delayed)
+UI.loading = true; delayed.open("White")
+check(CZS.rebuilding and #conditions == 1, "pool expansion waits for asynchronous UI loading")
+czsClose(white)
+UI.loading = false; conditions[1](); conditions = {}
+check(CZS.state.White == nil and attrs.czs_panel_White.active == "False", "a closed panel stays private and closed after a rebuild")
+big.open("White")
 -- Atlas imports still list and retrieve exact cards, without an incorrect sheet preview.
 big.getData = function() return {ContainedObjects = {{GUID = "g001", CardID = 100}},
   CustomDeck = {["1"] = {FaceURL = "https://example.test/sheet.jpg", NumWidth = 10, NumHeight = 7}}} end
@@ -150,14 +198,49 @@ accented.getData = function() return {ContainedObjects = {{GUID = "e", CardID = 
   CustomDeck = {["1"] = {NumWidth = 1, NumHeight = 1,
   FaceURL = "https://cards.scryfall.io/large/front/a/b/card.jpg?123"}}}}} end
 czsRefreshClick(white)
-check(attrs.czs_image_1_White.image == "https://img.klrmngr.com/display/front/a/b/card.webp", "old Scryfall image URLs use the existing TTS-compatible image host")
+check(imageURL("czs_image_1_White") == "https://cards.scryfall.io/large/front/a/b/card.jpg?123", "Inspect uses the contained object's actual image without catalog-specific rewrites")
+local bag = deck("bag", {{guid = "blue", name = "Blue marker"}, {guid = "amber", name = "Amber marker"}})
+bag.type = "Bag"
+bag.getData = function() return {ContainedObjects = {
+  {GUID = "blue", Name = "Custom_Token", CustomImage = {ImageURL = "https://example.test/blue.png"}},
+  {GUID = "amber", Name = "Custom_Tile", CustomImage = {ImageURL = "https://example.test/amber.png"}},
+}} end
+onObjectSpawn(bag); bag.open("White")
+check(CZS.state.White.cards[1].guid == "amber" and CZS.state.White.cards[2].guid == "blue", "a non-card bag is inspected alphabetically without a deck catalog")
+check(imageURL("czs_image_1_White") == "https://example.test/amber.png", "non-card objects use their contained image data")
+check(bag.contents[1].guid == "blue" and bag.contents[2].guid == "amber", "inspecting a bag preserves its actual order too")
+czsPick(white, "amber", "czs_card_1_White")
+local oldDeals = #dealt
+czsTake(white)
+check(taken[#taken].guid == "amber" and taken[#taken].position.x == 13 and #dealt == oldDeals, "a bag object is taken next to the bag, never dealt as a card")
+-- Real imports can have empty GUIDs on every contained card. Preview those
+-- without fabricating physical IDs, changing the deck, or exposing positions.
+local anonymous = deck("anonymous", {{guid = "", name = "Zulu"}, {guid = "", name = "Alpha"}, {guid = "", name = "Alpha"}})
+anonymous.getData = function()
+  local children = {}
+  for _, v in ipairs(anonymous.contents) do children[#children + 1] = {GUID = "", Nickname = v.name, CardID = v.name == "Alpha" and 100 or 200} end
+  return {ContainedObjects = children, CustomDeck = {
+    [1] = {NumWidth = 1, NumHeight = 1, FaceURL = "https://example.test/alpha.jpg"},
+    [2] = {NumWidth = 1, NumHeight = 1, FaceURL = "https://example.test/zulu.jpg"}}}
+end
+onObjectSpawn(anonymous); anonymous.open("White"); s = CZS.state.White
+check(#s.shown == 3 and s.cards[1].name == "Alpha" and s.cards[3].name == "Zulu", "empty GUIDs do not hide imported cards or duplicates")
+check(imageURL("czs_image_1_White") == "https://example.test/alpha.jpg" and imageURL("czs_image_3_White") == "https://example.test/zulu.jpg", "GUID-less cards keep their own matching images")
+local token = s.shown[1]
+anonymous.contents[1], anonymous.contents[2] = anonymous.contents[2], anonymous.contents[1]
+tick()
+check(s.shown[1] == token and s.cards[1].index == nil, "anonymous preview tokens survive shuffle and do not encode deck positions")
+czsPick(white, token, "czs_card_1_White")
+check(attrs.czs_preview_White.active == "True" and attrs.czs_preview_take_White.interactable == "False", "GUID-less objects can be previewed but cannot trigger unsafe retrieval")
+old = #taken; czsTake(white)
+check(#taken == old, "even a forged retrieval callback cannot take an anonymous card by position")
 Player.Red.steam_id = "new-player"
 onPlayerChangeColor("Red")
 check(CZS.state.Red == nil and attrs.czs_panel_Red.active == "False", "changing players clears the previous player's search")
 check(baseChanges == 1, "seat-change wrapper preserves the table's handler")
 -- Live reload keeps one context item and one polling loop.
 local menus, oldTicker = #a.menus, CZS.ticker
-dofile("tts/cactuar_search.lua")
+loadInspect()
 check(#a.menus == menus and ticks[oldTicker] == nil, "reloading duplicates neither menus nor pollers")
 print(string.format("%d checks, %d failed", checks, failures))
 os.exit(failures == 0 and 0 or 1)

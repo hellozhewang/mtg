@@ -32,7 +32,7 @@ SEATS = ("White", "Red", "Yellow", "Green", "Blue", "Purple")
 ROWS = 10                                   # must match CZ.rows in cactuar.lua
 CHOICES = 10                                # paged filter menu; matches CZ.menuRows
 SLEEVE_CELLS = 8                            # paged Sleeves grid; matches CZ.sleeveCells
-SEARCH_CELLS = 12                           # alphabetical card search, 6 columns x 2 rows
+SEARCH_CELLS = 128                          # initial scrolling pool; grows for larger containers
 MARKER = "-- ==== Cactuar deck browser"     # how a second build recognises the first
 TILE_IMAGE = "cactuar-tile.jpg"             # published beside decks.json (ttsdecks.py)
 TILE_SCALE = 2.2
@@ -90,6 +90,8 @@ def browser_lua(base_url: str) -> str:
         if clip.suffix.lower() in (".wav", ".mp3", ".ogg"):
             version = hashlib.sha256(clip.read_bytes()).hexdigest()[:8]
             lua = lua.replace(f'"sounds/{clip.name}"', f'"sounds/{clip.name}?v={version}"')
+    cell = _section((SOURCE / "cactuar_search.xml").read_text(encoding="utf-8"), "CARD")
+    lua = lua.replace("@INSPECT_CELL@", cell)
     return f"\n\n{MARKER} (appended by scripts/build_tts_table.py) ====\n" + \
         lua.replace("@BASE_URL@", base_url)
 

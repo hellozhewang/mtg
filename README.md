@@ -806,18 +806,20 @@ The table also shows each seat's **total turn time** for the game under its turn
 (the "Who goes first?" roll resets it). An **announcer** mocks a turn that reaches 5 and
 then 10 minutes ([tts/cactuar_turns.lua](tts/cactuar_turns.lua); chat `announcer off`).
 
-**Inspect a library alphabetically:** right-click any deck and choose **Inspect**.
-The private card gallery sorts by name and filters as you type, without displaying
-library positions or changing the deck's order. Select a card for a larger preview,
-then **Take to hand** to take that exact card. Draws and other changes refresh the
-gallery automatically. The ordinary Search menu stays available.
-TTS controls where custom entries appear in that menu; its scripting API cannot
-insert Inspect directly below the built-in Search entry.
+**Inspect contents alphabetically:** right-click a deck or bag and choose **Inspect**.
+A private, narrow window shows four scrolling columns and a search bar, using the live
+container's names and images independently of our deck catalog. Browsing never reveals
+positions or changes the container's order; membership changes refresh automatically.
+Click an object for a larger preview. Identified cards support **Take to hand** and bag
+objects **Take out**. Imports with empty card GUIDs can still be browsed and previewed;
+retrieval is disabled for those entries to avoid taking a different card by position.
+TTS controls custom-menu placement, so Workshop Lua cannot insert Inspect beside native
+Search or reuse its actual window. Standard Search remains available.
 
-The catalog's single-card image textures have picture previews. Decks imported as
-multi-card image sheets still have searchable names and exact-card retrieval, but
-their picture previews are omitted. Source: [cactuar_search.lua](tts/cactuar_search.lua)
-and [cactuar_search.xml](tts/cactuar_search.xml).
+Single-card textures and custom object images have previews, including WebP through
+named UI assets. Multi-card image sheets and built-in 3D object thumbnails remain
+searchable by name without a picture. Source:
+[cactuar_search.lua](tts/cactuar_search.lua) and [cactuar_search.xml](tts/cactuar_search.xml).
 
 Players can also pick **sleeves** (a custom card back) for the deck they load. The
 sleeves are the pictures in [tts/sleeves/](tts/sleeves/); its

@@ -4,7 +4,61 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-20 (Codex): v36 delivered and uploaded; the alphabetical browser is now Inspect. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-20 (Codex): v37 Inspect revision in progress; matching the native Search layout within Workshop Lua. See `tts/CHANGELOG.md` for released versions.
+
+## v37: scrolling Inspect (release in progress)
+
+Owner clarified that Inspect should match the native Search screenshot: a narrow dark
+window with the container name, one live search field, and four columns of continuously
+scrolling thumbnails. The earlier six-column, 12-card paged gallery was too different.
+Owner explicitly chose **Workshop-compatible; match the screenshot** after the native
+UI limitation was explained. No client mod is involved.
+
+- Replaced paging, the extra toolbar and explanatory footer with the requested layout.
+  Soft-white text, a dark neutral background, full-name hover labels, and optional
+  click-to-preview remain. The initial 128-cell pool grows for larger containers;
+  there is no 128-object limit. Typing does not rebuild shared UI or reload images.
+- Uses live deck/bag contents and their actual image URLs, independently of our deck
+  catalog. Opening, sorting, filtering and closing copy only metadata, never objects.
+  Neither physical indexes nor order-based fallback identifiers reach the UI.
+- **Empty GUID issue found in-game:** all 99 cards in the owner's imported Yuna deck
+  have empty GUIDs. Earlier Inspect skipped them. Serialized contents now supply
+  names, matching textures and duplicate counts. Stable preview tokens use content
+  identity, never physical position. Cards without a physical GUID are preview-only;
+  retrieval is disabled even if a callback is forged. No cards are taken out or given
+  new GUIDs to make inspection work. Identified cards still support Take to hand;
+  identified bag objects use Take out beside the bag.
+- **Blank WebP UI faces found in-game:** a direct URL rendered white even though the
+  same URL works on a physical card. A controlled JPEG/direct versus WebP/named-asset
+  comparison confirmed that registering the WebP as a named UI asset fixes it. Inspect
+  now merges its faces into the existing asset list, preserves all other modules'
+  assets, and retains only faces needed by open inspectors on the next registration.
+- **Scroll sizing issue found in-game:** implicit ScrollView dimensions produced an
+  oversized white viewport. Explicit 100% width/height fixes clipping and placement.
+  Header/search/footer use explicit anchors to avoid layout sizing surprises.
+- Growing the grid edits only its serialized XML section, keeping unrelated panels
+  and escaping intact. UI reloads restore active views and check seat ownership;
+  closing/changing seats during a rebuild cannot reopen a previous private view.
+
+Remaining engine limitations: custom context actions cannot be anchored next to native
+Search, and the actual native Search panel cannot be reused/re-sorted by Workshop Lua.
+TTS owns menu placement. This is a matching custom panel, not native drag-and-drop.
+Multi-card atlas faces and built-in 3D object thumbnails have no supported crop/render
+path in the custom Image element; their names remain searchable without an incorrect
+whole-sheet image. See https://api.tabletopsimulator.com/object/#addcontextmenuitem ,
+https://api.tabletopsimulator.com/behavior/container/ and
+https://api.tabletopsimulator.com/ui/attributes/#image-attributes .
+
+Validation: **216 unit tests pass**; the Inspect Lua harness passes **66 checks**,
+including 257/400-object containers, live filtering, order preservation, duplicates,
+empty GUIDs, matching faces, retrieval guards, asset preservation/bounds, stale
+callbacks and closing during asynchronous UI loading. Live Yuna Inspector lists all
+99 cards alphabetically. A window capture (`.cache/inspect-live/final.png`) confirms
+four clipped scrolling columns, real card faces, soft-white labels and the dark
+layout. Live filtering for `swan` produces one match and a byte-for-byte comparison
+of the physical deck metadata stays unchanged. All **41 pre-existing UI assets**
+are preserved, alongside 99 named faces. The temporary preview was closed after
+validation; no physical cards were moved. Workshop delivery details follow below.
 
 ## v36: Inspect naming (released)
 

@@ -1,9 +1,15 @@
--- Alphabetical, private search of a real deck. Sorting happens only in Lua's
+-- Alphabetical, private inspection of a live container. Sorting happens only in Lua's
 -- copied metadata, never in the container. No deck indexes reach the UI.
 -- Native Search has no scripted sort option: api.tabletopsimulator.com/behavior/container/
 local czsPrevious = CZS
 if czsPrevious and czsPrevious.ticker then Wait.stop(czsPrevious.ticker) end
-CZS = {state = {}, attached = czsPrevious and czsPrevious.attached or {}, cells = 12}
+if czsPrevious and czsPrevious.rebuildWait then Wait.stop(czsPrevious.rebuildWait) end
+CZS = {state = {}, attached = czsPrevious and czsPrevious.attached or {}, cells = 128, capacity = {}, assets = {}, nextAsset = 0}
+-- The build injects the same cell template used by the initial XML pool.
+CZS.cellXml = [==[@INSPECT_CELL@]==]
+for index, color in UI.getXml():gmatch('id="czs_card_(%d+)_(%a+)"') do
+  CZS.capacity[color] = math.max(CZS.capacity[color] or CZS.cells, tonumber(index))
+end
 
 local function czsText(id, text) UI.setAttribute(id, "text", text or "") end
 local function czsActive(id, active) UI.setAttribute(id, "active", active and "True" or "False") end
@@ -25,12 +31,12 @@ local function czsSession(player, id)
 end
 local function czsEscape(text)
   -- Names are plain text even if an imported card has a rich-text-looking name.
-  return (text:gsub("&", "&amp;"):gsub("<", "&lt;"):gsub(">", "&gt;"))
+  return (text:gsub("<", "‹"):gsub(">", "›"))
 end
 local function czsName(text)
   local first = (text or ""):match("^[^\r\n]*") or ""
   first = first:gsub("%[%x%x%x%x%x%x%]", ""):gsub("%[%-%]", "")
-  return first:match("%S") and first or "Unnamed card"
+  return first:match("%S") and first or "Unnamed object"
 end
 local function czsKey(text)
   local accents = { ["À"]="a", ["Á"]="a", ["Â"]="a", ["Ã"]="a", ["Ä"]="a", ["Å"]="a",
@@ -43,67 +49,138 @@ local function czsKey(text)
     ["Ù"]="u", ["Ú"]="u", ["Û"]="u", ["Ü"]="u", ["ù"]="u", ["ú"]="u", ["û"]="u", ["ü"]="u" }
   return string.lower((text:gsub("[\194-\244][\128-\191]*", accents)))
 end
+local function czsIsContainer(obj)
+  return obj and (obj.type == "Deck" or obj.tag == "Deck" or obj.type == "Bag" or obj.tag == "Bag")
+end
 local function czsDeck(s)
   local obj = getObjectFromGUID(s.deck)
-  return obj and (obj.type == "Deck" or obj.tag == "Deck") and obj or nil
+  return czsIsContainer(obj) and obj or nil
 end
 
 local function czsImage(url)
   if type(url) ~= "string" then return nil end
-  local path = url:match("^https://cards%.scryfall%.io/[^/]+/(.+)$")
-  if path then
-    path = path:gsub("[?#].*$", ""):gsub("%.[^./]+$", ".webp")
-    return "https://img.klrmngr.com/display/" .. path
-  end
   return url:match("^https?://") and url or nil
 end
-local function czsPictures(deck)
-  local ok, data = pcall(function() return deck.getData() end)
-  if not ok or type(data) ~= "table" then return {} end
-  local pictures = {}
-  for _, card in ipairs(data.ContainedObjects or {}) do
-    local key = math.floor((card.CardID or 0) / 100)
-    local own, shared = card.CustomDeck or {}, data.CustomDeck or {}
-    local sheet = own[tostring(key)] or own[key] or shared[tostring(key)] or shared[key]
-    -- Our catalog and rikrassen's importer use single-card textures. For an
-    -- atlas keep the named entry usable, rather than showing a whole sheet.
-    if card.GUID and sheet and (sheet.NumWidth or 1) == 1 and (sheet.NumHeight or 1) == 1 then
-      pictures[card.GUID] = czsImage(sheet.FaceURL)
-    end
+local function czsPicture(card, data)
+  local key = math.floor((card.CardID or 0) / 100)
+  local own, shared = card.CustomDeck or {}, data.CustomDeck or {}
+  local sheet = own[tostring(key)] or own[key] or shared[tostring(key)] or shared[key]
+  -- Atlas textures need UV cropping, which the Workshop Image element lacks.
+  if sheet and (sheet.NumWidth or 1) == 1 and (sheet.NumHeight or 1) == 1 then
+    return czsImage(sheet.FaceURL)
+  elseif card.CustomImage and card.Name ~= "Custom_Dice" then
+    return czsImage(card.CustomImage.ImageURL)
   end
-  return pictures
+  return nil
 end
 
-local function czsRender(color)
+local czsRender, czsCloseColor
+local function czsReload(change)
+  CZS.rebuilding = true
+  change()
+  CZS.rebuildWait = Wait.condition(function()
+    CZS.rebuilding, CZS.rebuildWait = false, nil
+    for _, c in ipairs(CZ.seats) do
+      local s = CZS.state[c]
+      if not s or s.owner ~= czsOwner(c) then
+        czsCloseColor(c)
+      else
+        UI.setAttribute("czs_query_" .. c, "text", s.query)
+        czsActive("czs_panel_" .. c, true)
+      end
+      if czRender and UI.getAttribute("cz_panel_" .. c, "active") == "True" then czRender(c) end
+    end
+    for _, c in ipairs(CZ.seats) do
+      if CZS.rebuilding then break end
+      czsRender(c)
+    end
+  end, function() return not UI.loading end)
+end
+local function czsRegisterPictures()
+  -- Direct UI image URLs use a different decoder: the cache's WebP works as a
+  -- named asset. Keep all other modules' assets and only our open views' faces.
+  local wanted, merged, known, changed = {}, {}, {}, false
+  for _, s in pairs(CZS.state) do
+    for _, url in pairs(s.pictures) do wanted[url] = true end
+  end
+  for _, asset in ipairs(UI.getCustomAssets() or {}) do
+    local serial = type(asset.name) == "string" and asset.name:match("^czsi_(%d+)$")
+    if serial then
+      CZS.nextAsset = math.max(CZS.nextAsset, tonumber(serial))
+      if wanted[asset.url] then
+        merged[#merged + 1] = asset; known[asset.url] = asset.name
+      else changed = true end
+    else merged[#merged + 1] = asset end
+  end
+  for url in pairs(wanted) do
+    if not known[url] then
+      CZS.nextAsset = CZS.nextAsset + 1
+      local name = "czsi_" .. CZS.nextAsset
+      merged[#merged + 1] = {name = name, url = url}
+      known[url], changed = name, true
+    end
+  end
+  CZS.assets = known
+  if changed then czsReload(function() UI.setCustomAssets(merged) end); return false end
+  return true
+end
+local function czsSprite(url) return url and CZS.assets[url] or "" end
+local function czsEnsureCells(color, count)
+  local capacity = CZS.capacity[color] or CZS.cells
+  if count <= capacity then return true end
+  if CZS.rebuilding then return false end
+  local size = math.ceil(count / 64) * 64
+  local cells = {}
+  for i = 1, size do
+    cells[i] = CZS.cellXml:gsub("{I}", tostring(i)):gsub("{C}", color)
+  end
+  -- Replace only our grid in the serialized XML. Re-serializing the base UI's
+  -- getXmlTable() loses entity escaping. Omit assets to preserve shared images.
+  local xml, replaced = UI.getXml():gsub(
+    '(<GridLayout[^>]-id="czs_grid_' .. color .. '"[^>]*>).-</GridLayout>',
+    function(open) return open .. table.concat(cells) .. "</GridLayout>" end, 1)
+  if replaced ~= 1 then return false end
+  CZS.capacity[color] = size
+  czsReload(function() UI.setXml(xml) end)
+  return false
+end
+local function czsShort(text, limit)
+  limit = limit or 15
+  local chars = {}
+  for char in text:gmatch("[%z\1-\127\194-\244][\128-\191]*") do chars[#chars + 1] = char end
+  if #chars > limit then return table.concat(chars, "", 1, limit - 2) .. "…" end
+  return text
+end
+czsRender = function(color)
   local s = CZS.state[color]
-  if not s then return end
+  if not s or CZS.rebuilding then return end
   local query, filtered = czsKey(s.query), {}
   for _, card in ipairs(s.cards) do
     if card.key:find(query, 1, true) then filtered[#filtered + 1] = card end
   end
-  local pages = math.max(1, math.ceil(#filtered / CZS.cells))
-  s.page = math.max(1, math.min(s.page, pages))
+  if not czsEnsureCells(color, #filtered) or not czsRegisterPictures() then return end
   s.shown = {}
   local selected = nil
   for _, card in ipairs(s.cards) do if card.guid == s.selected then selected = card end end
   if not selected then s.selected = nil; czsActive("czs_preview_" .. color, false) end
-  for i = 1, CZS.cells do
-    local card = filtered[(s.page - 1) * CZS.cells + i]
+  for i = 1, (CZS.capacity[color] or CZS.cells) do
+    local card = filtered[i]
     local suffix = i .. "_" .. color
     czsActive("czs_card_" .. suffix, card ~= nil)
     if card then
       s.shown[i] = card.guid
-      -- Bind the GUID into the client-side callback. A late click on an older
-      -- page must never be reinterpreted as the new occupant of that slot.
+      -- Bind stable identity into the client-side callback. A late click on an older
+      -- view must never be reinterpreted as the new occupant of that slot.
       UI.setAttribute("czs_card_" .. suffix, "onClick", "czsPick(" .. card.guid .. ")")
-      czsText("czs_name_" .. suffix, czsEscape(card.name))
-      local url = s.pictures[card.guid] or ""
+      czsText("czs_name_" .. suffix, czsEscape(czsShort(card.name)))
+      UI.setAttribute("czs_card_" .. suffix, "tooltip", czsEscape(card.name))
+      local url = czsSprite(s.pictures[card.guid])
       if UI.getAttribute("czs_image_" .. suffix, "image") ~= url then
         UI.setAttribute("czs_image_" .. suffix, "image", url)
       end
       UI.setAttribute("czs_image_" .. suffix, "color", url ~= "" and "#FFFFFF" or "#FFFFFF00")
       UI.setAttribute("czs_card_" .. suffix, "colors", card.guid == s.selected
-        and "#244E46|#345E56|#244E46|#182331" or "#1C2939|#34485F|#244E46|#182331")
+        and "#181818|#202020|#181818|#010101" or "#010101|#101010|#181818|#010101")
     else
       -- Clear stale faces as well as hiding them after a draw or search change.
       czsText("czs_name_" .. suffix, "")
@@ -111,23 +188,29 @@ local function czsRender(color)
     end
   end
   czsActive("czs_empty_" .. color, #filtered == 0)
-  czsText("czs_count_" .. color, #filtered .. " cards · Page " .. s.page .. " / " .. pages)
-  czsEnabled("czs_prev_" .. color, s.page > 1)
-  czsEnabled("czs_next_" .. color, s.page < pages)
-  czsEnabled("czs_take_" .. color, selected ~= nil and not s.busy)
-  czsEnabled("czs_preview_take_" .. color, selected ~= nil and not s.busy)
+  czsText("czs_count_" .. color, #filtered .. " / " .. #s.cards .. " objects · A–Z")
+  local height = math.max(1, math.ceil(#filtered / 4) * 134 + 8)
+  UI.setAttribute("czs_grid_" .. color, "preferredHeight", tostring(height))
+  UI.setAttribute("czs_grid_" .. color, "height", tostring(height))
+  czsEnabled("czs_preview_take_" .. color, selected ~= nil and selected.physical and not s.busy)
+  local deck = czsDeck(s)
+  czsText("czs_preview_take_" .. color, selected and not selected.physical and "Preview only"
+    or (deck and (deck.type == "Deck" or deck.tag == "Deck") and "Take to hand" or "Take out"))
 end
 
-local function czsCloseColor(color)
+czsCloseColor = function(color)
   CZS.state[color] = nil
   czsActive("czs_panel_" .. color, false)
   czsActive("czs_preview_" .. color, false)
   UI.setAttribute("czs_query_" .. color, "text", "")
+  czsText("czs_title_" .. color, "Inspect")
+  czsText("czs_count_" .. color, "")
   czsText("czs_status_" .. color, "")
   czsText("czs_preview_name_" .. color, "")
   UI.setAttribute("czs_preview_image_" .. color, "image", "")
-  for i = 1, CZS.cells do
+  for i = 1, (CZS.capacity[color] or CZS.cells) do
     czsText("czs_name_" .. i .. "_" .. color, "")
+    UI.setAttribute("czs_card_" .. i .. "_" .. color, "tooltip", "")
     UI.setAttribute("czs_image_" .. i .. "_" .. color, "image", "")
   end
 end
@@ -140,23 +223,49 @@ local function czsRefresh(color, force)
   if not deck then czsCloseColor(color); return false end
   local ok, contents = pcall(function() return deck.getObjects() end)
   if not ok then czsCloseColor(color); return false end
-  local cards = {}
+  czsText("czs_title_" .. color, czsEscape(czsShort(czsName(deck.getName()), 32)))
+  local dataOK, data = pcall(function() return deck.getData() end)
+  data = dataOK and type(data) == "table" and data or {}
+  -- Some importers leave every contained GUID empty. Serialized contents still
+  -- provide names and textures; inspect those without assigning physical GUIDs
+  -- or taking objects out to discover them. Neither path retains deck indexes.
+  local liveByGUID, dataByGUID = {}, {}
+  for _, meta in ipairs(contents) do if meta.guid and meta.guid ~= "" then liveByGUID[meta.guid] = meta end end
+  local serialized = data.ContainedObjects
+  for _, meta in ipairs(serialized or {}) do if meta.GUID and meta.GUID ~= "" then dataByGUID[meta.GUID] = meta end end
+  if serialized and #serialized == #contents then contents = serialized end
+  local cards, pictures = {}, {}
   for _, meta in ipairs(contents) do
-    if meta.guid and meta.guid ~= "" then
-      local name = czsName(meta.name or meta.nickname)
-      cards[#cards + 1] = {guid = meta.guid, name = name, key = czsKey(name)}
-    end
+    local guid = meta.GUID or meta.guid or ""
+    local live = liveByGUID[guid] or meta
+    local name = czsName(live.name or live.nickname or live.Nickname)
+    local picture = czsPicture(dataByGUID[guid] or meta, data)
+    cards[#cards + 1] = {guid = guid, name = name, key = czsKey(name), picture = picture,
+      physical = guid ~= "", identity = table.concat({name, meta.Name or "", tostring(meta.CardID or ""), picture or ""}, "\0")}
   end
   table.sort(cards, function(a, b)
     if a.key ~= b.key then return a.key < b.key end
-    -- Equal names use GUIDs, never deck positions (different printings too).
+    if a.identity ~= b.identity then return a.identity < b.identity end
     return a.guid < b.guid
   end)
+  local duplicates = {}
+  for _, card in ipairs(cards) do
+    if not card.physical then
+      duplicates[card.identity] = (duplicates[card.identity] or 0) + 1
+      local identity = card.identity .. "\1" .. duplicates[card.identity]
+      if not s.tokens[identity] then
+        s.nextToken = s.nextToken + 1
+        s.tokens[identity] = "item" .. s.nextToken
+      end
+      card.guid = s.tokens[identity]
+    end
+    pictures[card.guid] = card.picture
+  end
   local signature = {}
-  for _, card in ipairs(cards) do signature[#signature + 1] = card.guid .. "\0" .. card.name end
+  for _, card in ipairs(cards) do signature[#signature + 1] = card.guid .. "\0" .. card.identity end
   signature = table.concat(signature, "\1")
   if force or signature ~= s.signature then
-    s.cards, s.signature, s.pictures = cards, signature, czsPictures(deck)
+    s.cards, s.signature, s.pictures = cards, signature, pictures
     czsRender(color)
   end
   return true
@@ -164,10 +273,10 @@ end
 
 function czsOpen(color, deck)
   if not czsSeat(color) then return end
-  if not deck or (deck.type ~= "Deck" and deck.tag ~= "Deck") then return end
+  if not czsIsContainer(deck) then return end
   czsCloseColor(color)
-  CZS.state[color] = {owner = czsOwner(color), deck = deck.getGUID(), query = "", page = 1,
-                      cards = {}, shown = {}, pictures = {}}
+  CZS.state[color] = {owner = czsOwner(color), deck = deck.getGUID(), query = "",
+                      cards = {}, shown = {}, pictures = {}, tokens = {}, nextToken = 0}
   if czsRefresh(color, true) then
     czsActive("cz_panel_" .. color, false)
     czsActive("czs_panel_" .. color, true)
@@ -179,7 +288,7 @@ end
 function czsSearch(player, value, id)
   local s = czsSession(player, id)
   if not s then return end
-  s.query, s.page, s.selected = tostring(value or ""), 1, nil
+  s.query, s.selected = tostring(value or ""), nil
   czsActive("czs_preview_" .. player.color, false)
   if czsRefresh(player.color) then czsRender(player.color) end
 end
@@ -187,12 +296,6 @@ function czsClear(player, _, id)
   if not czsSession(player, id) then return end
   UI.setAttribute("czs_query_" .. player.color, "text", "")
   czsSearch(player, "", id)
-end
-function czsPage(player, direction, id)
-  local s = czsSession(player, id)
-  if not s then return end
-  s.page = s.page + (direction == "next" and 1 or -1)
-  if czsRefresh(player.color) then czsRender(player.color) end
 end
 function czsRefreshClick(player, _, id)
   if czsSession(player, id) then czsRefresh(player.color, true) end
@@ -214,7 +317,7 @@ function czsPick(player, value, id)
   for _, card in ipairs(s.cards) do if card.guid == guid then selected = card end end
   if not selected then return end
   s.selected = guid
-  local url = s.pictures[guid] or ""
+  local url = czsSprite(s.pictures[guid])
   czsText("czs_status_" .. player.color, czsEscape(selected.name))
   czsText("czs_preview_name_" .. player.color, czsEscape(selected.name))
   UI.setAttribute("czs_preview_image_" .. player.color, "image", url)
@@ -226,33 +329,38 @@ function czsTake(player, _, id)
   local s = czsSession(player, id)
   if not s or s.busy or not s.selected or not czsRefresh(player.color) then return end
   if not s.selected then return end
+  local selected
+  for _, card in ipairs(s.cards) do if card.guid == s.selected then selected = card end end
+  if not selected or not selected.physical then return end
   local deck, guid = czsDeck(s), s.selected
-  local hand = Player[player.color].getHandTransform()
-  if not hand then czsText("czs_status_" .. player.color, "No hand zone is available."); return end
+  local isDeck = deck.type == "Deck" or deck.tag == "Deck"
+  local hand = isDeck and Player[player.color].getHandTransform() or nil
+  if isDeck and not hand then czsText("czs_status_" .. player.color, "No hand zone is available."); return end
+  local position = hand and hand.position or deck.getPosition() + Vector(3, 2, 0)
   s.busy = true
   czsRender(player.color)
   local ok, taken = pcall(function()
-    return deck.takeObject({guid = guid, position = hand.position,
-      rotation = {x = 0, y = hand.rotation.y, z = 180},
+    return deck.takeObject({guid = guid, position = position,
+      rotation = hand and {x = 0, y = hand.rotation.y, z = 180} or {x = 0, y = 0, z = 0},
       smooth = false, callback_function = function(card)
-        card.deal(1, player.color)
+        if isDeck then card.deal(1, player.color) end
         if CZS.state[player.color] == s then
           s.busy, s.selected = false, nil
           czsActive("czs_preview_" .. player.color, false)
-          czsText("czs_status_" .. player.color, "Card moved to your hand.")
+          czsText("czs_status_" .. player.color, isDeck and "Card moved to your hand." or "Object taken out.")
           czsRefresh(player.color, true)
         end
       end})
   end)
   if not ok or not taken then
     s.busy = false
-    czsText("czs_status_" .. player.color, "That card could not be taken. Refresh and try again.")
+    czsText("czs_status_" .. player.color, "That object could not be taken. Try again.")
     czsRefresh(player.color, true)
   end
 end
 
 local function czsAttach(obj)
-  if not obj or (obj.type ~= "Deck" and obj.tag ~= "Deck") then return end
+  if not czsIsContainer(obj) then return end
   local guid = obj.getGUID()
   if CZS.attached[guid] == obj then return end
   CZS.attached[guid] = obj

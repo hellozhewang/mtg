@@ -30,13 +30,21 @@ class TableBuild(unittest.TestCase):
         table = build_tts_table.build(json.loads(json.dumps(BASE)), URL)
         root = ET.fromstring("<root>" + table["XmlUI"] + "</root>")
         self.assertIn("function czsOpen(", table["LuaScript"])
+        self.assertNotIn("@INSPECT_CELL@", table["LuaScript"])
+        self.assertIn('id="czs_card_{I}_{C}"', table["LuaScript"])
         for color in build_tts_table.SEATS:
             panel = root.find(f".//*[@id='czs_panel_{color}']")
             self.assertEqual(panel.get("visibility"), color)
             self.assertEqual(panel.get("active"), "False")
+            self.assertEqual(panel.get("width"), "480")
+            self.assertIsNotNone(panel.find(".//VerticalScrollView"))
+            grid = panel.find(".//GridLayout")
+            self.assertEqual(grid.get("constraintCount"), "4")
+            self.assertEqual(len(grid.findall("Button")), build_tts_table.SEARCH_CELLS)
+            self.assertIsNone(panel.find(f".//*[@id='czs_next_{color}']"))
             self.assertEqual(root.find(f".//*[@id='czs_query_{color}']").get("onValueChanged"), "czsSearch")
             for i in range(1, build_tts_table.SEARCH_CELLS + 1):
-                self.assertEqual(root.find(f".//*[@id='czs_card_{i}_{color}']").get("onClick"), f"czsPick({i})")
+                self.assertEqual(root.find(f".//*[@id='czs_card_{i}_{color}']").get("onClick"), "czsPick")
 
     def test_tiles_open_the_browser(self):
         table = build_tts_table.build(json.loads(json.dumps(BASE)), URL)

@@ -4,9 +4,9 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-20 (Codex): v38 hold-to-zoom implementation in progress; v37 remains the latest delivered build. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-20 (Codex): v38 delivered and uploaded; Inspect supports a bindable hold-to-zoom key. See `tts/CHANGELOG.md` for released versions.
 
-## v38: hold a key to zoom Inspect (release in progress)
+## v38: hold a key to zoom Inspect (released)
 
 Owner requested the familiar Alt + hover zoom on Inspect thumbnails. Workshop custom
 UI exposes mouse enter/exit but no raw Alt-key state. TTS's **Game Keys** API provides
@@ -46,6 +46,15 @@ prove the client's binding or keyboard focus behavior.
 
 Primary API references: https://api.tabletopsimulator.com/base/#addhotkey and
 https://api.tabletopsimulator.com/ui/attributes/#event-attributes .
+
+Released from `c33196c7`: **MTG 6 player Cactuar Ver_v38** and thumbnail delivered to
+Saves with matching checksums; v37's canonical save/thumbnail removed. Workshop item
+**3822623414** updated with **Steam EResult 1** and the temporary task removed.
+Result: `.cache/workshop/3822623414-12272c8c6b7248e5af8ff94d2c4986cc-result.json`.
+The delivered save was read back: Global Lua/XML parse, all six private zoom panels
+and one hotkey are present, and its encoded payload matches the staged upload.
+WIP and changelog copied to the PC Desktop. Load v38, then configure **Inspect zoom →
+Alt** under **Options → Game Keys**. Existing native object Alt zoom remains available.
 
 ## v37: scrolling Inspect (released)
 

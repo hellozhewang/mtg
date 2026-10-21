@@ -79,7 +79,7 @@ def browser_xml() -> str:
 
 # Appended to Global in this order: the browser, then the turn totals and
 # announcer, which use the browser's CZ.seats and CZ.base.
-GLOBAL_SCRIPTS = ("cactuar.lua", "cactuar_preview.lua", "cactuar_turns.lua", "cactuar_regex.lua", "cactuar_search.lua")
+GLOBAL_SCRIPTS = ("cactuar.lua", "cactuar_guide.lua", "cactuar_preview.lua", "cactuar_turns.lua", "cactuar_regex.lua", "cactuar_search.lua")
 
 
 def browser_lua(base_url: str) -> str:

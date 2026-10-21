@@ -70,8 +70,11 @@
           <VerticalScrollView id="cz_guide_scroll_{C}" width="100%" height="100%" color="#162130"
                               movementType="Clamped" scrollSensitivity="32" verticalScrollbarVisibility="AutoHide"
                               scrollbarBackgroundColor="#243244" scrollbarColors="#65788C|#8192A3|#65788C|#243244">
-            <Text id="cz_guide_text_{C}" width="100%" height="1" preferredHeight="1" rectAlignment="UpperLeft" pivot="0 1"
-                  fontSize="16" color="#E2E5EA" alignment="UpperLeft" horizontalOverflow="Wrap" text=""/>
+            <VerticalLayout id="cz_guide_content_{C}" height="100" preferredHeight="100" spacing="10"
+                            childForceExpandHeight="false" childForceExpandWidth="true">
+              <Text id="cz_guide_text_{C}" preferredHeight="80" fontSize="16" color="#E2E5EA"
+                    alignment="UpperLeft" horizontalOverflow="Wrap" text=""/>
+            </VerticalLayout>
           </VerticalScrollView>
         </Panel>
       </Panel>

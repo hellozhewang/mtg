@@ -221,15 +221,22 @@ class DeckFileTests(unittest.TestCase):
     def test_preview_keeps_pinned_faces_partner_order_and_guide_sections(self):
         from types import SimpleNamespace
         d = SimpleNamespace(key="alice/Pair", stem="Pair", commanders=["Elspeth", "Delver"],
-                            cards={"Elspeth": ELSPETH, "Delver": DELVER},
+                            cards={"Elspeth": ELSPETH, "Delver": DELVER, "Sol Ring": SOL},
                             guide=[("Plan & win", [("Sol Ring + Other", "Make mana."), ("", "Read this prose.")])])
         preview = json.loads(ttsdecks.preview_file(d))
         self.assertEqual(preview["id"], d.key)
         self.assertEqual([c["name"] for c in preview["commanders"]], d.commanders)
         self.assertEqual(preview["commanders"][1]["faces"][1]["FaceURL"], img("delver-back")["large"])
         self.assertEqual(preview["guide"][0], {"title": "Plan & win", "rows": [
-            {"name": "Sol Ring + Other", "text": "Make mana."}, {"name": "", "text": "Read this prose."}]})
+            {"name": "Sol Ring + Other", "text": "Make mana.", "cards": [
+                {"name": SOL["name"], "joiner": "", "faces": [{"name": SOL["name"], "FaceURL": img("sol")["large"]}]},
+                {"name": "Other", "joiner": "+", "faces": []}]},
+            {"name": "", "text": "Read this prose.", "cards": []}]})
         self.assertNotIn("ContainedObjects", preview)
+        d.guide = [("Chain", [("Delver -> Sol Ring", "Find it.")])]
+        pictures = json.loads(ttsdecks.preview_file(d))["guide"][0]["rows"][0]["cards"]
+        self.assertEqual([p["joiner"] for p in pictures], ["", "->"])
+        self.assertEqual(pictures[0]["faces"][1]["FaceURL"], img("delver-back")["large"])
 
     def test_preview_publication_and_content_hash_follow_guide_changes(self):
         d = self.deck_info("1 Sol Ring\n99 Plains\n", {"Sol Ring": SOL, "Plains": SOL})

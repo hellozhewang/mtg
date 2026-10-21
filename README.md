@@ -790,7 +790,9 @@ commander, strategy and stats; filtered counts also show the collection total.
 The larger browser shows the selected commander's full card at readable size on the
 right. Partner decks have arrows to switch commanders; double-faced commanders have
 a **Flip** button. **Read guide** opens that deck's strategy guide inside the browser,
-with scrolling text and **Back to decks**, while its commander remains visible.
+with the website's illustrated rows: card pictures beside explanations and picture
+strips for combos and tutor chains. Hover a guide picture to read that card on the
+right; moving away restores the commander. **Back to decks** returns to the list.
 Decks without a guide show **No guide**. Previews use the deck's pinned printing.
 **Load into my seat** puts the chosen deck in
 that player's seat: the library face down and shuffled in their library zone,

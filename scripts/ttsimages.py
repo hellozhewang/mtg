@@ -90,7 +90,7 @@ def image_urls(files: dict[Path, str | bytes]) -> dict[str, set[str]]:
     for path, body in sorted(files.items()):
         if path.name.endswith(".preview.json"):
             text = body.decode("utf-8") if isinstance(body, bytes) else body
-            walk(json.loads(text), f"{path}: commander preview")
+            walk(json.loads(text), f"{path}: commander/guide preview")
             continue
         if path.suffix != ".ndjson":
             continue

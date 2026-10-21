@@ -41,6 +41,17 @@ do
       if type(section) ~= "table" or type(section.title) ~= "string" or type(section.rows) ~= "table" then return false end
       for _, row in ipairs(section.rows) do
         if type(row) ~= "table" or type(row.name) ~= "string" or type(row.text) ~= "string" then return false end
+        if row.cards ~= nil then
+          if type(row.cards) ~= "table" then return false end
+          for _, card in ipairs(row.cards) do
+            if type(card) ~= "table" or type(card.name) ~= "string" or type(card.faces) ~= "table"
+                or (card.joiner ~= "" and card.joiner ~= "+" and card.joiner ~= "->") then return false end
+            for _, face in ipairs(card.faces) do
+              if type(face) ~= "table" or type(face.name) ~= "string" or type(face.FaceURL) ~= "string"
+                  or not face.FaceURL:match("^https?://") then return false end
+            end
+          end
+        end
       end
     end
     return true
@@ -71,6 +82,16 @@ do
         for _, commander in ipairs(entry.data.commanders) do
           for _, face in ipairs(commander.faces) do wanted[face.FaceURL] = true end
         end
+        if s.guideOpen then
+          for _, section in ipairs(entry.data.guide) do
+            for _, row in ipairs(section.rows) do
+              for _, card in ipairs(row.cards or {}) do
+                local face = card.faces[1]
+                if face then wanted[face.FaceURL] = true end
+              end
+            end
+          end
+        end
       end
     end
     local urls = {}
@@ -96,6 +117,33 @@ do
     CZ.previewAssets, CZ.previewSig = known, signature
     czSetAssets(merged) -- preserve sleeves, Inspect faces and every base asset
     return false -- render again after the rebuilt UI and its assets are ready
+  end
+
+  local function paintImages(color, s, images, counter)
+    s[counter] = (s[counter] or 0) + 1
+    local paint = s[counter]
+    for id in pairs(images) do
+      UI.setAttribute(id, "image", "")
+      UI.setAttribute(id, "color", "#FFFFFF00")
+    end
+    local function current()
+      return CZ.state[color] == s and s.open and s[counter] == paint
+        and not UI.loading and session(Player[color]) == s
+        and (counter ~= "guidePaint" or s.guideOpen)
+    end
+    local function bind()
+      if not current() then return end
+      for id, asset in pairs(images) do
+        UI.setAttribute(id, "image", asset)
+        UI.setAttribute(id, "color", asset ~= "" and "#FFFFFF" or "#FFFFFF00")
+      end
+    end
+    Wait.frames(bind, 2)
+    Wait.time(function()
+      if not current() then return end
+      for id in pairs(images) do UI.setAttribute(id, "image", "") end
+      Wait.frames(bind, 2)
+    end, 1)
   end
 
   local function guideText(guide)
@@ -126,6 +174,7 @@ do
     if s.previewKey ~= path or s.previewDeck ~= (deck and deck.id) then
       s.previewKey, s.previewDeck = path, deck and deck.id
       s.commander, s.commanderFace, s.guideOpen, s.guideDrawn = 1, 1, false, nil
+      s.guideHover, s.guideCards = nil, nil
     end
     local entry = deck and fetch(deck)
     local payload = entry and entry.status == "ready" and entry.data or nil
@@ -135,33 +184,11 @@ do
     local commander = commanders[s.commander]
     local faces = commander and commander.faces or {}
     s.commanderFace = math.max(1, math.min(s.commanderFace or 1, math.max(1, #faces)))
-    local face = faces[s.commanderFace]
+    local face = s.guideOpen and s.guideHover or faces[s.commanderFace]
     local image = face and CZ.previewAssets[face.FaceURL] or ""
     -- TTS can keep a blank sprite when clearing and rebinding in one frame,
     -- even after UI.loading becomes false. Let the clear reach the renderer.
-    s.previewPaint = (s.previewPaint or 0) + 1
-    local paint = s.previewPaint
-    UI.setAttribute("cz_commander_image_" .. color, "image", "")
-    UI.setAttribute("cz_commander_image_" .. color, "color", "#FFFFFF00")
-    if image ~= "" then
-      local function current()
-        return CZ.state[color] == s and s.open and s.previewPaint == paint
-          and not UI.loading and session(Player[color]) == s
-      end
-      local function bind()
-        if not current() then return end
-        UI.setAttribute("cz_commander_image_" .. color, "image", image)
-        UI.setAttribute("cz_commander_image_" .. color, "color", "#FFFFFF")
-      end
-      Wait.frames(bind, 2)
-      -- Newly downloaded named sprites can finish after the XML loading flag.
-      -- One guarded rebind repairs that first-selection placeholder too.
-      Wait.time(function()
-        if not current() then return end
-        UI.setAttribute("cz_commander_image_" .. color, "image", "")
-        Wait.frames(bind, 2)
-      end, 1)
-    end
+    paintImages(color, s, {["cz_commander_image_" .. color] = image}, "previewPaint")
     text("cz_commander_name_" .. color, face and plain(face.name) or "Commander preview")
     local note = not deck and "Select a deck to read its commander."
       or not path and "Press Refresh to get commander previews."
@@ -169,10 +196,10 @@ do
       or "Loading commander…"
     text("cz_commander_note_" .. color, note)
     active("cz_commander_note_" .. color, image == "")
-    text("cz_commander_page_" .. color, commander and ("Commander " .. s.commander .. " / " .. #commanders) or "")
+    text("cz_commander_page_" .. color, s.guideHover and "Guide card" or commander and ("Commander " .. s.commander .. " / " .. #commanders) or "")
     enabled("cz_commander_prev_" .. color, s.commander > 1)
     enabled("cz_commander_next_" .. color, s.commander < #commanders)
-    active("cz_commander_flip_" .. color, #faces > 1)
+    active("cz_commander_flip_" .. color, #faces > 1 and not s.guideHover)
     button("cz_commander_prev_" .. color, "‹")
     button("cz_commander_next_" .. color, "›")
     button("cz_commander_flip_" .. color, s.commanderFace > 1 and "Front" or "Flip")
@@ -187,7 +214,19 @@ do
       text("cz_guide_title_" .. color, "Deck guide")
       UI.setAttribute("cz_guide_title_" .. color, "tooltip", plain(deck.name .. " · " .. deck.commander))
       button("cz_guide_back_" .. color, "Back to decks")
-      if s.guideDrawn ~= entry then
+      if czpGuideLayout then
+        if not czpGuideLayout(color, s, entry) then return end
+        local images, signature = {}, {}
+        for id, card in pairs(s.guideCards or {}) do
+          images[id] = card.asset; signature[#signature + 1] = id .. "=" .. card.asset
+        end
+        table.sort(signature)
+        signature = table.concat(signature, ";")
+        if s.guidePainted ~= signature then
+          s.guidePainted = signature
+          paintImages(color, s, images, "guidePaint")
+        end
+      elseif s.guideDrawn ~= entry then
         local content, height = "Loading guide…", 100
         if entry and entry.status == "ready" then content, height = guideText(payload.guide)
         elseif entry and entry.status == "error" then content = "Could not load the guide. Press Refresh to retry." end
@@ -208,6 +247,7 @@ do
     if not s or not s.selected then return end
     local entry = CZ.previews[key(s.selected)]
     if not entry or entry.status ~= "ready" then return end
+    s.guideHover = nil
     local count = #entry.data.commanders
     if direction == "flip" then
       local commander = entry.data.commanders[s.commander or 1]
@@ -224,12 +264,28 @@ do
     local entry = CZ.previews[key(s.selected)]
     if not s.selected.guide and not (entry and entry.data and #entry.data.guide > 0) then return end
     s.guideOpen, s.guideDrawn = not s.guideOpen, nil
+    s.guidePainted = nil
+    s.guideHover = nil
     czRender(player.color)
   end
   function czGuideClose(player, _, id)
     local s = session(player, id)
     if not s then return end
     s.guideOpen = false
+    s.guideHover = nil
+    czRender(player.color)
+  end
+  function czGuideHover(player, _, id)
+    local s = session(player, id)
+    local card = s and s.guideOpen and s.guideCards and s.guideCards[id]
+    if not card then return end
+    s.guideHover, s.guideHoverId = card, id
+    czRender(player.color)
+  end
+  function czGuideUnhover(player, _, id)
+    local s = session(player, id)
+    if not s or s.guideHoverId ~= id then return end
+    s.guideHover, s.guideHoverId = nil, nil
     czRender(player.color)
   end
   function czpRefresh()

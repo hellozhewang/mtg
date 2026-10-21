@@ -263,6 +263,7 @@ local function czRedrawOpen()
       UI.setAttribute("cz_panel_" .. c, "active", "True")
       UI.setAttribute("cz_search_" .. c, "text", s.query)
       s.guideDrawn = nil
+      s.guidePainted = nil
       czRender(c)
       if czState(c).menu == "sleeve" then czRenderSleeves(c) end
     else
@@ -277,6 +278,18 @@ end
 function czSetAssets(assets)
   UI.setCustomAssets(assets)
   Wait.condition(czRedrawOpen, function() return not UI.loading end, 30, czRedrawOpen)
+end
+
+-- Guide rows replace only their own layout. Install XML and assets atomically:
+-- separate reloads can restore stale XML or leave named WebP sprites white.
+function czGuideXml(xml)
+  CZ.guideRebuilding = true
+  UI.setXml(xml, UI.getCustomAssets())
+  local function ready()
+    CZ.guideRebuilding = false
+    czRedrawOpen()
+  end
+  Wait.condition(ready, function() return not UI.loading end, 30, ready)
 end
 
 local function czRegisterThumbs()

@@ -125,4 +125,38 @@ check(attrs.cz_commander_image_White.image == "", "a pending image cannot repain
 local oldCommander = s.commander
 czCommander(white, "next", "cz_commander_next_White")
 check(s.commander == oldCommander, "callbacks for an old seat owner are rejected")
+-- Render the actual website-style XML module, not the text-only compatibility path.
+Player.White.steam_id = "owner-white"
+local xml = '<VerticalLayout id="cz_guide_content_White"><Text/></VerticalLayout>'
+UI.getXml = function() return xml end
+function czGuideXml(value)
+  xml = value
+  for color, state in pairs(CZ.state) do if state.open then czRender(color) end end
+end
+dofile("tts/cactuar_guide.lua")
+local function card(name, joiner)
+  return {name = name, joiner = joiner or "", faces = {{name = name, FaceURL = "https://example.test/" .. name .. ".webp"}}}
+end
+s.selected = deck("illustrated", true); czRender("White")
+payloads.illustrated = response("illustrated", nil, {{title = "Plan & <win>", rows = {
+  {name = "First", text = "A card beside prose.", cards = {card("First")}},
+  {name = "First -> Second + Third", text = "A chain of pictures above prose.", cards = {
+    card("First"), card("Second", "->"), card("Third", "+")}},
+  {name = "", text = "Ordinary prose remains readable.", cards = {}}}}})
+requests[#requests].callback({text = "illustrated"})
+czGuide(white, nil, "cz_guide_White"); paint()
+check(xml:find('cz_guide_pic_4_White', 1, true) and xml:find('A card beside prose.', 1, true), "single-card and combo rows include every picture and their prose")
+check(xml:find('Plan &amp; ‹win›', 1, true) and xml:find('→', 1, true), "headings are escaped and chains retain their direction")
+check(assets[1].name == "base" and assets[2].name == "czsl_standard" and assets[3].name == "czsi_1", "illustrated guides preserve every other module's image assets")
+local previousXml, commander = xml, s.commander
+czGuideHover(white, nil, "cz_guide_pic_3_White")
+check(picture("White") == "https://example.test/Second.webp" and xml == previousXml, "hover previews the right combo piece without rebuilding the guide")
+czGuideHover(red, nil, "cz_guide_pic_2_White")
+check(s.guideHover.name == "Second", "another seat cannot change a guide preview")
+czGuideUnhover(white, nil, "cz_guide_pic_2_White")
+check(s.guideHover.name == "Second", "late exits from another picture cannot dismiss the current preview")
+czGuideUnhover(white, nil, "cz_guide_pic_3_White")
+check(picture("White") == "https://example.test/illustrated.webp" and s.commander == commander, "leaving a guide picture restores the commander and partner position")
+czGuideClose(white, nil, "cz_guide_back_White")
+check(not s.guideHover and not s.guideOpen and #assets <= 5, "closing a guide drops its extra image assets")
 print(checks .. " preview checks, 0 failed")

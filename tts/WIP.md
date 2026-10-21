@@ -4,7 +4,28 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): live v42 check caught commander sizing and blank-image issues; fixes are delivered as a separate local test build. Owner says prepare the build and upload later: **hold further Workshop uploads**. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-21 (Codex): implementing website-style illustrated guides for the separate local test build. Owner says prepare the build and upload later: **hold further Workshop uploads**. See `tts/CHANGELOG.md` for released versions.
+
+## Illustrated guides (local test build; Workshop upload on hold)
+
+Owner requested that guides mimic the website with actual card pictures. The
+export now resolves each row with the same `deckguide.pieces()` parser as the
+website: cards retain their pinned faces, plus combo/chain joiners. Guide-only
+cards are included too; unresolved names keep a readable text fallback. Preview
+schema v1 remains compatible with older table builds. Build-time image validation
+walks every guide face as well as commander/spawn images.
+
+`tts/cactuar_guide.lua` builds a private scrolling reading layout: a single card
+beside its explanation, combo/chain picture strips above their prose, and the same
+section headings and free paragraphs. Hovering a guide image shows that card at
+readable size on the right; leaving restores the selected commander/partner.
+Only the guide's own named layout changes, with XML/assets installed atomically;
+shared reloads restore the current open sessions. Guide images register only while
+their guide is open and preserve base, sleeve and Inspect assets. Stale callbacks
+and cross-seat hover events cannot change another player's preview.
+
+Implementation and publication checks are in progress. The new static metadata
+will be published for the local save to fetch; **do not upload Workshop**.
 
 ## Commander layout follow-up (local test build; upload on hold)
 

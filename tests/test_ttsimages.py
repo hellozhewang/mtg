@@ -51,9 +51,10 @@ class URLTests(unittest.TestCase):
         path = Path("alice/Pair.preview.json")
         uses = ttsimages.image_urls({path: json.dumps({"commanders": [
             {"faces": [{"FaceURL": "https://example.org/front.webp"},
-                       {"FaceURL": "https://example.org/back.webp"}]}]})})
-        self.assertEqual(set(uses), {"https://example.org/front.webp", "https://example.org/back.webp"})
-        self.assertIn("alice/Pair.preview.json: commander preview (FaceURL)", uses["https://example.org/front.webp"])
+                       {"FaceURL": "https://example.org/back.webp"}]}], "guide": [{"rows": [{"cards": [
+                           {"faces": [{"FaceURL": "https://example.org/guide-only.webp"}]}]}]}]})})
+        self.assertEqual(set(uses), {"https://example.org/front.webp", "https://example.org/back.webp", "https://example.org/guide-only.webp"})
+        self.assertIn("alice/Pair.preview.json: commander/guide preview (FaceURL)", uses["https://example.org/front.webp"])
 
     def test_collect_exact_urls_from_every_export_role_and_nested_states(self):
         files = {Path("decks.json"): "ignored", Path("alice/Test.ndjson"): export(

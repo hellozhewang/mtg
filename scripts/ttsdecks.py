@@ -43,6 +43,7 @@ from urllib.parse import urlsplit
 
 import decktiers
 import deckthemes
+import deckguide
 
 TILE_IMAGE = Path(__file__).resolve().parent.parent / "tts" / "cactuar-tile.jpg"
 # Every picture here is a sleeve (card back) players can choose in the table's browser.
@@ -268,8 +269,19 @@ def preview_file(d) -> str:
             commanders.append({"name": name, "faces": [
                 {"name": face["nickname"].split("\n", 1)[0], "FaceURL": face["image"]}
                 for face in faces(card)]})
-    guide = [{"title": title, "rows": [{"name": name, "text": text} for name, text in rows]}
-             for title, rows in d.guide]
+    guide = []
+    for title, rows in d.guide:
+        section = {"title": title, "rows": []}
+        for name, text in rows:
+            pictures = []
+            for joiner, piece in deckguide.pieces(name) if name else []:
+                card = d.cards.get(piece)
+                pictures.append({"name": card.get("name", piece) if card else piece,
+                                 "joiner": joiner, "faces": [
+                                     {"name": face["nickname"].split("\n", 1)[0], "FaceURL": face["image"]}
+                                     for face in faces(card)] if card else []})
+            section["rows"].append({"name": name, "text": text, "cards": pictures})
+        guide.append(section)
     return json.dumps({"v": 1, "id": d.key, "name": d.stem,
                        "commanders": commanders, "guide": guide}, ensure_ascii=False,
                       separators=(",", ":")) + "\n"

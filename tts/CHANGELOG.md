@@ -8,6 +8,10 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v36 — 2026-10-20 (commit 53bb0a1f)
+- Renamed the alphabetical deck browser to Inspect in the right-click menu and window title.
+- Workshop item 3822623414 updated.
+
 ## v35 — 2026-10-20 (commit 342fb397)
 - Right-click a deck and choose Search A-Z for a private alphabetical card gallery with live name search, previews and Take to hand.
 - Browsing preserves the real library order and never shows card positions; draws and seat changes refresh the private view.

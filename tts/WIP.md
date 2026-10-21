@@ -4,9 +4,9 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-20 (Codex): preparing v36, renaming the alphabetical browser to Inspect. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-20 (Codex): v36 delivered and uploaded; the alphabetical browser is now Inspect. See `tts/CHANGELOG.md` for released versions.
 
-## v36: Inspect naming (preparing)
+## v36: Inspect naming (released)
 
 Owner asked to call the alphabetical browser **Inspect** and place it directly below
 native **Search**. The custom context-menu label and the window title are now Inspect;
@@ -20,8 +20,13 @@ Reference: https://api.tabletopsimulator.com/object/#addcontextmenuitem . This p
 the request remains unsupported by TTS, rather than implemented or promised.
 
 Validation: the existing alphabetical-search harness passes **41 checks**, and all
-**11 table-build tests pass**. Release v36 through the normal pipeline. In-game menu
-placement is engine-owned.
+**11 table-build tests pass**. In-game menu placement is engine-owned.
+
+Released from `53bb0a1f`: **MTG 6 player Cactuar Ver_v36** and its thumbnail delivered
+with matching checksums; v35's save/thumbnail removed. Workshop item **3822623414**
+updated with **Steam EResult 1**; temporary task removed. Result:
+`.cache/workshop/3822623414-7e01824406fb46d8966d8a3f9b2306f0-result.json`.
+WIP and changelog copied to the PC Desktop. Load v36 to use the renamed menu entry.
 
 ## v35: Search A–Z (released)
 

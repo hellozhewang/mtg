@@ -8,6 +8,10 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v39 — 2026-10-21 (commit cb94246a)
+- Card click previews open immediately to the left of Inspect, leaving the search field and card list accessible.
+- Workshop item 3822623414 updated.
+
 ## v38 — 2026-10-20 (commit c33196c7)
 - Inspect supports hold-to-zoom beside the card list; bind Inspect zoom to Alt once in Options > Game Keys.
 - Moving between thumbnails updates the enlarged image; releasing the key or leaving the card dismisses it, with no change to deck contents or order.

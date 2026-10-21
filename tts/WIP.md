@@ -4,9 +4,9 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): moving the click preview to the left of Inspect for v39; automatic use of the existing native Object Zoom binding remains unresolved. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-21 (Codex): v39 is released with the click preview to the left of Inspect; automatic use of the existing native Object Zoom binding remains unresolved. See `tts/CHANGELOG.md` for released versions.
 
-## v39: click preview beside Inspect (preparing release)
+## v39: click preview beside Inspect (released)
 
 Owner's screenshot showed that clicking a card still opened its larger preview over
 the Inspect grid. The click preview now anchors immediately to the **left** of Inspect,
@@ -17,6 +17,15 @@ the preview is open. It remains a child of the private Inspect panel and moves w
 This is a layout change in `tts/cactuar_search.xml`; preview/retrieval callbacks and
 native zoom support are unchanged. Validation: all **11 table-build tests pass**;
 the existing Inspect Lua harness passes **82 checks**, zero failures.
+Applied the same layout to the running game's six Inspect panels. A live capture
+(`.cache/inspect-side-live/after.png`) shows **Bountiful Promenade** enlarged to the
+left, with the Yuna-Counters search bar and all four thumbnail columns unobstructed.
+
+Released from `cb94246a`: **MTG 6 player Cactuar Ver_v39** and thumbnail delivered to
+Saves with matching checksums; v38's canonical save/thumbnail removed. Workshop item
+**3822623414** updated with **Steam EResult 1** and the temporary task removed.
+Result: `.cache/workshop/3822623414-a40d86a98d554f998fa648f26124c902-result.json`.
+The running game already has the layout adjustment; load v39 for the saved revision.
 
 ## Requested follow-up: existing native Object Zoom binding (unresolved)
 

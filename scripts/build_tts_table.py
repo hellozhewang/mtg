@@ -32,6 +32,7 @@ SEATS = ("White", "Red", "Yellow", "Green", "Blue", "Purple")
 ROWS = 10                                   # must match CZ.rows in cactuar.lua
 CHOICES = 10                                # paged filter menu; matches CZ.menuRows
 SLEEVE_CELLS = 8                            # paged Sleeves grid; matches CZ.sleeveCells
+SEARCH_CELLS = 12                           # alphabetical card search, 6 columns x 2 rows
 MARKER = "-- ==== Cactuar deck browser"     # how a second build recognises the first
 TILE_IMAGE = "cactuar-tile.jpg"             # published beside decks.json (ttsdecks.py)
 TILE_SCALE = 2.2
@@ -67,12 +68,18 @@ def browser_xml() -> str:
         out.append(panel.replace("@ROWS@", rows.rstrip("\n"))
                    .replace("@CHOICES@", choices.rstrip("\n"))
                    .replace("@SLEEVECELLS@", cells.rstrip("\n")).replace("{C}", color))
+    search_template = (SOURCE / "cactuar_search.xml").read_text(encoding="utf-8")
+    for color in SEATS:
+        cells = "".join(_section(search_template, "CARD").replace("{I}", str(i))
+                        for i in range(1, SEARCH_CELLS + 1))
+        out.append(_section(search_template, "SEARCH").replace("@CARDS@", cells.rstrip("\n"))
+                   .replace("{C}", color))
     return "\n".join(out)
 
 
 # Appended to Global in this order: the browser, then the turn totals and
 # announcer, which use the browser's CZ.seats and CZ.base.
-GLOBAL_SCRIPTS = ("cactuar.lua", "cactuar_turns.lua")
+GLOBAL_SCRIPTS = ("cactuar.lua", "cactuar_turns.lua", "cactuar_search.lua")
 
 
 def browser_lua(base_url: str) -> str:

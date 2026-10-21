@@ -4,7 +4,37 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-20 (Codex): v34 delivered and uploaded successfully to Workshop item 3822623414; Steam confirmed EResult 1. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-20 (Codex): preparing v35 with private alphabetical card search. v34 is the latest released version. See `tts/CHANGELOG.md` for released versions.
+
+## v35: Search A–Z (preparing)
+
+Owner request: another deck-search window showing cards alphabetically, with a search
+bar and without revealing the library order. TTS's native `Container.search` has no
+sort parameter, so this is a separate **Search A–Z** item on each deck's context menu.
+
+- Private, per-seat card gallery, 12 cards per page, live case/accent-insensitive name
+  search, larger preview and **Take to hand**. Standard Search stays available.
+- Reads the actual container's metadata and sorts a copy by name, then GUID for equal
+  names. No deck positions are stored/displayed; opening, filtering, paging and closing
+  never shuffle, reorder, clone or take cards. Retrieval uses the selected card's GUID.
+- Each displayed button sends its GUID, so a late click cannot select a new occupant
+  of a stale page slot. Missing/drawn cards are rejected; duplicate names remain distinct.
+- The original deck is refreshed while open. Destroyed/collapsed decks close the view.
+  Seat changes clear private state immediately; existing Global handlers are preserved.
+- UI text is stored in attributes to survive the base importer's XML round-trip, and
+  colours follow the owner's soft-white preference. Direct image URLs avoid reloading
+  the shared custom-asset list and disturbing other panels.
+- Single-card textures (our catalog and rikrassen's importer) show pictures. Atlas
+  imports remain searchable by name and support retrieval, but pictures are omitted
+  rather than showing the wrong whole sheet. This is a known preview limitation.
+
+Sources: `tts/cactuar_search.lua`, `tts/cactuar_search.xml`; included by
+`scripts/build_tts_table.py`. Opening the catalog closes the player's card search.
+Validation: the real base table builds with the new module; combined Global Lua and
+XML parse. The Lua harness checks sorting, literal searches, accents, unchanged physical
+order, duplicates, stale clicks, simultaneous players, retrieval, membership changes,
+seat privacy, existing event/menu preservation and reload cleanup: **41 checks,
+0 failed**. All **216 unit tests pass**. In-game layout/image checks remain for the owner.
 
 ## v34: Pirate Cannon starts the game (released)
 

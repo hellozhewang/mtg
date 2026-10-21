@@ -806,6 +806,17 @@ The table also shows each seat's **total turn time** for the game under its turn
 (the "Who goes first?" roll resets it). An **announcer** mocks a turn that reaches 5 and
 then 10 minutes ([tts/cactuar_turns.lua](tts/cactuar_turns.lua); chat `announcer off`).
 
+**Search a library alphabetically:** right-click any deck and choose **Search A–Z**.
+The private card gallery sorts by name and filters as you type, without displaying
+library positions or changing the deck's order. Select a card for a larger preview,
+then **Take to hand** to take that exact card. Draws and other changes refresh the
+gallery automatically. The ordinary Search menu stays available.
+
+The catalog's single-card image textures have picture previews. Decks imported as
+multi-card image sheets still have searchable names and exact-card retrieval, but
+their picture previews are omitted. Source: [cactuar_search.lua](tts/cactuar_search.lua)
+and [cactuar_search.xml](tts/cactuar_search.xml).
+
 Players can also pick **sleeves** (a custom card back) for the deck they load. The
 sleeves are the pictures in [tts/sleeves/](tts/sleeves/); its
 [README](tts/sleeves/README.md) gives the image specs. Add one by dropping a picture

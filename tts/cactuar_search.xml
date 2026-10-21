@@ -1,0 +1,59 @@
+<!-- @SEARCH@ -->
+<Panel id="czs_panel_{C}" visibility="{C}" active="False" width="980" height="760"
+       rectAlignment="MiddleCenter" allowDragging="true" returnToOriginalPositionWhenReleased="false"
+       color="#111923FC" outline="#34465B" outlineSize="1 1" shadow="#00000080" shadowDistance="-4 -6">
+  <VerticalLayout padding="14 14 14 14" spacing="8" childForceExpandHeight="false">
+    <HorizontalLayout preferredHeight="32" spacing="8" childForceExpandWidth="false">
+      <Text flexibleWidth="1" fontSize="22" color="#E2E5EA" alignment="MiddleLeft" text="Search cards A–Z"/>
+      <Button onClick="czsRefreshClick" preferredWidth="82" fontSize="13" color="#FFFFFF" textColor="#E2E5EA"
+              colors="#243244|#34485F|#1C2938|#1B2533" text="Refresh"/>
+      <Button onClick="czsClose" preferredWidth="34" fontSize="18" color="#FFFFFF" textColor="#E2E5EA"
+              colors="#243244|#643B46|#482C35|#1B2533" text="×"/>
+    </HorizontalLayout>
+    <HorizontalLayout preferredHeight="34" spacing="8" childForceExpandWidth="false">
+      <InputField id="czs_query_{C}" flexibleWidth="1" fontSize="15" onValueChanged="czsSearch"
+                  color="#1D2A3A" colors="#FFFFFF|#FFFFFF|#FFFFFF|#8C9AAD" textColor="#E2E5EA"
+                  caretColor="#C0C8D2" placeholder="Search card names…"/>
+      <Button onClick="czsClear" preferredWidth="70" fontSize="13" color="#FFFFFF" textColor="#E2E5EA"
+              colors="#243244|#34485F|#1C2938|#1B2533" text="Clear"/>
+    </HorizontalLayout>
+    <Text preferredHeight="18" fontSize="12" color="#C0C8D2" alignment="MiddleLeft"
+          text="Alphabetical view · Select a card to preview it or take it to your hand."/>
+    <Panel preferredHeight="420" color="#111923">
+      <GridLayout cellSize="150 206" spacing="8 8" constraint="FixedColumnCount" constraintCount="6" childAlignment="UpperCenter">
+@CARDS@
+      </GridLayout>
+      <Text id="czs_empty_{C}" active="False" fontSize="17" color="#C0C8D2" text="No matching cards." raycastTarget="false"/>
+    </Panel>
+    <HorizontalLayout preferredHeight="32" spacing="8" childForceExpandWidth="false">
+      <Button id="czs_prev_{C}" onClick="czsPage(prev)" preferredWidth="38" fontSize="20" color="#FFFFFF"
+              colors="#243244|#34485F|#1C2938|#1B2533" textColor="#E2E5EA" text="‹"/>
+      <Text id="czs_count_{C}" flexibleWidth="1" fontSize="13" color="#C0C8D2" text=""/>
+      <Button id="czs_next_{C}" onClick="czsPage(next)" preferredWidth="38" fontSize="20" color="#FFFFFF"
+              colors="#243244|#34485F|#1C2938|#1B2533" textColor="#E2E5EA" text="›"/>
+      <Button id="czs_take_{C}" onClick="czsTake" preferredWidth="142" fontSize="13" color="#FFFFFF" textColor="#E2E5EA"
+              colors="#173B30|#1A3F32|#123127|#202C39" interactable="False" text="Take to hand"/>
+    </HorizontalLayout>
+    <Text id="czs_status_{C}" preferredHeight="24" fontSize="13" color="#C0C8D2" alignment="MiddleLeft" text=""/>
+    <Text preferredHeight="18" fontSize="11" color="#C0C8D2" alignment="MiddleLeft"
+          text="Browsing never changes the library order. Close this window when you finish searching."/>
+  </VerticalLayout>
+  <Panel id="czs_preview_{C}" active="False" width="344" height="540" color="#172332FC" outline="#49627C" outlineSize="1 1">
+    <VerticalLayout padding="12 12 12 12" spacing="8" childForceExpandHeight="false">
+      <Text id="czs_preview_name_{C}" preferredHeight="36" fontSize="15" color="#E2E5EA" horizontalOverflow="Wrap" text=""/>
+      <Image id="czs_preview_image_{C}" preferredHeight="424" preserveAspect="true" color="#FFFFFF00"/>
+      <HorizontalLayout preferredHeight="32" spacing="8">
+        <Button onClick="czsHidePreview" color="#FFFFFF" colors="#243244|#34485F|#1C2938|#1B2533" textColor="#E2E5EA" text="Back"/>
+        <Button id="czs_preview_take_{C}" onClick="czsTake" color="#FFFFFF" colors="#173B30|#1A3F32|#123127|#202C39" textColor="#E2E5EA" text="Take to hand"/>
+      </HorizontalLayout>
+    </VerticalLayout>
+  </Panel>
+</Panel>
+<!-- @CARD@ -->
+        <Button id="czs_card_{I}_{C}" onClick="czsPick({I})" active="False" color="#FFFFFF" text=""
+                colors="#1C2939|#34485F|#244E46|#182331">
+          <VerticalLayout padding="4 4 4 4" spacing="4" childForceExpandHeight="false" raycastTarget="false">
+            <Image id="czs_image_{I}_{C}" preferredHeight="170" preserveAspect="true" color="#FFFFFF00" raycastTarget="false"/>
+            <Text id="czs_name_{I}_{C}" preferredHeight="24" fontSize="11" color="#E2E5EA" horizontalOverflow="Wrap" text="" raycastTarget="false"/>
+          </VerticalLayout>
+        </Button>

@@ -581,6 +581,7 @@ function czOpen(player)
     broadcastToColor("Take a seat first: decks load into your own seat.", color, {1, 0.8, 0.4})
     return
   end
+  if czsClose then czsClose(player) end
   czDismiss(player)
   local id = "cz_panel_" .. color
   if UI.getAttribute(id, "active") == "True" then

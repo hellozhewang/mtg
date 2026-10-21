@@ -26,6 +26,18 @@ def tiles(table: dict) -> list[dict]:
 
 
 class TableBuild(unittest.TestCase):
+    def test_alphabetical_search_is_private_and_included_in_the_build(self):
+        table = build_tts_table.build(json.loads(json.dumps(BASE)), URL)
+        root = ET.fromstring("<root>" + table["XmlUI"] + "</root>")
+        self.assertIn("function czsOpen(", table["LuaScript"])
+        for color in build_tts_table.SEATS:
+            panel = root.find(f".//*[@id='czs_panel_{color}']")
+            self.assertEqual(panel.get("visibility"), color)
+            self.assertEqual(panel.get("active"), "False")
+            self.assertEqual(root.find(f".//*[@id='czs_query_{color}']").get("onValueChanged"), "czsSearch")
+            for i in range(1, build_tts_table.SEARCH_CELLS + 1):
+                self.assertEqual(root.find(f".//*[@id='czs_card_{i}_{color}']").get("onClick"), f"czsPick({i})")
+
     def test_tiles_open_the_browser(self):
         table = build_tts_table.build(json.loads(json.dumps(BASE)), URL)
         placed = tiles(table)

@@ -816,10 +816,12 @@ retrieval is disabled for those entries to avoid taking a different card by posi
 TTS controls custom-menu placement, so Workshop Lua cannot insert Inspect beside native
 Search or reuse its actual window. Standard Search remains available.
 
-For **Alt + hover zoom**, bind **Inspect zoom** to **Alt** once under
-**Options → Game Keys**. Hold it over a thumbnail to enlarge that card beside the
-window; release or move away to dismiss it. This custom Game Key works with another
-key too, and its binding persists across loads. Click-to-preview remains available.
+v38 offers an optional **Inspect zoom** Game Key under **Options → Game Keys**.
+After separately binding it, hold that key over a thumbnail to enlarge the card;
+release or move away to dismiss it. Its binding persists across loads. This workaround
+does not inherit the player's native Object Zoom binding. Automatic reuse of that
+existing binding remains unresolved in Workshop Lua; see [WIP](tts/WIP.md).
+Click-to-preview remains available.
 
 Single-card textures and custom object images have previews, including WebP through
 named UI assets. Multi-card image sheets and built-in 3D object thumbnails remain

@@ -4,7 +4,33 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-20 (Codex): v38 delivered and uploaded; Inspect supports a bindable hold-to-zoom key. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-20 (Codex): v38 is released with a separate zoom shortcut; automatic use of the existing native Object Zoom binding remains unresolved. See `tts/CHANGELOG.md` for released versions.
+
+## Requested follow-up: existing native Object Zoom binding (unresolved)
+
+Owner clarified after v38: Inspect must follow the player's **existing TTS Object
+Zoom binding**, whatever key that player uses. Holding that key enlarges the hovered
+card; releasing it closes the enlargement. **No second key to configure and no
+unconditional hover-to-zoom.** Keep the previously chosen Workshop-compatible scope.
+
+v38 does **not** satisfy automatic reuse of the existing native binding. Its separate
+`Inspect zoom` Game Key is an optional workaround. The earlier completion report
+should have distinguished this from hooking native Object Zoom. Successful simulated
+press/release callbacks and a screenshot do not establish native-key integration.
+
+Rechecked the supported APIs: XML UI pointer events expose mouse events, not keyboard
+modifier state; `Player.Action` has no Object Zoom action; `addHotkey` creates a
+separate player-configured Game Key and cannot read or inherit Settings bindings.
+There is no documented native-zoom listener/binding getter for the current custom
+Inspect panel. Do not claim native integration is complete, ask the owner to configure
+another key as though it meets this requirement, or silently substitute automatic hover.
+No further runtime change or build was made for this clarification. Any future solution
+must demonstrate real native key-down/key-up behavior, including a remapped native key,
+without changing library order or adding client-mod requirements.
+
+References: https://api.tabletopsimulator.com/events/#actions ,
+https://api.tabletopsimulator.com/ui/attributes/#event-attributes and
+https://api.tabletopsimulator.com/base/#addhotkey .
 
 ## v38: hold a key to zoom Inspect (released)
 
@@ -14,8 +40,9 @@ both key press and release callbacks, so this revision adds a bindable **Inspect
 key. **Each player must bind Inspect zoom to Alt once in Options → Game Keys.** The
 binding then persists by label across table loads. It is not automatically bound and
 we do not alter client settings or install a client mod. Any chosen key also works.
-This implements the requested hold-to-zoom interaction using TTS's supported binding
-mechanism. Unconfigured clients retain the existing click preview.
+This implements separately configured hold-to-zoom. It does not inherit the existing
+native Object Zoom binding; see the unresolved clarification above. Unconfigured
+clients retain the existing click preview.
 
 - Hover a card, then hold the configured key, or hold it before entering a thumbnail:
   a larger face appears beside Inspect. Moving between thumbnails changes the image;
@@ -895,7 +922,7 @@ investigation and evidence; their older “pending” notes describe that point 
 
 | Issue / symptom | Cause and resolution | Verification / remaining work |
 |---|---|---|
-| Native Alt-hover did nothing over Inspect thumbnails | Custom UI is not a native scene object and exposes no raw Alt state. v38 adds a bindable Inspect zoom Game Key with press/release callbacks plus private thumbnail hover handlers. | Bind Inspect zoom to Alt once per player in Options → Game Keys. Callback behavior is covered by the harness; actual configured keyboard input remains an owner check. |
+| Native Alt-hover did nothing over Inspect thumbnails | Custom UI is not a native scene object and exposes no raw Alt state. v38 adds a bindable Inspect zoom Game Key with press/release callbacks plus private thumbnail hover handlers. | v38 is only a separately configured workaround. The owner requires automatic reuse of the existing native Object Zoom binding; that requirement remains unresolved. |
 | Inspect looked unlike native Search | v35/v36 used a wide, six-column paged gallery. v37 replaces it with a narrow dark four-column scrolling view and a single live search field, reading actual deck/bag contents. | Live screenshot and 99-card Yuna view checked. Exact native-menu placement/window reuse is unavailable; owner chose Workshop compatibility. |
 | Inspect showed no cards in an imported deck | All 99 contained GUIDs in the live Yuna deck were empty; the earlier code skipped them. v37 uses serialized metadata and stable preview identities without taking cards out or exposing positions. | All 99 display A–Z, including duplicates. Entries without physical GUIDs are preview-only; unsafe retrieval callbacks are rejected. |
 | Inspect WebP thumbnails were white boxes | Direct UI URL decoding did not display the cache's WebP; registering the same URL as a named custom asset did. v37 merges named faces while preserving existing assets. | Real card faces verified in the running game; all 41 previous UI assets retained. Asset sets stay bounded to open views on registration. |

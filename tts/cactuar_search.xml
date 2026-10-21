@@ -6,10 +6,13 @@
         fontSize="20" color="#E2E5EA" alignment="MiddleLeft" text="Inspect"/>
   <Button onClick="czsClose" width="28" height="28" rectAlignment="UpperRight" offsetXY="-12 -10"
           fontSize="20" color="#FFFFFF" textColor="#E27373" colors="#242424|#484040|#282020|#242424" text="×"/>
-  <InputField id="czs_query_{C}" width="456" height="34" rectAlignment="UpperLeft" offsetXY="12 -50"
+  <InputField id="czs_query_{C}" width="406" height="34" rectAlignment="UpperLeft" offsetXY="12 -50"
               fontSize="16" onValueChanged="czsSearch" color="#101010"
               colors="#FFFFFF|#FFFFFF|#FFFFFF|#8C9AAD" textColor="#E2E5EA"
-              caretColor="#C0C8D2" placeholder="Search…"/>
+              caretColor="#C0C8D2" placeholder="Search all card text…"/>
+  <Button id="czs_regex_{C}" onClick="czsToggleRegex" width="44" height="34" rectAlignment="UpperRight" offsetXY="-12 -50"
+          fontSize="18" color="#FFFFFF" textColor="#E2E5EA" colors="#242424|#383838|#181818|#242424" text=".*"
+          tooltip="Regex off. Click to enable: creature|artifact, draw.*card, or \belf\b. Searches all stored card text."/>
   <Panel anchorMin="0 0" anchorMax="1 1" offsetMin="12 28" offsetMax="-12 -92" color="#020202">
     <VerticalScrollView id="czs_scroll_{C}" width="100%" height="100%" color="#020202" movementType="Clamped" scrollSensitivity="28"
                         verticalScrollbarVisibility="AutoHide" scrollbarBackgroundColor="#222222"

@@ -49,6 +49,52 @@ local function czsKey(text)
     ["Ù"]="u", ["Ú"]="u", ["Û"]="u", ["Ü"]="u", ["ù"]="u", ["ú"]="u", ["û"]="u", ["ü"]="u" }
   return string.lower((text:gsub("[\194-\244][\128-\191]*", accents)))
 end
+local function czsPlain(text)
+  if type(text) ~= "string" then return "" end
+  text = text:gsub("\r\n", "\n"):gsub("\r", "\n")
+    :gsub("%[%x%x%x%x%x%x%]", ""):gsub("%[%-%]", "")
+  local tags = {b = true, i = true, u = true, s = true, sub = true, sup = true, color = true, size = true}
+  local function strip(tag, original)
+    local name = tag:lower():match("^/?([%a]+)")
+    if name == "br" then return "\n" end
+    return tags[name] and "" or original
+  end
+  text = text:gsub("%[([^%]]+)%]", function(tag) return strip(tag, "[" .. tag .. "]") end)
+  return (text:gsub("<([^>]+)>", function(tag) return strip(tag, "<" .. tag .. ">") end))
+end
+local function czsCardText(live, serialized)
+  local parts, seen = {}, {}
+  local function add(value)
+    value = czsPlain(value)
+    if value ~= "" then parts[#parts + 1] = value end
+  end
+  local function face(meta, current, depth)
+    if type(meta) ~= "table" or seen[meta] or depth > 8 then return end
+    seen[meta] = true
+    current = current or meta
+    add(current.name or current.nickname or current.Nickname or meta.Nickname)
+    -- Some metadata providers shorten the live name; serialization can still
+    -- carry the full nickname's type/mana-value lines.
+    if current ~= meta and meta.Nickname ~= (current.name or current.nickname or current.Nickname) then add(meta.Nickname) end
+    add(current.description or current.Description or meta.Description)
+    add(current.type_line or current.TypeLine or meta.type_line or meta.TypeLine)
+    add(current.oracle_text or current.OracleText or meta.oracle_text or meta.OracleText)
+    local tags = {}
+    for _, tag in ipairs(current.tags or current.Tags or meta.Tags or {}) do
+      if type(tag) == "string" then tags[#tags + 1] = tag end
+    end
+    table.sort(tags)
+    for _, tag in ipairs(tags) do add(tag) end
+    local states = {}
+    for id in pairs(meta.States or {}) do states[#states + 1] = id end
+    table.sort(states, function(a, b) return tostring(a) < tostring(b) end)
+    for _, id in ipairs(states) do face(meta.States[id], nil, depth + 1) end
+  end
+  -- Only visible names, descriptions, types and tags. Never GM notes, scripts,
+  -- GUIDs, deck indexes, or the contents of a nested container.
+  face(serialized, live, 0)
+  return czsKey(table.concat(parts, "\n"))
+end
 local function czsIsContainer(obj)
   return obj and (obj.type == "Deck" or obj.tag == "Deck" or obj.type == "Bag" or obj.tag == "Bag")
 end
@@ -176,14 +222,29 @@ end
 czsRender = function(color)
   local s = CZS.state[color]
   if not s or CZS.rebuilding then return end
-  local query, filtered = czsKey(s.query), {}
-  for _, card in ipairs(s.cards) do
-    if card.key:find(query, 1, true) then filtered[#filtered + 1] = card end
+  local filtered, searchError = {}, nil
+  if s.compiledQuery ~= s.query or s.compiledRegex ~= not not s.regex then
+    s.compiledQuery, s.compiledRegex = s.query, not not s.regex
+    if s.regex then s.matcher, s.patternError = CZRegex.compile(s.query, czsKey)
+    else
+      local query = czsKey(s.query)
+      s.matcher, s.patternError = function(text) return text:find(query, 1, true) ~= nil end, nil
+    end
+  end
+  searchError = s.patternError
+  local budget = {remaining = 2000000}
+  if not searchError then
+    for _, card in ipairs(s.cards) do
+      local matched, err = s.matcher(card.text, budget)
+      if err then searchError = err; filtered = {}; break end
+      if matched then filtered[#filtered + 1] = card end
+    end
   end
   if not czsEnsureCells(color, #filtered) or not czsRegisterPictures() then return end
   s.shown = {}
   local selected = nil
   for _, card in ipairs(s.cards) do if card.guid == s.selected then selected = card end end
+  if searchError then selected = nil end
   if not selected then s.selected, s.previewOpen = nil, false; czsActive("czs_preview_" .. color, false) end
   for i = 1, (CZS.capacity[color] or CZS.cells) do
     local card = filtered[i]
@@ -212,7 +273,13 @@ czsRender = function(color)
     end
   end
   czsActive("czs_empty_" .. color, #filtered == 0)
-  czsText("czs_count_" .. color, #filtered .. " / " .. #s.cards .. " objects · A–Z")
+  czsText("czs_empty_" .. color, searchError and czsEscape(searchError) or "No matching objects.")
+  czsText("czs_count_" .. color, searchError and czsEscape(searchError)
+    or (#filtered .. " / " .. #s.cards .. " objects · A–Z" .. (s.regex and " · Regex" or "")))
+  UI.setAttribute("czs_count_" .. color, "tooltip", czsEscape(searchError or "Searches stored names, types, descriptions, tags and alternate faces."))
+  UI.setAttribute("czs_regex_" .. color, "colors", s.regex and "#305448|#3A6456|#244036|#222222" or "#242424|#383838|#181818|#242424")
+  UI.setAttribute("czs_regex_" .. color, "tooltip", s.regex and "Regex on. Click for plain text. Examples: creature|artifact, draw.*card, \\belf\\b."
+    or "Regex off. Click to enable: creature|artifact, draw.*card, \\belf\\b.")
   local height = math.max(1, math.ceil(#filtered / 4) * 134 + 8)
   UI.setAttribute("czs_grid_" .. color, "preferredHeight", tostring(height))
   UI.setAttribute("czs_grid_" .. color, "height", tostring(height))
@@ -265,9 +332,11 @@ local function czsRefresh(color, force)
     local guid = meta.GUID or meta.guid or ""
     local live = liveByGUID[guid] or meta
     local name = czsName(live.name or live.nickname or live.Nickname)
-    local picture = czsPicture(dataByGUID[guid] or meta, data)
-    cards[#cards + 1] = {guid = guid, name = name, key = czsKey(name), picture = picture,
-      physical = guid ~= "", identity = table.concat({name, meta.Name or "", tostring(meta.CardID or ""), picture or ""}, "\0")}
+    local serializedCard = dataByGUID[guid] or meta
+    local picture = czsPicture(serializedCard, data)
+    local text = czsCardText(live, serializedCard)
+    cards[#cards + 1] = {guid = guid, name = name, key = czsKey(name), picture = picture, text = text,
+      physical = guid ~= "", identity = table.concat({name, meta.Name or "", tostring(meta.CardID or ""), picture or "", text}, "\0")}
   end
   table.sort(cards, function(a, b)
     if a.key ~= b.key then return a.key < b.key end
@@ -301,7 +370,7 @@ function czsOpen(color, deck)
   if not czsSeat(color) then return end
   if not czsIsContainer(deck) then return end
   czsCloseColor(color)
-  CZS.state[color] = {owner = czsOwner(color), deck = deck.getGUID(), query = "",
+  CZS.state[color] = {owner = czsOwner(color), deck = deck.getGUID(), query = "", regex = false,
                       cards = {}, shown = {}, pictures = {}, tokens = {}, nextToken = 0}
   if czsRefresh(color, true) then
     czsActive("cz_panel_" .. color, false)
@@ -318,6 +387,12 @@ function czsSearch(player, value, id)
   czsHideZoom(player.color)
   czsActive("czs_preview_" .. player.color, false)
   if czsRefresh(player.color) then czsRender(player.color) end
+end
+function czsToggleRegex(player, _, id)
+  local s = czsSession(player, id)
+  if not s then return end
+  s.regex = not s.regex
+  czsSearch(player, s.query, id)
 end
 function czsClear(player, _, id)
   if not czsSession(player, id) then return end

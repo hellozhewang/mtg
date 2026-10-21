@@ -4,7 +4,47 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): v40 is released with automatic hover previews to the left of Inspect, as requested. The owner has dropped the zoom-key requirement. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-21 (Codex): preparing v41 with full-card text search and an optional Regex mode in Inspect. See `tts/CHANGELOG.md` for released versions.
+
+## v41: full-card text and Regex search (preparing release)
+
+Owner requested regex and searching all card text, including descriptions and types.
+Previously Inspect only searched the first line of the nickname. It now searches full
+names (including type/mana-value lines), descriptions/rules/stats, tags and alternate
+card faces from the container's live and serialized metadata. Rich-text formatting is
+stripped; display names and alphabetical ordering remain unchanged. No network lookup
+or card movement is needed. Text missing from an import cannot be recovered from its
+picture. GM notes, scripts, identifiers, physical indexes and nested container contents
+are deliberately excluded from the search corpus.
+
+The **.* button** beside the search field switches between plain text (default) and
+Regex for each private Inspector. Regex supports `creature|artifact`, `draw.*card`,
+`\belf\b`, ordinary/noncapturing groups, character classes and ranges, `\d/\w/\s`
+and their uppercase complements, `* + ? {n,m}`, and line anchors. Literal matching
+remains case/accent insensitive; regex normalization preserves escapes such as `\D`.
+No lookarounds or backreferences. Invalid patterns show an inline error and clear
+results instead of leaving stale cards selectable; correcting the query recovers.
+
+`tts/cactuar_regex.lua` is a bundled boolean Thompson NFA matcher. It does not evaluate
+user code or use backtracking. Pattern length, group depth, expansion and per-search
+operations are bounded; excessive work reports an error, never partial results.
+`scripts/build_tts_table.py` embeds it before Inspect. Search metadata participates
+in refresh detection, so description/type edits update matches without a card draw.
+
+Validation: **152 regex checks**, **115 Inspect checks**, and all **217 Python tests**
+pass (including table builds and generated-pattern comparisons with Python's regex).
+The running Yuna deck has descriptions and multiline names on all **99 cards**.
+Live plain-text searches: `creature` finds 58 (including rules-text mentions), `draw`
+finds 19. Regex: `creature|artifact` finds 62, `draw.*card` finds 16, `\belf\b` finds 3.
+An unclosed `[` returns an inline error and zero results; the previous query/mode
+was restored afterward. Physical contents stayed byte-for-byte unchanged.
+First-character filtering reduced the tested regex searches from roughly 0.5–0.7s
+to 0.22–0.31s in the live TTS runtime. Report: `.cache/inspect-text-live/report.json`.
+During the live XML/module replacement, named image registrations remained present
+but thumbnails rendered white. Re-registering the existing asset list and rebinding
+the visible images restored them, including all unrelated assets. The final capture
+`.cache/inspect-text-live/restored.png` confirms card faces and the new search/Regex
+controls. This was a live-update recovery; fresh loads use the normal asset registration.
 
 ## v40: automatic hover preview (released)
 

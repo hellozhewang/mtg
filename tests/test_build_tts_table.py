@@ -30,6 +30,7 @@ class TableBuild(unittest.TestCase):
         table = build_tts_table.build(json.loads(json.dumps(BASE)), URL)
         root = ET.fromstring("<root>" + table["XmlUI"] + "</root>")
         self.assertIn("function czsOpen(", table["LuaScript"])
+        self.assertIn("function CZRegex.compile(", table["LuaScript"])
         self.assertNotIn("@INSPECT_CELL@", table["LuaScript"])
         self.assertIn('id="czs_card_{I}_{C}"', table["LuaScript"])
         for color in build_tts_table.SEATS:
@@ -47,6 +48,7 @@ class TableBuild(unittest.TestCase):
             self.assertEqual(len(grid.findall("Button")), build_tts_table.SEARCH_CELLS)
             self.assertIsNone(panel.find(f".//*[@id='czs_next_{color}']"))
             self.assertEqual(root.find(f".//*[@id='czs_query_{color}']").get("onValueChanged"), "czsSearch")
+            self.assertEqual(root.find(f".//*[@id='czs_regex_{color}']").get("onClick"), "czsToggleRegex")
             for i in range(1, build_tts_table.SEARCH_CELLS + 1):
                 card = root.find(f".//*[@id='czs_card_{i}_{color}']")
                 self.assertEqual(card.get("onClick"), "czsPick")

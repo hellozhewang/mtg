@@ -1,0 +1,56 @@
+-- Boolean matching against conventional regex examples, including pathological cases.
+dofile("tts/cactuar_regex.lua")
+local checks = 0
+local function check(condition, message)
+  checks = checks + 1
+  assert(condition, message)
+end
+local function matches(pattern, yes, no)
+  local fn, err = CZRegex.compile(pattern)
+  check(fn ~= nil, pattern .. ": " .. tostring(err))
+  for _, text in ipairs(yes) do check(fn(text) == true, pattern .. " should match " .. text) end
+  for _, text in ipairs(no or {}) do check(fn(text) == false, pattern .. " should not match " .. text) end
+end
+matches("", {"", "anything"})
+matches("draw", {"draw a card", "whenever you draw"}, {"discard", ""})
+matches("creature|artifact", {"artifact creature — golem", "enchantment creature", "artifact"}, {"land"})
+matches("draw.*cards?", {"draw a card", "draw two cards"}, {"discard", "draw\na card"})
+matches("(elf|goblin)s?", {"elf", "elves and goblins", "goblin"}, {"human"})
+matches("(?:elf|goblin)", {"elf", "goblin"}, {"human"})
+matches("^sol ring$", {"sol ring", "sol ring\nartifact\nadd {c}{c}."}, {"a sol ring", "sol ring extra"})
+matches("\\belf\\b", {"elf", "creature — elf druid"}, {"self", "elves"})
+matches("\\Belf", {"self"}, {"elf"})
+matches("\\d+", {"pay 2 life", "123"}, {"pay life"})
+matches("^\\D+$", {"abc", " {t}"}, {"ab1c", ""})
+matches("^\\w+\\s\\W+$", {"elf !?"}, {"elf a", "elf"})
+matches("\\S+", {"text", " x "}, {" \t\n"})
+matches("[a-c]+", {"abc", "dcb"}, {"xyz"})
+matches("^[^0-9]+$", {"abc"}, {"ab3", ""})
+matches("[\\dA-F]+", {"abc123", "feed"}, {"xyz"})
+matches("[a\\-z]", {"a", "-", "z"}, {"m"})
+matches("[\\]\\[]", {"[", "]"}, {"x"})
+matches("^a{2,4}$", {"aa", "aaa", "aaaa"}, {"a", "aaaaa", ""})
+matches("^a{2,}$", {"aa", "aaaaa"}, {"a", ""})
+matches("^a{0}$", {""}, {"a"})
+matches("^(ab){2}$", {"abab"}, {"ab", "ababab"})
+matches("^a+?b$", {"ab", "aaab"}, {"b", "aabb"})
+matches("^(a?)*$", {"", "aaa"}, {"b"})
+matches("(ab|a)b", {"ab", "abb"}, {"a"})
+matches("a|", {"", "anything"})
+matches("a\\+b\\?", {"a+b?"}, {"aab"})
+matches("\\{t\\}", {"{t}: add {g}."}, {"tap"})
+matches("a[\\s\\S]*b", {"a\nb", "ab"}, {"ac"})
+matches("é", {"éclair"}, {"eclair"})
+matches("^.$", {"é", "x"}, {"xy", ""})
+for _, pattern in ipairs({"[", "(", ")", "*", "a**", "a{", "a{3,2}", "a{65}", "[z-a]",
+    "[\\d-z]", "[]", "(?=elf)", "(?i)elf", "(a)\\1", "\\p{L}", "\\", "^*", string.rep("a", 257)}) do
+  local fn, err = CZRegex.compile(pattern)
+  check(fn == nil and type(err) == "string", "invalid or unsupported syntax must report an error: " .. pattern)
+end
+local fn = assert(CZRegex.compile("(a+)+b"))
+check(fn(string.rep("a", 2000)) == false, "nested repetition has no exponential backtracking")
+local value, err = fn(string.rep("a", 2000), {remaining = 20})
+check(value == nil and err ~= nil, "complex searches stop at their operation budget, not a false match")
+local folded = assert(CZRegex.compile("ÉLF|\\D+", function(text) return text:gsub("É", "e"):lower() end))
+check(folded("elf") == true and folded("123") == false, "normalizing regex literals preserves uppercase escapes")
+print(checks .. " regex checks, 0 failed")

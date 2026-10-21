@@ -16,6 +16,7 @@ local function imageURL(id)
   return ""
 end
 local function loadInspect()
+  dofile("tts/cactuar_regex.lua")
   local f = assert(io.open("tts/cactuar_search.lua")); local source = f:read("*a"); f:close()
   source = source:gsub("@INSPECT_CELL@", function() return cell end)
   assert(load(source, "cactuar_search.lua"))()
@@ -67,7 +68,9 @@ local function deck(guid, contents)
   obj.getData = function()
     local children = {}
     for _, card in ipairs(obj.contents) do
-      children[#children + 1] = {GUID = card.guid, CardID = 100, Nickname = card.name}
+      children[#children + 1] = {GUID = card.guid, CardID = 100, Nickname = card.name,
+        Description = card.description, States = card.states, Tags = card.tags,
+        GMNotes = card.gm_notes, LuaScript = card.lua_script}
     end
     return {ContainedObjects = children, CustomDeck = {["1"] = {FaceURL = "https://example.test/card.jpg", NumWidth = 1, NumHeight = 1}}}
   end
@@ -276,6 +279,66 @@ onPlayerChangeColor("Red")
 check(CZS.state.Red == nil and attrs.czs_panel_Red.active == "False", "changing players clears the previous player's search")
 check(attrs.czs_zoom_Red.active == "False" and attrs.czs_zoom_image_Red.image == "", "seat changes clear zoom images as well")
 check(baseChanges == 1, "seat-change wrapper preserves the table's handler")
+-- Search every public text field, independently of display names and deck order.
+local textDeck = deck("text-deck", {
+  {guid = "gamma", name = "Gamma\nLegendary Creature — Elf", description = "[b]Draw[/b] a card.\nPay 2 life.", tags = {"Engine"},
+    gm_notes = "secret-unsearchable", lua_script = "script-unsearchable",
+    states = {["2"] = {Nickname = "Night Side\nEnchantment", Description = "<b>Flying</b> and haste."}}},
+  {guid = "alpha", name = "Alpha\nArtifact", description = "{T}: Add one mana.", tags = {"Mana"}},
+  {guid = "beta", name = "Beta\nInstant", description = "Counter target spell."},
+})
+onObjectSpawn(textDeck); textDeck.open("White"); s = CZS.state.White
+local originalOrder = table.concat({textDeck.contents[1].guid, textDeck.contents[2].guid, textDeck.contents[3].guid})
+local function searchFor(query, expected)
+  czsSearch(white, query, "czs_query_White")
+  check(table.concat(s.shown, ",") == expected, "full-text query: " .. query)
+end
+searchFor("creature", "gamma")
+searchFor("draw a card", "gamma")
+searchFor("ENGINE", "gamma")
+searchFor("enchantment", "gamma")
+searchFor("flying and haste", "gamma")
+searchFor("{T}", "alpha")
+searchFor("2 life", "gamma")
+searchFor("secret-unsearchable", "")
+searchFor("script-unsearchable", "")
+searchFor("creature|artifact", "")
+czsToggleRegex(red, nil, "czs_regex_White")
+check(not s.regex, "other players cannot change the search mode of a private view")
+czsToggleRegex(white, nil, "czs_regex_White")
+check(s.regex and table.concat(s.shown, ",") == "alpha,gamma", "regex mode searches all text with alternation")
+searchFor("draw.*card", "gamma")
+searchFor("\\belf\\b", "gamma")
+searchFor("^alpha$", "alpha")
+searchFor("^\\D+$", "alpha,beta,gamma")
+searchFor("\\d+ life", "gamma")
+searchFor("(instant|artifact)", "alpha,beta")
+searchFor("[", "")
+check(attrs.czs_empty_White.text:find("Unclosed", 1, true) ~= nil, "invalid regex gives a visible error")
+searchFor("counter", "beta")
+check(attrs.czs_count_White.text:find("Regex", 1, true) ~= nil, "valid regex recovers after an error and labels its mode")
+textDeck.contents[3].description = "Exile target creature."
+tick()
+check(#s.shown == 0, "editing description refreshes current matches without a membership change")
+searchFor("exile", "beta")
+czsToggleRegex(white, nil, "czs_regex_White")
+searchFor("[b]", "")
+check(table.concat({textDeck.contents[1].guid, textDeck.contents[2].guid, textDeck.contents[3].guid}) == originalOrder,
+  "literal and regex searches never reorder the physical deck")
+-- getObjects-only containers still expose descriptions when serialization is unavailable.
+textDeck.getData = function() error("no serialized data") end
+searchFor("exile", "beta")
+-- Empty-GUID imports use serialized descriptions and types as well as names.
+anonymous.getData = function()
+  return {ContainedObjects = {
+    {GUID = "", Nickname = "Zulu\nInstant", Description = "Destroy target permanent.", CardID = 200},
+    {GUID = "", Nickname = "Alpha\nCreature — Elf", Description = "Draw a card.", CardID = 100},
+    {GUID = "", Nickname = "Alpha\nCreature — Elf", Description = "Draw a card.", CardID = 100}},
+    CustomDeck = {[1] = {FaceURL = "https://example.test/alpha.jpg"}, [2] = {FaceURL = "https://example.test/zulu.jpg"}}}
+end
+anonymous.open("White"); s = CZS.state.White
+czsSearch(white, "draw a card", "czs_query_White")
+check(#s.shown == 2, "serialized rules text is searchable for GUID-less duplicates")
 -- Live reload keeps one context item and one polling loop.
 local menus, oldTicker = #a.menus, CZS.ticker
 loadInspect()

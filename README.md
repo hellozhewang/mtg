@@ -810,6 +810,14 @@ then 10 minutes ([tts/cactuar_turns.lua](tts/cactuar_turns.lua); chat `announcer
 A private, narrow window shows four scrolling columns and a search bar, using the live
 container's names and images independently of our deck catalog. Browsing never reveals
 positions or changes the container's order; membership changes refresh automatically.
+Search covers the full stored name, card type, description/rules text, stats, tags and
+alternate faces, ignoring case and common accents. Click **`.*`** beside the search
+field to enable **Regex**, then use patterns such as `creature|artifact`, `draw.*card`
+or `\belf\b`. Click it again for plain text. Groups, character classes, repetitions,
+line anchors and word boundaries are supported; lookarounds and backreferences are
+not. Invalid or overly complex patterns show an error and can be corrected in place.
+Search uses the text stored on the imported objects; it cannot read words from an
+image when an importer omitted that metadata.
 Hover over a thumbnail to enlarge it automatically to the left of Inspect; move away
 to dismiss it. No key or binding is needed. Click to keep a preview open and use its
 actions; hovering another thumbnail resumes automatic previews. The list and search

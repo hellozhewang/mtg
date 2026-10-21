@@ -4,9 +4,9 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-20 (Codex): preparing v35 with private alphabetical card search. v34 is the latest released version. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-20 (Codex): v35 delivered and uploaded with private alphabetical card search; Steam confirmed EResult 1. See `tts/CHANGELOG.md` for released versions.
 
-## v35: Search A–Z (preparing)
+## v35: Search A–Z (released)
 
 Owner request: another deck-search window showing cards alphabetically, with a search
 bar and without revealing the library order. TTS's native `Container.search` has no
@@ -35,6 +35,16 @@ XML parse. The Lua harness checks sorting, literal searches, accents, unchanged 
 order, duplicates, stale clicks, simultaneous players, retrieval, membership changes,
 seat privacy, existing event/menu preservation and reload cleanup: **41 checks,
 0 failed**. All **216 unit tests pass**. In-game layout/image checks remain for the owner.
+
+Released from commit `342fb397` with `scripts/release_tts.py --workshop`.
+**MTG 6 player Cactuar Ver_v35** and its thumbnail are in TTS Saves, checksum verified;
+v34's save and thumbnail were removed. Workshop item **3822623414** was updated with
+**Steam EResult 1**, and the temporary task was removed. Result:
+`.cache/workshop/3822623414-6d468f4a76194a5aac885dcefb5f73db-result.json`.
+WIP and changelog are copied to the PC Desktop. The running game was not changed.
+To test: load v35, import a deck, right-click it, choose **Search A–Z**, type a card
+name, select a card and use **Take to hand**. Confirm the remaining library retains
+its order, previews load, and other seats cannot see the search panel.
 
 ## v34: Pirate Cannon starts the game (released)
 

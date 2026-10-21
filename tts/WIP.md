@@ -4,9 +4,9 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): preparing v40 with automatic hover previews to the left of Inspect, as requested. The owner has dropped the zoom-key requirement. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-21 (Codex): v40 is released with automatic hover previews to the left of Inspect, as requested. The owner has dropped the zoom-key requirement. See `tts/CHANGELOG.md` for released versions.
 
-## v40: automatic hover preview (preparing release)
+## v40: automatic hover preview (released)
 
 Owner explicitly changed the requested behavior: automatically enlarge cards on
 mouse-over; no zoom button/key needed. Hover now shows the face to the left of Inspect,
@@ -24,6 +24,14 @@ exits, old-key callbacks, switching from a pinned preview, retrieval protection,
 GUID-less images, filtering and seat privacy. All **11 table-build tests pass**.
 The updated module compiles and was applied to the running game; no Inspect sessions
 were open during the update. Native zoom-key integration is no longer a release goal.
+
+Released from `0490eba7`: **MTG 6 player Cactuar Ver_v40** and thumbnail delivered to
+Saves with matching checksums; v39's canonical save/thumbnail removed. Workshop item
+**3822623414** updated with **Steam EResult 1** and the temporary task removed.
+Result: `.cache/workshop/3822623414-d747f29fd60942a69f0795892c0a27b3-result.json`.
+The delivered save was read back: combined Lua/XML parse, no Inspect key requirement
+or registration remains, and all six private hover panels sit to the left.
+The running game already has automatic hover; load v40 for the saved revision.
 
 ## v39: click preview beside Inspect (released)
 

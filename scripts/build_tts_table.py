@@ -149,6 +149,29 @@ def fix_timer_script(lua: str) -> str:
         "    if timerID~=nil then pcall(function() Wait.stop(timerID) end) end", start]))
 
 
+def fix_cannon_script(lua: str) -> str:
+    """The Pirate Cannon fires the "goes first!" die and, once it rests, hands the turn to
+    the winner itself (`Turns.turn_color = ...`). That skipped our game start: no totals
+    reset, no turn 1 on the clock, and when the winner already held the turn (common
+    after a load), no turn event at all until they passed. Hand the winner to
+    cztStartGame instead, which handles both; keep the cannon's own lines as a fallback
+    for a table without our script."""
+    if not lua.strip() or "cztStartGame" in lua:
+        return lua                                              # no script, or already fixed
+    nl = "\r\n" if "\r\n" in lua else "\n"
+    pad = "\t" * 7
+    old = nl.join([pad + "Turns.enable = true", pad + "Turns.turn_color = ply.color"])
+    if lua.count(old) != 1:
+        sys.exit("the base table's Pirate Cannon script changed: review fix_cannon_script()")
+    return lua.replace(old, nl.join([
+        pad + "-- Cactuar: start the game through Global (totals, turn 1 on the clock).",
+        pad + "local started = pcall(function() Global.call(\"cztStartGame\", ply.color) end)",
+        pad + "if not started then",
+        pad + "\tTurns.enable = true",
+        pad + "\tTurns.turn_color = ply.color",
+        pad + "end"]))
+
+
 def _make_room_under_timers(objects: list) -> list:
     out = []
     for o in objects:
@@ -159,6 +182,9 @@ def _make_room_under_timers(objects: list) -> list:
             o["Transform"] = t
             o["LuaScriptState"] = "0"      # turn 0: cactuar_turns.lua reads >0 as a game in progress
             o["LuaScript"] = fix_timer_script(o.get("LuaScript") or "")
+        elif o.get("Nickname") == "Pirate Cannon":
+            o = dict(o)
+            o["LuaScript"] = fix_cannon_script(o.get("LuaScript") or "")
         out.append(o)
     return out
 

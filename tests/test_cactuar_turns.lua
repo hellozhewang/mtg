@@ -392,5 +392,23 @@ local live = 0
 for _ in pairs(ticks) do live = live + 1 end
 check(live == 1, "one ticker running (" .. live .. ")")
 
+-- The Pirate Cannon (patched by build_tts_table.fix_cannon_script) hands the die's
+-- winner to cztStartGame. After a load the winner often already holds the turn, so no
+-- turn event fires: the game must still start, with turn 1 on their clock.
+tick()                                           -- the ticker attaches the clocks
+CZT.started = false
+for _, c in ipairs(CZ.seats) do timers[c].vars.timerID = nil; timers[c].labels = {} end
+turnsRaw.turn_color = "Blue"                     -- set raw: TTS fires nothing for an unchanged turn
+cztStartGame("Blue")
+check(CZT.started and CZT.color == "Blue", "the cannon's pick starts the game on the current turn")
+check(timers.Blue.labels[5] == "turn" and timers.Blue.labels[6] == 1, "turn 1 shows on the winner's clock (got " .. tostring(timers.Blue.labels[6]) .. ")")
+check(timers.Blue.vars.turnN == 1 and timers.Blue.vars.timerID ~= nil, "their clock is running, counted once")
+-- A different winner: the turn moves, and their clock shows turn 1 too.
+timers.Green.vars.timerID = nil
+cztStartGame("Green")
+check(turnsRaw.turn_color == "Green" and CZT.color == "Green", "the turn moves to the cannon's pick")
+check(timers.Green.labels[6] == 1 and timers.Green.vars.turnN == 1, "turn 1 on the new winner's clock, not 2")
+check(read("scripts/build_tts_table.py"):find("cztStartGame", 1, true), "the build patches the cannon to call cztStartGame")
+
 print(string.format("%d checks, %d failed", checks, failures))
 os.exit(failures == 0 and 0 or 1)

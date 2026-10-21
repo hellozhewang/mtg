@@ -373,8 +373,18 @@ function czsOpen(color, deck)
   CZS.state[color] = {owner = czsOwner(color), deck = deck.getGUID(), query = "", regex = false,
                       cards = {}, shown = {}, pictures = {}, tokens = {}, nextToken = 0}
   if czsRefresh(color, true) then
-    czsActive("cz_panel_" .. color, false)
+    if czHideBrowser then czHideBrowser(color) else czsActive("cz_panel_" .. color, false) end
     czsActive("czs_panel_" .. color, true)
+  end
+end
+function czsRedrawOpen()
+  for color, s in pairs(CZS.state) do
+    if s.owner ~= czsOwner(color) then czsCloseColor(color)
+    else
+      UI.setAttribute("czs_query_" .. color, "text", s.query)
+      for i = 1, (CZS.capacity[color] or CZS.cells) do UI.setAttribute("czs_image_" .. i .. "_" .. color, "image", "") end
+      if czsRefresh(color, true) then czsActive("czs_panel_" .. color, true) end
+    end
   end
 end
 function czsClose(player, _, id)

@@ -787,6 +787,11 @@ importer. Clicking one opens the clicker's own browser, which
 searches as you type, sorts (newest first by default, or tier or name) and offers filter menus
 (bracket, tier, strategy, owner). A separate details panel shows the selected deck's
 commander, strategy and stats; filtered counts also show the collection total.
+The larger browser shows the selected commander's full card at readable size on the
+right. Partner decks have arrows to switch commanders; double-faced commanders have
+a **Flip** button. **Read guide** opens that deck's strategy guide inside the browser,
+with scrolling text and **Back to decks**, while its commander remains visible.
+Decks without a guide show **No guide**. Previews use the deck's pinned printing.
 **Load into my seat** puts the chosen deck in
 that player's seat: the library face down and shuffled in their library zone,
 the commander (or both partners) on their Commander Zones, the tokens beside them.
@@ -853,6 +858,7 @@ The data comes from the catalog build. `build_site.py` writes `docs/tts/`
 |---|---|
 | `tts/decks.json` | the index the browser lists |
 | `tts/<owner>/<Bracket>/<Deck>.ndjson` | one deck: a header line, then the library, commander(s) and tokens as ready-to-spawn Tabletop Simulator objects, built the way rikrassen's importer builds them |
+| `tts/<owner>/<Bracket>/<Deck>.preview.json` | commander faces and structured guide, fetched when a player selects that deck; content-versioned by the index |
 | `tts/cactuar-tile.jpg` | the picture on the Cactuar tiles |
 
 Card faces use the same image cache as rikrassen's importer (`img.klrmngr.com`),

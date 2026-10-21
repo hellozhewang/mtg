@@ -4,6 +4,7 @@ build_site.py calls `files()` and publishes what it returns under docs/tts/:
 
     tts/decks.json                          the index a table's deck browser lists
     tts/<owner>/<Bracket>/<Deck>.ndjson     one deck, ready to spawn
+    tts/<owner>/<Bracket>/<Deck>.preview.json  readable commander faces and structured guide
     tts/cactuar-tile.jpg                    the picture on the table's Cactuar tiles
     tts/sleeves/<name>.jpg                  sleeves (card backs) a player can pick, from the repo's tts/sleeves/
     tts/sleeves/thumbs/<name>.jpg           146 x 204 previews of them for the Sleeves menu
@@ -245,7 +246,33 @@ def index_entry(d, path: str) -> dict:
             "bracket": d.bracket, "bracketLabel": d.label, "tier": tier or "",
             "themes": list(themes), "colors": "".join(d.colours), "gc": len(d.gcs),
             "cap": d.cap, "mv": round(d.avg_mv, 2), "lands": d.lands,
-            "added": d.created, "updated": d.modified, "file": path}
+            "added": d.created, "updated": d.modified, "file": path,
+            "preview": preview_path(path) + "?v=" + hashlib.sha256(preview_file(d).encode()).hexdigest()[:12],
+            "guide": bool(d.guide)}
+
+
+def preview_path(deck_path: str) -> str:
+    return str(PurePosixPath(deck_path).with_suffix(".preview.json"))
+
+
+def preview_file(d) -> str:
+    """Small, lazy-loaded commander faces and guide; no library order or objects.
+
+    Use faces() so pictures match the exact pinned printing the deck imports.
+    Guides retain their section/row structure for an in-game reading view.
+    """
+    commanders = []
+    for name in d.commanders:
+        card = d.cards.get(name)
+        if card:
+            commanders.append({"name": name, "faces": [
+                {"name": face["nickname"].split("\n", 1)[0], "FaceURL": face["image"]}
+                for face in faces(card)]})
+    guide = [{"title": title, "rows": [{"name": name, "text": text} for name, text in rows]}
+             for title, rows in d.guide]
+    return json.dumps({"v": 1, "id": d.key, "name": d.stem,
+                       "commanders": commanders, "guide": guide}, ensure_ascii=False,
+                      separators=(",", ":")) + "\n"
 
 
 def sleeve_files() -> list[Path]:
@@ -350,6 +377,7 @@ def files(decks: list, out_dir: Path, q) -> dict[Path, str | bytes]:
         rel = Path(d.href).with_suffix(".ndjson").as_posix()   # <owner>/<Bracket>/<Deck>.ndjson
         paths[d.key] = rel
         out[root / rel] = deck_file(d, tokens)
+        out[root / preview_path(rel)] = preview_file(d)
     out[root / "decks.json"] = json.dumps(index(decks, paths), ensure_ascii=False,
                                           separators=(",", ":")) + "\n"
     return out

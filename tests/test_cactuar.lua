@@ -184,6 +184,7 @@ end
 -- ---------- load the browser ----------
 local source = read("tts/cactuar.lua"):gsub("@BASE_URL@", "test://tts/")
 assert(load(source, "cactuar.lua"))()
+dofile("tts/cactuar_preview.lua")
 local white, grey = {color = "White", steam_name = "zz"}, {color = "Grey", steam_name = "spectator"}
 
 -- A spectator cannot open it: decks load into your own seat.
@@ -597,6 +598,21 @@ spawned, inZone = {}, {{type = "Deck"}}
 czOpen(white); czLoad(white)
 check(#spawned == 0, "no spawn onto an existing deck")
 check(values["cz_status_White"]:find("not empty"), "and the player is told why")
+
+-- Named image loads rebuild shared UI asynchronously. A later close wins.
+if attrs.cz_panel_White.active ~= "True" then czOpen(white) end
+UI.loading = true
+czSetAssets(UI.assets)
+czClose(white)
+UI.loading = false
+settle()
+check(attrs.cz_panel_White.active == "False" and not CZ.state.White.open,
+  "finishing an image reload cannot reopen a browser closed while loading")
+czOpen(white)
+local rememberedQuery = CZ.state.White.query
+czSetAssets(UI.assets)
+check(attrs.cz_panel_White.active == "True" and attrs.cz_search_White.text == rememberedQuery,
+  "image reload restores the open browser and its search field")
 
 print(string.format("%d checks, %d failed", checks, failures))
 os.exit(failures == 0 and 0 or 1)

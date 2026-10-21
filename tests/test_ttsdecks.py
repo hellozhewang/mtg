@@ -218,6 +218,31 @@ class TournamentTests(unittest.TestCase):
 
 
 class DeckFileTests(unittest.TestCase):
+    def test_preview_keeps_pinned_faces_partner_order_and_guide_sections(self):
+        from types import SimpleNamespace
+        d = SimpleNamespace(key="alice/Pair", stem="Pair", commanders=["Elspeth", "Delver"],
+                            cards={"Elspeth": ELSPETH, "Delver": DELVER},
+                            guide=[("Plan & win", [("Sol Ring + Other", "Make mana."), ("", "Read this prose.")])])
+        preview = json.loads(ttsdecks.preview_file(d))
+        self.assertEqual(preview["id"], d.key)
+        self.assertEqual([c["name"] for c in preview["commanders"]], d.commanders)
+        self.assertEqual(preview["commanders"][1]["faces"][1]["FaceURL"], img("delver-back")["large"])
+        self.assertEqual(preview["guide"][0], {"title": "Plan & win", "rows": [
+            {"name": "Sol Ring + Other", "text": "Make mana."}, {"name": "", "text": "Read this prose."}]})
+        self.assertNotIn("ContainedObjects", preview)
+
+    def test_preview_publication_and_content_hash_follow_guide_changes(self):
+        d = self.deck_info("1 Sol Ring\n99 Plains\n", {"Sol Ring": SOL, "Plains": SOL})
+        d.guide = [("Plan", [("Sol Ring", "Add mana.")])]
+        entry = ttsdecks.index_entry(d, "alice/Bracket3/Test.ndjson")
+        self.assertTrue(entry["guide"])
+        self.assertRegex(entry["preview"], r"^alice/Bracket3/Test\.preview\.json\?v=[a-f0-9]{12}$")
+        d.guide[0][1][0] = ("Sol Ring", "Changed guide.")
+        self.assertNotEqual(entry["preview"], ttsdecks.index_entry(d, "alice/Bracket3/Test.ndjson")["preview"])
+        out = ttsdecks.files([d], Path("/site"), None)
+        path = Path("/site/tts") / Path(d.href).with_suffix(".preview.json")
+        self.assertEqual(json.loads(out[path])["guide"][0]["rows"][0]["text"], "Changed guide.")
+
     def deck_info(self, text: str, pool: dict):
         class Query:
             def cards(self, names):

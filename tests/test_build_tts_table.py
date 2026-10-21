@@ -26,6 +26,18 @@ def tiles(table: dict) -> list[dict]:
 
 
 class TableBuild(unittest.TestCase):
+    def test_readable_commander_and_guide_controls_are_private(self):
+        table = build_tts_table.build(json.loads(json.dumps(BASE)), URL)
+        self.assertIn("function czpRender(", table["LuaScript"])
+        root = ET.fromstring("<root>" + table["XmlUI"] + "</root>")
+        for color in build_tts_table.SEATS:
+            panel = root.find(f".//*[@id='cz_panel_{color}']")
+            self.assertEqual(panel.get("visibility"), color)
+            self.assertEqual((panel.get("width"), panel.get("height")), ("1280", "864"))
+            self.assertIsNotNone(panel.find(f".//*[@id='cz_commander_image_{color}']"))
+            self.assertEqual(panel.find(f".//*[@id='cz_guide_{color}']").get("onClick"), "czGuide")
+            self.assertIsNotNone(panel.find(f".//*[@id='cz_guide_scroll_{color}']"))
+
     def test_alphabetical_search_is_private_and_included_in_the_build(self):
         table = build_tts_table.build(json.loads(json.dumps(BASE)), URL)
         root = ET.fromstring("<root>" + table["XmlUI"] + "</root>")

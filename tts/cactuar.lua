@@ -258,11 +258,23 @@ local czRenderSleeves = nil   -- assigned after czRenderMenu
 
 local function czRedrawOpen()
   for _, c in ipairs(CZ.seats) do
-    if UI.getAttribute("cz_panel_" .. c, "active") == "True" then
+    local s = CZ.state[c]
+    if s and s.open and s.player == czSeatPlayer(c) then
+      UI.setAttribute("cz_panel_" .. c, "active", "True")
+      UI.setAttribute("cz_search_" .. c, "text", s.query)
+      s.guideDrawn = nil
       czRender(c)
       if czState(c).menu == "sleeve" then czRenderSleeves(c) end
     end
   end
+  if czsRedrawOpen then czsRedrawOpen() end
+end
+
+-- Registering named images rebuilds shared UI. Restore current private sessions
+-- after it finishes, checking the live open flag so closed windows stay closed.
+function czSetAssets(assets)
+  UI.setCustomAssets(assets)
+  Wait.condition(czRedrawOpen, function() return not UI.loading end, 30, czRedrawOpen)
 end
 
 local function czRegisterThumbs()
@@ -278,11 +290,11 @@ local function czRegisterThumbs()
       if type(a.name) ~= "string" or a.name:sub(1, 5) ~= "czsl_" then merged[#merged + 1] = a end
     end
     for _, a in ipairs(ours) do merged[#merged + 1] = a end
-    UI.setCustomAssets(merged)
+    CZ.thumbSig = sig
+    czSetAssets(merged)
   end)
   if not ok then return end
   CZ.thumbSig = sig
-  Wait.condition(czRedrawOpen, function() return not UI.loading end, 30, czRedrawOpen)
 end
 
 -- Every card's BackURL becomes the chosen back. Like czImageJSON, this edits the
@@ -454,6 +466,7 @@ function czRender(color)
   czEnabled("cz_sleeve_" .. color, #czSleeves() > 1)
   czEnabled("cz_load_" .. color, d ~= nil and not CZ.busy[color])
   czButton("cz_load_" .. color, CZ.busy[color] and "Loading…" or d and "Load into my seat" or "Select a deck")
+  if czpRender then czpRender(color, s, d) end
 end
 
 -- A menu's choices in order: a filter's All and its values, or the sleeves.
@@ -584,13 +597,15 @@ function czOpen(player)
   if czsClose then czsClose(player) end
   czDismiss(player)
   local id = "cz_panel_" .. color
+  local s = czState(color)
   if UI.getAttribute(id, "active") == "True" then
+    s.open = false
     UI.setAttribute(id, "active", "False")
     czLog(color, "closed the browser")
     return
   end
   UI.setAttribute(id, "active", "True")
-  local s = czState(color)
+  s.open = true
   if s.query == "" then UI.setAttribute("cz_search_" .. color, "text", "") end
   if s.selected == nil then czStatus(color, "") end
   czLog(color, "opened the browser")
@@ -612,12 +627,18 @@ end
 
 function czClose(player)
   czDismiss(player)
-  UI.setAttribute("cz_panel_" .. player.color, "active", "False")
+  czHideBrowser(player.color)
   czLog(player.color, "closed the browser")
+end
+
+function czHideBrowser(color)
+  if CZ.state[color] then CZ.state[color].open = false end
+  UI.setAttribute("cz_panel_" .. color, "active", "False")
 end
 
 function czRefresh(player)
   czDismiss(player)
+  if czpRefresh then czpRefresh() end
   czLog(player.color, "refreshed the deck list")
   czStatus(player.color, "Loading the deck list…")
   czFetchIndex()
@@ -908,7 +929,7 @@ local function czSpawn(player, d, text, zone)
   broadcastToAll(string.format("%s loaded a deck.", player.steam_name or czPlayerName(player.color)), {0.6, 0.9, 0.6})
   czLog(player.color, "LOADED a deck (sleeves " .. czSleeveLabel(czState(player.color)) .. ")")
   czStatus(player.color, "Loaded " .. d.name .. (header.tokens and "." or ". It makes no tokens."), "success")
-  UI.setAttribute("cz_panel_" .. player.color, "active", "False")
+  czHideBrowser(player.color)
 end
 
 function czLoad(player)

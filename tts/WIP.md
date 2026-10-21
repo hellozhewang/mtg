@@ -4,7 +4,36 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): v41 is released with full-card text search and an optional Regex mode in Inspect. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-21 (Codex): preparing v42 with readable commander previews and in-game deck guides in a larger catalog window. See `tts/CHANGELOG.md` for released versions.
+
+## v42: commander preview and guide (preparing release)
+
+Owner requested a commander card readable in the deck browser's right-hand panel,
+a larger window, and a button to read the selected commander's/deck's guide.
+
+The catalog window grows from 880×656 to 1280×864 logical pixels. The right panel
+keeps deck details/actions beside a full-height commander image. Partner decks
+start with the first commander and use arrows to show the second at the same size;
+double-faced commanders have Flip/Front. Read guide replaces the left-hand list
+with a scrollable reading view, keeping the commander visible; Back returns to the
+same selection/list. Missing guides are explicitly unavailable. Soft-white text is
+retained.
+
+`tts/cactuar_preview.lua` handles lazy metadata, private per-seat navigation and
+stale-response protection. The site exports a small `.preview.json` for each deck
+with commander faces from the same pinned cards as the spawn JSON and the existing
+guide's sections/rows. The index supplies a content-hashed preview URL and guide
+availability. The build-time Unity image check includes preview faces too.
+
+Commander images are named UI assets (needed for this cache's WebP). Registration
+preserves base, sleeve and Inspect assets and bounds commander assets to current
+open selections. Shared reloads restore current browser/Inspect sessions and check
+open flags/seat ownership so a late image load cannot reopen a closed browser.
+No physical cards are spawned or moved by previewing or reading a guide.
+
+Implementation checks currently pass: 27 preview scenarios, 1132 browser checks,
+115 Inspect checks, and the table-build/export checks. Site publication and live
+layout/readability checks are next.
 
 ## v41: full-card text and Regex search (released)
 

@@ -219,13 +219,13 @@ now = now + 238; tick()                                  -- 4:58 into the turn
 check(#played == 0, "nothing before 5 minutes")
 now = now + 2; tick()                                    -- 5:00
 check(played[1] == "test://tts/sounds/slow-5min.wav", "5-minute clip plays (got " .. tostring(played[1]) .. ")")
-check(broadcasts[#broadcasts]:find("WHAT'S TAKING SO LONG", 1, true) and broadcasts[#broadcasts]:find("WhitePlayer", 1, true),
+check(broadcasts[#broadcasts]:find("YO TWIN, HURRY YO ASS UP", 1, true) and broadcasts[#broadcasts]:find("WhitePlayer", 1, true),
   "5-minute line broadcast with the player's name")
 now = now + 30; tick(); tick()
 check(#played == 1, "the 5-minute line plays once")
 now = now + 270; tick()                                  -- 10:00
 check(played[2] == "test://tts/sounds/slow-10min.wav", "10-minute clip plays")
-check(broadcasts[#broadcasts]:find("WAKE ME UP", 1, true), "10-minute line broadcast")
+check(broadcasts[#broadcasts]:find("IN THE BENINGING", 1, true), "10-minute line broadcast")
 now = now + 3000; tick()
 check(#played == 2, "nothing more after 10 minutes")
 check(label("White") == "total 1:02:05", "hours shown once a total passes an hour (got " .. tostring(label("White")) .. ")")

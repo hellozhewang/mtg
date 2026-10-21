@@ -35,8 +35,8 @@ CZT = {
   timers = {},         -- seat colour -> {obj = Timer object, index = our button}
   muted = false,
   lines = {
-    {at = 300, text = "C'mon bro, what's taking so long?", sound = "sounds/slow-5min.wav"},
-    {at = 600, text = "Bruh, wake me up when you're done.", sound = "sounds/slow-10min.wav"},
+    {at = 300, text = "Yo Twin, hurry yo ass up, you tweakin!", sound = "sounds/slow-5min.wav"},
+    {at = 600, text = "In the beninging... In the, in the benin... In the beninging. Yah... In the, in, in...", sound = "sounds/slow-10min.wav"},
   },
 }
 

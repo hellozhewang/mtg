@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): preparing v42 with readable commander previews and in-game deck guides in a larger catalog window. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-21 (Codex): preparing v42 with readable commander previews, in-game guides and the owner's updated 5-/10-minute announcer clips. See `tts/CHANGELOG.md` for released versions.
 
 ## v42: commander preview and guide (preparing release)
 
@@ -63,6 +63,21 @@ publish old clips over that work or include uncommitted audio opportunistically.
 Owner has been asked to reopen/load TTS for the visual check and whether to wait for
 the audio work or prepare the build without uploading Workshop. Commander/guide
 layout, scroll position/readability and live asset reload still need a game check.
+
+### Updated slow-turn audio now authorized for this build
+
+Owner explicitly requested the prepared `slow-5min.wav` and `slow-10min.wav` updates.
+The source clips already match the corresponding published files exactly; committing
+them resolves the source/Pages mismatch without overwriting other audio work.
+
+- 5 minutes: **Yo Twin, hurry yo ass up, you tweakin!** — 3.089s, mono PCM16 at
+  22050 Hz, -12.0 LUFS, -0.6 dBFS sample peak; SHA-256 URL version `bb39d5f0`.
+- 10 minutes: supplied **In the beninging...** recording — 10.151s, same format,
+  -12.0 LUFS, -0.5 dBFS sample peak; URL version `bd36607e`.
+
+The existing timed chat lines and their assertions are updated to match. These
+prepared clips are reused; no regeneration or paid API call is needed. Other pending
+sound effects, generator changes and local credentials stay outside this update.
 
 ## v41: full-card text and Regex search (released)
 

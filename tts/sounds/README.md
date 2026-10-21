@@ -1,6 +1,22 @@
 # Announcer clips
 
-## Current audio: deep radio voice, second revision (2026-10-19)
+## Current slow-turn clips (2026-10-21)
+
+The 5-minute clip is the prepared `hood_warfare_2` recording: **"Yo Twin, hurry yo
+ass up, you tweakin!"** The 10-minute clip is the supplied `beginning-stutter1.mp3`
+recording, converted/mastered as **"In the beninging..."**. Both are mono PCM16 WAV,
+22050 Hz. The timer's chat messages match the recordings.
+
+| Clip | Duration | Project loudness | Sample peak | URL version |
+|---|---|---|---|---|
+| `slow-5min.wav` | 3.089 s | -12.0 LUFS | -0.6 dBFS | `bb39d5f0` |
+| `slow-10min.wav` | 10.151 s | -12.0 LUFS | -0.5 dBFS | `bd36607e` |
+
+The new source files and the published files must match before building the table.
+The local neural generator below describes the previous recordings; running it
+would replace these current clips.
+
+## Previous audio: deep radio voice, second revision (2026-10-19)
 
 The two WAVs now use **Kokoro-82M v1.0**, through `kokoro-onnx==0.6.1`, with an
 original preset blend: **70% `am_michael` + 30% `am_fenrir`**. Generated locally,
@@ -38,8 +54,8 @@ The Cactuar table's slow-turn announcer plays these clips when one player's turn
 
 | File | Line | When |
 |---|---|---|
-| `slow-5min.wav` | "C'mon bro, what's taking so long?" | 5 minutes into a turn |
-| `slow-10min.wav` | "Bruh, wake me up when you're done." | 10 minutes into a turn |
+| `slow-5min.wav` | "Yo Twin, hurry yo ass up, you tweakin!" | 5 minutes into a turn |
+| `slow-10min.wav` | "In the beninging..." | 10 minutes into a turn |
 
 The file names, lines and times are in `CZT.lines` in `tts/cactuar_turns.lua`. If you rename
 a clip, change it there too.

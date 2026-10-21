@@ -24,13 +24,37 @@ separate player-configured Game Key and cannot read or inherit Settings bindings
 There is no documented native-zoom listener/binding getter for the current custom
 Inspect panel. Do not claim native integration is complete, ask the owner to configure
 another key as though it meets this requirement, or silently substitute automatic hover.
-No further runtime change or build was made for this clarification. Any future solution
+No table-source change or release was made for this clarification. The later temporary
+native-window experiment is documented below. Any future solution
 must demonstrate real native key-down/key-up behavior, including a remapped native key,
 without changing library order or adding client-mod requirements.
 
 References: https://api.tabletopsimulator.com/events/#actions ,
 https://api.tabletopsimulator.com/ui/attributes/#event-attributes and
 https://api.tabletopsimulator.com/base/#addhotkey .
+
+### Native Search preview experiment after the clarification (not released)
+
+Tested a different architecture: disposable copies with copied metadata sorted A–Z,
+then `preview.Container.search(Player.White)` so the engine's actual Search window
+could provide native zoom without reading key bindings. The real deck was only read;
+no sort, take, shuffle or reconstruction operation was called on it.
+
+Live attempts used a small copied deck and a full alphabetical copied library,
+varied locking/interaction/visibility, waited for spawning/custom loading, and called
+the documented API from Global and the copied object's script context. API calls
+returned without a Lua error, but window captures did **not** demonstrate an open
+native Search window. The probe's status string `native Search opened` was assigned
+after the API call; it is **not evidence that the client displayed it**. Do not treat
+this experiment as a working implementation or a general proof the API is broken.
+Actual in-game callback context remains an untested variable; native key-down/up and
+read-only extraction prevention were not demonstrated.
+
+All disposable probe containers were removed/expired, the temporary probe script was
+removed, and the existing Inspect view was restored. Final cleanup reported
+`remainingCopies: 0`, `sourcePresent: true` (`.cache/inspect-native-live/cleanup.json`).
+Diagnostic captures are under `.cache/inspect-native-live/`. No table-source change,
+new build or Workshop upload was made. Native zoom integration remains unresolved.
 
 ## v38: hold a key to zoom Inspect (released)
 

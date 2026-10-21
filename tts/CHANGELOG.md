@@ -8,6 +8,12 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v41 — 2026-10-21 (commit 2668166e)
+- Inspect searches full stored card names, types, descriptions/rules, tags and alternate faces.
+- Use the .* toggle for regex patterns such as creature|artifact, draw.*card, or word boundaries; invalid patterns show an inline error.
+- Automatic hover previews remain beside the list; searching preserves deck order and seat privacy.
+- Workshop item 3822623414 updated.
+
 ## v40 — 2026-10-21 (commit 0490eba7)
 - Inspect automatically enlarges hovered cards to the left; moving away hides the preview, with no zoom key or binding needed.
 - Hovering another thumbnail resumes automatic previews after clicking a card; existing retrieval and privacy safeguards remain.

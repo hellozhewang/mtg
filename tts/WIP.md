@@ -4,9 +4,9 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): preparing v41 with full-card text search and an optional Regex mode in Inspect. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-21 (Codex): v41 is released with full-card text search and an optional Regex mode in Inspect. See `tts/CHANGELOG.md` for released versions.
 
-## v41: full-card text and Regex search (preparing release)
+## v41: full-card text and Regex search (released)
 
 Owner requested regex and searching all card text, including descriptions and types.
 Previously Inspect only searched the first line of the nickname. It now searches full
@@ -45,6 +45,14 @@ but thumbnails rendered white. Re-registering the existing asset list and rebind
 the visible images restored them, including all unrelated assets. The final capture
 `.cache/inspect-text-live/restored.png` confirms card faces and the new search/Regex
 controls. This was a live-update recovery; fresh loads use the normal asset registration.
+
+Released from `2668166e`: **MTG 6 player Cactuar Ver_v41** and thumbnail delivered to
+Saves with matching checksums; v40's canonical save/thumbnail removed. Workshop item
+**3822623414** updated with **Steam EResult 1** and the temporary task removed.
+Result: `.cache/workshop/3822623414-6bfeeb3866fa4acea6b42ca7cc5ff87f-result.json`.
+Delivered save read back and verified: combined Lua/XML parse, regex engine and six
+private search/Regex controls present, automatic hover panels still to the left.
+The running game already has full-text/Regex search; load v41 for the saved revision.
 
 ## v40: automatic hover preview (released)
 

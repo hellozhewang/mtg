@@ -87,6 +87,8 @@ local function deck(guid, contents)
   objects[guid] = obj
   return obj
 end
+local hotkeys = {{label = "Existing key"}}
+function addHotkey(label, fn, release) hotkeys[#hotkeys + 1] = {label = label, fn = fn, release = release} end
 local baseSpawns, baseDestroys, baseChanges = 0, 0, 0
 function onObjectSpawn() baseSpawns = baseSpawns + 1 end
 function onObjectDestroy() baseDestroys = baseDestroys + 1 end
@@ -113,8 +115,30 @@ check(s.cards[3].guid == "b1" and s.cards[4].guid == "b2", "equal names break ti
 check(a.contents[1].guid == "z" and a.contents[5].guid == "p" and #taken == 0, "opening doesn't change order or take any card")
 for _, card in ipairs(s.cards) do check(card.index == nil, "no library indexes retained in UI metadata") end
 check(imageURL("czs_image_1_White") == "https://example.test/card.jpg", "single-card textures can be previewed")
+check(#hotkeys == 2 and hotkeys[2].label == "Inspect zoom" and hotkeys[2].release, "adds one bindable zoom key with both press and release, preserving other hotkeys")
+czsHover(white, "a", "czs_card_2_White")
+check(attrs.czs_zoom_White.active == "False", "ordinary hover does not zoom without the configured key")
+hotkeys[2].fn("White", nil, nil, false)
+check(attrs.czs_zoom_White.active == "True" and attrs.czs_zoom_name_White.text == "Alpha", "pressing the zoom key enlarges the currently hovered object")
+check(imageURL("czs_zoom_image_White") == "https://example.test/card.jpg" and s.selected == nil and #taken == 0, "zoom uses the existing face without selecting or taking an object")
+czsHover(white, "b1", "czs_card_3_White")
+czsUnhover(white, "a", "czs_card_2_White")
+check(attrs.czs_zoom_White.active == "True" and attrs.czs_zoom_name_White.text == "Beta", "moving between cells while holding the key updates zoom; a stale exit cannot hide it")
+hotkeys[2].fn("White", nil, nil, true)
+check(attrs.czs_zoom_White.active == "False" and attrs.czs_zoom_image_White.image == "", "releasing the key immediately hides and clears the enlarged image")
+czsUnhover(white, "b1", "czs_card_3_White")
+hotkeys[2].fn("White", nil, nil, false)
+check(attrs.czs_zoom_White.active == "False", "pressing the key away from a card doesn't display stale content")
+czsHover(white, "z", "czs_card_5_White")
+check(attrs.czs_zoom_name_White.text == "Zombie", "entering a cell while the key is already held zooms too")
+czsHover(red, "a", "czs_card_2_White")
+czsUnhover(red, "z", "czs_card_5_White")
+check(attrs.czs_zoom_name_White.text == "Zombie" and CZS.state.Red == nil, "another player's hover events cannot change a private zoom")
 czsSearch(white, "BETA", "czs_query_White")
 check(#s.shown == 2 and s.shown[1] == "b1", "live, case-insensitive name filter")
+check(attrs.czs_zoom_White.active == "False" and s.hovered == nil, "filter changes clear hover so a reused slot cannot reveal a different object")
+czsHover(white, "z", "czs_card_5_White")
+check(attrs.czs_zoom_White.active == "False", "a stale enter from a filtered-out card is rejected")
 check(assetLoads == 1, "typing does not reload shared UI assets")
 czsSearch(white, "% [", "czs_query_White")
 check(#s.shown == 1 and s.shown[1] == "p", "Lua pattern characters are literal search text")
@@ -135,7 +159,9 @@ a.open("Red")
 czsSearch(red, "Zombie", "czs_query_Red")
 check(CZS.state.Red.shown[1] == "z" and #s.shown == 5, "simultaneous searches are independent")
 check(attrs.czs_card_3_White.onClick == "czsPick(b1)", "client callback binds a card GUID, not a mutable slot")
+czsHover(white, "b1", "czs_card_3_White")
 czsPick(white, "b1", "czs_card_3_White")
+check(attrs.czs_zoom_White.active == "False" and s.previewOpen, "click preview suppresses the transient zoom")
 check(s.selected == "b1" and attrs.czs_preview_White.active == "True", "selection previews the exact duplicate")
 czsTake(white)
 check(dealt[#dealt].guid == "b1" and dealt[#dealt].color == "White", "takes the selected physical card into the opener's hand")
@@ -143,7 +169,10 @@ check(#a.contents == 4 and a.contents[1].guid == "a" and a.contents[3].guid == "
 check(s.busy == false and s.selected == nil, "successful take clears selection and busy state")
 -- A stale slot may not be reinterpreted as the next card after somebody draws.
 czsPick(red, "z", "czs_card_1_Red")
+czsHidePreview(red); czsZoomKey("Red", false); czsHover(red, "z", "czs_card_1_Red")
 for i, card in ipairs(a.contents) do if card.guid == "z" then table.remove(a.contents, i); break end end
+tick()
+check(attrs.czs_zoom_Red.active == "False", "a card removed from the live deck disappears from hover zoom")
 local old = #taken
 czsTake(red)
 check(#taken == old and CZS.state.Red.selected == nil, "a removed selected GUID can't turn into a different draw")
@@ -230,6 +259,8 @@ local token = s.shown[1]
 anonymous.contents[1], anonymous.contents[2] = anonymous.contents[2], anonymous.contents[1]
 tick()
 check(s.shown[1] == token and s.cards[1].index == nil, "anonymous preview tokens survive shuffle and do not encode deck positions")
+czsHover(white, token, "czs_card_1_White"); czsZoomKey("White", false)
+check(attrs.czs_zoom_White.active == "True" and imageURL("czs_zoom_image_White") == "https://example.test/alpha.jpg", "GUID-less imports support hold-to-zoom using stable preview identities")
 czsPick(white, token, "czs_card_1_White")
 check(attrs.czs_preview_White.active == "True" and attrs.czs_preview_take_White.interactable == "False", "GUID-less objects can be previewed but cannot trigger unsafe retrieval")
 old = #taken; czsTake(white)
@@ -237,10 +268,12 @@ check(#taken == old, "even a forged retrieval callback cannot take an anonymous 
 Player.Red.steam_id = "new-player"
 onPlayerChangeColor("Red")
 check(CZS.state.Red == nil and attrs.czs_panel_Red.active == "False", "changing players clears the previous player's search")
+check(attrs.czs_zoom_Red.active == "False" and attrs.czs_zoom_image_Red.image == "", "seat changes clear zoom images as well")
 check(baseChanges == 1, "seat-change wrapper preserves the table's handler")
 -- Live reload keeps one context item and one polling loop.
 local menus, oldTicker = #a.menus, CZS.ticker
 loadInspect()
 check(#a.menus == menus and ticks[oldTicker] == nil, "reloading duplicates neither menus nor pollers")
+check(#hotkeys == 2, "live reload reuses the zoom hotkey rather than duplicating or clearing existing bindings")
 print(string.format("%d checks, %d failed", checks, failures))
 os.exit(failures == 0 and 0 or 1)

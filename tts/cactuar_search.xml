@@ -24,6 +24,14 @@
   </Panel>
   <Text id="czs_count_{C}" width="440" height="16" rectAlignment="LowerLeft" offsetXY="12 8"
         fontSize="11" color="#C0C8D2" alignment="MiddleLeft" text=""/>
+  <!-- Outside the scrolling viewport; never intercept pointer events or cover the hovered cell. -->
+  <Panel id="czs_zoom_{C}" active="False" width="380" height="570" rectAlignment="MiddleRight" offsetXY="-492 0"
+         color="#090909" outline="#181818" outlineSize="1 1" raycastTarget="false">
+    <Text id="czs_zoom_name_{C}" width="356" height="28" rectAlignment="UpperCenter" offsetXY="0 -8"
+          fontSize="14" color="#E2E5EA" text="" raycastTarget="false"/>
+    <Image id="czs_zoom_image_{C}" width="356" height="520" rectAlignment="UpperCenter" offsetXY="0 -40"
+           preserveAspect="true" color="#FFFFFF00" raycastTarget="false"/>
+  </Panel>
   <Panel id="czs_preview_{C}" active="False" width="344" height="540" color="#090909" outline="#181818" outlineSize="1 1">
     <VerticalLayout padding="12 12 12 12" spacing="8" childForceExpandHeight="false">
       <Text id="czs_preview_name_{C}" preferredHeight="36" fontSize="15" color="#E2E5EA" horizontalOverflow="Wrap" text=""/>
@@ -37,7 +45,7 @@
   </Panel>
 </Panel>
 <!-- @CARD@ -->
-          <Button id="czs_card_{I}_{C}" onClick="czsPick" active="False" color="#FFFFFF" text=""
+          <Button id="czs_card_{I}_{C}" onClick="czsPick" onMouseEnter="czsHover" onMouseExit="czsUnhover" active="False" color="#FFFFFF" text=""
                   colors="#010101|#101010|#181818|#010101">
             <Image id="czs_image_{I}_{C}" width="96" height="96" rectAlignment="UpperCenter" offsetXY="0 -4"
                    preserveAspect="true" color="#FFFFFF00" raycastTarget="false"/>

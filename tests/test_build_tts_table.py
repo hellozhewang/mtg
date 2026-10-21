@@ -38,13 +38,20 @@ class TableBuild(unittest.TestCase):
             self.assertEqual(panel.get("active"), "False")
             self.assertEqual(panel.get("width"), "480")
             self.assertIsNotNone(panel.find(".//VerticalScrollView"))
+            zoom = panel.find(f".//*[@id='czs_zoom_{color}']")
+            self.assertEqual(zoom.get("active"), "False")
+            self.assertEqual(zoom.get("raycastTarget"), "false")
+            self.assertTrue(all(node.get("raycastTarget") == "false" for node in zoom.iter()))
             grid = panel.find(".//GridLayout")
             self.assertEqual(grid.get("constraintCount"), "4")
             self.assertEqual(len(grid.findall("Button")), build_tts_table.SEARCH_CELLS)
             self.assertIsNone(panel.find(f".//*[@id='czs_next_{color}']"))
             self.assertEqual(root.find(f".//*[@id='czs_query_{color}']").get("onValueChanged"), "czsSearch")
             for i in range(1, build_tts_table.SEARCH_CELLS + 1):
-                self.assertEqual(root.find(f".//*[@id='czs_card_{i}_{color}']").get("onClick"), "czsPick")
+                card = root.find(f".//*[@id='czs_card_{i}_{color}']")
+                self.assertEqual(card.get("onClick"), "czsPick")
+                self.assertEqual(card.get("onMouseEnter"), "czsHover")
+                self.assertEqual(card.get("onMouseExit"), "czsUnhover")
 
     def test_tiles_open_the_browser(self):
         table = build_tts_table.build(json.loads(json.dumps(BASE)), URL)

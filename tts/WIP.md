@@ -4,7 +4,48 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-20 (Codex): v37 delivered and uploaded; Inspect now matches the narrow scrolling Search layout within Workshop Lua. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-20 (Codex): v38 hold-to-zoom implementation in progress; v37 remains the latest delivered build. See `tts/CHANGELOG.md` for released versions.
+
+## v38: hold a key to zoom Inspect (release in progress)
+
+Owner requested the familiar Alt + hover zoom on Inspect thumbnails. Workshop custom
+UI exposes mouse enter/exit but no raw Alt-key state. TTS's **Game Keys** API provides
+both key press and release callbacks, so this revision adds a bindable **Inspect zoom**
+key. **Each player must bind Inspect zoom to Alt once in Options → Game Keys.** The
+binding then persists by label across table loads. It is not automatically bound and
+we do not alter client settings or install a client mod. Any chosen key also works.
+This implements the requested hold-to-zoom interaction using TTS's supported binding
+mechanism. Unconfigured clients retain the existing click preview.
+
+- Hover a card, then hold the configured key, or hold it before entering a thumbnail:
+  a larger face appears beside Inspect. Moving between thumbnails changes the image;
+  releasing the key or leaving the card hides and clears it.
+- Uses the existing named UI image assets, including GUID-less imported cards. It
+  neither selects nor retrieves an object, reloads assets per hover, nor changes
+  physical contents or order. Entries without a supported face do not show a blank
+  enlarged panel; click preview still provides their name.
+- The enlarged panel and children do not intercept raycasts, and sit outside the
+  scroll viewport, so zoom cannot cover its own hover target and cause flicker.
+- Hover callbacks carry stable identities, not physical indexes. A late exit cannot
+  hide a newer hover; filtering, closing, seat changes, membership removal and click
+  preview clear/suppress transient zoom. The hotkey is registered once on live reload
+  and preserves other Game Keys and native Alt behavior.
+
+Validation: all **216 unit tests pass**; Inspect harness **82 checks, 0 failed**.
+Checks include press/release, both hover/key ordering cases, moving between cards,
+private seat callbacks, stale events, filtering, removed cards, anonymous imports,
+non-selection/retrieval, asset reuse, and hotkey reload preservation. The running game
+registered the new hotkey, and callbacks displayed an enlarged **An Offer You Can't
+Refuse** from the actual 99-card Yuna deck. A full-window capture at
+`.cache/inspect-zoom-live/zoom-live.png` confirms the card is readable beside the list,
+without covering the thumbnails. Physical metadata stayed byte-for-byte unchanged;
+release/close callbacks clear the preview. The temporary visual check was closed.
+Combined real-table Global Lua and generated XML parse. Release details follow below. **Actual Alt binding/input must be
+confirmed by the owner after configuring the key**; simulated callbacks alone do not
+prove the client's binding or keyboard focus behavior.
+
+Primary API references: https://api.tabletopsimulator.com/base/#addhotkey and
+https://api.tabletopsimulator.com/ui/attributes/#event-attributes .
 
 ## v37: scrolling Inspect (released)
 
@@ -845,6 +886,7 @@ investigation and evidence; their older “pending” notes describe that point 
 
 | Issue / symptom | Cause and resolution | Verification / remaining work |
 |---|---|---|
+| Native Alt-hover did nothing over Inspect thumbnails | Custom UI is not a native scene object and exposes no raw Alt state. v38 adds a bindable Inspect zoom Game Key with press/release callbacks plus private thumbnail hover handlers. | Bind Inspect zoom to Alt once per player in Options → Game Keys. Callback behavior is covered by the harness; actual configured keyboard input remains an owner check. |
 | Inspect looked unlike native Search | v35/v36 used a wide, six-column paged gallery. v37 replaces it with a narrow dark four-column scrolling view and a single live search field, reading actual deck/bag contents. | Live screenshot and 99-card Yuna view checked. Exact native-menu placement/window reuse is unavailable; owner chose Workshop compatibility. |
 | Inspect showed no cards in an imported deck | All 99 contained GUIDs in the live Yuna deck were empty; the earlier code skipped them. v37 uses serialized metadata and stable preview identities without taking cards out or exposing positions. | All 99 display A–Z, including duplicates. Entries without physical GUIDs are preview-only; unsafe retrieval callbacks are rejected. |
 | Inspect WebP thumbnails were white boxes | Direct UI URL decoding did not display the cache's WebP; registering the same URL as a named custom asset did. v37 merges named faces while preserving existing assets. | Real card faces verified in the running game; all 41 previous UI assets retained. Asset sets stay bounded to open views on registration. |

@@ -125,6 +125,28 @@ local function czsRegisterPictures()
   return true
 end
 local function czsSprite(url) return url and CZS.assets[url] or "" end
+local function czsHideZoom(color)
+  czsActive("czs_zoom_" .. color, false)
+  czsText("czs_zoom_name_" .. color, "")
+  UI.setAttribute("czs_zoom_image_" .. color, "image", "")
+end
+local function czsRenderZoom(color)
+  local s = CZS.state[color]
+  if not s or s.owner ~= czsOwner(color) or not s.zoomHeld or s.previewOpen or CZS.rebuilding then
+    czsHideZoom(color); return
+  end
+  local visible, card = false, nil
+  for _, guid in ipairs(s.shown) do if guid == s.hovered then visible = true end end
+  if visible then
+    for _, candidate in ipairs(s.cards) do if candidate.guid == s.hovered then card = candidate end end
+  end
+  local sprite = card and czsSprite(s.pictures[card.guid]) or ""
+  if not card or sprite == "" then czsHideZoom(color); return end
+  czsText("czs_zoom_name_" .. color, czsEscape(card.name))
+  UI.setAttribute("czs_zoom_image_" .. color, "image", sprite)
+  UI.setAttribute("czs_zoom_image_" .. color, "color", "#FFFFFF")
+  czsActive("czs_zoom_" .. color, true)
+end
 local function czsEnsureCells(color, count)
   local capacity = CZS.capacity[color] or CZS.cells
   if count <= capacity then return true end
@@ -162,7 +184,7 @@ czsRender = function(color)
   s.shown = {}
   local selected = nil
   for _, card in ipairs(s.cards) do if card.guid == s.selected then selected = card end end
-  if not selected then s.selected = nil; czsActive("czs_preview_" .. color, false) end
+  if not selected then s.selected, s.previewOpen = nil, false; czsActive("czs_preview_" .. color, false) end
   for i = 1, (CZS.capacity[color] or CZS.cells) do
     local card = filtered[i]
     local suffix = i .. "_" .. color
@@ -172,6 +194,8 @@ czsRender = function(color)
       -- Bind stable identity into the client-side callback. A late click on an older
       -- view must never be reinterpreted as the new occupant of that slot.
       UI.setAttribute("czs_card_" .. suffix, "onClick", "czsPick(" .. card.guid .. ")")
+      UI.setAttribute("czs_card_" .. suffix, "onMouseEnter", "czsHover(" .. card.guid .. ")")
+      UI.setAttribute("czs_card_" .. suffix, "onMouseExit", "czsUnhover(" .. card.guid .. ")")
       czsText("czs_name_" .. suffix, czsEscape(czsShort(card.name)))
       UI.setAttribute("czs_card_" .. suffix, "tooltip", czsEscape(card.name))
       local url = czsSprite(s.pictures[card.guid])
@@ -196,10 +220,12 @@ czsRender = function(color)
   local deck = czsDeck(s)
   czsText("czs_preview_take_" .. color, selected and not selected.physical and "Preview only"
     or (deck and (deck.type == "Deck" or deck.tag == "Deck") and "Take to hand" or "Take out"))
+  czsRenderZoom(color)
 end
 
 czsCloseColor = function(color)
   CZS.state[color] = nil
+  czsHideZoom(color)
   czsActive("czs_panel_" .. color, false)
   czsActive("czs_preview_" .. color, false)
   UI.setAttribute("czs_query_" .. color, "text", "")
@@ -288,7 +314,8 @@ end
 function czsSearch(player, value, id)
   local s = czsSession(player, id)
   if not s then return end
-  s.query, s.selected = tostring(value or ""), nil
+  s.query, s.selected, s.hovered, s.previewOpen = tostring(value or ""), nil, nil, false
+  czsHideZoom(player.color)
   czsActive("czs_preview_" .. player.color, false)
   if czsRefresh(player.color) then czsRender(player.color) end
 end
@@ -301,7 +328,29 @@ function czsRefreshClick(player, _, id)
   if czsSession(player, id) then czsRefresh(player.color, true) end
 end
 function czsHidePreview(player, _, id)
-  if czsSession(player, id) then czsActive("czs_preview_" .. player.color, false) end
+  local s = czsSession(player, id)
+  if s then s.previewOpen = false; czsActive("czs_preview_" .. player.color, false) end
+end
+function czsHover(player, value, id)
+  local s = czsSession(player, id)
+  if not s or s.busy or s.previewOpen then return end
+  local guid = tostring(value or "")
+  for _, shown in ipairs(s.shown) do
+    if shown == guid then s.hovered = guid; czsRenderZoom(player.color); return end
+  end
+end
+function czsUnhover(player, value, id)
+  local s = czsSession(player, id)
+  -- A late exit from one cell must not hide a newer cell's zoom.
+  if s and s.hovered == tostring(value or "") then
+    s.hovered = nil; czsHideZoom(player.color)
+  end
+end
+function czsZoomKey(color, isKeyUp)
+  local s = czsSession(Player[color])
+  if not s then return end
+  s.zoomHeld = not isKeyUp
+  czsRenderZoom(color)
 end
 function czsPick(player, value, id)
   local s = czsSession(player, id)
@@ -316,7 +365,8 @@ function czsPick(player, value, id)
   local selected = nil
   for _, card in ipairs(s.cards) do if card.guid == guid then selected = card end end
   if not selected then return end
-  s.selected = guid
+  s.selected, s.previewOpen, s.hovered = guid, true, nil
+  czsHideZoom(player.color)
   local url = czsSprite(s.pictures[guid])
   czsText("czs_status_" .. player.color, czsEscape(selected.name))
   czsText("czs_preview_name_" .. player.color, czsEscape(selected.name))
@@ -345,7 +395,7 @@ function czsTake(player, _, id)
       smooth = false, callback_function = function(card)
         if isDeck then card.deal(1, player.color) end
         if CZS.state[player.color] == s then
-          s.busy, s.selected = false, nil
+          s.busy, s.selected, s.previewOpen = false, nil, false
           czsActive("czs_preview_" .. player.color, false)
           czsText("czs_status_" .. player.color, isDeck and "Card moved to your hand." or "Object taken out.")
           czsRefresh(player.color, true)
@@ -369,6 +419,13 @@ end
 
 -- Keep every base handler, and keep one copy of each wrapper on live reload.
 CZS_BASE = CZS_BASE or {spawn = onObjectSpawn, destroy = onObjectDestroy, change = onPlayerChangeColor}
+-- Workshop Lua cannot poll raw Alt state. Bind this Game Key to Alt once in
+-- Options > Game Keys; TTS delivers both press and release, preserving native keys.
+-- A stable global callback lets live reload reuse the one registered hotkey.
+if not CZS_BASE.zoomHotkey then
+  addHotkey("Inspect zoom", function(color, _, _, isKeyUp) czsZoomKey(color, isKeyUp) end, true)
+  CZS_BASE.zoomHotkey = true
+end
 function onObjectSpawn(obj)
   if CZS_BASE.spawn then CZS_BASE.spawn(obj) end
   czsAttach(obj)

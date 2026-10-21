@@ -4,9 +4,9 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): preparing v42 with readable commander previews, in-game guides and the owner's updated 5-/10-minute announcer clips. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-21 (Codex): v42 is released with commander previews, in-game guides and the owner's updated 5-/10-minute announcer clips. Live layout/readability still needs checking in a loaded game. See `tts/CHANGELOG.md` for released versions.
 
-## v42: commander preview and guide (preparing release)
+## v42: commander preview, guide and updated slow-turn audio (released)
 
 Owner requested a commander card readable in the deck browser's right-hand panel,
 a larger window, and a button to read the selected commander's/deck's guide.
@@ -52,17 +52,16 @@ and index fields, checksum verified on Giada. A test build named **MTG 6 player 
 the PC's TTS Saves folder, both checksums verified. Combined Global Lua compiles,
 XML parses, and all six private commander panels are present. This separate preview
 does not increment the official version or replace v41.
-Local artifacts: `.cache/commander-preview-build/`. Remove the separate preview save
-and thumbnail after the official version is released.
+Local preview artifacts remain in `.cache/commander-preview-build/`. The separate
+preview save/thumbnail were removed from the PC after official v42 was delivered.
 
 Live validation is currently blocked: TTS's editor port 39999 refuses connections.
 The running-game patch attempt stopped at that initial connection and changed no UI.
-The official release check is also blocked because Pages' slow-10min audio differs
-from committed HEAD, while separate audio source/clip edits are in progress. Do not
-publish old clips over that work or include uncommitted audio opportunistically.
-Owner has been asked to reopen/load TTS for the visual check and whether to wait for
-the audio work or prepare the build without uploading Workshop. Commander/guide
-layout, scroll position/readability and live asset reload still need a game check.
+The initial release check was blocked by a source/Pages audio mismatch. The owner's
+subsequent explicit request to update both slow-turn clips authorized including that
+pair, resolving the mismatch. Other in-progress audio work remains outside this build.
+Commander/guide layout, scroll position/readability and live asset reload still need
+a game check after TTS is opened and a table loaded.
 
 ### Updated slow-turn audio now authorized for this build
 
@@ -78,6 +77,18 @@ them resolves the source/Pages mismatch without overwriting other audio work.
 The existing timed chat lines and their assertions are updated to match. These
 prepared clips are reused; no regeneration or paid API call is needed. Other pending
 sound effects, generator changes and local credentials stay outside this update.
+
+Validation: announcer harness **1469 checks pass**, including thresholds and mute;
+all **12 table-build tests pass**. Both WAVs match their published counterparts and
+their new content hashes are embedded in the delivered save.
+
+Released from `1d6fea03`: **MTG 6 player Cactuar Ver_v42** and thumbnail delivered to
+Saves with matching checksums; v41's canonical save/thumbnail removed. Workshop item
+**3822623414** updated with **Steam EResult 1** and the temporary task removed.
+Result: `.cache/workshop/3822623414-c9af7de2136448c492717e931b2ec48a-result.json`.
+The delivered save was read back: combined Lua/XML parse, both new audio hashes and
+matching chat lines are present, and all six private enlarged commander/guide panels
+are included. Load v42 to hear the updated clips and test the larger browser.
 
 ## v41: full-card text and Regex search (released)
 

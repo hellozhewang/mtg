@@ -4,7 +4,33 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-19 (Codex): v32 uploaded successfully to Workshop item 3822623414 using the programmatic legacy uploader; Steam confirmed EResult 1. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-20 (Codex): v34 delivered and uploaded successfully to Workshop item 3822623414; Steam confirmed EResult 1. See `tts/CHANGELOG.md` for released versions.
+
+## v34: Pirate Cannon starts the game (released)
+
+Resumed the interrupted release from the already pushed commit `eb2af491`. The
+repository WIP still described v32, while the changelog and PC showed v33 as the
+latest release. No v34 save had been delivered yet.
+
+The build patches the Pirate Cannon to pass the die's winner to `cztStartGame`
+instead of setting the turn directly. This resets totals and starts turn 1 even
+when the winner already holds the turn and no turn-change event fires. The cannon's
+original turn-setting behavior remains as a fallback if the Global call fails.
+
+Released with `python3 scripts/release_tts.py --workshop --notes "..."`:
+
+- **MTG 6 player Cactuar Ver_v34** and matching thumbnail delivered to TTS Saves;
+  SHA-256 checks matched. The previous v33 save and thumbnail were removed.
+- Workshop item **3822623414** updated; Steam returned **EResult 1**. The temporary
+  task was removed, with no execution-policy change.
+- Success result: `.cache/workshop/3822623414-e1960e9e209444cfb7c7e457f32381b4-result.json`.
+- **214 unit tests pass**. The release verified HEAD was pushed and Pages served
+  matching audio/tile bytes before delivery. The release is recorded in
+  `tts/CHANGELOG.md`; WIP and changelog are copied to the PC Desktop.
+
+Remaining manual check: load v34 from Saves or the Workshop, fire the Pirate Cannon,
+and confirm totals reset and the winner's clock shows turn 1 immediately, including
+when that player already holds the turn. The running game was not changed.
 
 ## v32 Workshop automation: uploaded successfully
 

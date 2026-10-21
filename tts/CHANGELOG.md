@@ -8,6 +8,10 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v34 — 2026-10-20 (commit eb2af491)
+- Pirate Cannon starts the game through cztStartGame, resetting totals and starting turn 1 even when the winner already holds the turn.
+- Workshop item 3822623414 updated.
+
 ## v33 — 2026-10-20 (commit b8c5b02b)
 - Turn clocks no longer keep running after a double start (a seat's clock could count through other players' turns)
 - Workshop item 3822623414 updated.

@@ -76,9 +76,9 @@
         </Panel>
       </Panel>
       </Panel>
-      <Panel preferredWidth="650" color="#1A2635">
+      <Panel minWidth="650" preferredWidth="650" flexibleWidth="0" color="#1A2635">
         <HorizontalLayout padding="12 12 12 12" spacing="12" childForceExpandWidth="false">
-        <VerticalLayout preferredWidth="190" spacing="8" childForceExpandHeight="false">
+        <VerticalLayout minWidth="190" preferredWidth="190" flexibleWidth="0" spacing="8" childForceExpandHeight="false">
           <Text preferredHeight="12" fontSize="11" fontStyle="Bold" color="#3D6554" alignment="MiddleLeft" text="DECK DETAILS"/>
           <Text id="cz_detail_{C}" flexibleHeight="1" fontSize="14" color="#E2E5EA" alignment="UpperLeft"
                 horizontalOverflow="Wrap" text="Select a deck to see its commander, strategy and stats."/>
@@ -95,15 +95,15 @@
           <Button id="cz_load_{C}" onClick="czLoad" preferredHeight="40" fontSize="15" fontStyle="Bold" interactable="False"
                   color="#FFFFFF" colors="#173B30|#1A3F32|#123127|#202C39" textColor="#E2E5EA" text="Select a deck"/>
         </VerticalLayout>
-        <VerticalLayout flexibleWidth="1" spacing="8" childForceExpandHeight="false">
+        <VerticalLayout minWidth="424" preferredWidth="424" flexibleWidth="0" spacing="8" childForceExpandHeight="false">
           <Text id="cz_commander_name_{C}" preferredHeight="36" fontSize="15" color="#E2E5EA" alignment="MiddleCenter"
                 horizontalOverflow="Wrap" text="Commander preview"/>
-          <Panel flexibleHeight="1" color="#111923">
+          <Panel minHeight="520" preferredHeight="520" flexibleHeight="0" color="#111923">
             <Image id="cz_commander_image_{C}" width="100%" height="100%" preserveAspect="true" color="#FFFFFF00" raycastTarget="false"/>
             <Text id="cz_commander_note_{C}" fontSize="16" color="#C0C8D2" alignment="MiddleCenter"
                   text="Select a deck to read its commander." raycastTarget="false"/>
           </Panel>
-          <HorizontalLayout preferredHeight="34" spacing="6" childForceExpandWidth="false">
+          <HorizontalLayout minHeight="34" preferredHeight="34" flexibleHeight="0" spacing="6" childForceExpandWidth="false">
             <Button id="cz_commander_prev_{C}" onClick="czCommander(prev)" preferredWidth="34" fontSize="20" color="#FFFFFF"
                     colors="#243244|#34485F|#1C2938|#1B2533" textColor="#E2E5EA" text="‹" interactable="False"/>
             <Text id="cz_commander_page_{C}" flexibleWidth="1" fontSize="12" color="#C0C8D2" text=""/>

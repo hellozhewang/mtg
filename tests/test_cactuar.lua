@@ -174,6 +174,7 @@ Color = {fromString = function() return {r = 1, g = 1, b = 1} end}
 Player = setmetatable({}, {__index = function(_, c) return {color = c, steam_name = c .. "Name"} end})
 local waits = {}
 Wait = {time = function(f) waits[#waits + 1] = f end,
+        frames = function(f) f() end,
         condition = function(f, ready) if ready() then f() else waits[#waits + 1] = f end end}
 local function settle() local w = waits; waits = {}; for _, f in ipairs(w) do f() end end
 local function logged(pattern)
@@ -492,7 +493,8 @@ spawned, inZone = {}, {}
 czOpen(white); czClear(white)
 logs = {}
 czSearch(white, "zzz")
-check(#logs == 0 and #waits == 0, "nothing is logged outside Tournament mode")
+settle(); settle() -- include deferred sprite work when checking for delayed chat
+check(#logs == 0, "nothing is logged outside Tournament mode")
 czClear(white)
 local pool = CZ.index.tournament
 check(#pool == 24, "the index carries the 24-deck tournament pool (" .. #pool .. ")")

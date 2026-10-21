@@ -14,7 +14,17 @@ WebRequest = {get = function(url, callback) requests[#requests + 1] = {url = url
 Player = {White = {color = "White", steam_id = "owner-white"}, Red = {color = "Red", steam_id = "owner-red"}}
 CZ = {base = "https://example.test/tts/", seats = {"White", "Red"}, state = {}}
 local registered = 0
-function czSetAssets(value) assets = value; registered = registered + 1 end
+local frames, timers = {}, {}
+Wait = {frames = function(callback) frames[#frames + 1] = callback end,
+        time = function(callback) timers[#timers + 1] = callback end}
+local function paint()
+  local pending = frames; frames = {}
+  for _, callback in ipairs(pending) do callback() end
+end
+function czSetAssets(value)
+  assets = value; registered = registered + 1
+  for color, s in pairs(CZ.state) do if s.open then czRender(color) end end
+end
 function czRender(color)
   local s = CZ.state[color]
   czpRender(color, s, s.selected)
@@ -28,6 +38,7 @@ local function response(id, commanders, guide)
     {name = id, faces = {{name = id, FaceURL = "https://example.test/" .. id .. ".webp"}}}}, guide = guide or {}}
 end
 local function picture(color)
+  paint()
   for _, asset in ipairs(assets) do if asset.name == attrs["cz_commander_image_" .. color].image then return asset.url end end
 end
 local a, b = deck("a", true), deck("b", true)
@@ -47,6 +58,7 @@ check(attrs.cz_commander_image_White.image == "", "a late response cannot show t
 payloads.b = response("b", nil, {{title = "Plan <x>", rows = {
   {name = "Card <i> + Other", text = "Read & play. " .. string.rep("Long readable prose. ", 180)}}}})
 requests[2].callback({text = "b"})
+check(attrs.cz_commander_image_White.image == "" and #frames > 0, "image binding waits for a later renderer frame")
 check(picture("White") == "https://example.test/b.webp", "the current commander's exact face is a named image asset")
 check(assets[1].name == "base" and assets[2].name == "czsl_standard" and assets[3].name == "czsi_1", "base, sleeve and Inspect images survive registration")
 local previousRegistered = registered
@@ -97,7 +109,19 @@ requests[#requests].callback({text = "wrong"})
 check(CZ.previews[s.selected.preview].status == "error", "a mismatched payload cannot impersonate the selected deck")
 s.selected = a; czRender("White")
 check(#assets <= 5 and assets[1].name == "base", "commander image registrations are bounded to current open selections")
+s.open = false; paint()
+check(attrs.cz_commander_image_White.image == "", "a pending image cannot repaint a closed browser")
+s.open = true; czRender("White")
+UI.loading = true; paint()
+check(attrs.cz_commander_image_White.image == "", "a pending image cannot bind during a shared UI reload")
+UI.loading = false; czRender("White")
+check(picture("White") == "https://example.test/a.webp", "the post-reload render restores the commander image")
+local pending = timers; timers = {}
+for _, callback in ipairs(pending) do callback() end
+check(picture("White") == "https://example.test/a.webp", "late sprite retries cannot restore an earlier selection")
 Player.White.steam_id = "new-owner"
+czRender("White"); paint()
+check(attrs.cz_commander_image_White.image == "", "a pending image cannot repaint for a new seat owner")
 local oldCommander = s.commander
 czCommander(white, "next", "cz_commander_next_White")
 check(s.commander == oldCommander, "callbacks for an old seat owner are rejected")

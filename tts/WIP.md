@@ -4,7 +4,35 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): v42 is released with commander previews, in-game guides and the owner's updated 5-/10-minute announcer clips. Live layout/readability still needs checking in a loaded game. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-21 (Codex): live v42 check caught commander sizing and blank-image issues; fixes are being prepared as a separate local test build. Owner says prepare the build and upload later: **hold further Workshop uploads**. See `tts/CHANGELOG.md` for released versions.
+
+## Commander layout follow-up (local test build; upload on hold)
+
+The owner's delayed replies confirmed the table was loaded and requested a build
+without a Workshop upload. v42 had already been uploaded before those replies
+arrived; it remains the current Workshop version. Do not upload another version
+until the owner asks.
+
+Live screenshots of the loaded v42 reproduced two issues that offline checks missed:
+
+- Unity's automatic layout gave the details column excessive width and expanded
+  the partner navigation vertically, leaving the commander small. Explicit minimum
+  widths and a 520px image area now keep the full card readable, with 34px navigation.
+- Newly registered named WebP sprites stayed white on first selection even after
+  `UI.loading` became false. Commander rendering now waits for the shared rebuild,
+  clears and binds on separate frames, and makes one delayed sprite rebind. Pending
+  paints check current selection/render, open state and seat owner before writing.
+
+Live screenshots confirm the corrected large Yuna and First Sliver cards, the guide
+beside Yuna, Akroma's second partner Vial Smasher at full size, and Esika's Prismatic
+Bridge back face. Fresh First Sliver selection loads without another click. Evidence
+is under `.cache/commander-live/`. Guide text and its top render correctly; remote
+mouse-wheel/scrollbar probes did not move the view, so actual scrolling and the last
+paragraph still need an owner mouse check. No physical deck was loaded or reordered.
+
+Regression checks cover delayed painting, closed windows, UI reloads, seat changes
+and stale sprite retries. The existing browser, Inspect, timer and table-build checks
+also pass. Delivery details will be added after the local test save is copied.
 
 ## v42: commander preview, guide and updated slow-turn audio (released)
 
@@ -55,13 +83,14 @@ does not increment the official version or replace v41.
 Local preview artifacts remain in `.cache/commander-preview-build/`. The separate
 preview save/thumbnail were removed from the PC after official v42 was delivered.
 
-Live validation is currently blocked: TTS's editor port 39999 refuses connections.
-The running-game patch attempt stopped at that initial connection and changed no UI.
+Initial live validation was blocked: TTS's editor port 39999 refused connections.
+That patch attempt stopped at the initial connection and changed no UI. The owner
+subsequently loaded a table; the live check and fixes are recorded above.
 The initial release check was blocked by a source/Pages audio mismatch. The owner's
 subsequent explicit request to update both slow-turn clips authorized including that
 pair, resolving the mismatch. Other in-progress audio work remains outside this build.
-Commander/guide layout, scroll position/readability and live asset reload still need
-a game check after TTS is opened and a table loaded.
+Guide scrolling/end-of-guide visibility still needs a mouse check in the local test
+build. Commander sizing, partner/DFC navigation and sprite reloads were checked live.
 
 ### Updated slow-turn audio now authorized for this build
 

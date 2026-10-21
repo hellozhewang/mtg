@@ -77,7 +77,7 @@ do
     for url in pairs(wanted) do urls[#urls + 1] = url end
     table.sort(urls)
     local signature = table.concat(urls, "\n")
-    if signature == CZ.previewSig then return end
+    if signature == CZ.previewSig then return true end
     local merged, known = {}, {}
     for _, asset in ipairs(UI.getCustomAssets() or {}) do
       local n = type(asset.name) == "string" and asset.name:match("^czcp_(%d+)$")
@@ -95,6 +95,7 @@ do
     end
     CZ.previewAssets, CZ.previewSig = known, signature
     czSetAssets(merged) -- preserve sleeves, Inspect faces and every base asset
+    return false -- render again after the rebuilt UI and its assets are ready
   end
 
   local function guideText(guide)
@@ -128,7 +129,7 @@ do
     end
     local entry = deck and fetch(deck)
     local payload = entry and entry.status == "ready" and entry.data or nil
-    registerPictures()
+    if not registerPictures() or UI.loading then return end
     local commanders = payload and payload.commanders or {}
     s.commander = math.max(1, math.min(s.commander or 1, math.max(1, #commanders)))
     local commander = commanders[s.commander]
@@ -136,10 +137,31 @@ do
     s.commanderFace = math.max(1, math.min(s.commanderFace or 1, math.max(1, #faces)))
     local face = faces[s.commanderFace]
     local image = face and CZ.previewAssets[face.FaceURL] or ""
-    -- Rebinding also handles named assets after a shared UI reload.
+    -- TTS can keep a blank sprite when clearing and rebinding in one frame,
+    -- even after UI.loading becomes false. Let the clear reach the renderer.
+    s.previewPaint = (s.previewPaint or 0) + 1
+    local paint = s.previewPaint
     UI.setAttribute("cz_commander_image_" .. color, "image", "")
-    UI.setAttribute("cz_commander_image_" .. color, "image", image)
-    UI.setAttribute("cz_commander_image_" .. color, "color", image ~= "" and "#FFFFFF" or "#FFFFFF00")
+    UI.setAttribute("cz_commander_image_" .. color, "color", "#FFFFFF00")
+    if image ~= "" then
+      local function current()
+        return CZ.state[color] == s and s.open and s.previewPaint == paint
+          and not UI.loading and session(Player[color]) == s
+      end
+      local function bind()
+        if not current() then return end
+        UI.setAttribute("cz_commander_image_" .. color, "image", image)
+        UI.setAttribute("cz_commander_image_" .. color, "color", "#FFFFFF")
+      end
+      Wait.frames(bind, 2)
+      -- Newly downloaded named sprites can finish after the XML loading flag.
+      -- One guarded rebind repairs that first-selection placeholder too.
+      Wait.time(function()
+        if not current() then return end
+        UI.setAttribute("cz_commander_image_" .. color, "image", "")
+        Wait.frames(bind, 2)
+      end, 1)
+    end
     text("cz_commander_name_" .. color, face and plain(face.name) or "Commander preview")
     local note = not deck and "Select a deck to read its commander."
       or not path and "Press Refresh to get commander previews."

@@ -604,6 +604,8 @@ if attrs.cz_panel_White.active ~= "True" then czOpen(white) end
 UI.loading = true
 czSetAssets(UI.assets)
 czClose(white)
+-- The pending prefab can finish with its earlier active flag after that close.
+attrs.cz_panel_White.active = "True"
 UI.loading = false
 settle()
 check(attrs.cz_panel_White.active == "False" and not CZ.state.White.open,

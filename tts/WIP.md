@@ -31,9 +31,19 @@ open selections. Shared reloads restore current browser/Inspect sessions and che
 open flags/seat ownership so a late image load cannot reopen a closed browser.
 No physical cards are spawned or moved by previewing or reading a guide.
 
-Implementation checks currently pass: 27 preview scenarios, 1132 browser checks,
-115 Inspect checks, and the table-build/export checks. Site publication and live
-layout/readability checks are next.
+Implementation checks currently pass: 27 preview scenarios, 1134 browser checks,
+115 Inspect checks, and the table-build/export checks. A clean committed-source
+catalog build produced previews for **158 decks**, **157 guides**, with all **4422
+unique image URLs verified**. Every preview's commander face was compared with the
+already published spawn files and matches exactly, including DFC backs.
+
+The isolated source suite ran 222 tests: 220 passed; two existing theme/tier coverage
+checks fail because committed assignments omit four newly published decks (Yuna,
+Slicer, Aloy, Vaevictis). Their assignment fixes are already separate working edits
+and were left untouched. The preview publication adds only new metadata and the
+index's `preview`/`guide` fields, preserving existing published tiers/themes and all
+other artifacts. Other in-progress audio/deck edits remain outside this change.
+Live layout/readability checks and the Workshop release are next.
 
 ## v41: full-card text and Regex search (released)
 

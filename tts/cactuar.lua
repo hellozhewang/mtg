@@ -265,6 +265,8 @@ local function czRedrawOpen()
       s.guideDrawn = nil
       czRender(c)
       if czState(c).menu == "sleeve" then czRenderSleeves(c) end
+    else
+      UI.setAttribute("cz_panel_" .. c, "active", "False")
     end
   end
   if czsRedrawOpen then czsRedrawOpen() end

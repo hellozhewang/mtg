@@ -127,7 +127,9 @@ czCommander(white, "next", "cz_commander_next_White")
 check(s.commander == oldCommander, "callbacks for an old seat owner are rejected")
 -- Render the actual website-style XML module, not the text-only compatibility path.
 Player.White.steam_id = "owner-white"
-local xml = '<VerticalLayout id="cz_guide_content_White"><Text/></VerticalLayout>'
+local baseXml = string.rep('<Panel><Text text="Other module UI"/></Panel>', 2000)
+local otherGuide = '<VerticalLayout id="cz_guide_content_Red"><Text text="Private Red guide"/></VerticalLayout>'
+local xml = baseXml .. '<VerticalLayout id="cz_guide_content_White"><Text/></VerticalLayout>' .. otherGuide
 UI.getXml = function() return xml end
 function czGuideXml(value)
   xml = value
@@ -147,6 +149,7 @@ requests[#requests].callback({text = "illustrated"})
 czGuide(white, nil, "cz_guide_White"); paint()
 check(xml:find('cz_guide_pic_4_White', 1, true) and xml:find('A card beside prose.', 1, true), "single-card and combo rows include every picture and their prose")
 check(xml:find('Plan &amp; ‹win›', 1, true) and xml:find('→', 1, true), "headings are escaped and chains retain their direction")
+check(xml:sub(1, #baseXml) == baseXml and xml:sub(-#otherGuide) == otherGuide, "guide replacement preserves the large base UI and other private guides exactly")
 check(assets[1].name == "base" and assets[2].name == "czsl_standard" and assets[3].name == "czsi_1", "illustrated guides preserve every other module's image assets")
 local previousXml, commander = xml, s.commander
 czGuideHover(white, nil, "cz_guide_pic_3_White")

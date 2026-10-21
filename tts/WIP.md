@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): implementing website-style illustrated guides for the separate local test build. Owner says prepare the build and upload later: **hold further Workshop uploads**. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-21 (Codex): website-style illustrated guides implemented and picture metadata published; the local preview save is being refreshed after live XML verification. **Hold further Workshop uploads**. See `tts/CHANGELOG.md` for released versions.
 
 ## Illustrated guides (local test build; Workshop upload on hold)
 
@@ -24,8 +24,26 @@ shared reloads restore the current open sessions. Guide images register only whi
 their guide is open and preserve base, sleeve and Inspect assets. Stale callbacks
 and cross-seat hover events cannot change another player's preview.
 
-Implementation and publication checks are in progress. The new static metadata
-will be published for the local save to fetch; **do not upload Workshop**.
+Source `2d94f485` and generated metadata `7e598297` are pushed. The clean catalog
+build covers **158 decks / 157 guides / 10,904 guide card occurrences**, with no
+unresolved picture names. All **4,422 image URLs** pass build-time validation from
+the recent verification cache; no new downloads/API calls were needed. Only preview
+metadata and the index's preview hashes were promoted, preserving published
+tiers/themes/sleeves and leaving separate deck/audio working edits untouched.
+Pages' Yuna metadata matches local bytes and includes all 55 pictured occurrences.
+
+All **222 tests passed** before the live check, including export/image validation.
+The final Lua follow-up passes **42 preview checks**, the browser/Inspect/timer
+harnesses and all **12 table-build tests**. Live screenshots show single-card rows
+and Heliod + Walking Ballista's picture strip and explanation. A temporary isolated
+combo view was used to inspect that row without scrolling the full guide.
+
+Live issue found/fixed: MoonSharp reports **pattern too complex** for a wildcard
+replacement over the large shared XML. Guide replacement now uses plain searches
+bounded to its own non-nested VerticalLayout. A large-base-XML regression verifies
+that other UI and another seat's guide remain byte-identical. Guide scrolling/end
+visibility still needs an owner mouse check; earlier remote mouse probes did not
+move the view. **Do not upload Workshop**.
 
 ## Commander layout follow-up (local test build; upload on hold)
 
@@ -63,8 +81,9 @@ Save SHA-256: `5d1ea2f6f3538cac47bdef03e8c52e1fb625a60ecf4baffae5e4f1a02d29ff18`
 Manifest: `.cache/commander-live/build.json`; local artifacts:
 `.cache/commander-layout-jmj65_il/`. No new Workshop upload or version increment.
 The running browser has the layout/sprite fixes for immediate viewing; load the
-separate preview save for the persistent build. Source/docs commits remain local
-pending the owner's release decision.
+separate preview save for the persistent build. The subsequent illustrated-guide
+request required publishing source/metadata for the test save; Workshop remains on
+hold pending the owner's release decision.
 
 ## v42: commander preview, guide and updated slow-turn audio (released)
 

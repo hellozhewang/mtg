@@ -60,7 +60,7 @@ do
           elseif #cards > 1 then
             for i, card in ipairs(cards) do
               local column, line = (i - 1) % 4, math.floor((i - 1) / 4)
-              local x, top = 8 + column * 128, 8 + line * 136
+              local x, top = 32 + column * 124, 8 + line * 136
               if i > 1 then
                 content = content .. label(card.joiner == '->' and '→' or '+', x - 25, top + 48, 24, 32, 20, true)
               end
@@ -87,8 +87,20 @@ do
     local replacement = '<VerticalLayout id="' .. id .. '" height="' .. math.max(100, total)
       .. '" preferredHeight="' .. math.max(100, total) .. '" spacing="10" childForceExpandHeight="false"'
       .. ' childForceExpandWidth="true">' .. body .. '</VerticalLayout>'
-    local xml, changed = UI.getXml():gsub('<VerticalLayout[^>]-id="' .. id .. '"[^>]*>.-</VerticalLayout>', function() return replacement end, 1)
-    if changed ~= 1 then return false end
+    -- MoonSharp rejects wildcard patterns over the table's large shared XML.
+    -- Our content has no nested VerticalLayout, so use bounded plain searches.
+    local xml = UI.getXml()
+    local anchor = xml:find('id="' .. id .. '"', 1, true)
+    if not anchor then return false end
+    local start, scan = nil, 1
+    while true do
+      local p = xml:find('<VerticalLayout', scan, true)
+      if not p or p > anchor then break end
+      start, scan = p, p + 1
+    end
+    local finish = xml:find('</VerticalLayout>', anchor, true)
+    if not start or not finish then return false end
+    xml = xml:sub(1, start - 1) .. replacement .. xml:sub(finish + #'</VerticalLayout>')
     s.guideLayout, s.guidePainted = body, nil -- redraw will reuse the installed layout
     czGuideXml(xml)
     return false

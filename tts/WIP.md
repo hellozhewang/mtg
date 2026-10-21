@@ -43,7 +43,26 @@ Slicer, Aloy, Vaevictis). Their assignment fixes are already separate working ed
 and were left untouched. The preview publication adds only new metadata and the
 index's `preview`/`guide` fields, preserving existing published tiers/themes and all
 other artifacts. Other in-progress audio/deck edits remain outside this change.
-Live layout/readability checks and the Workshop release are next.
+All **222 tests pass in the current working workspace**, including the separate
+assignment fixes; those unrelated edits remain uncommitted and unstaged by this task.
+
+Source/data are pushed as `98cee342` and `c74f0a84`. Pages serves the preview files
+and index fields, checksum verified on Giada. A test build named **MTG 6 player Cactuar
+- Commander Guide Preview** is built from HEAD and delivered with its thumbnail to
+the PC's TTS Saves folder, both checksums verified. Combined Global Lua compiles,
+XML parses, and all six private commander panels are present. This separate preview
+does not increment the official version or replace v41.
+Local artifacts: `.cache/commander-preview-build/`. Remove the separate preview save
+and thumbnail after the official version is released.
+
+Live validation is currently blocked: TTS's editor port 39999 refuses connections.
+The running-game patch attempt stopped at that initial connection and changed no UI.
+The official release check is also blocked because Pages' slow-10min audio differs
+from committed HEAD, while separate audio source/clip edits are in progress. Do not
+publish old clips over that work or include uncommitted audio opportunistically.
+Owner has been asked to reopen/load TTS for the visual check and whether to wait for
+the audio work or prepare the build without uploading Workshop. Commander/guide
+layout, scroll position/readability and live asset reload still need a game check.
 
 ## v41: full-card text and Regex search (released)
 

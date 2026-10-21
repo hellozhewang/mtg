@@ -32,7 +32,9 @@
     <Image id="czs_zoom_image_{C}" width="356" height="520" rectAlignment="UpperCenter" offsetXY="0 -40"
            preserveAspect="true" color="#FFFFFF00" raycastTarget="false"/>
   </Panel>
-  <Panel id="czs_preview_{C}" active="False" width="344" height="540" color="#090909" outline="#181818" outlineSize="1 1">
+  <!-- Click preview stays beside Inspect too, leaving its search field and card grid usable. -->
+  <Panel id="czs_preview_{C}" active="False" width="344" height="540" rectAlignment="MiddleRight" offsetXY="-492 0"
+         color="#090909" outline="#181818" outlineSize="1 1">
     <VerticalLayout padding="12 12 12 12" spacing="8" childForceExpandHeight="false">
       <Text id="czs_preview_name_{C}" preferredHeight="36" fontSize="15" color="#E2E5EA" horizontalOverflow="Wrap" text=""/>
       <Image id="czs_preview_image_{C}" preferredHeight="424" preserveAspect="true" color="#FFFFFF00"/>

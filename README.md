@@ -810,7 +810,7 @@ then 10 minutes ([tts/cactuar_turns.lua](tts/cactuar_turns.lua); chat `announcer
 A private, narrow window shows four scrolling columns and a search bar, using the live
 container's names and images independently of our deck catalog. Browsing never reveals
 positions or changes the container's order; membership changes refresh automatically.
-Click an object for a larger preview. Identified cards support **Take to hand** and bag
+Click an object for a larger preview beside the list, leaving search and browsing accessible. Identified cards support **Take to hand** and bag
 objects **Take out**. Imports with empty card GUIDs can still be browsed and previewed;
 retrieval is disabled for those entries to avoid taking a different card by position.
 TTS controls custom-menu placement, so Workshop Lua cannot insert Inspect beside native

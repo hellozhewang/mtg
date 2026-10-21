@@ -4,7 +4,19 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-20 (Codex): v38 is released with a separate zoom shortcut; automatic use of the existing native Object Zoom binding remains unresolved. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-21 (Codex): moving the click preview to the left of Inspect for v39; automatic use of the existing native Object Zoom binding remains unresolved. See `tts/CHANGELOG.md` for released versions.
+
+## v39: click preview beside Inspect (preparing release)
+
+Owner's screenshot showed that clicking a card still opened its larger preview over
+the Inspect grid. The click preview now anchors immediately to the **left** of Inspect,
+with a 12-pixel logical gap, matching the side used by the separate hold-key preview.
+The search field and card list stay accessible so another card can be selected while
+the preview is open. It remains a child of the private Inspect panel and moves with it.
+
+This is a layout change in `tts/cactuar_search.xml`; preview/retrieval callbacks and
+native zoom support are unchanged. Validation: all **11 table-build tests pass**;
+the existing Inspect Lua harness passes **82 checks**, zero failures.
 
 ## Requested follow-up: existing native Object Zoom binding (unresolved)
 

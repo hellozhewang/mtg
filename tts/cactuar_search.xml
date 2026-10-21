@@ -4,7 +4,7 @@
        color="#111923FC" outline="#34465B" outlineSize="1 1" shadow="#00000080" shadowDistance="-4 -6">
   <VerticalLayout padding="14 14 14 14" spacing="8" childForceExpandHeight="false">
     <HorizontalLayout preferredHeight="32" spacing="8" childForceExpandWidth="false">
-      <Text flexibleWidth="1" fontSize="22" color="#E2E5EA" alignment="MiddleLeft" text="Search cards A–Z"/>
+      <Text flexibleWidth="1" fontSize="22" color="#E2E5EA" alignment="MiddleLeft" text="Inspect"/>
       <Button onClick="czsRefreshClick" preferredWidth="82" fontSize="13" color="#FFFFFF" textColor="#E2E5EA"
               colors="#243244|#34485F|#1C2938|#1B2533" text="Refresh"/>
       <Button onClick="czsClose" preferredWidth="34" fontSize="18" color="#FFFFFF" textColor="#E2E5EA"

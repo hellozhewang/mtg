@@ -69,7 +69,7 @@ local a = deck("deck-a", {
 objects.notDeck = {type = "Card"}
 dofile("tts/cactuar_search.lua")
 local function tick() ticks[CZS.ticker]() end
-check(#a.menus == 2 and a.menus[1] == "Existing item" and a.menus[2] == "Search A–Z", "existing menus survive; Search A–Z attached")
+check(#a.menus == 2 and a.menus[1] == "Existing item" and a.menus[2] == "Inspect", "existing menus survive; Inspect attached")
 onObjectSpawn(a)
 check(#a.menus == 2 and baseSpawns == 1, "spawn is wrapped and the menu is not duplicated")
 a.open("White")

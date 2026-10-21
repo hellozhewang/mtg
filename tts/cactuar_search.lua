@@ -256,7 +256,7 @@ local function czsAttach(obj)
   local guid = obj.getGUID()
   if CZS.attached[guid] == obj then return end
   CZS.attached[guid] = obj
-  obj.addContextMenuItem("Search A–Z", function(color) czsOpen(color, obj) end)
+  obj.addContextMenuItem("Inspect", function(color) czsOpen(color, obj) end)
 end
 
 -- Keep every base handler, and keep one copy of each wrapper on live reload.

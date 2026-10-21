@@ -806,11 +806,13 @@ The table also shows each seat's **total turn time** for the game under its turn
 (the "Who goes first?" roll resets it). An **announcer** mocks a turn that reaches 5 and
 then 10 minutes ([tts/cactuar_turns.lua](tts/cactuar_turns.lua); chat `announcer off`).
 
-**Search a library alphabetically:** right-click any deck and choose **Search A–Z**.
+**Inspect a library alphabetically:** right-click any deck and choose **Inspect**.
 The private card gallery sorts by name and filters as you type, without displaying
 library positions or changing the deck's order. Select a card for a larger preview,
 then **Take to hand** to take that exact card. Draws and other changes refresh the
 gallery automatically. The ordinary Search menu stays available.
+TTS controls where custom entries appear in that menu; its scripting API cannot
+insert Inspect directly below the built-in Search entry.
 
 The catalog's single-card image textures have picture previews. Decks imported as
 multi-card image sheets still have searchable names and exact-card retrieval, but

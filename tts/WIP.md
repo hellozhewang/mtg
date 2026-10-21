@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): website-style illustrated guides implemented and picture metadata published; the local preview save is being refreshed after live XML verification. **Hold further Workshop uploads**. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-21 (Codex): website-style illustrated guides and picture metadata are implemented, published and delivered in the refreshed local preview save. **Hold further Workshop uploads**. See `tts/CHANGELOG.md` for released versions.
 
 ## Illustrated guides (local test build; Workshop upload on hold)
 
@@ -44,6 +44,21 @@ bounded to its own non-nested VerticalLayout. A large-base-XML regression verifi
 that other UI and another seat's guide remain byte-identical. Guide scrolling/end
 visibility still needs an owner mouse check; earlier remote mouse probes did not
 move the view. **Do not upload Workshop**.
+
+Final test save **MTG 6 player Cactuar - Commander Guide Preview** (JSON + PNG)
+replaces the earlier preview in the PC's Saves folder; both checksums match.
+Built from `21829578`; Lua compiles, XML parses and the fixed large-XML replacement
+is present. Both updated v42 slow-turn recordings remain included. SHA-256:
+`ee56fcd9b7a51bfd3441191337812def99d542ca8137e4ff3846b0639eb92a1e`.
+Manifest `.cache/illustrated-guide-delivery.json`; final local artifacts in
+`.cache/illustrated-guide-final-dqaaou58/`. No version increment/Workshop upload.
+
+Live evidence: `.cache/commander-live/17-illustrated-yuna.png` shows the full guide's
+single-card layout; `18-guide-combo-hover.png` shows the combo strip;
+`19-guide-hover.png` shows Walking Ballista at readable size after invoking its
+hover callback. The full published guide and commander were restored afterward;
+the temporary combo-only view is not saved or published. Source/data and final
+handoff docs are pushed; WIP/changelog copies on the PC Desktop are refreshed.
 
 ## Commander layout follow-up (local test build; upload on hold)
 

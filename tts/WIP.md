@@ -4,7 +4,26 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): v39 is released with the click preview to the left of Inspect; automatic use of the existing native Object Zoom binding remains unresolved. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-21 (Codex): preparing v40 with automatic hover previews to the left of Inspect, as requested. The owner has dropped the zoom-key requirement. See `tts/CHANGELOG.md` for released versions.
+
+## v40: automatic hover preview (preparing release)
+
+Owner explicitly changed the requested behavior: automatically enlarge cards on
+mouse-over; no zoom button/key needed. Hover now shows the face to the left of Inspect,
+moving between thumbnails changes it, and leaving the thumbnail hides/clears it.
+Click still pins a preview with retrieval actions; hovering another thumbnail dismisses
+that pinned preview and clears its retrieval target before showing the hovered card.
+
+Fresh loads no longer register an Inspect Game Key. A no-op `czsZoomKey` keeps old
+callbacks harmless when updating a running v38/v39 session; other modules' keys are
+preserved. Card order, named image assets, private seat visibility and retrieval guards
+remain intact. This request supersedes the earlier native Object Zoom investigation.
+
+Validation: **84 Inspect Lua checks pass**, including automatic enter/exit, stale
+exits, old-key callbacks, switching from a pinned preview, retrieval protection,
+GUID-less images, filtering and seat privacy. All **11 table-build tests pass**.
+The updated module compiles and was applied to the running game; no Inspect sessions
+were open during the update. Native zoom-key integration is no longer a release goal.
 
 ## v39: click preview beside Inspect (released)
 
@@ -27,7 +46,10 @@ Saves with matching checksums; v38's canonical save/thumbnail removed. Workshop 
 Result: `.cache/workshop/3822623414-a40d86a98d554f998fa648f26124c902-result.json`.
 The running game already has the layout adjustment; load v39 for the saved revision.
 
-## Requested follow-up: existing native Object Zoom binding (unresolved)
+## Earlier request: existing native Object Zoom binding (superseded by v40)
+
+Historical investigation below. On 2026-10-21 the owner chose automatic mouse-over
+zoom instead and dropped the requirement to use the existing zoom key.
 
 Owner clarified after v38: Inspect must follow the player's **existing TTS Object
 Zoom binding**, whatever key that player uses. Holding that key enlarges the hovered

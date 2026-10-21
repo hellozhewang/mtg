@@ -132,7 +132,7 @@ local function czsHideZoom(color)
 end
 local function czsRenderZoom(color)
   local s = CZS.state[color]
-  if not s or s.owner ~= czsOwner(color) or not s.zoomHeld or s.previewOpen or CZS.rebuilding then
+  if not s or s.owner ~= czsOwner(color) or s.previewOpen or CZS.rebuilding then
     czsHideZoom(color); return
   end
   local visible, card = false, nil
@@ -333,10 +333,16 @@ function czsHidePreview(player, _, id)
 end
 function czsHover(player, value, id)
   local s = czsSession(player, id)
-  if not s or s.busy or s.previewOpen then return end
+  if not s or s.busy then return end
   local guid = tostring(value or "")
   for _, shown in ipairs(s.shown) do
-    if shown == guid then s.hovered = guid; czsRenderZoom(player.color); return end
+    if shown == guid then
+      -- Browsing another thumbnail returns from the pinned click preview to hover.
+      s.previewOpen, s.selected, s.hovered = false, nil, guid
+      czsActive("czs_preview_" .. player.color, false)
+      czsRenderZoom(player.color)
+      return
+    end
   end
 end
 function czsUnhover(player, value, id)
@@ -346,12 +352,9 @@ function czsUnhover(player, value, id)
     s.hovered = nil; czsHideZoom(player.color)
   end
 end
-function czsZoomKey(color, isKeyUp)
-  local s = czsSession(Player[color])
-  if not s then return end
-  s.zoomHeld = not isKeyUp
-  czsRenderZoom(color)
-end
+-- An older live session can still have v38's callback registered. Ignore that key;
+-- fresh loads register no Inspect shortcut and zoom follows the pointer alone.
+function czsZoomKey() end
 function czsPick(player, value, id)
   local s = czsSession(player, id)
   if not s or s.busy then return end
@@ -419,13 +422,6 @@ end
 
 -- Keep every base handler, and keep one copy of each wrapper on live reload.
 CZS_BASE = CZS_BASE or {spawn = onObjectSpawn, destroy = onObjectDestroy, change = onPlayerChangeColor}
--- Workshop Lua cannot poll raw Alt state. Bind this Game Key to Alt once in
--- Options > Game Keys; TTS delivers both press and release, preserving native keys.
--- A stable global callback lets live reload reuse the one registered hotkey.
-if not CZS_BASE.zoomHotkey then
-  addHotkey("Inspect zoom", function(color, _, _, isKeyUp) czsZoomKey(color, isKeyUp) end, true)
-  CZS_BASE.zoomHotkey = true
-end
 function onObjectSpawn(obj)
   if CZS_BASE.spawn then CZS_BASE.spawn(obj) end
   czsAttach(obj)

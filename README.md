@@ -810,18 +810,14 @@ then 10 minutes ([tts/cactuar_turns.lua](tts/cactuar_turns.lua); chat `announcer
 A private, narrow window shows four scrolling columns and a search bar, using the live
 container's names and images independently of our deck catalog. Browsing never reveals
 positions or changes the container's order; membership changes refresh automatically.
-Click an object for a larger preview beside the list, leaving search and browsing accessible. Identified cards support **Take to hand** and bag
+Hover over a thumbnail to enlarge it automatically to the left of Inspect; move away
+to dismiss it. No key or binding is needed. Click to keep a preview open and use its
+actions; hovering another thumbnail resumes automatic previews. The list and search
+bar stay accessible. Identified cards support **Take to hand** and bag
 objects **Take out**. Imports with empty card GUIDs can still be browsed and previewed;
 retrieval is disabled for those entries to avoid taking a different card by position.
 TTS controls custom-menu placement, so Workshop Lua cannot insert Inspect beside native
 Search or reuse its actual window. Standard Search remains available.
-
-v38 offers an optional **Inspect zoom** Game Key under **Options → Game Keys**.
-After separately binding it, hold that key over a thumbnail to enlarge the card;
-release or move away to dismiss it. Its binding persists across loads. This workaround
-does not inherit the player's native Object Zoom binding. Automatic reuse of that
-existing binding remains unresolved in Workshop Lua; see [WIP](tts/WIP.md).
-Click-to-preview remains available.
 
 Single-card textures and custom object images have previews, including WebP through
 named UI assets. Multi-card image sheets and built-in 3D object thumbnails remain

@@ -11,7 +11,7 @@ to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 ## v60 — 2026-10-22 (commit 75c525d4)
 - Reduce Inspect opening bursts with cached metadata and preparation/painting in small frame batches.
 - Search cached full text without native deck reads; combine grid and face assets into one rebuild and add Refresh for metadata edits.
-- Keep alphabetical order, private hover previews and safe GUID retrieval. Saved build for testing; not uploaded to Steam.
+- Keep alphabetical order, private hover previews and safe GUID retrieval. Published unchanged to Steam Workshop item 3822623414 on 2026-10-22; Steam confirmed EResult 1.
 
 ## v59 — 2026-10-22 (commit 72b4df77)
 - Add a scrolling text-only commander section below Strategy: mana cost/value, type, full rules and creature/planeswalker/battle stats.

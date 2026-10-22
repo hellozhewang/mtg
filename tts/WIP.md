@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-22 (Codex): delivered **v60** with bounded Inspect preparation/painting and cached metadata, also applied live; v59 commander text is retained. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-22 (Codex): delivered **v60** with bounded Inspect preparation/painting and cached metadata, also applied live; v59 commander text is retained. **Steam is now v60, published at the owner’s request.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -18,7 +18,7 @@ Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a vers
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
 
-## v60: reduce Inspect opening and refresh bursts (saved; not on Steam)
+## v60: reduce Inspect opening and refresh bursts (saved and published to Steam)
 
 Owner asks whether the first-open catalog parser bottleneck also applies to Inspect.
 Inspect does **not** use `JSON.decode`. Code inspection found a different expensive
@@ -78,7 +78,7 @@ that valid target. Final read-back confirms **six Refresh buttons, UI.loading fa
 CZS.rebuilding false, 25 assets unchanged, White browser still open and no Inspect
 session**. Evidence: `v60-patch.json`, `v60-header-patch.json`,
 `v60-header-repair.json`, `v60-target.xml` and `v60-after.json`. No physical cards or turns have been
-changed. **Steam remains v42.**
+changed. Steam was v42 during this validation.
 
 Delivered **MTG 6 player Cactuar Ver_v60** JSON/PNG from pushed source `75c525d4`.
 The release gate verified exact published sound/tile bytes. Remote read-back Lua
@@ -87,7 +87,21 @@ initially hidden Inspect panels with Refresh controls and 32 initial cells each.
 Immutable archive/manifest: `.cache/tts-builds/v60/`. Save SHA-256:
 `40faed08d931de3007c46961b7c398285b4a896d13ee20c1f95b6942bf57f827`.
 Saves now contains v60; v59 remains archived unchanged. Final WIP/changelog copied
-to Desktop. **Steam remains v42; no Workshop upload.**
+to Desktop. Initially delivered without Workshop upload.
+
+Owner then requested **"and release the version on Steam when you're done"**.
+Published this exact delivered **v60** using `scripts/release_tts.py --workshop-only`,
+with no rebuild/version increment. Before upload, both PC save/thumbnail SHA-256
+values matched the immutable archive. Steam’s legacy API confirmed **EResult 1**,
+item **3822623414**, `ok=true`, no outstanding legal agreement at
+**2026-10-22 13:35:00 -07:00**. The ordinary interactive upload task was removed;
+existing PowerShell policy, Workshop title/description/visibility were retained.
+Receipt: `.cache/workshop/3822623414-2e62da845cae49deaf491c2a14cec2b9-result.json`
+in the release checkout, copied to `.cache/tts-builds/v60/workshop-result.json` in
+the main repo; the manifest now records publication while JSON/PNG bytes remain
+unchanged. **Saved Games v60; Steam Workshop v60.** This verifies Steam’s upload
+callback, not a fresh subscriber download or real-deck performance timing. Final
+WIP/changelog copies updated on Desktop.
 
 ## v59: readable commander rules in the details column (saved; not on Steam)
 

@@ -1,0 +1,82 @@
+The single biggest rule a new pilot gets wrong is timing Be'lakor's two abilities. Be'lakor's card-draw trigger (Prince of Chaos) triggers only when Be'lakor enters the battlefield, counting all Demons you control (including himself). However, his burn trigger (Lord of Torment) triggers whenever ANOTHER Demon you control enters, dealing damage equal to that Demon's power to ANY target. Crucially, mass reanimation spells like Living Death and Patriarch's Bidding bring all your Demons back simultaneously: Be'lakor sees every single returning Demon enter, triggering massive, lethal burn that can wipe out an entire table before combat even begins.
+
+# The dark master and the demon legion
+Be'lakor, the Dark Master :: Cast for {3}{U}{B}{R}. Draws cards equal to the number of Demons you control on entry, and turns every subsequent Demon into a direct burn spell equal to its power.
+Valgavoth, Terror Eater :: Massive 9/9 flying lifelink Elder Demon with ward sacrifice three nonlands. Enters to deal nine direct damage with Be'lakor and exiles opposing cards to cast for life.
+Bloodthirster :: 6/6 flying trampler that untaps your attacking team and grants up to three consecutive combat phases in a single turn.
+Vilis, Broker of Blood :: 8/8 flying Demon that converts life lost (including from Be'lakor's entry draw) into massive card advantage.
+Lord of Change :: 6/6 flying Demon with ward {3} that draws three cards on entry while shooting any target for six damage.
+Burning-Rune Demon :: 6/6 flying Demon that double-tutors two cards from your library, ensuring you always find your key mass reanimation or combo pieces.
+Archfiend of Despair :: Shuts off opponent lifegain and doubles all life lost by opponents at each end step, turning Be'lakor's burn triggers into lethal finishers.
+Bloodletter of Aclazotz :: Forces opponents to lose twice as much life during your turn, doubling all Lord of Torment damage.
+Rune-Scarred Demon :: 6/6 flying Demon that searches your library for any card on entry.
+Rakdos, Lord of Riots :: Trampling 6/6 that reduces creature costs by {1} for each point of life opponents lost this turn, allowing you to cast multiple massive Demons for almost nothing.
+Master of Cruelties :: First strike deathtouch attacker that sets defending player's life total to 1; a single subsequent Be'lakor burn trigger finishes them off.
+Archfiend of Depravity :: Forces each opponent to sacrifice down to two creatures on their end step, destroying opposing go-wide strategies.
+Raphael, Fiendish Savior :: Grants all Demons +1/+1 and lifelink, healing you for immense amounts of life whenever Lord of Torment triggers.
+Balor :: Exiles cards, destroys artifacts, or burns opponents whenever it attacks or dies.
+Chaos Defiler :: Destroys target nonland permanents at random on entry and on death.
+Kardur, Doomscourge :: Goads the entire table for a full turn cycle, buying you time to set up your biggest threats.
+Orcus, Prince of Undeath :: Flexible modal Demon that acts as a scalable creature wipe or reanimates multiple Demons.
+Great Unclean One :: Drains the table and creates 1/3 Nurgling Demon tokens on your upkeep that trigger Be'lakor's burn.
+Bloodcrusher of Khorne :: Grants all your attacking Demons trample.
+Dream Devourer :: Foretells Demons from your hand, reducing their costs by two generic mana to curve out smoothly.
+Lord Xander, the Collector :: Forces target opponent to discard half their hand on entry, mill half their library on attack, and sacrifice half their nonlands on death.
+Rakdos, the Showstopper :: Flips coins to destroy all non-Demon, non-Devil, non-Imp creatures across the battlefield.
+
+# Demon enablers and trigger doublers
+Roaming Throne :: Chooses Demon to double every triggered ability of your Demons, causing Be'lakor to draw twice as many cards and shoot twice for every entering Demon.
+Molten Echoes :: Names Demon to create a hasty token copy of every nontoken Demon that enters, doubling Be'lakor's burn triggers and generating immediate combat pressure.
+Reflections of Littjara :: Names Demon to copy every Demon spell you cast, doubling your Demon board presence.
+Heartless Summoning :: Reduces creature costs by {2} generic mana at the trivial cost of -1/-1 stats.
+Urza's Incubator :: Reduces casting costs of all Demon spells by {2}.
+Herald of Slaanesh :: Reduces Demon costs by {2} and gives all other Demons haste.
+
+# Mass reanimation and sneak attacks
+Patriarch's Bidding :: Names Demon to return every Demon in your graveyard to the battlefield simultaneously. Be'lakor sees every returning Demon, dealing 30 to 50+ direct burn damage across the table.
+Living Death :: Sweeps the current board while returning your entire graveyard of Demons directly into play to machine-gun opponents with Lord of Torment.
+Sneak Attack :: Pays {R} to drop massive Demons directly from your hand with haste. Triggers Be'lakor's burn immediately, attacks with evasion, and sends them to the graveyard ready for mass reanimation.
+Reanimate :: Single black mana to reanimate any massive Demon from any graveyard.
+Animate Dead :: Two-mana reanimation aura.
+
+# Alternate wins and the compact combo
+Dualcaster Mage + Twinflame :: Infinite hasty Dualcaster Mages. Cast Twinflame targeting any creature you control, hold priority, and cast Dualcaster Mage with flash. Copy Twinflame targeting Dualcaster Mage, creating a token copy that copies Twinflame again. Repeat for infinite attackers.
+Dualcaster Mage + Molten Duplication :: Redundant two-mana infinite combo line using Molten Duplication.
+In accordance with Bracket 3 rules, this two-card combo is reserved for turn 6 or later. Use early turns to cast cost reducers, deploy Be'lakor, and chip opponents with Demon burn before executing the finish.
+Liliana's Contract :: Draws four cards on entry and wins the game at your upkeep if you control four or more Demons with different names.
+
+# Card advantage and mana acceleration
+Rhystic Study :: Relentless card draw engine that taxes opponents on every spell.
+The One Ring :: Protection from everything for a full turn and exponential card advantage.
+Mystic Remora :: Early noncreature spell tax that draws cards rapidly in opening turns.
+Black Market Connections :: Consistent card draw, Treasure generation, and Changeling tokens every upkeep.
+Whip of Erebos :: Grants lifelink to your entire team, offsetting life loss from Be'lakor and Black Market Connections while providing emergency reanimation.
+Sol Ring :: Standard colorless acceleration.
+Arcane Signet :: Reliable three-color mana rock.
+Rakdos Signet :: Filters mana into Rakdos colors.
+Fellwar Stone :: Efficient two-mana rock producing multiple colors.
+Chromatic Lantern :: Perfect mana fixing that turns all your lands into any-color sources.
+Dark Ritual :: Burst mana to deploy early Demons or fast reanimation.
+Talisman of Creativity :: Untapped blue and red mana.
+Talisman of Dominance :: Untapped blue and black mana.
+Talisman of Indulgence :: Untapped black and red mana.
+
+# Removal and defensive countermagic
+Cyclonic Rift :: Asymmetrical board wipe that bounces every nonland permanent your opponents control, opening the way for an unblockable alpha strike.
+Toxic Deluge :: Premier three-mana board wipe that pays life to bypass indestructible and hexproof.
+Blasphemous Act :: Cheap red board wipe when the table gets congested.
+Deadly Rollick :: Free instant-speed creature exile as long as you control Be'lakor.
+Deflecting Swat :: Free redirection spell with Be'lakor on the battlefield to protect against removal or countermagic.
+Counterspell :: Reliable two-mana hard counter.
+Chaos Warp :: Universal spot removal for any permanent type.
+Bedevil :: Instant-speed destruction for target creature, artifact, or planeswalker.
+Withering Torment :: Flexible instant-speed answer that destroys either target creature or target enchantment.
+Feed the Swarm :: Clean enchantment or creature destruction in black.
+Sudden Spoiling :: Split second combat trick that reduces an opponent's entire attacking or blocking army to vanilla 0/2s.
+
+# Opening hand and sequencing
+Aim for opening hands with three lands, early mana rocks (Sol Ring, Talismans, Signets), and either a cost reducer (Herald of Slaanesh, Heartless Summoning) or an early Demon.
+Spend turns 1 through 3 establishing mana acceleration and dropping cost reducers or draw engines.
+Cast Be'lakor on turn 4 or 5 once you have at least one or two Demons on board or in hand to maximize his draw trigger.
+On subsequent turns, deploy high-impact Demons (Lord of Change, Bloodthirster, Valgavoth) to trigger Lord of Torment and burn opposing utility creatures and life totals.
+On turn 6 or later, execute a table-wide knockout with Patriarch's Bidding, Living Death, or the Dualcaster Mage combo to wipe out the remaining players in one turn.

@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): preparing **v51**: text-only Cactuar browser and reduced open/redraw work. Latest delivered is v50. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-21 (Codex): delivered **v51**: text-only Cactuar browser and reduced open/redraw work. Investigating a separately reported missing Inspect context menu on the running v50 table. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -18,7 +18,7 @@ Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a vers
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
 
-## v51: text-only browser and opening lag (preparing; not on Steam)
+## v51: text-only browser and opening lag (saved; not on Steam)
 
 Owner confirmed lag on clicking the Cactuar tile in **v50**, then requested scaling
 back guides/commander previews: **"no pictures on the deck object anymore"**.
@@ -60,7 +60,21 @@ catalog choice instead of the obsolete fixed cactuar.jpg fixture.
 
 Repository automation reset uncommitted work during implementation. Work continued
 in an isolated `codex/tts-v51` checkout to preserve unrelated bot/catalog updates.
-Delivery and live performance check pending. No Workshop upload.
+Delivered **MTG 6 player Cactuar Ver_v51** JSON/PNG from pushed source `c7f39892`.
+Pages passed exact sound/tile-byte verification. Delivered checksums match; read-back
+save name, Lua compilation, XML parsing, all six private text-only browser panels,
+32-cell initial Inspect pools and retained music priority are verified. Archive:
+`.cache/tts-builds/v51/`. Save SHA-256:
+`936f71b6bbe67a4893e48c30437dbd31b7a04a54238ee997599a93ffd8849bc8`.
+Canonical v50 files were replaced in Saves; their archive remains. The running game
+was not reloaded/patched; owner performance testing of v51 remains outstanding.
+Final WIP/changelog Desktop copies refreshed. **Steam remains v42; no Workshop upload.**
+
+After delivery the owner reported a missing Inspect context menu. A read-only live
+probe identifies the running table as v50 (old commander handler exists; written-guide
+handler absent), with `czsOpen` available and 11/11 deck objects marked attached.
+Do not conflate an attachment flag with a visible menu. Investigation is ongoing;
+Inspect was not intentionally removed.
 
 ## v50: prioritized battlefield soundtrack and commander images on demand (saved; not on Steam)
 

@@ -8,6 +8,11 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v51 — 2026-10-21 (commit c7f39892)
+- Make the Cactuar browser text-only: remove commander previews and guide pictures; keep written guides on Read guide and choose sleeves by name.
+- Skip closed-seat rendering and unchanged UI writes; eliminate browser picture registration and shared XML rebuilding. Start hidden Inspect grids at 32 cells and grow on demand.
+- Keep v50 battlefield music priorities. Saved build for testing; not uploaded to Steam.
+
 ## v50 — 2026-10-21 (commit 45472f47)
 - Prioritized battlefield music on qualifying active turns (10+ permanents): Goblins (Titan), artifacts (Ultima), White (Thordan), Black (Hades), Blue (Alexander/Locus), Green (Garuda), Red (Ifrit)
 - Use original FF14 WAV tracks with pause/resume across qualifying turns and trimmed start on Hades

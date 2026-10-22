@@ -18,6 +18,19 @@ Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a vers
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
 
+## Requested: private turn-change voice (2026-10-21; not implemented)
+
+Owner wants `change-turn.wav` heard only by the incoming player. Rechecked the
+official MusicPlayer and Player Instance APIs: MusicPlayer controls shared playback
+and provides no recipient parameter; Player exposes no custom-audio playback method.
+The native turn beep already targets the incoming player, but its clip cannot be
+replaced through the documented Workshop API. Standard Workshop Lua therefore
+cannot provide reliable private playback of this WAV. No audio behavior changed and
+no new numbered build delivered for this request. A separate client-side audio
+implementation would require investigation and installation by each listener.
+References: https://api.tabletopsimulator.com/musicplayer/ and
+https://api.tabletopsimulator.com/player/instance/.
+
 ## v46: turn-sound diagnostics and same-seat events (saved; not on Steam)
 
 Owner reported only hearing TTS's beep in v45. Live inspection confirmed the v45

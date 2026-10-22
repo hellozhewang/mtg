@@ -8,6 +8,11 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v55 — 2026-10-22 (commit 0e4ec05b)
+- Load sleeve thumbnails only when opening or paging to their eight-choice page; shared redraws never prefetch other pages.
+- Keep visited pages cached, skip superseded pending pages and preserve shared Inspect assets while loading.
+- Saved build for testing; not uploaded to Steam.
+
 ## v54 — 2026-10-22 (commit 18f147ff)
 - Fix Inspect pattern-too-complex errors by replacing its target grid with bounded plain XML searches; preserve other seats and base UI exactly.
 - Retain the live zone-menu repair and on-demand sleeve thumbnails from v53; commander/guide images remain disabled.

@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-22 (Codex): preparing **v55** with sleeve image requests tied strictly to opening or navigating a chooser page; v54 is the latest delivered save. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-22 (Codex): delivered **v55** with sleeve image requests tied strictly to opening or navigating a chooser page. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -18,7 +18,7 @@ Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a vers
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
 
-## v55: sleeve images only on explicit page navigation (preparing)
+## v55: sleeve images only on explicit page navigation (saved; not on Steam)
 
 Owner asks not to load sleeve images until paging into them. v53/v54 already limited
 registration to visible chooser pages, but its registration routine scanned **all
@@ -44,8 +44,16 @@ paging, closed pending pages and queued requests behind external UI loading.
 All **six Lua suites**, **14 table-build tests** and **8 release tests** pass
 (28 Python tests total). Browser still has **zero cold image loads**, 115 cold UI
 writes, 3 cached close/reopen writes and zero unchanged redraw writes. No live game
-reload or sleeve hot patch has been performed. Preparing the next numbered save;
-**no Workshop upload**.
+reload or sleeve hot patch has been performed; load v55 to test this behavior.
+
+Delivered **MTG 6 player Cactuar Ver_v55** JSON/PNG from pushed source `0e4ec05b`.
+Pages passed exact sound/tile-byte verification. Read-back Lua compiles and contains
+the exact sleeve module and both explicit navigation handlers; XML verifies six
+private eight-thumbnail chooser panels. Archive: `.cache/tts-builds/v55/`.
+Save SHA-256:
+`05a9e39dff29ef10db734abb17170407240674434acfab757408593f77b42ec8`.
+Saves now contains v55; immutable v54 remains archived. Final WIP/changelog copies
+refreshed on Desktop. **Steam remains v42; no Workshop upload.**
 
 ## v54: Inspect grid expansion exceeds MoonSharp pattern limit (saved; not on Steam)
 

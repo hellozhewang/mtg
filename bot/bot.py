@@ -470,7 +470,11 @@ def _autopush(chan: str, source: Path | None = None, what: str = "Deck") -> None
             if not _git("status", "--porcelain", "--", rel).stdout.strip():
                 return                                  # nothing changed
             site = _build_site()
-            paths = [rel, *([site] if site else [])]     # public/ and docs/, nothing else
+            maps = [
+                str((workspace.frontend_dir() / "deck-tiers.json").relative_to(REPO)),
+                str((workspace.frontend_dir() / "deck-themes.json").relative_to(REPO)),
+            ] if source is None else []
+            paths = [rel, *([site] if site else []), *maps]
             add = _git("add", "--", *paths)
             if add.returncode:
                 log().warning("autopush: git add failed: %s", add.stderr.strip()[:200])

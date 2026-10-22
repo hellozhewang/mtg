@@ -249,11 +249,32 @@ def index_entry(d, path: str) -> dict:
             "cap": d.cap, "mv": round(d.avg_mv, 2), "lands": d.lands,
             "added": d.created, "updated": d.modified, "file": path,
             "preview": preview_path(path) + "?v=" + hashlib.sha256(preview_file(d).encode()).hexdigest()[:12],
-            "guide": bool(d.guide), "commanders": commander_preview(d)}
+            "guide": bool(d.guide), "commanders": commander_preview(d),
+            "commander_text": commander_text_path(path) + "?v=" + hashlib.sha256(commander_text_file(d).encode()).hexdigest()[:12]}
 
 
 def preview_path(deck_path: str) -> str:
     return str(PurePosixPath(deck_path).with_suffix(".preview.json"))
+
+
+def commander_text_path(deck_path: str) -> str:
+    return str(PurePosixPath(deck_path).with_suffix(".commander.jsonl"))
+
+
+def commander_text_file(d) -> str:
+    """Small text-only records, fetched on selection rather than in the main index."""
+    commanders = []
+    for name in d.commanders:
+        card = d.cards.get(name)
+        if not card:
+            continue
+        text_faces = []
+        for face in card.get("card_faces") or [card]:
+            text_faces.append({key: face.get(key) or "" for key in
+                               ("name", "mana_cost", "type_line", "oracle_text", "power", "toughness", "loyalty", "defense")})
+        commanders.append({"name": name, "mv": card.get("cmc", 0), "faces": text_faces})
+    return "".join(json.dumps(record, ensure_ascii=False, separators=(",", ":")) + "\n"
+                   for record in ({"v": 1, "id": d.key, "count": len(commanders)}, *commanders))
 
 
 def commander_preview(d) -> list[dict]:
@@ -427,6 +448,7 @@ def files(decks: list, out_dir: Path, q) -> dict[Path, str | bytes]:
         paths[d.key] = rel
         out[root / rel] = deck_file(d, tokens)
         out[root / preview_path(rel)] = preview_file(d)
+        out[root / commander_text_path(rel)] = commander_text_file(d)
     data = index(decks, paths)
     out[root / "decks.json"] = json.dumps(data, ensure_ascii=False, separators=(",", ":")) + "\n"
     out[root / "catalog.jsonl"] = catalog_file(data)

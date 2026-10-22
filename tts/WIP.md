@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-22 (Codex): delivered **v58** for the measured first-open catalog decoding stall; the running table also uses the incremental loader. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-22 (Codex): preparing **v59** with a text-only commander rules area in the deck details column; v58 is the latest delivered save. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -17,6 +17,37 @@ selects. Report the latest saved build and Steam version separately.
 Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a version
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
+
+## v59: readable commander rules in the details column (preparing)
+
+Owner marked the empty space below Strategy and above the stats and requested
+important commander information (CMC, type, description) **without images**.
+A fixed 172px scrolling text section fills that space when a deck is selected.
+It uses the existing soft-white palette and shows name, mana cost, mana value
+(CMC), type, full oracle rules and power/toughness, loyalty or defense as applicable.
+Partners stay in commander order; multiple faces have separate text sections.
+
+Rules are deliberately **not embedded in the main catalog**. The publisher emits
+one tiny `<Deck>.commander.jsonl` per deck, with a content-hashed `commander_text`
+path in catalog metadata. `tts/cactuar_commander.lua` fetches only the selected
+file once, decodes one small record per frame and caches formatted text. No image
+assets, guide requests, object spawns or runtime XML rebuilds. Late responses only
+redraw matching open/current-owner selections; closing does not reopen a window.
+Refresh can retry failures; old indexes without text pointers show an unavailable
+message. Catalog pagination and incremental first-load decoding remain.
+
+Generated 164 files from **159 cache-hit commander names, zero cache misses**;
+average **559 bytes**, maximum **1,126 bytes**. All existing image and guide output
+is unchanged. The main index/JSONL gain only content-hashed pointers. Future site
+builds generate the same files centrally through `scripts/ttsdecks.py`.
+
+**17 commander-text checks** cover on-demand fetch/cache, rules/stats/partner order,
+rich-text escaping, late responses, retry and closed/legacy cases. Exporter tests
+cover double-faced creatures/planeswalkers, mana costs and no image fields; builder
+checks require a private scroll section with no Image nodes. **71 Python tests**
+pass across eight Lua suites, table builds, exporter, release and image validation.
+Preparing a numbered saved build; visual layout/network verification still pending.
+**Steam remains v42; no Workshop upload.**
 
 ## v58: measured first-click JSON decoding stall (saved; not on Steam)
 

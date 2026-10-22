@@ -1,0 +1,2 @@
+{"v":1,"id":"zzwang/MarrowGnawer-Rats","count":1}
+{"name":"Marrow-Gnawer","mv":5.0,"faces":[{"name":"Marrow-Gnawer","mana_cost":"{3}{B}{B}","type_line":"Legendary Creature — Rat Rogue","oracle_text":"All Rats have fear.\n{T}, Sacrifice a Rat: Create X 1/1 black Rat creature tokens, where X is the number of Rats you control.","power":"2","toughness":"3","loyalty":"","defense":""}]}

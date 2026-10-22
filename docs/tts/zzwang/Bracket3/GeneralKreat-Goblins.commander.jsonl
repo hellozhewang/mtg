@@ -1,0 +1,2 @@
+{"v":1,"id":"zzwang/GeneralKreat-Goblins","count":1}
+{"name":"General Kreat, the Boltbringer","mv":3.0,"faces":[{"name":"General Kreat, the Boltbringer","mana_cost":"{2}{R}","type_line":"Legendary Creature — Goblin Soldier","oracle_text":"Whenever one or more Goblins you control attack, create a 1/1 red Goblin creature token that's tapped and attacking.\nWhenever another creature you control enters, General Kreat deals 1 damage to each opponent.","power":"2","toughness":"2","loyalty":"","defense":""}]}

@@ -1,0 +1,2 @@
+{"v":1,"id":"ratdos/Rakdos-Demons","count":1}
+{"name":"Rakdos, the Showstopper","mv":6.0,"faces":[{"name":"Rakdos, the Showstopper","mana_cost":"{4}{B}{R}","type_line":"Legendary Creature — Demon","oracle_text":"Flying, trample\nWhen Rakdos enters, flip a coin for each creature that isn't a Demon, Devil, or Imp. Destroy each creature whose coin comes up tails.","power":"6","toughness":"6","loyalty":"","defense":""}]}

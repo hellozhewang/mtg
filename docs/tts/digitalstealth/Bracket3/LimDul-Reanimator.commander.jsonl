@@ -1,0 +1,2 @@
+{"v":1,"id":"digitalstealth/LimDul-Reanimator","count":1}
+{"name":"Lim-Dûl the Necromancer","mv":7.0,"faces":[{"name":"Lim-Dûl the Necromancer","mana_cost":"{5}{B}{B}","type_line":"Legendary Creature — Human Wizard","oracle_text":"Whenever a creature an opponent controls dies, you may pay {1}{B}. If you do, return that card to the battlefield under your control. If it's a creature, it's a Zombie in addition to its other creature types.\n{1}{B}: Regenerate target Zombie.","power":"4","toughness":"4","loyalty":"","defense":""}]}

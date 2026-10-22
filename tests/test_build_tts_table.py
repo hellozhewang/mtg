@@ -52,6 +52,11 @@ class TableBuild(unittest.TestCase):
             self.assertIsNone(panel.find(f".//*[@id='cz_commander_show_{color}']"))
             self.assertEqual(panel.find(f".//*[@id='cz_guide_{color}']").get("onClick"), "czGuide")
             self.assertIsNotNone(panel.find(f".//*[@id='cz_guide_scroll_{color}']"))
+            commander = panel.find(f".//*[@id='cz_commander_{color}']")
+            self.assertEqual(commander.get("active"), "False")
+            self.assertEqual(commander.findall(".//Image"), [])
+            self.assertIsNotNone(commander.find(f".//*[@id='cz_commander_scroll_{color}']"))
+            self.assertIsNotNone(commander.find(f".//*[@id='cz_commander_text_{color}']"))
 
     def test_alphabetical_search_is_private_and_included_in_the_build(self):
         table = build_tts_table.build(json.loads(json.dumps(BASE)), URL)

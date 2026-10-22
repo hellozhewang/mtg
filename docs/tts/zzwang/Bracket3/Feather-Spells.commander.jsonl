@@ -1,0 +1,2 @@
+{"v":1,"id":"zzwang/Feather-Spells","count":1}
+{"name":"Feather, the Redeemed","mv":3.0,"faces":[{"name":"Feather, the Redeemed","mana_cost":"{R}{W}{W}","type_line":"Legendary Creature — Angel","oracle_text":"Flying\nWhenever you cast an instant or sorcery spell that targets a creature you control, exile that card instead of putting it into your graveyard as it resolves. If you do, return it to your hand at the beginning of the next end step.","power":"3","toughness":"4","loyalty":"","defense":""}]}

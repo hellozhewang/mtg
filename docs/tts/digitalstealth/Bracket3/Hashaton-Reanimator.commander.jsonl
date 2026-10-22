@@ -1,0 +1,2 @@
+{"v":1,"id":"digitalstealth/Hashaton-Reanimator","count":1}
+{"name":"Hashaton, Scarab's Fist","mv":2.0,"faces":[{"name":"Hashaton, Scarab's Fist","mana_cost":"{W}{B}","type_line":"Legendary Creature — Zombie Wizard","oracle_text":"Whenever you discard a creature card, you may pay {2}{U}. If you do, create a tapped token that's a copy of that card, except it's a 4/4 black Zombie.","power":"1","toughness":"3","loyalty":"","defense":""}]}

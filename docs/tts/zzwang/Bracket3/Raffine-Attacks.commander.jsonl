@@ -1,0 +1,2 @@
+{"v":1,"id":"zzwang/Raffine-Attacks","count":1}
+{"name":"Raffine, Scheming Seer","mv":3.0,"faces":[{"name":"Raffine, Scheming Seer","mana_cost":"{W}{U}{B}","type_line":"Legendary Creature — Sphinx Demon","oracle_text":"Flying, ward {1}\nWhenever you attack, target attacking creature connives X, where X is the number of attacking creatures. (Draw X cards, then discard X cards. Put a +1/+1 counter on that creature for each nonland card discarded this way.)","power":"1","toughness":"4","loyalty":"","defense":""}]}

@@ -1,0 +1,2 @@
+{"v":1,"id":"ratdos/RilsaRael-Dungeons","count":1}
+{"name":"Rilsa Rael, Kingpin","mv":5.0,"faces":[{"name":"Rilsa Rael, Kingpin","mana_cost":"{3}{U}{B}","type_line":"Legendary Creature — Human Rogue","oracle_text":"Deathtouch\nWhen Rilsa Rael enters, you take the initiative.\nWhenever you attack, target attacking creature gains deathtouch until end of turn. If you've completed a dungeon, that creature also gets +5/+0 and gains first strike and menace until end of turn.","power":"2","toughness":"5","loyalty":"","defense":""}]}

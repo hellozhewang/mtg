@@ -1,0 +1,2 @@
+{"v":1,"id":"digitalstealth/Davros-Daleks","count":1}
+{"name":"Davros, Dalek Creator","mv":4.0,"faces":[{"name":"Davros, Dalek Creator","mana_cost":"{1}{U}{B}{R}","type_line":"Legendary Artifact Creature — Alien Scientist","oracle_text":"Menace\nAt the beginning of your end step, create a 3/3 black Dalek artifact creature token with menace if an opponent lost 3 or more life this turn. Then each opponent who lost 3 or more life this turn faces a villainous choice — You draw a card, or that player discards a card.","power":"3","toughness":"4","loyalty":"","defense":""}]}

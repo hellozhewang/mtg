@@ -1,0 +1,2 @@
+{"v":1,"id":"digitalstealth/SisayWeatherlight-Toolbox","count":1}
+{"name":"Sisay, Weatherlight Captain","mv":3.0,"faces":[{"name":"Sisay, Weatherlight Captain","mana_cost":"{2}{W}","type_line":"Legendary Creature — Human Soldier","oracle_text":"Sisay gets +1/+1 for each color among other legendary permanents you control.\n{W}{U}{B}{R}{G}: Search your library for a legendary permanent card with mana value less than Sisay's power, put that card onto the battlefield, then shuffle.","power":"2","toughness":"2","loyalty":"","defense":""}]}

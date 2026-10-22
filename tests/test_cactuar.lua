@@ -190,6 +190,7 @@ end
 local source = read("tts/cactuar.lua"):gsub("@BASE_URL@", "test://tts/")
 assert(load(source, "cactuar.lua"))()
 dofile("tts/cactuar_catalog.lua")
+dofile("tts/cactuar_commander.lua")
 dofile("tts/cactuar_guide.lua")
 dofile("tts/cactuar_sleeves.lua")
 local white, grey = {color = "White", steam_name = "zz"}, {color = "Grey", steam_name = "spectator"}
@@ -623,6 +624,7 @@ large.decks={};large.tournament={}
 for i=1,1000 do
   local d={}
   for k,v in pairs(realIndex.decks[1]) do d[k]=v end
+  d.commander_text=nil -- Isolate list pagination from the separate on-demand rules fetch.
   d.id="fixture-"..i;d.name=string.format("Fixture %04d",i)
   d.commander=i==1000 and "Remote marker commander" or "Fixture commander"
   d.owner=i%2==0 and "even" or "odd"

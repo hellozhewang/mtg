@@ -1,0 +1,2 @@
+{"v":1,"id":"ratdos/Greasefang-Vehicles","count":1}
+{"name":"Greasefang, Okiba Boss","mv":3.0,"faces":[{"name":"Greasefang, Okiba Boss","mana_cost":"{1}{W}{B}","type_line":"Legendary Creature — Rat Pilot","oracle_text":"At the beginning of combat on your turn, return target Vehicle card from your graveyard to the battlefield. It gains haste. Return it to its owner's hand at the beginning of your next end step.","power":"4","toughness":"3","loyalty":"","defense":""}]}

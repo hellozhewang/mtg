@@ -1,0 +1,2 @@
+{"v":1,"id":"zzwang/Prossh-Kobolds","count":1}
+{"name":"Prossh, Skyraider of Kher","mv":6.0,"faces":[{"name":"Prossh, Skyraider of Kher","mana_cost":"{3}{B}{R}{G}","type_line":"Legendary Creature — Dragon","oracle_text":"When you cast this spell, create X 0/1 red Kobold creature tokens named Kobolds of Kher Keep, where X is the amount of mana spent to cast it.\nFlying\nSacrifice another creature: Prossh gets +1/+0 until end of turn.","power":"5","toughness":"5","loyalty":"","defense":""}]}

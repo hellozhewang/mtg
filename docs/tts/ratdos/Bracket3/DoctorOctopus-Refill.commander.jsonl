@@ -1,0 +1,2 @@
+{"v":1,"id":"ratdos/DoctorOctopus-Refill","count":1}
+{"name":"Doctor Octopus, Master Planner","mv":7.0,"faces":[{"name":"Doctor Octopus, Master Planner","mana_cost":"{5}{U}{B}","type_line":"Legendary Creature — Human Scientist Villain","oracle_text":"Other Villains you control get +2/+2.\nYour maximum hand size is eight.\nAt the beginning of your end step, if you have fewer than eight cards in hand, draw cards equal to the difference.","power":"4","toughness":"8","loyalty":"","defense":""}]}

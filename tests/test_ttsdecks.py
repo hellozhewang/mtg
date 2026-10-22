@@ -248,6 +248,23 @@ class TournamentTests(unittest.TestCase):
 
 
 class DeckFileTests(unittest.TestCase):
+    def test_commander_text_preserves_rules_stats_faces_and_partner_order_without_images(self):
+        from types import SimpleNamespace
+        d = SimpleNamespace(key="alice/Pair", commanders=["Elspeth", "Delver"],
+                            cards={"Elspeth": {**ELSPETH, "mana_cost": "{4}{W}{W}"}, "Delver": DELVER})
+        records = [json.loads(line) for line in ttsdecks.commander_text_file(d).splitlines()]
+        self.assertEqual(records[0], {"v": 1, "id": d.key, "count": 2})
+        self.assertEqual([c["name"] for c in records[1:]], d.commanders)
+        first = records[1]
+        self.assertEqual(first["mv"], 6.0)
+        self.assertEqual(first["faces"][0]["mana_cost"], "{4}{W}{W}")
+        self.assertEqual(first["faces"][0]["loyalty"], "4")
+        self.assertEqual(first["faces"][0]["oracle_text"], ELSPETH["oracle_text"])
+        self.assertEqual([f["name"] for f in records[2]["faces"]], ["Delver of Secrets", "Insectile Aberration"])
+        self.assertEqual(records[2]["faces"][1]["power"], "3")
+        self.assertNotIn("http", ttsdecks.commander_text_file(d))
+        self.assertNotIn("image", ttsdecks.commander_text_file(d))
+
     def test_preview_keeps_pinned_faces_partner_order_and_guide_sections(self):
         from types import SimpleNamespace
         d = SimpleNamespace(key="alice/Pair", stem="Pair", commanders=["Elspeth", "Delver"],
@@ -275,6 +292,7 @@ class DeckFileTests(unittest.TestCase):
         self.assertTrue(entry["guide"])
         self.assertEqual(entry["commanders"], ttsdecks.commander_preview(d))
         self.assertNotIn("guide", entry["commanders"][0])
+        self.assertRegex(entry["commander_text"], r"^alice/Bracket3/Test\.commander\.jsonl\?v=[a-f0-9]{12}$")
         self.assertRegex(entry["preview"], r"^alice/Bracket3/Test\.preview\.json\?v=[a-f0-9]{12}$")
         d.guide[0][1][0] = ("Sol Ring", "Changed guide.")
         self.assertNotEqual(entry["preview"], ttsdecks.index_entry(d, "alice/Bracket3/Test.ndjson")["preview"])

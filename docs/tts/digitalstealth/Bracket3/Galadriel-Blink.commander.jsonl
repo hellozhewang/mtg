@@ -1,0 +1,2 @@
+{"v":1,"id":"digitalstealth/Galadriel-Blink","count":1}
+{"name":"Galadriel, Light of Valinor","mv":5.0,"faces":[{"name":"Galadriel, Light of Valinor","mana_cost":"{2}{G}{W}{U}","type_line":"Legendary Creature — Elf Noble","oracle_text":"Alliance — Whenever another creature you control enters, choose one that hasn't been chosen this turn —\n• Add {G}{G}{G}.\n• Put a +1/+1 counter on each creature you control.\n• Scry 2, then draw a card.","power":"3","toughness":"3","loyalty":"","defense":""}]}

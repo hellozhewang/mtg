@@ -1,0 +1,2 @@
+{"v":1,"id":"zzwang/Lathril-Elves","count":1}
+{"name":"Lathril, Blade of the Elves","mv":4.0,"faces":[{"name":"Lathril, Blade of the Elves","mana_cost":"{2}{B}{G}","type_line":"Legendary Creature — Elf Noble","oracle_text":"Menace (This creature can't be blocked except by two or more creatures.)\nWhenever Lathril deals combat damage to a player, create that many 1/1 green Elf Warrior creature tokens.\n{T}, Tap ten untapped Elves you control: Each opponent loses 10 life and you gain 10 life.","power":"2","toughness":"3","loyalty":"","defense":""}]}

@@ -84,6 +84,17 @@
           <Text preferredHeight="12" fontSize="11" fontStyle="Bold" color="#3D6554" alignment="MiddleLeft" text="DECK DETAILS"/>
           <Text id="cz_detail_{C}" flexibleHeight="1" fontSize="16" color="#E2E5EA" alignment="UpperLeft"
                 horizontalOverflow="Wrap" text="Select a deck to see its commander, strategy and stats."/>
+          <Panel id="cz_commander_{C}" preferredHeight="172" active="False" color="#1A2635">
+            <Text height="16" rectAlignment="UpperLeft" fontSize="11" color="#C0C8D2" alignment="MiddleLeft" text="COMMANDER"/>
+            <VerticalScrollView id="cz_commander_scroll_{C}" anchorMin="0 0" anchorMax="1 1" offsetMin="0 0" offsetMax="0 -20"
+                                color="#1A2635" movementType="Clamped" scrollSensitivity="24" verticalScrollbarVisibility="AutoHide"
+                                scrollbarBackgroundColor="#243244" scrollbarColors="#65788C|#8192A3|#65788C|#243244">
+              <VerticalLayout id="cz_commander_content_{C}" height="40" preferredHeight="40" padding="0 10 0 0" childForceExpandHeight="false">
+                <Text id="cz_commander_text_{C}" preferredHeight="40" fontSize="13" color="#E2E5EA"
+                      alignment="UpperLeft" horizontalOverflow="Wrap" text=""/>
+              </VerticalLayout>
+            </VerticalScrollView>
+          </Panel>
           <HorizontalLayout id="cz_stats_{C}" preferredHeight="40" spacing="4" active="False">
             <Text id="cz_gc_{C}" fontSize="12" color="#E2E5EA" text=""/>
             <Text id="cz_mv_{C}" fontSize="12" color="#E2E5EA" text=""/>

@@ -1,0 +1,2 @@
+{"v":1,"id":"zzwang/LightPaws-Auras","count":1}
+{"name":"Light-Paws, Emperor's Voice","mv":2.0,"faces":[{"name":"Light-Paws, Emperor's Voice","mana_cost":"{1}{W}","type_line":"Legendary Creature — Fox Advisor","oracle_text":"Whenever an Aura you control enters, if you cast it, you may search your library for an Aura card with mana value less than or equal to that Aura and with a different name than each Aura you control, put that card onto the battlefield attached to Light-Paws, then shuffle.","power":"2","toughness":"2","loyalty":"","defense":""}]}

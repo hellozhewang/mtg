@@ -1,0 +1,2 @@
+{"v":1,"id":"ratdos/Kwia-Lifegain","count":1}
+{"name":"Kwia Vigorbloom","mv":6.0,"faces":[{"name":"Kwia Vigorbloom","mana_cost":"{3}{G}{W}{W}","type_line":"Legendary Creature — Elder Sphinx","oracle_text":"Flying, vigilance, lifelink, ward {2}\nWhenever you gain life, create a colorless artifact token named Lotus with \"{T}, Sacrifice this token: Add three mana of any one color.\" This ability triggers only once each turn.","power":"6","toughness":"6","loyalty":"","defense":""}]}

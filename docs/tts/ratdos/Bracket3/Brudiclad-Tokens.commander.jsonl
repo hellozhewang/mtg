@@ -1,0 +1,2 @@
+{"v":1,"id":"ratdos/Brudiclad-Tokens","count":1}
+{"name":"Brudiclad, Telchor Engineer","mv":6.0,"faces":[{"name":"Brudiclad, Telchor Engineer","mana_cost":"{4}{U}{R}","type_line":"Legendary Artifact Creature — Phyrexian Artificer","oracle_text":"Creature tokens you control have haste.\nAt the beginning of combat on your turn, create a 2/1 blue Phyrexian Myr artifact creature token. Then you may choose a token you control. If you do, each other token you control becomes a copy of that token.","power":"4","toughness":"4","loyalty":"","defense":""}]}

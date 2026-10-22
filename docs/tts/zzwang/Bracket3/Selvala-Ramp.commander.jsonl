@@ -1,0 +1,2 @@
+{"v":1,"id":"zzwang/Selvala-Ramp","count":1}
+{"name":"Selvala, Heart of the Wilds","mv":3.0,"faces":[{"name":"Selvala, Heart of the Wilds","mana_cost":"{1}{G}{G}","type_line":"Legendary Creature — Elf Scout","oracle_text":"Whenever another creature enters, its controller may draw a card if its power is greater than each other creature's power.\n{G}, {T}: Add X mana in any combination of colors, where X is the greatest power among creatures you control.","power":"2","toughness":"3","loyalty":"","defense":""}]}

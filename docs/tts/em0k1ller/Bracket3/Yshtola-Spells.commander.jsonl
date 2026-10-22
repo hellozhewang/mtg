@@ -1,0 +1,2 @@
+{"v":1,"id":"em0k1ller/Yshtola-Spells","count":1}
+{"name":"Y'shtola, Night's Blessed","mv":4.0,"faces":[{"name":"Y'shtola, Night's Blessed","mana_cost":"{1}{W}{U}{B}","type_line":"Legendary Creature — Cat Warlock","oracle_text":"Vigilance\nAt the beginning of each end step, if a player lost 4 or more life this turn, you draw a card.\nWhenever you cast a noncreature spell with mana value 3 or greater, Y'shtola deals 2 damage to each opponent and you gain 2 life.","power":"2","toughness":"4","loyalty":"","defense":""}]}

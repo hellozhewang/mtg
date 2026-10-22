@@ -1,0 +1,2 @@
+{"v":1,"id":"zzwang/Heliod-Lifegain","count":1}
+{"name":"Heliod, Sun-Crowned","mv":3.0,"faces":[{"name":"Heliod, Sun-Crowned","mana_cost":"{2}{W}","type_line":"Legendary Enchantment Creature — God","oracle_text":"Indestructible\nAs long as your devotion to white is less than five, Heliod isn't a creature.\nWhenever you gain life, put a +1/+1 counter on target creature or enchantment you control.\n{1}{W}: Another target creature gains lifelink until end of turn.","power":"5","toughness":"5","loyalty":"","defense":""}]}

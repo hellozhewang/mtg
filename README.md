@@ -795,7 +795,10 @@ The catalog loads from `tts/catalog.jsonl`: small JSON records decoded over seve
 frames, with progress on first opening. Search and filtering use the complete catalog
 once it finishes. Refresh keeps the previous catalog until the replacement validates;
 older builds continue using `tts/decks.json`.
-Deck details, commander names and guides remain text-only. **Read guide** fetches
+Deck details and guides remain text-only. Selecting a deck shows a scrolling commander
+section with mana cost/value, type, rules and stats, including partners and multiple
+faces. Only that deck's small `.commander.jsonl` file is fetched and cached; commander
+pictures and guide data are not loaded by selection. **Read guide** fetches
 written strategy only when clicked; **Back to decks** returns to the list.
 **Sleeves ▾** opens an eight-picture chooser and downloads only that page's small
 thumbnails. Each page requests pictures only when opened or reached with the pager;

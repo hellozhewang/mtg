@@ -474,6 +474,7 @@ function czRender(color)
   czEnabled("cz_load_" .. color, d ~= nil and not CZ.busy[color])
   czButton("cz_load_" .. color, CZ.busy[color] and "Loading…" or d and "Load into my seat" or "Select a deck")
   if czgRender then czgRender(color, s, d) end
+  if czcRender then czcRender(color, s, d) end
 end
 
 -- A menu's choices in order: a filter's All and its values, or the sleeves.
@@ -632,6 +633,7 @@ end
 function czRefresh(player)
   czDismiss(player)
   if czgRefresh then czgRefresh() end
+  if czcRefresh then czcRefresh() end
   czLog(player.color, "refreshed the deck list")
   czStatus(player.color, "Loading the deck list…")
   czFetchIndex()

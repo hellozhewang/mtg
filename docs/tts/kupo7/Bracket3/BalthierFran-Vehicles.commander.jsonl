@@ -1,0 +1,2 @@
+{"v":1,"id":"kupo7/BalthierFran-Vehicles","count":1}
+{"name":"Balthier and Fran","mv":3.0,"faces":[{"name":"Balthier and Fran","mana_cost":"{1}{R}{G}","type_line":"Legendary Creature — Human Rabbit","oracle_text":"Reach\nVehicles you control get +1/+1 and have reach and vigilance.\nWhenever a Vehicle crewed by Balthier and Fran this turn attacks, if it's the first combat phase of the turn, you may pay {1}{R}{G}. If you do, after this phase, there is an additional combat phase.","power":"4","toughness":"3","loyalty":"","defense":""}]}

@@ -794,6 +794,8 @@ with the website's illustrated rows: card pictures beside explanations and pictu
 strips for combos and tutor chains. Hover a guide picture to read that card on the
 right; moving away restores the commander. **Back to decks** returns to the list.
 Decks without a guide show **No guide**. Previews use the deck's pinned printing.
+Commander faces come from the catalog; full guide content and pictures load only
+when **Read guide** is clicked. Recently viewed pictures are cached for faster switching.
 **Load into my seat** puts the chosen deck in
 that player's seat: the library face down and shuffled in their library zone,
 the commander (or both partners) on their Commander Zones, the tokens beside them.
@@ -865,7 +867,7 @@ The data comes from the catalog build. `build_site.py` writes `docs/tts/`
 |---|---|
 | `tts/decks.json` | the index the browser lists |
 | `tts/<owner>/<Bracket>/<Deck>.ndjson` | one deck: a header line, then the library, commander(s) and tokens as ready-to-spawn Tabletop Simulator objects, built the way rikrassen's importer builds them |
-| `tts/<owner>/<Bracket>/<Deck>.preview.json` | commander faces and structured guide, fetched when a player selects that deck; content-versioned by the index |
+| `tts/<owner>/<Bracket>/<Deck>.preview.json` | illustrated guide fetched on **Read guide**, content-versioned by the index; commander faces remain included for older table builds |
 | `tts/cactuar-tile.jpg` | the picture on the Cactuar tiles |
 
 Card faces use the same image cache as rikrassen's importer (`img.klrmngr.com`),

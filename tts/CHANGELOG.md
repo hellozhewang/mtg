@@ -8,6 +8,11 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v47 — 2026-10-21 (commit e4c4d3af)
+- Load illustrated guides only on Read guide; selecting commanders uses pinned faces already in the catalog.
+- Cache recent commander/guide pictures and avoid redundant image clears and shared UI asset reloads on revisits.
+- Saved build for testing; not uploaded to Steam.
+
 ## v46 — 2026-10-21 (commit b1b53868)
 - Play custom audio on reported turn starts, including first and same-seat events; add turn sound test for solo audio testing.
 - Record audio playback/load diagnostics; native solo End Turn may emit no Lua event.

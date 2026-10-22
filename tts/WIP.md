@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): preparing **v47** to speed up commander selection and load illustrated guides only on Read guide. Latest delivered save is v46. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-21 (Codex): delivered **v47** with faster commander selection, cached pictures and illustrated guides loaded only on Read guide. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -18,7 +18,7 @@ Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a vers
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
 
-## v47: faster commander selection and lazy guides (preparing saved build)
+## v47: faster commander selection and lazy guides (saved; not on Steam)
 
 Owner reported very slow commander entry selection and explicitly requested loading
 the guide only when its button is clicked. Previously, selection downloaded and
@@ -56,8 +56,19 @@ and 63 picture occurrences were ready in **0.840 s** on this already-cached clie
 These are observed UI binding times, not a guarantee for an uncached client/network.
 Evidence: `.cache/commander-live/v47-lazy-metrics.json`,
 `v47-lazy-commander.png` and `v47-lazy-guide.png`. The prior browser selection is
-restored after probing; no physical objects/turns were changed. Preparing numbered
-v47; **no Workshop upload**.
+restored after probing; closing the guide caused **zero asset reloads**, and no
+physical objects/turns were changed.
+
+Delivered **MTG 6 player Cactuar Ver_v47** JSON/PNG from pushed source `e4c4d3af`.
+Pages serves the exact updated catalog with inline faces for all 164 entries and
+passes the audio/tile-byte release check. Delivered checksums match; read-back save
+name, Lua compilation, XML parsing, lazy-guide/cache/invalidation code and the
+unchanged `777efbb9` turn clip are verified. Immutable archive/manifest:
+`.cache/tts-builds/v47/`. Save SHA-256:
+`e6b49842957c134db072449c1df8219ab4a2732a73dd9508a0f65ddaf9f3342a`.
+Canonical v46 files were replaced in Saves; their archive remains available.
+The live table was patched for testing without reloading it. Final WIP/changelog
+Desktop copies refreshed. **Steam remains v42; no Workshop upload**.
 
 ## Requested: private turn-change voice (2026-10-21; not implemented)
 

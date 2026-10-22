@@ -344,5 +344,36 @@ local menus, oldTicker = #a.menus, CZS.ticker
 loadInspect()
 check(#a.menus == menus and ticks[oldTicker] == nil, "reloading duplicates neither menus nor pollers")
 check(#hotkeys == 1, "live reload neither adds Inspect hotkeys nor clears existing bindings")
+-- A full Global/browser reload resets native menus but may preserve object refs.
+local previousBrowser = CZ
+for _, obj in pairs(objects) do if obj.menus then obj.menus = {"Existing item"} end end
+CZ = {seats = previousBrowser.seats}
+loadInspect()
+check(#a.menus == 2 and a.menus[2] == "Inspect", "full browser reload reattaches Inspect after native menus reset")
+local afterReload = #a.menus
+loadInspect()
+check(#a.menus == afterReload, "an Inspect-only hot patch in the same browser still avoids duplicates")
+
+-- A newly merged/split stack can report Card until the spawn frame finishes.
+local fresh = deck("new-stack", {})
+fresh.type = "Card"
+local originalFrames, pendingFrames = Wait.frames, {}
+Wait.frames = function(fn) pendingFrames[#pendingFrames + 1] = fn end
+onObjectSpawn(fresh)
+check(#fresh.menus == 1, "an unready stack is not marked attached")
+fresh.type = "Deck"
+for _, fn in ipairs(pendingFrames) do fn() end
+Wait.frames = originalFrames
+check(#fresh.menus == 2 and CZS.attached["new-stack"] == fresh, "the delayed spawn retry attaches once the deck exists")
+local transient = deck("retry-menu", {})
+local add, attempts = transient.addContextMenuItem, 0
+transient.addContextMenuItem = function(...)
+  attempts = attempts + 1
+  if attempts == 1 then error("Native menu not ready") end
+  return add(...)
+end
+onObjectSpawn(transient)
+check(attempts == 2 and #transient.menus == 2, "failed native registration is retried without leaving a stale attached flag")
+
 print(string.format("%d checks, %d failed", checks, failures))
 os.exit(failures == 0 and 0 or 1)

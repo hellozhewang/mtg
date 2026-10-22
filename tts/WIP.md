@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): delivered **v51**: text-only Cactuar browser and reduced open/redraw work. Investigating a separately reported missing Inspect context menu on the running v50 table. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-21 (Codex): preparing **v52** to restore Inspect registration across browser/global reloads. Latest delivered is v51. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -17,6 +17,29 @@ selects. Report the latest saved build and Steam version separately.
 Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a version
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
+
+## v52: Inspect menu registration after reload/stack creation (preparing)
+
+Owner reported losing Inspect on a deck. The live running table was still v50,
+with `czsOpen` defined and **11/11 decks marked attached**. The flag does not prove
+that a native menu still exists; TTS exposes no context-menu getter. A controlled
+regression reproduces the bug: reset native custom menus while keeping object
+references, then reload the full browser/Global instance. Old code retained the
+attachment map by object reference and skipped adding Inspect again.
+
+Attachment flags now belong to their **CZ browser instance**. A fresh browser/Global
+instance reattaches; an Inspect-only hot patch in the same instance still avoids
+duplicating menu entries. Flags are set only after native addContextMenuItem succeeds.
+Spawn gets one delayed retry for decks that initially report Card/unready while
+being merged/split. Startup scans at frames 2 and 10 cover transient native readiness;
+all retries are guarded against superseded modules and safely skip destroyed objects.
+No constant all-object scan, clearing of other custom menus, deck moves, shuffles
+or deck-order reads are added. Existing handler chaining and text-only v51 browser
+remain. **120 Inspect checks** pass, including reset/reload, no duplicates in the
+same instance, late-forming stacks and a transient native registration failure.
+All **five Lua suites** and **14 build tests** pass.
+
+Delivery and owner-visible menu verification pending. No Workshop upload.
 
 ## v51: text-only browser and opening lag (saved; not on Steam)
 

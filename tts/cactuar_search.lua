@@ -4,7 +4,12 @@
 local czsPrevious = CZS
 if czsPrevious and czsPrevious.ticker then Wait.stop(czsPrevious.ticker) end
 if czsPrevious and czsPrevious.rebuildWait then Wait.stop(czsPrevious.rebuildWait) end
-CZS = {state = {}, attached = czsPrevious and czsPrevious.attached or {}, cells = 32, capacity = {}, assets = {}, nextAsset = 0}
+-- A full Global/browser reload can keep object references while native custom
+-- menus are reset. Reuse registration flags only for an Inspect-only hot patch
+-- in the same browser instance, never across a new CZ/global instance.
+CZS = {state = {}, browser = CZ,
+  attached = czsPrevious and czsPrevious.browser == CZ and czsPrevious.attached or {},
+  cells = 32, capacity = {}, assets = {}, nextAsset = 0}
 -- The build injects the same cell template used by the initial XML pool.
 CZS.cellXml = [==[@INSPECT_CELL@]==]
 for index, color in UI.getXml():gmatch('id="czs_card_(%d+)_(%a+)"') do
@@ -502,8 +507,10 @@ local function czsAttach(obj)
   if not czsIsContainer(obj) then return end
   local guid = obj.getGUID()
   if CZS.attached[guid] == obj then return end
-  CZS.attached[guid] = obj
-  obj.addContextMenuItem("Inspect", function(color) czsOpen(color, obj) end)
+  local ok = pcall(function()
+    obj.addContextMenuItem("Inspect", function(color) czsOpen(color, obj) end)
+  end)
+  if ok then CZS.attached[guid] = obj end
 end
 
 -- Keep every base handler, and keep one copy of each wrapper on live reload.
@@ -511,6 +518,12 @@ CZS_BASE = CZS_BASE or {spawn = onObjectSpawn, destroy = onObjectDestroy, change
 function onObjectSpawn(obj)
   if CZS_BASE.spawn then CZS_BASE.spawn(obj) end
   czsAttach(obj)
+  -- Native stack creation can report a card/unready object during spawn.
+  -- One delayed retry covers merging/splitting without scanning every frame.
+  local state = CZS
+  Wait.frames(function()
+    if CZS == state then pcall(czsAttach, obj) end
+  end, 2)
 end
 function onObjectDestroy(obj)
   if CZS_BASE.destroy then CZS_BASE.destroy(obj) end
@@ -524,9 +537,13 @@ function onPlayerChangeColor(color)
     if c == color or s.owner ~= czsOwner(c) then czsCloseColor(c) end
   end
 end
-Wait.frames(function()
-  for _, obj in ipairs(getAllObjects()) do czsAttach(obj) end
-end, 2)
+local czsInstance = CZS
+local function czsAttachExisting()
+  if CZS ~= czsInstance then return end
+  for _, obj in ipairs(getAllObjects()) do pcall(czsAttach, obj) end
+end
+Wait.frames(czsAttachExisting, 2)
+Wait.frames(czsAttachExisting, 10) -- one startup retry for native menu readiness
 -- Membership refresh also handles draws, joins, splitting and the deck collapsing
 -- to one card. Sorting a copy means shuffling never changes the displayed order.
 CZS.ticker = Wait.time(function()

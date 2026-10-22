@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-22 (Codex): preparing **v58** for the measured first-open catalog decoding stall; v57 is the latest delivered save. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-22 (Codex): delivered **v58** for the measured first-open catalog decoding stall; the running table also uses the incremental loader. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -18,7 +18,7 @@ Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a vers
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
 
-## v58: measured first-click JSON decoding stall (preparing)
+## v58: measured first-click JSON decoding stall (saved; not on Steam)
 
 Owner reports a game freeze on the first Cactuar click after loading a new game.
 **Found a separate bottleneck from row rendering:** on the running PC, native
@@ -59,8 +59,25 @@ include async refresh, closing mid-decode and keeping old data on failure. Seven
 Lua suites, table-build, release, exporter and image-validation tests pass. The
 exporter test verifies that the generated JSONL matches the published old index.
 Cold UI writes are now 126 including progress updates, cached reopen 3, unchanged
-redraw 0; no browser image loads. Preparing the next numbered save, after verifying
-the new catalog file is actually published. **Steam remains v42; no Workshop upload.**
+redraw 0; no browser image loads. **69 Python tests** pass across those suites.
+
+Verified the new **catalog.jsonl** is published with exact source bytes (109,582
+bytes; initial pre-deploy 404 was cached at a fixed query URL, fresh timestamp/plain
+URL both served the matching file after Pages succeeded). Patched canonical parser
+and browser functions into the running table while retaining its existing CZ,
+selections, sleeves and all outer event hooks. A real Refresh used the new endpoint
+and completed with **164 decks**, fetching **false**, UI.loading **false**, **25
+assets unchanged**, White still open on **page 4**, status clear. No cards/turns
+were changed. Evidence: `v58-patch.json` and `v58-after.json`.
+
+Delivered **MTG 6 player Cactuar Ver_v58** JSON/PNG from pushed source `aaea17e2`.
+Pages passed exact sound/tile-byte verification as well. Read-back Lua compiles and
+contains the exact incremental parser and v56 sleeve module; catalog HTTP requests
+use JSONL, and XML retains ten private row widgets per seat.
+Archive: `.cache/tts-builds/v58/`. Save SHA-256:
+`b956cb173063a5080107e75bfc86af189570968abf790818401003db07a26066`.
+Saves now contains v58; v57 stays archived unchanged. Final WIP/changelog copies
+refreshed on Desktop. **Steam remains v42; no Workshop upload.**
 
 ## v57: keep catalog data, render only the visible page (saved; not on Steam)
 

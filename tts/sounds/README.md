@@ -48,54 +48,64 @@ TTS's native incoming-player
 ping remains separate; Workshop Lua cannot replace its sound or target a custom
 Music Player clip to just one player. The shared channel can interrupt music.
 
-## Current slow-turn clips (2026-10-21)
+## Current audio: ElevenLabs Voice Design + custom MP3 (2026-10-21)
 
-The 5-minute clip is the prepared `hood_warfare_2` recording: **"Yo Twin, hurry yo
-ass up, you tweakin!"** The 10-minute clip is the supplied `beginning-stutter1.mp3`
-recording, converted/mastered as **"In the beninging..."**. Both are mono PCM16 WAV,
-22050 Hz. The timer's chat messages match the recordings.
+The announcer WAVs are generated and mastered via `scripts/make_elevenlabs_announcer.py`
+(API key stored locally in `.apikeys/elevenlabsapikey.txt`, which is gitignored).
 
-| Clip | Duration | Project loudness | Sample peak | URL version |
+```sh
+python3 scripts/make_elevenlabs_announcer.py --list-profiles
+python3 scripts/make_elevenlabs_announcer.py --profile hood_warfare_2 --text "Yo Twin, hurry yo ass up, you tweakin!" -o tts/sounds/slow-5min.wav
+python3 scripts/make_elevenlabs_announcer.py --from-audio path/to/beginning-stutter1.mp3 -o tts/sounds/slow-10min.wav --target-lufs -12.0
+python3 scripts/make_announcer.py --measure
+```
+
+### Saved Voice Personalities (`VOICE_PROFILES` in `scripts/make_elevenlabs_announcer.py`)
+
+All custom and cloned voices created via ElevenLabs are saved both on the ElevenLabs account and in `VOICE_PROFILES` inside `scripts/make_elevenlabs_announcer.py`:
+
+| Profile Key | Voice ID | Name | Source / Prompt (`voice_description`) | Settings (`model_id`, `stability`, `similarity`, `style`, `speed`) |
 |---|---|---|---|---|
-| `slow-5min.wav` | 3.089 s | -12.0 LUFS | -0.6 dBFS | `bb39d5f0` |
-| `slow-10min.wav` | 10.151 s | -12.0 LUFS | -0.5 dBFS | `bd36607e` |
+| `hood_warfare_2` *(active 5-min & change-turn voice)* | `Z7lGZwgkqPHoS758ofO1` | **Hood Warfare 2 Narrator (Chi-Raq)** | Cloned via ElevenLabs Audio Isolation (`/v1/audio-isolation`) + Instant Voice Cloning (`/v1/voices/add`) from *Hood Warfare 2 Official Trailer* (`https://www.youtube.com/watch?v=fXz5DcshZ4g`). | `eleven_multilingual_v2`, `stability=0.40`, `similarity=0.95`, `style=0.65`, `speed=0.92` |
+| `chiraq_hood_og` | `b3CripuhV1iIyKkvLG5c` | **Chi-Raq Hood OG** | *"A raw, gritty, deep-voiced South Side Chicago African-American male drill rapper and street OG in his mid-20s. Authentic Chi-Raq street cadence, heavy resonant bass with a sharp, aggressive, impatient Midwest urban attitude, high energy and zero patience."* | `eleven_multilingual_v2`, `stability=0.35`, `similarity=0.88`, `style=0.80`, `speed=0.88` |
+| `deep_hood_og` | `RLqZJZ6x0HMKpWcKD2lq` | **Deep Hood OG** | *"A very deep, bass-heavy, gravelly African-American male voice from the hood in his 30s. Authentic urban street attitude, resonant chest bass, impatient and real, like a tough street OG."* | `eleven_multilingual_v2`, `stability=0.38`, `similarity=0.88`, `style=0.75`, `speed=0.82` |
+| `west_coast_og` | `PQwuCXrub5CDV6137lkt` | **West Coast OG (Snoop Style)** | *"A laid-back, smooth, unhurried West Coast African-American male hip-hop OG in his 40s from Long Beach California. Slightly nasal, melodic mid-tenor drawl, super chill and relaxed cadence, effortlessly cool and slightly sleepy."* | `eleven_multilingual_v2`, `stability=0.42`, `similarity=0.85`, `style=0.70`, `speed=0.82` |
+| `roger_premade` | `CwhRBWXzGAHq8TQ4Fs17` | **Roger - Laid-Back, Casual, Resonant** | ElevenLabs pre-made library voice (pitched `-1.5` semitones with `[laid-back, unhurried West Coast drawl]`). | `eleven_v3`, `stability=0.50`, `similarity=0.75`, `style=0.65`, `speed=0.82`, `pitch=-1.5` |
 
-The new source files and the published files must match before building the table.
-The local neural generator below describes the previous recordings; running it
-would replace these current clips.
+### Current Clip Measurements
 
-## Previous audio: deep radio voice, second revision (2026-10-19)
+| Clip | Source | Duration | Project meter | Peak | RMS |
+|---|---|---|---|---|---|
+| `start-game.wav` | ElevenLabs `Z7lGZwgkqPHoS758ofO1` (`hood_warfare_2`) | 1.65 s | -12.1 LUFS | -0.6 dBFS | -13.3 dBFS |
+| `change-turn.wav` | ElevenLabs `Z7lGZwgkqPHoS758ofO1` (`hood_warfare_2`) | 1.70 s | -12.1 LUFS | -0.6 dBFS | -12.9 dBFS |
+| `slow-5min.wav` | ElevenLabs `Z7lGZwgkqPHoS758ofO1` (`hood_warfare_2`) | 3.09 s | -12.0 LUFS | -0.6 dBFS | -12.0 dBFS |
+| `slow-10min.wav` | `beginning-stutter1.mp3` (`--from-audio`) | 10.15 s | -12.0 LUFS | -0.5 dBFS | -11.8 dBFS |
+| `sf_3_cursor.wav` | CPS3 *Street Fighter III: 3rd Strike* ROM (`SE_00065.wav`) | 0.10 s | -12.5 LUFS | -0.7 dBFS | -12.2 dBFS |
+| `sf_3_select.wav` | CPS3 *Street Fighter III: 3rd Strike* ROM (`SE_00018.wav` + `SE_00019.wav`) | 0.53 s | -12.6 LUFS | -0.6 dBFS | -12.5 dBFS |
+| `sf_3_theme.wav` | *Street Fighter III 3rd Strike - Let's Get It On.mp3* | 319.66 s | -15.9 LUFS | -0.8 dBFS | -15.0 dBFS |
+| `ff14_theme.wav` | *Final Fantasy XIV Prelude - Discoveries Final Fantasy XIV OST.mp3* | 632.35 s | -16.9 LUFS | -1.0 dBFS | -16.0 dBFS |
+| `ff14_ultima.wav` | *FFXIV The Weapon's Refrain (ultimate) Ultima Phase OST.mp3* | 297.17 s | -15.7 LUFS | -0.7 dBFS | -15.3 dBFS |
+| `ff14_garuda.wav` | *FFXIV The Weapon's Refrain (ultimate) Full Garuda OST.mp3* | 251.84 s | -15.0 LUFS | -2.1 dBFS | -15.5 dBFS |
+| `ff14_ifrit.wav` | *FFXIV The Weapon's Refrain (ultimate) Full Ifrit OST.mp3* | 171.92 s | -16.0 LUFS | -4.4 dBFS | -15.9 dBFS |
+| `ff14_titan.wav` | *FFXIV The Weapon's Refrain (ultimate) Full Titan OST.mp3* | 319.90 s | -16.3 LUFS | -5.6 dBFS | -16.1 dBFS |
+| `ff14_thordan.wav` | *FFXIV King Thordan's Theme — Heroes (Heavensward OST)* | 512.53 s | -17.0 LUFS | -3.2 dBFS | -15.5 dBFS |
+| `ff14_alexander.wav` | *FFXIV Alexander Theme — Locus (Heavensward OST)* | 535.95 s | -16.0 LUFS | -0.6 dBFS | -13.8 dBFS |
+| `ff14_hades.wav` | *FFXIV Hades Theme — Who Brings Shadow (Shadowbringers OST)* | 465.92 s | -15.8 LUFS | -2.3 dBFS | -15.0 dBFS |
 
-The two WAVs now use **Kokoro-82M v1.0**, through `kokoro-onnx==0.6.1`, with an
+## Previous local generator: Kokoro-82M neural radio voice (2026-10-19)
+
+The earlier local WAVs used **Kokoro-82M v1.0**, through `kokoro-onnx==0.6.1`, with an
 original preset blend: **70% `am_michael` + 30% `am_fenrir`**. Generated locally,
 without an account, API key, paid service, voice cloning or reference recording.
 Model and voice files come from the
 [Kokoro ONNX model release](https://github.com/thewh1teagle/kokoro-onnx/releases/tag/model-files-v1.0).
 
-Regenerate with the new generator, not the legacy Ralph command below:
+Regenerate with the local neural generator:
 
 ```sh
 ~/.cache/mtg-announcer/venv/bin/python scripts/make_neural_announcer.py
 python3 scripts/make_announcer.py --measure
 ```
-
-The owner asked for a deeper voice again. The current pair uses a **five-semitone pitch
-drop with tempo compensation** (three semitones below the first radio pair), stronger
-160 Hz body, light presence EQ and a restrained upper
-roll-off. A single quiet room reflection replaces the arena echoes. The bass accent
-is quieter too. This is a full, warm radio-host voice rather than a narrow telephone
-effect. The existing `clarity()` / `master()` chain, loudness trim and independent
-FFmpeg true-peak check remain. Model/voice hashes are printed on regeneration.
-
-| Clip | Duration | Project meter | Independent EBU loudness | True peak |
-|---|---|---|---|---|
-| `slow-5min.wav` | 2.96 s | -12.5 LUFS | -12.45 LUFS | -0.75 dBTP |
-| `slow-10min.wav` | 3.10 s | -12.8 LUFS | -12.95 LUFS | -0.55 dBTP |
-
-Both remain mono PCM16 WAV, 22050 Hz, with the same filenames and words. These are the
-v30 source clips. Publish them through the catalog build, then use
-`scripts/release_tts.py` to verify Pages and deliver the new table, as described below.
-Owner listening and in-game approval remain.
 
 The Cactuar table's slow-turn announcer plays these clips when one player's turn reaches
 5 and then 10 minutes.
@@ -103,7 +113,7 @@ The Cactuar table's slow-turn announcer plays these clips when one player's turn
 | File | Line | When |
 |---|---|---|
 | `slow-5min.wav` | "Yo Twin, hurry yo ass up, you tweakin!" | 5 minutes into a turn |
-| `slow-10min.wav` | "In the beninging..." | 10 minutes into a turn |
+| `slow-10min.wav` | "In the beninging... In the, in the benin... In the beninging. Yah... In the, in, in..." | 10 minutes into a turn |
 
 The file names, lines and times are in `CZT.lines` in `tts/cactuar_turns.lua`. If you rename
 a clip, change it there too.

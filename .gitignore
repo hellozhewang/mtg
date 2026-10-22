@@ -63,3 +63,4 @@ bot/.deck-metadata.db*
 tests/.sandbox-probe/
 
 tts/deploy.local.json
+.apikeys/

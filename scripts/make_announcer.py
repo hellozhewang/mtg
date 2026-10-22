@@ -174,7 +174,10 @@ def loudness(path: Path) -> float:
     x = array.array("f", (s / 32768 for s in a))
     k = biquad(biquad(x, "highshelf", 1682, gain_db=4.0), "highpass", 38, q=0.5)
     block, hop = int(RATE * 0.4), int(RATE * 0.1)
-    ms = [sum(v * v for v in k[i:i + block]) / block for i in range(0, len(k) - block + 1, hop)]
+    if len(k) < block:
+        ms = [sum(v * v for v in k) / max(1, len(k))]
+    else:
+        ms = [sum(v * v for v in k[i:i + block]) / block for i in range(0, len(k) - block + 1, hop)]
     lufs = lambda m: -0.691 + 10 * math.log10(m)
     ms = [m for m in ms if m > 0 and lufs(m) > -70]
     relative = lufs(sum(ms) / len(ms)) - 10

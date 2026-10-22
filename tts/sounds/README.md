@@ -1,29 +1,38 @@
 # Announcer clips
 
-## FF14 soundtrack (v49)
+## FF14 soundtrack (v50)
 
-`ff14_theme.wav` (Prelude / Discoveries) loops in setup and stops when the cannon
-actually fires. `ff14_ultima.wav` loops only on a turn where that player's battlefield
-contains 10+ artifacts. It pauses below the threshold or on a nonqualifying turn,
-then resumes without replacing the loaded track. There is one shared instance and
-playhead, including when several players qualify. Library/exile/graveyard/commander
-columns do not count. Imported type lines and explicit Artifact tags drive counts.
+The original `ff14_theme.wav` (Prelude / Discoveries) loops until cannon/start.
+During the active player's turn, **10+** battlefield objects select one looping
+WAV in this descending priority:
 
-The prelude owns the shared channel until fire; once Ultima is loaded, custom turn
-and slow-turn voice clips are skipped (even while paused) to retain its position.
-Native beeps and text alerts remain. Chat `music off` / `music on` controls music
-separately from `announcer off`. Position continuity lasts within a loaded session;
-MusicPlayer exposes no timestamp/seek API after a track replacement or full reload.
+| Threshold | WAV |
+|---|---|
+| Goblins | `ff14_titan.wav` |
+| Artifacts | `ff14_ultima.wav` |
+| White creatures | `ff14_thordan.wav` (Heroes) |
+| Black creatures | `ff14_hades.wav` (Who Brings Shadow) |
+| Blue creatures | `ff14_alexander.wav` (Locus) |
+| Green creatures | `ff14_garuda.wav` |
+| Red creatures | `ff14_ifrit.wav` |
 
-Runtime music uses the original mono PCM16 WAVs at 22050 Hz, without conversion
-or volume changes. Theme: 27,886,670 bytes / 632.35 s (`0e31e48c`); Ultima:
-13,105,230 bytes / 297.17 s (`86e3cc3d`). Each load installs only its own playlist
-entry; cannon fire clears the prelude playlist to prevent later fallback playback.
+Library/exile/graveyard/commander columns and face-down cards do not count.
+Multicolor creatures count for each color. Type lines, embedded face-color metadata
+and explicit color/type tags drive counts; no runtime Scryfall requests. The normal
+site build generates `docs/tts/card-colors.json`; refresh just that snapshot with
+`python3 scripts/build_tts_music_metadata.py` before a table-only release.
 
-v48's smaller MP3 derivatives produced repeated sounds on the owner's client;
-replacing the playlist did not fix that. The owner confirmed the original WAV works.
-MP3 files remain available for old saves. `scripts/encode_tts_music.py` only
-reproduces those historical files; v49 does not use them.
+A retained song pauses/resumes between eligible turns. Switching to another song
+restarts it: MusicPlayer exposes no timestamp/seek API for separate playheads.
+Custom turn/slow-turn voices are skipped while any battle song is loaded, including
+while paused. Native beeps/text remain. `music off` / `music on` controls music
+separately from `announcer off`. Each load replaces the playlist with one entry;
+cannon fire clears the setup playlist. Original mono PCM16 WAVs at 22050 Hz are
+used without conversion or volume changes.
+
+v48's MP3 copies produced repeated sounds on the owner's client; playlist replacement
+alone did not fix that. The owner confirmed both original theme/Ultima WAVs work.
+The MP3s remain for old saves; `scripts/encode_tts_music.py` is historical only.
 
 ## Turn-change clip (v46)
 

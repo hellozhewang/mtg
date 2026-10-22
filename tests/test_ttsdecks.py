@@ -86,6 +86,22 @@ class ImporterFormatTests(unittest.TestCase):
 
 
 class ObjectTests(unittest.TestCase):
+    def test_music_colors_use_face_colors_and_disambiguate_tokens(self):
+        devoid = {**SOL, "name": "Devoid", "type_line": "Creature — Eldrazi", "colors": [], "color_identity": ["R"]}
+        white = {**SOLDIER, "colors": ["W"]}
+        black = {**SOLDIER_REPRINT, "colors": ["B"]}
+        dfc = {**DELVER, "card_faces": [{**DELVER["card_faces"][0], "colors": ["U"]},
+                                       {**DELVER["card_faces"][1], "colors": []}]}
+        data = json.loads(ttsdecks.music_metadata([devoid, white, black, dfc]))
+        self.assertEqual(data["names"]["devoid"], "")
+        self.assertEqual(data["names"]["delver of secrets"], "U")
+        self.assertEqual(data["names"]["insectile aberration"], "")
+        self.assertNotIn("soldier", data["names"])
+        self.assertEqual(data["images"][img("soldier")["large"]], "W")
+        self.assertEqual(data["images"][img("soldier-2")["large"]], "B")
+        accented = {**white, "name": "Éowyn, Shieldmaiden"}
+        self.assertEqual(json.loads(ttsdecks.music_metadata([accented]))["names"]["Éowyn, shieldmaiden"], "W")
+
     def test_a_double_faced_card_flips_to_its_back_as_state_two(self):
         sheets = ttsdecks.Sheets()
         card = ttsdecks.card_object(DELVER, sheets)

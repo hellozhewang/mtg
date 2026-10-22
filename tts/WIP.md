@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): delivered **v49** using original WAV music; owner confirmed both the theme and Ultima sound correct. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-21 (Codex): preparing **v50** with seven prioritized battlefield soundtrack triggers; latest delivered build is v49. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -17,6 +17,59 @@ selects. Report the latest saved build and Steam version separately.
 Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a version
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
+
+## v50: prioritized battlefield soundtrack (preparing; not on Steam)
+
+Owner requested these **10+** battlefield thresholds in descending priority:
+
+| Priority | Active player's battlefield | Track |
+|---|---|---|
+| 1 | Goblins | Titan |
+| 2 | Artifacts | Ultima |
+| 3 | White creatures | Thordan / Heroes |
+| 4 | Black creatures | Hades / Who Brings Shadow |
+| 5 | Blue creatures | Alexander / Locus (`ff14_alexander.wav`) |
+| 6 | Green creatures | Garuda |
+| 7 | Red creatures | Ifrit |
+
+One shared original WAV loops. Only the current turn's seat is eligible; another
+seat meeting a higher threshold cannot override that player's song. Reevaluate
+after battlefield/turn/state changes and every 0.5 seconds. Prelude still loops
+until cannon/start. Library/exile/graveyard/commander columns and face-down cards
+remain excluded. Multicolor creatures count once for each applicable color;
+artifact creatures can satisfy both type and color thresholds. Goblins use their
+stored type line, not names or rules mentions.
+
+Changing songs restarts the newly selected song: MusicPlayer exposes no timestamp
+or seek API for restoring several independent playheads. Pausing between turns
+still preserves the current loaded song's position, including when different seats
+qualify for the same song. Voice suppression now covers all seven loaded battle
+songs, including while paused. Native beeps/text and music on/off are retained.
+
+Color comes from actual Scryfall **face colors**, never color identity, rules text,
+mana symbols or object tint. `ttsdecks.music_metadata()` publishes a deterministic
+`docs/tts/card-colors.json`; the table builder embeds it, and the release archive
+includes it. No runtime card downloads. It has **1,817 unambiguous creature names**
+and **104 exact pictures** for conflicting token/face names, **55,478 bytes**.
+All **4,984 creature faces in existing published deck objects** resolve. The token
+ID cache format advances to retain colors (including separate DFC face colors).
+`scripts/build_tts_music_metadata.py` refreshes only this metadata without rewriting
+catalog pages or unrelated tier/theme edits; normal site builds also regenerate it.
+
+New/custom card art absent from that snapshot can use explicit **White**, **Blue**,
+**Black**, **Red**, **Green** or **Colorless** tags; **Creature**, **Goblin** and
+**Artifact** tags support manually changed types. This does not evaluate continuous
+effects or infer a token stack's quantity from a separate numeric counter. Update
+the metadata and increment the table version to include newly added creature names.
+Object metadata is cached by object/name and invalidated on state changes/destruction;
+face-up stacks use contained metadata and parent picture sheets to disambiguate tokens.
+
+Validation: **92 music checks**, **1536 timer checks**, **25 deck-export tests**,
+**19 card/cache harness tests**, **5 lookup tests**, **8 release tests** and
+**14 table-build tests** pass.
+Combined Lua compilation and existing deck-object color coverage pass. The seven
+original WAVs are unchanged; six newly integrated source/published copies match.
+Delivery and live verification are pending. No Workshop upload.
 
 ## v49: original WAV soundtrack / v48 audible failure (saved; not on Steam)
 

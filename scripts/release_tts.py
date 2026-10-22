@@ -320,7 +320,7 @@ def build(base: bytes, name: str, out_dir: Path) -> tuple[Path, Path]:
     """Build `name` from HEAD into `out_dir`; returns (save json, thumbnail png)."""
     src = out_dir / "src"
     src.mkdir()
-    for rel, blob in head_files(["tts", "scripts"]).items():
+    for rel, blob in head_files(["tts", "scripts", "docs/tts/card-colors.json"]).items():
         (src / rel).parent.mkdir(parents=True, exist_ok=True)
         (src / rel).write_bytes(blob)
     base_file = out_dir / "base.json"

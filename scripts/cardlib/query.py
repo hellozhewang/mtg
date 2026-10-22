@@ -33,9 +33,9 @@ DEFAULT_DB = Path(
 # cached under the old shape are fetched again.
 PRINTING_FIELDS = 2
 # The same, for `CardQuery.by_ids`.
-ID_FIELDS = 1
+ID_FIELDS = 2
 _FACE_FIELDS = ("name", "type_line", "oracle_text", "power", "toughness", "loyalty",
-                "defense", "image_uris")
+                "defense", "image_uris", "colors")
 
 
 class CardQuery:

@@ -820,13 +820,16 @@ the shared Music Player. TTS's native incoming-player ping remains separate.
 Same-seat turn events play the clip too. Native End Turn can emit no Lua event
 when testing alone; chat `turn sound test` tests the clip without advancing a turn.
 
-The shared **FF14 soundtrack** uses the original WAV recordings and loops
-Prelude/Discoveries until the cannon fires.
-**Ultima** loops only during a player's turn while they have **10+ battlefield
-artifacts**, pausing and resuming the same track between qualifying turns. Library,
-exile, graveyard and commander columns do not count. Ultima stays loaded while
-paused, so custom voice clips are skipped to preserve its position; native beeps
-and text alerts still work. Chat `music off` / `music on` controls the soundtrack.
+The shared **FF14 soundtrack** uses original WAVs and loops Prelude/Discoveries
+until the cannon fires. During the active player's turn, **10+** battlefield
+objects select one looping song in priority order: **Goblins → Titan; artifacts →
+Ultima; white creatures → Thordan; black → Hades; blue → Locus; green → Garuda;
+red → Ifrit**. Library, exile, graveyard and commander columns do not count.
+Creature colors come from embedded face metadata; multicolor creatures count for
+each color. Custom or changed cards can use explicit color/type tags.
+The loaded song pauses/resumes between qualifying turns; switching songs restarts
+the selected recording. Custom voices are skipped while a battle song is retained;
+native beeps/text remain. Chat `music off` / `music on` controls the soundtrack.
 
 **Inspect contents alphabetically:** right-click a deck or bag and choose **Inspect**.
 A private, narrow window shows four scrolling columns and a search bar, using the live

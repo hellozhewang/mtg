@@ -174,4 +174,87 @@ onChat("music off", Player.Red)
 CZT.restored = true; czmTick()
 check(CZM.disabled and not playing, "an early music off is not overwritten by the saved-state restore")
 
+-- Seven battlefield triggers: threshold, exact priority, colors and turn gating.
+CZM.disabled, CZM.cannonFired, CZM.ready = false, true, true
+CZM_CARDS = {names = {soldier = "W", zombie = "B", merfolk = "U", elf = "G", dragon = "R",
+  multicolor = "WUBRG", devoid = ""}, images = {["test://black-soldier"] = "B"}}
+for _, color in ipairs(CZ.seats) do
+  data[color].playmat.objects = {}; data[color].libraryZone.objects = {}
+  data[color].graveyard.objects = {}; data[color].exile.objects = {}
+end
+Turns.enable, Turns.turn_color = true, "White"
+local tracks = {"titan", "ultima", "thordan", "hades", "locus", "garuda", "ifrit"}
+local types = {"Creature — Goblin", "Artifact", "Creature — Soldier", "Creature — Zombie",
+  "Creature — Merfolk", "Creature — Elf", "Creature — Dragon"}
+local names = {"Goblin", "Sol Ring", "Soldier", "Zombie", "Merfolk", "Elf", "Dragon"}
+for i, track in ipairs(tracks) do
+  data.White.playmat.objects = {}
+  for j = 1, 9 do table.insert(data.White.playmat.objects, card(types[i], names[i])) end
+  czmTick()
+  check(not playing, "nine objects never trigger " .. track)
+  table.insert(data.White.playmat.objects, card(types[i], names[i])); czmTick()
+  check(playing and CZM.track == track and MusicPlayer.repeat_track, "ten battlefield objects loop " .. track)
+  local selectedLoads = loads
+  advance(3); czmTick()
+  check(position == 3 and loads == selectedLoads, track .. " remains one instance without restarting")
+  Turns.turn_color = "Red"; onPlayerTurn(Player.Red, Player.White)
+  check(not playing and position == 3 and czmBlocksVoice(), track .. " pauses outside the qualifying player's turn and blocks voices")
+  Turns.turn_color = "White"; onPlayerTurn(Player.White, Player.Red)
+  check(playing and position == 3 and loads == selectedLoads, track .. " resumes unchanged on the qualifying turn")
+  data.White.playmat.objects = {}; czmTick()
+end
+
+-- All thresholds satisfied together, then peel them off in the owner's priority.
+for i = 1, #tracks do
+  for j = 1, 10 do table.insert(data.White.playmat.objects, card(types[i], names[i])) end
+end
+for i, track in ipairs(tracks) do
+  czmTick()
+  check(playing and CZM.track == track, "priority chooses " .. track .. " before all remaining triggers")
+  for j = 1, 10 do table.remove(data.White.playmat.objects, 1) end
+end
+czmTick(); check(not playing, "losing all seven thresholds pauses playback")
+
+data.White.playmat.objects = {}
+for i = 1, 10 do data.White.playmat.objects[i] = card("Artifact Creature — Goblin", "Multicolor") end
+czmTick()
+for _, track in ipairs(tracks) do check(CZM.battlefields.White[track] == 10, "one multicolor artifact Goblin counts once for " .. track) end
+check(CZM.track == "titan", "Goblin priority beats artifact and all five colors on the same ten creatures")
+data.White.playmat.objects = {card("Creature — Eldrazi", "Devoid"), card("Enchantment", "Soldier")}
+czmTick()
+check(CZM.battlefields.White.thordan == 0 and CZM.battlefields.White.ifrit == 0, "colorless devoid and colored noncreatures do not trigger creature colors")
+local custom = card("Creature — Goblin"); custom.tags = {"White", "Blue", "Artifact"}
+data.White.playmat.objects = {custom}; czmTick()
+check(CZM.battlefields.White.thordan == 1 and CZM.battlefields.White.locus == 1 and CZM.battlefields.White.ultima == 1,
+  "explicit tags support custom multicolor creatures and changed artifact types")
+custom.tags = {"Colorless"}; czmTick()
+check(CZM.battlefields.White.thordan == 0 and CZM.battlefields.White.locus == 0, "tag changes update without stale color caching")
+local token = card("Token Creature — Soldier", "Soldier")
+token.getData = function() return {CardID = 100, CustomDeck = {["1"] = {FaceURL = "test://black-soldier"}}} end
+data.White.playmat.objects = {token}; czmTick()
+check(CZM.battlefields.White.hades == 1 and CZM.battlefields.White.thordan == 0, "exact token image overrides an ambiguous shared name")
+token.is_face_down = true; czmTick()
+check(CZM.battlefields.White.hades == 0, "face-down colored creatures do not count")
+token.is_face_down = false
+data.White.exile.objects = {token}; czmTick()
+check(CZM.battlefields.White.hades == 0, "exile excludes colored creatures even when zones overlap")
+data.White.exile.objects = {}
+data.White.playmat.objects = {{type = "Deck", getObjects = function() return {} end,
+  getData = function() return {CustomDeck = {["1"] = {FaceURL = "test://black-soldier"}},
+    ContainedObjects = {{Nickname = "Soldier\nToken Creature — Soldier", CardID = 100}}} end}}
+czmTick()
+check(CZM.battlefields.White.hades == 1 and CZM.battlefields.White.thordan == 0, "face-up stacks resolve token colors from the parent sheet")
+
+-- A higher-priority trigger can replace a loading track. Old callbacks never play.
+data.White.playmat.objects = {}; MusicPlayer.loaded = false
+for i = 1, 10 do data.White.playmat.objects[i] = card("Creature — Dragon", "Dragon") end
+czmTick(); local ifritWait = waits[#waits]
+for i = 1, 10 do table.insert(data.White.playmat.objects, card("Creature — Goblin", "Goblin")) end
+czmTick(); local titanWait = waits[#waits]
+local beforeStale = plays
+ifritWait.fn()
+check(CZM.track == "titan" and CZM.status == "loading" and plays == beforeStale, "superseded load cannot play a lower-priority track")
+MusicPlayer.loaded = true; titanWait.fn()
+check(playing and CZM.track == "titan", "current highest-priority load starts once ready")
+
 print(checks .. " music checks, 0 failed")

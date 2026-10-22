@@ -84,6 +84,12 @@ GLOBAL_SCRIPTS = ("cactuar.lua", "cactuar_guide.lua", "cactuar_preview.lua", "ca
 
 def browser_lua(base_url: str) -> str:
     lua = "\n\n".join((SOURCE / name).read_text(encoding="utf-8") for name in GLOBAL_SCRIPTS)
+    # Embed catalog face colors once; battlefield scans never make card requests.
+    colors = (REPO / "docs" / "tts" / "card-colors.json").read_text(encoding="utf-8").strip()
+    json.loads(colors)  # fail the build on damaged metadata
+    if "]==]" in colors:
+        raise ValueError("card color metadata contains its Lua string delimiter")
+    lua = lua.replace("-- @MUSIC_COLORS@", "CZM_CARDS = JSON.decode([==[" + colors + "]==])")
     # TTS caches audio by URL too: a content hash on each announcer clip makes a
     # re-recorded clip a new URL, so tables built after it play the new one.
     for clip in sorted((SOURCE / "sounds").glob("*")):

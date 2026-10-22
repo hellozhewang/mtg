@@ -1,27 +1,63 @@
--- One shared FF14 soundtrack. Keep Ultima loaded and pause/play it between
--- eligible turns: MusicPlayer has no seek API to recover a replaced playhead.
+-- One shared FF14 soundtrack. Pause/resume the loaded song between eligible
+-- turns; switching songs restarts them (MusicPlayer exposes no seek API).
+-- @MUSIC_COLORS@
 local czmPrevious = CZM
 if czmPrevious and czmPrevious.ticker then pcall(function() Wait.stop(czmPrevious.ticker) end) end
 CZM = {
   theme = "sounds/ff14_theme.wav", ultima = "sounds/ff14_ultima.wav",
+  titan = "sounds/ff14_titan.wav", thordan = "sounds/ff14_thordan.wav",
+  hades = "sounds/ff14_hades.wav", locus = "sounds/ff14_alexander.wav",
+  garuda = "sounds/ff14_garuda.wav", ifrit = "sounds/ff14_ifrit.wav",
+  priority = {"titan", "ultima", "thordan", "hades", "locus", "garuda", "ifrit"},
+  titles = {theme = "Prelude / Discoveries", titan = "Titan", ultima = "Ultima",
+    thordan = "Thordan - Heroes", hades = "Hades - Who Brings Shadow",
+    locus = "Alexander - Locus", garuda = "Garuda", ifrit = "Ifrit"},
   threshold = 10, counts = {}, status = "idle", serial = 0,
   cannonFired = false, disabled = false, ready = false,
+  colorCache = {},
 }
 
 local function czmURL(track)
   return (CZT.soundBase or CZ.base) .. CZM[track]
 end
 
--- Only stored card types / explicit Artifact tags count. A card merely mentioning
--- artifacts in its name or rules is not an artifact. No Scryfall requests.
-local function czmArtifact(meta)
+-- Tags are explicit overrides for custom tokens / changed characteristics.
+-- Names, mana symbols, rules mentions and object tint never imply card color.
+local function czmTraits(meta)
+  local tags, colors, colorTagged = {}, "", false
+  local names = {white = "W", blue = "U", black = "B", red = "R", green = "G"}
   for _, tag in ipairs(meta.tags or meta.Tags or {}) do
-    if tostring(tag):lower() == "artifact" then return true end
+    tag = tostring(tag):lower()
+    tags[tag] = true
+    if names[tag] then colors, colorTagged = colors .. names[tag], true end
+    if tag == "colorless" then colorTagged = true end
   end
+  if tags.colorless then colors = "" end
   local name = meta.nickname or meta.Nickname or meta.name or ""
   local typ = meta.type_line or meta.TypeLine or name:match("[\r\n]+([^\r\n]+)") or ""
   typ = typ:gsub("%b[]", ""):gsub("<[^>]*>", ""):lower()
-  return typ:find("%f[%a]artifact%f[%A]") ~= nil
+  local function has(word) return tags[word] or typ:find("%f[%a]" .. word .. "%f[%A]") ~= nil end
+  if not colorTagged then
+    colors = meta.colors or meta.Colors
+    if type(colors) == "table" then colors = table.concat(colors) end
+    local stored = CZM_CARDS or {names = {}, images = {}}
+    if colors == nil then
+      local key = name:match("^[^\r\n]*"):gsub("%b[]", ""):gsub("<[^>]*>", "")
+        :gsub("^%s+", ""):gsub("%s+$", ""):gsub("[A-Z]", string.lower)
+      colors = stored.names[key]
+      -- Exact printing wins, especially for same-named tokens of different colors.
+      local sheets, id = meta.CustomDeck or {}, math.floor((tonumber(meta.CardID) or 0) / 100)
+      local sheet = sheets[tostring(id)] or sheets[id]
+      if sheet then colors = stored.images[(sheet.FaceURL or ""):gsub("%?.*$", "")] or colors end
+    end
+  end
+  colors = type(colors) == "string" and colors:upper() or ""
+  return {titan = has("goblin"), ultima = has("artifact"),
+    thordan = has("creature") and colors:find("W", 1, true) ~= nil,
+    hades = has("creature") and colors:find("B", 1, true) ~= nil,
+    locus = has("creature") and colors:find("U", 1, true) ~= nil,
+    garuda = has("creature") and colors:find("G", 1, true) ~= nil,
+    ifrit = has("creature") and colors:find("R", 1, true) ~= nil}
 end
 
 local function czmObjects(zone)
@@ -30,7 +66,7 @@ local function czmObjects(zone)
   return ok and objects or {}
 end
 
-function czmCountArtifacts()
+function czmCountBattlefield()
   local counts, excluded, seen = {}, {}, {}
   -- The battlefield zones already end before the commander/library/exile/GY
   -- columns. Explicitly exclude library/GY objects as well if zones overlap.
@@ -43,31 +79,57 @@ function czmCountArtifacts()
     end
   end
   for _, color in ipairs(CZ.seats) do
-    local count, seat = 0, data and data[color]
+    local count, seat = {}, data and data[color]
+    for _, track in ipairs(CZM.priority) do count[track] = 0 end
+    local function add(meta)
+      for track, matches in pairs(czmTraits(meta)) do
+        if matches then count[track] = count[track] + 1 end
+      end
+    end
     for _, obj in ipairs(czmObjects(seat and seat.playmat)) do
       if not excluded[obj] and not seen[obj] then
         seen[obj] = true
-        local ok, n = pcall(function()
-          if obj.is_face_down then return 0 end
+        pcall(function()
+          if obj.is_face_down then return end
           if obj.type == "Deck" or obj.tag == "Deck" then
-            local total = 0
-            for _, card in ipairs(obj.getObjects()) do
-              if czmArtifact(card) then total = total + 1 end
+            -- Container metadata omits CustomDeck; fetch full data once per
+            -- scan to resolve differently colored tokens by their exact art.
+            local cards = obj.getObjects()
+            if obj.getData then
+              local ok, full = pcall(obj.getData)
+              if ok and full and full.ContainedObjects then
+                cards = full.ContainedObjects
+                for _, card in ipairs(cards) do card.CustomDeck = card.CustomDeck or full.CustomDeck end
+              end
             end
-            return total
+            for _, card in ipairs(cards) do add(card) end
+            return
           end
-          local artifact = czmArtifact({nickname = obj.getName(), tags = obj.getTags()})
-          local total = artifact and 1 or 0
+          local name = obj.getName()
+          local cached = CZM.colorCache[obj]
+          if not cached or cached.name ~= name then
+            local ok, meta = pcall(function() return obj.getData() end)
+            cached = {name = name, meta = ok and meta or {}}
+            CZM.colorCache[obj] = cached
+          end
+          local meta = cached.meta
+          meta.nickname, meta.tags = name, obj.getTags()
+          add(meta)
           for _, attachment in ipairs(obj.getAttachments() or {}) do
-            if czmArtifact(attachment) then total = total + 1 end
+            add(attachment)
           end
-          return total
         end)
-        if ok then count = count + n end
       end
     end
     counts[color] = count
   end
+  return counts
+end
+
+-- Keep existing artifact diagnostics compatible; detailed counts live in .battlefields.
+function czmCountArtifacts()
+  local counts = {}
+  for color, totals in pairs(czmCountBattlefield()) do counts[color] = totals.ultima end
   return counts
 end
 
@@ -76,8 +138,8 @@ function czmSavedState()
 end
 
 function czmBlocksVoice()
-  -- Ultima stays loaded while paused. The prelude owns the channel until fire.
-  return CZM.track == "ultima" or CZM.track == "theme" and not CZM.cannonFired
+  -- Keep the loaded battle song even while paused so voices cannot lose its position.
+  return CZM.track ~= nil and (CZM.track ~= "theme" or not CZM.cannonFired)
 end
 
 local function czmRestore()
@@ -116,8 +178,7 @@ local function czmLoad(track)
   state.error, state.url = nil, czmURL(track)
   local serial = state.serial
   local ok, err = pcall(function()
-    local clip = {url = state.url,
-      title = track == "theme" and "FFXIV - Prelude / Discoveries" or "FFXIV - Ultima"}
+    local clip = {url = state.url, title = "FFXIV - " .. state.titles[track]}
     -- Replace the inherited placeholder playlist too, so repeat/next cannot
     -- return to an unrelated base-table sound. Enable looping only when ready.
     MusicPlayer.repeat_track = false
@@ -144,11 +205,18 @@ end
 
 function czmTick()
   if not CZM.ready and not czmRestore() then return end
-  CZM.counts = czmCountArtifacts()
+  CZM.battlefields, CZM.counts = czmCountBattlefield(), {}
+  for color, totals in pairs(CZM.battlefields) do CZM.counts[color] = totals.ultima end
   if CZM.disabled then czmPause(); return end
   local active = Turns.enable and Turns.turn_color or nil
-  local eligible = active and (CZM.counts[active] or 0) >= CZM.threshold
-  local wanted = not CZM.cannonFired and "theme" or eligible and "ultima" or nil
+  local wanted = not CZM.cannonFired and "theme" or nil
+  if CZM.cannonFired and active then
+    for _, track in ipairs(CZM.priority) do
+      if (CZM.battlefields[active] or {})[track] and CZM.battlefields[active][track] >= CZM.threshold then
+        wanted = track; break
+      end
+    end
+  end
   if wanted and wanted ~= CZM.track then czmLoad(wanted); return end
   if not wanted then czmPause(); return end
   if CZM.status ~= "loading" and CZM.status ~= "playing" and CZM.status ~= "error" then
@@ -188,7 +256,7 @@ CZMB = CZMB or {turn = onPlayerTurn, enter = onObjectEnterScriptingZone,
   leave = onObjectLeaveScriptingZone, destroy = onObjectDestroy,
   state = onObjectStateChange, chat = onChat}
 function onPlayerTurn(player, previous)
-  czmTick() -- claim/pause Ultima before the turn announcer can replace it
+  czmTick() -- claim/pause soundtrack before the turn announcer can replace it
   if CZMB.turn then return CZMB.turn(player, previous) end
 end
 function onObjectEnterScriptingZone(zone, obj)
@@ -200,10 +268,12 @@ function onObjectLeaveScriptingZone(zone, obj)
   if CZMB.leave then return CZMB.leave(zone, obj) end
 end
 function onObjectDestroy(obj)
+  CZM.colorCache[obj] = nil
   czmQueue()
   if CZMB.destroy then return CZMB.destroy(obj) end
 end
 function onObjectStateChange(obj, old)
+  CZM.colorCache[obj] = nil
   czmQueue()
   if CZMB.state then return CZMB.state(obj, old) end
 end

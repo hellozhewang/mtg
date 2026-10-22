@@ -28,6 +28,13 @@ def tiles(table: dict) -> list[dict]:
 
 
 class TableBuild(unittest.TestCase):
+    def test_soundtrack_embeds_colors_and_versions_every_wav(self):
+        lua = build_tts_table.build(json.loads(json.dumps(BASE)), URL)["LuaScript"]
+        self.assertIn("CZM_CARDS = JSON.decode([==[", lua)
+        self.assertNotIn("@MUSIC_COLORS@", lua)
+        for name in ("theme", "titan", "ultima", "thordan", "hades", "alexander", "garuda", "ifrit"):
+            self.assertRegex(lua, r'"sounds/ff14_' + name + r'\.wav\?v=[0-9a-f]{8}"')
+
     def test_readable_commander_and_guide_controls_are_private(self):
         table = build_tts_table.build(json.loads(json.dumps(BASE)), URL)
         self.assertIn("function czpRender(", table["LuaScript"])

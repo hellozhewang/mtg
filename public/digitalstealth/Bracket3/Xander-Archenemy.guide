@@ -1,0 +1,90 @@
+The single biggest mistake a new pilot makes with Lord Xander is assuming you must hard-cast him for seven mana and keep him alive to win. In reality, Lord Xander is a devastating weapon when copied, sacrificed, and reanimated. Because the legend rule sends excess legendary copies to the graveyard, casting a clone like Phantasmal Image or Molten Duplication on Xander immediately triggers *both* his enter-the-battlefield ability (forcing an opponent to discard half their hand) AND his death ability (forcing an opponent to sacrifice half their nonland permanents) for as little as two mana. Furthermore, his attack trigger mills half a defending player's entire library in a single swing, instantly supercharging your reanimation engines or turning Bloodchief Ascension into a one-hit kill.
+
+# The collector and the crime family
+Lord Xander, the Collector :: Cast for {4}{U}{B}{R}. Discards half a hand on entry, mills half a library on attack, and forces sacrifice of half nonland permanents on death.
+Tergrid, God of Fright :: The ultimate villain payoff. Whenever an opponent sacrifices a permanent or discards a permanent card, puts that card onto your battlefield under your control.
+Bloodletter of Aclazotz :: 2/4 flying Demon that doubles all life lost by opponents during your turn, accelerating lethal clocks.
+Syr Konrad, the Grim :: Whenever creatures die or are milled from libraries, pings each opponent for 1 life, weaponizing Xander's attack and death triggers.
+Tinybones, Bauble Burglar :: Exiles every card discarded by opponents with stash counters, letting you cast their spells using mana of any type.
+Dauthi Voidwalker :: Shadow beater that exiles opposing cards that hit the graveyard and lets you cast the best exiled spell for free.
+Hexing Squelcher :: Uncounterable Goblin Sorcerer that gives your spells uncounterable protection and taxes removal with ward 2 life.
+
+# Legend rule exploits and clone engines
+Saw in Half :: Destroys Lord Xander to trigger his death ability (opponent sacrifices half nonlands), then creates two token copies. Both tokens enter to discard half two opponents' hands; one dies to the legend rule to sacrifice half another opponent's nonlands.
+Phantasmal Image :: Two-mana clone that enters as Lord Xander (opponent discards half their hand), then dies to the legend rule (opponent sacrifices half their nonland permanents).
+Flesh Duplicate :: Enters as a copy of Lord Xander with vanishing 3, triggering ETB and death abilities immediately via the legend rule.
+Phyrexian Metamorph :: Pays three mana and two life to copy Lord Xander, discarding half a hand and wiping half a board.
+Molten Duplication :: Creates a hasty artifact token copy of Lord Xander for {1}{R}, triggering an ETB discard and a death sacrifice via the legend rule.
+Twinflame :: Creates a hasty token copy of Lord Xander for two mana, generating an ETB discard and death trigger immediately.
+Spark Double :: Enters as a non-legendary copy of Lord Xander with an extra +1/+1 counter, giving you a second permanent Xander on the battlefield without legend rule death.
+Irenicus's Vile Duplication :: Creates a non-legendary flying token copy of Lord Xander, allowing multiple Xanders to attack and mill libraries simultaneously.
+Sakashima of a Thousand Faces :: Clones Lord Xander while turning off the legend rule for all your permanents, letting you keep every Xander copy on the battlefield.
+Auton Soldier :: Clones Lord Xander with myriad as a non-legendary artifact. When it attacks, myriad copies attack every other opponent, milling half of all opposing libraries.
+Roaming Throne :: Names Vampire or Demon to trigger every Lord Xander ability an additional time: double hand discard, double library mill, and double nonland sacrifice.
+
+# Archenemy resource denial and discard punishment
+Waste Not :: Triggers off every discarded card from Xander or Windfall: land discards generate {B}{B}, creature discards create 2/2 Zombies, and noncreatures draw cards.
+Geth's Grimoire :: Four-mana artifact that draws a card whenever an opponent discards a card. Xander's ETB draws you three to five cards in a single trigger.
+Court of Ambition :: Grants the monarch on entry and drains opponents for 3 life each upkeep unless they discard; escalates to 6 life or two cards while you hold the crown.
+Bloodchief Ascension :: Quest enchantment that adds a counter whenever an opponent loses 2+ life. With three counters, drains opponents for 2 life whenever any card hits their graveyard.
+Mindcrank :: Artifact that mills cards equal to any damage or life lost by opponents.
+Windfall :: Refuels your hand while forcing opponents to discard their hands, triggering Waste Not, Geth's Grimoire, Tinybones, and Tergrid for game-breaking value.
+
+# Sneak attacks and graveyard reanimation
+Sneak Attack :: Pays {R} to drop Lord Xander onto the battlefield with haste. Attacks immediately to mill half the defending library, then sacrifices at end of turn to wipe half an opponent's nonlands.
+Entomb :: One-mana instant that tutors Lord Xander directly into your graveyard to set up cheap early reanimation.
+Reanimate :: One-mana sorcery that returns Lord Xander directly to the battlefield on early turns.
+Animate Dead :: Two-mana aura that reanimates Lord Xander from your graveyard.
+Necromancy :: Instant-speed three-mana reanimation aura that can flash Lord Xander into play during an opponent's turn.
+Breach the Multiverse :: Seven-mana sorcery that mills each player for ten cards and reanimates the best creature or planeswalker from every graveyard under your control.
+Rise of the Dark Realms :: Nine-mana sorcery that puts every creature card from all graveyards directly onto your battlefield.
+
+# The compact finish and late-game finishers
+Dualcaster Mage + Twinflame :: Infinite hasty attackers. Cast Twinflame targeting any creature, hold priority, and flash in Dualcaster Mage. Copy Twinflame targeting Dualcaster Mage, creating a token that copies Twinflame again. Repeat infinitely.
+Dualcaster Mage + Molten Duplication :: Redundant two-card infinite combo line using Molten Duplication.
+Bloodchief Ascension + Mindcrank :: Infinite mill and life drain loop. Any single point of damage or card put into a graveyard triggers an inescapable lethal loop that mills all opponents and drains their life totals to zero.
+Bloodchief Ascension + Lord Xander, the Collector :: When Xander attacks, defending player mills half their library (30-45 cards), triggering Bloodchief Ascension 30-45 times for 60-90 direct life drain and an instant knockout.
+Torment of Hailfire :: The classic villain mana sink. Forces each opponent to lose 3 life, sacrifice a nonland permanent, or discard a card X times.
+In accordance with Bracket 3 rules, two-card combos are reserved for turn 6 or later. Early turns focus on ramping, disrupting hands, and deploying Xander engines.
+
+# Card advantage, tutors, and mana development
+Rhystic Study :: Premier card advantage engine that taxes every opponent spell.
+Mystic Remora :: Early noncreature tax that draws aggressively against opening turns.
+Black Market Connections :: Upkeep engine trading life for Treasure tokens, card draw, and 3/2 Shapeshifter bodies.
+Grim Tutor :: Three-mana tutor searching for any card in your library at the cost of 3 life.
+Beseech the Mirror :: Bargain tutor that searches for any card and casts it for free if mana value is 4 or less.
+Sol Ring :: Premier fast mana artifact.
+Arcane Signet :: Reliable three-color mana rock.
+Dark Ritual :: Burst black mana to accelerate early reanimation or power out Xander.
+Talisman of Dominance :: Untapped blue and black mana rock.
+Talisman of Indulgence :: Untapped black and red mana rock.
+Talisman of Creativity :: Untapped blue and red mana rock.
+Dimir Signet :: Filters mana into blue and black.
+Rakdos Signet :: Filters mana into black and red.
+Izzet Signet :: Filters mana into blue and red.
+Fellwar Stone :: Efficient two-mana rock producing colors from opponent lands.
+Thought Vessel :: Two-mana rock providing unlimited hand size.
+Chromatic Lantern :: Perfect color fixing that turns all lands into rainbow sources.
+
+# Removal, protection, and board wipes
+Cyclonic Rift :: Asymmetric instant-speed sweeper that bounces all nonland permanents you don't control.
+Toxic Deluge :: Three-mana board wipe paying life to bypass indestructible and clear large creature boards.
+Blasphemous Act :: Cheap red board wipe costing as little as one red mana on crowded boards.
+Singularity Rupture :: Six-mana board wipe that destroys all creatures, triggers Xander's death ability, and forces target players to mill half their libraries.
+Deadly Rollick :: Free instant-speed creature exile while Lord Xander is on the battlefield.
+Deflecting Swat :: Free spell redirection while controlling Lord Xander to protect him from targeted removal or counterspells.
+Mana Drain :: Two-mana hard counter that converts the countered spell's mana into colorless mana on your next main phase.
+Counterspell :: Standard two-mana hard counter.
+Swan Song :: One-mana counter for instant, sorcery, or enchantment spells.
+An Offer You Can't Refuse :: One-mana counter for noncreature spells.
+Chaos Warp :: Instant-speed universal removal tucking any permanent into its owner's library.
+Bedevil :: Flexible instant-speed answer that destroys target creature, artifact, or planeswalker.
+Withering Torment :: Instant-speed removal destroying either target creature or target enchantment.
+Sudden Spoiling :: Split second response that reduces an opponent's attacking army to 0/2s with no abilities.
+
+# Opening hand and sequencing
+Look for opening hands with 3 lands, cheap mana acceleration (Sol Ring, Signets, Talismans), and an early enabler (Entomb, Sneak Attack, Waste Not, or Bloodchief Ascension).
+Spend turns 1 through 3 deploying mana rocks and establishing taxing enchantments like Rhystic Study or Waste Not.
+On turns 4 or 5, aim to cheat Lord Xander into play using Sneak Attack or Entomb into Reanimate, or cast him directly with mana rock ramp.
+Once Xander is active, leverage cheap clones (Saw in Half, Phantasmal Image, Molten Duplication) to strip opponent hands and decimate their nonland permanents with legend-rule triggers.
+On turn 6 or later, close the game using the Bloodchief Ascension + Mindcrank loop, the Dualcaster Mage combo, a massive Torment of Hailfire, or Rise of the Dark Realms.

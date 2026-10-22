@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): preparing numbered **v43** with the commander fixes and illustrated guides. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-21 (Codex): **v43 delivered to Saved Games** with the commander fixes and illustrated guides. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -14,10 +14,26 @@ increment the version and use `MTG 6 player Cactuar Ver_vN`. Do not use separate
 unnumbered Preview saves, and do not overwrite a numbered version with changed code.
 Build/deliver without Workshop upload; only upload a version the owner explicitly
 selects. Report the latest saved build and Steam version separately.
+Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a version
+the owner selects later can be uploaded unchanged, even after Saves keeps only the
+latest build.
 
-The commander sizing/blank-image fixes and illustrated guides below are being
-delivered as **v43**. The confusing `Commander Guide Preview` save will be removed
-after the numbered save/thumbnail are verified. No Steam upload is authorized.
+## v43: commander fixes and illustrated guides (saved; not on Steam)
+
+Delivered **MTG 6 player Cactuar Ver_v43** JSON/PNG from pushed source `d52abf22`.
+Read back and verified: SaveName, combined Lua compilation/XML parsing, all six
+fixed commander panels, illustrated guide content/hover callbacks, and both updated
+slow-turn audio hashes. Save SHA-256:
+`9593f810184ce9a5dd2cd2d78497881277cff6e71aac70c6d41e1ce316128e9b`.
+Archive and manifest: `.cache/tts-builds/v43/`; v42's delivered files are archived
+under `.cache/tts-builds/v42/` too. The old unnumbered Commander Guide Preview save
+and thumbnail have been removed from the PC; v42's canonical files were replaced
+by v43 per the existing keep-latest Saves policy. Steam is unchanged at v42.
+
+This is the numbered delivery of the tested commander/guide work described below;
+no new feature code was introduced. Guide scrolling/end visibility still needs the
+owner's mouse check. WIP/changelog are copied to the PC Desktop. No Steam upload is
+authorized until the owner explicitly chooses a version.
 
 ## Illustrated guides (local test build; Workshop upload on hold)
 

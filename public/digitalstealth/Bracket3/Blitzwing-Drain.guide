@@ -1,0 +1,70 @@
+The single biggest rule a new pilot gets wrong is how Blitzwing's end-step trigger tracks life loss. Blitzwing, Cruel Tormentor triggers at the beginning of YOUR end step, causing target opponent to lose life equal to the total life that player lost this turn from ALL sources—including combat damage, fetchlands, painlands, mana crypts, and life-loss spells. Crucially, if an opponent loses half their life (from Rush of Dread, Unstoppable Slasher, Virtus, or Peer into the Abyss), Blitzwing's trigger makes them lose that exact amount again at your end step, reducing their remaining life to exactly zero and killing them instantly.
+
+# The commander engine and Decepticon assault
+Blitzwing, Cruel Tormentor :: Cast converted for {3}{B} via More Than Meets the Eye as a 3/5 Vehicle that gains flying or indestructible at random each combat. When it deals combat damage, it converts into a 3/5 Robot whose end-step trigger doubles all life lost by target opponent that turn.
+Starscream, Power Hungry :: Fellow Decepticon flyer that introduces the monarch and converts into his Power Hungry form to burn opponents for two life whenever you draw cards, feeding life-loss totals for Blitzwing to double at end step.
+
+# The executioners: halving life totals
+Rush of Dread :: Spree spell whose primary mode forces target opponent to lose half their life, rounded up. At your end step, Blitzwing forces them to lose that much life again, immediately eliminating that player from full health.
+Unstoppable Slasher :: Deathtouch attacker that halves a defending player's life total whenever it connects. Blitzwing doubles that life loss at end step for a lethal one-two punch. Returns with stun counters when destroyed.
+Tree of Perdition :: Taps to exchange its 13 toughness with an opponent's life total. If an opponent is at 40 life, they lose 27 life instantly; Blitzwing triggers at end step to wipe out their remaining 13 life.
+Sorin Markov :: His -3 ability sets an opponent's life total to 10. That opponent immediately loses 30 life, and Blitzwing's end-step trigger eliminates their final 10 life.
+Shard of the Nightbringer :: Cast to drain half an opponent's life total and gain that much life. Blitzwing's trigger at end step finishes off the remaining half.
+Virtus the Veiled :: Menacing creature that halves an opponent's life on combat damage. Paired with Rogue's Passage or Shizo, Death's Storehouse to guarantee unblockable attacks that enable Blitzwing's lethal end-step trigger.
+Grievous Wound :: Auras an opponent to shut off their lifegain and halves their life whenever they take any damage. Blitzwing's end step finishes the job.
+Peer into the Abyss :: Target an opponent to force them to draw half their deck and lose half their life, then watch Blitzwing wipe them out at your end step. Alternatively, target yourself to draw 35+ cards to sculpt an unbeatable hand.
+Quietus Spike :: Grants deathtouch and halves defending player's life total on combat damage, setting up Blitzwing's end-step kill.
+Scytheclaw :: Living weapon that creates a Germ token and halves an opponent's life on hit, feeding Blitzwing's finisher.
+Scourge of the Skyclaves :: Kicked to make each player lose half their life, setting Blitzwing up to eliminate an opponent immediately.
+
+# Life loss multipliers and drain engines
+Bloodletter of Aclazotz :: Forces opponents to lose twice as much life during your turn. Turns any half-life loss into an instant lethal knockout on the spot, bypassing the need to even wait for end step.
+Archfiend of Despair :: Shuts off opponent lifegain and triggers at every end step to double all life lost that turn, stacking additively with Blitzwing.
+Wound Reflection :: Redundant end-step life-loss doubling enchantment that ensures no opponent survives after taking a heavy hit.
+Sheoldred, the Apocalypse :: Drains opponents for two life on every draw and heals you for two on yours, punishing wheels and card draw while maintaining your life cushion.
+Bloodchief Ascension :: Once loaded with quest counters, drains opponents for two life and gains you two life whenever any card hits their graveyard.
+Orcish Bowmasters :: Flashes in to punish opposing cantrips and draw engines with targeted pings that prime Blitzwing's end-step damage.
+Gray Merchant of Asphodel :: Drains the entire table for massive chunks of life based on your heavy black devotion, handing Blitzwing huge life-loss numbers to double.
+Bolas's Citadel :: Casts spells from the top of your library for life and taps to sacrifice ten permanents to drain each opponent for ten life, which Blitzwing doubles to twenty.
+The One Ring :: Grindy card draw engine and protection from everything for a full turn, fueling your hand with executioner spells.
+
+# The compact finish
+Bloodthirsty Conqueror + Vito, Thorn of the Dusk Rose :: Infinite life drain loop. Bloodthirsty Conqueror gains you life whenever an opponent loses life, and Vito drains target opponent whenever you gain life. A single point of damage starts an unstoppable chain reaction that drains the table.
+Exquisite Blood + Sanguine Bond :: Classic black infinite combo that instantly ends the game upon any life gain or life loss.
+In accordance with Bracket 3 rules, these infinite combos and Peer into the Abyss are reserved for turn 6 or later. Use early turns to develop your mana rocks, deploy Blitzwing, and establish your drain network before executing the kill.
+
+# Big mana and execution spells
+Torment of Hailfire :: Late-game mana sink powered by Cabal Coffers that forces opponents to sacrifice permanents or lose three life repeatedly.
+Exsanguinate :: Drains each opponent for X life and gains you life equal to all life lost this way.
+Cabal Coffers + Urborg, Tomb of Yawgmoth :: The legendary black mana engine that taps for double-digit black mana every turn.
+Cabal Stronghold :: Redundant basic Swamp doubler to fuel giant Torment of Hailfire casts.
+Crypt Ghast :: Doubles mana production from all Swamps while extorting opponents on every spell.
+K'rrik, Son of Yawgmoth :: Replaces black mana pips with two life, letting you deploy multiple executioner threats in a single explosive turn.
+Nykthos, Shrine to Nyx :: Taps for immense mana matching your heavy mono-black devotion.
+Phyrexian Tower :: Sacrifices utility creatures or spent tokens to generate two black mana.
+
+# Tutors and engine assembly
+Beseech the Mirror :: Bargain by sacrificing a spent artifact, token, or creature to search and cast any spell with mana value 4 or less for free (Unstoppable Slasher, Vito, Bloodletter, The One Ring, Rush of Dread).
+Grim Tutor :: Unconditional tutor to hand for three mana and three life.
+Insatiable Avarice :: Modal tutor that fetches any card to the top of your library or draws three cards.
+Wishclaw Talisman :: Two-mana tutor that can be used immediately or bargained with an ally to answer an archenemy.
+Urza's Saga :: Chapter III tutors Sol Ring for acceleration, Lotus Petal for burst mana, or Sensei's Divining Top for topdeck manipulation.
+
+# Removal, protection and interaction
+Deadly Rollick :: Free instant-speed creature exile as long as you control Blitzwing.
+Toxic Deluge :: Premier three-mana board wipe that pays life to ignore indestructible and hexproof.
+Damnation :: Clean four-mana creature board wipe to reset crowded boards.
+Defile :: Instant-speed removal for a single black mana that scales with your Swamp count.
+Withering Torment :: Flexible instant-speed answer that destroys either target creature or target enchantment.
+Imp's Mischief :: Black redirection spell that redirects opposing counterspells, targeted removal, or extra-turn spells.
+Darkness :: Black Fog that negates an opponent's lethal alpha strike for a single mana.
+Sudden Spoiling :: Split second combat trick that blanks an opponent's entire board of attacking or blocking creatures.
+Dauthi Voidwalker :: Exiles all opposing cards that would hit the graveyard with void counters, and sacrifices to cast their best exiled spell for free.
+Reanimate :: Cheap recursion to bring back Tree of Perdition, Shard of the Nightbringer, or Bloodletter of Aclazotz for a surprise lethal turn.
+Animate Dead :: Redundant two-mana reanimation aura.
+
+# Opening hand and sequencing
+Look for opening hands with two or three lands, early mana acceleration (Sol Ring, Jet Medallion, Dark Ritual, Arcane Signet), and at least one executioner piece or tutor.
+Cast Blitzwing converted for {3}{B} as Adaptive Assailant on turn 3 or 4. Attack immediately with his random flying or indestructible ability to deal combat damage and convert into his Cruel Tormentor form.
+On turns 4 and 5, deploy drain engines (Sheoldred, Bloodchief Ascension, Orcish Bowmasters) to start accumulating end-step damage triggers.
+On turn 6 or later, drop a half-life executioner (Rush of Dread, Tree of Perdition, Unstoppable Slasher, Shard of the Nightbringer, or Peer into the Abyss) to eliminate players one by one, or resolve Vito and Bloodthirsty Conqueror to wipe out the entire table simultaneously.

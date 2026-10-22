@@ -8,6 +8,11 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v48 — 2026-10-21 (commit a6e5c0ba)
+- Loop the FF14 prelude until the cannon fires; play one looping Ultima only during turns with 10+ artifacts in that player’s battlefield.
+- Pause/resume Ultima without reloading between qualifying turns; skip custom voice clips to preserve its playhead. Exclude library, exile, graveyard and commander columns.
+- Add music on/off and smaller content-versioned MP3 music files. Saved build for testing; not uploaded to Steam.
+
 ## v47 — 2026-10-21 (commit e4c4d3af)
 - Load illustrated guides only on Read guide; selecting commanders uses pinned faces already in the catalog.
 - Cache recent commander/guide pictures and avoid redundant image clears and shared UI asset reloads on revisits.

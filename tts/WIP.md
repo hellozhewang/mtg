@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): preparing **v48** with the FF14 lobby theme and turn-gated Ultima for 10+ battlefield artifacts. Latest delivered save is v47. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-21 (Codex): delivered **v48** with the FF14 lobby theme and turn-gated Ultima for 10+ battlefield artifacts; live threshold/pause/resume checks pass. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -18,7 +18,7 @@ Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a vers
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
 
-## v48: FF14 battlefield soundtrack (preparing saved build)
+## v48: FF14 battlefield soundtrack (saved; not on Steam)
 
 Owner requested the FF14 theme until the cannon fires, and one looping Ultima
 instance when a player has 10+ artifacts. Confirmed "while anyone qualifies", then
@@ -64,7 +64,31 @@ Validation so far: **29 music checks**, **1536 timer checks**, **13 table-build
 tests**, **55 preview checks**, **115 Inspect checks** and **8 release tests** pass.
 The cannon test executes the patched firing branch: no music event at zero power,
 one event before launch at positive power, no duplicate during firing, and the
-winner still starts the game. Live audio/zone verification is next. **No Steam upload**.
+winner still starts the game. A rebuild against the actual v47 table also compiles
+combined Lua, parses XML and retains both cannon hooks exactly once.
+
+Live check: the prelude plays with native repeat enabled. Ten temporary imported
+Sol Rings on White's battlefield report exactly 10 and start Ultima after invoking
+the cannon hook. Moving one into the exile column reports 9 and native **Pause**;
+moving it back reports 10 and native **Play**. The Ultima URL and request serial
+stay unchanged through pause/resume, demonstrating no clip replacement/restart.
+`turn sound test` is suppressed without changing the audio request serial or track.
+Evidence: `.cache/ff14-live/threshold-playback.json`. All ten test cards were removed;
+all six counts return to zero, the original White turn and not-started state remain,
+and the prelude is playing again (`cleanup.json`). The cannon's runtime firing
+function is patched; the cannon itself was not physically fired during the test.
+No real turns were advanced. Turn-switch gating is covered by the real-handler
+regression harness; a two-client listening test remains an owner check.
+
+Delivered **MTG 6 player Cactuar Ver_v48** JSON/PNG from pushed source `a6e5c0ba`.
+Pages passes exact audio/tile-byte verification; theme/Ultima URL versions are
+**18964f74 / 4181089e**. Delivered checksums match; read-back Lua/XML, music URLs,
+artifact/turn gate, voice suppression, persisted flag and cannon/winner hooks are
+verified. Immutable archive/manifest: `.cache/tts-builds/v48/`. Save SHA-256:
+`e8875aa75d5c0acc3411c5df745c8cb07e04d8379bd7132dd9d917c285c013c5`.
+Canonical v47 files were replaced in Saves; their archive remains available.
+The running table was patched without reloading it. Final WIP/changelog Desktop
+copies refreshed. **Steam remains v42; no Workshop upload**.
 
 ## v47: faster commander selection and lazy guides (saved; not on Steam)
 

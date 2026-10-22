@@ -820,6 +820,13 @@ the shared Music Player. TTS's native incoming-player ping remains separate.
 Same-seat turn events play the clip too. Native End Turn can emit no Lua event
 when testing alone; chat `turn sound test` tests the clip without advancing a turn.
 
+The shared **FF14 soundtrack** loops Prelude/Discoveries until the cannon fires.
+**Ultima** loops only during a player's turn while they have **10+ battlefield
+artifacts**, pausing and resuming the same track between qualifying turns. Library,
+exile, graveyard and commander columns do not count. Ultima stays loaded while
+paused, so custom voice clips are skipped to preserve its position; native beeps
+and text alerts still work. Chat `music off` / `music on` controls the soundtrack.
+
 **Inspect contents alphabetically:** right-click a deck or bag and choose **Inspect**.
 A private, narrow window shows four scrolling columns and a search bar, using the live
 container's names and images independently of our deck catalog. Browsing never reveals

@@ -1,5 +1,25 @@
 # Announcer clips
 
+## FF14 soundtrack (v48)
+
+`ff14_theme.mp3` (Prelude / Discoveries) loops in setup and stops when the cannon
+actually fires. `ff14_ultima.mp3` loops only on a turn where that player's battlefield
+contains 10+ artifacts. It pauses below the threshold or on a nonqualifying turn,
+then resumes without replacing the loaded track. There is one shared instance and
+playhead, including when several players qualify. Library/exile/graveyard/commander
+columns do not count. Imported type lines and explicit Artifact tags drive counts.
+
+The prelude owns the shared channel until fire; once Ultima is loaded, custom turn
+and slow-turn voice clips are skipped (even while paused) to retain its position.
+Native beeps and text alerts remain. Chat `music off` / `music on` controls music
+separately from `announcer off`. Position continuity lasts within a loaded session;
+MusicPlayer exposes no timestamp/seek API after a track replacement or full reload.
+
+Runtime MP3s are smaller derivatives of the owner's local WAVs, with no volume
+changes. Reproduce with `python3 scripts/encode_tts_music.py` (FFmpeg/libmp3lame,
+quality 2). Theme: 4,710,161 bytes / 632.35 s; Ultima: 2,078,973 bytes / 297.17 s.
+Only these two MP3 derivatives are included in v48; other audio work stays separate.
+
 ## Turn-change clip (v46)
 
 `change-turn.wav` is the owner-selected 1.696s mono PCM16 clip at 22050 Hz

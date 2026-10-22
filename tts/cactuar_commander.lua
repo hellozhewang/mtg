@@ -16,9 +16,14 @@ do
     for n, card in ipairs(commanders) do
       if n > 1 then add("") end
       add(card.name, true)
+      if #card.faces > 1 then add("Front mana value (CMC): " .. tostring(card.mv)) end
       for _, face in ipairs(card.faces) do
         if #card.faces > 1 then add(face.name, true) end
-        add((face.mana_cost ~= "" and face.mana_cost .. " · " or "") .. "Mana value (CMC): " .. tostring(card.mv))
+        if #card.faces > 1 then
+          if face.mana_cost ~= "" then add("Mana cost: " .. face.mana_cost) end
+        else
+          add((face.mana_cost ~= "" and face.mana_cost .. " · " or "") .. "Mana value (CMC): " .. tostring(card.mv))
+        end
         add(face.type_line)
         if face.power ~= "" and face.toughness ~= "" then add("P/T: " .. face.power .. "/" .. face.toughness) end
         if face.loyalty ~= "" then add("Loyalty: " .. face.loyalty) end

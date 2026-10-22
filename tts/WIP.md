@@ -25,7 +25,8 @@ important commander information (CMC, type, description) **without images**.
 A fixed 172px scrolling text section fills that space when a deck is selected.
 It uses the existing soft-white palette and shows name, mana cost, mana value
 (CMC), type, full oracle rules and power/toughness, loyalty or defense as applicable.
-Partners stay in commander order; multiple faces have separate text sections.
+Partners stay in commander order; multiple faces have separate text sections, with
+the stored front mana value labeled once and each face's own mana cost.
 
 Rules are deliberately **not embedded in the main catalog**. The publisher emits
 one tiny `<Deck>.commander.jsonl` per deck, with a content-hashed `commander_text`
@@ -41,12 +42,28 @@ average **559 bytes**, maximum **1,126 bytes**. All existing image and guide out
 is unchanged. The main index/JSONL gain only content-hashed pointers. Future site
 builds generate the same files centrally through `scripts/ttsdecks.py`.
 
-**17 commander-text checks** cover on-demand fetch/cache, rules/stats/partner order,
+**19 commander-text checks** cover on-demand fetch/cache, rules/stats/partner order,
 rich-text escaping, late responses, retry and closed/legacy cases. Exporter tests
 cover double-faced creatures/planeswalkers, mana costs and no image fields; builder
 checks require a private scroll section with no Image nodes. **71 Python tests**
 pass across eight Lua suites, table builds, exporter, release and image validation.
-Preparing a numbered saved build; visual layout/network verification still pending.
+All 164 text files plus the updated catalog were checked on Pages against exact
+source bytes (165 files, 215,313 bytes). Inserted only the new text sections into
+the live shared XML once for layout testing, retaining the existing CZ/state and
+asset table. Runtime commander selections themselves never replace XML. A syntax
+error in the first one-off injection probe made no changes; the corrected probe
+inserted six private sections successfully. The browser was closed with Inspect
+open; reopened Cactuar normally and refreshed its metadata for validation.
+
+Be'lakor's new data loaded successfully and is visually readable in the requested
+space, with cost `{3}{U}{B}{R}`, mana value 6, Legendary Creature — Demon Noble,
+6/5, Flying and the complete two triggered abilities in its scrolling text.
+**119 existing image assets unchanged**, UI.loading false, fetching false, one
+commander text cache entry ready. No cards or turns changed. Evidence:
+`.cache/commander-text-live/v59-patch.json`, `v59-loaded.json`, `v59-loaded.png`.
+The external JSON bridge's encoding rendered some dashes as `?` in its returned
+text; the actual in-game screenshot shows the dashes correctly. No data rewrite
+was needed. Preparing the next numbered save.
 **Steam remains v42; no Workshop upload.**
 
 ## v58: measured first-click JSON decoding stall (saved; not on Steam)

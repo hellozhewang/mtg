@@ -16,6 +16,11 @@ local function card(name,loyalty)
 end
 JSON={decode=function(raw)
  if raw=="head"then return {v=1,id="pair",count=2}end
+ if raw=="dualhead"then return {v=1,id="dual",count=1}end
+ if raw=="dualcard"then
+  local c=card("Front");local back={};for k,v in pairs(c.faces[1])do back[k]=v end
+  back.name="Back";back.mana_cost="{3}{B}";c.faces[2]=back;return c
+ end
  if raw=="one"then return card("First")end
  if raw=="two"then return card("Second","4")end
  error("bad JSON")
@@ -58,4 +63,9 @@ local before=#requests;czcRender("White",s,deck)
 check(#requests==before,"closed panels never initiate text downloads")
 s.open=true;s.selected={id="legacy"};czcRender("White",s,s.selected)
 check(attrs.cz_commander_text_White.text:find("unavailable",1,true),"older catalogs remain usable without commander data")
+s.selected={id="dual",commander_text="dual.commander.jsonl"};czcRender("White",s,s.selected)
+callbacks[requests[#requests]]({text="dualhead\ndualcard\n"});drain()
+local dual=attrs.cz_commander_text_White.text
+check(dual:find("Front mana value (CMC): 3",1,true) and dual:find("Mana cost: {3}{B}",1,true),"double-faced cards label the front's stored value and show each face's own cost")
+check(dual:find("Front",1,true)<dual:find("Back",1,true),"multiple faces retain their order")
 print(checks.." commander text checks, 0 failed")

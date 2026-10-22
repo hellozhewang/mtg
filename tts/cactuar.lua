@@ -638,14 +638,14 @@ function czFilter(player, key)
   for i, choice in ipairs(czMenuChoices(player.color, key)) do
     if choice.selected then s.menuPage = math.ceil(i / size) end
   end
-  if key == "sleeve" then czslRender(player.color) else czRenderMenu(player.color) end
+  if key == "sleeve" then czslRequest(player.color) else czRenderMenu(player.color) end
 end
 
 function czMenuPage(player, direction)
   local s = czState(player.color)
   if not s.menu then return end
   s.menuPage = (s.menuPage or 1) + (direction == "next" and 1 or -1)
-  if s.menu == "sleeve" then czslRender(player.color) else czRenderMenu(player.color) end
+  if s.menu == "sleeve" then czslRequest(player.color) else czRenderMenu(player.color) end
 end
 
 function czChoose(player, row)

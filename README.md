@@ -790,8 +790,9 @@ commander, strategy and stats; filtered counts also show the collection total.
 Deck details, commander names and guides remain text-only. **Read guide** fetches
 written strategy only when clicked; **Back to decks** returns to the list.
 **Sleeves ▾** opens an eight-picture chooser and downloads only that page's small
-thumbnails. Visited sleeve pages are cached; opening the browser itself never
-loads sleeve pictures. Only open panels are rendered, and unchanged UI writes are
+thumbnails. Each page requests pictures only when opened or reached with the pager;
+shared UI redraws never prefetch other pages. Visited sleeve pages are cached;
+opening the browser itself never loads sleeve pictures. Only open panels are rendered, and unchanged UI writes are
 skipped. The separate Inspect window still shows card faces. Inspect is restored
 after the base table rebuilds deck menus on zone entry/exit.
 **Load into my seat** puts the chosen deck in

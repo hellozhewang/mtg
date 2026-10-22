@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-22 (Codex): delivered **v54** with the live-verified Inspect grid expansion fix, zone-menu repair and sleeve thumbnails on demand. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-22 (Codex): preparing **v55** with sleeve image requests tied strictly to opening or navigating a chooser page; v54 is the latest delivered save. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -17,6 +17,35 @@ selects. Report the latest saved build and Steam version separately.
 Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a version
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
+
+## v55: sleeve images only on explicit page navigation (preparing)
+
+Owner asks not to load sleeve images until paging into them. v53/v54 already limited
+registration to visible chooser pages, but its registration routine scanned **all
+open seats**, and any completion redraw could request pictures for another seat's
+page. Rendering and requesting were the same operation.
+
+Only the **Sleeves button and its pager** now call `czslRequest`; `czslRender` only
+binds already-registered thumbnails. Opening loads the displayed page (up to eight
+small thumbnails), next/previous requests only the destination page, and visited
+pages remain cached. Other players' redraws and Inspect/shared-asset completion
+cannot initiate downloads for unrequested sleeve pages.
+
+Requests made during a shared UI load wait for completion and merge the latest
+assets, preserving Inspect/base assets. Each seat keeps only its latest pending
+page; requests are discarded if that page was left, the menu closed, or its seat
+owner/state changed before loading could start. Already-started network requests
+cannot be cancelled through TTS's shared asset API. Page names/pager update at once,
+old pictures clear during loading and choices stay disabled until loading finishes.
+There is no background prefetch or automatic retry loop after an image-load timeout.
+
+**35 lazy-sleeve checks** pass, including unrequested other-seat pages, rapid
+paging, closed pending pages and queued requests behind external UI loading.
+All **six Lua suites**, **14 table-build tests** and **8 release tests** pass
+(28 Python tests total). Browser still has **zero cold image loads**, 115 cold UI
+writes, 3 cached close/reopen writes and zero unchanged redraw writes. No live game
+reload or sleeve hot patch has been performed. Preparing the next numbered save;
+**no Workshop upload**.
 
 ## v54: Inspect grid expansion exceeds MoonSharp pattern limit (saved; not on Steam)
 

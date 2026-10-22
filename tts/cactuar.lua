@@ -282,11 +282,16 @@ local CZ_TOUR_LABEL = {all = "All pick", draft = "Draft", random = "Random"}
 
 -- The curated pool, in the order tts/tournament.json lists it.
 local function czPool()
+  local index = CZ.index
+  local decks, ids = index and index.decks, index and index.tournament
+  local cache = CZ.pool
+  if cache and cache.index == index and cache.decks == decks and cache.ids == ids then return cache.list end
   local byId, out = {}, {}
-  for _, d in ipairs((CZ.index and CZ.index.decks) or {}) do byId[d.id] = d end
-  for _, id in ipairs((CZ.index and CZ.index.tournament) or {}) do
+  for _, d in ipairs(decks or {}) do byId[d.id] = d end
+  for _, id in ipairs(ids or {}) do
     if byId[id] then out[#out + 1] = byId[id] end
   end
+  CZ.pool = {index = index, decks = decks, ids = ids, list = out}
   return out
 end
 
@@ -308,7 +313,8 @@ end
 
 -- n different decks from the pool, at random.
 local function czDeal(n)
-  local pool = czPool()
+  local pool = {}
+  for i, d in ipairs(czPool()) do pool[i] = d end -- shuffle a copy of the cached pool
   for i = #pool, 2, -1 do
     local j = math.random(i)
     pool[i], pool[j] = pool[j], pool[i]
@@ -331,49 +337,79 @@ local function czShort(text, limit)
   return out and #out < #text and (out .. "…") or text
 end
 
+-- Keep the whole catalog in Lua; filtering/sorting only changes when its inputs
+-- change. Paging, picking a deck, sleeve/guide redraws and reopening reuse it.
+local function czList(s)
+  local mode = s.tour and s.tour.mode or "browse"
+  local sorted = mode == "browse" or mode == "all"
+  local query, sort = sorted and s.query or "", sorted and s.sort or nil
+  local filter = mode == "browse" and s.filter or {}
+  local source = mode == "draft" and s.tour.offer or mode == "random" and s.tour.random or nil
+  local cache = s.catalog
+  local same = cache and cache.index == CZ.index and cache.decks == CZ.index.decks
+    and cache.pool == CZ.index.tournament and cache.mode == mode and cache.source == source
+    and cache.query == query and cache.sort == sort
+  if same then
+    for _, key in ipairs(CZ_FILTERS) do
+      if cache.filter[key] ~= filter[key] then same = false; break end
+    end
+  end
+  if same then return cache end
+  local list, byId, snapshot = {}, {}, {}
+  local match = {filter = filter, query = query}
+  for _, d in ipairs(s.tour and czTourList(s) or CZ.index.decks) do
+    if czMatches(d, match) then list[#list + 1] = d end
+  end
+  if sorted then table.sort(list, czCompare(sort)) end
+  for _, d in ipairs(list) do byId[d.id] = d end
+  for _, key in ipairs(CZ_FILTERS) do snapshot[key] = filter[key] end
+  cache = {index = CZ.index, decks = CZ.index.decks, pool = CZ.index.tournament,
+    mode = mode, source = source, query = query, sort = sort, filter = snapshot, list = list, byId = byId}
+  s.catalog = cache
+  return cache
+end
+
+-- Ten reusable row widgets per seat, independent of catalog size. Format only
+-- the requested page; selection changes update row highlights without rebuilding
+-- names. Native UI rebuilds still force the visible page to be painted again.
+local function czRenderRows(color, s)
+  local view, selected = s.rowView, s.selected and s.selected.id
+  local fresh = not view or view.list ~= s.list or view.page ~= s.page
+    or view.generation ~= (CZ.imageGeneration or 0) or view.paint ~= CZ.uiPaint
+  if not fresh and view.selected == selected then return end
+  for i = 1, CZ.rows do
+    local d = s.list[(s.page - 1) * CZ.rows + i]
+    local id = "cz_row_" .. i .. "_" .. color
+    if d then
+      if fresh then
+        czText("cz_row_name_" .. i .. "_" .. color, czShort(d.name, 51))
+        czText("cz_row_sub_" .. i .. "_" .. color, czShort(d.commander, 52) .. " · " .. d.owner)
+        czText("cz_row_tier_" .. i .. "_" .. color, d.tier ~= "" and d.tier or "?")
+        czUI("cz_row_tier_" .. i .. "_" .. color, "color", czTierColor(d.tier))
+        czUI(id, "active", "True")
+      end
+      if fresh or view.selected == d.id or selected == d.id then
+        czUI(id, "colors", selected == d.id and CZ_ACTIVE or "#1C2939|#2D4157|#244E46|#182331")
+      end
+    elseif fresh then czUI(id, "active", "False") end
+  end
+  s.rowView = {list = s.list, page = s.page, selected = selected,
+    generation = CZ.imageGeneration or 0, paint = CZ.uiPaint}
+end
+
 function czRender(color)
   czValidateUI(color)
   local s = czState(color)
   if not CZ.index then return end
-  local list = {}
-  if s.tour then
-    -- Filters are hidden in Tournament mode; search and sort apply to All pick.
-    local all = s.tour.mode == "all"
-    local match = {filter = {}, query = all and s.query or ""}
-    for _, d in ipairs(czTourList(s)) do
-      if czMatches(d, match) then list[#list + 1] = d end
-    end
-    if all then table.sort(list, czCompare(s.sort)) end
-  else
-    for _, d in ipairs(CZ.index.decks) do
-      if czMatches(d, s) then list[#list + 1] = d end
-    end
-    table.sort(list, czCompare(s.sort))
-  end
+  local catalog = czList(s)
+  local list = catalog.list
   s.list = list
-  if s.selected then
-    local selected = nil
-    for _, d in ipairs(list) do if d.id == s.selected.id then selected = d end end
-    s.selected = selected     -- don't offer to load a stale or filtered-out deck
-  end
+  if s.selected then s.selected = catalog.byId[s.selected.id] end -- refresh stale or filtered selections
   local pages = math.max(1, math.ceil(#list / CZ.rows))
   if s.page > pages then s.page = pages end
   if s.page < 1 then s.page = 1 end
-  for i = 1, CZ.rows do
-    local d = list[(s.page - 1) * CZ.rows + i]
-    local id = "cz_row_" .. i .. "_" .. color
-    if d then
-      local selected = s.selected and s.selected.id == d.id
-      czText("cz_row_name_" .. i .. "_" .. color, czShort(d.name, 51))
-      czText("cz_row_sub_" .. i .. "_" .. color, czShort(d.commander, 52) .. " · " .. d.owner)
-      czText("cz_row_tier_" .. i .. "_" .. color, d.tier ~= "" and d.tier or "?")
-      czUI("cz_row_tier_" .. i .. "_" .. color, "color", czTierColor(d.tier))
-      czUI(id, "colors", selected and CZ_ACTIVE or "#1C2939|#2D4157|#244E46|#182331")
-      czUI(id, "active", "True")
-    else
-      czUI(id, "active", "False")
-    end
-  end
+  if not s.open then return end -- Closed seats retain their data without UI work.
+  czRenderRows(color, s)
   czText("cz_page_" .. color, string.format("Page %d / %d", s.page, pages))
   if s.tour then
     local pool = #czPool()

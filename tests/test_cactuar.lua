@@ -455,10 +455,13 @@ czFilter(white, "sleeve"); czChoose(white, "1")
 check(s.sleeve == "standard", "Standard can be selected again")
 spawned = {}; czLoad(white)
 for i, o in ipairs(spawned) do check(o.json == expectedObjects[i + 1], "Standard leaves deck objects untouched") end
+local legacyClosed = not CZ.state.White.open
+if legacyClosed then czOpen(white) end
 local withBacks = CZ.index.sleeves; CZ.index.sleeves = nil
 czRender("White"); czFilter(white, "sleeve")
 check(attrs.cz_sleeve_White.interactable == "False" and s.menu == nil, "old indexes without sleeves remain usable")
 CZ.index.sleeves = withBacks
+if legacyClosed then czClose(white) end
 
 -- A new player in a seat gets a fresh browser, not the last player's leftovers.
 local whoIn = {}
@@ -535,6 +538,9 @@ check(logged("switched to Draft (5 decks on offer)"), "returning to Draft logs t
 czTourRedraw(white)
 check(s.tour.offer ~= offer and #s.tour.offer == 5 and s.tour.redraws == 1, "Redraw deals a new offer")
 check(logged("REDREW the draft (redraw #1, 5 new decks dealt)"), "redraws are logged and counted")
+local stablePool = true
+for i, d in ipairs(CZ.pool.list) do if d.id ~= pool[i] then stablePool = false end end
+check(stablePool, "draft shuffles a copy and leaves the cached curated pool in its original order")
 czPick(white, "3")
 check(s.selected and s.selected.id == s.tour.offer[3].id, "pick one from the offer")
 
@@ -607,6 +613,88 @@ local beforeReopen = UI.assetCalls
 if not CZ.state.White.open then czOpen(white) end
 czClose(white); czOpen(white)
 check(UI.assetCalls == beforeReopen, "opening the browser after sleeve use still does not reload pictures")
+
+-- A large full catalog stays in Lua; only the current ten rows are formatted.
+local realIndex, realState = CZ.index, CZ.state.White
+local large = {}
+for k,v in pairs(realIndex) do large[k]=v end
+large.decks={};large.tournament={}
+for i=1,1000 do
+  local d={}
+  for k,v in pairs(realIndex.decks[1]) do d[k]=v end
+  d.id="fixture-"..i;d.name=string.format("Fixture %04d",i)
+  d.commander=i==1000 and "Remote marker commander" or "Fixture commander"
+  d.owner=i%2==0 and "even" or "odd"
+  large.decks[i]=d
+end
+CZ.index=large
+CZ.state.White={sort="name",filter={},query="",page=1,list={},open=true}
+local scaled=CZ.state.White
+local formats,sorts,rowWrites=0,0,{}
+local rep,sort,attribute=string.rep,table.sort,UI.setAttribute
+string.rep=function(pattern,n)
+  if n==51 or n==52 then formats=formats+1 end
+  return rep(pattern,n)
+end
+table.sort=function(...)sorts=sorts+1;return sort(...)end
+UI.setAttribute=function(id,key,value)
+  if id:find("cz_row_",1,true)==1 then rowWrites[#rowWrites+1]={id=id,key=key} end
+  attribute(id,key,value)
+end
+local web,images,objects=requests,UI.assetCalls,#spawned
+czRender("White")
+check(#scaled.list==1000 and formats==20 and sorts==1,"a thousand-deck catalog formats only the first ten rows")
+check(values.cz_page_White=="Page 1 / 100","pagination uses the complete in-memory result count")
+local catalog=scaled.list
+formats=0;rowWrites={};czPage(white,"next")
+check(scaled.list==catalog and sorts==1 and formats==20,"next page formats ten rows without rescanning/sorting the full catalog")
+local onlyCurrent=true
+for _,w in ipairs(rowWrites) do
+  local row,color=w.id:match("_(%d+)_(%a+)$")
+  if not row or tonumber(row)>10 or color~="White" then onlyCurrent=false end
+end
+check(onlyCurrent and #rowWrites<=60,"page rendering only touches the same ten private row widgets")
+check(values.cz_row_name_1_White=="Fixture 0011","reused first widget displays the requested page's first deck")
+formats=0;rowWrites={};czPick(white,"1");czPick(white,"2")
+local highlightsOnly=true
+for _,w in ipairs(rowWrites) do if w.key~="colors" then highlightsOnly=false end end
+check(scaled.list==catalog and sorts==1 and formats==0 and highlightsOnly,"selecting decks updates highlights/details without formatting or sorting list rows")
+czClose(white);czOpen(white)
+check(scaled.list==catalog and formats==0 and sorts==1,"reopening the cached page keeps its list and formatted rows")
+local written=UI.rawCalls
+czClose(white);written=UI.rawCalls;czRender("White")
+check(UI.rawCalls==written,"closed browser renders issue no UI writes")
+czOpen(white)
+check(requests==web and UI.assetCalls==images and #spawned==objects,"paging/selecting/reopening downloads no assets or decks and spawns no objects")
+czSearch(white,"remote marker")
+check(#scaled.list==1 and scaled.list[1].id=="fixture-1000","search still reaches commander metadata on unvisited pages")
+czClear(white);local beforeFilter=scaled.list
+scaled.filter.owner="even";czRender("White")
+check(scaled.list~=beforeFilter and #scaled.list==500,"changing a filter in place invalidates cached results")
+local beforeSort=scaled.list;czSort(white,"newest")
+check(scaled.list~=beforeSort and sorts>1,"changing sort invalidates the cached ordering")
+czClear(white);czSort(white,"name");czPick(white,"1")
+local oldSelection=scaled.selected
+local replacement={}
+for k,v in pairs(large)do replacement[k]=v end
+replacement.decks={}
+for i,d in ipairs(large.decks)do
+  local copy={};for k,v in pairs(d)do copy[k]=v end
+  if i==1 then copy.commander="Updated commander" end
+  replacement.decks[i]=copy
+end
+CZ.index=replacement;czRender("White")
+check(scaled.selected~=oldSelection and scaled.selected.commander=="Updated commander","catalog refresh replaces cached selected metadata even for the same deck ID")
+check(values.cz_row_sub_1_White:find("Updated commander",1,true),"refresh redraws updated row text")
+local beforeReset=scaled.list
+local beforeFormats=formats
+CZ.imageGeneration=(CZ.imageGeneration or 0)+1;czRender("White")
+check(scaled.list==beforeReset and formats==beforeFormats+20,"shared UI rebuild repaints the current page while retaining catalog results")
+attrs.cz_count_White.text="External reset"
+beforeFormats=formats;czRender("White")
+check(formats==beforeFormats+20,"external XML reset also repaints the current page")
+string.rep,table.sort,UI.setAttribute=rep,sort,attribute
+CZ.index,CZ.state.White=realIndex,realState
 
 print(string.format("%d checks, %d failed", checks, failures))
 os.exit(failures == 0 and 0 or 1)

@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-22 (Codex): delivered **v56** for white sleeve previews; the binding repair is also applied and visually checked on the running v55 table. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-22 (Codex): preparing **v57** for cached deck-list data and visible-page row rendering; code is applied to the running table, and v56 is the latest delivered save. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -17,6 +17,47 @@ selects. Report the latest saved build and Steam version separately.
 Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a version
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
+
+## v57: keep catalog data, render only the visible page (preparing)
+
+Owner asks for Cactuar's full information to remain in a data structure while only
+paginated rows render on demand. Inspection confirms the browser **already had ten
+reusable rows per seat**, not a widget/card object for every catalog deck. Initial
+UI node counts do not shrink in this change. The remaining waste was rebuilding,
+filtering and sorting the full deck list, plus formatting the ten row labels, on
+every page/selection/guide/sleeve redraw.
+
+Per-seat catalog results are now cached by index/decks/pool identity, search,
+filter values, sort, tournament mode and draft/random source. Page changes and
+selection reuse that list; a by-ID lookup validates selections without scanning
+it. Refresh/new catalog, search/filter/sort changes and tournament redraws invalidate
+the results. The tournament pool is cached separately, and dealing shuffles a copy
+so it cannot mutate the shared curated order.
+
+A visible-page snapshot formats ten row widgets only when the page/results change
+or a shared/native UI rebuild requires repainting. Picking a different deck changes
+only the old/new visible highlights and details. Closed panels retain data and get
+no UI writes. The complete metadata catalog remains available for search/filter
+across unvisited pages; physical card objects still spawn only on Load. No new
+web pagination, image downloads, per-deck widgets or shared XML rebuilds are added.
+
+**1,164 browser checks** pass. A **1,000-deck** fixture gives 100 pages: only ten
+row pairs format on open/page changes, zero row formatting or catalog sorting on
+selection/cached reopen, and zero closed-panel writes. Paging/picking/reopening
+make no network requests, image loads or physical objects. Search finds metadata
+on page 100; in-place filter changes, new index records under the same deck ID,
+tournament offers/rerolls and shared/external UI resets remain correct. Six Lua
+suites, 14 table-build tests and eight release tests pass (28 Python tests total).
+Cold UI operation counts remain 115 writes, 3 cached close/reopen and zero unchanged
+redraw; this is a CPU-work/cache improvement, not a measured FPS/latency claim.
+
+Patched only browser functions into the running table while preserving the existing
+CZ instance, states, index, sleeve module and Inspect/music/event hooks. Live check:
+**164 decks**, root instance retained, assets unchanged, event hooks retained. No
+browser was open during that probe, so it does not verify owner-visible paging.
+No physical cards, turns or player selections were changed. Evidence:
+`.cache/deck-list-live/v57-patch.json`. Preparing the next numbered save.
+**Steam remains v42; no Workshop upload.**
 
 ## v56: white sleeve preview pictures (saved; not on Steam)
 

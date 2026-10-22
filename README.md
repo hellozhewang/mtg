@@ -787,6 +787,10 @@ importer. Clicking one opens the clicker's own browser, which
 searches as you type, sorts (newest first by default, or tier or name) and offers filter menus
 (bracket, tier, strategy, owner). A separate details panel shows the selected deck's
 commander, strategy and stats; filtered counts also show the collection total.
+The full metadata catalog stays in Lua for search and filtering. The list reuses ten
+rows per seat, formats only the requested page and caches filtered/sorted results;
+paging or selecting a deck does not rebuild the full list. Closed panels receive no
+UI writes. Actual cards spawn only when a player loads a deck.
 Deck details, commander names and guides remain text-only. **Read guide** fetches
 written strategy only when clicked; **Back to decks** returns to the list.
 **Sleeves ▾** opens an eight-picture chooser and downloads only that page's small

@@ -7,6 +7,13 @@ Last updated 2026-10-22 (Codex): delivered **v62** with Show commander, explicit
 longer sprite settling, and consolidated TTS docs under `docs/development/`.
 **Steam remains v60.** See [the changelog](../docs/development/tts-changelog.md).
 
+## Next build: white Show commander label
+
+Set the Show commander / Hide commander button label to white (`#FFFFFF`) in
+both the XML template and its runtime render attributes, leaving the button's
+background unchanged. Validate the expanded six-seat XML and existing picture
+suite; deliver the next numbered save for testing. Steam remains v60.
+
 ## v62: commander image recurrence and documentation consolidation (saved; not on Steam)
 
 Owner reported Lord Xander still white after Show picture. Rename the control to

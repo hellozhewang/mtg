@@ -165,6 +165,7 @@ do
     if not s.pictureOpen then pending[color] = nil end
     czUI("cz_commander_show_" .. color, "interactable", #list > 0 and "True" or "False")
     czUI("cz_commander_show_" .. color, "text", s.pictureOpen and "Hide commander" or "Show commander")
+    czUI("cz_commander_show_" .. color, "textColor", "#FFFFFF")
     czUI("cz_picture_" .. color, "active", s.pictureOpen and "True" or "False")
     local face = s.pictureOpen and list[s.pictureIndex or 1]
     if not face then

@@ -8,6 +8,11 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v45 — 2026-10-21 (commit ac40727f)
+- Play change-turn.wav for everyone on genuine turn changes; announcer off mutes the custom clip.
+- Keep TTS native incoming-player ping; avoid duplicate/setup sounds and stale audio playback callbacks.
+- Saved build for testing; not uploaded to Steam.
+
 ## v44 — 2026-10-21 (commit 0c313b98)
 - Commander images are 15% smaller and centered; guide-card hover previews retain their full readable size.
 - Saved build for testing; not uploaded to Steam.

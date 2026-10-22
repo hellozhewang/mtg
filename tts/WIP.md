@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): preparing **v45** with the owner's `change-turn.wav` clip on turn changes. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-21 (Codex): **v45 delivered to Saved Games** with the owner's `change-turn.wav` clip on turn changes. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -18,7 +18,7 @@ Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a vers
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
 
-## v45: custom change-turn sound (preparing saved build)
+## v45: custom change-turn sound (saved; not on Steam)
 
 Owner asked who hears the turn-change sound and requested `change-turn`. Inspection
 of v44 found no custom turn-change clip: the existing sound is TTS's native alert
@@ -39,6 +39,14 @@ first-turn initialization, same-color duplicate events and spectator turns do no
 load callbacks after a newer sound, mute or script reload. Existing timer/base
 handlers remain wrapped. **1506 turn/timer checks** and **12 table-build tests** pass.
 Deliver v45 without Steam upload.
+
+Delivered **MTG 6 player Cactuar Ver_v45** JSON/PNG from pushed source `ac40727f`.
+Pages passed the audio-byte release check after its deployment completed. Both
+delivered checksums match; read-back SaveName/Lua/XML and the `777efbb9` clip URL
+and guarded playback are verified. Archive/manifest: `.cache/tts-builds/v45/`.
+Save SHA-256: `70f4a5e6628d827c757109ccf4d820a50a3a3ab2f33b991afa6a488573accbcb`.
+Canonical v44 files were replaced in Saves; their archive remains available.
+WIP/changelog Desktop copies refreshed. **Steam remains v42.**
 
 ## v44: slightly smaller commander image (saved; not on Steam)
 

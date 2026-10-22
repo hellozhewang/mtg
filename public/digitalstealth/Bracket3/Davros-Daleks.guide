@@ -1,0 +1,84 @@
+The single biggest mistake a new pilot makes with Davros is forgetting that his ability triggers off ANY life loss, not just your own combat or spells. Opponents cracking fetchlands, paying life for shocklands or Black Market Connections, or attacking one another all count toward the 3-life threshold. Furthermore, you only need one opponent to have lost 3+ life to create your 3/3 menace Dalek artifact creature token, but *every* opponent who lost 3+ life is forced into the villainous choice: discarding a card or letting you draw.
+
+# The Dalek creator and relentless invasion
+Davros, Dalek Creator :: Cast for {1}{U}{B}{R}. At your end step, creates a 3/3 menace Dalek artifact token if an opponent lost 3+ life, and forces each qualifying opponent to choose discard or let you draw.
+The Dalek Emperor :: Affinity for Daleks, gives other Daleks +2/+0, and triggers villainous choices whenever it attacks to put opponents in a bind between card draw or creature sacrifice.
+Dalek Squadron :: 3/3 Dalek with myriad and menace. Each combat step creates Dalek copies attacking every other opponent, triggering Dalek-based synergies across the whole table.
+Dalek Drone :: Menace flyer that forces each opponent to lose life or sacrifice a creature on entry, easily enabling Davros while pruning enemy boards.
+Cult of Skaro :: Enters with menace and taps to flip a coin: either draws you cards, deals direct damage, creates a Dalek token, or forces discard.
+The Cyber-Controller :: Scales with X to exile cards from each opponent's library and fabricates a massive army of Cyberman artifact creatures from the exiled creatures and artifacts.
+Cyberman Patrol :: Gives attacking artifact creatures afflict 3. Defending players take 3 direct life loss even if they block your attackers, guaranteeing Davros triggers on combat.
+Cybermen Squadron :: Grants myriad to all your nonlegendary artifact creatures, multiplying your Dalek army exponentially across every opponent.
+Missy :: Transforms killed nonartifact creatures into 2/2 Cyberman tokens under your control, turning opposing removal and creature combat into fodder.
+Auton Soldier :: Clones any creature on the battlefield with myriad, creating temporary copies of key threats or Dalek Lords whenever it attacks.
+
+# Enablers for the three-life threshold
+Boltwave :: Single red mana sorcery that deals 3 damage directly to each opponent, instantly turning on Davros triggers and villainous choices for the entire pod.
+Loyal Subordinate :: With Davros on the battlefield, deals 3 direct life loss to each opponent on combat, consistently guaranteeing all three villainous choices without even needing to attack.
+Tectonic Giant :: Deals 3 damage to each opponent whenever it attacks or becomes the target of an opponent's spell, or digs two cards deep for card advantage.
+Creeping Bloodsucker :: Drains each opponent for 1 life on your upkeep and gains you 3 life, chipping away life totals to bring opponents within range.
+Underworld Dreams :: Deals 1 damage to an opponent whenever they draw a card, turning cantrips and wheel effects into lethal burn that triggers Davros on their turns.
+Sheoldred, the Apocalypse :: Punishes opponents for 2 life per card draw while healing you for 2 life on your own draws, punishing villainous choices and natural cantrips.
+Sygg, River Cutthroat :: End step card draw engine that triggers whenever any player lost 3 or more life in a turn, perfectly aligning with Davros's trigger window.
+Mirkwood Bats :: Drains each opponent for 1 life whenever a token enters or leaves your battlefield, weaponizing your Dalek creation and artifact sacs.
+Marionette Apprentice :: Fabricates a 1/1 Servo or +1/+1 counter and drains each opponent for 1 whenever an artifact or creature you control dies.
+
+# Punishers, villainous choices, and discard engines
+The Valeyard :: Doubles all villainous choices, forcing each opponent to make their painful decision twice whenever Davros or your Daleks trigger.
+Waste Not :: Heavily exploits opponents choosing to discard: generates two black mana off land discards, 2/2 Zombie tokens off creature discards, and card draw off noncreature nonland discards.
+Court of Ambition :: Introduces the Monarch and forces each opponent on your upkeep to lose 3 life unless they discard a card; while you are Monarch, this escalates to 6 life or two cards.
+Wound Reflection :: Triggers at the end of each turn, forcing each opponent to lose life equal to the life they lost that turn, effectively doubling all burn and combat damage.
+Dauthi Voidwalker :: Shadow beater that exiles all opposing cards that would hit the graveyard, allowing you to cast their best discarded spell for free.
+
+# Artifact synergies, token swarm, and doublers
+Roaming Throne :: Names Dalek to double Davros's end step triggers, generating two Daleks and forcing opponents to face villainous choices twice per turn.
+Strionic Resonator :: Pays {2} and taps to copy Davros's end step triggered ability, duplicating your token generation and card draw/discard choices.
+Genesis of the Daleks :: Saga that produces Dalek tokens, destroys target creatures, and eventually unleashes a one-sided wipe on non-Dalek threats.
+Steel Overseer :: Taps to put a +1/+1 counter on every artifact creature you control, steadily growing your menace Dalek army into lethal beaters.
+Enthusiastic Mechanaut :: Flying artifact creature that reduces the cost of all your artifact spells by {1}.
+Etherium Sculptor :: Classic artifact cost reducer that curves out into early mana rocks and utility artifacts.
+Padeem, Consul of Innovation :: Grants hexproof to all your artifacts, shielding Davros, your Dalek army, and mana rocks from spot removal while drawing cards.
+
+# Compact win and table execution
+Dualcaster Mage + Twinflame :: Infinite hasty Dualcaster Mages. Cast Twinflame targeting any creature you control, hold priority, and flash in Dualcaster Mage. Copy Twinflame targeting Dualcaster Mage, repeating the loop infinitely for lethal combat.
+Dualcaster Mage + Molten Duplication :: Redundant infinite copy combo with Molten Duplication, providing a second line to create arbitrary numbers of hasty attackers.
+In accordance with Bracket 3 rules, this two-card combo is reserved for turn 6 or later. Early turns should focus on setting up Davros, churning out Dalek tokens, and draining opponents.
+Torment of Hailfire :: Devastating late-game mana sink that forces each opponent to lose 3 life, sacrifice a nonland permanent, or discard a card X times.
+Their Name Is Death :: Six-mana asymmetrical sweeper that destroys all nonartifact creatures, clearing the board completely while leaving your Daleks and Cybermen intact.
+
+# Card advantage and mana acceleration
+Rhystic Study :: Premier card advantage engine that taxes every opponent spell.
+The One Ring :: Grants protection from everything for a full turn and draws cards in rapidly growing bursts.
+Mystic Remora :: Early noncreature spell tax that draws cards aggressively in the opening turns.
+Black Market Connections :: Upkeep engine trading small amounts of life for card draw, Treasure tokens, and Shapeshifter bodies.
+Sol Ring :: Premier fast mana artifact.
+Arcane Signet :: Efficient three-color mana rock.
+Fellwar Stone :: Reliable two-mana rock producing pod colors.
+Talisman of Indulgence :: Untapped black and red mana.
+Talisman of Creativity :: Untapped blue and red mana.
+Talisman of Dominance :: Untapped blue and black mana.
+Thought Vessel :: Two-mana rock that grants an unlimited hand size.
+Chromatic Lantern :: Perfect color fixing that turns all your lands into any-color sources.
+Dark Ritual :: Burst mana to cast Davros on turn 1 or turn 2.
+
+# Interactive protection and defensive control
+Cyclonic Rift :: Instant-speed asymmetrical board wipe that bounces all nonland permanents opponents control right before your turn.
+Toxic Deluge :: Flexible black sweeper that pays life to bypass indestructible and clear large creature swarms.
+Blasphemous Act :: Cheap red board wipe that cleans congested boards for as little as a single red mana.
+Exterminate! :: Two-mana black removal spell with replicate; taps Daleks to replicate the spell and destroy multiple creatures while causing their controllers to lose life.
+Cyber Conversion :: Turns an opposing commander or threatening creature face-down as a 2/2 Cyberman with no abilities, bypassing death triggers.
+Deadly Rollick :: Free instant-speed creature exile as long as you control Davros.
+Deflecting Swat :: Free spell redirection while Davros is on the field to deflect counterspells or targeted removal.
+Counterspell :: Standard two-mana hard counter for crucial opposing threats.
+Chaos Warp :: Instant-speed answer that tucks any permanent into an opponent's library.
+Bedevil :: Versatile spot removal for target artifact, creature, or planeswalker.
+Withering Torment :: Flexible instant-speed answer that destroys either target creature or target enchantment.
+Feed the Swarm :: Clean low-cost answer to problematic enchantments or creatures.
+Sudden Spoiling :: Split second response that neutralizes opposing alpha strikes or bypasses combat tricks.
+
+# Opening hand and sequencing
+Look for opening hands with 3 lands, at least one cheap mana rock (Sol Ring, Signets, Talismans), and an early 3-life trigger engine (Boltwave, Loyal Subordinate, Creeping Bloodsucker) or card engine (Rhystic Study, Mystic Remora).
+On turns 1 to 3, prioritize mana fixing and ramp to ensure you have all three Grixis colors available.
+Deploy Davros on turn 3 or 4, ideally with an enabler ready to deal 3 damage that turn (such as casting Boltwave or attacking with Loyal Subordinate) to immediately trigger Dalek creation and villainous choices.
+Throughout the midgame, amass menace Dalek tokens, use Exterminate! and Their Name Is Death to keep opposing boards clear, and milk Waste Not value off forced discards.
+On turn 6 or later, close the game with an unblockable alpha strike backed by Cyclonic Rift, a massive Torment of Hailfire, or the Dualcaster Mage + Twinflame combo.

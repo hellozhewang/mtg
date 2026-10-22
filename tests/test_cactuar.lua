@@ -189,6 +189,7 @@ end
 -- ---------- load the browser ----------
 local source = read("tts/cactuar.lua"):gsub("@BASE_URL@", "test://tts/")
 assert(load(source, "cactuar.lua"))()
+dofile("tts/cactuar_catalog.lua")
 dofile("tts/cactuar_guide.lua")
 dofile("tts/cactuar_sleeves.lua")
 local white, grey = {color = "White", steam_name = "zz"}, {color = "Grey", steam_name = "spectator"}
@@ -694,6 +695,38 @@ attrs.cz_count_White.text="External reset"
 beforeFormats=formats;czRender("White")
 check(formats==beforeFormats+20,"external XML reset also repaints the current page")
 string.rep,table.sort,UI.setAttribute=rep,sort,attribute
+CZ.index,CZ.state.White=realIndex,realState
+
+-- The HTTP callback may return immediately; decoding must still yield, retain an
+-- old catalog during refresh, and never reopen a panel closed during loading.
+local frameJobs={}
+local oldFrames=Wait.frames
+Wait.frames=function(fn)frameJobs[#frameJobs+1]=fn end
+local function stepFrames()
+  local pending=frameJobs;frameJobs={}
+  for _,fn in ipairs(pending)do fn()end
+end
+local function finishFrames()
+  for _=1,200 do if #frameJobs==0 then return end;stepFrames()end
+  error("catalog refresh never settled")
+end
+CZ.index=nil;CZ.state.White={sort="newest",filter={},query="",page=1,list={},open=true}
+czRefresh(white)
+check(CZ.fetching and CZ.index==nil,"catalog network completion keeps fetching active while incremental decoding runs")
+stepFrames()
+check(CZ.index==nil,"partial decoded data never reaches browser search/sort")
+czClose(white);local closedWrites=UI.seatWrites.White
+finishFrames()
+check(CZ.index and #CZ.index.decks>100 and not CZ.fetching,"decoding finishes with the complete cached catalog even if the user closes")
+check(UI.seatWrites.White==closedWrites and attrs.cz_panel_White.active=="False","late catalog completion makes no writes to the closed panel")
+CZ.state.White.open=true
+local keepIndex=CZ.index
+local get=WebRequest.get
+WebRequest.get=function(_,cb)cb({text=read("docs/tts/catalog.jsonl"):match("^[^\n]*\n"),is_error=false})end
+czRefresh(white);finishFrames()
+check(CZ.index==keepIndex and not CZ.fetching,"failed/truncated refresh retains the previous complete catalog and allows retry")
+check(values.cz_status_White:find("incomplete",1,true) and attrs.cz_refresh_White.interactable=="True","decode failure is shown and Refresh is re-enabled")
+WebRequest.get=get;Wait.frames=oldFrames
 CZ.index,CZ.state.White=realIndex,realState
 
 print(string.format("%d checks, %d failed", checks, failures))

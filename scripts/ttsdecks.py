@@ -391,6 +391,14 @@ def index(decks: list, paths: dict[str, str]) -> dict:
     }
 
 
+def catalog_file(data: dict) -> str:
+    """Same catalog metadata as decks.json, split into small frame-decodable records."""
+    header = {key: value for key, value in data.items() if key != "decks"}
+    header["count"] = len(data["decks"])
+    return "".join(json.dumps(record, ensure_ascii=False, separators=(",", ":")) + "\n"
+                   for record in (header, *data["decks"]))
+
+
 def files(decks: list, out_dir: Path, q) -> dict[Path, str | bytes]:
     """Every docs/tts/ file for `decks` (build_site.DeckInfo objects)."""
     wanted = token_ids([c for d in decks for n in d.deck.names
@@ -419,6 +427,7 @@ def files(decks: list, out_dir: Path, q) -> dict[Path, str | bytes]:
         paths[d.key] = rel
         out[root / rel] = deck_file(d, tokens)
         out[root / preview_path(rel)] = preview_file(d)
-    out[root / "decks.json"] = json.dumps(index(decks, paths), ensure_ascii=False,
-                                          separators=(",", ":")) + "\n"
+    data = index(decks, paths)
+    out[root / "decks.json"] = json.dumps(data, ensure_ascii=False, separators=(",", ":")) + "\n"
+    out[root / "catalog.jsonl"] = catalog_file(data)
     return out

@@ -34,7 +34,7 @@ CZ = {
   rows = 10,
   menuRows = 10,
   sleeveCells = 8,
-  index = nil,        -- decks.json, once fetched
+  index = nil,        -- full catalog metadata, decoded over several frames
   indexAt = 0,        -- os.time() it arrived
   staleAfter = 120,   -- seconds: opening the browser after this re-fetches it
   fetching = false,
@@ -537,7 +537,9 @@ local function czFetchIndex(then_)
       czButton("cz_refresh_" .. c, "Refreshing…")
     end
   end
-  WebRequest.get(CZ.base .. "decks.json?t=" .. os.time(), function(req)
+  local browser = CZ
+  local function finish(index, err)
+    if CZ ~= browser then return end
     CZ.fetching = false
     for _, c in ipairs(CZ.seats) do
       if CZ.state[c] and CZ.state[c].open then
@@ -545,13 +547,10 @@ local function czFetchIndex(then_)
         czButton("cz_refresh_" .. c, "Refresh")
       end
     end
-    if req.is_error then
-      for _, c in ipairs(CZ.seats) do if CZ.state[c] and CZ.state[c].open then czStatus(c, "Could not reach the deck list: " .. tostring(req.error), "error") end end
-      return
-    end
-    local ok, index = pcall(JSON.decode, req.text)
-    if not ok or type(index) ~= "table" or not index.decks then
-      for _, c in ipairs(CZ.seats) do if CZ.state[c] and CZ.state[c].open then czStatus(c, "The deck list did not read as JSON.", "error") end end
+    if err then
+      for _, c in ipairs(CZ.seats) do
+        if CZ.state[c] and CZ.state[c].open then czStatus(c, err, "error") end
+      end
       return
     end
     CZ.index, CZ.indexAt = index, os.time()
@@ -562,6 +561,20 @@ local function czFetchIndex(then_)
       end
     end
     if then_ then then_() end
+  end
+  WebRequest.get(CZ.base .. "catalog.jsonl?t=" .. os.time(), function(req)
+    if CZ ~= browser then return end
+    if req.is_error then finish(nil, "Could not reach the deck list: " .. tostring(req.error)); return end
+    local reported = -1
+    czDecodeCatalog(req.text, finish, function(count, total)
+      if CZ.index or math.floor(count / 16) == reported then return end
+      reported = math.floor(count / 16)
+      for _, c in ipairs(CZ.seats) do
+        if CZ.state[c] and CZ.state[c].open then
+          czStatus(c, string.format("Loading the deck list… %d / %d", count, total))
+        end
+      end
+    end, function() return CZ == browser end)
   end)
 end
 

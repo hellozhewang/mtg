@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-22 (Codex): delivered **v57** for cached deck-list data and visible-page row rendering; browser functions are also applied to the running table. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-22 (Codex): preparing **v58** for the measured first-open catalog decoding stall; v57 is the latest delivered save. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -17,6 +17,50 @@ selects. Report the latest saved build and Steam version separately.
 Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a version
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
+
+## v58: measured first-click JSON decoding stall (preparing)
+
+Owner reports a game freeze on the first Cactuar click after loading a new game.
+**Found a separate bottleneck from row rendering:** on the running PC, native
+`JSON.decode` of the existing **109,574-byte / 164-deck** catalog took **8.638 s**
+by `os.clock`. Cold list preparation/row formatting with UI writes suppressed
+was **0.006 s**; cached opening was **0.0014 s**. v57 cached subsequent list work
+but did not change this first monolithic native decode. Earlier hypotheses about
+images or row counts did not identify this stall. No images/card objects load in
+this path. Evidence: `.cache/deck-list-live/v58-profile.json` and
+`v58-record-profile.json`.
+
+The publisher now emits **catalog.jsonl**, with one small metadata header followed
+by one complete deck metadata record per line, alongside unchanged **decks.json**
+for older builds. It reconstructs the same full catalog, including all fields;
+formatting is generated centrally by `scripts/ttsdecks.py`. JSONL separates catalog
+records from the physical spawn files' .ndjson format/image-validation roles.
+
+New `tts/cactuar_catalog.lua` decodes at most **two records per frame**, yielding
+when its **6 ms soft budget** is consumed. Native record decoding cannot be
+preempted, so this is not a guaranteed frame-time ceiling. Data is committed only
+once counts, unique deck IDs and all JSON records validate. Fetching remains active
+through decoding, first-load progress updates are limited, refresh failures retain
+the previous complete catalog, and closed windows stay closed. Superseded browser
+instances stop their scheduled work. No fallback performs the old giant decode.
+The complete metadata catalog remains available for search/filter after loading.
+
+Live decoder-only trials using the same 164 records finished in **1.480 / 1.487 s
+including frame yields**, versus the monolithic 8.638 s measured decode. A sampled
+header was ~20 ms and a deck ~3 ms, but full runs also included an **isolated native
+decode spike of 383–396 ms** on an ordinary 629-byte record. Cause of that isolated
+outlier is unproven; do not claim zero hitches, a strict 6 ms limit or a particular
+GC cause. HTTP latency and a truly cold scene/UI layout are not covered by these
+trials. Evidence: `v58-incremental-profile.json` and `v58-record-details.json`.
+
+**17 incremental-catalog checks** cover yielding, slow native calls, cancellation,
+malformed/duplicate/truncated records and atomic completion. **1,170 browser checks**
+include async refresh, closing mid-decode and keeping old data on failure. Seven
+Lua suites, table-build, release, exporter and image-validation tests pass. The
+exporter test verifies that the generated JSONL matches the published old index.
+Cold UI writes are now 126 including progress updates, cached reopen 3, unchanged
+redraw 0; no browser image loads. Preparing the next numbered save, after verifying
+the new catalog file is actually published. **Steam remains v42; no Workshop upload.**
 
 ## v57: keep catalog data, render only the visible page (saved; not on Steam)
 

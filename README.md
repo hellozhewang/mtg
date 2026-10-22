@@ -791,6 +791,10 @@ The full metadata catalog stays in Lua for search and filtering. The list reuses
 rows per seat, formats only the requested page and caches filtered/sorted results;
 paging or selecting a deck does not rebuild the full list. Closed panels receive no
 UI writes. Actual cards spawn only when a player loads a deck.
+The catalog loads from `tts/catalog.jsonl`: small JSON records decoded over several
+frames, with progress on first opening. Search and filtering use the complete catalog
+once it finishes. Refresh keeps the previous catalog until the replacement validates;
+older builds continue using `tts/decks.json`.
 Deck details, commander names and guides remain text-only. **Read guide** fetches
 written strategy only when clicked; **Back to decks** returns to the list.
 **Sleeves ▾** opens an eight-picture chooser and downloads only that page's small

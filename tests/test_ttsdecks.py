@@ -153,6 +153,20 @@ class SleeveTests(unittest.TestCase):
             {"id": "zebra_stripes", "label": "Zebra Stripes", "file": "sleeves/zebra_stripes.png?v=8f8cbb7d"},
         ])
 
+    def test_incremental_catalog_reconstructs_the_same_metadata(self):
+        data = {"v": 1, "tiers": [], "themes": [], "sleeves": [], "tournament": ["deck"],
+                "decks": [{"id": "deck", "name": 'Quoted "name" — 中文', "commander": "A\nB", "cap": None}]}
+        records = [json.loads(line) for line in ttsdecks.catalog_file(data).splitlines()]
+        header = records[0]
+        self.assertEqual(header.pop("count"), 1)
+        header["decks"] = records[1:]
+        self.assertEqual(header, data)
+        self.assertNotIn("count", data)
+        published = json.loads((ROOT / "docs/tts/decks.json").read_text())
+        self.assertEqual((ROOT / "docs/tts/catalog.jsonl").read_text(), ttsdecks.catalog_file(published))
+        out = ttsdecks.files([], Path("/site"), None)
+        self.assertEqual(json.loads(out[Path("/site/tts/catalog.jsonl")])["count"], 0)
+
     def test_sleeves_are_published_and_listed(self):
         (self.dir / "cactuar.jpg").write_bytes(b"jpg-bytes")
         out = ttsdecks.files([], Path("/site"), None)

@@ -8,6 +8,11 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v52 — 2026-10-21 (commit f17111b9)
+- Restore Inspect menu registration across browser/Global reloads without duplicating entries on Inspect-only hot patches.
+- Retry late-forming decks and transient native menu readiness; preserve other menus, deck order, the text-only browser and battlefield music.
+- Saved build for testing; not uploaded to Steam.
+
 ## v51 — 2026-10-21 (commit c7f39892)
 - Make the Cactuar browser text-only: remove commander previews and guide pictures; keep written guides on Read guide and choose sleeves by name.
 - Skip closed-seat rendering and unchanged UI writes; eliminate browser picture registration and shared XML rebuilding. Start hidden Inspect grids at 32 cells and grow on demand.

@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): preparing **v52** to restore Inspect registration across browser/global reloads. Latest delivered is v51. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-21 (Codex): delivered **v52** with Inspect registration fixes across browser/global reloads. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -18,7 +18,7 @@ Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a vers
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
 
-## v52: Inspect menu registration after reload/stack creation (preparing)
+## v52: Inspect menu registration after reload/stack creation (saved; not on Steam)
 
 Owner reported losing Inspect on a deck. The live running table was still v50,
 with `czsOpen` defined and **11/11 decks marked attached**. The flag does not prove
@@ -39,7 +39,18 @@ remain. **120 Inspect checks** pass, including reset/reload, no duplicates in th
 same instance, late-forming stacks and a transient native registration failure.
 All **five Lua suites** and **14 build tests** pass.
 
-Delivery and owner-visible menu verification pending. No Workshop upload.
+Delivered **MTG 6 player Cactuar Ver_v52** JSON/PNG from pushed source `f17111b9`.
+Pages passed exact audio/tile-byte verification. Delivered checksums match; read-back
+Lua compilation, XML parsing, private text-only browser/Inspect panels, scoped
+attachment flags, success-only registration and startup retries are verified.
+Archive/manifest: `.cache/tts-builds/v52/`. Save SHA-256:
+`be1c8d9d42122e3a501d5b3b0d0caca704c26e625c8e1665beb6b312a07ea93a`.
+Canonical v51 files were replaced in Saves; their archive remains. The running v50
+was not reloaded/patched; owner-visible menu verification requires loading v52.
+The owner has not yet answered whether missing Inspect affects all decks or only a
+changed deck. Do not claim the visible current-game menu is already restored.
+Final WIP/changelog copies refreshed on the Desktop. **Steam remains v42; no
+Workshop upload.**
 
 ## v51: text-only browser and opening lag (saved; not on Steam)
 

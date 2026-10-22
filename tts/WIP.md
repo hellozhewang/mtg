@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): preparing **v50** with seven prioritized battlefield soundtrack triggers and commander pictures on demand; latest delivered build is v49. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-21 (Codex): delivered **v50** with seven prioritized battlefield soundtrack triggers and commander pictures on demand. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -18,7 +18,7 @@ Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a vers
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
 
-## v50: prioritized battlefield soundtrack and commander images on demand (preparing; not on Steam)
+## v50: prioritized battlefield soundtrack and commander images on demand (saved; not on Steam)
 
 Owner reported commander pictures still cause major lag, and requested a button
 instead of automatic loading. Selecting any deck now shows text details and a
@@ -81,9 +81,22 @@ Validation: **92 music checks**, **1536 timer checks**, **25 deck-export tests**
 **14 table-build tests** pass.
 Commander image opt-in and guide independence pass **63 preview checks**; existing
 Inspect behavior passes **115 checks**.
-Combined Lua compilation and existing deck-object color coverage pass. The seven
-original WAVs are unchanged; six newly integrated source/published copies match.
-Delivery and live verification are pending. No Workshop upload.
+Combined Lua compilation and existing deck-object color coverage pass. Original
+soundtrack WAVs are unchanged; six newly integrated source/published copies match
+and their loudness measurements were checked without modifying the recordings.
+
+Delivered **MTG 6 player Cactuar Ver_v50** JSON/PNG from pushed source `45472f47`.
+Pages passed the exact audio/tile-byte gate for all recordings. Delivered checksums
+match; read-back save name, combined Lua compilation, XML parsing, all six private
+image buttons, image opt-in/reset logic, embedded colors, music priority and all
+eight WAV URL hashes are verified. Immutable archive/manifest:
+`.cache/tts-builds/v50/`. Save SHA-256:
+`2269aa4f32e1739760b76d2971205f5f713aa00fbf8f04e2de14b6becd33f589`.
+Canonical v49 files were replaced in Saves; their archive remains. The running game
+was not reloaded or patched: load v50 from Saved Games to test the new button and
+additional music triggers. Owner listening/performance checks remain outstanding;
+the earlier theme/Ultima WAV confirmations apply to v49. Final WIP/changelog copies
+refreshed on the Desktop. **Steam remains v42; no Workshop upload.**
 
 ## v49: original WAV soundtrack / v48 audible failure (saved; not on Steam)
 

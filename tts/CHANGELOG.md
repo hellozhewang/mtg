@@ -8,6 +8,11 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v50 — 2026-10-21 (commit 45472f47)
+- Prioritized battlefield music on qualifying active turns (10+ permanents): Goblins (Titan), artifacts (Ultima), White (Thordan), Black (Hades), Blue (Alexander/Locus), Green (Garuda), Red (Ifrit)
+- Use original FF14 WAV tracks with pause/resume across qualifying turns and trimmed start on Hades
+- Embed card color metadata for accurate creature color detection
+
 ## v49 — 2026-10-21 (commit 17949770)
 - Use the original FF14 WAV recordings; v48’s MP3 copies produced incorrect repeated sounds on the owner’s client.
 - Keep one soundtrack playlist entry, enable looping only after load, and clear the prelude playlist when the cannon fires. Retain artifact/turn gating and Ultima pause/resume.

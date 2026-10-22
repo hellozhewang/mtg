@@ -1,0 +1,67 @@
+The single biggest rule a new pilot gets wrong is Starscream's vehicle trigger: when Starscream, Seeker Leader deals combat damage to a player and there is no monarch, that player becomes the monarch, NOT you. This is deliberate political design: Starscream crowns an opponent to make them the table's archenemy and incentivize other players to attack them. You then attack that player on your next turn with Starscream's flying, menace, and haste to seize the crown, which automatically converts Starscream into his Power Hungry side to start burning opponents for two damage on every card you draw.
+
+# Seizing the crown and political deals
+Starscream, Power Hungry :: Cast converted for {2}{B} via More Than Meets the Eye. Attacks with flying, menace, and haste to introduce the monarch or reclaim it. Once you hold the crown, every card you draw deals two damage to any target opponent.
+Court of Ambition :: You become the monarch. At your upkeep, opponents lose three life or discard a card; if you remain the monarch, that tax doubles to six life or two discarded cards.
+Court of Locthwain :: You become the monarch. Upkeep exiles the top card of an opponent's library to play; if you are the monarch, you cast that card completely free of charge.
+Custodi Lich :: Introduces the monarch and forces target player to sacrifice a creature. Whenever you reclaim the monarch, another sacrifice trigger hits the table.
+Marchesa's Decree :: Makes you the monarch and punishes anyone attacking you with direct life loss, discouraging players from snatching the crown back.
+Thorn of the Black Rose :: Cheap monarch enabler with deathtouch that serves as an impenetrable defensive blocker.
+Throne of the High City :: Lands-based monarch recovery. Sacrifice it at instant speed to retake the crown when combat is unfavorable.
+Bloodthirsty Blade :: Equips for {1} to an opponent's most dangerous creature, forcing it to attack another opponent every turn.
+Scheming Symmetry :: Ultimate political bargaining chip. Partner with an opponent to each tutor a card to the top of your libraries, striking a deal to answer the current archenemy.
+Wishclaw Talisman :: Search for your key engine piece, then hand the talisman to an ally with an agreement on what threat they must tutor an answer for.
+
+# Weaponizing the draw and table drain
+Peer into the Abyss :: The premier one-card win with Starscream. Target yourself to draw half your library (~35 cards). With Starscream active as the monarch, each drawn card triggers independently, giving you 35 triggers of two life loss to distribute across opponents for 70 total damage.
+Sheoldred, the Apocalypse :: Life-total swing engine. Heals you for two life on every draw while punishing opponents for two life whenever they draw, perfectly countering the life loss from Peer into the Abyss.
+Bloodletter of Aclazotz :: Forces opponents to lose double the life they would normally lose during your turn, turning Starscream's two-damage pings into four-damage bolts.
+Teferi's Puzzle Box :: Forces each player to put their hand on the bottom of their library and draw that many cards every turn. Starscream turns your draw step into massive burn, while Sheoldred, Bowmasters, and Underworld Dreams shred opponents.
+Temple Bell :: Tap at instant speed to give everyone a card, triggering Starscream to deal two damage to any target whenever you need a quick kill.
+Howling Mine :: Group hug card draw that feeds the table while weaponizing your own extra draws into consistent damage.
+Psychosis Crawler :: Sits on the board and drains every opponent for one life whenever you draw a card.
+Scrawling Crawler :: Punishes opponents for drawing cards on their turns while feeding you an additional draw on your upkeep.
+Underworld Dreams :: Consistent drain that chips opponents down whenever they attempt to draw through their libraries.
+Gixian Puppeteer :: Triggers on your second draw each turn to drain each opponent for two life and gain you two life.
+Blitzwing, Cruel Tormentor :: Fellow Decepticon Triple Changer. Halves the life total of opponents who took heavy damage from Starscream's draw triggers on your end step.
+Gray Merchant of Asphodel :: Massive lifegain and table-wide drain scaling with your heavy black devotion.
+
+# Political pillowfort and rattlesnake deterrents
+No Mercy :: Automatically destroys any creature that deals damage to you, making attacking you a suicidal proposition for opponents.
+Revenge of Ravens :: Drains one life and gains you one life whenever any creature attacks you or your planeswalkers.
+Darkness :: Black Fog. When an opponent commits their entire army to take the monarch from you, cast Darkness for a single black mana to completely negate combat and leave them defenseless.
+Ophiomancer :: Spawns a 1/1 deathtouch Snake token on each player's upkeep if you control no snakes, providing an endless supply of rattlesnake blockers.
+Dauthi Voidwalker :: Exiles all opposing cards that would hit the graveyard with void counters, and sacrifices to cast their best exiled spell for free.
+Sudden Spoiling :: Split second combat trick that reduces an opponent's entire attacking or defending creature board to vanilla 0/2s with no abilities.
+
+# The compact finishes
+Bloodthirsty Conqueror + Vito, Thorn of the Dusk Rose :: Infinite life drain loop. Bloodthirsty Conqueror gains life whenever an opponent loses life, and Vito deals that much damage to an opponent whenever you gain life. A single point of damage or life loss starts an infinite chain that wipes out the table.
+Bolas's Citadel + Sensei's Divining Top :: Play Top from top of library for one life via Citadel, tap Top to draw a card and put it back on top. With Starscream active as the monarch, each draw burns an opponent for two life. With Sheoldred, you gain two life per loop for infinite life and damage.
+In accordance with Bracket 3 rules, these two-card combos and Peer into the Abyss are reserved for turn 6 or later. Spend early turns orchestrating the monarch, making political alliances, and setting up defenses before executing the finish.
+
+# Tutors and big mana engines
+Beseech the Mirror :: Bargain by sacrificing a Treasure, token, or spent artifact to search your library and cast any spell with mana value 4 or less for free (Sheoldred, Citadel, The One Ring, or Vito).
+Grim Tutor :: Unconditional tutor to hand for three mana and three life.
+Insatiable Avarice :: Flexible modal tutor that puts a card on top of your library or draws three cards to trigger Starscream.
+Cabal Coffers :: Generates astronomical amounts of black mana when combined with Urborg, Tomb of Yawgmoth.
+Urborg, Tomb of Yawgmoth :: Turns every land on the battlefield into a Swamp, powering Cabal Coffers and Cabal Stronghold.
+Crypt Ghast :: Doubles mana production from all Swamps with extort to drain opponents on every spell.
+K'rrik, Son of Yawgmoth :: Replaces black mana pips with two life, accelerating high-cost spells into play.
+Vilis, Broker of Blood :: Massive card advantage engine that draws cards whenever you lose life, triggering Starscream repeatedly.
+The One Ring :: Grindy card draw engine and protection from everything for a full turn. Each tap draws cards and burns an opponent via Starscream.
+Orcish Bowmasters :: Flashes in to punish opponent card draw, generating a massive Orc Army while pinging down opposing utility creatures.
+
+# Removal and defensive interaction
+Deadly Rollick :: Free instant-speed creature exile as long as you control Starscream.
+Toxic Deluge :: Premier three-mana black board wipe that pays life to bypass indestructible and hexproof.
+Damnation :: Clean four-mana creature board wipe.
+Defile :: Instant-speed creature removal for a single black mana that scales with your Swamp count.
+Withering Torment :: Flexible instant-speed answer that destroys either target creature or target enchantment.
+Imp's Mischief :: Black redirection spell that redirects opposing counterspells, targeted removal, or extra-turn spells.
+
+# Opening hand and sequencing
+Aim for hands with two or three lands, a cheap mana rock (Sol Ring, Arcane Signet, Jet Medallion, Dark Ritual), and early card draw or a monarch payoff.
+Cast Starscream converted for {2}{B} as Seeker Leader on turn 2 or 3. Attack an open opponent to introduce the monarch to the table and incite conflict between your opponents.
+On following turns, attack the monarch with Starscream's flying and menace to seize the crown and convert Starscream into Power Hungry mode.
+Deploy pillowfort pieces (Marchesa's Decree, No Mercy, Ophiomancer) to hold the crown, and leverage symmetrical draw artifacts (Teferi's Puzzle Box, Howling Mine) to chip away at life totals.
+On turn 6 or later, resolve Peer into the Abyss or assemble Bloodthirsty Conqueror with Vito to drain the entire table in a single overwhelming turn.

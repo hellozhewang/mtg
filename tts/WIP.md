@@ -5,9 +5,9 @@ Codex) reads it first and updates it with every change. The [TTS development gui
 
 Last updated 2026-10-22 (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
-Both states visually checked live. **Steam remains v60.** See [the changelog](../docs/development/tts-changelog.md).
+Both states visually checked live. **Steam is now v64, published at the owner’s request.** See [the changelog](../docs/development/tts-changelog.md).
 
-## v64: explicit white commander button labels (saved; not on Steam)
+## v64: explicit white commander button labels (saved and published to Steam)
 
 Owner's screenshot disproves the v63 white-label claim: the native Button label
 remained dark despite XML and runtime `textColor="#FFFFFF"`. Replace the built-in
@@ -24,7 +24,16 @@ Both Show and Hide were visually white in screenshots; the Hide check temporaril
 hid the popup without loading artwork, then restored its prior state. No cards,
 selection, searches, audio or image assets were changed. Delivered from `876a4fe7`;
 remote readback confirms all six explicit child labels and canonical runtime code.
-Immutable JSON/PNG and SHA-256 manifest: `.cache/tts-builds/v64/`. No Steam upload.
+Immutable JSON/PNG and SHA-256 manifest: `.cache/tts-builds/v64/`.
+
+Owner authorized release of this version on 2026-10-22. Uploaded the exact delivered
+v64 JSON/PNG with `release_tts.py --workshop-only --version 64`, without rebuilding or
+incrementing the version. Local archive and Saved Games SHA-256 values match before
+and after upload. Steam confirmed `ok=true`, `EResult=1`, item `3822623414`, no
+pending legal agreement, at `2026-10-22T16:41:01.8665926-07:00`. Ordinary interactive temporary task
+removed; no execution-policy changes. Receipt retained as
+`.cache/tts-builds/v64/workshop-result.json`, manifest marked uploaded.
+**Saved Games v64; Steam Workshop v64.**
 
 ## v63: white Show commander label (saved; not on Steam)
 

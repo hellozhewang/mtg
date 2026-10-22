@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-22 (Codex): preparing **v53**: actual zone-menu Inspect fix (patched live), plus sleeve thumbnails on demand. Latest delivered is v52. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-22 (Codex): preparing **v54** with a live-verified Inspect grid expansion fix. Latest delivered is v53 with zone-menu repair and sleeve thumbnails on demand. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -18,7 +18,36 @@ Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a vers
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
 
-## v53: actual Inspect zone-menu fix and lazy sleeve images (preparing)
+## v54: Inspect grid expansion exceeds MoonSharp pattern limit (preparing)
+
+After confirming the menu was back, owner provided a console screenshot:
+`pattern too complex` from `gsub` in **czsEnsureCells**, reached through refresh/open.
+The function used a wildcard substitution across the entire shared XML to replace
+a grid. v51's smaller initial pool made this old pattern path run for ordinary
+~100-card decks, exposing the MoonSharp limit. The menu and the opened view are
+separate failures; v53's zone hook fixes the menu, not this XML growth error.
+
+Grid replacement now uses **plain bounded searches** for the exact grid ID, its
+opening tag and first closing GridLayout. No wildcard over the shared XML, no
+getXmlTable/setXmlTable round-trip, no nested grids in our card cell template.
+Only the target seat's grid body changes; other private grids, entities and the
+large base UI remain byte-for-byte intact. Existing 64-cell growth increments and
+full-container inspection remain.
+
+Applied the module repair to the running table while preserving current Inspect
+sessions/queries, asset maps and outer spawn/destroy/color/zone hooks (including
+music). The old ticker was replaced, not duplicated. Retried current views:
+**retryOK true**, White pool **128**, other pools **32**. Subsequent live state:
+White Inspect **active**, **83 cards**, **31 shown with current filtering**,
+UI.loading **false**, rebuilding **false**. Zone hook still active; music status
+retained. No physical cards or turns were changed. Evidence:
+`.cache/inspect-live/v54-patch.json` and `v54-after.json`.
+
+**129 Inspect checks** pass, adding preservation of a 12,000-panel shared prefix
+and another seat's grid through expansion. All **six Lua suites** and **14 build
+tests** pass. v53's lazy sleeves remain. Delivery pending; no Workshop upload.
+
+## v53: actual Inspect zone-menu fix and lazy sleeve images (saved; not on Steam)
 
 Owner clarified Inspect was missing **only from White's and Red's decks**, then
 showed the White library menu with native Search/Cascade/basic-land actions but no
@@ -60,8 +89,17 @@ written-guide checks**, **92 music checks**, **1,536 timer checks**, **14 table-
 tests** and **8 release tests** pass. Combined Lua compiles. All browser images are
 inside the inactive private sleeve chooser; there are no commander/guide images.
 
-Delivery pending. Live menu repair/zone hook is installed on the running game;
-owner visual confirmation is pending. No Workshop upload.
+Delivered **MTG 6 player Cactuar Ver_v53** JSON/PNG from pushed source `26ab03fc`.
+Pages passed exact sound/tile-byte verification. Delivered checksums and read-back
+Lua/XML match; private sleeve grids contain all eight images, guide views have none,
+and both base-zone hooks are included. Archive: `.cache/tts-builds/v53/`.
+Save SHA-256:
+`5adf6f3bc1eb08aaca57bb9a45fb5d1f4a2579f218a1e2ae4653f36623337512`.
+Canonical v52 files were replaced in Saves; their archive remains. Owner explicitly
+confirmed **"Yes, Inspect is back"** after the live repair. They then reported a
+separate `czsEnsureCells` pattern error on opening Inspect: see v54. Sleeve pictures
+are in the numbered save; the running table only received the menu hook so far.
+**Steam remains v42; no Workshop upload.**
 
 ## v52: Inspect menu registration after reload/stack creation (saved; not on Steam)
 

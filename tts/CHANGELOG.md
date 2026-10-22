@@ -8,6 +8,11 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v53 — 2026-10-22 (commit 26ab03fc)
+- Restore Inspect after the base table clears and rebuilds deck menus on zone entry and exit; preserve Cascade/basic-land actions and existing startup/spawn retries.
+- Restore sleeve thumbnails only on opening the Sleeves chooser, eight per page; cache visited pages and preserve other private windows. Commander and guide pictures remain disabled.
+- Applied the Inspect zone hook to the running game. Saved build for testing; not uploaded to Steam.
+
 ## v52 — 2026-10-21 (commit f17111b9)
 - Restore Inspect menu registration across browser/Global reloads without duplicating entries on Inspect-only hot patches.
 - Retry late-forming decks and transient native menu readiness; preserve other menus, deck order, the text-only browser and battlefield music.

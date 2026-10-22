@@ -195,12 +195,18 @@ local old = #taken
 czsTake(red)
 check(#taken == old and CZS.state.Red.selected == nil, "a removed selected GUID can't turn into a different draw")
 -- Every entry is in one scrolling view; larger containers expand the pool.
+-- A large unrelated shared UI and another seat's grid must survive byte-for-byte.
+local largePrefix = string.rep('<Panel text="Unrelated &amp; layout"/>', 12000)
+local otherGrid = '<GridLayout id="czs_grid_Red"><Text text="Other private grid"/></GridLayout>'
+xml = largePrefix .. xml .. otherGrid
 local many = {}
 for i = 1, 257 do many[#many + 1] = {guid = string.format("g%03d", i), name = string.format("Card %03d", i), index = 257 - i} end
 local big = deck("big", many)
 onObjectSpawn(big); big.open("White"); s = CZS.state.White
 check(#s.shown == 257 and s.shown[257] == "g257", "the scrolling view includes every object beyond the initial cell pool")
 check(CZS.capacity.White == 320 and rebuilds == 1, "a large container grows the pool once instead of truncating")
+check(xml:sub(1, #largePrefix) == largePrefix and xml:sub(-#otherGrid) == otherGrid,
+  "bounded grid replacement preserves the large shared prefix and another private grid exactly")
 check(#assets == 2, "Inspect assets are bounded to open views instead of accumulating past containers")
 check(xml:find('id="unrelated" text="A &amp; B"', 1, true) ~= nil, "pool expansion preserves unrelated XML and entity escaping")
 check(xml:find('id="czs_card_320_White"', 1, true) ~= nil, "new cells come from the build's shared template")

@@ -210,10 +210,21 @@ local function czsEnsureCells(color, count)
   end
   -- Replace only our grid in the serialized XML. Re-serializing the base UI's
   -- getXmlTable() loses entity escaping. Omit assets to preserve shared images.
-  local xml, replaced = UI.getXml():gsub(
-    '(<GridLayout[^>]-id="czs_grid_' .. color .. '"[^>]*>).-</GridLayout>',
-    function(open) return open .. table.concat(cells) .. "</GridLayout>" end, 1)
-  if replaced ~= 1 then return false end
+  -- MoonSharp rejects broad wildcard substitutions over the shared table XML.
+  -- Locate our exact grid with plain searches; its card cells contain no grids.
+  local xml = UI.getXml()
+  local anchor = xml:find('id="czs_grid_' .. color .. '"', 1, true)
+  if not anchor then return false end
+  local start, scan = nil, 1
+  while true do
+    local pos = xml:find("<GridLayout", scan, true)
+    if not pos or pos > anchor then break end
+    start, scan = pos, pos + 1
+  end
+  local openEnd = start and xml:find(">", start, true)
+  local closeStart = openEnd and xml:find("</GridLayout>", openEnd + 1, true)
+  if not openEnd or openEnd < anchor or not closeStart then return false end
+  xml = xml:sub(1, openEnd) .. table.concat(cells) .. xml:sub(closeStart)
   CZS.capacity[color] = size
   czsReload(function() UI.setXml(xml) end)
   return false

@@ -18,6 +18,37 @@ Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a vers
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
 
+## Commander picture performance follow-up (measured; no new build)
+
+Owner asks whether bringing commander pictures back will hurt performance again.
+**Yes on first registration; no clear extra cost switching already registered images
+in this run.** See [COMMANDER_IMAGE_PROFILE.md](COMMANDER_IMAGE_PROFILE.md) for the
+method, limits, per-window table and reproduction commands. Profiling helpers are
+`scripts/profile_tts_commander_images.py` and `.lua`, outside production table code.
+
+Three normal new-image registrations caused **437–531 ms** Lua callback gaps; three
+fresh-URL trials caused **435–509 ms**. An unchanged-asset negative control, with no
+commander pictures, caused **430–501 ms** gaps. The shared native UI/asset update path
+is implicated; its individual internal steps are not profiled. Cached picture
+switches averaged **1.72 ms/frame** versus **1.74 ms/frame** text-only across 36
+switches each, with overlapping p95s and background spikes in both variants.
+An independent unchanged-assets probe confirmed **440.16 ms / one engine frame**,
+while reported frame delta/game time were capped at 150 ms. Do not report the capped
+150 ms as the full hitch or claim zero image cost from the similar cached averages.
+
+The 60–94 KB pinned WebPs were checked; fresh-query bodies matched the original
+bytes. Actual Be'lakor artwork was verified in a held screenshot. This is a single
+host/current-table, small-window test, not busy multiplayer/full-resolution or
+empty-cache startup validation. One-time harness XML setup is separate from picture
+selection cost. Guides and deck parsing were excluded. Recommend optional first-load
+pictures and retained registered assets if reintroducing them; no production image
+feature was implemented in this measurement task.
+
+Cleanup restored **25 assets**, zero benchmark asset/panel entries, loading false and
+White's original Be'lakor selection/open state. Released benchmark globals/sampling;
+no cards/turns changed. Evidence: `.cache/commander-image-profile/` in the main repo.
+Archived v60 save/PNG checksums remain identical. **Saved Games v60; Steam v60.**
+
 ## v60: reduce Inspect opening and refresh bursts (saved and published to Steam)
 
 Owner asks whether the first-open catalog parser bottleneck also applies to Inspect.

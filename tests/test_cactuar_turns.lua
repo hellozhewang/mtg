@@ -49,9 +49,12 @@ local function tick()
   for id, f in pairs(ticks) do f() end
 end
 
-local played, broadcasts = {}, {}
+local played, turnPlayed, broadcasts = {}, {}, {}
 MusicPlayer = {loaded = true,
-  setCurrentAudioclip = function(p) played[#played + 1] = p.url end,
+  setCurrentAudioclip = function(p)
+    local target = p.url:find("change-turn.wav", 1, true) and turnPlayed or played
+    target[#target + 1] = p.url
+  end,
   play = function() end}
 function broadcastToAll(msg) broadcasts[#broadcasts + 1] = msg end
 
@@ -158,6 +161,7 @@ check(timers.White.vars.timerID == nil, "the table's clock isn't started before 
 check(timers.White.vars.timerOn == false and timers.Green.vars.timerOn == false,
   "the table's own clocks are kept quiet before the roll")
 onPlayerTurn({color = "Red"}, {color = "White"})                -- fired while the table loads
+check(#turnPlayed == 0, "loading a table does not play the turn-change clip")
 check(not CZT.started and CZT.color == nil, "a turn event while the table loads doesn't start the game")
 now = now + 100; tick()
 check(next(CZT.total) == nil and (label("Red") or "") == "", "nothing timed before the first turn")
@@ -184,10 +188,14 @@ check(timers.Blue.vars.turnN == 1 and timers.Blue.labels[6] == 1, "it is turn 1 
 check(timers.Blue.vars.timerID ~= nil and timers.Blue.vars.timerOn == true, "the table clock runs")
 check(timers.Green.vars.turnN == 0 and timers.Green.vars.timerOn == true, "every other seat starts from 0")
 check(broadcasts[#broadcasts]:find("BluePlayer takes the first turn", 1, true), "the table is told")
+check(#turnPlayed == 0, "the first turn is not announced as a turn change")
 now = now + 30; tick()
 check(label("Blue") == "total 0:30", "Blue's total runs (got " .. tostring(label("Blue")) .. ")")
 onPlayerTurn({color = "Red"}, {color = "Blue"})
 check(CZT.color == "Red" and CZT.total.Blue == 30, "later turns just switch, they don't restart the game")
+check(#turnPlayed == 1 and turnPlayed[1] == "test://tts/sounds/change-turn.wav", "a real turn change plays the selected custom clip")
+onPlayerTurn({color = "Red"}, {color = "Red"})
+check(#turnPlayed == 1, "duplicate events for the same turn do not replay the clip")
 
 -- Rolling the die starts a new game. Here it lands on White, whose turn it already is.
 local die = dieNamed("Who goes first?")
@@ -239,7 +247,9 @@ check(played[3] == "test://tts/sounds/slow-5min.wav", "the next slow turn is ann
 local chatsBefore = baseChats
 onChat("Announcer Off", {color = "White"})
 check(CZT.muted and baseChats == chatsBefore + 1, "announcer off, and the table's onChat still ran")
+local turnsBeforeMute = #turnPlayed
 onPlayerTurn({color = "Yellow"}, {color = "Red"})
+check(#turnPlayed == turnsBeforeMute, "announcer off also mutes turn-change audio")
 local shown = #broadcasts
 now = now + 300; tick()
 check(#played == 3 and #broadcasts > shown, "muted: broadcast only")
@@ -409,6 +419,25 @@ cztStartGame("Green")
 check(turnsRaw.turn_color == "Green" and CZT.color == "Green", "the turn moves to the cannon's pick")
 check(timers.Green.labels[6] == 1 and timers.Green.vars.turnN == 1, "turn 1 on the new winner's clock, not 2")
 check(read("scripts/build_tts_table.py"):find("cztStartGame", 1, true), "the build patches the cannon to call cztStartGame")
+
+-- A new turn replaces a pending clip; the old load callback must not play it.
+local pending, plays = {}, 0
+Wait.condition = function(callback) pending[#pending + 1] = callback end
+MusicPlayer.play = function() plays = plays + 1 end
+onPlayerTurn({color = "Blue"}, {color = "Green"})
+onPlayerTurn({color = "Red"}, {color = "Blue"})
+check(#pending == 2 and MusicPlayer.repeat_track == false, "turn-change clips are queued once per change and do not loop")
+pending[1]()
+check(plays == 0, "an obsolete clip load cannot play after a newer turn change")
+pending[2]()
+check(plays == 1, "the newest loaded clip plays once")
+onPlayerTurn({color = "White"}, {color = "Red"})
+onChat("announcer off", {color = "White"})
+pending[3]()
+check(plays == 1, "muting also cancels a clip that was still loading")
+local beforeInvalid = #turnPlayed
+onPlayerTurn({color = "Grey"}, {color = "White"})
+check(#turnPlayed == beforeInvalid, "spectator turn events do not play the custom clip")
 
 print(string.format("%d checks, %d failed", checks, failures))
 os.exit(failures == 0 and 0 or 1)

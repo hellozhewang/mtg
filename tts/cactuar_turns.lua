@@ -34,6 +34,7 @@ CZT = {
   announced = {},      -- thresholds already announced this turn
   timers = {},         -- seat colour -> {obj = Timer object, index = our button}
   muted = false,
+  turnSound = "sounds/change-turn.wav",
   lines = {
     {at = 300, text = "Yo Twin, hurry yo ass up, you tweakin!", sound = "sounds/slow-5min.wav"},
     {at = 600, text = "In the beninging... In the, in the benin... In the beninging. Yah... In the, in, in...", sound = "sounds/slow-10min.wav"},
@@ -165,15 +166,25 @@ local function cztShowAll()
   for _, c in ipairs(CZ.seats) do cztShow(c) end
 end
 
+local function cztPlay(sound, title)
+  if CZT.muted then return end
+  local state = CZT
+  state.audioSerial = (state.audioSerial or 0) + 1
+  local serial = state.audioSerial
+  pcall(function()
+    -- soundBase: set by hand to test clips from somewhere other than CZ.base.
+    MusicPlayer.repeat_track = false
+    MusicPlayer.setCurrentAudioclip({url = (CZT.soundBase or CZ.base) .. sound, title = title})
+    Wait.condition(function()
+      if CZT == state and state.audioSerial == serial and not state.muted then MusicPlayer.play() end
+    end, function() return MusicPlayer.loaded end, 15)
+  end)
+end
+
 local function cztAnnounce(line, color)
   local who = Player[color] and Player[color].steam_name or color
   broadcastToAll(string.upper(line.text) .. "  (" .. who .. ")", {1, 0.45, 0.2})
-  if CZT.muted then return end
-  pcall(function()
-    -- soundBase: set by hand to test clips from somewhere other than CZ.base.
-    MusicPlayer.setCurrentAudioclip({url = (CZT.soundBase or CZ.base) .. line.sound, title = "Announcer: " .. line.text})
-    Wait.condition(function() MusicPlayer.play() end, function() return MusicPlayer.loaded end, 15)
-  end)
+  cztPlay(line.sound, "Announcer: " .. line.text)
 end
 
 -- Bank the finished turn and start timing the next one, once the game has started.
@@ -450,11 +461,16 @@ CZT_BASE = CZT_BASE or {turn = onPlayerTurn, randomize = onObjectRandomize, chat
 -- Turn events TTS fires while the table is still loading don't start a game.
 function onPlayerTurn(player, previous)
   local color = player and player.color
+  local changed = CZT.started and CZT.restored and CZT.color and color ~= CZT.color
+    and cztSeat(color) and os.time() - (CZT.loadedAt or 0) > 5
   if not CZT.started and CZT.restored and cztSeat(color) and os.time() - (CZT.loadedAt or 0) > 5 then
     cztFirstTurn(color)
   else
     cztSwitch(color)
   end
+  -- MusicPlayer is shared: everyone hears this clip. TTS's private native ping
+  -- is not exposed for replacement through the Workshop scripting API.
+  if changed then cztPlay(CZT.turnSound, "Turn change") end
   if CZT_BASE.turn then return CZT_BASE.turn(player, previous) end
 end
 

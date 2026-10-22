@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): **v44 delivered to Saved Games** with a slightly smaller commander image. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-21 (Codex): preparing **v45** with the owner's `change-turn.wav` clip on turn changes. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -17,6 +17,28 @@ selects. Report the latest saved build and Steam version separately.
 Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a version
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
+
+## v45: custom change-turn sound (preparing saved build)
+
+Owner asked who hears the turn-change sound and requested `change-turn`. Inspection
+of v44 found no custom turn-change clip: the existing sound is TTS's native alert
+for the incoming player. The official Turns KB describes that behavior; the Lua
+Turns API exposes no sound replacement setting. The custom Music Player is shared,
+so the new WAV plays for **everyone**, while TTS's native ping remains separate.
+This distinction was explained before implementation. The shared music channel can
+interrupt music; each client's MP3 Volume controls what they hear.
+
+Reuse the owner-prepared `tts/sounds/change-turn.wav`: 1.696s, mono PCM16 at 22050 Hz,
+SHA-256 prefix **777efbb9**. Source/published bytes match; no audio regeneration or
+paid API call. Other audio/generator edits and the separate deleted legacy
+`docs/tts/sounds/pass-turn.wav` working edit stay outside this change.
+
+Only genuine changes between active turns play the custom clip; setup/load,
+first-turn initialization, same-color duplicate events and spectator turns do not.
+`announcer off` mutes it. Clips do not loop. Shared playback now discards obsolete
+load callbacks after a newer sound, mute or script reload. Existing timer/base
+handlers remain wrapped. **1506 turn/timer checks** and **12 table-build tests** pass.
+Deliver v45 without Steam upload.
 
 ## v44: slightly smaller commander image (saved; not on Steam)
 

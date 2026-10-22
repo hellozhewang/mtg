@@ -812,6 +812,9 @@ in Tournament mode is printed to chat with their name, seat and the time.
 The table also shows each seat's **total turn time** for the game under its turn timer
 (the "Who goes first?" roll resets it). An **announcer** mocks a turn that reaches 5 and
 then 10 minutes ([tts/cactuar_turns.lua](tts/cactuar_turns.lua); chat `announcer off`).
+Turn changes after the game starts also play `change-turn.wav` for everyone through
+the shared Music Player. TTS's native incoming-player ping remains separate.
+`announcer off` mutes custom turn-change and slow-turn clips.
 
 **Inspect contents alphabetically:** right-click a deck or bag and choose **Inspect**.
 A private, narrow window shows four scrolling columns and a search bar, using the live

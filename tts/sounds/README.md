@@ -1,5 +1,15 @@
 # Announcer clips
 
+## Turn-change clip (v45)
+
+`change-turn.wav` is the owner-selected 1.696s mono PCM16 clip at 22050 Hz
+(SHA-256 prefix `777efbb9`). It plays through the shared Music Player on genuine
+turn changes after the game has started, so everyone hears it at their own MP3
+Volume. `announcer off` mutes it along with the slow-turn clips. It does not loop
+or play for duplicate events, setup, or restored turns. TTS's native incoming-player
+ping remains separate; Workshop Lua cannot replace its sound or target a custom
+Music Player clip to just one player. The shared channel can interrupt music.
+
 ## Current slow-turn clips (2026-10-21)
 
 The 5-minute clip is the prepared `hood_warfare_2` recording: **"Yo Twin, hurry yo

@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-22 (Codex): preparing **v56** for white sleeve previews; the binding repair is applied and visually checked on the running v55 table. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-22 (Codex): delivered **v56** for white sleeve previews; the binding repair is also applied and visually checked on the running v55 table. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -18,7 +18,7 @@ Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a vers
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
 
-## v56: white sleeve preview pictures (preparing)
+## v56: white sleeve preview pictures (saved; not on Steam)
 
 Owner reports **"SLEEV LOADS WHITE"**, clarified as the **pictures in the Sleeves
 menu**, not loaded card backs. Reproduced on the running v55 host: all eight first-
@@ -54,7 +54,13 @@ Do not claim that separate message fixed by this sprite repair.
 **42 lazy-sleeve checks** pass, including delayed native completion, stale cached
 image names after a rebuild and closing during settling. All six Lua suites,
 14 table-build tests and eight release tests pass (28 Python tests total).
-Preparing the next numbered save. **Steam remains v42; no Workshop upload.**
+Delivered **MTG 6 player Cactuar Ver_v56** JSON/PNG from pushed source `7ed7739b`.
+Pages passed exact sound/tile-byte verification. Delivered Lua compiles and includes
+the exact patched sleeve module; XML verifies six private eight-picture chooser
+panels. Archive: `.cache/tts-builds/v56/`. Save SHA-256:
+`91e4d9d362c0aef425ebe63bf6396e4a266188eb9f2f4c527a6b8b9e4f53f01c`.
+Saves now contains v56, with v55 archived unchanged. Final WIP/changelog copies
+refreshed on Desktop. **Steam remains v42; no Workshop upload.**
 
 ## v55: sleeve images only on explicit page navigation (saved; not on Steam)
 

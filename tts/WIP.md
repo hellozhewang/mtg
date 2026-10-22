@@ -3,9 +3,11 @@
 Living status doc for the Tabletop Simulator table work. Whoever picks this up (Claude or
 Codex) reads it first and updates it with every change. The [TTS development guide](../docs/development/tts-development-guide.md) and README are the lasting documentation; this file tracks what is in flight.
 
-Last updated 2026-10-22 (Codex): delivered **v61** with an explicit Show commander button for commander faces, also applied and visually checked live. **Steam is now v60, published at the owner’s request.** See `docs/development/tts-changelog.md` for numbered builds.
+Last updated 2026-10-22 (Codex): delivered **v62** with Show commander, explicit Reload,
+longer sprite settling, and consolidated TTS docs under `docs/development/`.
+**Steam remains v60.** See [the changelog](../docs/development/tts-changelog.md).
 
-## Commander image recurrence and documentation consolidation (next build)
+## v62: commander image recurrence and documentation consolidation (saved; not on Steam)
 
 Owner reported Lord Xander still white after Show picture. Rename the control to
 **Show commander / Hide commander** and add explicit **Reload**. A registered asset
@@ -29,6 +31,15 @@ documents moved there too. The site planner explicitly includes authored Markdow
 in that namespace, so rebuild/check/alternate output do not prune it. Release
 version discovery and references use the moved changelog. Private deployment
 notes/config are not copied into public docs. Older WIP sections describe history.
+
+Delivered **MTG 6 player Cactuar Ver_v62**, source `63ad5ee4`. Read back both files
+from Saved Games, compiled the delivered Global Lua and validated six private
+Show commander/Reload controls with no commander assets preloaded. Immutable
+archive: `.cache/tts-builds/v62/`. JSON SHA-256:
+`99eb5c69fe9ada6a2cbb2251ec2a961e1e9e5834073a73a2d2967028d802fdc9`;
+PNG `1974fa34f0286f4edbe4004d81fe516ad710533b9afb73e6e0ef6f5c94901a0a`.
+No Workshop upload. Live probes restored the original selection and closed browser;
+no cards or music changed. Valid requested image assets remain cached.
 
 ## Standing build/release instruction (2026-10-21)
 

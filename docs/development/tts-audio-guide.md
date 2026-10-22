@@ -1,5 +1,7 @@
 # Announcer clips
 
+Audio source assets remain in `tts/sounds/`; this guide lives in `docs/development/`.
+
 ## FF14 soundtrack (v50)
 
 The original `ff14_theme.wav` (Prelude / Discoveries) loops until cannon/start.
@@ -133,7 +135,7 @@ consequences:
 
 ## Legacy placeholder generator
 
-    python3 scripts/make_announcer.py              # re-record both clips into this folder
+    python3 scripts/make_announcer.py              # re-record both clips into tts/sounds/
     python3 scripts/make_announcer.py --measure    # check their loudness
     python3 scripts/make_announcer.py --measure some/other.wav
 

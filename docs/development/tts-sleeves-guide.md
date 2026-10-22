@@ -21,10 +21,10 @@ Players can also have sleeves made for them. In the deck builder's Discord chann
 
 sleever paints the picture with whichever model the owner has set for the builder
 (`bot/harness.py`; it needs a harness with an image tool). Then `bot/sleever.py`:
-- crops it to these specs and saves `<name>.jpg` here;
+- crops it to these specs and saves `<name>.jpg` in `tts/sleeves/`;
 - never overwrites a hand-made sleeve or another player's;
 - attaches the sleeve to the Discord reply;
-- autopushes this folder and `docs/`, so it shows in the Sleeves menu a few minutes later
+- autopushes `tts/sleeves/` and `docs/`, so it shows in the Sleeves menu a few minutes later
   (reopen the browser, or press **Refresh** in an open one).
 
 The model works in `bot/.sleever/<user>/`, which isn't in git. Uploads are downloaded to

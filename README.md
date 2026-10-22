@@ -787,12 +787,14 @@ importer. Clicking one opens the clicker's own browser, which
 searches as you type, sorts (newest first by default, or tier or name) and offers filter menus
 (bracket, tier, strategy, owner). A separate details panel shows the selected deck's
 commander, strategy and stats; filtered counts also show the collection total.
-The larger browser shows the selected commander's full card at readable size on the
-right. Partner decks have arrows to switch commanders; double-faced commanders have
+Selecting a deck shows text details immediately; **Load commander image** loads
+its pinned picture on demand in the right panel. Each new selection starts with
+pictures off. Partner decks have arrows to switch commanders; double-faced commanders have
 a **Flip** button. **Read guide** opens that deck's strategy guide inside the browser,
 with the website's illustrated rows: card pictures beside explanations and picture
 strips for combos and tutor chains. Hover a guide picture to read that card on the
-right; moving away restores the commander. **Back to decks** returns to the list.
+right; moving away restores the commander only if its image was requested.
+**Back to decks** returns to the list.
 Decks without a guide show **No guide**. Previews use the deck's pinned printing.
 Commander faces come from the catalog; full guide content and pictures load only
 when **Read guide** is clicked. Recently viewed pictures are cached for faster switching.

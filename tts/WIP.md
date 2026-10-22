@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): preparing **v50** with seven prioritized battlefield soundtrack triggers; latest delivered build is v49. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-21 (Codex): preparing **v50** with seven prioritized battlefield soundtrack triggers and commander pictures on demand; latest delivered build is v49. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -18,7 +18,19 @@ Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a vers
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
 
-## v50: prioritized battlefield soundtrack (preparing; not on Steam)
+## v50: prioritized battlefield soundtrack and commander images on demand (preparing; not on Steam)
+
+Owner reported commander pictures still cause major lag, and requested a button
+instead of automatic loading. Selecting any deck now shows text details and a
+**Load commander image** button without registering picture assets or requesting
+legacy preview metadata. Clicking loads only the current commander face; partner
+and back-face pictures load on navigation. A new selection resets image consent,
+even for a cached commander. Loading a guide remains separate: only guide pictures
+load, guide hover still previews, and leaving it returns to the button until the
+commander itself is requested. Seat ownership guards and delayed-paint cancellation
+are retained. Existing picture cache still avoids rebuilding assets on explicit
+revisits. This removes new picture decoding from routine deck selection; an
+explicit image/guide request can still make TTS reload shared UI assets.
 
 Owner requested these **10+** battlefield thresholds in descending priority:
 
@@ -67,6 +79,8 @@ face-up stacks use contained metadata and parent picture sheets to disambiguate 
 Validation: **92 music checks**, **1536 timer checks**, **25 deck-export tests**,
 **19 card/cache harness tests**, **5 lookup tests**, **8 release tests** and
 **14 table-build tests** pass.
+Commander image opt-in and guide independence pass **63 preview checks**; existing
+Inspect behavior passes **115 checks**.
 Combined Lua compilation and existing deck-object color coverage pass. The seven
 original WAVs are unchanged; six newly integrated source/published copies match.
 Delivery and live verification are pending. No Workshop upload.

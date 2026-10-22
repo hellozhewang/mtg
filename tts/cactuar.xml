@@ -103,7 +103,10 @@
                 horizontalOverflow="Wrap" text="Commander preview"/>
           <Panel minHeight="520" preferredHeight="520" flexibleHeight="0" color="#111923">
             <Image id="cz_commander_image_{C}" width="85%" height="85%" rectAlignment="MiddleCenter" preserveAspect="true" color="#FFFFFF00" raycastTarget="false"/>
-            <Text id="cz_commander_note_{C}" fontSize="16" color="#C0C8D2" alignment="MiddleCenter"
+            <Button id="cz_commander_show_{C}" onClick="czCommanderShow" width="232" height="40" rectAlignment="MiddleCenter"
+                    fontSize="15" color="#FFFFFF" colors="#243244|#34485F|#1C2938|#1B2533" textColor="#E2E5EA"
+                    text="Load commander image" active="False"/>
+            <Text id="cz_commander_note_{C}" fontSize="16" color="#C0C8D2" alignment="MiddleCenter" rectAlignment="MiddleCenter" offsetXY="0 -60" height="80" width="95%"
                   text="Select a deck to read its commander." raycastTarget="false"/>
           </Panel>
           <HorizontalLayout minHeight="34" preferredHeight="34" flexibleHeight="0" spacing="6" childForceExpandWidth="false">

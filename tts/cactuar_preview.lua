@@ -1,5 +1,5 @@
 -- Readable pinned commander faces and deck guides for the private deck browser.
--- Commander metadata is in the catalog; guides load only when opened.
+-- Commander images load only on an explicit click; guides load only when opened.
 CZ.previews, CZ.previewAssets, CZ.previewSerial, CZ.previewSig = {}, {}, 0, ""
 CZ.previewUsed, CZ.previewClock, CZ.previewLimit = {}, 0, 32
 do
@@ -106,8 +106,10 @@ do
     for _, s in pairs(CZ.state) do
       local entry = s.selected and CZ.previews[key(s.selected)]
       if s.open and entry and entry.status == "ready" then
-        for _, commander in ipairs(entry.data.commanders) do
-          for _, face in ipairs(commander.faces) do wanted[face.FaceURL] = true end
+        if s.commanderImages then
+          local commander = entry.data.commanders[s.commander or 1]
+          local face = commander and commander.faces[s.commanderFace or 1]
+          if face then wanted[face.FaceURL] = true end
         end
         if s.guideOpen and entry.guide and entry.guide.status == "ready" then
           for _, section in ipairs(entry.guide.data.guide) do
@@ -240,9 +242,11 @@ do
       UI.setAttribute("cz_commander_image_" .. color, "image", "")
       UI.setAttribute("cz_commander_image_" .. color, "color", "#FFFFFF00")
       s.commander, s.commanderFace, s.guideOpen, s.guideDrawn = 1, 1, false, nil
+      s.commanderImages = false
       s.guideHover, s.guideCards = nil, nil
     end
-    local entry = deck and fetch(deck)
+    -- Selection alone must not register any picture or request a legacy preview.
+    local entry = deck and (CZ.previews[path] or (s.commanderImages or s.guideOpen) and fetch(deck))
     local payload = entry and entry.status == "ready" and entry.data or nil
     local guideEntry = s.guideOpen and entry and fetchGuide(deck, entry) or nil
     if not registerPictures() or UI.loading then return end
@@ -251,25 +255,35 @@ do
     local commander = commanders[s.commander]
     local faces = commander and commander.faces or {}
     s.commanderFace = math.max(1, math.min(s.commanderFace or 1, math.max(1, #faces)))
-    local face = s.guideOpen and s.guideHover or faces[s.commanderFace]
+    local face = s.guideOpen and s.guideHover or s.commanderImages and faces[s.commanderFace] or nil
     local image = face and CZ.previewAssets[face.FaceURL] or ""
     local size = s.guideOpen and s.guideHover and "100%" or "85%"
     UI.setAttribute("cz_commander_image_" .. color, "width", size)
     UI.setAttribute("cz_commander_image_" .. color, "height", size)
     -- TTS can keep a blank sprite when clearing and rebinding in one frame,
     -- even after UI.loading becomes false. Let the clear reach the renderer.
-    paintImages(color, s, {["cz_commander_image_" .. color] = image}, "previewPaint")
-    text("cz_commander_name_" .. color, face and plain(face.name) or "Commander preview")
+    if image == "" then
+      s.previewPaint = (s.previewPaint or 0) + 1 -- cancel any pending hover/image bind
+      UI.setAttribute("cz_commander_image_" .. color, "image", "")
+      UI.setAttribute("cz_commander_image_" .. color, "color", "#FFFFFF00")
+    else
+      paintImages(color, s, {["cz_commander_image_" .. color] = image}, "previewPaint")
+    end
+    text("cz_commander_name_" .. color, face and plain(face.name) or deck and plain(deck.commander) or "Commander preview")
     local note = not deck and "Select a deck to read its commander."
       or not path and "Press Refresh to get commander previews."
-      or entry.status == "error" and "Could not load the preview.\nPress Refresh to retry."
+      or not s.commanderImages and "Load the image only if you need it."
+      or entry and entry.status == "error" and "Could not load the preview.\nPress Refresh to retry."
       or "Loading commander…"
     text("cz_commander_note_" .. color, note)
     active("cz_commander_note_" .. color, image == "")
+    active("cz_commander_show_" .. color, deck ~= nil and not s.commanderImages and not s.guideHover)
+    enabled("cz_commander_show_" .. color, path ~= nil)
+    button("cz_commander_show_" .. color, "Load commander image")
     text("cz_commander_page_" .. color, s.guideHover and "Guide card" or commander and ("Commander " .. s.commander .. " / " .. #commanders) or "")
-    enabled("cz_commander_prev_" .. color, s.commander > 1)
-    enabled("cz_commander_next_" .. color, s.commander < #commanders)
-    active("cz_commander_flip_" .. color, #faces > 1 and not s.guideHover)
+    enabled("cz_commander_prev_" .. color, s.commanderImages and s.commander > 1)
+    enabled("cz_commander_next_" .. color, s.commanderImages and s.commander < #commanders)
+    active("cz_commander_flip_" .. color, s.commanderImages and #faces > 1 and not s.guideHover)
     button("cz_commander_prev_" .. color, "‹")
     button("cz_commander_next_" .. color, "›")
     button("cz_commander_flip_" .. color, s.commanderFace > 1 and "Front" or "Flip")
@@ -312,9 +326,16 @@ do
     end
   end
 
+  function czCommanderShow(player, _, id)
+    local s = session(player, id)
+    if not s or not s.selected or not key(s.selected) then return end
+    s.commanderImages = true
+    czRender(player.color)
+  end
+
   function czCommander(player, direction, id)
     local s = session(player, id)
-    if not s or not s.selected then return end
+    if not s or not s.selected or not s.commanderImages then return end
     local entry = CZ.previews[key(s.selected)]
     if not entry or entry.status ~= "ready" then return end
     s.guideHover = nil

@@ -44,6 +44,9 @@ class TableBuild(unittest.TestCase):
             self.assertEqual(panel.get("visibility"), color)
             self.assertEqual((panel.get("width"), panel.get("height")), ("1280", "864"))
             self.assertIsNotNone(panel.find(f".//*[@id='cz_commander_image_{color}']"))
+            image_button = panel.find(f".//*[@id='cz_commander_show_{color}']")
+            self.assertEqual(image_button.get("onClick"), "czCommanderShow")
+            self.assertEqual(image_button.get("active"), "False")
             self.assertEqual(panel.find(f".//*[@id='cz_guide_{color}']").get("onClick"), "czGuide")
             self.assertIsNotNone(panel.find(f".//*[@id='cz_guide_scroll_{color}']"))
 

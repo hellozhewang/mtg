@@ -179,7 +179,9 @@ def parse_image_quota_error(text: str) -> dict | None:
     """Extract gemini-3.1-flash-image 429 quota exhaustion info from log/error text."""
     if IMAGE_MODEL not in text or ("QUOTA_EXHAUSTED" not in text and "RESOURCE_EXHAUSTED" not in text):
         return None
-    ts_match = re.search(r'["\']quotaResetTimeStamp["\']\s*:\s*["\']([^"\']+)["\']', text)
+    ts_match = re.search(r'quotaResetTimeStamp(?:\\["\'])?\s*:\s*\\["\']?([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\.[0-9]+)?Z?)', text)
+    if not ts_match:
+        ts_match = re.search(r'["\']quotaResetTimeStamp["\']\s*:\s*["\']([^"\']+)["\']', text)
     resets_iso = ts_match.group(1) if ts_match else None
     resets_at = None
     if resets_iso:
@@ -192,6 +194,50 @@ def parse_image_quota_error(text: str) -> dict | None:
         "resets_iso": resets_iso,
         "resets_at": resets_at,
     }
+
+
+def check_session_image_quota(home: Path | str | None, conv_id: str | None) -> dict | None:
+    """Directly inspect this specific turn's brain and subagents for image quota errors."""
+    if not home or not conv_id:
+        return None
+    brain_dir = Path(home) / ".gemini" / "antigravity-cli" / "brain" / conv_id
+    if not brain_dir.is_dir():
+        return None
+    # 1. Check parent session messages from subagents
+    msgs_dir = brain_dir / ".system_generated" / "messages"
+    if msgs_dir.is_dir():
+        for msg_file in sorted(msgs_dir.glob("*.json"), key=lambda p: p.stat().st_mtime, reverse=True)[:5]:
+            try:
+                info = parse_image_quota_error(msg_file.read_text(encoding="utf-8", errors="replace"))
+                if info and info.get("resets_at"):
+                    return info
+            except Exception:
+                continue
+    # 2. Check parent session transcript
+    parent_log = brain_dir / ".system_generated" / "logs" / "transcript.jsonl"
+    if parent_log.is_file():
+        try:
+            info = parse_image_quota_error(parent_log.read_text(encoding="utf-8", errors="replace"))
+            if info and info.get("resets_at"):
+                return info
+        except Exception:
+            pass
+    # 3. Check subagents spawned in this session
+    subagents_dir = brain_dir / ".system_generated" / "subagents"
+    if subagents_dir.is_dir():
+        for sa_meta in subagents_dir.glob("*.json"):
+            try:
+                sa_data = json.loads(sa_meta.read_text(encoding="utf-8"))
+                sa_id = sa_data.get("conversationId")
+                if sa_id:
+                    sa_log = Path(home) / ".gemini" / "antigravity-cli" / "brain" / sa_id / ".system_generated" / "logs" / "transcript.jsonl"
+                    if sa_log.is_file():
+                        info = parse_image_quota_error(sa_log.read_text(encoding="utf-8", errors="replace"))
+                        if info and info.get("resets_at"):
+                            return info
+            except Exception:
+                continue
+    return None
 
 
 def scan_recent_image_quota(home: Path | str) -> dict | None:

@@ -232,7 +232,8 @@ class AgyHarness(Harness):
         data.setdefault("userSettings", {})["permissionPreset"] = "AGENT_PERMISSION_PRESET_TURBO"
         cfg.write_text(json.dumps(data, indent=1) + "\n")
 
-    def args(self, message: str, session_id: str | None, timeout: int) -> list[str]:
+    def args(self, message: str, session_id: str | None, timeout: int,
+             log_file: Path | None = None) -> list[str]:
         # --model on every run: only the owner picks the model (MTG_BOT_MODEL), so
         # nothing saved in agy's settings can change it. --disable-slash-commands: a
         # Discord message starting with "/" ("/model …", "/usage") is the user's
@@ -240,6 +241,8 @@ class AgyHarness(Harness):
         args = [self.exe, "--model", self.model, "--dangerously-skip-permissions",
                 "--disable-slash-commands",
                 "--output-format", "json", "--print-timeout", f"{timeout}s"]
+        if log_file:
+            args += ["--log-file", str(log_file)]
         if self.effort:
             args += ["--effort", self.effort]
         if session_id:
@@ -266,28 +269,38 @@ class AgyHarness(Harness):
 
     def run(self, folder, message, session_id, *, chan, timeout, writable):
         self.prepare(folder.parent)
-        argv = sandbox.wrap(self.args(message, session_id, timeout), self.profile(folder, writable))
-        proc = subprocess.run(argv, cwd=folder, stdin=subprocess.DEVNULL, capture_output=True,
-                              text=True, timeout=timeout + 30,
-                              env=self._env(chan, HOME=str(self.home)))
-        output = (proc.stdout or "") + (proc.stderr or "")
-        import usage
-        img_info = usage.parse_image_quota_error(output)
-        if not img_info:
-            img_info = usage.scan_recent_image_quota(self.home)
-        if img_info and img_info.get("resets_at"):
-            usage.record_image_quota(self.home, img_info)
-        if QUOTA_RE.search(proc.stderr or "") or (proc.returncode != 0 and QUOTA_RE.search(output[-4000:])):
-            raise QuotaExhausted(output[-2000:])
-        if proc.returncode != 0:
-            raise HarnessError(f"agy exited {proc.returncode}\n{output[-2000:]}")
-        data = self.parse(proc.stdout)
-        if data.get("status") != "SUCCESS":
-            if QUOTA_RE.search(json.dumps(data)):
+        log_file = self.home / f".run-{os.getpid()}-{int(time.time() * 1000)}.log"
+        argv = sandbox.wrap(self.args(message, session_id, timeout, log_file=log_file),
+                            self.profile(folder, writable))
+        try:
+            proc = subprocess.run(argv, cwd=folder, stdin=subprocess.DEVNULL, capture_output=True,
+                                  text=True, timeout=timeout + 30,
+                                  env=self._env(chan, HOME=str(self.home)))
+            output = (proc.stdout or "") + (proc.stderr or "")
+            run_log = log_file.read_text(encoding="utf-8", errors="replace") if log_file.is_file() else ""
+            combined_output = output + "\n" + run_log
+            import usage
+            img_info = usage.parse_image_quota_error(combined_output)
+            if QUOTA_RE.search(proc.stderr or "") or (proc.returncode != 0 and QUOTA_RE.search(output[-4000:])):
                 raise QuotaExhausted(output[-2000:])
-            raise HarnessError(f"agy status {data.get('status')}\n{output[-2000:]}")
-        answer = (data.get("response") or "").strip()
-        return Turn(answer or "(no output)", data.get("conversation_id") or session_id, output)
+            if proc.returncode != 0:
+                raise HarnessError(f"agy exited {proc.returncode}\n{output[-2000:]}")
+            data = self.parse(proc.stdout)
+            conv_id = data.get("conversation_id") or session_id
+            if not img_info:
+                img_info = usage.check_session_image_quota(self.home, conv_id)
+            if not img_info:
+                img_info = usage.scan_recent_image_quota(self.home)
+            if img_info and img_info.get("resets_at"):
+                usage.record_image_quota(self.home, img_info)
+            if data.get("status") != "SUCCESS":
+                if QUOTA_RE.search(json.dumps(data)):
+                    raise QuotaExhausted(output[-2000:])
+                raise HarnessError(f"agy status {data.get('status')}\n{output[-2000:]}")
+            answer = (data.get("response") or "").strip()
+            return Turn(answer or "(no output)", conv_id, output)
+        finally:
+            log_file.unlink(missing_ok=True)
 
     def usage(self, *, discord: bool = False, is_image: bool = False) -> str:
         """agy's own /usage panel, as data, for the quota group this model draws from."""

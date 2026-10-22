@@ -2,7 +2,7 @@
      can safely rebuild the shared UI. No global Defaults: the base owns those. -->
 <!-- @PANEL@ -->
 <Panel id="cz_panel_{C}" visibility="{C}" active="False"
-       width="1280" height="864" rectAlignment="MiddleRight" offsetXY="-24 0"
+       width="1080" height="864" rectAlignment="MiddleRight" offsetXY="-24 0"
        allowDragging="true" returnToOriginalPositionWhenReleased="false"
        color="#111923FC" outline="#34465B" outlineSize="1 1"
        shadow="#00000080" shadowDistance="-4 -6">
@@ -79,11 +79,10 @@
         </Panel>
       </Panel>
       </Panel>
-      <Panel minWidth="650" preferredWidth="650" flexibleWidth="0" color="#1A2635">
-        <HorizontalLayout padding="12 12 12 12" spacing="12" childForceExpandWidth="false">
-        <VerticalLayout minWidth="190" preferredWidth="190" flexibleWidth="0" spacing="8" childForceExpandHeight="false">
+      <Panel minWidth="340" preferredWidth="340" flexibleWidth="0" color="#1A2635">
+        <VerticalLayout padding="12 12 12 12" spacing="8" childForceExpandHeight="false">
           <Text preferredHeight="12" fontSize="11" fontStyle="Bold" color="#3D6554" alignment="MiddleLeft" text="DECK DETAILS"/>
-          <Text id="cz_detail_{C}" flexibleHeight="1" fontSize="14" color="#E2E5EA" alignment="UpperLeft"
+          <Text id="cz_detail_{C}" flexibleHeight="1" fontSize="16" color="#E2E5EA" alignment="UpperLeft"
                 horizontalOverflow="Wrap" text="Select a deck to see its commander, strategy and stats."/>
           <HorizontalLayout id="cz_stats_{C}" preferredHeight="40" spacing="4" active="False">
             <Text id="cz_gc_{C}" fontSize="12" color="#E2E5EA" text=""/>
@@ -98,28 +97,6 @@
           <Button id="cz_load_{C}" onClick="czLoad" preferredHeight="40" fontSize="15" fontStyle="Bold" interactable="False"
                   color="#FFFFFF" colors="#173B30|#1A3F32|#123127|#202C39" textColor="#E2E5EA" text="Select a deck"/>
         </VerticalLayout>
-        <VerticalLayout minWidth="424" preferredWidth="424" flexibleWidth="0" spacing="8" childForceExpandHeight="false">
-          <Text id="cz_commander_name_{C}" preferredHeight="36" fontSize="15" color="#E2E5EA" alignment="MiddleCenter"
-                horizontalOverflow="Wrap" text="Commander preview"/>
-          <Panel minHeight="520" preferredHeight="520" flexibleHeight="0" color="#111923">
-            <Image id="cz_commander_image_{C}" width="85%" height="85%" rectAlignment="MiddleCenter" preserveAspect="true" color="#FFFFFF00" raycastTarget="false"/>
-            <Button id="cz_commander_show_{C}" onClick="czCommanderShow" width="232" height="40" rectAlignment="MiddleCenter"
-                    fontSize="15" color="#FFFFFF" colors="#243244|#34485F|#1C2938|#1B2533" textColor="#E2E5EA"
-                    text="Load commander image" active="False"/>
-            <Text id="cz_commander_note_{C}" fontSize="16" color="#C0C8D2" alignment="MiddleCenter" rectAlignment="MiddleCenter" offsetXY="0 -60" height="80" width="95%"
-                  text="Select a deck to read its commander." raycastTarget="false"/>
-          </Panel>
-          <HorizontalLayout minHeight="34" preferredHeight="34" flexibleHeight="0" spacing="6" childForceExpandWidth="false">
-            <Button id="cz_commander_prev_{C}" onClick="czCommander(prev)" preferredWidth="34" fontSize="20" color="#FFFFFF"
-                    colors="#243244|#34485F|#1C2938|#1B2533" textColor="#E2E5EA" text="‹" interactable="False"/>
-            <Text id="cz_commander_page_{C}" flexibleWidth="1" fontSize="12" color="#C0C8D2" text=""/>
-            <Button id="cz_commander_flip_{C}" onClick="czCommander(flip)" preferredWidth="60" fontSize="13" color="#FFFFFF"
-                    colors="#243244|#34485F|#1C2938|#1B2533" textColor="#E2E5EA" text="Flip" active="False"/>
-            <Button id="cz_commander_next_{C}" onClick="czCommander(next)" preferredWidth="34" fontSize="20" color="#FFFFFF"
-                    colors="#243244|#34485F|#1C2938|#1B2533" textColor="#E2E5EA" text="›" interactable="False"/>
-          </HorizontalLayout>
-        </VerticalLayout>
-        </HorizontalLayout>
       </Panel>
     </HorizontalLayout>
     <Text id="cz_status_{C}" preferredHeight="20" fontSize="12" color="#C0C8D2" alignment="MiddleLeft" text=""/>
@@ -138,21 +115,7 @@
       </HorizontalLayout>
     </VerticalLayout>
   </Panel>
-  <!-- Sleeves: a paged grid of thumbnails, opened from the Sleeves button. -->
-  <Panel id="cz_sleeves_{C}" active="False" width="372" height="330" rectAlignment="UpperRight" offsetXY="-16 -146"
-         color="#202F42" outline="#49627C" outlineSize="1 1" shadow="#00000090" shadowDistance="3 -4">
-    <VerticalLayout padding="10 10 10 10" spacing="6" childForceExpandHeight="false">
-      <Text id="cz_sleeves_title_{C}" preferredHeight="22" fontSize="12" fontStyle="Bold" color="#C0C8D2" alignment="MiddleLeft" text="Choose sleeves"/>
-      <GridLayout preferredHeight="250" cellSize="82 122" spacing="6 6" constraint="FixedColumnCount" constraintCount="4" childAlignment="UpperLeft">
-@SLEEVECELLS@
-      </GridLayout>
-      <HorizontalLayout id="cz_sleeves_pager_{C}" preferredHeight="28" active="False" spacing="6" childForceExpandWidth="false">
-        <Button id="cz_sleeves_prev_{C}" onClick="czMenuPage(prev)" preferredWidth="32" color="#FFFFFF" colors="#243244|#34485F|#1C2938|#1B2533" textColor="#E2E5EA" text="‹"/>
-        <Text id="cz_sleeves_page_{C}" flexibleWidth="1" fontSize="12" color="#C0C8D2" text=""/>
-        <Button id="cz_sleeves_next_{C}" onClick="czMenuPage(next)" preferredWidth="32" color="#FFFFFF" colors="#243244|#34485F|#1C2938|#1B2533" textColor="#E2E5EA" text="›"/>
-      </HorizontalLayout>
-    </VerticalLayout>
-  </Panel>
+
 </Panel>
 <!-- @ROW@ -->
             <Button id="cz_row_{I}_{C}" onClick="czPick({I})" preferredHeight="55" active="False" color="#FFFFFF"
@@ -168,11 +131,3 @@
 <!-- @CHOICE@ -->
       <Button id="cz_choice_{I}_{C}" onClick="czChoose({I})" preferredHeight="30" fontSize="13" textAlignment="MiddleLeft"
               padding="8 8 0 0" color="#FFFFFF" colors="#202F42|#344D66|#275B4B|#182331" textColor="#E2E5EA" text="" active="False"/>
-<!-- @SLEEVECELL@ -->
-        <Button id="cz_sl_{I}_{C}" onClick="czSleevePick({I})" active="False" color="#FFFFFF"
-                colors="#202F42|#344D66|#275B4B|#182331" text="">
-          <VerticalLayout padding="4 4 4 2" spacing="2" childForceExpandHeight="false" raycastTarget="false">
-            <Image id="cz_sl_img_{I}_{C}" preferredHeight="96" preserveAspect="true" color="#FFFFFF00" raycastTarget="false"/>
-            <Text id="cz_sl_name_{I}_{C}" preferredHeight="14" fontSize="10" color="#E2E5EA" text="" raycastTarget="false"/>
-          </VerticalLayout>
-        </Button>

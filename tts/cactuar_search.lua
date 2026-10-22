@@ -4,7 +4,7 @@
 local czsPrevious = CZS
 if czsPrevious and czsPrevious.ticker then Wait.stop(czsPrevious.ticker) end
 if czsPrevious and czsPrevious.rebuildWait then Wait.stop(czsPrevious.rebuildWait) end
-CZS = {state = {}, attached = czsPrevious and czsPrevious.attached or {}, cells = 128, capacity = {}, assets = {}, nextAsset = 0}
+CZS = {state = {}, attached = czsPrevious and czsPrevious.attached or {}, cells = 32, capacity = {}, assets = {}, nextAsset = 0}
 -- The build injects the same cell template used by the initial XML pool.
 CZS.cellXml = [==[@INSPECT_CELL@]==]
 for index, color in UI.getXml():gmatch('id="czs_card_(%d+)_(%a+)"') do

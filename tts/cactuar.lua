@@ -19,7 +19,7 @@
   never which deck; the commander(s) and tokens spawn face down. A player's
   own panel (visible only to them) still shows their deck.
 
-  Labels: always UI.setAttribute(id, "text", ...). setValue on a Button does
+  Labels: always czUI(id, "text", ...). setValue on a Button does
   nothing; on Text it stores raw rich-text markup that breaks the importer's
   getXmlTable/setXmlTable round-trip. Text attributes are XML-escaped instead.
 
@@ -33,7 +33,6 @@ CZ = {
   seats = {"White", "Red", "Yellow", "Green", "Blue", "Purple"},
   rows = 10,
   menuRows = 10,
-  sleeveCells = 8,     -- the Sleeves grid's page size; matches SLEEVE_CELLS in build_tts_table.py
   index = nil,        -- decks.json, once fetched
   indexAt = 0,        -- os.time() it arrived
   staleAfter = 120,   -- seconds: opening the browser after this re-fetches it
@@ -52,8 +51,30 @@ local CZ_TEXT = "#E2E5EA"
 local CZ_NORMAL = "#243244|#34485F|#1C2938|#1B2533"
 local CZ_ACTIVE = "#1B3A33|#21483D|#163128|#1B2533"
 
+-- Skip unchanged UI/network writes; input text remains controlled by the user.
+function czUI(id, key, value)
+  local generation = CZ.imageGeneration or 0
+  if CZ.uiGeneration ~= generation then CZ.uiPaint, CZ.uiGeneration = {}, generation end
+  local cache = CZ.uiPaint[id]
+  if not cache then cache = {}; CZ.uiPaint[id] = cache end
+  if key == "text" and id:match("^cz_search_") then
+    UI.setAttribute(id, key, value)
+  elseif cache[key] ~= value then
+    UI.setAttribute(id, key, value)
+    cache[key] = value
+  end
+end
+local function czValidateUI(color)
+  local id = "cz_count_" .. color
+  local paint = CZ.uiPaint and CZ.uiPaint[id]
+  if paint and UI.getAttribute(id, "text") ~= paint.text then
+    CZ.uiPaint = {}
+    for _, s in pairs(CZ.state) do s.guideDrawn = nil end
+  end
+end
+
 local function czText(id, text)
-  UI.setAttribute(id, "text", text)
+  czUI(id, "text", text)
 end
 
 -- Explicit rich-text colour also survives the importer's default Button styles.
@@ -62,7 +83,7 @@ local function czButton(id, text)
 end
 
 local function czEnabled(id, enabled)
-  UI.setAttribute(id, "interactable", enabled and "True" or "False")
+  czUI(id, "interactable", enabled and "True" or "False")
 end
 
 -- ---------- state ----------
@@ -97,7 +118,7 @@ end
 
 local function czStatus(color, text, tone)
   czText("cz_status_" .. color, text or "")
-  UI.setAttribute("cz_status_" .. color, "color",
+  czUI("cz_status_" .. color, "color",
     tone == "error" and "#FF9A9A" or tone == "success" and "#3D6554" or CZ_DIM)
 end
 
@@ -245,75 +266,6 @@ local function czSleeveLabel(s)
   return b and b.label or "Standard"
 end
 
--- Thumbnails. TTS's UI shows pictures only as named custom assets, so each sleeve's
--- thumbnail is registered as "czsl_<id>". setCustomAssets REPLACES the whole list, so
--- the base table's own assets are kept, and it only runs when the list changed: a
--- change makes TTS reload the UI, after which the open panels are drawn again.
-local function czThumbAsset(b)
-  local url = b.thumb_url or (b.thumb and (CZ.base .. b.thumb))
-  return url and {name = "czsl_" .. b.id, url = url} or nil
-end
-
-local czRenderSleeves = nil   -- assigned after czRenderMenu
-
-local function czRedrawOpen()
-  for _, c in ipairs(CZ.seats) do
-    local s = CZ.state[c]
-    if s and s.open and s.player == czSeatPlayer(c) then
-      UI.setAttribute("cz_panel_" .. c, "active", "True")
-      UI.setAttribute("cz_search_" .. c, "text", s.query)
-      s.guideDrawn = nil
-      s.guidePainted = nil
-      czRender(c)
-      if czState(c).menu == "sleeve" then czRenderSleeves(c) end
-    else
-      UI.setAttribute("cz_panel_" .. c, "active", "False")
-    end
-  end
-  if czsRedrawOpen then czsRedrawOpen() end
-end
-
--- Registering named images rebuilds shared UI. Restore current private sessions
--- after it finishes, checking the live open flag so closed windows stay closed.
-function czSetAssets(assets)
-  CZ.imageGeneration = (CZ.imageGeneration or 0) + 1
-  UI.setCustomAssets(assets)
-  Wait.condition(czRedrawOpen, function() return not UI.loading end, 30, czRedrawOpen)
-end
-
--- Guide rows replace only their own layout. Install XML and assets atomically:
--- separate reloads can restore stale XML or leave named WebP sprites white.
-function czGuideXml(xml)
-  CZ.imageGeneration = (CZ.imageGeneration or 0) + 1
-  CZ.guideRebuilding = true
-  UI.setXml(xml, UI.getCustomAssets())
-  local function ready()
-    CZ.guideRebuilding = false
-    czRedrawOpen()
-  end
-  Wait.condition(ready, function() return not UI.loading end, 30, ready)
-end
-
-local function czRegisterThumbs()
-  local ours, sig = {}, ""
-  for _, b in ipairs(czSleeves()) do
-    local a = czThumbAsset(b)
-    if a then ours[#ours + 1] = a; sig = sig .. a.name .. "=" .. a.url .. ";" end
-  end
-  if sig == "" or sig == CZ.thumbSig then return end
-  local ok = pcall(function()
-    local merged = {}
-    for _, a in ipairs(UI.getCustomAssets() or {}) do
-      if type(a.name) ~= "string" or a.name:sub(1, 5) ~= "czsl_" then merged[#merged + 1] = a end
-    end
-    for _, a in ipairs(ours) do merged[#merged + 1] = a end
-    CZ.thumbSig = sig
-    czSetAssets(merged)
-  end)
-  if not ok then return end
-  CZ.thumbSig = sig
-end
-
 -- Every card's BackURL becomes the chosen back. Like czImageJSON, this edits the
 -- string values only: decoding and re-encoding would break CustomDeck.
 local function czSleeveJSON(text, sleeve)
@@ -379,6 +331,7 @@ local function czShort(text, limit)
 end
 
 function czRender(color)
+  czValidateUI(color)
   local s = czState(color)
   if not CZ.index then return end
   local list = {}
@@ -413,11 +366,11 @@ function czRender(color)
       czText("cz_row_name_" .. i .. "_" .. color, czShort(d.name, 51))
       czText("cz_row_sub_" .. i .. "_" .. color, czShort(d.commander, 52) .. " · " .. d.owner)
       czText("cz_row_tier_" .. i .. "_" .. color, d.tier ~= "" and d.tier or "?")
-      UI.setAttribute("cz_row_tier_" .. i .. "_" .. color, "color", czTierColor(d.tier))
-      UI.setAttribute(id, "colors", selected and CZ_ACTIVE or "#1C2939|#2D4157|#244E46|#182331")
-      UI.setAttribute(id, "active", "True")
+      czUI("cz_row_tier_" .. i .. "_" .. color, "color", czTierColor(d.tier))
+      czUI(id, "colors", selected and CZ_ACTIVE or "#1C2939|#2D4157|#244E46|#182331")
+      czUI(id, "active", "True")
     else
-      UI.setAttribute(id, "active", "False")
+      czUI(id, "active", "False")
     end
   end
   czText("cz_page_" .. color, string.format("Page %d / %d", s.page, pages))
@@ -432,20 +385,20 @@ function czRender(color)
   end
   local tour = s.tour
   czButton("cz_tour_" .. color, tour and "Leave tournament" or "Tournament")
-  UI.setAttribute("cz_tour_" .. color, "colors", tour and CZ_ACTIVE or CZ_NORMAL)
+  czUI("cz_tour_" .. color, "colors", tour and CZ_ACTIVE or CZ_NORMAL)
   czEnabled("cz_tour_" .. color, tour ~= nil or #czPool() > 0)
-  UI.setAttribute("cz_filters_" .. color, "active", tour and "False" or "True")
-  UI.setAttribute("cz_tourbar_" .. color, "active", tour and "True" or "False")
+  czUI("cz_filters_" .. color, "active", tour and "False" or "True")
+  czUI("cz_tourbar_" .. color, "active", tour and "True" or "False")
   if tour then
     for _, m in ipairs(CZ_TOUR_MODES) do
       local id = "cz_tmode_" .. m .. "_" .. color
       czButton(id, CZ_TOUR_LABEL[m])
-      UI.setAttribute(id, "colors", tour.mode == m and CZ_ACTIVE or CZ_NORMAL)
+      czUI(id, "colors", tour.mode == m and CZ_ACTIVE or CZ_NORMAL)
     end
-    UI.setAttribute("cz_tredraw_" .. color, "active", tour.mode ~= "all" and "True" or "False")
+    czUI("cz_tredraw_" .. color, "active", tour.mode ~= "all" and "True" or "False")
     czButton("cz_tredraw_" .. color, tour.mode == "draft" and "Redraw 5" or "Reroll")
   end
-  UI.setAttribute("cz_empty_" .. color, "active", #list == 0 and "True" or "False")
+  czUI("cz_empty_" .. color, "active", #list == 0 and "True" or "False")
   czEnabled("cz_prev_" .. color, s.page > 1)
   czEnabled("cz_next_" .. color, s.page < pages)
   czEnabled("cz_random_" .. color, #list > 0)
@@ -456,17 +409,17 @@ function czRender(color)
   end
   for _, key in ipairs(CZ_SORTS) do
     local id = "cz_sort_" .. key .. "_" .. color
-    UI.setAttribute(id, "colors", s.sort == key and CZ_ACTIVE or CZ_NORMAL)
+    czUI(id, "colors", s.sort == key and CZ_ACTIVE or CZ_NORMAL)
     czButton(id, CZ_SORT_LABEL[key])
   end
   for _, key in ipairs(CZ_FILTERS) do
     local id = "cz_f_" .. key .. "_" .. color
     czButton(id, czFilterLabel(key, s.filter[key]) .. " ▾")
-    UI.setAttribute(id, "colors", s.filter[key] and CZ_ACTIVE or CZ_NORMAL)
+    czUI(id, "colors", s.filter[key] and CZ_ACTIVE or CZ_NORMAL)
   end
   local d = s.selected
   czText("cz_detail_" .. color, czDetail(d))
-  UI.setAttribute("cz_stats_" .. color, "active", d and "True" or "False")
+  czUI("cz_stats_" .. color, "active", d and "True" or "False")
   if d then
     local function stat(id, value, label)
       czText("cz_" .. id .. "_" .. color, "<size=20><b>" .. value .. "</b></size>\n<color=" .. CZ_DIM .. "><size=10>" .. label .. "</size></color>")
@@ -483,7 +436,7 @@ function czRender(color)
   czEnabled("cz_sleeve_" .. color, #czSleeves() > 1)
   czEnabled("cz_load_" .. color, d ~= nil and not CZ.busy[color])
   czButton("cz_load_" .. color, CZ.busy[color] and "Loading…" or d and "Load into my seat" or "Select a deck")
-  if czpRender then czpRender(color, s, d) end
+  if czgRender then czgRender(color, s, d) end
 end
 
 -- A menu's choices in order: a filter's All and its values, or the sleeves.
@@ -515,58 +468,25 @@ local function czRenderMenu(color)
   for i = 1, CZ.menuRows do
     local n = (s.menuPage - 1) * CZ.menuRows + i
     local id = "cz_choice_" .. i .. "_" .. color
-    UI.setAttribute(id, "active", n <= count and "True" or "False")
+    czUI(id, "active", n <= count and "True" or "False")
     if n <= count then
       local choice = choices[n]
       czButton(id, (choice.selected and "✓  " or "    ") .. choice.label)
-      UI.setAttribute(id, "colors", choice.selected and CZ_ACTIVE or "#202F42|#344D66|#275B4B|#182331")
+      czUI(id, "colors", choice.selected and CZ_ACTIVE or "#202F42|#344D66|#275B4B|#182331")
     end
   end
   local positions = {bracket = 16, tier = 230, theme = 444, owner = 620, sleeve = 620}
-  UI.setAttribute("cz_menu_" .. color, "offsetXY", positions[s.menu] .. " -146")
-  UI.setAttribute("cz_menu_" .. color, "height", tostring(53 + visible * 33 + (pages > 1 and 31 or 0)))
-  UI.setAttribute("cz_menu_" .. color, "active", "True")
-  UI.setAttribute("cz_scrim_" .. color, "active", "True")
+  czUI("cz_menu_" .. color, "offsetXY", positions[s.menu] .. " -146")
+  czUI("cz_menu_" .. color, "height", tostring(53 + visible * 33 + (pages > 1 and 31 or 0)))
+  czUI("cz_menu_" .. color, "active", "True")
+  czUI("cz_scrim_" .. color, "active", "True")
   czText("cz_menu_title_" .. color, "Choose " .. (s.menu == "sleeve" and "sleeves" or string.lower(CZ_FILTER_LABEL[s.menu])))
-  UI.setAttribute("cz_menu_pager_" .. color, "active", pages > 1 and "True" or "False")
+  czUI("cz_menu_pager_" .. color, "active", pages > 1 and "True" or "False")
   czText("cz_menu_page_" .. color, s.menuPage .. " / " .. pages)
   czEnabled("cz_menu_prev_" .. color, s.menuPage > 1)
   czEnabled("cz_menu_next_" .. color, s.menuPage < pages)
   czButton("cz_menu_prev_" .. color, "‹")
   czButton("cz_menu_next_" .. color, "›")
-end
-
--- The Sleeves grid: CZ.sleeveCells thumbnails a page, the chosen one ticked. A sleeve
--- without a thumbnail (or before its asset has loaded) shows its name alone.
-czRenderSleeves = function(color)
-  local s = czState(color)
-  if s.menu ~= "sleeve" then return end
-  local choices = czMenuChoices(color, "sleeve")
-  local sleeves = czSleeves()
-  local count, size = #choices, CZ.sleeveCells
-  local pages = math.max(1, math.ceil(count / size))
-  s.menuPage = math.max(1, math.min(s.menuPage or 1, pages))
-  for i = 1, size do
-    local n = (s.menuPage - 1) * size + i
-    local id = "cz_sl_" .. i .. "_" .. color
-    UI.setAttribute(id, "active", n <= count and "True" or "False")
-    if n <= count then
-      local choice, b = choices[n], sleeves[n]
-      local asset = CZ.thumbSig and b and czThumbAsset(b)
-      UI.setAttribute("cz_sl_img_" .. i .. "_" .. color, "image", asset and asset.name or "")
-      UI.setAttribute("cz_sl_img_" .. i .. "_" .. color, "color", asset and "#FFFFFF" or "#FFFFFF00")
-      czText("cz_sl_name_" .. i .. "_" .. color, (choice.selected and "✓ " or "") .. choice.label)
-      UI.setAttribute(id, "colors", choice.selected and CZ_ACTIVE or "#202F42|#344D66|#275B4B|#182331")
-    end
-  end
-  UI.setAttribute("cz_sleeves_" .. color, "active", "True")
-  UI.setAttribute("cz_scrim_" .. color, "active", "True")
-  UI.setAttribute("cz_sleeves_pager_" .. color, "active", pages > 1 and "True" or "False")
-  czText("cz_sleeves_page_" .. color, s.menuPage .. " / " .. pages)
-  czEnabled("cz_sleeves_prev_" .. color, s.menuPage > 1)
-  czEnabled("cz_sleeves_next_" .. color, s.menuPage < pages)
-  czButton("cz_sleeves_prev_" .. color, "‹")
-  czButton("cz_sleeves_next_" .. color, "›")
 end
 
 -- ---------- fetching ----------
@@ -575,29 +495,34 @@ local function czFetchIndex(then_)
   if CZ.fetching then return end
   CZ.fetching = true
   for _, c in ipairs(CZ.seats) do
-    czEnabled("cz_refresh_" .. c, false)
-    czButton("cz_refresh_" .. c, "Refreshing…")
+    if CZ.state[c] and CZ.state[c].open then
+      czEnabled("cz_refresh_" .. c, false)
+      czButton("cz_refresh_" .. c, "Refreshing…")
+    end
   end
   WebRequest.get(CZ.base .. "decks.json?t=" .. os.time(), function(req)
     CZ.fetching = false
     for _, c in ipairs(CZ.seats) do
-      czEnabled("cz_refresh_" .. c, true)
-      czButton("cz_refresh_" .. c, "Refresh")
+      if CZ.state[c] and CZ.state[c].open then
+        czEnabled("cz_refresh_" .. c, true)
+        czButton("cz_refresh_" .. c, "Refresh")
+      end
     end
     if req.is_error then
-      for _, c in ipairs(CZ.seats) do czStatus(c, "Could not reach the deck list: " .. tostring(req.error), "error") end
+      for _, c in ipairs(CZ.seats) do if CZ.state[c] and CZ.state[c].open then czStatus(c, "Could not reach the deck list: " .. tostring(req.error), "error") end end
       return
     end
     local ok, index = pcall(JSON.decode, req.text)
     if not ok or type(index) ~= "table" or not index.decks then
-      for _, c in ipairs(CZ.seats) do czStatus(c, "The deck list did not read as JSON.", "error") end
+      for _, c in ipairs(CZ.seats) do if CZ.state[c] and CZ.state[c].open then czStatus(c, "The deck list did not read as JSON.", "error") end end
       return
     end
     CZ.index, CZ.indexAt = index, os.time()
-    czRegisterThumbs()
     for _, c in ipairs(CZ.seats) do
-      czStatus(c, "")
-      czRender(c)
+      if CZ.state[c] and CZ.state[c].open then
+        czStatus(c, "")
+        czRender(c)
+      end
     end
     if then_ then then_() end
   end)
@@ -611,19 +536,20 @@ function czOpen(player)
     broadcastToColor("Take a seat first: decks load into your own seat.", color, {1, 0.8, 0.4})
     return
   end
+  czValidateUI(color)
   if czsClose then czsClose(player) end
   czDismiss(player)
   local id = "cz_panel_" .. color
   local s = czState(color)
   if UI.getAttribute(id, "active") == "True" then
     s.open = false
-    UI.setAttribute(id, "active", "False")
+    czUI(id, "active", "False")
     czLog(color, "closed the browser")
     return
   end
-  UI.setAttribute(id, "active", "True")
+  czUI(id, "active", "True")
   s.open = true
-  if s.query == "" then UI.setAttribute("cz_search_" .. color, "text", "") end
+  if s.query == "" then czUI("cz_search_" .. color, "text", "") end
   if s.selected == nil then czStatus(color, "") end
   czLog(color, "opened the browser")
   if CZ.index then
@@ -650,12 +576,12 @@ end
 
 function czHideBrowser(color)
   if CZ.state[color] then CZ.state[color].open = false end
-  UI.setAttribute("cz_panel_" .. color, "active", "False")
+  czUI("cz_panel_" .. color, "active", "False")
 end
 
 function czRefresh(player)
   czDismiss(player)
-  if czpRefresh then czpRefresh() end
+  if czgRefresh then czgRefresh() end
   czLog(player.color, "refreshed the deck list")
   czStatus(player.color, "Loading the deck list…")
   czFetchIndex()
@@ -695,9 +621,8 @@ end
 
 function czDismiss(player)
   czState(player.color).menu = nil
-  UI.setAttribute("cz_menu_" .. player.color, "active", "False")
-  UI.setAttribute("cz_sleeves_" .. player.color, "active", "False")
-  UI.setAttribute("cz_scrim_" .. player.color, "active", "False")
+  czUI("cz_menu_" .. player.color, "active", "False")
+  czUI("cz_scrim_" .. player.color, "active", "False")
 end
 
 function czFilter(player, key)
@@ -707,33 +632,18 @@ function czFilter(player, key)
   if s.menu == key then czDismiss(player); return end
   s.menu, s.menuPage = key, 1
   -- Open the page containing the currently selected value.
-  local size = key == "sleeve" and CZ.sleeveCells or CZ.menuRows
+  local size = CZ.menuRows
   for i, choice in ipairs(czMenuChoices(player.color, key)) do
     if choice.selected then s.menuPage = math.ceil(i / size) end
   end
-  if key == "sleeve" then czRenderSleeves(player.color) else czRenderMenu(player.color) end
+  czRenderMenu(player.color)
 end
 
 function czMenuPage(player, direction)
   local s = czState(player.color)
   if not s.menu then return end
   s.menuPage = (s.menuPage or 1) + (direction == "next" and 1 or -1)
-  if s.menu == "sleeve" then czRenderSleeves(player.color) else czRenderMenu(player.color) end
-end
-
--- A thumbnail in the Sleeves grid was clicked.
-function czSleevePick(player, cell)
-  local s = czState(player.color)
-  local i = tonumber(cell)
-  if s.menu ~= "sleeve" or not i or i < 1 or i > CZ.sleeveCells then return end
-  local choices = czMenuChoices(player.color, "sleeve")
-  local n = ((s.menuPage or 1) - 1) * CZ.sleeveCells + i
-  if n > #choices then return end
-  s.sleeve = choices[n].value                  -- applies to the next deck loaded
-  czLog(player.color, "chose sleeves " .. choices[n].label)
-  czDismiss(player)
-  czStatus(player.color, "")
-  czRender(player.color)
+  czRenderMenu(player.color)
 end
 
 function czChoose(player, row)
@@ -744,9 +654,14 @@ function czChoose(player, row)
   local choices = czMenuChoices(player.color, s.menu)
   local n = ((s.menuPage or 1) - 1) * CZ.menuRows + i
   if n > #choices then return end
-  s.filter[s.menu] = choices[n].value        -- All (first choice) is nil
-  s.page = 1
-  czLog(player.color, "changed a filter")
+  if s.menu == "sleeve" then
+    s.sleeve = choices[n].value
+    czLog(player.color, "chose sleeves " .. choices[n].label)
+  else
+    s.filter[s.menu] = choices[n].value
+    s.page = 1
+    czLog(player.color, "changed a filter")
+  end
   czDismiss(player)
   czStatus(player.color, "")
   czRender(player.color)
@@ -774,7 +689,7 @@ function czClear(player)
   czDismiss(player)
   czStatus(player.color, "")
   s.filter, s.query, s.page = {}, "", 1
-  UI.setAttribute("cz_search_" .. player.color, "text", "")
+  czUI("cz_search_" .. player.color, "text", "")
   czLog(player.color, "reset the search")
   s.loggedQuery = ""
   czRender(player.color)

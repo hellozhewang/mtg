@@ -55,8 +55,8 @@ Custom Deck dialog. The table finds sleeves in the published deck list. So:
    `https://hellozhewang.github.io/mtg/tts/sleeves/<file>`. Check that URL opens the picture.
 4. **In the game**: open the Cactuar browser (click a Cactuar tile). From v32 it fetches the
    list again when the copy it has is over 2 minutes old; in an open browser, press
-   **Refresh**. The new sleeve is now in **Sleeves ▾**, a paged grid of thumbnails (8 a
-   page). Pick it, then **Load into my seat**.
+   **Refresh**. In v51+, **Sleeves ▾** is a paged list of names (10 per page),
+   without thumbnail downloads. Pick a name, then **Load into my seat**.
 
 Things that trip people up:
 - **Decks already on the table keep their old sleeves.** Sleeves are applied as a deck spawns,
@@ -74,8 +74,9 @@ Things that trip people up:
 
 Thumbnails: the build also writes a 146 × 204 preview of each sleeve to
 `docs/tts/sleeves/thumbs/` (macOS `sips`, cached in `.cache/sleeve-thumbs/`) and lists it as
-`thumb`. The table registers the previews as UI assets named `czsl_<id>` to show them in the
-grid. Standard's preview is Scryfall's small card back.
+`thumb` for older builds. From v51 the Cactuar browser is text-only and does not
+register or download these previews. Earlier builds use the thumbnail grid;
+Standard's preview there is Scryfall's small card back.
 
 
 1. `scripts/ttsdecks.py` (`sleeve_files()`, `sleeves()`) lists this folder during

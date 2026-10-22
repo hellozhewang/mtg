@@ -97,6 +97,10 @@ UI = {
     values[id] = v
   end,
   setAttribute = function(id, k, v)
+    UI.rawCalls = (UI.rawCalls or 0) + 1
+    UI.seatWrites = UI.seatWrites or {}
+    local seat = id:match("_(%a+)$")
+    if seat then UI.seatWrites[seat] = (UI.seatWrites[seat] or 0) + 1 end
     attrs[id] = attrs[id] or {}; attrs[id][k] = v
     if k == "text" then values[id] = v end
   end,
@@ -185,7 +189,7 @@ end
 -- ---------- load the browser ----------
 local source = read("tts/cactuar.lua"):gsub("@BASE_URL@", "test://tts/")
 assert(load(source, "cactuar.lua"))()
-dofile("tts/cactuar_preview.lua")
+dofile("tts/cactuar_guide.lua")
 local white, grey = {color = "White", steam_name = "zz"}, {color = "Grey", steam_name = "spectator"}
 
 -- A spectator cannot open it: decks load into your own seat.
@@ -197,6 +201,12 @@ check(attrs["cz_panel_Grey"] == nil, "no panel for a spectator")
 czOpenFor({color = "White"})
 check(attrs["cz_panel_White"].active == "True", "panel opens")
 check(CZ.index and #CZ.index.decks > 100, "index loaded")
+check(UI.assetCalls == 0, "opening registers no images or shared assets")
+check(UI.seatWrites.Red == nil and UI.seatWrites.Blue == nil, "index load skips closed seats")
+local coldWrites = UI.rawCalls
+local rendered = UI.rawCalls; czRender("White")
+local unchangedWrites = UI.rawCalls - rendered
+check(unchangedWrites == 0, "an unchanged redraw emits zero UI writes")
 local s = CZ.state.White
 check(#s.list == #CZ.index.decks, "every deck listed")
 check(s.sort == "newest", "newest is the default sort")
@@ -207,8 +217,12 @@ check(attrs["cz_sort_newest_White"].colors ~= attrs["cz_sort_tier_White"].colors
 check(not read("tts/cactuar.xml"):find("cz_sort_owner", 1, true), "no Owner sort button")
 -- Reopening uses the list it has while it's fresh, and re-fetches an old one.
 local before = requests
+local beforeWarm = UI.rawCalls
 czOpenFor({color = "White"}); czOpenFor({color = "White"})       -- close, open
 check(requests == before, "a fresh list isn't fetched again on open")
+local warmWrites = UI.rawCalls - beforeWarm
+check(warmWrites <= 4, "cached close/open changes visibility/input only")
+print("Browser UI writes: cold=" .. coldWrites .. ", cached close/open=" .. warmWrites .. ", unchanged redraw=" .. unchangedWrites .. "; asset reloads=" .. UI.assetCalls)
 CZ.indexAt = os.time() - CZ.staleAfter - 1
 czOpenFor({color = "White"}); czOpenFor({color = "White"})
 check(requests == before + 1 and CZ.indexAt >= os.time() - 1, "an old list is fetched again on open")
@@ -396,80 +410,51 @@ czOpen(white); czClear(white); czSearch(white, "beamtown"); czPick(white, "1"); 
 check(#spawned == 2, "library and commander only, no token pile (got " .. #spawned .. ")")
 check(values["cz_status_White"]:find("makes no tokens", 1, true), "the player is told there are no tokens")
 
--- The sleeves grid: Standard first, then the repo's sleeves as thumbnails; the choice
--- applies on load.
-spawned = {}
-czOpen(white); czClear(white)
-check(attrs["cz_sleeve_White"].text:find("Sleeves: Standard", 1, true), "sleeves button starts on Standard")
-check(attrs["cz_sleeve_White"].interactable == "True", "sleeves menu enabled when the repo has sleeves")
--- Thumbnails are registered once, next to the base table's own assets.
-local names = {}
-for _, a in ipairs(UI.assets) do names[a.name] = a.url end
-check(names.base_logo, "the base table's assets are kept")
-check(names.czsl_standard and names.czsl_standard:find("backs.scryfall.io/small/", 1, true), "Standard's thumbnail is Scryfall's small back")
-check(names.czsl_cactuar and names.czsl_cactuar:match("^test://tts/sleeves/thumbs/cactuar%.jpg%?v=%x+$"), "repo sleeves use their published thumbnail")
-local calls = UI.assetCalls
-czRefresh(white)
-check(UI.assetCalls == calls, "an unchanged list doesn't reload the UI")
-czFilter(white, "sleeve")
-check(s.menu == "sleeve" and attrs["cz_sleeves_White"].active == "True", "the sleeves grid opens")
-check(attrs["cz_menu_White"].active ~= "True", "not the text menu")
-check(values["cz_sl_name_1_White"] == "✓ Standard", "Standard listed first and ticked")
-check(attrs["cz_sl_img_1_White"].image == "czsl_standard", "cells show their thumbnail")
-local cactuarCell
-for i, b in ipairs(CZ.index.sleeves) do
-  if i > CZ.sleeveCells then break end
-  check(values["cz_sl_name_" .. i .. "_White"]:find(b.label, 1, true), "sleeve " .. b.label .. " in order")
-  if b.id == "cactuar" then cactuarCell = i end
-end
-local pages = math.ceil(#CZ.index.sleeves / CZ.sleeveCells)
-check(attrs["cz_sleeves_pager_White"].active == (pages > 1 and "True" or "False"), "the pager shows only with more than one page")
-check(values["cz_sleeves_page_White"] == "1 / " .. pages, "page count")
-check(cactuarCell, "the repo's Cactuar sleeve is on page 1")
-czSleevePick(white, tostring(cactuarCell))
-check(s.sleeve == "cactuar" and attrs["cz_sleeves_White"].active == "False", "picking a thumbnail closes the grid")
-check(attrs["cz_sleeve_White"].text:find("Sleeves: Cactuar", 1, true), "button shows the chosen sleeves")
-check(next(s.filter) == nil and #s.list == #CZ.index.decks, "picking sleeves leaves the filters alone")
--- Paging: with more sleeves than one page, the grid pages and opens on the chosen one.
+-- Sleeves are names in the text menu; changing them still changes all card backs.
+spawned = {}; czOpen(white); czClear(white)
 local realSleeves = CZ.index.sleeves
+local chosen = realSleeves[2]
+check(chosen and chosen.id ~= "standard", "a custom sleeve is available")
+local calls = UI.assetCalls
+czRefresh(white); czFilter(white, "sleeve")
+check(UI.assetCalls == calls and #UI.assets == 1, "refresh and sleeve selection register no images")
+check(s.menu == "sleeve" and attrs.cz_menu_White.active == "True", "sleeves open the text menu")
+check(values.cz_choice_1_White:find("Standard", 1, true), "Standard is listed first")
+for i = 1, math.min(CZ.menuRows, #realSleeves) do
+  check(values["cz_choice_" .. i .. "_White"]:find(realSleeves[i].label, 1, true), "sleeves retain catalog order")
+end
+czChoose(white, "2")
+check(s.sleeve == chosen.id and attrs.cz_menu_White.active == "False", "choosing sleeves by name closes the menu")
+check(attrs.cz_sleeve_White.text:find(chosen.label, 1, true), "button shows chosen sleeve")
+check(next(s.filter) == nil and #s.list == #CZ.index.decks, "sleeve choice does not filter decks")
 local many = {realSleeves[1]}
 for i = 1, 19 do many[#many + 1] = {id = "s" .. i, label = "S" .. i, file = "sleeves/s" .. i .. ".jpg"} end
-CZ.index.sleeves = many
+CZ.index.sleeves = many; czFilter(white, "sleeve")
+check(values.cz_menu_page_White == "1 / 2", "twenty sleeve names use two pages")
+czMenuPage(white, "next"); czChoose(white, "10")
+check(s.sleeve == "s19", "a later page selects the correct sleeve")
 czFilter(white, "sleeve")
-check(values["cz_sleeves_page_White"] == "1 / 3" and attrs["cz_sleeves_pager_White"].active == "True", "20 sleeves are 3 pages")
-check(attrs["cz_sl_img_2_White"].image == "", "a sleeve without a thumbnail shows its name only")
-czMenuPage(white, "next"); czMenuPage(white, "next")
-check(values["cz_sleeves_page_White"] == "3 / 3" and attrs["cz_sl_4_White"].active == "True" and attrs["cz_sl_5_White"].active == "False", "the last page holds the rest")
-czSleevePick(white, "4")
-check(s.sleeve == "s19", "picking on a later page picks that sleeve")
-czFilter(white, "sleeve")
-check(values["cz_sleeves_page_White"] == "3 / 3", "the grid reopens on the chosen sleeve's page")
-czDismiss(white)
-CZ.index.sleeves = realSleeves
-czOpen(white); czFilter(white, "sleeve"); czSleevePick(white, tostring(cactuarCell)); czOpen(white)
+check(values.cz_menu_page_White == "2 / 2", "the menu reopens at the selected name")
+czDismiss(white); CZ.index.sleeves = realSleeves
+czFilter(white, "sleeve"); czChoose(white, "2")
 czSearch(white, "giada"); czPick(white, "1"); czLoad(white)
-local backs, faces = 0, 0
+local backs = 0
 for i, o in ipairs(spawned) do
   for url in o.json:gmatch('"BackURL":"([^"]*)"') do
     backs = backs + 1
-    check(url:match("^test://tts/sleeves/cactuar%.jpg%?v=%x+$") ~= nil, "every card gets the chosen back (" .. url .. ")")
+    check(url == (chosen.url or "test://tts/" .. chosen.file), "cards receive selected sleeves")
   end
   local standard = o.json:gsub('"BackURL":"[^"]*"', '"BackURL":"https://backs.scryfall.io/large/0/a/0aeebaf5-8c7d-4636-9e82-8c27447861f7.jpg"')
-  check(standard == expectedObjects[i + 1], "only BackURL changes in object " .. i)
+  check(standard == expectedObjects[i + 1], "only BackURL changes")
 end
-check(backs > 50, "library, commander and token backs all swapped (" .. backs .. ")")
-czOpen(white); czFilter(white, "sleeve"); czSleevePick(white, "1")
-check(s.sleeve == "standard" and attrs["cz_sleeve_White"].text:find("Standard", 1, true), "Standard can be chosen again")
-spawned = {}
-czLoad(white)
-for i, o in ipairs(spawned) do check(o.json == expectedObjects[i + 1], "Standard leaves object " .. i .. " untouched") end
-check(CZ.state.Red == nil or CZ.state.Red.sleeve == nil, "each player has their own back")
-local withBacks = CZ.index.sleeves
-CZ.index.sleeves = nil                     -- a deck list published before sleeves
-czRender("White")
-check(attrs["cz_sleeve_White"].interactable == "False", "no sleeves list: the button is disabled")
-czFilter(white, "sleeve")
-check(s.menu == nil and attrs["cz_sleeves_White"].active ~= "True", "no sleeves list: the grid stays shut")
+check(backs > 50, "all library, commander and token backs are swapped")
+czFilter(white, "sleeve"); czChoose(white, "1")
+check(s.sleeve == "standard", "Standard can be selected again")
+spawned = {}; czLoad(white)
+for i, o in ipairs(spawned) do check(o.json == expectedObjects[i + 1], "Standard leaves deck objects untouched") end
+local withBacks = CZ.index.sleeves; CZ.index.sleeves = nil
+czRender("White"); czFilter(white, "sleeve")
+check(attrs.cz_sleeve_White.interactable == "False" and s.menu == nil, "old indexes without sleeves remain usable")
 CZ.index.sleeves = withBacks
 
 -- A new player in a seat gets a fresh browser, not the last player's leftovers.
@@ -528,9 +513,9 @@ czSort(white, "name"); check(logged("sorted by Name"), "sort logged")
 czPage(white, "next"); check(logged("turned to page 2"), "paging logged")
 czPage(white, "prev")
 czPick(white, "1"); check(s.selected and logged("selected a deck") and not logged(s.selected.name), "selection logged without the deck")
-czFilter(white, "sleeve"); czSleevePick(white, "2")
+czFilter(white, "sleeve"); czChoose(white, "2")
 check(logged("chose sleeves " .. CZ.index.sleeves[2].label), "sleeves choice logged")
-czFilter(white, "sleeve"); czSleevePick(white, "1")
+czFilter(white, "sleeve"); czChoose(white, "1")
 
 -- Draft: 5 different pool decks; Redraw deals again, logged with a count.
 czTourMode(white, "draft")
@@ -601,22 +586,21 @@ czOpen(white); czLoad(white)
 check(#spawned == 0, "no spawn onto an existing deck")
 check(values["cz_status_White"]:find("not empty"), "and the player is told why")
 
--- Named image loads rebuild shared UI asynchronously. A later close wins.
+-- Shared XML rebuilds from the separate Inspect/importer must invalidate cached writes.
 if attrs.cz_panel_White.active ~= "True" then czOpen(white) end
-UI.loading = true
-czSetAssets(UI.assets)
-czClose(white)
--- The pending prefab can finish with its earlier active flag after that close.
-attrs.cz_panel_White.active = "True"
-UI.loading = false
-settle()
-check(attrs.cz_panel_White.active == "False" and not CZ.state.White.open,
-  "finishing an image reload cannot reopen a browser closed while loading")
-czOpen(white)
-local rememberedQuery = CZ.state.White.query
-czSetAssets(UI.assets)
-check(attrs.cz_panel_White.active == "True" and attrs.cz_search_White.text == rememberedQuery,
-  "image reload restores the open browser and its search field")
+local written = UI.rawCalls
+CZ.imageGeneration = (CZ.imageGeneration or 0) + 1
+czRender("White")
+check(UI.rawCalls > written, "shared Inspect rebuild invalidates cached attributes")
+written = UI.rawCalls; czRender("White")
+check(UI.rawCalls == written, "repaint is cached again after a shared rebuild")
+attrs.cz_count_White.text = "External importer reset"
+czRender("White")
+check(attrs.cz_count_White.text ~= "External importer reset", "external XML reset is detected by the count sentinel")
+attrs.cz_search_White.text = "User input"
+czClear(white)
+check(attrs.cz_search_White.text == "", "user-edited input can always be cleared")
+check(UI.assetCalls == 0, "the entire browser session never rebuilds shared image assets")
 
 print(string.format("%d checks, %d failed", checks, failures))
 os.exit(failures == 0 and 0 or 1)

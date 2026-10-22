@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): delivered **v50** with seven prioritized battlefield soundtrack triggers and commander pictures on demand. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-21 (Codex): preparing **v51**: text-only Cactuar browser and reduced open/redraw work. Latest delivered is v50. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -17,6 +17,50 @@ selects. Report the latest saved build and Steam version separately.
 Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a version
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
+
+## v51: text-only browser and opening lag (preparing; not on Steam)
+
+Owner confirmed lag on clicking the Cactuar tile in **v50**, then requested scaling
+back guides/commander previews: **"no pictures on the deck object anymore"**.
+The Cactuar browser is now text-only: commander names/details, written guides and
+sleeve names. Commander image controls and the picture/asset module are removed.
+The right column is a readable 340px details panel; the window narrows to 1080px.
+Written guides load only on Read guide into the existing scrolling text element;
+no guide pictures, hover images or shared XML replacement. Sleeve selection uses
+the existing paged text menu (10 names/page); card-back replacement still works.
+Published preview/image metadata remains for older numbered saves, but this build
+never registers/downloads browser picture assets. Inspect remains a separate card
+image window and still grows to show every object.
+
+Source diagnosis found the index callback eagerly registered all **27** sleeve
+thumbnails and rendered all six seats, even closed ones. A 164-deck opening replay
+against v50 confirms **745 UI writes and one shared asset reload** on cold open,
+**110 writes** on close/reopen and **99** on an unchanged redraw. New code renders
+only open seats and caches its own attribute writes. The same replay gives
+**114 cold writes, 3 close/reopen writes, zero unchanged redraw writes, and zero
+browser asset reloads**. These are deterministic operation counts, not measured
+client FPS/latency. New colors/guides preserve privacy and seat-owner guards.
+
+The cache invalidates after shared Inspect rebuilds (imageGeneration) and detects
+external importer XML resets with a count-text sentinel. User-edited search input
+is deliberately not cached. Failed guide loads can retry with Refresh; late guide
+responses cannot reopen a closed view or display a previous selection.
+
+The hidden Inspect pool starts at **32 instead of 128** cells per seat, growing on
+demand with the existing full-container behavior. Browser panels drop from **187
+to 135 nodes per seat**. Total appended UI drops from **3,553 to 1,513 nodes**;
+new appended XML is **292,381 bytes**. This reduces shared UI construction/update
+cost even before anyone opens Inspect.
+
+Validation: **1,148 browser checks**, **17 written-guide checks**, **115 Inspect
+checks**, **92 music checks**, **1,536 timer checks**, **14 table-build tests** and
+**8 release tests** pass. Combined Lua compiles; static browser XML contains no
+Image nodes or commander-picture buttons. Sleeve tests use a real available
+catalog choice instead of the obsolete fixed cactuar.jpg fixture.
+
+Repository automation reset uncommitted work during implementation. Work continued
+in an isolated `codex/tts-v51` checkout to preserve unrelated bot/catalog updates.
+Delivery and live performance check pending. No Workshop upload.
 
 ## v50: prioritized battlefield soundtrack and commander images on demand (saved; not on Steam)
 

@@ -31,8 +31,7 @@ DEFAULT_BASE_URL = "https://hellozhewang.github.io/mtg/tts/"
 SEATS = ("White", "Red", "Yellow", "Green", "Blue", "Purple")
 ROWS = 10                                   # must match CZ.rows in cactuar.lua
 CHOICES = 10                                # paged filter menu; matches CZ.menuRows
-SLEEVE_CELLS = 8                            # paged Sleeves grid; matches CZ.sleeveCells
-SEARCH_CELLS = 128                          # initial scrolling pool; grows for larger containers
+SEARCH_CELLS = 32                           # initial scrolling pool; grows for larger containers
 MARKER = "-- ==== Cactuar deck browser"     # how a second build recognises the first
 TILE_IMAGE = "cactuar-tile.jpg"             # published beside decks.json (ttsdecks.py)
 TILE_SCALE = 2.2
@@ -58,16 +57,13 @@ def browser_xml() -> str:
     template = (SOURCE / "cactuar.xml").read_text(encoding="utf-8")
     row = _section(template, "ROW")
     choice = _section(template, "CHOICE")
-    cell = _section(template, "SLEEVECELL")
     panel = _section(template, "PANEL")
     out = ["<!-- Cactuar deck browser: github.com/hellozhewang/mtg, tts/ -->"]
     for color in SEATS:
         rows = "".join(row.replace("{I}", str(i)) for i in range(1, ROWS + 1))
         choices = "".join(choice.replace("{I}", str(i)) for i in range(1, CHOICES + 1))
-        cells = "".join(cell.replace("{I}", str(i)) for i in range(1, SLEEVE_CELLS + 1))
         out.append(panel.replace("@ROWS@", rows.rstrip("\n"))
-                   .replace("@CHOICES@", choices.rstrip("\n"))
-                   .replace("@SLEEVECELLS@", cells.rstrip("\n")).replace("{C}", color))
+                   .replace("@CHOICES@", choices.rstrip("\n")).replace("{C}", color))
     search_template = (SOURCE / "cactuar_search.xml").read_text(encoding="utf-8")
     for color in SEATS:
         cells = "".join(_section(search_template, "CARD").replace("{I}", str(i))
@@ -79,7 +75,7 @@ def browser_xml() -> str:
 
 # Appended to Global in this order: the browser, then the turn totals and
 # announcer, which use the browser's CZ.seats and CZ.base.
-GLOBAL_SCRIPTS = ("cactuar.lua", "cactuar_guide.lua", "cactuar_preview.lua", "cactuar_turns.lua", "cactuar_regex.lua", "cactuar_search.lua", "cactuar_music.lua")
+GLOBAL_SCRIPTS = ("cactuar.lua", "cactuar_guide.lua", "cactuar_turns.lua", "cactuar_regex.lua", "cactuar_search.lua", "cactuar_music.lua")
 
 
 def browser_lua(base_url: str) -> str:

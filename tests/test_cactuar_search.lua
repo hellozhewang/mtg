@@ -8,7 +8,7 @@ local attrs = {}
 local file = assert(io.open("tts/cactuar_search.xml")); local template = file:read("*a"); file:close()
 local cell = assert(template:match("<!%-%- @CARD@ %-%->\n(.*)"))
 local xml = '<Panel id="unrelated" text="A &amp; B"/><GridLayout id="czs_grid_White"></GridLayout>'
-local rebuilds, assetLoads = 0, 0
+local rebuilds, assetLoads, writes, dataReads, objectReads = 0, 0, 0, 0, 0
 local assets = {{name = "base", url = "https://example.test/base.png"}}
 local function imageURL(id)
   local name = (attrs[id] or {}).image
@@ -28,11 +28,15 @@ UI = {
     check(value[1].name == "base", "registering Inspect faces preserves the base table's assets")
     assets, assetLoads = value, assetLoads + 1
   end,
-  setXml = function(value, assets)
-    check(assets == nil, "expanding the grid preserves the shared custom assets")
+  setXml = function(value, merged)
+    if merged then
+      check(merged[1].name == "base", "a combined XML/asset rebuild preserves the base assets")
+      assets = merged
+    end
     xml, rebuilds = value, rebuilds + 1
   end,
   setAttribute = function(id, key, value)
+    writes = writes + 1
     attrs[id] = attrs[id] or {}; attrs[id][key] = value
   end,
   getAttribute = function(id, key) return (attrs[id] or {})[key] end,
@@ -63,9 +67,10 @@ local function deck(guid, contents)
   obj.getGUID = function() return guid end
   obj.getName = function() return "Live " .. guid end
   obj.getPosition = function() return Vector(10, 1, 20) end
-  obj.getObjects = function() return obj.contents end -- deliberately returns the actual array
+  obj.getObjects = function() objectReads = objectReads + 1; return obj.contents end -- deliberately returns the actual array
   obj.addContextMenuItem = function(label, callback) obj.menus[#obj.menus + 1] = label; obj.open = callback end
   obj.getData = function()
+    dataReads = dataReads + 1
     local children = {}
     for _, card in ipairs(obj.contents) do
       children[#children + 1] = {GUID = card.guid, CardID = 100, Nickname = card.name,
@@ -352,8 +357,91 @@ anonymous.getData = function()
     CustomDeck = {[1] = {FaceURL = "https://example.test/alpha.jpg"}, [2] = {FaceURL = "https://example.test/zulu.jpg"}}}
 end
 anonymous.open("White"); s = CZS.state.White
+czsRefreshClick(white) -- serialization-only edits can be refreshed explicitly
 czsSearch(white, "draw a card", "czs_query_White")
 check(#s.shown == 2, "serialized rules text is searchable for GUID-less duplicates")
+-- Cache and native-call regression checks on an unchanged, identified container.
+czsClose(red)
+textDeck.open("White"); s = CZS.state.White
+local readsBefore, objectsBefore = dataReads, objectReads
+local writesBefore = writes
+czsSearch(white, "exile"); czsSearch(white, "creature"); czsToggleRegex(white); czsClear(white)
+check(dataReads == readsBefore and objectReads == objectsBefore, "typing/toggling regex filters cached text without native container reads")
+czsToggleRegex(white)
+czsClear(white)
+writesBefore = writes
+tick()
+check(dataReads == readsBefore and writes == writesBefore, "unchanged polling avoids serialization and all UI writes")
+local serialReads = 0
+local realData = textDeck.getData
+textDeck.getData = function() serialReads = serialReads + 1; return realData() end
+czsRefreshClick(white)
+check(serialReads == 1, "explicit Refresh bypasses serialized metadata cache")
+czsClose(white); textDeck.open("White")
+check(serialReads == 1 and #CZS.state.White.cards == 3, "reopening unchanged contents reuses prepared metadata")
+for i = 1, 9 do tick() end
+check(serialReads == 2, "infrequent audit detects serialization-only changes without reading it every second")
+-- Cold grid growth and picture registration happen in a single shared rebuild.
+local freshCards = {}
+for i = 1, 500 do freshCards[i] = {guid = "perf" .. i, name = string.format("Perf %03d", i)} end
+local perf = deck("performance", freshCards)
+local perfData = perf.getData
+perf.getData = function()
+  local d = perfData(); d.CustomDeck["1"].FaceURL = "https://example.test/perf-new.jpg"; return d
+end
+onObjectSpawn(perf)
+local oldRebuilds, oldLoads = rebuilds, assetLoads
+perf.open("White")
+check(rebuilds == oldRebuilds + 1 and assetLoads == oldLoads, "new grid and new face assets use one native XML/asset rebuild")
+check(#CZS.state.White.shown == 500 and imageURL("czs_image_500_White") == "https://example.test/perf-new.jpg", "batched preparation/painting retains the entire alphabetical list and matching pictures")
+-- Exercise actual queued frames, rather than the synchronous convenience mock.
+czsClose(white)
+local immediateFrames, queue, maxCellWrites, frameWrites = Wait.frames, {}, 0, 0
+local nativeWrite = UI.setAttribute
+UI.setAttribute = function(id, key, value)
+  if id:match("^czs_card_%d+_") and key == "onClick" then frameWrites = frameWrites + 1 end
+  nativeWrite(id, key, value)
+end
+Wait.frames = function(fn) queue[#queue + 1] = fn end
+local function frame()
+  local pending = queue; queue = {}; frameWrites = 0
+  for _, fn in ipairs(pending) do fn() end
+  maxCellWrites = math.max(maxCellWrites, frameWrites)
+end
+local function drain()
+  local frames = 0
+  while #queue > 0 do frame(); frames = frames + 1; assert(frames < 1000, "queued work must finish") end
+  return frames
+end
+local oldReads = dataReads
+perf.open("White")
+check(dataReads == oldReads and #CZS.state.White.cards == 0, "opening returns before reading/preparing contents")
+check(attrs.czs_grid_White.active == "False", "reopening hides previous private cells until the fresh view is fully painted")
+czsSearch(white, "Perf 500")
+local framesUsed = drain()
+check(attrs.czs_grid_White.active == "True", "completed initial painting reveals the current private grid")
+check(framesUsed > 1 and #CZS.state.White.shown == 1 and CZS.state.White.shown[1] == "perf500", "a query entered during preparation wins when the atomic snapshot commits")
+czsSearch(white, "")
+frame(); czsSearch(white, "Perf 001"); drain()
+check(#CZS.state.White.shown == 1 and attrs.czs_card_500_White.active == "False", "a superseded paint cancels and clears distant stale cells")
+check(maxCellWrites <= 8, "at most eight card cells bind their callbacks in a frame")
+czsRefreshClick(white); frame(); czsClose(white); drain()
+check(CZS.state.White == nil and attrs.czs_panel_White.active == "False", "closing during preparation cancels queued reads/paints and never reopens")
+perf.open("White"); frame(); Player.White.steam_id = "replacement-owner"; drain()
+check(CZS.state.White.readJob ~= nil and #CZS.state.White.cards == 0, "queued preparation cannot commit to a replacement player")
+tick(); drain()
+check(CZS.state.White == nil and attrs.czs_panel_White.active == "False", "owner change clears the stale session")
+Player.White.steam_id = "White-owner"
+Wait.frames, UI.setAttribute = immediateFrames, nativeWrite
+-- Retrieval checks current physical membership even before an async poll commits.
+perf.open("White"); czsPick(white, "perf1")
+Wait.frames = function(fn) queue[#queue + 1] = fn end
+local oldTaken = #taken
+table.remove(perf.contents, 1)
+czsTake(white)
+check(#taken == oldTaken and CZS.state.White.selected == nil, "async cache cannot retrieve a removed GUID or substitute another card")
+drain(); Wait.frames = immediateFrames
+czsClose(white)
 -- Live reload keeps one context item and one polling loop.
 local menus, oldTicker = #a.menus, CZS.ticker
 loadInspect()

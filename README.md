@@ -852,7 +852,14 @@ or `\belf\b`. Click it again for plain text. Groups, character classes, repetiti
 line anchors and word boundaries are supported; lookarounds and backreferences are
 not. Invalid or overly complex patterns show an error and can be corrected in place.
 Search uses the text stored on the imported objects; it cannot read words from an
-image when an importer omitted that metadata.
+image when an importer omitted that metadata. Inspect prepares metadata and paints
+up to eight cells per frame, with a soft time budget, and reuses prepared metadata
+for up to six containers. Typing searches that cache without re-reading the deck.
+A lightweight poll detects membership and public-text changes; serialization-only
+picture/alternate-face edits are audited every ten unchanged polls or immediately
+with **↻ Refresh** in Inspect's header. Grid expansion and picture registration share
+one native UI rebuild. Native serialization and UI/image loading can still hitch;
+those engine calls cannot be interrupted by Lua.
 Hover over a thumbnail to enlarge it automatically to the left of Inspect; move away
 to dismiss it. No key or binding is needed. Click to keep a preview open and use its
 actions; hovering another thumbnail resumes automatic previews. The list and search

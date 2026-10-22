@@ -2,8 +2,11 @@
 <Panel id="czs_panel_{C}" visibility="{C}" active="False" width="480" height="94%"
        rectAlignment="MiddleRight" offsetXY="-16 0" allowDragging="true" returnToOriginalPositionWhenReleased="false"
        color="#090909" outline="#181818" outlineSize="1 1">
-  <Text id="czs_title_{C}" width="400" height="32" rectAlignment="UpperLeft" offsetXY="12 -10"
+  <Text id="czs_title_{C}" width="356" height="32" rectAlignment="UpperLeft" offsetXY="12 -10"
         fontSize="20" color="#E2E5EA" alignment="MiddleLeft" text="Inspect"/>
+  <Button id="czs_refresh_{C}" onClick="czsRefreshClick" width="28" height="28" rectAlignment="UpperRight" offsetXY="-48 -10"
+          fontSize="18" color="#FFFFFF" textColor="#C0C8D2" colors="#242424|#383838|#181818|#242424" text="↻"
+          tooltip="Refresh contents, pictures and alternate-face text"/>
   <Button onClick="czsClose" width="28" height="28" rectAlignment="UpperRight" offsetXY="-12 -10"
           fontSize="20" color="#FFFFFF" textColor="#E27373" colors="#242424|#484040|#282020|#242424" text="×"/>
   <InputField id="czs_query_{C}" width="406" height="34" rectAlignment="UpperLeft" offsetXY="12 -50"

@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-22 (Codex): delivered **v59** with a text-only commander rules area in the deck details column, also applied and visually checked on the running table. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-22 (Codex): preparing **v60** with bounded Inspect preparation/painting and cached metadata; v59 commander text is retained. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -17,6 +17,68 @@ selects. Report the latest saved build and Steam version separately.
 Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a version
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
+
+## v60: reduce Inspect opening and refresh bursts (preparing; not on Steam)
+
+Owner asks whether the first-open catalog parser bottleneck also applies to Inspect.
+Inspect does **not** use `JSON.decode`. Code inspection found a different expensive
+path: `getObjects` plus full native `getData` serialization every second **and on
+every search keystroke**, then normalization/sorting of all cards. Cold opening also
+grew the grid and registered pictures in **two** shared native UI rebuilds, followed
+by a burst of per-cell writes. Previous v59 commentary incorrectly described search
+as render-only; the actual handler called `czsRefresh` before rendering.
+
+Preparation now yields through batches of at most eight cards with a 4 ms **soft**
+budget. An unchanged public-text/membership fingerprint reuses prepared metadata;
+a bounded six-container cache also supports reopening. Typing/regex toggles search
+cached full text without native container reads. Lightweight polling still detects
+draws and edits exposed by `getObjects`; every tenth unchanged poll re-serializes to
+detect picture/alternate-face-only edits. New **↻ Refresh** bypasses that cache.
+Accented normalization reuses its constant map rather than allocating it per call.
+
+Grid expansion uses the v54 bounded XML splice, and a single `setXml(xml, mergedAssets)`
+registers pictures alongside new cells when both are needed (documented optional
+asset argument). Other shared assets/XML are preserved. Completion waits a native
+frame, loading=false, then two settling frames before rebinding sprites. Painting
+and hidden-cell cleanup are batched; unchanged native attribute writes are skipped.
+An opening grid stays hidden until its current cells finish painting so a new
+session cannot briefly display the previous private contents. Closing, superseded
+queries, owner changes and module reloads cancel queued jobs. All alphabetical
+entries, regex/full text, stable-GUID callbacks and left-side hover preview remain.
+Retrieval rechecks the current physical membership immediately before taking an
+identified GUID; cached data can never substitute another card or a deck index.
+
+**146 Inspect checks** pass, including a 500-card queued-frame fixture, at most eight
+cell callback bindings per frame, queries during preparation, stale-paint cleanup,
+closing/seat-change cancellation, removed-GUID retrieval, cache reuse/audit and one
+combined grid/asset rebuild. Existing 257/400-card, anonymous-import, metadata,
+privacy, large-XML and menu-restoration cases remain. The first 71-test Python run
+exposed one expected cache-warmup title write; rendering now restores the title with
+the rest of the view, and the rerun passes. The final **71 Python tests** pass across all eight Lua suites, table building,
+release, exporter and image validation; `git diff --check` is clean. Delivery follows.
+
+Live discovery found **no Deck objects and no open Inspect sessions** in the running
+table, including no White library deck, so there is no real-container timing or
+before/after FPS claim. Evidence: `.cache/inspect-live/v60-read-profile.json` and
+`v60-discovery.json`. Native `getObjects`/`getData`, the shared XML/asset rebuild,
+texture decoding, sorting and other individual operations cannot be preempted;
+the 4 ms check is not a strict frame ceiling and does not prove all hitches gone.
+Applied the new Inspect module live with the CZ/browser and music instances retained,
+25 assets unchanged, and no open Inspect sessions to interrupt. Updated the music
+wrapper's `CZMB.destroy` delegate to the new Inspect destroy handler before restoring
+the outer music wrapper; all other base/menu handlers remain in place. A first probe
+using `load` failed because that function is not exposed by TTS, before any mutation;
+inlining the canonical module through the editor API succeeded. Added six private
+header Refresh buttons with bounded header splices, preserving existing XML/assets;
+no gameplay objects moved. The first one-off header extractor accidentally captured
+through a later closing Button tag and produced invalid XML, leaving UI.loading true;
+this was a live helper error, not the source XML/build. Replaced it with a bounded
+single-tag extractor, validated the complete target with ElementTree, and applied
+that valid target. Final read-back confirms **six Refresh buttons, UI.loading false,
+CZS.rebuilding false, 25 assets unchanged, White browser still open and no Inspect
+session**. Evidence: `v60-patch.json`, `v60-header-patch.json`,
+`v60-header-repair.json`, `v60-target.xml` and `v60-after.json`. No physical cards or turns have been
+changed. **Steam remains v42.**
 
 ## v59: readable commander rules in the details column (saved; not on Steam)
 

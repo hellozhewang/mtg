@@ -81,6 +81,7 @@ class TableBuild(unittest.TestCase):
             self.assertIsNone(panel.find(f".//*[@id='czs_next_{color}']"))
             self.assertEqual(root.find(f".//*[@id='czs_query_{color}']").get("onValueChanged"), "czsSearch")
             self.assertEqual(root.find(f".//*[@id='czs_regex_{color}']").get("onClick"), "czsToggleRegex")
+            self.assertEqual(root.find(f".//*[@id='czs_refresh_{color}']").get("onClick"), "czsRefreshClick")
             for i in range(1, build_tts_table.SEARCH_CELLS + 1):
                 card = root.find(f".//*[@id='czs_card_{i}_{color}']")
                 self.assertEqual(card.get("onClick"), "czsPick")

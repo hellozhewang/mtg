@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): preparing **v46** with turn-sound testing/diagnostics and same-seat event handling; live solo native End Turn emits no Lua event. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-21 (Codex): delivered **v46** with turn-sound testing/diagnostics and same-seat event handling; owner confirmed the voice clip plays. Live solo native End Turn emits no Lua event. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -18,7 +18,7 @@ Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a vers
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
 
-## v46: turn-sound diagnostics and same-seat events (preparing saved build)
+## v46: turn-sound diagnostics and same-seat events (saved; not on Steam)
 
 Owner reported only hearing TTS's beep in v45. Live inspection confirmed the v45
 code/clip URL were present, unmuted and restored, with only White (EggRolls) seated.
@@ -43,12 +43,23 @@ tests** pass. Native ping/audience/mute behavior is otherwise unchanged.
 
 The running v45 table has the fix patched for immediate testing, preserving active
 turn/color/start time and existing totals. A direct clip test was requested without
-advancing the turn. Preparing numbered v46; **no Steam upload**.
+advancing the turn. Delivered numbered v46; **no Steam upload**.
 
 Direct live test verified both requested and observed-at-playback URLs equal
 `change-turn.wav?v=777efbb9`, with playback status `playing`. The owner explicitly
 confirmed **"Yes, I heard the clip."** The audio file/client volume work. This is
 separate from native solo End Turn, which emits no callback in the live test.
+
+Delivered **MTG 6 player Cactuar Ver_v46** JSON/PNG from pushed source `b1b53868`.
+Pages passed the exact audio/tile-byte release check. Delivered checksums match;
+read-back SaveName, combined Lua compilation, XML parsing, hashed clip URL,
+turn-event hook and playback diagnostics are verified. Immutable archive/manifest:
+`.cache/tts-builds/v46/`. Save SHA-256:
+`a8e85c81e07cd66cac168d7a7ce72103be5a3e2cbe91bba4770a36a83220d023`.
+Canonical v45 files were replaced in Saves; their archive remains available.
+The running table was not reloaded. WIP/changelog Desktop copies refreshed.
+**Steam remains v42.** A multi-player turn change still needs the owner's check;
+the audible direct test verifies playback, not native multi-player event delivery.
 
 ## v45: custom change-turn sound (saved; not on Steam)
 

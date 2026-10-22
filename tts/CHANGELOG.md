@@ -8,6 +8,11 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v46 — 2026-10-21 (commit b1b53868)
+- Play custom audio on reported turn starts, including first and same-seat events; add turn sound test for solo audio testing.
+- Record audio playback/load diagnostics; native solo End Turn may emit no Lua event.
+- Saved build for testing; not uploaded to Steam.
+
 ## v45 — 2026-10-21 (commit ac40727f)
 - Play change-turn.wav for everyone on genuine turn changes; announcer off mutes the custom clip.
 - Keep TTS native incoming-player ping; avoid duplicate/setup sounds and stale audio playback callbacks.

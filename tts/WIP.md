@@ -7,6 +7,24 @@ Last updated 2026-10-22 (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
 Both states visually checked live. **Steam is now v64, published at the owner’s request.** See [the changelog](../docs/development/tts-changelog.md).
 
+## Audio asset cleanup (2026-10-22)
+
+Owner requested removal of unnecessary MP3s. Current Global Lua references only
+WAVs. Remove `ff14_theme.mp3` and `ff14_ultima.mp3` from both `tts/sounds/` and the
+published `docs/tts/sounds/`, plus the obsolete `scripts/encode_tts_music.py` v48
+reproduction helper. Regenerate only the published sound folder with the normal
+export/sync functions; no catalog/deck changes. Audio guide now records the removal.
+Historical v48/v49 notes below describe the previous retained copies.
+
+Keep all 15 WAVs byte-for-byte unchanged, including their published URLs. Retain
+MP3 input support in the mastering tool and generic format support in publishing;
+TTS's MP3 Volume setting and source recording provenance are not obsolete files.
+Verified generated runtime Lua and all 15 source/published WAV SHA-256 values are
+unchanged. Existing audio export/table build checks: 41 tests pass. Removed
+13,578,268 bytes of MP3 copies from the checkout; Git history remains available.
+No replacement table build/upload is needed for unused assets;
+Saved Games and Steam remain v64.
+
 ## Competitive Brawl banlist clarification (2026-10-22)
 
 Owner supplied the October 12 Arena commander-ban update, then withdrew the deck

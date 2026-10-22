@@ -34,7 +34,10 @@ used without conversion or volume changes.
 
 v48's MP3 copies produced repeated sounds on the owner's client; playlist replacement
 alone did not fix that. The owner confirmed both original theme/Ultima WAVs work.
-The MP3s remain for old saves; `scripts/encode_tts_music.py` is historical only.
+The unused `ff14_theme.mp3` and `ff14_ultima.mp3` source/published copies and the
+obsolete MP3 encoder were removed on 2026-10-22. Current saves, including Steam
+v64, use WAVs exclusively. Old v48 reproduction remains available in Git history.
+All 15 WAV assets retain their existing bytes and URLs.
 
 ## Turn-change clip (v46)
 
@@ -50,7 +53,7 @@ TTS's native incoming-player
 ping remains separate; Workshop Lua cannot replace its sound or target a custom
 Music Player clip to just one player. The shared channel can interrupt music.
 
-## Current audio: ElevenLabs Voice Design + custom MP3 (2026-10-21)
+## Current audio: ElevenLabs Voice Design + mastered WAV output (2026-10-21)
 
 The announcer WAVs are generated and mastered via `scripts/make_elevenlabs_announcer.py`
 (API key stored locally in `.apikeys/elevenlabsapikey.txt`, which is gitignored).
@@ -169,8 +172,10 @@ below the ceiling. Loudness is matched to the target independently of peak heigh
 - **Not louder than about -11 LUFS.** Past that the limiter only flattens the voice: 24 dB
   of drive measured only 0.4 LU louder than 18 dB, and sounded worse.
 - **Keep clips short**, about 3 to 4 seconds: they interrupt a game.
-- **WAV** is what's tested in game. `.mp3` and `.ogg` are published too
-  (`ttsdecks.SOUND_TYPES`), but test a new format in TTS before relying on it.
+- **WAV** is the tested, currently published format. Generic publishing tools
+  still recognize `.mp3` and `.ogg`, but no such playback assets remain in the
+  sound folders. The mastering tool may accept an MP3 input and produce WAV output;
+  those input-format examples and TTS's **MP3 Volume** setting are still valid.
 
 ## Getting a new clip to the table
 

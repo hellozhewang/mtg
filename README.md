@@ -820,7 +820,8 @@ the shared Music Player. TTS's native incoming-player ping remains separate.
 Same-seat turn events play the clip too. Native End Turn can emit no Lua event
 when testing alone; chat `turn sound test` tests the clip without advancing a turn.
 
-The shared **FF14 soundtrack** loops Prelude/Discoveries until the cannon fires.
+The shared **FF14 soundtrack** uses the original WAV recordings and loops
+Prelude/Discoveries until the cannon fires.
 **Ultima** loops only during a player's turn while they have **10+ battlefield
 artifacts**, pausing and resuming the same track between qualifying turns. Library,
 exile, graveyard and commander columns do not count. Ultima stays loaded while

@@ -8,6 +8,11 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v49 — 2026-10-21 (commit 17949770)
+- Use the original FF14 WAV recordings; v48’s MP3 copies produced incorrect repeated sounds on the owner’s client.
+- Keep one soundtrack playlist entry, enable looping only after load, and clear the prelude playlist when the cannon fires. Retain artifact/turn gating and Ultima pause/resume.
+- Saved build for testing; not uploaded to Steam.
+
 ## v48 — 2026-10-21 (commit a6e5c0ba)
 - Loop the FF14 prelude until the cannon fires; play one looping Ultima only during turns with 10+ artifacts in that player’s battlefield.
 - Pause/resume Ultima without reloading between qualifying turns; skip custom voice clips to preserve its playhead. Exclude library, exile, graveyard and commander columns.

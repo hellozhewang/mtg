@@ -1,9 +1,9 @@
 # Announcer clips
 
-## FF14 soundtrack (v48)
+## FF14 soundtrack (v49)
 
-`ff14_theme.mp3` (Prelude / Discoveries) loops in setup and stops when the cannon
-actually fires. `ff14_ultima.mp3` loops only on a turn where that player's battlefield
+`ff14_theme.wav` (Prelude / Discoveries) loops in setup and stops when the cannon
+actually fires. `ff14_ultima.wav` loops only on a turn where that player's battlefield
 contains 10+ artifacts. It pauses below the threshold or on a nonqualifying turn,
 then resumes without replacing the loaded track. There is one shared instance and
 playhead, including when several players qualify. Library/exile/graveyard/commander
@@ -15,10 +15,15 @@ Native beeps and text alerts remain. Chat `music off` / `music on` controls musi
 separately from `announcer off`. Position continuity lasts within a loaded session;
 MusicPlayer exposes no timestamp/seek API after a track replacement or full reload.
 
-Runtime MP3s are smaller derivatives of the owner's local WAVs, with no volume
-changes. Reproduce with `python3 scripts/encode_tts_music.py` (FFmpeg/libmp3lame,
-quality 2). Theme: 4,710,161 bytes / 632.35 s; Ultima: 2,078,973 bytes / 297.17 s.
-Only these two MP3 derivatives are included in v48; other audio work stays separate.
+Runtime music uses the original mono PCM16 WAVs at 22050 Hz, without conversion
+or volume changes. Theme: 27,886,670 bytes / 632.35 s (`0e31e48c`); Ultima:
+13,105,230 bytes / 297.17 s (`86e3cc3d`). Each load installs only its own playlist
+entry; cannon fire clears the prelude playlist to prevent later fallback playback.
+
+v48's smaller MP3 derivatives produced repeated sounds on the owner's client;
+replacing the playlist did not fix that. The owner confirmed the original WAV works.
+MP3 files remain available for old saves. `scripts/encode_tts_music.py` only
+reproduces those historical files; v49 does not use them.
 
 ## Turn-change clip (v46)
 

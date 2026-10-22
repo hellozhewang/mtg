@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): preparing **v49** to replace v48's failed MP3 music with the original WAVs; owner confirmed "wav works". Latest delivered save is v48. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-21 (Codex): delivered **v49** using original WAV music; owner confirmed both the theme and Ultima sound correct. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -18,7 +18,7 @@ Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a vers
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
 
-## v49: original WAV soundtrack / v48 audible failure (preparing saved build)
+## v49: original WAV soundtrack / v48 audible failure (saved; not on Steam)
 
 Owner reported repeated beeps/voices rather than the FF14 theme in v48. Live state
 showed one theme request (serial 1), a loaded FF14 MP3 URL, native Play and repeat
@@ -44,7 +44,26 @@ up changed sound URLs rather than retaining an obsolete MP3 binding.
 
 **32 music checks**, **1536 timer checks** and **13 table-build tests** pass.
 New checks cover the one-entry playlist, original WAV selection and clearing the
-prelude fallback on cannon fire. Preparing numbered v49; **no Workshop upload**.
+prelude fallback on cannon fire.
+
+The live patch restores the diagnostic-only music mute and picks up the new WAV
+URLs without reloading the table. By then the cannon had fired and the active seat
+qualified, so the controller selected the published Ultima WAV. Its only playlist
+entry and current URL are `ff14_ultima.wav?v=86e3cc3d`, native Play and repeat on.
+Owner explicitly confirmed **"Yes, Ultima sounds correct"**, in addition to the
+earlier audible theme confirmation. No physical objects or turns were changed in
+this diagnosis. Evidence: `.cache/ff14-live/v48-noise-before.json` and
+`v49-original-wav.json`. Media API state is not a substitute for a listening check.
+
+Delivered **MTG 6 player Cactuar Ver_v49** JSON/PNG from pushed source `17949770`.
+Pages passed the exact audio/tile-byte gate, including both original WAVs.
+Delivered checksums match; read-back save name, Lua compilation, XML parsing,
+WAV hashes and the one-entry/clear-playlist lifecycle are verified. Runtime music
+contains no MP3 bindings. Immutable archive/manifest: `.cache/tts-builds/v49/`.
+Save SHA-256:
+`bb68d2882a05a8d26f396132e470e521271eecda799e08c1488a60a980ef8f9e`.
+Canonical v48 files were replaced in Saves; their archive remains available.
+Final WIP/changelog Desktop copies refreshed. **Steam remains v42; no Workshop upload**.
 
 ## v48: FF14 battlefield soundtrack (saved; not on Steam; MP3 playback failed)
 

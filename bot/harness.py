@@ -266,6 +266,7 @@ class AgyHarness(Harness):
 
     def run(self, folder, message, session_id, *, chan, timeout, writable):
         self.prepare(folder.parent)
+        t0 = time.time()
         argv = sandbox.wrap(self.args(message, session_id, timeout), self.profile(folder, writable))
         proc = subprocess.run(argv, cwd=folder, stdin=subprocess.DEVNULL, capture_output=True,
                               text=True, timeout=timeout + 30,
@@ -280,7 +281,7 @@ class AgyHarness(Harness):
         data = self.parse(proc.stdout)
         conv_id = data.get("conversation_id") or session_id
         if not img_info:
-            img_info = usage.check_session_image_quota(self.home, conv_id)
+            img_info = usage.check_session_image_quota(self.home, conv_id, since=t0)
         if not img_info:
             img_info = usage.scan_recent_image_quota(self.home)
         if img_info and img_info.get("resets_at"):

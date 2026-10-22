@@ -196,38 +196,44 @@ def parse_image_quota_error(text: str) -> dict | None:
     }
 
 
-def check_session_image_quota(home: Path | str | None, conv_id: str | None) -> dict | None:
-    """Directly inspect this specific turn's brain and subagents for image quota errors."""
+def check_session_image_quota(home: Path | str | None, conv_id: str | None,
+                              *, since: float | None = None) -> dict | None:
+    """Directly inspect this specific turn's brain and subagents for image quota errors.
+    Uses the last USER_INPUT step and mtime to distinguish between turns on a persisted session."""
     if not home or not conv_id:
         return None
     brain_dir = Path(home) / ".gemini" / "antigravity-cli" / "brain" / conv_id
     if not brain_dir.is_dir():
         return None
-    # 1. Check parent session messages from subagents
-    msgs_dir = brain_dir / ".system_generated" / "messages"
-    if msgs_dir.is_dir():
-        for msg_file in sorted(msgs_dir.glob("*.json"), key=lambda p: p.stat().st_mtime, reverse=True)[:5]:
-            try:
-                info = parse_image_quota_error(msg_file.read_text(encoding="utf-8", errors="replace"))
-                if info and info.get("resets_at"):
-                    return info
-            except Exception:
-                continue
-    # 2. Check parent session transcript
+
+    # Find the last USER_INPUT step index to isolate the current request
+    last_user_step = 0
     parent_log = brain_dir / ".system_generated" / "logs" / "transcript.jsonl"
     if parent_log.is_file():
         try:
-            info = parse_image_quota_error(parent_log.read_text(encoding="utf-8", errors="replace"))
-            if info and info.get("resets_at"):
-                return info
-        except Exception:
+            with open(parent_log, "r", encoding="utf-8", errors="replace") as f:
+                for line in f:
+                    if '"USER_INPUT"' in line:
+                        try:
+                            step = json.loads(line)
+                            if step.get("type") == "USER_INPUT":
+                                last_user_step = step.get("step_index", 0)
+                        except json.JSONDecodeError:
+                            continue
+        except OSError:
             pass
-    # 3. Check subagents spawned in this session
+
+    # 1. Check subagents spawned in this request (spawnStepIndex >= last_user_step)
     subagents_dir = brain_dir / ".system_generated" / "subagents"
     if subagents_dir.is_dir():
         for sa_meta in subagents_dir.glob("*.json"):
+            if since and sa_meta.stat().st_mtime < since - 2:
+                continue
             try:
                 sa_data = json.loads(sa_meta.read_text(encoding="utf-8"))
+                spawn_idx = sa_data.get("spawnStepIndex", 0)
+                if spawn_idx < last_user_step:
+                    continue  # spawned in a prior request
                 sa_id = sa_data.get("conversationId")
                 if sa_id:
                     sa_log = Path(home) / ".gemini" / "antigravity-cli" / "brain" / sa_id / ".system_generated" / "logs" / "transcript.jsonl"
@@ -237,6 +243,44 @@ def check_session_image_quota(home: Path | str | None, conv_id: str | None) -> d
                             return info
             except Exception:
                 continue
+
+    # 2. Check parent session messages delivered in this request
+    msgs_dir = brain_dir / ".system_generated" / "messages"
+    if msgs_dir.is_dir():
+        for msg_file in sorted(msgs_dir.glob("*.json"), key=lambda p: p.stat().st_mtime, reverse=True)[:5]:
+            if since and msg_file.stat().st_mtime < since - 2:
+                continue
+            try:
+                data = json.loads(msg_file.read_text(encoding="utf-8"))
+                src = data.get("sourceMetadata", {}).get("tool", {})
+                if src.get("stepIndex", 0) and src.get("stepIndex", 0) < last_user_step:
+                    continue
+                info = parse_image_quota_error(json.dumps(data))
+                if info and info.get("resets_at"):
+                    return info
+            except Exception:
+                continue
+
+    # 3. Check lines after last_user_step in parent transcript
+    if parent_log.is_file():
+        try:
+            with open(parent_log, "r", encoding="utf-8", errors="replace") as f:
+                tail_lines = []
+                for line in f:
+                    if '"step_index"' in line:
+                        try:
+                            s = json.loads(line)
+                            if s.get("step_index", 0) >= last_user_step:
+                                tail_lines.append(line)
+                        except json.JSONDecodeError:
+                            continue
+                if tail_lines:
+                    info = parse_image_quota_error("\n".join(tail_lines))
+                    if info and info.get("resets_at"):
+                        return info
+        except Exception:
+            pass
+
     return None
 
 

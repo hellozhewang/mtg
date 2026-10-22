@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-22 (Codex): preparing **v54** with a live-verified Inspect grid expansion fix. Latest delivered is v53 with zone-menu repair and sleeve thumbnails on demand. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-22 (Codex): delivered **v54** with the live-verified Inspect grid expansion fix, zone-menu repair and sleeve thumbnails on demand. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -18,7 +18,7 @@ Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a vers
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
 
-## v54: Inspect grid expansion exceeds MoonSharp pattern limit (preparing)
+## v54: Inspect grid expansion exceeds MoonSharp pattern limit (saved; not on Steam)
 
 After confirming the menu was back, owner provided a console screenshot:
 `pattern too complex` from `gsub` in **czsEnsureCells**, reached through refresh/open.
@@ -45,7 +45,17 @@ retained. No physical cards or turns were changed. Evidence:
 
 **129 Inspect checks** pass, adding preservation of a 12,000-panel shared prefix
 and another seat's grid through expansion. All **six Lua suites** and **14 build
-tests** pass. v53's lazy sleeves remain. Delivery pending; no Workshop upload.
+tests** pass. v53's lazy sleeves remain.
+
+Delivered **MTG 6 player Cactuar Ver_v54** JSON/PNG from pushed source `18f147ff`.
+Pages passed exact sound/tile-byte verification. Delivered checksums and read-back
+Lua/XML match; bounded grid replacement, zone-menu hooks and the private lazy sleeve
+choosers are verified. Archive: `.cache/tts-builds/v54/`. Save SHA-256:
+`59b3069372cf7eb2ada2005a367c1fb447be9ada16911462c61e6105f82b6b2b`.
+Canonical v53 files were replaced in Saves; its archive remains. The running game
+received the Inspect menu/grid repairs; load v54 for the lazy sleeve chooser and
+persistent fixes. Final WIP/changelog copies refreshed on Desktop. **Steam remains
+v42; no Workshop upload.**
 
 ## v53: actual Inspect zone-menu fix and lazy sleeve images (saved; not on Steam)
 

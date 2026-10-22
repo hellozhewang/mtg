@@ -815,6 +815,8 @@ then 10 minutes ([tts/cactuar_turns.lua](tts/cactuar_turns.lua); chat `announcer
 Turn changes after the game starts also play `change-turn.wav` for everyone through
 the shared Music Player. TTS's native incoming-player ping remains separate.
 `announcer off` mutes custom turn-change and slow-turn clips.
+Same-seat turn events play the clip too. Native End Turn can emit no Lua event
+when testing alone; chat `turn sound test` tests the clip without advancing a turn.
 
 **Inspect contents alphabetically:** right-click a deck or bag and choose **Inspect**.
 A private, narrow window shows four scrolling columns and a search bar, using the live

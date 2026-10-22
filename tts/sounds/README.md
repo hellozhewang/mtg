@@ -1,12 +1,16 @@
 # Announcer clips
 
-## Turn-change clip (v45)
+## Turn-change clip (v46)
 
 `change-turn.wav` is the owner-selected 1.696s mono PCM16 clip at 22050 Hz
 (SHA-256 prefix `777efbb9`). It plays through the shared Music Player on genuine
-turn changes after the game has started, so everyone hears it at their own MP3
+reported turn starts after setup, including same-seat events, so everyone hears it
+at their own MP3
 Volume. `announcer off` mutes it along with the slow-turn clips. It does not loop
-or play for duplicate events, setup, or restored turns. TTS's native incoming-player
+or play during the initial loading grace period. Chat `turn sound test` plays it
+without advancing the turn. In a one-player table, native End Turn can beep without
+firing a Lua turn event; use that test command to check the custom sound solo.
+TTS's native incoming-player
 ping remains separate; Workshop Lua cannot replace its sound or target a custom
 Music Player clip to just one player. The shared channel can interrupt music.
 

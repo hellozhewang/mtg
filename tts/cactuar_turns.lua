@@ -171,14 +171,30 @@ local function cztPlay(sound, title)
   local state = CZT
   state.audioSerial = (state.audioSerial or 0) + 1
   local serial = state.audioSerial
-  pcall(function()
+  state.audioStatus, state.audioError = "loading", nil
+  state.audioObservedURL = nil
+  state.audioURL = (CZT.soundBase or CZ.base) .. sound
+  local ok, err = pcall(function()
     -- soundBase: set by hand to test clips from somewhere other than CZ.base.
     MusicPlayer.repeat_track = false
-    MusicPlayer.setCurrentAudioclip({url = (CZT.soundBase or CZ.base) .. sound, title = title})
+    MusicPlayer.setCurrentAudioclip({url = state.audioURL, title = title})
     Wait.condition(function()
-      if CZT == state and state.audioSerial == serial and not state.muted then MusicPlayer.play() end
-    end, function() return MusicPlayer.loaded end, 15)
+      if CZT == state and state.audioSerial == serial and not state.muted then
+        state.audioStatus = MusicPlayer.play() == false and "error" or "playing"
+        local clipOK, clip = pcall(MusicPlayer.getCurrentAudioclip)
+        if clipOK and clip then state.audioObservedURL = clip.url end
+      end
+    end, function() return MusicPlayer.loaded end, 15, function()
+      if CZT == state and state.audioSerial == serial and not state.muted then
+        state.audioStatus, state.audioError = "error", "Clip load timed out"
+        print("Cactuar audio: " .. state.audioError)
+      end
+    end)
   end)
+  if not ok then
+    state.audioStatus, state.audioError = "error", tostring(err)
+    print("Cactuar audio: " .. state.audioError)
+  end
 end
 
 local function cztAnnounce(line, color)
@@ -461,8 +477,9 @@ CZT_BASE = CZT_BASE or {turn = onPlayerTurn, randomize = onObjectRandomize, chat
 -- Turn events TTS fires while the table is still loading don't start a game.
 function onPlayerTurn(player, previous)
   local color = player and player.color
-  local changed = CZT.started and CZT.restored and CZT.color and color ~= CZT.color
-    and cztSeat(color) and os.time() - (CZT.loadedAt or 0) > 5
+  -- Same-seat events can be real turns (e.g. extra turns from a mod).
+  -- Solo native End Turn may emit no event; "turn sound test" tests audio alone.
+  local playSound = CZT.restored and cztSeat(color) and os.time() - (CZT.loadedAt or 0) > 5
   if not CZT.started and CZT.restored and cztSeat(color) and os.time() - (CZT.loadedAt or 0) > 5 then
     cztFirstTurn(color)
   else
@@ -470,7 +487,7 @@ function onPlayerTurn(player, previous)
   end
   -- MusicPlayer is shared: everyone hears this clip. TTS's private native ping
   -- is not exposed for replacement through the Workshop scripting API.
-  if changed then cztPlay(CZT.turnSound, "Turn change") end
+  if playSound then cztPlay(CZT.turnSound, "Turn change") end
   if CZT_BASE.turn then return CZT_BASE.turn(player, previous) end
 end
 
@@ -489,6 +506,7 @@ function onChat(message, player)
   if m == "announcer off" then CZT.muted = true; broadcastToAll("Announcer muted.", {0.7, 0.7, 0.7})
   elseif m == "announcer on" then CZT.muted = false; broadcastToAll("Announcer on.", {0.7, 0.7, 0.7})
   elseif m == "announcer test" then cztAnnounce(CZT.lines[1], player and player.color or "White")
+  elseif m == "turn sound test" then cztPlay(CZT.turnSound, "Turn change test")
   elseif m == "timers off" then CZT.hidden = true; cztShowAll()
   elseif m == "timers on" then CZT.hidden = false; cztResume(); cztShowAll()
   end

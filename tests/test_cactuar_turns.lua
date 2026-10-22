@@ -188,14 +188,18 @@ check(timers.Blue.vars.turnN == 1 and timers.Blue.labels[6] == 1, "it is turn 1 
 check(timers.Blue.vars.timerID ~= nil and timers.Blue.vars.timerOn == true, "the table clock runs")
 check(timers.Green.vars.turnN == 0 and timers.Green.vars.timerOn == true, "every other seat starts from 0")
 check(broadcasts[#broadcasts]:find("BluePlayer takes the first turn", 1, true), "the table is told")
-check(#turnPlayed == 0, "the first turn is not announced as a turn change")
+check(#turnPlayed == 1, "the first real turn plays the custom alert after setup")
 now = now + 30; tick()
 check(label("Blue") == "total 0:30", "Blue's total runs (got " .. tostring(label("Blue")) .. ")")
 onPlayerTurn({color = "Red"}, {color = "Blue"})
 check(CZT.color == "Red" and CZT.total.Blue == 30, "later turns just switch, they don't restart the game")
-check(#turnPlayed == 1 and turnPlayed[1] == "test://tts/sounds/change-turn.wav", "a real turn change plays the selected custom clip")
+check(#turnPlayed == 2 and turnPlayed[2] == "test://tts/sounds/change-turn.wav", "a real turn change plays the selected custom clip")
 onPlayerTurn({color = "Red"}, {color = "Red"})
-check(#turnPlayed == 1, "duplicate events for the same turn do not replay the clip")
+check(#turnPlayed == 3, "same-seat turns play the clip for solo games and extra turns")
+local beforeSoundTest, colorBeforeSoundTest = #turnPlayed, CZT.color
+onChat("turn sound test", {color = "White"})
+check(#turnPlayed == beforeSoundTest + 1 and CZT.color == colorBeforeSoundTest, "turn sound test plays the clip without changing the active turn")
+check(CZT.audioStatus == "playing" and CZT.audioURL == "test://tts/sounds/change-turn.wav", "playback status records that the correct clip reached the player")
 
 -- Rolling the die starts a new game. Here it lands on White, whose turn it already is.
 local die = dieNamed("Who goes first?")

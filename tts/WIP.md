@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): **v45 delivered to Saved Games** with the owner's `change-turn.wav` clip on turn changes. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-21 (Codex): preparing **v46** with turn-sound testing/diagnostics and same-seat event handling; live solo native End Turn emits no Lua event. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -17,6 +17,38 @@ selects. Report the latest saved build and Steam version separately.
 Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a version
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
+
+## v46: turn-sound diagnostics and same-seat events (preparing saved build)
+
+Owner reported only hearing TTS's beep in v45. Live inspection confirmed the v45
+code/clip URL were present, unmuted and restored, with only White (EggRolls) seated.
+No custom playback had been requested: the Music Player still held the base's
+`----` track and `CZT.audioSerial` was absent. The v45 color-change guard suppressed
+same-seat turn events, which can be legitimate extra turns.
+
+**Important live finding:** calling `Turns.endTurn()` on this one-player table
+leaves the active color/start time and audio request serial unchanged. TTS emits no
+Lua turn event in that case, so removing the color guard alone cannot make the
+native solo button play custom audio. This was tested, and the limitation explained
+to the owner. Do not claim solo native End Turn is fixed; use the sound test command
+to test the clip alone, or a real turn change with multiple players.
+
+The hook now plays on valid native turn-start events after the loading grace
+period, including first/manual and same-seat turns. It no longer treats the same
+color as a duplicate. Chat **`turn sound test`** plays the selected clip without
+advancing any turn. Playback records request/error status and the observed clip URL
+at playback start; load timeouts/errors are reported rather than silently swallowed.
+The new turn/timer regression suite passes **1525 checks**; all **12 table-build
+tests** pass. Native ping/audience/mute behavior is otherwise unchanged.
+
+The running v45 table has the fix patched for immediate testing, preserving active
+turn/color/start time and existing totals. A direct clip test was requested without
+advancing the turn. Preparing numbered v46; **no Steam upload**.
+
+Direct live test verified both requested and observed-at-playback URLs equal
+`change-turn.wav?v=777efbb9`, with playback status `playing`. The owner explicitly
+confirmed **"Yes, I heard the clip."** The audio file/client volume work. This is
+separate from native solo End Turn, which emits no callback in the live test.
 
 ## v45: custom change-turn sound (saved; not on Steam)
 

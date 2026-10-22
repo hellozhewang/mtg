@@ -86,7 +86,7 @@ class Harness:
             chan: str, timeout: int, writable: list[Path]) -> Turn:
         raise NotImplementedError
 
-    def usage(self, *, discord: bool = False) -> str:
+    def usage(self, *, discord: bool = False, is_image: bool = False) -> str:
         return ""
 
     def describe(self) -> str:
@@ -184,7 +184,7 @@ class CodexHarness(Harness):
         found = self.SESSION_RE.search(output)
         return Turn(answer or "(no output)", session_id or (found.group(1) if found else None), output)
 
-    def usage(self, *, discord: bool = False) -> str:
+    def usage(self, *, discord: bool = False, is_image: bool = False) -> str:
         import usage                                    # Codex's allowance RPC
         return usage.report(self.exe, self.model, discord=discord)
 
@@ -271,6 +271,12 @@ class AgyHarness(Harness):
                               text=True, timeout=timeout + 30,
                               env=self._env(chan, HOME=str(self.home)))
         output = (proc.stdout or "") + (proc.stderr or "")
+        import usage
+        img_info = usage.parse_image_quota_error(output)
+        if not img_info:
+            img_info = usage.scan_recent_image_quota(self.home)
+        if img_info and img_info.get("resets_at"):
+            usage.record_image_quota(self.home, img_info)
         if QUOTA_RE.search(proc.stderr or "") or (proc.returncode != 0 and QUOTA_RE.search(output[-4000:])):
             raise QuotaExhausted(output[-2000:])
         if proc.returncode != 0:
@@ -283,11 +289,11 @@ class AgyHarness(Harness):
         answer = (data.get("response") or "").strip()
         return Turn(answer or "(no output)", data.get("conversation_id") or session_id, output)
 
-    def usage(self, *, discord: bool = False) -> str:
+    def usage(self, *, discord: bool = False, is_image: bool = False) -> str:
         """agy's own /usage panel, as data, for the quota group this model draws from."""
         import usage
         self.prepare(Path(os.environ.get("MTG_DECKS") or HERE.parent / "public"))
-        return usage.agy_report(self.exe, str(self.home), self.model, discord=discord)
+        return usage.agy_report(self.exe, str(self.home), self.model, discord=discord, is_image=is_image)
 
 
 HARNESSES = {"codex": CodexHarness, "agy": AgyHarness}

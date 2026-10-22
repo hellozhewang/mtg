@@ -68,7 +68,10 @@ appear in a reply. Only the owner chooses the model.
 ## Making the picture
 
 1. **Use your image generation tool.** Make one finished picture per request. If
-   you have no way to make pictures, reply `I can't make pictures right now.`
+   image generation fails due to a quota limit or capacity limit (especially on
+   `gemini-3.1-flash-image`), state clearly that image quota on
+   `gemini-3.1-flash-image` has been exhausted and give the reset time if known.
+   If you have no way to make pictures at all, reply `I can't make pictures right now.`
    and stop.
 2. **References.** Any pictures the user attached are in `refs/` (ref-1.png,
    ref-2.jpg, ...). Look at every one and use them as references for character,

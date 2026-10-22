@@ -575,10 +575,10 @@ def _turn(folder: Path, message: str, sid: str | None, chan: str) -> harness.Tur
     return turn
 
 
-def _usage(discord: bool = False) -> str:
+def _usage(discord: bool = False, *, is_image: bool = False) -> str:
     """The harness's allowance line, or "" when it has none to report."""
     try:
-        return HARNESS.usage(discord=discord)
+        return HARNESS.usage(discord=discord, is_image=is_image)
     except Exception as exc:                 # a footer must never cost the reply
         log().warning("usage: skipped (%s: %s)", type(exc).__name__, exc)
         return ""
@@ -701,10 +701,10 @@ def send_sleever(message: str, username: str, channel: str | int | None = DEFAUL
                _oneline(message), len(refs or []))
 
     if message.strip().lower() in usage.USAGE_COMMANDS:
-        return _usage(discord) or usage.HEADER + "\nUnavailable right now."
+        return _usage(discord, is_image=True) or usage.HEADER + "\nUnavailable right now."
 
     def with_usage(reply: str) -> str:
-        footer = _usage(discord)
+        footer = _usage(discord, is_image=True)
         return reply + ("\n\n" + footer if footer else "")
 
     owner = workspace.owner_name(username)
@@ -714,6 +714,16 @@ def send_sleever(message: str, username: str, channel: str | int | None = DEFAUL
     if not HARNESS.images:
         log().info("SLEEVER [%s] the harness has no image tool", chan)
         return with_usage(sleever.UNAVAILABLE)
+
+    if HARNESS.name == "agy":
+        exhausted, resets_iso, resets_at = usage.is_image_quota_exhausted(getattr(HARNESS, "home", None))
+        if exhausted:
+            log().info("SLEEVER [%s] gemini-3.1-flash-image quota exhausted", chan)
+            when_str = f"<t:{int(resets_at)}:R>" if discord else (
+                datetime.fromtimestamp(resets_at, timezone.utc).strftime("%Y-%m-%d %H:%M UTC") if resets_at else "later"
+            )
+            msg = f"sleever can't make pictures right now: quota on gemini-3.1-flash-image has been exhausted (resets {when_str})."
+            return with_usage(msg)
     try:
         busy = _claim_bot()
     except Busy:
@@ -742,6 +752,13 @@ def send_sleever(message: str, username: str, channel: str | int | None = DEFAUL
             _autopush(chan, sleever.SLEEVES_DIR, "Sleeves")
         else:
             log().warning("SLEEVER [%s] no picture this turn", chan)
+            if HARNESS.name == "agy":
+                exhausted, resets_iso, resets_at = usage.is_image_quota_exhausted(getattr(HARNESS, "home", None))
+                if exhausted:
+                    when_str = f"<t:{int(resets_at)}:R>" if discord else (
+                        datetime.fromtimestamp(resets_at, timezone.utc).strftime("%Y-%m-%d %H:%M UTC") if resets_at else "later"
+                    )
+                    reply = f"sleever can't make pictures right now: quota on gemini-3.1-flash-image has been exhausted (resets {when_str})."
         if state:
             _save(conv, state)
         log().info("REPLY  [%s/sleever] %d chars %dms", chan, len(reply),

@@ -18,6 +18,11 @@ class CactuarBrowserTests(unittest.TestCase):
                              capture_output=True, text=True, timeout=30)
         self.assertEqual(run.returncode, 0, run.stdout + run.stderr)
 
+    def test_demand_commander_pictures(self):
+        run = subprocess.run(["lua", "tests/test_cactuar_pictures.lua"], cwd=ROOT,
+                             capture_output=True, text=True, timeout=30)
+        self.assertEqual(run.returncode, 0, run.stdout + run.stderr)
+
     def test_commander_text(self):
         run = subprocess.run(["lua", "tests/test_cactuar_commander.lua"], cwd=ROOT,
                              capture_output=True, text=True, timeout=30)

@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-22 (Codex): delivered **v60** with bounded Inspect preparation/painting and cached metadata, also applied live; v59 commander text is retained. **Steam is now v60, published at the owner’s request.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-22 (Codex): preparing **v61** with an explicit Show picture button for commander faces; v60 remains the latest delivered build. **Steam is now v60, published at the owner’s request.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -17,6 +17,58 @@ selects. Report the latest saved build and Steam version separately.
 Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a version
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
+
+## v61: commander pictures only on explicit demand (preparing; not on Steam)
+
+Owner follows the measured first-registration hitch with **"what if we add a button
+and fetch on demand"**. Add **Show picture** in the commander text header, retaining
+text-only deck browsing. The 310×510 private preview is predeclared in each seat's
+XML, with one image, close control and ordered partner/back-face pager. Clicking
+Show requests only the visible pinned FaceURL already present in catalog metadata;
+no preview JSON, guide request, image rewrite or runtime XML replacement. Each next
+face is explicit demand, with no partner/back-face prefetch. Loaded URL assets remain
+cached; cached reopen/previous faces do not call `setCustomAssets` again. New assets
+still have the measured shared native update pause; this is not a hitch-free claim.
+
+`tts/cactuar_pictures.lua` coalesces explicit pending requests, merges with the latest
+shared font/Inspect/sleeve assets and waits one frame, UI readiness, then two settling
+frames before sprite binding. Redraw/selection never queues pictures. Changing deck,
+replaced catalog metadata, close/browser close and owner changes invalidate queued
+requests; late completion cannot reopen windows. Inspect defers rendering during the
+picture update, then repaints cached cards. Sleeve/picture coordination avoids a
+mutual wait when sleeves are queued behind a native picture load. Main browser close
+paths reset picture visibility; all current open searches/private sessions restore
+after shared native asset updates. The Global asset table is shared: private preview
+visibility does not isolate the first native update's cost from other clients.
+
+**43 commander-picture checks** pass, including demand-only browsing, URL cache,
+partner/face order, coalescing/cancellation, metadata replacement, private ownership,
+changed/versioned URLs, timeout/retry, actual sleeve-queue coordination and delayed
+blank-to-sprite binding. Both main browser close paths have regression checks. All
+**72 Python tests** pass across nine Lua suites, table build, release, exporter and
+image validation; `git diff --check` is clean.
+
+Patched browser/picture/sleeve/Inspect modules live, preserving CZ/music instances
+and the outer music destroy hook/delegation. Inserted six prevalidated private
+previews/buttons with bounded XML splices (one test-layout rebuild only), retaining
+the existing selected Ishai/Tana deck and 25 shared assets. The first one-off layout
+helper tried parsing the multi-root template without a wrapper and stopped before
+mutating the table; wrapping it fixed that helper. Browsing after patch still had
+**25 assets**, no picture load and all six Show picture buttons.
+
+Clicking Show registered **only Ishai** (25 -> 26), but native ready plus two settling
+frames still produced a white image. A manual blank -> two frames -> named sprite
+transition restored actual artwork. Incorporated that transition into the module,
+with state/owner/face/generation tokens and transparent loading, then verified a
+**first new Tana registration** (26 -> 27) renders real artwork without a manual
+rebind. It loads only when paging to 2/2. Cached previous-face/hide/reopen validation
+and final delivery follow. The private 310×510 preview leaves the list accessible;
+the current tall/narrow game window has the original wide browser extending off
+its left edge, so these screenshots do not establish full-window responsiveness.
+No physical cards, turns or music changed. Evidence in the main repo:
+`.cache/commander-demand-live/v61-patch.json`, `v61-ready.json`, `v61-loaded.png`,
+`v61-rebound.png`, `v61-binding-patch.json`, `v61-partner-loaded.json/png` and
+`v61-cached.json`. **Steam remains v60; v61 is not authorized for Workshop upload.**
 
 ## Commander picture performance follow-up (measured; no new build)
 

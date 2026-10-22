@@ -44,7 +44,7 @@ do
       Wait.condition(function()
         Wait.frames(function()
           if CZ ~= browser then return end
-          if UI.loading then wait(); return end
+          if UI.loading or CZ.pictureLoading or CZS and CZS.rebuilding then wait(); return end
           CZ.sleeveLoading = false
           -- A native rebuild can discard sprites while our write cache still
           -- remembers their names. Rebind after settling, even for cached pages.
@@ -52,7 +52,7 @@ do
           register() -- Only explicit requests queued while the shared UI was loading.
           redraw()
         end, 2)
-      end, function() return not UI.loading end, 30, function()
+      end, function() return not UI.loading and not CZ.pictureLoading and not (CZS and CZS.rebuilding) end, 30, function()
         if CZ ~= browser then return end
         CZ.sleeveLoading, pending = false, {}
         CZ.imageGeneration = (CZ.imageGeneration or 0) + 1
@@ -74,7 +74,7 @@ do
       end
     end
     if not next(wanted) then pending = {}; return end
-    if UI.loading then wait(); return end
+    if UI.loading or CZ.pictureLoading or CZS and CZS.rebuilding then wait(); return end
     pending = {}
     local merged, known = {}, {}
     for _, a in ipairs(UI.getCustomAssets() or {}) do

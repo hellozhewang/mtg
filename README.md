@@ -795,10 +795,15 @@ The catalog loads from `tts/catalog.jsonl`: small JSON records decoded over seve
 frames, with progress on first opening. Search and filtering use the complete catalog
 once it finishes. Refresh keeps the previous catalog until the replacement validates;
 older builds continue using `tts/decks.json`.
-Deck details and guides remain text-only. Selecting a deck shows a scrolling commander
+Deck details and guides default to text. Selecting a deck shows a scrolling commander
 section with mana cost/value, type, rules and stats, including partners and multiple
 faces. Only that deck's small `.commander.jsonl` file is fetched and cached; commander
-pictures and guide data are not loaded by selection. **Read guide** fetches
+pictures and guide data are not loaded by selection. **Show picture** opens a private,
+smaller commander preview and loads only its current face. Its pager explicitly loads
+the next partner or back face; previous faces stay cached. Changing decks or closing
+cancels queued requests. First registration still incurs TTS's measured shared UI
+rebuild pause; cached pictures reopen without another asset update. No runtime XML
+rebuild or guide download is needed for the picture. **Read guide** fetches
 written strategy only when clicked; **Back to decks** returns to the list.
 **Sleeves ▾** opens an eight-picture chooser and downloads only that page's small
 thumbnails. Each page requests pictures only when opened or reached with the pager;

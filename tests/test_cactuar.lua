@@ -731,5 +731,16 @@ check(values.cz_status_White:find("incomplete",1,true) and attrs.cz_refresh_Whit
 WebRequest.get=get;Wait.frames=oldFrames
 CZ.index,CZ.state.White=realIndex,realState
 
+-- Both browser close paths clear an explicitly opened commander preview.
+local priorState=CZ.state.White
+CZ.state.White={open=true,pictureOpen=true,sort="newest",filter={},query="",page=1,list={}}
+czHideBrowser("White")
+check(not CZ.state.White.open and not CZ.state.White.pictureOpen,"browser close cancels commander picture visibility")
+CZ.state.White.open,CZ.state.White.pictureOpen=true,true
+attrs.cz_panel_White.active="True"
+czOpen(white)
+check(not CZ.state.White.open and not CZ.state.White.pictureOpen,"clicking the Cactuar tile to close also resets picture visibility")
+CZ.state.White=priorState
+
 print(string.format("%d checks, %d failed", checks, failures))
 os.exit(failures == 0 and 0 or 1)

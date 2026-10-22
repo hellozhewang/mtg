@@ -273,7 +273,7 @@ local function czsShort(text, limit)
 end
 czsRender = function(color)
   local s = CZS.state[color]
-  if not s or CZS.rebuilding then return end
+  if not s or CZS.rebuilding or CZ.pictureLoading then return end
   if s.readJob and not s.signature then return end
   if s.title then czsText("czs_title_" .. color, s.title) end
   local filtered, searchError = {}, nil

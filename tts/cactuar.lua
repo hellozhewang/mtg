@@ -475,6 +475,7 @@ function czRender(color)
   czButton("cz_load_" .. color, CZ.busy[color] and "Loading…" or d and "Load into my seat" or "Select a deck")
   if czgRender then czgRender(color, s, d) end
   if czcRender then czcRender(color, s, d) end
+  if czcpRender then czcpRender(color, s, d) end
 end
 
 -- A menu's choices in order: a filter's All and its values, or the sleeves.
@@ -593,7 +594,7 @@ function czOpen(player)
   local id = "cz_panel_" .. color
   local s = czState(color)
   if UI.getAttribute(id, "active") == "True" then
-    s.open = false
+    s.open, s.pictureOpen = false, false
     czUI(id, "active", "False")
     czLog(color, "closed the browser")
     return
@@ -626,7 +627,9 @@ function czClose(player)
 end
 
 function czHideBrowser(color)
-  if CZ.state[color] then CZ.state[color].open = false end
+  if CZ.state[color] then
+    CZ.state[color].open, CZ.state[color].pictureOpen = false, false
+  end
   czUI("cz_panel_" .. color, "active", "False")
 end
 

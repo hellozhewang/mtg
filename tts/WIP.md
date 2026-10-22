@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-22 (Codex): preparing **v61** with an explicit Show picture button for commander faces; v60 remains the latest delivered build. **Steam is now v60, published at the owner’s request.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-22 (Codex): delivered **v61** with an explicit Show picture button for commander faces, also applied and visually checked live. **Steam is now v60, published at the owner’s request.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -18,7 +18,7 @@ Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a vers
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
 
-## v61: commander pictures only on explicit demand (preparing; not on Steam)
+## v61: commander pictures only on explicit demand (saved; not on Steam)
 
 Owner follows the measured first-registration hitch with **"what if we add a button
 and fetch on demand"**. Add **Show picture** in the commander text header, retaining
@@ -61,14 +61,26 @@ frames still produced a white image. A manual blank -> two frames -> named sprit
 transition restored actual artwork. Incorporated that transition into the module,
 with state/owner/face/generation tokens and transparent loading, then verified a
 **first new Tana registration** (26 -> 27) renders real artwork without a manual
-rebind. It loads only when paging to 2/2. Cached previous-face/hide/reopen validation
-and final delivery follow. The private 310×510 preview leaves the list accessible;
+rebind. It loads only when paging to 2/2. Cached previous-face/hide/reopen kept **27 assets and image generation 7 unchanged**,
+UI.loading false: no native asset rebuild. Final after-frame read-back is back to
+text-only with **Show picture**, preview inactive, sprite cleared, same Ishai/Tana
+selection and both explicitly loaded faces retained in the asset cache. The private 310×510 preview leaves the list accessible;
 the current tall/narrow game window has the original wide browser extending off
 its left edge, so these screenshots do not establish full-window responsiveness.
 No physical cards, turns or music changed. Evidence in the main repo:
 `.cache/commander-demand-live/v61-patch.json`, `v61-ready.json`, `v61-loaded.png`,
 `v61-rebound.png`, `v61-binding-patch.json`, `v61-partner-loaded.json/png` and
-`v61-cached.json`. **Steam remains v60; v61 is not authorized for Workshop upload.**
+`v61-cached.json`. **Steam remains v60; no Workshop upload in this task.**
+
+Delivered **MTG 6 player Cactuar Ver_v61** JSON/PNG from pushed source `b071f558`.
+The release gate verified exact published sounds/tile bytes. Remote read-back Lua
+compiles and contains the exact final picture module; XML confirms six private,
+initially hidden one-image previews, explicit Show/close controls, commander text
+retained and no initial picture bindings. Immutable archive/manifest:
+`.cache/tts-builds/v61/`. Save SHA-256:
+`05060e9143e7b802e3816689e0b12ab753e5567fc36fae3f9ef4ba0fdc5ac3e6`.
+Saves now contains v61; published v60 remains archived unchanged. Final WIP/changelog
+copies updated on Desktop. **Saved Games v61; Steam Workshop v60.**
 
 ## Commander picture performance follow-up (measured; no new build)
 

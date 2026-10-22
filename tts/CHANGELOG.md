@@ -8,6 +8,11 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v61 — 2026-10-22 (commit b071f558)
+- Add Show picture beside commander text; deck browsing stays text-only until explicitly requested.
+- Load only the current commander face, with ordered partner/back-face paging and cached URL reuse; repair white sprites with a post-load blank-to-picture transition.
+- Retain cached catalog/Inspect rendering, written guides and lazy sleeves. Saved build for testing; not uploaded to Steam.
+
 ## v60 — 2026-10-22 (commit 75c525d4)
 - Reduce Inspect opening bursts with cached metadata and preparation/painting in small frame batches.
 - Search cached full text without native deck reads; combine grid and face assets into one rebuild and add Refresh for metadata edits.

@@ -266,6 +266,7 @@ class AgyHarness(Harness):
 
     def run(self, folder, message, session_id, *, chan, timeout, writable):
         self.prepare(folder.parent)
+        t0 = time.time()
         argv = sandbox.wrap(self.args(message, session_id, timeout), self.profile(folder, writable))
         proc = subprocess.run(argv, cwd=folder, stdin=subprocess.DEVNULL, capture_output=True,
                               text=True, timeout=timeout + 30,
@@ -273,21 +274,24 @@ class AgyHarness(Harness):
         output = (proc.stdout or "") + (proc.stderr or "")
         import usage
         img_info = usage.parse_image_quota_error(output)
-        if not img_info:
-            img_info = usage.scan_recent_image_quota(self.home)
-        if img_info and img_info.get("resets_at"):
-            usage.record_image_quota(self.home, img_info)
         if QUOTA_RE.search(proc.stderr or "") or (proc.returncode != 0 and QUOTA_RE.search(output[-4000:])):
             raise QuotaExhausted(output[-2000:])
         if proc.returncode != 0:
             raise HarnessError(f"agy exited {proc.returncode}\n{output[-2000:]}")
         data = self.parse(proc.stdout)
+        conv_id = data.get("conversation_id") or session_id
+        if not img_info:
+            img_info = usage.check_session_image_quota(self.home, conv_id, since=t0)
+        if not img_info:
+            img_info = usage.scan_recent_image_quota(self.home)
+        if img_info and img_info.get("resets_at"):
+            usage.record_image_quota(self.home, img_info)
         if data.get("status") != "SUCCESS":
             if QUOTA_RE.search(json.dumps(data)):
                 raise QuotaExhausted(output[-2000:])
             raise HarnessError(f"agy status {data.get('status')}\n{output[-2000:]}")
         answer = (data.get("response") or "").strip()
-        return Turn(answer or "(no output)", data.get("conversation_id") or session_id, output)
+        return Turn(answer or "(no output)", conv_id, output)
 
     def usage(self, *, discord: bool = False, is_image: bool = False) -> str:
         """agy's own /usage panel, as data, for the quota group this model draws from."""

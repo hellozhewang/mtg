@@ -356,6 +356,66 @@ class GeminiImageQuotaTests(unittest.TestCase):
             self.assertIn("Image (gemini-3.1-flash-image): 0% left (resets <t:1792983579:R>)", text_sleever)
             self.assertIn("5h: 93% left", text_sleever)
 
+    def test_check_session_image_quota_distinguishes_turns_in_same_session(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            home = Path(tmp)
+            conv_id = "test-conv-123"
+            brain = home / ".gemini" / "antigravity-cli" / "brain" / conv_id
+            logs_dir = brain / ".system_generated" / "logs"
+            subagents_dir = brain / ".system_generated" / "subagents"
+            logs_dir.mkdir(parents=True)
+            subagents_dir.mkdir(parents=True)
+
+            future = time.time() + 3600
+            future_iso = "2026-10-26T02:59:39Z"
+
+            # Create subagent 1 transcript (old turn: success)
+            sa1_id = "subagent-1"
+            sa1_log = home / ".gemini" / "antigravity-cli" / "brain" / sa1_id / ".system_generated" / "logs"
+            sa1_log.mkdir(parents=True)
+            (sa1_log / "transcript.jsonl").write_text('{"step_index": 1, "type": "GENERIC", "content": "saved sleeve"}\n')
+            (subagents_dir / f"{sa1_id}.json").write_text(json.dumps({
+                "conversationId": sa1_id,
+                "spawnStepIndex": 5,
+            }))
+
+            # Create subagent 2 transcript (turn 2: quota error)
+            sa2_id = "subagent-2"
+            sa2_log = home / ".gemini" / "antigravity-cli" / "brain" / sa2_id / ".system_generated" / "logs"
+            sa2_log.mkdir(parents=True)
+            sa2_error = f'{{"model": "gemini-3.1-flash-image", "status": "RESOURCE_EXHAUSTED", "quotaResetTimeStamp": "{future_iso}"}}'
+            (sa2_log / "transcript.jsonl").write_text(json.dumps({"step_index": 2, "error": sa2_error}) + "\n")
+            (subagents_dir / f"{sa2_id}.json").write_text(json.dumps({
+                "conversationId": sa2_id,
+                "spawnStepIndex": 25,
+            }))
+
+            # Session transcript has:
+            # - Request 1 at step 0
+            # - Request 2 at step 20 (where subagent 2 spawned)
+            transcript = logs_dir / "transcript.jsonl"
+            transcript.write_text(
+                json.dumps({"step_index": 0, "type": "USER_INPUT", "content": "prompt 1"}) + "\n" +
+                json.dumps({"step_index": 5, "type": "PLANNER_RESPONSE"}) + "\n" +
+                json.dumps({"step_index": 20, "type": "USER_INPUT", "content": "prompt 2"}) + "\n" +
+                json.dumps({"step_index": 25, "type": "PLANNER_RESPONSE"}) + "\n"
+            )
+
+            # Turn 2: checks current request (starts at step 20) -> finds subagent 2 quota error
+            info = usage.check_session_image_quota(home, conv_id)
+            self.assertIsNotNone(info)
+            self.assertEqual(info["model"], "gemini-3.1-flash-image")
+            self.assertEqual(info["resets_iso"], future_iso)
+
+            # Turn 3: user sends a new prompt at step 40
+            transcript.write_text(
+                transcript.read_text() +
+                json.dumps({"step_index": 40, "type": "USER_INPUT", "content": "prompt 3"}) + "\n"
+            )
+            # Now last USER_INPUT is step 40; subagent 2 (spawnStepIndex 25) belongs to prior turn
+            info_turn3 = usage.check_session_image_quota(home, conv_id)
+            self.assertIsNone(info_turn3)
+
 
 class SleeverImageQuotaTests(unittest.TestCase):
     def test_send_sleever_fails_fast_when_image_quota_is_exhausted(self):

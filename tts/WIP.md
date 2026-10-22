@@ -6,6 +6,19 @@ Codex) reads it first and updates it with every change. The [TTS development gui
 Last updated 2026-10-22 (Codex): delivered **v63**, making Show commander / Hide
 commander text white. **Steam remains v60.** See [the changelog](../docs/development/tts-changelog.md).
 
+## Next build: native commander button label still dark
+
+Owner's screenshot disproves the v63 white-label claim: the native Button label
+remained dark despite XML and runtime `textColor="#FFFFFF"`. Replace the built-in
+label with an explicit centered child Text using `color="#FFFFFF"`, and update
+that label when toggling Show/Hide. Keep the Button's text empty, preserve its
+background/click target, and disable raycasts on the child so clicks reach it.
+Visual checks of the running table confirm Show commander renders white with the
+explicit Text label. Local evidence: `.cache/commander-label-v64/`. The existing
+47 picture checks and 14 table-build tests pass, and expanded XML verifies all six
+child labels are white, centered, and do not intercept clicks. Attribute checks
+alone were insufficient in v63.
+
 ## v63: white Show commander label (saved; not on Steam)
 
 Set the Show commander / Hide commander button label to white (`#FFFFFF`) in

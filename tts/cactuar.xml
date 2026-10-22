@@ -88,7 +88,10 @@
             <HorizontalLayout height="22" width="100%" rectAlignment="UpperLeft" childForceExpandWidth="false" spacing="6">
               <Text flexibleWidth="1" fontSize="11" color="#C0C8D2" alignment="MiddleLeft" text="COMMANDER"/>
               <Button id="cz_commander_show_{C}" onClick="czPictureShow" preferredWidth="112" fontSize="11" interactable="False"
-                      color="#FFFFFF" colors="#243244|#34485F|#1C2938|#1B2533" textColor="#FFFFFF" text="Show commander"/>
+                      color="#FFFFFF" colors="#243244|#34485F|#1C2938|#1B2533" text="">
+                <Text id="cz_commander_show_label_{C}" width="100%" height="100%" fontSize="11" color="#FFFFFF"
+                      alignment="MiddleCenter" raycastTarget="false" text="Show commander"/>
+              </Button>
             </HorizontalLayout>
             <VerticalScrollView id="cz_commander_scroll_{C}" anchorMin="0 0" anchorMax="1 1" offsetMin="0 0" offsetMax="0 -28"
                                 color="#1A2635" movementType="Clamped" scrollSensitivity="24" verticalScrollbarVisibility="AutoHide"

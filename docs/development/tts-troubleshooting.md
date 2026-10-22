@@ -55,6 +55,15 @@ paused the host for roughly half a second. See the
 [performance report](tts-commander-image-performance.md). If artwork remains white,
 leave this issue open and retain the failed screenshot/diagnostics.
 
+## Show commander label remains dark despite white attributes
+
+In v63, setting the Button's `textColor` to `#FFFFFF` in both XML and runtime
+attributes did not make its native label white in the owner's screenshot. Template
+and attribute readback checks passed but failed to establish the rendered color.
+The replacement uses an explicit child Text with `color="#FFFFFF"`,
+centered inside the Button; its built-in label stays empty. The child does not
+intercept clicks. Verify actual Show and Hide pixels, not only serialized values.
+
 ## Card image download says unsupported format UNKNOWN
 
 The initial exported cards used direct `cards.scryfall.io` URLs. Deck metadata

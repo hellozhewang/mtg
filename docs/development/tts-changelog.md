@@ -8,6 +8,9 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v64 — 2026-10-22 (commit 876a4fe7)
+- Fix dark Show commander and Hide commander labels by using explicit white child Text elements; preserve button clicks and background. Both labels visually checked in the running table. Saved build for testing; Steam remains v60.
+
 ## v63 — 2026-10-22 (commit 4e426ad0)
 - Make Show commander and Hide commander text white; retain the existing button background and on-demand picture behavior. Saved build for testing; Steam remains v60.
 

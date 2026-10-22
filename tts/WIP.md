@@ -3,10 +3,11 @@
 Living status doc for the Tabletop Simulator table work. Whoever picks this up (Claude or
 Codex) reads it first and updates it with every change. The [TTS development guide](../docs/development/tts-development-guide.md) and README are the lasting documentation; this file tracks what is in flight.
 
-Last updated 2026-10-22 (Codex): delivered **v63**, making Show commander / Hide
-commander text white. **Steam remains v60.** See [the changelog](../docs/development/tts-changelog.md).
+Last updated 2026-10-22 (Codex): delivered **v64**, using explicit white Text
+for Show commander / Hide commander after v63's native label remained dark.
+Both states visually checked live. **Steam remains v60.** See [the changelog](../docs/development/tts-changelog.md).
 
-## Next build: native commander button label still dark
+## v64: explicit white commander button labels (saved; not on Steam)
 
 Owner's screenshot disproves the v63 white-label claim: the native Button label
 remained dark despite XML and runtime `textColor="#FFFFFF"`. Replace the built-in
@@ -18,6 +19,12 @@ explicit Text label. Local evidence: `.cache/commander-label-v64/`. The existing
 47 picture checks and 14 table-build tests pass, and expanded XML verifies all six
 child labels are white, centered, and do not intercept clicks. Attribute checks
 alone were insufficient in v63.
+
+Both Show and Hide were visually white in screenshots; the Hide check temporarily
+hid the popup without loading artwork, then restored its prior state. No cards,
+selection, searches, audio or image assets were changed. Delivered from `876a4fe7`;
+remote readback confirms all six explicit child labels and canonical runtime code.
+Immutable JSON/PNG and SHA-256 manifest: `.cache/tts-builds/v64/`. No Steam upload.
 
 ## v63: white Show commander label (saved; not on Steam)
 

@@ -62,7 +62,11 @@ attributes did not make its native label white in the owner's screenshot. Templa
 and attribute readback checks passed but failed to establish the rendered color.
 The replacement uses an explicit child Text with `color="#FFFFFF"`,
 centered inside the Button; its built-in label stays empty. The child does not
-intercept clicks. Verify actual Show and Hide pixels, not only serialized values.
+intercept clicks. Both Show and Hide rendered white in live screenshots on
+2026-10-22 (`.cache/commander-label-v64/show-after.png` and `hide-after.png`).
+The Hide render check temporarily hid the popup to expose its underlying button,
+without requesting a picture; original visibility was restored. Verify actual
+Show and Hide pixels, not only serialized values.
 
 ## Card image download says unsupported format UNKNOWN
 

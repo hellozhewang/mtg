@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-22 (Codex): preparing **v59** with a text-only commander rules area in the deck details column; v58 is the latest delivered save. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-22 (Codex): delivered **v59** with a text-only commander rules area in the deck details column, also applied and visually checked on the running table. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -18,7 +18,7 @@ Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a vers
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
 
-## v59: readable commander rules in the details column (preparing)
+## v59: readable commander rules in the details column (saved; not on Steam)
 
 Owner marked the empty space below Strategy and above the stats and requested
 important commander information (CMC, type, description) **without images**.
@@ -63,8 +63,18 @@ commander text cache entry ready. No cards or turns changed. Evidence:
 `.cache/commander-text-live/v59-patch.json`, `v59-loaded.json`, `v59-loaded.png`.
 The external JSON bridge's encoding rendered some dashes as `?` in its returned
 text; the actual in-game screenshot shows the dashes correctly. No data rewrite
-was needed. Preparing the next numbered save.
-**Steam remains v42; no Workshop upload.**
+was needed. Applied the final front-mana-value labeling module and refreshed only
+its lightweight text cache; the 119 image assets remain unchanged.
+
+Delivered **MTG 6 player Cactuar Ver_v59** JSON/PNG from pushed source `72b4df77`.
+Pages passed exact sound/tile-byte verification. Read-back Lua compiles and contains
+the exact commander-text, incremental-catalog and sleeve modules. XML verifies six
+private, initially inactive commander scrolling sections with no Image nodes; all
+browser images remain confined to Sleeves. Archive: `.cache/tts-builds/v59/`.
+Save SHA-256:
+`ac347a0c6044f6b4701c8942c9e2656b588e85e9f455dbe7940c73ad74347d1b`.
+Saves now contains v59; v58 remains archived unchanged. Final WIP/changelog copies
+refreshed on Desktop. **Steam remains v42; no Workshop upload.**
 
 ## v58: measured first-click JSON decoding stall (saved; not on Steam)
 

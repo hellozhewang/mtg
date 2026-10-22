@@ -8,6 +8,11 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v59 — 2026-10-22 (commit 72b4df77)
+- Add a scrolling text-only commander section below Strategy: mana cost/value, type, full rules and creature/planeswalker/battle stats.
+- Support ordered partners and multiple faces. Fetch only the selected deck’s small cached text file; no commander images or guide downloads.
+- Retain incremental catalog loading, cached ten-row pagination and sleeve fixes. Saved build for testing; not uploaded to Steam.
+
 ## v58 — 2026-10-22 (commit aaea17e2)
 - Avoid the first-open full-catalog JSON decode stall: load catalog.jsonl and decode small records over multiple frames with progress.
 - Keep full metadata for search/filtering, atomically replace validated catalogs, and retain old data on refresh failures.

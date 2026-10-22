@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-22 (Codex): preparing **v60** with bounded Inspect preparation/painting and cached metadata; v59 commander text is retained. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-22 (Codex): delivered **v60** with bounded Inspect preparation/painting and cached metadata, also applied live; v59 commander text is retained. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -18,7 +18,7 @@ Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a vers
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
 
-## v60: reduce Inspect opening and refresh bursts (preparing; not on Steam)
+## v60: reduce Inspect opening and refresh bursts (saved; not on Steam)
 
 Owner asks whether the first-open catalog parser bottleneck also applies to Inspect.
 Inspect does **not** use `JSON.decode`. Code inspection found a different expensive
@@ -55,7 +55,7 @@ combined grid/asset rebuild. Existing 257/400-card, anonymous-import, metadata,
 privacy, large-XML and menu-restoration cases remain. The first 71-test Python run
 exposed one expected cache-warmup title write; rendering now restores the title with
 the rest of the view, and the rerun passes. The final **71 Python tests** pass across all eight Lua suites, table building,
-release, exporter and image validation; `git diff --check` is clean. Delivery follows.
+release, exporter and image validation; `git diff --check` is clean.
 
 Live discovery found **no Deck objects and no open Inspect sessions** in the running
 table, including no White library deck, so there is no real-container timing or
@@ -79,6 +79,15 @@ CZS.rebuilding false, 25 assets unchanged, White browser still open and no Inspe
 session**. Evidence: `v60-patch.json`, `v60-header-patch.json`,
 `v60-header-repair.json`, `v60-target.xml` and `v60-after.json`. No physical cards or turns have been
 changed. **Steam remains v42.**
+
+Delivered **MTG 6 player Cactuar Ver_v60** JSON/PNG from pushed source `75c525d4`.
+The release gate verified exact published sound/tile bytes. Remote read-back Lua
+compiles and includes the exact final Inspect source; XML verifies six private,
+initially hidden Inspect panels with Refresh controls and 32 initial cells each.
+Immutable archive/manifest: `.cache/tts-builds/v60/`. Save SHA-256:
+`40faed08d931de3007c46961b7c398285b4a896d13ee20c1f95b6942bf57f827`.
+Saves now contains v60; v59 remains archived unchanged. Final WIP/changelog copied
+to Desktop. **Steam remains v42; no Workshop upload.**
 
 ## v59: readable commander rules in the details column (saved; not on Steam)
 

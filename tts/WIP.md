@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-22 (Codex): delivered **v55** with sleeve image requests tied strictly to opening or navigating a chooser page. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-22 (Codex): preparing **v56** for white sleeve previews; the binding repair is applied and visually checked on the running v55 table. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -17,6 +17,44 @@ selects. Report the latest saved build and Steam version separately.
 Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a version
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
+
+## v56: white sleeve preview pictures (preparing)
+
+Owner reports **"SLEEV LOADS WHITE"**, clarified as the **pictures in the Sleeves
+menu**, not loaded card backs. Reproduced on the running v55 host: all eight first-
+page previews were solid white even though the named assets were registered,
+UI.loading/sleeveLoading were false, and image attributes/write-cache names were
+correct. Pages returned HTTP 200 image/jpeg for sampled local thumbnails. A direct
+native image rebind made pictures appear; invalidating the cached UI writes and
+redrawing restored all eight correct pictures, including Standard. This is a
+sprite-binding/completion issue; registered URLs alone did not verify rendering.
+
+Completion now waits a native frame before checking loading, then two settling
+frames after loading clears before enabling choices/binding images. It invalidates
+the UI write-cache generation **after** the native rebuild, so previously remembered
+image names cannot suppress restoring discarded sprites. If another UI load begins
+during settling, completion waits for it. Explicit page demand, pending-page
+cancellation, visited-page caching and preservation of other shared assets remain.
+
+Applied only the sleeve module to the running table, retaining browser selections,
+queries, chosen sleeves, Inspect and music/event hooks. Visually confirmed correct
+page-three pictures. Then removed only that page's eight UI asset registrations
+for a controlled reload (52 total assets -> 44), preserving every other asset;
+requested it again through the new queue. After re-registration, **52 assets**, both
+loading flags **false**, all eight correct named bindings and a screenshot with
+actual artwork. No physical cards or turns changed by these probes. Evidence:
+`.cache/sleeve-live/v56-before.png`, `v56-forced-rebind.png`, `v56-patch.json`,
+`v56-cold-start.json`, `v56-cold-finished.json` and `v56-cold-finished.png`.
+This exercises a fresh UI registration/atlas build, not an empty TTS disk cache.
+
+The original screenshot also contains a base Global **Object reference not set**
+console message at table startup; no stack/causal connection to sleeves was captured.
+Do not claim that separate message fixed by this sprite repair.
+
+**42 lazy-sleeve checks** pass, including delayed native completion, stale cached
+image names after a rebuild and closing during settling. All six Lua suites,
+14 table-build tests and eight release tests pass (28 Python tests total).
+Preparing the next numbered save. **Steam remains v42; no Workshop upload.**
 
 ## v55: sleeve images only on explicit page navigation (saved; not on Steam)
 

@@ -5,7 +5,7 @@ local attrs,assets,conditions,loads,redraws={},{{name="base",url="test://base"},
 UI={loading=false,getCustomAssets=function()return assets end,
  setCustomAssets=function(value)assets=value;loads=loads+1;UI.loading=true end}
 function czUI(id,k,v)attrs[id]=attrs[id] or {};attrs[id][k]=v end
-Wait={condition=function(fn,condition)if condition()then fn()else conditions[#conditions+1]=fn end end}
+Wait={frames=function(fn)fn()end,condition=function(fn,condition)if condition()then fn()else conditions[#conditions+1]=fn end end}
 local function finish()UI.loading=false;local pending=conditions;conditions={};for _,fn in ipairs(pending)do fn()end end
 CZ={base="https://example.test/tts/",sleeveCells=8,seats={"White","Red"},index={sleeves={}},state={}}
 for i=1,20 do CZ.index.sleeves[i]={id="s"..i,label="Sleeve "..i,thumb="sleeves/thumbs/"..i..".jpg"} end
@@ -92,4 +92,42 @@ czslRequest("Red")
 check(loads==3,"requesting a cached page never downloads another seat's changed page")
 czslRequest("White");finish()
 check(loads==4 and attrs.cz_sl_img_1_White.image=="czsl_s9","explicit navigation refreshes changed art on its requested page")
+-- Native UI rebuilds can finish their loading flag before sprite binding settles.
+local frames,frame={},0
+Wait.frames=function(fn,delay)frames[#frames+1]={fn=fn,at=frame+delay}end
+local function tick()
+ frame=frame+1
+ local due=frames;frames={}
+ for _,job in ipairs(due)do if job.at<=frame then job.fn()else frames[#frames+1]=job end end
+end
+assets={{name="base",url="test://base"}}
+s.menuPage=1;red.open=false
+czslRequest("White")
+check(CZ.sleeveLoading and #conditions==0,"load completion is not checked until the native asset change has had a frame")
+tick();finish()
+local generation=CZ.imageGeneration
+check(CZ.sleeveLoading and attrs.cz_sl_img_1_White.image=="","loading=false does not immediately expose unbound white sprites")
+-- Model the native rebuild discarding an image while our write cache remembers it.
+local paint={}
+local originalUI=czUI
+function czUI(id,key,value)
+ if generation~=CZ.imageGeneration then paint={};generation=CZ.imageGeneration end
+ local cache=paint[id] or {};paint[id]=cache
+ if cache[key]~=value then originalUI(id,key,value);cache[key]=value end
+end
+czUI("cz_sl_img_1_White","image","czsl_s1")
+attrs.cz_sl_img_1_White.image=""
+tick()
+check(CZ.sleeveLoading and attrs.cz_sl_img_1_White.image=="","sprites remain hidden during the native settling frame")
+tick()
+check(not CZ.sleeveLoading and attrs.cz_sl_img_1_White.image=="czsl_s1","settled completion invalidates the stale write cache and rebinds pictures")
+check(attrs.cz_sl_1_White.interactable=="True","choices become usable only after the settled image binding")
+local cachedLoads=loads
+czslRequest("White")
+check(loads==cachedLoads and #frames==0,"cached pages still open immediately without downloads or settling waits")
+-- A user can close the menu after downloading but before the delayed redraw.
+s.menuPage=2;czslRequest("White");tick();finish()
+s.open=false;s.menu=nil
+tick();tick()
+check(attrs.cz_panel_White.active=="False","closing during the settling frames cannot reopen the browser")
 print(checks.." lazy sleeve checks, 0 failed")

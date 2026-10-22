@@ -37,16 +37,28 @@ do
   end
   local function wait()
     CZ.sleeveLoading = true
-    Wait.condition(function()
+    -- Asset changes and sprite rebuilding span native frames. Never bind a page
+    -- in the frame that starts loading, or in the frame loading first goes false.
+    Wait.frames(function()
       if CZ ~= browser then return end
-      CZ.sleeveLoading = false
-      register() -- Only explicit requests queued while the shared UI was loading.
-      redraw()
-    end, function() return not UI.loading end, 30, function()
-      if CZ ~= browser then return end
-      CZ.sleeveLoading, pending = false, {}
-      redraw() -- No automatic retry loop if the client's image loader is stuck.
-    end)
+      Wait.condition(function()
+        Wait.frames(function()
+          if CZ ~= browser then return end
+          if UI.loading then wait(); return end
+          CZ.sleeveLoading = false
+          -- A native rebuild can discard sprites while our write cache still
+          -- remembers their names. Rebind after settling, even for cached pages.
+          CZ.imageGeneration = (CZ.imageGeneration or 0) + 1
+          register() -- Only explicit requests queued while the shared UI was loading.
+          redraw()
+        end, 2)
+      end, function() return not UI.loading end, 30, function()
+        if CZ ~= browser then return end
+        CZ.sleeveLoading, pending = false, {}
+        CZ.imageGeneration = (CZ.imageGeneration or 0) + 1
+        redraw() -- No automatic retry loop if the client's image loader is stuck.
+      end)
+    end, 1)
   end
   register = function()
     if CZ.sleeveLoading then return end

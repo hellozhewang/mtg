@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Encode the owner-provided FF14 WAVs as smaller MP3s for TTS MusicPlayer.
+"""Reproduce the historical v48 MP3s (not used by v49+).
+
+The owner's TTS client did not play these MP3 derivatives correctly. Runtime music
+now uses the original WAVs; retain this only to reproduce the old v48 artifacts.
 
 No synthesis, API calls, volume changes or edits to the source recordings.
     python3 scripts/encode_tts_music.py

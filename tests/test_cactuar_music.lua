@@ -31,8 +31,10 @@ local function flush()
 end
 local loads, plays, pauses, position = 0, 0, 0, 0
 local current, playing = {url = "base://playlist"}, false
+local playlist = {{url = "base://playlist", title = "----"}}
 MusicPlayer = {loaded = true,
   getCurrentAudioclip = function() return current end,
+  setPlaylist = function(value) playlist = value end,
   setCurrentAudioclip = function(clip) loads = loads + 1; current = clip; position = 0; playing = false end,
   play = function() plays = plays + 1; playing = true; return true end,
   pause = function() pauses = pauses + 1; playing = false; return true end,
@@ -65,12 +67,15 @@ CZT.restored, CZT.started, CZT.loadedAt = true, false, 0
 dofile("tts/cactuar_music.lua")
 
 czmTick()
-check(current.url:find("ff14_theme.mp3", 1, true) and playing and MusicPlayer.repeat_track, "fresh table loops the FF14 prelude")
+check(current.url:find("ff14_theme.wav", 1, true) and playing and MusicPlayer.repeat_track, "fresh table loops the original FF14 WAV")
+check(#playlist == 1 and playlist[1].url == current.url and MusicPlayer.playlist_index == 0, "looping uses only the current theme, never an inherited placeholder track")
 local firstLoads = loads
 czmTick(); czmTick()
 check(loads == firstLoads, "repeated scans do not reload or duplicate the prelude")
+local beforeFirePauses = pauses
 czmCannonFired()
-check(not playing and CZM.cannonFired and pauses == 1, "cannon firing stops the prelude immediately")
+check(not playing and CZM.cannonFired and pauses == beforeFirePauses + 1, "cannon firing stops the prelude immediately")
+check(#playlist == 0 and not MusicPlayer.repeat_track, "cannon firing clears the prelude playlist so voice completion cannot resume it")
 check(JSON.decode(tile.memo).cactuar_music.cannonFired, "cannon state persists even before a winner is chosen")
 CZT.started = true
 
@@ -88,7 +93,8 @@ end
 czmTick()
 check(CZM.counts.White == 9, "rules mentions, face-down cards and excluded zones never count")
 table.insert(data.White.playmat.objects, card("Artifact Land")); czmTick()
-check(CZM.counts.White == 10 and current.url:find("ff14_ultima.mp3", 1, true) and playing, "ten battlefield artifacts start one looping Ultima")
+check(CZM.counts.White == 10 and current.url:find("ff14_ultima.wav", 1, true) and playing, "ten battlefield artifacts start one looping original Ultima WAV")
+check(#playlist == 1 and playlist[1].url == current.url, "Ultima replaces every previous playlist entry")
 local ultimaLoads = loads
 advance(23); czmTick()
 check(position == 23 and loads == ultimaLoads, "steady qualification does not restart the music")

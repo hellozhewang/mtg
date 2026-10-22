@@ -3,7 +3,7 @@
 local czmPrevious = CZM
 if czmPrevious and czmPrevious.ticker then pcall(function() Wait.stop(czmPrevious.ticker) end) end
 CZM = {
-  theme = "sounds/ff14_theme.mp3", ultima = "sounds/ff14_ultima.mp3",
+  theme = "sounds/ff14_theme.wav", ultima = "sounds/ff14_ultima.wav",
   threshold = 10, counts = {}, status = "idle", serial = 0,
   cannonFired = false, disabled = false, ready = false,
 }
@@ -116,9 +116,15 @@ local function czmLoad(track)
   state.error, state.url = nil, czmURL(track)
   local serial = state.serial
   local ok, err = pcall(function()
-    MusicPlayer.repeat_track = true
-    MusicPlayer.setCurrentAudioclip({url = state.url,
-      title = track == "theme" and "FFXIV — Prelude / Discoveries" or "FFXIV — Ultima"})
+    local clip = {url = state.url,
+      title = track == "theme" and "FFXIV - Prelude / Discoveries" or "FFXIV - Ultima"}
+    -- Replace the inherited placeholder playlist too, so repeat/next cannot
+    -- return to an unrelated base-table sound. Enable looping only when ready.
+    MusicPlayer.repeat_track = false
+    MusicPlayer.pause()
+    MusicPlayer.setPlaylist({clip})
+    MusicPlayer.setCurrentAudioclip(clip)
+    MusicPlayer.playlist_index = 0
     Wait.condition(function()
       if CZM ~= state or state.serial ~= serial then return end
       state.status = "ready"
@@ -158,7 +164,9 @@ function czmCannonFired()
   -- Stop immediately, even if the prelude download is still pending.
   if CZM.track == "theme" then
     CZM.serial = CZM.serial + 1
+    MusicPlayer.repeat_track = false
     MusicPlayer.pause()
+    MusicPlayer.setPlaylist({}) -- no prelude fallback after a one-shot voice clip
     CZM.status = "paused"
   end
   if cztPersist then cztPersist() end
@@ -216,5 +224,6 @@ if czmPrevious then
     CZM[key] = czmPrevious[key]
   end
   if CZM.status == "loading" then CZM.track, CZM.status = nil, "idle" end
+  if CZM.track and CZM.url ~= czmURL(CZM.track) then CZM.track, CZM.status = nil, "idle" end
 end
 CZM.ticker = Wait.time(czmTick, 0.5, -1)

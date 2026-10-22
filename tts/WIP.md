@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): delivered **v48** with the FF14 lobby theme and turn-gated Ultima for 10+ battlefield artifacts; live threshold/pause/resume checks pass. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-21 (Codex): preparing **v49** to replace v48's failed MP3 music with the original WAVs; owner confirmed "wav works". Latest delivered save is v48. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -18,7 +18,35 @@ Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a vers
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
 
-## v48: FF14 battlefield soundtrack (saved; not on Steam)
+## v49: original WAV soundtrack / v48 audible failure (preparing saved build)
+
+Owner reported repeated beeps/voices rather than the FF14 theme in v48. Live state
+showed one theme request (serial 1), a loaded FF14 MP3 URL, native Play and repeat
+enabled; the API state alone did **not** prove correct audible playback. Pausing
+MusicPlayer stopped the noise (owner confirmed). The inherited `----` playlist
+entry was still present. Replacing that playlist with only the MP3 did **not** fix
+the noise. Playing the original WAV over the LAN did: owner explicitly confirmed
+**"wav works"**. Do not claim that playlist replacement alone fixed this, or that
+TTS universally lacks MP3 support; the failure is in this client's MP3 playback.
+
+Both runtime tracks now use the owner's original mono PCM16 WAVs at 22050 Hz,
+without conversion or volume changes. Theme: 27,886,670 bytes, SHA prefix
+**0e31e48c**; Ultima: 13,105,230 bytes, **86e3cc3d**. Source/published WAV bytes match.
+MP3 derivatives remain published for old v48 saves but are no longer selected;
+`scripts/encode_tts_music.py` is marked as a historical v48 reproduction tool.
+
+Each music load pauses the previous clip, installs a one-entry soundtrack playlist,
+selects entry zero and enables looping only after the desired WAV is loaded. Firing
+the cannon clears the prelude playlist and repeat setting, preventing a later voice
+clip from falling back to setup music. Existing artifact/turn gating, a single
+shared Ultima playhead, pause/resume and voice suppression remain. Hot patches pick
+up changed sound URLs rather than retaining an obsolete MP3 binding.
+
+**32 music checks**, **1536 timer checks** and **13 table-build tests** pass.
+New checks cover the one-entry playlist, original WAV selection and clearing the
+prelude fallback on cannon fire. Preparing numbered v49; **no Workshop upload**.
+
+## v48: FF14 battlefield soundtrack (saved; not on Steam; MP3 playback failed)
 
 Owner requested the FF14 theme until the cannon fires, and one looping Ultima
 instance when a player has 10+ artifacts. Confirmed "while anyone qualifies", then

@@ -38,7 +38,7 @@ def deck_root() -> Path:
 # docs/, so a Discord user called `img` or `Bracket3` must not get a folder.
 # `Bracket*` is also where every pre-2026-10-18 deck URL lived; those paths now
 # hold redirects (see build_site.redirect_pages).
-_RESERVED = {"img", "mana", "tts", "private", "docs", "index.html", "index.local.html"}
+_RESERVED = {"img", "mana", "tts", "private", "docs", "development", "index.html", "index.local.html"}
 _USERNAME = re.compile(r"[a-z0-9_][a-z0-9_.]{0,31}")
 
 

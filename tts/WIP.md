@@ -1,10 +1,34 @@
 # WIP: Cactuar table (hand-off)
 
 Living status doc for the Tabletop Simulator table work. Whoever picks this up (Claude or
-Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
-table" section is the lasting description; this file tracks what is in flight.
+Codex) reads it first and updates it with every change. The [TTS development guide](../docs/development/tts-development-guide.md) and README are the lasting documentation; this file tracks what is in flight.
 
-Last updated 2026-10-22 (Codex): delivered **v61** with an explicit Show picture button for commander faces, also applied and visually checked live. **Steam is now v60, published at the owner’s request.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-22 (Codex): delivered **v61** with an explicit Show commander button for commander faces, also applied and visually checked live. **Steam is now v60, published at the owner’s request.** See `docs/development/tts-changelog.md` for numbered builds.
+
+## Commander image recurrence and documentation consolidation (next build)
+
+Owner reported Lord Xander still white after Show picture. Rename the control to
+**Show commander / Hide commander** and add explicit **Reload**. A registered asset
+and `UI.loading == false` did not prove rendering; the v61 visual success on Ishai/
+Tana was limited to those trials. Add a minimum 0.2-second settling wait plus two
+native frames before assigning the sprite, rather than two frames alone. Reload
+rebinds the same pinned asset without another shared native asset update. This is
+a mitigation, not a proven universal white-image fix. Live Xander cached reopen
+rendered both before and after the change; a newly registered Davros rendered on
+its first request (28→29 assets). Reload did not add assets. Screenshot evidence:
+`.cache/commander-white-v62/`. The reported original white state was not consistently
+reproduced. Keep the issue open in troubleshooting. Validation: 76 Python tests
+including nine Lua suites; 47 picture checks include high-frame-rate settling,
+reload privacy/cancellation and cached reuse. Expanded six-seat XML validates.
+
+Lasting TTS docs now live in `docs/development/`; only this WIP stays under `tts/`.
+Start with [TTS development guide](../docs/development/tts-development-guide.md),
+[recurring issues](../docs/development/tts-troubleshooting.md), and
+[changelog](../docs/development/tts-changelog.md). Audio, sleeves and performance
+documents moved there too. The site planner explicitly includes authored Markdown
+in that namespace, so rebuild/check/alternate output do not prune it. Release
+version discovery and references use the moved changelog. Private deployment
+notes/config are not copied into public docs. Older WIP sections describe history.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -86,7 +110,7 @@ copies updated on Desktop. **Saved Games v61; Steam Workshop v60.**
 
 Owner asks whether bringing commander pictures back will hurt performance again.
 **Yes on first registration; no clear extra cost switching already registered images
-in this run.** See [COMMANDER_IMAGE_PROFILE.md](COMMANDER_IMAGE_PROFILE.md) for the
+in this run.** See [commander image measurements](../docs/development/tts-commander-image-performance.md) for the
 method, limits, per-window table and reproduction commands. Profiling helpers are
 `scripts/profile_tts_commander_images.py` and `.lua`, outside production table code.
 
@@ -1533,7 +1557,7 @@ Released with `python3 scripts/release_tts.py --workshop --notes "..."`:
 - Success result: `.cache/workshop/3822623414-e1960e9e209444cfb7c7e457f32381b4-result.json`.
 - **214 unit tests pass**. The release verified HEAD was pushed and Pages served
   matching audio/tile bytes before delivery. The release is recorded in
-  `tts/CHANGELOG.md`; WIP and changelog are copied to the PC Desktop.
+  `docs/development/tts-changelog.md`; WIP and changelog are copied to the PC Desktop.
 
 Remaining manual check: load v34 from Saves or the Workshop, fire the Pirate Cannon,
 and confirm totals reset and the winner's clock shows turn 1 immediately, including
@@ -1630,7 +1654,7 @@ Released from commit `856d1f8b` using `scripts/release_tts.py`, after publishing
 verifying the exact audio and tile bytes on Pages. **MTG 6 player Cactuar Ver_v30**
 and its thumbnail are in the owner's TTS Saves folder, with matching SHA-256 checks.
 The tool removed v29's save and thumbnail and copied this WIP and the changelog to
-the Desktop. The release notes are recorded in `tts/CHANGELOG.md`.
+the Desktop. The release notes are recorded in `docs/development/tts-changelog.md`.
 
 Validation: **204 unit tests pass**; the catalog build and `--check` pass with 4,344
 image URLs accepted by the verifier. Generated audio equals the source WAVs. The
@@ -1641,7 +1665,7 @@ and in-game approval remain.
 
 ## Announcer voice revisions
 
-**Read `tts/sounds/README.md` first:** it covers how to generate and measure clips, the loudness targets, and the order for publishing them.
+**Read `docs/development/tts-audio-guide.md` first:** it covers how to generate and measure clips, the loudness targets, and the order for publishing them.
 
 ### Audio generators moved to scripts — 2026-10-19
 
@@ -2372,11 +2396,11 @@ python3 -m unittest discover tests
 python3 scripts/build_site.py                # rebuilds docs/, including docs/tts/
 # Commit and push the changes; allow Pages to publish before delivery.
 python3 scripts/release_tts.py --notes "what changed"
-# Commit and push the new tts/CHANGELOG.md entry afterwards.
+# Commit and push the new docs/development/tts-changelog.md entry afterwards.
 ```
 
 - Use `scripts/release_tts.py` for releases (see the root README). It reads the current
-  version from `tts/CHANGELOG.md`, checks that HEAD is pushed and its audio/tile bytes
+  version from `docs/development/tts-changelog.md`, checks that HEAD is pushed and its audio/tile bytes
   are live on Pages, then builds the next version from HEAD, never the working tree.
 - The release tool fetches Workshop file `2293586471.json` from the owner's PC. It and
   the generated save stay out of the repo. Deployment details live in the gitignored

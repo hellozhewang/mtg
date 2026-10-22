@@ -1,14 +1,14 @@
 # Sleeves
 
 > **Drop pictures in the repo's `tts/sleeves/`, not `docs/tts/sleeves/`.** `docs/` is the
-> catalog build's output: the build copies this README and the pictures there, and it
-> deletes anything in `docs/` it didn't write.
+> catalog build's output: the build copies the pictures there. Authored development docs live in
+> `docs/development/`, which the build explicitly preserves.
 
-Every picture in this folder is a sleeve (a custom card back) players can choose in the
+Every picture in `tts/sleeves/` is a sleeve (a custom card back) players can choose in the
 Cactuar table's deck browser (**Sleeves ▾**, above **Load into my seat**). The choice is per player and
 applies to every card of the next deck they load: library, commanders and tokens.
 
-To add one: put the picture here, run the catalog build and push. No table rebuild or
+To add one: put the picture in `tts/sleeves/`, run the catalog build and push. No table rebuild or
 Workshop upload is needed, because the table reads the list from the published site.
 
 ## sleever: sleeves from Discord
@@ -34,7 +34,7 @@ The model works in `bot/.sleever/<user>/`, which isn't in git. Uploads are downl
 
 | | |
 |---|---|
-| format | `.jpg`, `.jpeg` or `.png`. Nothing else is offered as a sleeve; this README is published beside them as documentation. |
+| format | `.jpg`, `.jpeg` or `.png`. Nothing else is offered as a sleeve; the documentation lives in `docs/development/`. |
 | shape | portrait, a Magic card's 63:88. **745 × 1040** is the reference size. Other shapes are stretched to fit. |
 | size | keep it under ~500 KB. JPEG quality 85–90 is plenty; `cactuar.jpg` is about 130 KB. Every player downloads it. |
 | corners | fill the whole rectangle: Tabletop Simulator rounds the card's corners itself. Leave about 25 px of border free of anything important. |
@@ -48,7 +48,7 @@ The model works in `bot/.sleever/<user>/`, which isn't in git. Uploads are downl
 There's nothing to register inside TTS: no Workshop upload, no table rebuild, and no
 Custom Deck dialog. The table finds sleeves in the published deck list. So:
 
-1. **Add the file** here, following the specs above.
+1. **Add the file** in `tts/sleeves/`, following the specs above.
 2. **Build the catalog**: `python3 scripts/build_site.py`. It must list the sleeve in
    `docs/tts/decks.json` under `sleeves`, and copy it to `docs/tts/sleeves/`.
 3. **Publish**: commit and push. GitHub Pages serves it a minute or so later at

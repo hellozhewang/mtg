@@ -4,7 +4,7 @@
     python3 scripts/make_announcer.py              # re-record every clip
     python3 scripts/make_announcer.py --measure    # loudness of the clips (or named files)
 
-See tts/sounds/README.md for the loudness targets and how clips reach the table.
+See docs/development/tts-audio-guide.md for the loudness targets and how clips reach the table.
 
 macOS only: the voice is `say`. Each clip is a low "boom", then the line spoken deep
 and slow, with an arena-style echo, normalised loud: the "Double kill!" announcer of a

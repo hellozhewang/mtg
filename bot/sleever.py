@@ -33,7 +33,7 @@ SLEEVES_DIR = REPO / "tts" / "sleeves"
 STAGING = HERE / ".sleever"                      # gitignored; one folder per user
 OWNERS = STAGING / "owners.json"                 # slug -> Discord owner, for overwrites
 
-WIDTH, HEIGHT = 745, 1040                        # tts/sleeves/README.md "Image specs"
+WIDTH, HEIGHT = 745, 1040                        # docs/development/tts-sleeves-guide.md "Image specs"
 MAX_BYTES = 500_000
 IMAGE_TYPES = (".png", ".jpg", ".jpeg", ".webp")
 RESERVED = {"standard"}                          # Magic's own back, always listed first

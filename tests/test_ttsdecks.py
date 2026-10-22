@@ -174,10 +174,10 @@ class SleeveTests(unittest.TestCase):
         index = json.loads(out[Path("/site/tts/decks.json")])
         self.assertEqual([b["id"] for b in index["sleeves"]], ["standard", "cactuar"])
 
-    def test_the_readme_is_published_but_is_not_a_sleeve(self):
+    def test_asset_folder_readme_is_not_published_or_a_sleeve(self):
         (self.dir / "README.md").write_text("# Sleeves")
         out = ttsdecks.files([], Path("/site"), None)
-        self.assertEqual(out[Path("/site/tts/sleeves/README.md")], "# Sleeves")
+        self.assertNotIn(Path("/site/tts/sleeves/README.md"), out)
         self.assertEqual([b["id"] for b in ttsdecks.sleeves()], ["standard"])
 
     def test_no_folder_means_only_the_standard_back(self):

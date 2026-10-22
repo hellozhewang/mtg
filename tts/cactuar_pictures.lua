@@ -46,7 +46,8 @@ do
     if job and job.sprite == sprite and job.generation == generation and job.paint == CZ.uiPaint then return end
     local id = "cz_picture_image_" .. color
     -- Native readiness alone can leave an already-named Image white. Force a
-    -- real blank -> two native frames -> sprite transition after readiness.
+    -- real blank -> settled native frames -> sprite transition after readiness.
+    -- Two frames can be only milliseconds on a fast client; also allow 0.2 s.
     local paint = CZ.uiPaint and CZ.uiPaint[id]
     if paint then paint.image = nil end
     czUI(id, "image", "")
@@ -54,16 +55,18 @@ do
     local request = {state = s, deck = s.selected.id, url = face.url}
     job = {sprite = sprite, generation = generation, paint = CZ.uiPaint}
     s.pictureBinding, s.pictureBound = job, nil
-    Wait.frames(function()
-      if s.pictureBinding ~= job then return end
-      s.pictureBinding = nil
-      if not current(color, request) or CZ.pictureLoading or busy()
-        or (CZ.imageGeneration or 0) ~= generation then return end
-      czUI(id, "image", sprite)
-      czUI(id, "color", "#FFFFFF")
-      czUI("cz_picture_status_" .. color, "text", "")
-      s.pictureBound = {sprite = sprite, generation = generation, paint = CZ.uiPaint}
-    end, 2)
+    Wait.time(function()
+      Wait.frames(function()
+        if s.pictureBinding ~= job then return end
+        s.pictureBinding = nil
+        if not current(color, request) or CZ.pictureLoading or busy()
+          or (CZ.imageGeneration or 0) ~= generation then return end
+        czUI(id, "image", sprite)
+        czUI(id, "color", "#FFFFFF")
+        czUI("cz_picture_status_" .. color, "text", "")
+        s.pictureBound = {sprite = sprite, generation = generation, paint = CZ.uiPaint}
+      end, 2)
+    end, 0.2)
   end
   local function redraw()
     if not alive() then return end
@@ -161,7 +164,7 @@ do
     local list = faces(s, deck)
     if not s.pictureOpen then pending[color] = nil end
     czUI("cz_commander_show_" .. color, "interactable", #list > 0 and "True" or "False")
-    czUI("cz_commander_show_" .. color, "text", s.pictureOpen and "Hide picture" or "Show picture")
+    czUI("cz_commander_show_" .. color, "text", s.pictureOpen and "Hide commander" or "Show commander")
     czUI("cz_picture_" .. color, "active", s.pictureOpen and "True" or "False")
     local face = s.pictureOpen and list[s.pictureIndex or 1]
     if not face then
@@ -193,6 +196,14 @@ do
     s.pictureOpen, s.pictureError = false, nil
     pending[player.color] = nil
     czcpRender(player.color, s, s.selected)
+  end
+  function czPictureReload(player, _, id)
+    local s = session(player, id)
+    if not s or not s.pictureOpen then return end
+    -- Explicit recovery for native white sprites. Reuse the exact pinned URL;
+    -- no cache-busting URL or whole shared-asset reload for a registered picture.
+    s.pictureBinding, s.pictureBound = nil, nil
+    request(player.color, s)
   end
   function czPictureStep(player, direction, id)
     local s = session(player, id)

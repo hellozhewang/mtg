@@ -183,7 +183,7 @@ Do the steps in this order.
 6. **After** the push is live on Pages, run
    `python3 scripts/release_tts.py --notes "Updated announcer clips"`. It verifies
    the published bytes, builds the next `_vN` save from HEAD, delivers it and records
-   the version. Commit and push the resulting `tts/CHANGELOG.md` entry afterwards
+   the version. Commit and push the resulting `docs/development/tts-changelog.md` entry afterwards
    (see the root README and `tts/WIP.md`).
 
 The build adds `?v=<sha256[:8]>` to each clip URL, because TTS caches audio by URL. If someone

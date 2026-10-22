@@ -877,6 +877,17 @@ def collect_symbols(mana: Mana, sym: SymbolQuery, out_dir: Path) -> dict[Path, b
     return files
 
 
+# Authored documentation is intentionally retained beside generated site output.
+# Read from the checkout even for --out builds; never preserve arbitrary orphans.
+DEVELOPMENT_DOCS = Path(__file__).resolve().parents[1] / "docs" / "development"
+
+
+def development_docs(out_dir: Path) -> dict[Path, str]:
+    return {out_dir / "development" / p.relative_to(DEVELOPMENT_DOCS):
+            p.read_text(encoding="utf-8")
+            for p in sorted(DEVELOPMENT_DOCS.rglob("*.md")) if p.is_file()}
+
+
 def plan(root: Path, out_dir: Path, repo: str, q: CardQuery,
          img: ImageQuery, sym: SymbolQuery) -> dict[Path, str | bytes]:
     """Every file the site consists of, as {path: content}. Nothing written yet.
@@ -932,6 +943,7 @@ def plan(root: Path, out_dir: Path, repo: str, q: CardQuery,
     files.update(redirect_pages(tpl, decks, out_dir, fdir / "redirects.json", files))
     # What a Tabletop Simulator table loads: an index and one spawnable file per deck.
     files.update(ttsdecks.files(decks, out_dir, q))
+    files.update(development_docs(out_dir))
     files.update(image_files)
     files.update(collect_symbols(mana, sym, out_dir))   # after render: needs .used
     return files

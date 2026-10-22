@@ -440,8 +440,6 @@ def files(decks: list, out_dir: Path, q) -> dict[Path, str | bytes]:
         for p in sorted(SOUNDS_DIR.iterdir()):
             if p.suffix.lower() in SOUND_TYPES:
                 out[root / "sounds" / p.name] = p.read_bytes()
-    if (SLEEVES_DIR / "README.md").is_file():                  # the specs, beside the pictures
-        out[root / "sleeves" / "README.md"] = (SLEEVES_DIR / "README.md").read_text(encoding="utf-8")
     paths: dict[str, str] = {}
     for d in decks:
         rel = Path(d.href).with_suffix(".ndjson").as_posix()   # <owner>/<Bracket>/<Deck>.ndjson

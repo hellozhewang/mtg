@@ -798,7 +798,9 @@ older builds continue using `tts/decks.json`.
 Deck details and guides default to text. Selecting a deck shows a scrolling commander
 section with mana cost/value, type, rules and stats, including partners and multiple
 faces. Only that deck's small `.commander.jsonl` file is fetched and cached; commander
-pictures and guide data are not loaded by selection. **Show picture** opens a private,
+pictures and guide data are not loaded by selection. Development and release rules
+are in the [TTS development guide](docs/development/tts-development-guide.md);
+recurring failures are tracked in [TTS troubleshooting](docs/development/tts-troubleshooting.md). **Show commander** opens a private,
 smaller commander preview and loads only its current face. Its pager explicitly loads
 the next partner or back face; previous faces stay cached. Changing decks or closing
 cancels queued requests. First registration still incurs TTS's measured shared UI
@@ -880,8 +882,8 @@ searchable by name without a picture. Source:
 [cactuar_search.lua](tts/cactuar_search.lua) and [cactuar_search.xml](tts/cactuar_search.xml).
 
 Players can also pick **sleeves** (a custom card back) for the deck they load. The
-sleeves are the pictures in [tts/sleeves/](tts/sleeves/); its
-[README](tts/sleeves/README.md) gives the image specs. Add one by dropping a picture
+sleeves are the pictures in [tts/sleeves/](tts/sleeves/); the
+[sleeves guide](docs/development/tts-sleeves-guide.md) gives the image specs. Add one by dropping a picture
 there, running the catalog build and pushing, or ask **sleever** in Discord
 (`sleever make me sailor moon sleeves`, with pictures attached or links pasted for
 reference). sleever paints it on the builder's harness, then
@@ -941,7 +943,7 @@ It builds the next `MTG 6 player Cactuar Ver_vN` from HEAD, not the working tree
 refuses until HEAD is pushed and Pages serves its clips and tile picture, because TTS
 caches by URL. It delivers the save and thumbnail to the PC's TTS Saves folder, checks
 their SHA-256, removes the previous version, copies the WIP and changelog to the Desktop,
-and adds the version's patch notes to [tts/CHANGELOG.md](tts/CHANGELOG.md). Commit and
+and adds the version's patch notes to [docs/development/tts-changelog.md](docs/development/tts-changelog.md). Commit and
 push the changelog afterwards. The PC's address is in the gitignored
 `tts/deploy.local.json` (see `INTERNALS.md`).
 

@@ -9,13 +9,16 @@ UI={loading=false,getCustomAssets=function()return assets end,
  setXml=function()error("picture loading must not replace XML")end,
  setCustomAssets=function(a)assets=a;loads=loads+1;UI.loading=true end}
 function czUI(id,k,v)attrs[id]=attrs[id]or{};attrs[id][k]=v end
-local frameNumber=0
+local frameNumber, clock, frameSeconds=0,0,0.1
+local timers={}
 Wait={frames=function(fn,delay)frames[#frames+1]={fn=fn,at=frameNumber+(delay or 1)} end,
+ time=function(fn,delay)timers[#timers+1]={fn=fn,at=clock+delay}end,
  condition=function(fn,condition,timeout,onTimeout)
   conditions[#conditions+1]={fn=fn,test=condition,timeout=onTimeout}
  end}
 local function frame()
- frameNumber=frameNumber+1
+ frameNumber=frameNumber+1;clock=clock+frameSeconds
+ local due=timers;timers={};for _,job in ipairs(due)do if job.at<=clock+1e-9 then job.fn()else timers[#timers+1]=job end end
  local queued=frames;frames={};for _,job in ipairs(queued)do if job.at<=frameNumber then job.fn()else frames[#frames+1]=job end end
  local pending=conditions;conditions={}
  for _,c in ipairs(pending)do if c.test()then c.fn()else conditions[#conditions+1]=c end end
@@ -63,7 +66,7 @@ check(not CZ.pictureLoading and faceURL("cz_picture_image_White")=="https://exam
 czPictureClose(white);czPictureShow(white)
 check(attrs.cz_picture_image_White.image==""and attrs.cz_picture_image_White.color=="#FFFFFF00","cached binding forces a blank transparent image before its delayed sprite")
 frame();check(attrs.cz_picture_image_White.image=="","sprite is not assigned in the same frame as the blank transition")
-frame();check(faceURL("cz_picture_image_White")=="https://example.test/a.webp","post-ready blank-to-sprite transition binds on a later native frame")
+drain(4);check(faceURL("cz_picture_image_White")=="https://example.test/a.webp","post-ready blank-to-sprite transition binds after the minimum settling time and native frames")
 check(attrs.cz_picture_page_White.text=="1 / 3"and attrs.cz_picture_prev_White.interactable=="False","ordered partners/faces share a bounded preview pager")
 check(attrs.cz_search_White.text=="keep my search"and attrs.cz_search_Red.text=="private red"and inspectRedraws==1,"shared completion restores current searches and Inspect")
 local n=loads
@@ -117,6 +120,19 @@ finish();finish()
 check(not CZ.pictureLoading and not CZ.sleeveLoading and has(CZ.base.."sleeves/new.jpg"),"picture and sleeve queues settle without a mutual wait")
 check(has("https://example.test/overlap.webp")and has("https://example.test/a.webp"),"loading a sleeve page retains previously requested commander faces")
 s.menu=nil
+-- Recovery uses the cached sprite, guards privacy and allows real settling time
+-- even at 600 fps; two frames alone previously left white images in the client.
+n=loads;frameSeconds=1/600
+czPictureReload(other,nil,"cz_picture_reload_White")
+check(s.pictureBound~=nil,"another seat cannot reload a private commander")
+czPictureReload(white,nil,"cz_picture_reload_White")
+drain(10)
+check(attrs.cz_picture_image_White.image=="" and not s.pictureBound,"high frame rate cannot shorten the minimum settling interval")
+drain(120)
+check(loads==n and faceURL("cz_picture_image_White")=="https://example.test/overlap.webp","Reload rebinds pinned artwork without a shared native asset update")
+czPictureReload(white);czPictureClose(white);drain(130)
+check(not s.pictureOpen and attrs.cz_picture_image_White.image=="","closing cancels a delayed recovery write")
+frameSeconds=0.1
 -- Exact changed URL is a new asset; unchanged URL does not rebuild.
 n=loads;czPictureClose(white);s.selected=deck("Pinned",{"https://example.test/a.webp?v=2"});czRender("White");czPictureShow(white);finish()
 check(loads==n+1 and faceURL("cz_picture_image_White")=="https://example.test/a.webp?v=2","changed/versioned picture URLs are not confused with old pinned art")

@@ -11,7 +11,7 @@ Workshop upload option without that explicit release instruction.
 
 What it does, in order:
 
-1. Reads the latest version from tts/CHANGELOG.md; the new one is the next number.
+1. Reads the latest version from docs/development/tts-changelog.md; the new one is the next number.
 2. Checks HEAD is pushed and GitHub Pages already serves HEAD's sounds and tile
    picture. The table downloads those from Pages by content-hashed URL, and TTS caches
    by URL: delivering first would let TTS cache the old file under the new name.
@@ -23,8 +23,8 @@ What it does, in order:
    the previous Cactuar versions (the owner keeps only the latest). It never touches
    anything else in Saves.
 6. With --workshop, updates the Steam Workshop item too (see "Workshop" below).
-7. Copies tts/WIP.md and tts/CHANGELOG.md to the PC Desktop, and adds the new
-   version's entry to tts/CHANGELOG.md. Commit and push that file afterwards.
+7. Copies tts/WIP.md and docs/development/tts-changelog.md to the PC Desktop, and adds the new
+   version's entry to docs/development/tts-changelog.md. Commit and push that file afterwards.
 
 Workshop: TTS uses Steam's legacy RemoteStorage API, not SteamCMD's UGC uploader.
 A temporary, least-privileged interactive task runs tts_workshop.ps1 in the owner's
@@ -57,7 +57,7 @@ from io import BytesIO
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-CHANGELOG = REPO / "tts" / "CHANGELOG.md"
+CHANGELOG = REPO / "docs" / "development" / "tts-changelog.md"
 WIP = REPO / "tts" / "WIP.md"
 CONFIG = REPO / "tts" / "deploy.local.json"
 NAME = "MTG 6 player Cactuar Ver_v{}"
@@ -426,7 +426,7 @@ def main() -> int:
     for local, remote in ((WIP, "Cactuar table WIP.md"), (CHANGELOG, "Cactuar table CHANGELOG.md")):
         pc.write(f"{pc.desktop}/{remote}", local.read_bytes())
     print(f"v{version} recorded in {CHANGELOG.relative_to(REPO)}; WIP and changelog copied to the Desktop.")
-    print("Next: commit and push tts/CHANGELOG.md.")
+    print("Next: commit and push docs/development/tts-changelog.md.")
     return 0
 
 

@@ -102,7 +102,7 @@
           <Text id="cz_commander_name_{C}" preferredHeight="36" fontSize="15" color="#E2E5EA" alignment="MiddleCenter"
                 horizontalOverflow="Wrap" text="Commander preview"/>
           <Panel minHeight="520" preferredHeight="520" flexibleHeight="0" color="#111923">
-            <Image id="cz_commander_image_{C}" width="100%" height="100%" preserveAspect="true" color="#FFFFFF00" raycastTarget="false"/>
+            <Image id="cz_commander_image_{C}" width="85%" height="85%" rectAlignment="MiddleCenter" preserveAspect="true" color="#FFFFFF00" raycastTarget="false"/>
             <Text id="cz_commander_note_{C}" fontSize="16" color="#C0C8D2" alignment="MiddleCenter"
                   text="Select a deck to read its commander." raycastTarget="false"/>
           </Panel>

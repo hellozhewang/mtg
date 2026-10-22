@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): **v43 delivered to Saved Games** with the commander fixes and illustrated guides. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-21 (Codex): preparing **v44** with a slightly smaller commander image. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -17,6 +17,20 @@ selects. Report the latest saved build and Steam version separately.
 Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a version
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
+
+## v44: slightly smaller commander image (preparing saved build)
+
+Owner requested the commander picture be slightly smaller. It now uses 85% of the
+existing image area's width/height (15% smaller), centered with its aspect ratio
+preserved. This applies to the primary commander, second partner and DFC faces.
+Guide-card hover previews retain the full readable size; leaving restores the
+smaller commander. The browser layout and navigation positions stay the same.
+Deliver as the next numbered save; **no Steam upload**.
+
+Validation: all **12 table-build tests** and **42 preview checks** pass. The broader
+browser harness currently has **97 sleeve-fixture failures** after the separate
+sleeve data updates; the unchanged HEAD script reproduces exactly the same failures.
+They are unrelated to image sizing. Inspect and timer harnesses pass.
 
 ## v43: commander fixes and illustrated guides (saved; not on Steam)
 

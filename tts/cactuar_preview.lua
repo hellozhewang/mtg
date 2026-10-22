@@ -186,6 +186,9 @@ do
     s.commanderFace = math.max(1, math.min(s.commanderFace or 1, math.max(1, #faces)))
     local face = s.guideOpen and s.guideHover or faces[s.commanderFace]
     local image = face and CZ.previewAssets[face.FaceURL] or ""
+    local size = s.guideOpen and s.guideHover and "100%" or "85%"
+    UI.setAttribute("cz_commander_image_" .. color, "width", size)
+    UI.setAttribute("cz_commander_image_" .. color, "height", size)
     -- TTS can keep a blank sprite when clearing and rebinding in one frame,
     -- even after UI.loading becomes false. Let the clear reach the renderer.
     paintImages(color, s, {["cz_commander_image_" .. color] = image}, "previewPaint")

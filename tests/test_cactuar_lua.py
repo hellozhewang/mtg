@@ -13,6 +13,11 @@ ROOT = Path(__file__).resolve().parents[1]
 
 @unittest.skipUnless(shutil.which("lua"), "lua is not installed (brew install lua)")
 class CactuarBrowserTests(unittest.TestCase):
+    def test_battlefield_soundtrack(self):
+        run = subprocess.run(["lua", "tests/test_cactuar_music.lua"], cwd=ROOT,
+                             capture_output=True, text=True, timeout=30)
+        self.assertEqual(run.returncode, 0, run.stdout + run.stderr)
+
     def test_commander_preview_and_guides(self):
         run = subprocess.run(["lua", "tests/test_cactuar_preview.lua"], cwd=ROOT,
                              capture_output=True, text=True, timeout=30)

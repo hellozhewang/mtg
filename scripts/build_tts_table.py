@@ -79,7 +79,7 @@ def browser_xml() -> str:
 
 # Appended to Global in this order: the browser, then the turn totals and
 # announcer, which use the browser's CZ.seats and CZ.base.
-GLOBAL_SCRIPTS = ("cactuar.lua", "cactuar_guide.lua", "cactuar_preview.lua", "cactuar_turns.lua", "cactuar_regex.lua", "cactuar_search.lua")
+GLOBAL_SCRIPTS = ("cactuar.lua", "cactuar_guide.lua", "cactuar_preview.lua", "cactuar_turns.lua", "cactuar_regex.lua", "cactuar_search.lua", "cactuar_music.lua")
 
 
 def browser_lua(base_url: str) -> str:
@@ -165,9 +165,17 @@ def fix_cannon_script(lua: str) -> str:
     after a load), no turn event at all until they passed. Hand the winner to
     cztStartGame instead, which handles both; keep the cannon's own lines as a fallback
     for a table without our script."""
-    if not lua.strip() or "cztStartGame" in lua:
-        return lua                                              # no script, or already fixed
+    if not lua.strip():
+        return lua
     nl = "\r\n" if "\r\n" in lua else "\n"
+    if 'Global.call("czmCannonFired")' not in lua:
+        fire = "\t\tisFiring = true"
+        if lua.count(fire) != 1:
+            sys.exit("the base table's cannon firing changed: review fix_cannon_script()")
+        lua = lua.replace(fire, fire + nl +
+                          '\t\tpcall(function() Global.call("czmCannonFired") end)')
+    if "cztStartGame" in lua:
+        return lua                                              # winner hook already fixed
     pad = "\t" * 7
     old = nl.join([pad + "Turns.enable = true", pad + "Turns.turn_color = ply.color"])
     if lua.count(old) != 1:

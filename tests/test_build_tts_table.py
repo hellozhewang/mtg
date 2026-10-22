@@ -3,6 +3,8 @@ is appended once, and the Cactuar tiles that open it sit on the table."""
 from __future__ import annotations
 
 import json
+import shutil
+import subprocess
 import sys
 import unittest
 import xml.etree.ElementTree as ET
@@ -194,6 +196,31 @@ print(left, timerID == nil)
         self.assertIn("bbbbbb", taken)                              # nested objects count
         with self.assertRaises(SystemExit):
             build_tts_table.tiles(URL, {build_tts_table.TILES[0][0]})
+
+    @unittest.skipUnless(shutil.which("lua"), "Lua is required")
+    def test_cannon_stops_music_at_fire_before_launch_and_still_starts_the_game(self):
+        cannon = "\r\n".join([
+            "function FireCannon()", "  if isFiring then return end", "  if power > 0 then",
+            "\t\tisFiring = true", "    launches = launches + 1", "  end", "end",
+            "function choose(ply)", "\t" * 7 + "Turns.enable = true",
+            "\t" * 7 + "Turns.turn_color = ply.color", "end"])
+        fixed = build_tts_table.fix_cannon_script(cannon)
+        self.assertEqual(build_tts_table.fix_cannon_script(fixed), fixed)
+        probe = """
+isFiring=false;power=0;launches=0;fires=0;starts=0;Turns={}
+Global={call=function(name,color)
+  if name=='czmCannonFired' then
+    assert(launches==0);fires=fires+1
+  elseif name=='cztStartGame' then assert(color=='Blue');starts=starts+1 end
+end}
+""" + fixed + """
+FireCannon();assert(fires==0)
+power=1;FireCannon();assert(fires==1 and launches==1)
+FireCannon();assert(fires==1)
+choose({color='Blue'});assert(starts==1)
+"""
+        out = subprocess.run(["lua", "-"], input=probe, text=True, capture_output=True, timeout=10)
+        self.assertEqual(out.returncode, 0, out.stdout + out.stderr)
 
 
 if __name__ == "__main__":

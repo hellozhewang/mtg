@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): delivered **v47** with faster commander selection, cached pictures and illustrated guides loaded only on Read guide. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-21 (Codex): preparing **v48** with the FF14 lobby theme and turn-gated Ultima for 10+ battlefield artifacts. Latest delivered save is v47. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -17,6 +17,54 @@ selects. Report the latest saved build and Steam version separately.
 Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a version
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
+
+## v48: FF14 battlefield soundtrack (preparing saved build)
+
+Owner requested the FF14 theme until the cannon fires, and one looping Ultima
+instance when a player has 10+ artifacts. Confirmed "while anyone qualifies", then
+refined this to **only during a qualifying player's own turn**, preserving playback
+position between turns. Owner chose **"Preserve Ultima position; skip voice clips"**
+because MusicPlayer has no playback-time/seek API for recovering a replaced track.
+
+`tts/cactuar_music.lua` owns one shared soundtrack: Prelude/Discoveries loops in
+setup; the cannon's actual positive-power firing branch stops it before launch.
+The existing winner/start-game hook is retained. Direct game start / start-die roll
+also end setup music. Ultima starts only when the active turn color has at least
+10 artifacts in that seat's **playmat** ScriptingTrigger. It pauses when that player
+drops below 10, turns are disabled, or a nonqualifying player takes the turn.
+Eligible turns share one playhead, using pause/play without replacing/reloading
+Ultima. It remains loaded even while nobody qualifies. Native beeps and announcer
+text remain; custom voices cannot replace Ultima, including while it is paused.
+The prelude likewise owns its channel until cannon/start. `music off` / `music on`
+pause/resume automation separately from `announcer off`.
+
+Counting uses the base's six battlefield zones, which exclude the commander,
+library, exile and graveyard columns. Library/GY/exile zone contents are explicitly
+excluded too if zones overlap. Artifact type lines, artifact lands/creatures,
+face-up card stacks and attached equipment count; rules-text mentions and face-down
+objects do not. An explicit **Artifact** object tag supports manually changed types
+or custom tokens without stored type text. This does not evaluate MTG continuous
+effects or infer how many tokens a separate numeric counter represents. Counts
+refresh every 0.5 s and after zone/destroy/state events. No card API/network calls,
+draws, moves or public card-name logs are involved.
+
+The cannon-fired/music-disabled flags persist with the existing tile snapshot;
+old midgame saves skip setup music using the existing started flag. Live patches
+replace their old ticker and retain playback. Position continuity is within the
+loaded session: manually replacing the track or fully reloading a table cannot
+restore an arbitrary timestamp through the documented MusicPlayer API.
+
+Runtime music uses MP3 derivatives of the owner's WAVs, without volume changes,
+via `scripts/encode_tts_music.py` (libmp3lame quality 2). Theme: **4,710,161 bytes**
+instead of 27,886,670; Ultima: **2,078,973** instead of 13,105,230. Source WAVs and
+other ongoing audio work stay separate. Content-hashed MP3 URLs use the same
+Pages release-byte gate as other clips.
+
+Validation so far: **29 music checks**, **1536 timer checks**, **13 table-build
+tests**, **55 preview checks**, **115 Inspect checks** and **8 release tests** pass.
+The cannon test executes the patched firing branch: no music event at zero power,
+one event before launch at positive power, no duplicate during firing, and the
+winner still starts the game. Live audio/zone verification is next. **No Steam upload**.
 
 ## v47: faster commander selection and lazy guides (saved; not on Steam)
 

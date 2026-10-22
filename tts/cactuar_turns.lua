@@ -76,7 +76,8 @@ local function cztState()
   end
   local running = CZT.color and {color = CZT.color, elapsed = cztElapsed()} or nil
   return JSON.encode({cactuar_turn_totals = totals, cactuar_started = CZT.started == true,
-                      cactuar_turn_numbers = turns, cactuar_turn = running})
+                      cactuar_turn_numbers = turns, cactuar_turn = running,
+                      cactuar_music = czmSavedState and czmSavedState() or nil})
 end
 
 -- Where the state lives. TTS rewinds restore objects' fields (memo, GM notes) but
@@ -96,7 +97,7 @@ local function cztStoreObject()
   return nil
 end
 
-local function cztPersist()
+function cztPersist()
   local state = cztState()
   pcall(function() Global.script_state = state end)
   local store = cztStoreObject()
@@ -168,6 +169,10 @@ end
 
 local function cztPlay(sound, title)
   if CZT.muted then return end
+  if czmBlocksVoice and czmBlocksVoice() then
+    CZT.audioStatus = "suppressed for soundtrack"
+    return
+  end
   local state = CZT
   state.audioSerial = (state.audioSerial or 0) + 1
   local serial = state.audioSerial
@@ -299,6 +304,7 @@ end
 -- Turn 1: zero every total and the table's turn counters, and give the turn to
 -- the player the die picked. Their clock and total start now.
 function cztStartGame(color)
+  if czmCannonFired then czmCannonFired() end
   CZT.total, CZT.announced, CZT.color, CZT.start = {}, {}, nil, nil
   for _, t in pairs(CZT.timers) do
     pcall(function()
@@ -328,6 +334,7 @@ end
 -- turn counters from zero, and this turn is turn 1. The Timer object's own
 -- onPlayerTurn may run before or after ours, so its count is settled a frame later.
 function cztFirstTurn(color)
+  if czmCannonFired then czmCannonFired() end
   CZT.total, CZT.announced, CZT.started = {}, {}, true
   for _, t in pairs(CZT.timers) do
     pcall(function()
@@ -362,6 +369,7 @@ end
 
 -- The die was rolled: stop everything, then start once it settles.
 function cztRolled(die)
+  if czmCannonFired then czmCannonFired() end
   CZT.started, CZT.total, CZT.announced, CZT.color, CZT.start = false, {}, {}, nil, nil
   cztTableClocks(false)
   cztShowAll()

@@ -889,7 +889,7 @@ is never committed; only what we add is: [tts/cactuar.lua](tts/cactuar.lua),
 [tts/cactuar.xml](tts/cactuar.xml), [tts/cactuar_tile.lua](tts/cactuar_tile.lua) and
 [build_tts_table.py](scripts/build_tts_table.py).
 
-**Releasing a new table version** is one command, after the change is committed and pushed:
+**Building a numbered table version** is one command, after the change is committed and pushed:
 
 ```bash
 python3 scripts/release_tts.py --notes "what changed" --notes "and what else"
@@ -904,6 +904,12 @@ their SHA-256, removes the previous version, copies the WIP and changelog to the
 and adds the version's patch notes to [tts/CHANGELOG.md](tts/CHANGELOG.md). Commit and
 push the changelog afterwards. The PC's address is in the gitignored
 `tts/deploy.local.json` (see `INTERNALS.md`).
+
+Every delivered build, including one intended for testing, gets the next version
+number and the canonical `MTG 6 player Cactuar Ver_vN` name. Do not deliver separate
+unnumbered Preview builds or replace a version with changed code. Building and
+delivering does not publish to Steam: the owner chooses which version to upload.
+Only use Workshop upload options when the owner explicitly selects a release.
 
 `--workshop` also updates the Steam Workshop item through Steam's legacy
 RemoteStorage API. A TTS Workshop item is one BSON file, `WorkshopUpload`

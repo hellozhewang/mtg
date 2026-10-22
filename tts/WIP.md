@@ -4,7 +4,20 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): website-style illustrated guides and picture metadata are implemented, published and delivered in the refreshed local preview save. **Hold further Workshop uploads**. See `tts/CHANGELOG.md` for released versions.
+Last updated 2026-10-21 (Codex): preparing numbered **v43** with the commander fixes and illustrated guides. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+
+## Standing build/release instruction (2026-10-21)
+
+Owner: **"don't do that just keep upping the version"** and **"I'll tell you which
+version to release to Steam."** Every delivered build, including a test build, must
+increment the version and use `MTG 6 player Cactuar Ver_vN`. Do not use separate
+unnumbered Preview saves, and do not overwrite a numbered version with changed code.
+Build/deliver without Workshop upload; only upload a version the owner explicitly
+selects. Report the latest saved build and Steam version separately.
+
+The commander sizing/blank-image fixes and illustrated guides below are being
+delivered as **v43**. The confusing `Commander Guide Preview` save will be removed
+after the numbered save/thumbnail are verified. No Steam upload is authorized.
 
 ## Illustrated guides (local test build; Workshop upload on hold)
 

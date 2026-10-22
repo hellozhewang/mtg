@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Build the next Cactuar table version and deliver it to the owner's TTS Saves folder.
 
+Every delivered/test build gets the next vN, never an unnumbered Preview name.
+The owner separately selects which version to publish to Steam; do not use any
+Workshop upload option without that explicit release instruction.
+
     python3 scripts/release_tts.py --notes "Sleeves menu" --notes "Louder announcer"
     python3 scripts/release_tts.py --dry-run          # build locally, deliver nothing
     python3 scripts/release_tts.py --current          # print the version we're at

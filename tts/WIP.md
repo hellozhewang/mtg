@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): preparing **v44** with a slightly smaller commander image. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-21 (Codex): **v44 delivered to Saved Games** with a slightly smaller commander image. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -18,7 +18,7 @@ Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a vers
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
 
-## v44: slightly smaller commander image (preparing saved build)
+## v44: slightly smaller commander image (saved; not on Steam)
 
 Owner requested the commander picture be slightly smaller. It now uses 85% of the
 existing image area's width/height (15% smaller), centered with its aspect ratio
@@ -26,6 +26,14 @@ preserved. This applies to the primary commander, second partner and DFC faces.
 Guide-card hover previews retain the full readable size; leaving restores the
 smaller commander. The browser layout and navigation positions stay the same.
 Deliver as the next numbered save; **no Steam upload**.
+
+Delivered **MTG 6 player Cactuar Ver_v44** JSON/PNG from pushed source `0c313b98`.
+Both checksums match; read-back Lua compiles, XML parses, and all six commander
+images use centered 85% sizing with aspect preserved. The runtime retains 100%
+size for guide hover previews. Archive/manifest: `.cache/tts-builds/v44/`.
+Save SHA-256: `9c1fede3c824b2e6a276320292ce8a11b97ca02038deaf169d806e0b1b6ae503`.
+The canonical v43 files were replaced in Saves; their archive remains available.
+WIP/changelog Desktop copies refreshed. **Steam remains v42.**
 
 Validation: all **12 table-build tests** and **42 preview checks** pass. The broader
 browser harness currently has **97 sleeve-fixture failures** after the separate

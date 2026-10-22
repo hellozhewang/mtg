@@ -1,0 +1,82 @@
+The single biggest rule a new pilot gets wrong is underestimating how Tana's token generation scales with power boosts. Tana does not create a fixed number of tokens; she creates Saprolings equal to the combat damage she actually deals to a player. Every +1/+1 counter from Ishai synergies, every anthem from Cathars' Crusade or Beastmaster Ascension, and every pump spell multiplies her token output exponentially. Trample ensures that excess damage pushes through blockers directly into a massive army of Saprolings.
+
+# The commanders: air superiority and ground swarm
+Ishai, Ojutai Dragonspeaker :: Deploys for {2}{W}{U} to dominate the air. Grows with a +1/+1 counter whenever an opponent casts any spell, rapidly expanding into a lethal flying commander damage threat while absorbing table removal.
+Tana, the Bloodsower :: Deploys for {2}{R}{G} with trample to generate a swarm of 1/1 green Saprolings equal to combat damage dealt. Benefits immensely from evasion, power buffs, and anthems.
+
+# Token multiplication and impact engines
+Anointed Procession :: Doubles all token production, turning a four-damage Tana connection into eight Saprolings.
+Parallel Lives :: Redundant green token doubler that accelerates wide boards exponentially.
+Doubling Season :: Doubles both tokens created and counters placed on permanents, supercharging both Tana's Saprolings and Ishai's +1/+1 counters.
+Ocelot Pride :: One-mana lifelink engine that achieves the city's blessing effortlessly, duplicating every token that entered this turn at your end step.
+Cathars' Crusade :: Whenever any creature enters, put a +1/+1 counter on every creature you control. When Tana connects for four damage, four Saprolings enter and buff Tana, Ishai, and the entire team with four +1/+1 counters each.
+Beastmaster Ascension :: Seven quest counters give all creatures you control +5/+5. Tana immediately hits as a 7/7 trampler that creates seven Saprolings on every swing.
+Purphoros, God of the Forge :: Indestructible god that deals two damage to each opponent whenever any creature enters. A wide Tana connection can easily burn the table for ten to twenty damage in one combat.
+Impact Tremors :: Redundant two-mana burn engine that pings every opponent whenever a Saproling or creature token enters.
+Skullclamp :: Equips to a 1/1 Saproling for {1} to kill it and draw two cards, turning your token swarm into relentless card velocity.
+Halo Fountain :: Versatile artifact that untaps tapped tokens to create Citizens or draw cards, with an alternate win condition that wins the game by untapping fifteen creatures.
+
+# Counter synergies and scaling threats
+Hardened Scales :: Adds an additional +1/+1 counter whenever counters are placed on your creatures, speeding up Ishai's aerial clock.
+Bristly Bill, Spine Sower :: Landfall places +1/+1 counters on Tana or Ishai, and his five-mana activated ability doubles all counters across your board.
+Danny Pink :: Draws a card whenever counters are put on a creature for the first time each turn, triggering repeatedly off Ishai's counter gains.
+Forgotten Ancient :: Hoards +1/+1 counters whenever any player casts a spell, then transfers them onto Tana at upkeep to multiply her Saproling generation.
+Managorger Hydra :: Trampling beast that gains counters on every spell cast by any player, growing alongside Ishai into an overwhelming beater.
+The Ozolith :: Stores all counters from dying or removed creatures and redistributes them onto Tana or Ishai at the start of combat.
+All Will Be One :: Converts every counter placed on Ishai, Forgotten Ancient, and your board into direct damage against any target.
+Springheart Nantuko :: Landfall engine that bestows onto Tana to create token copies or spawns 1/1 Insects.
+
+# The compact finish and alpha strikes
+Dualcaster Mage + Twinflame :: Infinite hasty Dualcaster Mages. Cast Twinflame targeting any creature you control, hold priority, and cast Dualcaster Mage with flash. Copy Twinflame targeting Dualcaster Mage, creating a token copy that copies Twinflame again. Repeat for infinite attackers.
+Dualcaster Mage + Molten Duplication :: Redundant two-mana infinite combo line using Molten Duplication.
+In accordance with Bracket 3 rules, this two-card combo is reserved for turn 6 or later. Spend early turns developing your mana, applying combat pressure with your commanders, and establishing token engines before closing out the game.
+Craterhoof Behemoth :: The premier combat finisher. Grants trample and enormous power buffs scaling with your total creature count to trample over any opposing defense.
+Moonshaker Cavalry :: White counterpart to Craterhoof that gives your entire army flying and power boosts scaling with your creature count.
+Finale of Devastation :: Tutors Craterhoof or Dualcaster directly onto the battlefield; with X=10, grants +X/+X and haste to your entire army for a lethal game-ending swing.
+
+# Ramp and the Cradle engine
+Gaea's Cradle :: Taps for green mana equal to the number of creatures you control. With Tana's Saproling swarm, Cradle routinely produces ten to twenty mana to fund massive Finale casts.
+Jaheira, Friend of the Forest :: Turns every Saproling and token you control into an active mana dork tapping for {G}.
+Bloom Tender :: Taps for up to four mana of different colors with Ishai and Tana on the battlefield.
+Faeburrow Elder :: Vigilant beater that taps for four mana across all four of your deck's colors.
+Delighted Halfling :: Uncounterable legendary mana acceleration for Ishai and Tana.
+Birds of Paradise :: Classic one-mana flying dork fixing all four colors.
+Noble Hierarch :: Exalted dork that pumps Tana's initial combat damage while fixing colors.
+Sol Ring :: Standard colorless fast mana.
+Arcane Signet :: Reliable four-color mana rock.
+Fellwar Stone :: Efficient two-mana rock producing multiple colors.
+Nature's Lore :: Searches for any land with the Forest type (Breeding Pool, Stomping Ground, Taiga, Tropical Island) to enter untapped.
+Three Visits :: Redundant Forest searcher entering untapped.
+Farseek :: Searches for Plains, Island, or Mountain dual lands to fix your mana curve.
+
+# Tutors and creature toolboxes
+Imperial Recruiter -> Dualcaster Mage :: Searches for Dualcaster Mage to assemble the combo, or grabs Birds of Paradise or Bloom Tender early.
+Recruiter of the Guard -> Dualcaster Mage :: Searches for any creature with toughness 2 or less, finding Dualcaster Mage, Esper Sentinel, or Ranger-Captain.
+Ranger-Captain of Eos -> Esper Sentinel :: Tutors Esper Sentinel or Ocelot Pride, and can sacrifice to silence opponents during your winning turn.
+Eldritch Evolution -> Craterhoof Behemoth :: Sacrifices a mid-sized creature to tutor Craterhoof Behemoth directly onto the battlefield.
+Urza's Saga -> Skullclamp :: Chapter III searches Skullclamp directly into play to draw through your deck, or grabs Sol Ring.
+
+# Protection and countermagic
+Grand Abolisher :: Shuts off opposing interaction on your turn, ensuring your token deployment and combo lines resolve undisturbed.
+Teferi, Time Raveler :: Restricts opponents to sorcery-speed casting, eliminating opposing counterspells and instant-speed removal.
+Heroic Intervention :: Grants all your permanents hexproof and indestructible in response to opposing board wipes.
+Boros Charm :: Protects all your permanents with indestructible or grants double strike to Tana to double her Saprolings.
+Deflecting Swat :: Free redirection spell with Ishai or Tana on the battlefield.
+Cyclonic Rift :: Asymmetrical board wipe that bounces every nonland permanent your opponents control, clearing the way for an unblockable alpha strike.
+Rhystic Study :: Relentless card draw engine that taxes opponents on every spell.
+Mystic Remora :: Explosive early noncreature spell tax drawing cards in the opening turns.
+Esper Sentinel :: One-mana draw engine that scales as counters are placed on it.
+Archivist of Oghma :: Draws cards whenever opponents search their libraries.
+Kutzil, Malamet Exemplar :: Protects your turn from opponent spells and draws cards whenever modified creatures deal combat damage.
+Toski, Bearer of Secrets :: Indestructible squirrel that draws a card whenever any of your creatures deal combat damage to a player.
+Dovin's Veto :: Uncounterable noncreature counterspell.
+Counterspell :: Reliable two-mana hard counter.
+Swords to Plowshares :: Clean one-mana creature exile.
+Path to Exile :: Unconditional one-mana creature exile.
+
+# Opening hand and sequencing
+Look for opening hands with three lands, a mana dork (Birds of Paradise, Delighted Halfling, Noble Hierarch), and either an engine piece (Skullclamp, Hardened Scales) or early interaction.
+Cast Ishai on turn 3 to begin accumulating +1/+1 counters as opponents cast their ramp and setup spells.
+Cast Tana on turn 4, using Ishai's aerial presence to force opponents into awkward blocking choices while Tana connects on the ground to spawn Saprolings.
+On turn 5, deploy an engine multiplier (Cathars' Crusade, Purphoros, Beastmaster Ascension, or Gaea's Cradle) to convert your Saproling board into overwhelming table damage and mana.
+On turn 6 or later, either drop Craterhoof Behemoth / Moonshaker Cavalry to execute an alpha strike, or resolve Dualcaster Mage and Twinflame to finish off the table.

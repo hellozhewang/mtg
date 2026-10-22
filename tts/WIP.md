@@ -3,16 +3,17 @@
 Living status doc for the Tabletop Simulator table work. Whoever picks this up (Claude or
 Codex) reads it first and updates it with every change. The [TTS development guide](../docs/development/tts-development-guide.md) and README are the lasting documentation; this file tracks what is in flight.
 
-Last updated 2026-10-22 (Codex): delivered **v62** with Show commander, explicit Reload,
-longer sprite settling, and consolidated TTS docs under `docs/development/`.
-**Steam remains v60.** See [the changelog](../docs/development/tts-changelog.md).
+Last updated 2026-10-22 (Codex): delivered **v63**, making Show commander / Hide
+commander text white. **Steam remains v60.** See [the changelog](../docs/development/tts-changelog.md).
 
-## Next build: white Show commander label
+## v63: white Show commander label (saved; not on Steam)
 
 Set the Show commander / Hide commander button label to white (`#FFFFFF`) in
 both the XML template and its runtime render attributes, leaving the button's
-background unchanged. Validate the expanded six-seat XML and existing picture
-suite; deliver the next numbered save for testing. Steam remains v60.
+background unchanged. Validation: expanded six-seat XML has white labels and all 47 existing picture
+checks pass. Delivered from `4e426ad0`, read back and verified the save contents;
+immutable JSON/PNG and SHA-256 manifest are in `.cache/tts-builds/v63/`.
+Steam remains v60.
 
 ## v62: commander image recurrence and documentation consolidation (saved; not on Steam)
 

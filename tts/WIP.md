@@ -7,6 +7,17 @@ Last updated 2026-10-22 (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
 Both states visually checked live. **Steam is now v64, published at the owner’s request.** See [the changelog](../docs/development/tts-changelog.md).
 
+## Competitive Brawl banlist clarification (2026-10-22)
+
+Owner supplied the October 12 Arena commander-ban update, then withdrew the deck
+removal request after its **Competitive Brawl** scope was identified. Recorded the
+full update and source in
+[Competitive Brawl update](../docs/development/competitive-brawl-banlist-2026-10-12.md).
+The 164-deck audit found only LightPaws-Auras and Yuriko-Ninjas led by named cards;
+both remain Commander legal and stay in the catalog/tournament pool. No Commander
+house bans/unbans or Nashi rebalance are adopted. No deck/runtime/catalog changes;
+Saved Games and Steam remain v64.
+
 ## v64: explicit white commander button labels (saved and published to Steam)
 
 Owner's screenshot disproves the v63 white-label claim: the native Button label

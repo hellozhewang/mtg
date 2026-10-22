@@ -219,6 +219,10 @@ Amethyst is just two taxes stacking; the table can still play.
 
 ## Banned in Commander
 
+Format-specific updates are recorded separately. The
+[October 12, 2026 Competitive Brawl update](docs/development/competitive-brawl-banlist-2026-10-12.md)
+is for MTG Arena and does not automatically change these Commander rules.
+
 **83 cards.** A banned card makes a deck illegal in every bracket — this is
 not a bracket restriction, it is the format's own list, and it overrides
 everything below.

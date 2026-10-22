@@ -8,6 +8,11 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v57 — 2026-10-22 (commit f1601e48)
+- Keep the full metadata catalog in Lua and cache filtered/sorted results; paging and selection reuse the list.
+- Format only the visible ten reusable rows, update selection highlights without rebuilding row text, and skip closed-panel UI writes.
+- Retain demand-loaded sleeves and white-preview binding repair. Saved build for testing; not uploaded to Steam.
+
 ## v56 — 2026-10-22 (commit 7ed7739b)
 - Fix white sleeve previews by binding images after native UI asset rebuilding settles and invalidating stale UI writes.
 - Retain eight-per-page demand loading, visited-page caching and preservation of shared assets; repair verified visually on the running table.

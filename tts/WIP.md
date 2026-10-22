@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-22 (Codex): preparing **v57** for cached deck-list data and visible-page row rendering; code is applied to the running table, and v56 is the latest delivered save. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-22 (Codex): delivered **v57** for cached deck-list data and visible-page row rendering; browser functions are also applied to the running table. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -18,7 +18,7 @@ Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a vers
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
 
-## v57: keep catalog data, render only the visible page (preparing)
+## v57: keep catalog data, render only the visible page (saved; not on Steam)
 
 Owner asks for Cactuar's full information to remain in a data structure while only
 paginated rows render on demand. Inspection confirms the browser **already had ten
@@ -56,8 +56,16 @@ CZ instance, states, index, sleeve module and Inspect/music/event hooks. Live ch
 **164 decks**, root instance retained, assets unchanged, event hooks retained. No
 browser was open during that probe, so it does not verify owner-visible paging.
 No physical cards, turns or player selections were changed. Evidence:
-`.cache/deck-list-live/v57-patch.json`. Preparing the next numbered save.
-**Steam remains v42; no Workshop upload.**
+`.cache/deck-list-live/v57-patch.json`.
+
+Delivered **MTG 6 player Cactuar Ver_v57** JSON/PNG from pushed source `f1601e48`.
+Pages passed exact sound/tile-byte verification. Read-back Lua compiles and includes
+catalog/page caching plus the exact v56 sleeve module. XML verifies exactly ten
+initially inactive row widgets per private seat and eight lazy sleeve images.
+Archive: `.cache/tts-builds/v57/`. Save SHA-256:
+`e49b6a4eadfa88be0ea4fdb3f0d99eb69078610ce5f5511c16a43f00f9cd1591`.
+Saves now contains v57; v56 remains archived unchanged. Final WIP/changelog copies
+refreshed on Desktop. **Steam remains v42; no Workshop upload.**
 
 ## v56: white sleeve preview pictures (saved; not on Steam)
 

@@ -96,6 +96,15 @@ local baseSpawns, baseDestroys, baseChanges = 0, 0, 0
 function onObjectSpawn() baseSpawns = baseSpawns + 1 end
 function onObjectDestroy() baseDestroys = baseDestroys + 1 end
 function onPlayerChangeColor() baseChanges = baseChanges + 1 end
+local zoneEnters, zoneLeaves = 0, 0
+function onObjectEnterZone(_, obj)
+  zoneEnters = zoneEnters + 1
+  obj.menus = {"Cascade for X", "Get Basic Plains"}
+end
+function onObjectLeaveZone(_, obj)
+  zoneLeaves = zoneLeaves + 1
+  obj.menus = {"Cascade for X", "Get Basic Plains"}
+end
 local a = deck("deck-a", {
   {guid = "z", name = "Zombie\nCreature — Zombie", index = 0},
   {guid = "b2", name = "beta", index = 1},
@@ -374,6 +383,17 @@ transient.addContextMenuItem = function(...)
 end
 onObjectSpawn(transient)
 check(attempts == 2 and #transient.menus == 2, "failed native registration is retried without leaving a stale attached flag")
+
+-- The real base clears custom menus on zone enter/leave. Restore after each event.
+local library = {}
+for i = 1, 3 do
+  onObjectEnterZone(library, a)
+  check(#a.menus == 3 and a.menus[3] == "Inspect", "zone entry restores Inspect after the base recreates its menu")
+  onObjectLeaveZone(library, a)
+  check(#a.menus == 3 and a.menus[3] == "Inspect", "zone exit restores Inspect without duplicates")
+end
+check(zoneEnters == 3 and zoneLeaves == 3, "original zone handlers still execute once per event")
+check(a.menus[1] == "Cascade for X" and a.menus[2] == "Get Basic Plains", "base actions survive Inspect restoration")
 
 print(string.format("%d checks, %d failed", checks, failures))
 os.exit(failures == 0 and 0 or 1)

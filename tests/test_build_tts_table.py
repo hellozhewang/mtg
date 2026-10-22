@@ -35,7 +35,7 @@ class TableBuild(unittest.TestCase):
         for name in ("theme", "titan", "ultima", "thordan", "hades", "alexander", "garuda", "ifrit"):
             self.assertRegex(lua, r'"sounds/ff14_' + name + r'\.wav\?v=[0-9a-f]{8}"')
 
-    def test_text_only_browser_and_guides_are_private(self):
+    def test_text_details_and_lazy_sleeves_are_private(self):
         table = build_tts_table.build(json.loads(json.dumps(BASE)), URL)
         self.assertIn("function czgRender(", table["LuaScript"])
         root = ET.fromstring("<root>" + table["XmlUI"] + "</root>")
@@ -43,7 +43,12 @@ class TableBuild(unittest.TestCase):
             panel = root.find(f".//*[@id='cz_panel_{color}']")
             self.assertEqual(panel.get("visibility"), color)
             self.assertEqual((panel.get("width"), panel.get("height")), ("1080", "864"))
-            self.assertEqual(panel.findall(".//Image"), [])
+            chooser = panel.find(f".//*[@id='cz_sleeves_{color}']")
+            self.assertIsNotNone(chooser)
+            self.assertEqual(chooser.get("active"), "False")
+            self.assertEqual(len(chooser.findall(".//Image")), 8)
+            self.assertEqual(panel.findall(".//Image"), chooser.findall(".//Image"))
+            self.assertEqual(panel.find(f".//*[@id='cz_sl_1_{color}']").get("onClick"), "czSleevePick(1)")
             self.assertIsNone(panel.find(f".//*[@id='cz_commander_show_{color}']"))
             self.assertEqual(panel.find(f".//*[@id='cz_guide_{color}']").get("onClick"), "czGuide")
             self.assertIsNotNone(panel.find(f".//*[@id='cz_guide_scroll_{color}']"))

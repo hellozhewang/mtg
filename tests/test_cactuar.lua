@@ -190,6 +190,7 @@ end
 local source = read("tts/cactuar.lua"):gsub("@BASE_URL@", "test://tts/")
 assert(load(source, "cactuar.lua"))()
 dofile("tts/cactuar_guide.lua")
+dofile("tts/cactuar_sleeves.lua")
 local white, grey = {color = "White", steam_name = "zz"}, {color = "Grey", steam_name = "spectator"}
 
 -- A spectator cannot open it: decks load into your own seat.
@@ -410,31 +411,33 @@ czOpen(white); czClear(white); czSearch(white, "beamtown"); czPick(white, "1"); 
 check(#spawned == 2, "library and commander only, no token pile (got " .. #spawned .. ")")
 check(values["cz_status_White"]:find("makes no tokens", 1, true), "the player is told there are no tokens")
 
--- Sleeves are names in the text menu; changing them still changes all card backs.
-spawned = {}; czOpen(white); czClear(white)
+-- Sleeve previews are lazy; choosing a thumbnail still changes every card back.
+spawned = {}; if not CZ.state.White.open then czOpen(white) end; czClear(white)
 local realSleeves = CZ.index.sleeves
 local chosen = realSleeves[2]
 check(chosen and chosen.id ~= "standard", "a custom sleeve is available")
 local calls = UI.assetCalls
-czRefresh(white); czFilter(white, "sleeve")
-check(UI.assetCalls == calls and #UI.assets == 1, "refresh and sleeve selection register no images")
-check(s.menu == "sleeve" and attrs.cz_menu_White.active == "True", "sleeves open the text menu")
-check(values.cz_choice_1_White:find("Standard", 1, true), "Standard is listed first")
-for i = 1, math.min(CZ.menuRows, #realSleeves) do
-  check(values["cz_choice_" .. i .. "_White"]:find(realSleeves[i].label, 1, true), "sleeves retain catalog order")
+czRefresh(white)
+check(UI.assetCalls == calls and #UI.assets == 1, "refresh does not register sleeve images")
+czFilter(white, "sleeve")
+check(UI.assetCalls == calls + 1 and #UI.assets <= CZ.sleeveCells + 1, "opening Sleeves registers only its current page")
+check(s.menu == "sleeve" and attrs.cz_sleeves_White.active == "True", "sleeves open the thumbnail chooser")
+check(values.cz_sl_name_1_White:find("Standard", 1, true), "Standard is listed first")
+for i = 1, math.min(CZ.sleeveCells, #realSleeves) do
+  check(values["cz_sl_name_" .. i .. "_White"]:find(realSleeves[i].label, 1, true), "sleeves retain catalog order")
 end
 czChoose(white, "2")
-check(s.sleeve == chosen.id and attrs.cz_menu_White.active == "False", "choosing sleeves by name closes the menu")
+check(s.sleeve == chosen.id and attrs.cz_sleeves_White.active == "False", "choosing a sleeve closes the chooser")
 check(attrs.cz_sleeve_White.text:find(chosen.label, 1, true), "button shows chosen sleeve")
 check(next(s.filter) == nil and #s.list == #CZ.index.decks, "sleeve choice does not filter decks")
 local many = {realSleeves[1]}
 for i = 1, 19 do many[#many + 1] = {id = "s" .. i, label = "S" .. i, file = "sleeves/s" .. i .. ".jpg"} end
 CZ.index.sleeves = many; czFilter(white, "sleeve")
-check(values.cz_menu_page_White == "1 / 2", "twenty sleeve names use two pages")
-czMenuPage(white, "next"); czChoose(white, "10")
+check(values.cz_sleeves_page_White == "1 / 3", "twenty sleeves use three pages")
+czMenuPage(white, "next"); czMenuPage(white, "next"); czChoose(white, "4")
 check(s.sleeve == "s19", "a later page selects the correct sleeve")
 czFilter(white, "sleeve")
-check(values.cz_menu_page_White == "2 / 2", "the menu reopens at the selected name")
+check(values.cz_sleeves_page_White == "3 / 3", "the chooser reopens at the selected sleeve")
 czDismiss(white); CZ.index.sleeves = realSleeves
 czFilter(white, "sleeve"); czChoose(white, "2")
 czSearch(white, "giada"); czPick(white, "1"); czLoad(white)
@@ -600,7 +603,10 @@ check(attrs.cz_count_White.text ~= "External importer reset", "external XML rese
 attrs.cz_search_White.text = "User input"
 czClear(white)
 check(attrs.cz_search_White.text == "", "user-edited input can always be cleared")
-check(UI.assetCalls == 0, "the entire browser session never rebuilds shared image assets")
+local beforeReopen = UI.assetCalls
+if not CZ.state.White.open then czOpen(white) end
+czClose(white); czOpen(white)
+check(UI.assetCalls == beforeReopen, "opening the browser after sleeve use still does not reload pictures")
 
 print(string.format("%d checks, %d failed", checks, failures))
 os.exit(failures == 0 and 0 or 1)

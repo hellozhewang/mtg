@@ -33,6 +33,7 @@ CZ = {
   seats = {"White", "Red", "Yellow", "Green", "Blue", "Purple"},
   rows = 10,
   menuRows = 10,
+  sleeveCells = 8,
   index = nil,        -- decks.json, once fetched
   indexAt = 0,        -- os.time() it arrived
   staleAfter = 120,   -- seconds: opening the browser after this re-fetches it
@@ -457,7 +458,7 @@ end
 
 -- A small menu of Buttons avoids rebuilding Global UI or putting ampersands in
 -- Option values. It remains safe when the table's other importer round-trips it.
-local function czRenderMenu(color)
+function czRenderMenu(color)
   local s = czState(color)
   if not s.menu then return end
   local choices = czMenuChoices(color, s.menu)
@@ -622,6 +623,7 @@ end
 function czDismiss(player)
   czState(player.color).menu = nil
   czUI("cz_menu_" .. player.color, "active", "False")
+  czUI("cz_sleeves_" .. player.color, "active", "False")
   czUI("cz_scrim_" .. player.color, "active", "False")
 end
 
@@ -632,27 +634,28 @@ function czFilter(player, key)
   if s.menu == key then czDismiss(player); return end
   s.menu, s.menuPage = key, 1
   -- Open the page containing the currently selected value.
-  local size = CZ.menuRows
+  local size = key == "sleeve" and CZ.sleeveCells or CZ.menuRows
   for i, choice in ipairs(czMenuChoices(player.color, key)) do
     if choice.selected then s.menuPage = math.ceil(i / size) end
   end
-  czRenderMenu(player.color)
+  if key == "sleeve" then czslRender(player.color) else czRenderMenu(player.color) end
 end
 
 function czMenuPage(player, direction)
   local s = czState(player.color)
   if not s.menu then return end
   s.menuPage = (s.menuPage or 1) + (direction == "next" and 1 or -1)
-  czRenderMenu(player.color)
+  if s.menu == "sleeve" then czslRender(player.color) else czRenderMenu(player.color) end
 end
 
 function czChoose(player, row)
   local s = czState(player.color)
   if not s.menu then return end
   local i = tonumber(row)
-  if not i or i < 1 or i > CZ.menuRows then return end
+  local size = s.menu == "sleeve" and CZ.sleeveCells or CZ.menuRows
+  if not i or i < 1 or i > size then return end
   local choices = czMenuChoices(player.color, s.menu)
-  local n = ((s.menuPage or 1) - 1) * CZ.menuRows + i
+  local n = ((s.menuPage or 1) - 1) * size + i
   if n > #choices then return end
   if s.menu == "sleeve" then
     s.sleeve = choices[n].value

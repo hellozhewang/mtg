@@ -18,6 +18,11 @@ class CactuarBrowserTests(unittest.TestCase):
                              capture_output=True, text=True, timeout=30)
         self.assertEqual(run.returncode, 0, run.stdout + run.stderr)
 
+    def test_lazy_sleeves(self):
+        run = subprocess.run(["lua", "tests/test_cactuar_sleeves.lua"], cwd=ROOT,
+                             capture_output=True, text=True, timeout=30)
+        self.assertEqual(run.returncode, 0, run.stdout + run.stderr)
+
     def test_written_guides(self):
         run = subprocess.run(["lua", "tests/test_cactuar_guide.lua"], cwd=ROOT,
                              capture_output=True, text=True, timeout=30)

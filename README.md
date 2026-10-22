@@ -787,12 +787,13 @@ importer. Clicking one opens the clicker's own browser, which
 searches as you type, sorts (newest first by default, or tier or name) and offers filter menus
 (bracket, tier, strategy, owner). A separate details panel shows the selected deck's
 commander, strategy and stats; filtered counts also show the collection total.
-The browser is text-only: deck details, commander names, written guides and sleeve
-names. **Read guide** fetches that deck's written strategy only when clicked;
-**Back to decks** returns to the list. There are no commander previews, guide
-pictures or sleeve thumbnails in this window. Only open panels are rendered, and
-unchanged UI writes are skipped. This avoids rebuilding the shared UI to load
-browser pictures. The separate Inspect window still shows card faces.
+Deck details, commander names and guides remain text-only. **Read guide** fetches
+written strategy only when clicked; **Back to decks** returns to the list.
+**Sleeves ▾** opens an eight-picture chooser and downloads only that page's small
+thumbnails. Visited sleeve pages are cached; opening the browser itself never
+loads sleeve pictures. Only open panels are rendered, and unchanged UI writes are
+skipped. The separate Inspect window still shows card faces. Inspect is restored
+after the base table rebuilds deck menus on zone entry/exit.
 **Load into my seat** puts the chosen deck in
 that player's seat: the library face down and shuffled in their library zone,
 the commander (or both partners) on their Commander Zones, the tokens beside them.

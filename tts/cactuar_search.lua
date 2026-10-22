@@ -515,6 +515,26 @@ end
 
 -- Keep every base handler, and keep one copy of each wrapper on live reload.
 CZS_BASE = CZS_BASE or {spawn = onObjectSpawn, destroy = onObjectDestroy, change = onPlayerChangeColor}
+if not CZS_BASE.zoneBound then
+  CZS_BASE.enterZone, CZS_BASE.leaveZone = onObjectEnterZone, onObjectLeaveZone
+  CZS_BASE.zoneBound = true
+end
+local function czsAfterZone(obj, rebuilt)
+  -- The base's onObjectEnterZone/onObjectLeaveZone clear custom menus on normal
+  -- cards/decks, then recreate their zone actions. Restore Inspect after them.
+  if rebuilt and obj and obj.type == "Deck" and not obj.getName():lower():find("planechase") then
+    CZS.attached[obj.getGUID()] = nil
+  end
+  pcall(czsAttach, obj)
+end
+function onObjectEnterZone(zone, obj)
+  if CZS_BASE.enterZone then CZS_BASE.enterZone(zone, obj) end
+  czsAfterZone(obj, CZS_BASE.enterZone ~= nil)
+end
+function onObjectLeaveZone(zone, obj)
+  if CZS_BASE.leaveZone then CZS_BASE.leaveZone(zone, obj) end
+  czsAfterZone(obj, CZS_BASE.leaveZone ~= nil)
+end
 function onObjectSpawn(obj)
   if CZS_BASE.spawn then CZS_BASE.spawn(obj) end
   czsAttach(obj)

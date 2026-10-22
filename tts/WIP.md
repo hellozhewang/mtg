@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): delivered **v52** with Inspect registration fixes across browser/global reloads. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-22 (Codex): preparing **v53**: actual zone-menu Inspect fix (patched live), plus sleeve thumbnails on demand. Latest delivered is v52. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -17,6 +17,51 @@ selects. Report the latest saved build and Steam version separately.
 Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a version
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
+
+## v53: actual Inspect zone-menu fix and lazy sleeve images (preparing)
+
+Owner clarified Inspect was missing **only from White's and Red's decks**, then
+showed the White library menu with native Search/Cascade/basic-land actions but no
+Inspect. The running table had v52's scoped registration fix, both affected decks
+marked attached and four seated players. This disproves treating v52's reload fix
+as sufficient for the observed problem.
+
+**Actual cause found in the base Global script:** `onObjectEnterZone` and
+`onObjectLeaveZone` both call **obj.clearContextMenu()**, then recreate the zone's
+Cascade/reveal/basic-land actions. Only decks crossing those zones lose Inspect;
+our retained attachment flag then suppresses re-registration. The earlier diagnosis
+had checked object scripts and scripting-zone handlers, missing these base **Zone**
+handlers. v52 did not fix this observed path.
+
+Restored Inspect directly on the two live library decks (native calls succeeded),
+without moving/shuffling/drawing cards or clearing other actions. Installed live
+wrappers around the real base zone handlers: run the original first, then re-add
+Inspect. A proxy test through the running table's **actual** base handlers returns
+exactly one Inspect after both enter and leave, retaining three menu items. No
+physical card, turn or music was changed by that probe. Owner-visible confirmation
+is still pending; do not treat a successful add call as a screenshot verification.
+The canonical source now includes the same hook and existing v52 startup/spawn
+retries. Planechase/bag cases that the base does not clear avoid forced duplicates.
+
+Owner also wants **sleeve pictures back, loaded only on click**. A dedicated
+`tts/cactuar_sleeves.lua` restores the eight-choice thumbnail grid, but registers
+only pages explicitly opened through Sleeves. Reopening cached pages does not call
+setCustomAssets; other open chooser pages, Inspect and base assets are preserved.
+Missing thumbnails show names, without loading full-size art. Shared image-load
+completion redraws only current private sessions and cannot reopen closed windows;
+choices are disabled during an asynchronous image load. Commander previews and
+guide pictures remain removed; written guides stay lazy and text-only.
+
+Cold browser open still has **zero image loads**: **115 UI writes**, **3** on cached
+close/reopen, **zero** unchanged redraw writes in the harness. Only an explicit
+Sleeves click triggers shared asset loading, up to eight thumbnails per page.
+**1,147 browser checks**, **128 Inspect checks**, **19 lazy-sleeve checks**, **17
+written-guide checks**, **92 music checks**, **1,536 timer checks**, **14 table-build
+tests** and **8 release tests** pass. Combined Lua compiles. All browser images are
+inside the inactive private sleeve chooser; there are no commander/guide images.
+
+Delivery pending. Live menu repair/zone hook is installed on the running game;
+owner visual confirmation is pending. No Workshop upload.
 
 ## v52: Inspect menu registration after reload/stack creation (saved; not on Steam)
 

@@ -12,16 +12,16 @@
 1 Birgi, God of Storytelling (KHM) 123
 1 Conspicuous Snoop (M21) 139
 1 Goblin Matron (PLST) DMR-123
-1 Defense Grid (9ED) 293
+1 Roaming Throne
 1 Imperial Recruiter (MH2) 281
 1 General Kreat, the Boltbringer
 1 Storm-Kiln Artist (SOC) 255
 1 Krenko, Mob Boss (RVR) 114
-1 Rally at the Hornburg
+1 Krenko's Command
 1 Lightning Crafter
 1 Mox Amber (DOM) 224
 1 Kiki-Jiki, Mirror Breaker (IMA) 136
-1 Zealous Conscripts (INR) 183
+1 Howlsquad Heavy
 1 Simian Spirit Guide (A25) 148
 1 Sol Ring (FDC) 286
 1 Rite of Flame (CSP) 96
@@ -46,7 +46,7 @@
 1 Sudden Breakthrough
 1 Ancestors' Aid
 1 Haste Magic
-1 Goblin Ringleader (APC) 62
+1 Dragon Fodder
 1 Twinflame (SOC) 258
 1 Muxus, Goblin Grandee (JMP) 24
 1 Molten Duplication (BIG) 14
@@ -65,7 +65,7 @@
 1 Chaos Warp (MBC) 72
 1 Valakut Awakening
 1 Pinnacle Monk
-1 Reliquary Tower
+1 Dwarven Mine
 1 Cavern of Souls
 1 Three Tree City
 1 Arena of Glory

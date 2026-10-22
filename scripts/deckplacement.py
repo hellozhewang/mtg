@@ -120,6 +120,24 @@ def save(answer: str, touched: set[str], frontend: Path, owner: str) -> list[str
             tiers[key] = tier
             tiers_changed = True
 
+    owner_folder = frontend.parent / "public" / owner
+    if (frontend.parent / ".git").is_dir() and owner_folder.is_dir():
+        existing_stems = {p.stem for p in owner_folder.glob("Bracket*/*.txt")}
+        for key in list(tiers):
+            if key.startswith(f"{owner}/"):
+                stem = key.split("/", 1)[1]
+                if stem not in existing_stems:
+                    notes.append(f"pruned deleted deck {key} from tiers")
+                    del tiers[key]
+                    tiers_changed = True
+        for key in list(themes):
+            if key.startswith(f"{owner}/"):
+                stem = key.split("/", 1)[1]
+                if stem not in existing_stems:
+                    notes.append(f"pruned deleted deck {key} from categories")
+                    del themes[key]
+                    themes_changed = True
+
     if tiers_changed:
         _write(tiers_path, _dump_tiers(tiers))
     if themes_changed:

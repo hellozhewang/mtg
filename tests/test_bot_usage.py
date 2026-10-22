@@ -274,5 +274,112 @@ class BuilderTests(unittest.TestCase):
         self.assertEqual(output.getvalue(), "USAGE\n")
 
 
+class GeminiImageQuotaTests(unittest.TestCase):
+    def test_parse_image_quota_error(self):
+        sample = """
+        error generating image: failed to generate content: 429 Too Many Requests, body: {
+          "error": {
+            "code": 429,
+            "message": "You have exhausted your capacity on this model.",
+            "status": "RESOURCE_EXHAUSTED",
+            "details": [
+              {
+                "metadata": {
+                  "model": "gemini-3.1-flash-image",
+                  "quotaResetTimeStamp": "2026-10-26T02:59:39Z"
+                }
+              }
+            ]
+          }
+        }
+        """
+        info = usage.parse_image_quota_error(sample)
+        self.assertIsNotNone(info)
+        self.assertEqual(info["model"], "gemini-3.1-flash-image")
+        self.assertEqual(info["resets_iso"], "2026-10-26T02:59:39Z")
+        self.assertEqual(info["resets_at"], 1792983579.0)
+
+        # None on unrelated errors
+        self.assertIsNone(usage.parse_image_quota_error("random error text"))
+        self.assertIsNone(usage.parse_image_quota_error("gemini-3.8-flash-high RESOURCE_EXHAUSTED"))
+
+    def test_record_read_and_exhausted_check(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            home = Path(tmp)
+            # No record yet
+            self.assertEqual(usage.is_image_quota_exhausted(home), (False, None, None))
+            self.assertEqual(usage.format_image_quota(home), "Image (gemini-3.1-flash-image): available")
+
+            # Active exhaustion in future
+            future = time.time() + 3600
+            usage.record_image_quota(home, {
+                "model": "gemini-3.1-flash-image",
+                "resets_at": future,
+                "resets_iso": "2026-10-26T02:59:39Z",
+            })
+            exhausted, resets_iso, resets_at = usage.is_image_quota_exhausted(home)
+            self.assertTrue(exhausted)
+            self.assertEqual(resets_at, future)
+            self.assertEqual(resets_iso, "2026-10-26T02:59:39Z")
+
+            # Formatting
+            text_plain = usage.format_image_quota(home, discord=False)
+            self.assertIn("Image (gemini-3.1-flash-image): 0% left (resets ", text_plain)
+            text_discord = usage.format_image_quota(home, discord=True)
+            self.assertIn(f"<t:{int(future)}:R>", text_discord)
+
+            # Expired exhaustion in past
+            past = time.time() - 100
+            usage.record_image_quota(home, {
+                "model": "gemini-3.1-flash-image",
+                "resets_at": past,
+                "resets_iso": "2026-10-20T00:00:00Z",
+            })
+            self.assertEqual(usage.is_image_quota_exhausted(home), (False, None, None))
+            self.assertEqual(usage.format_image_quota(home), "Image (gemini-3.1-flash-image): available")
+
+    def test_format_agy_includes_image_when_is_image_is_true(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            home = Path(tmp)
+            future = 1792983579.0
+            usage.record_image_quota(home, {
+                "model": "gemini-3.1-flash-image",
+                "resets_at": future,
+                "resets_iso": "2026-10-26T02:59:39Z",
+            })
+            # When is_image=False: no image line
+            text_builder = usage.format_agy(AGY_USAGE, "gemini-3.8-flash-high", image_home=home, is_image=False)
+            self.assertNotIn("gemini-3.1-flash-image", text_builder)
+
+            # When is_image=True: has image line
+            text_sleever = usage.format_agy(AGY_USAGE, "gemini-3.8-flash-high", image_home=home, is_image=True, discord=True)
+            self.assertIn("Image (gemini-3.1-flash-image): 0% left (resets <t:1792983579:R>)", text_sleever)
+            self.assertIn("5h: 93% left", text_sleever)
+
+
+class SleeverImageQuotaTests(unittest.TestCase):
+    def test_send_sleever_fails_fast_when_image_quota_is_exhausted(self):
+        import bot
+        with tempfile.TemporaryDirectory() as tmp:
+            home = Path(tmp)
+            future = 1792983579.0
+            usage.record_image_quota(home, {
+                "model": "gemini-3.1-flash-image",
+                "resets_at": future,
+                "resets_iso": "2026-10-26T02:59:39Z",
+            })
+            with patch.object(bot.HARNESS, "home", home), \
+                 patch.object(bot.HARNESS, "name", "agy"), \
+                 patch.object(bot.HARNESS, "images", True), \
+                 patch.object(bot, "_claim_bot") as claim, \
+                 patch.object(bot.HARNESS, "usage", return_value="Image (gemini-3.1-flash-image): 0% left"):
+                reply = bot.send_sleever("make me sleeves", "zzwang", discord=True)
+                # Model turn is NOT called when image quota is already exhausted
+                claim.assert_not_called()
+                self.assertIn("quota on gemini-3.1-flash-image has been exhausted", reply)
+                self.assertIn("<t:1792983579:R>", reply)
+                self.assertIn("Image (gemini-3.1-flash-image): 0% left", reply)
+
+
 if __name__ == "__main__":
     unittest.main()

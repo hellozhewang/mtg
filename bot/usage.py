@@ -18,6 +18,7 @@ import signal
 import subprocess
 import time
 from datetime import datetime, timezone
+from pathlib import Path
 
 
 USAGE_COMMANDS = {"usage", "!usage", "/builder-usage", "!builder-usage"}
@@ -170,6 +171,110 @@ def report(codex: str, model: str, *, discord: bool = False) -> str:
 # ---------- Antigravity (agy) ----------
 
 AGY_WINDOWS = {"5h": 0, "weekly": 1}      # 5-hour first, then weekly, as Codex shows them
+IMAGE_MODEL = "gemini-3.1-flash-image"
+IMAGE_QUOTA_FILE = "image_quota.json"
+
+
+def parse_image_quota_error(text: str) -> dict | None:
+    """Extract gemini-3.1-flash-image 429 quota exhaustion info from log/error text."""
+    if IMAGE_MODEL not in text or ("QUOTA_EXHAUSTED" not in text and "RESOURCE_EXHAUSTED" not in text):
+        return None
+    ts_match = re.search(r'["\']quotaResetTimeStamp["\']\s*:\s*["\']([^"\']+)["\']', text)
+    resets_iso = ts_match.group(1) if ts_match else None
+    resets_at = None
+    if resets_iso:
+        try:
+            resets_at = datetime.fromisoformat(resets_iso.replace("Z", "+00:00")).astimezone(timezone.utc).timestamp()
+        except ValueError:
+            pass
+    return {
+        "model": IMAGE_MODEL,
+        "resets_iso": resets_iso,
+        "resets_at": resets_at,
+    }
+
+
+def scan_recent_image_quota(home: Path | str) -> dict | None:
+    """Scan the newest log files in home for gemini-3.1-flash-image quota errors."""
+    log_dir = Path(home) / ".gemini" / "antigravity-cli" / "log"
+    if not log_dir.is_dir():
+        return None
+    log_files = sorted(log_dir.glob("cli-*.log"), key=lambda p: p.stat().st_mtime, reverse=True)
+    for log_path in log_files[:10]:
+        try:
+            size = log_path.stat().st_size
+            with open(log_path, "r", encoding="utf-8", errors="replace") as f:
+                if size > 100_000:
+                    f.seek(size - 100_000)
+                chunk = f.read()
+            info = parse_image_quota_error(chunk)
+            if info:
+                return info
+        except Exception:
+            continue
+    return None
+
+
+def read_image_quota(home: Path | str | None) -> dict | None:
+    """Read cached image quota state, or scan recent logs if not cached yet."""
+    if not home:
+        return None
+    quota_path = Path(home) / IMAGE_QUOTA_FILE
+    if quota_path.is_file():
+        try:
+            data = json.loads(quota_path.read_text(encoding="utf-8"))
+            if isinstance(data, dict) and data.get("model") == IMAGE_MODEL:
+                return data
+        except (OSError, ValueError):
+            pass
+    info = scan_recent_image_quota(home)
+    if info and info.get("resets_at") and info["resets_at"] > time.time():
+        record_image_quota(home, info)
+        return info
+    return None
+
+
+def record_image_quota(home: Path | str | None, info: dict) -> None:
+    """Cache the image quota state to image_quota.json."""
+    if not home:
+        return
+    quota_path = Path(home) / IMAGE_QUOTA_FILE
+    try:
+        quota_path.parent.mkdir(parents=True, exist_ok=True)
+        payload = {
+            "model": info.get("model", IMAGE_MODEL),
+            "resets_iso": info.get("resets_iso"),
+            "resets_at": info.get("resets_at"),
+            "updated_at": time.time(),
+        }
+        quota_path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    except OSError:
+        pass
+
+
+def is_image_quota_exhausted(home: Path | str | None) -> tuple[bool, str | None, float | None]:
+    """Check if gemini-3.1-flash-image quota is currently exhausted.
+    Returns (exhausted, resets_iso, resets_at)."""
+    info = read_image_quota(home)
+    if info and _number(info.get("resets_at")):
+        resets_at = float(info["resets_at"])
+        if resets_at > time.time():
+            return True, info.get("resets_iso"), resets_at
+    return False, None, None
+
+
+def format_image_quota(home: Path | str | None, *, discord: bool = False) -> str:
+    """Image quota line for Sleever on Gemini."""
+    exhausted, resets_iso, resets_at = is_image_quota_exhausted(home)
+    if exhausted and resets_at:
+        try:
+            when = datetime.fromtimestamp(resets_at, timezone.utc)
+            reset_str = f"<t:{int(resets_at)}:R>" if discord else when.strftime("%Y-%m-%d %H:%M UTC")
+            return f"Image ({IMAGE_MODEL}): 0% left (resets {reset_str})"
+        except (ValueError, OverflowError, OSError):
+            pass
+        return f"Image ({IMAGE_MODEL}): 0% left"
+    return f"Image ({IMAGE_MODEL}): available"
 
 
 def read_agy(exe: str, home: str, *, timeout: float = 20.0) -> dict:
@@ -227,10 +332,16 @@ def _agy_bucket(bucket: dict, discord: bool) -> str:
     return text
 
 
-def format_agy(data: dict, model: str, *, discord: bool = False) -> str:
+def format_agy(data: dict, model: str, *, discord: bool = False,
+               image_home: str | Path | None = None, is_image: bool = False) -> str:
     """The same shape as the Codex footer, for the group the model draws from, with
-    no group or model name (players don't see which model runs)."""
+    no group or model name (players don't see which model runs). When is_image is True,
+    includes gemini-3.1-flash-image quota line."""
     lines = []
+    if is_image and image_home:
+        img_line = format_image_quota(image_home, discord=discord)
+        if img_line:
+            lines.append(img_line)
     for group in _agy_group(data.get("groups") or [], model):
         buckets = [b for b in group.get("buckets") or [] if isinstance(b, dict)]
         buckets.sort(key=lambda b: AGY_WINDOWS.get(str(b.get("window")), 9))
@@ -247,10 +358,16 @@ def exhausted_reset(text: str) -> str | None:
     return min(found, key=lambda f: float(f[0]))[1] if found else None
 
 
-def agy_report(exe: str, home: str, model: str, *, discord: bool = False) -> str:
+def agy_report(exe: str, home: str, model: str, *, discord: bool = False, is_image: bool = False) -> str:
     """Usage failure must never discard a deckbuilding reply or invent a quota."""
     try:
-        return format_agy(read_agy(exe, home), model, discord=discord)
+        return format_agy(read_agy(exe, home), model, discord=discord, image_home=home, is_image=is_image)
     except (UsageUnavailable, OSError, ValueError) as exc:
         reason = str(exc) if isinstance(exc, UsageUnavailable) else "could not read usage"
-        return f"{HEADER}\nUnavailable: {reason}."
+        lines = []
+        if is_image and home:
+            img_line = format_image_quota(home, discord=discord)
+            if img_line:
+                lines.append(img_line)
+        lines.append(f"Unavailable: {reason}.")
+        return HEADER + "\n" + "\n".join(lines)

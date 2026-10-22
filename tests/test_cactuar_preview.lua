@@ -7,6 +7,7 @@ local attrs, assets, requests, payloads = {}, {
   {name = "czsi_1", url = "https://example.test/inspect.webp"}}, {}, {}
 UI = {
   getCustomAssets = function() return assets end,
+  getAttribute = function(id, key) return attrs[id] and attrs[id][key] end,
   setAttribute = function(id, key, value) attrs[id] = attrs[id] or {}; attrs[id][key] = value end,
 }
 JSON = {decode = function(value) return assert(payloads[value], "bad JSON") end}
@@ -22,6 +23,7 @@ local function paint()
   for _, callback in ipairs(pending) do callback() end
 end
 function czSetAssets(value)
+  CZ.imageGeneration = (CZ.imageGeneration or 0) + 1
   assets = value; registered = registered + 1
   for color, s in pairs(CZ.state) do if s.open then czRender(color) end end
 end
@@ -108,7 +110,7 @@ payloads.wrong = response("wrong-deck")
 requests[#requests].callback({text = "wrong"})
 check(CZ.previews[s.selected.preview].status == "error", "a mismatched payload cannot impersonate the selected deck")
 s.selected = a; czRender("White")
-check(#assets <= 5 and assets[1].name == "base", "commander image registrations are bounded to current open selections")
+check(#assets <= CZ.previewLimit + 3 and assets[1].name == "base", "recent commander pictures stay within the cache bound")
 s.open = false; paint()
 check(attrs.cz_commander_image_White.image == "", "a pending image cannot repaint a closed browser")
 s.open = true; czRender("White")
@@ -132,6 +134,7 @@ local otherGuide = '<VerticalLayout id="cz_guide_content_Red"><Text text="Privat
 local xml = baseXml .. '<VerticalLayout id="cz_guide_content_White"><Text/></VerticalLayout>' .. otherGuide
 UI.getXml = function() return xml end
 function czGuideXml(value)
+  CZ.imageGeneration = (CZ.imageGeneration or 0) + 1
   xml = value
   for color, state in pairs(CZ.state) do if state.open then czRender(color) end end
 end
@@ -161,5 +164,59 @@ check(s.guideHover.name == "Second", "late exits from another picture cannot dis
 czGuideUnhover(white, nil, "cz_guide_pic_3_White")
 check(picture("White") == "https://example.test/illustrated.webp" and s.commander == commander, "leaving a guide picture restores the commander and partner position")
 czGuideClose(white, nil, "cz_guide_back_White")
-check(not s.guideHover and not s.guideOpen and #assets <= 5, "closing a guide drops its extra image assets")
+check(not s.guideHover and not s.guideOpen and #assets <= CZ.previewLimit + 3, "closing a guide preserves bounded cached pictures")
+
+-- Modern catalogs carry only commander faces; the pictured guide is requested
+-- on demand. Repeated selection/hover must not blank a bound image or reload UI.
+local modern = deck("modern", true)
+modern.commanders = response("modern").commanders
+count = #requests
+s.selected = modern; czRender("White")
+check(#requests == count and picture("White") == "https://example.test/modern.webp", "catalog commander renders without fetching the full illustrated guide")
+local loadedImage = attrs.cz_commander_image_White.image
+local rendered, timed = registered, #timers
+czRender("White")
+check(attrs.cz_commander_image_White.image == loadedImage and #timers == timed, "unchanged commander stays painted without scheduling another clear/rebind")
+CZ.imageGeneration = (CZ.imageGeneration or 0) + 1
+czRender("White")
+check(attrs.cz_commander_image_White.image == "" and picture("White") == "https://example.test/modern.webp", "a shared UI reload rebinds the cached sprite even when its image attribute survived")
+s.selected = a; czRender("White"); paint()
+s.selected = modern; czRender("White"); paint()
+check(registered == rendered and #requests == count, "returning to cached commanders causes no metadata request or shared asset reload")
+czGuide(white, nil, "cz_guide_White")
+check(#requests == count + 1 and xml:find("Loading guide…", 1, true), "only opening Read guide requests its content and shows loading feedback")
+czRender("White")
+check(#requests == count + 1, "guide redraws do not duplicate its pending request")
+czGuideClose(white, nil, "cz_guide_back_White")
+payloads.modern = response("modern", nil, {{title = "Lazy guide", rows = {
+  {name = "Lazy", text = "Only download on Read guide.", cards = {card("Lazy")}}}}})
+requests[#requests].callback({text = "modern"})
+check(not s.guideOpen and attrs.cz_guide_view_White.active == "False", "a late guide response cannot reopen the closed reading view")
+czGuide(white, nil, "cz_guide_White"); paint()
+check(#requests == count + 1 and xml:find("Only download on Read guide.", 1, true), "reopening uses the cached illustrated guide")
+rendered = registered
+czGuideClose(white, nil, "cz_guide_back_White")
+check(registered == rendered, "closing the guide never reloads shared image assets")
+
+local failing = deck("lazy-failure", true)
+failing.commanders = response("lazy-failure").commanders
+s.selected = failing; czRender("White"); paint()
+czGuide(white, nil, "cz_guide_White")
+requests[#requests].callback({is_error = true})
+check(picture("White") == "https://example.test/lazy-failure.webp" and xml:find("Could not load the guide", 1, true), "guide failure leaves the commander usable with a separate retry message")
+count = #requests
+czpRefresh(); czRender("White")
+check(#requests == count + 1, "Refresh retries a failed lazy guide without refetching commander metadata")
+czGuideClose(white, nil, "cz_guide_back_White")
+
+local limit = CZ.previewLimit
+CZ.previewLimit = 4
+for i = 1, 10 do
+  local d = deck("cached-" .. i, false)
+  d.commanders = response("cached-" .. i).commanders
+  s.selected = d; czRender("White"); paint()
+end
+check(#assets <= CZ.previewLimit + 3, "eviction bounds retained images while preserving base/sleeve/Inspect assets")
+check(picture("Red") == "https://example.test/b.webp", "eviction keeps another seat's active commander registered")
+CZ.previewLimit = limit
 print(checks .. " preview checks, 0 failed")

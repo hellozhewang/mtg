@@ -243,9 +243,12 @@ class DeckFileTests(unittest.TestCase):
         d.guide = [("Plan", [("Sol Ring", "Add mana.")])]
         entry = ttsdecks.index_entry(d, "alice/Bracket3/Test.ndjson")
         self.assertTrue(entry["guide"])
+        self.assertEqual(entry["commanders"], ttsdecks.commander_preview(d))
+        self.assertNotIn("guide", entry["commanders"][0])
         self.assertRegex(entry["preview"], r"^alice/Bracket3/Test\.preview\.json\?v=[a-f0-9]{12}$")
         d.guide[0][1][0] = ("Sol Ring", "Changed guide.")
         self.assertNotEqual(entry["preview"], ttsdecks.index_entry(d, "alice/Bracket3/Test.ndjson")["preview"])
+        self.assertEqual(entry["commanders"], ttsdecks.index_entry(d, "alice/Bracket3/Test.ndjson")["commanders"])
         out = ttsdecks.files([d], Path("/site"), None)
         path = Path("/site/tts") / Path(d.href).with_suffix(".preview.json")
         self.assertEqual(json.loads(out[path])["guide"][0]["rows"][0]["text"], "Changed guide.")

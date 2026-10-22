@@ -276,6 +276,7 @@ end
 -- Registering named images rebuilds shared UI. Restore current private sessions
 -- after it finishes, checking the live open flag so closed windows stay closed.
 function czSetAssets(assets)
+  CZ.imageGeneration = (CZ.imageGeneration or 0) + 1
   UI.setCustomAssets(assets)
   Wait.condition(czRedrawOpen, function() return not UI.loading end, 30, czRedrawOpen)
 end
@@ -283,6 +284,7 @@ end
 -- Guide rows replace only their own layout. Install XML and assets atomically:
 -- separate reloads can restore stale XML or leave named WebP sprites white.
 function czGuideXml(xml)
+  CZ.imageGeneration = (CZ.imageGeneration or 0) + 1
   CZ.guideRebuilding = true
   UI.setXml(xml, UI.getCustomAssets())
   local function ready()

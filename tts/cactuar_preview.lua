@@ -1,6 +1,7 @@
 -- Readable pinned commander faces and deck guides for the private deck browser.
--- Small metadata files load on selection; browsing never spawns an object.
+-- Commander metadata is in the catalog; guides load only when opened.
 CZ.previews, CZ.previewAssets, CZ.previewSerial, CZ.previewSig = {}, {}, 0, ""
+CZ.previewUsed, CZ.previewClock, CZ.previewLimit = {}, 0, 32
 do
   local textColor, dim = "#E2E5EA", "#C0C8D2"
   local function text(id, value) UI.setAttribute(id, "text", value or "") end
@@ -60,6 +61,14 @@ do
     local path = key(deck)
     if not path then return nil end -- older indexes remain usable for loading decks
     if CZ.previews[path] then return CZ.previews[path] end
+    if deck.commanders then
+      local payload = {v = 1, id = deck.id, commanders = deck.commanders, guide = {}}
+      if valid(payload, deck) then
+        local entry = {status = "ready", data = payload}
+        CZ.previews[path] = entry
+        return entry
+      end
+    end
     local entry = {status = "loading"}
     CZ.previews[path] = entry
     WebRequest.get(CZ.base .. path, function(req)
@@ -67,11 +76,29 @@ do
       if CZ.previews[path] ~= entry then return end
       local ok, payload = false, nil
       if not req.is_error then ok, payload = pcall(JSON.decode, req.text) end
-      if ok and valid(payload, deck) then entry.status, entry.data = "ready", payload
+      if ok and valid(payload, deck) then
+        entry.status, entry.data = "ready", payload
+        entry.guide = {status = "ready", data = payload} -- legacy combined response
       else entry.status = "error" end
       notify(path) -- draw the currently selected deck, never a stale response's deck
     end)
     return entry
+  end
+
+  local function fetchGuide(deck, entry)
+    if entry.status ~= "ready" then return entry end
+    if entry.guide then return entry.guide end
+    local guide, path = {status = "loading"}, key(deck)
+    entry.guide = guide
+    WebRequest.get(CZ.base .. path, function(req)
+      if CZ.previews[path] ~= entry or entry.guide ~= guide then return end
+      local ok, payload = false, nil
+      if not req.is_error then ok, payload = pcall(JSON.decode, req.text) end
+      if ok and valid(payload, deck) then guide.status, guide.data = "ready", payload
+      else guide.status = "error" end
+      notify(path)
+    end)
+    return guide
   end
 
   local function registerPictures()
@@ -82,8 +109,8 @@ do
         for _, commander in ipairs(entry.data.commanders) do
           for _, face in ipairs(commander.faces) do wanted[face.FaceURL] = true end
         end
-        if s.guideOpen then
-          for _, section in ipairs(entry.data.guide) do
+        if s.guideOpen and entry.guide and entry.guide.status == "ready" then
+          for _, section in ipairs(entry.guide.data.guide) do
             for _, row in ipairs(section.rows) do
               for _, card in ipairs(row.cards or {}) do
                 local face = card.faces[1]
@@ -97,15 +124,39 @@ do
     local urls = {}
     for url in pairs(wanted) do urls[#urls + 1] = url end
     table.sort(urls)
+    CZ.previewClock = CZ.previewClock + 1
+    for _, url in ipairs(urls) do CZ.previewUsed[url] = CZ.previewClock end
     local signature = table.concat(urls, "\n")
     if signature == CZ.previewSig then return true end
-    local merged, known = {}, {}
+    local merged, known, cached = {}, {}, {}
     for _, asset in ipairs(UI.getCustomAssets() or {}) do
       local n = type(asset.name) == "string" and asset.name:match("^czcp_(%d+)$")
       if n then
         CZ.previewSerial = math.max(CZ.previewSerial, tonumber(n))
-        if wanted[asset.url] then merged[#merged + 1] = asset; known[asset.url] = asset.name end
+        cached[#cached + 1] = asset
+        known[asset.url] = asset.name
       else merged[#merged + 1] = asset end
+    end
+    local missing = false
+    for _, url in ipairs(urls) do if not known[url] then missing = true end end
+    if not missing then
+      CZ.previewAssets, CZ.previewSig = known, signature
+      return true -- revisits/guide close must not rebuild shared UI
+    end
+    -- Evict only when adding new images. Keep active guides intact, and retain
+    -- recent pictures so switching back does not reload the shared UI/assets.
+    table.sort(cached, function(a, b)
+      local au, bu = CZ.previewUsed[a.url] or 0, CZ.previewUsed[b.url] or 0
+      if au ~= bu then return au > bu end
+      return a.name < b.name
+    end)
+    known = {}
+    local retained, spare = 0, math.max(0, CZ.previewLimit - #urls)
+    for _, asset in ipairs(cached) do
+      if wanted[asset.url] or retained < spare then
+        merged[#merged + 1] = asset; known[asset.url] = asset.name
+        if not wanted[asset.url] then retained = retained + 1 end
+      end
     end
     for _, url in ipairs(urls) do
       if not known[url] then
@@ -120,6 +171,17 @@ do
   end
 
   local function paintImages(color, s, images, counter)
+    local changed = {}
+    local generation = CZ.imageGeneration or 0
+    for id, asset in pairs(images) do
+      if s[counter .. "Generation"] ~= generation or not UI.getAttribute
+          or UI.getAttribute(id, "image") ~= asset or session(Player[color]) ~= s then
+        changed[id] = asset
+      end
+    end
+    if not next(changed) then return end
+    images = changed
+    s[counter .. "Generation"] = generation
     s[counter] = (s[counter] or 0) + 1
     local paint = s[counter]
     for id in pairs(images) do
@@ -128,6 +190,7 @@ do
     end
     local function current()
       return CZ.state[color] == s and s.open and s[counter] == paint
+        and (CZ.imageGeneration or 0) == generation
         and not UI.loading and session(Player[color]) == s
         and (counter ~= "guidePaint" or s.guideOpen)
     end
@@ -173,11 +236,15 @@ do
     local path = key(deck)
     if s.previewKey ~= path or s.previewDeck ~= (deck and deck.id) then
       s.previewKey, s.previewDeck = path, deck and deck.id
+      s.previewPaint = (s.previewPaint or 0) + 1 -- cancel a prior deck's delayed rebind
+      UI.setAttribute("cz_commander_image_" .. color, "image", "")
+      UI.setAttribute("cz_commander_image_" .. color, "color", "#FFFFFF00")
       s.commander, s.commanderFace, s.guideOpen, s.guideDrawn = 1, 1, false, nil
       s.guideHover, s.guideCards = nil, nil
     end
     local entry = deck and fetch(deck)
     local payload = entry and entry.status == "ready" and entry.data or nil
+    local guideEntry = s.guideOpen and entry and fetchGuide(deck, entry) or nil
     if not registerPictures() or UI.loading then return end
     local commanders = payload and payload.commanders or {}
     s.commander = math.max(1, math.min(s.commander or 1, math.max(1, #commanders)))
@@ -218,7 +285,7 @@ do
       UI.setAttribute("cz_guide_title_" .. color, "tooltip", plain(deck.name .. " · " .. deck.commander))
       button("cz_guide_back_" .. color, "Back to decks")
       if czpGuideLayout then
-        if not czpGuideLayout(color, s, entry) then return end
+        if not czpGuideLayout(color, s, guideEntry) then return end
         local images, signature = {}, {}
         for id, card in pairs(s.guideCards or {}) do
           images[id] = card.asset; signature[#signature + 1] = id .. "=" .. card.asset
@@ -229,16 +296,16 @@ do
           s.guidePainted = signature
           paintImages(color, s, images, "guidePaint")
         end
-      elseif s.guideDrawn ~= entry then
+      elseif s.guideDrawn ~= guideEntry then
         local content, height = "Loading guide…", 100
-        if entry and entry.status == "ready" then content, height = guideText(payload.guide)
-        elseif entry and entry.status == "error" then content = "Could not load the guide. Press Refresh to retry." end
+        if guideEntry and guideEntry.status == "ready" then content, height = guideText(guideEntry.data.guide)
+        elseif guideEntry and guideEntry.status == "error" then content = "Could not load the guide. Press Refresh to retry." end
         text("cz_guide_text_" .. color, content)
         UI.setAttribute("cz_guide_text_" .. color, "height", tostring(height))
         UI.setAttribute("cz_guide_text_" .. color, "preferredHeight", tostring(height))
         -- Loading -> ready mutates the same entry; cache status as well.
-        s.guideDrawn, s.guideStatus = entry, entry and entry.status
-      elseif s.guideStatus ~= (entry and entry.status) then
+        s.guideDrawn, s.guideStatus = guideEntry, guideEntry and guideEntry.status
+      elseif s.guideStatus ~= (guideEntry and guideEntry.status) then
         s.guideDrawn = nil
         czpRender(color, s, deck)
       end
@@ -292,7 +359,10 @@ do
     czRender(player.color)
   end
   function czpRefresh()
-    for path, entry in pairs(CZ.previews) do if entry.status == "error" then CZ.previews[path] = nil end end
+    for path, entry in pairs(CZ.previews) do
+      if entry.status == "error" then CZ.previews[path] = nil
+      elseif entry.guide and entry.guide.status == "error" then entry.guide = nil end
+    end
     for _, s in pairs(CZ.state) do s.guideDrawn = nil end
   end
 end

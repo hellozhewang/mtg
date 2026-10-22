@@ -4,7 +4,7 @@ Living status doc for the Tabletop Simulator table work. Whoever picks this up (
 Codex) reads it first and updates it with every change. The README's "Tabletop Simulator
 table" section is the lasting description; this file tracks what is in flight.
 
-Last updated 2026-10-21 (Codex): delivered **v46** with turn-sound testing/diagnostics and same-seat event handling; owner confirmed the voice clip plays. Live solo native End Turn emits no Lua event. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
+Last updated 2026-10-21 (Codex): preparing **v47** to speed up commander selection and load illustrated guides only on Read guide. Latest delivered save is v46. **Steam remains v42; the owner chooses which version to upload.** See `tts/CHANGELOG.md` for numbered builds.
 
 ## Standing build/release instruction (2026-10-21)
 
@@ -17,6 +17,47 @@ selects. Report the latest saved build and Steam version separately.
 Keep immutable delivered JSON/PNG copies under `.cache/tts-builds/vN/` so a version
 the owner selects later can be uploaded unchanged, even after Saves keeps only the
 latest build.
+
+## v47: faster commander selection and lazy guides (preparing saved build)
+
+Owner reported very slow commander entry selection and explicitly requested loading
+the guide only when its button is clicked. Previously, selection downloaded and
+validated the entire illustrated `.preview.json` (up to 48 KB per deck) before
+showing the commander. Switching selections also removed the previous pictures,
+forcing another shared UI asset reload when revisiting them. Every redraw cleared
+and rebound the commander even when the picture was unchanged.
+
+The catalog now includes only the pinned commander/partner/DFC face records; the
+164-deck index grows from 76,145 to 109,302 bytes. Selection needs no additional
+metadata request. Full guides and their pictures load only on **Read guide**, with
+separate loading/error/retry state and caching. An old index still works through
+the original combined-file fallback; older table builds ignore the new index field.
+All `.preview.json` contents/URLs remain compatible. No library order is exposed.
+
+A 32-picture recent-use cache avoids reloading shared assets on revisits or guide
+close. Open selections/guides are protected even if they exceed that limit; eviction
+runs when adding a new image, rather than forcing a reload just to remove pictures.
+Unchanged images keep their sprite. Shared asset/XML rebuilds explicitly invalidate
+paint generations, retaining the clear/rebind workaround for TTS's blank WebP
+sprites and the stale callback, seat-owner and closed-panel guards.
+
+Validation: **55 preview checks**, **115 Inspect checks**, **1526 turn/timer checks**,
+**12 table-build tests** and **14 image-validation tests** pass. All **24 export
+tests** pass. The broader browser fixture still reports its known **97 sleeve
+failures**. An isolated committed-data catalog build validates **4,508 unique image
+URLs** from the recent verification cache, with no new downloads/API calls.
+Only the generated commander records are promoted into the published index,
+preserving existing order/dates/tiers/themes/guide hashes and separate working edits.
+Live visual checks show Yuna's commander and Jace's illustrated guide correctly.
+Jace's first image binding took **0.303 s** (one asset registration), while cached
+Giada/Jace selections took **0.082 / 0.076 s** with **zero asset reloads** and no
+guide request. The guide request starts only after Read guide; its eight sections
+and 63 picture occurrences were ready in **0.840 s** on this already-cached client.
+These are observed UI binding times, not a guarantee for an uncached client/network.
+Evidence: `.cache/commander-live/v47-lazy-metrics.json`,
+`v47-lazy-commander.png` and `v47-lazy-guide.png`. The prior browser selection is
+restored after probing; no physical objects/turns were changed. Preparing numbered
+v47; **no Workshop upload**.
 
 ## Requested: private turn-change voice (2026-10-21; not implemented)
 

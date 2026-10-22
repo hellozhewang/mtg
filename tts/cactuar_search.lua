@@ -123,6 +123,7 @@ end
 local czsRender, czsCloseColor
 local function czsReload(change)
   CZS.rebuilding = true
+  CZ.imageGeneration = (CZ.imageGeneration or 0) + 1
   change()
   CZS.rebuildWait = Wait.condition(function()
     CZS.rebuilding, CZS.rebuildWait = false, nil

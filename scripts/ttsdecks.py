@@ -249,19 +249,15 @@ def index_entry(d, path: str) -> dict:
             "cap": d.cap, "mv": round(d.avg_mv, 2), "lands": d.lands,
             "added": d.created, "updated": d.modified, "file": path,
             "preview": preview_path(path) + "?v=" + hashlib.sha256(preview_file(d).encode()).hexdigest()[:12],
-            "guide": bool(d.guide)}
+            "guide": bool(d.guide), "commanders": commander_preview(d)}
 
 
 def preview_path(deck_path: str) -> str:
     return str(PurePosixPath(deck_path).with_suffix(".preview.json"))
 
 
-def preview_file(d) -> str:
-    """Small, lazy-loaded commander faces and guide; no library order or objects.
-
-    Use faces() so pictures match the exact pinned printing the deck imports.
-    Guides retain their section/row structure for an in-game reading view.
-    """
+def commander_preview(d) -> list[dict]:
+    """Pinned faces in the catalog: selecting a deck needs no metadata request."""
     commanders = []
     for name in d.commanders:
         card = d.cards.get(name)
@@ -269,6 +265,12 @@ def preview_file(d) -> str:
             commanders.append({"name": name, "faces": [
                 {"name": face["nickname"].split("\n", 1)[0], "FaceURL": face["image"]}
                 for face in faces(card)]})
+    return commanders
+
+
+def preview_file(d) -> str:
+    """Lazy-loaded illustrated guide, retaining commanders for older table builds."""
+    commanders = commander_preview(d)
     guide = []
     for title, rows in d.guide:
         section = {"title": title, "rows": []}

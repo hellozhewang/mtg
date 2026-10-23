@@ -7,6 +7,22 @@ Last updated 2026-10-22 (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
 Both states visually checked live. **Steam is now v64, published at the owner’s request.** See [the changelog](../docs/development/tts-changelog.md).
 
+## Vivi-Spellslinger Bracket 3 tuning (2026-10-22)
+
+Owner requested maximum potential within Bracket 3. Tune `zzwang/Vivi-Spellslinger`
+in place: 20 swaps, Game Changers Gamble/Rhystic Study/Underworld Breach, nine
+tutors, explicit Quicksilver + buyback outlets and the independent Dualcaster +
+Molten Duplication win. Keep combos until turn 6 per house rules. Replace the
+conditional Frostboil Snarl with Cephalid Coliseum; maintain 30 lands + 2 MDFCs.
+The rewritten guide fixes Vivi's nontapping mana ability, transmute values, storm
+copies and finite graveyard/draw resources, and describes the exact winning loops.
+Power tier A→S; primary strategy Combo, secondary Spells & Burn.
+
+Validator passes 100 cards, 3/3 Game Changers, avg MV 1.84 (was 2.17), TTS import
+100/100 and 44/44 retained pinned printings. All guide card references are present.
+Publish through the normal catalog/guide/commander data build; no runtime/table
+change or Steam upload is needed. Saved Games and Steam remain v64.
+
 ## Audio asset cleanup (2026-10-22)
 
 Owner requested removal of unnecessary MP3s. Current Global Lua references only

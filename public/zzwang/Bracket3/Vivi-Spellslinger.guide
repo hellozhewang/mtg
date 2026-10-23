@@ -1,64 +1,68 @@
-Vivi is a ritual that grows. Every noncreature spell puts a counter on him and pings each opponent, and once per turn he taps for mana equal to his power. So the turn works in one direction: cast the free and cheap spells first to grow him, THEN activate for a pile of mana, then spend it. Get the order wrong and you have used the deck's biggest mana source at half size.
+Grow Vivi before spending his mana. His {0} ability does not tap him, works through summoning sickness, and is usable only once during each of your own turns. Cheap noncreature spells build both his power and the damage dealt to every opponent; resolve those growth triggers before activating.
+This version is tuned for our Bracket 3 house rules: exactly three Game Changers, no mass land denial, and no infinite/game-ending two-card combo before turn 6. The three Game Changers are Rhystic Study, Underworld Breach and Gamble. Build resources and protect the commander before the agreed combo window.
 
-# The commander
-Vivi Ornitier :: {0}: add mana equal to his power, once each turn on your turn. Every noncreature spell you cast grows him by one and deals one to each opponent, so the damage and the mana scale together.
-Note the activation is once per turn and only on your turn. Count your hand before you use it — three cantrips first turns a four-mana activation into a seven-mana one.
-Harmonic Prodigy :: Vivi is a Wizard, so his cast trigger fires TWICE. Two counters and two damage to each opponent per spell.
-Hexing Squelcher :: your spells cannot be countered and your creatures all get ward, which is what protects a storm turn from a blue table.
+# Turn cheap spells into cards and mana
+Vivi Ornitier :: every noncreature spell adds a permanent counter and deals one damage to each opponent. His mana ability adds blue/red in any combination equal to his current power. It needs neither haste nor an untap; untapping him does not grant another activation.
+Curiosity :: enchant Vivi. Each opponent damaged gives its own optional draw trigger: normally three cards per Vivi trigger in a four-player game. This is the main storm engine. Decline draws when the library gets low, particularly during a repeated-cast win.
+Harmonic Prodigy :: doubles Vivi's triggered ability, giving two counters and two damage to each opponent per noncreature spell. It also doubles Spellseeker, Imperial Recruiter and Dualcaster Mage entry triggers, and Storm-Kiln Artist's Shaman magecraft trigger.
+Wizard's Staff :: equip Vivi for {1}. It doubles his damage/counter trigger and grants prowess, which it also doubles: normally two permanent counters plus two temporary power per noncreature spell. With Harmonic Prodigy too, each relevant ability triggers three times, not four.
+Geist of Saint Thalia :: reduces generic costs of all your noncreature spells, including rocks, escape casts and buyback costs. It does not remove colored pips or Breach's three-card exile payment. It makes the expensive half of a storm turn cheaper after the one-mana spells run out.
+Perfected Theory :: choose the 4/5 mode on Vivi before his mana activation. His counters remain on top of that base power, and casting Theory itself triggers him. This is a one-mana burst of extra mana and toughness, not an extra activation.
+Wild Ride :: gives Vivi +3 power in addition to his cast-trigger counter. Later harmonize it by tapping a large Vivi to reduce the generic cost; being tapped does not stop his {0} mana ability. Sequence both casts before the activation when possible.
+Birgi, God of Storytelling :: adds red for every spell cast, helping the cheap spells fund the next one. Her mana persists between steps and phases during the turn. The back face converts spare cards into two playable cards, but discarding a card you still need is a real cost.
+Mystic Remora :: early independent draw while Vivi is absent or being developed. Decide whether another upkeep payment is better than establishing an engine.
+Rhystic Study :: the retained Game Changer draw engine. It works without Vivi, pressures opponents' mana, and helps rebuild after removal.
 
-# Free and near-free spells
-Every one of these is a Vivi counter and a point of damage to the whole table for no mana.
-Gitaxian Probe :: two life, a card, and information.
-Mishra's Bauble :: zero mana, a card next upkeep.
-Lotus Petal :: zero mana, and it adds mana.
-Mox Amber :: live from the moment Vivi is on the battlefield.
-Mox Opal :: metalcraft is easy with the other zero-drops.
-Jeweled Amulet :: stores mana across turns.
-Gut Shot :: two life for a ping and a Vivi counter.
-Mental Misstep :: two life to counter their turn-one accelerant, and a free trigger.
+# Two finishes that do not run out of cards
+Vivi Ornitier + Quicksilver Elemental :: from turn 6, pay {U} to give the Elemental Vivi's activated ability. The Elemental's own base power is three, so activate the gained {0} ability for three blue/red mana. Pay one blue to copy Vivi's ability again, gaining a fresh instance with its own once-per-turn limit; repeat for arbitrarily much blue/red mana. Vivi does not need counters for this line. It still works only during your turn.
+Quicksilver Elemental + Seething Anger :: with the unlimited mana and Vivi present, cast Anger targeting Vivi and pay buyback each time. Every cast triggers Vivi's damage to all opponents. It is the repeated casts, not enormous power or extra attacks, that kill the table. Resolve each cast before repeating, and decline unnecessary Curiosity draws.
+Quicksilver Elemental + Haze of Rage :: the second buyback outlet for the same mana loop. Cast and buy it back repeatedly; every actual cast triggers Vivi. Storm copies boost the team but do not count as casts or trigger Vivi again.
+Dualcaster Mage + Molten Duplication :: the independent turn-6 win when Vivi is unavailable. With another artifact or creature you control as the initial target, cast Duplication, hold priority, then cast Dualcaster before it resolves. Copy Duplication targeting Dualcaster. The resulting hasty token copies the original spell again, making another Dualcaster token. Repeat for a chosen large number of hasty 2/2s, then target a different permanent with the final copy to end the chain. Attack before the tokens are sacrificed at the end step.
+This line normally costs {3}{R}{R}; Geist reduces the sorcery's generic cost by one. It needs a legal initial permanent target and an opposing board you can attack through. It does not require Vivi, a graveyard, a combat step on a later turn, or an opponent to cast the spell for you. Keep protection for the original spell and the first Dualcaster.
+Storm-Kiln Artist + Haze of Rage :: another turn-6 repeated-cast finish. With four spells already cast this turn and four mana to begin, cast Haze with buyback. The original plus four storm copies create five Treasures through Artist. Buyback returns Haze; repeat using the Treasures, with storm increasing each time. Vivi turns those casts into table-wide lethal damage. Harmonic Prodigy or Geist makes the starting requirement easier, but do not assume them when counting mana.
 
-# Cantrips that build the turn
-Ponder :: sets up the next three draws.
-Preordain :: scry two and draw.
-Brainstorm :: three cards deep.
-Consider :: a card and a surveil.
-Frantic Search :: free, and it untaps three lands.
-Faithless Looting :: filtering, twice with flashback.
-Borne Upon a Wind :: everything gains flash, so a whole storm turn can happen on their end step.
-Dramatic Reversal :: untaps every nonland permanent, which with a few rocks is a genuine ritual.
-Birgi, God of Storytelling :: red mana on every spell you cast, and the mana does not empty between phases.
+# Breach as a recovery and finishing engine
+Underworld Breach :: reuses cheap mana, tutors, protection and cantrips. Every escape exiles three OTHER graveyard cards, and the enchantment sacrifices at the end step. Graveyard size is a finite resource; do not exile the next spell or protection you need.
+Underworld Breach + Brain Freeze + Lotus Petal :: one repeatable sequence escapes Petal twice for {U}{U}, then escapes Freeze and mills yourself with its copies to replace the spent fuel. If both cards begin in the graveyard, budget nine other graveyard cards for those first three escapes. Breach plus the two Petal casts give that first Freeze four total resolutions, milling twelve. Later copies can target opponents once enough fuel is banked.
+Storm-Kiln Artist :: its Treasures come from both casting and COPYING instants/sorceries. Freeze's storm copies can fund subsequent Freezes directly, saving the graveyard cards otherwise spent re-escaping Petal. Birgi also reduces how often Petal must be reused. These efficiencies matter at five- and six-player tables.
+Brain Freeze + Windfall :: mill opponents, then make them draw from empty libraries if Windfall is safe. Preserve enough cards in YOUR library for the largest hand being discarded and make sure at least one card will be discarded. Milling alone does not immediately eliminate someone; graveyard reshufflers and replacement effects need a different finish. Without enough fuel for the whole pod, use Breach to assemble a buyback or token win instead.
+Flashback :: a one-mana way to reuse a key instant or sorcery without drawing Breach: a tutor, interaction spell or Molten Duplication. The reused card is exiled. It cannot recur an enchantment or Quicksilver, and a flashback copy of a buyback spell goes to exile rather than returning to hand.
+Faithless Looting :: filters a clumsy hand and puts reuse targets into the graveyard. It loses a card on its first cast, so favor it when the discard actively supports Breach or a surplus land needs replacing.
+Frantic Search :: filters while untapping three lands. Sequence the lands you tap so you recover useful colors; its discard also supplies Breach fuel.
+Wheel of Fortune :: refills and loads graveyards. It also gives three opponents new hands, so do not fire it just because it is available. Prefer a protected turn where you use the cards immediately.
+Timetwister :: a reset when hands are exhausted or graveyard plans are blocked. It shuffles graveyards back, so use it before committing to Breach, not in the middle of a carefully stocked escape line. It also refills opponents.
 
-# The draw engines
-Archmage Emeritus :: a card for every instant and sorcery you cast or copy.
-Niv-Mizzet, Parun :: uncounterable, and every instant or sorcery ANYONE casts draws you a card, while every card you draw pings for one.
-Niv-Mizzet, Visionary :: whenever a source you control deals noncombat damage to an opponent, you draw that many cards. Vivi pinging three opponents is three cards, every single spell.
-Curiosity :: on Niv-Mizzet, Parun this loops — his ping draws you a card, which triggers him again. Point the damage at an opponent and it goes as long as you want, which ends the game on the spot.
-Ophidian Eye :: the same line with flash, so you can assemble it at instant speed.
-Mystic Remora :: the best card in the deck on turns one through four.
+# Tutors that actually reach the wins
+Gamble :: finds any missing piece, including Breach or Quicksilver, at the cost of a random discard. A discarded target is not automatically accessible; have Breach available if you are relying on the graveyard. Do not gamble away the only protection on a small hand without a recovery plan.
+Muddle the Mixture -> Underworld Breach + Molten Duplication :: transmute for either two-mana card, or for Wizard's Staff, Harmonic Prodigy or Geist. Casting Muddle instead counters only an instant or sorcery. Transmuting is an activated ability, so it does not grow Vivi.
+Spellseeker -> Gamble + Seething Anger + Haze of Rage + Molten Duplication :: finds these spells, Brain Freeze, Curiosity's tutor or interaction. Its entry trigger is doubled by Harmonic Prodigy. It does not directly find an enchantment or Quicksilver.
+Imperial Recruiter -> Dualcaster Mage + Spellseeker + Harmonic Prodigy :: finds any of those power-two-or-less creatures, or Hexing Squelcher. It cannot fetch Quicksilver Elemental, whose power is three.
+Step Through -> Dualcaster Mage + Spellseeker + Harmonic Prodigy :: Wizardcycling for {2} finds the needed Wizard. Cycling neither casts Step Through nor triggers Vivi. The five-mana bounce spell is an emergency alternative, not the main reason to play it.
+Dizzy Spell -> Curiosity + Seething Anger + Gamble :: transmute finds mana value ONE, not three. Those are its primary jobs; Magic Damper and other one-mana interaction are available when protecting Vivi matters more.
+Merchant Scroll -> Brain Freeze + Muddle the Mixture + Long-Term Plans :: finds a blue instant directly into hand, including a protection spell when the combo is ready. It cannot find a red sorcery or Breach directly.
+Personal Tutor -> Molten Duplication + Seething Anger + Haze of Rage + Gamble :: puts a sorcery on top, not into hand. Plan the next draw or cantrip before spending it.
+Long-Term Plans -> Quicksilver Elemental :: also finds Breach or any other card, placing it third from the top. With Curiosity on Vivi and three opponents alive, a subsequent noncreature spell can draw through all three cards. The tutor's OWN Vivi triggers resolve before the tutor, so they cannot draw the card it has not yet found. Avoid shuffling afterward.
 
-# Interaction
-Counterspell :: two mana, and a Vivi trigger.
-Force of Negation :: free on their turn.
-Pact of Negation :: free now, paid for later — and the deck usually wins before the upkeep.
-Flusterstorm :: nearly unbeatable in a counter war, and each copy is another trigger.
-An Offer You Can't Refuse :: one mana for anything noncreature.
-Mindbreak Trap :: free against a storm turn, and it EXILES, so it beats graveyard recursion too.
-Deflecting Swat :: free with your commander out.
-Lightning Bolt :: removal or three damage to the face.
-Chain of Vapor :: one mana to bounce anything, and it can chain into several.
-Cyclonic Rift :: overloaded, the clear for a lethal attack or the answer to a locked board.
-Dizzy Spell :: a combat trick, or transmute for any three-drop you are missing.
-Hullbreaker Horror :: uncounterable, flash, and every spell afterwards bounces a permanent or a whole spell.
-Imperial Recruiter :: finds Harmonic Prodigy, Vivi's protection, or a combo piece.
+# Protect the turn and remove the stopper
+Hexing Squelcher :: an uncounterable two-drop that makes all your spells uncounterable. Its ward and the ward it grants your other creatures charge two life, not extra mana, so opponents can still pay to remove Vivi. It does not stop spell exile or activated abilities.
+Deflecting Swat :: free while you control Vivi; redirect single-target removal or a counterspell to a legal target. It cannot fix an untargeted board wipe.
+Redirect Lightning :: an additional redirection spell for a single-target spell OR ability. The cheap mode costs {R} and five life, not zero. Keep a legal replacement target available.
+Magic Damper :: one blue for hexproof and a power boost on Vivi. The untap is incidental; it does not reset his once-per-turn mana restriction. Hexproof does not stop a sweeper.
+Pact of Negation :: protects the winning turn without reserving mana. If the turn fails, budget {3}{U}{U} at the next upkeep rather than treating it as free forever.
+Force of Negation :: the alternate cost is available only when it is NOT your turn. During your own combo turn it costs {1}{U}{U}, so do not count it as free protection.
+Flusterstorm :: counters an instant or sorcery with several tax copies in a counter war. Only casting the original grows Vivi; its storm copies do not.
+Swan Song :: one-mana protection against an instant, sorcery or enchantment. The Bird is usually irrelevant on a winning turn, but this cannot counter a creature or artifact.
+Pyroblast + Red Elemental Blast :: cheap answers to blue interaction. Their targeting rules differ; check the spell rather than assuming they stop any color.
+Mental Misstep :: stops a one-mana removal or interaction spell, including one aimed at Vivi, for blue or two life. It cannot answer higher-mana spells.
+Mindbreak Trap :: exiles spells, including uncounterable ones. Its free condition requires one opponent to have cast three spells that turn; your own storm count does not satisfy it.
+Chain of Vapor + Into the Flood Maw :: clear a graveyard-hate, creature-ability or spell-limit permanent before committing. Maw needs the promised tapped Fish to hit a noncreature. Vapor's controller may sacrifice a land to copy it, potentially bouncing YOUR Vivi, so account for that risk.
+Snap :: bounces a creature and recovers two lands, often providing a nearly mana-neutral way past a hatebear. Land untaps are separate from Vivi's activation limit.
 
-# Closing the game
-Vivi Ornitier :: on a real storm turn he alone deals eight or ten to each opponent, doubled with Harmonic Prodigy out.
-Brain Freeze :: storm, so on a long turn it decks a player outright.
-Final Fortune :: an extra turn to finish what you started — you lose at its end step, so only cast it on a turn that wins.
-Niv-Mizzet, Parun :: with Curiosity or Ophidian Eye attached this ends the game immediately. Without them he still draws two or three cards a turn cycle off other people's spells.
-
-# What to keep in an opening hand
-Keep cheap spells and one mana source, not a hand of expensive payoffs. This deck wins by chaining six or eight spells in a turn, and Vivi turns that chain into both mana and damage.
-Sequence for Vivi's power. Cast every zero- and one-mana spell you can before the {0} activation, because you only get one per turn and its size is locked in when you use it.
-Harmonic Prodigy :: two mana that doubles the commander. Prioritise it over almost any other two-drop.
-Niv-Mizzet, Parun :: six specific pips is a real cost. He is not the plan on turn five; he is the finisher once Vivi has already made the mana.
+# What to keep and how to sequence it
+Keep two usable land sources plus acceleration and either a draw engine or a tutor into one. A one-land hand needs genuine extra mana and cheap draw; several five-mana cards or a pile of protection is not a keep by itself. There are thirty true lands plus two spell/land MDFCs; do not mistake either MDFC's spell face for a free untapped land.
+Jeweled Amulet + Lotus Petal :: either can bridge two land drops into turn-two Vivi. Amulet must be charged in advance; Petal is one-shot. Do not spend both early merely to deploy a commander with no follow-up.
+Mox Amber + Mox Opal :: Amber needs a legendary creature or planeswalker, usually Vivi or Ragavan. Opal needs three artifacts; count actual permanents before relying on it, since the deck trimmed equipment and rocks.
+Ragavan, Nimble Pilferer :: early Treasures pay for development. Dash can create an immediate attacker, but the Treasure depends on connecting; a table with blockers can shut this plan off.
+Ponder + Preordain + Brainstorm + Consider :: keep the chain finding lands, Curiosity and protection instead of spending all the mana on a large payoff. Fetch after Brainstorm when clearing unwanted cards; do not fetch after a tutor deliberately arranged the top of your library.
+Cephalid Coliseum :: replaces the conditional tapped land with an untapped blue source. At threshold its activation turns surplus cards into three new looks, supplies discard fuel, or draws through Long-Term Plans. It costs another blue, taps and sacrifices the land; it also pings you when used for mana.
+Through turn five, develop mana, draw and interaction; do not execute the infinites early even if an opening hand permits one. From turn six, find the missing piece, clear the relevant stopper, establish protection, and take the shortest supported win. Grow Vivi before his {0}, retain blue/red as needed, and choose a finish that defeats the entire pod rather than merely generating unlimited mana.

@@ -152,7 +152,7 @@
   "zzwang/Torbran-Burn": ["spells", "combo"],
   "zzwang/Urza-Combo": ["combo", "value"],
   "zzwang/Valgavoth-Punisher": ["spells", "control", "combo"],
-  "zzwang/Vivi-Spellslinger": ["spells", "combo"],
+  "zzwang/Vivi-Spellslinger": ["combo", "spells"],
   "zzwang/Vorinclex-Anticounters": ["control", "aggro"],
   "zzwang/Windgrace-Lands": ["value"],
   "zzwang/Winota-Attacks": ["aggro", "gowide", "control"],

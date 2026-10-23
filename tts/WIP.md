@@ -7,6 +7,36 @@ Last updated 2026-10-22 (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
 Both states visually checked live. **Steam is now v64, published at the owner’s request.** See [the changelog](../docs/development/tts-changelog.md).
 
+## Sephiroth-Aristocrats Bracket 3 tuning (2026-10-22)
+
+Owner requested optimization using EDHREC and find_cards.py. Reviewed EDHREC's
+normal/new/trending sections, searched recent cheap sacrifice/death engines and
+artifact answers, and checked exact Oracle text for every combo. Thirteen swaps:
+Nine-Lives Familiar→Reassembling Skeleton; Liliana→Sensei's Divining Top;
+Sheoldred→Aetherflux Reservoir; Syr Konrad→Defense Grid;
+Gray Merchant→Altar of Dementia; Bitterblossom→Unearth;
+Bastion of Remembrance→Victimize; Plaguecrafter→Winter, Tormented Loner;
+Arcane Signet→The Soul Stone; Cabal Stronghold/Volrath's Stronghold/Witch's Cottage
+→three more Swamps; High Market→Blast Zone. Keep Bitterbloom Bearer as a black
+creature/fodder source; reject eight-mana Avacyn and delayed Phoenix recurrence
+as slower than the selected engine. No budget limit or new printing pins.
+
+Validate 100 cards, 30 lands + 3 MDFCs (18 basic Swamps), average MV 2.36
+(previously 2.54), 3/3 Game Changers (Citadel/Demonic Tutor/Vampiric Tutor), TTS
+import 100/100. Complete Citadel + Top + Reservoir, add an independent
+Altar of Dementia + Miner + Plunderer mill route and Skeleton/Altar redundancy.
+Tier remains S; primary category now Combo, then Tokens & Aristocrats/Graveyard.
+
+Rewrite the guide: 52 card/chain rows, all references in the final deck. Document
+Miner's initial black mana and two-life requirement with Soultrader, mana-neutral
+Gravecrawler recasts, conditional edict transformation, Wishclaw's immediate
+handoff, draw exhaustion, exact token/phase timing and Mischief's legal counterspell
+redirection. Citadel bypasses graveyard exile but not library-casting or artifact
+activation restrictions. Blast Zone answers suitable artifact hate and also
+hits our one-drops; count counters and recovery costs. Compact wins wait until
+turn six. Publish a scoped deck/catalog update preserving other records, timestamps
+and spawn bytes. No table/runtime or Steam build is required; both stay v64.
+
 ## Kefka-Discard Bracket 3 build (2026-10-22)
 
 Owner requested the same maximum-potential Bracket 3 treatment as Vivi. No existing

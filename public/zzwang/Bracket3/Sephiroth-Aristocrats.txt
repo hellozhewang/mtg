@@ -1,15 +1,15 @@
 1 Sephiroth, Fabled SOLDIER
 1 Accursed Marauder
+1 Aetherflux Reservoir
 1 Agadeem's Awakening
+1 Altar of Dementia
 1 Animate Dead
-1 Arcane Signet
 1 Ashnod's Altar
 1 Ayara, First of Locthwain
-1 Bastion of Remembrance
 1 Beseech the Mirror
 1 Bitterbloom Bearer
-1 Bitterblossom
 1 Black Market Connections
+1 Blast Zone
 1 Blood Artist
 1 Bloodghast
 1 Bloodstained Mire
@@ -19,7 +19,6 @@
 1 Buried Alive
 1 Cabal Coffers
 1 Cabal Ritual
-1 Cabal Stronghold
 1 Carrion Feeder
 1 Chthonian Nightmare
 1 Crypt Ghast
@@ -27,6 +26,7 @@
 1 Dark Ritual
 1 Deadly Dispute
 1 Deadly Rollick
+1 Defense Grid
 1 Demonic Tutor
 1 Diabolic Intent
 1 Entomb
@@ -38,14 +38,11 @@
 1 Gemstone Caverns
 1 Grave Pact
 1 Gravecrawler
-1 Gray Merchant of Asphodel
 1 Grim Tutor
-1 High Market
 1 Imp's Mischief
 1 Jadar, Ghoulcaller of Nephalia
 1 Jet Medallion
 1 Lake of the Dead
-1 Liliana, Dreadhorde General
 1 Lotus Petal
 1 Malakir Rebirth
 1 Marionette Apprentice
@@ -53,34 +50,34 @@
 1 Morbid Opportunist
 1 Mox Amber
 1 Nether Traitor
-1 Nine-Lives Familiar
 1 Nykthos, Shrine to Nyx
 1 Ophiomancer
 1 Pawn of Ulamog
 1 Phyrexian Altar
 1 Phyrexian Tower
 1 Pitiless Plunderer
-1 Plaguecrafter
 1 Reanimate
+1 Reassembling Skeleton
+1 Sensei's Divining Top
 1 Sheoldred's Edict
-1 Sheoldred, the Apocalypse
 1 Skullclamp
 1 Snuff Out
 1 Sol Ring
-15 Swamp
-1 Syr Konrad, the Grim
+18 Swamp
 1 Takenuma, Abandoned Mire
 1 The Masamune
 1 The Meathook Massacre
+1 The Soul Stone
 1 Toxic Deluge
+1 Unearth
 1 Urborg, Tomb of Yawgmoth
 1 Urza's Saga
 1 Vampiric Tutor
+1 Victimize
 1 Viscera Seer
-1 Volrath's Stronghold
 1 Warren Soultrader
+1 Winter, Tormented Loner
 1 Wishclaw Talisman
-1 Witch's Cottage
 1 Withering Torment
 1 Yawgmoth, Thran Physician
 1 Zulaport Cutthroat

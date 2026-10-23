@@ -1,55 +1,62 @@
-A prison deck whose lock pieces are also its clock. Alela turns every artifact and enchantment you cast into a 1/1 flier, so Moat, Propaganda, Rhystic Study and the signets are not durdle — each one is a body. You wall off the ground and win in the air, where nobody is allowed to follow.
+A prison deck whose lock pieces are also its clock. Alela turns every artifact and enchantment you cast into a 1/1 flier, so Moat, Ghostly Prison, Propaganda, Rhystic Study and the signets are not durdle — each one is a body. You wall off the ground and win in the air, where nobody is allowed to follow.
+Bracket 3: the Game Changer cap is three, filled by Cyclonic Rift, Rhystic Study, and Smothering Tithe. No mass land denial.
 
 # The commander and the token engine
 Alela, Artful Provocateur :: flying, deathtouch, lifelink on a 2/3, other Faeries get +1/+0, and every artifact or enchantment spell makes a 1/1 flying Faerie. Read the deck as "every noncreature spell is also a creature spell".
-Bitterblossom :: a Faerie every upkeep for one life, forever, off a one-mana enchantment. The best turn-one play in the deck.
-Bitterbloom Bearer :: the second Bitterblossom. You want to see one of the two early enough that the wall has bodies behind it.
-Anointed Procession :: doubles every Faerie, every Bitterblossom trigger, every Construct off Urza's Saga. With Bitterblossom out it is two free fliers a turn.
+Bitterblossom :: a Faerie every upkeep for one life, forever, off a two-mana enchantment. The best early-game engine in the deck.
+Bitterbloom Bearer :: the second Bitterblossom, with flash. You want to see one of the two early enough that the wall has bodies behind it.
+Anointed Procession :: doubles every Faerie, every Bitterblossom trigger, and every Construct off Urza's Saga. With Bitterblossom out it is two free fliers a turn.
 Roaming Throne :: name Faerie. Alela's cast trigger doubles, and so does Bitterblossom's — the Throne is the single biggest multiplier in the deck.
-Court of Grace :: a flier every upkeep, and a 4/4 Angel instead while you hold the monarchy. The card draw from being monarch is what you were short on.
+Intangible Virtue :: gives your Faeries +1/+1 and vigilance. Attack to draw cards through your combat engines while leaving an unassailable wall of flying blockers.
 
 # The wall, and why it is one-sided
-Moat :: creatures without flying cannot attack. Your entire board flies. This is not a symmetrical stax piece — it is a wall with a door only you can use.
-Propaganda :: taxes the fliers and the trample that Moat does not stop. In a four-player pod the tax is a deterrent: they go hit whoever did not pay for one.
-No Mercy :: anything that does connect with you dies. Between this and Moat, attacking you is a losing trade even before the tax.
-Authority of the Consuls :: everything they play arrives tapped, so no surprise blocker and no haste kill. It is also an enchantment, so it makes a Faerie.
-Blind Obedience :: the same effect plus extort, and it turns off haste-based combo turns.
-Cursed Totem :: no creature activated abilities. Mana dorks, sac outlets and tutor creatures all stop. Your Faeries have no abilities to lose.
+Moat :: creatures without flying cannot attack. Your entire army flies. This is not a symmetrical stax piece — it is a wall with a door only you can use.
+Ghostly Prison :: taxes each creature attacking you by {2}. Stacks with Propaganda to demand {4} per attacker, making attacks mathematically impossible for most boards.
+Propaganda :: the second attack tax. In a four-player pod the tax is a deterrent: opponents go hit whoever did not pay for one.
+Sphere of Safety :: taxes each creature attacking you or your planeswalkers by {X}, where X is the number of enchantments you control. With 5 to 10 enchantments out, combat against you is shut down completely.
+Solitary Confinement :: gives you shroud and prevents all damage dealt to you. The discard cost each upkeep is trivial behind your massive combat draw engines.
+Authority of the Consuls :: opponents' creatures enter tapped and gain you life. Stops haste-based combo turns and surprise blockers entirely.
+Blind Obedience :: artifacts and creatures enter tapped, plus extort to drain the table and offset life payments.
+Cursed Totem :: shuts down all activated abilities of creatures. Mana dorks, sac outlets, and activated combo lines stop cold. Your Faeries have no abilities to lose.
+Torpor Orb :: creature ETBs do not trigger. Shuts off opposing ETB-based engines and combos table-wide. Alela's token generation is a cast trigger, so your deck functions completely unimpeded.
 
 # Drawing off the lock
-Rhystic Study :: in a deck already taxing their mana with Propaganda and Blind Obedience, the "unless they pay" cards get paid far less often. Alela makes a Faerie when you cast it.
+Rhystic Study :: in a deck taxing opponents' mana with Prison, Propaganda, and Blind Obedience, the tax gets paid far less often. Alela creates a Faerie upon casting it.
 Mystic Remora :: the early-game version. Cast it turn one or two and let the cumulative upkeep run three or four turns.
-Esper Sentinel :: same tax, on a body, and it survives Moat's world because it never needs to attack.
-Smothering Tithe :: the mana that pays for everything else. Nobody pays the two when they are already paying Propaganda.
-Kindred Discovery :: name Faerie. Draw on every token that enters and every one that attacks. With Bitterblossom and Anointed Procession this is two to four cards a turn.
-Reconnaissance Mission :: a card for every Faerie that connects, and under Moat they all connect.
-Enduring Curiosity :: the same job on an enchantment creature that comes back once when it dies.
-Idol of Oblivion :: a token every turn already means a card every turn; late it makes a 10/10.
+Esper Sentinel :: creature-based draw tax that survives Moat's world because it never needs to attack.
+Smothering Tithe :: the mana engine that funds everything else. Generates artifact Treasures that also trigger Mirkwood Bats.
+Bident of Thassa :: both an artifact and an enchantment. Draws a card for every flier connecting in combat, and can tap to force opponents' creatures to attack into each other.
+Kindred Discovery :: name Faerie. Draws on every token entering and every token attacking, refilling your hand in bursts of three to six cards.
+Reconnaissance Mission :: draws a card for every creature that deals combat damage to a player, easily triggering on three or four opponents' open boards.
+Enduring Curiosity :: redundant combat draw on an enchantment creature that returns as an enchantment when it dies.
+Idol of Oblivion :: generating tokens every turn guarantees a free card every turn; late it can crack into an emergency 10/10.
 
 # Turning Faeries into cards and kills
-Skullclamp :: your tokens are 1/1s that Alela makes 2/1. Clamping one kills it and draws two. This is a mana sink that never runs out while Bitterblossom is on the table.
-Grave Pact :: now every clamped Faerie makes all three opponents sacrifice a creature. Draw two, wipe the pod's board, repeat. This is the deck's real engine and the reason to prioritize Skullclamp.
-Braids, Arisen Nightmare :: feed her the same expendable Faeries, plus the Seals you have already used. Each one is draw a card and drain two, or they give up a permanent.
-Urza's Saga :: makes its own Construct, then fetches Skullclamp, Sol Ring or Mox Opal. Hall of Heliod's Generosity and Academy Ruins buy back what gets destroyed.
+Skullclamp :: your tokens are 1/1s that Alela makes 2/1. Clamping one kills it and draws two cards. A bottomless draw engine alongside Bitterblossom.
+Grave Pact :: every clamped or sacrificed Faerie forces all three opponents to sacrifice a creature. Draw two, wipe opposing boards, and repeat.
+Braids, Arisen Nightmare :: feed her expendable Faeries or spent Seals to draw up to three cards and drain opponents for up to six life every end step.
+Urza's Saga :: constructs massive threats and tutors Skullclamp, Sol Ring, or Mox Opal directly into play before generating mana.
 
 # Closing the game
-Gravitational Shift :: fliers get +2/+0, everything on the ground gets -2/-0. Your Faeries become 4/1s and half the table's creatures shrink out of relevance. Combined with Moat this ends games in two swings.
-Sephara, Sky's Blade :: costs almost nothing with a board of fliers and gives them all lifelink and indestructible — the anti-wrath button and a damage doubler at once.
-Akroma's Will :: the finisher. On a wide flying board, protection from creatures for the alpha strike or double strike for the kill, and both halves are on one card.
-Cyclonic Rift :: the other way games end. Overload it once the wall is up and swing into an empty table.
+Approach of the Second Sun :: the premier noncombat win condition. Behind your prison wall, cast it to gain 7 life, draw seven cards across a single turn cycle with your mass draw engines, and recast it to win the game.
+Mirkwood Bats :: drains each opponent for 1 life whenever you create or sacrifice any token. Alela's Faeries, Bitterblossom tokens, Tithe Treasures, and Skullclamp sacrifices passively burn the table down.
+All That Glitters :: turns Alela into a lethal 20/20+ flying, deathtouch, lifelink commander that deletes players in a single swing.
+Akroma's Will :: grants double strike, lifelink, vigilance, and protection from all creature colors for a lethal alpha strike across the table.
+Cyclonic Rift :: overloads at instant speed to bounce all opposing nonland permanents, clearing the way for an unimpeded lethal swing.
 
-# Answers
-Mana Drain :: the counterspell you want most, because the floating mana deploys two prison pieces the following turn.
-Swan Song :: it gives them a 2/2 flier, which Moat does not stop — but Gravitational Shift shrinks it and No Mercy kills it if it ever attacks.
-Swords to Plowshares :: for the one creature that flies or ignores Moat.
-Oubliette :: the cleanest answer to a commander, since it is not destruction, exile or targeting once it resolves.
-Imprisoned in the Moon :: turns a commander into a land they cannot recast from the command zone.
-Darksteel Mutation :: same idea for one mana, and it is an enchantment, so it makes a Faerie.
-Seal of Cleansing :: pre-pay for the artifact or enchantment removal, then crack it in response — and it is Braids food afterwards.
-Aura of Silence :: taxes their artifacts and enchantments two while it sits there, then eats one.
+# Answers and protection
+Teferi, Time Raveler :: forces opponents to cast spells at sorcery speed, completely shutting off counterspells and combat interaction on your turn while guaranteeing Approach of the Second Sun resolves.
+Grasp of Fate :: exiles the best nonland permanent from each opponent for just three mana, providing a clean 3-for-1 that also triggers Alela.
+Mana Drain :: premium counterspell whose stored mana deploys two or three prison pieces on your next turn.
+Swan Song :: one-mana counterspell. The 2/2 swan it grants is taxed by Ghostly Prison and Propaganda, and blocked cleanly by Alela.
+Swords to Plowshares :: unconditional spot exile for any problematic flyer or commander that bypasses Moat.
+Oubliette :: phases out a commander without sending it to the command zone or graveyard, removing it indefinitely.
+Imprisoned in the Moon :: transforms any opposing commander or troublesome land into a harmless colourless land.
+Darksteel Mutation :: turns a commander into an indestructible 0/1 Beetle with no abilities.
+Seal of Cleansing :: pre-pay for artifact or enchantment removal, crack it at instant speed, or feed it to Braids.
+Aura of Silence :: taxes opposing artifacts and enchantments by {2}, then sacrifices to destroy the most dangerous one.
 
 # What to keep in an opening hand
-Keep a hand that does two of these three things: makes mana, makes a Faerie every turn, and stops the fastest deck at the table. Bitterblossom plus any two lands is a keep on its own.
-Alela does NOT need to come down on turn four. She is a value multiplier, not the plan — deploying Moat or Bitterblossom on curve matters more, and she is much safer cast into an untapped-mana table that is busy paying Propaganda.
-Moat :: hold it until a creature deck actually commits. Cast into an empty board it just eats a Krosan Grip for nothing.
-Skullclamp :: find this before you find a finisher. Clamp plus Bitterblossom plus Grave Pact is a better win condition than any single card in the deck.
+Keep a hand that does two of these three things: produces all three colors of mana, deploys a token engine (Bitterblossom, Bitterbloom Bearer), and drops an early stax piece (Moat, Ghostly Prison, Blind Obedience, Cursed Totem).
+Alela does not need to be cast on turn four. She is a value amplifier, not the wall itself. Deploy your prison pieces and mana rocks first so opponents are already throttled before Alela hits the board.
+Hold Moat until creature decks commit to the board, and prioritize finding Skullclamp or Bident of Thassa to keep your hand full. Once the fortress is secure, use Teferi, Time Raveler to protect your winning Approach of the Second Sun or close the game with an unblockable flying alpha strike.

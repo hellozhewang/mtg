@@ -1,0 +1,79 @@
+Black Cat is not merely a fun theft creature; she is an engine and an infinite win condition. While her entrance trigger steals two cards from an opponent's top nine, looping her with Nim Deathmantle, Ashnod's Altar, and a Treasure or token generator completely exiles all three opponents' libraries face down, leaving them with nothing to draw while giving you their entire decks to cast. Furthermore, Black Market converts every creature death into immense black mana pools, which Black Cat's static ability explicitly lets you spend as any color of mana to cast those stolen cards.
+Bracket 3: the Game Changer cap is three, filled by Demonic Tutor, The One Ring, and Vampiric Tutor. No mass land denial. Infinite combo lines (Exquisite Blood + Sanguine Bond/Vito, and Nim Deathmantle loops) wait until turn 6 under house rules.
+
+# The infinite drain finishers
+Exquisite Blood + Sanguine Bond :: any opponent losing life or you gaining life starts an unbounded loop where Exquisite Blood gains life and Sanguine Bond drains an opponent, repeating until all opponents are eliminated
+Exquisite Blood + Vito, Thorn of the Dusk Rose :: redundant Sanguine Bond effect on a three-mana legendary creature that immediately closes out the game alongside Exquisite Blood
+Blood Artist :: drains target player for 1 whenever any creature dies, weaponizing your sacrifice loops to kill the table
+Zulaport Cutthroat :: drains each opponent for 1 whenever your creatures die, bypassing single-target hexproof
+Marionette Apprentice :: drains each opponent for 1 whenever an artifact or creature you control dies, triggering on both sacrificed Servos and Altars
+Gray Merchant of Asphodel :: massive life drain on entrance scaled by your heavy black devotion, easily retriggered via Mimic Vat, Saw in Half, or reanimation
+
+# The Nim Deathmantle loops
+Nim Deathmantle + Ashnod's Altar + Weaponcraft Enthusiast :: sacrifice two Servos and Weaponcraft for {6}, pay {4} to return Weaponcraft with Deathmantle, netting infinite colorless mana and infinite 1/1 Servos
+Nim Deathmantle + Ashnod's Altar + Grave Titan :: sacrifice two Zombies and Grave Titan for {6}, pay {4} to return Grave Titan with Deathmantle, netting infinite colorless mana and infinite 2/2 Zombies
+Nim Deathmantle + Ashnod's Altar + Wurmcoil Engine :: sacrifice Wurmcoil Engine and one 3/3 Wurm token for {4}, pay {4} to return Wurmcoil with Deathmantle, netting infinite 3/3 deathtouch/lifelink Wurm tokens
+Nim Deathmantle + Ashnod's Altar + Pitiless Plunderer + Black Cat, Cunning Thief :: sacrifice Black Cat to Ashnod's Altar for {C}{C} and a Treasure from Plunderer, crack the Treasure and pay {4} to return Black Cat with Deathmantle; repeat indefinitely to exile all cards from all opponents' libraries face down
+Pawn of Ulamog :: creates an Eldrazi Spawn token on nontoken creature deaths, providing the extra sacrifice body needed to loop Nim Deathmantle with Black Cat
+Warren Soultrader :: a repeatable sacrifice outlet that converts creatures into Treasures at the cost of 1 life, enabling colored mana loops with Blood Artist or Zulaport Cutthroat
+Phyrexian Altar :: alternate sacrifice outlet providing colored mana to cast stolen spells or start loops
+
+# Big mana and Black Cat's heist
+Black Market :: accumulates charge counters whenever any creature dies and adds {B} for each counter during your precombat main phase; Black Cat's ability lets you spend this mana as any color to cast stolen spells
+Mimic Vat :: imprints Black Cat, Gray Merchant, or an opponent's creature when it dies; pay {3} and tap each turn to create a hasty token copy that exiles two more cards face down from an opponent's top nine
+Cabal Coffers + Urborg, Tomb of Yawgmoth :: turns every land into a Swamp to generate massive mana bursts, easily doubled by Deserted Temple
+Cabal Stronghold :: ramps additional black mana from your basic Swamps
+Nykthos, Shrine to Nyx :: produces huge mana pools based on heavy black devotion
+Crypt Ghast :: doubles black mana produced by Swamps and has extort to trigger Exquisite Blood
+Torment of Hailfire :: scalable game-ender that converts infinite or massive black mana into lethal life loss and board destruction
+Exsanguinate :: direct table-wide drain funded by Black Market or Coffers
+
+# Tutors and assembly lines
+Demonic Tutor -> Exquisite Blood :: when you have Sanguine Bond or Vito ready to assemble the instant drain loop
+Demonic Tutor -> Nim Deathmantle :: when you have Ashnod's Altar and a token engine ready
+Vampiric Tutor -> Exquisite Blood :: instant-speed tutor to the top of your library right before your draw step
+Vampiric Tutor -> Ashnod's Altar :: finds the sacrifice half of the Deathmantle infinite loop
+Diabolic Intent -> Sanguine Bond :: sacrifice a token or Black Cat to search for the drain finisher
+Beseech the Mirror -> Vito, Thorn of the Dusk Rose :: bargain sacrifice an artifact or token to search and cast Vito directly onto the battlefield for free
+Grim Tutor :: three-mana unconditional search directly to your hand
+Wishclaw Talisman :: two-mana artifact search; can be activated and then sacrificed to Deadly Dispute or Diabolic Intent before an opponent can use it
+Expedition Map -> Cabal Coffers :: searches Coffers, Urborg, or Nykthos to assemble your big mana engine
+Buried Alive -> Grave Titan + Weaponcraft Enthusiast + Blood Artist :: dumps key loop targets into the graveyard for mass reanimation or Deathmantle returns
+
+# Blink, death-returns and recursion
+Panharmonicon :: doubles Black Cat's entrance trigger to exile four cards from the top eighteen of an opponent's library
+Roaming Throne :: name Rogue or Villain to double Black Cat's entrance ability and Morbid Opportunist triggers
+Blade of Selves :: equipped to Black Cat, attacking in a four-player game creates two token copies that each exile two cards before dying to the legend rule
+Saw in Half :: destroys Black Cat and creates two 1/2 token copies, yielding two fresh entrance triggers while putting the original into the graveyard for reanimation
+Conjurer's Closet :: blinks Black Cat at each end step to steal two more cards every turn cycle
+Not Dead After All :: one-mana instant that brings Black Cat right back with a Wicked Role when she dies, triggering her entrance again
+Undying Malice :: grants a return-on-death trigger for one mana
+Feign Death :: another one-mana instant return-on-death effect
+Kaya's Ghostform :: protects against both death and exile removal, returning Black Cat to the battlefield
+Reanimate + Animate Dead :: cheap reanimation to bring back combo pieces or Black Cat from the graveyard
+Necromancy :: instant-speed reanimation flexibility
+Victimize :: sacrifices a token to return two combo creatures from graveyard to battlefield
+Agadeem's Awakening :: flexible land early or mass reanimation late game
+Skullclamp :: equips to 1/1 tokens or dorks for {1} to draw two cards
+
+# Interaction and protection
+Deadly Rollick :: free exile creature removal while Black Cat is in play
+Toxic Deluge :: three-mana sweeper that bypasses indestructible by paying life
+Damnation :: clean four-mana creature reset
+Feed the Swarm :: destroys target creature or enchantment
+Withering Torment :: instant-speed removal hitting a creature or enchantment
+Soul Shatter :: instant-speed edict forcing each opponent to sacrifice their highest-cost threat
+Imp's Mischief :: redirects targeted removal or opposing counterspells
+The One Ring :: indestructible card draw and protection from everything for a turn
+Lightning Greaves :: grants shroud and zero-equip haste to protect combo pieces or activate Vito
+Fell the Profane :: MDFC that removes a creature or planeswalker, or enters as an untapped land
+Malakir Rebirth :: MDFC that saves a creature on death, or enters as a land
+Boggart Trawler :: MDFC that exiles target player's graveyard, or enters as a land
+Bojuka Bog :: uncounterable graveyard exile on a land
+
+# Opening hand and sequencing
+Keep an opening hand with two to three lands, early mana acceleration (Sol Ring, Arcane Signet, Dark Ritual, Wayfarer's Bauble), and a tutor, draw piece (The One Ring, Morbid Opportunist, Deadly Dispute), or combo component.
+Turn 1-2: Deploy mana rocks or setup artifacts (Skullclamp, Expedition Map, Wishclaw Talisman).
+Turn 3-4: Cast Black Market or a value creature (Morbid Opportunist, Vito). Cast Black Cat to exile high-value opposing cards.
+Turn 5: Establish protection (Lightning Greaves) or death-triggers. Prepare your mana engines (Coffers, Black Market accumulating counters from dying creatures).
+Turn 6+: Under Bracket 3 rules, deploy and execute your infinite lines: assemble Exquisite Blood + Sanguine Bond/Vito to drain the table, or Nim Deathmantle + Ashnod's Altar to generate infinite mana, drain with Blood Artist, and exile all opposing libraries with Black Cat.

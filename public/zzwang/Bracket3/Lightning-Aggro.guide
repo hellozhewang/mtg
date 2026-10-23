@@ -1,28 +1,36 @@
-The key to piloting Lightning, Army of One is understanding its core engine: Lightning has first strike, trample, and lifelink. Her Stagger ability doubles all damage that player takes until your next turn. Combining her with extra combat steps and equipment turns each hit into lethal exponential damage.
-This is a Bracket 3 build running three Game Changers: Smothering Tithe, Teferi's Protection, Jeska's Will. It contains zero mass land denial and focuses on high-synergy board development, interactive answers, and an inevitable endgame clock.
+Stagger opponents with Lightning's combat damage to double all subsequent damage, chain extra combat steps to escalate damage exponentially, and finish games via voltron equipment or the Aggravated Assault combo.
 
-# Commander and Core Synergy
-Lightning, Army of One :: primary commander driving the deck's core strategy
-Aurelia, the Warleader :: critical engine card maximizing commander synergy and card advantage
-Combat Celebrant :: critical engine card maximizing commander synergy and card advantage
-Karlach, Fury of Avernus :: critical engine card maximizing commander synergy and card advantage
-Embercleave :: critical engine card maximizing commander synergy and card advantage
-Colossus Hammer :: critical engine card maximizing commander synergy and card advantage
+# Stagger mechanics and combat damage doubling
+Lightning, Army of One :: first strike, trample, and lifelink. Her Stagger ability dictates that whenever she deals combat damage to a player, until your next turn, any source dealing damage to that player or their permanents deals double that damage instead. Because Lightning has first strike, granting her double strike (via Duelist's Heritage, Blade Historian, or Lizard Blades) means the first strike hit applies Stagger, and her normal combat damage strike hits for double damage in the same combat step.
+Kediss, Emberclaw Familiar :: whenever Lightning deals combat damage to a player, Kediss deals that much damage to each other opponent, spreading Stagger-boosted damage across the entire table.
+Blade Historian :: attacking creatures you control have double strike, instantly doubling all offensive output and triggering first-strike Stagger on your commander.
+Duelist's Heritage :: grants double strike to any attacking creature at beginning of combat, whether your own commander or an opponent's creature attacking another rival.
+Gisela, Blade of Goldnight :: doubles all damage dealt to opponents and their permanents while halving all damage dealt to you and your permanents.
+Roaming Throne :: choose Soldier or Human on entry to double Lightning's combat damage triggers.
 
-# High-Impact Engines and Support
-Blade Historian :: premier support piece providing board presence, ramp, or recursion
-Boros Charm :: premier support piece providing board presence, ramp, or recursion
-Flawless Maneuver :: premier support piece providing board presence, ramp, or recursion
-Sword of Feast and Famine :: premier support piece providing board presence, ramp, or recursion
-Puresteel Paladin :: premier support piece providing board presence, ramp, or recursion
+# Extra combats and continuous aggression
+Aurelia, the Warleader :: untaps all creatures you control on her first attack each turn and grants an additional combat phase.
+Karlach, Fury of Avernus :: untaps all attacking creatures on your first combat, grants first strike, and provides an additional combat phase.
+Moraug, Fury of Akoum :: grants an additional combat phase and untaps all creatures whenever a land enters under your control during your main phase.
+Port Razer :: whenever Port Razer deals combat damage to a player, untap each creature you control and take an additional combat phase after this one.
+Combat Celebrant :: exerts upon attacking to untap all other creatures you control and grant an additional combat phase.
 
-# Game Changers and Interaction
-Smothering Tithe :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Teferi's Protection :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Jeska's Will :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Swords to Plowshares :: efficient interaction and acceleration keeping the table in check
-Path to Exile :: efficient interaction and acceleration keeping the table in check
-Blasphemous Act :: efficient interaction and acceleration keeping the table in check
-Chaos Warp :: efficient interaction and acceleration keeping the table in check
-Arcane Signet :: efficient interaction and acceleration keeping the table in check
-Sol Ring :: efficient interaction and acceleration keeping the table in check
+# Equipment tutoring and infinite combats (Turn 6+)
+Aggravated Assault + Sword of Feast and Famine :: equip Sword of Feast and Famine to an unblocked creature or Lightning. When combat damage connects, Sword untaps all lands you control. If you control at least five lands (producing {3}{R}{R}), spend that mana to activate Aggravated Assault, untapping your creatures and granting an additional combat phase. Repeat indefinitely for infinite combat steps, infinite damage, and infinite Stagger triggers.
+Stoneforge Mystic :: tutors any equipment card to hand and taps for {1}{W} to put equipment directly into play at instant speed.
+Steelshaper's Gift :: one-mana tutor searching any equipment card from your library into your hand.
+Open the Armory :: two-mana search for any Aura or Equipment card.
+Fighter Class :: tutors an equipment on level 1, reduces equip costs by {2} on level 2, and forces opposing blocks on level 3.
+Hammer of Nazahn :: equips any equipment attached to entering creatures for free while granting indestructible and +2/+0.
+Shadowspear :: grants +1/+1, trample, and lifelink, and pays {1} to remove hexproof and indestructible from all opposing permanents.
+
+# Interaction, protection, and opening hands
+Jeska's Will :: premium ritual and impulsive draw to finance expensive equipment and extra-combat engines.
+Smothering Tithe :: produces Treasures on opposing card draws to keep Boros mana flowing.
+Teferi's Protection :: phases out all your permanents and freezes your life total until your next turn against board wipes.
+Flawless Maneuver :: zero-mana indestructible board protection while controlling Lightning.
+Deflecting Swat :: zero-mana redirection spell to protect Lightning from targeted removal.
+Boros Charm :: versatile modal spell granting indestructible to all permanents, double strike to a creature, or dealing four damage.
+
+Keep opening hands with two to three lands, early equipment or tutors (Stoneforge Mystic, Fighter Class), and low-cost ramp (Sol Ring, Boros Signet, Talisman). Deploy Lightning on turn three to begin applying pressure and Stagger multipliers. Leverage extra combats on subsequent turns to eliminate players through exponential damage escalation.
+House rules apply: infinite combo loops and compact wins are restricted to Turn 6 or later. Earlier turns focus on establishing board presence, card advantage, and combat pressure.

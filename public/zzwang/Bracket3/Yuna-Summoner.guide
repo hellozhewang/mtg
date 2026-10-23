@@ -1,26 +1,29 @@
-The key to piloting Yuna, Grand Summoner is understanding its core engine: Yuna acts as a rainbow mana dork that enters subsequent creatures with two bonus +1/+1 counters. When permanent with counters die, she transfers those counters onto other creatures, ensuring threats stay massive.
-This is a Bracket 3 build running three Game Changers: Rhystic Study, Smothering Tithe, Cyclonic Rift. It contains zero mass land denial and focuses on high-synergy board development, interactive answers, and an inevitable endgame clock.
+Ramp and amplify counters with Yuna's Grand Summon, conserve and double counters on permanent deaths via Yuna and The Ozolith, and finish games through infinite Sage of Hours extra turns or Ballista mana loops.
 
-# Commander and Core Synergy
-Yuna, Grand Summoner :: primary commander driving the deck's core strategy
-Hardened Scales :: critical engine card maximizing commander synergy and card advantage
-Ozolith, the Shattered Spire :: critical engine card maximizing commander synergy and card advantage
-The Ozolith :: critical engine card maximizing commander synergy and card advantage
-Doubling Season :: critical engine card maximizing commander synergy and card advantage
-Kalonian Hydra :: critical engine card maximizing commander synergy and card advantage
+# Grand Summon and counter conservation on death
+Yuna, Grand Summoner :: Grand Summon taps for one mana of any color and causes the next creature spell you cast this turn to enter with two additional +1/+1 counters on it. Whenever another permanent you control with one or more counters on it is put into a graveyard from the battlefield, you may put that number of +1/+1 counters on target creature.
+The Ozolith :: whenever a creature you control leaves the battlefield, put all counters that were on it onto The Ozolith. When combined with Yuna, whenever a creature with counters dies, The Ozolith catches those counters AND Yuna puts that same number of counters onto a creature on the battlefield, effectively doubling your total counter count upon any death!
+Hangarback Walker :: enters with counters, taps to add counters, and when it dies creates a 1/1 flying Thopter token for each +1/+1 counter on it while Yuna moves all of those counters onto another creature.
+Walking Ballista :: enters with counters via Grand Summon or mana, removes counters to ping any target, and upon dying transfers its remaining counters to another creature via Yuna.
+Doubling Season :: doubles all tokens created and doubles all counters placed on permanents you control.
+Branching Evolution :: doubles the number of +1/+1 counters put on creatures you control.
+Hardened Scales :: adds an extra +1/+1 counter whenever counters are placed on your creatures.
 
-# High-Impact Engines and Support
-Heroic Intervention :: premier support piece providing board presence, ramp, or recursion
-Counterspell :: premier support piece providing board presence, ramp, or recursion
-Dovin's Veto :: premier support piece providing board presence, ramp, or recursion
-Swords to Plowshares :: premier support piece providing board presence, ramp, or recursion
-Farseek :: premier support piece providing board presence, ramp, or recursion
+# Dedicated combo win lines (Turn 6+)
+Sage of Hours + Doubling Season + Yuna, Grand Summoner :: tap Yuna with Grand Summon to add one mana and prime the next creature with two +1/+1 counters. Cast Sage of Hours for {1}{U}. Grand Summon adds two counters, doubled by Doubling Season to four counters, while Sage's heroic or entry adds two more, entering with six or more +1/+1 counters. At beginning of combat, remove five counters from Sage of Hours to take an extra turn. Repeat every turn for infinite extra turns.
+Bloom Tender + Freed from the Real :: Bloom Tender taps for {G}{W}{U}. Spend {U} to activate Freed from the Real to untap Bloom Tender. Each iteration nets {G}{W}, generating infinite green and white mana, which can then untap Bloom Tender for infinite blue mana. Pour infinite mana into Walking Ballista or Thrasios to win on the spot.
+Incubation Druid + Pemmin's Aura :: with a +1/+1 counter on Incubation Druid, it taps for three mana of any color. Pemmin's Aura untaps it for {U}, netting infinite mana of any color.
+Kami of Whispered Hopes + Freed from the Real :: with power two or greater, Kami taps for multiple mana, generating infinite mana when enchanted with Freed from the Real.
+Finale of Devastation :: with infinite mana, cast Finale for X=100+ to search your library and graveyard for all creatures, granting them haste and +100/+100 to attack for lethal damage.
 
-# Game Changers and Interaction
-Rhystic Study :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Smothering Tithe :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Cyclonic Rift :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Path to Exile :: efficient interaction and acceleration keeping the table in check
-An Offer You Can't Refuse :: efficient interaction and acceleration keeping the table in check
-Arcane Signet :: efficient interaction and acceleration keeping the table in check
-Sol Ring :: efficient interaction and acceleration keeping the table in check
+# Tutors, interaction, and protection
+Eladamri's Call :: instant-speed search for Sage of Hours, Bloom Tender, or Walking Ballista directly to your hand.
+Grand Abolisher :: shuts off opposing spells and abilities on your turn to protect combo loops.
+Silence :: one-mana instant locking opponents out of casting spells during your winning turn.
+Cyclonic Rift :: premier blue asymmetric reset.
+Smothering Tithe :: generates massive Treasure reserves off opposing card draws.
+Force of Negation :: free counterspell on opponents' turns to stop board wipes or combo disruption by exiling a blue card.
+Heroic Intervention :: grants hexproof and indestructible to your entire board at instant speed.
+
+Keep opening hands with two to three lands, early mana acceleration (Birds of Paradise, Noble Hierarch, Sol Ring), and a counter enabler or tutor (Hardened Scales, Bristly Bill, Eladamri's Call). Cast Yuna on turn two or three, use Grand Summon to deploy large counter-boosted threats, and assemble the Sage of Hours extra turn engine or infinite mana Ballista combo on Turn 6 or later.
+House rules apply: infinite combo loops and compact wins are restricted to Turn 6 or later. Earlier turns focus on establishing board presence, counter accumulation, and mana development.

@@ -22,6 +22,7 @@
 1 Dauthi Voidwalker
 1 Deadly Rollick
 1 Deflecting Swat
+1 Delney, Streetwise Lookout
 1 Demonic Tutor
 1 Dragonskull Summit
 1 Elegant Parlor
@@ -33,11 +34,10 @@
 1 General Leo Cristophe
 1 Godless Shrine
 1 Gogo, Mysterious Mime
-1 Grave Researcher
+1 Gray Merchant of Asphodel
 1 Isolated Chapel
 1 Joshua, Phoenix's Dominant
 1 Karmic Guide
-1 Key to the City
 1 Lightning Greaves
 1 Locke, Treasure Hunter
 1 Loran of the Third Path
@@ -47,7 +47,7 @@
 1 Luxury Suite
 1 Mana Confluence
 1 Marsh Flats
-1 Meteor Golem
+1 Master of Cruelties
 2 Mountain
 1 Path to Exile
 1 Phyrexian Tower

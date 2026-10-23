@@ -21,9 +21,7 @@
 1 Chaos Warp
 1 Circle of Power
 1 City on Fire
-1 Collective Inferno
 1 Command Tower
-1 Cornered by Black Mages
 1 Coruscation Mage
 1 Dark Confidant
 1 Dark Ritual
@@ -56,6 +54,7 @@
 1 Luxury Suite
 1 Mana Geyser
 1 Mizzix's Mastery
+1 Molten Duplication
 7 Mountain
 1 Mysidian Elder
 1 Night's Whisper
@@ -80,6 +79,7 @@
 1 Terminate
 1 Thrill of Possibility
 1 Transpose
+1 Twinflame
 1 Untimely Malfunction
 1 Urborg, Tomb of Yawgmoth
 1 Vandalblast

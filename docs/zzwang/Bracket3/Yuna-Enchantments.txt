@@ -1,6 +1,7 @@
 1 Yuna, Hope of Spira
 1 Arcane Signet
 1 Argothian Enchantress
+1 Aura of Silence
 1 Beast Within
 1 Birds of Paradise
 1 Boseiju, Who Endures
@@ -59,17 +60,16 @@
 1 Smothering Tithe
 1 Soaring Lightbringer
 1 Sol Ring
+1 Solemnity
 1 Sphere of Safety
 1 Starfield of Nyx
 1 Sterling Grove
 1 Strength of the Harvest
 1 Summon: Bahamut
 1 Summon: Fenrir
-1 Summon: Good King Mog XII
 1 Summon: Ixion
 1 Summon: Knights of Round
 1 Summon: Magus Sisters
-1 Summon: Titan
 1 Summon: Yojimbo
 1 Summoner's Grimoire
 1 Sunpetal Grove

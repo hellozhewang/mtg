@@ -9,6 +9,7 @@
 1 Badlands
 1 Beseech the Mirror
 1 Blasphemous Act
+1 Blood Artist
 1 Blood Crypt
 1 Bloodstained Mire
 1 Boros Charm
@@ -17,6 +18,7 @@
 1 Cavern of Souls
 1 City of Brass
 1 City of Traitors
+1 Clifftop Retreat
 1 Cloudshift
 1 Command Tower
 1 Culling the Weak
@@ -25,6 +27,7 @@
 1 Demonic Tutor
 1 Diabolic Intent
 1 Dragon's Rage Channeler
+1 Dragonskull Summit
 1 Dualcaster Mage
 1 Entomb
 1 Ephemerate
@@ -34,15 +37,16 @@
 1 Fellwar Stone
 1 Final Fortune
 1 Flooded Strand
-1 Gemstone Caverns
 1 Gleaming Splendor
 1 Goblin Bombardment
 1 Godless Shrine
 1 Grand Abolisher
+1 Gravecrawler
 1 Grinding Station
 1 Hexing Squelcher
 1 Hoarding Broodlord
 1 Imperial Recruiter
+1 Isolated Chapel
 1 Jeska's Will
 1 Karmic Guide
 1 Lesser Masticore
@@ -53,12 +57,11 @@
 1 Mana Confluence
 1 Marsh Flats
 1 Molten Duplication
-3 Mountain
-1 Mox Opal
+1 Mountain
 1 Murderous Redcap
 1 Necromancy
 1 Phyrexian Altar
-2 Plains
+1 Plains
 1 Plateau
 1 Polluted Delta
 1 Putrid Goblin
@@ -74,12 +77,15 @@
 1 Scrubland
 1 Sevinne's Reclamation
 1 Silence
-1 Simian Spirit Guide
 1 Smothering Tithe
+1 Snow-Covered Mountain
+1 Snow-Covered Plains
+1 Snow-Covered Swamp
 1 Sol Ring
+1 Squee, Goblin Nabob
 1 Starting Town
 1 Sun Titan
-4 Swamp
+1 Swamp
 1 Swords to Plowshares
 1 Tainted Pact
 1 Talisman of Hierarchy

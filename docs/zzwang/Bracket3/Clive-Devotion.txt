@@ -17,6 +17,7 @@
 1 Cursed Mirror
 1 Defiler of Instinct
 1 Deflecting Swat
+1 Dualcaster Mage
 1 Electroduplicate
 1 Enduring Courage
 1 Faithless Looting
@@ -31,7 +32,7 @@
 1 Mana Geyser
 1 Molten Duplication
 1 Monument to Endurance
-28 Mountain
+24 Mountain
 1 Neheb, Dreadhorde Champion
 1 Neheb, the Eternal
 1 Nibelheim Aflame
@@ -40,11 +41,13 @@
 1 Orthion, Hero of Lavabrink
 1 Powerbalance
 1 Professional Face-Breaker
+1 Purphoros, Bronze-Blooded
 1 Purphoros, God of the Forge
 1 Pyretic Ritual
 1 Ragavan, Nimble Pilferer
 1 Razorkin Needlehead
 1 Reliquary Tower
+1 Roaming Throne
 1 Ruby Medallion
 1 Runaway Steam-Kin
 1 Seething Song
@@ -62,6 +65,7 @@
 1 Throne of Eldraine
 1 Tibalt's Trickery
 1 Torbran, Thane of Red Fell
+1 Treasonous Ogre
 1 Twinflame
 1 Twinflame Tyrant
 1 Underworld Breach

@@ -1,25 +1,34 @@
-The key to piloting Tidus, Yuna's Guardian is understanding its core engine: Tidus shifts counters between creatures at combat, and whenever creatures with counters deal combat damage, he draws a card and proliferates, rapidly compounding +1/+1 counters and loyalty across all permanents.
-This is a Bracket 3 build running three Game Changers: Rhystic Study, Cyclonic Rift, Teferi's Protection. It contains zero mass land denial and focuses on high-synergy board development, interactive answers, and an inevitable endgame clock.
+Shift counters strategically at combat with Tidus, trigger Cheer to draw cards and proliferate on damage, leverage Danny Pink for mass card draw, and overrun opponents with unblockable, counter-boosted creatures.
 
-# Commander and Core Synergy
-Tidus, Yuna's Guardian :: primary commander driving the deck's core strategy
-Kami of Whispered Hopes :: critical engine card maximizing commander synergy and card advantage
-Inexorable Tide :: critical engine card maximizing commander synergy and card advantage
-Evolution Sage :: critical engine card maximizing commander synergy and card advantage
-Forgotten Ancient :: critical engine card maximizing commander synergy and card advantage
-Danny Pink :: critical engine card maximizing commander synergy and card advantage
+# Counter relocation and Cheer proliferation
+Tidus, Yuna's Guardian :: at the beginning of combat on your turn, you may move a counter from target creature you control onto a second target creature you control. His Cheer ability dictates that whenever one or more creatures you control with counters on them deal combat damage to a player, you may draw a card and proliferate. Note that Tidus can move ANY counter type, including shield counters, indestructible counters from Arwen, Mortal Queen, or +1/+1 counters.
+Danny Pink :: whenever a counter is put on a creature you control, if it didn't have a counter put on it yet this turn, you draw a card. Tidus moving a counter onto a creature puts a counter on it, immediately triggering Danny Pink. Proliferating subsequently places counters on multiple creatures, drawing fresh cards for each creature modified!
+Tekuthal, Inquiry Dominus :: whenever you proliferate, proliferate an additional time instead, doubling Tidus's Cheer payoff.
+Inexorable Tide :: proliferates whenever you cast any spell.
+Evolution Sage :: proliferates on every land entry under your control.
+Sword of Truth and Justice :: grants protection from white and blue, puts a +1/+1 counter on a creature on damage, and proliferates.
 
-# High-Impact Engines and Support
-Kalonian Hydra :: premier support piece providing board presence, ramp, or recursion
-Heroic Intervention :: premier support piece providing board presence, ramp, or recursion
-Counterspell :: premier support piece providing board presence, ramp, or recursion
+# Evasion and counter-scaling payoffs
+Herald of Secret Streams :: creatures you control with +1/+1 counters on them cannot be blocked, guaranteeing that your entire army connects to trigger Cheer and combat damage effects.
+Kodama of the West Tree :: modified creatures you control have trample; whenever a modified creature deals combat damage to a player, search a basic land onto the battlefield tapped.
+Kalonian Hydra :: enters with four +1/+1 counters, trample, and doubles the number of +1/+1 counters on each creature you control whenever it attacks.
+Sovereign Okinec Ahau :: whenever you attack, each creature you control with power greater than its base power gets a number of +1/+1 counters equal to the difference, exponentially swelling your team.
+Crystalline Crawler :: enters with +1/+1 counters, gains counters on spell casts, and removes counters to add mana of any color.
+Walking Ballista :: scales with counters and can machine-gun opposing utility creatures or direct damage to players.
 
-# Game Changers and Interaction
-Rhystic Study :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Cyclonic Rift :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Teferi's Protection :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Swords to Plowshares :: efficient interaction and acceleration keeping the table in check
-Path to Exile :: efficient interaction and acceleration keeping the table in check
-An Offer You Can't Refuse :: efficient interaction and acceleration keeping the table in check
-Arcane Signet :: efficient interaction and acceleration keeping the table in check
-Sol Ring :: efficient interaction and acceleration keeping the table in check
+# Asymmetric board wipes and counter protection
+Damning Verdict :: five-mana sorcery that destroys all creatures without counters on them, wiping opposing battlefields while leaving your entire modified board completely intact.
+Wave Goodbye :: returns each creature without a +1/+1 counter on it to its owner's hand, functioning as a one-sided board bounce.
+The Ozolith :: preserves all counters from creatures that leave the battlefield and transfers them onto target creature at beginning of combat.
+Resourceful Defense :: catches counters from permanents leaving play and lets you pay {4}{W} to move counters between any permanents at instant speed.
+Arwen, Mortal Queen :: enters with an indestructible counter and gives another creature an indestructible counter when it attacks.
+
+# Interaction, tutors, and opening hands
+Cyclonic Rift :: premier blue reset to eliminate opposing tokens and blockers.
+Rhystic Study :: card advantage engine taxing opponents' spellcasting.
+Teferi's Protection :: phases out your board in response to mass exile or global destruction.
+Heroic Intervention :: grants hexproof and indestructible to your permanents.
+Swords to Plowshares :: premier one-mana creature exile.
+
+Keep opening hands with two to three lands, early counter producers or dorks (Birds of Paradise, Bristly Bill, Hardened Scales), and a card draw payoff (Danny Pink, Fathom Mage). Deploy Tidus on turn three, move a counter onto an unblocked attacker to guarantee Cheer combat damage, and proliferate to continuously grow your army and hand size. Deliver an unblockable alpha strike on Turn 6 or later.
+House rules apply: infinite combo loops and compact wins are restricted to Turn 6 or later. Earlier turns focus on establishing board presence, counter accumulation, and combat triggers.

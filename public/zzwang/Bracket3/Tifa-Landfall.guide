@@ -1,24 +1,39 @@
-The key to piloting Tifa Lockhart is understanding its core engine: Tifa Lockhart doubles her power on every single land drop. With trample built-in, a single fetchland turns her from 2 power to 8 power, and a Scapeshift or double land drop easily hits 32+ power for one-shot commander knockouts.
-This is a Bracket 3 build running three Game Changers: Crop Rotation, The One Ring, Worldly Tutor. It contains zero mass land denial and focuses on high-synergy board development, interactive answers, and an inevitable endgame clock.
+Leverage Tifa's exponential power doubling on every landfall trigger to eliminate opponents with lethal trample commander damage, accelerated by multiple land drops and Scapeshift.
 
-# Commander and Core Synergy
-Tifa Lockhart :: primary commander driving the deck's core strategy
-Scapeshift :: critical engine card maximizing commander synergy and card advantage
-Azusa, Lost but Seeking :: critical engine card maximizing commander synergy and card advantage
-Exploration :: critical engine card maximizing commander synergy and card advantage
-Lotus Cobra :: critical engine card maximizing commander synergy and card advantage
-Tireless Provisioner :: critical engine card maximizing commander synergy and card advantage
+# Exponential power doubling mechanics
+Tifa Lockhart :: possesses natural trample. Her landfall trigger doubles her power until end of turn each time a land enters the battlefield under your control. One land drop doubles her from two to four power; two lands yields eight power; three lands yields sixteen; four lands yields thirty-two; and five lands yields sixty-four trample damage.
+Scale Up :: sorcery that makes Tifa a 6/4 Wurm until end of turn. Landfall triggers resolving afterward double her power from six to twelve, twenty-four, forty-eight, or ninety-six power.
+Berserk :: one-mana green instant that grants trample and doubles target creature's current power. Cast Berserk after landfall triggers resolve to double an already massive Tifa into an unblockable one-shot kill.
+Unnatural Growth :: doubles the power and toughness of each creature you control at the beginning of each combat, compounding Tifa's pre-combat landfall growth.
+Adventuring Gear :: grants an additional +2/+2 on each landfall trigger, giving Tifa extra base stats before each doubling calculation.
 
-# High-Impact Engines and Support
-Conduit of Worlds :: premier support piece providing board presence, ramp, or recursion
-Ramunap Excavator :: premier support piece providing board presence, ramp, or recursion
-Heroic Intervention :: premier support piece providing board presence, ramp, or recursion
-Sylvan Safekeeper :: premier support piece providing board presence, ramp, or recursion
-Unnatural Growth :: premier support piece providing board presence, ramp, or recursion
+# Mass landfall and fetchland chains
+Scapeshift :: sacrifices any number of lands to search that many lands from your library directly onto the battlefield. Sacrificing four lands to put four lands into play generates four simultaneous landfall triggers, catapulting Tifa to thirty-two power.
+Awaken the Woods :: creates X 1/1 green Forest Dryad land creature tokens. Each token counts as a land entering the battlefield, triggering X landfall triggers in a single resolution.
+Crop Rotation :: one-mana instant sacrificing a land to put any land (such as Nykthos, Cradle, or a fetchland) onto the battlefield at instant speed during combat.
+Harrow :: sacrifices a land as an additional cost to search two basic lands directly onto the battlefield untapped at instant speed, providing two surprise combat landfall triggers.
+Entish Restoration :: searches two basic lands onto the battlefield tapped, or three if you control a creature with power four or greater (which Tifa easily fulfills after one land drop).
+Lotus Cobra :: adds one mana of any color on each landfall trigger, financing further spells and activations during explosive combo turns.
+Tireless Provisioner :: generates a Treasure or Food token on every land entry to accumulate ramp or life.
 
-# Game Changers and Interaction
-Crop Rotation :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-The One Ring :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Worldly Tutor :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Beast Within :: efficient interaction and acceleration keeping the table in check
-Sol Ring :: efficient interaction and acceleration keeping the table in check
+# Extra land drops and graveyard land recursion
+Azusa, Lost but Seeking :: allows you to play two additional lands on each of your turns.
+Exploration :: allows one additional land play each turn for a single mana.
+Dryad of the Ilysian Grove :: allows an additional land play each turn and fixes lands to all basic land types.
+Oracle of Mul Daya :: reveals the top of your library, allows playing lands from top, and grants an additional land drop.
+Crucible of Worlds :: allows playing lands from your graveyard, turning fetchlands into repeating double-landfall engines every turn.
+Ramunap Excavator :: creature version of Crucible of Worlds that recurs fetchlands from the graveyard.
+Conduit of Worlds :: plays lands from graveyard and can cast a nonland permanent from graveyard once per turn.
+Ancient Greenwarden :: allows playing lands from graveyard and doubles all land-triggered abilities, causing each land to trigger Tifa TWICE for quadruple power growth per land!
+
+# Card draw, protection, and opening hands
+Rishkar's Expertise :: draws cards equal to the greatest power among creatures you control (drawing sixteen to thirty-two cards with Tifa) and casts a card with mana value five or less for free.
+The Great Henge :: taps for two green mana, gains life, and draws cards whenever nontoken creatures enter.
+The One Ring :: grants protection from everything upon casting and provides compounding card draw.
+Sylvan Safekeeper :: sacrifices a land to give target creature you control shroud at instant speed; the sacrificed land can then be replayed with Crucible or Excavator.
+Legolas's Quick Reflexes :: one-mana instant granting hexproof, reach, untap, and letting Tifa deal damage to attacking or blocking creatures.
+Tamiyo's Safekeeping :: gives target permanent hexproof and indestructible while gaining two life.
+Heroic Intervention :: grants all your permanents hexproof and indestructible at instant speed.
+
+Keep opening hands with two to three lands, early exploration or ramp (Exploration, Nature's Lore, Three Visits), and a fetchland or tutor. Cast Tifa early on turn two, establish extra land drops or fetchland recursion on turns three and four, and deliver lethal commander damage on turn five or six using Scapeshift, Berserk, or multi-fetch landfall sequences.
+House rules apply: infinite combo loops and compact wins are restricted to Turn 6 or later. Earlier turns focus on establishing board presence, land drops, and ramp engines.

@@ -68,6 +68,7 @@
 1 Sazh's Chocobo
 1 Scute Swarm
 1 Sea of Clouds
+1 Sephara, Sky's Blade
 1 Sidequest: Raise a Chocobo
 1 Sol Ring
 1 Soulcatchers' Aerie
@@ -85,7 +86,6 @@
 1 Traveling Chocobo
 1 Tropical Island
 1 Tundra
-1 Wan Shi Tong, Librarian
 1 Warden of Evos Isle
 1 Watcher of the Spheres
 1 Windswept Heath

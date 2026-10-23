@@ -1,23 +1,35 @@
-The key to piloting Jenova, Ancient Calamity is understanding its core engine: Jenova targets a creature each combat to place +1/+1 counters equal to Jenova's power and make it a Mutant. When that Mutant dies on your turn, you draw cards equal to its power, creating a self-fueling card draw and sacrifice engine.
-This is a Bracket 3 build running three Game Changers: Demonic Tutor, Vampiric Tutor, Ancient Tomb. It contains zero mass land denial and focuses on high-synergy board development, interactive answers, and an inevitable endgame clock.
+Turn your creatures into colossal Mutants using Jenova's combat ability, draw massive hands when sacrificing them on your turn, amplify counters with Golgari doublers, and finish games with Jarad flings or persist loops.
 
-# Commander and Core Synergy
-Jenova, Ancient Calamity :: primary commander driving the deck's core strategy
-Hardened Scales :: critical engine card maximizing commander synergy and card advantage
-Branching Evolution :: critical engine card maximizing commander synergy and card advantage
-Corpsejack Menace :: critical engine card maximizing commander synergy and card advantage
-Skullclamp :: critical engine card maximizing commander synergy and card advantage
-Greater Good :: critical engine card maximizing commander synergy and card advantage
+# Mutant creation and death card draw
+Jenova, Ancient Calamity :: at the beginning of combat on your turn, put a number of +1/+1 counters equal to Jenova's power on up to one other target creature, turning it into a Mutant. Whenever a Mutant you control dies during your turn, you draw cards equal to its power. Because this draw triggers only on your turn, use instant-speed sacrifice outlets (Greater Good, Altars, Carrion Feeder) before your turn ends.
+Greater Good :: sacrifice a creature to draw cards equal to its power, then discard three cards. When sacrificing a Mutant during your turn with Jenova on the battlefield, both Jenova and Greater Good trigger, drawing DOUBLE the creature's power in cards!
+Carrion Feeder :: one-mana sacrifice outlet that cannot block, gaining a +1/+1 counter each time it consumes a creature.
+Viscera Seer :: one-mana sacrifice outlet that scrys one card on each sacrifice.
+Phyrexian Altar :: converts sacrificed Mutants into colored mana to cast newly drawn cards.
+Ashnod's Altar :: converts sacrificed creatures into two colorless mana.
+Skullclamp :: equips for one mana to draw two cards upon creature death, stacking with Jenova's draw trigger.
 
-# High-Impact Engines and Support
-Ashnod's Altar :: premier support piece providing board presence, ramp, or recursion
-Heroic Intervention :: premier support piece providing board presence, ramp, or recursion
-Assassin's Trophy :: premier support piece providing board presence, ramp, or recursion
-Beast Within :: premier support piece providing board presence, ramp, or recursion
+# Counter doublers and amplifiers
+Branching Evolution :: doubles the number of +1/+1 counters put on creatures you control. With Jenova at four power, Branching Evolution places eight +1/+1 counters instead.
+Corpsejack Menace :: doubles all +1/+1 counters placed on creatures you control.
+Hardened Scales :: adds one additional +1/+1 counter whenever counters are placed on a creature you control.
+Winding Constrictor :: adds an additional counter of any kind whenever counters are placed on you or your permanents.
+Kami of Whispered Hopes :: adds an additional +1/+1 counter and taps for mana of any color equal to its power.
+The Ozolith :: collects all counters from permanents that leave the battlefield at combat step and moves them onto target creature at combat, preventing counter loss upon sacrifice.
+Ozolith, the Shattered Spire :: increases counters placed and can pay {1}{G} and tap to add +1/+1 counters.
 
-# Game Changers and Interaction
-Demonic Tutor :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Vampiric Tutor :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Ancient Tomb :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Arcane Signet :: efficient interaction and acceleration keeping the table in check
-Sol Ring :: efficient interaction and acceleration keeping the table in check
+# Finisher lines and persist loop (Turn 6+)
+Jarad, Golgari Lich Lord :: pays {1}{B}{G} and sacrifices a creature to force each opponent to lose life equal to the sacrificed creature's power. Sacrificing a 20-power Mutant with Jarad drains each opponent for twenty life directly, bypassing combat blockers entirely.
+Woodfall Primus :: enters and destroys target noncreature permanent. When it dies, persist returns it to the battlefield with a -1/-1 counter. Putting +1/+1 counters on Primus (via Jenova or The Ozolith) removes the -1/-1 counter due to state-based actions, allowing infinite persist sacrifice with an Altar to destroy all opposing noncreature permanents.
+Blood Artist :: drains target player for one life and gains you one life whenever any creature dies.
+
+# Tutors, interaction, and opening hands
+Demonic Tutor :: finds Greater Good, Jarad, or a counter multiplier.
+Vampiric Tutor :: one-mana instant tutor placing any card on top of your library.
+Ancient Tomb :: provides two colorless mana for early acceleration.
+Deadly Rollick :: free creature exile while controlling Jenova.
+Toxic Deluge :: clears wide opposing boards through indestructible.
+Culling Ritual :: destroys all nonland permanents with mana value two or less and generates green and black mana for each destroyed permanent.
+
+Keep opening hands with two to three lands, early mana dorks (Birds of Paradise, Llanowar Elves, Delighted Halfling), and a sacrifice outlet or counter doubler. Cast Jenova on turn three or four, immediately target an existing creature to place four +1/+1 counters and turn it into a Mutant, and sacrifice it post-combat to draw four or more fresh cards. Close out games with Jarad or massive board swings on Turn 6 or later.
+House rules apply: infinite combo loops and compact wins are restricted to Turn 6 or later. Earlier turns focus on establishing board presence, counter accumulation, and card draw.

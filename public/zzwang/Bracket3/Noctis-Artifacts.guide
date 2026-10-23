@@ -1,26 +1,40 @@
-The key to piloting Noctis, Prince of Lucis is understanding its core engine: Noctis allows you to cast artifact spells directly from your graveyard by paying 3 life. His built-in lifelink recoups that life instantly on combat, enabling rapid recovery of sacrifice engines, baubles, and artifact win conditions.
-This is a Bracket 3 build running three Game Changers: Rhystic Study, Smothering Tithe, Demonic Tutor. It contains zero mass land denial and focuses on high-synergy board development, interactive answers, and an inevitable endgame clock.
+Cast artifacts repeatedly from your graveyard using Noctis's recursion, negate finality counter drawbacks with Solemnity and counter manipulation, and close out games with Thopter-Sword loops or animated artifact swarms.
 
-# Commander and Core Synergy
-Noctis, Prince of Lucis :: primary commander driving the deck's core strategy
-Urza, Lord High Artificer :: critical engine card maximizing commander synergy and card advantage
-Emry, Lurker of the Loch :: critical engine card maximizing commander synergy and card advantage
-Sai, Master Thopterist :: critical engine card maximizing commander synergy and card advantage
-Etherium Sculptor :: critical engine card maximizing commander synergy and card advantage
-Foundry Inspector :: critical engine card maximizing commander synergy and card advantage
+# Cast artifacts from the graveyard with Noctis
+Noctis, Prince of Lucis :: grants lifelink to replenish life spent on recursion. You may cast artifact spells from your graveyard by paying three life in addition to their mana costs. Those artifacts enter with a finality counter, exiling them if they would die. Bypass this restriction using Solemnity, Power Conduit, Nesting Grounds, or Hex Parasite.
+Solemnity :: prevents counters of any kind from being placed on artifacts, creatures, enchantments, or players. With Solemnity on the battlefield, artifacts cast via Noctis CANNOT receive finality counters, allowing infinite sacrifice and recursion without exile.
+Power Conduit :: taps to remove a counter from a permanent you control and put a charge counter on an artifact or a +1/+1 counter on a creature. Remove finality counters from recurring artifacts before sacrificing them again.
+Nesting Grounds :: pays one generic mana and taps at sorcery speed to move a counter from target permanent you control onto another target permanent. Shift finality counters off your artifacts and onto opposing creatures.
+Hex Parasite :: pays {X} or two life times X to remove up to X counters from any target permanent, stripping finality counters cleanly at instant speed.
 
-# High-Impact Engines and Support
-Time Sieve :: premier support piece providing board presence, ramp, or recursion
-Sword of the Meek :: premier support piece providing board presence, ramp, or recursion
-Thopter Foundry :: premier support piece providing board presence, ramp, or recursion
-Scrap Trawler :: premier support piece providing board presence, ramp, or recursion
-Mirrodin Besieged :: premier support piece providing board presence, ramp, or recursion
+# Reusable artifacts and engine pieces
+Mishra's Bauble :: costs zero to cast. Sacrifices itself for zero mana to draw a card next upkeep, providing free graveyard fuel for Noctis to recast.
+Urza's Bauble :: identical zero-mana sacrifice cantrip that fuels recursion engines and draws cards without mana investment.
+Chromatic Star :: filters mana while drawing a card whenever it goes to the graveyard, regardless of how it was put there.
+Soul-Guide Lantern :: provides targeted graveyard exile on entry and can sacrifice itself to draw a card or exile all opposing graveyards in response to reanimation.
+Emry, Lurker of the Loch :: mills four cards on entry to load your graveyard with artifacts and taps to cast an artifact directly without paying Noctis's three-life tax.
+Scrap Trawler :: returns a lower-mana-value artifact from your graveyard to your hand whenever an artifact you control dies.
+Sai, Master Thopterist :: creates a 1/1 flying Thopter token whenever you cast an artifact spell, providing evasive threats and sacrifice fodder for card draw.
+Etherium Sculptor :: reduces the casting cost of all artifact spells by one generic mana.
+Foundry Inspector :: secondary artifact cost reducer that stacks with Sculptor and Urza.
 
-# Game Changers and Interaction
-Rhystic Study :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Smothering Tithe :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Demonic Tutor :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Swords to Plowshares :: efficient interaction and acceleration keeping the table in check
-An Offer You Can't Refuse :: efficient interaction and acceleration keeping the table in check
-Arcane Signet :: efficient interaction and acceleration keeping the table in check
-Sol Ring :: efficient interaction and acceleration keeping the table in check
+# Infinite turns and combat finishes (Turn 6+)
+Thopter Foundry + Sword of the Meek + Time Sieve :: pay one mana to sacrifice Sword to Thopter Foundry, creating a 1/1 Thopter and gaining one life. Sword sees a 1/1 enter and returns to the battlefield attached to the token. Repeat five times for five mana to produce five Thopters, then tap and sacrifice those five Thopters to Time Sieve to take an extra turn. Repeat every turn for infinite turns and unbounded Thopters.
+Cyberdrive Awakener :: turns all noncreature artifacts you control into 4/4 flying constructs until end of turn, converting an army of mana rocks, Baubles, and Thopters into an immediate lethal alpha strike.
+Kappa Cannoneer :: enters with ward 4 and improvise, growing by +1/+1 and becoming unblockable whenever any artifact enters under your control.
+Urza, Lord High Artificer :: taps any untapped artifact for blue mana and can spend five mana to shuffle and play cards from exile without paying mana costs.
+Marionette Apprentice :: fabricates a Servo or enters with a counter, and drains each opponent for one life whenever another creature or artifact you control dies.
+
+# Tutors, interaction, and protection
+Demonic Tutor :: finds Solemnity, Time Sieve, or protection at sorcery speed.
+Transmute Artifact :: sacrifices an expendable artifact to search your library for any artifact directly onto the battlefield.
+Wishclaw Talisman :: cheap two-mana tutor that can be sacrificed in response to its ability or recurred with Noctis before an opponent can utilize it.
+Grand Abolisher :: silences all opponent interaction on your turn, securing combo execution without fear of counterspells or removal.
+Ranger-Captain of Eos :: tutors Esper Sentinel or Hex Parasite and can sacrifice itself to prevent opponents from casting noncreature spells on crucial turns.
+Silence :: one-mana instant that stops opponents from casting spells on your winning turn.
+Smothering Tithe :: generates massive Treasure tokens whenever opponents draw cards without paying two mana.
+Rhystic Study :: premier card draw engine that taxes opposing spells.
+
+# Opening hands and sequencing
+Keep opening hands with two to three lands, early mana acceleration (Sol Ring, Signets, Talismans), and cheap artifacts or tutors. Play Noctis once your graveyard has relevant Baubles or utility artifacts to cast, or after deploying Solemnity to completely ignore finality penalties. Protect your board with Silence or Grand Abolisher before executing the Thopter Foundry or Time Sieve loops on Turn 6 or later.
+House rules apply: infinite combo loops and compact wins are restricted to Turn 6 or later. Earlier turns focus on establishing board presence, card advantage, and graveyard setup.

@@ -1,22 +1,35 @@
-The key to piloting Terra, Herald of Hope is understanding its core engine: Terra mills two cards and gains flying at combat, then reanimates creature cards with power 3 or less directly to the battlefield tapped whenever she deals combat damage, recurring value engines and combo pieces.
-This is a Bracket 3 build running three Game Changers: Smothering Tithe, Teferi's Protection, Demonic Tutor. It contains zero mass land denial and focuses on high-synergy board development, interactive answers, and an inevitable endgame clock.
+Self-mill and gain flying with Terra's Trance, connect for combat damage to reanimate power 3 or less utility and combo creatures for two mana, and double triggers with Delney to overwhelm the table.
 
-# Commander and Core Synergy
-Terra, Herald of Hope :: primary commander driving the deck's core strategy
-Sun Titan :: critical engine card maximizing commander synergy and card advantage
-Lurrus of the Dream-Den :: critical engine card maximizing commander synergy and card advantage
-Karmic Guide :: critical engine card maximizing commander synergy and card advantage
-Swords to Plowshares :: critical engine card maximizing commander synergy and card advantage
-Anguished Unmaking :: critical engine card maximizing commander synergy and card advantage
+# Trance self-mill and combat reanimation
+Terra, Herald of Hope :: at the beginning of combat on your turn, Trance mills two cards and grants Terra flying until end of turn. Whenever Terra deals combat damage to a player, you may pay {2} to return target creature card with power three or less from your graveyard to the battlefield tapped.
+Delney, Streetwise Lookout :: power 2 creature that causes triggered abilities of creatures you control with power two or less to trigger an additional time. While controlling Delney, Terra's reanimation ability triggers twice upon dealing combat damage, allowing you to pay {2} twice to return TWO creatures in a single combat!
+Master of Cruelties :: power 1 demon with first strike and deathtouch. Can only attack alone and cannot be blocked except by one or more creatures. If Master of Cruelties attacks and is unblocked, the defending player's life total becomes one, setting up an immediate elimination.
+Karmic Guide :: power 2 flying Angel that returns ANY creature card from your graveyard to the battlefield upon entering. Reanimating Karmic Guide with Terra bypasses the power 3 restriction, allowing Karmic Guide to bring back Aurelia, the Warleader or Sun Titan.
+Gray Merchant of Asphodel :: power 2 Zombie that enters the battlefield and forces each opponent to lose life equal to your devotion to black while gaining you that much life.
+Priest of Fell Rites :: power 2 creature that pays {T}, sacrifices itself, and loses three life to reanimate any creature card from your graveyard, with unearth {2}{B}.
+Loran of the Third Path :: power 2 creature destroying target artifact or enchantment on entry.
+Accursed Marauder :: power 2 creature forcing each player to sacrifice a nontoken creature.
 
-# High-Impact Engines and Support
-Lightning Greaves :: premier support piece providing board presence, ramp, or recursion
-Swiftfoot Boots :: premier support piece providing board presence, ramp, or recursion
+# Graveyard stocking and haste enablers
+Anger :: gives all creatures you control haste while in your graveyard as long as you control a Mountain. Pitch it via Trance or looting to attack immediately with Terra and reanimated creatures.
+Buried Alive :: searches three creature cards (e.g., Delney, Master of Cruelties, Anger, or Karmic Guide) directly into your graveyard for three mana.
+Entomb :: instant-speed one-mana search putting any reanimation target into your graveyard.
+Stitcher's Supplier :: mills three cards on entry and three on death to fuel Terra's recursion targets.
+Faithless Looting :: draws two cards and discards two, filtering hands while putting large recursion targets into the graveyard.
+Ripples of Undeath :: surveils two on upkeep and pays one mana and life to draw a card while loading the graveyard.
 
-# Game Changers and Interaction
-Smothering Tithe :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Teferi's Protection :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Demonic Tutor :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Path to Exile :: efficient interaction and acceleration keeping the table in check
-Arcane Signet :: efficient interaction and acceleration keeping the table in check
-Sol Ring :: efficient interaction and acceleration keeping the table in check
+# Late-game bombs and combat multipliers (Turn 6+)
+Aurelia, the Warleader :: attacks to untap all creatures and grant an additional combat phase, allowing Terra to attack, fly, and trigger reanimation a second time in the same turn.
+Sun Titan :: enters and attacks to return any permanent card with mana value three or less from your graveyard to the battlefield.
+Rise of the Dark Realms :: puts all creature cards from all graveyards onto the battlefield under your control.
+Ruinous Ultimatum :: asymmetric seven-mana board wipe that destroys all nonland permanents target opponent controls.
+
+# Tutors, interaction, and opening hands
+Demonic Tutor :: finds Buried Alive, Delney, or protection.
+Smothering Tithe :: generates massive Treasure reserves off opposing card draws to easily fund Terra's {2} reanimation cost.
+Teferi's Protection :: phases out all your permanents in response to graveyard hate or board wipes.
+Deflecting Swat :: zero-mana redirection spell while controlling Terra to protect her during combat.
+Deadly Rollick :: free creature exile while controlling your commander.
+
+Keep opening hands with two to three lands, early mana rocks (Sol Ring, Signets, Talismans), and a self-mill or discard enabler (Faithless Looting, Stitcher's Supplier, Ripples of Undeath). Cast Terra on turn three, trigger Trance to mill and take flight on turn four, and spend two mana to reanimate Delney, Karmic Guide, or Master of Cruelties. Close out games with Aurelia extra combats or Rise of the Dark Realms on Turn 6 or later.
+House rules apply: infinite combo loops and compact wins are restricted to Turn 6 or later. Earlier turns focus on establishing board presence, graveyard stocking, and combat recursion.

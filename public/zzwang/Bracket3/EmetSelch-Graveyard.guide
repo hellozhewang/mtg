@@ -1,24 +1,46 @@
-The key to piloting Emet-Selch, Unsundered is understanding its core engine: Emet-Selch filters hands on enter and attack. With 14 cards in your graveyard, he transforms into Hades, Sorcerer of Eld, allowing you to cast any card from your graveyard during your turn with total freedom.
-This is a Bracket 3 build running three Game Changers: Rhystic Study, Cyclonic Rift, Demonic Tutor. It contains zero mass land denial and focuses on high-synergy board development, interactive answers, and an inevitable endgame clock.
+Transform Emet-Selch into Hades by filling the graveyard to fourteen cards, then leverage his Yawgmoth's Will engine to recast spells, cheat colossal threats onto the battlefield, or close out games through combo redundancy.
 
-# Commander and Core Synergy
-Emet-Selch, Unsundered :: primary commander driving the deck's core strategy
-Mesmeric Orb :: critical engine card maximizing commander synergy and card advantage
-Frantic Search :: critical engine card maximizing commander synergy and card advantage
-Windfall :: critical engine card maximizing commander synergy and card advantage
-An Offer You Can't Refuse :: critical engine card maximizing commander synergy and card advantage
-Counterspell :: critical engine card maximizing commander synergy and card advantage
+# Transform into Hades, Sorcerer of Eld
+Emet-Selch, Unsundered :: loots on entry and on attack. His transformation triggers at the beginning of your upkeep if you have fourteen or more cards in your graveyard. Hades allows you to play cards from your graveyard during your turn. Note Hades's replacement effect: if any card or token would be put into your graveyard from anywhere, it is exiled instead. Plan your recursion sequences accordingly.
+Hedron Crab :: mills three cards whenever a land enters under your control. Target yourself in the early turns to rapidly hit the fourteen-card threshold for transformation.
+Stitcher's Supplier :: mills three cards on entry and three cards upon dying. Excellent cheap sacrifice fodder for Dread Return or Victimize.
+Mesmeric Orb :: triggers whenever any permanent untaps, milling one card per permanent. Rapidly stockpiles your graveyard while disrupting opponents' library setups.
+Ripples of Undeath :: surveils two on upkeep and lets you pay one life and one mana to put one into your hand while the other fills the graveyard.
+Windfall :: forces each player to discard and draw equal to the greatest number discarded. Discarding a hand of high-cost reanimation targets into a loaded graveyard often reaches the fourteen-card requirement in a single cast.
+Otherworldly Gaze :: surveils three cards for a single blue mana at instant speed, with flashback to repeat the process from the graveyard.
+Thought Scour :: cantrips for one mana while putting the top two cards of target player's library into the graveyard.
+Consider :: surveils one before drawing, letting you pitch reanimation targets into the graveyard directly.
 
-# High-Impact Engines and Support
-Drown in the Loch :: premier support piece providing board presence, ramp, or recursion
-Toxic Deluge :: premier support piece providing board presence, ramp, or recursion
-Reanimate :: premier support piece providing board presence, ramp, or recursion
-Animate Dead :: premier support piece providing board presence, ramp, or recursion
-Living Death :: premier support piece providing board presence, ramp, or recursion
+# Reanimation targets and recursion engines
+Hoarding Broodlord :: convokes out easily and tutors any card to exile with permission to play it using convoke. Find Saw in Half, cast it targeting Broodlord to tutor two more combo pieces, or fetch Living Death to swing the game.
+Archon of Cruelty :: entry and attack triggers force target opponent to sacrifice a creature or planeswalker, discard a card, and lose three life while you gain three life and draw a card.
+Toxrill, the Corrosive :: places slime counters on all opposing creatures at each end step, shrinking them and creating 1/1 Slug tokens when they die.
+Vilis, Broker of Blood :: draws cards whenever you lose life. Reanimating Vilis draws eight cards immediately from the life loss of Reanimate.
+Massacre Wurm :: gives all opposing creatures -2/-2 on entry and drains two life per creature death, devastating token and wide creature boards.
+Hullbreaker Horror :: cannot be countered and bounces spells or nonland permanents whenever you cast any spell. Combined with cheap mana rocks or graveyard casts from Hades, it locks down opponents entirely.
+Displacer Kitten :: blinks nonland permanents whenever you cast a noncreature spell, resetting Broodlord for additional searches or blinking Archon for repeated drains.
+Reanimate :: the premier one-mana recursion spell. Weigh the life cost against your life total before targeting large demons.
+Animate Dead :: brings back any creature with a minor -1/-0 penalty. Vulnerable to enchantment removal.
+Necromancy :: instant-speed reanimation when cast with flash, sacrificing the creature at end step if cast that way.
+Victimize :: sacrifices an expendable creature like Stitcher's Supplier or a Slug token to return two creatures tapped from your graveyard.
+Dread Return :: reanimates for four mana or for a flashback cost of sacrificing three creatures, letting you recur key pieces even after being fully tapped out.
 
-# Game Changers and Interaction
-Rhystic Study :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Cyclonic Rift :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Demonic Tutor :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Arcane Signet :: efficient interaction and acceleration keeping the table in check
-Sol Ring :: efficient interaction and acceleration keeping the table in check
+# Dedicated win conditions (Turn 6+)
+Bloodchief Ascension + Mindcrank :: with three quest counters on Ascension, any card put into an opponent's graveyard deals two damage to them, which triggers Mindcrank to mill two cards. This creates an infinite mill and drain loop that eliminates the table.
+Demonic Consultation + Laboratory Maniac :: name a card not in your library to exile your entire deck, then draw a card to win via Lab Maniac.
+Tainted Pact + Jace, Wielder of Mysteries :: every land in the deck has a distinct name (including separate snow and non-snow basics), allowing Tainted Pact to exile your entire library into an empty-library win with Jace's +1 ability.
+Living Death :: wipes all creatures on the battlefield and returns every creature in your graveyard at once, creating an unanswerable board state.
+
+# Tutors, interaction, and protection
+Demonic Tutor :: unrestricted tutor to assemble the missing combo piece, a board wipe, or reanimation spell.
+Entomb :: instant-speed setup putting any reanimation target directly into your graveyard for a single black mana.
+Buried Alive :: searches up to three creature cards into your graveyard, perfectly setting up Victimize or Living Death.
+Cyclonic Rift :: asymmetric board wipe that resets all nonland permanents you don't control.
+Mana Drain :: counters any spell and converts its mana value into colorless mana on your next main phase.
+Force of Negation :: free counterspell against noncreature spells on opponents' turns by exiling a blue card from hand.
+Deadly Rollick :: free creature exile while controlling Emet-Selch.
+Toxic Deluge :: efficient board wipe that answers indestructible threats by paying life.
+
+# Opening hands and sequencing
+Keep hands with two to three mana sources, early self-mill or card selection (Hedron Crab, Stitcher's Supplier, Consider), and interaction. Avoid keeping hands full of high-cost reanimation targets without a discard outlet or entomb effect. In the early game, cast Emet-Selch to begin looting and chip away at the fourteen-card threshold. Once Hades is active, prioritize establishing protection before initiating combo loops.
+House rules apply: infinite combo loops and compact wins are restricted to Turn 6 or later. Earlier turns focus on establishing board presence, card advantage, and graveyard setup.

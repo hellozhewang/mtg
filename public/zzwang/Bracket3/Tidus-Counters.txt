@@ -13,6 +13,7 @@
 1 Chocobo Knights
 1 Command Tower
 1 Counterspell
+1 Crystalline Crawler
 1 Cyclonic Rift
 1 Damning Verdict
 1 Danny Pink
@@ -60,7 +61,6 @@
 1 Path to Exile
 2 Plains
 1 Pollywog Prodigy
-1 Protection Magic
 1 Rejuvenating Springs
 1 Resourceful Defense
 1 Rhystic Study
@@ -70,6 +70,7 @@
 1 Sea of Clouds
 1 Shelinda, Yevon Acolyte
 1 Sol Ring
+1 Sovereign Okinec Ahau
 1 Spara's Headquarters
 1 Sphere Grid
 1 Sunpetal Grove
@@ -82,7 +83,6 @@
 1 The Great Henge
 1 The Ozolith
 1 Three Visits
-1 Tromell, Seymour's Butler
 1 Tropical Island
 1 Tundra
 1 Verdant Catacombs

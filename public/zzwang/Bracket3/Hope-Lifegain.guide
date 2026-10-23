@@ -1,28 +1,40 @@
-The key to piloting Hope Estheim is understanding its core engine: Hope Estheim gains life through Soul Sisters and defensive enchantments, translating every point of life gained into mill against all opponents at end step. Pillowfort pieces protect your life total while Aetherflux Reservoir provides an alternate burst finisher.
-This is a Bracket 3 build running three Game Changers: Rhystic Study, Smothering Tithe, Cyclonic Rift. It contains zero mass land denial and focuses on high-synergy board development, interactive answers, and an inevitable endgame clock.
+Gain incremental and burst life to convert every point of healing into library mill via Hope Estheim's end step ability, supported by soul-sisters, life-doublers, and the Heliod-Ballista combo finish.
 
-# Commander and Core Synergy
-Hope Estheim :: primary commander driving the deck's core strategy
-Aetherflux Reservoir :: critical engine card maximizing commander synergy and card advantage
-Archangel of Thune :: critical engine card maximizing commander synergy and card advantage
-Soul Warden :: critical engine card maximizing commander synergy and card advantage
-Soul's Attendant :: critical engine card maximizing commander synergy and card advantage
-Suture Priest :: critical engine card maximizing commander synergy and card advantage
+# Convert life into library exhaustion
+Hope Estheim :: possesses lifelink and forces each opponent to mill cards equal to the total life you gained this turn at the beginning of your end step. Life gained on opponents' turns does NOT count for your end step mill; maximize healing during your own turn.
+Beacon of Immortality :: doubles your life total at instant speed. If you have 40 life, casting Beacon gains 40 life and immediately triggers Hope to mill 40 cards from each opponent on your end step.
+Bruvac the Grandiloquent :: doubles all cards milled by opponents. Combined with Beacon of Immortality or burst lifegain, opponents are forced to mill their entire libraries in a single turn.
+Alhammarret's Archive :: doubles all life you gain and doubles all card draws except the first one in your draw step.
+Boon Reflection :: doubles all life gained from any source, supercharging Hope's end step mill count.
+Rhox Faithmender :: doubles life gained while providing a resilient lifelink blocker.
+Congregate :: gains four life for each creature on the battlefield at instant speed, punishing token strategies and converting wide opposing boards into massive mill numbers.
+Riot Control :: prevents all combat damage that would be dealt to you this turn while gaining one life per creature opponents control.
 
-# High-Impact Engines and Support
-Authority of the Consuls :: premier support piece providing board presence, ramp, or recursion
-Ghostly Prison :: premier support piece providing board presence, ramp, or recursion
-Propaganda :: premier support piece providing board presence, ramp, or recursion
-Heliod, Sun-Crowned :: premier support piece providing board presence, ramp, or recursion
-Drogskol Reaver :: premier support piece providing board presence, ramp, or recursion
+# Incidental soul-sister lifegain engines
+Soul Warden :: gains one life whenever any creature enters the battlefield.
+Soul's Attendant :: identical soul-sister trigger that activates whenever another creature enters.
+Auriok Champion :: possesses protection from black and red while gaining life on any creature entering.
+Suture Priest :: gains life when your creatures enter and drains opposing life when opposing creatures enter.
+Authority of the Consuls :: enters for one mana, taps opposing creatures as they enter, and gains life on each opposing creature entry.
+Guide of Souls :: gains life and produces energy on creature entries, eventually granting flying and +1/+1 counters.
+Delney, Streetwise Lookout :: doubles all triggered abilities of creatures you control with power two or less, doubling triggers from Soul Warden, Soul's Attendant, Auriok Champion, Suture Priest, Guide of Souls, Esper Sentinel, and Archivist of Oghma.
+Drogskol Reaver :: draws a card whenever you gain life from any source. With lifelink and double strike, each hit draws two cards.
+Well of Lost Dreams :: lets you pay {X} whenever you gain X life to draw X cards, translating burst lifegain into full hand refills.
+Voice of the Blessed :: grows with +1/+1 counters on each lifegain event, eventually gaining flying, vigilance, and indestructible.
 
-# Game Changers and Interaction
-Rhystic Study :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Smothering Tithe :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Cyclonic Rift :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Swords to Plowshares :: efficient interaction and acceleration keeping the table in check
-Path to Exile :: efficient interaction and acceleration keeping the table in check
-Counterspell :: efficient interaction and acceleration keeping the table in check
-Dovin's Veto :: efficient interaction and acceleration keeping the table in check
-Arcane Signet :: efficient interaction and acceleration keeping the table in check
-Sol Ring :: efficient interaction and acceleration keeping the table in check
+# Dedicated win lines (Turn 6+)
+Heliod, Sun-Crowned + Walking Ballista :: with Heliod on the battlefield, cast Walking Ballista for {4} (entering with two +1/+1 counters). Pay {1}{W} with Heliod to grant Ballista lifelink until end of turn. Remove a +1/+1 counter from Ballista to deal one damage to any target; lifelink gains one life, which triggers Heliod to place a +1/+1 counter back onto Ballista. Repeat for infinite damage and infinite life gain, which also triggers Hope to mill out all opponents.
+Aetherflux Reservoir :: rewards spellcasting with compounding life gain and lets you pay 50 life to deal 50 damage to eliminate an opponent.
+Felidar Sovereign :: wins the game at your upkeep if your life total is 40 or greater.
+Ajani, Strength of the Pride :: gains life and can exile itself at 15 life above your starting total to exile all opposing creatures and artifacts.
+
+# Interaction, protection, and opening hands
+Cyclonic Rift :: premier blue asymmetric reset to clear opposing boards before combat.
+Smothering Tithe :: taxes opposing draws with Treasures to fund large spells like Beacon of Immortality or Sphinx's Revelation.
+Rhystic Study :: continuous card draw engine taxing opposing spells.
+Grand Abolisher :: protects your turn from counterspells and instant-speed interaction while assembling combo lines.
+Flawless Maneuver :: zero-mana indestructible board protection while controlling Hope.
+Mana Drain :: counters opposing threats and channels their mana into massive lifegain spells.
+
+Keep opening hands with two to three lands, early soul-sisters or cheap ramp (Sol Ring, Signets), and card draw or interaction. Deploy soul-sisters early to gain incidental life from all players' creature plays, cast Hope on turn two or three, and build toward a game-ending Beacon of Immortality, Bruvac sequence, or Heliod-Ballista loop.
+House rules apply: infinite combo loops and compact wins are restricted to Turn 6 or later. Earlier turns focus on establishing board presence, card advantage, and lifegain engines.

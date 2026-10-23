@@ -33,6 +33,7 @@
 1 Grand Abolisher
 1 Gyre Sage
 1 Hallowed Fountain
+1 Hangarback Walker
 1 Hardened Scales
 1 Herald of Secret Streams
 1 Heroic Intervention
@@ -86,7 +87,6 @@
 1 Verdant Catacombs
 1 Voice of Victory
 1 Walking Ballista
-1 Wan Shi Tong, Librarian
 1 Windswept Heath
 1 Wooded Foothills
 1 Yavimaya, Cradle of Growth

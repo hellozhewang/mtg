@@ -8,6 +8,7 @@
 1 Bayou
 1 Beast Within
 1 Birds of Paradise
+1 Blood Artist
 1 Bojuka Bog
 1 Boseiju, Who Endures
 1 Branching Evolution
@@ -36,7 +37,6 @@
 1 Heroic Intervention
 1 High Market
 1 Hollowmurk Siege
-1 Host of the Hereafter
 1 Incubation Druid
 1 Innkeeper's Talent
 1 Inspiring Call
@@ -47,7 +47,6 @@
 1 Llanowar Wastes
 1 Maester Seymour
 1 Michelangelo, Weirdness to 11
-1 Mona Lisa, Science Geek
 1 Nature's Lore
 1 Ouroboroid
 1 Overgrown Tomb
@@ -85,5 +84,6 @@
 1 Wastewood Verge
 1 Watchful Radstag
 1 Winding Constrictor
+1 Woodfall Primus
 1 Woodland Cemetery
 1 Yavimaya, Cradle of Growth

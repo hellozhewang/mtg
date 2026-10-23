@@ -1,24 +1,28 @@
-The key to piloting Celes, Rune Knight is understanding its core engine: Celes discards and draws on entry, and buffs your entire team with +1/+1 counters whenever creatures enter from or are cast from a graveyard, synergizing with reanimation spells and recursive creatures.
-This is a Bracket 3 build running three Game Changers: Smothering Tithe, Demonic Tutor, Jeska's Will. It contains zero mass land denial and focuses on high-synergy board development, interactive answers, and an inevitable endgame clock.
+Filter hands through Celes's entry looting, buff your entire board with +1/+1 counters whenever creatures enter from the graveyard, and close out games with Abdel flicker loops or persist machine guns.
 
-# Commander and Core Synergy
-Celes, Rune Knight :: primary commander driving the deck's core strategy
-Lurrus of the Dream-Den :: critical engine card maximizing commander synergy and card advantage
-Sun Titan :: critical engine card maximizing commander synergy and card advantage
-Karmic Guide :: critical engine card maximizing commander synergy and card advantage
-Reanimate :: critical engine card maximizing commander synergy and card advantage
-Animate Dead :: critical engine card maximizing commander synergy and card advantage
+# Hand sculpting and graveyard entry counter buffs
+Celes, Rune Knight :: when Celes enters the battlefield, discard any number of cards, then draw that many cards plus one. Whenever one or more other creatures you control enter, if one or more entered from a graveyard or was cast from a graveyard, put a +1/+1 counter on each creature you control.
+Squee, Goblin Nabob :: returns to your hand from the graveyard at the beginning of your upkeep, providing free, reusable discard fodder for Celes's entry ability every turn.
+Ephemerate :: flickers Celes for a single white mana to discard unneeded cards and draw fresh resources with rebound on the following turn.
+Cloudshift :: one-mana instant flickering Celes or a reanimated creature to reset triggers or protect them from targeted removal.
+Gravecrawler :: costs {B} to cast directly from your graveyard as long as you control a Zombie, triggering Celes's board-wide +1/+1 counter buff on every cast.
 
-# High-Impact Engines and Support
-Faithless Looting :: premier support piece providing board presence, ramp, or recursion
-Boros Charm :: premier support piece providing board presence, ramp, or recursion
-Blasphemous Act :: premier support piece providing board presence, ramp, or recursion
-Swords to Plowshares :: premier support piece providing board presence, ramp, or recursion
-Anguished Unmaking :: premier support piece providing board presence, ramp, or recursion
+# Dedicated combo win lines (Turn 6+)
+Abdel Adrian, Gorion's Ward + Animate Dead :: with Abdel Adrian in your graveyard, cast Animate Dead targeting Abdel. When Abdel enters, his exile trigger targets Animate Dead. Exiling Animate Dead forces Abdel to be sacrificed. When Abdel leaves the battlefield, his return trigger brings Animate Dead back to the battlefield, targeting Abdel again. Each iteration creates a 1/1 white Soldier token and counts as a creature entering from the graveyard, triggering Celes to place infinite +1/+1 counters across your entire army!
+Abdel Adrian, Gorion's Ward + Necromancy :: operates identically to the Animate Dead loop at instant speed.
+Murderous Redcap + Goblin Bombardment + Celes, Rune Knight :: sacrifice Murderous Redcap to Goblin Bombardment to deal one damage to any target. Persist returns Redcap from the graveyard with a -1/-1 counter. Because Redcap entered from the graveyard, Celes triggers and puts a +1/+1 counter on each creature you control, including Redcap. The +1/+1 counter and -1/-1 counter cancel out via state-based actions, resetting persist. Repeat for infinite damage to defeat all opponents.
+Putrid Goblin + Phyrexian Altar + Celes, Rune Knight :: persist loop functioning identically; generates infinite colored mana and infinite +1/+1 counters on your team.
+Dualcaster Mage + Twinflame :: cast Twinflame targeting any creature you control, hold priority, and flash in Dualcaster Mage to copy Twinflame targeting Dualcaster. Repeat for infinite hasty 2/2 attackers.
+Dualcaster Mage + Molten Duplication :: redundant two-mana copy combo.
 
-# Game Changers and Interaction
-Smothering Tithe :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Demonic Tutor :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Jeska's Will :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Arcane Signet :: efficient interaction and acceleration keeping the table in check
-Sol Ring :: efficient interaction and acceleration keeping the table in check
+# Tutors, interaction, and protection
+Demonic Tutor :: unrestricted tutor to assemble Abdel Adrian, an Altar, or protection.
+Jeska's Will :: explosive red ritual and impulsive card draw.
+Smothering Tithe :: taxes opposing card draws to accumulate massive Treasure reserves.
+Tainted Pact :: every land in the deck has a completely distinct name (utilizing separate normal and snow-covered basics), allowing Tainted Pact to tutor any card without risk of fizzling.
+Grand Abolisher :: silences all opponent interaction during your turn to guarantee uninterrupted combo execution.
+Silence :: one-mana instant preventing opponents from casting spells on your winning turn.
+Deflecting Swat :: zero-mana redirection spell while controlling Celes.
+
+Keep opening hands with two to three lands, early mana acceleration (Sol Ring, Dark Ritual, Talismans), and card draw or discard outlets (Faithless Looting, Squee, Goblin Nabob). Cast Celes on turn three to sculpt your hand, discard large threats or combo pieces into the graveyard, and execute an Abdel Adrian loop, Persist loop, or Dualcaster line on Turn 6 or later.
+House rules apply: infinite combo loops and compact wins are restricted to Turn 6 or later. Earlier turns focus on establishing board presence, hand sculpting, and graveyard setup.

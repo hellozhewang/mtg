@@ -46,20 +46,24 @@
 1 Lizard Blades
 1 Mithril Coat
 1 Mjölnir, Hammer of Thor
+1 Moraug, Fury of Akoum
 1 Mother of Runes
-9 Mountain
+7 Mountain
 1 Needleverge Pathway
 1 Open the Armory
 1 Path to Exile
-9 Plains
+7 Plains
 1 Plateau
+1 Port Razer
 1 Professional Face-Breaker
 1 Puresteel Paladin
 1 Ragavan, Nimble Pilferer
+1 Roaming Throne
 1 Rogue's Passage
 1 Rugged Prairie
 1 Sacred Foundry
 1 Seize the Day
+1 Shadowspear
 1 Sigarda's Aid
 1 Slayers' Stronghold
 1 Smothering Tithe

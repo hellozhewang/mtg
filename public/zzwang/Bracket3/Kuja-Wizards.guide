@@ -1,24 +1,33 @@
-The key to piloting Kuja, Genome Sorcerer is understanding its core engine: Kuja generates Wizard tokens at end step that ping every opponent whenever you cast a noncreature spell. Once you control four Wizards, Kuja transforms into Trance Kuja, doubling all damage dealt by Wizards to burn out the table in rapid storm turns.
-This is a Bracket 3 build running three Game Changers: Demonic Tutor, Jeska's Will, Bolas's Citadel. It contains zero mass land denial and focuses on high-synergy board development, interactive answers, and an inevitable endgame clock.
+Assemble a coven of black Wizard tokens that burn opponents on every noncreature spell, transform Kuja into Trance Kuja to double all Wizard damage, chain spells via Bolas's Citadel, and finish with the Dualcaster-Twinflame combo.
 
-# Commander and Core Synergy
-Kuja, Genome Sorcerer :: primary commander driving the deck's core strategy
-Harmonic Prodigy :: critical engine card maximizing commander synergy and card advantage
-Guttersnipe :: critical engine card maximizing commander synergy and card advantage
-Electrostatic Field :: critical engine card maximizing commander synergy and card advantage
-Erebos's Intervention :: critical engine card maximizing commander synergy and card advantage
-Blasphemous Act :: critical engine card maximizing commander synergy and card advantage
+# Wizard token creation and transforming into Trance Kuja
+Kuja, Genome Sorcerer :: creates a tapped 0/1 black Wizard creature token at the beginning of your end step with "Whenever you cast a noncreature spell, this token deals 1 damage to each opponent." Then, if you control four or more Wizards, Kuja transforms into Trance Kuja, Fate Defied. Trance Kuja's static ability Flare Star dictates that if a Wizard you control would deal damage to a permanent or player, it deals double that damage instead, turning each 0/1 Wizard token into a 2-damage burn cannon per spell.
+Harmonic Prodigy :: possesses prowess and states that if an ability of another Shaman or Wizard you control triggers, that ability triggers an additional time. This doubles Kuja's end step token generation (yielding two Wizard tokens per turn) and doubles each token's noncreature damage trigger.
+Coruscation Mage :: Wizard with offspring that deals one damage to each opponent whenever you cast a noncreature spell.
+Guttersnipe :: deals two damage to each opponent on each instant or sorcery cast; under Trance Kuja, Guttersnipe deals four damage per spell.
+Electrostatic Field :: one-mana 0/4 defender that deals one damage to each opponent on each instant or sorcery.
+Roaming Throne :: choose Wizard on entry to double all triggered abilities of Wizards, doubling Kuja's token generation and all burn triggers.
 
-# High-Impact Engines and Support
-Feed the Swarm :: premier support piece providing board presence, ramp, or recursion
-Night's Whisper :: premier support piece providing board presence, ramp, or recursion
-Sign in Blood :: premier support piece providing board presence, ramp, or recursion
-Chaos Warp :: premier support piece providing board presence, ramp, or recursion
-Talisman of Indulgence :: premier support piece providing board presence, ramp, or recursion
+# Spellslinger mana and storm acceleration
+Birgi, God of Storytelling :: adds {R} whenever you cast any spell, keeping mana flowing during long cantrip turns.
+Storm-Kiln Artist :: creates a Treasure token whenever you cast or copy an instant or sorcery spell.
+Jeska's Will :: premium ritual adding red mana equal to cards in target opponent's hand and exiling the top three cards to play.
+Mana Geyser :: adds {R} for each tapped land your opponents control, frequently producing 15 to 25 red mana in mid-to-late game turns.
+Bolas's Citadel :: lets you look at the top card of your library and cast spells from the top by paying life equal to their mana values, stringing together long noncreature spell sequences that trigger repeated Wizard burn.
+Mizzix's Mastery :: overloads from your graveyard to cast copies of all instant and sorcery cards in your graveyard for free, triggering massive bursts of noncreature casts.
 
-# Game Changers and Interaction
-Demonic Tutor :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Jeska's Will :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Bolas's Citadel :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Arcane Signet :: efficient interaction and acceleration keeping the table in check
-Sol Ring :: efficient interaction and acceleration keeping the table in check
+# Dedicated combo win lines (Turn 6+)
+Dualcaster Mage + Twinflame :: cast Twinflame targeting any creature you control, leaving priority with Twinflame on the stack. Cast Dualcaster Mage with flash. Dualcaster's entry trigger targets Twinflame, creating a copy of Twinflame that targets Dualcaster Mage. The copy resolves to create a token copy of Dualcaster with haste, which triggers to copy Twinflame again. Repeat for infinite hasty 2/2 Wizards to attack for the win.
+Dualcaster Mage + Molten Duplication :: functions identically to Twinflame; produces infinite hasty creature/artifact tokens while triggering all Wizard noncreature entry and cast synergies.
+Solphim, Mayhem Dominus :: doubles all noncombat damage dealt by red sources you control, stacking with Trance Kuja's damage doubling.
+City on Fire :: triples all damage dealt by sources you control.
+
+# Tutors, interaction, and opening hands
+Demonic Tutor :: finds Bolas's Citadel, Twinflame, or a critical board answer.
+Deflecting Swat :: zero-mana redirection spell while controlling Kuja to protect him from targeted removal.
+Deadly Rollick :: free creature exile while controlling your commander.
+Blasphemous Act :: one-mana board wipe to clear opposing boards before deploying Kuja and your Wizards.
+Vandalblast :: overloads to destroy all opposing artifacts.
+
+Keep opening hands with two to three lands, early acceleration (Sol Ring, Rakdos Signet, Talisman), and cheap noncreature cantrips or rituals (Faithless Looting, Night's Whisper, Deadly Dispute). Deploy Kuja early to start generating Wizard tokens on end steps, transform into Trance Kuja once four Wizards are on board, and unleash a flurry of spells with Bolas's Citadel or the Dualcaster combo on Turn 6 or later.
+House rules apply: infinite combo loops and compact wins are restricted to Turn 6 or later. Earlier turns focus on establishing board presence, Wizard accumulation, and card advantage.

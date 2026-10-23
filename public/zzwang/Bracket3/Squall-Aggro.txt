@@ -28,11 +28,10 @@
 1 Flooded Strand
 1 Giver of Runes
 1 Godless Shrine
-1 Grand Abolisher
+1 Gravecrawler
 1 Isolated Chapel
 1 Jirina, Dauntless General
 1 Karmic Guide
-1 Key to the City
 1 Lightning Greaves
 1 Lotho, Corrupt Shirriff
 1 Lotus Petal
@@ -40,12 +39,10 @@
 1 Marsh Flats
 1 Mask of Memory
 1 Mother of Runes
-1 Mox Opal
 1 Necromancy
 1 Orzhov Signet
 1 Path to Exile
 1 Phyrexian Tower
-1 Plaguecrafter
 6 Plains
 1 Polluted Delta
 1 Ranger-Captain of Eos
@@ -55,6 +52,7 @@
 1 Scrubland
 1 Seal of Cleansing
 1 Selfless Savior
+1 Selfless Spirit
 1 Sephiroth, Fabled SOLDIER
 1 Serra Ascendant
 1 Sevinne's Reclamation
@@ -69,10 +67,12 @@
 1 Stitcher's Supplier
 1 Stoneforge Mystic
 1 Strip Mine
+1 Sublime Archangel
 1 Sun Titan
 7 Swamp
 1 Swiftfoot Boots
 1 Sword of Feast and Famine
+1 Sword of Fire and Ice
 1 Swords to Plowshares
 1 Talisman of Hierarchy
 1 Teferi's Protection

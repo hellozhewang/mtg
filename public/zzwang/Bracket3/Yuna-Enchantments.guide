@@ -1,25 +1,37 @@
-The key to piloting Yuna, Hope of Spira is understanding its core engine: Yuna protects enchantment creatures with trample, lifelink, and ward 2, and reanimates any enchantment from your graveyard to the battlefield every end step, establishing unbreakable board presence and lifegain.
-This is a Bracket 3 build running three Game Changers: Smothering Tithe, Teferi's Protection, Enlightened Tutor. It contains zero mass land denial and focuses on high-synergy board development, interactive answers, and an inevitable endgame clock.
+Recur game-ending enchantments every end step with Yuna, neutralize finality counters via Solemnity, drown opponents in card advantage with enchantresses, and overwhelm with trample, lifelink enchantment armies.
 
-# Commander and Core Synergy
-Yuna, Hope of Spira :: primary commander driving the deck's core strategy
-Sythis, Harvest's Hand :: critical engine card maximizing commander synergy and card advantage
-Sanctum Weaver :: critical engine card maximizing commander synergy and card advantage
-Sterling Grove :: critical engine card maximizing commander synergy and card advantage
-Destiny Spinner :: critical engine card maximizing commander synergy and card advantage
-Eidolon of Blossoms :: critical engine card maximizing commander synergy and card advantage
+# End step enchantment recursion and finality bypass
+Yuna, Hope of Spira :: during your turn, Yuna and enchantment creatures you control have trample, lifelink, and ward {2}. At the beginning of your end step, return up to one target enchantment card from your graveyard to the battlefield with a finality counter on it.
+Solemnity :: prevents counters of any kind from being placed on artifacts, creatures, enchantments, or lands. With Solemnity on the battlefield, enchantments returned via Yuna CANNOT receive finality counters, allowing you to sacrifice and recur enchantments indefinitely.
+Power Conduit :: taps to remove a counter from a permanent you control and put a charge counter on an artifact or a +1/+1 counter on a creature. Strips finality counters off recurring enchantments.
+Nesting Grounds :: pays {1} and taps at sorcery speed to move a counter from target permanent you control onto another permanent. Shift finality counters onto opposing creatures.
+Sterling Grove :: grants shroud to all other enchantments you control and can sacrifice itself for {1} to tutor any enchantment to the top of your library; recur it every end step with Yuna.
+Aura of Silence :: taxes opposing artifacts and enchantments by two mana and can sacrifice itself for zero mana to destroy target artifact or enchantment; recur it repeatedly.
 
-# High-Impact Engines and Support
-Courser of Kruphix :: premier support piece providing board presence, ramp, or recursion
-Jukai Naturalist :: premier support piece providing board presence, ramp, or recursion
-Heroic Intervention :: premier support piece providing board presence, ramp, or recursion
-Swords to Plowshares :: premier support piece providing board presence, ramp, or recursion
-Path to Exile :: premier support piece providing board presence, ramp, or recursion
+# Enchantress card draw engines
+Sythis, Harvest's Hand :: two-mana legendary enchantment creature that gains one life and draws a card whenever you cast an enchantment spell.
+Argothian Enchantress :: shroud creature that draws a card on each enchantment cast.
+Eidolon of Blossoms :: enchantment creature with constellation that draws a card on entry and whenever any enchantment enters under your control.
+Enchantress's Presence :: enchantment that draws a card on each enchantment cast.
+Mesa Enchantress :: draws a card whenever you cast an enchantment spell.
+Satyr Enchanter :: draws a card whenever you cast an enchantment spell.
+Setessan Champion :: enters with constellation to put a +1/+1 counter on itself and draw a card whenever an enchantment enters under your control.
 
-# Game Changers and Interaction
-Smothering Tithe :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Teferi's Protection :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Enlightened Tutor :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Beast Within :: efficient interaction and acceleration keeping the table in check
-Arcane Signet :: efficient interaction and acceleration keeping the table in check
-Sol Ring :: efficient interaction and acceleration keeping the table in check
+# Win conditions and enchantment armies (Turn 6+)
+Hallowed Haunting :: creates a Spirit Cleric token with power and toughness equal to your spirits on creature enchantment casts, and grants flying and vigilance to all creatures once you control seven or more enchantments.
+Sigil of the Empty Throne :: creates a 4/4 white Angel creature token with flying whenever you cast an enchantment spell.
+Nylea's Colossus :: whenever an enchantment enters under your control, double the power and toughness of target creature until end of turn. Stacking multiple triggers on Yuna or an enchantment creature yields exponential trample and lifelink damage.
+Starfield of Nyx :: returns an enchantment from your graveyard to the battlefield on your upkeep and turns non-Aura enchantments into creatures with power and toughness equal to their mana values if you control five or more enchantments.
+Replenish :: returns ALL enchantment cards from your graveyard to the battlefield for four mana, instantly rebuilding an insurmountable board.
+Nyxbloom Ancient :: triples all mana produced by permanents you tap.
+
+# Tutors, interaction, and opening hands
+Enlightened Tutor :: one-mana instant search for any enchantment or artifact to the top of your library.
+Idyllic Tutor :: three-mana sorcery finding any enchantment directly into your hand.
+Greater Auramancy :: grants shroud to all other enchantments and enchanted creatures you control.
+Smothering Tithe :: generates massive Treasure reserves from opposing card draws.
+Teferi's Protection :: phases out all permanents and preserves your life total against board wipes.
+Sphere of Safety :: taxes opposing attacks by {X} mana per attacking creature, where X is the number of enchantments you control.
+
+Keep opening hands with two to three lands, early enchantresses (Sythis, Argothian Enchantress), and low-cost ramp or enchantments (Wild Growth, Utopia Sprawl, Sterling Grove). Cast Yuna on turn four or five once your graveyard holds valuable enchantments, bypass finality counters with Solemnity or Conduit, and leverage trample and lifelink to crush opponents on Turn 6 or later.
+House rules apply: infinite combo loops and compact wins are restricted to Turn 6 or later. Earlier turns focus on establishing board presence, enchantresses, and card advantage.

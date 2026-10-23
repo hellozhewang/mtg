@@ -1,24 +1,37 @@
-The key to piloting Clive, Ifrit's Dominant is understanding its core engine: Clive discards your hand to draw cards equal to your devotion to red on entry, then transforms into Ifrit, Warden of Inferno to fight creatures and generate 8 red mana over two lore chapters before resetting to draw a fresh hand.
-This is a Bracket 3 build running three Game Changers: Jeska's Will, The One Ring, Underworld Breach. It contains zero mass land denial and focuses on high-synergy board development, interactive answers, and an inevitable endgame clock.
+Accumulate heavy red devotion to draw massive hands with Clive, convert discards into lethal burn with Glint-Horn and Brallin, generate explosive mana as Ifrit, and finish games via damage multipliers or the Dualcaster-Twinflame combo.
 
-# Commander and Core Synergy
-Clive, Ifrit's Dominant :: primary commander driving the deck's core strategy
-Fanatic of Mogis :: critical engine card maximizing commander synergy and card advantage
-Purphoros, God of the Forge :: critical engine card maximizing commander synergy and card advantage
-Torbran, Thane of Red Fell :: critical engine card maximizing commander synergy and card advantage
-Neheb, the Eternal :: critical engine card maximizing commander synergy and card advantage
-Nykthos, Shrine to Nyx :: critical engine card maximizing commander synergy and card advantage
+# Devotion card draw and transforming into Ifrit
+Clive, Ifrit's Dominant :: when Clive enters the battlefield, you may discard your hand, then draw cards equal to your devotion to red. For {4}{R}{R} and tapping Clive as a sorcery, exile him and return him transformed as Ifrit, Warden of Inferno. Ifrit's Chapter I fights target creature, while Chapters II and III add {R}{R}{R}{R} each. On Chapter III, exile Ifrit and return it front face up, re-triggering Clive's devotion hand refill.
+Torbran, Thane of Red Fell :: provides three red devotion pips and adds two additional damage to any red damage source you control.
+Fanatic of Mogis :: enters the battlefield and deals damage to each opponent equal to your devotion to red. With high devotion, this deals 10 to 15 direct damage to the table.
+Defiler of Instinct :: lets you pay two life instead of one red mana for red permanent spells while dealing one damage to any target on each red permanent cast.
+Nykthos, Shrine to Nyx :: taps for {2} to add red mana equal to your devotion to red, generating massive mana bursts.
+Nyx Lotus :: enters tapped and taps to add mana of one color equal to your devotion to that color.
+Roaming Throne :: choose Noble or Warrior on entry; doubles triggered abilities of that type, causing Clive to draw double your devotion when he enters.
 
-# High-Impact Engines and Support
-Birgi, God of Storytelling :: premier support piece providing board presence, ramp, or recursion
-Blasphemous Act :: premier support piece providing board presence, ramp, or recursion
-Chaos Warp :: premier support piece providing board presence, ramp, or recursion
-Deflecting Swat :: premier support piece providing board presence, ramp, or recursion
-Ruby Medallion :: premier support piece providing board presence, ramp, or recursion
+# Discard payoffs and burn damage
+Glint-Horn Buccaneer :: deals one damage to each opponent whenever you discard a card. Pitching an eight-card hand to Clive burns each opponent for eight life.
+Brallin, Skyshark Rider :: puts a +1/+1 counter on itself and deals one damage to each opponent whenever you discard a card.
+Surly Badgersaur :: creates Treasures when you discard lands, puts counters on itself when you discard creatures, and fights opposing creatures when you discard noncreature nonlands.
+Terror of the Peaks :: deals damage equal to power whenever any creature enters the battlefield under your control.
+Purphoros, God of the Forge :: indestructible enchantment that deals two damage to each opponent whenever any creature enters.
+Purphoros, Bronze-Blooded :: grants all creatures haste and lets you sneak large red creatures onto the battlefield from hand for {2}{R}.
+Solphim, Mayhem Dominus :: doubles all noncombat damage dealt by red sources you control.
+City on Fire :: triples all damage dealt by sources you control.
+Twinflame Tyrant :: doubles all damage dealt by sources you control to opponents and their permanents.
 
-# Game Changers and Interaction
-Jeska's Will :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-The One Ring :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Underworld Breach :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Arcane Signet :: efficient interaction and acceleration keeping the table in check
-Sol Ring :: efficient interaction and acceleration keeping the table in check
+# Dedicated win lines and combo (Turn 6+)
+Dualcaster Mage + Twinflame :: cast Twinflame targeting any creature you control, leaving priority with Twinflame on the stack. Cast Dualcaster Mage with flash. When Dualcaster enters, target Twinflame with its copy ability. The copy of Twinflame targets Dualcaster Mage, resolving to create a hasty 2/2 token copy with haste. That token's entry trigger copies the original Twinflame again. Repeat for unbounded hasty 2/2 creatures to attack for the win.
+Dualcaster Mage + Molten Duplication :: functions identically to Twinflame; creates unbounded artifact/creature copies with haste.
+Underworld Breach + Jeska's Will + Wheel of Fortune :: cast spells from graveyard using escape; Jeska's Will provides massive red mana and cards while Wheel of Fortune stocks the graveyard with escape fuel to assemble lethal burn or combo pieces.
+Treasonous Ogre :: pays three life for each {R}, converting surplus life into immediate mana to cast Clive or execute combo turns.
+
+# Interaction, ramp, and opening hands
+Jeska's Will :: premium red ritual and card advantage engine scaling off opponents' hands.
+The One Ring :: grants protection from everything upon casting and draws exponential cards each turn.
+Deflecting Swat :: zero-mana redirection spell while controlling Clive to protect him from targeted removal.
+Bolt Bend :: one-mana redirection spell when controlling a creature with power four or greater.
+Blasphemous Act :: one-mana board wipe to clear opposing boards before deploying your commander.
+
+Keep opening hands with two to three lands, early mana acceleration (Sol Ring, Ruby Medallion, rituals), and red devotion permanents. Deploy permanents with dense red pips in the first few turns to establish board presence and devotion, then resolve Clive to refill your hand with six to ten new cards. Protect your board and resolve combo lines or damage multipliers on Turn 6 or later.
+House rules apply: infinite combo loops and compact wins are restricted to Turn 6 or later. Earlier turns focus on establishing board presence, card advantage, and devotion.

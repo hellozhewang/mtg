@@ -1,24 +1,37 @@
-The key to piloting Squall, SeeD Mercenary is understanding its core engine: Squall grants double strike to any creature attacking alone. Whenever Squall connects with combat damage, he recurs any permanent with mana value 3 or less from the graveyard straight to the battlefield, hitting twice with double strike to reanimate two permanents per turn.
-This is a Bracket 3 build running three Game Changers: Smothering Tithe, Teferi's Protection, Demonic Tutor. It contains zero mass land denial and focuses on high-synergy board development, interactive answers, and an inevitable endgame clock.
+Attack alone with Squall to grant him double strike, connecting twice to return two low-cost permanents from your graveyard every combat, backed by Sun Titan recursion and the Soultrader-Gravecrawler combo.
 
-# Commander and Core Synergy
-Squall, SeeD Mercenary :: primary commander driving the deck's core strategy
-Lurrus of the Dream-Den :: critical engine card maximizing commander synergy and card advantage
-Sun Titan :: critical engine card maximizing commander synergy and card advantage
-Serra Ascendant :: critical engine card maximizing commander synergy and card advantage
-Karmic Guide :: critical engine card maximizing commander synergy and card advantage
-Selfless Savior :: critical engine card maximizing commander synergy and card advantage
+# Rough Divide and combat recursion mechanics
+Squall, SeeD Mercenary :: Rough Divide grants double strike to any creature you control that attacks alone until end of turn. Whenever Squall deals combat damage to a player, return target permanent card with mana value three or less from your graveyard to the battlefield. Because double strike deals damage in both first-strike and regular combat damage steps, connecting unblocked returns TWO permanents in a single turn.
+Brotherhood Regalia :: equips for two mana to make Squall unblockable and grant ward {2}, guaranteeing that both combat damage strikes connect unhindered.
+Shadowspear :: provides trample and lifelink while removing hexproof and indestructible from opposing blockers.
+Sword of Feast and Famine :: grants protection from black and green, forces opposing discard, and untaps all your lands twice when attacking alone with double strike.
+Sword of Fire and Ice :: grants protection from red and blue, deals two damage to any target, and draws a card on each strike (drawing two cards and dealing four damage per combat).
+Sublime Archangel :: grants exalted to all creatures you control. With a modest board of four creatures, Squall attacks alone as an 8/7 double strike threat.
 
-# High-Impact Engines and Support
-Swords to Plowshares :: premier support piece providing board presence, ramp, or recursion
-Path to Exile :: premier support piece providing board presence, ramp, or recursion
-Lightning Greaves :: premier support piece providing board presence, ramp, or recursion
-Swiftfoot Boots :: premier support piece providing board presence, ramp, or recursion
-Duelist's Heritage :: premier support piece providing board presence, ramp, or recursion
+# Recurring utility engines (MV 3 or less)
+Accursed Marauder :: forces each player to sacrifice a nontoken creature on entry; recur it with Squall each combat to decimate opposing boards while preserving Squall.
+Cathar Commando :: flash creature that sacrifices itself for one generic mana to destroy target artifact or enchantment; recur it each turn to shatter opposing engines.
+Seal of Cleansing :: enchantment that sits on board and sacrifices itself for zero mana to destroy an artifact or enchantment.
+Selfless Spirit :: flying creature that sacrifices itself to grant all your creatures indestructible until end of turn; recur it every combat to maintain permanent board wipe immunity.
+Selfless Savior :: sacrifices itself to grant target creature you control indestructible until end of turn.
+Boromir, Warden of the Tower :: counters free spells and sacrifices itself to grant indestructible and allow the Ring to tempt you.
+Esper Sentinel :: taxes opposing noncreature spells with card draw.
+Dauthi Voidwalker :: exiles all opposing cards that would enter the graveyard and can sacrifice itself to cast an exiled card for free.
+Lurrus of the Dream-Den :: companion/creature allowing you to cast one permanent spell with mana value two or less from your graveyard each turn.
+Lotho, Corrupt Shirriff :: creates Treasures whenever any player casts their second spell each turn.
 
-# Game Changers and Interaction
-Smothering Tithe :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Teferi's Protection :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Demonic Tutor :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Arcane Signet :: efficient interaction and acceleration keeping the table in check
-Sol Ring :: efficient interaction and acceleration keeping the table in check
+# Dedicated combo finish (Turn 6+)
+Warren Soultrader + Gravecrawler + Blood Artist :: Warren Soultrader is a Zombie. With Blood Artist and Soultrader on the battlefield and Gravecrawler in hand or graveyard, sacrifice Gravecrawler to Soultrader, paying one life to create a Treasure token. Blood Artist triggers to drain target opponent for one life and gain you one life, offsetting the life payment. Spend the Treasure for {B} to cast Gravecrawler from the graveyard using Soultrader's Zombie typing. Repeat for infinite life drain to defeat all opponents.
+Sun Titan :: enters or attacks to return any permanent card with mana value three or less, reinforcing Squall's recursion.
+Karmic Guide :: returns any creature from graveyard to battlefield upon entering, providing an outlet to bring back Sun Titan or large threats.
+
+# Interaction, tutors, and opening hands
+Demonic Tutor :: finds Brotherhood Regalia, an equipment, or a combo piece.
+Buried Alive :: searches three creatures (e.g., Soultrader, Gravecrawler, Blood Artist) directly into your graveyard to set up recursion.
+Smothering Tithe :: generates extensive Treasure acceleration to pay for recasting commanders or large recursion turns.
+Teferi's Protection :: shields your entire board from mass removal or lethal opposing swings.
+Deadly Rollick :: free creature exile while controlling Squall.
+Toxic Deluge :: efficient life-based board sweeper that clears opposing blockers.
+
+Keep opening hands with two to three lands, early ramp (Sol Ring, Signets, Talismans), and an evasive equipment or self-sacrificing utility creature (Selfless Spirit, Cathar Commando, Esper Sentinel). Cast Squall on turn three or four, equip him with protection or evasion, and swing alone to begin generating double recursion advantage every combat. Assemble combo lines or overwhelm with exalted damage on Turn 6 or later.
+House rules apply: infinite combo loops and compact wins are restricted to Turn 6 or later. Earlier turns focus on establishing board presence, card advantage, and combat pressure.

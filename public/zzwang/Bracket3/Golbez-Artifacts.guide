@@ -1,25 +1,36 @@
-The key to piloting Golbez, Crystal Collector is understanding its core engine: Golbez surveils whenever an artifact enters and recurs creature cards to hand at your end step if you have 4+ artifacts. At 8+ artifacts, he drains every opponent for that creature's power, turning recurring high-power artifact creatures into an inevitable clock.
-This is a Bracket 3 build running three Game Changers: Rhystic Study, Cyclonic Rift, Demonic Tutor. It contains zero mass land denial and focuses on high-synergy board development, interactive answers, and an inevitable endgame clock.
+Deploy cheap artifacts to continuously surveil your library, assemble artifact token swarms, and leverage Golbez's end step recursion to drain opponents for massive damage using high-power creatures like Phyrexian Dreadnought.
 
-# Commander and Core Synergy
-Golbez, Crystal Collector :: primary commander driving the deck's core strategy
-Emry, Lurker of the Loch :: critical engine card maximizing commander synergy and card advantage
-Sai, Master Thopterist :: critical engine card maximizing commander synergy and card advantage
-Kappa Cannoneer :: critical engine card maximizing commander synergy and card advantage
-Urza, Lord High Artificer :: critical engine card maximizing commander synergy and card advantage
-Thought Monitor :: critical engine card maximizing commander synergy and card advantage
+# Surveil and end-step drain engine
+Golbez, Crystal Collector :: surveils one whenever an artifact you control enters. At your end step, if you control four or more artifacts, return target creature card from your graveyard to your hand. If you control eight or more artifacts, each opponent loses life equal to that card's power.
+Phyrexian Dreadnought :: one-mana 12/12 that sacrifices itself on entry unless you sacrifice twelve power. Put it into the graveyard via surveil, self-sacrifice, or Entomb; returning it with Golbez drains each opponent for twelve life every turn.
+Metalwork Colossus :: 10/10 with an active cost reduction based on the total mana value of noncreature artifacts you control. Drains for ten life when returned via Golbez.
+Triplicate Titan :: 9/9 flying, trample, vigilance threat that breaks into three 3/3 Golems upon death. Drains nine life when returned via Golbez.
+Wurmcoil Engine :: 6/6 deathtouch and lifelink threat that splits into two 3/3 tokens. Reusable recursion target that drains six life on return.
+Noxious Gearhulk :: destroys target creature on entry and gains life equal to its toughness while draining five life on end step return.
 
-# High-Impact Engines and Support
-Baleful Strix :: premier support piece providing board presence, ramp, or recursion
-Cyberdrive Awakener :: premier support piece providing board presence, ramp, or recursion
-Sharding Sphinx :: premier support piece providing board presence, ramp, or recursion
-Noxious Gearhulk :: premier support piece providing board presence, ramp, or recursion
-Phyrexian Metamorph :: premier support piece providing board presence, ramp, or recursion
+# Artifact token producers and cost reduction
+Sai, Master Thopterist :: creates a 1/1 flying Thopter token whenever you cast an artifact spell, triggering Golbez's surveil and rapidly achieving the eight-artifact drain threshold.
+Sharding Sphinx :: creates a 1/1 Thopter token whenever an artifact creature you control deals combat damage to a player. These tokens trigger surveil and double your artifact count.
+Etherium Sculptor :: reduces the mana cost of artifact spells by one generic mana.
+Foundry Inspector :: secondary cost reducer that enables multi-spell storm turns with Sensei's Divining Top and Mystic Forge.
+Cloud Key :: names artifacts to provide unconditional cost reduction across all artifact cards.
+Forensic Gadgeteer :: creates Clue tokens whenever you cast artifact spells and reduces artifact activated ability costs by one mana.
 
-# Game Changers and Interaction
-Rhystic Study :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Cyclonic Rift :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-Demonic Tutor :: high-power Game Changer providing irreplaceable tempo, draw, or board control
-An Offer You Can't Refuse :: efficient interaction and acceleration keeping the table in check
-Arcane Signet :: efficient interaction and acceleration keeping the table in check
-Sol Ring :: efficient interaction and acceleration keeping the table in check
+# Combat finishes and infinite turns (Turn 6+)
+Cyberdrive Awakener :: animates all noncreature artifacts into 4/4 flying creatures until end of turn, converting an army of Clues, Thopters, and mana rocks into lethal evasive damage.
+Kappa Cannoneer :: enters with improvise and ward 4, gaining +1/+1 counters and becoming unblockable whenever artifacts enter your battlefield.
+Tezzeret, Master of the Bridge :: grants affinity for artifacts to creature and planeswalker spells; his +2 ability drains each opponent and gains life equal to the number of artifacts you control.
+Time Sieve + Sai, Master Thopterist :: sacrifice five Thopter tokens to Time Sieve to take an extra turn. With Sai or Sharding Sphinx generating five or more artifact tokens per turn cycle, this generates unbounded extra turns.
+Aetherflux Reservoir + Sensei's Divining Top + Mystic Forge :: with cost reduction reducing Top to zero mana, tap Top to draw and recast it from top of library with Forge, accumulating massive life gain to eliminate opponents with 50-damage lasers.
+
+# Tutors, interaction, and protection
+Demonic Tutor :: finds Phyrexian Dreadnought, Time Sieve, or Cyberdrive Awakener.
+Transmute Artifact :: sacrifices a cheap artifact token to tutor any artifact directly into play.
+Entomb :: puts Phyrexian Dreadnought or Triplicate Titan directly into your graveyard to enable immediate end-step drain triggers.
+Cyclonic Rift :: clears opposing blockers and disruptive permanents before initiating an alpha strike.
+Mana Drain :: counters opposing key spells and converts their mana value into acceleration for high-cost artifacts.
+Deadly Rollick :: free creature exile while controlling Golbez.
+
+# Opening hands and sequencing
+Look for opening hands with two to three lands, early mana rocks (Sol Ring, Signets, Talismans), and cheap artifacts or surveil enablers. Cast Golbez on turn two to start sculpting your draws with surveil on every artifact entry. Aim to hit four artifacts early for creature recursion, then push to eight artifacts to turn your graveyard into a repeating burn engine. Save combo finishes for Turn 6 or later.
+House rules apply: infinite combo loops and compact wins are restricted to Turn 6 or later. Earlier turns focus on establishing board presence, card advantage, and graveyard setup.

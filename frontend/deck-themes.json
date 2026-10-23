@@ -89,6 +89,7 @@
   "ratdos/TeveshTana-Aristocrats": ["gowide", "value"],
   "ratdos/TheMaster-Myriad": ["gowide", "value", "aggro"],
   "ratdos/Tivit-Politics": ["gowide", "value", "control"],
+  "ratdos/Ultima-Ramp": ["value", "aggro", "combo"],
   "ratdos/UrSphinx-Sphinxes": ["aggro", "value", "graveyard"],
   "ratdos/Vaevictis-Topdeck": ["aggro", "value", "combo"],
   "ratdos/VirtusGorm-Ambush": ["aggro", "value"],

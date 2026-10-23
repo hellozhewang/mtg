@@ -1,0 +1,69 @@
+Ultima is not merely an evasive land-hosing attacker; it is a mana doubler in the command zone. Its static ability adds an additional {C} whenever you tap a land for {C}. Because every single land in this pure colorless ninety-nine produces colorless mana, resolving Ultima turns five lands into ten mana, allowing you to cast colossal Eldrazi titans, activate Planar Bridge, or execute infinite mana finishes turns ahead of normal timing. Meanwhile, Ultima's attack trigger permanently neutralizes opponents' most threatening utility lands (Cabal Coffers, Gaea's Cradle, Nykthos) and color-fixing by converting them into colorless-only Wastes.
+Bracket 3: the Game Changer cap is three, filled by Ancient Tomb, Mishra's Workshop, and The One Ring. No mass land denial. Infinite mana combos (Basalt Monolith + Forsaken Monument / Rings of Brighthearth into Walking Ballista) wait until turn 6 under house rules.
+
+# The engine: Ultima's double mana
+Ultima, Origin of Oblivion :: a 4/4 flying God that doubles the mana of all your lands whenever tapped for {C}, and attacks to put a blight counter on target land, permanently stripping all types and abilities to make it a colorless mana tap.
+Candelabra of Tawnos :: pay {X} and tap to untap X target lands. Because Ultima causes each land to produce two mana, untapping your lands generates massive net mana bursts.
+Deserted Temple :: pays {1} and taps to untap target land, untapping a high-yield land like Ancient Tomb, Eldrazi Temple, or Shrine of the Forsaken Gods for extra mana.
+Forsaken Monument :: adds an additional {C} whenever you tap ANY permanent for {C}, stacking with Ultima to turn ordinary lands into triple-mana powerhouses while buffing colorless creatures by +2/+2.
+Omnath, Locus of the Void :: colorless creature whose unspent mana never empties across phases and turns, turning your massive mana surpluses into floating reserves and growing Omnath into a lethal beatdown threat.
+Thespian's Stage + The Mycosynth Gardens :: copy key utility lands or artifacts on the battlefield.
+
+# Infinite mana and compact finishes
+Basalt Monolith + Forsaken Monument :: Forsaken Monument adds an extra {C} when Basalt taps for {C}{C}{C}, netting 4 mana; pay {3} to untap Basalt, netting infinite colorless mana
+Basalt Monolith + Rings of Brighthearth :: tap Basalt Monolith for {C}{C}{C}, pay {3} to activate its untap ability, pay {2} to Rings of Brighthearth to copy the untap; tap Basalt between untap resolutions to net infinite colorless mana
+Basalt Monolith + Forsaken Monument + Walking Ballista :: infinite colorless mana into Walking Ballista shoots the entire table for lethal direct damage
+Mystic Forge + Sensei's Divining Top + Foundry Inspector :: with Foundry Inspector discounting artifacts by {1}, cast Sensei's Divining Top from the top of your library for free via Mystic Forge, tap Top to draw a card, and repeat to draw your entire library
+Planar Bridge :: an eight-mana artifact that pays {8} and taps to search ANY permanent card from your library directly onto the battlefield, easily funded by Ultima or infinite mana
+Under Bracket 3 rules, infinite mana and Ballista kills must wait until turn 6 or later. Spend turns 1 through 5 establishing your manabase, casting Ultima, and dropping mid-game ramp engines.
+
+# The Eldrazi titans and colossal threats
+Ulamog, the Ceaseless Hunger :: exiles two target permanents on cast, is indestructible, and exiles the top twenty cards of defending player's library whenever it attacks.
+Emrakul, the Promised End :: gains cost reduction for each card type in your graveyard, controls target opponent during their next turn, and attacks as a 13/13 flying trampler.
+Emrakul, the Exigent Doom :: untaps all lands you control when cast, provides ward sacrifice three permanents, and can be exiled from hand early to give a land two mana.
+Ulamog, the Defiler :: exiles the top half of an opponent's library on cast and enters with massive +1/+1 counters and devastating Annihilator X.
+Ulamog, the Infinite Gyre :: destroys a permanent on cast, attacks with Annihilator 4, and is indestructible.
+Kozilek, Butcher of Truth :: draws four cards on cast and attacks with Annihilator 4.
+Kozilek, the Great Distortion :: draws cards up to seven on cast and discards cards from hand to counter spells with matching mana values.
+Kozilek, the Broken Reality :: manifests dread and draws cards on cast while buffing other colorless creatures.
+Sire of Seven Deaths :: a seven-mana 7/7 keyword machine with first strike, vigilance, menace, trample, reach, lifelink, and ward pay 7 life.
+It That Betrays :: attacks with Annihilator 2 and steals every permanent an opponent sacrifices directly onto your battlefield.
+Void Winnower :: completely locks opponents out of casting spells with even mana values and prevents even-mana creatures from blocking.
+Zhulodok, Void Gorger :: gives every colorless spell with mana value 7 or greater cascade, cascade, chaining multiple titans from a single cast.
+Echoes of Eternity :: copies all colorless spells you cast and doubles all colorless permanent triggers, including Ultima's blight counter attacks and titan cast triggers.
+Darksteel Monolith :: an indestructible artifact that lets you cast one colorless spell from your hand for free on each turn.
+Cityscape Leveler :: destroys a nonland permanent on cast and attack, and unearths from the graveyard.
+Portal to Phyrexia :: forces each opponent to sacrifice three creatures on entry and reanimates a creature from any graveyard every upkeep.
+Blightsteel Colossus :: an 11/11 indestructible trampler with infect that ends games in one swing.
+
+# Artifact engines and flash enablers
+The One Ring :: indestructible protection from everything for a turn and explosive, accelerating card draw.
+Mind's Eye :: pays {1} whenever an opponent draws a card to draw a card, heavily funded by Ultima's doubled mana.
+Liberator, Urza's Battlethopter :: flashes in colorless spells on opposing turns while growing larger each time.
+Skittering Cicada :: grants flash to all colorless spells and gets massive stat boosts when casting high-cost spells.
+Chimil, the Inner Sun :: makes all your spells uncounterable and discovers 5 on each end step.
+Unwinding Clock :: untaps all your artifacts during each opponent's untap step, letting you use The One Ring, Planar Bridge, and mana rocks on every player's turn.
+Roaming Throne :: name God or Eldrazi to double triggered abilities.
+Glaring Fleshraker :: creates Eldrazi Spawn tokens on colorless casts and pings opponents.
+It That Heralds the End :: discounts colorless spells and pumps Eldrazi.
+Foundry Inspector :: discounts all artifact spells by {1}.
+
+# Colorless interaction and wipes
+All Is Dust :: forces each player to sacrifice all colored permanents, completely wiping opposing boards while leaving your entire colorless board intact.
+Selective Obliteration :: exiles all permanents of chosen colors, gutting opposing strategies.
+Rise of the Eldrazi :: draws three cards, destroys a permanent, and grants an extra turn.
+Kozilek's Command :: modal instant that can exile a creature, exile graveyards, create Spawns, or scry and draw cards.
+Eldrazi Confluence :: modal instant to exile nonland permanents, bounce, or create Eldrazi Spawns.
+Eldritch Immunity :: grants all your creatures protection from all colors at instant speed, or overloads to protect your entire board.
+Null Elemental Blast :: one-mana instant that counters or destroys a multicolored spell or permanent.
+Warping Wail :: modal instant that exiles a small creature, counters a sorcery sweeper, or makes a Spawn for ramp.
+Blast Zone :: land that detonates nonland permanents with matching counters.
+Scavenger Grounds :: land that exiles all graveyards at instant speed.
+Bonders' Enclave + War Room :: lands that provide repeatable card draw.
+
+# Opening hand and sequencing
+Look for an opening hand with two to three lands, early mana acceleration (Sol Ring, Mox Opal, Everflowing Chalice, Mind Stone, Expedition Map), and a card draw or mid-game ramp piece (The One Ring, Chimil, Worn Powerstone).
+Turn 1-2: Deploy fast mana rocks and utility lands. Use Expedition Map to find Ancient Tomb, Mishra's Workshop, or Urza lands.
+Turn 3-4: Cast Ultima, Origin of Oblivion on turn 3 or 4. Once Ultima resolves, your lands immediately produce double mana.
+Turn 5: Attack with Ultima to put a blight counter on an opponent's most dangerous land (Cabal Coffers, Cradle, or a triome). Use your doubled mana pool (ten or more mana) to drop an Eldrazi titan (Ulamog, Kozilek, Sire of Seven Deaths) or an engine (Echoes of Eternity, Darksteel Monolith, Portal to Phyrexia).
+Turn 6+: Under Bracket 3 rules, tutor or deploy Basalt Monolith + Forsaken Monument/Rings to generate infinite colorless mana into Walking Ballista, or wipe opposing boards with All Is Dust and overwhelm the table with annihilator attacks.

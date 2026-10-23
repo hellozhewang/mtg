@@ -1,0 +1,2 @@
+{"v":1,"id":"ratdos/Ultima-Ramp","count":1}
+{"name":"Ultima, Origin of Oblivion","mv":5.0,"faces":[{"name":"Ultima, Origin of Oblivion","mana_cost":"{5}","type_line":"Legendary Creature — God","oracle_text":"Flying\nWhenever Ultima attacks, put a blight counter on target land. For as long as that land has a blight counter on it, it loses all land types and abilities and has \"{T}: Add {C}.\"\nWhenever you tap a land for {C}, add an additional {C}.","power":"4","toughness":"4","loyalty":"","defense":""}]}

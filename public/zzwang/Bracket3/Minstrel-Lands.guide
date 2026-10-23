@@ -1,0 +1,107 @@
+The mistake new pilots make with The Wandering Minstrel is focusing only on his five-Town token trigger and missing the power of having "Lands you control enter untapped" in the command zone. This passive ability acts as an Amulet of Vigor from turn 2 onward, completely negating the enters-tapped drawback on all 23 Town lands and five guild bouncelands. Bouncelands enter untapped to tap for two mana before returning themselves to hand, and mass land spells like Scapeshift, Reshape the Earth, and Splendid Reclamation enter completely untapped to immediately fund game-ending spells or Minstrel's team-wide pump.
+This is a Bracket 3 build running three Game Changers: Crop Rotation, Demonic Tutor, and Rhystic Study. There is no mass land denial. Infinite mana loops using bouncelands and Kodama of the East Tree are held until turn 6 per bracket rules; before then, establish your Towns, develop a lethal board of Elemental and Insect tokens, and overrun opponents with Minstrel's anthem.
+
+# The untapped engine and Town lands
+The Wandering Minstrel :: two-mana commander ensuring every land enters untapped; with five Towns, creates an all-colors 2/2 Elemental every combat, and his eight-mana activated ability pumps the entire team by +X/+X where X is your Town count
+Starting Town :: enters untapped to fix any color or tap for colorless without losing tempo
+Crossroads Village :: enters untapped and chooses any color for permanent fixing
+Capital City :: five-color Town land that cycles if flooded
+Midgar, City of Mako :: Town land with Adventure Reactor Raid to sacrifice a creature or artifact and draw two cards
+Lindblum, Industrial Regency :: Town land with Adventure Mage Siege for direct burn removal
+Ishgard, the Holy See :: Town land with Adventure Faith & Grief for life gain and board stabilization
+Jidoor, Aristocratic Capital :: Town land with Adventure Overture for late-game spell copying
+Zanarkand, Ancient Metropolis :: Town land with Adventure Lasting Fayth for recursive creature return
+Balamb Garden, SeeD Academy :: Town land providing Simic colors that can transform into an airborne Vehicle
+The Gold Saucer :: utility Town producing mana and flipping coins for bonus Treasure tokens
+Eden, Seat of the Sanctum :: utility Town that mills and recurs key threats from the graveyard
+Clive's Hideaway :: enters untapped with hideaway 4 to cast a high-impact spell for free later
+Adventurer's Inn :: enters untapped, provides colorless mana, and gains 2 life on entry
+
+# Bouncelands and mass ramp spells
+Simic Growth Chamber :: enters untapped with Minstrel; taps for two mana immediately before bouncing itself or another land back to hand
+Golgari Rot Farm :: enters untapped, produces black and green mana, and resets land drops
+Selesnya Sanctuary :: enters untapped, accelerating into green and white spells
+Gruul Turf :: enters untapped to fund red and green ramp
+Izzet Boilerworks :: enters untapped for blue and red mana
+Scapeshift :: sacrifices any number of lands to fetch that many Towns and utility lands; with Minstrel, every searched land enters untapped and ready to spend
+Reshape the Earth :: nine-mana sorcery searching for ten lands; with Minstrel, all ten lands enter untapped, instantly granting ten fresh mana and activating Minstrel's anthem
+Splendid Reclamation :: four-mana sorcery returning all lands from your graveyard to the battlefield untapped, creating massive burst mana after a Scapeshift
+Reach the Horizon :: searches for two Town lands or basics directly onto the battlefield untapped
+Hour of Promise :: searches for any two land cards in the deck, placing them onto the battlefield untapped while generating Zombie tokens
+Open the Way :: scalable X-cost sorcery revealing lands and putting X of them onto the battlefield untapped
+Circuitous Route :: searches for two gates or basics directly onto the battlefield untapped
+Cultivate :: classic ramp searching two basics, putting one onto the battlefield untapped
+Kodama's Reach :: identical ramp placing a basic onto the battlefield untapped
+Nature's Lore :: two-mana ramp searching for a Forest onto the battlefield untapped
+Three Visits :: identical untapped Forest search
+Farseek :: two-mana ramp fetching any basic land type onto the battlefield untapped
+
+# Landfall value and token armies
+Aesi, Tyrant of Gyre Strait :: grants an extra land drop each turn and draws a card on every land entry
+Tatyova, Benthic Druid :: gains 1 life and draws a card on every landfall trigger
+Omnath, Locus of Creation :: provides 4 life, {R}{G}{W}{U} mana, and 4 burn damage across three land drops each turn
+Scute Swarm :: creates a 1/1 Insect or exponential copies of Scute Swarm on every land drop; crucial combo piece with Kodama
+Avenger of Zendikar :: creates a Plant token for each land you control and puts +1/+1 counters on them on every subsequent landfall trigger
+Lotus Cobra :: adds one mana of any color on every land entry, generating massive mana bursts off ramp spells
+Tireless Provisioner :: creates a Treasure or Food token on every land entry
+Nissa, Resurgent Animist :: adds mana on landfall and tutors an Elf or Elemental to hand on the second land drop each turn
+Choco, Seeker of Paradise :: attacks to look at top cards and put land cards directly onto the battlefield untapped
+Azusa, Lost but Seeking :: permits two additional land drops every turn
+Dryad of the Ilysian Grove :: provides an additional land drop and gives all your lands every basic land type
+Oracle of Mul Daya :: reveals top of library, allows playing lands from top, and grants an extra land play
+Mina and Denn, Wildborn :: grants an extra land play and returns lands to hand to trigger landfall and grant trample
+Sakura-Tribe Scout :: taps to drop a land from hand onto the battlefield at instant speed
+Walking Atlas :: taps to put a land from hand onto the battlefield
+Ramunap Excavator :: replays lands from your graveyard
+Conduit of Worlds :: replays lands from your graveyard and casts noncreatures from the yard
+Crucible of Worlds :: artifact engine allowing continuous land plays from graveyard
+Spelunking :: draws a card, puts a land onto the battlefield, and serves as redundant untap protection
+Amulet of Vigor :: one-mana artifact serving as backup untap acceleration
+Burgeoning :: drops lands from hand whenever opponents play lands, accelerating your mana on opposing turns
+Exploration :: one-mana enchantment allowing an additional land play each turn
+
+# Infinite combos and lines
+Infinite combos are restricted to turn 6 and later under Bracket 3 rules. Spend turns 1 through 5 establishing Towns and drawing cards.
+The Wandering Minstrel + Kodama of the East Tree + Simic Growth Chamber + Scute Swarm :: play Simic Growth Chamber; it enters untapped due to Minstrel, Scute Swarm triggers to create an Insect token, tap Chamber for {G}{U}, the bounce trigger returns Chamber to hand, and the Insect's entry triggers Kodama to put Chamber back onto the battlefield from hand; repeat infinitely for infinite mana and infinite 1/1 Insects
+The Wandering Minstrel + Kodama of the East Tree + Simic Growth Chamber + Tireless Provisioner :: identical loop replacing Scute Swarm with Tireless Provisioner, generating infinite Treasure tokens and infinite colored mana
+The Wandering Minstrel + Scapeshift + Splendid Reclamation :: cast Scapeshift sacrificing eight lands to find eight Towns untapped; activate Minstrel's anthem, then cast Splendid Reclamation to return the eight sacrificed lands untapped for twenty total landfall triggers in a single turn
+
+# Tutors and Game Changers
+The three Game Changers are Crop Rotation, Demonic Tutor, and Rhystic Study.
+Crop Rotation -> Simic Growth Chamber :: instant-speed search for the combo bounceland or an emergency Bojuka Bog
+Crop Rotation -> Boseiju, Who Endures :: searches for uncounterable channel removal
+Demonic Tutor -> Scapeshift :: finds the premier mass land reset to trigger lethal landfall
+Demonic Tutor -> Kodama of the East Tree :: locates the key creature piece for infinite bounceland loops
+Rhystic Study :: premier card draw engine punishing opponents for casting spells
+Elvish Reclaimer -> Bojuka Bog :: repeatable creature tutor finding utility lands or Towns at instant speed
+Knight of the Reliquary -> Simic Growth Chamber :: taps and sacrifices a Forest or Plains to fetch any land directly onto the battlefield untapped
+Expedition Map -> The World Tree :: one-mana artifact tutor finding any utility land or Town
+Sylvan Scrying -> Simic Growth Chamber :: two-mana sorcery tutor finding any land card directly to hand
+Weathered Wayfarer -> Zanarkand, Ancient Metropolis :: repeatable land search finding Towns or utility lands whenever an opponent controls more lands
+
+# Interaction and board wipes
+Swords to Plowshares :: one-mana instant exile for any creature threat
+Path to Exile :: premier instant creature exile
+Assassin's Trophy :: destroys any opposing permanent for two mana
+Anguished Unmaking :: exiles any nonland permanent at instant speed
+Beast Within :: destroys any permanent and leaves a 3/3 Beast token
+Dovin's Veto :: uncounterable noncreature counterspell
+Swan Song :: one-mana counterspell targeting instants, sorceries, or enchantments
+An Offer You Can't Refuse :: hard counter for noncreature spells
+Heroic Intervention :: grants hexproof and indestructible across your entire board
+Supreme Verdict :: uncounterable sweeper to reset opposing creature boards
+Blasphemous Act :: one-mana red board wipe that clears opposing boards while leaving your land count unaffected
+Bojuka Bog :: enters untapped with Minstrel to exile an opponent's entire graveyard at sorcery or instant speed via Crop Rotation
+Boseiju, Who Endures :: uncounterable channel ability destroying artifacts, enchantments, or nonbasic lands
+
+# Mana base and opening hands
+Birds of Paradise :: one-mana dork fixing all five colors
+Delighted Halfling :: produces mana of any color that prevents legendary spells from being countered
+Sol Ring :: colorless staple acceleration
+Arcane Signet :: two-mana colored fixing rock
+The World Tree :: fixes all lands to produce all colors once you control six or more lands
+Plaza of Heroes :: fixes legendary mana and protects Minstrel with hexproof and indestructible
+Command Tower :: five-color land entering untapped
+Exotic Orchard :: fixes opposing colors
+
+Keep opening hands with 3 to 4 lands, green mana available, early ramp (Exploration, Burgeoning, Farseek, Sakura-Tribe Scout), and a card draw engine (Tatyova, Aesi, Rhystic Study). Avoid keeping hands heavy on 6+ mana creatures without land acceleration. Cast Minstrel on turn 2 to unlock untapped Town and bounceland development, deploy additional land drops to amass five Towns, and close the game through massive token swarms or Minstrel's +X/+X anthem.

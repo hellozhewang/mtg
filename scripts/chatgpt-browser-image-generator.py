@@ -110,9 +110,26 @@ class Browser:
                               "The ChatGPT layout may have changed.")
 
     def close_viewer(self) -> None:
-        ref = self.ref("button", "Close viewer", optional=True)
-        if ref:
-            self.run("click", ref)
+        try:
+            ref = self.ref("button", "Close viewer", optional=True)
+            if ref:
+                self.run("click", ref)
+                return
+        except GenerationError:
+            pass
+        try:
+            self.run("press", "Escape")
+        except GenerationError:
+            pass
+        try:
+            self.run("eval", """(() => {
+                const btn = document.querySelector(
+                    'button[aria-label="Close viewer"], [role="dialog"] button[aria-label*="Close" i], button[aria-label="Close"]'
+                );
+                if (btn) btn.click();
+            })()""")
+        except GenerationError:
+            pass
 
 
 def check_access(state: dict) -> None:
@@ -191,56 +208,70 @@ def download_turn(browser: Browser, turn: dict, output: Path) -> dict:
     selector = (f'[data-turn-key={turn_id}] {IMAGE_BUTTON}, '
                 f'article[data-testid={turn_id}] {IMAGE_BUTTON}, '
                 f'[data-message-id={turn_id}] {IMAGE_BUTTON}')
-    browser.run("click", selector)
-    browser.run("wait", "--fn", """[...document.querySelectorAll('[role="dialog"] img')]
+    if hasattr(browser, "close_viewer"):
+        browser.close_viewer()
+    try:
+        browser.run("click", selector)
+    except GenerationError:
+        # Fall back to scrolling into view and clicking via JS if covered or obstructed
+        try:
+            browser.run("eval", f"document.querySelector({repr(selector)})?.scrollIntoView({{ block: 'center' }})")
+        except GenerationError:
+            pass
+        browser.run("eval", f"document.querySelector({repr(selector)})?.click()")
+    try:
+        browser.run("wait", "--fn", """[...document.querySelectorAll('[role="dialog"] img')]
       .some(i => i.complete && i.naturalWidth > 0 &&
                  i.getBoundingClientRect().width > 0 &&
                  /^Generated image/.test(i.alt))""")
-    deadline = time.monotonic() + 20
-    ref = None
-    while time.monotonic() < deadline:
-        ref = browser.ref("button", "Download", optional=True)
-        if ref:
-            break
-        time.sleep(0.5)
-    if not ref:
-        raise GenerationError("Image viewer did not expose a Download button.")
-    output.parent.mkdir(parents=True, exist_ok=True)
-    with tempfile.TemporaryDirectory(prefix=".chatgpt-download-", dir=output.parent) as tmp:
-        for attempt in range(2):
-            downloaded = Path(tmp) / f"original-{attempt}.png"
+        deadline = time.monotonic() + 20
+        ref = None
+        while time.monotonic() < deadline:
+            ref = browser.ref("button", "Download", optional=True)
+            if ref:
+                break
+            time.sleep(0.5)
+        if not ref:
+            raise GenerationError("Image viewer did not expose a Download button.")
+        output.parent.mkdir(parents=True, exist_ok=True)
+        with tempfile.TemporaryDirectory(prefix=".chatgpt-download-", dir=output.parent) as tmp:
+            for attempt in range(2):
+                downloaded = Path(tmp) / f"original-{attempt}.png"
+                try:
+                    browser.run("download", ref, str(downloaded), timeout=90)
+                except GenerationError as exc:
+                    # A lost acknowledgement is ambiguous. Recover a completed file
+                    # first, then allow ONE retry of only the original-file download.
+                    deadline = time.monotonic() + 5
+                    while time.monotonic() < deadline:
+                        if downloaded.exists():
+                            try:
+                                png_info(downloaded)
+                                break
+                            except GenerationError:
+                                pass
+                        time.sleep(0.5)
+                    else:
+                        transient = any(message in str(exc) for message in
+                                        ("no response came back", "did not complete"))
+                        if attempt == 0 and transient:
+                            print("Download acknowledgement lost; retrying only the download…",
+                                  file=sys.stderr, flush=True)
+                            ref = browser.ref("button", "Download")
+                            continue
+                        raise
+                break
+            info = png_info(downloaded)
             try:
-                browser.run("download", ref, str(downloaded), timeout=90)
-            except GenerationError as exc:
-                # A lost acknowledgement is ambiguous. Recover a completed file
-                # first, then allow ONE retry of only the original-file download.
-                deadline = time.monotonic() + 5
-                while time.monotonic() < deadline:
-                    if downloaded.exists():
-                        try:
-                            png_info(downloaded)
-                            break
-                        except GenerationError:
-                            pass
-                    time.sleep(0.5)
-                else:
-                    transient = any(message in str(exc) for message in
-                                    ("no response came back", "did not complete"))
-                    if attempt == 0 and transient:
-                        print("Download acknowledgement lost; retrying only the download…",
-                              file=sys.stderr, flush=True)
-                        ref = browser.ref("button", "Download")
-                        continue
-                    raise
-            break
-        info = png_info(downloaded)
-        try:
-            # The temp file is on the same filesystem. Linking is atomic and
-            # refuses an existing destination even if another writer raced us.
-            os.link(downloaded, output)
-        except FileExistsError as exc:
-            raise GenerationError(f"Output already exists: {output}. Choose another name.") from exc
-    return {"path": str(output), **info}
+                # The temp file is on the same filesystem. Linking is atomic and
+                # refuses an existing destination even if another writer raced us.
+                os.link(downloaded, output)
+            except FileExistsError as exc:
+                raise GenerationError(f"Output already exists: {output}. Choose another name.") from exc
+        return {"path": str(output), **info}
+    finally:
+        if hasattr(browser, "close_viewer"):
+            browser.close_viewer()
 
 
 def chat_url(value: str) -> str:
@@ -314,6 +345,9 @@ def main(argv=None) -> int:
                 raise GenerationError("A response is already generating in this chat. "
                                       "Wait for it to finish before starting another request.")
             composer = browser.ref("textbox", "Ask ChatGPT", optional=True)
+            if not composer:
+                browser.close_viewer()
+                composer = browser.ref("textbox", "Ask ChatGPT", optional=True)
             history_ready = not urlparse(url).path.startswith("/c/") or bool(state.get("turns"))
             if composer and history_ready:
                 break

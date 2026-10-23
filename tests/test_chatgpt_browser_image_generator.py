@@ -159,6 +159,59 @@ class ImageGeneratorTests(unittest.TestCase):
             self.assertEqual(browser.downloads, 1)
             self.assertEqual(output.read_bytes(), png())
 
+    def test_download_turn_closes_viewer_before_and_after(self):
+        class ClosingBrowser:
+            def __init__(self):
+                self.closed = 0
+
+            def close_viewer(self):
+                self.closed += 1
+
+            def ref(self, *args, **kwargs):
+                return "@download"
+
+            def run(self, command, *args, **kwargs):
+                if command == "download":
+                    Path(args[1]).write_bytes(png())
+                return {}
+
+        with tempfile.TemporaryDirectory() as folder:
+            browser = ClosingBrowser()
+            output = Path(folder) / "image.png"
+            generator.download_turn(browser, {"id": "new", "images": [{"ready": True}]}, output)
+            self.assertEqual(browser.closed, 2)  # once before clicking, once in finally
+
+    def test_download_turn_falls_back_to_js_click_when_covered(self):
+        class CoveredBrowser:
+            commands = []
+
+            def ref(self, *args, **kwargs):
+                return "@download"
+
+            def run(self, command, *args, **kwargs):
+                self.commands.append(command)
+                if command == "click" and "generated-image-preview" in args[0]:
+                    raise generator.GenerationError("Element is covered by <img ...> at its click point")
+                if command == "download":
+                    Path(args[1]).write_bytes(png())
+                return {}
+
+        with tempfile.TemporaryDirectory() as folder:
+            browser = CoveredBrowser()
+            output = Path(folder) / "image.png"
+            generator.download_turn(browser, {"id": "new", "images": [{"ready": True}]}, output)
+            self.assertIn("click", browser.commands)
+            self.assertIn("eval", browser.commands)
+            self.assertEqual(output.read_bytes(), png())
+
+    def test_close_viewer_resilience(self):
+        browser = generator.Browser("test")
+        commands = []
+        with patch.object(browser, "ref", side_effect=generator.GenerationError("not found")), \
+                patch.object(browser, "run", side_effect=lambda cmd, *args: commands.append(cmd)):
+            browser.close_viewer()
+            self.assertEqual(commands, ["press", "eval"])
+
 
 if __name__ == "__main__":
     unittest.main()

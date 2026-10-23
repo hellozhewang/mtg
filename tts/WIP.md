@@ -7,6 +7,48 @@ Last updated 2026-10-22 (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
 Both states visually checked live. **Steam is now v64, published at the owner’s request.** See [the changelog](../docs/development/tts-changelog.md).
 
+## Urza-Combo speed and resilience tuning (2026-10-23)
+
+Owner found the list slow and easy to disrupt. Review EDHREC's normal, new and
+trending cards, search recent cheap artifact support, and read exact Oracle text
+for all engines and protection. Twenty-one swaps retain the existing commander
+and printing pins. Replace the three Tron lands with Islands (now sixteen), and
+Darksteel Citadel with Buried Ruin. Replace Rift/Ring's two Game Changer slots
+with Force of Will and Grim Monolith; retain Rhystic Study as the third.
+
+Remove the slow combat/value package (Cyberdrive, Mechanized Production,
+Hullbreaker, Clock, Padeem, Kitten, Sai, Chip and others). Add Staff, Goblin
+Cannon, Defense Grid, Samut, Geist, Misdirection, Welding Jar, Mox Amber,
+Moonsnare Prototype, Borne Upon a Wind, Tribute/Trophy Mage, affinity draw and
+Into the Flood Maw. Keep four compact Monolith pairs plus Scepter/Reversal with
+adequate recurring nonland mana. Staff and Cannon convert mana into a kill
+without Urza; Cannon also avoids creature-only activation hate. Broad artifact
+activation hate remains a real weakness, answered before attempting a loop.
+
+Rewrite 51 guide card/chain rows; all 54 referenced cards are in the list. Fix
+the old guide's Basalt mana value (three), Gadgeteer reduction (one), Scepter
+output threshold, unnecessary haste claim, and Urza's free-X/timing limits.
+Explain queuing Cannon activations before the first resolves, Staff draw limits,
+lost Scepter imprints, Grid taxing our off-turn counters, Samut's protection
+windows, and legal redirect targets. Compact wins wait until turn six.
+
+Validator passes: 100 cards, 31 lands + 1 MDFC, average MV 2.04 (was 2.20),
+3/3 Game Changers, TTS import 100/100, all 44 retained pinned printings load.
+The list has 32 artifacts, sixteen nonland artifacts costing zero or one, and
+ten direct tutors for combo components, conversion or protection. Tier remains
+S; categories remain Combo / Value & Ramp. Six guide-parser tests pass.
+Scoped publication verifies 92 image URLs (three freshly downloaded, 89 recently
+verified), 99 library cards plus Urza, and source/published guide parity. Preserve
+all 184 other catalog records and unrelated spawn decks, existing added dates,
+and music metadata (already covers the added creatures/tokens). Refresh the
+Cactuar catalog and import the revised deck; no runtime or Steam build needed.
+Saved Games and Steam remain v64.
+
+Research: [EDHREC](https://edhrec.com/commanders/urza-lord-high-artificer),
+[Urza timing and X rules](https://magic.wizards.com/en/news/feature/modern-horizons-release-notes-2019-05-31),
+[Grim/Power Artifact](https://commanderspellbook.com/combo/2585-5149/),
+[Basalt/Gadgeteer](https://commanderspellbook.com/combo/4131-5390/).
+
 ## Heliod-Lifegain guide rewrite (2026-10-23)
 
 Owner asked for the S-tier guide to explain wins beyond Ballista. Rewrite 47

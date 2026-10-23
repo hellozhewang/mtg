@@ -131,6 +131,21 @@ class Browser:
         except GenerationError:
             pass
 
+    def upload_file(self, path: Path) -> None:
+        file_path = str(path.resolve())
+        self.run("upload", 'input[type="file"]', file_path)
+        name_json = json.dumps(path.name)
+        deadline = time.monotonic() + 15
+        while time.monotonic() < deadline:
+            has_attachment = self.run("eval", f"""(() => {{
+                const target = {name_json}.toLowerCase();
+                const cards = [...document.querySelectorAll('button[aria-label*="Remove" i], img[alt], [aria-label]')];
+                return cards.some(c => (c.getAttribute('aria-label') || c.getAttribute('alt') || '').toLowerCase().includes(target));
+            }})()""").get("result")
+            if has_attachment:
+                return
+            time.sleep(0.5)
+
 
 def check_access(state: dict) -> None:
     if state.get("challenge"):
@@ -305,6 +320,8 @@ def main(argv=None) -> int:
     source.add_argument("--prompt-file", type=Path, help="UTF-8 image prompt file")
     source.add_argument("--download-only", action="store_true",
                         help="Download the latest completed turn's image without sending")
+    parser.add_argument("--ref", action="append", dest="refs", type=Path, default=[],
+                        help="Reference image to upload to ChatGPT (can be specified multiple times)")
     parser.add_argument("--out", required=True, type=Path, help="New output PNG path")
     parser.add_argument("--chat-url", type=chat_url,
                         help="Chat URL; defaults to local image-generation.json or New chat")
@@ -322,6 +339,10 @@ def main(argv=None) -> int:
         parser.error(f"output already exists: {output}; choose a new filename")
     if not shutil.which("agent-browser"):
         parser.error("agent-browser is not installed; see docs/development/agent-browser-guide.md")
+    ref_paths = [r.expanduser().resolve() for r in args.refs]
+    for r in ref_paths:
+        if not r.is_file():
+            parser.error(f"reference image does not exist: {r}")
     lock = None
     try:
         prompt = args.prompt_file.read_text(encoding="utf-8") if args.prompt_file else args.prompt
@@ -367,6 +388,9 @@ def main(argv=None) -> int:
             if any(not turn.get("id") for turn in state.get("turns", [])):
                 raise GenerationError("Cannot identify existing turns safely; UI layout changed.")
             before = {turn["id"] for turn in state.get("turns", []) if turn.get("id")}
+            for r in ref_paths:
+                print(f"Uploading reference image: {r.name}…", file=sys.stderr, flush=True)
+                browser.upload_file(r)
             request = "Generate exactly one image based on this description:\n\n" + prompt
             browser.run("fill", composer, request)
             send = browser.ref("button", "Send")

@@ -212,6 +212,21 @@ class ImageGeneratorTests(unittest.TestCase):
             browser.close_viewer()
             self.assertEqual(commands, ["press", "eval"])
 
+    def test_upload_file_uploads_and_waits(self):
+        browser = generator.Browser("test")
+        commands = []
+        with tempfile.NamedTemporaryFile(suffix=".png") as f:
+            path = Path(f.name)
+            with patch.object(browser, "run", side_effect=lambda cmd, *args, **kwargs: (
+                commands.append((cmd, args)),
+                {"result": True} if cmd == "eval" else {}
+            )[1]):
+                browser.upload_file(path)
+            self.assertEqual(commands[0][0], "upload")
+            self.assertEqual(commands[0][1][0], 'input[type="file"]')
+            self.assertEqual(commands[0][1][1], str(path.resolve()))
+            self.assertEqual(commands[1][0], "eval")
+
 
 if __name__ == "__main__":
     unittest.main()

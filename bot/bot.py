@@ -730,11 +730,15 @@ def send_sleever(message: str, username: str, channel: str | int | None = DEFAUL
             conv = f"{chan}-{owner}-sleever"
             try:
                 folder = sleever.prepare(owner)
+                notes = sleever.fetch_refs(refs or [], folder / "refs")
+                for note in notes:
+                    log().info("SLEEVER [%s] %s", chan, note)
                 state = _load(conv)
+                local_refs = sorted([p for p in (folder / "refs").iterdir() if p.is_file()])
                 sleeve_name = state.get("sleeve") or sleever.infer_sleeve_name(message)
-                sleeve_prompt = sleever.sleeve_prompt_for_generator(message)
+                sleeve_prompt = sleever.sleeve_prompt_for_generator(message, has_refs=bool(local_refs))
                 out_png = folder / "sleeve.png"
-                sleever.generate_secondary_image(sleeve_prompt, out_png, timeout=TIMEOUT)
+                sleever.generate_secondary_image(sleeve_prompt, out_png, refs=local_refs, timeout=TIMEOUT)
                 answer = f"Made **{sleeve_name}** sleeves.\nSleeve: {sleeve_name}"
                 reply, slug = sleever.publish(folder, answer, owner, state.get("sleeve"), started, secondary=True)
                 if slug:
@@ -790,10 +794,11 @@ def send_sleever(message: str, username: str, channel: str | int | None = DEFAUL
                     )
                     log().info("SLEEVER [%s] quota exhausted during turn; falling back to secondary generator", chan)
                     try:
+                        local_refs = sorted([p for p in (folder / "refs").iterdir() if p.is_file()])
                         sleeve_name = sleever.sleeve_name(turn.answer) or state.get("sleeve") or sleever.infer_sleeve_name(message)
-                        sleeve_prompt = sleever.sleeve_prompt_for_generator(message)
+                        sleeve_prompt = sleever.sleeve_prompt_for_generator(message, has_refs=bool(local_refs))
                         out_png = folder / "sleeve.png"
-                        sleever.generate_secondary_image(sleeve_prompt, out_png, timeout=TIMEOUT)
+                        sleever.generate_secondary_image(sleeve_prompt, out_png, refs=local_refs, timeout=TIMEOUT)
                         answer = f"Made **{sleeve_name}** sleeves.\nSleeve: {sleeve_name}"
                         reply, slug = sleever.publish(folder, answer, owner, state.get("sleeve"), started, secondary=True)
                         if slug:

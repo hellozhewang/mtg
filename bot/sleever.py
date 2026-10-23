@@ -199,6 +199,9 @@ def infer_sleeve_name(message: str) -> str:
     """Derive a concise 1-4 word sleeve title from the user request."""
     clean = re.sub(r"^(sleever\s+)?(please\s+)?(make\s+(me\s+)?)?(create\s+|draw\s+)?(a\s+|an\s+|some\s+)?", "", message.strip(), flags=re.I).strip()
     clean = re.sub(r"\s+sleeves?(\s+please)?\.?$", "", clean, flags=re.I).strip()
+    clean = re.sub(r"^(a\s+)?sleeve\s+(of\s+|for\s+)?", "", clean, flags=re.I).strip()
+    clean = re.sub(r"^of\s+(this|these)(\s+image|\s+picture|\s+ref|\s+reference)?", "", clean, flags=re.I).strip()
+    clean = re.sub(r"^(this|these)(\s+image|\s+picture|\s+ref|\s+reference)?", "", clean, flags=re.I).strip()
     clean = re.sub(r"[^\w\s-]", "", clean).strip()
     words = clean.split()
     if not words:
@@ -206,22 +209,30 @@ def infer_sleeve_name(message: str) -> str:
     selected = words[:4]
     while len(selected) > 1 and selected[-1].lower() in {'at', 'in', 'of', 'on', 'with', 'for', 'a', 'the', 'an', 'to', 'and', 'by'}:
         selected.pop()
-    return " ".join(selected).title()[:40]
+    return " ".join(selected).title()[:40] or "Sleeves"
 
 
-def sleeve_prompt_for_generator(user_request: str) -> str:
+def sleeve_prompt_for_generator(user_request: str, has_refs: bool = False) -> str:
     """Format the user request into an optimal prompt for card back sleeve generation."""
-    clean = re.sub(r"^(sleever\s+)?(please\s+)?(make\s+(me\s+)?)?(create\s+|draw\s+)?", "", user_request.strip(), flags=re.I).strip()
+    clean = re.sub(r"^(sleever\s+)?(please\s+)?(make\s+(me\s+)?)?(create\s+|draw\s+)?(a\s+|an\s+|some\s+)?", "", user_request.strip(), flags=re.I).strip()
     clean = re.sub(r"\s+sleeves?(\s+please)?\.?$", "", clean, flags=re.I).strip()
+    clean = re.sub(r"^(a\s+)?sleeve\s+(of\s+|for\s+)?", "", clean, flags=re.I).strip()
+    clean = re.sub(r"^of\s+(this|these)(\s+image|\s+picture|\s+ref|\s+reference)?", "", clean, flags=re.I).strip()
+    clean = re.sub(r"^(this|these)(\s+image|\s+picture|\s+ref|\s+reference)?", "", clean, flags=re.I).strip()
+    clean = clean.strip()
+    if has_refs:
+        subject = f"the character/subject in the attached reference image ({clean})" if clean else "the character/subject in the attached reference image"
+    else:
+        subject = clean or "custom fantasy or sci-fi card back art"
     return (
-        f"A custom card back sleeve illustration of: {clean}. "
+        f"A custom card back sleeve illustration of: {subject}. "
         f"Portrait 2:3 aspect ratio, one strong centered motif that reads at thumbnail size, dynamic composition, "
         f"full-bleed artwork extending to all edges with safe margins for cropping. "
         f"No borders, no frames, no card game templates, no text, no logos, no watermarks."
     )
 
 
-def generate_secondary_image(prompt: str, out_path: Path, timeout: float = 600) -> None:
+def generate_secondary_image(prompt: str, out_path: Path, refs: list[Path] | None = None, timeout: float = 600) -> None:
     """Generate a sleeve image using scripts/chatgpt-browser-image-generator.py."""
     if not SECONDARY_GENERATOR.is_file():
         raise SleeveError(f"secondary image generator not found at {SECONDARY_GENERATOR}")
@@ -234,6 +245,9 @@ def generate_secondary_image(prompt: str, out_path: Path, timeout: float = 600) 
         "--out", str(out_path),
         "--timeout", str(timeout),
     ]
+    for r in refs or []:
+        if Path(r).is_file():
+            cmd.extend(["--ref", str(Path(r).resolve())])
     r = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout + 30)
     if r.returncode != 0 or not out_path.exists():
         err = (r.stderr or r.stdout).strip()

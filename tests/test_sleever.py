@@ -108,10 +108,29 @@ class PictureTests(Isolated):
         self.assertEqual(sleever.infer_sleeve_name("sleever make me sailor moon sleeves"), "Sailor Moon")
         self.assertEqual(sleever.infer_sleeve_name("make me gengar sleeves"), "Gengar")
         self.assertEqual(sleever.infer_sleeve_name("sleever make me a dark gothic castle at night"), "Dark Gothic Castle")
+        self.assertEqual(sleever.infer_sleeve_name("sleever make a sleeve of this"), "Sleeves")
         prompt = sleever.sleeve_prompt_for_generator("make me sailor moon sleeves")
         self.assertIn("sailor moon", prompt.lower())
         self.assertIn("custom card back sleeve illustration", prompt.lower())
         self.assertIn("portrait 2:3", prompt.lower())
+        ref_prompt = sleever.sleeve_prompt_for_generator("make a sleeve of this", has_refs=True)
+        self.assertIn("attached reference image", ref_prompt.lower())
+
+    def test_generate_secondary_image_passes_refs(self):
+        script = self.dir / "gen.py"
+        script.write_text("#!/usr/bin/env python3")
+        with patch.object(sleever.subprocess, "run") as mock_run, \
+                patch.object(sleever, "SECONDARY_GENERATOR", script):
+            out = self.dir / "out.png"
+            ref_file = self.dir / "ref.jpg"
+            ref_file.write_bytes(b"image")
+            mock_run.side_effect = lambda *args, **kwargs: (out.write_bytes(b"done"), Mock(returncode=0, stdout="", stderr=""))[1]
+            sleever.generate_secondary_image("draw this", out, refs=[ref_file])
+            cmd = mock_run.call_args[0][0]
+            self.assertIn("--prompt", cmd)
+            self.assertIn("draw this", cmd)
+            self.assertIn("--ref", cmd)
+            self.assertIn(str(ref_file.resolve()), cmd)
 
     def test_no_new_picture_publishes_nothing(self):
         f = sleever.prepare("zz")

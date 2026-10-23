@@ -7,6 +7,24 @@ Last updated 2026-10-22 (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
 Both states visually checked live. **Steam is now v64, published at the owner’s request.** See [the changelog](../docs/development/tts-changelog.md).
 
+## S-tier turn-six consistency review (2026-10-23, in progress)
+
+Owner requests real turn-six consistency rather than exceptional opening hands.
+Baseline main `2c6c1338`: 26 S decks (23 zzwang, two ratdos, one kupo7).
+All 26 validate at 100 cards, 3/3 Game Changers and TTS import 100/100. These
+checks do not establish a turn-six win rate. No games have been simulated or
+claimed as measured wins. [The audit](../docs/development/s-tier-consistency-audit.md)
+records all 26 lists' prerequisites, a proposed trial protocol, and concrete
+rules errors in Terra, Minstrel and Animar that invalidate earlier estimates.
+
+Two clarification questions are pending: ownership scope for bulk edits and
+whether the target means 80%/70% unopposed turn-six wins or a protected attempt.
+No deck lists or tiers have changed in this baseline review. Next work is to
+correct invalid lines, tune the selected scope and measure under an agreed
+mulligan/opponent model. Do not report success percentages from card-access-only
+sampling, tutor counts, a mana-value average or hand-picked example hands.
+Saved Games and Steam remain v64; no table build or upload is needed.
+
 ## Urza-Combo speed and resilience tuning (2026-10-23)
 
 Owner found the list slow and easy to disrupt. Review EDHREC's normal, new and

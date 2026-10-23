@@ -579,10 +579,11 @@ wins:
     other      Other Strategies      catch-all, ONLY when a plan truly fits none of the seven
 
 A deck's entry is its primary first, then any secondary categories with a real
-supporting package: `Krenko-Combo: combo, gowide, goblins`, `Najeela-Warriors:
-aggro, combo, gowide`. Creature types are not categories. The one exception is
-`goblins`: every Goblin deck adds it as a SECONDARY tag (never first). Only the
-owner's local catalog shows it, as a Goblins section mirroring those decks.
+supporting package: `Krenko-Combo: combo, gowide, goblins`, `Cloud-Equipment:
+aggro, value, finalfantasy`. Creature types are not categories. The tag
+exceptions are `goblins` (secondary on Goblin decks, local catalog) and
+`finalfantasy` (secondary on Final Fantasy decks, published across the catalog,
+filters, and Tabletop Simulator).
 Read `../../deck-catalog-strategies.md` for the definitions, distinctions and
 examples.
 

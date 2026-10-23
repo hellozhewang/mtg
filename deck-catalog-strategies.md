@@ -36,12 +36,20 @@ primary.
 | `value` | Value & Ramp | Out-resourcing the table with engines: big mana, lands, artifacts, enchantments, counters, blink, planeswalkers. |
 | `other` | Other Strategies | The catch-all: a plan that genuinely fits none of the seven. Try every one first; a deck here should be rare. |
 
-| Local-only | Catalog label | Use |
+| Extra tag | Catalog label | Use |
 |---|---|---|
+| `finalfantasy` | Final Fantasy | A secondary tag on every Final Fantasy deck. Published across the catalog, filters, and Tabletop Simulator (owner instruction, 2026-10-22). |
 | `goblins` | Goblins | A secondary tag on every Goblin deck. Only the owner's local index mirrors those decks into a Goblins section; the published catalog ignores the tag. Never a primary. |
 
 [`scripts/deckthemes.py`](scripts/deckthemes.py) defines the IDs, labels, order
 and filename fallbacks. Use the IDs in JSON, not labels or synonyms.
+
+## Final Fantasy: the published category
+
+**Every Final Fantasy deck carries `finalfantasy` as a secondary tag, after its canonical primary.** (owner instruction, 2026-10-22). Unlike Goblins, Final Fantasy is published everywhere:
+
+- **Web catalog:** Appears on deck tiles as a `Final Fantasy` tag, in the Category filter dropdown, and matches search queries (`final fantasy`, `ff`, `chocobo`, `cactuar`, `sephiroth`, etc.).
+- **Tabletop Simulator:** Appears in the Cactuar table's Category filter dropdown, allowing players to filter down to all Final Fantasy decks with a single selection, and shows under Categories on deck inspection.
 
 ## File placement and metadata
 

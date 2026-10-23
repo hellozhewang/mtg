@@ -52,13 +52,15 @@ THEMES = {
     # and for decks nobody has placed yet (see FALLBACK).
     "other": Theme("Other Strategies", "Plans that genuinely fit none of the seven categories above.",
                    "misc unique"),
+    "finalfantasy": Theme("Final Fantasy", "Decks built around Final Fantasy commanders, characters, summons, and mechanics.",
+                          "final fantasy ff ff7 ffvi ffx ffxiv ffxvi chocobo cactuar sephiroth cloud"),
     "goblins": Theme("Goblins", "Every Goblin deck, mirrored here from its own category. Local catalog only.",
                      "goblin kindred typal", local_only=True),
 }
 
 # The categories a deck can have as its primary: the seven plus `other`.
-# Goblins is not one of them.
-CANONICAL = tuple(k for k, t in THEMES.items() if not t.local_only)
+# Secondary tags such as goblins and finalfantasy are not primaries.
+CANONICAL = tuple(k for k, t in THEMES.items() if not t.local_only and k != "finalfantasy")
 
 
 # A conservative fallback for decks without an explicit assignment, keyed on the
@@ -77,6 +79,8 @@ _HINT_WORDS = {
 }
 HINTS = {w: (cat,) for cat, words in _HINT_WORDS.items() for w in words.split()}
 HINTS["goblins"] = ("gowide", "goblins")
+HINTS["finalfantasy"] = ("other", "finalfantasy")
+HINTS["ff"] = ("other", "finalfantasy")
 FALLBACK = ("other",)
 
 

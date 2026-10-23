@@ -187,6 +187,21 @@ class DeckThemeTests(unittest.TestCase):
         self.assertEqual(tiles, {"alice/Bracket4/Shared-Deck.html": "aggro",
                                  "bob/Bracket4/Shared-Deck.html": "control"})
 
+    def test_finalfantasy_published_and_searchable(self):
+        cloud = deck("Cloud-Attacks", ("aggro", "finalfantasy"), owner="zzwang", bracket="Bracket3")
+        other = deck("Fair-Deck", ("aggro",), bracket="Bracket3")
+        templates = frontend.load(ROOT / "frontend")
+        published = build_site.render_index(templates, [cloud, other], "https://example.test", Mana())
+        self.assertIn('value="finalfantasy">Final Fantasy</option>', published)
+        self.assertIn('<span class="theme-tag">Final Fantasy</span>', published)
+        catalog = Catalog(published)
+        cloud_tile = next(attrs for _, attrs in catalog.tiles if attrs["href"].endswith("Cloud-Attacks.html"))
+        self.assertIn("Final Fantasy", cloud_tile["data-search"])
+        self.assertIn("finalfantasy", cloud_tile["data-themes"])
+        # Non-local: visible on published index
+        self.assertEqual(deckthemes.visible(("aggro", "finalfantasy"), local=False),
+                         ("aggro", "finalfantasy"))
+
 
 if __name__ == "__main__":
     unittest.main()

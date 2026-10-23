@@ -82,6 +82,7 @@
   "ratdos/Niko-Blink": ["gowide", "value"],
   "ratdos/Norin-Chaos": ["spells", "control", "gowide"],
   "ratdos/Obeka-Upkeep": ["aggro", "spells", "value"],
+  "ratdos/Omega-Lockdown": ["control", "combo", "value"],
   "ratdos/Rakdos-Demons": ["graveyard", "aggro"],
   "ratdos/RilsaRael-Dungeons": ["combo", "value", "aggro"],
   "ratdos/Sin-Reanimator": ["graveyard", "value", "aggro"],

@@ -1,0 +1,67 @@
+Kefka is not a passive spectator to random graveyard flips. You actively curate opponents' graveyards with mass wheels and continuous mill so his end-step ability hits their most devastating spells, casting up to three stolen spells for free every turn while draining their owners for their full mana values. Even more importantly, Kefka is indestructible during your turn, allowing you to cast symmetrical board sweepers like Blasphemous Act and Damnation with zero fear of losing your commander before stealing whatever just died on your end step.
+Bracket 3: the Game Changer cap is three, filled by Demonic Tutor, Jeska's Will, and Vampiric Tutor. No mass land denial. The Bloodchief Ascension plus Mindcrank infinite mill-drain combo waits until turn 6 under house rules.
+
+# The engine: End-step heists and burn
+Kefka, Dancing Mad :: a 6/6 Wizard that is indestructible on your turn. At your end step, exile a card at random from each opponent's graveyard, cast any number of them without paying mana costs, and deal life loss equal to mana value to each spell's owner.
+Harmonic Prodigy :: a Wizard that causes triggered abilities of other Wizards to trigger an additional time; doubles Kefka's end-step ability to exile two cards per opponent and cast up to six free spells every turn.
+Roaming Throne :: name Wizard or Human to double Kefka's end-step trigger, doubling your stolen spells and life drain.
+Strionic Resonator :: pays {2} and taps to copy Kefka's end-step triggered ability.
+Gogo, Mysterious Mime :: becomes a copy of Kefka or any creature with haste at combat, granting additional beatdown and potential triggers.
+Locke, Treasure Hunter :: attacks to mill each player, generates Treasures on milled lands, and lets you cast a spell from the milled cards.
+Dauthi Voidwalker :: exiles opposing cards with void counters whenever they would hit the graveyard, letting you sacrifice Dauthi to cast an opponent's best spell for free.
+
+# Stocking opposing graveyards: Wheels and mill
+Wheel of Fortune :: forces each player to discard their hand and draw seven cards, instantly dumping high-cost opposing spells into graveyards for Kefka.
+Reforge the Soul :: a secondary Wheel of Fortune with a miracle cost of {1}{R}.
+Wheel of Misfortune :: forces opponents to choose between taking high damage or wheeling their hands into the graveyard.
+Dark Deal :: each player discards their hand and draws that many minus one, shredding opposing hands and stocking graveyards.
+Burning Inquiry :: cheap one-mana disruption that forces each player to draw three and discard three at random.
+Waste Not :: converts opponent discards from wheels into 2/2 Zombie armies, {B}{B} mana bursts, and extra card draws.
+Mesmeric Orb :: repeatedly mills every player whenever their permanents untap, filling opposing graveyards with Kefka targets every turn cycle.
+Altar of the Brood :: mills each opponent for 1 whenever a permanent enters under your control, creating massive mill off wheels or Zombie tokens.
+Breach the Multiverse :: each player mills ten cards, then you reanimate the best creature or planeswalker from each player's graveyard under your control.
+Rise of the Dark Realms :: late-game reanimation bomb that puts all creatures from all graveyards onto your battlefield.
+Syr Konrad, the Grim :: pings each opponent for 1 whenever a creature enters or leaves any graveyard, weaponizing wheels, mill, and Kefka's exile.
+Brainstealer Dragon :: whenever you cast a spell you don't own, its owner loses life equal to its mana value; on your end step, it exiles additional cards from opponents.
+
+# The infinite mill-drain loop
+Bloodchief Ascension + Mindcrank :: with three quest counters on Bloodchief Ascension, any opponent taking damage or milling a card starts an infinite loop where Ascension drains 2 life, Mindcrank mills 2 cards, and each card milled triggers Ascension again until all opponents are drained to 0
+Mindcrank :: continuous mill engine that grinds opponents' libraries whenever they take combat damage or burn from Kefka's triggers.
+Bloodchief Ascension :: charges quickly off Kefka's end-step life loss and early pings, then punishes every card hitting an opponent's graveyard.
+Under Bracket 3 rules, this infinite combo must wait until turn 6 or later. Spend turns 1 through 5 using wheels to disrupt hands, ramping with rituals, and deploying Kefka.
+
+# Exile cast payoffs and damage amps
+Passionate Archaeologist :: grants Kefka an ability that deals damage equal to mana value to target player whenever you cast a spell from exile, effectively doubling Kefka's burn.
+Keeper of Secrets :: deals damage equal to mana value to target opponent whenever you cast a spell from anywhere other than your hand, stacking with Kefka and Passionate Archaeologist.
+Nalfeshnee :: whenever you cast a spell from exile, copies it; duplicates every stolen spell cast via Kefka, Dauthi, or Locke.
+Wild-Magic Sorcerer :: gives the first spell you cast from exile each turn cascade, cascading into free spells from your own ninety-nine.
+Prosper, Tome-Bound :: generates a Treasure token whenever you play a card from exile, turning Kefka's free casts into banked mana.
+The Lord of Pain :: prevents opponents from gaining life and deals damage equal to mana value whenever a player casts their first spell each turn.
+
+# Fast mana and rituals for Kefka
+Jeska's Will :: premier red ritual that generates red mana equal to an opponent's hand size (often five to seven mana) and exiles three cards to play, enabling turn 3 or 4 Kefka casts.
+Dark Ritual + Cabal Ritual :: explosive black mana acceleration to speed up early development or cast heavy sorceries.
+Seething Song :: turns three mana into five red mana to cast Kefka or Breach the Multiverse.
+Mana Geyser :: taps into opposing tapped lands to generate fifteen to twenty red mana in the mid-to-late game.
+Sol Ring + Arcane Signet + Rakdos Signet + Talisman of Indulgence + Fellwar Stone + Mind Stone :: reliable artifact acceleration to curve smoothly.
+Lotus Petal :: free mana fixing and acceleration.
+Cabal Coffers + Urborg, Tomb of Yawgmoth :: late-game black mana powerhouse.
+Phyrexian Tower :: land that sacrifices a creature for {B}{B} to cast Kefka ahead of curve.
+
+# Sweepers and interaction
+Blasphemous Act :: costs {R} with full boards and deals thirteen damage to all creatures; because Kefka is indestructible on your turn, he survives unscathed while opponents' creatures die and become fodder for your end-step trigger.
+Damnation + Toxic Deluge :: clean board resets that leave your indestructible commander intact on your turn while wiping opposing boards.
+Deadly Rollick + Deflecting Swat :: free exile creature removal and redirection spells while your commander is on the battlefield.
+Chaos Warp + Bedevil + Withering Torment :: versatile instant-speed answers hitting creatures, artifacts, enchantments, and planeswalkers.
+Feed the Swarm :: efficient black enchantment and creature removal.
+Imp's Mischief :: redirects opposing counterspells or targeted removal spells to protect your key pieces.
+Rakdos Charm :: modal instant that can exile all graveyards in response to opponent reanimation, shatter an artifact, or deal lethal damage to a go-wide player.
+Lightning Greaves :: provides shroud and zero-cost haste to protect Kefka or enable immediate attacks with Locke and Gogo.
+Fell the Profane + Malakir Rebirth + Agadeem's Awakening :: MDFCs providing removal, death protection, and reanimation while serving as land drops.
+
+# Opening hand and sequencing
+Look for an opening hand with two to three lands, early ramp or a ritual (Sol Ring, Dark Ritual, Arcane Signet, Talisman of Indulgence), and a wheel or value engine (Wheel of Fortune, Burning Inquiry, Waste Not, Mesmeric Orb).
+Turn 1-2: Deploy early mana rocks or disruption (Altar of the Brood, Bloodchief Ascension, Burning Inquiry).
+Turn 3-4: Cast a wheel (Wheel of Fortune, Dark Deal) or ritual (Jeska's Will, Seething Song) to accelerate and stock opposing graveyards with high-value targets.
+Turn 5-6: Cast Kefka, Dancing Mad. Move to your end step to exile cards from opponents' graveyards, casting their best threats for free and burning them for their mana value.
+Turn 7+: Deploy trigger doublers (Harmonic Prodigy, Roaming Throne) or damage amplifiers (Passionate Archaeologist, Keeper of Secrets). Assemble Bloodchief Ascension + Mindcrank to close out the game, or overwhelm the table with Rise of the Dark Realms.

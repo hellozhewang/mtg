@@ -76,6 +76,7 @@
   "ratdos/Feldon-Reanimator": ["graveyard", "value"],
   "ratdos/Greasefang-Vehicles": ["graveyard", "aggro", "value"],
   "ratdos/HeiBai-Shrines": ["value", "gowide", "spells"],
+  "ratdos/Kefka-Theft": ["control", "finalfantasy", "spells", "combo"],
   "ratdos/Kwia-Lifegain": ["gowide", "value"],
   "ratdos/MaelstromWanderer-Roulette": ["value", "aggro"],
   "ratdos/MarrowGnawer-Swarm": ["gowide"],

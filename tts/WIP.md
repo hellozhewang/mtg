@@ -7,6 +7,23 @@ Last updated 2026-10-22 (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
 Both states visually checked live. **Steam is now v64, published at the owner’s request.** See [the changelog](../docs/development/tts-changelog.md).
 
+## Kefka-Discard Bracket 3 build (2026-10-22)
+
+Owner requested the same maximum-potential Bracket 3 treatment as Vivi. No existing
+Kefka list was present, so build Kefka, Court Mage with a front-face blink/discard
+engine, nine combo-access tutors, Oracle + Consultation/Pact and independent
+Dualcaster + Molten Duplication. Game Changers: Demonic Tutor, Rhystic Study and
+Thassa's Oracle. Validate 100 cards, 33 lands + 3 MDFCs, average MV 1.93 and TTS
+import 100/100. No duplicate names, preserving the Pact line. Tier S; primary
+Combo, secondary Graveyard and Value & Ramp. Compact wins wait until turn six.
+
+The guide warns against unnecessary eight-mana transformations and mandatory
+back-face draw explosions, documents Dress Down disabling our own entry triggers,
+Defense Grid taxing our interaction, and the exact pre-resolution timing of
+Kitten + Wishclaw. Check every guide card against the final list. Publish only
+Kefka's assets and matching catalog metadata, preserving existing records and
+spawn bytes. This is a deck-data update; Saved Games and Steam remain v64.
+
 ## Vivi-Spellslinger Bracket 3 tuning (2026-10-22)
 
 Owner requested maximum potential within Bracket 3. Tune `zzwang/Vivi-Spellslinger`

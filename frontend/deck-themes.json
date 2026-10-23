@@ -121,6 +121,7 @@
   "zzwang/Kaervek-Punisher": ["spells", "control"],
   "zzwang/Kambal-Punisher": ["spells", "control"],
   "zzwang/Karazikar-Goad": ["control"],
+  "zzwang/Kefka-Discard": ["combo", "graveyard", "value"],
   "zzwang/Kilo-Infinite": ["combo", "value"],
   "zzwang/Kinnan-Combo": ["combo", "value"],
   "zzwang/Kinnan-Infinite": ["combo", "value"],

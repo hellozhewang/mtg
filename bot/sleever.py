@@ -23,6 +23,7 @@ import json
 import re
 import shutil
 import subprocess
+import sys
 import tempfile
 import urllib.request
 from pathlib import Path
@@ -30,6 +31,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parent
 SLEEVES_DIR = REPO / "tts" / "sleeves"
+SECONDARY_GENERATOR = REPO / "scripts" / "chatgpt-browser-image-generator.py"
 STAGING = HERE / ".sleever"                      # gitignored; one folder per user
 OWNERS = STAGING / "owners.json"                 # slug -> Discord owner, for overwrites
 
@@ -193,6 +195,55 @@ def latest_picture(f: Path, since: float) -> Path | None:
 
 # ---------- naming ----------
 
+def infer_sleeve_name(message: str) -> str:
+    """Derive a concise 1-4 word sleeve title from the user request."""
+    clean = re.sub(r"^(sleever\s+)?(please\s+)?(make\s+(me\s+)?)?(create\s+|draw\s+)?(a\s+|an\s+|some\s+)?", "", message.strip(), flags=re.I).strip()
+    clean = re.sub(r"\s+sleeves?(\s+please)?\.?$", "", clean, flags=re.I).strip()
+    clean = re.sub(r"[^\w\s-]", "", clean).strip()
+    words = clean.split()
+    if not words:
+        return "Sleeves"
+    selected = words[:4]
+    while len(selected) > 1 and selected[-1].lower() in {'at', 'in', 'of', 'on', 'with', 'for', 'a', 'the', 'an', 'to', 'and', 'by'}:
+        selected.pop()
+    return " ".join(selected).title()[:40]
+
+
+def sleeve_prompt_for_generator(user_request: str) -> str:
+    """Format the user request into an optimal prompt for card back sleeve generation."""
+    clean = re.sub(r"^(sleever\s+)?(please\s+)?(make\s+(me\s+)?)?(create\s+|draw\s+)?", "", user_request.strip(), flags=re.I).strip()
+    clean = re.sub(r"\s+sleeves?(\s+please)?\.?$", "", clean, flags=re.I).strip()
+    return (
+        f"A custom card back sleeve illustration of: {clean}. "
+        f"Portrait 2:3 aspect ratio, one strong centered motif that reads at thumbnail size, dynamic composition, "
+        f"full-bleed artwork extending to all edges with safe margins for cropping. "
+        f"No borders, no frames, no card game templates, no text, no logos, no watermarks."
+    )
+
+
+def generate_secondary_image(prompt: str, out_path: Path, timeout: float = 600) -> None:
+    """Generate a sleeve image using scripts/chatgpt-browser-image-generator.py."""
+    if not SECONDARY_GENERATOR.is_file():
+        raise SleeveError(f"secondary image generator not found at {SECONDARY_GENERATOR}")
+    out_path.unlink(missing_ok=True)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    cmd = [
+        sys.executable,
+        str(SECONDARY_GENERATOR),
+        "--prompt", prompt,
+        "--out", str(out_path),
+        "--timeout", str(timeout),
+    ]
+    r = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout + 30)
+    if r.returncode != 0 or not out_path.exists():
+        err = (r.stderr or r.stdout).strip()
+        for line in err.splitlines():
+            if line.startswith("Error:"):
+                err = line
+                break
+        raise SleeveError(f"secondary image generator failed: {err[:300]}")
+
+
 def sleeve_name(answer: str) -> str | None:
     found = SLEEVE_LINE.findall(answer or "")
     name = found[-1].strip().strip("*`'\"") if found else ""
@@ -291,7 +342,8 @@ def finish(src: Path, dest: Path) -> None:
         shutil.copyfile(out, dest)
 
 
-def publish(f: Path, answer: str, owner: str, previous: str | None, since: float) -> tuple[str, str | None]:
+def publish(f: Path, answer: str, owner: str, previous: str | None, since: float,
+            *, secondary: bool = False) -> tuple[str, str | None]:
     """After a turn: install the sleeve and return (reply, slug), or the reply alone.
 
     The reply loses its `Sleeve:` line and gains the attach marker for Discord.
@@ -308,7 +360,10 @@ def publish(f: Path, answer: str, owner: str, previous: str | None, since: float
     finish(picture, dest)
     record_owner(slug, owner)
     label = slug.replace("-", " ").replace("_", " ").title()
-    lines = [body or f"Made **{label}** sleeves.",
+    desc_line = body or f"Made **{label}** sleeves."
+    if secondary:
+        desc_line += "\n\n*(Using secondary image gen workaround)*"
+    lines = [desc_line,
              f"In the table it's **Sleeves: {label}** in the Cactuar deck browser, a few "
              f"minutes from now: open the browser (or press **Refresh** if it's open), then "
              f"pick it before loading a deck.",

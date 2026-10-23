@@ -16,6 +16,11 @@ dependencies beyond the standard library:
 | [`validate_deck.py`](scripts/validate_deck.py) | 100 cards, real names, colour identity, bracket legality, singleton, and that Tabletop Simulator's importer loads it |
 | [`ttsimport.py`](scripts/ttsimport.py) | ask the Tabletop Simulator deck importer what a pasted list loads as |
 
+For image assets, [`chatgpt-browser-image-generator.py`](scripts/chatgpt-browser-image-generator.py)
+generates and downloads an original PNG through a saved ChatGPT browser session.
+It requires the separately installed `agent-browser` CLI; see the
+[browser setup and usage guide](docs/development/agent-browser-guide.md).
+
 Every deck targets a **Commander bracket** and has to obey its restrictions, which
 is what most of this document is about. The bracket rules themselves live in
 [commander-brackets-and-rules.md](commander-brackets-and-rules.md).

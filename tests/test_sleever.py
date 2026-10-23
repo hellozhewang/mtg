@@ -95,6 +95,24 @@ class PictureTests(Isolated):
         self.assertIn("**Sleeves: Sailor Moon**", reply)
         self.assertNotIn("Sleeve: Sailor Moon\n", reply)
 
+    def test_publish_with_secondary_generator_includes_note(self):
+        f = sleever.prepare("zz")
+        png(f / "sleeve.png", 848, 1264)
+        reply, slug = sleever.publish(f, "Made **Sailor Moon** sleeves.\nSleeve: Sailor Moon",
+                                      "zz", None, since=0, secondary=True)
+        self.assertEqual(slug, "sailor-moon")
+        self.assertIn("*(Using secondary image gen workaround)*", reply)
+        self.assertIn(f"[[attach:{self.sleeves / 'sailor-moon.jpg'}]]", reply)
+
+    def test_infer_sleeve_name_and_prompt(self):
+        self.assertEqual(sleever.infer_sleeve_name("sleever make me sailor moon sleeves"), "Sailor Moon")
+        self.assertEqual(sleever.infer_sleeve_name("make me gengar sleeves"), "Gengar")
+        self.assertEqual(sleever.infer_sleeve_name("sleever make me a dark gothic castle at night"), "Dark Gothic Castle")
+        prompt = sleever.sleeve_prompt_for_generator("make me sailor moon sleeves")
+        self.assertIn("sailor moon", prompt.lower())
+        self.assertIn("custom card back sleeve illustration", prompt.lower())
+        self.assertIn("portrait 2:3", prompt.lower())
+
     def test_no_new_picture_publishes_nothing(self):
         f = sleever.prepare("zz")
         png(f / "sleeve.png", 848, 1264)

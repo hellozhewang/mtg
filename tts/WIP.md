@@ -19,9 +19,14 @@ copies and finite graveyard/draw resources, and describes the exact winning loop
 Power tier A→S; primary strategy Combo, secondary Spells & Burn.
 
 Validator passes 100 cards, 3/3 Game Changers, avg MV 1.84 (was 2.17), TTS import
-100/100 and 44/44 retained pinned printings. All guide card references are present.
-Publish through the normal catalog/guide/commander data build; no runtime/table
-change or Steam upload is needed. Saved Games and Steam remain v64.
+100/100 and 44/44 retained pinned printings. All 51 guide card/chain rows refer to cards in the deck. Full build verified
+4,510 image URLs; the scoped Vivi publication verifies its 106 URLs. Publish the
+Vivi page/list/guide data, category/tier catalog records and required thumbnails.
+Preserve other decks' published timestamps, records and spawn bytes: a fresh
+worktree has different file birth dates, and its cache can carry newer default
+art unrelated to this request. All 163 other catalog records and spawn decks
+were checked unchanged. No runtime/table change or Steam upload is needed.
+Saved Games and Steam remain v64.
 
 ## Audio asset cleanup (2026-10-22)
 

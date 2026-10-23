@@ -1,61 +1,62 @@
 1 Vivi Ornitier (FIN) 248
 1 An Offer You Can't Refuse (FIC) 267
 1 Arcane Signet (FIC) 332
-1 Archmage Emeritus (FIC) 261
 1 Arid Mesa
 1 Birgi, God of Storytelling (KHM) 123
 1 Bloodstained Mire
-1 Borne Upon a Wind (LTR) 44
 1 Brain Freeze (SCG) 29
 1 Brainstorm (FCA) 28
 1 Cascade Bluffs
+1 Cephalid Coliseum
 1 Chain of Vapor (MB2) 156
 1 City of Brass
 1 Command Tower
 1 Consider (TDC) 148
-1 Counterspell (FCA) 4
 1 Curiosity (A25) 52
-1 Cyclonic Rift (CMM) 84
 1 Deflecting Swat (CMM) 214
 1 Dizzy Spell
-1 Dramatic Reversal (KLD) 44
+1 Dualcaster Mage
 1 Exotic Orchard
 1 Faithless Looting (SOC) 244
 1 Fellwar Stone (MBC) 74
 1 Fiery Islet
-1 Final Fortune (7ED) 182
+1 Flashback
 1 Flooded Strand
 1 Flusterstorm (IMA) 55
 1 Force of Negation (2X2) 50
 1 Frantic Search (TDC) 153
-1 Frostboil Snarl
+1 Gamble
+1 Geist of Saint Thalia
 1 Gemstone Caverns
 1 Gitaxian Probe (NPH) 35
-1 Gut Shot (MM2) 117
 1 Harmonic Prodigy (MH2) 132
+1 Haze of Rage
 1 Hexing Squelcher (ECL) 145
-1 Hullbreaker Horror (INR) 68
 1 Imperial Recruiter (MH2) 281
+1 Into the Flood Maw
 2 Island
 1 Izzet Signet (TDC) 320
 1 Jeweled Amulet
-1 Lightning Bolt (SLD) 1871
+1 Long-Term Plans
 1 Lotus Petal (MB2) 226
+1 Magic Damper
 1 Mana Confluence
 1 Mental Misstep (NPH) 38
+1 Merchant Scroll
 1 Mindbreak Trap (ZEN) 57
 1 Mishra's Bauble (2XM) 274
 1 Mistrise Village
 1 Misty Rainforest
+1 Molten Duplication
 2 Mountain
 1 Mox Amber (DOM) 224
 1 Mox Opal (2XM) 275
+1 Muddle the Mixture
 1 Mystic Remora (DMR) 59
-1 Niv-Mizzet, Parun (OTC) 235
-1 Niv-Mizzet, Visionary (FDN) 123
-1 Ophidian Eye
 1 Otawara, Soaring City
 1 Pact of Negation (TSR) 77
+1 Perfected Theory
+1 Personal Tutor
 1 Polluted Delta
 1 Ponder (TDC) 159
 1 Preordain (TDC) 161
@@ -63,36 +64,35 @@
 1 Quicksilver Elemental (MRD) 47
 1 Ragavan, Nimble Pilferer (FCA) 43
 1 Red Elemental Blast (LEB) 170
+1 Redirect Lightning
 1 Rhystic Study (FCA) 31
 1 Rite of Flame (CSP) 96
 1 Riverpyre Verge
 1 Scalding Tarn
 1 Sea Gate Restoration
+1 Seething Anger
 1 Shivan Reef
 1 Simian Spirit Guide (A25) 148
 1 Sink into Stupor
 1 Snap (DMR) 66
 1 Sol Ring (FIC) 358
+1 Spellseeker
 1 Spirebluff Canal
-1 Springleaf Drum (2XM) 291
 1 Steam Vents
+1 Step Through
 1 Storm-Kiln Artist (SOC) 255
 1 Stormcarved Coast
 1 Strike It Rich
 1 Sulfur Falls
 1 Swan Song (C16) 98
-1 Swiftfoot Boots (FIC) 361
 1 Talisman of Creativity (FRC) 61
-1 Tandem Lookout
-1 The One Ring (LTR) 246
 1 Thundering Falls
 1 Timetwister
 1 Training Center
-1 Valley Floodcaller (BLB) 79
-1 Veyran, Voice of Duality (SOC) 337
-1 Virtue of Courage (WOE) 157
+1 Underworld Breach
 1 Volcanic Island
 1 Wheel of Fortune (LEB) 184
 1 Wild Ride
 1 Windfall (OTC) 123
+1 Wizard's Staff
 1 Wooded Foothills

@@ -1,170 +1,792 @@
 {
-  "digitalstealth/AkromaVialSmasher-Keywords": ["aggro"],
-  "digitalstealth/Azami-Wizards": ["combo", "control", "value"],
-  "digitalstealth/Belakor-Demons": ["aggro", "spells", "graveyard"],
-  "digitalstealth/Blitzwing-Drain": ["spells", "combo", "aggro"],
-  "digitalstealth/Breena-Politics": ["aggro", "control", "gowide"],
-  "digitalstealth/CaptainSisay-Legends": ["value", "control"],
-  "digitalstealth/CaptainSisay-Prison": ["control", "combo", "value"],
-  "digitalstealth/CecilyElmar-Spells": ["spells", "value"],
-  "digitalstealth/Davros-Daleks": ["gowide", "spells", "control"],
-  "digitalstealth/DoctorDoom-Discard": ["graveyard", "spells", "combo"],
-  "digitalstealth/DoctorDoom-Reanimator": ["graveyard", "aggro"],
-  "digitalstealth/Esika-Superfriends": ["value", "control"],
-  "digitalstealth/Felothar-Reanimator": ["aggro", "graveyard"],
-  "digitalstealth/Galadriel-Blink": ["gowide", "value", "control"],
-  "digitalstealth/Glarb-Topdeck": ["value", "graveyard"],
-  "digitalstealth/Grima-Theft": ["control", "aggro"],
-  "digitalstealth/Hashaton-Reanimator": ["graveyard", "gowide"],
-  "digitalstealth/Hearthhull-Lands": ["value", "spells"],
-  "digitalstealth/IshaiTana-Tokens": ["gowide", "aggro", "value"],
-  "digitalstealth/Jace-Polymorph": ["value", "combo", "control"],
-  "digitalstealth/Kenrith-Toolbox": ["value", "control", "aggro"],
-  "digitalstealth/Korvold-Sacrifice": ["gowide", "value"],
-  "digitalstealth/LimDul-Reanimator": ["graveyard", "control", "gowide"],
-  "digitalstealth/Lucea-Tyranids": ["aggro", "value"],
-  "digitalstealth/NicolBolas-Handbreaker": ["control", "graveyard"],
-  "digitalstealth/NicolBolas-Reanimator": ["graveyard", "control", "combo"],
-  "digitalstealth/NicolBolas-Superfriends": ["value", "control"],
-  "digitalstealth/OptimusPrime-Counters": ["value", "aggro", "combo"],
-  "digitalstealth/Saruman-Antistax": ["spells", "control"],
-  "digitalstealth/Sauron-Reanimator": ["graveyard", "gowide"],
-  "digitalstealth/SecondDoctor-Draw": ["control", "gowide", "value"],
-  "digitalstealth/Shorikai-Prison": ["control", "value"],
-  "digitalstealth/SisayWeatherlight-Toolbox": ["value", "control"],
-  "digitalstealth/Slicer-Voltron": ["aggro", "combo", "control"],
-  "digitalstealth/Starscream-Politics": ["spells", "control", "combo"],
-  "digitalstealth/Surrak-Combat": ["aggro", "value"],
-  "digitalstealth/ThaliaGitrog-Lands": ["value", "control"],
-  "digitalstealth/Ureni-Dragons": ["aggro", "value"],
-  "digitalstealth/Venser-Wizards": ["control", "value"],
-  "digitalstealth/Xander-Archenemy": ["control", "graveyard", "combo"],
-  "em0k1ller/Anafenza-Hatebears": ["control", "aggro"],
-  "em0k1ller/Ghidorah-Mutate": ["aggro", "value"],
-  "em0k1ller/Godzilla-Stompy": ["aggro", "combo", "value"],
-  "em0k1ller/GrandArbiter-Prison": ["control"],
-  "em0k1ller/NivMizzet-Antispells": ["spells", "control"],
-  "em0k1ller/Pantlaza-Discover": ["value"],
-  "em0k1ller/RuricThar-Punisher": ["spells", "aggro"],
-  "em0k1ller/Sigarda-Hatebears": ["control", "aggro"],
-  "em0k1ller/Teval-Reanimator": ["graveyard", "gowide", "value"],
-  "em0k1ller/Yasharn-Antisacrifice": ["control"],
-  "em0k1ller/Yshtola-Spells": ["spells"],
-  "kupo7/Alela-Prison": ["control", "gowide", "value"],
-  "kupo7/Alela-Tempo": ["control", "gowide", "spells"],
-  "kupo7/Atraxa-Blink": ["value"],
-  "kupo7/Atraxa-Counters": ["value", "aggro"],
-  "kupo7/BalthierFran-Vehicles": ["aggro", "value"],
-  "kupo7/Flubs-Storm": ["spells", "value", "graveyard"],
-  "kupo7/Hakbal-Merfolk": ["aggro", "value", "gowide"],
-  "kupo7/Kilo-Proliferate": ["value", "combo"],
-  "kupo7/Kotis-Theft": ["aggro", "control"],
-  "kupo7/OjerAxonil-Burn": ["spells"],
-  "kupo7/Sheoldred-Drain": ["spells"],
-  "kupo7/Sheoldred-Reanimator": ["graveyard", "gowide"],
-  "kupo7/Tergrid-Theft": ["control", "graveyard"],
-  "kupo7/Yuna-Counters": ["value", "combo", "aggro"],
-  "ratdos/Aloy-Artifacts": ["aggro", "value", "combo"],
-  "ratdos/Beamtown-Gifts": ["graveyard", "control", "combo"],
-  "ratdos/BlackCat-Theft": ["control", "graveyard", "value"],
-  "ratdos/BruceBanner-Combo": ["combo", "aggro"],
-  "ratdos/Brudiclad-Tokens": ["gowide", "value"],
-  "ratdos/Capitoline-Emblem": ["gowide", "value"],
-  "ratdos/DoctorOctopus-Refill": ["spells", "graveyard", "value"],
-  "ratdos/Feldon-Reanimator": ["graveyard", "value"],
-  "ratdos/Greasefang-Vehicles": ["graveyard", "aggro", "value"],
-  "ratdos/HeiBai-Shrines": ["value", "gowide", "spells"],
-  "ratdos/Kwia-Lifegain": ["gowide", "value"],
-  "ratdos/MaelstromWanderer-Roulette": ["value", "aggro"],
-  "ratdos/MarrowGnawer-Swarm": ["gowide"],
-  "ratdos/Meren-Reanimator": ["graveyard", "gowide", "control"],
-  "ratdos/Niko-Blink": ["gowide", "value"],
-  "ratdos/Norin-Chaos": ["spells", "control", "gowide"],
-  "ratdos/Obeka-Upkeep": ["aggro", "spells", "value"],
-  "ratdos/Rakdos-Demons": ["graveyard", "aggro"],
-  "ratdos/RilsaRael-Dungeons": ["combo", "value", "aggro"],
-  "ratdos/TeveshTana-Aristocrats": ["gowide", "value"],
-  "ratdos/TheMaster-Myriad": ["gowide", "value", "aggro"],
-  "ratdos/Tivit-Politics": ["gowide", "value", "control"],
-  "ratdos/UrSphinx-Sphinxes": ["aggro", "value", "graveyard"],
-  "ratdos/Vaevictis-Topdeck": ["aggro", "value", "combo"],
-  "ratdos/VirtusGorm-Ambush": ["aggro", "value"],
-  "zzwang/Adeline-Humans": ["gowide", "aggro", "combo"],
-  "zzwang/Aesi-Lands": ["value", "combo"],
-  "zzwang/Anafenza-Graveyardhate": ["control", "aggro"],
-  "zzwang/Animar-Storm": ["combo", "value"],
-  "zzwang/Baral-Control": ["control", "spells"],
-  "zzwang/Baylen-Goblins": ["gowide", "combo", "goblins"],
-  "zzwang/Blim-Gifts": ["control", "aggro"],
-  "zzwang/Bumbleflower-Menagerie": ["gowide", "value"],
-  "zzwang/Chatterfang-Tokens": ["gowide", "combo"],
-  "zzwang/Cloud-Attacks": ["aggro", "value", "gowide"],
-  "zzwang/Cloud-Equipment": ["aggro", "value"],
-  "zzwang/DonAndres-Beats": ["aggro", "control"],
-  "zzwang/Edgar-Vampires": ["gowide", "combo", "spells"],
-  "zzwang/Feather-Spells": ["spells", "aggro"],
-  "zzwang/GaddockTeeg-Removal": ["control", "value"],
-  "zzwang/GeneralKreat-Goblins": ["gowide", "spells", "combo", "goblins"],
-  "zzwang/Ghave-Saprolings": ["combo", "gowide"],
-  "zzwang/Giada-Angels": ["aggro", "value", "gowide"],
-  "zzwang/Gishath-Dinosaurs": ["aggro", "value", "combo"],
-  "zzwang/Godo-Combats": ["combo", "aggro"],
-  "zzwang/GrandArbiter-Lockdown": ["control", "combo"],
-  "zzwang/Gwenom-Drain": ["spells", "combo"],
-  "zzwang/Heliod-Lifegain": ["combo", "control"],
-  "zzwang/Henzie-Blitz": ["graveyard", "aggro", "value"],
-  "zzwang/HeroesinaHalfShell-Ninjas": ["aggro", "value"],
-  "zzwang/Inalla-Wizards": ["combo", "value"],
-  "zzwang/Isshin-Attacks": ["aggro", "gowide"],
-  "zzwang/Jetmir-Goblins": ["aggro", "gowide", "combo", "goblins"],
-  "zzwang/Kaalia-Angels": ["aggro", "graveyard"],
-  "zzwang/Kaervek-Punisher": ["spells", "control"],
-  "zzwang/Kambal-Punisher": ["spells", "control"],
-  "zzwang/Karazikar-Goad": ["control"],
-  "zzwang/Kefka-Discard": ["combo", "graveyard", "value"],
-  "zzwang/Kilo-Infinite": ["combo", "value"],
-  "zzwang/Kinnan-Combo": ["combo", "value"],
-  "zzwang/Kinnan-Infinite": ["combo", "value"],
-  "zzwang/Kozilek-Annihilator": ["value", "aggro"],
-  "zzwang/Krenko-Combo": ["combo", "gowide", "goblins"],
-  "zzwang/KrenkoTinStreet-Goblins": ["aggro", "gowide", "combo", "goblins"],
-  "zzwang/Laelia-Voltron": ["aggro"],
-  "zzwang/Lathril-Elves": ["gowide", "aggro"],
-  "zzwang/Lavinia-Hatebears": ["control"],
-  "zzwang/LightPaws-Auras": ["aggro", "value"],
-  "zzwang/Lorehold-Miracles": ["spells", "combo"],
-  "zzwang/Marchesa-Crew": ["graveyard", "control", "gowide"],
-  "zzwang/MarrowGnawer-Rats": ["gowide", "combo"],
-  "zzwang/Megatron-Reanimator": ["graveyard", "value"],
-  "zzwang/Minstrel-Lands": ["value", "combo"],
-  "zzwang/Muldrotha-Graveyard": ["graveyard", "value"],
-  "zzwang/Muxus-Goblins": ["combo", "gowide", "goblins"],
-  "zzwang/Najeela-Warriors": ["aggro", "combo", "gowide"],
-  "zzwang/Pramikon-Control": ["control", "value"],
-  "zzwang/Prosper-Treasure": ["value"],
-  "zzwang/Prossh-Kobolds": ["combo", "gowide"],
-  "zzwang/Raffine-Attacks": ["aggro", "graveyard"],
-  "zzwang/Selenia-Prison": ["control", "combo", "spells"],
-  "zzwang/Selvala-Ramp": ["value", "aggro"],
-  "zzwang/Sephiroth-Aristocrats": ["combo", "gowide", "graveyard"],
-  "zzwang/Shorikai-Prison": ["control", "value"],
-  "zzwang/Sythis-Enchantress": ["value", "control", "gowide"],
-  "zzwang/Terra-Enchantress": ["value", "graveyard", "combo"],
-  "zzwang/Teysa-Aristocrats": ["gowide"],
-  "zzwang/TheFirstSliver-Cascade": ["gowide", "value"],
-  "zzwang/Tifa-Combat": ["aggro", "value"],
-  "zzwang/Torbran-Burn": ["spells", "combo"],
-  "zzwang/Urza-Combo": ["combo", "value"],
-  "zzwang/Valgavoth-Punisher": ["spells", "control", "combo"],
-  "zzwang/Vivi-Spellslinger": ["combo", "spells"],
-  "zzwang/Vorinclex-Anticounters": ["control", "aggro"],
-  "zzwang/Windgrace-Lands": ["value"],
-  "zzwang/Winota-Attacks": ["aggro", "gowide", "control"],
-  "zzwang/Wort-Goblins": ["gowide", "combo", "goblins"],
-  "zzwang/Yawgmoth-Combo": ["combo", "gowide", "graveyard"],
-  "zzwang/Yuriko-Ninjas": ["aggro"],
-  "zzwang/Zada-Goblins": ["spells", "combo", "gowide", "goblins"],
-  "zzwang/Ziatora-Goblins": ["gowide", "combo", "goblins"],
-  "zzwang/Zur-Enchantress": ["aggro", "value", "control"],
-  "zzwang/Zur-Voltron": ["aggro", "value", "control"]
+  "digitalstealth/AkromaVialSmasher-Keywords": [
+    "aggro"
+  ],
+  "digitalstealth/Azami-Wizards": [
+    "combo",
+    "control",
+    "value"
+  ],
+  "digitalstealth/Belakor-Demons": [
+    "aggro",
+    "spells",
+    "graveyard"
+  ],
+  "digitalstealth/Blitzwing-Drain": [
+    "spells",
+    "combo",
+    "aggro"
+  ],
+  "digitalstealth/Breena-Politics": [
+    "aggro",
+    "control",
+    "gowide"
+  ],
+  "digitalstealth/CaptainSisay-Legends": [
+    "value",
+    "control"
+  ],
+  "digitalstealth/CaptainSisay-Prison": [
+    "control",
+    "combo",
+    "value"
+  ],
+  "digitalstealth/CecilyElmar-Spells": [
+    "spells",
+    "value"
+  ],
+  "digitalstealth/Davros-Daleks": [
+    "gowide",
+    "spells",
+    "control"
+  ],
+  "digitalstealth/DoctorDoom-Discard": [
+    "graveyard",
+    "spells",
+    "combo"
+  ],
+  "digitalstealth/DoctorDoom-Reanimator": [
+    "graveyard",
+    "aggro"
+  ],
+  "digitalstealth/Esika-Superfriends": [
+    "value",
+    "control"
+  ],
+  "digitalstealth/Felothar-Reanimator": [
+    "aggro",
+    "graveyard"
+  ],
+  "digitalstealth/Galadriel-Blink": [
+    "gowide",
+    "value",
+    "control"
+  ],
+  "digitalstealth/Glarb-Topdeck": [
+    "value",
+    "graveyard"
+  ],
+  "digitalstealth/Grima-Theft": [
+    "control",
+    "aggro"
+  ],
+  "digitalstealth/Hashaton-Reanimator": [
+    "graveyard",
+    "gowide"
+  ],
+  "digitalstealth/Hearthhull-Lands": [
+    "value",
+    "spells"
+  ],
+  "digitalstealth/IshaiTana-Tokens": [
+    "gowide",
+    "aggro",
+    "value"
+  ],
+  "digitalstealth/Jace-Polymorph": [
+    "value",
+    "combo",
+    "control"
+  ],
+  "digitalstealth/Kenrith-Toolbox": [
+    "value",
+    "control",
+    "aggro"
+  ],
+  "digitalstealth/Korvold-Sacrifice": [
+    "gowide",
+    "value"
+  ],
+  "digitalstealth/LimDul-Reanimator": [
+    "graveyard",
+    "control",
+    "gowide"
+  ],
+  "digitalstealth/Lucea-Tyranids": [
+    "aggro",
+    "value"
+  ],
+  "digitalstealth/NicolBolas-Handbreaker": [
+    "control",
+    "graveyard"
+  ],
+  "digitalstealth/NicolBolas-Reanimator": [
+    "graveyard",
+    "control",
+    "combo"
+  ],
+  "digitalstealth/NicolBolas-Superfriends": [
+    "value",
+    "control"
+  ],
+  "digitalstealth/OptimusPrime-Counters": [
+    "value",
+    "aggro",
+    "combo"
+  ],
+  "digitalstealth/Saruman-Antistax": [
+    "spells",
+    "control"
+  ],
+  "digitalstealth/Sauron-Reanimator": [
+    "graveyard",
+    "gowide"
+  ],
+  "digitalstealth/SecondDoctor-Draw": [
+    "control",
+    "gowide",
+    "value"
+  ],
+  "digitalstealth/Shorikai-Prison": [
+    "control",
+    "value"
+  ],
+  "digitalstealth/SisayWeatherlight-Toolbox": [
+    "value",
+    "control"
+  ],
+  "digitalstealth/Slicer-Voltron": [
+    "aggro",
+    "combo",
+    "control"
+  ],
+  "digitalstealth/Starscream-Politics": [
+    "spells",
+    "control",
+    "combo"
+  ],
+  "digitalstealth/Surrak-Combat": [
+    "aggro",
+    "value"
+  ],
+  "digitalstealth/ThaliaGitrog-Lands": [
+    "value",
+    "control"
+  ],
+  "digitalstealth/Ureni-Dragons": [
+    "aggro",
+    "value"
+  ],
+  "digitalstealth/Venser-Wizards": [
+    "control",
+    "value"
+  ],
+  "digitalstealth/Xander-Archenemy": [
+    "control",
+    "graveyard",
+    "combo"
+  ],
+  "em0k1ller/Anafenza-Hatebears": [
+    "control",
+    "aggro"
+  ],
+  "em0k1ller/Ghidorah-Mutate": [
+    "aggro",
+    "value"
+  ],
+  "em0k1ller/Godzilla-Stompy": [
+    "aggro",
+    "combo",
+    "value"
+  ],
+  "em0k1ller/GrandArbiter-Prison": [
+    "control"
+  ],
+  "em0k1ller/NivMizzet-Antispells": [
+    "spells",
+    "control"
+  ],
+  "em0k1ller/Pantlaza-Discover": [
+    "value"
+  ],
+  "em0k1ller/RuricThar-Punisher": [
+    "spells",
+    "aggro"
+  ],
+  "em0k1ller/Sigarda-Hatebears": [
+    "control",
+    "aggro"
+  ],
+  "em0k1ller/Teval-Reanimator": [
+    "graveyard",
+    "gowide",
+    "value"
+  ],
+  "em0k1ller/Yasharn-Antisacrifice": [
+    "control"
+  ],
+  "em0k1ller/Yshtola-Spells": [
+    "spells"
+  ],
+  "kupo7/Alela-Prison": [
+    "control",
+    "gowide",
+    "value"
+  ],
+  "kupo7/Alela-Tempo": [
+    "control",
+    "gowide",
+    "spells"
+  ],
+  "kupo7/Atraxa-Blink": [
+    "value"
+  ],
+  "kupo7/Atraxa-Counters": [
+    "value",
+    "aggro"
+  ],
+  "kupo7/BalthierFran-Vehicles": [
+    "aggro",
+    "value"
+  ],
+  "kupo7/Flubs-Storm": [
+    "spells",
+    "value",
+    "graveyard"
+  ],
+  "kupo7/Hakbal-Merfolk": [
+    "aggro",
+    "value",
+    "gowide"
+  ],
+  "kupo7/Kilo-Proliferate": [
+    "value",
+    "combo"
+  ],
+  "kupo7/Kotis-Theft": [
+    "aggro",
+    "control"
+  ],
+  "kupo7/OjerAxonil-Burn": [
+    "spells"
+  ],
+  "kupo7/Sheoldred-Drain": [
+    "spells"
+  ],
+  "kupo7/Sheoldred-Reanimator": [
+    "graveyard",
+    "gowide"
+  ],
+  "kupo7/Tergrid-Theft": [
+    "control",
+    "graveyard"
+  ],
+  "kupo7/Yuna-Counters": [
+    "value",
+    "combo",
+    "aggro"
+  ],
+  "ratdos/Aloy-Artifacts": [
+    "aggro",
+    "value",
+    "combo"
+  ],
+  "ratdos/Beamtown-Gifts": [
+    "graveyard",
+    "control",
+    "combo"
+  ],
+  "ratdos/BlackCat-Theft": [
+    "control",
+    "graveyard",
+    "value"
+  ],
+  "ratdos/BruceBanner-Combo": [
+    "combo",
+    "aggro"
+  ],
+  "ratdos/Brudiclad-Tokens": [
+    "gowide",
+    "value"
+  ],
+  "ratdos/Capitoline-Emblem": [
+    "gowide",
+    "value"
+  ],
+  "ratdos/DoctorOctopus-Refill": [
+    "spells",
+    "graveyard",
+    "value"
+  ],
+  "ratdos/Feldon-Reanimator": [
+    "graveyard",
+    "value"
+  ],
+  "ratdos/Greasefang-Vehicles": [
+    "graveyard",
+    "aggro",
+    "value"
+  ],
+  "ratdos/HeiBai-Shrines": [
+    "value",
+    "gowide",
+    "spells"
+  ],
+  "ratdos/Kwia-Lifegain": [
+    "gowide",
+    "value"
+  ],
+  "ratdos/MaelstromWanderer-Roulette": [
+    "value",
+    "aggro"
+  ],
+  "ratdos/MarrowGnawer-Swarm": [
+    "gowide"
+  ],
+  "ratdos/Meren-Reanimator": [
+    "graveyard",
+    "gowide",
+    "control"
+  ],
+  "ratdos/Niko-Blink": [
+    "gowide",
+    "value"
+  ],
+  "ratdos/Norin-Chaos": [
+    "spells",
+    "control",
+    "gowide"
+  ],
+  "ratdos/Obeka-Upkeep": [
+    "aggro",
+    "spells",
+    "value"
+  ],
+  "ratdos/Rakdos-Demons": [
+    "graveyard",
+    "aggro"
+  ],
+  "ratdos/RilsaRael-Dungeons": [
+    "combo",
+    "value",
+    "aggro"
+  ],
+  "ratdos/TeveshTana-Aristocrats": [
+    "gowide",
+    "value"
+  ],
+  "ratdos/TheMaster-Myriad": [
+    "gowide",
+    "value",
+    "aggro"
+  ],
+  "ratdos/Tivit-Politics": [
+    "gowide",
+    "value",
+    "control"
+  ],
+  "ratdos/UrSphinx-Sphinxes": [
+    "aggro",
+    "value",
+    "graveyard"
+  ],
+  "ratdos/Vaevictis-Topdeck": [
+    "aggro",
+    "value",
+    "combo"
+  ],
+  "ratdos/VirtusGorm-Ambush": [
+    "aggro",
+    "value"
+  ],
+  "zzwang/Adeline-Humans": [
+    "gowide",
+    "aggro",
+    "combo"
+  ],
+  "zzwang/Aesi-Lands": [
+    "value",
+    "combo"
+  ],
+  "zzwang/Anafenza-Graveyardhate": [
+    "control",
+    "aggro"
+  ],
+  "zzwang/Animar-Storm": [
+    "combo",
+    "value"
+  ],
+  "zzwang/Baral-Control": [
+    "control",
+    "spells"
+  ],
+  "zzwang/Baylen-Goblins": [
+    "gowide",
+    "combo",
+    "goblins"
+  ],
+  "zzwang/Blim-Gifts": [
+    "control",
+    "aggro"
+  ],
+  "zzwang/Bumbleflower-Menagerie": [
+    "gowide",
+    "value"
+  ],
+  "zzwang/Chatterfang-Tokens": [
+    "gowide",
+    "combo"
+  ],
+  "zzwang/Cloud-Attacks": [
+    "aggro",
+    "value",
+    "gowide"
+  ],
+  "zzwang/Cloud-Equipment": [
+    "aggro",
+    "value"
+  ],
+  "zzwang/DonAndres-Beats": [
+    "aggro",
+    "control"
+  ],
+  "zzwang/Edgar-Vampires": [
+    "gowide",
+    "combo",
+    "spells"
+  ],
+  "zzwang/Feather-Spells": [
+    "spells",
+    "aggro"
+  ],
+  "zzwang/GaddockTeeg-Removal": [
+    "control",
+    "value"
+  ],
+  "zzwang/GeneralKreat-Goblins": [
+    "gowide",
+    "spells",
+    "combo",
+    "goblins"
+  ],
+  "zzwang/Ghave-Saprolings": [
+    "combo",
+    "gowide"
+  ],
+  "zzwang/Giada-Angels": [
+    "aggro",
+    "value",
+    "gowide"
+  ],
+  "zzwang/Gishath-Dinosaurs": [
+    "aggro",
+    "value",
+    "combo"
+  ],
+  "zzwang/Godo-Combats": [
+    "combo",
+    "aggro"
+  ],
+  "zzwang/GrandArbiter-Lockdown": [
+    "control",
+    "combo"
+  ],
+  "zzwang/Gwenom-Drain": [
+    "spells",
+    "combo"
+  ],
+  "zzwang/Heliod-Lifegain": [
+    "combo",
+    "control"
+  ],
+  "zzwang/Henzie-Blitz": [
+    "graveyard",
+    "aggro",
+    "value"
+  ],
+  "zzwang/HeroesinaHalfShell-Ninjas": [
+    "aggro",
+    "value"
+  ],
+  "zzwang/Inalla-Wizards": [
+    "combo",
+    "value"
+  ],
+  "zzwang/Isshin-Attacks": [
+    "aggro",
+    "gowide"
+  ],
+  "zzwang/Jetmir-Goblins": [
+    "aggro",
+    "gowide",
+    "combo",
+    "goblins"
+  ],
+  "zzwang/Kaalia-Angels": [
+    "aggro",
+    "graveyard"
+  ],
+  "zzwang/Kaervek-Punisher": [
+    "spells",
+    "control"
+  ],
+  "zzwang/Kambal-Punisher": [
+    "spells",
+    "control"
+  ],
+  "zzwang/Karazikar-Goad": [
+    "control"
+  ],
+  "zzwang/Kefka-Discard": [
+    "combo",
+    "graveyard",
+    "value"
+  ],
+  "zzwang/Kilo-Infinite": [
+    "combo",
+    "value"
+  ],
+  "zzwang/Kinnan-Combo": [
+    "combo",
+    "value"
+  ],
+  "zzwang/Kinnan-Infinite": [
+    "combo",
+    "value"
+  ],
+  "zzwang/Kozilek-Annihilator": [
+    "value",
+    "aggro"
+  ],
+  "zzwang/Krenko-Combo": [
+    "combo",
+    "gowide",
+    "goblins"
+  ],
+  "zzwang/KrenkoTinStreet-Goblins": [
+    "aggro",
+    "gowide",
+    "combo",
+    "goblins"
+  ],
+  "zzwang/Laelia-Voltron": [
+    "aggro"
+  ],
+  "zzwang/Lathril-Elves": [
+    "gowide",
+    "aggro"
+  ],
+  "zzwang/Lavinia-Hatebears": [
+    "control"
+  ],
+  "zzwang/LightPaws-Auras": [
+    "aggro",
+    "value"
+  ],
+  "zzwang/Lorehold-Miracles": [
+    "spells",
+    "combo"
+  ],
+  "zzwang/Marchesa-Crew": [
+    "graveyard",
+    "control",
+    "gowide"
+  ],
+  "zzwang/MarrowGnawer-Rats": [
+    "gowide",
+    "combo"
+  ],
+  "zzwang/Megatron-Reanimator": [
+    "graveyard",
+    "value"
+  ],
+  "zzwang/Minstrel-Lands": [
+    "value",
+    "combo"
+  ],
+  "zzwang/Muldrotha-Graveyard": [
+    "graveyard",
+    "value"
+  ],
+  "zzwang/Muxus-Goblins": [
+    "combo",
+    "gowide",
+    "goblins"
+  ],
+  "zzwang/Najeela-Warriors": [
+    "aggro",
+    "combo",
+    "gowide"
+  ],
+  "zzwang/Pramikon-Control": [
+    "control",
+    "value"
+  ],
+  "zzwang/Prosper-Treasure": [
+    "value"
+  ],
+  "zzwang/Prossh-Kobolds": [
+    "combo",
+    "gowide"
+  ],
+  "zzwang/Raffine-Attacks": [
+    "aggro",
+    "graveyard"
+  ],
+  "zzwang/Selenia-Prison": [
+    "control",
+    "combo",
+    "spells"
+  ],
+  "zzwang/Selvala-Ramp": [
+    "value",
+    "aggro"
+  ],
+  "zzwang/Sephiroth-Aristocrats": [
+    "combo",
+    "gowide",
+    "graveyard"
+  ],
+  "zzwang/Shorikai-Prison": [
+    "control",
+    "value"
+  ],
+  "zzwang/Sythis-Enchantress": [
+    "value",
+    "control",
+    "gowide"
+  ],
+  "zzwang/Terra-Enchantress": [
+    "value",
+    "graveyard",
+    "combo"
+  ],
+  "zzwang/Teysa-Aristocrats": [
+    "gowide"
+  ],
+  "zzwang/TheFirstSliver-Cascade": [
+    "gowide",
+    "value"
+  ],
+  "zzwang/Tifa-Combat": [
+    "aggro",
+    "value"
+  ],
+  "zzwang/Torbran-Burn": [
+    "spells",
+    "combo"
+  ],
+  "zzwang/Urza-Combo": [
+    "combo",
+    "value"
+  ],
+  "zzwang/Valgavoth-Punisher": [
+    "spells",
+    "control",
+    "combo"
+  ],
+  "zzwang/Vivi-Spellslinger": [
+    "combo",
+    "spells"
+  ],
+  "zzwang/Vorinclex-Anticounters": [
+    "control",
+    "aggro"
+  ],
+  "zzwang/Windgrace-Lands": [
+    "value"
+  ],
+  "zzwang/Winota-Attacks": [
+    "aggro",
+    "gowide",
+    "control"
+  ],
+  "zzwang/Wort-Goblins": [
+    "gowide",
+    "combo",
+    "goblins"
+  ],
+  "zzwang/Yawgmoth-Combo": [
+    "combo",
+    "gowide",
+    "graveyard"
+  ],
+  "zzwang/Yuriko-Ninjas": [
+    "aggro"
+  ],
+  "zzwang/Zada-Goblins": [
+    "spells",
+    "combo",
+    "gowide",
+    "goblins"
+  ],
+  "zzwang/Ziatora-Goblins": [
+    "gowide",
+    "combo",
+    "goblins"
+  ],
+  "zzwang/Zur-Enchantress": [
+    "aggro",
+    "value",
+    "control"
+  ],
+  "zzwang/Zur-Voltron": [
+    "aggro",
+    "value",
+    "control"
+  ],
+  "zzwang/Choco-Paradise": [
+    "aggro",
+    "value"
+  ],
+  "zzwang/Hope-Lifegain": [
+    "control",
+    "spells"
+  ],
+  "zzwang/Tifa-Landfall": [
+    "aggro",
+    "value"
+  ],
+  "zzwang/Lightning-Aggro": [
+    "aggro",
+    "value"
+  ],
+  "zzwang/Golbez-Artifacts": [
+    "value",
+    "graveyard"
+  ],
+  "zzwang/Noctis-Artifacts": [
+    "value",
+    "combo"
+  ],
+  "zzwang/Squall-Aggro": [
+    "aggro",
+    "graveyard"
+  ],
+  "zzwang/Clive-Devotion": [
+    "spells",
+    "aggro"
+  ],
+  "zzwang/Jenova-Mutants": [
+    "aggro",
+    "value"
+  ],
+  "zzwang/Kuja-Wizards": [
+    "spells",
+    "combo"
+  ],
+  "zzwang/EmetSelch-Graveyard": [
+    "graveyard",
+    "control"
+  ],
+  "zzwang/Yuna-Enchantments": [
+    "value",
+    "graveyard"
+  ],
+  "zzwang/Tidus-Counters": [
+    "aggro",
+    "value"
+  ],
+  "zzwang/Terra-Herald": [
+    "aggro",
+    "graveyard"
+  ],
+  "zzwang/Celes-Counters": [
+    "graveyard",
+    "aggro"
+  ],
+  "zzwang/Yuna-Summoner": [
+    "value",
+    "aggro"
+  ]
 }

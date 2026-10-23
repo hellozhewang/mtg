@@ -1,0 +1,2 @@
+{"v":1,"id":"zzwang/Terra-Herald","count":1}
+{"name":"Terra, Herald of Hope","mv":3.0,"faces":[{"name":"Terra, Herald of Hope","mana_cost":"{R}{W}{B}","type_line":"Legendary Creature — Human Wizard Warrior","oracle_text":"Trance — At the beginning of combat on your turn, mill two cards. Terra gains flying until end of turn.\nWhenever Terra deals combat damage to a player, you may pay {2}. When you do, return target creature card with power 3 or less from your graveyard to the battlefield tapped.","power":"3","toughness":"3","loyalty":"","defense":""}]}

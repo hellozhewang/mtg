@@ -1,0 +1,2 @@
+{"v":1,"id":"zzwang/Jenova-Mutants","count":1}
+{"name":"Jenova, Ancient Calamity","mv":4.0,"faces":[{"name":"Jenova, Ancient Calamity","mana_cost":"{2}{B}{G}","type_line":"Legendary Creature — Alien","oracle_text":"At the beginning of combat on your turn, put a number of +1/+1 counters equal to Jenova's power on up to one other target creature. That creature becomes a Mutant in addition to its other types.\nWhenever a Mutant you control dies during your turn, you draw cards equal to its power.","power":"1","toughness":"5","loyalty":"","defense":""}]}

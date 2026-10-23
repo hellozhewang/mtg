@@ -1,0 +1,2 @@
+{"v":1,"id":"ratdos/Sin-Reanimator","count":1}
+{"name":"Sin, Spira's Punishment","mv":7.0,"faces":[{"name":"Sin, Spira's Punishment","mana_cost":"{4}{B}{G}{U}","type_line":"Legendary Creature — Leviathan Avatar","oracle_text":"Flying\nWhenever Sin enters or attacks, exile a permanent card from your graveyard at random, then create a tapped token that's a copy of that card. If the exiled card is a land card, repeat this process.","power":"7","toughness":"7","loyalty":"","defense":""}]}

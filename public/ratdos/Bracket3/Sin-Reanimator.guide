@@ -1,0 +1,80 @@
+Sin only exiles and copies permanent cards from your graveyard; instants and sorceries are completely ignored, keeping your hits concentrated on real board presence. More importantly, when Sin hits a land card, it creates a tapped copy and repeats the process immediately. A graveyard stocked with multiple fetchlands and duals allows Sin to chain through all of them in a single enter or attack trigger, ramping multiple lands onto the battlefield before capping off with a game-ending titan.
+Bracket 3: the Game Changer cap is three, filled by Cyclonic Rift, Demonic Tutor, and Rhystic Study. No mass land denial. This deck intentionally avoids infinite combos, winning through overwhelming value, oppressive permanent triggers, and Craterhoof overrun finishes.
+
+# The engine: Sin and chained copies
+Sin, Spira's Punishment :: a 7/7 flying Leviathan that triggers on both entry and attack. It exiles a permanent card from your graveyard at random and creates a tapped token copy of it, repeating the trigger whenever it hits a land.
+Amulet of Vigor :: whenever a permanent enters the battlefield tapped, untap it. The lands and creatures Sin creates enter tapped; Amulet untaps them immediately, letting chained lands tap for mana right away and giving token creatures pseudo-vigilance.
+Spelunking :: draws a card and allows lands you control to enter the battlefield untapped, ensuring that every land Sin chains from the graveyard is immediately active.
+Shifting Woodland :: delirium allows this land to become a copy of any permanent card in your graveyard for {2}{G}{G}, letting you duplicate an Archon, Toxrill, or Portal to Phyrexia without needing Sin on the board.
+Talon Gates of Madara :: a utility land that phases out a creature upon entering. When Sin copies this from the graveyard, you can phase out an opposing threat or blocker, or phase out Sin to protect it from targeted removal.
+Six :: gives all nonland permanent cards in your graveyard retrace, while attacking to mill three cards and return a land to your hand.
+
+# The titan targets
+Archon of Cruelty :: a premier hit for Sin. On entry and attack, an opponent sacrifices a creature or planeswalker, discards a card, and loses 3 life, while you draw a card and gain 3 life.
+Toxrill, the Corrosive :: places slime counters on all opposing creatures at each end step, shrinking the table's boards while creating an army of Slugs and drawing cards.
+Portal to Phyrexia :: nine-mana artifact that forces each opponent to sacrifice three creatures when it enters and reanimates a creature from any graveyard on upkeep.
+Vaultborn Tyrant :: draws a card and gains 3 life whenever a creature with power 4 or greater enters, triggering off itself, Sin, and any other massive token copy.
+Hullbreaker Horror :: uncounterable 7/8 flash threat that turns every instant and sorcery into an uncounterable bounce for opposing spells or nonland permanents.
+Koma, Cosmos Serpent :: uncounterable powerhouse that generates 3/3 Serpents every upkeep to tap down opposing permanents and grant itself indestructible.
+Craterhoof Behemoth :: gives your entire board trample and massive power boosts based on creature count to close the game on an alpha strike.
+The Great Henge :: provides two green mana, life gain, +1/+1 counters, and draw on creature entry, cast cheaply off Sin's 7 power.
+Avenger of Zendikar :: creates a Plant token for each land you control, then pumps them whenever Sin chains lands into play.
+Rampaging Baloths :: landfall creates a 4/4 Beast token for every land Sin copies from the graveyard.
+
+# Self-mill and graveyard stocking
+Entomb -> Archon of Cruelty :: instant-speed placement into the graveyard right before Sin enters or attacks
+Entomb -> Toxrill, the Corrosive :: when the board is filled with opposing small creatures or tokens
+Entomb -> Portal to Phyrexia :: when opponents have big threats that need to be sacrificed immediately
+Buried Alive -> Archon of Cruelty + Toxrill, the Corrosive + Vaultborn Tyrant :: loads the graveyard with three massive haymakers for Sin to hit
+Grisly Salvage :: digs five cards deep at instant speed, putting a creature or land into hand and dumping the rest into the graveyard.
+Hermit Druid :: reveals cards until you hit a basic land; with only three basics in the entire ninety-nine, this single activation often dumps fifteen to twenty cards straight into the graveyard.
+Mesmeric Orb :: repeatedly mills every player as their permanents untap, filling your graveyard with Sin targets while disrupting opposing libraries.
+Stitcher's Supplier :: mills three on entry and three on death, providing early defense and cheap fodder.
+Frantic Search :: draws two, discards two expensive permanents from your hand into the graveyard, and untaps three lands for zero net mana.
+Ripples of Undeath :: mills three cards each upkeep and lets you pay {1} and 3 life to draw one of them.
+Life from the Loam :: dredges three cards to fuel the graveyard while repeatedly recovering three lands to ensure steady land drops.
+Windfall :: forces each player to discard their hand and draw fresh cards, pitching high-mana permanents into the graveyard while refilling your grip.
+
+# Flicker and copy multipliers
+Yarok, the Desecrated :: doubles all entry triggers, causing Sin to trigger twice upon entering and doubling the ETB effects of any creature Sin creates.
+Thassa, Deep-Dwelling :: exiles and returns Sin at each of your end steps, providing a free repeatable ETB trigger every turn cycle.
+Displacer Kitten :: blinks Sin whenever you cast a noncreature spell, letting cheap interaction or ramp spells immediately trigger another Sin reanimation.
+Auton Soldier :: enters as a copy of Sin or Archon of Cruelty with myriad, generating attacking copies against each opponent.
+Adrix and Nev, Twincasters :: doubles the number of tokens created, meaning Sin creates two token copies of every permanent it exiles from the graveyard.
+Roaming Throne :: name Leviathan or Avatar to trigger Sin's enter and attack abilities an additional time.
+Lightning Greaves :: grants haste and shroud so Sin can attack the turn it resolves to get both the enter and attack triggers immediately.
+Swiftfoot Boots :: provides hexproof and haste for safe attacks.
+
+# Landfall payoffs and untap enablers
+Scute Swarm :: creates an exponential swarm of Insects as Sin chains land copies into play.
+Aesi, Tyrant of Gyre Strait :: grants an extra land drop per turn and draws a card whenever a land enters under your control.
+Tatyova, Benthic Druid :: gains 1 life and draws a card on each land drop, turning Sin's land chains into massive card advantage.
+The Gitrog Monster :: provides an additional land drop and draws cards whenever land cards enter the graveyard.
+Lotus Cobra :: generates mana of any color whenever a land enters, turning Sin's land copies into immediate floating mana.
+Tireless Provisioner :: creates a Treasure or Food on every land drop.
+Reanimate :: one-mana spell to bring back any creature directly if Sin is not yet on the field.
+Muldrotha, the Gravetide :: allows you to cast permanent cards from your graveyard every turn.
+
+# Interaction and stack control
+Cyclonic Rift :: asymmetric instant sweeper that clears opposing boards before an alpha swing.
+Toxic Deluge :: efficient board wipe that pays life to kill indestructible threats.
+Assassin's Trophy :: destroys any target permanent at instant speed for two mana.
+Beast Within :: destroys any target permanent at instant speed, leaving a 3/3 Beast.
+Tear Asunder :: exiles an artifact or enchantment for two mana, or any nonland permanent for four mana with kicker.
+Mana Drain :: counters any spell and converts its mana cost into colorless mana on your next turn to power out Sin.
+Counterspell :: clean two-mana stack interaction.
+An Offer You Can't Refuse :: one-mana negation for noncreature spells.
+Heroic Intervention :: protects your entire board with hexproof and indestructible in response to opposing removal.
+Sink into Stupor :: MDFC that bounces a spell or nonland permanent, or enters as an untapped blue land.
+Fell the Profane :: MDFC that destroys a creature or planeswalker at instant speed, or enters as an untapped black land.
+Bala Ged Recovery :: MDFC that returns any card from your graveyard to your hand, or enters as a tapped land.
+Boseiju, Who Endures :: uncounterable channel ability to destroy an artifact, enchantment, or nonbasic land.
+Otawara, Soaring City :: uncounterable channel ability to bounce any nonland permanent.
+Bojuka Bog :: graveyard hate land to exile an opponent's entire graveyard upon entering.
+
+# Opening hand and sequencing
+A strong opening hand contains two to three lands, early mana acceleration (Sol Ring, Birds of Paradise, Delighted Halfling, Farseek, Nature's Lore), and a self-mill or discard outlet (Grisly Salvage, Hermit Druid, Entomb, Frantic Search, Mesmeric Orb).
+Turn 1-2: Develop mana and fix colors. Cast dorks or early mill pieces like Stitcher's Supplier or Hermit Druid.
+Turn 3-4: Stock the graveyard with high-impact permanents using Buried Alive, Grisly Salvage, or Frantic Search. Deploy value engines like Rhystic Study or Spelunking.
+Turn 5-6: Deploy haste enablers or flicker pieces (Lightning Greaves, Thassa, Deep-Dwelling, Yarok). Cast Sin, Spira's Punishment.
+Turn 7+: Trigger Sin's enter ability to chain lands and resurrect an Archon, Toxrill, or Vaultborn Tyrant. Declare attacks with Sin to trigger the ability a second time. Overwhelm the table with massive permanent triggers, controlling the stack with Mana Drain and Cyclonic Rift, then finish with Craterhoof Behemoth.

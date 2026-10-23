@@ -83,6 +83,7 @@
   "ratdos/Obeka-Upkeep": ["aggro", "spells", "value"],
   "ratdos/Rakdos-Demons": ["graveyard", "aggro"],
   "ratdos/RilsaRael-Dungeons": ["combo", "value", "aggro"],
+  "ratdos/Sin-Reanimator": ["graveyard", "value", "aggro"],
   "ratdos/TeveshTana-Aristocrats": ["gowide", "value"],
   "ratdos/TheMaster-Myriad": ["gowide", "value", "aggro"],
   "ratdos/Tivit-Politics": ["gowide", "value", "control"],

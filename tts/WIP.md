@@ -35,7 +35,15 @@ redirection. Citadel bypasses graveyard exile but not library-casting or artifac
 activation restrictions. Blast Zone answers suitable artifact hate and also
 hits our one-drops; count counters and recovery costs. Compact wins wait until
 turn six. Publish a scoped deck/catalog update preserving other records, timestamps
-and spawn bytes. No table/runtime or Steam build is required; both stay v64.
+and spawn bytes. Scoped publication verifies 97 image URLs (one freshly downloaded,
+96 recently checked), 99 library cards plus the commander, all 52 guide rows and
+all 165 other catalog records/spawn decks. The original added date is preserved.
+No table/runtime or Steam build is required; both stay v64.
+
+Research: [EDHREC](https://edhrec.com/commanders/sephiroth-fabled-soldier),
+[verified Soultrader/Miner timing](https://commanderspellbook.com/combo/5544-5670-6578/).
+Recent sacrifice/death and artifact-answer searches were run with find_cards.py;
+combo, recursion, protection and mana text was read through its named lookups.
 
 ## Kefka-Discard Bracket 3 build (2026-10-22)
 

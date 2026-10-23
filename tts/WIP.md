@@ -7,6 +7,32 @@ Last updated 2026-10-22 (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
 Both states visually checked live. **Steam is now v64, published at the owner’s request.** See [the changelog](../docs/development/tts-changelog.md).
 
+## Heliod-Lifegain guide rewrite (2026-10-23)
+
+Owner asked for the S-tier guide to explain wins beyond Ballista. Rewrite 47
+card/chain rows covering Heliod + Triskelion, Cauldron recovery on a surviving
+creature (including naturally lifelinking Ascendant), and finite combat/extort
+fallbacks. All damage loops still require Heliod; the guide explicitly avoids
+presenting Cauldron or ordinary extort as independent infinite wins.
+
+Fix the old X=1 Ballista instructions: without a toughness boost, removing its
+last counter kills it before the shot resolves. Default to X=2 plus lifelink
+(six mana with Heliod already out), or first supply another counter. Document
+Rule of Law preventing Silence followed by a newly cast shooter, protection from
+white blocking Heliod's targeting, Saga's inability to fetch Ballista, the Ring's
+actual draw activation, and Rest in Peace preserving already-exiled Cauldron fuel.
+Triskelion's base 1/1 survives spending its last counter. Compact wins wait until
+turn six under the house rules.
+
+Decklist, S tier and all printing pins are unchanged. Validator: 100 cards, 3/3
+Game Changers, TTS import 100/100, 56/56 pinned printings load. All 45 distinct
+guide references are in the deck; six guide-parser tests pass. Scoped publication
+updates only Heliod's page, illustrated preview and catalog timestamp/hash,
+preserving all 184 other catalog records and every spawn deck. All 91 image URLs
+pass the existing recent-verification cache. No runtime or Steam update:
+Saved Games and Steam remain v64. The already-published Final Fantasy category
+continues to cover 27 decks.
+
 ## Sephiroth-Aristocrats Bracket 3 tuning (2026-10-22)
 
 Owner requested optimization using EDHREC and find_cards.py. Reviewed EDHREC's

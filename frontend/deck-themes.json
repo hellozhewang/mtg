@@ -55,6 +55,7 @@
   "kupo7/Atraxa-Blink": ["value"],
   "kupo7/Atraxa-Counters": ["value", "aggro"],
   "kupo7/BalthierFran-Vehicles": ["aggro", "value", "finalfantasy"],
+  "kupo7/Breya-Combo": ["combo", "value"],
   "kupo7/Flubs-Storm": ["spells", "value", "graveyard"],
   "kupo7/Hakbal-Merfolk": ["aggro", "value", "gowide"],
   "kupo7/Kilo-Proliferate": ["value", "combo"],

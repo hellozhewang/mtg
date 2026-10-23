@@ -1,0 +1,100 @@
+1 Breya, Etherium Shaper
+1 Academy Ruins
+1 An Offer You Can't Refuse
+1 Ancient Den
+1 Arcane Signet
+1 Arid Mesa
+1 Ashnod's Altar
+1 Badlands
+1 Baleful Strix
+1 Beseech the Mirror
+1 Blood Crypt
+1 Bloodstained Mire
+1 City of Brass
+1 Command Tower
+1 Counterspell
+1 Cyclonic Rift
+1 Deflecting Swat
+1 Demonic Tutor
+1 Diabolic Intent
+1 Dispatch
+1 Dovin's Veto
+1 Eldrazi Displacer
+1 Emry, Lurker of the Loch
+1 Enthusiastic Mechanaut
+1 Esper Sentinel
+1 Etherium Sculptor
+1 Fabricate
+1 Fellwar Stone
+1 Flooded Strand
+1 Force of Negation
+1 Foundry Inspector
+1 Goblin Engineer
+1 Goblin Welder
+1 Godless Shrine
+1 Grand Abolisher
+1 Great Furnace
+1 Hallowed Fountain
+1 Inventors' Fair
+1 Island
+1 Jhoira, Weatherlight Captain
+1 Krark-Clan Ironworks
+1 Lotho, Corrupt Shirriff
+1 Lotus Petal
+1 Mana Confluence
+1 Mana Drain
+1 Marionette Apprentice
+1 Marionette Master
+1 Marsh Flats
+1 Misty Rainforest
+1 Mountain
+1 Mox Opal
+1 Mystic Forge
+1 Mystic Remora
+1 Nim Deathmantle
+1 Otawara, Soaring City
+1 Pact of Negation
+1 Padeem, Consul of Innovation
+1 Plains
+1 Plateau
+1 Polluted Delta
+1 Reshape
+1 Sacred Foundry
+1 Sai, Master Thopterist
+1 Scalding Tarn
+1 Scrubland
+1 Seat of the Synod
+1 Sensei's Divining Top
+1 Sevinne's Reclamation
+1 Silence
+1 Skullclamp
+1 Sol Ring
+1 Spire of Industry
+1 Steam Vents
+1 Swamp
+1 Swan Song
+1 Sword of the Meek
+1 Swords to Plowshares
+1 Takenuma, Abandoned Mire
+1 Talisman of Conviction
+1 Talisman of Creativity
+1 Talisman of Dominance
+1 Talisman of Hierarchy
+1 Talisman of Indulgence
+1 Talisman of Progress
+1 Tezzeret the Seeker
+1 The One Ring
+1 Thopter Foundry
+1 Thought Monitor
+1 Time Sieve
+1 Toxic Deluge
+1 Tribute Mage
+1 Trophy Mage
+1 Tundra
+1 Underground Sea
+1 Urza's Saga
+1 Vault of Whispers
+1 Volcanic Island
+1 Watery Grave
+1 Whir of Invention
+1 Wishclaw Talisman

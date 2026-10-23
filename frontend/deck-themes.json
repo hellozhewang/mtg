@@ -148,6 +148,7 @@
   "zzwang/Sephiroth-Aristocrats": ["combo", "gowide", "graveyard"],
   "zzwang/Shorikai-Prison": ["control", "value"],
   "zzwang/Sythis-Enchantress": ["value", "control", "gowide"],
+  "zzwang/Terra-Enchantress": ["value", "graveyard", "combo"],
   "zzwang/Teysa-Aristocrats": ["gowide"],
   "zzwang/TheFirstSliver-Cascade": ["gowide", "value"],
   "zzwang/Tifa-Combat": ["aggro", "value"],

@@ -1,0 +1,91 @@
+The mistake new pilots make with Terra is hesitating to Trance or treating her as a passive ramp piece. When Terra activates Trance for {4}{R}{G}, she returns transformed as Esper Terra, triggering Chapter I immediately. Her ability copies any nonlegendary enchantment you control, and if that enchantment is a Saga, she puts up to three lore counters on it. Because Sagas enter with one counter, the token copy immediately reaches four lore counters, firing Chapters I through IV simultaneously on the turn it enters. On Chapter IV, Esper Terra produces ten mana ({W}{W}{U}{U}{B}{B}{R}{R}{G}{G}) and returns to her front face, which immediately mills five cards, grabs an enchantment, and funds her own Trance to flip right back over.
+Bracket 3 limits Game Changers to three: Demonic Tutor, Rhystic Study, and Smothering Tithe. Both Rhystic Study and Smothering Tithe are nonlegendary enchantments that Esper Terra can duplicate for compounding card draw and Treasure generation. Infinite mana lines via Sanctum Weaver wait until turn 6 per bracket expectations; before then, overwhelm opponents with duplicated Sagas and continuous value.
+
+# The Esper Terra copy engine
+Terra, Magical Adept :: mills five cards on entry to put an enchantment into hand; her {4}{R}{G} Trance transforms her into Esper Terra at sorcery speed, launching a chain of duplicated Sagas
+Summon: Bahamut :: nine-mana Saga Dragon; when copied by Esper Terra, the token copy enters with four lore counters to immediately destroy two nonland permanents, draw two cards, and unleash Mega Flare to deal massive burn to each opponent
+Summon: Knights of Round :: when copied by Esper Terra, fires Chapters I through IV in one turn to generate twelve 2/2 Knight creature tokens before buffing the team with +2/+2 and indestructible
+Summon: Primal Odin :: copied by Esper Terra with haste, destroys a creature on Chapter I, gains Zantetsuken on Chapter II to eliminate any player it deals combat damage to, and draws two cards
+Summon: Titan :: copied by Esper Terra to mill five cards, return every land from your graveyard to the battlefield tapped, and pump a creature with trample scaled to your land count
+Summon: Leviathan :: six-mana board wipe that bounces all non-sea creatures to hand, leaving your enchantment army intact to swing and draw cards
+Summon: Yojimbo :: exiles an opposing threat, establishes an attack tax against opponents, and creates a flood of Treasure tokens
+Summon: Valefor :: bounces the highest mana-value creature each opponent controls and locks down remaining threats with stun counters
+Summon: Fenrir :: cheap three-mana Saga wolf that ramps a basic land, buffs your next creature, and draws a card
+The Kami War :: nonlegendary Saga that exiles a permanent on Chapter I, bounces another while forcing discards on Chapter II, and transforms into a lethal Dragon Spirit on Chapter III
+Binding the Old Gods :: destroys any nonland permanent, fetches a Forest onto the battlefield, and grants deathtouch to your team
+Fable of the Mirror-Breaker :: produces a Goblin Shaman for Treasure generation, loots two cards, and flips into Reflection of Kiki-Jiki to copy nonlegendary creatures
+
+# Enchantress draw engines and nonlegendary targets
+Sythis, Harvest's Hand :: two-mana enchantress that gains 1 life and draws a card on every enchantment cast
+Argothian Enchantress :: two-mana enchantress with shroud, drawing a card on every cast
+Enchantress's Presence :: enchantment-based card draw engine that survives creature sweepers
+Eidolon of Blossoms :: draws a card whenever it enters and whenever any other enchantment enters, including token copies made by Esper Terra
+Satyr Enchanter :: rewards every enchantment cast with an extra draw
+Setessan Champion :: grows with +1/+1 counters and draws a card whenever an enchantment enters under your control
+Esper Sentinel :: taxes opponents' noncreature spells, drawing cards whenever they refuse to pay
+Destiny Spinner :: makes your creature and enchantment spells uncounterable, and animates lands into massive trampling attackers late game
+Zur, Eternal Schemer :: grants deathtouch, lifelink, and hexproof to all enchantment creatures, turning your Summons into terrifying combat threats
+Yuna, Hope of Spira :: gives enchantment creatures trample, lifelink, and ward {2} on your turn, and reanimates an enchantment from your graveyard every end step
+Garnet, Princess of Alexandria :: removes lore counters from your Sagas during combat to reset their most devastating chapters
+Rydia, Summoner of Mist :: loots on landfall and reanimates Sagas directly from the graveyard with haste
+Doubling Season :: nonlegendary enchantment that doubles all token creation and doubles counters placed on Sagas; copying it with Esper Terra creates explosive multiplication
+Mirari's Wake :: doubles mana output from lands while buffing creatures; copying it with Esper Terra provides triple mana to fund high-cost Summons
+Shark Typhoon :: nonlegendary enchantment that creates flying Shark tokens scaled to the mana value of every noncreature spell you cast
+
+# Infinite mana and closing lines
+Bracket 3 combo expectations require waiting until turn 6 before initiating infinite loops. Use earlier turns to develop your enchantress engine and deploy Sagas.
+Sanctum Weaver + Freed from the Real :: enchant Sanctum Weaver with Freed from the Real; tap Weaver for two or more blue mana, pay {U} to untap it, and repeat for infinite mana of all five colors to cast your entire hand and activate Trance repeatedly
+Sanctum Weaver + Freed from the Real + Destiny Spinner :: with infinite mana generated from Sanctum Weaver, activate Destiny Spinner repeatedly to animate all your lands into infinite trample power and swing for lethal
+Terra, Magical Adept + Summon: Primal Odin :: copy Primal Odin with Esper Terra; the token copy gains haste and Zantetsuken, attacking immediately to eliminate a target player on combat damage
+Terra, Magical Adept + Summon: Bahamut :: copy Bahamut to wipe opposing nonland permanents, draw two cards, and deal board-wide burn equal to the total mana value of your permanents via Mega Flare
+
+# Tutors and Game Changers
+This list runs three Game Changers: Demonic Tutor, Rhystic Study, and Smothering Tithe.
+Demonic Tutor -> Sanctum Weaver :: when you hold Freed from the Real and want to assemble the infinite mana engine
+Demonic Tutor -> Replenish :: when your graveyard is stocked with milled Sagas and enchantments for an immediate mass reanimation
+Demonic Tutor -> Summon: Bahamut :: when you need an immediate wipe and finishing burn spell through Esper Terra
+Rhystic Study :: nonlegendary enchantment drawing cards off opposing spells; can be copied by Esper Terra to create multiple taxation engines
+Smothering Tithe :: nonlegendary enchantment generating Treasures; copying it with Esper Terra yields two Treasures per opponent draw unless they pay {4}
+Idyllic Tutor -> Freed from the Real :: finds the missing combo aura to pair with Sanctum Weaver
+Idyllic Tutor -> Doubling Season :: finds the ultimate token and counter multiplier
+Sterling Grove -> Replenish :: protects enchantments with shroud, then sacrifices to place Replenish or a key Saga on top of your library
+Eladamri's Call -> Sanctum Weaver :: instant-speed creature search finding Weaver, Sythis, Zur, or Yuna
+Moon-Blessed Cleric -> Doubling Season :: tutors any enchantment to the top of your library upon entry
+
+# Interaction and graveyard recovery
+Swords to Plowshares :: premier one-mana instant creature exile
+Path to Exile :: unconditional creature exile at instant speed
+Assassin's Trophy :: destroys any opposing permanent for two mana
+Anguished Unmaking :: exiles any nonland permanent at instant speed
+Dovin's Veto :: uncounterable noncreature counterspell
+Swan Song :: one-mana counterspell hitting instants, sorceries, and enchantments
+An Offer You Can't Refuse :: hard counter targeting noncreature spells for a single blue mana
+Heroic Intervention :: grants hexproof and indestructible to your entire board in response to sweepers
+Grasp of Fate :: nonlegendary enchantment exiling one nonland permanent from each opponent; can be copied by Esper Terra to exile three more permanents
+Kenrith's Transformation :: cantrip aura that strips an opposing commander of all abilities and turns it into a 3/3 Elk
+Song of the Dryads :: turns any opposing permanent, including commanders and problem lands, into a colorless Forest
+Blind Obedience :: slows opposing haste attackers and mana rocks while providing extort drain on every spell cast
+Greater Auramancy :: gives all your other enchantments and enchanted creatures shroud
+Supreme Verdict :: uncounterable four-mana board wipe to clear opposing creature boards while your noncreature enchantments remain intact
+Replenish :: four-mana mass reanimation that returns every milled enchantment and Saga from your graveyard directly onto the battlefield
+Bala Ged Recovery :: modal card returning any key card from graveyard to hand, or played as an untapped green land
+Hall of Heliod's Generosity :: utility land that returns an enchantment from graveyard to top of library on end step
+Boseiju, Who Endures :: uncounterable channel ability that destroys opposing artifacts, enchantments, or nonbasic lands
+
+# Mana base and opening hands
+Birds of Paradise :: one-mana dork fixing all five colors
+Noble Hierarch :: mana dork providing exalted combat buffs and Bant colors
+Ignoble Hierarch :: mana dork providing Jund colors
+Delighted Halfling :: produces mana of any color that makes legendary spells uncounterable
+Wild Growth :: one-mana enchantment ramp on a land that triggers enchantress draw
+Utopia Sprawl :: one-mana enchantment ramp fixing any chosen color
+Fertile Ground :: two-mana enchantment ramp fixing all five colors
+Farseek :: two-mana sorcery searching for shocklands with basic land types
+Nature's Lore :: two-mana ramp searching for an untapped Forest shockland
+Three Visits :: identical untapped Forest search
+Sol Ring :: staple colorless acceleration
+Arcane Signet :: two-mana colored fixing rock
+Fellwar Stone :: two-mana rock producing colors from opposing lands
+The World Tree :: fixes all lands to tap for all colors once you control six lands, and can sacrifice late game to cheat gods into play
+
+Keep hands with at least 3 lands, green and white mana available, early ramp (Wild Growth, Utopia Sprawl, Birds of Paradise, Farseek), and a card draw engine (Sythis, Argothian Enchantress, Rhystic Study). Do not keep hands heavy on 6+ mana Sagas with no early development. Cast Terra on curve to mill and sculpt your hand, transition into Esper Terra when you control a high-value Saga or nonlegendary enchantment, and leverage your duplicated triggers to dominate the midgame.

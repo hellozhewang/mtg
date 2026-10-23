@@ -22,7 +22,9 @@ back-face draw explosions, documents Dress Down disabling our own entry triggers
 Defense Grid taxing our interaction, and the exact pre-resolution timing of
 Kitten + Wishclaw. Check every guide card against the final list. Publish only
 Kefka's assets and matching catalog metadata, preserving existing records and
-spawn bytes. This is a deck-data update; Saved Games and Steam remain v64.
+spawn bytes. Verified 110 image URLs, all 46 guide card/chain rows and all 165
+previous catalog records/spawn payloads. The catalog now has 166 decks. This is
+a deck-data update; Saved Games and Steam remain v64.
 
 ## Vivi-Spellslinger Bracket 3 tuning (2026-10-22)
 

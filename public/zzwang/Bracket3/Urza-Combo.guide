@@ -1,92 +1,75 @@
-Urza turns every artifact you control into a blue mana. Not artifacts that tap for mana — ALL of them: the Construct token he brings with him, Clues, Baubles, Equipment, even Sol Ring after you have already tapped it for its own mana would not work, but everything untapped does. That one line is why this deck's mana is effectively its board, and why an untap effect is the same thing as a ritual.
+Unlimited mana is not automatically a win, and Urza is not required for every engine. Assemble a mana-positive loop plus a damage outlet, protecting the window before committing. The two critical counts: Scepter needs more recurring nonland mana than its activation costs, and Ballista cast free through Urza has X=0 and dies.
 
-# The commander
-Urza, Lord High Artificer :: arrives with a Construct that is as big as your artifact count, taps any untapped artifact for {U}, and his {5} ability exiles the top card of your library and lets you play it free.
-Tapping an artifact for Urza's mana uses it up. You cannot tap Sol Ring for {C}{C} and then tap it again for Urza — pick one. That is the main thing people get wrong.
-The {5} ability is the deck's engine once mana is unlimited: shuffle, exile, cast free, repeat until you find the kill.
-Lightning Greaves :: haste so the {5} ability works immediately, and shroud against the removal that follows him.
+# Develop mana without depending on Urza
+Urza, Lord High Artificer :: turns each untapped artifact into one blue mana, including a fresh Construct or an artifact creature with summoning sickness. This is Urza's mana ability, not a tap ability granted to that artifact. A tapped Sol Ring cannot also pay for it. Neither the mana ability nor the {5} ability requires Urza himself to tap or have haste.
+Mox Amber :: starts producing blue once Urza, Emry, Samut or Geist is out. Before then it is a free artifact for metalcraft; with Urza it can be tapped through Urza's ability regardless of Amber's own condition. Mox Opal still needs three artifacts for its own ability.
+Moonsnare Prototype :: before Urza, tap this and ANOTHER untapped artifact or creature to produce one colorless. It helps deploy Urza, but does not turn two tapped permanents into two mana. After Urza arrives, compare tapping each artifact separately for blue instead.
+Voltaic Key + Manifold Key :: pay one to untap a Monolith and reuse its three-mana output. This is useful acceleration before finding a combo. A Key and Monolith alone do not repeat indefinitely because the Key remains tapped; the second Key also does not make this mana-positive without another engine.
+The mana base now has sixteen Islands instead of the three rarely assembled Tron lands. Prioritize two real blue sources for Urza and Power Artifact; a hand of colorless lands and artifacts is not automatically a functional Urza hand.
 
-# The infinite mana
-Isochron Scepter :: imprint Dramatic Reversal. {2} and a tap copies it, untapping every nonland permanent you control. If those permanents tap for three or more with Urza out — and they always do — the loop pays for itself forever.
-Dramatic Reversal :: the other half, and a fine card on its own for a big Urza turn.
-Basalt Monolith :: taps for three, untaps for three. On its own that is nothing; with either card below it is unlimited colourless mana.
-Power Artifact :: enchanted artifact's activated abilities cost {2} less. Basalt Monolith now untaps for {1} and taps for three.
-Forensic Gadgeteer :: the same reduction across ALL your artifacts, and it makes a Clue on every artifact spell.
-Rings of Brighthearth :: copies any nonmana activated ability for {2}, including Urza's {5}, Tezzeret's minus and Walking Ballista's ping.
+# The compact mana engines: execute from turn 6
+Basalt Monolith + Power Artifact :: enchant Basalt, tap it for three colorless, pay one to untap it, and repeat. Each repetition nets two colorless. Neither Urza nor a creature activation is needed; this works through restrictions on creature abilities, but not restrictions on artifact abilities.
+Grim Monolith + Power Artifact :: Grim costs two to cast and produces three. The Aura reduces its four-mana untap cost to two, so each repetition nets one colorless. Start with Grim untapped, or reserve mana for its first untap if you already spent its output. This is the cheaper redundant Monolith pair.
+Basalt Monolith + Forensic Gadgeteer :: Gadgeteer reduces Basalt's untap cost from THREE to TWO, not one. Tap for three, pay two to untap, net one each cycle. Gadgeteer's reduction is one mana and cannot reduce a cost below one; Grim plus Gadgeteer alone merely breaks even and is NOT infinite.
+Basalt Monolith + Rings of Brighthearth :: start with Basalt untapped and two additional mana. Tap Basalt for three; spend three activating its untap, then pay two for Rings to copy that ability. Let the copy untap Basalt, tap Basalt for three while the original untap is still on the stack, then resolve the original untap. You finish with Basalt untapped and three floating, one more than the starting two. Repeat. Copy the UNTAP ability, not the mana ability, which Rings cannot copy.
+Isochron Scepter + Dramatic Reversal :: imprint Reversal from hand. Produce at least THREE mana from reusable nonland sources OTHER THAN SCEPTER, pay two and tap Scepter, then cast its Reversal copy. Reversal untaps Scepter and those sources, netting at least one mana per cycle. Sol Ring plus Mind Stone works without Urza. With Urza, three other nonland artifacts also suffice. Do not count an artifact land, a sacrificed Petal, or Scepter's own tap toward that recurring output.
+Forensic Gadgeteer + Isochron Scepter :: with Reversal imprinted, Gadgeteer reduces the activation to one, so two recurring nonland mana suffices. It does not reduce the cost to zero. Removing Gadgeteer changes the threshold immediately: retain enough output to continue or stop and rebuild.
+With a Monolith loop already producing unlimited colorless and Urza on the battlefield, tap the Monolith through Urza for blue, then spend floating colorless on its untap ability. Repeat to make unlimited blue too. Reserve enough mana and a legal outlet before exposing your engine. All compact infinite finishes wait until turn 6 under our house rules.
 
-# What unlimited mana buys
-Walking Ballista :: {4} for a counter, remove a counter to ping. With infinite mana it kills the table, and with none it is still a flexible removal creature.
-Urza, Lord High Artificer :: the {5} ability, over and over, casting your entire library for free.
-Whir of Invention :: instant speed, improvise, fetches any artifact — including the missing combo piece.
-Reshape :: the sorcery version, tutoring straight onto the battlefield.
-Transmute Artifact :: trades a big artifact for whatever you need.
-Tezzeret the Seeker :: the minus finds any artifact onto the battlefield; the plus untaps two.
+# Convert the mana into a win
+Goblin Cannon :: a noncreature artifact outlet usable immediately, including when cast free through Urza. With unlimited mana, HOLD PRIORITY and activate its two-mana damage ability enough times for lethal, assigning targets before any shot resolves. The first resolution sacrifices Cannon; the remaining abilities still resolve and deal their damage. Do not let the first shot resolve before queuing the rest. Creature-activation restrictions that disable Urza and Ballista do not disable this noncreature artifact, but artifact-activation restrictions do.
+Walking Ballista :: cast from HAND with a sufficiently large X, then spend the counters on lethal damage. If it is already alive with counters, unlimited mana also pays its four-mana counter ability repeatedly. Casting it free with Urza forces X=0; it normally dies before you can activate anything. Neither haste nor indestructible fixes a 0/0.
+Staff of Domination -> Walking Ballista :: with unlimited colorless, spend five and tap Staff to draw, then one to untap it. Repeat until Ballista or Cannon reaches your hand, STOP before drawing from an empty library, then cast the outlet with mana. Staff is a searchable converter that works without Urza; drawing or gaining arbitrary life alone is not the win.
+Urza, Lord High Artificer + Goblin Cannon :: with unlimited mana, use Urza's five-mana ability to find and cast Cannon free, then queue lethal activations. Each activation shuffles before exiling. You cannot use this to put Ballista into your hand, and exiling the entire library blindly can strand cards you wanted to draw. Prefer fetching the outlet or Staff directly when available. If Cannon is not in the library, recover it or draw another outlet instead.
+Borne Upon a Wind :: opens an opponent's end step or another response window for your spells and Urza's exiled cards that turn. Without this, Urza's ability does NOT override normal casting timing or land-play limits. Flash does not override a one-spell restriction either. It draws a card on resolution, so do not cast it with an empty library.
 
-# Winning without the combo
-This is the answer to "does it just run out of gas" — it does not, and it has a fair kill.
-Cyberdrive Awakener :: every noncreature artifact becomes a 4/4 AND they all fly. On a board of twelve artifacts that is a lethal alpha strike from nowhere.
-Tezzeret the Seeker :: the ultimate does the same for a turn.
-The Construct token Urza brings with him is as big as your artifact count — by turn six that is eight or ten power on a single body, and Cyberdrive Awakener gives it flying.
-Mechanized Production :: enchant an artifact you have several copies of — or one that copies itself — and it makes another every upkeep. At eight with the same name, you simply win.
-Sai, Master Thopterist :: a flying Thopter for every artifact spell, and a sacrifice outlet that draws.
+# Tutor for the missing function
+Muddle the Mixture -> Power Artifact :: transmute for {1}{U}{U} at sorcery speed, finding a card of EXACT mana value two. This reaches the Aura, Grim, Scepter or Defense Grid. It cannot find Basalt, which costs THREE. Keep Muddle as an instant/sorcery counter when you already have a complete line.
+Tribute Mage -> Grim Monolith :: a three-mana body that finds a two-mana artifact to hand: Grim for Power Artifact, Scepter when Reversal is ready, or Grid before exposing the finish. It cannot find the Aura, which is not an artifact.
+Trophy Mage -> Basalt Monolith :: finds artifacts of EXACT value three: Basalt for any of its partners, Rings when Basalt is ready, or Staff when you have mana but no outlet. It does not find the four-mana Cannon.
+Fabricate -> Goblin Cannon :: when an engine is already assembled, find the actual kill instead of another redundant rock. Otherwise find the missing Monolith, Scepter or Staff. This puts the artifact into hand and still requires casting it.
+Merchant Scroll -> Dramatic Reversal :: finds a blue instant to HAND. It also reaches Whir, protection or Borne when timing is the missing piece. It does not find Power Artifact or Scepter directly.
+Solve the Equation -> Transmute Artifact :: finds an instant or sorcery to hand, setting up a battlefield tutor. Find Reversal directly when Scepter is ready, or find Whir when an instant-speed artifact search is worth the extra mana.
+Reshape -> Staff of Domination :: choose X=3 and sacrifice an artifact as an ADDITIONAL cost; Staff enters directly for five mana total before reductions. X=2 reaches Grim or Scepter; X=4 reaches Cannon. If Reshape is countered, the sacrificed artifact is already gone, so prefer expendable artifacts rather than your only engine.
+Transmute Artifact -> Goblin Cannon :: sacrifice an artifact as the spell resolves, then search. If the target's mana value exceeds the sacrificed artifact's, pay the difference or the target goes to your graveyard. A two-mana artifact into Cannon needs two additional mana after the spell's {U}{U}; a three-mana Basalt into Cannon needs one, but sacrifices that engine. Choose expendable material and preserve the mana source you need to win.
+Whir of Invention -> Goblin Cannon :: X=4 puts Cannon straight onto the battlefield at instant speed, while X=3 finds Staff or Basalt. Improvise helps pay generic mana only. An artifact tapped to Urza for blue cannot ALSO be tapped for improvise; make the color/generic plan first.
+Inventors' Fair -> Staff of Domination :: with three artifacts, pay four, tap and sacrifice Fair for an artifact to hand. This is an activated land tutor, useful when spells are restricted. Count the artifact threshold before sacrificing Treasures or other artifacts, and budget the artifact's casting cost too.
+Urza's Saga -> Sensei's Divining Top :: Chapter III puts an artifact with printed mana cost {0} or {1} directly onto the battlefield. Find Top for selection, Sol Ring for recurring Scepter output, or Welding Jar for destruction protection. It does not find Ballista with its {X}{X} cost or any two-mana combo piece.
 
-# Card flow
-The One Ring :: a full turn of protection, then it draws an escalating pile — the single best card in the deck for a grindy game.
-Mystic Forge :: cast artifacts and colourless spells straight off the top of your library. With Sensei's Divining Top it never stops.
-Sensei's Divining Top :: sets your draws, and it is an artifact that taps for {U} under Urza.
-The Reality Chip :: attach it and you play everything off the top, lands included.
-Padeem, Consul of Innovation :: your artifacts get hexproof — which answers the artifact removal this deck folds to — and it draws most upkeeps.
-Rhystic Study :: their turns pay for yours.
-Mystic Remora :: the best card in the deck on turns one through four.
-Faerie Mastermind :: flash, flies, draws off the table's extra draws.
-Emry, Lurker of the Loch :: nearly free, mills four, and recasts an artifact from your graveyard every turn.
-Timetwister :: a fresh seven for everyone when you have emptied your hand.
-Windfall :: the same, and it hits hardest when someone is hoarding.
+# Protect the attempt before committing
+Force of Will :: the Game Changer slot replacing the slower reset spell. Exile another blue card and pay one life to protect a critical cast even after tapping out and even when Urza is absent. Reserve the blue card; a nominally free counter without fuel is not protection.
+Misdirection :: exile another blue card to redirect a SPELL with a single target to another legal target. It cannot stop an untargeted wipe, change ability targets, or redirect removal to something that spell cannot target. In a counter war, a targeted counterspell can be redirected to Misdirection while it is still resolving on the stack; never target the counterspell at itself.
+Defense Grid :: on your turn opponents' spells cost three more, making your combo window harder to contest. It is not a hard lock and does not stop abilities. On opposing turns YOUR spells cost three more too, including alternative-cost counters; budget that tax before planning free interaction or Borne.
+Samut, Tyrant of Naktamun :: your instants and sorceries have split second, including the Reversal copies you cast from Scepter. While one is on the stack, players cannot cast spells or activate nonmana abilities; mana abilities and triggered abilities remain possible. This protects those SPELLS, not Scepter's preceding activation or your artifact/enchantment casts, and it does not remove static hate. It also makes your counterspells harder to fight over.
+Spellskite :: can redirect eligible spells OR abilities to itself for blue mana or two life. It must be a legal new target: it can absorb removal that targets an artifact or creature, but cannot absorb enchantment-only removal aimed at Power Artifact. An illegal target change does nothing.
+Welding Jar :: free artifact development that can be sacrificed to regenerate an artifact against destruction. It does not stop exile, bounce, sacrifice or zero toughness. Regeneration taps the saved permanent, so you may need a Key or a resolving Reversal before continuing that turn.
+Force of Negation :: free by pitching blue ONLY when it is not your turn. On your own finishing turn it normally costs {1}{U}{U}; do not count it as tapped-out protection there. Grid adds its off-turn tax even when using the pitch option.
+Pact of Negation :: costs no mana now, but requires {3}{U}{U} next upkeep or you lose. Use it when the current attempt genuinely ends the game or that payment is secure, not merely because your first combo piece resolved.
+Flusterstorm :: efficient in an instant/sorcery counter war, but does not counter a creature, artifact or enchantment spell. Counterspell and Mana Drain handle broader spells; Swan Song and An Offer You Can't Refuse have their own target restrictions. Leave the right answer available for the disruption you expect.
 
-# Making artifacts cheap
-Etherium Sculptor :: artifact spells cost one less.
-Foundry Inspector :: the second copy.
-Sapphire Medallion :: the blue half.
-Mox Opal :: metalcraft is immediate here.
-Lotus Petal :: free, and it is an artifact for Urza before it is sacrificed.
-Jeweled Amulet :: stores mana across turns.
-Everflowing Chalice :: scales to whatever you have spare.
-Mind Stone :: ramp early, a card later.
-Thought Vessel :: mana and no maximum hand size, which matters with The One Ring.
-Mishra's Bauble :: zero mana, an artifact, and a card next upkeep.
-Urza's Bauble :: the same.
+# Clear hate and rebuild after removal
+Chain of Vapor :: bounces a nonland permanent, including an obstacle that disables your engine. An opponent may sacrifice a land to copy it and bounce one of yours, so consider that retaliation before exposing Power Artifact or a critical rock.
+Into the Flood Maw :: one blue bounces an opposing creature; promise the tapped Fish gift to bounce ANY opposing nonland permanent instead. This covers artifact and enchantment hate rather than only creature removal. A temporary clear is enough if you finish before it can be replayed.
+Sink into Stupor :: answers an opposing spell or nonland permanent, with the blue land face available when development is more urgent. Choose the mode at play time; a card already played as a land is no longer a removal spell in hand.
+Otawara, Soaring City :: channel gives a land-based answer to an artifact, creature, enchantment or planeswalker. It still uses the stack and can be answered as an ability; spell counters do not directly counter it. Your legends reduce its channel cost, making it useful against hate that has already resolved.
+Emry, Lurker of the Loch :: mills four on entry and lets you CAST an artifact from your graveyard after tapping. You still pay its normal costs and obey timing restrictions; unlike Urza, this lets you choose a large Ballista X. Summoning sickness delays a freshly cast Emry's tap ability. Graveyard exile can shut off this recovery route.
+Buried Ruin -> Goblin Cannon :: pay two, tap and sacrifice the land to return an artifact to hand for recasting. This is faster recovery than waiting for a draw step, but costs a land and cannot recover exiled cards.
+Academy Ruins -> Isochron Scepter :: puts a destroyed artifact on TOP for {1}{U} and tapping the land; it does not return it to hand immediately. A rebuilt Scepter needs a fresh instant in hand to imprint; its old Reversal stays exiled with the old object. If that happens, use a Monolith line rather than assuming recovery restores the imprint.
+Copy Artifact + Phyrexian Metamorph :: copy a useful rock or artifact engine, not the effect of an Aura attached to it. Copies do not inherit counters or imprinted cards. A copied Scepter gets a new imprint trigger and needs an instant in hand. Copying a legendary Mox does not let you keep both under the legend rule. Metamorph can also copy a creature such as Gadgeteer; Copy Artifact cannot copy a nonartifact creature.
+All routes remain vulnerable to broad artifact-activation hate. Bounce or remove that obstacle before starting; a second Monolith does not bypass it. Creature-only activation hate is different: the noncreature Monolith engines, Staff and Cannon can work without Urza, while Ballista cannot shoot through it.
 
-# Untaps, which are mana
-Voltaic Key :: untap any artifact.
-Manifold Key :: the same, and it makes a creature unblockable for the kill.
-Unwinding Clock :: untaps every artifact during each opponent's untap step. With Urza that is a full extra pool of blue mana on all three of their turns.
-Copy Artifact :: a second Basalt Monolith, Isochron Scepter or Mox Opal.
-Phyrexian Metamorph :: a copy of the best artifact or creature on the board.
+# Draw efficiently instead of waiting on expensive engines
+Mystic Forge + Sensei's Divining Top + Geist of Saint Thalia :: Forge permits casting Top from the library; Geist removes its one generic mana cost. Tap Top to draw a card and put Top on the library, recast it free, and repeat as needed. This draws through a FINITE library, not unlimited mana or an automatic kill. Stop before an empty draw. Etherium Sculptor substitutes for Geist's reduction of Top's artifact cost.
+Forensic Gadgeteer :: each artifact CAST investigates, giving another artifact for Urza or an inexpensive Clue draw. A free Top recast still triggers it. It does not investigate merely because a tutor puts an artifact onto the battlefield, and drawing through Clues still requires mana and sacrificing them.
+Thoughtcast :: four artifacts reduce this to one blue for two cards. It refills immediately rather than requiring another turn cycle. Count artifacts still on the battlefield after paying any other costs.
+Thought Monitor :: six artifacts reduce this to one blue for a flying artifact creature and two cards on entry. It has mana value seven regardless of the discount; artifact cost reducers can help further with generic costs. Its draw is mandatory, so do not cast it with fewer than two cards left after drawing through Staff.
+Rhystic Study :: retained as the repeatable draw Game Changer. It supplies both combo access and blue pitch cards across the table's turns; do not replace actual development with waiting for opponents to feed it.
+Mystic Remora :: establish early for cheap cards, but weigh cumulative upkeep against deploying a protected engine. Let it go when maintaining it prevents the decisive turn.
+Timetwister :: reload after deploying cheap artifacts, but remember it gives every opponent seven cards too and shuffles away your graveyard recovery targets. Prefer resolving it before finding the final piece, not gifting fresh interaction immediately before an unprotected win attempt.
+Windfall :: refill an emptied hand when an opponent is holding cards. It is not guaranteed to draw seven and stocks opposing graveyards. Grid or an existing Samut can improve the spell window, but neither guarantees those newly drawn answers cannot matter afterward.
 
-# Interaction
-Counterspell :: the clean two-mana answer.
-Mana Drain :: counter, and the mana pays for the combo turn.
-Force of Negation :: free on their turn.
-Pact of Negation :: free now, and the deck usually wins before the upkeep.
-Flusterstorm :: nearly unbeatable in a counter war.
-Swan Song :: one mana for a wrath or an enchantment.
-An Offer You Can't Refuse :: the same for anything noncreature.
-Mental Misstep :: two life for their turn-one accelerant.
-Mindbreak Trap :: free against a storm turn, and it exiles.
-Muddle the Mixture :: a counterspell, or transmute for Isochron Scepter, Basalt Monolith or Power Artifact — all mana value two.
-Solve the Equation :: any instant or sorcery, usually Dramatic Reversal.
-Merchant Scroll :: any blue instant.
-Fabricate :: any artifact, to hand.
-Spellskite :: redirects the removal spell aimed at Urza for two life.
-Chain of Vapor :: one mana to bounce anything.
-Pongify :: one mana, kills anything.
-Cyclonic Rift :: overloaded, the clear for a lethal artifact attack.
-Hullbreaker Horror :: uncounterable, flash, and every spell afterwards bounces something.
-Trinisphere :: a tax that hurts a fast table far more than a deck that generates its own mana.
-Tormod's Crypt :: free graveyard hate that is also an artifact for Urza.
-
-# What to keep in an opening hand
-Keep cheap artifacts and a land. Mox Opal, Lotus Petal, Mishra's Bauble and Sol Ring all make Urza a turn-three play and immediately turn into mana once he lands.
-Count Urza's mana correctly. Each untapped artifact is one blue, once. Tapping Sol Ring for its own two means it is no longer available for Urza — work out which use you need before you start.
-Muddle the Mixture :: remember it transmutes for exactly two. Isochron Scepter, Basalt Monolith and Power Artifact are all two, so it is a tutor for whichever combo half you are missing.
-Hold up interaction on the turn you go off. The deck's failure case is a single counterspell on Dramatic Reversal, and Force of Negation or Pact of Negation costs you nothing to keep available.
+# Opening hands and sequencing
+Keep two or three usable mana sources, at least one blue source with a realistic path to the second, cheap acceleration and either draw or a tutor. A one-land keep needs a concrete castable acceleration/cantrip sequence, not just several zero-mana artifacts that do nothing before Urza. Avoid treating an unsupported colorless land plus a pile of expensive cards as a fast hand.
+Before turn 6, deploy mana, draw and find complementary pieces. With Power Artifact in hand, a cheap Grim can be better than committing four mana to Urza. With Scepter and Reversal, count recurring mana BEFORE imprinting. Hold a blue card for Force or Misdirection and preserve an answer for the hate permanent that would stop your line.
+On the finishing turn, clear existing hate, establish the protection you can afford, then assemble the engine. Produce enough mana, find or cast Cannon or Ballista, and execute the actual lethal sequence. Do not spend every resource on unlimited mana with no outlet accessible. Keep compact infinite wins until turn 6 under our house rules.
+After disruption, reassess the card zones. Lost Urza does not stop the Monolith engines or Staff/Cannon. An exiled Reversal makes the original Scepter plan unavailable; pivot to a Monolith pair. A destroyed artifact may be recovered with Emry or a land, while an exiled artifact needs another route. The aim is a protected, redundant finish, not pretending any one line is disruption-proof.

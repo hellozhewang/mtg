@@ -1,0 +1,104 @@
+The mistake new pilots make with Sephiroth is treating him as a creature you need to protect forever, or rushing out an infinite combo before the board is prepared. Sephiroth's fourth resolution each turn creates an emblem that grants "Whenever a creature dies, target opponent loses 1 life and you gain 1 life." Emblems cannot be destroyed, exiled, or interacted with by any card in Magic. In a four-player game, a single symmetrical edict like Accursed Marauder forces four creature deaths simultaneously, transforming Sephiroth immediately and permanently locking in the emblem drain for the rest of the game.
+This is a Bracket 3 build operating with three Game Changers: Bolas's Citadel, Demonic Tutor, and Vampiric Tutor. It contains no mass land denial. Infinite sacrifice loops are designed to close games from turn 6 onward; before then, establish your mana, control the board with edicts, and transform Sephiroth to accumulate emblems.
+
+# The emblem and edict engines
+Sephiroth, Fabled SOLDIER :: draws a card on enter or attack by sacrificing a creature, and drains 1 life whenever any other creature dies; on the fourth death resolution each turn, he transforms into Sephiroth, One-Winged Angel and grants an emblem that drains on any creature death
+Accursed Marauder :: two mana to force each player to sacrifice a nontoken creature; at a full table this represents four simultaneous deaths, instantly transforming Sephiroth and granting the emblem
+Fleshbag Marauder :: three mana to force each player to sacrifice a creature; provides another four simultaneous creature deaths while serving as a Zombie for Gravecrawler lines
+Plaguecrafter :: forces each player to sacrifice a creature or planeswalker, or discard; another clean four-death trigger for Sephiroth's transformation
+Flare of Malice :: free instant-speed removal by sacrificing a nontoken black creature; makes each opponent sacrifice their highest-mana threat, generating four creature deaths for zero mana
+The Masamune :: equips to Sephiroth to grant first strike and force blocks, while doubling every death trigger from Sephiroth and doubling every trigger from his emblems; transforms Sephiroth in just two creature deaths instead of four
+Grave Pact :: turns every creature you sacrifice into a one-sided board wipe, forcing three opposing sacrifices and accelerating Sephiroth triggers
+
+# Sac outlets and recursion
+Warren Soultrader :: free sacrifice outlet that produces a Treasure for 1 life; as a Zombie Goblin, it enables Gravecrawler recursion and forms the core of the Forsaken Miner crime loop
+Carrion Feeder :: one mana sacrifice outlet that grows with +1/+1 counters; its Zombie typing allows casting Gravecrawler from the graveyard
+Viscera Seer :: one mana sacrifice outlet providing card selection via scry 1 on every death
+Phyrexian Altar :: sacrifices creatures for colored mana; generates infinite mana, casts, and death triggers with Gravecrawler
+Ashnod's Altar :: produces two generic mana per sacrifice, converting tokens into rapid mana for Bolas's Citadel or Gray Merchant
+Yawgmoth, Thran Physician :: free sacrifice outlet that draws cards, spreads -1/-1 counters to remove opposing threats, and triggers Sephiroth's drain
+Forsaken Miner :: recurs from the graveyard for {B} whenever you commit a crime; targeting an opponent with Sephiroth's drain ability is a crime, enabling the infinite loop with Warren Soultrader
+Gravecrawler :: casts itself from the graveyard for {B} whenever you control a Zombie such as Carrion Feeder, Warren Soultrader, Accursed Marauder, or Fleshbag Marauder
+Nether Traitor :: recurring shadow attacker that returns to the battlefield for {B} whenever another creature dies; loops with Phyrexian Altar and mana generators
+Bloodghast :: returns from the graveyard automatically on any land drop, providing zero-mana fodder every turn
+Nine-Lives Familiar :: provides nine distinct lives, returning automatically up to eight times whenever it dies
+Ophiomancer :: creates a 1/1 deathtouch Snake on every player's upkeep if you control no snakes, providing four free sacrifices per turn cycle
+Bitterblossom :: creates a 1/1 flying Faerie Rogue on your upkeep to feed Sephiroth and Skullclamp
+Bitterbloom Bearer :: flash flying threat that creates a 1/1 Faerie every upkeep, providing immediate fodder and aerial defense
+Jadar, Ghoulcaller of Nephalia :: generates a 2/2 decayed Zombie token on your end step, triggering Gravecrawler legality and dying automatically in combat
+Black Market Connections :: yields card advantage, Treasure mana, and a 3/2 Shapeshifter every upkeep
+Chthonian Nightmare :: repeatable energy engine that sacrifices a creature to recur low-mana threats from the graveyard
+
+# Aristocrat payoffs and finishers
+Blood Artist :: drains target player for 1 life whenever any creature dies, including opposing creatures
+Zulaport Cutthroat :: drains each opponent for 1 life whenever any creature you control dies, dodging targeting restrictions
+Marionette Apprentice :: fabricates a token or counter, and drains each opponent whenever an artifact or creature you control dies; triggers off Treasures as well as creatures
+Ayara, First of Locthwain :: drains each opponent for 1 life on black creature entry, provides three devotion pips, and taps to sacrifice and draw
+Bastion of Remembrance :: enchantment drain piece that enters with a 1/1 Soldier and survives creature sweepers
+The Meathook Massacre :: scalable -X/-X sweeper that permanently stays on board to drain on your creature deaths and gain life on opponents' creature deaths
+Syr Konrad, the Grim :: drains each opponent for 1 life whenever a creature dies, is milled, or leaves your graveyard
+Sheoldred, the Apocalypse :: gains 2 life on your draws to offset life payments, while draining opponents for 2 life on each of their draws
+Gray Merchant of Asphodel :: massive burst drain and lifegain scaled to your devotion to black, often draining the table for 10 to 14 life upon entry
+Pitiless Plunderer :: creates a Treasure token whenever another creature you control dies, converting every death into mana
+Pawn of Ulamog :: creates an Eldrazi Spawn token whenever a nontoken creature dies, generating two deaths and one mana per body
+
+# Infinite combos and lines
+Remember that in Bracket 3, infinite loops are reserved for turn 6 and later. Assemble your pieces or hold them until the table has reached the midgame.
+Sephiroth, Fabled SOLDIER + Warren Soultrader + Forsaken Miner :: Soultrader sacrifices Miner to make a Treasure, Sephiroth targets an opponent with the drain ability which counts as committing a crime, crack the Treasure for {B} to return Miner, and repeat infinitely to drain the entire table
+Phyrexian Altar + Gravecrawler + Carrion Feeder :: with Carrion Feeder providing Zombie typing, sacrifice Gravecrawler to Phyrexian Altar for {B}, drain with Sephiroth or Blood Artist, and recast Gravecrawler from the graveyard for {B} infinitely
+Warren Soultrader + Gravecrawler + Carrion Feeder + Blood Artist :: sacrifice Gravecrawler to Soultrader for a Treasure and 1 life loss, Blood Artist drains an opponent and gains 1 life back, crack Treasure for {B} to recast Gravecrawler, repeating infinitely
+Phyrexian Altar + Nether Traitor + Pawn of Ulamog :: sacrifice Nether Traitor to Phyrexian Altar for {B}, Pawn creates an Eldrazi Spawn, sacrifice Spawn for {1}, Nether Traitor triggers on the Spawn's death and returns for {B}, netting infinite colorless mana and infinite death triggers with Sephiroth
+Bolas's Citadel + Ayara, First of Locthwain :: cast spells directly off the top of your library using your life total, replenishing your life with Sephiroth and Ayara triggers on entry and death, and tap Citadel to sacrifice ten permanents to deal 10 damage to each opponent
+
+# Tutors and Game Changers
+The three Game Changers in this list are Bolas's Citadel, Demonic Tutor, and Vampiric Tutor. Use the tutors to locate the missing piece of your engine or an immediate answer to a hostile stax piece.
+Demonic Tutor -> Warren Soultrader :: when you hold Forsaken Miner or Gravecrawler and need the primary sacrifice engine to close the game
+Demonic Tutor -> Phyrexian Altar :: to establish an infinite mana and death loop with Gravecrawler
+Demonic Tutor -> Toxic Deluge :: when facing an overwhelming wide board or untargetable threats
+Vampiric Tutor -> Bolas's Citadel :: cast on the previous opponent's end step to untap and begin churning through your deck
+Vampiric Tutor -> Withering Torment :: instant-speed search for your premier enchantment and creature answer
+Diabolic Intent -> Warren Soultrader :: sacrifices a fodder creature to trigger Sephiroth while fetching your combo piece
+Beseech the Mirror -> Warren Soultrader :: bargain by sacrificing a Treasure, Blood token, or artifact to cast Soultrader directly onto the battlefield
+Buried Alive -> Gravecrawler + Forsaken Miner + Nether Traitor :: bins all three primary recursive creatures in one cast, ready to be revived
+Entomb -> Gravecrawler :: one-mana instant-speed graveyard setup for immediate recast with a Zombie present
+Wishclaw Talisman -> Demonic Tutor :: two-mana artifact tutor; bargain it away with Beseech the Mirror or sacrifice it to Braids before giving it to an opponent
+Grim Tutor -> Toxic Deluge :: three-mana unconditional search for a board wipe or combo piece
+
+# Interaction and card advantage
+Deadly Rollick :: free instant-speed creature exile while Sephiroth is on the battlefield
+Snuff Out :: free instant-speed creature destruction paid with 4 life, easily replenished by Sephiroth
+Withering Torment :: instant-speed removal targeting a creature or an enchantment, answering Rest in Peace or Leyline of the Void
+Feed the Swarm :: sorcery-speed removal targeting a creature or enchantment
+Sheoldred's Edict :: flexible instant edict that forces each opponent to sacrifice a nontoken creature, token creature, or planeswalker, ignoring hexproof and indestructible
+Imp's Mischief :: redirects targeted removal or counterspells, turning an opponent's Counterspell against itself or protecting Sephiroth from Swords to Plowshares
+Toxic Deluge :: scalable three-mana board wipe that pays life to eliminate indestructible and hexproof creatures alike
+Skullclamp :: attach to 1/1 tokens or 1-toughness recurring creatures for {1} to draw two cards per death
+Morbid Opportunist :: draws a card on the first creature death each turn, yielding up to four cards per round at a four-player table
+Braids, Arisen Nightmare :: sacrifices a creature, enchantment, or artifact at end step to force opponents to match or hand you three cards and lose 2 life
+Liliana, Dreadhorde General :: draws a card on every creature death you control, generates Zombie tokens, and forces a two-creature sacrifice from each player
+Reanimate :: one-mana resurrection of your strongest creature or a key threat from an opponent's graveyard
+Animate Dead :: two-mana aura reanimation for Gary, Warren Soultrader, or high-impact targets
+Deadly Dispute :: instant-speed sacrifice of an outmatched creature or Treasure to draw two cards and create a fresh Treasure
+
+# Mana base and opening hands
+Cabal Coffers + Urborg, Tomb of Yawgmoth :: taps for massive black mana equal to your total land count, easily funding multi-spell turns and Bolas's Citadel
+Cabal Stronghold :: secondary Coffers effect requiring basic Swamps
+Nykthos, Shrine to Nyx :: produces huge mana scaling with high devotion from Ayara, Sephiroth, and Grave Pact
+Lake of the Dead :: converts Swamps into four black mana for explosive turns
+Phyrexian Tower :: utility land that sacrifices a creature to tap for {B}{B}
+High Market :: colorless land providing an uncounterable instant-speed sacrifice outlet
+Urza's Saga :: develops construct tokens before tutoring Skullclamp or Sol Ring directly onto the battlefield on chapter III
+Volrath's Stronghold :: puts a critical creature from graveyard to library on end step
+Witch's Cottage :: returns a creature to top of library if you control three other Swamps
+Takenuma, Abandoned Mire :: channel ability mills three cards and recurs a legend or creature without using the stack
+Agadeem's Awakening :: modal land that doubles as an X-cost mass reanimation spell late game
+Malakir Rebirth :: modal land that saves a creature from removal for {B}
+Fell the Profane :: modal land that doubles as instant-speed creature or planeswalker removal
+Dark Ritual :: provides three black mana on turn 1 for early setup
+Cabal Ritual :: ramps into midgame bombs, adding five black mana with threshold
+Culling the Weak :: converts a single token or creature into four black mana
+Sol Ring :: colorless staple acceleration
+Arcane Signet :: clean two-mana colored rock
+Jet Medallion :: discounts all black spells in the deck
+
+Keep opening hands with 2 to 3 lands, at least one piece of early ramp (Sol Ring, Dark Ritual, Jet Medallion) or fodder generation (Bitterblossom, Jadar, Ophiomancer), and either an edict or a tutor. Do not keep hands reliant purely on 4+ mana spells with no early plays. Cast Sephiroth on turn 2 or 3, follow up with an edict to immediately transform him and gain the emblem, and control the pace of combat until turn 6 when you can safely tutor and execute your winning drain loop.

@@ -24,8 +24,9 @@ Validator passes 100 cards, 3/3 Game Changers, avg MV 1.84 (was 2.17), TTS impor
 Vivi page/list/guide data, category/tier catalog records and required thumbnails.
 Preserve other decks' published timestamps, records and spawn bytes: a fresh
 worktree has different file birth dates, and its cache can carry newer default
-art unrelated to this request. All 163 other catalog records and spawn decks
-were checked unchanged. No runtime/table change or Steam upload is needed.
+art unrelated to this request. The concurrent Sephiroth publication was preserved while resolving generated
+catalog conflicts. The final catalog has 165 decks; all 164 other records and
+spawn decks match that concurrent publication. No runtime/table change or Steam upload is needed.
 Saved Games and Steam remain v64.
 
 ## Audio asset cleanup (2026-10-22)

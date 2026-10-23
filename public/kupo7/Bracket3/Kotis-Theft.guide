@@ -1,10 +1,11 @@
-Kotis is Voltron where the reward is other people's cards. He exiles cards off the defending player equal to the DAMAGE he dealt, and you cast any number of them for free as long as they cost that much or less. So every point of power you add does two jobs — it kills faster and it digs deeper. And because he is indestructible, the two most dangerous pump effects in the format cost him nothing.
+Kotis is Voltron where the reward is other people's cards. He exiles cards off the defending player equal to the DAMAGE he dealt, and you cast any number of them for free as long as they cost that much or less. So every point of power you add does two jobs — it kills faster and it digs deeper. And because he is indestructible, the most dangerous pump effects in the format cost him nothing.
 
 # The commander
 Kotis, the Fangkeeper :: indestructible, and every connection exiles X cards and casts any number of them with mana value X or less, free. A ten-damage hit routinely produces two or three free spells.
 Berserk :: doubles his power and grants trample for one green mana. The "destroy it at end of turn" clause is a dead line of text on an indestructible creature. This is the single best card in the deck.
 Inquisitor's Flail :: doubles his combat damage. The drawback — he takes double damage back — does not matter, because he cannot be destroyed.
 Leyline Axe :: double strike, so Kotis triggers TWICE, each with its own X. It can start the game on the battlefield if it is in your opening hand.
+Fireshrieker :: gives double strike, ensuring two distinct Kotis combat damage triggers per swing.
 Felix Five-Boots :: combat damage triggers of your permanents happen an additional time. Two full Kotis triggers per connection.
 Roaming Throne :: name Zombie or Warrior. Another doubling of the same trigger.
 
@@ -13,46 +14,51 @@ Brotherhood Regalia :: equip to a legendary creature for {1} — ward {2} and co
 My Precious :: hexproof and unblockable on one Equipment, and the Adventure half draws two.
 Aqueous Form :: one mana, unblockable, and it scries every attack.
 Security Bypass :: unblockable while attacking alone, plus a connive on every hit.
-Indomitable Might :: flash, +3/+3, and it assigns damage as though unblocked — so a chump block does not shrink X.
-Silent Arbiter :: only one creature can block each combat. In a deck attacking with one enormous creature, that is close to unblockable, and it shuts down the table's alpha strikes at the same time.
+Distortion Strike :: grants +1/+0 and unblockable this turn, then rebounds from exile on your next upkeep for a second free unblockable attack.
+Shadowspear :: grants trample and lifelink to buffer your life while punching through, and removes hexproof or indestructible from opposing blockers.
+Rogue's Passage :: an unblockable engine stapled to an untapped utility land when opponents hold up creature removal.
 Conqueror's Flail :: opponents cannot cast spells during your turn while it is attached. Deploy it before the big swing.
 
 # Making X large
+Might of the Nephilim :: Kotis is Sultai (black, green, and blue), so this gives him a staggering +6/+6 for just two mana. Combined with Berserk or double strike, it creates game-ending damage.
+Invigorate :: +4/+4 for free by giving an opponent 3 life. A zero-mana pump that can be cast before damage to steal larger cards or close a lethal window.
+Tainted Strike :: gives +1/+0 and infect at instant speed for {B}. At 10 power Kotis eliminates a player instantly while still exiling 10 cards.
 Blackblade Reforged :: +1/+1 per land. On turn seven that is +7/+7 for a three-mana equip on a legendary creature.
 Strong Back :: +2/+2 for every Aura and Equipment attached, and it makes every subsequent Aura and Equipment cost three less. It is both a payoff and a discount.
 Bear Umbra :: +2/+2, untaps all your lands when he attacks — so the free spells you just exiled can be followed by ones you pay for — and umbra armor eats a removal spell.
-Power Fist :: trample, and it turns every hit into permanent +1/+1 counters, so X grows every turn.
-Buster Sword :: +3/+2, a card on damage, and a free spell from your hand priced by the damage dealt.
 Rancor :: +2/+0 and trample for one mana, and it returns to your hand when it dies.
-Dragonfire Blade :: +2/+2 and hexproof from monocoloured, which is most removal.
 Overprotect :: +3/+3, trample, hexproof and indestructible at instant speed.
 
-# Getting paid for the free spells
-Ancient Cellarspawn :: whenever you cast a spell for LESS than its mana value, an opponent loses the difference. Every free spell Kotis gives you is a drain equal to its full cost.
+# Tutor chains and card advantage
+Spellseeker -> Berserk :: when Kotis is unblocked and you need double damage and trample to close the game or exile deep into their deck.
+Spellseeker -> Might of the Nephilim :: when you need raw stats (+6/+6) to pump Kotis before damage.
+Spellseeker -> Tainted Strike :: the surprise one-shot infect kill line.
+Spellseeker -> Heroic Intervention :: when you need to protect your board from a wipe.
+Spellseeker -> Cyclonic Rift :: tutors an overloaded wipe to clear all blockers.
+Grim Tutor :: unconditional tutor for three mana to assemble whatever piece of the unblockable/pump equation is missing.
+The One Ring :: grants protection from everything until your next turn, buys an extra turn to swing, and draws deep into pump and counterspells.
 Gonti, Night Minister :: a Treasure whenever anyone casts a spell they do not own, and it exiles a card off an opponent whenever any creature damages them.
 Dauthi Voidwalker :: unblockable, exiles everything headed for their graveyards, and cashes in for a free cast.
-Opposition Agent :: flash him onto a fetchland or tutor and keep whatever they find.
 
 # Protecting the pile
-The failure case is obvious: one exile effect answers eight cards. Kotis being indestructible only covers half of it.
 Guardian Augmenter :: your commander gets +2/+2 and HEXPROOF. Flash, so it can arrive in response to removal.
 Slip Out the Back :: one mana, phases him out with everything attached.
 Legolas's Quick Reflexes :: split second, so nothing can respond at all.
 Heroic Intervention :: hexproof and indestructible for the whole board.
-Overprotect :: the same on one creature, plus a pump.
 Glen Elendra Archmage :: a repeatable counterspell for the removal spell that matters, twice thanks to persist.
 Deadly Rollick :: free with your commander out.
 
 # Interaction
 Mana Drain :: counter their answer, then spend the mana equipping.
-Swan Song :: one mana for a wrath.
+Swan Song :: one mana for an instant, sorcery, or enchantment answer.
 An Offer You Can't Refuse :: the same for anything noncreature.
 Assassin's Trophy :: two mana for any permanent.
 Reality Shift :: exile a blocker and leave them a 2/2 they cannot use.
 Damnation :: a wrath, and Kotis walks away from it untouched.
 Cyclonic Rift :: overloaded, it clears every blocker for the lethal swing.
-Amphibian Downpour :: flash, and storm means one copy per spell cast this turn — it turns a table full of commanders into a table full of 1/1 Frogs.
 Manglehorn :: an artifact destroyed on entry, and their artifacts arrive tapped.
+Tishana's Tidebinder :: shuts down activated and triggered abilities on troublesome permanents.
+Veil of Summer :: stops blue and black interaction dead.
 
 # Mana and cards
 Birds of Paradise :: turn-one fixing.
@@ -61,13 +67,15 @@ Delighted Halfling :: uncounterable mana for legendary spells, which is Kotis an
 Deathrite Shaman :: mana, drain and lifegain from one card.
 Nature's Lore :: an untapped dual.
 Farseek :: the same for shocklands.
+Three Visits :: copies Nature's Lore for redundant early ramp.
 Rhystic Study :: their turns pay for yours.
 Mystic Remora :: the strongest card in the deck on turns one through four.
 Combat Research :: a card on every hit, plus +1/+1 and ward on a legendary creature.
+Toski, Bearer of Secrets :: uncounterable, indestructible card draw engine that triggers on every combat connection.
 Eternal Witness :: any card back from the graveyard.
 
 # What to keep in an opening hand
-Keep an unblockable enabler. Aqueous Form, Brotherhood Regalia or My Precious is what turns Kotis from a 2/1 that trades into a repeatable engine, and none of the pump matters if he does not connect.
-Attack the player whose deck you want to cast from, not the player with the lowest life. The exile is off THEIR library, so hitting the combo deck gets you tutors and rituals while hitting the creature deck may give you nothing castable.
-Berserk :: hold it for the turn a large X matters. Doubling a 12-power Kotis takes X from twelve to twenty-four, which casts essentially anything exiled.
-Do not overcommit Auras and Equipment before you have protection available. Guardian Augmenter or Slip Out the Back in hand is worth more than one more +2/+2.
+Keep an unblockable enabler and early ramp. Aqueous Form, Brotherhood Regalia, Security Bypass, or Distortion Strike is what turns Kotis from a 2/1 into a repeatable engine; none of the pump matters if he cannot connect.
+Attack the player whose deck you want to cast from, not just the lowest life total. Kotis exiles from THEIR library, so hitting the combo or control deck produces tutors, countermagic, and extra turns, while creature-heavy decks offer less utility.
+Berserk, Might of the Nephilim, and Tainted Strike are your primary finishers. Doubling a pumped Kotis produces 16-24 power, easily one-shotting opponents via commander damage while exiling a quarter of their deck for free casts.
+Do not overcommit pump spells before blockers are declared or protection is held up. A single instant-speed exile or bounce spell can blow out combat if you commit before their priority passes.

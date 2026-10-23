@@ -1,7 +1,5 @@
 1 Kotis, the Fangkeeper (TDM) 202
-1 Amphibian Downpour
 1 An Offer You Can't Refuse (FDN) 160
-1 Ancient Cellarspawn
 1 Aqueous Form
 1 Arcane Signet (TDC) 105
 1 Assassin's Trophy (SOC) 294
@@ -16,7 +14,6 @@
 1 Boseiju, Who Endures
 1 Breeding Pool
 1 Brotherhood Regalia
-1 Buster Sword (FIN) 255
 1 Combat Research
 1 Command Tower
 1 Conqueror's Flail (2X2) 302
@@ -26,60 +23,63 @@
 1 Deadly Rollick (CMM) 147
 1 Deathrite Shaman (RVR) 175
 1 Delighted Halfling (HOC) 65
-1 Dragonfire Blade (TDM) 324
+1 Distortion Strike
 1 Eternal Witness (CMM) 286
 1 Exotic Orchard
 1 Farseek (TDC) 255
 1 Felix Five-Boots
 1 Fellwar Stone (MBC) 74
+1 Fireshrieker
 1 Flooded Strand
 1 Forest
 1 Glen Elendra Archmage (WOC) 94
 1 Gonti, Night Minister (DFT) 87
+1 Grim Tutor
 1 Guardian Augmenter
 1 Hedge Maze
 1 Heroic Intervention (CMM) 295
-1 Indomitable Might
 1 Inquisitor's Flail
+1 Invigorate
 1 Island
 1 Legolas's Quick Reflexes
 1 Leyline Axe (FDN) 129
-1 Llanowar Wastes
 1 Mana Confluence
 1 Mana Drain (2X2) 57
 1 Manglehorn
 1 Marsh Flats
+1 Might of the Nephilim
 1 Misty Rainforest
 1 Morphic Pool
 1 My Precious (HOB) 271
 1 Mystic Remora (DMR) 59
 1 Nature's Lore (SOC) 278
-1 Opposition Agent (CMR) 141
 1 Otawara, Soaring City
 1 Overgrown Tomb
 1 Overprotect
 1 Polluted Delta
-1 Power Fist
 1 Rancor (2X2) 156
 1 Reality Shift (SOC) 199
 1 Rejuvenating Springs
 1 Rhystic Study (JMP) 169
 1 Roaming Throne (LCI) 258
+1 Rogue's Passage
 1 Scalding Tarn
 1 Security Bypass
+1 Shadowspear
 1 Shizo, Death's Storehouse
-1 Silent Arbiter
 1 Slip Out the Back (CLU) 99
 1 Sol Ring (TDC) 106
+1 Spellseeker
 1 Strong Back
 1 Swamp
 1 Swan Song (C16) 98
 1 Swiftfoot Boots (MBC) 77
 1 Sylvan Library (LEG) 207
+1 Tainted Strike
 1 Talisman of Curiosity (MKC) 241
 1 Talon Gates of Madara
 1 The Black Gate
-1 The Thirteenth Doctor (WHO) 4
+1 The One Ring
 1 Three Visits (SOC) 289
 1 Tishana's Tidebinder (LCI) 81
 1 Toski, Bearer of Secrets (MKC) 191

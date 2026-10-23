@@ -1,70 +1,65 @@
-Sheoldred does both halves of a sacrifice deck at once: she reanimates a creature for free on your upkeep, and she makes every opponent sacrifice one on theirs. So the deck is built out of creatures that WANT to die — Kokusho, Junji, Archon of Cruelty — and outlets to kill them on your own terms. Bring one back every turn, cash it in for value, repeat.
+Sheoldred does both halves of a sacrifice deck at once: she reanimates a creature for free on your upkeep, and she makes every opponent sacrifice one on theirs. So the deck is built out of high-impact creatures that want to die or enter—Archon of Cruelty, Vilis, Razaketh, Kokusho—and outlets to recycle them on your own terms. Early on, cheap reanimation spells cheat monsters into play on turns 1 to 3; later, Sheoldred and Mikaeus take over to lock out or kill the entire table.
+Bracket 3: the Game Changer cap is three, filled by Demonic Tutor, Opposition Agent, and The One Ring. No mass land denial. Assemble infinite combo lines from turn 6 onward.
 
-# The commander
-Sheoldred, Whispering One :: 6/6 with swampwalk, a free reanimation every one of your upkeeps, and a forced sacrifice on every opponent's upkeep. Seven mana, and she is worth every one of them.
-Lightning Greaves :: shroud, because she is the single most removal-magnetic card in the deck.
-Swiftfoot Boots :: hexproof and haste for when you want to attack immediately.
-Kaya's Ghostform :: one mana that brings her back through destruction OR exile.
-Imp's Mischief :: redirects the removal spell aimed at her.
+# The infinite combo
+Mikaeus, the Unhallowed + Triskelion :: Triskelion enters with three +1/+1 counters and gains +1/+1 from Mikaeus. Remove one counter to deal 1 damage to an opponent, then remove the other two counters to deal 2 damage to Triskelion itself. With zero counters, Triskelion dies as a 2/2 with two damage marked. Undying triggers and returns Triskelion with an additional +1/+1 counter (now four counters total). Repeat the loop removing two counters to ping opponents and two to kill itself, dealing infinite damage to all opponents.
+Buried Alive -> Mikaeus, the Unhallowed + Triskelion :: the primary winning pile. Entomb both pieces alongside a third threat (like Gray Merchant or Archon of Cruelty); return them together with Victimize, Living Death, or Agadeem's Awakening to end the game on the spot.
 
-# Creatures that pay you for dying
-Kokusho, the Evening Star :: five life from each opponent and fifteen back to you, every time it dies. Reanimate it on upkeep, sacrifice it, repeat — that is fifteen damage a turn cycle in a four-player pod.
-Junji, the Midnight Sky :: two cards discarded and two life from each opponent, or it reanimates something else on its way out.
-Archon of Cruelty :: a sacrifice, a discard and three life from an opponent when it ENTERS, so Sheoldred's upkeep trigger alone is a beating, and it triggers again on every attack.
-Grave Titan :: six power and four Zombies across entry and attack, all of them sacrifice fodder.
-Massacre Wurm :: a one-sided wrath on entry, and every creature they lose costs two life.
-Gray Merchant of Asphodel :: your devotion is high; reanimating it is six or more damage to each opponent.
-Sephiroth, Fabled SOLDIER :: draws off every sacrifice, drains on every creature death, and flips into an emblem that keeps draining for the rest of the game.
+# Heavy reanimation targets
+Vilis, Broker of Blood :: an 8/8 flying demon that draws cards whenever you lose life. Cheating him out with Reanimate loses eight life, immediately drawing eight fresh cards for a single black mana.
+Razaketh, the Foulblooded :: an 8/8 flying trample demon that sacrifices any creature for two life to tutor any card to hand at instant speed, effortlessly chaining tutors into your winning combo.
+Archon of Cruelty :: forces an opponent to sacrifice a creature, discard a card, and lose three life while drawing you a card and gaining three life on both entry and attack.
+Kokusho, the Evening Star :: drains five life from each opponent and heals you for fifteen whenever it dies. Bringing it back on upkeep and sacrificing it drains the table for fifteen life every turn cycle.
+Junji, the Midnight Sky :: forces discards and drains life when it dies, or reanimates another creature from your graveyard.
+Grave Titan :: generates four 2/2 Zombies across entry and attack to feed sacrifice outlets or protect your life total.
+Massacre Wurm :: a one-sided sweeper on entry that drains opponents for two life per dead creature.
+Gray Merchant of Asphodel :: leverages heavy black devotion to drain the table for lethal chunks of life when reanimated.
+Sephiroth, Fabled SOLDIER :: draws cards off sacrifices and flips into an emblem that permanently drains opponents.
 
-# Sacrifice outlets
-Ashnod's Altar :: free, repeatable, and it makes mana. This is what turns Sheoldred's reanimation into a loop.
-Deadly Dispute :: two cards and a Treasure for a creature you were going to lose anyway.
-Skullclamp :: on a 2/2 Zombie, two cards.
-Braids, Arisen Nightmare :: every end step they give up a permanent or you draw and they lose two.
-Gate to Phyrexia :: repeatable artifact removal that costs only a body.
-Sephiroth, Fabled SOLDIER :: a free sacrifice on entry and every attack, each one a card.
+# Sacrifice outlets and payoffs
+Ashnod's Altar :: free, repeatable sacrifice outlet that produces two colorless mana per creature, accelerating plays and enabling loops.
+Grave Pact :: every creature you lose forces each opponent to sacrifice one. Alongside Sheoldred's upkeep edict, opposing creature boards are wiped clean.
+Syr Konrad, the Grim :: deals damage to all opponents whenever creatures die anywhere, cards are milled or discarded, or creature cards leave your graveyard—triggering every time Sheoldred reanimates.
+Skullclamp :: attach to 1/1 tokens or expendable creatures to draw two cards for one mana.
+Braids, Arisen Nightmare :: sacrifices expendable bodies on your end step to draw cards and drain opponents.
+Deadly Dispute :: draws two cards and creates a Treasure while sending a big target to the graveyard.
+Morbid Opportunist :: draws a card every turn a creature dies.
+Accursed Marauder + Plaguecrafter :: forced sacrifices that clear opposing boards and put themselves in the graveyard to trigger your death engines.
 
-# Punishing the deaths
-Grave Pact :: every creature you lose makes each opponent sacrifice one. Alongside Sheoldred's upkeep edict, the table simply cannot keep a board.
-Syr Konrad, the Grim :: damage to each opponent whenever a creature dies anywhere, whenever a creature card is milled or discarded, AND whenever a creature card leaves your graveyard — so Sheoldred's reanimation trigger itself pings the table every upkeep.
-Morbid Opportunist :: a card every turn creatures die.
-Accursed Marauder :: everyone sacrifices a nontoken creature. You have fodder; they usually do not.
-Plaguecrafter :: the same, and it catches planeswalkers.
-Emeritus of Woe :: a 5/4 that also carries a Demonic Tutor, and it re-prepares whenever two creatures die in a turn.
+# Graveyard setup and reanimation spells
+Entomb :: one black mana at instant speed to put your best creature directly into the graveyard.
+Buried Alive :: searches three creatures straight into your graveyard, immediately setting up the Mikaeus + Triskelion win or an Archon + Vilis value pile.
+Stitcher's Supplier :: mills three cards on entry and three on death, loading six cards into your graveyard for one mana.
+Ripples of Undeath :: mills three cards each turn and allows you to pay one mana and three life to draw the best card among them.
+Grave Researcher :: surveils on upkeep and grants a free prepared Reanimate once three creatures are in your graveyard.
+Reanimate :: one mana to reanimate any creature from any graveyard.
+Animate Dead :: two mana enchantment that returns any creature.
+Necromancy :: three mana reanimation that can be cast at flash speed in response to removal or sweepers.
+Victimize :: sacrifices an expendable creature to return two creatures to the battlefield tapped, assembling two-card creature combos in one cast.
+Living Death :: mass creature wipe that simultaneously empties all graveyards onto the battlefield, breaking stalemates completely.
+Phyrexian Reclamation :: two mana and two life to return creature cards from your graveyard to your hand to bypass graveyard hate.
 
-# Getting the fatties down there
-Entomb :: one mana, instant speed, exactly what you want.
-Buried Alive :: three at once. Kokusho, Archon of Cruelty and Junji is the standard pile.
-Perpetual Timepiece :: mills two at a time, and shuffles back in when you are at risk of decking.
-Grave Researcher :: surveils each upkeep and prepares a free Reanimate once three creatures are down.
-Reanimate :: one mana for anything in any graveyard.
-Animate Dead :: the second copy.
-Necromancy :: flash speed, so you can rebuild in response to a wrath.
-Living Death :: your graveyard is the deepest at the table by design.
-Phyrexian Reclamation :: buys creatures back to your HAND, which matters when they exile your graveyard.
+# Tutors and mana acceleration
+Demonic Tutor :: unconditional two-mana tutor for whatever missing piece completes your plan.
+Dark Ritual :: provides three black mana for one, enabling turn 1 or turn 2 reanimation of Archon of Cruelty or Vilis.
+Sol Ring + Arcane Signet + Mind Stone :: early mana rocks that help ramp toward Sheoldred or big reanimation spells.
+Jet Medallion :: discounts all black spells in the deck.
+Crypt Ghast :: doubles mana from every Swamp and extorts on every cast.
+Expedition Map :: finds Cabal Coffers or Urborg, Tomb of Yawgmoth to unlock massive black mana.
+The One Ring :: grants protection for a turn while drawing deep into your combo pieces and reanimation spells.
+Black Market Connections :: yields Treasures, card draw, and Changeling fodder every turn.
 
-# Removal and interaction
-Deadly Rollick :: free with your commander out.
-Bitter Triumph :: a creature or planeswalker, and the discard cost puts a fatty where you want it.
-Feed the Swarm :: mono-black's only clean enchantment answer.
-Meteor Golem :: destroys any nonland permanent, and it is a creature so Sheoldred can rebuy it.
-Gate to Phyrexia :: artifacts, repeatedly.
-Liquimetal Torque :: turns any permanent into an artifact so the Gate can eat it.
-Opposition Agent :: flash him onto a fetchland or tutor.
-Stonespeaker Crystal :: mana, and it exiles graveyards while drawing you a card — useful when someone else is the reanimator.
+# Removal and protection
+Deadly Rollick :: free exile removal while Sheoldred is on the battlefield.
+Bitter Triumph :: two-mana instant removal for creatures or planeswalkers whose discard cost helps pitch big reanimation targets from your hand.
+Feed the Swarm + Withering Torment :: answers troublesome enchantments or creatures at low mana costs.
+Toxic Deluge :: low-cost sweeper to reset aggressive creature boards.
+Opposition Agent :: flashes in on opposing fetchlands and tutors to steal their searches.
+Lightning Greaves + Swiftfoot Boots :: grants shroud or hexproof and haste to protect Sheoldred and let reanimated fatties attack immediately.
+Kaya's Ghostform :: one-mana enchantment that brings Sheoldred back through destruction or exile.
+Imp's Mischief :: redirects opposing targeted removal spells or counterspells.
 
-# Mana and cards
-Sol Ring :: turn one.
-Jet Medallion :: a discount on every card in the deck.
-Crypt Ghast :: doubles every Swamp and extorts on every spell.
-Mind Stone :: ramp early, a card later.
-Black Market Connections :: three effects a turn.
-Night's Whisper :: two cards for two mana.
-Solemn Simulacrum :: a land, a card, and a body to sacrifice.
-Expedition Map :: finds Cabal Coffers or whichever land the board needs.
-
-# What to keep in an opening hand
-Keep a graveyard enabler and acceleration. Entomb plus Reanimate is a turn-two Archon of Cruelty, which is faster than casting Sheoldred and better than waiting for her.
-Sheoldred is a seven-drop. Crypt Ghast, Sol Ring and Jet Medallion are what make her a turn-five play. Do not keep a hand that only works if you draw four more lands.
-Sacrifice on your upkeep, not your main phase. Sheoldred's trigger reanimates first — so put Kokusho back, then sacrifice it during your turn, then do it again next upkeep. Killing it before the trigger wastes a whole turn of value.
-Grave Pact :: with Sheoldred out this is the lock. Their upkeep edict plus your sacrifice outlet means every opponent loses two creatures per turn cycle and cannot rebuild.
+# What to keep and sequencing
+A playable opening hand requires two or three mana sources, a discard outlet or self-mill enabler (Entomb, Stitcher's Supplier, Buried Alive, Bitter Triumph), and a reanimation spell (Reanimate, Animate Dead, Necromancy, Victimize). Hands with big 8-drops but no way to discard or reanimate them are unplayable.
+In the early turns, use Dark Ritual or cheap reanimation to get Archon of Cruelty or Vilis into play on turn 2 or 3 to bury the table in card advantage.
+When preparing to win on turn 6 or later, cast Buried Alive to bin Mikaeus, the Unhallowed and Triskelion, then return them with Victimize or Living Death to execute the infinite damage loop. If a combo finish is not available, Sheoldred and Grave Pact will starve the table of creatures while Kokusho and Gray Merchant drain opponents out.

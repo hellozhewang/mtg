@@ -136,6 +136,41 @@ class AgyRunTests(unittest.TestCase):
                      "You have exhausted your quota on this model.", "429 RESOURCE_EXHAUSTED"):
             self.assertTrue(harness.QUOTA_RE.search(line), line)
 
+    def _transcript(self, conv, steps):
+        log = (self.dir / "home" / ".gemini" / "antigravity-cli" / "brain" / conv
+               / ".system_generated" / "logs" / "transcript_full.jsonl")
+        log.parent.mkdir(parents=True, exist_ok=True)
+        log.write_text("\n".join(json.dumps(s) for s in steps) + "\n")
+
+    def test_a_late_error_after_the_finished_reply_keeps_the_reply(self):
+        reply = {"conversation_id": "conv-late", "status": "ERROR", "response": "Built **Gogo-Combats**.\n"}
+        self._transcript("conv-late", [
+            {"type": "PLANNER_RESPONSE", "status": "DONE", "tool_calls": [{"name": "run_command"}], "content": ""},
+            {"type": "GENERIC", "status": "DONE", "content": "Command exited with code 0."},
+            {"type": "PLANNER_RESPONSE", "status": "DONE", "content": "Built **Gogo-Combats**."}])
+        with patch.object(harness.Path, "home", return_value=self.dir / "nohome"):
+            turn = self.make(reply=reply).run(self.folder, "build", None, chan="c", timeout=60, writable=[])
+        self.assertEqual((turn.answer, turn.session_id), ("Built **Gogo-Combats**.", "conv-late"))
+        self.assertIn("ERROR", turn.note)
+
+    def test_an_error_is_still_an_error_unless_the_transcript_proves_completion(self):
+        cases = {
+            "no transcript": None,
+            "tool call pending": [{"type": "PLANNER_RESPONSE", "status": "DONE",
+                                   "tool_calls": [{"name": "run_command"}], "content": "Built it."}],
+            "different text": [{"type": "PLANNER_RESPONSE", "status": "DONE", "content": "Let me validate first."}],
+            "not done": [{"type": "PLANNER_RESPONSE", "status": "ERROR", "content": "Built it."}],
+        }
+        for name, steps in cases.items():
+            with self.subTest(name):
+                conv = "conv-" + name.replace(" ", "-")
+                if steps:
+                    self._transcript(conv, steps)
+                reply = {"conversation_id": conv, "status": "ERROR", "response": "Built it."}
+                with patch.object(harness.Path, "home", return_value=self.dir / "nohome"):
+                    with self.assertRaisesRegex(harness.HarnessError, "status ERROR"):
+                        self.make(reply=reply).run(self.folder, "hi", None, chan="c", timeout=60, writable=[])
+
     def test_an_empty_reply_is_no_output_and_the_session_is_kept(self):
         h = self.make(reply={"conversation_id": "conv-2", "status": "SUCCESS", "response": ""})
         with patch.object(harness.Path, "home", return_value=self.dir / "nohome"):

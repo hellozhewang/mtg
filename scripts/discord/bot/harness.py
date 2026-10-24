@@ -67,6 +67,9 @@ class Turn:
     answer: str
     session_id: str | None
     output: str
+    # Set when the harness reported a failure but the turn had in fact finished
+    # (see AgyHarness.finished_despite). bot.py logs it and carries on.
+    note: str = ""
 
 
 class Harness:
@@ -250,6 +253,33 @@ class AgyHarness(Harness):
     def profile(self, folder: Path, writable: list[Path]) -> str:
         return sandbox.profile([folder, *writable, self.home])
 
+    def finished_despite(self, data: dict) -> bool:
+        """True when agy's own transcript shows the turn completed: its last planner
+        step is DONE, asks for no further tool call, and is exactly the reply returned.
+        agy can report ERROR for a server hiccup AFTER that step (a 503 on a later
+        call); the deck and reply are already done then, and dropping them loses the
+        user's work. Anything less certain stays an error."""
+        response = (data.get("response") or "").strip()
+        conv = data.get("conversation_id")
+        if not response or not conv or "/" in conv or ".." in conv:
+            return False
+        log = (self.home / ".gemini" / "antigravity-cli" / "brain" / conv
+               / ".system_generated" / "logs" / "transcript_full.jsonl")
+        try:
+            lines = log.read_text(encoding="utf-8", errors="replace").splitlines()[-40:]
+        except OSError:
+            return False
+        last = None
+        for line in lines:
+            try:
+                step = json.loads(line)
+            except ValueError:
+                continue
+            if step.get("type") == "PLANNER_RESPONSE":
+                last = step
+        return bool(last) and last.get("status") == "DONE" and not last.get("tool_calls") \
+            and str(last.get("content") or "").strip() == response
+
     @staticmethod
     def parse(stdout: str) -> dict:
         """The JSON result: the last stdout line that is one."""
@@ -289,6 +319,10 @@ class AgyHarness(Harness):
         if data.get("status") != "SUCCESS":
             if QUOTA_RE.search(json.dumps(data)):
                 raise QuotaExhausted(output[-2000:])
+            if self.finished_despite(data):
+                answer = (data.get("response") or "").strip()
+                return Turn(answer, data.get("conversation_id"), output,
+                            note=f"agy reported {data.get('status')} after the final reply; kept it")
             raise HarnessError(f"agy status {data.get('status')}\n{output[-2000:]}")
         answer = (data.get("response") or "").strip()
         return Turn(answer or "(no output)", conv_id, output)

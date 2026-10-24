@@ -570,6 +570,8 @@ def _turn(folder: Path, message: str, sid: str | None, chan: str) -> harness.Tur
     log().debug("turn: %s in %s (resume=%s)", HARNESS.describe(), folder, sid)
     t0 = time.time()
     turn = HARNESS.run(folder, message, sid, chan=chan, timeout=TIMEOUT, writable=[CACHE_DIR])
+    if turn.note:
+        log().warning("[%s] %s", chan, turn.note)
     log().debug("%s turn in %dms, %d chars of output", HARNESS.name,
                 int((time.time() - t0) * 1000), len(turn.output))
     if turn.answer == "(no output)":

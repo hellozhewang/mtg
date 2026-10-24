@@ -102,7 +102,7 @@ CZT.started = true
 data.White.playmat.objects = {}
 for i = 1, 12 do data.White.playmat.objects[i] = card("Artifact — Treasure", "Treasure") end
 czmTick()
-check(CZM.counts.White == 0 and not playing, "twelve artifacts no longer call Ultima")
+check(CZM.battlefields.White.ultima == 0 and not playing, "twelve artifacts no longer call Ultima")
 local mention = card("Creature — Human", "Ultima Fan"); mention.description = "Ultima, Origin of Oblivion is great."
 local facedown = card("Legendary Creature — God", "Ultima, Origin of Oblivion"); facedown.is_face_down = true
 table.insert(data.White.playmat.objects, mention); table.insert(data.White.playmat.objects, facedown)
@@ -112,9 +112,9 @@ for _, entry in ipairs({{library, "libraryZone"}, {graveyard, "graveyard"}, {exi
   table.insert(data.White.playmat.objects, entry[1]); data.White[entry[2]].objects = {entry[1]}
 end
 czmTick()
-check(CZM.counts.White == 0 and not playing, "mentions, face-down cards and excluded zones never call a song")
+check(CZM.battlefields.White.ultima == 0 and not playing, "mentions, face-down cards and excluded zones never call a song")
 table.insert(data.White.playmat.objects, card("Legendary Creature — God", "Ultima, Origin of Oblivion")); czmTick()
-check(CZM.counts.White == 1 and current.url:find("ff14_ultima.wav", 1, true) and playing, "Ultima, Origin of Oblivion on the battlefield loops Ultima")
+check(CZM.battlefields.White.ultima == 1 and current.url:find("ff14_ultima.wav", 1, true) and playing, "Ultima, Origin of Oblivion on the battlefield loops Ultima")
 check(#playlist == 1 and playlist[1].url == current.url, "Ultima replaces every previous playlist entry")
 local ultimaLoads = loads
 advance(23); czmTick()
@@ -129,8 +129,8 @@ advance(5); populate("Red", true)
 Turns.turn_color = "Red"; onPlayerTurn(Player.Red, Player.White)
 check(playing and position == 28 and loads == ultimaLoads, "another player with Ultima shares the one continuous instance")
 populate("Red", false); onObjectLeaveScriptingZone(data.Red.playmat, nil); flush()
-check(not playing and CZM.counts.Red == 0, "Ultima leaving the active player's battlefield pauses promptly")
-check(CZM.counts.White == 1, "another player's Ultima does not play on the wrong turn")
+check(not playing and CZM.battlefields.Red.ultima == 0, "Ultima leaving the active player's battlefield pauses promptly")
+check(CZM.battlefields.White.ultima == 1, "another player's Ultima does not play on the wrong turn")
 populate("Red", true); onObjectEnterScriptingZone(data.Red.playmat, nil); flush()
 check(playing and position == 28 and loads == ultimaLoads and baseEnters == 1, "entering the zone resumes once and preserves the base zone event")
 onChat("announcer test", Player.Red)
@@ -176,7 +176,7 @@ check(playing and loads == downloaded, "a later eligible turn uses the already l
 local ultimaCard = data.Red.playmat.objects[#data.Red.playmat.objects]
 ultimaCard.nickname = "Changed face\nCreature — Human"
 onObjectStateChange(ultimaCard, "old"); flush()
-check(CZM.counts.Red == 0 and not playing, "flipping the card to another face pauses the song")
+check(CZM.battlefields.Red.ultima == 0 and not playing, "flipping the card to another face pauses the song")
 
 -- A chat mute issued during initial table setup must survive restoration.
 CZM = nil; tile.memo, Global.script_state = nil, nil; CZT.restored = false

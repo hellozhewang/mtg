@@ -47,7 +47,7 @@ CZM = {
   },
   -- Name fragments that also call a song: any card with "Chocobo" in its name.
   fragments = {chocobo = {"chocobo"}},
-  counts = {}, status = "idle", serial = 0,
+  status = "idle", serial = 0,
   cannonFired = false, disabled = false, ready = false,
 }
 
@@ -139,13 +139,6 @@ function czmCountBattlefield()
   return counts
 end
 
--- Keep existing artifact diagnostics compatible; detailed counts live in .battlefields.
-function czmCountArtifacts()
-  local counts = {}
-  for color, totals in pairs(czmCountBattlefield()) do counts[color] = totals.ultima end
-  return counts
-end
-
 function czmSavedState()
   return {cannonFired = CZM.cannonFired == true, disabled = CZM.disabled == true}
 end
@@ -220,8 +213,7 @@ function czmTick()
   if not CZM.ready and not czmRestore() then return end
   -- Music off stops the battlefield scan too, not just playback.
   if CZM.disabled then czmPause(); return end
-  CZM.battlefields, CZM.counts = czmCountBattlefield(), {}
-  for color, totals in pairs(CZM.battlefields) do CZM.counts[color] = totals.ultima end
+  CZM.battlefields = czmCountBattlefield()
   local active = Turns.enable and Turns.turn_color or nil
   local wanted = not CZM.cannonFired and "theme" or nil
   if CZM.cannonFired and active then
@@ -302,7 +294,7 @@ function onChat(message, player)
 end
 
 if czmPrevious then
-  for _, key in ipairs({"ready", "cannonFired", "disabled", "settingChanged", "track", "url", "status", "counts"}) do
+  for _, key in ipairs({"ready", "cannonFired", "disabled", "settingChanged", "track", "url", "status"}) do
     CZM[key] = czmPrevious[key]
   end
   if CZM.status == "loading" then CZM.track, CZM.status = nil, "idle" end

@@ -100,6 +100,14 @@ function czmCountBattlefield()
         for _, obj in ipairs(czmObjects(seat[key])) do excluded[obj] = true end
       end
     end
+    -- Hands sit inside the playmat zone on this table: a card in hand is not on
+    -- the battlefield. Check every hand zone of every seat.
+    pcall(function()
+      local player = Player[color]
+      for i = 1, math.max(1, tonumber(player.getHandCount()) or 1) do
+        for _, obj in ipairs(player.getHandObjects(i) or {}) do excluded[obj] = true end
+      end
+    end)
   end
   for _, color in ipairs(CZ.seats) do
     local count, seat = {}, data and data[color]
@@ -113,6 +121,7 @@ function czmCountBattlefield()
         seen[obj] = true
         pcall(function()
           if obj.is_face_down then return end
+          if obj.held_by_color then return end      -- being dragged, not played
           if obj.type == "Deck" or obj.tag == "Deck" then
             -- A face-up pile: only its top card is showing.
             local cards = obj.getObjects()

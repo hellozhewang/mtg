@@ -55,7 +55,8 @@ Player = {}
 for _, c in ipairs(CZ.seats) do
   Player[c] = {color = c, steam_id = c .. "-owner", getHandTransform = function()
     return {position = {x = 1, y = 2, z = 3}, rotation = {x = 0, y = 180, z = 0}}
-  end}
+  end, cleared = 0}
+  Player[c].clearSelectedObjects = function() Player[c].cleared = Player[c].cleared + 1; return true end
 end
 local taken, dealt, objects = {}, {}, {}
 function Vector(x, y, z) return setmetatable({x = x, y = y, z = z}, {
@@ -121,6 +122,10 @@ objects.notDeck = {type = "Card"}
 loadInspect()
 local function tick() ticks[CZS.ticker]() end
 check(#a.menus == 2 and a.menus[1] == "Existing item" and a.menus[2] == "Inspect", "existing menus survive; Inspect attached")
+local clearedBefore = Player.White.cleared
+a.open("White")
+check(Player.White.cleared == clearedBefore + 1 and Player.Red.cleared == 0, "opening Inspect clears only that player's selection")
+czsClose({color = "White"}, nil, "czs_close_White")
 onObjectSpawn(a)
 check(#a.menus == 2 and baseSpawns == 1, "spawn is wrapped and the menu is not duplicated")
 a.open("White")

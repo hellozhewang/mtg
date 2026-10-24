@@ -52,7 +52,10 @@ end
 data = {}
 for _, color in ipairs(CZ.seats) do
   data[color] = {playmat = zone(), libraryZone = zone(), graveyard = zone(), exile = zone()}
-  Player[color] = {color = color, seated = true, steam_name = color}
+  Player[color] = {color = color, seated = true, steam_name = color, hands = {{}, {}}}
+  local player = Player[color]
+  player.getHandCount = function() return #player.hands end
+  player.getHandObjects = function(i) return player.hands[i or 1] or {} end
 end
 -- A battlefield: filler permanents, plus Ultima when `ultima` is true.
 local function populate(color, ultima)
@@ -168,6 +171,25 @@ dofile("tts/cactuar_music.lua")
 onChat("music off", Player.Red)
 CZT.restored = true; czmTick()
 check(CZM.disabled and not playing, "an early music off is not overwritten by the saved-state restore")
+
+-- A caller in hand is not on the battlefield, even though the hand sits inside the
+-- playmat zone; neither is one being dragged on someone's cursor.
+CZM.disabled, CZM.cannonFired, CZM.ready = false, true, true
+for _, color in ipairs(CZ.seats) do
+  data[color].playmat.objects = {}; data[color].libraryZone.objects = {}
+  data[color].graveyard.objects = {}; data[color].exile.objects = {}
+end
+Turns.enable, Turns.turn_color = true, "White"
+local inHand = card("Enchantment Creature — Saga Knight", "Summon: Knights of Round")
+data.White.playmat.objects = {inHand}; Player.White.hands[1] = {inHand}; czmTick()
+check(not playing and CZM.battlefields.White.thordan == 0, "a caller in hand does not play its song")
+Player.White.hands[1] = {}; Player.White.hands[2] = {inHand}; czmTick()
+check(not playing, "the second hand zone counts as hand too")
+Player.White.hands[2] = {}; inHand.held_by_color = "White"; czmTick()
+check(not playing, "a caller being dragged does not play its song")
+inHand.held_by_color = nil; czmTick()
+check(playing and CZM.track == "thordan", "the same card played onto the battlefield does")
+data.White.playmat.objects = {}; czmTick()
 
 -- Every song and every card that calls it, with turn gating.
 CZM.disabled, CZM.cannonFired, CZM.ready = false, true, true

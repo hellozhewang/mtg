@@ -503,6 +503,9 @@ end
 function czsOpen(color, deck)
   if not czsSeat(color) then return end
   if not czsIsContainer(deck) then return end
+  -- Drop whatever the player had selected (the deck itself, usually), so table
+  -- keys and drags don't act on it while they browse.
+  pcall(function() Player[color].clearSelectedObjects() end)
   czsCloseColor(color)
   CZS.state[color] = {owner = czsOwner(color), deck = deck.getGUID(), query = "", regex = false,
                       cards = {}, shown = {}, pictures = {}, tokens = {}, nextToken = 0,

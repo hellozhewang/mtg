@@ -2,27 +2,50 @@
 
 Audio source assets remain in `tts/sounds/`; this guide lives in `docs/development/`.
 
-## FF14 soundtrack (v50)
+## FF14 soundtrack (named cards, since v65)
 
 The original `ff14_theme.wav` (Prelude / Discoveries) loops until cannon/start.
-During the active player's turn, **10+** battlefield objects select one looping
-WAV in this descending priority:
+After that, a battle song plays during a turn only while the **active player** has
+one of its cards **face up on their battlefield** (attached cards count; the top card
+of a face-up pile counts; library, graveyard, exile, commander columns and face-down
+cards never do). If several are out, the first in this list wins:
 
-| Threshold | WAV |
-|---|---|
-| Goblins | `ff14_titan.wav` |
-| Artifacts | `ff14_ultima.wav` |
-| White creatures | `ff14_thordan.wav` (Heroes) |
-| Black creatures | `ff14_hades.wav` (Who Brings Shadow) |
-| Blue creatures | `ff14_alexander.wav` (Locus) |
-| Green creatures | `ff14_garuda.wav` |
-| Red creatures | `ff14_ifrit.wav` |
+| Song | WAV | Called by |
+|---|---|---|
+| Titan | `ff14_titan.wav` | Summon: Titan |
+| Ultima | `ff14_ultima.wav` | Ultima, Origin of Oblivion; Ultima Weapon |
+| Omega - eScape | `ff14_omega.wav` | Omega, Heartless Evolution |
+| Thordan - Heroes | `ff14_thordan.wav` | Summon: Knights of Round |
+| Hades - Who Brings Shadow | `ff14_hades.wav` | Hades, Sorcerer of Eld (Emet-Selch's back face; the front does not count); Y'shtola Rhul; Y'shtola, Night's Blessed; G'raha Tia; G'raha Tia, Scion Reborn |
+| Alexander - Locus | `ff14_alexander.wav` | Summon: Alexander (Crystal Fragments' back face) |
+| Garuda | `ff14_garuda.wav` | Summon: Primal Garuda |
+| Ifrit | `ff14_ifrit.wav` | Clive, Ifrit's Dominant; Ifrit, Warden of Inferno (Clive's back face) |
+| Shiva - Oblivion | `ff14_shiva.wav` | Summon: Shiva; Shiva, Warden of Ice (Jill's back face; Jill herself does not count) |
+| Leviathan - Through the Maelstrom | `ff14_leviathan.wav` | Summon: Leviathan |
+| Ramuh - Thunder Rolls | `ff14_ramuh.wav` | Summon: Esper Ramuh |
+| Bahamut - Answers | `ff14_answers.wav` | Summon: Bahamut (*Answers* is A Realm Reborn's theme of the Calamity, not Bahamut's fight music) |
+| Gilgamesh - Battle on the Big Bridge | `ff14_gilgamesh.wav` | Gilgamesh, Master-at-Arms |
+| Dragonsong | `ff14_dragonsong.wav` | Estinien Varlineau; Eye of Nidhogg |
+| Endwalker - Footfalls | `ff14_footfalls.wav` | Venat, Heart of Hydaelyn; Hydaelyn, the Mothercrystal |
+| Dash de Chocobo (FFXI) | `ff14_shiva.wav` | *Oblivion with Official Lyrics (Shiva Theme) Final Fantasy XIV.mp3*, lowered 3 dB (was -11.9 LUFS) | 475.10 s | -14.9 LUFS | -3.2 dBFS | -14.6 dBFS |
+| `ff14_leviathan.wav` | *Through the Maelstrom with Official Lyrics (Leviathan Theme) Final Fantasy XIV.mp3*, lowered 2 dB (was -12.9 LUFS) | 446.08 s | -14.9 LUFS | -2.0 dBFS | -13.9 dBFS |
+| `ff14_ramuh.wav` | *Thunder Rolls with Official Lyrics (Ramuh Theme) Final Fantasy XIV.mp3* | 614.40 s | -17.8 LUFS | -2.0 dBFS | -16.4 dBFS |
+| `ff14_answers.wav` | *Answers with Official Lyrics Final Fantasy XIV.mp3* | 441.74 s | -15.0 LUFS | 0.0 dBFS | -16.7 dBFS |
+| `ff14_gilgamesh.wav` | *FFXIV OST Gilgamesh Theme ( Battle on the Big Bridge ).mp3*, lowered 4 dB (was -11.0 LUFS) | 259.62 s | -15.0 LUFS | -4.0 dBFS | -14.6 dBFS |
+| `ff14_dragonsong.wav` | *Dragonsong with Official Lyrics Final Fantasy XIV.mp3* | 383.85 s | -15.9 LUFS | 0.0 dBFS | -17.5 dBFS |
+| `ff14_footfalls.wav` | *Endwalker – Footfalls with Official Lyrics Final Fantasy XIV.mp3*, lowered 5 dB (was -10.0 LUFS) | 349.90 s | -15.0 LUFS | -5.0 dBFS | -15.3 dBFS |
+| `ff11_chocobo.wav` | Choco, Seeker of Paradise; Summon: Choco/Mog; any card with "Chocobo" in its name. Lowest priority: plays only when no other song is called |
 
-Library/exile/graveyard/commander columns and face-down cards do not count.
-Multicolor creatures count for each color. Type lines, embedded face-color metadata
-and explicit color/type tags drive counts; no runtime Scryfall requests. The normal
-site build generates `docs/tts/card-colors.json`; refresh just that snapshot with
-`python3 scripts/tabletop/build_tts_music_metadata.py` before a table-only release.
+The lists live in `CZM.cards` (exact names) and `CZM.fragments` (name fragments) in `tts/cactuar_music.lua`. Names match the first line of
+the card's TTS nickname, ignoring markup and curly apostrophes; a full
+"Front // Back" name matches by either face. Before v65 songs were picked by counting
+10+ permanents of a type or colour; that logic and its embedded card-colour table
+(`docs/tts/card-colors.json`) are gone.
+
+`ff14_omega.wav` comes from the owner's *eScape with Official Lyrics (Omega Theme)
+Final Fantasy XIV.mp3*, converted with `afconvert -f WAVE -d LEI16@22050 -c 1` to the
+same mono PCM16 22050 Hz format as the others (v48's MP3s misplayed in TTS):
+284.19 s, -14.3 LUFS, -1.5 dBFS peak.
 
 A retained song pauses/resumes between eligible turns. Switching to another song
 restarts it: MusicPlayer exposes no timestamp/seek API for separate playheads.
@@ -96,6 +119,8 @@ All custom and cloned voices created via ElevenLabs are saved both on the Eleven
 | `ff14_thordan.wav` | *FFXIV King Thordan's Theme — Heroes (Heavensward OST)* | 512.53 s | -17.0 LUFS | -3.2 dBFS | -15.5 dBFS |
 | `ff14_alexander.wav` | *FFXIV Alexander Theme — Locus (Heavensward OST)* | 535.95 s | -16.0 LUFS | -0.6 dBFS | -13.8 dBFS |
 | `ff14_hades.wav` | *FFXIV Hades Theme — Who Brings Shadow (Shadowbringers OST)* | 465.92 s | -15.8 LUFS | -2.3 dBFS | -15.0 dBFS |
+| `ff14_omega.wav` | *eScape with Official Lyrics (Omega Theme) Final Fantasy XIV.mp3* | 284.19 s | -14.3 LUFS | -1.5 dBFS | -14.0 dBFS |
+| `ff11_chocobo.wav` | *FFXI Music Dash de Chocobo.mp3*, raised 6.4 dB (it was -23.9 LUFS) | 180.09 s | -17.5 LUFS | -0.5 dBFS | -16.5 dBFS |
 
 ## Previous local generator: Kokoro-82M neural radio voice (2026-10-19)
 

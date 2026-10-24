@@ -1,0 +1,95 @@
+The single biggest mistake a new pilot makes with Gaddock Teeg is assuming his restriction only hurts your opponents. Gaddock Teeg stops *all* players—including you—from casting noncreature spells with mana value 4 or greater, or spells with {X} in their mana costs. Running staples like Smothering Tithe, Chord of Calling, Finale of Devastation, or The One Ring will leave dead cards stranded in your hand. Instead, this list ensures that *every* noncreature spell in the ninety-nine costs 3 or less with no {X}, while all your high-end finishers (Elesh Norn, Craterhoof Behemoth, Moonshaker Cavalry) are creature spells that bypass Teeg's restriction completely.
+
+# The Kithkin Advisor and the stax lockdown
+Gaddock Teeg :: Cast for {G}{W}. Shuts off all noncreature spells with mana value 4 or greater and any noncreature spells with {X} in their mana costs, locking out board wipes, extra turns, and planeswalkers.
+Drannith Magistrate :: Locks out commanders from the command zone, flashback spells from graveyards, and cascade, discover, or exile casts. Combined with Teeg, opponents cannot play commanders or sweepers.
+Archon of Emeria :: Restricts each player to casting only one spell each turn while forcing opponents' nonbasic lands to enter tapped, completely suffocating storm and high-tempo decks.
+Thalia, Guardian of Thraben :: Taxes all noncreature spells by {1}, punishing early cantrips, mana rocks, and cheap removal.
+Vryn Wingmare :: Flying tax hatebear that taxes all noncreature spells by an additional {1}.
+Aven Interrupter :: Flash flying bird that exiles a spell on the stack into plot with a {2} mana tax, and taxes all spells cast from graveyards and exile by {2}.
+Blind Obedience :: Two-mana enchantment that forces all opposing creatures and artifacts to enter tapped, turning off hasty attackers and instant mana rocks.
+Deafening Silence :: One-mana enchantment allowing each player to cast only one noncreature spell each turn.
+
+# Search suppression and graveyard denial
+Aven Mindcensor :: Flash flyer that restricts opposing searches to only the top four cards of their library, neutering fetchlands and tutors.
+Leonin Arbiter :: Prevents any player from searching libraries unless they pay {2} per search, crippling early mana development.
+Archivist of Oghma :: Flash hatebear that draws a card and gains 1 life whenever an opponent searches their library.
+Rest in Peace :: Two-mana enchantment that exiles all graveyards on entry and permanently exiles any card that would be put into a graveyard.
+Spirit of the Labyrinth :: Restricts each player to drawing at most one card each turn, completely shutting down wheel spells, Rhystic Study, and brainstorms.
+Scavenging Ooze :: Repeatable graveyard hate on a green creature that exiles cards from graveyards, gains life, and grows in size.
+Yasharn, Implacable Earth :: Prevents players from paying life or sacrificing nonland permanents to cast spells or activate abilities; searches a basic Forest and Plains on entry.
+
+# Ability and artifact suppression
+Collector Ouphe :: Shuts down all activated abilities of artifacts across the entire table, neutralizing Treasures, Signets, and combo pieces.
+Stony Silence :: Two-mana enchantment that shuts down all artifact activated abilities.
+Kataki, War's Wage :: Forces opponents to pay {1} during each upkeep for every artifact they control or sacrifice it.
+Manglehorn :: Enters to destroy an artifact, and forces all opposing artifacts to enter the battlefield tapped.
+Linvala, Keeper of Silence :: Shuts off all activated abilities of creatures opponents control, blanking mana dorks and creature combo pieces.
+Sanctum Prelate :: Name a number (typically 1, 2, or 3) to prevent opponents from casting noncreature spells with that mana value.
+
+# The creature toolbox and tutor lines
+Survival of the Fittest :: The premier creature engine. Pay {G} and discard a creature to search your library for any creature card and put it directly into your hand.
+Fauna Shaman :: Repeatable Survival of the Fittest on a creature, tapping for {G} to swap any creature for your best silver bullet.
+Eladamri's Call :: Instant-speed two-mana tutor putting any creature directly into your hand.
+Recruiter of the Guard :: Enters to tutor any creature with toughness 2 or less directly into hand (fetches almost every hatebear in the deck, plus Walking Ballista).
+Ranger-Captain of Eos :: Tutors any creature with mana value 1 or less (Esper Sentinel, Mother of Runes, Walking Ballista), and sacrifices to silence noncreature spells for a full turn.
+Yisan, the Wanderer Bard :: Taps to search creatures directly onto the battlefield with increasing verse counters, tutoring on curve every turn cycle.
+Eldritch Evolution :: Sacrifices a small hatebear or dork to put a creature with mana value up to two greater directly onto the battlefield.
+
+# Protection and anti-sweeper defense
+Mother of Runes :: Taps to give any creature you control protection from any color, shielding your lock pieces from spot removal.
+Giver of Runes :: Taps to give another creature protection from any color or colorless, protecting against Eldrazi and artifact answers.
+Grand Abolisher :: Shuts off all opponent spells and abilities during your turn, guaranteeing that your tutors and combat phases resolve uninterrupted.
+Selfless Spirit :: Flying creature that sacrifices at instant speed to grant all your creatures indestructible until end of turn.
+Boromir, Warden of the Tower :: Shuts off all free spells and cascades, and sacrifices to grant your board indestructible and tempt you with the Ring.
+Sylvan Safekeeper :: Sacrifices a land to give any target creature shroud at instant speed.
+Flawless Maneuver :: Free instant-speed spell granting all your creatures indestructible while Gaddock Teeg is on the battlefield.
+Heroic Intervention :: Two-mana instant granting all your permanents hexproof and indestructible.
+Shalai, Voice of Plenty :: Grants hexproof to you and all your other creatures and planeswalkers, and provides a repeatable +1/+1 counter pump.
+
+# Compact win and aggro finishers
+Heliod, Sun-Crowned + Walking Ballista :: Heliod grants lifelink to Walking Ballista for {1}{W}. Remove a +1/+1 counter from Ballista to deal 1 damage to an opponent. Lifelink gains 1 life, triggering Heliod to put a +1/+1 counter back on Ballista. Repeat infinitely for lethal table burn. (Note: Collector Ouphe or Stony Silence shuts off Ballista's activated ability, so sacrifice or remove them before executing).
+In accordance with Bracket 3 rules, this two-card combo is reserved for turn 6 or later. Early turns focus on establishing hatebears, locking opponent mana, and applying combat pressure.
+Craterhoof Behemoth :: Eight-mana creature with haste and trample that gives your entire hatebear swarm trample and massive +X/+X to close out games in one swing.
+Moonshaker Cavalry :: Eight-mana creature that gives your entire team flying and +X/+X on entry, launching an unblockable aerial alpha strike.
+Elesh Norn, Grand Cenobite :: Seven-mana creature that gives all opposing creatures -2/-2, wiping enemy dorks while buffing your hatebears by +2/+2.
+Archon of Valor's Reach :: 5/6 flying trampler that chooses Instant or Sorcery on entry, locking out whatever remaining answers opponents could possibly have.
+Beastmaster Ascension :: Three-mana enchantment that triggers on attacks. Once seven creatures have attacked, grants your entire team +5/+5 permanently.
+
+# Mana dorks, acceleration, and card advantage
+Gaea's Cradle :: Legendary land tapping for green mana equal to the number of creatures you control, producing huge bursts of mana to cast Craterhoof or activate Yisan.
+Esper Sentinel :: One-mana creature taxing noncreature spells and drawing cards.
+Sylvan Library :: Two-mana enchantment providing card selection and drawing extra cards each turn.
+Kutzil, Malamet Exemplar :: Shuts down opponent interaction on your turn and draws cards when modified or pumped creatures connect for combat damage.
+Beast Whisperer :: Draws a card whenever you cast any creature spell, turning your hatebears into continuous cantrips.
+Birds of Paradise :: Taps for any color of mana on turn 1.
+Delighted Halfling :: Taps for any color to cast uncounterable legendary spells.
+Avacyn's Pilgrim :: One-drop mana dork producing white mana.
+Llanowar Elves :: Classic one-drop green mana dork.
+Elvish Mystic :: One-drop green mana dork.
+Fyndhorn Elves :: One-drop green mana dork.
+Priest of Titania :: Two-mana Elf Druid that taps for green mana equal to the number of Elves on the battlefield.
+Sol Ring :: Standard fast mana artifact.
+Arcane Signet :: Reliable two-color mana rock.
+
+# Spot removal and noncreature answers
+Swords to Plowshares :: Premier one-mana instant creature exile.
+Path to Exile :: One-mana instant creature exile.
+Beast Within :: Instant-speed universal destruction for any permanent.
+Reprieve :: Two-mana instant tempo answer that returns a spell to hand and draws a card, bypassing uncounterable clauses.
+Winds of Abandon :: Two-mana sorcery exiling an opposing creature, or six-mana overloaded one-sided creature exile wipe.
+Aura of Silence :: Taxes opposing artifacts and enchantments by {2}, and sacrifices to destroy target artifact or enchantment.
+Witch Enchanter :: MDFC creature that destroys target artifact or enchantment on entry, or enters tapped as a land.
+Bala Ged Recovery :: MDFC sorcery returning any card from graveyard to hand, or enters tapped as a land.
+Disciple of Freyalise :: MDFC creature that sacrifices a creature to draw cards and gain life, or enters tapped as a land.
+Boseiju, Who Endures :: Channel ability that provides uncounterable artifact, enchantment, or nonbasic land destruction.
+Eiganjo, Seat of the Empire :: Channel ability that deals 4 damage to an attacking or blocking creature.
+Wirewood Lodge :: Taps to untap an Elf like Priest of Titania or Yisan.
+Gavony Township :: Taps to put a +1/+1 counter on every creature you control, steadily turning small hatebears into lethal attackers.
+
+# Opening hand and sequencing
+Look for opening hands with 2 to 3 lands, a 1-drop mana dork (Birds of Paradise, Llanowar Elves, Avacyn's Pilgrim, Delighted Halfling), and at least one impactful turn-2 hatebear or tutor (Gaddock Teeg, Thalia, Drannith Magistrate, Eladamri's Call).
+On turn 1, play a land and deploy a mana dork.
+On turn 2, deploy Gaddock Teeg or a targeted hatebear based on what your opponents are playing (Drannith Magistrate against commander-centric pods, Collector Ouphe against artifact ramp, Thalia against spellslinger).
+On turns 3 through 5, assemble your lock using Survival of the Fittest, Recruiter of the Guard, or Yisan to tutor the exact silver bullet needed to shut down the table, while holding up protection (Mother of Runes, Selfless Spirit, Heroic Intervention).
+On turn 6 or later, execute your finish by dropping Craterhoof Behemoth, Moonshaker Cavalry, or triggering Beastmaster Ascension for an overwhelming combat alpha strike, or tutor up the Heliod + Walking Ballista combo to burn out the table.

@@ -12,6 +12,7 @@
   "digitalstealth/DoctorDoom-Reanimator": ["graveyard", "aggro"],
   "digitalstealth/Esika-Superfriends": ["value", "control"],
   "digitalstealth/Felothar-Reanimator": ["aggro", "graveyard"],
+  "digitalstealth/GaddockTeeg-Hatebears": ["control", "aggro", "combo"],
   "digitalstealth/Galadriel-Blink": ["gowide", "value", "control"],
   "digitalstealth/Glarb-Topdeck": ["value", "graveyard"],
   "digitalstealth/Grima-Theft": ["control", "aggro"],

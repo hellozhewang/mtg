@@ -8,6 +8,11 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v65 — 2026-10-23 (commit 52ce3a05)
+- Battle music follows named cards on the active player's battlefield instead of permanent counts
+- New songs: Omega (eScape), Shiva (Oblivion), Leviathan (Through the Maelstrom), Ramuh (Thunder Rolls), Bahamut (Answers), Gilgamesh (Battle on the Big Bridge), Dragonsong, Footfalls; Dash de Chocobo as the lowest-priority fallback
+- Y'shtola and G'raha Tia call Hades; card-colour table removed from the save
+
 ## v64 — 2026-10-22 (commit 876a4fe7)
 - Fix dark Show commander and Hide commander labels by using explicit white child Text elements; preserve button clicks and background. Both labels visually checked in the running table. Published unchanged to Steam Workshop item 3822623414 on 2026-10-22; Steam confirmed EResult 1.
 

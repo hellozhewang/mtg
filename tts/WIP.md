@@ -3,9 +3,27 @@
 Living status doc for the Tabletop Simulator table work. Whoever picks this up (Claude or
 Codex) reads it first and updates it with every change. The [TTS development guide](../docs/development/tts-development-guide.md) and README are the lasting documentation; this file tracks what is in flight.
 
-Last updated 2026-10-22 (Codex): delivered **v64**, using explicit white Text
+Last updated 2026-10-23 (Claude): delivered **v65** (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
 Both states visually checked live. **Steam is now v64, published at the owner’s request.** See [the changelog](../docs/development/tts-changelog.md).
+
+
+## v65: battle music by named cards, nine new songs (saved; not on Steam)
+
+Owner asked to "repin" every battle song (prelude unchanged) to specific cards on
+the active player's battlefield: Ultima (Ultima, Origin of Oblivion; Ultima Weapon),
+Thordan (Summon: Knights of Round), Ifrit (Clive, Ifrit's Dominant and his Ifrit back
+face; no FF14 Ifrit card exists, G.F. Ifrit is FF8 and excluded), Garuda (Summon:
+Primal Garuda), Alexander (Summon: Alexander back face), Titan (Summon: Titan), Hades
+(Hades, Sorcerer of Eld back face, plus Y'shtola and G'raha Tia at the owner's
+request). Added Omega (Omega, Heartless Evolution), Dash de Chocobo (FFXI; Choco and
+any "Chocobo" card, lowest priority), and FF14 tracks the owner downloaded: Shiva,
+Leviathan, Ramuh, Bahamut (Answers), Gilgamesh, Dragonsong, Footfalls. Mapping, priority
+and loudness: [audio guide](../docs/development/tts-audio-guide.md). The 10+ count
+rules and the embedded card-colour table are removed. 178 music checks; source
+`52ce3a05`. Delivered **MTG 6 player Cactuar Ver_v65**; archive and SHA-256 manifest in
+`.cache/tts-builds/v65/` (verified equal to Saves). **Saved Games v65; Steam v64.**
+Not yet heard in game: the owner should check a turn with each caller on board.
 
 ## Both zzwang Yunas optimized (2026-10-23)
 

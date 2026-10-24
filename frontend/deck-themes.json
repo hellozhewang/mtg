@@ -24,6 +24,7 @@
   "digitalstealth/Korvold-Sacrifice": ["gowide", "value"],
   "digitalstealth/LimDul-Reanimator": ["graveyard", "control", "gowide"],
   "digitalstealth/Lucea-Tyranids": ["aggro", "value"],
+  "digitalstealth/Muldrotha-Graveyard": ["graveyard", "value", "combo"],
   "digitalstealth/NicolBolas-Handbreaker": ["control", "graveyard"],
   "digitalstealth/NicolBolas-Reanimator": ["graveyard", "control", "combo"],
   "digitalstealth/NicolBolas-Superfriends": ["value", "control"],

@@ -8,6 +8,10 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v66 — 2026-10-23 (commit 1705975e)
+- Cards in hand (or being dragged) no longer start battle music; only the battlefield counts
+- Opening Inspect deselects whatever that player had selected
+
 ## v65 — 2026-10-23 (commit 52ce3a05)
 - Battle music follows named cards on the active player's battlefield instead of permanent counts
 - New songs: Omega (eScape), Shiva (Oblivion), Leviathan (Through the Maelstrom), Ramuh (Thunder Rolls), Bahamut (Answers), Gilgamesh (Battle on the Big Bridge), Dragonsong, Footfalls; Dash de Chocobo as the lowest-priority fallback

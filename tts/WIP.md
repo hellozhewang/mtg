@@ -3,10 +3,21 @@
 Living status doc for the Tabletop Simulator table work. Whoever picks this up (Claude or
 Codex) reads it first and updates it with every change. The [TTS development guide](../docs/development/tts-development-guide.md) and README are the lasting documentation; this file tracks what is in flight.
 
-Last updated 2026-10-23 (Claude): delivered **v65** (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
+Last updated 2026-10-23 (Claude): delivered **v66** (no music from cards in hand; Inspect deselects), after v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
 Both states visually checked live. **Steam is now v64, published at the owner’s request.** See [the changelog](../docs/development/tts-changelog.md).
 
+
+
+## v66: no music from cards in hand; Inspect deselects (saved; not on Steam)
+
+Owner: Summon: Knights of Round started Heroes while still in hand. The playmat
+scripting zone reaches over the hand zones on this table, so hand cards counted.
+`czmCountBattlefield` now excludes every seat's hand objects (`getHandObjects` for
+each of `getHandCount()` zones) and cards with `held_by_color`. Owner also asked that
+opening Inspect deselect the current object: `czsOpen` calls
+`Player[color].clearSelectedObjects()`. 182 music and 147 Inspect checks. Source
+`1705975e`; archive `.cache/tts-builds/v66/`. **Saved Games v66; Steam v64.**
 
 ## v65: battle music by named cards, nine new songs (saved; not on Steam)
 

@@ -10,7 +10,7 @@
 1 Goblin Chirurgeon (FEM) 54c
 1 Goblin Warchief (DOM) 130
 1 Goblin Chieftain (JMP) 324
-1 Goblin King (10E) 207
+1 Torch Courier
 1 Goblin Matron (PLST) DMR-123
 1 Legion Warboss
 1 Goblin Rabblemaster (PM15) 145

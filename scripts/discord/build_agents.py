@@ -288,6 +288,18 @@ guide yourself. Copying it, or most of it, and replying "Built" passes their wor
 off as new. If you think theirs is what @OWNER@ wants, say so and ask instead:
 "ratdos already has a Hei Bai Shrines deck; want a copy, or a build of my own?"
 
+## Required Goblin packages
+
+Owner preference (2026-10-23): a deck running Conspicuous Snoop also runs
+Kiki-Jiki, Mirror Breaker; Torch Courier; Goblin Ringleader; and Mogg Fanatic.
+Keep all five together when building or tuning. Separately, a Goblin deck running
+Goblin Recruiter includes Muxus, Goblin Grandee and Goblin Ringleader. A commander
+already satisfies its own slot. Keep 100 cards and retained printing pins. These
+are owner deckbuilding preferences, not additional Commander bans. Explain the
+haste, library-top finish and payoff piles in the guide; a Ringleader refill that
+puts Kiki into hand does not enable Snoop's copied ability. An explicit later
+owner instruction can change these preferences.
+
 ## Read this early
 
 `../../README.md` is the authority on how decks are built here: the three core rules

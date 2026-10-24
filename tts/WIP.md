@@ -7,6 +7,19 @@ Last updated 2026-10-22 (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
 Both states visually checked live. **Steam is now v64, published at the owner’s request.** See [the changelog](../docs/development/tts-changelog.md).
 
+## Complete Snoop package (2026-10-23)
+
+Owner requires every Conspicuous Snoop deck, across tiers/owners, to also include
+Kiki-Jiki, Mirror Breaker, Torch Courier, Goblin Ringleader and Mogg Fanatic.
+Audited all seven current lists: Muxus already had all four; fill ten missing
+slots across General Kreat, Krenko, Tin Street, Wort, Ziatora and Zada. Preserve
+100 cards, commander positions and every retained printing pin. Update all seven
+guides with Courier haste, the Kiki-top/Fanatic-top sequence and Ringleader's
+four-card refill. Record the preference in README and the Discord builder source
+and add a catalog regression check. The separate S-tier candidate worktree must
+also apply this to its new Baylen and Jetmir Snoop packages before publication.
+No table code or Steam version change is needed.
+
 ## S-tier turn-six consistency review (2026-10-23, in progress)
 
 Owner requests real turn-six consistency rather than exceptional opening hands.
@@ -17,11 +30,13 @@ claimed as measured wins. [The audit](../docs/development/s-tier-consistency-aud
 records all 26 lists' prerequisites, a proposed trial protocol, and concrete
 rules errors in Terra, Minstrel and Animar that invalidate earlier estimates.
 
-Two clarification questions are pending: ownership scope for bulk edits and
-whether the target means 80%/70% unopposed turn-six wins or a protected attempt.
-No deck lists or tiers have changed in this baseline review. Next work is to
-correct invalid lines, tune the selected scope and measure under an agreed
-mulligan/opponent model. Do not report success percentages from card-access-only
+Owner confirmed tuning **everyone’s S-tier decks** and a target of **80% of
+unopposed goldfish games won by turn six**. Draft tuning and a restricted pilot
+are in `/tmp/mtg-s-tier-bench-20261023`; these are unpublished candidates and
+are not a full-rules benchmark or a certification of that target. The catalog
+now contains 30 S lists after subsequent Discord additions; include Ultimecia in
+the next audit refresh. Next work is to finish guide corrections and validate
+and measure the candidates under the agreed mulligan/opponent model. Do not report success percentages from card-access-only
 sampling, tutor counts, a mana-value average or hand-picked example hands.
 Saved Games and Steam remain v64; no table build or upload is needed.
 

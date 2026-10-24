@@ -38,8 +38,8 @@
 1 Zulaport Cutthroat (SOC) 233
 1 Pitiless Plunderer (LCC) 208
 1 Korvold, Fae-Cursed King (EOC) 120
-1 Professional Face-Breaker (SNC) 116
-1 Shared Animosity (LCC) 231
+1 Mogg Fanatic
+1 Torch Courier
 1 Impact Tremors (WOT) 44
 1 Muxus, Goblin Grandee (JMP) 24
 1 Goblin Ringleader (APC) 62

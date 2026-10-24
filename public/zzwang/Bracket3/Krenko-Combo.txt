@@ -24,7 +24,7 @@
 1 Goblin Chieftain (JMP) 324
 1 Goblin Chirurgeon (FEM) 54c
 1 Goblin Engineer (MH1) 128
-1 Goblin Grenade (FEM) 56c
+1 Mogg Fanatic
 1 Goblin Lackey (MB2) 192
 1 Goblin Matron (PLST) DMR-123
 1 Goblin Recruiter (6ED) 186

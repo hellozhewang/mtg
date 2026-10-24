@@ -125,6 +125,15 @@ list, including a sacrifice outlet if its combo requires one. Account for the
 draw needed to reach a payoff in the library, intervening shuffles, and Muxus's
 restriction to Goblin creature cards with mana value five or less.
 
+**Owner preference (2026-10-23): every catalog deck running Conspicuous Snoop
+also runs Kiki-Jiki, Mirror Breaker; Torch Courier; Goblin Ringleader; and Mogg
+Fanatic.** Apply this across tiers and owners. Keep 100 cards and retained printing
+pins. This is a deckbuilding preference, separate from Commander legality; an
+explicit later owner instruction can change it. The catalog regression test checks
+the package. Explain Courier's haste, the Kiki-top copy sequence and Fanatic's
+library-top finish in the guide. Ringleader is a refill; drawing Kiki into hand
+does not enable Snoop's copied ability.
+
 ## Assumed play context
 
 **Games are 4-player free-for-all (1v1v1v1)** unless stated otherwise. This changes

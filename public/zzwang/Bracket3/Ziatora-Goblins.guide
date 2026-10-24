@@ -1,4 +1,4 @@
-Ziatora turns one spare Goblin into three Treasures every turn. At each of your end steps you may sacrifice another creature: Ziatora deals damage equal to that creature's power to any target, and you make three Treasures. Most turns that's a 1/1 token for 1 damage and three mana — ramp you get to keep. The big turn is different: pumps that last "until end of turn" are still on at your end step, so after an attack with Shared Animosity, sacrifice your biggest attacker and Ziatora throws all of it.
+Ziatora turns a spare Goblin into three Treasures at each of your end steps. Sacrifice another creature to deal damage equal to its power and make three Treasures. The Goblin copy and sacrifice engines provide the immediate combo finishes; Ziatora supplies mana and a way to cash in a creature that would otherwise die.
 The deck also goes infinite three ways — see the combos.
 The Goblin engine doesn't need Ziatora. Krenko, Siege-Gang and the token spells run on their own; Ziatora arrives on turn four or five off the ramp and starts paying out.
 
@@ -72,11 +72,9 @@ Ashnod's Altar :: sacrifice a creature for {C}{C}.
 Deadly Dispute :: sacrifice a creature or artifact — a Treasure counts: two cards and a Treasure back.
 
 # Treasure
-Professional Face-Breaker :: a Treasure for each player your creatures deal combat damage to, and Treasures become cards.
 Tireless Provisioner :: a Food or Treasure for every land you play.
 
 # Finishers
-Shared Animosity :: each attacking Goblin gets +1/+0 for each other attacking Goblin — and that's still on at your end step, when Ziatora sacrifices the biggest one.
 Impact Tremors :: 1 to each opponent for every creature that enters.
 
 # Cards
@@ -115,4 +113,10 @@ Veil of Summer :: one mana: your spells can't be countered this turn, and your p
 # What to keep in an opening hand
 Keep two or three lands, a mana creature or ramp spell, and a Goblin maker. Build the board first; Ziatora comes down when it can start sacrificing right away.
 Every one of your end steps with Ziatora out, sacrifice something — the three Treasures are the point, even when the damage is only 1.
-Save the big sacrifice for the turn Shared Animosity pumps an attack, or for a creature that's about to die anyway.
+Use Ziatora's end-step sacrifice on spare fodder or a creature that is about to die; preserve the creatures needed for your next combo attempt.
+
+# Complete Snoop package — compact wins from turn 6
+Conspicuous Snoop + Kiki-Jiki, Mirror Breaker + Goblin Recruiter + Mogg Fanatic :: With Snoop able to tap, resolve Recruiter and put Kiki on top with Fanatic below it. Snoop gains Kiki's activated ability and can target itself because it is nonlegendary. Make more than 120 hasty Snoop copies, leaving the newest one untapped. Use that copy to copy Recruiter instead of Snoop. The new Recruiter puts Fanatic on top, so every surviving Snoop gains Fanatic's sacrifice ability. Sacrifice at least 40 Snoops for 1 damage each to each of three opponents. Most Snoops being tapped does not prevent the sacrifice ability. Kiki and Fanatic must still be in the library when searched; Recruiter cannot put a card from your hand back on top.
+Torch Courier + Conspicuous Snoop :: Cast Courier for {R} and sacrifice it targeting Snoop for haste this turn. Courier's ability has no tap cost, so it works immediately. Do this before starting the Kiki-top sequence. If Courier is your only haste source and still in the library, Recruiter can stack Courier, then Kiki, then Fanatic: cast Courier off the top through Snoop, sacrifice it to give Snoop haste, and Kiki is now revealed. Avoid extra draws, mills, exiles and shuffles that move Kiki away from the top before the copying ends. Shroud prevents Courier or Snoop's copied Kiki ability from targeting Snoop.
+Goblin Recruiter -> Goblin Ringleader :: For a refill, put Ringleader on top followed by Torch Courier, Conspicuous Snoop, Kiki-Jiki, Mirror Breaker and Mogg Fanatic. Draw Ringleader, then pay {3}{R}; its entry trigger puts the next four Goblins into your hand. If Ringleader is already in hand, omit it from the pile and cast it before another draw. This is a four-card hand refill, not an immediate Snoop kill: Kiki in hand cannot grant Snoop its ability from the library. Choose the Kiki-top pile instead when Snoop is ready to win. Additional draws require padding or a revised pile; use fetches and other shuffling searches before Recruiter.
+Mogg Fanatic :: The library-top finisher lets Snoop tokens sacrifice themselves for damage without another permanent payoff. An ordinary Fanatic on the battlefield can also sacrifice itself for one damage; that single card by itself is not an unlimited damage engine. Keep compact wins for turn six or later under the house rules.

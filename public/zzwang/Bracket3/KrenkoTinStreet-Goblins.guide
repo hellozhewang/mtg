@@ -38,7 +38,6 @@ Goblin Lackey :: a one-drop that, when it connects, puts a Goblin from your hand
 Goblin Recruiter -> Kiki-Jiki, Mirror Breaker :: with Conspicuous Snoop able to tap, the Snoop combo; finish it with Mogg Fanatic as described above.
 Goblin Recruiter -> Kiki-Jiki, Mirror Breaker -> Lightning Crafter -> Skirk Prospector -> Goblin Warchief :: then cast Muxus: all four go onto the battlefield, the Crafter champions Recruiter, and Kiki starts the loop at once.
 Goblin Recruiter -> Skirk Prospector -> Goblin Warchief -> Krenko, Mob Boss :: with Snoop out, cast them off the top in order — mana, then haste, then a second token engine that taps immediately.
-Goblin Recruiter -> Goblin Chieftain -> Goblin King -> Hobgoblin Bandit Lord :: three lords: every one is another Goblin each time Krenko attacks.
 Anything that searches your library shuffles it and wrecks the stack — Goblin Matron, Imperial Recruiter, Gamble and Goblin Engineer. Use those before Recruiter, never after.
 
 # Every pump is more Goblins
@@ -46,7 +45,6 @@ Stoneforge Masterwork :: one mana: +1/+1 for every other Goblin you control. On 
 Embercleave :: double strike, trample and +1/+1, cheaper for every attacker, at flash speed.
 Shared Animosity :: +1/+0 for each other attacking Goblin — and it resolves before Krenko's trigger if you put it on the stack second.
 Goblin Chieftain :: other Goblins +1/+1 and haste.
-Goblin King :: Goblins +1/+1 and mountainwalk — opponents' Goblins too, and your own Mountains make theirs unblockable against you.
 Goblin Trashmaster :: other Goblins +1/+1, and a sacrifice outlet that destroys artifacts.
 Hobgoblin Bandit Lord :: other Goblins +1/+1; {R} and a tap deal damage equal to the Goblins that entered this turn.
 Castle Embereth :: {1}{R}{R} and a tap: your creatures get +1/+0, Krenko included.
@@ -107,3 +105,9 @@ Chaos Warp :: the red answer to anything.
 Keep fast mana, a land or two and a way to give Krenko haste or protect it. A turn-two Krenko with Swiftfoot Boots, attacking every turn after, wins games by itself.
 Equip before attacking: Masterwork and Plate first, then attack — the tokens use Krenko's power at the moment the trigger resolves.
 Go for a combo when the board is answered or stalled. Aggravated Assault is the one to look for: with Krenko already attacking, it usually only needs Skirk Prospector or the Sword.
+
+# Complete Snoop package — compact wins from turn 6
+Conspicuous Snoop + Kiki-Jiki, Mirror Breaker + Goblin Recruiter + Mogg Fanatic :: With Snoop able to tap, resolve Recruiter and put Kiki on top with Fanatic below it. Snoop gains Kiki's activated ability and can target itself because it is nonlegendary. Make more than 120 hasty Snoop copies, leaving the newest one untapped. Use that copy to copy Recruiter instead of Snoop. The new Recruiter puts Fanatic on top, so every surviving Snoop gains Fanatic's sacrifice ability. Sacrifice at least 40 Snoops for 1 damage each to each of three opponents. Most Snoops being tapped does not prevent the sacrifice ability. Kiki and Fanatic must still be in the library when searched; Recruiter cannot put a card from your hand back on top.
+Torch Courier + Conspicuous Snoop :: Cast Courier for {R} and sacrifice it targeting Snoop for haste this turn. Courier's ability has no tap cost, so it works immediately. Do this before starting the Kiki-top sequence. If Courier is your only haste source and still in the library, Recruiter can stack Courier, then Kiki, then Fanatic: cast Courier off the top through Snoop, sacrifice it to give Snoop haste, and Kiki is now revealed. Avoid extra draws, mills, exiles and shuffles that move Kiki away from the top before the copying ends. Shroud prevents Courier or Snoop's copied Kiki ability from targeting Snoop.
+Goblin Recruiter -> Goblin Ringleader :: For a refill, put Ringleader on top followed by Torch Courier, Conspicuous Snoop, Kiki-Jiki, Mirror Breaker and Mogg Fanatic. Draw Ringleader, then pay {3}{R}; its entry trigger puts the next four Goblins into your hand. If Ringleader is already in hand, omit it from the pile and cast it before another draw. This is a four-card hand refill, not an immediate Snoop kill: Kiki in hand cannot grant Snoop its ability from the library. Choose the Kiki-top pile instead when Snoop is ready to win. Additional draws require padding or a revised pile; use fetches and other shuffling searches before Recruiter.
+Mogg Fanatic :: The library-top finisher lets Snoop tokens sacrifice themselves for damage without another permanent payoff. An ordinary Fanatic on the battlefield can also sacrifice itself for one damage; that single card by itself is not an unlimited damage engine. Keep compact wins for turn six or later under the house rules.

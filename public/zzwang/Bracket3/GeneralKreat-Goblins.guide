@@ -1,4 +1,4 @@
-In this deck every creature is a burn spell. Kreat deals 1 damage to each opponent whenever another creature enters under your control — tokens included — so Siege-Gang Commander is four damage to every opponent before it does anything else, and a Krenko activation is as much damage as it makes Goblins. Stack more cards that do the same thing and each creature does more: with Impact Tremors, Purphoros, Agate Instigator, Molten Gatekeeper and Witty Roastmaster all out, one 1/1 entering is 7 damage to every opponent.
+In this deck every creature is a burn spell. Kreat deals 1 damage to each opponent whenever another creature enters under your control — tokens included — so Siege-Gang Commander is four damage to every opponent before it does anything else, and a Krenko activation is as much damage as it makes Goblins. Stack more cards that do the same thing and each creature does more: with Impact Tremors, Purphoros, Agate Instigator and Molten Gatekeeper all out, one 1/1 entering is 6 damage to every opponent.
 Only creatures YOU control count. Tokens you hand an opponent — from Tempt with Vengeance — trigger nothing.
 That also makes every infinite-creature loop an infinite-damage loop: with Kreat out, each copy entering is 1 damage to each opponent. The deck has four of them — see the combos.
 
@@ -42,7 +42,6 @@ Impact Tremors :: 1 more to each opponent per creature.
 Purphoros, God of the Forge :: 2 more to each opponent per creature. Indestructible, and only a creature once your devotion to red reaches five.
 Agate Instigator :: 1 more per creature. Pay offspring ({1}{R} extra) and you get a 1/1 copy that does it too.
 Molten Gatekeeper :: 1 more per creature, and unearth brings it back for {R}.
-Witty Roastmaster :: 1 more per creature.
 Roaming Throne :: name Goblin. Kreat is a Goblin, so both of its triggers happen twice — 2 damage per creature and two tokens per attack. It doubles every Goblin that makes tokens when it enters or attacks, too: Siege-Gang Commander makes six.
 
 # Making Goblins
@@ -85,7 +84,6 @@ Sol Ring :: the fastest start.
 Arcane Signet :: a second rock.
 Ruby Medallion :: red spells cost {1} less — generic mana only, so a one-mana {R} spell still costs {R}.
 The Fire Crystal :: red spells cost one less and every creature you control has haste.
-Patchwork Banner :: name Goblin: +1/+1, and it taps for mana.
 Three Tree City :: name Goblin: {2} and a tap make a red mana for every Goblin you control.
 Cavern of Souls :: name Goblin: they can't be countered.
 Arena of Glory :: {R}, tap and exert it for {R}{R} — one extra mana — and a creature spell cast with it gains haste.
@@ -109,3 +107,9 @@ Keep two or three lands and two-drops that make bodies. Kreat lands on turn thre
 Deploy the pingers before the token spells. Siege-Gang Commander is 4 damage with Kreat alone and 20 with Impact Tremors, Purphoros and Agate Instigator out.
 Krenko, Mob Boss needs haste to tap the turn it lands: have Goblin Warchief, Goblin Chieftain, Howlsquad Heavy, The Fire Crystal or Greaves ready. Kiki-Jiki has haste already.
 Red has little protection. Against a sweeper, sacrifice to Goblin Bombardment or Skirk Prospector in response — every death still counts for Pashalik Mons.
+
+# Complete Snoop package — compact wins from turn 6
+Conspicuous Snoop + Kiki-Jiki, Mirror Breaker + Goblin Recruiter + Mogg Fanatic :: With Snoop able to tap, resolve Recruiter and put Kiki on top with Fanatic below it. Snoop gains Kiki's activated ability and can target itself because it is nonlegendary. Make more than 120 hasty Snoop copies, leaving the newest one untapped. Use that copy to copy Recruiter instead of Snoop. The new Recruiter puts Fanatic on top, so every surviving Snoop gains Fanatic's sacrifice ability. Sacrifice at least 40 Snoops for 1 damage each to each of three opponents. Most Snoops being tapped does not prevent the sacrifice ability. Kiki and Fanatic must still be in the library when searched; Recruiter cannot put a card from your hand back on top.
+Torch Courier + Conspicuous Snoop :: Cast Courier for {R} and sacrifice it targeting Snoop for haste this turn. Courier's ability has no tap cost, so it works immediately. Do this before starting the Kiki-top sequence. If Courier is your only haste source and still in the library, Recruiter can stack Courier, then Kiki, then Fanatic: cast Courier off the top through Snoop, sacrifice it to give Snoop haste, and Kiki is now revealed. Avoid extra draws, mills, exiles and shuffles that move Kiki away from the top before the copying ends. Shroud prevents Courier or Snoop's copied Kiki ability from targeting Snoop.
+Goblin Recruiter -> Goblin Ringleader :: For a refill, put Ringleader on top followed by Torch Courier, Conspicuous Snoop, Kiki-Jiki, Mirror Breaker and Mogg Fanatic. Draw Ringleader, then pay {3}{R}; its entry trigger puts the next four Goblins into your hand. If Ringleader is already in hand, omit it from the pile and cast it before another draw. This is a four-card hand refill, not an immediate Snoop kill: Kiki in hand cannot grant Snoop its ability from the library. Choose the Kiki-top pile instead when Snoop is ready to win. Additional draws require padding or a revised pile; use fetches and other shuffling searches before Recruiter.
+Mogg Fanatic :: The library-top finisher lets Snoop tokens sacrifice themselves for damage without another permanent payoff. An ordinary Fanatic on the battlefield can also sacrifice itself for one damage; that single card by itself is not an unlimited damage engine. Keep compact wins for turn six or later under the house rules.

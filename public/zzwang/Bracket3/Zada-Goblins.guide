@@ -10,15 +10,12 @@ Hexing Squelcher :: your spells can't be countered, and your other creatures gai
 Zada, Hedron Grinder + Expedite :: one red mana: every creature gains haste and you draw a card per creature. Crimson Wisps, Impolite Entrance, Might of the Meek, Renegade Tactics, Ancestral Anger and Accelerate do the same draw.
 Zada, Hedron Grinder + Storm-Kiln Artist + Reckless Ransacking :: each copy makes a Treasure, and Storm-Kiln makes another for the cast and for every copy — about two Treasures per creature for two mana, and the whole team gets +3/+2. Sudden Breakthrough and Ancestors' Aid do the same with first strike.
 Zada, Hedron Grinder + Fists of Flame :: cast it after a cantrip turn. Each copy draws first, then gives its creature +1/+0 for every card drawn so far this turn, plus trample — after twenty draws each creature gets +21/+0 or more.
-Zada, Hedron Grinder + Haste Magic :: every creature gets +3/+1 and haste, and each copy exiles a card you can play until your next end step.
 Zada, Hedron Grinder + Twinflame :: two mana: a hasty copy of every creature you control. With Impact Tremors or General Kreat out, each copy entering is damage to each opponent. Molten Duplication does the same. Copies of legendary creatures still enter and trigger your payoffs, but you keep only one of each name.
 Zada, Hedron Grinder + Temur Battle Rage :: the finisher: double strike for the whole army, plus trample if anything has 4 power.
-Roaming Throne :: name Goblin: enters as a 4/4 Goblin with Ward {2} and doubles every triggered ability of your other Goblins — Zada copies every targeted spell twice per creature, General Kreat deals 2 per entering creature and makes two Goblins on attack, and Recruiter, Matron and Muxus trigger twice.
 Frontline Heroism :: whenever you cast a spell that targets one of your creatures, a hasty 1/1 and a copy of the spell for it. Resolve its trigger before Zada's, so the new Soldier gets a Zada copy too.
 
 # How you win — Zada storm finishes
 Zada, Hedron Grinder + Fists of Flame + Temur Battle Rage :: after a cantrip chain draws 15–20 cards, Fists of Flame gives every creature +15/+0 to +25/+0 and trample, and Temur Battle Rage gives the entire army double strike.
-Zada, Hedron Grinder + Roaming Throne + Twinflame :: with Roaming Throne naming Goblin, Twinflame or Molten Duplication targeting Zada triggers Zada twice — making two hasty copies of every creature (including two more non-legendary Roaming Thrones). With Impact Tremors or General Kreat out, the entering copies burn the table out before combat.
 Zada, Hedron Grinder + Storm-Kiln Artist + Underworld Breach :: escape a one-mana cantrip or Treasure spell from your graveyard by exiling three cards each time; every recast copies across your whole board to draw your deck and make dozens of Treasures into any combo or combat kill.
 
 # Infinite combos — from turn 6
@@ -57,7 +54,6 @@ Mogg War Marshal :: a Goblin now and another when it dies.
 Dragon Fodder :: two Goblins for two mana.
 Krenko's Command :: two more Goblins for two mana.
 Hordeling Outburst :: three Goblins.
-Empty the Warrens :: two Goblins, plus two more for each spell cast before it this turn. Zada's copies aren't cast, so only real spells count.
 Dwarven Mine :: a Mountain that makes a free 1/1 Dwarf when it enters untapped.
 Kher Keep :: a land that makes 0/1 Kobolds — every one is another copy.
 Urza's Saga :: makes Construct tokens, then fetches Sol Ring, Lotus Petal, Mox Amber or Skullclamp.
@@ -100,3 +96,9 @@ Chaos Warp :: the red answer to anything.
 Keep mana, two or three creatures and a cheap spell. Zada on turn three or four with four bodies out already draws four off one Expedite.
 Build the board first, then spend the turn: a Treasure spell to make mana, cantrips to draw, Twinflame or a pump to finish.
 Nothing here stops a sweeper that doesn't target. Equip Swiftfoot Boots before the big turn (equipping is sorcery speed), keep Deflecting Swat or Untimely Malfunction for targeted removal, and after a wipe rebuild with Kher Keep and the token spells.
+
+# Complete Snoop package — compact wins from turn 6
+Conspicuous Snoop + Kiki-Jiki, Mirror Breaker + Goblin Recruiter + Mogg Fanatic :: With Snoop able to tap, resolve Recruiter and put Kiki on top with Fanatic below it. Snoop gains Kiki's activated ability and can target itself because it is nonlegendary. Make more than 120 hasty Snoop copies, leaving the newest one untapped. Use that copy to copy Recruiter instead of Snoop. The new Recruiter puts Fanatic on top, so every surviving Snoop gains Fanatic's sacrifice ability. Sacrifice at least 40 Snoops for 1 damage each to each of three opponents. Most Snoops being tapped does not prevent the sacrifice ability. Kiki and Fanatic must still be in the library when searched; Recruiter cannot put a card from your hand back on top.
+Torch Courier + Conspicuous Snoop :: Cast Courier for {R} and sacrifice it targeting Snoop for haste this turn. Courier's ability has no tap cost, so it works immediately. Do this before starting the Kiki-top sequence. If Courier is your only haste source and still in the library, Recruiter can stack Courier, then Kiki, then Fanatic: cast Courier off the top through Snoop, sacrifice it to give Snoop haste, and Kiki is now revealed. Avoid extra draws, mills, exiles and shuffles that move Kiki away from the top before the copying ends. Shroud prevents Courier or Snoop's copied Kiki ability from targeting Snoop.
+Goblin Recruiter -> Goblin Ringleader :: For a refill, put Ringleader on top followed by Torch Courier, Conspicuous Snoop, Kiki-Jiki, Mirror Breaker and Mogg Fanatic. Draw Ringleader, then pay {3}{R}; its entry trigger puts the next four Goblins into your hand. If Ringleader is already in hand, omit it from the pile and cast it before another draw. This is a four-card hand refill, not an immediate Snoop kill: Kiki in hand cannot grant Snoop its ability from the library. Choose the Kiki-top pile instead when Snoop is ready to win. Additional draws require padding or a revised pile; use fetches and other shuffling searches before Recruiter.
+Mogg Fanatic :: The library-top finisher lets Snoop tokens sacrifice themselves for damage without another permanent payoff. An ordinary Fanatic on the battlefield can also sacrifice itself for one damage; that single card by itself is not an unlimited damage engine. Keep compact wins for turn six or later under the house rules.

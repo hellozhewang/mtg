@@ -59,6 +59,7 @@
   "kupo7/BalthierFran-Vehicles": ["aggro", "value", "finalfantasy"],
   "kupo7/Breya-Combo": ["combo", "value"],
   "kupo7/Flubs-Storm": ["spells", "value", "graveyard"],
+  "kupo7/Gogo-Combats": ["aggro", "combo", "finalfantasy"],
   "kupo7/Hakbal-Merfolk": ["aggro", "value", "gowide"],
   "kupo7/Kilo-Proliferate": ["value", "combo"],
   "kupo7/Kotis-Theft": ["aggro", "control"],

@@ -1,0 +1,51 @@
+An explosive Bracket 4 extra combat and combo deck led by Gogo, Mysterious Mime. Gogo bypasses the legend rule by retaining his own name when copying a creature, while granting both himself and the copied creature +2/+0 and haste at the beginning of combat. This turns any bomb cast in your precombat main phase into an immediate double threat. With Bracket 4 removing Game Changer caps and lifting mass land denial restrictions, the deck pairs fast mana and nonbasic stax (Blood Moon, Magus of the Moon, Ruination) with multiple deterministic combat and storm finishes.
+
+# The copy engine and extra combats
+Gogo, Mysterious Mime :: At beginning of combat, copies any creature you control until end of turn without triggering the legend rule, giving both Gogo and that creature +2/+0 and haste. Cast your biggest threat and swing with two copies immediately.
+Combat Celebrant + Gogo, Mysterious Mime :: Cast Celebrant; at combat, Gogo copies Celebrant and both gain haste and +2/+0. Exert Gogo in combat 1 to untap all creatures and take combat 2. In combat 2, exert the real Celebrant to untap all creatures and take combat 3. Yields three devastating combat phases in a single turn.
+Port Razer :: Dealing combat damage untaps each creature you control and grants an additional combat phase. Gogo copies Port Razer to create two independent extra combat triggers.
+Bloodthirster :: Flying, trample 6/6 that untaps and grants an additional combat phase whenever it deals combat damage to a player. Copying it with Gogo creates two 8/6 flying tramplers that chain extra combats across all opponents.
+Karlach, Fury of Avernus :: Untaps all attacking creatures, gives first strike, and adds an additional combat on your first attack. Gogo copies Karlach to double the threat.
+Moraug, Fury of Akoum :: Landfall during your main phase grants an additional combat phase and untaps all creatures. Each attack stacks +1/+0 across your entire board.
+
+# Infinite combos
+Godo, Bandit Warlord + Helm of the Host :: Godo enters and puts Helm onto the battlefield. Equip Helm (paying {5} or {R} with Magnetic Theft). At beginning of combat, Helm creates a nonlegendary hasty copy of Godo. That token attacks, untaps itself, and creates an additional combat phase where Helm triggers again, generating infinite combats and hasty Godos.
+Kiki-Jiki, Mirror Breaker + Zealous Conscripts :: Tap Kiki-Jiki to create a hasty token copy of Conscripts; the token's ETB untaps Kiki-Jiki. Repeat for infinite hasty Conscripts.
+Kiki-Jiki, Mirror Breaker + Combat Celebrant :: Tap Kiki-Jiki to create a copy of Celebrant. The token attacks and exerts, untapping Kiki-Jiki and granting an additional combat. In the next combat, Kiki-Jiki creates another token Celebrant to repeat infinitely.
+Dualcaster Mage + Twinflame :: Cast Twinflame targeting any creature; hold priority and cast Dualcaster Mage. Dualcaster ETB copies Twinflame targeting Dualcaster. The copy resolves, making a hasty Dualcaster that copies Twinflame again, looping for infinite hasty Dualcaster Mages.
+Dualcaster Mage + Molten Duplication :: Identical infinite hasty token loop using Molten Duplication.
+Aggravated Assault + Neheb, the Eternal :: Attack with Gogo copying Neheb for 12+ combat damage. In your postcombat main phase, both Nehebs add {R} for each life lost by opponents (24+ mana). Pay {3}{R}{R} into Aggravated Assault to untap all creatures and take another combat, generating infinite combats and mana.
+Underworld Breach + Grinding Station + Sol Ring :: Tap Station sacrificing Sol Ring to mill three cards; escape Sol Ring from graveyard by exiling three cards. Sol Ring enters, untapping Station. Repeat to mill your entire library, escape infinite mana, and finish with a storm or damage kill.
+
+# Mass land denial and stax
+Blood Moon :: Turns all nonbasic lands into basic Mountains. Shuts down multicolored mana bases completely while our mono-red manabase functions untouched.
+Magus of the Moon :: Creature version of Blood Moon that can be tutored with Imperial Recruiter and copied by Gogo with haste.
+Ruination :: Four-mana sorcery that destroys all nonbasic lands on the table, crippling three opponents simultaneously.
+Strip Mine :: Land-slot uncounterable land destruction to remove problematic utility lands.
+
+# Acceleration and card engines
+Chrome Mox + Mox Diamond + Lotus Petal :: Zero-mana mana acceleration powering out turn-one and turn-two plays.
+Mana Vault + Grim Monolith :: Burst colorless acceleration to cast five- and six-mana threats ahead of curve.
+Jeska's Will :: Adds massive red mana based on opponent hand size and exiles three cards to play.
+Treasonous Ogre :: Converts life into burst red mana to deploy Godo or multiple extra combat threats in one turn.
+The One Ring :: Protection from everything for a full turn cycle, buying an untouchable turn while drawing an escalating stream of cards.
+Wheel of Fortune :: Refills an empty hand with seven fresh cards while disrupting opponents' sculpted hands.
+Ancient Copper Dragon :: Deals combat damage to roll a d20 and create that many Treasures. Copying it with Gogo creates two 8/5 dragons generating an absurd pile of mana.
+Etali, Primal Storm :: Attack trigger casts nonland cards from the top of all four libraries for free. Gogo copies Etali to steal up to eight spells every combat.
+Terror of the Peaks :: Punishes opponent targeting with 3 life loss and burns any target whenever another creature enters. Copying it with Gogo doubles all enter-the-battlefield burn.
+Twinflame Tyrant :: Doubles all damage dealt by sources you control. Gogo copying Tyrant quadruples all damage.
+
+# Protection and interaction
+Deflecting Swat :: Free redirection spell with Gogo on the battlefield to protect combos from countermagic and spot removal.
+Bolt Bend :: One-mana redirection when controlling a creature with power 4 or greater (consistently enabled by Gogo's +2/+0 pump).
+Untimely Malfunction :: Versatile modal answer that destroys an artifact, redirects a spell, or prevents two creatures from blocking.
+Tibalt's Trickery :: Hard counter in mono-red to stop a game-winning spell.
+Pyroblast + Red Elemental Blast :: One-mana hard counters against blue interaction, Rhystic Study, and Cyclonic Rift.
+Chaos Warp + Wild Magic Surge :: Instant-speed answers to any permanent, including enchantments red normally cannot answer.
+Blasphemous Act :: Cheap board wipe to clear opposing boards before deploying your haste threats.
+
+# Opening hands and sequencing
+Keep hands with fast mana (Sol Ring, Mana Vault, Chrome Mox, rituals) and either a tutor (Gamble, Imperial Recruiter), a lock piece (Blood Moon), or an extra combat threat.
+Deploy Blood Moon or Magus of the Moon on turn 1 or 2 whenever possible. Against 3-color and 4-color decks, an early Blood Moon ends the game on the spot.
+Do not cast Gogo on turn 4 with an empty board unless you have protection. Wait until you can cast a high-impact creature (Combat Celebrant, Port Razer, Neheb) and immediately copy it for haste and extra combats on the same turn.
+Godo, Bandit Warlord with Magnetic Theft or 11 mana is a one-card win condition; protect Godo with Deflecting Swat, Bolt Bend, or Red Elemental Blast when casting him.

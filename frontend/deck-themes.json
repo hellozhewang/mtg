@@ -82,6 +82,7 @@
   "ratdos/HeiBai-Shrines": ["value", "gowide", "spells"],
   "ratdos/Kefka-Theft": ["control", "finalfantasy", "spells", "combo"],
   "ratdos/Kwia-Lifegain": ["gowide", "value"],
+  "ratdos/Maelstrom-Jony-Special": ["value", "combo"],
   "ratdos/MaelstromWanderer-Roulette": ["value", "aggro"],
   "ratdos/MarrowGnawer-Swarm": ["gowide"],
   "ratdos/Meren-Reanimator": ["graveyard", "gowide", "control"],

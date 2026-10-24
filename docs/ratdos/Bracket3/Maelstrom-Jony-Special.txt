@@ -1,0 +1,94 @@
+1 Maelstrom Wanderer (PC2) 101
+1 Agent of Treachery (TLE) 9
+1 All Is Dust (CMM) 800
+1 Ancient Tomb (UMA) 236
+1 Apex Devastator (CMR) 217
+1 Arcane Signet (MKC) 223
+1 Balefire Dragon (CMM) 207
+1 Bloodstained Mire (MH3) 216
+1 Breeding Pool (RNA) 246
+1 Bribery (J13) 2
+1 Chandra, Flamecaller (OGW) 104
+1 Chimil, the Inner Sun (LCI) 249
+1 Cinder Glade (MKC) 255
+1 Command Tower (SCD) 297
+1 Consecrated Sphinx (2X2) 43
+1 Cultivate (PRM) 81920
+1 Etali, Primal Conqueror (MOM) 137
+1 Etali, Primal Storm (MKC) 152
+1 Explosive Vegetation (C18) 144
+1 Farseek (RAV) 163
+1 Fire-Lit Thicket (2XM) 317
+1 Flooded Grove (SOC) 373
+5 Forest (THB) 254
+1 Fury (MH2) 313
+1 Genesis Ultimatum (PIKO) 189p
+1 Greater Good (AFC) 160
+1 Gruul Ragebeast (GTC) 170
+1 Gruul Signet (AFC) 207
+1 Hellkite Tyrant (FIC) 295
+1 Hinterland Harbor (OTC) 300
+1 Homeward Path (C16) 301
+1 Hour of Devastation (HOU) 97
+1 Imoti, Celebrant of Bounty (CMR) 600
+1 Inferno Titan (NCC) 269
+1 Island (THB) 251
+1 Karplusan Forest (DMU) 250
+1 Ketria Triome (PIKO) 250p
+1 Kiki-Jiki, Mirror Breaker (CHK) 175
+1 Kodama's Reach (OTC) 196
+1 Kogla, the Titan Ape (IKO) 162
+1 Kozilek, Butcher of Truth (MM2) 5
+1 Lórien Revealed (LTR) 60
+1 Majestic Genesis (CLB) 240
+1 Mana Confluence (JOU) 163
+1 Mana Vault (2X2) 308
+1 Misty Rainforest (MH2) 250
+3 Mountain (THB) 253
+1 Nature's Lore (MKC) 178
+1 Nexus of Fate (PLST) M19-306
+1 Ojer Kaslem, Deepest Growth (LCI) 204
+1 Pathbreaker Ibex (C15) 38
+1 Polluted Delta (MH3) 224
+1 Possibility Storm (DGM) 34
+1 Rampant Growth (10E) 288
+1 Rootbound Crag (XLN) 256
+1 Ruric Thar, the Unbowed (DGM) 99
+1 Sakura-Tribe Elder (MKC) 183
+1 Scalding Tarn (MH2) 254
+1 Sea Gate Restoration (ZNR) 76
+1 Selvala's Stampede (CN2) 71
+1 Sheltered Thicket (ECC) 167
+1 Simic Signet (CLU) 228
+1 Skyshroud Claim (CMM) 321
+1 Sol Ring (PIP) 239
+1 Steam Vents (RTR) 247
+1 Stomping Ground (PRNA) 259p
+1 Summoning Trap (MM3) 139
+1 Sunbird's Invocation (BLC) 116
+1 Sylvan Library (DMR) 179
+1 Taiga (30A) 278
+1 Talisman of Curiosity (WHO) 249
+1 Talisman of Impulse (MRD) 254
+1 Thran Dynamo (CMM) 415
+1 Three Visits (CMR) 261
+1 Tooth and Nail (CMM) 327
+1 Tropical Island (30A) 279
+1 Trumpeting Carnosaur (PLCI) 171p
+1 Turntimber Symbiosis (ZNR) 215
+1 Ugin, the Spirit Dragon (FRF) 1
+1 Ulamog, the Ceaseless Hunger (CMM) 5
+1 Up the Beanstalk (WOE) 195
+1 Valakut Awakening (ZNR) 174
+1 Vaultborn Tyrant (BIG) 20
+1 Verdant Catacombs (MH2) 260
+1 Volcanic Island (30A) 282
+1 Windswept Heath (MH3) 235
+1 Wooded Foothills (KTK) 249
+1 World Breaker (OGW) 126
+1 Worldspine Wurm (DSC) 206
+1 Worn Powerstone (MH3) 298
+1 Wurmcoil Engine (CM2) 231
+1 Xenagos, God of Revels (BNG) 156
+1 Yavimaya Coast (OTC) 342
+1 Zealous Conscripts (AVR) 166

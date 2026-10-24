@@ -1,87 +1,95 @@
 1 Yuna, Hope of Spira
-1 Arcane Signet
 1 Argothian Enchantress
+1 Arid Mesa
 1 Aura of Silence
+1 Avacyn's Pilgrim
+1 Bala Ged Recovery
 1 Beast Within
 1 Birds of Paradise
+1 Blasting Station
 1 Boseiju, Who Endures
 1 Bountiful Promenade
 1 Branchloft Pathway
 1 Brushland
 1 Calix, Guided by Fate
-1 Canopy Vista
 1 Command Tower
-1 Courser of Kruphix
-1 Darksteel Mutation
+1 Commune with the Gods
 1 Destiny Spinner
-1 Dryad of the Ilysian Grove
+1 Earthcraft
 1 Eidolon of Blossoms
+1 Eiganjo, Seat of the Empire
 1 Eladamri's Call
 1 Enchantress's Presence
 1 Enduring Vitality
 1 Enlightened Tutor
-1 Esper Origins
-1 Exploration
-8 Forest
-1 Ghostly Prison
-1 Greater Auramancy
+1 Esper Sentinel
+1 Fauna Shaman
+1 Finale of Devastation
+1 Flooded Strand
+1 Force of Vigor
+4 Forest
+1 Formidable Speaker
+1 Gauntlets of Light
+1 Grand Abolisher
+1 Greater Good
+1 Green Sun's Zenith
 1 Hall of Heliod's Generosity
 1 Hallowed Haunting
-1 Herald of the Pantheon
+1 Heliod, Sun-Crowned
 1 Heroic Intervention
+1 Horizon Canopy
 1 Hushwood Verge
 1 Idyllic Tutor
-1 Ishgard, the Holy See
 1 Jukai Naturalist
-1 Karametra, God of Harvests
 1 Kenrith's Transformation
-1 Lightning Greaves
-1 Lush Portico
+1 Llanowar Elves
+1 Lotus Petal
+1 Malevolent Rumble
+1 Marsh Flats
 1 Mesa Enchantress
-1 Mirari's Wake
+1 Misty Rainforest
+1 Nature's Claim
 1 Nature's Lore
+1 Nature's Rhythm
 1 Nesting Grounds
-1 Nykthos, Shrine to Nyx
-1 Nylea's Colossus
-1 Nyxbloom Ancient
-1 Ondu Spiritdancer
 1 Overgrown Farmland
-1 Overlord of the Hauntwoods
 1 Path to Exile
-7 Plains
+1 Pia, Aether Ascetic
+3 Plains
 1 Power Conduit
-1 Reliquary Tower
+1 Prismatic Vista
+1 Ranger-Captain of Eos
+1 Razorverge Thicket
 1 Replenish
 1 Sanctum Weaver
-1 Satyr Enchanter
 1 Savannah
+1 Seal of Cleansing
+1 Serra's Sanctum
 1 Setessan Champion
-1 Sigil of the Empty Throne
-1 Smothering Tithe
-1 Soaring Lightbringer
+1 Silence
 1 Sol Ring
-1 Solemnity
-1 Sphere of Safety
-1 Starfield of Nyx
+1 Squirrel Nest
+1 Staff of Domination
 1 Sterling Grove
-1 Strength of the Harvest
 1 Summon: Bahamut
 1 Summon: Fenrir
-1 Summon: Ixion
 1 Summon: Knights of Round
-1 Summon: Magus Sisters
 1 Summon: Yojimbo
-1 Summoner's Grimoire
 1 Sunpetal Grove
+1 Survival of the Fittest
 1 Swords to Plowshares
 1 Sylvan Library
 1 Sythis, Harvest's Hand
-1 Teferi's Protection
 1 Temple Garden
 1 Three Visits
+1 Touch the Spirit Realm
 1 Utopia Sprawl
-1 Weaver of Harmony
+1 Veil of Summer
+1 Verdant Catacombs
+1 Walking Ballista
 1 Wild Growth
 1 Windswept Heath
+1 Witch Enchanter
 1 Wooded Bastion
+1 Wooded Foothills
 1 Yavimaya, Cradle of Growth

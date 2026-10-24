@@ -7,6 +7,29 @@ Last updated 2026-10-22 (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
 Both states visually checked live. **Steam is now v64, published at the owner’s request.** See [the changelog](../docs/development/tts-changelog.md).
 
+## Both zzwang Yunas optimized (2026-10-23)
+
+Owner requested maximum Bracket 3 power for **Yuna-Summoner** (Grand Summoner)
+and **Yuna-Enchantments** (Hope of Spira), plus detailed guides. These are both
+zzwang's; kupo7/Yuna-Counters stays unchanged. See the [tuning record](../docs/development/yuna-optimization-20261023.md)
+for all 39/42 swaps, source hashes, research and rules corrections.
+
+Grand Summoner now emphasizes the Yuna/untap-Aura/Ballista entry-counter finish,
+Heliod and redundant mana-creature loops, backed by 15 relevant tutor cards.
+Hope retains enchantress recursion with Heliod, Earthcraft/Nest/Station and
+Weaver untap finishes, 12 relevant tutors and 27 enchantments. Remove Solemnity's
+conflict with lore/Ballista counters. Both guides cover exact costs, zones,
+readiness, protection, weaknesses, finality and legal recovery; 42/43 card rows,
+roughly 2,800/3,200 words. Correct the old Sage heroic, Tender blue-mana, free-X
+and finality assumptions.
+
+Both validate: **100 cards, 3/3 Game Changers, TTS import 100/100**, 33 lands +
+2 MDFCs each. Average nonland MV goes 2.37→1.88 and 3.14→2.46. All guide row
+references are present; 23 category/tier/guide tests pass. Both are placed S by
+the existing structural tier criteria, **not** an 80% goldfish certification.
+Their numeric consistency remains unmeasured; include them in later benchmarking.
+This is deck/catalog data only: Saved Games and Steam stay v64.
+
 ## Complete Snoop package (2026-10-23)
 
 Owner requires every Conspicuous Snoop deck, across tiers/owners, to also include
@@ -39,8 +62,8 @@ Owner confirmed tuning **everyone’s S-tier decks** and a target of **80% of
 unopposed goldfish games won by turn six**. Draft tuning and a restricted pilot
 are in `/tmp/mtg-s-tier-bench-20261023`; these are unpublished candidates and
 are not a full-rules benchmark or a certification of that target. The catalog
-now contains 30 S lists after subsequent Discord additions; include Ultimecia in
-the next audit refresh. Next work is to finish guide corrections and validate
+now contains 32 S lists after Discord additions and the two zzwang Yuna revisions;
+include Ultimecia and both new S-tagged Yunas in the next benchmark refresh. Next work is to finish guide corrections and validate
 and measure the candidates under the agreed mulligan/opponent model. Do not report success percentages from card-access-only
 sampling, tutor counts, a mana-value average or hand-picked example hands.
 Saved Games and Steam remain v64; no table build or upload is needed.

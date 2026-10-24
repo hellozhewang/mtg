@@ -17,9 +17,12 @@ The owner confirmed **tuning every owner's S-tier lists** and a target of
 cross-owner tuning for this task. Protected attempts and recovery remain separate
 questions; they are not part of the confirmed percentage.
 
-The catalog has since grown to 30 S-tier decks. Draft list tuning for 29 and an
+The catalog has since grown to 32 S-tier decks, including the two revised
+zzwang Yunas. Draft list tuning for 29 and an
 experimental restricted pilot are preserved in the `codex/s-tier-bench-20261023`
-worktree; the newly added Ultimecia list still needs inclusion. These candidates
+worktree; the newly added Ultimecia and two zzwang Yuna lists still need
+inclusion in the benchmark. The Yuna lists were separately tuned with detailed
+guides; their structural S placements do not establish the numeric target. These candidates
 are unpublished. Their guides, complete effect coverage and comparative benchmark
 are unfinished. The pilot models selected routes and has 44 regression tests;
 its unsupported-card failures do not establish the decks' real win rates. No

@@ -1,23 +1,37 @@
 # S-tier turn-six consistency audit
 
-Status: baseline and rules review, 2026-10-23. Owner requested S-tier lists that
+Status: baseline review with unpublished tuning in progress, 2026-10-23. Owner requested S-tier lists that
 reliably win on turn six from ordinary hands rather than exceptional draws.
 This audit does **not** certify a win percentage or change deck ratings. The
 existing S labels were structural judgments, not measured turn-six results.
 
-There are 26 published S-tier lists: 23 owned by zzwang, two by ratdos and one by
-kupo7. All 26 pass the current validator: 100 cards, legal identities and
+The original baseline had 26 S-tier lists: 23 owned by zzwang, two by ratdos and one by
+kupo7. All 26 passed the baseline validator: 100 cards, legal identities and
 singletons, three Game Changers, no prohibited mass land denial, and TTS import
 100/100. This establishes legality and importability, not speed or consistency.
 
-## Decisions requested before the bulk rewrite
+## Confirmed scope and current work
 
-- Scope: tune zzwang's lists and audit other owners, or tune all owners' S lists.
-  The owner-folder instructions normally reserve each other owner's lists for
-  them; a direct instruction from the catalog owner can establish wider scope.
-- Success criterion: 80% unopposed wins by turn six, 70%, or a protected turn-six
-  attempt. These are different targets; an unopposed win is not a win through
-  interaction. None of these numeric targets has been confirmed yet.
+The owner confirmed **tuning every owner's S-tier lists** and a target of
+**80% of unopposed goldfish games won by the end of turn six**. This authorizes
+cross-owner tuning for this task. Protected attempts and recovery remain separate
+questions; they are not part of the confirmed percentage.
+
+The catalog has since grown to 30 S-tier decks. Draft list tuning for 29 and an
+experimental restricted pilot are preserved in the `codex/s-tier-bench-20261023`
+worktree; the newly added Ultimecia list still needs inclusion. These candidates
+are unpublished. Their guides, complete effect coverage and comparative benchmark
+are unfinished. The pilot models selected routes and has 44 regression tests;
+its unsupported-card failures do not establish the decks' real win rates. No
+80% result or full-rules certification is claimed.
+
+A separate finished package update covers all seven currently published Snoop
+lists. Every Conspicuous Snoop deck must include Kiki-Jiki, Mirror Breaker,
+Torch Courier, Goblin Ringleader and Mogg Fanatic. Six lists needed ten added
+slots; Muxus was already complete. All seven validate at 100 cards, 3/3 Game
+Changers and TTS import 100/100; all guides explain haste, top-card sequencing and
+the Fanatic finish. The nine Snoop lists in the draft worktree also satisfy the
+package, including Baylen and Jetmir. This package validation is not a speed test.
 
 ## What a valid benchmark must count
 
@@ -60,7 +74,7 @@ tutor counts and card-access-only simulations do not measure actual wins.
 ## Current list review
 
 These are prerequisites and review priorities, **not measured pass/fail rates**.
-Other owners' lists have only been read and validated.
+This table records the original baseline; draft cross-owner tuning is not yet published.
 
 | Deck | Ordinary-hand requirement and main risk to check |
 |---|---|

@@ -20,7 +20,7 @@
 1 Goblin Warchief (DOM) 130
 1 Gempalm Incinerator (PLST) DMR-122
 1 Torch Courier
-1 Legion Warboss
+1 Mogg Fanatic
 1 Lightning Crafter
 1 Boggart Trawler
 1 Sling-Gang Lieutenant

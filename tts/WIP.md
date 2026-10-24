@@ -18,7 +18,12 @@ guides with Courier haste, the Kiki-top/Fanatic-top sequence and Ringleader's
 four-card refill. Record the preference in README and the Discord builder source
 and add a catalog regression check. The separate S-tier candidate worktree must
 also apply this to its new Baylen and Jetmir Snoop packages before publication.
-No table code or Steam version change is needed.
+Validation: all seven pass 100 cards, 3/3 Game Changers, TTS import 100/100
+and retained printing pins. All guide references are in their lists. Twenty-one
+package/guide/builder tests pass. Scoped publication verifies 297 image URLs
+(one downloaded, 296 recently verified), source/list/guide parity, 99-card
+libraries plus commanders and all four support cards. Preserve all 184 unrelated
+catalog records and spawn payloads. No table code or Steam version change is needed.
 
 ## S-tier turn-six consistency review (2026-10-23, in progress)
 

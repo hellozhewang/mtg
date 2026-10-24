@@ -11,7 +11,7 @@ versions. This guide holds lasting implementation and release rules. See also th
 Runtime Lua and UI templates live in `tts/`; reusable tooling belongs in `scripts/`.
 The root [README](../../README.md) describes the catalog and table architecture.
 `docs/tts/` is generated catalog output. Author development documentation only in
-`docs/development/`: `scripts/build_site.py` explicitly includes its Markdown files
+`docs/development/`: `scripts/common/build_site.py` explicitly includes its Markdown files
 in both normal and alternate-output builds. Other unplanned output is pruned.
 `development` is a reserved site namespace, not a deck owner.
 
@@ -99,7 +99,7 @@ Every delivered test build increments the version and is named
 an unnumbered Preview. Commit/push source first, then run from the repository root:
 
 ```sh
-python3 scripts/release_tts.py --notes "Describe the resulting behavior"
+python3 scripts/tabletop/release_tts.py --notes "Describe the resulting behavior"
 ```
 
 The release tool reads [the changelog](tts-changelog.md), checks the pushed source
@@ -112,7 +112,7 @@ large base/build saves, private config, credentials or generated upload receipts
 **Workshop upload requires the owner to select the version.** A saved test build
 is not automatically a Steam release. To publish an already delivered version,
 use the release tool's `--workshop-only` path with the exact archived JSON/PNG
-(see `python3 scripts/release_tts.py --help`). Do not rebuild it under the old number.
+(see `python3 scripts/tabletop/release_tts.py --help`). Do not rebuild it under the old number.
 Use the authorized ordinary interactive temporary task; keep the PC's PowerShell
 execution policy. Require a receipt with the expected Workshop item, Steam result
 1, no pending legal agreement, and matching content hashes. Record the receipt in

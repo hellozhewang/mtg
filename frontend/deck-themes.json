@@ -64,6 +64,7 @@
   "kupo7/Sheoldred-Drain": ["spells"],
   "kupo7/Sheoldred-Reanimator": ["graveyard", "combo", "gowide"],
   "kupo7/Tergrid-Theft": ["control", "graveyard", "combo"],
+  "kupo7/Ultimecia-Combo": ["combo", "graveyard", "finalfantasy"],
   "kupo7/Yuna-Counters": ["value", "combo", "aggro", "finalfantasy"],
   "ratdos/Aloy-Artifacts": ["aggro", "value", "combo"],
   "ratdos/Beamtown-Gifts": ["graveyard", "control", "combo"],

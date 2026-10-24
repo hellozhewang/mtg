@@ -20,15 +20,15 @@ Players can also have sleeves made for them. In the deck builder's Discord chann
     sleever make it darker                      (revises your last one)
 
 sleever paints the picture with whichever model the owner has set for the builder
-(`bot/harness.py`; it needs a harness with an image tool). Then `bot/sleever.py`:
+(`scripts/discord/bot/harness.py`; it needs a harness with an image tool). Then `scripts/discord/bot/sleever.py`:
 - crops it to these specs and saves `<name>.jpg` in `tts/sleeves/`;
 - never overwrites a hand-made sleeve or another player's;
 - attaches the sleeve to the Discord reply;
 - autopushes `tts/sleeves/` and `docs/`, so it shows in the Sleeves menu a few minutes later
   (reopen the browser, or press **Refresh** in an open one).
 
-The model works in `bot/.sleever/<user>/`, which isn't in git. Uploads are downloaded to
-`refs/` there. Who made which sleeve is kept in `bot/.sleever/owners.json`.
+The model works in `scripts/discord/bot/.sleever/<user>/`, which isn't in git. Uploads are downloaded to
+`refs/` there. Who made which sleeve is kept in `scripts/discord/bot/.sleever/owners.json`.
 
 ## Image specs
 
@@ -49,7 +49,7 @@ There's nothing to register inside TTS: no Workshop upload, no table rebuild, an
 Custom Deck dialog. The table finds sleeves in the published deck list. So:
 
 1. **Add the file** in `tts/sleeves/`, following the specs above.
-2. **Build the catalog**: `python3 scripts/build_site.py`. It must list the sleeve in
+2. **Build the catalog**: `python3 scripts/common/build_site.py`. It must list the sleeve in
    `docs/tts/decks.json` under `sleeves`, and copy it to `docs/tts/sleeves/`.
 3. **Publish**: commit and push. GitHub Pages serves it a minute or so later at
    `https://hellozhewang.github.io/mtg/tts/sleeves/<file>`. Check that URL opens the picture.
@@ -81,8 +81,8 @@ itself does not download them. v51–v52 used names only; older versions eagerly
 registered every thumbnail. Standard uses Scryfall's small card back.
 
 
-1. `scripts/ttsdecks.py` (`sleeve_files()`, `sleeves()`) lists this folder during
-   `python3 scripts/build_site.py`. It copies each picture to `docs/tts/sleeves/` and adds
+1. `scripts/tabletop/ttsdecks.py` (`sleeve_files()`, `sleeves()`) lists this folder during
+   `python3 scripts/common/build_site.py`. It copies each picture to `docs/tts/sleeves/` and adds
    it to `docs/tts/decks.json` under `sleeves`: Standard first, with an absolute `url`; then
    these files by name, with a `file` relative to `decks.json`.
 2. Pushing publishes them on GitHub Pages under `https://hellozhewang.github.io/mtg/tts/sleeves/`.
@@ -92,7 +92,7 @@ registered every thumbnail. Standard uses Scryfall's small card back.
 
 ## Testing before a push
 
-The owner's catalog server on the Mac (`scripts/start_private_server.py`, port 5588) serves
+The owner's catalog server on the Mac (`scripts/common/start_private_server.py`, port 5588) serves
 `docs/`. A table whose browser reads from `http://192.168.0.100:5588/tts/` sees a new back
 right after the catalog build, once a player clicks **Refresh**. Tables reading from Pages
 see it only after the push.

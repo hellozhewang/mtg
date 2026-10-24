@@ -75,7 +75,7 @@ arrived from GitHub, but picture downloads could fail afterward; an image extens
 does not mean the response body is a usable picture. Do not describe this as GitHub
 failing to deliver a deck or assume every Scryfall URL is universally blocked.
 Export pinned images through the validated image service and check the bytes at
-build time. See `scripts/ttsimages.py`. The service is external, not our own cache,
+build time. See `scripts/tabletop/ttsimages.py`. The service is external, not our own cache,
 and validation cannot promise later uptime.
 
 ## Deck count appears smaller after Refresh

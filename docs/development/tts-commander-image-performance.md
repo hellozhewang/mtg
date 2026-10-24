@@ -63,9 +63,9 @@ main experiment in `frame-counter-check.json`.
 Scripts live in `scripts/` and do not participate in the table builder:
 
 ```sh
-python3 scripts/profile_tts_commander_images.py --hold
+python3 scripts/tabletop/profile_tts_commander_images.py --hold
 # Capture/check the temporary picture, then restore the original UI:
-python3 scripts/profile_tts_commander_images.py --cleanup
+python3 scripts/tabletop/profile_tts_commander_images.py --cleanup
 ```
 
 Requires the private local deploy config, running TTS scripting connection, an open

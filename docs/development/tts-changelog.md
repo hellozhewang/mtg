@@ -1,7 +1,7 @@
 # Cactuar table: versions and patch notes
 
 One entry per table build delivered as **MTG 6 player Cactuar Ver_vN**, newest first.
-`scripts/release_tts.py` reads the latest version here, builds the next one and adds
+`scripts/tabletop/release_tts.py` reads the latest version here, builds the next one and adds
 its entry. Details of how each change works live in [WIP](../../tts/WIP.md).
 
 Data changes don't need a new version: decks and sleeves reach every table through the

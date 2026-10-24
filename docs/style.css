@@ -1,4 +1,4 @@
-/* Deck catalog. Copied verbatim to docs/style.css by scripts/build_site.py. */
+/* Deck catalog. Copied verbatim to docs/style.css by scripts/common/build_site.py. */
 :root{
   --bg:#12141a; --panel:#1a1d26; --panel2:#222634; --line:#2e3242;
   --fg:#e7e9f0; --dim:#98a0b3; --accent:#c8a24a; --accent-bg:#2a2415;

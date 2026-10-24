@@ -118,7 +118,7 @@ chosen. No unperformed game tests are represented as results here.
 
 - Baseline: main commit `2c6c1338`, published `docs/tts/decks.json`, source lists
   and matching guides under `public/<owner>/Bracket3/`.
-- Validate the baseline with `scripts/validate_deck.py` on all 26 S-tier paths;
+- Validate the baseline with `scripts/common/validate_deck.py` on all 26 S-tier paths;
   result: 26/26 pass, TTS import 100/100 for each.
 - Card mechanics were read through the project's cache-first `find_cards.py`
   named lookups, backed by Scryfall Oracle data.

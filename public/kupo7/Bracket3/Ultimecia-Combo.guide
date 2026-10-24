@@ -1,0 +1,49 @@
+A Bracket 3 combo deck led by Ultimecia, Time Sorceress. The single biggest mistake is paying eight mana to transform her too early before your combo lines or protection are in place. Ultimecia's real strength is acting as a surveil-fueled graveyard engine from the command zone, sculpting your hand and yard to assemble deterministic infinite extra turns, infinite mana blinks, or instant-speed mill locks. Bracket 3 rules: 3/3 Game Changers (Demonic Tutor, Cyclonic Rift, The One Ring), no mass land denial, and two-card combos are held until turn 6.
+
+# Infinite turns and time loops
+Archaeomancer + Time Warp + Thassa, Deep-Dwelling :: cast Time Warp for an extra turn; at end step, Thassa flickers Archaeomancer to return Time Warp from your graveyard to your hand. Repeat on every extra turn for infinite turns, winning through combat damage with Ultimecia, Omnipotent.
+Shipwreck Dowser + Temporal Manipulation + Thassa, Deep-Dwelling :: identical infinite turn loop with Dowser and Manipulation; Thassa flickers Dowser at end step to return Manipulation for the next turn.
+Peregrine Drake + Deadeye Navigator :: soulbond Navigator and Drake, pay {1}{U} to flicker Drake, untapping five lands. Floats three mana per loop for infinite mana and blinks. Soulbond to Archaeomancer to recur all spells, or to Ultimecia to surveil your entire library into your graveyard.
+Peregrine Drake + Ghostly Flicker + Archaeomancer :: cast Ghostly Flicker targeting Drake and Archaeomancer; Drake untaps five lands and Archaeomancer returns Flicker to hand. Loops for infinite colored mana, then targets Ultimecia to mill your deck.
+
+# The mill and drain locks
+Duskmantle Guildmage + Mindcrank :: activate Guildmage's first ability for {1}{U}{B}; whenever a card enters an opponent's graveyard or an opponent loses life, Mindcrank mills that many cards and Guildmage drains that player for 1 life, creating an unstoppable damage and mill loop.
+Bloodchief Ascension + Mindcrank :: with three quest counters on Ascension, any card put into an opponent's graveyard causes them to lose 2 life and you gain 2 life; Mindcrank mills 2 cards, looping until every opponent is dead.
+Duskmantle Guildmage :: its second ability {2}{U}{B} mills two cards on demand, serving as an instant self-contained starter for the Mindcrank loop with no outside combat required.
+
+# Tutor chains
+Muddle the Mixture -> Mindcrank :: transmute for {1}{U}{U} to fetch the artifact half of the mill combo.
+Muddle the Mixture -> Duskmantle Guildmage :: transmute for the creature half of the mill combo.
+Muddle the Mixture -> Demonic Tutor :: transmute into Demonic Tutor to access any card in the deck.
+Spellseeker -> Demonic Tutor :: fetches Demonic Tutor to bridge into any missing combo piece.
+Spellseeker -> Cyclonic Rift :: fetches an overloaded board wipe to clear all opposing boards before the combo turn.
+Spellseeker -> Entomb :: tutors Entomb to bury Peregrine Drake or an extra turn spell directly into your graveyard.
+Solve the Equation -> Time Warp :: searches up the extra turn piece for the Archaeomancer loop.
+Buried Alive -> Peregrine Drake + Deadeye Navigator + Archaeomancer :: puts the entire creature combo suite straight into your graveyard for reanimation.
+Wishclaw Talisman :: unconditional tutor for {1} on your winning turn; opponents never get to activate it.
+Grim Tutor :: unconditional three-mana tutor directly to hand.
+
+# Commander transformation and Final Fantasy engines
+Ultimecia, Time Sorceress :: surveils 2 on entry and attack to fuel the graveyard with spells and combo pieces; at end step, pay {4}{U}{U}{B}{B} and exile eight cards to transform into Ultimecia, Omnipotent for an extra turn.
+Thassa, Deep-Dwelling :: flickers Ultimecia, Omnipotent at end step to reset her to her front face, re-triggering surveil 2 and enabling future transform triggers.
+Y'shtola Rhul :: flickers a creature and creates an additional end step, allowing Ultimecia to enter on her front face in the first end step and trigger her transform in the second.
+Matoya, Archon Elder :: turns every Ultimecia entry and attack trigger (surveil 2) into raw card draw.
+Emet-Selch, Unsundered :: loots on entry and attack, then transforms into Hades, Sorcerer of Eld to cast spells directly from your graveyard.
+Dreams of Laguna :: surveils and draws for two mana, with flashback to double-dip on graveyard velocity.
+Displacer Kitten :: blinks nonland permanents whenever you cast a noncreature spell, resetting The One Ring burden counters or flickering Archaeomancer.
+
+# Protecting the combo
+The One Ring :: indestructible protection from everything for a full turn cycle, buying time to assemble combo pieces while drawing deep into interaction.
+Force of Negation :: free interaction against opposing disruption during opponents' turns.
+Pact of Negation :: zero-mana counterspell to guarantee your combo turn resolves without interruption.
+Mana Drain :: counters a key threat and funnels colorless mana into casting Deadeye Navigator, extra turn spells, or activating Ultimecia.
+Swan Song :: one-mana hard counter for instants, sorceries, and enchantments targeting your combo pieces.
+An Offer You Can't Refuse :: one-mana noncreature counterspell to defend against board wipes and removal.
+Deadly Rollick :: free instant exile with Ultimecia on the board.
+Cyclonic Rift :: clears the entire opposing board overloaded at instant speed before untapping for the win.
+
+# Opening hands and sequencing
+Keep two to three lands, early mana rocks, and selection or a tutor. Ultimecia does not need to be rushed out on turn 5; prioritize establishing mana and sculpting your graveyard.
+Do not cast two-card combo lines before turn 6 under Bracket 3 table expectations. Use turns 1 through 5 to set up mana rocks, cast The One Ring, deploy Ultimecia to surveil, and hold up countermagic.
+If a combo piece gets milled by Ultimecia's surveil, do not panic: Archaeomancer, Shipwreck Dowser, Reanimate, and Animate Dead are specifically built to pull pieces back from the graveyard.
+Always hold at least one counterspell (Pact of Negation, Swan Song, or Mana Drain) when attempting to resolve Deadeye Navigator, Peregrine Drake, or Mindcrank.

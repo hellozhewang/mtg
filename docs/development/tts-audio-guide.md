@@ -22,7 +22,7 @@ Library/exile/graveyard/commander columns and face-down cards do not count.
 Multicolor creatures count for each color. Type lines, embedded face-color metadata
 and explicit color/type tags drive counts; no runtime Scryfall requests. The normal
 site build generates `docs/tts/card-colors.json`; refresh just that snapshot with
-`python3 scripts/build_tts_music_metadata.py` before a table-only release.
+`python3 scripts/tabletop/build_tts_music_metadata.py` before a table-only release.
 
 A retained song pauses/resumes between eligible turns. Switching to another song
 restarts it: MusicPlayer exposes no timestamp/seek API for separate playheads.
@@ -55,19 +55,19 @@ Music Player clip to just one player. The shared channel can interrupt music.
 
 ## Current audio: ElevenLabs Voice Design + mastered WAV output (2026-10-21)
 
-The announcer WAVs are generated and mastered via `scripts/make_elevenlabs_announcer.py`
+The announcer WAVs are generated and mastered via `scripts/tabletop/make_elevenlabs_announcer.py`
 (API key stored locally in `.apikeys/elevenlabsapikey.txt`, which is gitignored).
 
 ```sh
-python3 scripts/make_elevenlabs_announcer.py --list-profiles
-python3 scripts/make_elevenlabs_announcer.py --profile hood_warfare_2 --text "Yo Twin, hurry yo ass up, you tweakin!" -o tts/sounds/slow-5min.wav
-python3 scripts/make_elevenlabs_announcer.py --from-audio path/to/beginning-stutter1.mp3 -o tts/sounds/slow-10min.wav --target-lufs -12.0
-python3 scripts/make_announcer.py --measure
+python3 scripts/tabletop/make_elevenlabs_announcer.py --list-profiles
+python3 scripts/tabletop/make_elevenlabs_announcer.py --profile hood_warfare_2 --text "Yo Twin, hurry yo ass up, you tweakin!" -o tts/sounds/slow-5min.wav
+python3 scripts/tabletop/make_elevenlabs_announcer.py --from-audio path/to/beginning-stutter1.mp3 -o tts/sounds/slow-10min.wav --target-lufs -12.0
+python3 scripts/tabletop/make_announcer.py --measure
 ```
 
-### Saved Voice Personalities (`VOICE_PROFILES` in `scripts/make_elevenlabs_announcer.py`)
+### Saved Voice Personalities (`VOICE_PROFILES` in `scripts/tabletop/make_elevenlabs_announcer.py`)
 
-All custom and cloned voices created via ElevenLabs are saved both on the ElevenLabs account and in `VOICE_PROFILES` inside `scripts/make_elevenlabs_announcer.py`:
+All custom and cloned voices created via ElevenLabs are saved both on the ElevenLabs account and in `VOICE_PROFILES` inside `scripts/tabletop/make_elevenlabs_announcer.py`:
 
 | Profile Key | Voice ID | Name | Source / Prompt (`voice_description`) | Settings (`model_id`, `stability`, `similarity`, `style`, `speed`) |
 |---|---|---|---|---|
@@ -108,8 +108,8 @@ Model and voice files come from the
 Regenerate with the local neural generator:
 
 ```sh
-~/.cache/mtg-announcer/venv/bin/python scripts/make_neural_announcer.py
-python3 scripts/make_announcer.py --measure
+~/.cache/mtg-announcer/venv/bin/python scripts/tabletop/make_neural_announcer.py
+python3 scripts/tabletop/make_announcer.py --measure
 ```
 
 The Cactuar table's slow-turn announcer plays these clips when one player's turn reaches
@@ -138,9 +138,9 @@ consequences:
 
 ## Legacy placeholder generator
 
-    python3 scripts/make_announcer.py              # re-record both clips into tts/sounds/
-    python3 scripts/make_announcer.py --measure    # check their loudness
-    python3 scripts/make_announcer.py --measure some/other.wav
+    python3 scripts/tabletop/make_announcer.py              # re-record both clips into tts/sounds/
+    python3 scripts/tabletop/make_announcer.py --measure    # check their loudness
+    python3 scripts/tabletop/make_announcer.py --measure some/other.wav
 
 This older generator overwrites the neural WAVs with macOS `say` using Ralph. The owner wants a
 clearer, in-character arena or radio announcer; see the TODO at the top of `tts/WIP.md`.
@@ -184,11 +184,11 @@ Do the steps in this order.
 1. Regenerate, and run `--measure`.
 2. Listen to both clips, then give the owner the files to judge. The owner's PC Desktop is
    the usual place; `INTERNALS.md` has how to reach it.
-3. Copy them to `docs/tts/sounds/`. A site build (`scripts/build_site.py`) does this too.
+3. Copy them to `docs/tts/sounds/`. A site build (`scripts/common/build_site.py`) does this too.
 4. Run `python3 -m unittest discover tests`.
 5. Commit, and push **only when the owner says so**: the repo is public.
 6. **After** the push is live on Pages, run
-   `python3 scripts/release_tts.py --notes "Updated announcer clips"`. It verifies
+   `python3 scripts/tabletop/release_tts.py --notes "Updated announcer clips"`. It verifies
    the published bytes, builds the next `_vN` save from HEAD, delivers it and records
    the version. Commit and push the resulting `docs/development/tts-changelog.md` entry afterwards
    (see the root README and `tts/WIP.md`).

@@ -8,7 +8,7 @@ Chrome for Testing was installed with `agent-browser install`.
 Use the wrapper from the repository root:
 
 ```sh
-python3 scripts/chatgpt-browser-image-generator.py \
+python3 scripts/discord/chatgpt-browser-image-generator.py \
   --prompt "A happy golden retriever sitting in a sunny park, square photograph" \
   --out assets/generated/my-dog.png
 ```
@@ -50,7 +50,7 @@ If a generation times out, inspect the same chat, then recover it without
 spending another generation:
 
 ```sh
-python3 scripts/chatgpt-browser-image-generator.py \
+python3 scripts/discord/chatgpt-browser-image-generator.py \
   --download-only --out assets/generated/recovered.png
 ```
 

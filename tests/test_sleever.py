@@ -1,4 +1,4 @@
-"""sleever (bot/sleever.py): turning a model's picture into a published sleeve."""
+"""sleever (scripts/discord/bot/sleever.py): turning a model's picture into a published sleeve."""
 from __future__ import annotations
 
 import contextlib
@@ -11,7 +11,7 @@ from pathlib import Path
 from unittest.mock import Mock, patch
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "bot"))
+import _paths  # noqa: F401  (scripts/<area>/ on sys.path)
 
 import sleever
 

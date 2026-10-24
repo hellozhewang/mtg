@@ -1,4 +1,4 @@
---[[ Cactuar tile: the script on each Cactuar tile scripts/build_tts_table.py
+--[[ Cactuar tile: the script on each Cactuar tile scripts/tabletop/build_tts_table.py
   puts on the table (source: github.com/hellozhewang/mtg, tts/). Clicking the
   tile opens the clicker's own deck browser, which lives in the Global script
   (tts/cactuar.lua). ]]

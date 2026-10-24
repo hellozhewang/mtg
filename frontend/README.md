@@ -66,7 +66,7 @@ assigning themes; the commander or filename alone can be misleading. Names stay
 the same when a deck moves to another bracket.
 
 Category labels, descriptions, and conservative filename fallbacks are defined
-in `scripts/deckthemes.py`. A deck with no entry and an unrecognised filename word
+in `scripts/common/deckthemes.py`. A deck with no entry and an unrecognised filename word
 falls back to Other Strategies. Unknown IDs, a non-canonical first ID and
 duplicate tags fail the build, and the tests fail for any deck without an entry.
 
@@ -84,13 +84,13 @@ Search finds a tier by its folded `S-tier` token.
 
 `deck-tiers.json` maps the same `<owner>/<filename stem>` keys to a tier ID. A
 tier, like a category, can be `local_only`, shown only on the local index. Tier IDs
-and their one-line descriptions are defined in `scripts/decktiers.py`. There is
+and their one-line descriptions are defined in `scripts/common/decktiers.py`. There is
 no filename fallback: an unplaced deck renders as Unrated ("?"), the build warns,
 and `tests/test_deck_tiers.py` fails for any deck missing from its map.
 How to choose a tier is in [deck-tiers.md](../deck-tiers.md).
 
-Run `python3 scripts/build_site.py` to regenerate the catalog, then
-`python3 scripts/build_site.py --check`. Generated files in `docs/` must not be
+Run `python3 scripts/common/build_site.py` to regenerate the catalog, then
+`python3 scripts/common/build_site.py --check`. Generated files in `docs/` must not be
 edited by hand.
 The template loader versions stylesheet and script URLs by content hash, so
 browsers refresh changed assets while repeated builds stay deterministic.

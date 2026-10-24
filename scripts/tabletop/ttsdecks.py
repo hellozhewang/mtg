@@ -41,11 +41,15 @@ import sys
 from pathlib import Path, PurePosixPath
 from urllib.parse import urlsplit
 
+_SCRIPTS = next(p for p in Path(__file__).resolve().parents if p.name == "scripts")
+sys.path[:0] = [d for d in (str(_SCRIPTS / s) for s in ("common", "tabletop", "discord", "discord/bot"))
+                if d not in sys.path]          # scripts/ is split by area; module names stay flat
+
 import decktiers
 import deckthemes
 import deckguide
 
-TILE_IMAGE = Path(__file__).resolve().parent.parent / "tts" / "cactuar-tile.jpg"
+TILE_IMAGE = Path(__file__).resolve().parents[2] / "tts" / "cactuar-tile.jpg"
 # Every picture here is a sleeve (card back) players can choose in the table's browser.
 # Adding one needs only a catalog build and a push: the menu lists decks.json's "sleeves".
 SLEEVES_DIR = TILE_IMAGE.parent / "sleeves"

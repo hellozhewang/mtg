@@ -24,7 +24,7 @@ import re
 import sys
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parent.parent
+REPO = Path(__file__).resolve().parents[2]
 SOURCE = REPO / "tts"
 NAME = "MTG 6 player Cactuar Ver"
 DEFAULT_BASE_URL = "https://hellozhewang.github.io/mtg/tts/"
@@ -98,7 +98,7 @@ def browser_lua(base_url: str) -> str:
             lua = lua.replace(f'"sounds/{clip.name}"', f'"sounds/{clip.name}?v={version}"')
     cell = _section((SOURCE / "cactuar_search.xml").read_text(encoding="utf-8"), "CARD")
     lua = lua.replace("@INSPECT_CELL@", cell)
-    return f"\n\n{MARKER} (appended by scripts/build_tts_table.py) ====\n" + \
+    return f"\n\n{MARKER} (appended by scripts/tabletop/build_tts_table.py) ====\n" + \
         lua.replace("@BASE_URL@", base_url)
 
 

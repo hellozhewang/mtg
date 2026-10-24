@@ -1,6 +1,6 @@
 --[[ ======================================================================
   Cactuar turn totals and the slow-turn announcer: appended to the table's
-  Global script after cactuar.lua by scripts/build_tts_table.py.
+  Global script after cactuar.lua by scripts/tabletop/build_tts_table.py.
 
   The table's six "Timer" objects show how long the current turn has taken.
   Under each one this adds the seat's total across every turn of the game,

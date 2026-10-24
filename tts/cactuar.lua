@@ -1,6 +1,6 @@
 --[[ ======================================================================
   Cactuar deck browser — appended to the table's Global script by
-  scripts/build_tts_table.py (source: github.com/hellozhewang/mtg, tts/).
+  scripts/tabletop/build_tts_table.py (source: github.com/hellozhewang/mtg, tts/).
 
   Each seated player gets their own browser panel (tts/cactuar.xml, one copy
   per seat colour), opened by clicking a Cactuar tile on the table

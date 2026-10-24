@@ -6,7 +6,7 @@
 #   write the file and the preview to TTS's Steam Cloud, then update the item's file,
 #   preview and change note, and wait for Steam's verdict.
 #
-# Runs on the owner's PC inside their logged-in Windows session (scripts/release_tts.py
+# Runs on the owner's PC inside their logged-in Windows session (scripts/tabletop/release_tts.py
 # starts it as a one-off scheduled task), because the Steam API talks to the running
 # Steam client. It uses whatever account that client is logged in as; it never sees a
 # password. It keeps the existing PowerShell policy. The result is written as JSON.

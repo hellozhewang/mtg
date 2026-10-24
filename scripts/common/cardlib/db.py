@@ -198,7 +198,7 @@ class ToolLogStore:
     codex's captured output and silently lost most of them.
 
     `id` is monotonic, so "everything since I last looked" is one comparison --
-    that is what `scripts/toollog.py --flush` checkpoints on.
+    that is what `scripts/common/toollog.py --flush` checkpoints on.
     """
 
     def __init__(self, path: Path, timeout: float = 10.0):

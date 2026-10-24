@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Generate announcer WAV clips via the ElevenLabs Text-to-Speech API.
 
-    python3 scripts/make_elevenlabs_announcer.py
-    python3 scripts/make_elevenlabs_announcer.py --list-voices
-    python3 scripts/make_elevenlabs_announcer.py --voice Roger --pitch -1.5 --speed 0.85
-    python3 scripts/make_elevenlabs_announcer.py --text "Yo hurry up man" -o tts/sounds/custom.wav
+    python3 scripts/tabletop/make_elevenlabs_announcer.py
+    python3 scripts/tabletop/make_elevenlabs_announcer.py --list-voices
+    python3 scripts/tabletop/make_elevenlabs_announcer.py --voice Roger --pitch -1.5 --speed 0.85
+    python3 scripts/tabletop/make_elevenlabs_announcer.py --text "Yo hurry up man" -o tts/sounds/custom.wav
 
 Reads the API key from `.apikeys/elevenlabsapikey.txt` (or `ELEVENLABS_API_KEY`).
 Requests raw 22050 Hz 16-bit mono PCM directly from ElevenLabs (`pcm_22050`),
@@ -26,10 +26,12 @@ import urllib.request
 import wave
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+_SCRIPTS = next(p for p in Path(__file__).resolve().parents if p.name == "scripts")
+sys.path[:0] = [d for d in (str(_SCRIPTS / s) for s in ("common", "tabletop", "discord", "discord/bot"))
+                if d not in sys.path]          # scripts/ is split by area; module names stay flat
 import make_announcer as dsp
 
-REPO_ROOT = Path(__file__).resolve().parents[1]
+REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_KEY_FILE = REPO_ROOT / ".apikeys" / "elevenlabsapikey.txt"
 API_BASE = "https://api.elevenlabs.io/v1"
 

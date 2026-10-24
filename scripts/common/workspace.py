@@ -15,7 +15,7 @@ state is explicit too: the card cache is separately granted to the sandbox.
 
 Override with MTG_DECKS to point the tools at a different workspace:
 
-    MTG_DECKS=~/decks ./scripts/validate_deck.py
+    MTG_DECKS=~/decks ./scripts/common/validate_deck.py
 """
 from __future__ import annotations
 
@@ -25,7 +25,7 @@ import subprocess
 from pathlib import Path
 
 # scripts/ lives one level above the workspace it operates on.
-_REPO = Path(__file__).resolve().parent.parent
+_REPO = Path(__file__).resolve().parents[2]
 _DEFAULT_ROOT = _REPO / "public"
 
 

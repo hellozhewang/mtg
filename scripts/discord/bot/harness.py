@@ -18,8 +18,8 @@ session id belongs to the harness and model that made it (see bot.session_id).
     codex  OpenAI Codex CLI. Confines itself (`-s workspace-write -C <folder>`).
     agy    Google Antigravity CLI: Gemini, Claude, GPT-OSS. Runs in turbo
            (`--dangerously-skip-permissions`: no prompts, which a headless turn cannot
-           answer anyway) inside an OS sandbox (bot/sandbox.py) that the kernel enforces.
-           Its own home folder (bot/.harness/agy/) keeps the bot's settings, sign-in and
+           answer anyway) inside an OS sandbox (scripts/discord/bot/sandbox.py) that the kernel enforces.
+           Its own home folder (scripts/discord/bot/.harness/agy/) keeps the bot's settings, sign-in and
            conversations apart from the owner's own Antigravity setup.
 
 Adding a harness: subclass Harness, implement `run` (and `usage` if it has one), and
@@ -96,7 +96,7 @@ class Harness:
     @staticmethod
     def _env(chan: str, **extra: str) -> dict:
         # MTG_TOOL_CHANNEL tags each tool record so the drain after this turn takes
-        # only its own lines (scripts/toollog.py).
+        # only its own lines (scripts/common/toollog.py).
         return {**os.environ, "PATH": ":".join(EXEC_ALLOWED_DIRS), "MTG_TOOL_CHANNEL": chan, **extra}
 
 
@@ -192,7 +192,7 @@ class CodexHarness(Harness):
 # ---------- Antigravity (agy) ----------
 
 class AgyHarness(Harness):
-    """`agy --print`, headless, in turbo, inside bot/sandbox.py's profile."""
+    """`agy --print`, headless, in turbo, inside scripts/discord/bot/sandbox.py's profile."""
     name = "agy"
     default_model = "gemini-3.8-flash-high"
     default_effort = None              # the model id carries the thinking level

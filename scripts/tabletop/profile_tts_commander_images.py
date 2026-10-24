@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Measure temporary commander images on the running TTS host; never build/upload.
 
-    python3 scripts/profile_tts_commander_images.py --hold
-    python3 scripts/profile_tts_commander_images.py --cleanup
+    python3 scripts/tabletop/profile_tts_commander_images.py --hold
+    python3 scripts/tabletop/profile_tts_commander_images.py --cleanup
 
 Requires tts/deploy.local.json, a loaded Cactuar browser and its scripting server.
 The --hold option keeps the last picture visible for a screenshot until --cleanup.
@@ -133,7 +133,7 @@ def main():
   for _,d in ipairs(CZ.index.decks) do if d.id==id then CZPB.decks[#CZPB.decks+1]=d;break end end
  end
  assert(#CZPB.decks==#cfg.ids,"Sample deck missing from live catalog")
- '''+(REPO/'scripts/profile_tts_commander_images.lua').read_text()+'''
+ '''+(REPO/'scripts/tabletop/profile_tts_commander_images.lua').read_text()+'''
  return {phase=CZPB.phase}
  end) return JSON.encode({ok=ok,result=r,error=not ok and tostring(r) or nil})'''
         print(editor.execute(start), flush=True);started=True

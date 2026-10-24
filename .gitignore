@@ -7,23 +7,23 @@ logs/
 
 # Pinned Codex session UUIDs, one per Discord channel. Machine-local state, and
 # a session id from one machine is meaningless on another.
-bot/.sessions/
-bot/.session.json
+scripts/discord/bot/.sessions/
+scripts/discord/bot/.session.json
 
 # Empty SQLite file used only as a cross-process mutex for autopush. Holds no
 # data — it exists so BEGIN IMMEDIATE has something to lock.
-bot/.locks.db
+scripts/discord/bot/.locks.db
 
 # Transient reply files bot.py writes for `codex -o` and cleans up after.
-bot/.reply-*.txt
+scripts/discord/bot/.reply-*.txt
 
 # Only created on the npm-shim fallback path; a symlink to a local node install.
-bot/.sandbox-bin/
+scripts/discord/bot/.sandbox-bin/
 # The agy harness's own home: settings, conversations and a copy of the sign-in.
-bot/.harness/
-bot/.sleever/
+scripts/discord/bot/.harness/
+scripts/discord/bot/.sleever/
 
-# GENERATED — the source of truth is AGENTS_MD in scripts/build_agents.py, and
+# GENERATED — the source of truth is AGENTS_MD in scripts/discord/build_agents.py, and
 # this copy is overwritten before every message. Committing it would invite
 # editing the wrong one.
 public/*/AGENTS.md
@@ -41,12 +41,12 @@ __pycache__/
 # Whole-bot mutex. Empty SQLite file; the lock IS the open transaction. The glob
 # matters: SQLite also writes `-journal`/`-wal` siblings, and a pattern without it
 # let `.busy.db-journal` get committed once.
-bot/.busy.db*
-bot/.locks.db*
+scripts/discord/bot/.busy.db*
+scripts/discord/bot/.locks.db*
 
 # Retired: who requested each deck, from before decks lived in owner folders
 # (public/<user>/ is the owner now). Kept on disk for the record, never read.
-bot/.deck-metadata.db*
+scripts/discord/bot/.deck-metadata.db*
 
 # The owner's personal tools (cardsearch/, showcards/) and scratch files. Decks
 # never live here: every deck is under public/<user>/, and private/ held the

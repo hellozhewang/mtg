@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Seed a decklist from EDHREC's aggregate deck for a commander.
 
-    ./scripts/new_deck.py "Sythis, Harvest's Hand"                    # preview
-    ./scripts/new_deck.py "Sythis, Harvest's Hand" -o public/Bracket3/Sythis-Enchantress.txt
-    ./scripts/new_deck.py "Krenko, Mob Boss" --flavour average        # budget-weighted
-    ./scripts/new_deck.py "Lord Windgrace" --lands 40                 # force a land count
+    ./scripts/common/new_deck.py "Sythis, Harvest's Hand"                    # preview
+    ./scripts/common/new_deck.py "Sythis, Harvest's Hand" -o public/Bracket3/Sythis-Enchantress.txt
+    ./scripts/common/new_deck.py "Krenko, Mob Boss" --flavour average        # budget-weighted
+    ./scripts/common/new_deck.py "Lord Windgrace" --lands 40                 # force a land count
 
 This is a STARTING POINT, not a finished deck. What it gives you is the consensus
 shell so you are not typing 99 lines from memory; the tuning is the actual work.
@@ -33,7 +33,9 @@ import argparse
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+_SCRIPTS = next(p for p in Path(__file__).resolve().parents if p.name == "scripts")
+sys.path[:0] = [d for d in (str(_SCRIPTS / s) for s in ("common", "tabletop", "discord", "discord/bot"))
+                if d not in sys.path]          # scripts/ is split by area; module names stay flat
 
 import deckfile
 import toollog
@@ -167,7 +169,7 @@ def main() -> int:
         print(f"            Bracket 3 allows 3. Cut {len(gc) - 3}.", file=sys.stderr)
     print(f"cache     : {query.counters()}; {edhrec.counters()}", file=sys.stderr)
     if args.out:
-        print(f"next      : ./scripts/validate_deck.py {args.out}", file=sys.stderr)
+        print(f"next      : ./scripts/common/validate_deck.py {args.out}", file=sys.stderr)
     return 0
 
 

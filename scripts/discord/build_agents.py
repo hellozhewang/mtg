@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """The agent's operating instructions, and the code that deploys them.
 
-    ./scripts/build_agents.py               # deploy into every owner folder (idempotent)
-    ./scripts/build_agents.py --user ratdos # one owner's folder
-    ./scripts/build_agents.py --check       # verify deployed copies match; exit 1 if not
-    ./scripts/build_agents.py --force       # rewrite even if content matches
+    ./scripts/discord/build_agents.py               # deploy into every owner folder (idempotent)
+    ./scripts/discord/build_agents.py --user ratdos # one owner's folder
+    ./scripts/discord/build_agents.py --check       # verify deployed copies match; exit 1 if not
+    ./scripts/discord/build_agents.py --force       # rewrite even if content matches
 
 **Edit AGENTS_MD below to change what the agent is told.** The text lives in this
 file rather than in a separate canonical markdown file, so there is exactly one
@@ -38,7 +38,9 @@ import os
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+_SCRIPTS = next(p for p in Path(__file__).resolve().parents if p.name == "scripts")
+sys.path[:0] = [d for d in (str(_SCRIPTS / s) for s in ("common", "tabletop", "discord", "discord/bot"))
+                if d not in sys.path]          # scripts/ is split by area; module names stay flat
 
 import workspace
 
@@ -195,9 +197,9 @@ If someone asks for "a good deck" or "something popular" without naming a
 commander, do NOT guess from memory — training data goes stale and new legends
 are printed constantly. Ask the tool:
 
-    ../../scripts/find_inspiration.py --top             # most-built, past week
-    ../../scripts/find_inspiration.py --top month
-    ../../scripts/find_inspiration.py --top year        # EDHREC's "Past 2 Years"
+    ../../scripts/common/find_inspiration.py --top             # most-built, past week
+    ../../scripts/common/find_inspiration.py --top month
+    ../../scripts/common/find_inspiration.py --top year        # EDHREC's "Past 2 Years"
 
 It prints commanders ranked by how many decks EDHREC has for each. The windows
 disagree on purpose: `year` reflects accumulated volume, `week` reflects what is
@@ -303,17 +305,17 @@ Read `../../deck-tiers.md` too: every deck also gets a power tier.
 
 Run with python3 from your working directory:
 
-    python3 ../../scripts/validate_deck.py Bracket3/Zur-Voltron.txt   # one deck
-    python3 ../../scripts/validate_deck.py .               # every deck in this folder
-    python3 ../../scripts/find_cards.py "t:enchantment mv<=3" --commander "Zur the Enchanter"
-    python3 ../../scripts/find_cards.py "o:'whenever' o:'attacks'" --ci brw --since 2025 --no-gc
-    python3 ../../scripts/find_cards.py --gc-only          # current Game Changers list
-    python3 ../../scripts/find_cards.py --names "Combat Celebrant" "Winota, Joiner of Forces" --text
-    python3 ../../scripts/new_deck.py "Queen Marchesa" -o Bracket3/Marchesa-Pillowfort.txt
-    python3 ../../scripts/find_inspiration.py Bracket3/Zur-Voltron.txt
-    python3 ../../scripts/find_inspiration.py Bracket3/Zur-Voltron.txt --new
-    python3 ../../scripts/find_inspiration.py Bracket3/Zur-Voltron.txt --trending
-    python3 ../../scripts/cache.py --stats
+    python3 ../../scripts/common/validate_deck.py Bracket3/Zur-Voltron.txt   # one deck
+    python3 ../../scripts/common/validate_deck.py .               # every deck in this folder
+    python3 ../../scripts/common/find_cards.py "t:enchantment mv<=3" --commander "Zur the Enchanter"
+    python3 ../../scripts/common/find_cards.py "o:'whenever' o:'attacks'" --ci brw --since 2025 --no-gc
+    python3 ../../scripts/common/find_cards.py --gc-only          # current Game Changers list
+    python3 ../../scripts/common/find_cards.py --names "Combat Celebrant" "Winota, Joiner of Forces" --text
+    python3 ../../scripts/common/new_deck.py "Queen Marchesa" -o Bracket3/Marchesa-Pillowfort.txt
+    python3 ../../scripts/common/find_inspiration.py Bracket3/Zur-Voltron.txt
+    python3 ../../scripts/common/find_inspiration.py Bracket3/Zur-Voltron.txt --new
+    python3 ../../scripts/common/find_inspiration.py Bracket3/Zur-Voltron.txt --trending
+    python3 ../../scripts/common/cache.py --stats
 
 **To check what a specific card does, use `find_cards.py --names "A" "B" --text`.**
 It takes many names at once, is cache-first, and prints full oracle text. Do not
@@ -405,7 +407,7 @@ tri-lands for three or more colours.
 Find them with the tools rather than from memory — new cycles are printed
 constantly:
 
-    python3 ../../scripts/find_cards.py "t:land produces:wu -produces:wubrg" --limit 40
+    python3 ../../scripts/common/find_cards.py "t:land produces:wu -produces:wubrg" --limit 40
 
 Swap `wu` for the pair you need. `-produces:wubrg` filters out Command Tower and
 the other any-colour lands, which are fine to run but are not what this is about.
@@ -502,7 +504,7 @@ The site renders it as a Guide tab on that deck's page.
 **Format.** The showcards format you already know: `# Section` headers, `Name ::
 comment` rows, and any line without `::` is prose. Anything before the first `#`
 renders as an intro paragraph with no heading. The parser is
-`../../scripts/deckguide.py`.
+`../../scripts/common/deckguide.py`.
 
     A line or two naming the single thing a new pilot would get wrong.
 
@@ -591,7 +593,7 @@ Keep the `Bracket*/Commander-Theme.txt` layout; category folders are not used.
 The map is `../../frontend/deck-themes.json`, keyed `<owner>/<stem>`, so
 @OWNER@'s decks are the `@OWNER@/...` entries.
 If no entry exists, the last filename word is matched against `HINTS` in
-`../../scripts/deckthemes.py` (unknown words fall back to `other`). Choose a
+`../../scripts/common/deckthemes.py` (unknown words fall back to `other`). Choose a
 meaningful filename theme word for a new deck; do not rename an existing deck
 merely to alter a catalog label.
 
@@ -721,7 +723,7 @@ def check() -> int:
     for p in problems:
         print(f"FAIL {p}", file=sys.stderr)
     if problems:
-        print("run ./scripts/build_agents.py to fix", file=sys.stderr)
+        print("run ./scripts/discord/build_agents.py to fix", file=sys.stderr)
         return 1
     print(f"OK   deployed AGENTS.md files match AGENTS_MD ({len(AGENTS_MD)} chars, 0444)")
     return 0

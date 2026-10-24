@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Record the slow-turn announcer lines as WAV files in tts/sounds/.
 
-    python3 scripts/make_announcer.py              # re-record every clip
-    python3 scripts/make_announcer.py --measure    # loudness of the clips (or named files)
+    python3 scripts/tabletop/make_announcer.py              # re-record every clip
+    python3 scripts/tabletop/make_announcer.py --measure    # loudness of the clips (or named files)
 
 See docs/development/tts-audio-guide.md for the loudness targets and how clips reach the table.
 
@@ -22,7 +22,7 @@ import tempfile
 import wave
 from pathlib import Path
 
-SOUNDS_DIR = Path(__file__).resolve().parents[1] / "tts" / "sounds"
+SOUNDS_DIR = Path(__file__).resolve().parents[2] / "tts" / "sounds"
 RATE = 22050
 VOICE = "Ralph"                     # a deep classic voice that honours [[pbas]]/[[rate]]
 LINES = {

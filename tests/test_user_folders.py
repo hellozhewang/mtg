@@ -12,8 +12,7 @@ from pathlib import Path
 from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "scripts"))
-sys.path.insert(0, str(ROOT / "bot"))
+import _paths  # noqa: F401  (scripts/<area>/ on sys.path)
 
 import build_site
 import commands

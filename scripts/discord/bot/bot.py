@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Persistent deck-builder session for the Discord bot to talk to.
 
-The model runs on a swappable harness (bot/harness.py): Antigravity (`agy`, Gemini by
+The model runs on a swappable harness (scripts/discord/bot/harness.py): Antigravity (`agy`, Gemini by
 default) or Codex. MTG_BOT_HARNESS / MTG_BOT_MODEL pick it. What follows describes the
 mechanics in Codex terms where they started; the harness module has each one's details.
 
@@ -25,7 +25,7 @@ user's session runs in that user's own deck folder (below). Pass the channel id:
 
 Omitting it uses the "cli" channel, which is what the command line uses.
 
-Operating instructions: edit the AGENTS_MD string in `scripts/build_agents.py`,
+Operating instructions: edit the AGENTS_MD string in `scripts/discord/build_agents.py`,
 which deploys it to `public/<user>/AGENTS.md` as mode 0444 before every send, because
 codex auto-injects AGENTS.md only from its working directory — under an
 `# AGENTS.md instructions for <dir>` / `<INSTRUCTIONS>` header, on every invocation
@@ -76,12 +76,14 @@ except ImportError:                    # Windows: degrade to no locking
     fcntl = None
 
 
-HERE = Path(__file__).resolve().parent               # bot/ — OUTSIDE the workspace
-REPO = HERE.parent
+HERE = Path(__file__).resolve().parent               # scripts/discord/bot/ — OUTSIDE the workspace
+REPO = HERE.parents[2]
 
 # The AGENTS.md generator lives in scripts/ (outside the writable root) so the
 # session cannot edit the thing that writes its own instructions.
-sys.path.insert(0, str(REPO / "scripts"))
+_SCRIPTS = next(p for p in Path(__file__).resolve().parents if p.name == "scripts")
+sys.path[:0] = [d for d in (str(_SCRIPTS / s) for s in ("common", "tabletop", "discord", "discord/bot"))
+                if d not in sys.path]          # scripts/ is split by area; module names stay flat
 import build_agents
 import deckplacement
 import toollog
@@ -93,7 +95,7 @@ import postprocess
 import sleever
 import usage
 
-# Ask workspace.py; do NOT derive these from __file__. bot/ sits outside the tree
+# Ask workspace.py; do NOT derive these from __file__. scripts/discord/bot/ sits outside the tree
 # it drives, so `HERE.parent` is the repo root — using it as the workspace would
 # silently hand the Codex session write access to scripts/, docs/ and logs/.
 WORKSPACE = workspace.deck_root()                    # public/ — every owner's folder
@@ -224,7 +226,7 @@ def _flock(path: Path):
             fcntl.flock(fh, fcntl.LOCK_UN)
 
 
-# Global mutex, held only briefly. Lives in bot/ and NOT in .cache/cards.db,
+# Global mutex, held only briefly. Lives in scripts/discord/bot/ and NOT in .cache/cards.db,
 # deliberately: the cache is handed to the sandbox via --add-dir, so a lock kept
 # there would be one the sandboxed session could take, hold or corrupt.
 LOCK_DB = HERE / ".locks.db"
@@ -400,7 +402,7 @@ def _build_site() -> str | None:
     """
     site = workspace.site_dir()
     try:
-        r = subprocess.run([sys.executable, str(REPO / "scripts" / "build_site.py"),
+        r = subprocess.run([sys.executable, str(REPO / "scripts" / "common" / "build_site.py"),
                             "--quiet"],
                            capture_output=True, text=True, timeout=SITE_TIMEOUT)
     except subprocess.SubprocessError as exc:

@@ -422,7 +422,7 @@ timers.Green.vars.timerID = nil
 cztStartGame("Green")
 check(turnsRaw.turn_color == "Green" and CZT.color == "Green", "the turn moves to the cannon's pick")
 check(timers.Green.labels[6] == 1 and timers.Green.vars.turnN == 1, "turn 1 on the new winner's clock, not 2")
-check(read("scripts/build_tts_table.py"):find("cztStartGame", 1, true), "the build patches the cannon to call cztStartGame")
+check(read("scripts/tabletop/build_tts_table.py"):find("cztStartGame", 1, true), "the build patches the cannon to call cztStartGame")
 
 -- A new turn replaces a pending clip; the old load callback must not play it.
 local pending, plays = {}, 0

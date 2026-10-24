@@ -146,7 +146,7 @@ Defined by **Scryfall's `is:gamechanger`**. That query is the authoritative list
 not any article or blog post. Check it, never recall it:
 
 ```bash
-./scripts/find_cards.py --gc-only
+./scripts/common/find_cards.py --gc-only
 ```
 
 **The commander counts.** A Bracket 3 deck led by Grand Arbiter Augustin IV has

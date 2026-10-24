@@ -10,13 +10,13 @@ dependencies beyond the standard library:
 
 | | |
 |---|---|
-| [`new_deck.py`](scripts/new_deck.py) | seed a decklist from EDHREC's aggregate for a commander |
-| [`find_cards.py`](scripts/find_cards.py) | search Scryfall, or look cards up by name |
-| [`find_inspiration.py`](scripts/find_inspiration.py) | what other pilots of a commander run that yours doesn't |
-| [`validate_deck.py`](scripts/validate_deck.py) | 100 cards, real names, colour identity, bracket legality, singleton, and that Tabletop Simulator's importer loads it |
-| [`ttsimport.py`](scripts/ttsimport.py) | ask the Tabletop Simulator deck importer what a pasted list loads as |
+| [`new_deck.py`](scripts/common/new_deck.py) | seed a decklist from EDHREC's aggregate for a commander |
+| [`find_cards.py`](scripts/common/find_cards.py) | search Scryfall, or look cards up by name |
+| [`find_inspiration.py`](scripts/common/find_inspiration.py) | what other pilots of a commander run that yours doesn't |
+| [`validate_deck.py`](scripts/common/validate_deck.py) | 100 cards, real names, colour identity, bracket legality, singleton, and that Tabletop Simulator's importer loads it |
+| [`ttsimport.py`](scripts/tabletop/ttsimport.py) | ask the Tabletop Simulator deck importer what a pasted list loads as |
 
-For image assets, [`chatgpt-browser-image-generator.py`](scripts/chatgpt-browser-image-generator.py)
+For image assets, [`chatgpt-browser-image-generator.py`](scripts/discord/chatgpt-browser-image-generator.py)
 generates and downloads an original PNG through a saved ChatGPT browser session.
 It requires the separately installed `agent-browser` CLI; see the
 [browser setup and usage guide](docs/development/agent-browser-guide.md).
@@ -36,9 +36,9 @@ decks. Two people can each have a deck for the same commander; the builder only
 checks for duplicates within the asker's own folder.
 
 ```bash
-./scripts/new_deck.py "Queen Marchesa" -o public/zzwang/Bracket3/Marchesa-Pillowfort.txt
-./scripts/validate_deck.py public/zzwang/Bracket3/Marchesa-Pillowfort.txt
-./scripts/build_site.py                                      # refresh the catalog
+./scripts/common/new_deck.py "Queen Marchesa" -o public/zzwang/Bracket3/Marchesa-Pillowfort.txt
+./scripts/common/validate_deck.py public/zzwang/Bracket3/Marchesa-Pillowfort.txt
+./scripts/common/build_site.py                                      # refresh the catalog
 ```
 
 A deck is not real until `validate_deck.py` passes it: exactly 100 cards, every
@@ -242,7 +242,7 @@ One `.txt` per deck, importable directly by a client that reads decklists.
 
 All in [scripts/](scripts/). No dependencies beyond Python 3 stdlib.
 
-### Finding cards — `scripts/find_cards.py`
+### Finding cards — `scripts/common/find_cards.py`
 
 Wraps Scryfall's search API with this repo's rules baked in: `legal:commander` is
 always applied, results are **ordered by EDHREC rank** (the best proxy for "most
@@ -252,16 +252,16 @@ never shown.
 
 ```bash
 # strong cheap enchantments Zur can tutor -- colour identity derived from the commander
-./scripts/find_cards.py "t:enchantment mv<=3" --commander "Zur the Enchanter"
+./scripts/common/find_cards.py "t:enchantment mv<=3" --commander "Zur the Enchanter"
 
 # power-creep check: genuinely new Mardu attack-triggers, no Game Changers
-./scripts/find_cards.py "o:'whenever' o:'attacks'" --ci brw --since 2025 --no-gc
+./scripts/common/find_cards.py "o:'whenever' o:'attacks'" --ci brw --since 2025 --no-gc
 
 # the current Game Changers list
-./scripts/find_cards.py --gc-only
+./scripts/common/find_cards.py --gc-only
 
 # look cards up BY NAME rather than searching — bulk, cache-first
-./scripts/find_cards.py --names "Combat Celebrant" "Winota, Joiner of Forces" --text
+./scripts/common/find_cards.py --names "Combat Celebrant" "Winota, Joiner of Forces" --text
 ```
 
 **`--names` is a different operation from search** and worth knowing about: exact
@@ -311,16 +311,16 @@ Useful query syntax (full reference: <https://scryfall.com/docs/syntax>):
 Goldspan Dragon both slipped through that way. `--since` therefore adds
 `not:reprint` automatically. Use `--include-reprints` to opt out.
 
-### Seeding a deck — `scripts/new_deck.py`
+### Seeding a deck — `scripts/common/new_deck.py`
 
 Fetches EDHREC's aggregate deck for a commander so you start from the consensus
 shell instead of typing 99 lines from memory.
 
 ```bash
-./scripts/new_deck.py "Queen Marchesa"                       # preview to stdout
-./scripts/new_deck.py "Queen Marchesa" -o public/zzwang/Bracket3/Marchesa-Pillowfort.txt
-./scripts/new_deck.py "Queen Marchesa" --lands 38            # force a land count
-./scripts/new_deck.py "Queen Marchesa" --flavour average     # the popular build
+./scripts/common/new_deck.py "Queen Marchesa"                       # preview to stdout
+./scripts/common/new_deck.py "Queen Marchesa" -o public/zzwang/Bracket3/Marchesa-Pillowfort.txt
+./scripts/common/new_deck.py "Queen Marchesa" --lands 38            # force a land count
+./scripts/common/new_deck.py "Queen Marchesa" --flavour average     # the popular build
 ```
 
 **It defaults to EDHREC's `expensive` cut, on purpose.** The plain average is
@@ -341,16 +341,16 @@ game chg  : 5 — Demonic Tutor, Enlightened Tutor, Farewell, Smothering Tithe, 
             Bracket 3 allows 3. Cut 2.
 ```
 
-### Inspiration and gaps — `scripts/find_inspiration.py`
+### Inspiration and gaps — `scripts/common/find_inspiration.py`
 
 Diffs a decklist against what other pilots of that commander run.
 
 ```bash
-./scripts/find_inspiration.py public/zzwang/Bracket3/Sythis-Enchantress.txt
-./scripts/find_inspiration.py public/zzwang/Bracket3/Zur-Voltron.txt --new     # EDHREC's New Cards section
-./scripts/find_inspiration.py public/zzwang/Bracket3/Zur-Voltron.txt --trending # rising adoption, any age
-./scripts/find_inspiration.py public/zzwang/Bracket3/GrandArbiter-Prison.txt --mine
-./scripts/find_inspiration.py --commander "Queen Marchesa"              # no deck yet
+./scripts/common/find_inspiration.py public/zzwang/Bracket3/Sythis-Enchantress.txt
+./scripts/common/find_inspiration.py public/zzwang/Bracket3/Zur-Voltron.txt --new     # EDHREC's New Cards section
+./scripts/common/find_inspiration.py public/zzwang/Bracket3/Zur-Voltron.txt --trending # rising adoption, any age
+./scripts/common/find_inspiration.py public/zzwang/Bracket3/GrandArbiter-Prison.txt --mine
+./scripts/common/find_inspiration.py --commander "Queen Marchesa"              # no deck yet
 ```
 
 Two numbers per card, and **they are not the same thing**:
@@ -383,16 +383,16 @@ the deck has been tuned away from average. `GrandArbiter-Prison` sits at 21.
 Game Changers are flagged `[GC]` so the bracket cap is visible before you add
 anything.
 
-### What's popular right now — `scripts/find_inspiration.py --top`
+### What's popular right now — `scripts/common/find_inspiration.py --top`
 
 Every other EDHREC call starts from a commander you already have in mind. This one
 does not — it ranks the most-built commanders by deck count, which is the question
 to ask when picking what to build next.
 
 ```bash
-./scripts/find_inspiration.py --top            # past week (default)
-./scripts/find_inspiration.py --top month
-./scripts/find_inspiration.py --top year -n 20 # EDHREC calls this "Past 2 Years"
+./scripts/common/find_inspiration.py --top            # past week (default)
+./scripts/common/find_inspiration.py --top month
+./scripts/common/find_inspiration.py --top year -n 20 # EDHREC calls this "Past 2 Years"
 ```
 
 ```
@@ -468,7 +468,7 @@ front page. Only nonland cards with two or more artworks are pinned; lands are
 left alone. When a deck is retuned, keep the pins on the lines that stay and
 never carry a pin over to a different card.
 
-### Validating — `scripts/validate_deck.py`
+### Validating — `scripts/common/validate_deck.py`
 
 **Required before calling any deck done.** Checks six rules, then two things
 about how the list loads in Tabletop Simulator:
@@ -486,7 +486,7 @@ about how the list loads in Tabletop Simulator:
    in Tabletop Simulator, it silently loads other art, so it is an error here.
 8. **The Tabletop Simulator importer loads the whole deck.** Once 1–7 pass, the
    list is checked against the importer the table uses (rikrassen's, via
-   [`ttsimport.py`](scripts/ttsimport.py)): no "failed to find card", all 100
+   [`ttsimport.py`](scripts/tabletop/ttsimport.py)): no "failed to find card", all 100
    cards returned, and each pin loaded as the printing asked for. The line
    `TTS import 100/100 cards, 52/52 pinned printings load` reports it.
 
@@ -508,9 +508,9 @@ readable list is in
 [commander-brackets-and-rules.md](commander-brackets-and-rules.md).
 
 ```bash
-./scripts/validate_deck.py                  # every deck in public/
-./scripts/validate_deck.py public/ratdos    # one owner's decks
-./scripts/validate_deck.py --max-gc 0 ...   # override the cap
+./scripts/common/validate_deck.py                  # every deck in public/
+./scripts/common/validate_deck.py public/ratdos    # one owner's decks
+./scripts/common/validate_deck.py --max-gc 0 ...   # override the cap
 ```
 
 Real bugs this caught: `Sunbaked Canyon` is R/W and was illegal in a Jund deck;
@@ -521,7 +521,7 @@ The legality check was added after noticing the validator had no opinion at all
 about banned cards — a deck with `Mana Crypt` or `Dockside Extortionist` passed
 every check and was simply illegal.
 
-### Publishing the catalog — `scripts/build_site.py`
+### Publishing the catalog — `scripts/common/build_site.py`
 
 Renders every deck into a browsable site at
 **<https://hellozhewang.github.io/mtg/>** — a menu of decks, then per-deck pages
@@ -566,15 +566,15 @@ finished list hits. [deck-tiers.md](deck-tiers.md) has the rubric, the anchor
 decks for each tier and how to place a new deck.
 
 ```bash
-./scripts/build_site.py              # rebuild docs/ from public/ -- PUBLISHED
-./scripts/build_site.py --check      # verify TTS images and docs/, write nothing
-./scripts/build_site.py --out /tmp/x # build elsewhere to look before publishing
+./scripts/common/build_site.py              # rebuild docs/ from public/ -- PUBLISHED
+./scripts/common/build_site.py --check      # verify TTS images and docs/, write nothing
+./scripts/common/build_site.py --out /tmp/x # build elsewhere to look before publishing
 ```
 
 To see a build before it is pushed, or from another device on your network, run:
 
 ```bash
-./scripts/start_private_server.py
+./scripts/common/start_private_server.py
 ```
 
 It serves the generated `docs/` catalog at **http://localhost:5588/**, with one
@@ -602,7 +602,7 @@ changed, so a build timestamp would mean an empty commit on every Discord messag
 Authorship is the folder. A deck in `public/ratdos/` is ratdos's, because the
 builder only ever writes in the folder of whoever asked, and nothing else records
 it. Until 2026-10-18 the bot instead kept a database of who requested each deck
-(`bot/.deck-metadata.db`, now retired and never read); the move into owner
+(`scripts/discord/bot/.deck-metadata.db`, now retired and never read); the move into owner
 folders used it to put each deck where it belonged.
 
 Card images are split by size, because a public git repo keeps every version of a
@@ -616,7 +616,7 @@ binary forever:
 Either way the bytes are cached in SQLite, so deleting `docs/` and rebuilding from
 scratch downloads nothing.
 
-### Caching — `scripts/cache.py`
+### Caching — `scripts/common/cache.py`
 
 A SQLite cache sits under every tool. Lookups hit the DB first; only missing or
 stale (>30 day) names go to Scryfall, batched 75 at a time. Validating all ten
@@ -636,11 +636,11 @@ automatically on every tool call — nothing needs invoking. This script only in
 the result and forces a refetch:
 
 ```bash
-./scripts/cache.py --stats             # both caches: what, how fresh, how big
-./scripts/cache.py --warm public/Bracket3   # pre-fetch a folder's cards
+./scripts/common/cache.py --stats             # both caches: what, how fresh, how big
+./scripts/common/cache.py --warm public/Bracket3   # pre-fetch a folder's cards
 # to inspect a card, use find_cards.py --names — that's a card question, not a cache one
-./scripts/cache.py --clear pages       # drop EDHREC pages, KEEP the cards
-./scripts/cache.py --clear             # wipe everything
+./scripts/common/cache.py --clear pages       # drop EDHREC pages, KEEP the cards
+./scripts/common/cache.py --clear             # wipe everything
 ```
 
 `--clear` takes a target because the two caches have different lifetimes and very
@@ -714,7 +714,7 @@ sequence without launching a separate reviewing agent (see `AGENTS.md` below).
    (a land entering, an attack, a controller's own upkeep).
 
 6. **Validate. This is the gate.**
-   `./scripts/validate_deck.py <path>` — 100 cards, every name
+   `./scripts/common/validate_deck.py <path>` — 100 cards, every name
    resolves, colour identity, the GC cap, singleton. A deck that hasn't passed
    this is not done.
 
@@ -892,7 +892,7 @@ sleeves are the pictures in [tts/sleeves/](tts/sleeves/); the
 there, running the catalog build and pushing, or ask **sleever** in Discord
 (`sleever make me sailor moon sleeves`, with pictures attached or links pasted for
 reference). sleever paints it on the builder's harness, then
-[bot/sleever.py](bot/sleever.py) crops it to spec, saves it, attaches it to the reply and
+[scripts/discord/bot/sleever.py](scripts/discord/bot/sleever.py) crops it to spec, saves it, attaches it to the reply and
 autopushes it.
 
 New and retuned decks reach the table without a new upload: it reads the deck list
@@ -901,7 +901,7 @@ the Workshop item updated: load the save, then **Modding → Workshop Upload** t
 3822623414.
 
 The data comes from the catalog build. `build_site.py` writes `docs/tts/`
-([ttsdecks.py](scripts/ttsdecks.py)):
+([ttsdecks.py](scripts/tabletop/ttsdecks.py)):
 
 | | |
 |---|---|
@@ -934,14 +934,14 @@ published it, with no change to the table.
 The table itself is built from the Workshop file, which is someone else's work and
 is never committed; only what we add is: [tts/cactuar.lua](tts/cactuar.lua),
 [tts/cactuar.xml](tts/cactuar.xml), [tts/cactuar_tile.lua](tts/cactuar_tile.lua) and
-[build_tts_table.py](scripts/build_tts_table.py).
+[build_tts_table.py](scripts/tabletop/build_tts_table.py).
 
 **Building a numbered table version** is one command, after the change is committed and pushed:
 
 ```bash
-python3 scripts/release_tts.py --notes "what changed" --notes "and what else"
-python3 scripts/release_tts.py --current      # the version we're at
-python3 scripts/release_tts.py --dry-run      # build into .cache/release/ only
+python3 scripts/tabletop/release_tts.py --notes "what changed" --notes "and what else"
+python3 scripts/tabletop/release_tts.py --current      # the version we're at
+python3 scripts/tabletop/release_tts.py --dry-run      # build into .cache/release/ only
 ```
 
 It builds the next `MTG 6 player Cactuar Ver_vN` from HEAD, not the working tree. It
@@ -960,9 +960,9 @@ Only use Workshop upload options when the owner explicitly selects a release.
 
 `--workshop` also updates the Steam Workshop item through Steam's legacy
 RemoteStorage API. A TTS Workshop item is one BSON file, `WorkshopUpload`
-([scripts/tts_bson.py](scripts/tts_bson.py)), plus its preview. SteamCMD cannot update
+([scripts/tabletop/tts_bson.py](scripts/tabletop/tts_bson.py)), plus its preview. SteamCMD cannot update
 this kind of item ("no workshop depot found"). Instead, the release script stages the
-files, then launches [scripts/tts_workshop.ps1](scripts/tts_workshop.ps1) in the
+files, then launches [scripts/tabletop/tts_workshop.ps1](scripts/tabletop/tts_workshop.ps1) in the
 owner's logged-in Windows session using a temporary task with ordinary user privileges.
 It uses TTS's `steam_api64.dll` and the running Steam client, keeps the existing
 PowerShell execution policy, waits for Steam's result, and removes the task afterward.
@@ -974,8 +974,8 @@ local deployment config; optional `steam_dll` and `workshop_dir` override DLL di
 and the staging folder. No Steam password or SteamCMD login is needed.
 
 ```bash
-python3 scripts/release_tts.py --workshop --notes "what changed"
-python3 scripts/release_tts.py --workshop-only  # upload the current delivered save, no new version
+python3 scripts/tabletop/release_tts.py --workshop --notes "what changed"
+python3 scripts/tabletop/release_tts.py --workshop-only  # upload the current delivered save, no new version
 ```
 
 `--workshop-only` reads the current version's save and thumbnail from TTS Saves,
@@ -987,8 +987,8 @@ an outstanding Workshop agreement. Load the item in TTS to confirm it end to end
 The lower-level build, for experiments:
 
 ```bash
-./scripts/build_tts_table.py 2293586471.json -o "MTG 6 player Cactuar Ver.json"
-./scripts/build_tts_table.py 2293586471.json -o test.json --base-url http://192.168.0.100:5588/tts/
+./scripts/tabletop/build_tts_table.py 2293586471.json -o "MTG 6 player Cactuar Ver.json"
+./scripts/tabletop/build_tts_table.py 2293586471.json -o test.json --base-url http://192.168.0.100:5588/tts/
 lua tests/test_cactuar.lua     # plays the browser against stand-ins for TTS
 ```
 
@@ -1000,7 +1000,7 @@ times. The command works while a build is running and does not start a model tur
 From the terminal:
 
 ```bash
-python3 bot/bot.py --usage
+python3 scripts/discord/bot/bot.py --usage
 ```
 
 Every builder chat reply includes a usage footer, including busy/error replies.
@@ -1025,8 +1025,8 @@ lookup fails, the reply says usage is unavailable rather than guessing a number.
 ## The builder's harness
 
 The Discord builder's model runs inside an agent CLI, its **harness**
-([bot/harness.py](bot/harness.py)), chosen by environment variables the Discord app
-passes to `bot/bot.py`:
+([scripts/discord/bot/harness.py](scripts/discord/bot/harness.py)), chosen by environment variables the Discord app
+passes to `scripts/discord/bot/bot.py`:
 
 | variable | default | meaning |
 |---|---|---|
@@ -1043,19 +1043,19 @@ conversation itself; the bot stores only its id.
 - **codex** confines itself: `-s workspace-write -C public/<user>`, plus the card cache.
 - **agy** runs in turbo (`--dangerously-skip-permissions`: no prompts, which a headless
   turn could not answer; a denied prompt would end the turn with no reply) inside a
-  macOS sandbox profile from [bot/sandbox.py](bot/sandbox.py) that the kernel enforces
+  macOS sandbox profile from [scripts/discord/bot/sandbox.py](scripts/discord/bot/sandbox.py) that the kernel enforces
   on agy and everything it starts. Writes: only `public/<user>/`, the card cache,
-  agy's own home (`bot/.harness/agy/`) and temp space. Reads: anything but credential
+  agy's own home (`scripts/discord/bot/.harness/agy/`) and temp space. Reads: anything but credential
   stores (`~/.ssh`, cloud and GitHub tokens, the other agent CLIs' sign-ins). Exec:
   `claude`, `codex`, `gh` and `npx` are refused. Network: open, so it can search
   Scryfall and the web. A blocked action fails as "Operation not permitted", which
   the model works around, and the reply still arrives. `tests/test_harness.py` checks
   each of these by trying to escape the real sandbox.
-- agy has its own home, `bot/.harness/agy/` (gitignored), so the bot's settings and
+- agy has its own home, `scripts/discord/bot/.harness/agy/` (gitignored), so the bot's settings and
   conversations never mix with the owner's own Antigravity. It copies the owner's
   Antigravity sign-in there when that is newer.
 
-To add a harness, subclass `Harness` in `bot/harness.py` (`run`, and `usage` if it
+To add a harness, subclass `Harness` in `scripts/discord/bot/harness.py` (`run`, and `usage` if it
 reports an allowance) and register it in `HARNESSES`. Set `images = True` if its turns
 can make pictures; sleever needs that, and on a harness without it replies that it
 can't make pictures right now, without running a turn.
@@ -1064,29 +1064,56 @@ can't make pictures right now, without running a turn.
 
 ```
 mtg/
-├── scripts/                 toolchain — READ + EXECUTE only from the bot's view
-│   ├── cardlib/               card and deck data access
-│   │   ├── api.py               Scryfall HTTP only
-│   │   ├── edhrec.py            EDHREC HTTP only (sibling of api.py)
-│   │   ├── images.py            card image CDN, HTTP only (another sibling)
-│   │   ├── db.py                SQLite storage (CardStore + PageStore + ImageStore)
-│   │   └── query.py             orchestration (CardQuery + EdhrecQuery + ImageQuery)
-│   ├── workspace.py           owns all path policy (deck root, cache, metadata)
-│   ├── deckfile.py            .txt decklist format (incl. pinned printings), read and write
-│   ├── frontend.py            {{TOKEN}} + <template data-part> loader
-│   ├── toollog.py             tool-invocation log: API + CLI over SQLite
-│   ├── find_cards.py          Scryfall search with bracket rules applied
-│   ├── new_deck.py            seed a decklist from EDHREC's aggregate
-│   ├── find_inspiration.py    what other pilots run that yours doesn't
-│   ├── validate_deck.py       the required checks, including the TTS import
-│   ├── ttsimport.py           client for the Tabletop Simulator deck importer
-│   ├── ttsimages.py           checks exported image URLs before catalog publication
-│   ├── deckplacement.py       saves the builder's Categories:/Tier: lines to the maps
-│   ├── build_site.py          renders frontend/ + public/ into docs/
-│   ├── cache.py               cache admin CLI
-│   ├── build_agents.py        HOLDS the agent's instructions (AGENTS_MD) and
-│   │                          deploys them to public/<user>/AGENTS.md as 0444
-│   └── ask_codex.py           one-off second opinion
+├── scripts/                 toolchain — READ + EXECUTE only from the bot's view.
+│   │                        Split by area; module names stay flat (`import workspace`
+│   │                        works anywhere: each entry point puts all four folders on
+│   │                        sys.path, and tests/_paths.py does the same for tests)
+│   ├── common/                deck tools and the catalog site, used by everything
+│   │   ├── cardlib/             card and deck data access
+│   │   │   ├── api.py             Scryfall HTTP only
+│   │   │   ├── edhrec.py          EDHREC HTTP only (sibling of api.py)
+│   │   │   ├── images.py          card image CDN, HTTP only (another sibling)
+│   │   │   ├── db.py              SQLite storage (CardStore + PageStore + ImageStore)
+│   │   │   └── query.py           orchestration (CardQuery + EdhrecQuery + ImageQuery)
+│   │   ├── workspace.py         owns all path policy (deck root, cache, metadata)
+│   │   ├── deckfile.py          .txt decklist format (incl. pinned printings), read and write
+│   │   ├── deckguide.py         deck guide format
+│   │   ├── deckthemes.py / decktiers.py   catalog categories and power tiers
+│   │   ├── deckplacement.py     saves the builder's Categories:/Tier: lines to the maps
+│   │   ├── toollog.py           tool-invocation log: API + CLI over SQLite
+│   │   ├── find_cards.py        Scryfall search with bracket rules applied
+│   │   ├── new_deck.py          seed a decklist from EDHREC's aggregate
+│   │   ├── find_inspiration.py  what other pilots run that yours doesn't
+│   │   ├── validate_deck.py     the required checks, including the TTS import
+│   │   ├── cache.py             cache admin CLI
+│   │   ├── ask_codex.py         one-off second opinion
+│   │   ├── frontend.py          {{TOKEN}} + <template data-part> loader
+│   │   ├── build_site.py        renders frontend/ + public/ into docs/
+│   │   └── start_private_server.py   the LAN catalog server (launchd)
+│   ├── tabletop/              the Cactuar Tabletop Simulator table
+│   │   ├── build_tts_table.py   builds the table save from the base Workshop table
+│   │   ├── release_tts.py       builds, delivers and (on request) uploads a version
+│   │   ├── tts_bson.py / tts_workshop.ps1   the Workshop upload
+│   │   ├── ttsdecks.py          the table's deck catalog and spawn files in docs/tts/
+│   │   ├── ttsimport.py         client for the Tabletop Simulator deck importer
+│   │   ├── ttsimages.py         checks exported image URLs before catalog publication
+│   │   ├── build_tts_music_metadata.py   card colours for battlefield music
+│   │   ├── make_*announcer.py   the slow-turn announcer clips
+│   │   └── profile_tts_commander_images.*   commander picture profiling
+│   └── discord/               everything the Discord bot runs
+│       ├── build_agents.py      HOLDS the agent's instructions (AGENTS_MD) and
+│       │                        deploys them to public/<user>/AGENTS.md as 0444
+│       ├── chatgpt-browser-image-generator.py   sleever's fallback image maker
+│       └── bot/                 the harness — OUTSIDE the workspace it drives
+│           ├── bot.py             persistent builder session the Discord app calls
+│           ├── harness.py         the agent CLI it runs on: agy (Gemini) or codex
+│           ├── sleever.py         sleever: sleeves from Discord, cropped and published
+│           ├── sandbox.py         the macOS sandbox profile around agy
+│           ├── commands.py        deterministic !decks / !deck / !help
+│           ├── usage.py           read-only allowance lookup (no model turn)
+│           ├── .harness/agy/      agy's own home: settings, conversations, sign-in copy
+│           ├── .sleever/<user>/   sleever's per-user workspace (+ owners.json); not in git
+│           └── .sessions/         one pinned session id per Discord channel and user
 ├── frontend/                the catalog's source — markup, CSS and JS
 │   ├── layout.html            page shell and the deck menu on every page
 │   ├── index.html             the catalog
@@ -1098,22 +1125,12 @@ mtg/
 │   ├── <owner>/<Bracket>/<Deck>.html
 │   ├── img/*.webp             committed card thumbnails
 │   └── mana/*.svg             Scryfall's official mana symbols
-├── bot/                     the harness — OUTSIDE the workspace it drives
-│   ├── bot.py                 persistent builder session the Discord app calls
-│   ├── harness.py             the agent CLI it runs on: agy (Gemini) or codex
-│   ├── sleever.py             sleever: sleeves from Discord, cropped and published
-│   ├── sandbox.py             the macOS sandbox profile around agy
-│   ├── commands.py            deterministic !decks / !deck / !help
-│   ├── usage.py               read-only Codex allowance lookup (no model turn)
-│   ├── .harness/agy/          agy's own home: settings, conversations, sign-in copy
-│   ├── .sleever/<user>/       sleever's per-user workspace (+ owners.json); not in git
-│   └── .sessions/             one pinned session id per Discord channel and user
 ├── public/                  every deck, one folder per owner
 │   └── <user>/                that user's decks; the builder's only writable tree
 │       ├── Bracket3/            while it works for them
 │       ├── Bracket4/ Bracket5/   only where a deck is uncapped
 │       └── AGENTS.md            GENERATED, 0444 — edit AGENTS_MD in
-│                                scripts/build_agents.py, never this file
+│                                scripts/discord/build_agents.py, never this file
 ├── frontend/redirects.json  old deck URLs -> where each deck lives now
 ├── logs/<utc-date>.log      request + debug log, outside the writable tree
 ├── .cache/cards.db          generated; writable by the builder
@@ -1124,7 +1141,7 @@ mtg/
 Folder name states the bracket. File name is `Commander-Theme` — see
 [Deck file naming](#deck-file-naming).
 
-**`scripts/` and `bot/` both sit deliberately outside `public/`.** The Discord-driven
+**`scripts/`, including the bot in `scripts/discord/bot/`, sits deliberately outside `public/`.** The Discord-driven
 builder session is rooted at `public/<user>/`, the asker's own folder, confined by
 its harness's sandbox (below), so it can edit that user's decks but not anyone else's, and
 cannot modify its own toolchain, its own harness, its own session state or its own
@@ -1133,16 +1150,16 @@ nothing else — the workspace boundary is only worth anything if the code that
 enforces it lives on the other side of it.
 
 That is also why the agent's instructions are a **string inside
-`scripts/build_agents.py`** rather than a markdown file of their own. There is one
+`scripts/discord/build_agents.py`** rather than a markdown file of their own. There is one
 copy under version control, so a canonical file and a deployed copy cannot drift
 apart, and the source sits in a directory the sandbox cannot write. Each
 `public/<user>/AGENTS.md` is generated output — editing it is pointless, since it is overwritten before every
 message.
 
 Because both trees live outside the workspace they operate on, neither may infer
-paths from `__file__`. `bot/bot.py` is one directory above the repo root's `public/`,
+paths from `__file__`. `scripts/discord/bot/bot.py` is one directory above the repo root's `public/`,
 so `Path(__file__).parent.parent` would resolve the "workspace" to the repo root and
-silently grant write access to everything. `scripts/workspace.py` owns that policy
+silently grant write access to everything. `scripts/common/workspace.py` owns that policy
 and both import it; `MTG_DECKS` overrides the deck root:
 
 ```bash

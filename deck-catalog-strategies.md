@@ -41,7 +41,7 @@ primary.
 | `finalfantasy` | Final Fantasy | A secondary tag on every Final Fantasy deck. Published across the catalog, filters, and Tabletop Simulator (owner instruction, 2026-10-22). |
 | `goblins` | Goblins | A secondary tag on every Goblin deck. Only the owner's local index mirrors those decks into a Goblins section; the published catalog ignores the tag. Never a primary. |
 
-[`scripts/deckthemes.py`](scripts/deckthemes.py) defines the IDs, labels, order
+[`scripts/common/deckthemes.py`](scripts/common/deckthemes.py) defines the IDs, labels, order
 and filename fallbacks. Use the IDs in JSON, not labels or synonyms.
 
 ## Final Fantasy: the published category
@@ -129,7 +129,7 @@ plan, do not make a Goblin deck.
 The tag is for the owner alone (owner instruction, 2026-10-18):
 
 - **Local index** (`docs/index.local.html`, gitignored; the home page of
-  `./scripts/start_private_server.py`): each Goblin deck appears in its
+  `./scripts/common/start_private_server.py`): each Goblin deck appears in its
   canonical category AND in a Goblins section (Goblins → bracket → decks). The
   Goblins copy is a mirror: it is not moved between views and does not add to
   the deck count. The category is marked `local` everywhere: a badge on its
@@ -155,7 +155,7 @@ a reviewed explicit entry.
 - **Delete:** remove the entry when no remaining deck in that scope uses it.
 
 Without an explicit entry, the renderer matches the word after the last hyphen
-against `HINTS` in `scripts/deckthemes.py` (for example `-Prison` gives
+against `HINTS` in `scripts/common/deckthemes.py` (for example `-Prison` gives
 `control` and `-Reanimator` gives `graveyard`); an unknown word falls back to
 `other`, which is a reason to add a reviewed entry, not a placement. A statement in a `.guide` does not update the map; the one chat line that does is the Discord builder's `Categories:` line (below).
 Unknown IDs, a non-canonical primary, empty arrays and repeated IDs fail the build.
@@ -169,8 +169,8 @@ filename theme word for a new deck, and end the handoff with the exact stem and
 ordered IDs from the fixed set on a line of their own, for example
 `Categories: Krenko-Combo — combo, gowide, goblins`.
 
-`bot/bot.py` saves that line to `frontend/deck-themes.json` after the turn
-(`scripts/deckplacement.py`), under `<user>/<stem>` for the user the turn worked
+`scripts/discord/bot/bot.py` saves that line to `frontend/deck-themes.json` after the turn
+(`scripts/common/deckplacement.py`), under `<user>/<stem>` for the user the turn worked
 for, but only for a deck whose `.txt` or `.guide` the turn wrote, and only when the IDs pass the same checks as the build. Anything
 else is logged as `PLACEMENT … ignored` in the bot log and left for a
 maintainer. Never invent a category outside the fixed set.
@@ -182,8 +182,8 @@ For a full-workspace build or tune:
 1. Validate the deck and update its `.guide`.
 2. Save the reviewed assignment in `frontend/deck-themes.json` and the deck's
    tier in `frontend/deck-tiers.json`, both under `<owner>/<Deck>`.
-3. Run `python3 scripts/build_site.py`, then
-   `python3 scripts/build_site.py --check` from the repository root.
+3. Run `python3 scripts/common/build_site.py`, then
+   `python3 scripts/common/build_site.py --check` from the repository root.
 4. Confirm the deck appears once under its bracket in List, under its primary
    category and bracket in Categories (plus Goblins on the local index, for a
    Goblin deck), and under its tier in Tiers, and that the filter finds it by

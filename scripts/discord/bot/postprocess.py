@@ -37,8 +37,10 @@ import re
 import sys
 from pathlib import Path
 
-_REPO = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(_REPO / "scripts"))
+_REPO = Path(__file__).resolve().parents[3]
+_SCRIPTS = next(p for p in Path(__file__).resolve().parents if p.name == "scripts")
+sys.path[:0] = [d for d in (str(_SCRIPTS / s) for s in ("common", "tabletop", "discord", "discord/bot"))
+                if d not in sys.path]          # scripts/ is split by area; module names stay flat
 
 import workspace
 

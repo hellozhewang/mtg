@@ -1,4 +1,4 @@
-"""The builder's harnesses (bot/harness.py) and the OS sandbox around them (bot/sandbox.py).
+"""The builder's harnesses (scripts/discord/bot/harness.py) and the OS sandbox around them (scripts/discord/bot/sandbox.py).
 
 The sandbox tests run the real macOS `sandbox-exec`: the profile is the only thing
 keeping a turbo-mode agent inside the asker's deck folder, so it is tested by trying
@@ -17,7 +17,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "bot"))
+import _paths  # noqa: F401  (scripts/<area>/ on sys.path)
 
 import harness
 import sandbox

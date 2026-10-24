@@ -1,4 +1,4 @@
-"""scripts/release_tts.py: version numbers and patch notes (the PC side is not run here)."""
+"""scripts/tabletop/release_tts.py: version numbers and patch notes (the PC side is not run here)."""
 from __future__ import annotations
 
 import sys
@@ -10,7 +10,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "scripts"))
+import _paths  # noqa: F401  (scripts/<area>/ on sys.path)
 
 import release_tts
 
@@ -28,7 +28,7 @@ class ChangelogTests(unittest.TestCase):
         self.assertEqual(release_tts.current_version(out), 29)
 
     def test_the_pc_details_are_not_in_the_repo(self):
-        text = (ROOT / "scripts" / "release_tts.py").read_text()
+        text = (ROOT / "scripts" / "tabletop" / "release_tts.py").read_text()
         self.assertNotRegex(text, r"\d+\.\d+\.\d+\.\d+")
         self.assertNotIn("cloak", text)
 
@@ -76,8 +76,8 @@ class WorkshopTests(unittest.TestCase):
             (folder / "save.json").write_text('{"SaveName":"v32"}')
             (folder / "thumb.png").write_bytes(b"preview")
             with patch.object(release_tts, "REPO", folder):
-                (folder / "scripts").mkdir()
-                (folder / "scripts/tts_workshop.ps1").write_text("# stub")
+                (folder / "scripts" / "tabletop").mkdir(parents=True)
+                (folder / "scripts/tabletop/tts_workshop.ps1").write_text("# stub")
                 with self.assertRaises(SystemExit):
                     release_tts.workshop_upload(pc, folder / "save.json", folder / "thumb.png", "123", "note")
         commands = [call.args[0] for call in pc.shell.call_args_list]

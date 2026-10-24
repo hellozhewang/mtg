@@ -11,7 +11,7 @@ import zlib
 
 SPEC = importlib.util.spec_from_file_location(
     "chatgpt_image_generator",
-    Path(__file__).resolve().parents[1] / "scripts/chatgpt-browser-image-generator.py",
+    Path(__file__).resolve().parents[1] / "scripts/discord/chatgpt-browser-image-generator.py",
 )
 generator = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(generator)

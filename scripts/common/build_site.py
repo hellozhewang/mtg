@@ -65,7 +65,9 @@ import sys
 from pathlib import Path
 from urllib.parse import urlsplit
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+_SCRIPTS = next(p for p in Path(__file__).resolve().parents if p.name == "scripts")
+sys.path[:0] = [d for d in (str(_SCRIPTS / s) for s in ("common", "tabletop", "discord", "discord/bot"))
+                if d not in sys.path]          # scripts/ is split by area; module names stay flat
 
 import deckfile
 import deckguide
@@ -879,7 +881,7 @@ def collect_symbols(mana: Mana, sym: SymbolQuery, out_dir: Path) -> dict[Path, b
 
 # Authored documentation is intentionally retained beside generated site output.
 # Read from the checkout even for --out builds; never preserve arbitrary orphans.
-DEVELOPMENT_DOCS = Path(__file__).resolve().parents[1] / "docs" / "development"
+DEVELOPMENT_DOCS = Path(__file__).resolve().parents[2] / "docs" / "development"
 
 
 def development_docs(out_dir: Path) -> dict[Path, str]:

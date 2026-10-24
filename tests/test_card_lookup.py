@@ -5,7 +5,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "scripts"))
+import _paths  # noqa: F401  (scripts/<area>/ on sys.path)
 
 from cardlib import CardQuery
 

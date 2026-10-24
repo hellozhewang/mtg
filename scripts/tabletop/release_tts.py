@@ -5,9 +5,9 @@ Every delivered/test build gets the next vN, never an unnumbered Preview name.
 The owner separately selects which version to publish to Steam; do not use any
 Workshop upload option without that explicit release instruction.
 
-    python3 scripts/release_tts.py --notes "Sleeves menu" --notes "Louder announcer"
-    python3 scripts/release_tts.py --dry-run          # build locally, deliver nothing
-    python3 scripts/release_tts.py --current          # print the version we're at
+    python3 scripts/tabletop/release_tts.py --notes "Sleeves menu" --notes "Louder announcer"
+    python3 scripts/tabletop/release_tts.py --dry-run          # build locally, deliver nothing
+    python3 scripts/tabletop/release_tts.py --current          # print the version we're at
 
 What it does, in order:
 
@@ -56,7 +56,7 @@ from datetime import date
 from io import BytesIO
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parent.parent
+REPO = Path(__file__).resolve().parents[2]
 CHANGELOG = REPO / "docs" / "development" / "tts-changelog.md"
 WIP = REPO / "tts" / "WIP.md"
 CONFIG = REPO / "tts" / "deploy.local.json"
@@ -138,7 +138,7 @@ def check_published(skip: bool) -> str:
             fail(f"couldn't fetch {url} ({type(exc).__name__}). Pages may still be publishing.")
         if hashlib.sha256(live).digest() != hashlib.sha256(blob).digest():
             fail(f"Pages doesn't serve HEAD's {name} yet. Wait a minute after the push and retry.")
-    dirty = git("status", "--porcelain", "--", "tts", "scripts/build_tts_table.py")
+    dirty = git("status", "--porcelain", "--", "tts", "scripts/tabletop/build_tts_table.py")
     if dirty:
         print("note: uncommitted changes under tts/ are NOT in this build:\n" + dirty)
     return commit
@@ -258,7 +258,7 @@ def workshop_upload(pc: PC, save: Path, thumb: Path, item: str, note: str) -> No
               "preview": folder_win + "\\preview.png", "note": note,
               "result": folder_win + "\\result.json"}
     for filename, blob in (("WorkshopUpload", payload), ("preview.png", thumb.read_bytes()),
-                           ("tts_workshop.ps1", (REPO / "scripts/tts_workshop.ps1").read_bytes()),
+                           ("tts_workshop.ps1", (REPO / "scripts/tabletop/tts_workshop.ps1").read_bytes()),
                            ("config.json", json.dumps(config, ensure_ascii=False).encode()),
                            ("task.xml", workshop_task_xml(status["sid"], folder_win).encode("utf-16"))):
         pc.write(f"{folder}/{filename}", blob)
@@ -326,7 +326,7 @@ def build(base: bytes, name: str, out_dir: Path) -> tuple[Path, Path]:
     base_file = out_dir / "base.json"
     base_file.write_bytes(base)
     save = out_dir / f"{name}.json"
-    run(sys.executable, str(src / "scripts" / "build_tts_table.py"), str(base_file),
+    run(sys.executable, str(src / "scripts" / "tabletop" / "build_tts_table.py"), str(base_file),
         "-o", str(save), "--name", name)
     lua = json.loads(save.read_text(encoding="utf-8"))["LuaScript"]
     if re.search(r'soundBase\s*=\s*"', lua):

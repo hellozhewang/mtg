@@ -354,7 +354,7 @@ Owner asks whether bringing commander pictures back will hurt performance again.
 **Yes on first registration; no clear extra cost switching already registered images
 in this run.** See [commander image measurements](../docs/development/tts-commander-image-performance.md) for the
 method, limits, per-window table and reproduction commands. Profiling helpers are
-`scripts/profile_tts_commander_images.py` and `.lua`, outside production table code.
+`scripts/tabletop/profile_tts_commander_images.py` and `.lua`, outside production table code.
 
 Three normal new-image registrations caused **437–531 ms** Lua callback gaps; three
 fresh-URL trials caused **435–509 ms**. An unchanged-asset negative control, with no
@@ -451,7 +451,7 @@ Saves now contains v60; v59 remains archived unchanged. Final WIP/changelog copi
 to Desktop. Initially delivered without Workshop upload.
 
 Owner then requested **"and release the version on Steam when you're done"**.
-Published this exact delivered **v60** using `scripts/release_tts.py --workshop-only`,
+Published this exact delivered **v60** using `scripts/tabletop/release_tts.py --workshop-only`,
 with no rebuild/version increment. Before upload, both PC save/thumbnail SHA-256
 values matched the immutable archive. Steam’s legacy API confirmed **EResult 1**,
 item **3822623414**, `ok=true`, no outstanding legal agreement at
@@ -486,7 +486,7 @@ message. Catalog pagination and incremental first-load decoding remain.
 Generated 164 files from **159 cache-hit commander names, zero cache misses**;
 average **559 bytes**, maximum **1,126 bytes**. All existing image and guide output
 is unchanged. The main index/JSONL gain only content-hashed pointers. Future site
-builds generate the same files centrally through `scripts/ttsdecks.py`.
+builds generate the same files centrally through `scripts/tabletop/ttsdecks.py`.
 
 **19 commander-text checks** cover on-demand fetch/cache, rules/stats/partner order,
 rich-text escaping, late responses, retry and closed/legacy cases. Exporter tests
@@ -537,7 +537,7 @@ this path. Evidence: `.cache/deck-list-live/v58-profile.json` and
 The publisher now emits **catalog.jsonl**, with one small metadata header followed
 by one complete deck metadata record per line, alongside unchanged **decks.json**
 for older builds. It reconstructs the same full catalog, including all fields;
-formatting is generated centrally by `scripts/ttsdecks.py`. JSONL separates catalog
+formatting is generated centrally by `scripts/tabletop/ttsdecks.py`. JSONL separates catalog
 records from the physical spawn files' .ndjson format/image-validation roles.
 
 New `tts/cactuar_catalog.lua` decodes at most **two records per frame**, yielding
@@ -881,7 +881,7 @@ Image nodes or commander-picture buttons. Sleeve tests use a real available
 catalog choice instead of the obsolete fixed cactuar.jpg fixture.
 
 Repository automation reset uncommitted work during implementation. Work continued
-in an isolated `codex/tts-v51` checkout to preserve unrelated bot/catalog updates.
+in an isolated `codex/tts-v51` checkout to preserve unrelated scripts/discord/bot/catalog updates.
 Delivered **MTG 6 player Cactuar Ver_v51** JSON/PNG from pushed source `c7f39892`.
 Pages passed exact sound/tile-byte verification. Delivered checksums match; read-back
 save name, Lua compilation, XML parsing, all six private text-only browser panels,
@@ -945,7 +945,7 @@ includes it. No runtime card downloads. It has **1,817 unambiguous creature name
 and **104 exact pictures** for conflicting token/face names, **55,478 bytes**.
 All **4,984 creature faces in existing published deck objects** resolve. The token
 ID cache format advances to retain colors (including separate DFC face colors).
-`scripts/build_tts_music_metadata.py` refreshes only this metadata without rewriting
+`scripts/tabletop/build_tts_music_metadata.py` refreshes only this metadata without rewriting
 catalog pages or unrelated tier/theme edits; normal site builds also regenerate it.
 
 New/custom card art absent from that snapshot can use explicit **White**, **Blue**,
@@ -1475,7 +1475,7 @@ results instead of leaving stale cards selectable; correcting the query recovers
 `tts/cactuar_regex.lua` is a bundled boolean Thompson NFA matcher. It does not evaluate
 user code or use backtracking. Pattern length, group depth, expansion and per-search
 operations are bounded; excessive work reports an error, never partial results.
-`scripts/build_tts_table.py` embeds it before Inspect. Search metadata participates
+`scripts/tabletop/build_tts_table.py` embeds it before Inspect. Search metadata participates
 in refresh detection, so description/type edits update matches without a card draw.
 
 Validation: **152 regex checks**, **115 Inspect checks**, and all **217 Python tests**
@@ -1762,14 +1762,14 @@ sort parameter, so this is a separate **Search A–Z** item on each deck's conte
   rather than showing the wrong whole sheet. This is a known preview limitation.
 
 Sources: `tts/cactuar_search.lua`, `tts/cactuar_search.xml`; included by
-`scripts/build_tts_table.py`. Opening the catalog closes the player's card search.
+`scripts/tabletop/build_tts_table.py`. Opening the catalog closes the player's card search.
 Validation: the real base table builds with the new module; combined Global Lua and
 XML parse. The Lua harness checks sorting, literal searches, accents, unchanged physical
 order, duplicates, stale clicks, simultaneous players, retrieval, membership changes,
 seat privacy, existing event/menu preservation and reload cleanup: **41 checks,
 0 failed**. All **216 unit tests pass**. In-game layout/image checks remain for the owner.
 
-Released from commit `342fb397` with `scripts/release_tts.py --workshop`.
+Released from commit `342fb397` with `scripts/tabletop/release_tts.py --workshop`.
 **MTG 6 player Cactuar Ver_v35** and its thumbnail are in TTS Saves, checksum verified;
 v34's save and thumbnail were removed. Workshop item **3822623414** was updated with
 **Steam EResult 1**, and the temporary task was removed. Result:
@@ -1790,7 +1790,7 @@ instead of setting the turn directly. This resets totals and starts turn 1 even
 when the winner already holds the turn and no turn-change event fires. The cannon's
 original turn-setting behavior remains as a fallback if the Global call fails.
 
-Released with `python3 scripts/release_tts.py --workshop --notes "..."`:
+Released with `python3 scripts/tabletop/release_tts.py --workshop --notes "..."`:
 
 - **MTG 6 player Cactuar Ver_v34** and matching thumbnail delivered to TTS Saves;
   SHA-256 checks matched. The previous v33 save and thumbnail were removed.
@@ -1815,14 +1815,14 @@ bypass or policy change is needed or used; tasks run with ordinary user privileg
 
 ### Current implementation
 
-- `scripts/tts_bson.py` encodes the save as BSON, including int64 `OwnerSteamID`.
+- `scripts/tabletop/tts_bson.py` encodes the save as BSON, including int64 `OwnerSteamID`.
   Earlier investigation re-encoded the real base Workshop file byte for byte.
-- `scripts/tts_workshop.ps1` uses TTS's own `steam_api64.dll` and the legacy
+- `scripts/tabletop/tts_workshop.ps1` uses TTS's own `steam_api64.dll` and the legacy
   ISteamRemoteStorage API. It waits for `BLoggedOn` before writing the cloud files,
   uploads `WorkshopUpload` and its preview, commits the update and polls callback 1316.
   It validates EResult, returned item ID and legal-agreement status, writes its JSON
   result atomically and shuts down Steam's API.
-- `scripts/release_tts.py --workshop` replaces the failed SteamCMD path. It discovers
+- `scripts/tabletop/release_tts.py --workshop` replaces the failed SteamCMD path. It discovers
   TTS's DLL, stages and checksums the payload, validates PowerShell syntax, then uses
   a uniquely named, on-demand **InteractiveToken / LeastPrivilege** task. No password,
   elevation, persistent trigger, encoded command or execution-policy change is used.
@@ -1833,7 +1833,7 @@ bypass or policy change is needed or used; tasks run with ordinary user privileg
   version or edit the changelog. The next attempt is:
 
   ```sh
-  python3 scripts/release_tts.py --workshop-only
+  python3 scripts/tabletop/release_tts.py --workshop-only
   ```
 
 ### Live attempts and resolution
@@ -1892,7 +1892,7 @@ using the updated release instructions. Both source WAVs use the deep radio revi
 below (-5 semitones from the neural voice, three below v29), with the same words and
 timing. The audio generators now live in `scripts/`; assets remain in `tts/sounds/`.
 
-Released from commit `856d1f8b` using `scripts/release_tts.py`, after publishing and
+Released from commit `856d1f8b` using `scripts/tabletop/release_tts.py`, after publishing and
 verifying the exact audio and tile bytes on Pages. **MTG 6 player Cactuar Ver_v30**
 and its thumbnail are in the owner's TTS Saves folder, with matching SHA-256 checks.
 The tool removed v29's save and thumbnail and copied this WIP and the changelog to
@@ -1978,12 +1978,12 @@ paid service, API key, reference recording or voice cloning was used.
   true peak -0.55 dBTP. SHA-256 `5fdc2f5e732136b67722d86a4ac24f03c4ee2085382d2cd13383efc4d0e49a3d`.
 - Same spoken words and filenames, 22050 Hz mono PCM16 WAV. The second line's
   exclamation mark only steers delivery; the displayed wording need not change.
-- Regenerator: `scripts/make_neural_announcer.py`, using the existing
+- Regenerator: `scripts/tabletop/make_neural_announcer.py`, using the existing
   `make_announcer.clarity()` and `master()`, lighter reflections, quiet bass accent,
   measured loudness trim and an independent true-peak guard. The old Ralph generator
   is preserved; **do not run its default recording command** over these new clips.
 - Runtime/model environment is outside the repo at `~/.cache/mtg-announcer/`; use
-  `~/.cache/mtg-announcer/venv/bin/python scripts/make_neural_announcer.py`.
+  `~/.cache/mtg-announcer/venv/bin/python scripts/tabletop/make_neural_announcer.py`.
   Model SHA-256 `7d5df8ecf7d4b1878015a32686053fd0eebe2bc377234608764cc0ef3636a6c5`;
   voice-bank SHA-256 `bca610b8308e8d99f32e6fe4197e7ec01679264efed0cac9140fe9c29f1fbf7d`.
 - Previous uncommitted Ralph clips were backed up outside git at
@@ -2011,7 +2011,7 @@ What exists (pushed in 0fe29d2f):
 - **Lines.** Keep the meaning, and keep the on-screen text in `CZT.lines` in sync:
   - `tts/sounds/slow-5min.wav`: "C'mon bro, what's taking so long?"
   - `tts/sounds/slow-10min.wav`: "Bruh, wake me up when you're done."
-- **Generator:** `scripts/make_announcer.py`. It's macOS `say`, the classic voice Ralph
+- **Generator:** `scripts/tabletop/make_announcer.py`. It's macOS `say`, the classic voice Ralph
   pitched down, at 22 kHz mono, with a sub-bass boom, three echo taps and a `tanh` limiter. The
   low-quality voice and the distortion are what make it muddy, so don't build on them.
 - **Playback:** `tts/cactuar_turns.lua`, function `cztAnnounce`, plays
@@ -2039,7 +2039,7 @@ What to do:
    all three.
 4. **Replace the generator,** or add a new script beside it, so the clips can be regenerated.
    Commit no API keys, and print the voice/model used.
-5. **Rebuild and check:** `python3 scripts/build_site.py`, which copies the clips to
+5. **Rebuild and check:** `python3 scripts/common/build_site.py`, which copies the clips to
    `docs/tts/sounds/`. Run `python3 -m unittest discover tests`; `test_announcer_clips_are_published`
    expects both `.wav` names and `RIFF` headers, so update it if names or format change.
 6. **Test in the owner's game, then hand them the files to judge.** Set `CZT.soundBase` to the
@@ -2100,7 +2100,7 @@ no soundBase, so every player hears the clips from Pages.
 
 The owner found the announcer too quiet with every TTS volume slider (Game, MP3) at maximum,
 so the clips themselves were the problem. A peak normalise left the voice at about -18.6 LUFS
-(K-weighted, gated), because the sub-bass boom set the peak. `scripts/make_announcer.py`
+(K-weighted, gated), because the sub-bass boom set the peak. `scripts/tabletop/make_announcer.py`
 now:
 - turns the boom down to sit under the voice;
 - high-passes the voice at 140 Hz and adds a +6 dB shelf above 2.2 kHz for clarity;
@@ -2463,7 +2463,7 @@ The owner asked for two things:
     "Who goes first?"/"goes first!", description "Who goes first dice…").
   - Chat: `announcer off|on|test`. `timers off|on` also hides our totals.
 - **Audio:** `tts/sounds/slow-5min.wav` and `slow-10min.wav`, made by
-  `scripts/make_announcer.py` (macOS `say` Ralph, a bass boom, echo, tanh limiter). They play
+  `scripts/tabletop/make_announcer.py` (macOS `say` Ralph, a bass boom, echo, tanh limiter). They play
   through `MusicPlayer.setCurrentAudioclip`, which replaces whatever music is playing.
   `CZT.soundBase` overrides `CZ.base` for testing. **The owner heard it and wants a clearer,
   more in-character "radio announcer"** voice. Options were researched: ElevenLabs (needs an
@@ -2561,9 +2561,9 @@ category, owner). **Load into my seat** spawns the chosen deck into that player'
 | `tts/cactuar_tile.lua` | the script on each tile: a transparent whole-tile button that runs `Global.call("czOpenFor", {color = clicker})` |
 | `tts/backs/` | card back pictures players can choose (cactuar, girly_pop so far). Specs and flow are in its `README.md`, which the build also publishes to `docs/tts/backs/README.md`. Never drop pictures in `docs/`: the build prunes them. |
 | `tts/cactuar-tile.jpg` | the tile picture. `ttsdecks.files()` publishes it at `docs/tts/cactuar-tile.jpg` |
-| `scripts/build_tts_table.py` | base save JSON → our table. `TILES` holds the tile GUIDs, positions and facing; `TILE_SCALE`; `--name`, `--base-url` |
-| `scripts/ttsdecks.py` | builds `docs/tts/` (`decks.json` and one `.ndjson` per deck) during `build_site.py` |
-| `scripts/ttsimages.py` | verifies every exact exported image URL with UnityPlayer headers before catalog publication; conditional GETs reuse verified image metadata |
+| `scripts/tabletop/build_tts_table.py` | base save JSON → our table. `TILES` holds the tile GUIDs, positions and facing; `TILE_SCALE`; `--name`, `--base-url` |
+| `scripts/tabletop/ttsdecks.py` | builds `docs/tts/` (`decks.json` and one `.ndjson` per deck) during `build_site.py` |
+| `scripts/tabletop/ttsimages.py` | verifies every exact exported image URL with UnityPlayer headers before catalog publication; conditional GETs reuse verified image metadata |
 | `tests/test_cactuar.lua` | runs the browser against TTS stand-ins and the real `docs/tts/`. `tests/test_cactuar_lua.py` runs it in the suite when `lua` is installed |
 | `tests/test_build_tts_table.py`, `tests/test_ttsdecks.py` | the build and the deck-object format |
 | `tests/test_ttsimages.py` | image download failures, conditional rechecks, all exported roles and the publication failure gate |
@@ -2635,19 +2635,19 @@ category, owner). **Load into my seat** spawns the chosen deck into that player'
 
 ```sh
 python3 -m unittest discover tests
-python3 scripts/build_site.py                # rebuilds docs/, including docs/tts/
+python3 scripts/common/build_site.py                # rebuilds docs/, including docs/tts/
 # Commit and push the changes; allow Pages to publish before delivery.
-python3 scripts/release_tts.py --notes "what changed"
+python3 scripts/tabletop/release_tts.py --notes "what changed"
 # Commit and push the new docs/development/tts-changelog.md entry afterwards.
 ```
 
-- Use `scripts/release_tts.py` for releases (see the root README). It reads the current
+- Use `scripts/tabletop/release_tts.py` for releases (see the root README). It reads the current
   version from `docs/development/tts-changelog.md`, checks that HEAD is pushed and its audio/tile bytes
   are live on Pages, then builds the next version from HEAD, never the working tree.
 - The release tool fetches Workshop file `2293586471.json` from the owner's PC. It and
   the generated save stay out of the repo. Deployment details live in the gitignored
   `tts/deploy.local.json` and `INTERNALS.md`.
-- For a local experiment, use `python3 scripts/release_tts.py --dry-run`; this does not
+- For a local experiment, use `python3 scripts/tabletop/release_tts.py --dry-run`; this does not
   deliver or advance the changelog. Never bypass publication checks for a normal release.
 - Keep only the latest build in the owner's Saves folder. On 2026-10-19 the owner asked to
   clean it up, and v1–v23 were deleted. When delivering a new version, delete the previous
@@ -2984,7 +2984,7 @@ The importer's backend currently returns `img.klrmngr.com/display/...webp` card 
 That cache returned HTTP 200 images to UnityPlayer for the four failing pictures and
 a double-faced back checked during diagnosis.
 
-Local fix: `scripts/ttsdecks.py` now uses that cache for all Scryfall card faces,
+Local fix: `scripts/tabletop/ttsdecks.py` now uses that cache for all Scryfall card faces,
 including library cards, commanders, tokens and double-faced backs. Printing UUIDs and
 front/back sides stay the same. Regression tests cover those roles, normal-size fallback,
 custom URLs and leaving the catalog's Scryfall URLs unchanged. No table rebuild is needed:

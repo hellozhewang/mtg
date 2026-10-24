@@ -93,7 +93,7 @@ may each have a deck of the same name; the value is one of `GOD`, `SS`, `S`, `A`
 `B`, `C`, `D`, `TRASH`. Keep one deck per line, keys sorted.
 
 A tier can be made **local-only**, like the Goblins category: set
-`local_only=True` on it in `scripts/decktiers.py`, and it shows only on the
+`local_only=True` on it in `scripts/common/decktiers.py`, and it shows only on the
 owner's local index, while the published catalog treats its decks as unplaced.
 None is local-only today.
 
@@ -106,9 +106,9 @@ entry whose deck no longer exists). A typo in a tier fails the build.
 
 The bot's sandbox can read the map but cannot write it. It ends every new-deck
 reply with one line, `Tier: <Stem> — <TIER> — <the cards or lines that put it
-there>`, and `bot/bot.py` saves it to `frontend/deck-tiers.json`, under the
+there>`, and `scripts/discord/bot/bot.py` saves it to `frontend/deck-tiers.json`, under the
 asking user's `<user>/<Stem>`, after the turn
-(`scripts/deckplacement.py`), before autopush rebuilds the site. It saves only
+(`scripts/common/deckplacement.py`), before autopush rebuilds the site. It saves only
 for a deck whose `.txt` or `.guide` that turn wrote, so a chat answer about some
 other deck cannot re-rate it. A turn that dies before replying (a Codex quota
 error, say) saves nothing, and its deck stays Unrated until the next turn that

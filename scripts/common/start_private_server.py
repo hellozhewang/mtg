@@ -224,7 +224,7 @@ def main() -> int:
                  else (site / "index.html")).read_bytes()
     except OSError as error:
         print(f"Cannot read the catalog: {error}\n"
-              "Build it first with: python3 scripts/build_site.py", file=sys.stderr)
+              "Build it first with: python3 scripts/common/build_site.py", file=sys.stderr)
         return 1
 
     if sys.platform == "darwin" and shutil.which("launchctl"):

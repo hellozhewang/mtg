@@ -3,14 +3,14 @@
     sleever make me sailor moon sleeves          (+ optional image uploads or links)
 
 bot.py runs the turn on the same harness as the builder (whichever model the owner has
-picked), in a per-user staging folder: bot/.sleever/<owner>/. The model only paints. It
+picked), in a per-user staging folder: scripts/discord/bot/.sleever/<owner>/. The model only paints. It
 saves one picture there and ends its reply with `Sleeve: <Name>`. Everything after that is
 this module's, so it behaves the same whatever model made the picture:
 
   * crop to a Magic card's 63:88 around the centre, resize to 745 x 1040, save as JPEG
     under 500 KB (macOS `sips`);
   * name it `<slug>.jpg` in tts/sleeves/, never overwriting another user's sleeve or one
-    of the hand-made ones (ownership is kept privately in bot/.sleever/owners.json);
+    of the hand-made ones (ownership is kept privately in scripts/discord/bot/.sleever/owners.json);
   * hand the file path back so Discord can attach the picture; bot.py then autopushes
     tts/sleeves/ and docs/, and the table's Sleeves menu lists it after a Refresh.
 
@@ -29,9 +29,9 @@ import urllib.request
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-REPO = HERE.parent
+REPO = HERE.parents[2]
 SLEEVES_DIR = REPO / "tts" / "sleeves"
-SECONDARY_GENERATOR = REPO / "scripts" / "chatgpt-browser-image-generator.py"
+SECONDARY_GENERATOR = REPO / "scripts" / "discord" / "chatgpt-browser-image-generator.py"
 STAGING = HERE / ".sleever"                      # gitignored; one folder per user
 OWNERS = STAGING / "owners.json"                 # slug -> Discord owner, for overwrites
 
@@ -233,7 +233,7 @@ def sleeve_prompt_for_generator(user_request: str, has_refs: bool = False) -> st
 
 
 def generate_secondary_image(prompt: str, out_path: Path, refs: list[Path] | None = None, timeout: float = 600) -> None:
-    """Generate a sleeve image using scripts/chatgpt-browser-image-generator.py."""
+    """Generate a sleeve image using scripts/discord/chatgpt-browser-image-generator.py."""
     if not SECONDARY_GENERATOR.is_file():
         raise SleeveError(f"secondary image generator not found at {SECONDARY_GENERATOR}")
     out_path.unlink(missing_ok=True)

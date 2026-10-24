@@ -54,9 +54,22 @@ for _, color in ipairs(CZ.seats) do
   data[color] = {playmat = zone(), libraryZone = zone(), graveyard = zone(), exile = zone()}
   Player[color] = {color = color, seated = true, steam_name = color, hands = {{}, {}}}
   local player = Player[color]
-  player.getHandCount = function() return #player.hands end
-  player.getHandObjects = function(i) return player.hands[i or 1] or {} end
+  -- On the real table indexing hands can throw past pcall: fail loudly if the
+  -- music code ever goes back to that.
+  player.getHandCount = function() error("music must not index player hands") end
+  player.getHandObjects = function() error("music must not index player hands") end
 end
+-- Hand zones as TTS's Hands.getHands() returns them: each zone lists its objects.
+Hands = {getHands = function()
+  local zones = {}
+  for _, color in ipairs(CZ.seats) do
+    for i = 1, 2 do
+      local hand = Player[color].hands[i]
+      zones[#zones + 1] = {getObjects = function() return hand end}
+    end
+  end
+  return zones
+end}
 -- A battlefield: filler permanents, plus Ultima when `ultima` is true.
 local function populate(color, ultima)
   local list = {card("Artifact — Treasure", "Treasure"), card("Creature — Golem", "Golem")}

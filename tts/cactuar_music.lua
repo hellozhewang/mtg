@@ -100,14 +100,13 @@ function czmCountBattlefield()
         for _, obj in ipairs(czmObjects(seat[key])) do excluded[obj] = true end
       end
     end
-    -- Hands sit inside the playmat zone on this table: a card in hand is not on
-    -- the battlefield. Check every hand zone of every seat.
-    pcall(function()
-      local player = Player[color]
-      for i = 1, math.max(1, tonumber(player.getHandCount()) or 1) do
-        for _, obj in ipairs(player.getHandObjects(i) or {}) do excluded[obj] = true end
-      end
-    end)
+  end
+  -- Hands sit inside the playmat zone on this table: a card in hand is not on the
+  -- battlefield. Ask each hand ZONE for its objects. Never index a player's hands
+  -- (getHandObjects(2)): on this table that throws past pcall and breaks the script.
+  local okHands, hands = pcall(function() return Hands.getHands() end)
+  for _, hand in ipairs(okHands and hands or {}) do
+    for _, obj in ipairs(czmObjects(hand)) do excluded[obj] = true end
   end
   for _, color in ipairs(CZ.seats) do
     local count, seat = {}, data and data[color]
@@ -219,9 +218,10 @@ end
 
 function czmTick()
   if not CZM.ready and not czmRestore() then return end
+  -- Music off stops the battlefield scan too, not just playback.
+  if CZM.disabled then czmPause(); return end
   CZM.battlefields, CZM.counts = czmCountBattlefield(), {}
   for color, totals in pairs(CZM.battlefields) do CZM.counts[color] = totals.ultima end
-  if CZM.disabled then czmPause(); return end
   local active = Turns.enable and Turns.turn_color or nil
   local wanted = not CZM.cannonFired and "theme" or nil
   if CZM.cannonFired and active then

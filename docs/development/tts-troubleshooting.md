@@ -130,3 +130,13 @@ normal desktop client and inspect the uploader receipt/log; do not repeatedly
 request login when the actual API connection is the unknown. Preserve the existing
 PowerShell policy. A process starting is not an upload: require successful Steam
 result 1 for the intended item and no pending legal agreement.
+
+## Errors escape pcall: never index player hands
+
+`Player[color].getHandObjects(i)` (and the base table's `deal(..., 2)`) can throw
+"Index was out of range" on this table, and that error is NOT caught by `pcall`: it
+propagates, and the broken script state then makes unrelated calls fail too (v66
+showed "Function required for context menu" for Inspect right after). To find cards in
+hand, ask the zones: `Hands.getHands()` then `zone.getObjects()`. Treat any TTS API call
+that takes an index as able to escape `pcall`.
+

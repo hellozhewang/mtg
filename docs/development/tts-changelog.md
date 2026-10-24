@@ -8,6 +8,10 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v67 — 2026-10-24 (commit b93dd1cd)
+- Fix v66 script errors (czmTick trace and Inspect 'Function required' menu errors): hand cards are found through hand zones, never by hand index
+- music off now also stops the battlefield scan
+
 ## v66 — 2026-10-23 (commit 1705975e)
 - Cards in hand (or being dragged) no longer start battle music; only the battlefield counts
 - Opening Inspect deselects whatever that player had selected

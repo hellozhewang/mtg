@@ -3,11 +3,24 @@
 Living status doc for the Tabletop Simulator table work. Whoever picks this up (Claude or
 Codex) reads it first and updates it with every change. The [TTS development guide](../docs/development/tts-development-guide.md) and README are the lasting documentation; this file tracks what is in flight.
 
-Last updated 2026-10-23 (Claude): delivered **v66** (no music from cards in hand; Inspect deselects), after v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
+Last updated 2026-10-24 (Claude): delivered **v67** (fixes v66's hand-index script errors), after v66 (no music from cards in hand; Inspect deselects) and v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
 Both states visually checked live. **Steam is now v64, published at the owner’s request.** See [the changelog](../docs/development/tts-changelog.md).
 
 
+
+
+## v67: v66 script errors fixed (saved; not on Steam)
+
+Live v66 game showed a `czmTick` / `czmCountBattlefield` trace inside `pcall`, then
+"Function required for context menu (label = "Inspect", ...)" for seven decks. Cause:
+v66's `Player[color].getHandObjects(i)` hand indexing throws on this table, and that
+error escapes MoonSharp's `pcall` (compare the base table's `playerDraw` "Index was out
+of range, index 2"). The broken script state then made Inspect's menu registration
+fail. v67 asks each zone from `Hands.getHands()` for its objects instead, and
+`music off` now skips the scan entirely. Stubs fail if music indexes hands again.
+Source `b93dd1cd`; archive `.cache/tts-builds/v67/`. **Saved Games v67; Steam v64.**
+The Steam session failures in the same screenshot (1001/5008) are Steam networking.
 
 ## v66: no music from cards in hand; Inspect deselects (saved; not on Steam)
 

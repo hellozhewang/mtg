@@ -479,14 +479,16 @@ def render_index(tpl: dict[str, frontend.Template], decks: list[DeckInfo],
             GC=f"{len(d.gcs)}/{d.cap}" if d.cap is not None else str(len(d.gcs)))
         by_bracket.setdefault(d.bracket, []).append(tile)
         for t in shown:
-            if deckthemes.THEMES[t].local_only:
+            if deckthemes.THEMES[t].local_only or deckthemes.THEMES[t].showcase:
                 # A second link to the same deck. `mirror` keeps the script from
                 # moving it and keeps it out of the deck count.
                 mirrors.setdefault(t, {}).setdefault(d.bracket, []).append(
                     tile.replace('<a class="tile"', '<a class="tile mirror"', 1))
     sections = []
-    for key, theme in deckthemes.THEMES.items():
-        if theme.local_only:
+    # Showcase sections (Final Fantasy) come first: they're the special ones.
+    ordered = sorted(deckthemes.THEMES.items(), key=lambda kv: not kv[1].showcase)
+    for key, theme in ordered:
+        if theme.local_only or theme.showcase:
             if key not in mirrors:
                 continue
             brackets = [index.part("bracket").render(

@@ -314,32 +314,6 @@ def preview_file(d) -> str:
                       separators=(",", ":")) + "\n"
 
 
-def music_metadata(cards: list[dict]) -> str:
-    """Face colors for battlefield music, including ambiguous token names by image.
-
-    Never use color_identity: devoid creatures and colored back faces differ.
-    Conflicting names (e.g. differently colored Soldier tokens) require a picture
-    match rather than guessing or combining all their colors.
-    """
-    names: dict[str, set[str]] = {}
-    images: dict[str, tuple[str, str]] = {}
-    for card in cards:
-        halves = card.get("card_faces") or []
-        sources = halves[:2] if len(halves) >= 2 and all(h.get("image_uris") for h in halves[:2]) else [card]
-        for face, source in zip(faces(card), sources):
-            if source.get("colors") is None or "Creature" not in source.get("type_line", ""):
-                continue
-            colors = "".join(c for c in "WUBRG" if c in source["colors"])
-            # Match Lua/MoonSharp without relying on locale-specific Unicode casing.
-            name = face["nickname"].split("\n", 1)[0].translate(str.maketrans("ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz"))
-            names.setdefault(name, set()).add(colors)
-            if face["image"]:
-                images[face["image"]] = (name, colors)
-    return json.dumps({"v": 1, "names": {n: next(iter(c)) for n, c in sorted(names.items()) if len(c) == 1},
-                       "images": {url: c for url, (n, c) in sorted(images.items()) if len(names[n]) > 1}},
-                      ensure_ascii=False, separators=(",", ":")) + "\n"
-
-
 def sleeve_files() -> list[Path]:
     if not SLEEVES_DIR.is_dir():
         return []
@@ -434,7 +408,6 @@ def files(decks: list, out_dir: Path, q) -> dict[Path, str | bytes]:
         tokens = {}
     root = out_dir / "tts"
     out: dict[Path, str | bytes] = {root / TILE_IMAGE.name: TILE_IMAGE.read_bytes()}
-    out[root / "card-colors.json"] = music_metadata([c for d in decks for c in d.cards.values()] + list(tokens.values()))
     for p in sleeve_files():
         out[root / "sleeves" / p.name] = p.read_bytes()
         thumb = sleeve_thumb(p)

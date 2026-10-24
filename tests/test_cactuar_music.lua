@@ -1,4 +1,5 @@
--- Battlefield-only counting and one pause/resume soundtrack, with real turn hooks.
+-- Battle songs called by named cards on the active player's battlefield, and one
+-- pause/resume soundtrack, with real turn hooks.
 local checks = 0
 local function check(value, message) checks = checks + 1; assert(value, message) end
 local function serialize(v)
@@ -53,9 +54,10 @@ for _, color in ipairs(CZ.seats) do
   data[color] = {playmat = zone(), libraryZone = zone(), graveyard = zone(), exile = zone()}
   Player[color] = {color = color, seated = true, steam_name = color}
 end
-local function populate(color, count)
-  local list = {}
-  for i = 1, count do list[i] = card(i % 2 == 0 and "Artifact Creature — Golem" or "Artifact — Treasure") end
+-- A battlefield: filler permanents, plus Ultima when `ultima` is true.
+local function populate(color, ultima)
+  local list = {card("Artifact — Treasure", "Treasure"), card("Creature — Golem", "Golem")}
+  if ultima then list[#list + 1] = card("Legendary Creature — God", "Ultima, Origin of Oblivion") end
   data[color].playmat.objects = list
 end
 local baseTurns, baseEnters, baseChats = 0, 0, 0
@@ -79,38 +81,41 @@ check(#playlist == 0 and not MusicPlayer.repeat_track, "cannon firing clears the
 check(JSON.decode(tile.memo).cactuar_music.cannonFired, "cannon state persists even before a winner is chosen")
 CZT.started = true
 
-populate("White", 9); czmTick()
-check(CZM.counts.White == 9 and not playing, "nine artifacts do not trigger Ultima")
-local other = card("Creature — Human", "Artifact Collector")
-other.description = "Artifacts you control get a bonus."
-table.insert(data.White.playmat.objects, other)
-local facedown = card("Artifact"); facedown.is_face_down = true
-table.insert(data.White.playmat.objects, facedown)
-local library, graveyard, exile = card("Artifact"), card("Artifact"), card("Artifact")
+-- Only the named card calls the song: lots of artifacts, rules mentions, face-down
+-- copies and copies in the library, graveyard or exile do not.
+data.White.playmat.objects = {}
+for i = 1, 12 do data.White.playmat.objects[i] = card("Artifact — Treasure", "Treasure") end
+czmTick()
+check(CZM.counts.White == 0 and not playing, "twelve artifacts no longer call Ultima")
+local mention = card("Creature — Human", "Ultima Fan"); mention.description = "Ultima, Origin of Oblivion is great."
+local facedown = card("Legendary Creature — God", "Ultima, Origin of Oblivion"); facedown.is_face_down = true
+table.insert(data.White.playmat.objects, mention); table.insert(data.White.playmat.objects, facedown)
+local library, graveyard, exile = card("Legendary Creature — God", "Ultima, Origin of Oblivion"),
+  card("Legendary Creature — God", "Ultima, Origin of Oblivion"), card("Legendary Creature — God", "Ultima, Origin of Oblivion")
 for _, entry in ipairs({{library, "libraryZone"}, {graveyard, "graveyard"}, {exile, "exile"}}) do
   table.insert(data.White.playmat.objects, entry[1]); data.White[entry[2]].objects = {entry[1]}
 end
 czmTick()
-check(CZM.counts.White == 9, "rules mentions, face-down cards and excluded zones never count")
-table.insert(data.White.playmat.objects, card("Artifact Land")); czmTick()
-check(CZM.counts.White == 10 and current.url:find("ff14_ultima.wav", 1, true) and playing, "ten battlefield artifacts start one looping original Ultima WAV")
+check(CZM.counts.White == 0 and not playing, "mentions, face-down cards and excluded zones never call a song")
+table.insert(data.White.playmat.objects, card("Legendary Creature — God", "Ultima, Origin of Oblivion")); czmTick()
+check(CZM.counts.White == 1 and current.url:find("ff14_ultima.wav", 1, true) and playing, "Ultima, Origin of Oblivion on the battlefield loops Ultima")
 check(#playlist == 1 and playlist[1].url == current.url, "Ultima replaces every previous playlist entry")
 local ultimaLoads = loads
 advance(23); czmTick()
 check(position == 23 and loads == ultimaLoads, "steady qualification does not restart the music")
 Turns.turn_color = "Red"; onPlayerTurn(Player.Red, Player.White)
-check(not playing and position == 23 and loads == ultimaLoads, "nonqualifying player's turn pauses at the same playhead")
+check(not playing and position == 23 and loads == ultimaLoads, "another player's turn pauses at the same playhead")
 check(CZT.audioStatus == "suppressed for soundtrack" and baseTurns == 1, "real turn voice is suppressed and the base handler still runs")
 advance(30)
 Turns.turn_color = "White"; onPlayerTurn(Player.White, Player.Red)
-check(playing and position == 23 and loads == ultimaLoads, "eligible player's next turn resumes without replacing the clip")
-advance(5); populate("Red", 12)
+check(playing and position == 23 and loads == ultimaLoads, "the card owner's next turn resumes without replacing the clip")
+advance(5); populate("Red", true)
 Turns.turn_color = "Red"; onPlayerTurn(Player.Red, Player.White)
-check(playing and position == 28 and loads == ultimaLoads, "another eligible player shares the one continuous Ultima instance")
-populate("Red", 9); onObjectLeaveScriptingZone(data.Red.playmat, nil); flush()
-check(not playing and CZM.counts.Red == 9, "dropping below ten on the active player's battlefield pauses promptly")
-check(CZM.counts.White == 10, "another player's threshold does not play music on the wrong turn")
-populate("Red", 10); onObjectEnterScriptingZone(data.Red.playmat, nil); flush()
+check(playing and position == 28 and loads == ultimaLoads, "another player with Ultima shares the one continuous instance")
+populate("Red", false); onObjectLeaveScriptingZone(data.Red.playmat, nil); flush()
+check(not playing and CZM.counts.Red == 0, "Ultima leaving the active player's battlefield pauses promptly")
+check(CZM.counts.White == 1, "another player's Ultima does not play on the wrong turn")
+populate("Red", true); onObjectEnterScriptingZone(data.Red.playmat, nil); flush()
 check(playing and position == 28 and loads == ultimaLoads and baseEnters == 1, "entering the zone resumes once and preserves the base zone event")
 onChat("announcer test", Player.Red)
 check(loads == ultimaLoads, "slow-turn test voices cannot overwrite the retained Ultima")
@@ -118,17 +123,6 @@ onChat("music off", Player.Red)
 check(not playing, "music off pauses without losing its position")
 onChat("music on", Player.Red)
 check(playing and position == 28 and loads == ultimaLoads and baseChats >= 3, "music on resumes and preserves existing chat handlers")
-
--- Stacks count each artifact, not deck quantity or a misleading deck name.
-local stack = {type = "Deck", getObjects = function() return {
-  {name = "Sol Ring\nArtifact 1CMC"}, {nickname = "Golem\nArtifact Creature — Golem"},
-  {name = "Collector\nCreature — Human", description = "Make artifacts."}} end}
-data.Yellow.playmat.objects = {stack, card("Creature")}
-local tagged = card("Creature"); tagged.tags = {"Artifact"}
-local attached = card("Creature"); attached.attachments = {{Nickname = "Equipment\nArtifact — Equipment"}}
-data.Green.playmat.objects = {tagged, attached}
-czmTick()
-check(CZM.counts.Yellow == 2 and CZM.counts.Green == 2, "artifact stacks, tags and attached equipment count without inspecting rules text")
 Turns.enable = false; czmTick()
 check(not playing, "disabling turns pauses Ultima")
 Turns.enable = true; czmTick()
@@ -149,23 +143,24 @@ CZM = nil; CZT.started = false; tile.memo, Global.script_state = nil, nil
 MusicPlayer.loaded = false
 dofile("tts/cactuar_music.lua"); czmTick()
 check(CZM.status == "loading", "soundtrack loading is asynchronous")
-populate("Red", 0); czmCannonFired()
+populate("Red", false); czmCannonFired()
 local before = plays
 for _, wait in ipairs(waits) do wait.fn() end
 check(plays == before and not playing, "an obsolete prelude completion cannot play after the cannon fires")
 
--- Eligibility may disappear while Ultima downloads. Keep the file paused and
--- resume it later; neither the old trigger nor subsequent scans may restart it.
-populate("Red", 10); czmTick()
+-- The card may leave while Ultima downloads. Keep the file paused and resume it
+-- later; neither the old trigger nor subsequent scans may restart it.
+populate("Red", true); czmTick()
 local ultimaWait = waits[#waits]
-populate("Red", 9); MusicPlayer.loaded = true; ultimaWait.fn()
-check(not playing and CZM.status == "paused", "late Ultima loading rechecks a no-longer-eligible battlefield before playback")
+populate("Red", false); MusicPlayer.loaded = true; ultimaWait.fn()
+check(not playing and CZM.status == "paused", "late Ultima loading rechecks a battlefield that lost its card before playback")
 local downloaded = loads
-populate("Red", 10); czmTick()
+populate("Red", true); czmTick()
 check(playing and loads == downloaded, "a later eligible turn uses the already loaded Ultima")
-data.Red.playmat.objects[1].nickname = "Changed face\nCreature — Human"
-onObjectStateChange(data.Red.playmat.objects[1], "old"); flush()
-check(CZM.counts.Red == 9 and not playing, "state/type changes on the active battlefield pause Ultima")
+local ultimaCard = data.Red.playmat.objects[#data.Red.playmat.objects]
+ultimaCard.nickname = "Changed face\nCreature — Human"
+onObjectStateChange(ultimaCard, "old"); flush()
+check(CZM.counts.Red == 0 and not playing, "flipping the card to another face pauses the song")
 
 -- A chat mute issued during initial table setup must survive restoration.
 CZM = nil; tile.memo, Global.script_state = nil, nil; CZT.restored = false
@@ -174,82 +169,114 @@ onChat("music off", Player.Red)
 CZT.restored = true; czmTick()
 check(CZM.disabled and not playing, "an early music off is not overwritten by the saved-state restore")
 
--- Seven battlefield triggers: threshold, exact priority, colors and turn gating.
+-- Every song and every card that calls it, with turn gating.
 CZM.disabled, CZM.cannonFired, CZM.ready = false, true, true
-CZM_CARDS = {names = {soldier = "W", zombie = "B", merfolk = "U", elf = "G", dragon = "R",
-  multicolor = "WUBRG", devoid = ""}, images = {["test://black-soldier"] = "B"}}
 for _, color in ipairs(CZ.seats) do
   data[color].playmat.objects = {}; data[color].libraryZone.objects = {}
   data[color].graveyard.objects = {}; data[color].exile.objects = {}
 end
 Turns.enable, Turns.turn_color = true, "White"
-local tracks = {"titan", "ultima", "thordan", "hades", "locus", "garuda", "ifrit"}
-local types = {"Creature — Goblin", "Artifact", "Creature — Soldier", "Creature — Zombie",
-  "Creature — Merfolk", "Creature — Elf", "Creature — Dragon"}
-local names = {"Goblin", "Sol Ring", "Soldier", "Zombie", "Merfolk", "Elf", "Dragon"}
-for i, track in ipairs(tracks) do
-  data.White.playmat.objects = {}
-  for j = 1, 9 do table.insert(data.White.playmat.objects, card(types[i], names[i])) end
-  czmTick()
-  check(not playing, "nine objects never trigger " .. track)
-  table.insert(data.White.playmat.objects, card(types[i], names[i])); czmTick()
-  check(playing and CZM.track == track and MusicPlayer.repeat_track, "ten battlefield objects loop " .. track)
+local callers = {
+  {"titan", "Summon: Titan", "Enchantment Creature — Saga Giant"},
+  {"ultima", "Ultima, Origin of Oblivion", "Legendary Creature — God"},
+  {"ultima", "Ultima Weapon", "Artifact Creature — Construct"},
+  {"omega", "Omega, Heartless Evolution", "Legendary Artifact Creature — Robot"},
+  {"thordan", "Summon: Knights of Round", "Enchantment Creature — Saga Knight"},
+  {"hades", "Hades, Sorcerer of Eld", "Legendary Creature — Avatar"},
+  {"locus", "Summon: Alexander", "Enchantment Artifact Creature — Saga Construct"},
+  {"garuda", "Summon: Primal Garuda", "Enchantment Creature — Saga Elemental"},
+  {"ifrit", "Clive, Ifrit's Dominant", "Legendary Creature — Human Noble Warrior"},
+  {"ifrit", "Ifrit, Warden of Inferno", "Legendary Creature — Demon"},
+  {"hades", "Y'shtola Rhul", "Legendary Creature — Cat Druid"},
+  {"hades", "Y'shtola, Night's Blessed", "Legendary Creature — Cat Warlock"},
+  {"hades", "G'raha Tia", "Legendary Creature — Cat Archer"},
+  {"hades", "G'raha Tia, Scion Reborn", "Legendary Creature — Cat Wizard"},
+  {"shiva", "Summon: Shiva", "Enchantment Creature — Saga Elemental"},
+  {"shiva", "Shiva, Warden of Ice", "Legendary Enchantment Creature — Saga Elemental"},
+  {"leviathan", "Summon: Leviathan", "Enchantment Creature — Saga Leviathan"},
+  {"ramuh", "Summon: Esper Ramuh", "Enchantment Creature — Saga Wizard"},
+  {"bahamut", "Summon: Bahamut", "Enchantment Creature — Saga Dragon"},
+  {"gilgamesh", "Gilgamesh, Master-at-Arms", "Legendary Creature — Human Samurai"},
+  {"dragonsong", "Estinien Varlineau", "Legendary Creature — Elf Warrior"},
+  {"dragonsong", "Eye of Nidhogg", "Legendary Enchantment — Aura"},
+  {"footfalls", "Venat, Heart of Hydaelyn", "Legendary Creature — Elder Wizard"},
+  {"footfalls", "Hydaelyn, the Mothercrystal", "Legendary Creature — God"},
+  {"chocobo", "Choco, Seeker of Paradise", "Legendary Creature — Bird"},
+  {"chocobo", "Traveling Chocobo", "Creature — Bird"},
+  {"chocobo", "Chocobo Camp", "Land — Town"},
+  {"chocobo", "Black Chocobo", "Creature — Bird"},
+}
+for _, caller in ipairs(callers) do
+  local track, name = caller[1], caller[2]
+  data.White.playmat.objects = {card(caller[3], name)}; czmTick()
+  check(playing and CZM.track == track and MusicPlayer.repeat_track, name .. " loops " .. track)
   local selectedLoads = loads
   advance(3); czmTick()
-  check(position == 3 and loads == selectedLoads, track .. " remains one instance without restarting")
+  check(loads == selectedLoads, track .. " remains one instance without restarting")
   Turns.turn_color = "Red"; onPlayerTurn(Player.Red, Player.White)
-  check(not playing and position == 3 and czmBlocksVoice(), track .. " pauses outside the qualifying player's turn and blocks voices")
+  check(not playing and czmBlocksVoice(), track .. " pauses outside its owner's turn and blocks voices")
   Turns.turn_color = "White"; onPlayerTurn(Player.White, Player.Red)
-  check(playing and position == 3 and loads == selectedLoads, track .. " resumes unchanged on the qualifying turn")
+  check(playing and loads == selectedLoads, track .. " resumes unchanged on its owner's turn")
   data.White.playmat.objects = {}; czmTick()
 end
+check(CZM.cards.omega and CZM.omega:find("ff14_omega.wav", 1, true), "Omega has its own track")
+check(CZM.chocobo:find("ff11_chocobo.wav", 1, true) and CZM.priority[#CZM.priority] == "chocobo",
+  "Dash de Chocobo is its own track, last in priority")
+-- Birds of Paradise and other non-Chocobo birds do not call it.
+data.White.playmat.objects = {card("Creature — Bird", "Birds of Paradise")}; czmTick()
+check(not playing, "Birds of Paradise calls nothing")
+-- Any other song beats Chocobo on the same battlefield.
+data.White.playmat.objects = {card("Legendary Creature — Bird", "Choco, Seeker of Paradise"),
+                              card("Legendary Creature — God", "Ultima, Origin of Oblivion")}
+czmTick(); check(playing and CZM.track == "ultima", "Ultima beats Chocobo")
+data.White.playmat.objects = {}; czmTick()
 
--- All thresholds satisfied together, then peel them off in the owner's priority.
-for i = 1, #tracks do
-  for j = 1, 10 do table.insert(data.White.playmat.objects, card(types[i], names[i])) end
+-- The front faces of double-faced cards do not call their back face's song.
+for _, name in ipairs({"Emet-Selch, Unsundered", "Crystal Fragments", "Jill, Shiva's Dominant"}) do
+  data.White.playmat.objects = {card("Legendary Creature", name)}; czmTick()
+  check(not playing, name .. " (front face) calls nothing")
 end
-for i, track in ipairs(tracks) do
-  czmTick()
-  check(playing and CZM.track == track, "priority chooses " .. track .. " before all remaining triggers")
-  for j = 1, 10 do table.remove(data.White.playmat.objects, 1) end
+-- Full "Front // Back" names, markup and curly apostrophes still match.
+for _, name in ipairs({"Emet-Selch, Unsundered // Hades, Sorcerer of Eld", "[b]Summon: Titan[/b]",
+                       "Clive, Ifrit\226\128\153s Dominant"}) do
+  data.White.playmat.objects = {card("Legendary Creature", name)}; czmTick()
+  check(playing, name .. " is recognised")
+  data.White.playmat.objects = {}; czmTick()
 end
-czmTick(); check(not playing, "losing all seven thresholds pauses playback")
+-- Generic Summons, other Ifrits and other Omegas are not on the list.
+for _, name in ipairs({"Summon: Fenrir", "Summon: G.F. Ifrit", "Omega Myr", "Titan of Industry"}) do
+  data.White.playmat.objects = {card("Creature", name)}; czmTick()
+  check(not playing, name .. " calls nothing")
+end
 
+-- Attached cards and the top of a face-up pile count; buried pile cards do not.
+local host = card("Creature — Human", "Host"); host.attachments = {{name = "Summon: Titan\nSaga"}}
+data.White.playmat.objects = {host}; czmTick()
+check(playing and CZM.track == "titan", "an attached caller counts")
+data.White.playmat.objects = {{type = "Deck", getObjects = function() return {
+  {name = "Treasure\nArtifact"}, {name = "Summon: Titan\nSaga"}} end}}
+czmTick()
+check(not playing, "a caller buried in a face-up pile does not count")
+
+-- Several callers at once: the first in CZM.priority wins, peeled off in order.
 data.White.playmat.objects = {}
-for i = 1, 10 do data.White.playmat.objects[i] = card("Artifact Creature — Goblin", "Multicolor") end
-czmTick()
-for _, track in ipairs(tracks) do check(CZM.battlefields.White[track] == 10, "one multicolor artifact Goblin counts once for " .. track) end
-check(CZM.track == "titan", "Goblin priority beats artifact and all five colors on the same ten creatures")
-data.White.playmat.objects = {card("Creature — Eldrazi", "Devoid"), card("Enchantment", "Soldier")}
-czmTick()
-check(CZM.battlefields.White.thordan == 0 and CZM.battlefields.White.ifrit == 0, "colorless devoid and colored noncreatures do not trigger creature colors")
-local custom = card("Creature — Goblin"); custom.tags = {"White", "Blue", "Artifact"}
-data.White.playmat.objects = {custom}; czmTick()
-check(CZM.battlefields.White.thordan == 1 and CZM.battlefields.White.locus == 1 and CZM.battlefields.White.ultima == 1,
-  "explicit tags support custom multicolor creatures and changed artifact types")
-custom.tags = {"Colorless"}; czmTick()
-check(CZM.battlefields.White.thordan == 0 and CZM.battlefields.White.locus == 0, "tag changes update without stale color caching")
-local token = card("Token Creature — Soldier", "Soldier")
-token.getData = function() return {CardID = 100, CustomDeck = {["1"] = {FaceURL = "test://black-soldier"}}} end
-data.White.playmat.objects = {token}; czmTick()
-check(CZM.battlefields.White.hades == 1 and CZM.battlefields.White.thordan == 0, "exact token image overrides an ambiguous shared name")
-token.is_face_down = true; czmTick()
-check(CZM.battlefields.White.hades == 0, "face-down colored creatures do not count")
-token.is_face_down = false
-data.White.exile.objects = {token}; czmTick()
-check(CZM.battlefields.White.hades == 0, "exile excludes colored creatures even when zones overlap")
-data.White.exile.objects = {}
-data.White.playmat.objects = {{type = "Deck", getObjects = function() return {} end,
-  getData = function() return {CustomDeck = {["1"] = {FaceURL = "test://black-soldier"}},
-    ContainedObjects = {{Nickname = "Soldier\nToken Creature — Soldier", CardID = 100}}} end}}
-czmTick()
-check(CZM.battlefields.White.hades == 1 and CZM.battlefields.White.thordan == 0, "face-up stacks resolve token colors from the parent sheet")
+local order = {}
+for _, track in ipairs(CZM.priority) do
+  order[#order + 1] = track
+  table.insert(data.White.playmat.objects, card("Creature", CZM.cards[track][1]))
+end
+for _, track in ipairs(order) do
+  czmTick()
+  check(playing and CZM.track == track, "priority chooses " .. track .. " before the remaining callers")
+  table.remove(data.White.playmat.objects, 1)
+end
+czmTick(); check(not playing, "no callers left pauses playback")
 
--- A higher-priority trigger can replace a loading track. Old callbacks never play.
-data.White.playmat.objects = {}; MusicPlayer.loaded = false
-for i = 1, 10 do data.White.playmat.objects[i] = card("Creature — Dragon", "Dragon") end
+-- A higher-priority caller can replace a loading track. Old callbacks never play.
+MusicPlayer.loaded = false
+data.White.playmat.objects = {card("Creature", "Clive, Ifrit's Dominant")}
 czmTick(); local ifritWait = waits[#waits]
-for i = 1, 10 do table.insert(data.White.playmat.objects, card("Creature — Goblin", "Goblin")) end
+table.insert(data.White.playmat.objects, card("Creature", "Summon: Titan"))
 czmTick(); local titanWait = waits[#waits]
 local beforeStale = plays
 ifritWait.fn()

@@ -1,6 +1,7 @@
--- One shared FF14 soundtrack. Pause/resume the loaded song between eligible
--- turns; switching songs restarts them (MusicPlayer exposes no seek API).
--- @MUSIC_COLORS@
+-- One shared FF14 soundtrack. The prelude loops until the cannon fires; after
+-- that a battle song plays during a turn only while the ACTIVE player has one of
+-- its cards face up on their battlefield. Pause/resume the loaded song between
+-- eligible turns; switching songs restarts them (MusicPlayer exposes no seek API).
 local czmPrevious = CZM
 if czmPrevious and czmPrevious.ticker then pcall(function() Wait.stop(czmPrevious.ticker) end) end
 CZM = {
@@ -8,56 +9,78 @@ CZM = {
   titan = "sounds/ff14_titan.wav", thordan = "sounds/ff14_thordan.wav",
   hades = "sounds/ff14_hades.wav", locus = "sounds/ff14_alexander.wav",
   garuda = "sounds/ff14_garuda.wav", ifrit = "sounds/ff14_ifrit.wav",
-  priority = {"titan", "ultima", "thordan", "hades", "locus", "garuda", "ifrit"},
+  omega = "sounds/ff14_omega.wav", chocobo = "sounds/ff11_chocobo.wav",
+  shiva = "sounds/ff14_shiva.wav", leviathan = "sounds/ff14_leviathan.wav",
+  ramuh = "sounds/ff14_ramuh.wav", bahamut = "sounds/ff14_answers.wav",
+  gilgamesh = "sounds/ff14_gilgamesh.wav", dragonsong = "sounds/ff14_dragonsong.wav",
+  footfalls = "sounds/ff14_footfalls.wav",
+  -- When several are out, the first listed wins. Chocobo is the fallback.
+  priority = {"titan", "ultima", "omega", "thordan", "hades", "locus", "garuda", "ifrit",
+    "shiva", "leviathan", "ramuh", "bahamut", "gilgamesh", "dragonsong", "footfalls", "chocobo"},
   titles = {theme = "Prelude / Discoveries", titan = "Titan", ultima = "Ultima",
-    thordan = "Thordan - Heroes", hades = "Hades - Who Brings Shadow",
-    locus = "Alexander - Locus", garuda = "Garuda", ifrit = "Ifrit"},
-  threshold = 10, counts = {}, status = "idle", serial = 0,
+    omega = "Omega - eScape", thordan = "Thordan - Heroes", hades = "Hades - Who Brings Shadow",
+    locus = "Alexander - Locus", garuda = "Garuda", ifrit = "Ifrit", chocobo = "Dash de Chocobo",
+    shiva = "Shiva - Oblivion", leviathan = "Leviathan - Through the Maelstrom",
+    ramuh = "Ramuh - Thunder Rolls", bahamut = "Bahamut - Answers",
+    gilgamesh = "Gilgamesh - Battle on the Big Bridge", dragonsong = "Dragonsong",
+    footfalls = "Endwalker - Footfalls"},
+  -- The cards that call each song (either face of a double-faced card counts as
+  -- its own name, so Emet-Selch alone does not call Hades).
+  cards = {
+    titan = {"Summon: Titan"},
+    ultima = {"Ultima, Origin of Oblivion", "Ultima Weapon"},
+    omega = {"Omega, Heartless Evolution"},
+    thordan = {"Summon: Knights of Round"},
+    hades = {"Hades, Sorcerer of Eld", "Y'shtola Rhul", "Y'shtola, Night's Blessed",
+      "G'raha Tia", "G'raha Tia, Scion Reborn"},
+    locus = {"Summon: Alexander"},
+    garuda = {"Summon: Primal Garuda"},
+    ifrit = {"Clive, Ifrit's Dominant", "Ifrit, Warden of Inferno"},
+    shiva = {"Summon: Shiva", "Shiva, Warden of Ice"},
+    leviathan = {"Summon: Leviathan"},
+    ramuh = {"Summon: Esper Ramuh"},
+    bahamut = {"Summon: Bahamut"},
+    gilgamesh = {"Gilgamesh, Master-at-Arms"},
+    dragonsong = {"Estinien Varlineau", "Eye of Nidhogg"},
+    footfalls = {"Venat, Heart of Hydaelyn", "Hydaelyn, the Mothercrystal"},
+    chocobo = {"Choco, Seeker of Paradise", "Summon: Choco/Mog"},
+  },
+  -- Name fragments that also call a song: any card with "Chocobo" in its name.
+  fragments = {chocobo = {"chocobo"}},
+  counts = {}, status = "idle", serial = 0,
   cannonFired = false, disabled = false, ready = false,
-  colorCache = {},
 }
 
 local function czmURL(track)
   return (CZT.soundBase or CZ.base) .. CZM[track]
 end
 
--- Tags are explicit overrides for custom tokens / changed characteristics.
--- Names, mana symbols, rules mentions and object tint never imply card color.
-local function czmTraits(meta)
-  local tags, colors, colorTagged = {}, "", false
-  local names = {white = "W", blue = "U", black = "B", red = "R", green = "G"}
-  for _, tag in ipairs(meta.tags or meta.Tags or {}) do
-    tag = tostring(tag):lower()
-    tags[tag] = true
-    if names[tag] then colors, colorTagged = colors .. names[tag], true end
-    if tag == "colorless" then colorTagged = true end
+-- A card's name as TTS shows it: the first line of its nickname, without
+-- [color] / <b> markup, curly apostrophes made straight, lower case.
+local function czmKey(name)
+  name = (tostring(name or ""):match("^[^\r\n]*") or "")
+  name = name:gsub("%b[]", ""):gsub("<[^>]*>", ""):gsub("\226\128\153", "'")
+  return (name:gsub("^%s+", ""):gsub("%s+$", ""):lower())
+end
+
+CZM.byName = {}
+for track, names in pairs(CZM.cards) do
+  for _, name in ipairs(names) do CZM.byName[czmKey(name)] = track end
+end
+
+-- The song a card calls, if any. A full "Front // Back" name counts by either part.
+local function czmTrackFor(name)
+  local key = czmKey(name)
+  if CZM.byName[key] then return CZM.byName[key] end
+  for part in (key .. " // "):gmatch("(.-) // ") do
+    if CZM.byName[part] then return CZM.byName[part] end
   end
-  if tags.colorless then colors = "" end
-  local name = meta.nickname or meta.Nickname or meta.name or ""
-  local typ = meta.type_line or meta.TypeLine or name:match("[\r\n]+([^\r\n]+)") or ""
-  typ = typ:gsub("%b[]", ""):gsub("<[^>]*>", ""):lower()
-  local function has(word) return tags[word] or typ:find("%f[%a]" .. word .. "%f[%A]") ~= nil end
-  if not colorTagged then
-    colors = meta.colors or meta.Colors
-    if type(colors) == "table" then colors = table.concat(colors) end
-    local stored = CZM_CARDS or {names = {}, images = {}}
-    if colors == nil then
-      local key = name:match("^[^\r\n]*"):gsub("%b[]", ""):gsub("<[^>]*>", "")
-        :gsub("^%s+", ""):gsub("%s+$", ""):gsub("[A-Z]", string.lower)
-      colors = stored.names[key]
-      -- Exact printing wins, especially for same-named tokens of different colors.
-      local sheets, id = meta.CustomDeck or {}, math.floor((tonumber(meta.CardID) or 0) / 100)
-      local sheet = sheets[tostring(id)] or sheets[id]
-      if sheet then colors = stored.images[(sheet.FaceURL or ""):gsub("%?.*$", "")] or colors end
+  for track, fragments in pairs(CZM.fragments) do
+    for _, fragment in ipairs(fragments) do
+      if key:find(fragment, 1, true) then return track end
     end
   end
-  colors = type(colors) == "string" and colors:upper() or ""
-  return {titan = has("goblin"), ultima = has("artifact"),
-    thordan = has("creature") and colors:find("W", 1, true) ~= nil,
-    hades = has("creature") and colors:find("B", 1, true) ~= nil,
-    locus = has("creature") and colors:find("U", 1, true) ~= nil,
-    garuda = has("creature") and colors:find("G", 1, true) ~= nil,
-    ifrit = has("creature") and colors:find("R", 1, true) ~= nil}
+  return nil
 end
 
 local function czmObjects(zone)
@@ -81,10 +104,9 @@ function czmCountBattlefield()
   for _, color in ipairs(CZ.seats) do
     local count, seat = {}, data and data[color]
     for _, track in ipairs(CZM.priority) do count[track] = 0 end
-    local function add(meta)
-      for track, matches in pairs(czmTraits(meta)) do
-        if matches then count[track] = count[track] + 1 end
-      end
+    local function add(name)
+      local track = czmTrackFor(name)
+      if track then count[track] = count[track] + 1 end
     end
     for _, obj in ipairs(czmObjects(seat and seat.playmat)) do
       if not excluded[obj] and not seen[obj] then
@@ -92,31 +114,14 @@ function czmCountBattlefield()
         pcall(function()
           if obj.is_face_down then return end
           if obj.type == "Deck" or obj.tag == "Deck" then
-            -- Container metadata omits CustomDeck; fetch full data once per
-            -- scan to resolve differently colored tokens by their exact art.
+            -- A face-up pile: only its top card is showing.
             local cards = obj.getObjects()
-            if obj.getData then
-              local ok, full = pcall(obj.getData)
-              if ok and full and full.ContainedObjects then
-                cards = full.ContainedObjects
-                for _, card in ipairs(cards) do card.CustomDeck = card.CustomDeck or full.CustomDeck end
-              end
-            end
-            for _, card in ipairs(cards) do add(card) end
+            if cards[1] then add(cards[1].name or cards[1].nickname) end
             return
           end
-          local name = obj.getName()
-          local cached = CZM.colorCache[obj]
-          if not cached or cached.name ~= name then
-            local ok, meta = pcall(function() return obj.getData() end)
-            cached = {name = name, meta = ok and meta or {}}
-            CZM.colorCache[obj] = cached
-          end
-          local meta = cached.meta
-          meta.nickname, meta.tags = name, obj.getTags()
-          add(meta)
+          add(obj.getName())
           for _, attachment in ipairs(obj.getAttachments() or {}) do
-            add(attachment)
+            add(attachment.name or attachment.nickname or attachment.Nickname)
           end
         end)
       end
@@ -212,7 +217,7 @@ function czmTick()
   local wanted = not CZM.cannonFired and "theme" or nil
   if CZM.cannonFired and active then
     for _, track in ipairs(CZM.priority) do
-      if (CZM.battlefields[active] or {})[track] and CZM.battlefields[active][track] >= CZM.threshold then
+      if ((CZM.battlefields[active] or {})[track] or 0) > 0 then
         wanted = track; break
       end
     end
@@ -268,12 +273,10 @@ function onObjectLeaveScriptingZone(zone, obj)
   if CZMB.leave then return CZMB.leave(zone, obj) end
 end
 function onObjectDestroy(obj)
-  CZM.colorCache[obj] = nil
   czmQueue()
   if CZMB.destroy then return CZMB.destroy(obj) end
 end
 function onObjectStateChange(obj, old)
-  CZM.colorCache[obj] = nil
   czmQueue()
   if CZMB.state then return CZMB.state(obj, old) end
 end

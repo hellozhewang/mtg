@@ -11,7 +11,8 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-import _paths  # noqa: F401  (scripts/<area>/ on sys.path)
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import _paths  # noqa: E402,F401  (scripts/<area>/ on sys.path)
 
 import build_tts_table
 
@@ -28,12 +29,13 @@ def tiles(table: dict) -> list[dict]:
 
 
 class TableBuild(unittest.TestCase):
-    def test_soundtrack_embeds_colors_and_versions_every_wav(self):
+    def test_soundtrack_versions_every_wav(self):
         lua = build_tts_table.build(json.loads(json.dumps(BASE)), URL)["LuaScript"]
-        self.assertIn("CZM_CARDS = JSON.decode([==[", lua)
-        self.assertNotIn("@MUSIC_COLORS@", lua)
-        for name in ("theme", "titan", "ultima", "thordan", "hades", "alexander", "garuda", "ifrit"):
+        self.assertNotIn("CZM_CARDS", lua)                    # music needs no card colour table
+        for name in ("theme", "titan", "ultima", "omega", "thordan", "hades", "alexander", "garuda", "ifrit",
+                     "shiva", "leviathan", "ramuh", "answers", "gilgamesh", "dragonsong", "footfalls"):
             self.assertRegex(lua, r'"sounds/ff14_' + name + r'\.wav\?v=[0-9a-f]{8}"')
+        self.assertRegex(lua, r'"sounds/ff11_chocobo\.wav\?v=[0-9a-f]{8}"')
 
     def test_text_details_and_lazy_sleeves_are_private(self):
         table = build_tts_table.build(json.loads(json.dumps(BASE)), URL)

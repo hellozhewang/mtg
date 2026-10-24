@@ -8,7 +8,8 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-import _paths  # noqa: F401  (scripts/<area>/ on sys.path)
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import _paths  # noqa: E402,F401  (scripts/<area>/ on sys.path)
 
 import tts_bson
 

@@ -12,7 +12,8 @@ from contextlib import redirect_stderr
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-import _paths  # noqa: F401  (scripts/<area>/ on sys.path)
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import _paths  # noqa: E402,F401  (scripts/<area>/ on sys.path)
 
 import build_site
 import ttsdecks
@@ -86,22 +87,6 @@ class ImporterFormatTests(unittest.TestCase):
 
 
 class ObjectTests(unittest.TestCase):
-    def test_music_colors_use_face_colors_and_disambiguate_tokens(self):
-        devoid = {**SOL, "name": "Devoid", "type_line": "Creature — Eldrazi", "colors": [], "color_identity": ["R"]}
-        white = {**SOLDIER, "colors": ["W"]}
-        black = {**SOLDIER_REPRINT, "colors": ["B"]}
-        dfc = {**DELVER, "card_faces": [{**DELVER["card_faces"][0], "colors": ["U"]},
-                                       {**DELVER["card_faces"][1], "colors": []}]}
-        data = json.loads(ttsdecks.music_metadata([devoid, white, black, dfc]))
-        self.assertEqual(data["names"]["devoid"], "")
-        self.assertEqual(data["names"]["delver of secrets"], "U")
-        self.assertEqual(data["names"]["insectile aberration"], "")
-        self.assertNotIn("soldier", data["names"])
-        self.assertEqual(data["images"][img("soldier")["large"]], "W")
-        self.assertEqual(data["images"][img("soldier-2")["large"]], "B")
-        accented = {**white, "name": "Éowyn, Shieldmaiden"}
-        self.assertEqual(json.loads(ttsdecks.music_metadata([accented]))["names"]["Éowyn, shieldmaiden"], "W")
-
     def test_a_double_faced_card_flips_to_its_back_as_state_two(self):
         sheets = ttsdecks.Sheets()
         card = ttsdecks.card_object(DELVER, sheets)
@@ -240,7 +225,11 @@ class TournamentTests(unittest.TestCase):
 
     def test_the_catalog_tags_every_tournament_deck(self):
         html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
-        self.assertEqual(html.count('class="theme-tag tournament"'), 24)
+        # Count each deck once: showcase sections (Final Fantasy) repeat some tiles
+        # as mirrors.
+        import re
+        real = re.sub(r'<a class="tile mirror".*?</a>', "", html, flags=re.S)
+        self.assertEqual(real.count('class="theme-tag tournament"'), 24)
         page = (ROOT / "docs" / "zzwang" / "Bracket3" / "Baral-Control.html").read_text(encoding="utf-8")
         self.assertIn('class="chip tournament"', page)
         other = (ROOT / "docs" / "zzwang" / "Bracket5" / "Kinnan-Combo.html").read_text(encoding="utf-8")

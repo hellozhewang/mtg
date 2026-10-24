@@ -29,6 +29,10 @@ class Theme:
     # Shown only on the owner's local index, as a mirror of decks that already
     # sit in a canonical category. Never a primary, never published.
     local_only: bool = False
+    # A published special category: its own section, listed FIRST in the
+    # Categories view, mirroring every deck that carries the tag while each deck
+    # also stays in its primary category. Never a primary.
+    showcase: bool = False
 
 
 # Display order is stable across brackets, filters, and builds. Each category is
@@ -52,15 +56,16 @@ THEMES = {
     # and for decks nobody has placed yet (see FALLBACK).
     "other": Theme("Other Strategies", "Plans that genuinely fit none of the seven categories above.",
                    "misc unique"),
-    "finalfantasy": Theme("Final Fantasy", "Decks built around Final Fantasy commanders, characters, summons, and mechanics.",
-                          "final fantasy ff ff7 ffvi ffx ffxiv ffxvi chocobo cactuar sephiroth cloud"),
+    "finalfantasy": Theme("Final Fantasy", "Every deck led by a Final Fantasy commander, character or summon, mirrored here from its own category.",
+                          "final fantasy ff ff7 ffvi ffx ffxiv ffxvi chocobo cactuar sephiroth cloud",
+                          showcase=True),
     "goblins": Theme("Goblins", "Every Goblin deck, mirrored here from its own category. Local catalog only.",
                      "goblin kindred typal", local_only=True),
 }
 
 # The categories a deck can have as its primary: the seven plus `other`.
 # Secondary tags such as goblins and finalfantasy are not primaries.
-CANONICAL = tuple(k for k, t in THEMES.items() if not t.local_only and k != "finalfantasy")
+CANONICAL = tuple(k for k, t in THEMES.items() if not t.local_only and not t.showcase)
 
 
 # A conservative fallback for decks without an explicit assignment, keyed on the

@@ -1106,7 +1106,6 @@ mtg/
 │   │   ├── ttsdecks.py          the table's deck catalog and spawn files in docs/tts/
 │   │   ├── ttsimport.py         client for the Tabletop Simulator deck importer
 │   │   ├── ttsimages.py         checks exported image URLs before catalog publication
-│   │   ├── build_tts_music_metadata.py   card colours for battlefield music
 │   │   ├── make_*announcer.py   the slow-turn announcer clips
 │   │   └── profile_tts_commander_images.*   commander picture profiling
 │   └── discord/               everything the Discord bot runs

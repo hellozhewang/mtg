@@ -9,7 +9,8 @@ from pathlib import Path
 from types import SimpleNamespace
 
 ROOT = Path(__file__).resolve().parents[1]
-import _paths  # noqa: F401  (scripts/<area>/ on sys.path)
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import _paths  # noqa: E402,F401  (scripts/<area>/ on sys.path)
 
 import build_site
 import deckthemes
@@ -205,3 +206,25 @@ class DeckThemeTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ShowcaseSectionTests(unittest.TestCase):
+    """Final Fantasy is a published showcase: its own section, first, mirroring every
+    tagged deck while each also stays in its primary category."""
+
+    def test_final_fantasy_is_a_showcase_but_never_a_primary(self):
+        import deckthemes
+        self.assertTrue(deckthemes.THEMES["finalfantasy"].showcase)
+        self.assertNotIn("finalfantasy", deckthemes.CANONICAL)
+
+    def test_the_published_index_lists_every_final_fantasy_deck_first(self):
+        import json
+        import re
+        html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
+        sections = re.findall(r'<details class="strategy-group" data-theme="([^"]+)"', html)
+        self.assertEqual(sections[0], "finalfantasy")
+        section = re.search(r'<details class="strategy-group" data-theme="finalfantasy".*?</details>', html, re.S).group(0)
+        tagged = [k for k, v in json.loads((ROOT / "frontend" / "deck-themes.json").read_text()).items()
+                  if "finalfantasy" in v]
+        self.assertEqual(section.count('class="tile mirror"'), len(tagged))
+        self.assertNotIn('class="tile"', section)          # mirrors only: no deck counted twice

@@ -14,7 +14,8 @@ from unittest.mock import Mock, patch
 import urllib.error
 import zlib
 
-import _paths  # noqa: F401  (scripts/<area>/ on sys.path)
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import _paths  # noqa: E402,F401  (scripts/<area>/ on sys.path)
 import build_site
 import ttsimages
 

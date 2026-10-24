@@ -1,92 +1,100 @@
 1 Yuna, Grand Summoner
+1 Adarkar Wastes
 1 Agatha's Soul Cauldron
 1 An Offer You Can't Refuse
-1 Arcane Signet
+1 Arid Mesa
+1 Avacyn's Pilgrim
 1 Badgermole Cub
+1 Bala Ged Recovery
 1 Birds of Paradise
 1 Bloom Tender
 1 Boseiju, Who Endures
+1 Botanical Sanctum
 1 Bountiful Promenade
-1 Branching Evolution
 1 Breeding Pool
-1 Bristly Bill, Spine Sower
+1 Brushland
+1 Chord of Calling
 1 City of Brass
 1 Command Tower
-1 Counterspell
-1 Cyclonic Rift
-1 Damning Verdict
+1 Concordant Crossroads
 1 Delighted Halfling
-1 Doubling Season
+1 Devoted Druid
 1 Dovin's Veto
+1 Drift of Phantasms
 1 Eladamri's Call
+1 Eldritch Evolution
+1 Elvish Mystic
+1 Endurance
+1 Enlightened Tutor
 1 Esper Sentinel
-1 Eternal Witness
 1 Exotic Orchard
-1 Farseek
-1 Fathom Mage
+1 Faeburrow Elder
+1 Fauna Shaman
 1 Finale of Devastation
 1 Flooded Strand
+1 Flusterstorm
 1 Force of Negation
-5 Forest
-1 Forgotten Ancient
+1 Forest
+1 Formidable Speaker
 1 Freed from the Real
+1 Fyndhorn Elves
 1 Grand Abolisher
-1 Gyre Sage
+1 Green Sun's Zenith
 1 Hallowed Fountain
-1 Hangarback Walker
-1 Hardened Scales
-1 Herald of Secret Streams
+1 Heliod, Sun-Crowned
 1 Heroic Intervention
 1 Idyllic Tutor
 1 Incubation Druid
-1 Inspiring Call
-3 Island
-1 Kalonian Hydra
+1 Island
 1 Kami of Whispered Hopes
 1 Kinnan, Bonder Prodigy
-1 Kutzil, Malamet Exemplar
+1 Llanowar Elves
 1 Lotus Petal
-1 Maester Seymour
 1 Mana Confluence
 1 Mana Drain
 1 Mistrise Village
 1 Misty Rainforest
+1 Mox Amber
 1 Mystic Remora
+1 Nature's Claim
+1 Nature's Rhythm
 1 Noble Hierarch
 1 Otawara, Soaring City
-1 Ouroboroid
-1 Ozolith, the Shattered Spire
-1 Path to Exile
+1 Pact of Negation
 1 Pemmin's Aura
-3 Plains
+1 Pia, Aether Ascetic
+1 Plains
 1 Polluted Delta
 1 Pollywog Prodigy
 1 Ranger-Captain of Eos
+1 Razorverge Thicket
+1 Recruiter of the Guard
 1 Rejuvenating Springs
 1 Rhystic Study
-1 Rikku, Resourceful Guardian
-1 Sage of Hours
 1 Savannah
+1 Scalding Tarn
 1 Sea of Clouds
 1 Silence
-1 Smothering Tithe
+1 Sink into Stupor
 1 Sol Ring
-1 Spara's Headquarters
-1 Sphere Grid
+1 Staff of Domination
 1 Swan Song
+1 Swift Reconfiguration
 1 Swords to Plowshares
+1 Sylvan Library
 1 Temple Garden
-1 Terrasymbiosis
-1 The Great Henge
-1 The Ozolith
 1 Thrasios, Triton Hero
 1 Three Visits
-1 Tidus, Yuna's Guardian
 1 Tropical Island
 1 Tundra
+1 Veil of Summer
 1 Verdant Catacombs
+1 Vigean Graftmage
+1 Vizier of Remedies
 1 Voice of Victory
 1 Walking Ballista
 1 Windswept Heath
 1 Wooded Foothills
+1 Worldly Tutor
+1 Yavimaya Coast
 1 Yavimaya, Cradle of Growth

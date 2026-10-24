@@ -125,6 +125,17 @@ because they are new. All selected cards pass current legality validation.
 - [Wizards Neon Dynasty release notes](https://magic.wizards.com/en/news/feature/kamigawa-neon-dynasty-release-notes-2022-02-09): Swift retains abilities and changes card types.
 - [Grand Summoner / Freed line](https://commanderspellbook.com/combo/4222-6566/): corroborates the delayed-counter engine, not a measured win rate.
 
+## Scoped publication verification
+
+Verified 166 unique exported TTS image URLs: nine downloaded and validated, 157
+trusted through recent successful checks. Both payloads contain 99 library cards
+and the correct standalone commander. Source/published lists and every guide
+section match; all referenced local thumbnails and mana symbols exist. Preserve
+all 189 unrelated catalog records and spawn payloads, including kupo7's Yuna,
+and preserve both original added dates. Music metadata adds only Devoted Druid
+and Vizier colors, retaining every existing entry. No audio or table runtime
+changes and no Steam upload are needed; the existing table imports the new data.
+
 ## Exact source changes
 
 The following changes include mana-source and utility-slot adjustments, not just

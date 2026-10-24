@@ -28,6 +28,11 @@ Both validate: **100 cards, 3/3 Game Changers, TTS import 100/100**, 33 lands +
 references are present; 23 category/tier/guide tests pass. Both are placed S by
 the existing structural tier criteria, **not** an 80% goldfish certification.
 Their numeric consistency remains unmeasured; include them in later benchmarking.
+Scoped publication validates 166 image URLs (nine downloaded, 157 recently
+verified), both 99-card libraries plus standalone commanders, all list/guide
+parity and local assets. Preserve 189 unrelated catalog records/payloads,
+including kupo7's Yuna, and both added dates. Add only Devoted Druid and Vizier
+to music color lookup; existing music entries are unchanged.
 This is deck/catalog data only: Saved Games and Steam stay v64.
 
 ## Complete Snoop package (2026-10-23)

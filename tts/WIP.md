@@ -3,7 +3,7 @@
 Living status doc for the Tabletop Simulator table work. Whoever picks this up (Claude or
 Codex) reads it first and updates it with every change. The [TTS development guide](../docs/development/tts-development-guide.md) and README are the lasting documentation; this file tracks what is in flight.
 
-Last updated 2026-10-24 (Claude): delivered **v69** (per-seat guide-line switches), after v68 (edge strip redrawn as a five-slot stack), v67 (fixes v66's hand-index script errors), v66 (no music from cards in hand; Inspect deselects) and v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
+Last updated 2026-10-24 (Claude): delivered **v70** (trigger areas in seat colours; stack panel picture), after v69 (per-seat guide-line switches), v68 (edge strip redrawn as a five-slot stack), v67 (fixes v66's hand-index script errors), v66 (no music from cards in hand; Inspect deselects) and v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
 Both states visually checked live. **Steam is now v64, published at the owner’s request.** See [the changelog](../docs/development/tts-changelog.md).
 
@@ -11,6 +11,28 @@ Both states visually checked live. **Steam is now v64, published at the owner’
 
 
 
+
+## v70: trigger areas in seat colours, stack panel picture (saved; not on Steam)
+
+Owner, with a sketch on White's mat: replace v69's divider with an L in the far corner
+(down from the far edge about 62% across, then across to the edge by the library
+column), in each player's playmat colour and labelled; the switch overlapped the
+reveal (magnifier) button; and make the stack area look professional, in a colour no
+seat uses. `tts/cactuar_lines.lua` now draws, per enabled seat, one 3-point polyline
+(thickness 0.07) boxing off the far 40% of the mat's depth by the 38% of its width on
+the library side (worked out from `data[seat].libraryZone`, the player's right at every
+seat), in the seat's colour (TTS seat colours; White's cream), plus a "TRIGGERS" decal
+in that colour centred in the box, reading from the seat. The stack area is now a
+graphite-and-silver picture (`tts/table/stack-panel.png`: STACK title, five numbered
+slots with corner brackets, "resolves from the top") laid as a Global decal under the
+same five snap points; its size comes from `build_tts_table.stack_geometry()` and a test
+keeps the Lua's `CZL.stack` in step. `scripts/tabletop/make_table_art.py` renders all the
+pictures with headless Chrome; `ttsdecks.files()` publishes them as `tts/table/*.png` and
+the builder versions their URLs by content hash. Our decals are named "Cactuar ...";
+others are kept. The switch is now 2.6 wide with a 1300-wide button (width/500 = table
+units; the old 1750-wide button on a 1.9 block reached back over the reveal button),
+4.0 past the reveal button, labelled "Triggers ○━━" / "━━●". **Not yet seen in game:
+`Global.setDecals` placement and orientation, and the box against the mat art.**
 
 ## v69: per-seat battlefield guide-line switches (saved; not on Steam)
 

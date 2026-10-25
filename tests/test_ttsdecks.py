@@ -191,6 +191,12 @@ class SleeveTests(unittest.TestCase):
             self.assertTrue(out[Path("/site/tts/sounds") / name].startswith(b"RIFF"), name)
         self.assertNotIn(Path("/site/tts/sounds/make_announcer.py"), out)
 
+    def test_table_decals_are_published(self):
+        out = ttsdecks.files([], Path("/site"), None)
+        for name in ["stack-panel.png"] + [f"triggers-{seat}.png" for seat in
+                                           ("White", "Red", "Yellow", "Green", "Blue", "Purple")]:
+            self.assertTrue(out[Path("/site/tts/table") / name].startswith(b"\x89PNG"), name)
+
     def test_the_repo_ships_the_cactuar_sleeve(self):
         self.assertTrue((ROOT / "tts" / "sleeves" / "cactuar.jpg").is_file())
 

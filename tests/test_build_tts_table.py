@@ -3,7 +3,9 @@ is appended once, and the Cactuar tiles that open it sit on the table."""
 from __future__ import annotations
 
 import json
+import re
 import shutil
+import struct
 import subprocess
 import sys
 import unittest
@@ -217,7 +219,7 @@ print(left, timerID == nil)
         fixed = build_tts_table.fix_timer_script(timer)
         self.assertEqual(build_tts_table.fix_timer_script(fixed), fixed)
 
-    def test_the_edge_strip_is_cleared_and_drawn_as_a_five_slot_stack(self):
+    def test_the_edge_strip_is_cleared_for_a_five_slot_stack(self):
         base = json.loads(json.dumps(BASE))
         base["ObjectStates"] += [
             {"GUID": "222541", "Name": "Custom_Tile", "Transform": {"posX": 48.2, "posZ": 12.7}},  # importer
@@ -225,21 +227,42 @@ print(left, timerID == nil)
             {"GUID": "c2e905", "Name": "Custom_Token", "Transform": {"posX": 41.8, "posZ": -5.7}},  # a seat's tracker
         ]
         base["SnapPoints"] = [{"Position": {"x": 41.77, "y": 0.96, "z": -23.7}, "Rotation": {"x": 0, "y": 180, "z": 0}}]
+        old = {"points3": [{"x": 47, "y": 0.97, "z": -15}, {"x": 49, "y": 0.97, "z": -15}],
+               "color": dict(build_tts_table.OLD_STACK_COLOR), "thickness": 0.12}
+        base["VectorLines"] = [old, {"points3": [], "color": {"r": 1, "g": 0, "b": 0}, "thickness": 0.1}]
         table = build_tts_table.build(base, URL)
         guids = {o["GUID"] for o in table["ObjectStates"]}
         self.assertNotIn("222541", guids)
         self.assertNotIn("b7ccfb", guids)
         self.assertIn("c2e905", guids)                      # the neighbouring seat is untouched
-        self.assertEqual(len(table["VectorLines"]), 6)     # outer rectangle + five slots
-        self.assertTrue(all(l["loop"] and len(l["points3"]) == 4 for l in table["VectorLines"]))
+        self.assertEqual(len(table["VectorLines"]), 1)     # v68/v69's stack lines go; others stay
+        self.assertNotEqual(table["VectorLines"][0]["color"], build_tts_table.OLD_STACK_COLOR)
         slots = table["SnapPoints"][1:]
         self.assertEqual(len(slots), 5)
         self.assertEqual(table["SnapPoints"][0]["Position"]["x"], 41.77)   # existing snap points kept
         self.assertEqual({s["Position"]["x"] for s in slots}, {build_tts_table.STACK_X})
         again = build_tts_table.build(json.loads(json.dumps(table)), URL)
-        self.assertEqual((len(again["VectorLines"]), len(again["SnapPoints"])), (6, 6))
+        self.assertEqual((len(again["VectorLines"]), len(again["SnapPoints"])), (1, 6))
 
-    def test_each_seat_gets_a_guide_line_switch_off_by_default(self):
+    def test_stack_panel_matches_the_lua_decal_and_its_picture(self):
+        g = build_tts_table.stack_geometry()
+        lua = (build_tts_table.SOURCE / "cactuar_lines.lua").read_text()
+        decal = re.search(r'CZL\.stack = \{url = "table/stack-panel\.png", x = ([-\d.]+), z = ([-\d.]+), '
+                          r'width = ([-\d.]+), height = ([-\d.]+)\}', lua)
+        self.assertIsNotNone(decal)
+        self.assertEqual(tuple(float(v) for v in decal.groups()), (g["x"], g["z"], g["width"], g["height"]))
+        snaps = sorted(s["Position"]["z"] for s in build_tts_table.stack_snaps())
+        self.assertEqual(snaps, sorted(g["slots"]))
+        self.assertTrue(all(g["top"] - g["height"] < z < g["top"] for z in snaps))
+        art = build_tts_table.SOURCE / "table" / "stack-panel.png"
+        width, height = struct.unpack(">II", art.read_bytes()[16:24])
+        self.assertAlmostEqual(width / height, g["width"] / g["height"], places=3)   # not stretched
+        built = build_tts_table.browser_lua(URL)
+        self.assertRegex(built, r'"table/stack-panel\.png\?v=[0-9a-f]{8}"')
+        for seat in build_tts_table.SEATS:
+            self.assertRegex(built, r'"table/triggers-' + seat + r'\.png\?v=[0-9a-f]{8}"')
+
+    def test_each_seat_gets_a_trigger_area_switch_off_by_default(self):
         base = json.loads(json.dumps(BASE))
         lua = []
         for i, color in enumerate(("White", "Purple")):
@@ -251,15 +274,19 @@ print(left, timerID == nil)
                     f'data["{color}"]["millButton"] = getObjectFromGUID("m{i}0000")']
         base["LuaScript"] = "\n".join(lua)
         table = build_tts_table.build(base, URL)
-        switches = {o["Description"]: o for o in table["ObjectStates"] if o.get("Nickname") == "Guide lines"}
+        switches = {o["Description"]: o for o in table["ObjectStates"] if o.get("Nickname") == "Trigger area"}
         self.assertEqual(len(switches), 2)
-        white = switches["Battlefield guide lines for White."]
-        self.assertGreater(white["Transform"]["posX"], 33.3)          # past the reveal button
+        white = switches["Shows White's trigger area."]
+        # Past the reveal button, its whole label clear of it (button width / 500 units).
+        left = white["Transform"]["posX"] - white["Transform"]["scaleX"] / 2
+        self.assertGreater(left, 33.3 + 1.0)
+        self.assertIn("width = 1300", white["LuaScript"])
+        self.assertAlmostEqual(1300 / 500, white["Transform"]["scaleX"])
         self.assertEqual((white["Memo"], white["Locked"]), ("off", True))
         self.assertIn('Global.call("czlRegister"', white["LuaScript"])
         self.assertIn("function czlToggle", table["LuaScript"])
         again = build_tts_table.build(json.loads(json.dumps(table)), URL)
-        self.assertEqual(sum(o.get("Nickname") == "Guide lines" for o in again["ObjectStates"]), 2)
+        self.assertEqual(sum(o.get("Nickname") == "Trigger area" for o in again["ObjectStates"]), 2)
 
     def test_tile_guids_are_new(self):
         taken = build_tts_table._guids(BASE["ObjectStates"])

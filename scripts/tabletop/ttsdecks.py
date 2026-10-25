@@ -9,6 +9,7 @@ build_site.py calls `files()` and publishes what it returns under docs/tts/:
     tts/sleeves/<name>.jpg                  sleeves (card backs) a player can pick, from the repo's tts/sleeves/
     tts/sleeves/thumbs/<name>.jpg           146 x 204 previews of them for the Sleeves menu
     tts/sounds/<name>.wav                   the slow-turn announcer's clips, from the repo's tts/sounds/
+    tts/table/<name>.png                    the table's decals (stack panel, trigger labels), from tts/table/
 
 A deck file is one JSON value per line:
 
@@ -66,6 +67,8 @@ SOUNDS_DIR = TILE_IMAGE.parent / "sounds"
 # The tournament pool the browser's Tournament mode offers (curated by hand).
 TOURNAMENT_FILE = TILE_IMAGE.parent / "tournament.json"
 SOUND_TYPES = (".wav", ".mp3", ".ogg")
+# Decal pictures cactuar_lines.lua lays on the table (make_table_art.py renders them).
+TABLE_ART_DIR = TILE_IMAGE.parent / "table"
 
 # Scryfall's standard Magic card back, and its small size for the Sleeves grid.
 CARD_BACK = "https://backs.scryfall.io/large/0/a/0aeebaf5-8c7d-4636-9e82-8c27447861f7.jpg"
@@ -417,6 +420,9 @@ def files(decks: list, out_dir: Path, q) -> dict[Path, str | bytes]:
         for p in sorted(SOUNDS_DIR.iterdir()):
             if p.suffix.lower() in SOUND_TYPES:
                 out[root / "sounds" / p.name] = p.read_bytes()
+    if TABLE_ART_DIR.is_dir():
+        for p in sorted(TABLE_ART_DIR.glob("*.png")):
+            out[root / "table" / p.name] = p.read_bytes()
     paths: dict[str, str] = {}
     for d in decks:
         rel = Path(d.href).with_suffix(".ndjson").as_posix()   # <owner>/<Bracket>/<Deck>.ndjson

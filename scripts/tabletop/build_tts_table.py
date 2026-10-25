@@ -84,12 +84,13 @@ GLOBAL_SCRIPTS = ("cactuar.lua", "cactuar_catalog.lua", "cactuar_commander.lua",
 
 def browser_lua(base_url: str) -> str:
     lua = "\n\n".join((SOURCE / name).read_text(encoding="utf-8") for name in GLOBAL_SCRIPTS)
-    # TTS caches audio by URL too: a content hash on each announcer clip makes a
-    # re-recorded clip a new URL, so tables built after it play the new one.
-    for clip in sorted((SOURCE / "sounds").glob("*")):
-        if clip.suffix.lower() in (".wav", ".mp3", ".ogg"):
-            version = hashlib.sha256(clip.read_bytes()).hexdigest()[:8]
-            lua = lua.replace(f'"sounds/{clip.name}"', f'"sounds/{clip.name}?v={version}"')
+    # TTS caches audio and pictures by URL too: a content hash on each clip and table
+    # picture makes a re-recorded or redrawn one a new URL, so tables built after it get it.
+    for folder, kinds in (("sounds", (".wav", ".mp3", ".ogg")), ("table", (".png",))):
+        for asset in sorted((SOURCE / folder).glob("*")):
+            if asset.suffix.lower() in kinds:
+                version = hashlib.sha256(asset.read_bytes()).hexdigest()[:8]
+                lua = lua.replace(f'"{folder}/{asset.name}"', f'"{folder}/{asset.name}?v={version}"')
     cell = _section((SOURCE / "cactuar_search.xml").read_text(encoding="utf-8"), "CARD")
     lua = lua.replace("@INSPECT_CELL@", cell)
     return f"\n\n{MARKER} (appended by scripts/tabletop/build_tts_table.py) ====\n" + \
@@ -220,51 +221,54 @@ STRIP_GUIDS = frozenset({
     "0beb07", "4256ba", "9ca38a", "401fc2", "7071ce", "7bf068", "eab9bb", "63bc71", "3d7912", "b34886",
     "3c7ad3", "d7dc8e", "a4868a", "ed330c", "295538", "633ed3", "7dd5e3", "dc19a6", "818de4", "b7ccfb",
 })
-# The stack area drawn there: five portrait card slots in one column under the Cactuar
-# tile (x 48.2). Cards on this table are about 2.25 x 3.15; the slots leave a margin.
-STACK_X, STACK_Z, STACK_Y = 48.2, -5.0, 0.97        # centre of the column; table surface
+# The stack area there: five portrait card slots in one column under the Cactuar tile
+# (x 48.2), on a picture (tts/table/stack-panel.png, from make_table_art.py) that
+# cactuar_lines.lua lays on the table as a decal. Cards on this table are about
+# 2.25 x 3.15; the slots leave a margin.
+STACK_X, STACK_Z = 48.2, -5.0                       # centre of the slot column
 SLOT_W, SLOT_H, SLOT_STEP, SLOTS = 2.6, 3.5, 4.2, 5
-STACK_COLOR = {"r": 0.92, "g": 0.88, "b": 0.78}     # soft cream, like the playmat lines
+STACK_MARGIN, STACK_HEADER = 0.6, 0.8               # around the slots; the title band on top
+# v68/v69 drew the area with vector lines in this colour; a rebuild removes them.
+OLD_STACK_COLOR = {"r": 0.92, "g": 0.88, "b": 0.78}
 
 
-def _rect(cx: float, cz: float, w: float, h: float, thickness: float) -> dict:
-    corners = [(cx - w / 2, cz - h / 2), (cx + w / 2, cz - h / 2),
-               (cx + w / 2, cz + h / 2), (cx - w / 2, cz + h / 2)]
-    return {"points3": [{"x": round(x, 3), "y": STACK_Y, "z": round(z, 3)} for x, z in corners],
-            "color": dict(STACK_COLOR), "thickness": thickness,
-            "rotation": {"x": 0.0, "y": 0.0, "z": 0.0}, "loop": True, "square": True}
-
-
-def stack_area() -> tuple[list[dict], list[dict]]:
-    """Vector lines (outer rectangle + one per slot) and a snap point per slot."""
+def stack_geometry() -> dict:
+    """The panel's centre and size, and its slot centres (north first), in table units."""
     first = STACK_Z - SLOT_STEP * (SLOTS - 1) / 2
-    centres = [first + i * SLOT_STEP for i in range(SLOTS)]
-    margin = 0.6
-    lines = [_rect(STACK_X, STACK_Z, SLOT_W + 2 * margin,
-                   SLOT_STEP * (SLOTS - 1) + SLOT_H + 2 * margin, 0.12)]
-    lines += [_rect(STACK_X, z, SLOT_W, SLOT_H, 0.06) for z in centres]
-    snaps = [{"Position": {"x": STACK_X, "y": 0.961135, "z": round(z, 3)},
-              "Rotation": {"x": 0.0, "y": 180.0, "z": 0.0}} for z in centres]
-    return lines, snaps
+    slots = sorted((round(first + i * SLOT_STEP, 3) for i in range(SLOTS)), reverse=True)
+    top = slots[0] + SLOT_H / 2 + STACK_MARGIN + STACK_HEADER
+    bottom = slots[-1] - SLOT_H / 2 - STACK_MARGIN
+    return {"x": STACK_X, "z": round((top + bottom) / 2, 3), "width": round(SLOT_W + 2 * STACK_MARGIN, 3),
+            "height": round(top - bottom, 3), "top": round(top, 3), "header": STACK_HEADER,
+            "slots": slots}
 
 
-# Battlefield guide-line switches (tts/cactuar_lines.lua): one per seat, just past
-# that seat's reveal button, continuing its row of round buttons.
+def stack_snaps() -> list[dict]:
+    """A snap point per slot, facing the south seats like the rest of the strip."""
+    return [{"Position": {"x": STACK_X, "y": 0.961135, "z": z},
+             "Rotation": {"x": 0.0, "y": 180.0, "z": 0.0}} for z in sorted(stack_geometry()["slots"])]
+
+
+# Trigger-area switches (tts/cactuar_lines.lua): one per seat, past that seat's
+# reveal button, continuing its row of round buttons. Buttons are 1.96 apart and a
+# button's width/500 is its size in table units, so the label fits the block exactly
+# and the block sits well clear of the reveal button.
 SWITCH_GUIDS = {"White": "c4c7b1", "Red": "c4c7b2", "Yellow": "c4c7b3",
                 "Green": "c4c7b4", "Blue": "c4c7b5", "Purple": "c4c7b6"}
-SWITCH_SCALE = (1.9, 0.1, 0.6)
-SWITCH_LUA = """-- Battlefield guide lines switch for @SEAT@ (tts/cactuar_lines.lua does the drawing).
+SWITCH_SCALE = (2.6, 0.1, 0.6)
+SWITCH_STEP = 4.0                                   # from the reveal button's centre
+SWITCH_LUA = """-- Trigger-area switch for @SEAT@ (tts/cactuar_lines.lua does the drawing).
 local SEAT = "@SEAT@"
 function onLoad()
   self.createButton({click_function = "czlClick", function_owner = self, label = "",
-    position = {0, 0.6, 0}, scale = {1 / 1.9, 1, 1 / 0.6}, width = 1750, height = 520,
-    font_size = 230, color = {0.13, 0.17, 0.23}, hover_color = {0.20, 0.26, 0.34},
+    position = {0, 0.6, 0}, scale = {1 / 2.6, 1, 1 / 0.6}, width = 1300, height = 300,
+    font_size = 190, color = {0.13, 0.17, 0.23}, hover_color = {0.20, 0.26, 0.34},
     font_color = {0.92, 0.88, 0.78},
-    tooltip = "Battlefield guide lines (decorative). The music still counts the whole playmat."})
+    tooltip = "Show a trigger area on this playmat (decorative). The music still counts the whole playmat."})
   Global.call("czlRegister", {color = SEAT, object = self})
 end
 function czlShow(on)
-  self.editButton({index = 0, label = on and "Guide lines  ━━●" or "Guide lines  ○━━"})
+  self.editButton({index = 0, label = on and "Triggers  ━━●" or "Triggers  ○━━"})
 end
 function czlClick(_, player_color)
   Global.call("czlToggle", {color = SEAT, by = player_color})
@@ -288,14 +292,13 @@ def guide_switches(base: dict) -> list[dict]:
         rx, rz = reveal["Transform"]["posX"], reveal["Transform"]["posZ"]
         dx, dz = rx - mill["Transform"]["posX"], rz - mill["Transform"]["posZ"]
         length = (dx * dx + dz * dz) ** 0.5 or 1.0
-        step = 1.0 + SWITCH_SCALE[0] / 2 + 0.25       # clear of the reveal button
         out.append({
             "GUID": guid, "Name": "BlockSquare",
-            "Transform": {"posX": round(rx + dx / length * step, 3), "posY": 0.97,
-                          "posZ": round(rz + dz / length * step, 3), "rotX": 0.0,
+            "Transform": {"posX": round(rx + dx / length * SWITCH_STEP, 3), "posY": 0.97,
+                          "posZ": round(rz + dz / length * SWITCH_STEP, 3), "rotX": 0.0,
                           "rotY": reveal["Transform"].get("rotY", 0.0), "rotZ": 0.0,
                           "scaleX": SWITCH_SCALE[0], "scaleY": SWITCH_SCALE[1], "scaleZ": SWITCH_SCALE[2]},
-            "Nickname": "Guide lines", "Description": f"Battlefield guide lines for {color}.",
+            "Nickname": "Trigger area", "Description": f"Shows {color}'s trigger area.",
             "GMNotes": "", "ColorDiffuse": {"r": 0.13, "g": 0.17, "b": 0.23},
             "Locked": True, "Grid": False, "Snap": False, "IgnoreFoW": False,
             "MeasureMovement": False, "DragSelectable": False, "Autoraise": True,
@@ -313,9 +316,9 @@ def build(base: dict, base_url: str, name: str = NAME) -> dict:
         [o for o in table.get("ObjectStates") or []
          if o.get("GUID") not in ours           # rebuilding from an earlier output
          and o.get("GUID") not in STRIP_GUIDS])  # the cleared edge strip
-    lines, snaps = stack_area()
+    snaps = stack_snaps()
     stack = {(round(s["Position"]["x"], 3), round(s["Position"]["z"], 3)) for s in snaps}
-    old_lines = [l for l in table.get("VectorLines") or [] if l.get("color") != STACK_COLOR]
+    old_lines = [l for l in table.get("VectorLines") or [] if l.get("color") != OLD_STACK_COLOR]
     old_snaps = [s for s in table.get("SnapPoints") or []
                  if (round(s["Position"]["x"], 3), round(s["Position"]["z"], 3)) not in stack]
     lua = table.get("LuaScript") or ""
@@ -325,7 +328,7 @@ def build(base: dict, base_url: str, name: str = NAME) -> dict:
     if "<!-- Cactuar deck browser" in xml:
         xml = xml[:xml.index("<!-- Cactuar deck browser")].rstrip()
     table.update({"SaveName": name, "GameMode": name,
-                  "VectorLines": old_lines + lines, "SnapPoints": old_snaps + snaps,
+                  "VectorLines": old_lines, "SnapPoints": old_snaps + snaps,
                   "LuaScript": lua + browser_lua(base_url),
                   "XmlUI": xml + "\n\n" + browser_xml(),
                   "ObjectStates": objects + tiles(base_url, _guids(objects)) + guide_switches(base)})

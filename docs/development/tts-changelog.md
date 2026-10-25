@@ -8,6 +8,9 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v72 — 2026-10-24 (commit f1fdba72)
+- Trigger areas now end about halfway down the playmat, leaving a row above the land line for artifacts
+
 ## v71 — 2026-10-24 (commit 03a367c3)
 - Stack panel frames, title and slot numbers are now teal, a colour no seat uses
 - Trigger areas now run from the far edge all the way down to the land line

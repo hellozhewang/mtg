@@ -18,7 +18,8 @@ Owner, with a sketch on Blue's mat: end the box about halfway down so a row is l
 above the land line "for a row of artifacts or something". `CZL.depth` 0.53 (the far
 53% of the mat's depth; measured from the sketch, where the printed land line sat at
 about 29-31% from the player's edge, confirming the v69 estimate) replaces v71's
-land-line bottom; the width (38%, library side) is unchanged.
+land-line bottom; the width (38%, library side) is unchanged. Source `f1fdba72`;
+archive `.cache/tts-builds/v72/`. **Saved Games v72; Steam v64.**
 
 ## v71: teal stack frames; trigger areas reach the land line (saved; not on Steam)
 

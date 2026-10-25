@@ -23,7 +23,6 @@ import json
 import re
 import shutil
 import subprocess
-import sys
 import tempfile
 import urllib.request
 from pathlib import Path
@@ -31,7 +30,6 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[2]
 SLEEVES_DIR = REPO / "tts" / "sleeves"
-SECONDARY_GENERATOR = REPO / "scripts" / "discord" / "chatgpt-browser-image-generator.py"
 STAGING = HERE / ".sleever"                      # gitignored; one folder per user
 OWNERS = STAGING / "owners.json"                 # slug -> Discord owner, for overwrites
 
@@ -77,7 +75,9 @@ appear in a reply. Only the owner chooses the model.
 
 ## Making the picture
 
-1. **Use your image generation tool.** Make one finished picture per request. If
+1. **Use your built-in image generation tool.** Make one finished picture per request.
+   Never use the ChatGPT website, browser automation, or a paid image API. For Codex,
+   use the built-in `image_gen` tool and copy its selected output into this folder. If
    image generation fails due to a quota limit or capacity limit (especially on
    `gemini-3.1-flash-image`), state clearly that image quota on
    `gemini-3.1-flash-image` has been exhausted and give the reset time if known.
@@ -198,75 +198,11 @@ def fetch_refs(urls: list[str], dest: Path) -> list[str]:
 def latest_picture(f: Path, since: float) -> Path | None:
     """The newest picture the model saved in its folder this turn (refs/ excluded)."""
     found = [p for p in f.iterdir()
-             if p.is_file() and p.suffix.lower() in IMAGE_TYPES and p.stat().st_mtime >= since - 1]
+             if p.is_file() and p.suffix.lower() in IMAGE_TYPES and p.stat().st_mtime >= since]
     return max(found, key=lambda p: p.stat().st_mtime) if found else None
 
 
 # ---------- naming ----------
-
-def infer_sleeve_name(message: str) -> str:
-    """Derive a concise 1-4 word sleeve title from the user request."""
-    clean = re.sub(r"^(sleever\s+)?(please\s+)?(make\s+(me\s+)?)?(create\s+|draw\s+)?(a\s+|an\s+|some\s+)?", "", message.strip(), flags=re.I).strip()
-    clean = re.sub(r"\s+sleeves?(\s+please)?\.?$", "", clean, flags=re.I).strip()
-    clean = re.sub(r"^(a\s+)?sleeve\s+(of\s+|for\s+)?", "", clean, flags=re.I).strip()
-    clean = re.sub(r"^of\s+(this|these)(\s+image|\s+picture|\s+ref|\s+reference)?", "", clean, flags=re.I).strip()
-    clean = re.sub(r"^(this|these)(\s+image|\s+picture|\s+ref|\s+reference)?", "", clean, flags=re.I).strip()
-    clean = re.sub(r"[^\w\s-]", "", clean).strip()
-    words = clean.split()
-    if not words:
-        return "Sleeves"
-    selected = words[:4]
-    while len(selected) > 1 and selected[-1].lower() in {'at', 'in', 'of', 'on', 'with', 'for', 'a', 'the', 'an', 'to', 'and', 'by'}:
-        selected.pop()
-    return " ".join(selected).title()[:40] or "Sleeves"
-
-
-def sleeve_prompt_for_generator(user_request: str, has_refs: bool = False) -> str:
-    """Format the user request into an optimal prompt for card back sleeve generation."""
-    clean = re.sub(r"^(sleever\s+)?(please\s+)?(make\s+(me\s+)?)?(create\s+|draw\s+)?(a\s+|an\s+|some\s+)?", "", user_request.strip(), flags=re.I).strip()
-    clean = re.sub(r"\s+sleeves?(\s+please)?\.?$", "", clean, flags=re.I).strip()
-    clean = re.sub(r"^(a\s+)?sleeve\s+(of\s+|for\s+)?", "", clean, flags=re.I).strip()
-    clean = re.sub(r"^of\s+(this|these)(\s+image|\s+picture|\s+ref|\s+reference)?", "", clean, flags=re.I).strip()
-    clean = re.sub(r"^(this|these)(\s+image|\s+picture|\s+ref|\s+reference)?", "", clean, flags=re.I).strip()
-    clean = clean.strip()
-    if has_refs:
-        subject = f"the character/subject in the attached reference image ({clean})" if clean else "the character/subject in the attached reference image"
-    else:
-        subject = clean or "custom fantasy or sci-fi card back art"
-    return (
-        f"A custom card back sleeve illustration of: {subject}. "
-        f"Portrait 2:3 aspect ratio, one strong centered motif that reads at thumbnail size, dynamic composition, "
-        f"full-bleed artwork extending to all edges with safe margins for cropping. "
-        f"No borders, no frames, no card game templates, no text, no logos, no watermarks. "
-        f"Content restriction: {SLEEVE_CONTENT_RULE}"
-    )
-
-
-def generate_secondary_image(prompt: str, out_path: Path, refs: list[Path] | None = None, timeout: float = 600) -> None:
-    """Generate a sleeve image using scripts/discord/chatgpt-browser-image-generator.py."""
-    if not SECONDARY_GENERATOR.is_file():
-        raise SleeveError(f"secondary image generator not found at {SECONDARY_GENERATOR}")
-    out_path.unlink(missing_ok=True)
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    cmd = [
-        sys.executable,
-        str(SECONDARY_GENERATOR),
-        "--prompt", prompt,
-        "--out", str(out_path),
-        "--timeout", str(timeout),
-    ]
-    for r in refs or []:
-        if Path(r).is_file():
-            cmd.extend(["--ref", str(Path(r).resolve())])
-    r = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout + 30)
-    if r.returncode != 0 or not out_path.exists():
-        err = (r.stderr or r.stdout).strip()
-        for line in err.splitlines():
-            if line.startswith("Error:"):
-                err = line
-                break
-        raise SleeveError(f"secondary image generator failed: {err[:300]}")
-
 
 def sleeve_name(answer: str) -> str | None:
     found = SLEEVE_LINE.findall(answer or "")
@@ -366,8 +302,7 @@ def finish(src: Path, dest: Path) -> None:
         shutil.copyfile(out, dest)
 
 
-def publish(f: Path, answer: str, owner: str, previous: str | None, since: float,
-            *, secondary: bool = False) -> tuple[str, str | None]:
+def publish(f: Path, answer: str, owner: str, previous: str | None, since: float) -> tuple[str, str | None]:
     """After a turn: install the sleeve and return (reply, slug), or the reply alone.
 
     The reply loses its `Sleeve:` line and gains the attach marker for Discord.
@@ -375,18 +310,16 @@ def publish(f: Path, answer: str, owner: str, previous: str | None, since: float
     picture = latest_picture(f, since)
     name = sleeve_name(answer)
     body = strip_name_line(answer)
-    if picture is None:
-        return (body or NO_PICTURE), None
     if name is None:
-        name = previous.replace("-", " ").title() if previous else "Sleeves"
+        return (body or NO_PICTURE), None
+    if picture is None:
+        return NO_PICTURE, None
     slug = choose_slug(name, owner, previous)
     dest = SLEEVES_DIR / f"{slug}.jpg"
     finish(picture, dest)
     record_owner(slug, owner)
     label = slug.replace("-", " ").replace("_", " ").title()
     desc_line = body or f"Made **{label}** sleeves."
-    if secondary:
-        desc_line += "\n\n*(Using secondary image gen workaround)*"
     lines = [desc_line,
              f"In the table it's **Sleeves: {label}** in the Cactuar deck browser, a few "
              f"minutes from now: open the browser (or press **Refresh** if it's open), then "

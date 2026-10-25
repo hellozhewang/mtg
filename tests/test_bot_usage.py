@@ -418,58 +418,5 @@ class GeminiImageQuotaTests(unittest.TestCase):
             self.assertIsNone(info_turn3)
 
 
-class SleeverImageQuotaTests(unittest.TestCase):
-    def test_send_sleever_uses_secondary_workaround_when_image_quota_is_exhausted(self):
-        import bot
-        with tempfile.TemporaryDirectory() as tmp:
-            home = Path(tmp)
-            future = 1792983579.0
-            usage.record_image_quota(home, {
-                "model": "gemini-3.1-flash-image",
-                "resets_at": future,
-                "resets_iso": "2026-10-26T02:59:39Z",
-            })
-            with patch.object(bot.HARNESS, "home", home), \
-                 patch.object(bot.HARNESS, "name", "agy"), \
-                 patch.object(bot.HARNESS, "images", True), \
-                 patch.object(bot, "_claim_bot"), \
-                 patch.object(bot, "_autopush"), \
-                 patch.object(bot.HARNESS, "run") as mock_run, \
-                 patch.object(bot.sleever, "generate_secondary_image") as mock_gen, \
-                 patch.object(bot.sleever, "publish", return_value=("Made **Sleeves** sleeves.\n\n*(Using secondary image gen workaround)*", "sleeves")), \
-                 patch.object(bot.HARNESS, "usage", return_value="Image (gemini-3.1-flash-image): 0% left"):
-                reply = bot.send_sleever("make me sleeves", "zzwang", discord=True)
-                # Primary model harness is NOT called
-                mock_run.assert_not_called()
-                # Secondary generator is called
-                mock_gen.assert_called_once()
-                self.assertIn("secondary image gen workaround", reply)
-                self.assertIn("Image (gemini-3.1-flash-image): 0% left", reply)
-
-    def test_send_sleever_fails_with_quota_when_secondary_also_fails(self):
-        import bot
-        with tempfile.TemporaryDirectory() as tmp:
-            home = Path(tmp)
-            future = 1792983579.0
-            usage.record_image_quota(home, {
-                "model": "gemini-3.1-flash-image",
-                "resets_at": future,
-                "resets_iso": "2026-10-26T02:59:39Z",
-            })
-            with patch.object(bot.HARNESS, "home", home), \
-                 patch.object(bot.HARNESS, "name", "agy"), \
-                 patch.object(bot.HARNESS, "images", True), \
-                 patch.object(bot, "_claim_bot"), \
-                 patch.object(bot.HARNESS, "run") as mock_run, \
-                 patch.object(bot.sleever, "generate_secondary_image", side_effect=RuntimeError("browser closed")), \
-                 patch.object(bot.HARNESS, "usage", return_value="Image (gemini-3.1-flash-image): 0% left"):
-                reply = bot.send_sleever("make me sleeves", "zzwang", discord=True)
-                mock_run.assert_not_called()
-                self.assertIn("quota on gemini-3.1-flash-image has been exhausted", reply)
-                self.assertIn("<t:1792983579:R>", reply)
-                self.assertIn("Secondary image generation also failed: browser closed", reply)
-                self.assertIn("Image (gemini-3.1-flash-image): 0% left", reply)
-
-
 if __name__ == "__main__":
     unittest.main()

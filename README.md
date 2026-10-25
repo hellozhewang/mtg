@@ -16,10 +16,9 @@ dependencies beyond the standard library:
 | [`validate_deck.py`](scripts/common/validate_deck.py) | 100 cards, real names, colour identity, bracket legality, singleton, and that Tabletop Simulator's importer loads it |
 | [`ttsimport.py`](scripts/tabletop/ttsimport.py) | ask the Tabletop Simulator deck importer what a pasted list loads as |
 
-For image assets, [`chatgpt-browser-image-generator.py`](scripts/discord/chatgpt-browser-image-generator.py)
-generates and downloads an original PNG through a saved ChatGPT browser session.
-It requires the separately installed `agent-browser` CLI; see the
-[browser setup and usage guide](docs/development/agent-browser-guide.md).
+Sleeve images use the configured image-capable harness, with Codex's built-in image
+generation as the fallback when Gemini's image quota is exhausted. See the
+[sleeves guide](docs/development/tts-sleeves-guide.md).
 
 Every deck targets a **Commander bracket** and has to obey its restrictions, which
 is what most of this document is about. The bracket rules themselves live in
@@ -1111,7 +1110,6 @@ mtg/
 │   └── discord/               everything the Discord bot runs
 │       ├── build_agents.py      HOLDS the agent's instructions (AGENTS_MD) and
 │       │                        deploys them to public/<user>/AGENTS.md as 0444
-│       ├── chatgpt-browser-image-generator.py   sleever's fallback image maker
 │       └── bot/                 the harness — OUTSIDE the workspace it drives
 │           ├── bot.py             persistent builder session the Discord app calls
 │           ├── harness.py         the agent CLI it runs on: agy (Gemini) or codex

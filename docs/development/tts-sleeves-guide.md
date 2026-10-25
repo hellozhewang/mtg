@@ -18,7 +18,7 @@ This includes Donald Trump's likeness, name, slogans, campaign imagery, memes an
 indirect references, whether supportive, critical or satirical. The rule also applies
 to uploaded reference images. Decline these requests without generating a picture.
 `SLEEVE_CONTENT_RULE` in `scripts/discord/bot/sleever.py` supplies the same rule to
-both the normal sleever instructions and the secondary image-generator prompt.
+the shared instructions used by Gemini and the Codex fallback.
 
 Players can also have sleeves made for them. In the deck builder's Discord channels:
 
@@ -33,6 +33,22 @@ sleever paints the picture with whichever model the owner has set for the builde
 - attaches the sleeve to the Discord reply;
 - autopushes `tts/sleeves/` and `docs/`, so it shows in the Sleeves menu a few minutes later
   (reopen the browser, or press **Refresh** in an open one).
+
+When **Gemini's image quota is exhausted**, sleever runs **Codex CLI's built-in
+`image_gen` tool** instead. This covers a quota already recorded before a request
+and one discovered during a request. The configured builder harness stays unchanged.
+Codex keeps a separate per-channel, per-user conversation; both harnesses read the
+same owner rules, uploaded references and previous sleeve for revisions. The model's
+actual reply supplies the sleeve name. A refusal, failed generation or unchanged old
+picture is never published.
+
+The Mac needs Codex CLI **0.160.0 or newer**, signed in with the owner's ChatGPT
+account (`codex login`). Image generation is explicitly enabled on Codex calls.
+It uses the built-in image tool and the account's Codex allowance; there is no
+ChatGPT browser automation or automatic paid image API fallback. See OpenAI's
+[image-generation documentation](https://learn.chatgpt.com/docs/image-generation).
+If Codex is unavailable or out of quota too, sleever reports that it cannot make
+pictures. Replies report the allowance of the harness used for that request.
 
 The model works in `scripts/discord/bot/.sleever/<user>/`, which isn't in git. Uploads are downloaded to
 `refs/` there. Who made which sleeve is kept in `scripts/discord/bot/.sleever/owners.json`.

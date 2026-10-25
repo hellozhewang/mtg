@@ -579,10 +579,10 @@ def _turn(folder: Path, message: str, sid: str | None, chan: str) -> harness.Tur
     return turn
 
 
-def _usage(discord: bool = False, *, is_image: bool = False) -> str:
+def _usage(discord: bool = False, *, is_image: bool = False, agent=None) -> str:
     """The harness's allowance line, or "" when it has none to report."""
     try:
-        return HARNESS.usage(discord=discord, is_image=is_image)
+        return (agent or HARNESS).usage(discord=discord, is_image=is_image)
     except Exception as exc:                 # a footer must never cost the reply
         log().warning("usage: skipped (%s: %s)", type(exc).__name__, exc)
         return ""
@@ -707,8 +707,10 @@ def send_sleever(message: str, username: str, channel: str | int | None = DEFAUL
     if message.strip().lower() in usage.USAGE_COMMANDS:
         return _usage(discord, is_image=True) or usage.HEADER + "\nUnavailable right now."
 
+    usage_agent = HARNESS
+
     def with_usage(reply: str) -> str:
-        footer = _usage(discord, is_image=True)
+        footer = _usage(discord, is_image=True, agent=usage_agent)
         return reply + ("\n\n" + footer if footer else "")
 
     owner = workspace.owner_name(username)
@@ -719,58 +721,6 @@ def send_sleever(message: str, username: str, channel: str | int | None = DEFAUL
         log().info("SLEEVER [%s] the harness has no image tool", chan)
         return with_usage(sleever.UNAVAILABLE)
 
-    if HARNESS.name == "agy":
-        exhausted, resets_iso, resets_at = usage.is_image_quota_exhausted(getattr(HARNESS, "home", None))
-        if exhausted:
-            log().info("SLEEVER [%s] gemini-3.1-flash-image quota exhausted; using secondary image gen workaround", chan)
-            when_str = f"<t:{int(resets_at)}:R>" if discord else (
-                datetime.fromtimestamp(resets_at, timezone.utc).strftime("%Y-%m-%d %H:%M UTC") if resets_at else "later"
-            )
-            try:
-                busy = _claim_bot()
-            except Busy:
-                log().info("BUSY   [%s] refused; already busy", chan)
-                return with_usage(BUSY_REPLY)
-            conv = f"{chan}-{owner}-sleever"
-            try:
-                folder = sleever.prepare(owner)
-                notes = sleever.fetch_refs(refs or [], folder / "refs")
-                for note in notes:
-                    log().info("SLEEVER [%s] %s", chan, note)
-                state = _load(conv)
-                local_refs = sorted([p for p in (folder / "refs").iterdir() if p.is_file()])
-                inferred = sleever.infer_sleeve_name(message)
-                if inferred != "Sleeves":
-                    sleeve_name = inferred
-                    prev_sleeve = state.get("sleeve") if sleever.slugify(inferred) == state.get("sleeve") else None
-                elif refs:
-                    sleeve_name = "Sleeves"
-                    prev_sleeve = None
-                else:
-                    sleeve_name = state.get("sleeve") or "Sleeves"
-                    prev_sleeve = state.get("sleeve")
-                sleeve_prompt = sleever.sleeve_prompt_for_generator(message, has_refs=bool(local_refs))
-                out_png = folder / "sleeve.png"
-                sleever.generate_secondary_image(sleeve_prompt, out_png, refs=local_refs, timeout=TIMEOUT)
-                answer = f"Made **{sleeve_name}** sleeves.\nSleeve: {sleeve_name}"
-                reply, slug = sleever.publish(folder, answer, owner, prev_sleeve, started, secondary=True)
-                if slug:
-                    state["sleeve"] = slug
-                    log().info("SLEEVER [%s] installed tts/sleeves/%s.jpg via secondary generator", chan, slug)
-                    _autopush(chan, sleever.SLEEVES_DIR, "Sleeves")
-                if state:
-                    _save(conv, state)
-                log().info("REPLY  [%s/sleever] %d chars %dms (secondary generator)", chan, len(reply),
-                           int((time.time() - started) * 1000))
-                return with_usage(reply)
-            except Exception as exc:
-                log().error("FAILED [%s] sleever secondary generator after %dms: %s: %s", chan,
-                            int((time.time() - started) * 1000), exc.__class__.__name__, _oneline(str(exc))[:300])
-                msg = (f"sleever can't make pictures right now: quota on gemini-3.1-flash-image has been exhausted "
-                       f"(resets {when_str}). Secondary image generation also failed: {exc}")
-                return with_usage(msg)
-            finally:
-                _release_bot(busy)
     try:
         busy = _claim_bot()
     except Busy:
@@ -783,59 +733,62 @@ def send_sleever(message: str, username: str, channel: str | int | None = DEFAUL
         for note in notes:
             log().info("SLEEVER [%s] %s", chan, note)
         state = _load(conv)
-        sid = session_id(conv)
         prompt = message
+        if state.get("sleeve"):
+            prompt += ("\n\nYour previous sleeve is named " + state["sleeve"] +
+                       ". For a revision, inspect the existing sleeve picture here and keep its name.")
         if notes:
             prompt += "\n\n(Note from the bot: " + "; ".join(notes) + ".)"
-        turn = HARNESS.run(folder, prompt, sid, chan=chan, timeout=TIMEOUT, writable=[])
-        if turn.session_id and turn.session_id != sid:
-            state = {**state, "session_id": turn.session_id, "harness": HARNESS.name,
-                     "model": MODEL, "effort": EFFORT}
-            log().info("[%s] pinned new sleever session %s", chan, turn.session_id)
-        reply, slug = sleever.publish(folder, turn.answer, owner, state.get("sleeve"), started)
+
+        def image_quota_exhausted() -> bool:
+            return HARNESS.name == "agy" and usage.is_image_quota_exhausted(
+                getattr(HARNESS, "home", None))[0]
+
+        def paint(agent, key, saved):
+            # Gemini and Codex must never resume each other's session. Keep the
+            # fallback's conversation separate while sharing references and art.
+            sid = saved.get("session_id") if (
+                saved.get("harness") == agent.name and saved.get("model") == agent.model
+                and saved.get("effort") == agent.effort) else None
+            attempt_started = time.time()
+            turn = agent.run(folder, prompt, sid, chan=chan, timeout=TIMEOUT, writable=[])
+            if turn.session_id:
+                saved.update(session_id=turn.session_id, harness=agent.name,
+                             model=agent.model, effort=agent.effort)
+                _save(key, saved)
+            return sleever.publish(folder, turn.answer, owner, state.get("sleeve"), attempt_started)
+
+        use_fallback = image_quota_exhausted()
+        if not use_fallback:
+            try:
+                reply, slug = paint(HARNESS, conv, state)
+            except harness.HarnessError:
+                if not image_quota_exhausted():
+                    raise
+                use_fallback = True
+            else:
+                use_fallback = not slug and image_quota_exhausted()
+        if use_fallback:
+            log().info("SLEEVER [%s] image quota exhausted; retrying with Codex", chan)
+            try:
+                fallback = harness.CodexHarness()
+                usage_agent = fallback
+                fallback_key = conv + "-codex"
+                reply, slug = paint(fallback, fallback_key, _load(fallback_key))
+            except Exception as exc:
+                log().error("SLEEVER [%s] Codex fallback failed: %s: %s", chan,
+                            type(exc).__name__, _oneline(str(exc))[:300])
+                reply, slug = sleever.UNAVAILABLE, None
         if slug:
             state["sleeve"] = slug
             log().info("SLEEVER [%s] installed tts/sleeves/%s.jpg", chan, slug)
             _autopush(chan, sleever.SLEEVES_DIR, "Sleeves")
         else:
-            log().warning("SLEEVER [%s] no picture this turn", chan)
-            if HARNESS.name == "agy":
-                exhausted, resets_iso, resets_at = usage.is_image_quota_exhausted(getattr(HARNESS, "home", None))
-                if exhausted:
-                    when_str = f"<t:{int(resets_at)}:R>" if discord else (
-                        datetime.fromtimestamp(resets_at, timezone.utc).strftime("%Y-%m-%d %H:%M UTC") if resets_at else "later"
-                    )
-                    log().info("SLEEVER [%s] quota exhausted during turn; falling back to secondary generator", chan)
-                    try:
-                        local_refs = sorted([p for p in (folder / "refs").iterdir() if p.is_file()])
-                        inferred = sleever.infer_sleeve_name(message)
-                        sleeve_name = sleever.sleeve_name(turn.answer)
-                        if not sleeve_name:
-                            if inferred != "Sleeves":
-                                sleeve_name = inferred
-                            elif refs:
-                                sleeve_name = "Sleeves"
-                            else:
-                                sleeve_name = state.get("sleeve") or "Sleeves"
-                        prev_sleeve = state.get("sleeve") if (not refs and sleever.slugify(sleeve_name) == state.get("sleeve")) else None
-                        sleeve_prompt = sleever.sleeve_prompt_for_generator(message, has_refs=bool(local_refs))
-                        out_png = folder / "sleeve.png"
-                        sleever.generate_secondary_image(sleeve_prompt, out_png, refs=local_refs, timeout=TIMEOUT)
-                        answer = f"Made **{sleeve_name}** sleeves.\nSleeve: {sleeve_name}"
-                        reply, slug = sleever.publish(folder, answer, owner, prev_sleeve, started, secondary=True)
-                        if slug:
-                            state["sleeve"] = slug
-                            log().info("SLEEVER [%s] installed tts/sleeves/%s.jpg via secondary generator", chan, slug)
-                            _autopush(chan, sleever.SLEEVES_DIR, "Sleeves")
-                    except Exception as exc:
-                        log().error("SLEEVER [%s] secondary generator also failed: %s", chan, exc)
-                        reply = (f"sleever can't make pictures right now: quota on gemini-3.1-flash-image has been exhausted "
-                                 f"(resets {when_str}). Secondary image generation also failed: {exc}")
+            log().warning("SLEEVER [%s] no picture published this turn", chan)
         if state:
             _save(conv, state)
         log().info("REPLY  [%s/sleever] %d chars %dms", chan, len(reply),
                    int((time.time() - started) * 1000))
-        log().debug("REPLY-BODY %s", _oneline(reply))
         return with_usage(reply)
     except Exception as exc:
         log().error("FAILED [%s] sleever after %dms: %s: %s", chan,

@@ -132,6 +132,7 @@ class CodexHarness(Harness):
     default_model = "gpt-6-astra"
     default_effort = "high"
     label = "Codex"
+    images = True                      # built-in image_gen (Codex CLI 0.160+)
     SESSION_RE = re.compile(r"session id:\s*([0-9a-fA-F-]{32,40})")
 
     def __init__(self, model: str | None = None, effort: str | None = None):
@@ -157,7 +158,7 @@ class CodexHarness(Harness):
 
     def args(self, folder: Path, message: str, session_id: str | None,
              out_file: Path, writable: list[Path]) -> list[str]:
-        args = [self.exe, "exec", "--skip-git-repo-check",
+        args = [self.exe, "exec", "--enable", "image_generation", "--skip-git-repo-check",
                 "-s", "workspace-write", "-C", str(folder)]
         for path in writable:
             args += ["--add-dir", str(path)]

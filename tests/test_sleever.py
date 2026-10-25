@@ -9,6 +9,7 @@ import unittest
 import zlib
 from pathlib import Path
 from unittest.mock import Mock, patch
+from types import SimpleNamespace
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -96,42 +97,20 @@ class PictureTests(Isolated):
         self.assertIn("**Sleeves: Sailor Moon**", reply)
         self.assertNotIn("Sleeve: Sailor Moon\n", reply)
 
-    def test_publish_with_secondary_generator_includes_note(self):
+    def test_refusal_never_publishes_even_with_a_recent_picture(self):
         f = sleever.prepare("zz")
         png(f / "sleeve.png", 848, 1264)
-        reply, slug = sleever.publish(f, "Made **Sailor Moon** sleeves.\nSleeve: Sailor Moon",
-                                      "zz", None, since=0, secondary=True)
-        self.assertEqual(slug, "sailor-moon")
-        self.assertIn("*(Using secondary image gen workaround)*", reply)
-        self.assertIn(f"[[attach:{self.sleeves / 'sailor-moon.jpg'}]]", reply)
+        reply, slug = sleever.publish(f, "I can't make that sleeve.", "zz", "moon", since=0)
+        self.assertIsNone(slug)
+        self.assertEqual(reply, "I can't make that sleeve.")
+        self.assertEqual(list(self.sleeves.iterdir()), [])
 
-    def test_infer_sleeve_name_and_prompt(self):
-        self.assertEqual(sleever.infer_sleeve_name("sleever make me sailor moon sleeves"), "Sailor Moon")
-        self.assertEqual(sleever.infer_sleeve_name("make me gengar sleeves"), "Gengar")
-        self.assertEqual(sleever.infer_sleeve_name("sleever make me a dark gothic castle at night"), "Dark Gothic Castle")
-        self.assertEqual(sleever.infer_sleeve_name("sleever make a sleeve of this"), "Sleeves")
-        prompt = sleever.sleeve_prompt_for_generator("make me sailor moon sleeves")
-        self.assertIn("sailor moon", prompt.lower())
-        self.assertIn("custom card back sleeve illustration", prompt.lower())
-        self.assertIn("portrait 2:3", prompt.lower())
-        ref_prompt = sleever.sleeve_prompt_for_generator("make a sleeve of this", has_refs=True)
-        self.assertIn("attached reference image", ref_prompt.lower())
-
-    def test_generate_secondary_image_passes_refs(self):
-        script = self.dir / "gen.py"
-        script.write_text("#!/usr/bin/env python3")
-        with patch.object(sleever.subprocess, "run") as mock_run, \
-                patch.object(sleever, "SECONDARY_GENERATOR", script):
-            out = self.dir / "out.png"
-            ref_file = self.dir / "ref.jpg"
-            ref_file.write_bytes(b"image")
-            mock_run.side_effect = lambda *args, **kwargs: (out.write_bytes(b"done"), Mock(returncode=0, stdout="", stderr=""))[1]
-            sleever.generate_secondary_image("draw this", out, refs=[ref_file])
-            cmd = mock_run.call_args[0][0]
-            self.assertIn("--prompt", cmd)
-            self.assertIn("draw this", cmd)
-            self.assertIn("--ref", cmd)
-            self.assertIn(str(ref_file.resolve()), cmd)
+    def test_instructions_use_builtin_images_and_keep_owner_rule(self):
+        f = sleever.prepare("zz")
+        instructions = (f / "AGENTS.md").read_text()
+        self.assertIn(sleever.SLEEVE_CONTENT_RULE, instructions)
+        self.assertIn("built-in `image_gen`", instructions)
+        self.assertIn("Never use the ChatGPT website", instructions)
 
     def test_no_new_picture_publishes_nothing(self):
         f = sleever.prepare("zz")
@@ -166,6 +145,136 @@ class BotTests(unittest.TestCase):
                 patch.object(bot.HARNESS, "usage", return_value=""), patch.object(bot, "_claim_bot") as claim:
             self.assertEqual(bot.send_sleever("sailor moon", "zzwang"), sleever.UNAVAILABLE)
             claim.assert_not_called()
+
+
+@unittest.skipUnless(SIPS, "macOS sips only")
+class RoutingTests(Isolated):
+    def setUp(self):
+        super().setUp()
+        import bot
+        self.bot = bot
+        self.primary = SimpleNamespace(name="agy", model="gemini-test", effort=None,
+                                       images=True, home=self.dir, run=Mock(), usage=Mock(return_value=""))
+        self.codex = SimpleNamespace(name="codex", model="gpt-test", effort="high",
+                                     images=True, run=Mock(), usage=Mock(return_value="codex allowance"))
+        patches = {
+            "HARNESS": self.primary, "SESSIONS": self.dir / "sessions",
+            "LEGACY_STATE": self.dir / "legacy.json", "log": Mock(return_value=Mock()),
+            "_claim_bot": Mock(), "_release_bot": Mock(), "_autopush": Mock(),
+        }
+        for key, value in patches.items():
+            p = patch.object(bot, key, value)
+            p.start()
+            self.addCleanup(p.stop)
+        p = patch.object(bot.harness, "CodexHarness", return_value=self.codex)
+        self.factory = p.start()
+        self.addCleanup(p.stop)
+        p = patch.object(bot.usage, "is_image_quota_exhausted", return_value=(True, None, None))
+        self.quota = p.start()
+        self.addCleanup(p.stop)
+        self.conv = "cli-zzwang-sleever"
+
+    def picture_turn(self, folder, message, sid, **kwargs):
+        png(folder / "sleeve.png", 848, 1264)
+        return self.bot.harness.Turn("Made **Moon** sleeves.\nSleeve: Moon", "codex-session", "")
+
+    def test_known_quota_skips_gemini_uses_actual_codex_answer_and_own_session(self):
+        self.bot._save(self.conv, {"session_id": "gemini-session", "harness": "agy",
+                                  "model": self.primary.model, "effort": None})
+        self.codex.run.side_effect = self.picture_turn
+        reply = self.bot.send_sleever("make moon sleeves", "zzwang")
+        self.primary.run.assert_not_called()
+        self.assertIsNone(self.codex.run.call_args.args[2])
+        self.assertIn("[[attach:", reply)
+        self.assertIn("codex allowance", reply)
+        self.assertNotIn("workaround", reply)
+        self.assertEqual(self.bot._load(self.conv)["session_id"], "gemini-session")
+        self.assertEqual(self.bot._load(self.conv + "-codex")["session_id"], "codex-session")
+        self.assertEqual(self.bot._load(self.conv)["sleeve"], "moon")
+        self.bot._autopush.assert_called_once()
+        self.bot._release_bot.assert_called_once()
+
+    def test_quota_discovered_during_turn_retries_codex(self):
+        self.quota.side_effect = [(False, None, None), (True, None, None)]
+        self.primary.run.return_value = self.bot.harness.Turn("Image quota exhausted", "gemini-session", "")
+        self.codex.run.side_effect = self.picture_turn
+        reply = self.bot.send_sleever("moon sleeves", "zzwang")
+        self.primary.run.assert_called_once()
+        self.codex.run.assert_called_once()
+        self.assertIn("[[attach:", reply)
+        self.assertEqual(self.bot._load(self.conv)["session_id"], "gemini-session")
+
+    def test_quota_error_during_turn_retries_codex(self):
+        self.quota.side_effect = [(False, None, None), (True, None, None)]
+        self.primary.run.side_effect = self.bot.harness.QuotaExhausted("image quota")
+        self.codex.run.side_effect = self.picture_turn
+        self.assertIn("[[attach:", self.bot.send_sleever("moon sleeves", "zzwang"))
+        self.codex.run.assert_called_once()
+
+    def test_other_errors_are_not_routed_to_codex(self):
+        self.quota.return_value = (False, None, None)
+        self.primary.run.side_effect = self.bot.harness.HarnessError("connection failed")
+        with self.assertRaises(self.bot.harness.HarnessError):
+            self.bot.send_sleever("moon sleeves", "zzwang")
+        self.factory.assert_not_called()
+        self.bot._autopush.assert_not_called()
+
+    def test_codex_failure_never_reuses_old_picture(self):
+        f = sleever.prepare("zzwang")
+        png(f / "sleeve.png", 848, 1264)
+        self.codex.run.side_effect = self.bot.harness.HarnessError("quota exhausted")
+        reply = self.bot.send_sleever("moon sleeves", "zzwang")
+        self.assertIn(sleever.UNAVAILABLE, reply)
+        self.assertNotIn("[[attach:", reply)
+        self.assertEqual(list(self.sleeves.iterdir()), [])
+        self.bot._autopush.assert_not_called()
+
+    def test_codex_refusal_never_publishes_or_fabricates_a_title(self):
+        self.codex.run.return_value = self.bot.harness.Turn("I can't make that sleeve.", "codex-session", "")
+        reply = self.bot.send_sleever("make Trump sleeves", "zzwang")
+        self.assertIn("I can't make that sleeve.", reply)
+        self.assertNotIn("Made **", reply)
+        self.assertNotIn("[[attach:", reply)
+        self.bot._autopush.assert_not_called()
+
+    def test_codex_revision_keeps_references_name_and_resumes_its_own_session(self):
+        self.bot._save(self.conv, {"sleeve": "moon"})
+        self.bot._save(self.conv + "-codex", {"session_id": "previous-codex", "harness": "codex",
+                                            "model": self.codex.model, "effort": self.codex.effort})
+        def fetch(urls, folder):
+            png(folder / "ref-1.png", 64, 64)
+            return []
+        self.codex.run.side_effect = self.picture_turn
+        with patch.object(sleever, "fetch_refs", side_effect=fetch):
+            self.bot.send_sleever("make it darker", "zzwang", refs=["https://cdn/ref.png"])
+        args = self.codex.run.call_args.args
+        self.assertEqual(args[2], "previous-codex")
+        self.assertIn("previous sleeve is named moon", args[1])
+        self.assertTrue((args[0] / "refs" / "ref-1.png").is_file())
+        self.assertIn(sleever.SLEEVE_CONTENT_RULE, (args[0] / "AGENTS.md").read_text())
+
+    def test_normal_gemini_success_does_not_start_codex(self):
+        self.quota.return_value = (False, None, None)
+        self.primary.run.side_effect = self.picture_turn
+        self.assertIn("[[attach:", self.bot.send_sleever("moon sleeves", "zzwang"))
+        self.factory.assert_not_called()
+
+    def test_unchanged_picture_is_not_published_even_with_a_sleeve_line(self):
+        f = sleever.prepare("zzwang")
+        png(f / "sleeve.png", 848, 1264)
+        self.codex.run.return_value = self.bot.harness.Turn("Made **Moon** sleeves.\nSleeve: Moon", "codex-session", "")
+        reply = self.bot.send_sleever("moon sleeves", "zzwang")
+        self.assertIn(sleever.NO_PICTURE, reply)
+        self.assertNotIn("Made **", reply)
+        self.assertNotIn("[[attach:", reply)
+        self.bot._autopush.assert_not_called()
+
+    def test_changed_codex_model_does_not_resume_old_session(self):
+        self.bot._save(self.conv + "-codex", {"session_id": "old-codex", "harness": "codex",
+                                            "model": "other-model", "effort": self.codex.effort})
+        self.codex.run.side_effect = self.picture_turn
+        self.bot.send_sleever("moon sleeves", "zzwang")
+        self.assertIsNone(self.codex.run.call_args.args[2])
 
 
 if __name__ == "__main__":

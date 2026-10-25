@@ -256,6 +256,8 @@ class SelectionTests(unittest.TestCase):
     def test_codex_args_resume_and_confine(self):
         h = harness.CodexHarness()
         args = h.args(Path("/d/public/zz"), "- list", "sess-1", Path("/tmp/out.txt"), [Path("/d/.cache")])
+        self.assertTrue(h.images)
+        self.assertEqual(args[args.index("--enable") + 1], "image_generation")
         self.assertEqual(args[args.index("-C") + 1], "/d/public/zz")
         self.assertEqual(args[args.index("--add-dir") + 1], "/d/.cache")
         self.assertEqual(args[-4:], ["resume", "sess-1", "--", "- list"])

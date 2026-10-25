@@ -12,6 +12,29 @@ Both states visually checked live. **Steam is now v64, published at the owner’
 
 
 
+## Sleever: Codex fallback and two rejected sleeves removed (2026-10-24)
+
+Owner identified only the last two images: the eraser (`delete-this`) and the man
+with a malformed hand (`update-this-why-does`). Remove those two source JPEGs,
+published JPEGs, thumbnails and catalog entries. Keep all other sleeves and decks.
+
+Replace both ChatGPT-browser fallback paths with the existing Codex harness and its
+built-in `image_gen` tool, enabled explicitly (CLI 0.160.0 tested). Gemini remains
+the default; both quota already exhausted and quota discovered mid-turn retry with
+Codex. Keep Codex session IDs separately from Gemini's. Revisions share the previous
+art and references and the same no-Trump owner rule. Use the model's actual answer
+and `Sleeve:` name instead of inventing a title from the raw request (which produced
+names like "Delete This"). Publish only a newly saved image plus a `Sleeve:` line;
+refusals and old staging pictures do not publish. Usage footers follow the harness
+used. Remove the browser wrapper, its tests and instructions; ordinary browser
+setup remains documented.
+
+Validation: 21 sleever, 26 usage and 21 harness/sandbox tests pass, including both quota paths,
+exceptions, refusal/stale-image handling, references, revisions and separate session
+IDs. A live `CodexHarness.run` smoke test generated a 1024 × 1536 PNG through the
+built-in tool and copied it into the confined workspace; the test art was not
+published. No table build or Steam upload is needed; **Saved Games v73; Steam v64**.
+
 ## Sleeve prompt content rule (2026-10-24)
 
 Owner asks that sleever not create Trump-related sleeves. Add one shared content

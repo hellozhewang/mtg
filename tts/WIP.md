@@ -3,7 +3,7 @@
 Living status doc for the Tabletop Simulator table work. Whoever picks this up (Claude or
 Codex) reads it first and updates it with every change. The [TTS development guide](../docs/development/tts-development-guide.md) and README are the lasting documentation; this file tracks what is in flight.
 
-Last updated 2026-10-24 (Claude): delivered **v70** (trigger areas in seat colours; stack panel picture), after v69 (per-seat guide-line switches), v68 (edge strip redrawn as a five-slot stack), v67 (fixes v66's hand-index script errors), v66 (no music from cards in hand; Inspect deselects) and v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
+Last updated 2026-10-24 (Claude): delivered **v71** (teal stack frames; trigger areas to the land line), after v70 (trigger areas in seat colours; stack panel picture), v69 (per-seat guide-line switches), v68 (edge strip redrawn as a five-slot stack), v67 (fixes v66's hand-index script errors), v66 (no music from cards in hand; Inspect deselects) and v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
 Both states visually checked live. **Steam is now v64, published at the owner’s request.** See [the changelog](../docs/development/tts-changelog.md).
 
@@ -11,6 +11,15 @@ Both states visually checked live. **Steam is now v64, published at the owner’
 
 
 
+
+## v71: teal stack frames; trigger areas reach the land line (saved; not on Steam)
+
+Owner after v70: the stack frames should be a colour no player uses, and the trigger
+rectangle should run all the way down to the land line. `make_table_art.py` now draws
+the stack panel's frames, title and numerals in teal (`ACCENT`, 64/201/190), away from
+every seat colour including Green and Blue. `cactuar_lines.lua` ends the box at the
+printed land line (`CZL.landLine` 0.31 of the depth from the player's edge, the v69
+estimate) instead of 40% down; the label stays centred in the taller box.
 
 ## v70: trigger areas in seat colours, stack panel picture (saved; not on Steam)
 

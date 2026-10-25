@@ -26,7 +26,9 @@ CHROME = Path("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
 OUT = table.SOURCE / "table"
 PX = 100                                   # CSS pixels per table unit
 FONT = '"Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif'
-SILVER, SILVER_DIM = "#cfd4db", "rgba(207, 212, 219, 0.42)"
+# The stack panel's accent: teal, a colour no seat uses (see SEAT_RGB).
+ACCENT = "64, 201, 190"
+FRAME, FRAME_DIM = f"rgb({ACCENT})", f"rgba({ACCENT}, 0.42)"
 # Playmat border colours: Tabletop Simulator's seat colours, except White's cream mat.
 SEAT_RGB = {"White": (0.92, 0.88, 0.78), "Red": (0.856, 0.1, 0.094),
             "Yellow": (0.905, 0.898, 0.172), "Green": (0.192, 0.701, 0.168),
@@ -59,23 +61,23 @@ def stack_panel() -> None:
 html, body {{ margin: 0; width: {w}px; height: {h}px; background: transparent; overflow: hidden; position: relative; }}
 .panel {{ position: absolute; inset: 0; border-radius: 24px; box-sizing: border-box;
   background: linear-gradient(180deg, rgba(33, 37, 44, 0.95), rgba(20, 22, 27, 0.95));
-  border: 3px solid {SILVER}; box-shadow: inset 0 0 0 8px rgba(20, 22, 27, 0.0), inset 0 0 0 9.5px {SILVER_DIM}; }}
+  border: 3px solid {FRAME}; box-shadow: inset 0 0 0 8px rgba(20, 22, 27, 0.0), inset 0 0 0 9.5px {FRAME_DIM}; }}
 .head {{ position: absolute; left: 0; right: 0; top: 0; height: {g["header"] * PX + 30}px;
   display: flex; align-items: center; justify-content: center; gap: 14px;
-  font: 600 31px/1 {FONT}; letter-spacing: 11px; color: {SILVER}; }}
-.head b {{ display: block; width: 46px; height: 2px; background: {SILVER_DIM}; }}
+  font: 600 31px/1 {FONT}; letter-spacing: 11px; color: {FRAME}; }}
+.head b {{ display: block; width: 46px; height: 2px; background: {FRAME_DIM}; }}
 .slot {{ position: absolute; width: {table.SLOT_W * PX}px; height: {table.SLOT_H * PX}px; box-sizing: border-box;
-  border-radius: 14px; border: 2px solid {SILVER_DIM};
-  background: radial-gradient(ellipse at 50% 40%, rgba(207, 212, 219, 0.07), rgba(207, 212, 219, 0.02)); }}
+  border-radius: 14px; border: 2px solid {FRAME_DIM};
+  background: radial-gradient(ellipse at 50% 40%, rgba({ACCENT}, 0.07), rgba({ACCENT}, 0.02)); }}
 .slot span {{ position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-  font: 600 128px/1 {FONT}; color: rgba(207, 212, 219, 0.13); }}
-.c {{ position: absolute; width: 30px; height: 30px; border: 0 solid {SILVER}; }}
+  font: 600 128px/1 {FONT}; color: rgba({ACCENT}, 0.13); }}
+.c {{ position: absolute; width: 30px; height: 30px; border: 0 solid {FRAME}; }}
 .tl {{ left: -2px; top: -2px; border-width: 4px 0 0 4px; border-top-left-radius: 14px; }}
 .tr {{ right: -2px; top: -2px; border-width: 4px 4px 0 0; border-top-right-radius: 14px; }}
 .bl {{ left: -2px; bottom: -2px; border-width: 0 0 4px 4px; border-bottom-left-radius: 14px; }}
 .br {{ right: -2px; bottom: -2px; border-width: 0 4px 4px 0; border-bottom-right-radius: 14px; }}
 .foot {{ position: absolute; left: 0; right: 0; bottom: 18px; text-align: center;
-  font: 600 14px/1 {FONT}; letter-spacing: 4px; color: rgba(207, 212, 219, 0.5); }}
+  font: 600 14px/1 {FONT}; letter-spacing: 4px; color: rgba({ACCENT}, 0.5); }}
 </style><div class="panel"></div><div class="head"><b></b>STACK<b></b></div>{"".join(slots)}
 <div class="foot">RESOLVES FROM THE TOP</div>"""
     render(html, w, h, OUT / "stack-panel.png")

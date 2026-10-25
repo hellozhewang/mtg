@@ -2,7 +2,7 @@
 --
 -- A slide switch at each seat (built by build_tts_table.py, past that seat's row of
 -- round buttons) marks a trigger area on that player's playmat, for everyone to see:
--- the far corner on the library side, boxed off by two lines in the seat's playmat
+-- the far corner on the library side down to the land line, boxed off by two lines in the seat's playmat
 -- colour, with "TRIGGERS" in it. Off by default. Purely visual: the battle music
 -- still counts the whole playmat. Each switch keeps its state in its own memo, which
 -- saves and rewinds keep.
@@ -15,8 +15,9 @@
 CZL = CZL or {}
 CZL.guideThickness = 0.07
 CZL.decalPrefix = "Cactuar "
--- The box: the far 40% of the mat's depth, the 38% of its width on the library side.
-CZL.depth, CZL.width = 0.40, 0.38
+-- The box: from the far edge down to the printed land line (about 31% of the mat's
+-- depth from the player's edge), across the 38% of its width on the library side.
+CZL.landLine, CZL.width = 0.31, 0.38
 -- Playmat border colours (Tabletop Simulator's seat colours; White's mat is cream).
 CZL.colors = {White = {0.92, 0.88, 0.78}, Red = {0.856, 0.1, 0.094}, Yellow = {0.905, 0.898, 0.172},
               Green = {0.192, 0.701, 0.168}, Blue = {0.118, 0.53, 1.0}, Purple = {0.627, 0.125, 0.941}}
@@ -81,7 +82,7 @@ function czlGuides(color)
   local f = czlFrame(color)
   if not f then return {}, {} end
   local far = -f.d / 2
-  local bottom = far + CZL.depth * f.d
+  local bottom = f.d / 2 - CZL.landLine * f.d
   local outer = f.side * f.w / 2
   local inner = outer - f.side * CZL.width * f.w
   local line = {points = {f.world(inner, far), f.world(inner, bottom), f.world(outer, bottom)},

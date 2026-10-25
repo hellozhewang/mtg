@@ -8,6 +8,9 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v73 — 2026-10-24 (commit 4d75884b)
+- Fix a 'table index is nil' Lua error in onObjectDestroy when a destroyed or merging object has no GUID
+
 ## v72 — 2026-10-24 (commit f1fdba72)
 - Trigger areas now end about halfway down the playmat, leaving a row above the land line for artifacts
 

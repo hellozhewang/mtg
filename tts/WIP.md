@@ -18,7 +18,8 @@ Owner saw `[Global] Lua Error <onObjectDestroy>: Global:(5935,2-48): table index
 `cactuar_search.lua`'s destroy wrapper indexed `CZS.attached[obj.getGUID()]`, and an
 object being destroyed or merged can report no GUID. `czsGuid()` now reads it under
 pcall and returns nil for none; the destroy, attach and zone wrappers skip such objects
-(the base's own handler still runs first). Lua test added.
+(the base's own handler still runs first). Lua test added. Source `4d75884b`;
+archive `.cache/tts-builds/v73/`. **Saved Games v73; Steam v64.**
 
 ## v72: trigger areas end above the land line (saved; not on Steam)
 

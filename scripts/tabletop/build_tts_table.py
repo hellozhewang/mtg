@@ -206,12 +206,60 @@ def _make_room_under_timers(objects: list) -> list:
     return out
 
 
+# The right-hand edge strip between the Purple and White seats (x 45..54, z -24..14),
+# below the Cactuar tile: rikrassen's importer, dice, counter/keyword bags, commander
+# damage markers, Turn Order card, Turn Skipper puck and the Planechase bag. The owner
+# asked (2026-10-24) to clear it and draw a plain stack area with five card slots.
+# Only the base's "Table Instructions" tile names these, in its optional clutter
+# remover, which skips missing objects (pcall), so removing them breaks nothing.
+STRIP_GUIDS = frozenset({
+    "222541", "098c38", "1e0d2b", "40f9d3", "aa184e", "3cba4d", "94b67a", "916ad9", "576ccd", "6c6f29",
+    "1d9a7a", "bbcbc1", "b3961f", "b2b54e", "2fff0c", "5cf32d", "9c3ffe", "da1b48", "5035f1", "8aab65",
+    "1de175", "51e7af", "383659", "29d31b", "beb998", "418ec8", "dd259e", "327b82", "3cab4b", "56a44e",
+    "855d09", "fcb171", "fcbaf4", "d3198d", "df61a3", "e76686", "b02684", "de25ac", "aaf003", "9cf532",
+    "0beb07", "4256ba", "9ca38a", "401fc2", "7071ce", "7bf068", "eab9bb", "63bc71", "3d7912", "b34886",
+    "3c7ad3", "d7dc8e", "a4868a", "ed330c", "295538", "633ed3", "7dd5e3", "dc19a6", "818de4", "b7ccfb",
+})
+# The stack area drawn there: five portrait card slots in one column under the Cactuar
+# tile (x 48.2). Cards on this table are about 2.25 x 3.15; the slots leave a margin.
+STACK_X, STACK_Z, STACK_Y = 48.2, -5.0, 0.97        # centre of the column; table surface
+SLOT_W, SLOT_H, SLOT_STEP, SLOTS = 2.6, 3.5, 4.2, 5
+STACK_COLOR = {"r": 0.92, "g": 0.88, "b": 0.78}     # soft cream, like the playmat lines
+
+
+def _rect(cx: float, cz: float, w: float, h: float, thickness: float) -> dict:
+    corners = [(cx - w / 2, cz - h / 2), (cx + w / 2, cz - h / 2),
+               (cx + w / 2, cz + h / 2), (cx - w / 2, cz + h / 2)]
+    return {"points3": [{"x": round(x, 3), "y": STACK_Y, "z": round(z, 3)} for x, z in corners],
+            "color": dict(STACK_COLOR), "thickness": thickness,
+            "rotation": {"x": 0.0, "y": 0.0, "z": 0.0}, "loop": True, "square": True}
+
+
+def stack_area() -> tuple[list[dict], list[dict]]:
+    """Vector lines (outer rectangle + one per slot) and a snap point per slot."""
+    first = STACK_Z - SLOT_STEP * (SLOTS - 1) / 2
+    centres = [first + i * SLOT_STEP for i in range(SLOTS)]
+    margin = 0.6
+    lines = [_rect(STACK_X, STACK_Z, SLOT_W + 2 * margin,
+                   SLOT_STEP * (SLOTS - 1) + SLOT_H + 2 * margin, 0.12)]
+    lines += [_rect(STACK_X, z, SLOT_W, SLOT_H, 0.06) for z in centres]
+    snaps = [{"Position": {"x": STACK_X, "y": 0.961135, "z": round(z, 3)},
+              "Rotation": {"x": 0.0, "y": 180.0, "z": 0.0}} for z in centres]
+    return lines, snaps
+
+
 def build(base: dict, base_url: str, name: str = NAME) -> dict:
     table = dict(base)
     ours = {guid for guid, *_ in TILES}
     objects = _make_room_under_timers(
         [o for o in table.get("ObjectStates") or []
-         if o.get("GUID") not in ours])       # rebuilding from an earlier output
+         if o.get("GUID") not in ours           # rebuilding from an earlier output
+         and o.get("GUID") not in STRIP_GUIDS])  # the cleared edge strip
+    lines, snaps = stack_area()
+    stack = {(round(s["Position"]["x"], 3), round(s["Position"]["z"], 3)) for s in snaps}
+    old_lines = [l for l in table.get("VectorLines") or [] if l.get("color") != STACK_COLOR]
+    old_snaps = [s for s in table.get("SnapPoints") or []
+                 if (round(s["Position"]["x"], 3), round(s["Position"]["z"], 3)) not in stack]
     lua = table.get("LuaScript") or ""
     if MARKER in lua:                       # rebuilding from an earlier output
         lua = lua[:lua.index(MARKER)].rstrip()
@@ -219,6 +267,7 @@ def build(base: dict, base_url: str, name: str = NAME) -> dict:
     if "<!-- Cactuar deck browser" in xml:
         xml = xml[:xml.index("<!-- Cactuar deck browser")].rstrip()
     table.update({"SaveName": name, "GameMode": name,
+                  "VectorLines": old_lines + lines, "SnapPoints": old_snaps + snaps,
                   "LuaScript": lua + browser_lua(base_url),
                   "XmlUI": xml + "\n\n" + browser_xml(),
                   "ObjectStates": objects + tiles(base_url, _guids(objects))})

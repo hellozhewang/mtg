@@ -217,6 +217,28 @@ print(left, timerID == nil)
         fixed = build_tts_table.fix_timer_script(timer)
         self.assertEqual(build_tts_table.fix_timer_script(fixed), fixed)
 
+    def test_the_edge_strip_is_cleared_and_drawn_as_a_five_slot_stack(self):
+        base = json.loads(json.dumps(BASE))
+        base["ObjectStates"] += [
+            {"GUID": "222541", "Name": "Custom_Tile", "Transform": {"posX": 48.2, "posZ": 12.7}},  # importer
+            {"GUID": "b7ccfb", "Name": "Custom_Model_Bag", "Transform": {"posX": 51.5, "posZ": -22.9}},
+            {"GUID": "c2e905", "Name": "Custom_Token", "Transform": {"posX": 41.8, "posZ": -5.7}},  # a seat's tracker
+        ]
+        base["SnapPoints"] = [{"Position": {"x": 41.77, "y": 0.96, "z": -23.7}, "Rotation": {"x": 0, "y": 180, "z": 0}}]
+        table = build_tts_table.build(base, URL)
+        guids = {o["GUID"] for o in table["ObjectStates"]}
+        self.assertNotIn("222541", guids)
+        self.assertNotIn("b7ccfb", guids)
+        self.assertIn("c2e905", guids)                      # the neighbouring seat is untouched
+        self.assertEqual(len(table["VectorLines"]), 6)     # outer rectangle + five slots
+        self.assertTrue(all(l["loop"] and len(l["points3"]) == 4 for l in table["VectorLines"]))
+        slots = table["SnapPoints"][1:]
+        self.assertEqual(len(slots), 5)
+        self.assertEqual(table["SnapPoints"][0]["Position"]["x"], 41.77)   # existing snap points kept
+        self.assertEqual({s["Position"]["x"] for s in slots}, {build_tts_table.STACK_X})
+        again = build_tts_table.build(json.loads(json.dumps(table)), URL)
+        self.assertEqual((len(again["VectorLines"]), len(again["SnapPoints"])), (6, 6))
+
     def test_tile_guids_are_new(self):
         taken = build_tts_table._guids(BASE["ObjectStates"])
         self.assertIn("bbbbbb", taken)                              # nested objects count

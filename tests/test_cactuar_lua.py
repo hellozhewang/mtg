@@ -59,5 +59,11 @@ class CactuarBrowserTests(unittest.TestCase):
         self.assertEqual(run.returncode, 0, run.stdout + run.stderr)
 
 
+    def test_battlefield_guide_lines(self):
+        run = subprocess.run(["lua", "tests/test_cactuar_lines.lua"], cwd=ROOT,
+                             capture_output=True, text=True, timeout=60)
+        self.assertEqual(run.returncode, 0, run.stdout + run.stderr)
+
+
 if __name__ == "__main__":
     unittest.main()

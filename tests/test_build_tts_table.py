@@ -239,6 +239,28 @@ print(left, timerID == nil)
         again = build_tts_table.build(json.loads(json.dumps(table)), URL)
         self.assertEqual((len(again["VectorLines"]), len(again["SnapPoints"])), (6, 6))
 
+    def test_each_seat_gets_a_guide_line_switch_off_by_default(self):
+        base = json.loads(json.dumps(BASE))
+        lua = []
+        for i, color in enumerate(("White", "Purple")):
+            z, rot, dx = (-26.9, 180.0, 1.9) if color == "White" else (26.9, 0.0, -2.0)
+            base["ObjectStates"] += [
+                {"GUID": f"r{i}0000", "Name": "Custom_Model", "Transform": {"posX": 33.3, "posZ": z, "rotY": rot}},
+                {"GUID": f"m{i}0000", "Name": "Custom_Model", "Transform": {"posX": 33.3 - dx, "posZ": z, "rotY": rot}}]
+            lua += [f'data["{color}"]["revealButton"] = getObjectFromGUID("r{i}0000")',
+                    f'data["{color}"]["millButton"] = getObjectFromGUID("m{i}0000")']
+        base["LuaScript"] = "\n".join(lua)
+        table = build_tts_table.build(base, URL)
+        switches = {o["Description"]: o for o in table["ObjectStates"] if o.get("Nickname") == "Guide lines"}
+        self.assertEqual(len(switches), 2)
+        white = switches["Battlefield guide lines for White."]
+        self.assertGreater(white["Transform"]["posX"], 33.3)          # past the reveal button
+        self.assertEqual((white["Memo"], white["Locked"]), ("off", True))
+        self.assertIn('Global.call("czlRegister"', white["LuaScript"])
+        self.assertIn("function czlToggle", table["LuaScript"])
+        again = build_tts_table.build(json.loads(json.dumps(table)), URL)
+        self.assertEqual(sum(o.get("Nickname") == "Guide lines" for o in again["ObjectStates"]), 2)
+
     def test_tile_guids_are_new(self):
         taken = build_tts_table._guids(BASE["ObjectStates"])
         self.assertIn("bbbbbb", taken)                              # nested objects count

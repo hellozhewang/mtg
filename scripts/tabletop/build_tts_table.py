@@ -79,7 +79,7 @@ def browser_xml() -> str:
 
 # Appended to Global in this order: the browser, then the turn totals and
 # announcer, which use the browser's CZ.seats and CZ.base.
-GLOBAL_SCRIPTS = ("cactuar.lua", "cactuar_catalog.lua", "cactuar_commander.lua", "cactuar_pictures.lua", "cactuar_sleeves.lua", "cactuar_guide.lua", "cactuar_turns.lua", "cactuar_regex.lua", "cactuar_search.lua", "cactuar_music.lua")
+GLOBAL_SCRIPTS = ("cactuar.lua", "cactuar_catalog.lua", "cactuar_commander.lua", "cactuar_pictures.lua", "cactuar_sleeves.lua", "cactuar_guide.lua", "cactuar_turns.lua", "cactuar_regex.lua", "cactuar_search.lua", "cactuar_music.lua", "cactuar_lines.lua")
 
 
 def browser_lua(base_url: str) -> str:
@@ -248,9 +248,67 @@ def stack_area() -> tuple[list[dict], list[dict]]:
     return lines, snaps
 
 
+# Battlefield guide-line switches (tts/cactuar_lines.lua): one per seat, just past
+# that seat's reveal button, continuing its row of round buttons.
+SWITCH_GUIDS = {"White": "c4c7b1", "Red": "c4c7b2", "Yellow": "c4c7b3",
+                "Green": "c4c7b4", "Blue": "c4c7b5", "Purple": "c4c7b6"}
+SWITCH_SCALE = (1.9, 0.1, 0.6)
+SWITCH_LUA = """-- Battlefield guide lines switch for @SEAT@ (tts/cactuar_lines.lua does the drawing).
+local SEAT = "@SEAT@"
+function onLoad()
+  self.createButton({click_function = "czlClick", function_owner = self, label = "",
+    position = {0, 0.6, 0}, scale = {1 / 1.9, 1, 1 / 0.6}, width = 1750, height = 520,
+    font_size = 230, color = {0.13, 0.17, 0.23}, hover_color = {0.20, 0.26, 0.34},
+    font_color = {0.92, 0.88, 0.78},
+    tooltip = "Battlefield guide lines (decorative). The music still counts the whole playmat."})
+  Global.call("czlRegister", {color = SEAT, object = self})
+end
+function czlShow(on)
+  self.editButton({index = 0, label = on and "Guide lines  ━━●" or "Guide lines  ○━━"})
+end
+function czlClick(_, player_color)
+  Global.call("czlToggle", {color = SEAT, by = player_color})
+end
+"""
+
+
+def guide_switches(base: dict) -> list[dict]:
+    """Switch objects, placed from each seat's reveal and mill buttons in the base."""
+    by = {o.get("GUID"): o for o in base.get("ObjectStates") or []}
+    found = re.findall(r'data\["(\w+)"\]\["(\w+)"\]\s*=\s*getObjectFromGUID\("(\w+)"\)',
+                       base.get("LuaScript") or "")
+    seats = {}
+    for color, key, guid in found:
+        seats.setdefault(color, {})[key] = by.get(guid)
+    out = []
+    for color, guid in SWITCH_GUIDS.items():
+        reveal, mill = (seats.get(color) or {}).get("revealButton"), (seats.get(color) or {}).get("millButton")
+        if not reveal or not mill:
+            continue                                  # not this base table's layout
+        rx, rz = reveal["Transform"]["posX"], reveal["Transform"]["posZ"]
+        dx, dz = rx - mill["Transform"]["posX"], rz - mill["Transform"]["posZ"]
+        length = (dx * dx + dz * dz) ** 0.5 or 1.0
+        step = 1.0 + SWITCH_SCALE[0] / 2 + 0.25       # clear of the reveal button
+        out.append({
+            "GUID": guid, "Name": "BlockSquare",
+            "Transform": {"posX": round(rx + dx / length * step, 3), "posY": 0.97,
+                          "posZ": round(rz + dz / length * step, 3), "rotX": 0.0,
+                          "rotY": reveal["Transform"].get("rotY", 0.0), "rotZ": 0.0,
+                          "scaleX": SWITCH_SCALE[0], "scaleY": SWITCH_SCALE[1], "scaleZ": SWITCH_SCALE[2]},
+            "Nickname": "Guide lines", "Description": f"Battlefield guide lines for {color}.",
+            "GMNotes": "", "ColorDiffuse": {"r": 0.13, "g": 0.17, "b": 0.23},
+            "Locked": True, "Grid": False, "Snap": False, "IgnoreFoW": False,
+            "MeasureMovement": False, "DragSelectable": False, "Autoraise": True,
+            "Sticky": False, "Tooltip": True, "GridProjection": False,
+            "HideWhenFaceDown": False, "Hands": False, "Memo": "off",
+            "LuaScript": SWITCH_LUA.replace("@SEAT@", color), "LuaScriptState": "", "XmlUI": "",
+        })
+    return out
+
+
 def build(base: dict, base_url: str, name: str = NAME) -> dict:
     table = dict(base)
-    ours = {guid for guid, *_ in TILES}
+    ours = {guid for guid, *_ in TILES} | set(SWITCH_GUIDS.values())
     objects = _make_room_under_timers(
         [o for o in table.get("ObjectStates") or []
          if o.get("GUID") not in ours           # rebuilding from an earlier output
@@ -270,7 +328,7 @@ def build(base: dict, base_url: str, name: str = NAME) -> dict:
                   "VectorLines": old_lines + lines, "SnapPoints": old_snaps + snaps,
                   "LuaScript": lua + browser_lua(base_url),
                   "XmlUI": xml + "\n\n" + browser_xml(),
-                  "ObjectStates": objects + tiles(base_url, _guids(objects))})
+                  "ObjectStates": objects + tiles(base_url, _guids(objects)) + guide_switches(base)})
     return table
 
 

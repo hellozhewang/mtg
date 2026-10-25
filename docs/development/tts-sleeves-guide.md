@@ -13,6 +13,13 @@ Workshop upload is needed, because the table reads the list from the published s
 
 ## sleever: sleeves from Discord
 
+**Owner content rule (2026-10-24): do not create or revise Trump-related sleeves.**
+This includes Donald Trump's likeness, name, slogans, campaign imagery, memes and
+indirect references, whether supportive, critical or satirical. The rule also applies
+to uploaded reference images. Decline these requests without generating a picture.
+`SLEEVE_CONTENT_RULE` in `scripts/discord/bot/sleever.py` supplies the same rule to
+both the normal sleever instructions and the secondary image-generator prompt.
+
 Players can also have sleeves made for them. In the deck builder's Discord channels:
 
     sleever make me sailor moon sleeves

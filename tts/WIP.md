@@ -12,6 +12,19 @@ Both states visually checked live. **Steam is now v64, published at the owner’
 
 
 
+## Sleeve prompt content rule (2026-10-24)
+
+Owner asks that sleever not create Trump-related sleeves. Add one shared content
+rule in `scripts/discord/bot/sleever.py` to both normal instructions and the
+secondary image-generator prompt. Cover Donald Trump's likeness, name, slogans,
+campaign imagery, memes and indirect depictions, including reference-image
+requests and supportive/critical/satirical versions. Instruct the generator to
+decline without an image or `Sleeve:` publication line. Document the rule in the
+[sleeves guide](../docs/development/tts-sleeves-guide.md). This changes future
+generation prompts; no existing sleeves, table builds or Steam releases change.
+All 12 existing sleever tests pass; both generator prompt variants and the normal
+instruction template include the shared rule.
+
 ## v73: no "table index is nil" error when an object is destroyed (saved; not on Steam)
 
 Owner saw `[Global] Lua Error <onObjectDestroy>: Global:(5935,2-48): table index is nil`.

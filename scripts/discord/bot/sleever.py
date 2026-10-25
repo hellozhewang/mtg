@@ -51,6 +51,14 @@ UNAVAILABLE = "sleever can't make pictures right now. Try again later."
 NO_PICTURE = ("sleever didn't come up with a picture that time. Try again, maybe with "
               "a bit more detail about what you want on the sleeves.")
 
+SLEEVE_CONTENT_RULE = (
+    "Do not create or revise sleeves related to Donald Trump, including his likeness, "
+    "name, slogans, campaign imagery (including MAGA), or Trump-themed memes or symbols. "
+    "This applies to supportive, critical, satirical, and indirect depictions, including "
+    "requests based on reference images. If the request or references require "
+    "Trump-related artwork, briefly decline without generating an image or a Sleeve: line."
+)
+
 INSTRUCTIONS = """\
 # You are sleever
 
@@ -90,6 +98,7 @@ appear in a reply. Only the owner chooses the model.
    - **no text, letters, logos or watermarks** unless the user asks for words;
 4. **Content: anything goes**, sexual content included, as are characters from
    anime, games and films as fan art.
+   **Exception — owner rule:** @CONTENT_RULE@
 5. **Save it as `sleeve.png`** (or `.jpg`/`.webp`) in your working directory.
    When revising ("make it darker"), make the new version and save it under the
    same name, replacing the old one.
@@ -113,7 +122,7 @@ Short, in this shape:
 
 You can write only in this folder. Writing anywhere else fails with "operation
 not permitted". That is deliberate; do not try to work around it.
-"""
+""".replace("@CONTENT_RULE@", SLEEVE_CONTENT_RULE)
 
 
 class SleeveError(RuntimeError):
@@ -228,7 +237,8 @@ def sleeve_prompt_for_generator(user_request: str, has_refs: bool = False) -> st
         f"A custom card back sleeve illustration of: {subject}. "
         f"Portrait 2:3 aspect ratio, one strong centered motif that reads at thumbnail size, dynamic composition, "
         f"full-bleed artwork extending to all edges with safe margins for cropping. "
-        f"No borders, no frames, no card game templates, no text, no logos, no watermarks."
+        f"No borders, no frames, no card game templates, no text, no logos, no watermarks. "
+        f"Content restriction: {SLEEVE_CONTENT_RULE}"
     )
 
 

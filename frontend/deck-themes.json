@@ -64,6 +64,7 @@
   "kupo7/Kilo-Proliferate": ["value", "combo"],
   "kupo7/Kotis-Theft": ["aggro", "control"],
   "kupo7/OjerAxonil-Burn": ["spells"],
+  "kupo7/Quina-FoodChain": ["combo", "gowide", "finalfantasy"],
   "kupo7/Sheoldred-Drain": ["spells"],
   "kupo7/Sheoldred-Reanimator": ["graveyard", "combo", "gowide"],
   "kupo7/Tergrid-Theft": ["control", "graveyard", "combo"],

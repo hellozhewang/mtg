@@ -1,0 +1,54 @@
+A fully optimized Bracket 4 Food Chain combo deck led by Quina, Qu Gourmet. Quina adds an extra 1/1 green Frog token whenever one or more tokens are created under your control, turning every Treasure, Clue, and token engine into instant creature fodder for Natural Order, Skullclamp, Gaea's Cradle, and Earthcraft. The deck's primary win condition is the Food Chain + Eternal Scourge loop for infinite creature mana, instantly funneled into a lethal Walking Ballista or library-drawing engines (Beast Whisperer, Soul of the Harvest) to close the game on turns 3–4 with full fast mana and uncounterable protection.
+
+# The Food Chain combo and finishes
+Food Chain + Eternal Scourge :: Exile Scourge to Food Chain to add four mana of any color (restricted to creature spells). Recast Scourge from exile for three mana. Loops for infinite creature mana.
+Walking Ballista :: Cast from hand using infinite creature mana from the Food Chain loop for X = 1,000,000. It enters with 500,000 +1/+1 counters; remove counters to ping all opponents to death at instant speed.
+Food Chain + Eternal Scourge + Beast Whisperer :: Recasting Scourge from exile triggers Whisperer on each cast, drawing your entire library to find Walking Ballista, protection, or backup combo lines.
+Food Chain + Eternal Scourge + Soul of the Harvest :: Identical card draw loop on each Scourge entry, drawing your entire deck into hand.
+Food Chain + Eternal Scourge + Guardian Project :: Draws your entire library as Eternal Scourge repeatedly enters the battlefield.
+Food Chain + Eternal Scourge + The Great Henge :: Draws a card and adds a counter on each Scourge entry, drawing into Ballista.
+Temur Sabertooth + Selvala, Heart of the Wilds :: With Concordant Crossroads or haste, bounce and recast Selvala to generate infinite unrestricted mana and card draw.
+
+# Earthcraft and secondary combos
+Earthcraft + Squirrel Nest :: Enchant a basic Forest with Squirrel Nest; tap the Forest to create a 1/1 Squirrel. Tap the new Squirrel to Earthcraft untap the Forest. Repeats for infinite 1/1 Squirrel tokens.
+Earthcraft + Squirrel Nest + Quina, Qu Gourmet :: Quina creates an additional 1/1 Frog token on each token event. Tap the extra Frogs to Earthcraft untap other lands, generating infinite colored mana alongside infinite Squirrels and Frogs.
+Concordant Crossroads :: Gives haste to all infinite Squirrels and Frogs to attack and win the turn they are created.
+Craterhoof Behemoth :: The classic overrun finisher when attacking with an army of Elves, Frogs, and Squirrels.
+
+# Tutors and assembly
+Pia, Aether Ascetic :: Enters and discards a card to tutor Food Chain, Concordant Crossroads, Survival of the Fittest, or Sylvan Library directly to hand. As a creature, Pia is searchable by every creature tutor in the deck.
+Shared Summons :: Instant-speed double creature tutor that searches for Pia, Aether Ascetic and Eternal Scourge simultaneously, assembling the entire Food Chain combo with a single card.
+Worldly Tutor :: Topdeck creature tutor for Pia, Eternal Scourge, or Walking Ballista.
+Green Sun's Zenith :: Tutors Pia, Aether Ascetic onto the battlefield for X = 3 to immediately find Food Chain, or Dryad Arbor on turn 1 for X = 0.
+Chord of Calling :: Instant convoke tutor that turns Frog tokens into mana to deploy Pia or Eternal Scourge directly to the board.
+Finale of Devastation :: Tutors any creature from library or graveyard, or serves as an alternate lethal overrun with infinite mana.
+Invasion of Ikoria :: Tutors Eternal Scourge (MV 3) or Pia directly onto the battlefield for X = 3.
+Survival of the Fittest + Fauna Shaman :: Discard redundant creatures to chain into Pia and Eternal Scourge in a single turn.
+Natural Order :: Sacrifice a 1/1 Frog token to put Regal Force, Soul of the Harvest, or Craterhoof Behemoth directly onto the battlefield.
+Eldritch Evolution :: Sacrifice a 1/1 Frog token or 1-drop mana dork to put Pia or Eternal Scourge onto the battlefield.
+Eye of Ugin :: Land that reduces Eternal Scourge to one mana and tutors it directly to hand.
+
+# Quina and token engines
+Quina, Qu Gourmet :: Generates a bonus 1/1 green Frog token on every token creation event. Turns every Treasure, Clue, or creature token into double value.
+Skullclamp :: Equip to a 1/1 Frog token to kill it and draw two cards for one mana, turning every token event into card advantage.
+Tireless Provisioner :: Landfall creates a Treasure or Food plus a 1/1 Frog with Quina, accelerating mana and board presence.
+Tireless Tracker :: Landfall creates a Clue and a 1/1 Frog with Quina.
+Jaheira, Friend of the Forest :: Turns all tokens, including Quina's Frog tokens, into green mana rocks.
+Gaea's Cradle :: Taps for green mana equal to your creature count, supercharged by Quina's Frog tokens.
+
+# Fast mana and protection
+Chrome Mox + Mox Diamond + Mox Opal + Lotus Petal :: Zero-mana artifacts enabling explosive turn-one and turn-two plays.
+Lion's Eye Diamond + Mana Vault + Grim Monolith :: Burst mana acceleration to power out high-cost engines ahead of curve.
+Ancient Tomb :: Two colorless mana on a land slot for fast development.
+Allosaurus Shepherd + Destiny Spinner :: Prevents your green spells, creatures, and enchantments from being countered.
+Defense Grid :: Taxes opposing spells by three mana on your turn, locking out countermagic during your combo.
+Veil of Summer + Autumn's Veil :: Protects your spells and permanents from blue counterspells and black removal.
+Force of Vigor :: Zero-mana instant removal against opposing Torpor Orb, Cursed Totem, or Rest in Peace.
+Hall of Gemstone :: Forces all lands to tap for a single chosen color on each turn, locking multicolor decks out of their spells while our mono-green deck thrives.
+The One Ring :: Buys an untouchable turn of protection while drawing deep into combo pieces.
+
+# Opening hands and sequencing
+Keep hands with fast mana (dorks, Chrome Mox, Sol Ring, Ancient Tomb) and either a tutor (Worldly Tutor, Green Sun's Zenith, Survival) or combo piece.
+Use Green Sun's Zenith, Chord of Calling, or Shared Summons to fetch Pia, Aether Ascetic, who immediately fetches Food Chain.
+Deploy Allosaurus Shepherd, Destiny Spinner, or Defense Grid before casting Food Chain to guarantee your combo resolves without interference.
+Cast Food Chain, exile and recast Eternal Scourge for infinite creature mana, then cast Walking Ballista for lethal damage to eliminate the table on the spot.

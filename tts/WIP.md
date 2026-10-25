@@ -3,13 +3,28 @@
 Living status doc for the Tabletop Simulator table work. Whoever picks this up (Claude or
 Codex) reads it first and updates it with every change. The [TTS development guide](../docs/development/tts-development-guide.md) and README are the lasting documentation; this file tracks what is in flight.
 
-Last updated 2026-10-24 (Claude): delivered **v68** (edge strip redrawn as a five-slot stack), after v67 (fixes v66's hand-index script errors), v66 (no music from cards in hand; Inspect deselects) and v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
+Last updated 2026-10-24 (Claude): delivered **v69** (per-seat guide-line switches), after v68 (edge strip redrawn as a five-slot stack), v67 (fixes v66's hand-index script errors), v66 (no music from cards in hand; Inspect deselects) and v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
 Both states visually checked live. **Steam is now v64, published at the owner’s request.** See [the changelog](../docs/development/tts-changelog.md).
 
 
 
 
+
+
+## v69: per-seat battlefield guide-line switches (saved; not on Steam)
+
+Owner: a small slide toggle above each play area, everyone sees it, off by default,
+drawing "divided battlefield lines"; purely aesthetic, the music still counts the whole
+rectangle. `build_tts_table.guide_switches()` places a locked BlockSquare switch per seat
+(GUIDs c4c7b1-b6) just past its reveal button, continuing the round-button row; its
+button reads "Guide lines ○━━" / "━━●". `tts/cactuar_lines.lua` draws one cream divider
+(thickness 0.05) per enabled seat, halfway between the printed land line (about 31% from
+the player's edge, estimated from a screenshot) and the far edge, inset 0.6. State lives in
+each switch's memo; other vector lines (the v68 stack area) are kept. 11 Lua checks + build
+tests. **Not yet seen in game: the divider position and the switch's size and label need
+the owner's look.** Source `cef79a96`; archive `.cache/tts-builds/v69/`. **Saved Games
+v69; Steam v64.**
 
 ## v68: edge strip cleared and redrawn as a five-slot stack (saved; not on Steam)
 

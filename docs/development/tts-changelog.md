@@ -8,6 +8,9 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v69 — 2026-10-24 (commit cef79a96)
+- Each seat has a Guide lines switch next to its buttons (off by default): turning it on draws a divider splitting the playmat into creature and noncreature rows, for everyone to see; decorative only
+
 ## v68 — 2026-10-24 (commit 58443497)
 - Right-hand edge strip cleared (importer, dice, counters, commander damage markers, Turn Order, Planechase bag) and redrawn as a stack area with five card slots that cards snap into
 

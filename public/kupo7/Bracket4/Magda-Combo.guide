@@ -1,0 +1,44 @@
+A fully optimized Bracket 4 combo and stax deck led by Magda, Brazen Outlaw. Magda converts every tapped Dwarf into a Treasure, turning low-cost Dwarves, Vehicles, and Springleaf Drum into rapid acceleration. Once five Treasures are assembled, Magda tutors Clock of Omens directly onto the battlefield at instant speed, triggering an infinite Treasure loop with an artifact Dwarf (Universal Automaton, Metallic Mimic, or Magda via Liquimetal Torque). The loop immediately puts every artifact and Dragon in the deck into play, closing the game on turns 2–4 with infinite damage (Pyrite Spellbomb + Elixir of Immortality, or Terror of the Peaks) behind airtight stax and protection.
+
+# The Clock of Omens combo loop
+Clock of Omens + Universal Automaton + Magda, Brazen Outlaw :: With Magda and Clock of Omens out, tap Clock of Omens and artifact Dwarf Universal Automaton to activate Clock targeting Automaton. Automaton tapping triggers Magda to create a Treasure. Clock's ability untaps Automaton. Tap Automaton and the newly created Treasure to untap Automaton; Magda creates another Treasure. Repeat for infinite tapped Treasures.
+Liquimetal Torque + Clock of Omens + Magda, Brazen Outlaw :: Tap Torque to make Magda an artifact Dwarf until end of turn. Tap Clock and Magda to untap Magda; Magda creates a Treasure. Tap Magda and the Treasure to untap Magda. Loops for infinite tapped Treasures without needing Automaton.
+Adaptive Automaton + Clock of Omens + Magda, Brazen Outlaw :: Redundant artifact Dwarf choosing Dwarf to execute the infinite Clock of Omens loop.
+Metallic Mimic + Clock of Omens + Magda, Brazen Outlaw :: Redundant artifact Dwarf choosing Dwarf to execute the infinite Clock of Omens loop.
+
+# Infinite payoffs and wins
+Roaming Throne :: Sacrifice five tapped Treasures to Magda to put Roaming Throne onto the battlefield naming Dwarf. Magda now triggers twice on every Dwarf tap, creating two Treasures per untap cycle. Tapping one Treasure keeps Automaton looping while the second Treasure enters and stays UNTAPPED, generating infinite untapped Treasures and infinite mana of all colors.
+Pyrite Spellbomb + Elixir of Immortality :: With infinite untapped Treasures, sacrifice five Treasures to put Pyrite Spellbomb into play. Pay {R} from a Treasure and sacrifice Spellbomb to deal 2 damage to any target. Sacrifice five Treasures to put Elixir of Immortality into play; pay {2} and tap Elixir to gain 5 life and shuffle both artifacts from your graveyard back into your library. Magda tutors them right back to repeat for infinite damage to all opponents at instant speed.
+Terror of the Peaks :: Tutor Terror of the Peaks with Magda; then tutor Drakuseth, Maw of Flames, Ancient Copper Dragon, Twinflame Tyrant, and Goldspan Dragon. Terror triggers on each Dragon entry, dealing over 60 direct damage to face.
+The One Ring :: Tutorable by Magda at instant speed to grant protection from everything until your next turn and draw your deck.
+Portal to Phyrexia :: Tutorable by Magda at instant speed to force each opponent to sacrifice three creatures and reanimate opposing bombs every upkeep.
+
+# Tapping Dwarves and Treasure acceleration
+Springleaf Drum :: Tap Drum and an untapped Dwarf (including summoning-sick Dwarves) to add one mana of any color and create a Treasure token with Magda.
+Paradise Mantle :: Equips for zero mana to any Dwarf; tap that Dwarf for one mana of any color and create a Treasure token.
+Smuggler's Copter + Clown Car :: Tap any summoning-sick Dwarf to crew the Vehicle, immediately creating a Treasure token without needing to attack.
+Holdout Settlement + Survivors' Encampment :: Land slots that tap an untapped Dwarf to produce mana and generate a Treasure token on the turn they enter.
+Universal Automaton + Bloodfire Dwarf + Dwarven Trader + Dwarven Scorcher + Dwarven Grunt + Spark Mage :: One-mana Dwarves that curve directly into turn-two Magda and immediate Treasure generation.
+
+# Stax and mass land denial
+Blood Moon :: Turns all nonbasic lands into basic Mountains, crippling multicolor manabases while our mono-red manabase operates freely.
+Magus of the Moon :: Creature version of Blood Moon searchable with Imperial Recruiter and able to crew Vehicles to produce Treasures.
+Ruination :: Four-mana sorcery that destroys all nonbasic lands on the table.
+Trinisphere :: Tutorable with Magda! Forces all spells costing less than three mana to cost three, shutting down opposing fast mana and storm while Magda cheats everything into play for free.
+Defense Grid :: Tutorable with Magda! Taxes all off-turn spells by three mana, completely locking opponents out of countermagic and removal during your winning turn.
+Strip Mine :: Land-slot uncounterable land destruction.
+
+# Fast mana and interaction
+Chrome Mox + Mox Diamond + Mox Opal + Lotus Petal :: Zero-mana acceleration powering out Magda and a 1-drop Dwarf on turn one.
+Lion's Eye Diamond + Mana Vault + Grim Monolith :: Burst mana acceleration that also enables Underworld Breach loops.
+Ancient Tomb + City of Traitors :: Lands producing two colorless mana each for explosive early development.
+Underworld Breach + Grinding Station + Sol Ring :: Redundant infinite self-mill storm line tutorable via Magda.
+Deflecting Swat + Bolt Bend :: Zero- and one-mana redirection spells to protect Magda from spot removal.
+Tibalt's Trickery :: Hard counterspell in red to stop opposing win attempts.
+Pyroblast + Red Elemental Blast :: One-mana hard counters against blue interaction, Rhystic Study, and Cyclonic Rift.
+
+# Opening hands and sequencing
+Keep hands with at least one 1-drop Dwarf or tap outlet (Springleaf Drum, Paradise Mantle), fast mana, and land drops. Turn-two Magda with immediate Treasure generation is your primary priority.
+Deploy Defense Grid or Trinisphere with Magda's first five Treasures if opponents are holding up blue or black mana before initiating the Clock of Omens loop.
+When executing the Clock of Omens loop, remember to tutor Roaming Throne first to convert tapped Treasures into infinite untapped mana before executing the Pyrite Spellbomb damage loop.
+If Clock of Omens or an artifact Dwarf is removed, pivot to Underworld Breach, Goldspan Dragon beats, or Portal to Phyrexia control.

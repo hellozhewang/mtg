@@ -1,0 +1,90 @@
+1 Magda, Brazen Outlaw
+1 Abrade
+1 Adaptive Automaton
+1 Ancient Copper Dragon
+1 Ancient Tomb
+1 Arcane Signet
+1 Arena of Glory
+1 Arid Mesa
+1 Axgard Cavalry
+1 Blasphemous Act
+1 Bloodfire Dwarf
+1 Blood Moon
+1 Bloodstained Mire
+1 Bolt Bend
+1 Chaos Warp
+1 Chrome Mox
+1 City of Traitors
+1 Clock of Omens
+1 Clown Car
+1 Cursed Mirror
+1 Defense Grid
+1 Deflecting Swat
+1 Desperate Ritual
+1 Drakuseth, Maw of Flames
+1 Dwarven Grunt
+1 Dwarven Miner
+1 Dwarven Scorcher
+1 Dwarven Trader
+1 Elixir of Immortality
+1 Erebor Flamesmith
+1 Faithless Looting
+1 Gamble
+1 Goldspan Dragon
+1 Great Furnace
+1 Grim Monolith
+1 Grinding Station
+1 Holdout Settlement
+1 Imperial Recruiter
+1 Jeska's Will
+1 Lightning Greaves
+1 Lion's Eye Diamond
+1 Liquimetal Torque
+1 Lotus Petal
+1 Magda, the Hoardmaster
+1 Magus of the Moon
+1 Mana Vault
+1 Metallic Mimic
+1 Mox Diamond
+1 Mox Opal
+1 Nykthos, Shrine to Nyx
+1 Paradise Mantle
+1 Portal to Phyrexia
+1 Prismatic Vista
+1 Pyretic Ritual
+1 Pyrite Spellbomb
+1 Pyroblast
+1 Ragavan, Nimble Pilferer
+1 Red Elemental Blast
+1 Rite of Flame
+1 Roaming Throne
+1 Ruby Medallion
+1 Ruination
+1 Scalding Tarn
+1 Seething Song
+1 Sensei's Divining Top
+1 Shatterskull Smashing
+1 Shinka, the Bloodsoaked Keep
+1 Simian Spirit Guide
+1 Smuggler's Copter
+1 Sol Ring
+1 Spark Mage
+1 Springleaf Drum
+1 Strip Mine
+1 Sundering Eruption
+1 Survivors' Encampment
+1 Terror of the Peaks
+1 The One Ring
+1 Tibalt's Trickery
+1 Treasonous Ogre
+1 Trinisphere
+1 Twinflame Tyrant
+1 Underworld Breach
+1 Universal Automaton
+1 Untimely Malfunction
+1 Urza's Saga
+1 Valakut Awakening
+1 Vandalblast
+1 Wheel of Fortune
+1 Wooded Foothills
+11 Mountain

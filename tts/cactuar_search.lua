@@ -650,10 +650,17 @@ function czsTake(player, _, id)
   end
 end
 
+-- An object's GUID, or nil: objects being destroyed or merged can report none, and
+-- a nil table index is an error.
+local function czsGuid(obj)
+  local ok, guid = pcall(function() return obj.getGUID() end)
+  if ok and guid ~= nil and guid ~= "" then return guid end
+end
+
 local function czsAttach(obj)
   if not czsIsContainer(obj) then return end
-  local guid = obj.getGUID()
-  if CZS.attached[guid] == obj then return end
+  local guid = czsGuid(obj)
+  if not guid or CZS.attached[guid] == obj then return end
   local ok = pcall(function()
     obj.addContextMenuItem("Inspect", function(color) czsOpen(color, obj) end)
   end)
@@ -670,7 +677,8 @@ local function czsAfterZone(obj, rebuilt)
   -- The base's onObjectEnterZone/onObjectLeaveZone clear custom menus on normal
   -- cards/decks, then recreate their zone actions. Restore Inspect after them.
   if rebuilt and obj and obj.type == "Deck" and not obj.getName():lower():find("planechase") then
-    CZS.attached[obj.getGUID()] = nil
+    local guid = czsGuid(obj)
+    if guid then CZS.attached[guid] = nil end
   end
   pcall(czsAttach, obj)
 end
@@ -694,7 +702,8 @@ function onObjectSpawn(obj)
 end
 function onObjectDestroy(obj)
   if CZS_BASE.destroy then CZS_BASE.destroy(obj) end
-  local guid = obj.getGUID()
+  local guid = czsGuid(obj)
+  if not guid then return end
   CZS.attached[guid], CZS.cache[guid] = nil, nil
   for color, s in pairs(CZS.state) do if s.deck == guid then czsCloseColor(color) end end
 end

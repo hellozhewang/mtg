@@ -248,6 +248,10 @@ big.getData = function() return {ContainedObjects = {{GUID = "g001", CardID = 10
 czsRefreshClick(white)
 check(attrs.czs_image_1_White.image == "", "an atlas isn't displayed as a single card")
 -- Destroying/collapsing a deck closes the browser and clears private contents.
+-- An object that reports no GUID (mid-merge or already gone) is passed on, never an error.
+check(pcall(onObjectDestroy, {getGUID = function() return nil end}) and baseDestroys == 1,
+      "destroying an object without a GUID is harmless and still reaches the base handler")
+baseDestroys = 0
 onObjectDestroy(big); objects.big = nil
 check(baseDestroys == 1 and CZS.state.White == nil and attrs.czs_panel_White.active == "False", "destroy wrapper closes the browser and preserves the original handler")
 check(attrs.czs_name_1_White.text == "", "closed view does not leave another player's names behind")

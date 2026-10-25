@@ -3,7 +3,7 @@
 Living status doc for the Tabletop Simulator table work. Whoever picks this up (Claude or
 Codex) reads it first and updates it with every change. The [TTS development guide](../docs/development/tts-development-guide.md) and README are the lasting documentation; this file tracks what is in flight.
 
-Last updated 2026-10-24 (Claude): delivered **v72** (trigger areas end above the land line), after v71 (teal stack frames; trigger areas to the land line), v70 (trigger areas in seat colours; stack panel picture), v69 (per-seat guide-line switches), v68 (edge strip redrawn as a five-slot stack), v67 (fixes v66's hand-index script errors), v66 (no music from cards in hand; Inspect deselects) and v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
+Last updated 2026-10-24 (Claude): delivered **v73** (fixes an onObjectDestroy error), after v72 (trigger areas end above the land line), v71 (teal stack frames; trigger areas to the land line), v70 (trigger areas in seat colours; stack panel picture), v69 (per-seat guide-line switches), v68 (edge strip redrawn as a five-slot stack), v67 (fixes v66's hand-index script errors), v66 (no music from cards in hand; Inspect deselects) and v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
 Both states visually checked live. **Steam is now v64, published at the owner’s request.** See [the changelog](../docs/development/tts-changelog.md).
 
@@ -11,6 +11,14 @@ Both states visually checked live. **Steam is now v64, published at the owner’
 
 
 
+
+## v73: no "table index is nil" error when an object is destroyed (saved; not on Steam)
+
+Owner saw `[Global] Lua Error <onObjectDestroy>: Global:(5935,2-48): table index is nil`.
+`cactuar_search.lua`'s destroy wrapper indexed `CZS.attached[obj.getGUID()]`, and an
+object being destroyed or merged can report no GUID. `czsGuid()` now reads it under
+pcall and returns nil for none; the destroy, attach and zone wrappers skip such objects
+(the base's own handler still runs first). Lua test added.
 
 ## v72: trigger areas end above the land line (saved; not on Steam)
 

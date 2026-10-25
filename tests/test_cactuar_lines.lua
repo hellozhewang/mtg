@@ -61,21 +61,21 @@ czlToggle({color = "White"})
 check(switches.White.memo == "on" and switches.White.shown == true, "clicking turns it on and remembers it")
 check(ours("lines") == 1 and drawn[1] == otherLine, "White's trigger area is added; other lines stay")
 -- White's mat spans x 14.9..39.7 and z -25.9 (player's edge) to -3.9 (far edge), land
--- line at -19.08; the
+-- line at -19.08, box bottom 53% down at -15.56; the
 -- library column is at x 41.75, so the box is the far corner on the +x side.
 local white = drawn[2].points
-check(#white == 3 and at(white[1], 30.28, -3.9) and at(white[2], 30.28, -19.08) and at(white[3], 39.7, -19.08),
-      "White's box: down from the far edge to the land line, then across to the library side")
+check(#white == 3 and at(white[1], 30.28, -3.9) and at(white[2], 30.28, -15.56) and at(white[3], 39.7, -15.56),
+      "White's box: down from the far edge past the middle, then across to the library side")
 check(near(drawn[2].color[1], 0.92) and near(drawn[2].color[3], 0.78), "drawn in White's cream")
 local label = decal("Cactuar White triggers")
 check(label and label.url == "https://x/tts/table/triggers-White.png", "with White's label")
-check(label and near(label.position.x, 34.99) and near(label.position.z, -11.49), "centred in the box")
+check(label and near(label.position.x, 34.99) and near(label.position.z, -9.73), "centred in the box")
 check(label and label.rotation[1] == 90 and near(label.rotation[2], 0), "flat, reading from White's seat")
 
 czlToggle({color = "Purple"})
 local purple = drawn[3].points
 -- Purple's mat spans x 19.1..43.9, far edge z 3.9; its library column is at x 17.05.
-check(at(purple[1], 28.52, 3.9) and at(purple[2], 28.52, 19.08) and at(purple[3], 19.1, 19.08),
+check(at(purple[1], 28.52, 3.9) and at(purple[2], 28.52, 15.56) and at(purple[3], 19.1, 15.56),
       "a north seat's box is mirrored onto its own library side")
 check(near(drawn[3].color[1], 0.627) and near(drawn[3].color[3], 0.941), "drawn in purple")
 check(near(decal("Cactuar Purple triggers").rotation[2], 180), "Purple's label reads from its side")

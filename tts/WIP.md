@@ -3,12 +3,25 @@
 Living status doc for the Tabletop Simulator table work. Whoever picks this up (Claude or
 Codex) reads it first and updates it with every change. The [TTS development guide](../docs/development/tts-development-guide.md) and README are the lasting documentation; this file tracks what is in flight.
 
-Last updated 2026-10-24 (Claude): delivered **v67** (fixes v66's hand-index script errors), after v66 (no music from cards in hand; Inspect deselects) and v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
+Last updated 2026-10-24 (Claude): delivered **v68** (edge strip redrawn as a five-slot stack), after v67 (fixes v66's hand-index script errors), v66 (no music from cards in hand; Inspect deselects) and v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
 Both states visually checked live. **Steam is now v64, published at the owner’s request.** See [the changelog](../docs/development/tts-changelog.md).
 
 
 
+
+
+## v68: edge strip cleared and redrawn as a five-slot stack (saved; not on Steam)
+
+Owner circled the right-hand edge strip below Cactuar tile `c4c7a2` (between Purple and
+White) and asked to remove its contents and draw "a simple stack rectangle with 5 card
+slots"; this side only; keep the Cactuar tile. `build_tts_table.STRIP_GUIDS` removes the
+60 objects there (rikrassen's importer `222541`, dice, counter/keyword bags, commander
+damage markers, Turn Order `633ed3`, Turn Skipper puck, Planechase bag `b7ccfb`). Only the
+base's "Table Instructions" clutter remover names them, inside `pcall`, so nothing breaks.
+`stack_area()` adds six cream vector lines (outer rectangle + five 2.6 x 3.5 portrait
+slots at x 48.2, z -13.4..3.4) and five snap points. Source `58443497`; archive
+`.cache/tts-builds/v68/`. **Saved Games v68; Steam v64.**
 
 ## v67: v66 script errors fixed (saved; not on Steam)
 

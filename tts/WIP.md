@@ -32,7 +32,8 @@ the builder versions their URLs by content hash. Our decals are named "Cactuar .
 others are kept. The switch is now 2.6 wide with a 1300-wide button (width/500 = table
 units; the old 1750-wide button on a 1.9 block reached back over the reveal button),
 4.0 past the reveal button, labelled "Triggers ○━━" / "━━●". **Not yet seen in game:
-`Global.setDecals` placement and orientation, and the box against the mat art.**
+`Global.setDecals` placement and orientation, and the box against the mat art.** Source `54a0c475`;
+archive `.cache/tts-builds/v70/`. **Saved Games v70; Steam v64.**
 
 ## v69: per-seat battlefield guide-line switches (saved; not on Steam)
 

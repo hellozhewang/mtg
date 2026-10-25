@@ -8,6 +8,11 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v70 — 2026-10-24 (commit 54a0c475)
+- Guide switches now draw a trigger area: the far corner of the playmat on the library side, boxed in that player's playmat colour and labelled TRIGGERS
+- Switch moved clear of the reveal (magnifier) button and relabelled Triggers
+- Stack area on the edge strip is now a graphite-and-silver panel picture with five numbered slots
+
 ## v69 — 2026-10-24 (commit cef79a96)
 - Each seat has a Guide lines switch next to its buttons (off by default): turning it on draws a divider splitting the playmat into creature and noncreature rows, for everyone to see; decorative only
 

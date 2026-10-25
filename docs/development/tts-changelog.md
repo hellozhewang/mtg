@@ -8,6 +8,10 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v71 — 2026-10-24 (commit 03a367c3)
+- Stack panel frames, title and slot numbers are now teal, a colour no seat uses
+- Trigger areas now run from the far edge all the way down to the land line
+
 ## v70 — 2026-10-24 (commit 54a0c475)
 - Guide switches now draw a trigger area: the far corner of the playmat on the library side, boxed in that player's playmat colour and labelled TRIGGERS
 - Switch moved clear of the reveal (magnifier) button and relabelled Triggers

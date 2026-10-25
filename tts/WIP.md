@@ -19,7 +19,8 @@ rectangle should run all the way down to the land line. `make_table_art.py` now 
 the stack panel's frames, title and numerals in teal (`ACCENT`, 64/201/190), away from
 every seat colour including Green and Blue. `cactuar_lines.lua` ends the box at the
 printed land line (`CZL.landLine` 0.31 of the depth from the player's edge, the v69
-estimate) instead of 40% down; the label stays centred in the taller box.
+estimate) instead of 40% down; the label stays centred in the taller box. Source
+`03a367c3`; archive `.cache/tts-builds/v71/`. **Saved Games v71; Steam v64.**
 
 ## v70: trigger areas in seat colours, stack panel picture (saved; not on Steam)
 

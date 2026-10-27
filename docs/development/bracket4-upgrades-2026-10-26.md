@@ -27,7 +27,7 @@ uncapped Game Changers.
 | Kinnan-Infinite | [Kinnan-Optimized](../../public/zzwang/Bracket4/Kinnan-Optimized.txt) | 16 | 30 | 13 | 1.96 | SS | Adds Grim Monolith, free protection, draw and faster tutors; explicit colorless-to-outlet sequencing. |
 | Vivi-Spellslinger | [Vivi-Turbo](../../public/zzwang/Bracket4/Vivi-Turbo.txt) | 14 | 30 | 13 | 1.81 | SS | Breach/LED/Freeze plus Elemental or Cauldron mana into Ballista; adds free protection and fast mana. |
 | EDHREC seed | [Ral-Storm](../../public/zzwang/Bracket4/Ral-Storm.txt) | 19 | 26 | 13 | 2.05 | SS | New Ral, Monsoon Mage list; protected ritual/storm and Breach, with safe transformed-Ral loop instructions. |
-| Zada-Goblins | [Zada-Turbo](../../public/zzwang/Bracket4/Zada-Turbo.txt) | 13 | 30 | 7 | 2.17 | S | Retains Goblin Snoop package; adds fast mana, rituals, Empty the Warrens and a third Dualcaster copy spell. |
+| Zada-Goblins | [Zada-Turbo](../../public/zzwang/Bracket4/Zada-Turbo.txt) | 13 | 30 | 7 | 2.19 | S | Retains Goblin Snoop package; adds fast mana, rituals, Empty the Warrens and a third Dualcaster copy spell. |
 
 ## Research and combo review
 
@@ -42,6 +42,9 @@ the owner's Recruiter/Muxus/Ringleader package. Each Goblin guide includes a fou
 Ringleader refill, six-hit Muxus deployment, explicit draw/shuffle prerequisites,
 Snoop haste and the Recruiter-copy-to-Fanatic finish. If an exile trigger would change
 the top card, activate the required sacrifices before resolving it.
+
+Zada uses Infernal Plunge rather than an unreliable early metalcraft mox; its
+creature-heavy shell has too few ordinary artifacts to count Opal as opening mana.
 
 The guides cover resource costs and actual outlets: Kilo's Prism starts with two
 counters; poison must be seeded; Heliod/Ballista starts with two counters; Weaver
@@ -116,7 +119,7 @@ Removed: _____ Goblin; Abandon Attachments; Highway Robbery; Rob the Archives; R
 
 ### Zada-Turbo
 
-Added: Ancient Tomb; City of Traitors; Gemstone Caverns; Chrome Mox; Mox Diamond; Mox Opal; Mana Vault; Desperate Ritual; Pyretic Ritual; Seething Song; Empty the Warrens; Heat Shimmer; Goblin Warchief.
+Added: Ancient Tomb; City of Traitors; Gemstone Caverns; Chrome Mox; Mox Diamond; Infernal Plunge; Mana Vault; Desperate Ritual; Pyretic Ritual; Seething Song; Empty the Warrens; Heat Shimmer; Goblin Warchief.
 
 Removed: Swiftfoot Boots; Hordeling Outburst; Howlsquad Heavy; Mox Amber; Runaway Steam-Kin; Impact Tremors; Krenko, Mob Boss; Mountain; Mountain; Mountain; Mountain; Mountain; Mountain.
 

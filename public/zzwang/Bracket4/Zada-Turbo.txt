@@ -37,6 +37,7 @@
 1 Hexing Squelcher (ECL) 145
 1 Imperial Recruiter (MH2) 281
 1 Impolite Entrance
+1 Infernal Plunge
 1 Jeska's Will (MKC) 156
 1 Kher Keep
 1 Kiki-Jiki, Mirror Breaker (IMA) 136
@@ -50,7 +51,6 @@
 1 Molten Duplication (BIG) 14
 19 Mountain
 1 Mox Diamond
-1 Mox Opal
 1 Muxus, Goblin Grandee (JMP) 24
 1 Nykthos, Shrine to Nyx
 1 Past in Flames (C16) 131

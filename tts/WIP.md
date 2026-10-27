@@ -29,6 +29,8 @@ match their lists. SHA-256 comparison confirms all prior public files unchanged,
 including Bracket 3 guides/lists and the existing Bracket 5 Kinnan. Details, exact
 swaps, source research and tier reasoning are in the
 [Bracket 4 upgrade record](../docs/development/bracket4-upgrades-2026-10-26.md).
+Catalog build/check and 91 relevant tests pass; all 4,980 TTS image URLs verified.
+All 197 original TTS catalog records are identical, with eight additions only.
 No table build or Steam upload; Saved Games v73 and Steam v64 remain as before.
 
 ## Kupo sleeve deletion follow-up (2026-10-26)

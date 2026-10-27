@@ -68,7 +68,19 @@ card actually in that list. Each guide has 32–36 explanatory rows and ends wit
 opening hands and sequencing.
 
 A SHA-256 snapshot verifies every preexisting file under `public/` is byte-identical,
-including all Bracket 3 decklists and guides. This is a deck/catalog publication,
+including all Bracket 3 decklists and guides. Preserve original file creation
+dates in the isolated checkout so the catalog does not rewrite their "added"
+metadata. All 197 preexisting TTS catalog entries remain identical; the deck count
+increases only from 197 to 205. Existing deck-page changes are navigation updates.
+
+Publication checks: 91 relevant regression tests pass; the full catalog build and
+`build_site.py --check` pass; **4,980 unique TTS image URLs** are verified. The initial
+cold check had a Scryfall 429 and five transient image-server connection resets.
+Respect the API cooldown, bulk-warm missing card metadata with the existing
+`CardQuery` interface, and retry only the remaining unverified image URLs through
+the normal validation cache. No image-validation bypass was used.
+
+This is a deck/catalog publication,
 with no table code change, new save version or Steam upload. The faster construction
 target is protected turn-four-or-later opportunities; no goldfish percentage or
 competitive tournament result is claimed.

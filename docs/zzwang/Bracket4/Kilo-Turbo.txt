@@ -1,0 +1,100 @@
+1 Kilo, Apogee Mind
+1 Academy Ruins
+1 Adarkar Wastes
+1 Agatha's Soul Cauldron
+1 An Offer You Can't Refuse (FDN) 160
+1 Ancient Den
+1 Ancient Tomb
+1 Arid Mesa
+1 Astral Cornucopia (SOC) 342
+1 Aura of Dominion
+1 Battlefield Forge
+1 Bloodstained Mire
+1 Boros Charm (FDN) 721
+1 Chrome Mox
+1 City of Brass
+1 Command Tower
+1 Crystalline Crawler
+1 Cyclonic Rift
+1 Deflecting Swat (CMM) 214
+1 Dispatch (EOC) 64
+1 Dramatic Reversal (KLD) 44
+1 Drift of Phantasms
+1 Emry, Lurker of the Loch (EOC) 71
+1 Enlightened Tutor (MIR) 14
+1 Esper Sentinel (MH2) 12
+1 Everflowing Chalice (EOC) 137
+1 Exotic Orchard
+1 Fabricate (M10) 52
+1 Fierce Guardianship
+1 Flooded Strand
+1 Force of Negation (2X2) 50
+1 Force of Will
+1 Freed from the Real (A25) 58
+1 Grand Abolisher (CMM) 27
+1 Great Furnace
+1 Grim Monolith
+1 Hallowed Fountain
+1 Heliod, Sun-Crowned (CMM) 29
+1 Inventors' Fair
+1 Isochron Scepter (2XM) 264
+1 Lotus Petal (MB2) 226
+1 Mana Confluence
+1 Mana Drain (2X2) 57
+1 Mana Vault (2X2) 394
+1 Manifold Key (M20) 230
+1 Marsh Flats
+1 Minamo, School at Water's Edge
+1 Misty Rainforest
+1 Mox Amber
+1 Mox Diamond
+1 Mox Opal (2XM) 275
+1 Muddle the Mixture (RVR) 50
+1 Mystic Remora (DMR) 59
+1 Mystical Tutor
+1 Open the Armory (CMR) 34
+1 Otawara, Soaring City
+1 Pact of Negation (TSR) 77
+1 Paradise Mantle (MMA) 211
+1 Pemmin's Aura
+1 Pentad Prism (EOC) 56
+1 Plateau
+1 Polluted Delta
+1 Prologue to Phyresis
+1 Ranger-Captain of Eos (MH1) 21
+1 Recruiter of the Guard (CN2) 22
+1 Relic of Legends (DMU) 236
+1 Rhystic Study
+1 Sacred Foundry
+1 Scalding Tarn
+1 Sea of Clouds
+1 Seat of the Synod
+1 Sevinne's Reclamation
+1 Shivan Reef
+1 Shuri, Wakandan Inventor (MSH) 75
+1 Silence (M14) 35
+1 Smothering Tithe
+1 Sol Ring (EOC) 57
+1 Spellseeker (CMM) 120
+1 Spellskite
+1 Spire of Industry
+1 Springleaf Drum (2XM) 291
+1 Steam Vents
+1 Swan Song (EOC) 46
+1 Swords to Plowshares (EOC) 45
+1 Talisman of Creativity (SLD) 1058
+1 Talisman of Progress (FRC) 64
+1 Teferi, Time Raveler
+1 Tezzeret, Cruel Captain (EOE) 2
+1 The One Ring (LTR) 246
+1 Training Center
+1 Trinket Mage (TSR) 320
+1 Tundra
+1 Urza's Saga
+1 Volcanic Island
+1 Voltaic Key (USG) 314
+1 Walking Ballista (2XM) 306
+1 Wear // Tear (MOC) 343
+1 Whir of Invention (AER) 49
+1 Windswept Heath
+1 Wooded Foothills

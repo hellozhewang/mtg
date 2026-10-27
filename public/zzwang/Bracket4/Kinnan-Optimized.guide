@@ -1,0 +1,48 @@
+Kinnan-Optimized clones Kinnan-Infinite into Bracket 4 and leaves that Bracket 3 list, plus the existing Bracket 5 Kinnan-Combo, untouched. Nonland mana sources are the engine. Infinite colorless mana is not the same as infinite green and blue: identify the outlet and reserve the colors needed to reach it.
+
+# Nonland mana becomes the advantage
+Kinnan, Bonder Prodigy :: A nonland permanent tapped for mana adds one more mana of a type it actually produced. It adds ONE, not double every mana from a large source. Lotus Petal's activation DOES include a tap, so sacrificing it for mana also triggers Kinnan. Kinnan's extra is independent of the sacrificed Petal.
+Birds of Paradise + Llanowar Elves + Fyndhorn Elves + Elvish Mystic :: One-mana creatures become two-mana sources with Kinnan. Fresh creatures wait for summoning sickness unless Shang-Chi permits their activation.
+Bloom Tender :: Adds one mana per color among your permanents; with green-blue Kinnan it normally produces green and blue, then Kinnan adds ONE extra of either type. This can fund the colored part of activations.
+Shang-Chi, Master of Kung Fu :: Allows fresh creatures' activated abilities as though they had haste. Its own two mana are restricted to creature-source abilities, with Kinnan adding one more of the produced type. Do not spend the restricted portion to cast a spell.
+Gene Pollinator :: Taps itself and another untapped permanent for one colored mana, plus Kinnan's extra. A spare mana artifact or already-used-value creature can pay the second tap; Pollinator itself still needs to become ready normally.
+Chrome Mox + Mox Diamond + Mox Amber + Mox Opal :: Kinnan adds one when a functioning mox taps. Chrome needs a colored nonartifact imprint, Diamond discards a land, Amber needs an appropriate legendary permanent, and Opal needs metalcraft. Do not ignore those setup costs in a keep decision.
+Sol Ring + Mana Vault + Grim Monolith :: With Kinnan these tap for three, four and four colorless respectively. They are stronger than spending turns on generic two-mana ramp; the Monoliths/Vault still need an untap plan for repeated use.
+Fellwar Stone + Arcane Signet + Talisman of Curiosity :: Repeatable colored artifact mana that also receives Kinnan's extra. Stone depends on opposing lands. Preserve blue and green access instead of floating only colorless.
+Carpet of Flowers :: A one-mana source of colored burst mana against Islands. It is not tapped for its ability, so Kinnan does not add a bonus. Without opposing Islands it can produce nothing.
+Training Grounds :: Reduces Kinnan's activation from five-green-blue to three-green-blue. It also reduces Thrasios's four-generic activation to two. It does not reduce colored pips or artifact untap abilities.
+
+# Compact wins and the conversion step
+Kinnan, Bonder Prodigy + Basalt Monolith :: Tap Basalt for four colorless with Kinnan, spend three to untap it, and repeat for arbitrary colorless. This is not colored mana and cannot by itself pay the green-blue part of Kinnan's activation.
+Power Artifact + Basalt Monolith :: Enchant Basalt; its untap costs one and it produces three even without Kinnan. It is a separate route when the commander is repeatedly removed.
+Power Artifact + Grim Monolith :: Untapping Grim costs two instead of four, while it taps for three without Kinnan. Repeat for net mana. With Kinnan it taps for four and nets two each loop.
+Thrasios, Triton Hero :: Spend infinite colorless on repeated activations to put lands into play tapped and draw the nonlands. Drawing Ballista to hand is the deterministic conversion. Stop before attempting a draw from an empty library.
+Walking Ballista :: Cast for enough X using the mana bank, then distribute damage among all opponents. Kinnan putting Ballista onto the battlefield does NOT cast it and supplies zero X counters, so it normally dies.
+Finale of Devastation -> Thrasios, Triton Hero :: Finds Thrasios from library or graveyard for X=2 plus two green, then your colorless loop can draw toward Ballista. With huge X it also creates a haste/power combat finish if enough attackers can connect.
+Hullbreaker Horror + Sol Ring + Lotus Petal :: With Horror in play, tap Ring, cast Petal to bounce Ring, then recast Ring for one to bounce Petal. Do NOT sacrifice Petal; it is the reusable zero-cost spell. Ring makes at least two each pass, so the loop nets colorless and can repeatedly bounce opposing nonland permanents. Convert mana with Thrasios/Ballista.
+Isochron Scepter + Dramatic Reversal :: Imprint Reversal, then repeatedly tap nonland mana and pay two to untap them and Scepter. Count actual colored production and Kinnan's bonuses. More than two mana per iteration produces net mana; exactly two only sustains the loop.
+Freed from the Real + Bloom Tender :: With Kinnan's green-blue colors present, tap Tender for green and blue plus one bonus, spend blue to untap, and repeat. Allocate enough blue to keep untapping; use other passes to bank green or blue.
+Pemmin's Aura + Bloom Tender :: The second one-blue untapper supports the same line. Giving Tender shroud prevents new targeted attachments and untappers, so establish the needed setup first.
+
+# Tutors that lead to the real finish
+Worldly Tutor -> Thrasios, Triton Hero :: Top-deck access to the outlet, a mana creature or a recovery threat. It requires a draw and should follow any fetch or other shuffling search.
+Green Sun's Zenith -> Bloom Tender :: X=2 gets Tender directly into play; Zenith can also get green Thrasios. It cannot find an ordinary colorless Ballista or a blue-only creature.
+Chord of Calling -> Thrasios, Triton Hero :: Finds the outlet directly at instant speed, with convoke helping the generic and green costs. Save a real colored-mana plan rather than relying on infinite colorless to pay three green.
+Nature's Rhythm + Formidable Speaker :: Rhythm puts a creature into play and can be reused through harmonize; Speaker discards to find a creature to hand. Ballista needs to be cast for X, not put straight into play with no counters.
+Transmute Artifact -> Basalt Monolith :: Sacrifice an artifact on resolution and pay the mana-value difference when needed. It is not an unrestricted free artifact onto the battlefield. Find Scepter only with Reversal available to imprint.
+Whir of Invention -> Grim Monolith :: Instant-speed artifact access, with improvise for generic mana but not the three blue pips. Whir cannot find the Power Artifact enchantment.
+Pia, Aether Ascetic -> Power Artifact :: Pia discards any card on entry to put an enchantment into hand: Power Artifact, an untap Aura, a draw engine or Training Grounds. Pia is Human, so Kinnan's five-card ability cannot put her onto the battlefield.
+Mystical Tutor -> Transmute Artifact :: Find the artifact tutor, Finale, Chord or protection on top. It cannot directly find Power Artifact or Ballista; account for that extra step and draw.
+Moonsilver Key :: Pay one, tap and sacrifice it to find a mana-ability artifact such as a Monolith or a basic land to hand. It does not find an arbitrary artifact just because the card is useful in the combo.
+
+# Rebuild and force a window
+Seedborn Muse :: Untaps your permanents on each OTHER player's untap step, giving repeated colored mana for Kinnan activations. It does not bypass summoning sickness on newly deployed mana creatures.
+Rhystic Study + Mystic Remora + Consecrated Sphinx :: Tax draw, early noncreature-spell draw and scalable opponent-draw pressure give the deck a plan when the first combo is stopped. Sphinx costs six but can be a Kinnan hit.
+Gilded Drake + Phyrexian Metamorph :: Drake exchanges for the critical opposing creature; Metamorph copies a useful creature or artifact. Do not copy a legend you need to retain without accounting for the legend rule.
+Force of Will + Fierce Guardianship + Force of Negation :: Keep a blue pitch card and understand the restrictions. Guardianship needs your commander, and Negation is free only on another player's turn, so it normally costs three on your own winning turn.
+Pact of Negation + Flusterstorm + Swan Song :: Fight over the decisive interaction rather than every value spell. Pact demands five mana next upkeep if you do not win. Flusterstorm's tax copies can be paid and do not counter creature or artifact spells.
+Veil of Summer + Force of Vigor + Nature's Claim :: Clear artifact/enchantment hate and protect against blue/black interaction. Vigor's free alternate cost is only for opponents' turns. None of these universally stops activated graveyard hate.
+
+# Opening hands and sequencing
+Keep two functional colored sources or one source plus acceleration that actually works, then Kinnan, a draw engine or a tutor. Mulligan hands full of large creatures and colorless mana without green-blue access. Chrome/Mox Diamond costs must leave enough cards and lands to function after one answer.
+Play the one-mana creature first when it lets turn-two Kinnan repay its cost immediately. Hold the outlet or a tutor for it before declaring a Monolith combo; reserve green-blue mana for the conversion. Under creature-activation hate, a mana loop may still work while Thrasios and Ballista do not: remove the hate or take an actual Finale attack. The goal is protected turn-four-or-later opportunities in a high-power Bracket 4 game, not an asserted cEDH result or measured win percentage.

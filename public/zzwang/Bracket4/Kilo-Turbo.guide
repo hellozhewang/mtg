@@ -1,0 +1,43 @@
+Kilo-Turbo is the Bracket 4 copy of Kilo-Infinite; the original is unchanged. Tapping Kilo is the trigger, not attacking. Build a repeatable tap/untap loop, seed a real winning counter first, and protect the conversion. The upgrade removes slow spacecraft and prison cards for fast mana, efficient draw and free interaction.
+
+# Turn taps into a win
+Kilo, Apogee Mind :: Haste makes tap abilities ready immediately. Each time Kilo becomes tapped, proliferate. It cannot put a first counter on a permanent or player; seed poison, a charge counter or a Ballista counter before claiming a win.
+Kilo, Apogee Mind + Freed from the Real + Paradise Mantle :: Equip Mantle to Kilo, tap for blue, resolve proliferate, and spend the blue on Freed to untap Kilo. Repeat with no net mana. The equipment needs its one-mana equip payment first.
+Kilo, Apogee Mind + Freed from the Real + Relic of Legends :: Relic's second ability taps Kilo for blue without tapping Relic. Use that blue to untap Kilo with Freed and repeat. Kilo's haste is unnecessary for Relic's externally supplied tap cost, but remains useful elsewhere.
+Kilo, Apogee Mind + Pemmin's Aura + Paradise Mantle :: Pemmin supplies the same one-blue untap. Relic can replace Mantle. Giving Kilo shroud before attaching other pieces prevents your own targeting, so sequence attachments first.
+Kilo, Apogee Mind + Aura of Dominion + Pentad Prism :: Enchant Kilo and start with at least TWO Prism counters. Remove one for mana and tap Kilo to pay Aura's untap ability. The proliferate trigger resolves first, replacing the counter while Prism still has one. Resolve the untap and repeat. Starting Prism with one and spending it to zero cannot self-seed.
+Prologue to Phyresis :: Give each opponent one poison counter, then nine proliferates reach ten and eliminate them. It draws a card and can be found by Spellseeker; no combat or creature damage is needed.
+Walking Ballista :: With at least one counter left, a proliferate loop replenishes repeated damage shots. Never remove its last counter before replenishing it; it normally dies at zero toughness.
+Everflowing Chalice + Astral Cornucopia :: Cast with counters before proliferating. A large counter count yields arbitrarily large mana from a later tap. A zero-counter version helps artifact count but produces no counter growth until seeded.
+Crystalline Crawler :: Keep a +1/+1 counter on it while Kilo loops, then remove newly added counters for mana of any color. Do not strip its last seed counter before the next proliferate. This turns a mana-neutral Kilo loop into a mana-positive one.
+Kilo, Apogee Mind + Springleaf Drum :: Drum supplies a low-cost tap and colored mana on a normal turn. Drum taps too, so this is not the repeatable Mantle/Relic loop by itself.
+Tezzeret, Cruel Captain :: The zero ability untaps Kilo and adds a +1/+1 counter to it because it is an artifact creature. The minus-three finds Mantle, a Key, Chalice, Cornucopia or Ballista to HAND. Loyalty abilities are normally usable only once per turn; proliferating Tezzeret does not change that.
+
+# Independent wins when Kilo is answered
+Heliod, Sun-Crowned + Walking Ballista :: Put at least two counters on Ballista and pay Heliod's one-white-plus-one ability to grant lifelink. Remove one counter to deal one damage, gain one life, and return the counter with Heliod's trigger. Repeat for lethal damage. A one-counter Ballista normally dies before the first life-gain trigger can restore it.
+Isochron Scepter + Dramatic Reversal :: Imprint Reversal and tap nonland mana sources before paying two to activate Scepter. Reversal untaps those sources and Scepter. Two mana sustains repeated activations; at least three yields net mana. Add Ballista for a mana win, or a ready Kilo tap engine and a seeded counter for proliferate.
+Sol Ring + Mana Vault + Grim Monolith :: These make Scepter mana-positive. Vault and Monolith do not normally untap, but Reversal untaps them. Monolith's untap cost is four when you do not have that loop.
+Whir of Invention -> Isochron Scepter :: Find Scepter directly onto the battlefield only when Reversal is already in hand to imprint. Improvise helps generic costs, not the three blue pips; Kilo can be tapped for improvise to trigger proliferate.
+Enlightened Tutor -> Paradise Mantle :: Finds either an artifact or an enchantment on top. Choose the absent half of a loop, or the winning counter source. Finish fetches and other searches before the top-deck tutor.
+Mystical Tutor -> Enlightened Tutor :: Turns the new instant tutor into access to an artifact/enchantment engine, with another draw required. It can instead find Reversal, Prologue, removal or protection directly.
+Muddle the Mixture -> Aura of Dominion :: Transmute finds mana value TWO: Aura, Pentad Prism or Scepter. It cannot find the three-mana Freed; Drift reaches that instead.
+Drift of Phantasms -> Freed from the Real :: Transmute at sorcery speed for a three-mana piece: Freed, Relic, Staff or Teferi. Casting Drift as a blocker does not also tutor.
+Spellseeker -> Prologue to Phyresis :: Finds the poison seed, Reversal, Silence or another qualifying instant/sorcery to hand. It does not find an Aura or Ballista.
+Recruiter of the Guard -> Walking Ballista :: Ballista has toughness zero in the library. Ranger-Captain also finds it by mana value zero, and neither gives a Ballista put directly onto the battlefield any X counters.
+Open the Armory -> Pemmin's Aura :: Hand access to either untap Aura or Mantle. Choose the Aura whose colored cost you can actually pay rather than assuming two blue is interchangeable with one.
+Emry, Lurker of the Loch + Sevinne's Reclamation :: Emry recasts an artifact from the graveyard once per tap; Reclamation returns a permanent of mana value three or less. Ballista returns without X counters and normally dies. Use recursion to restore mana or a loop piece instead.
+
+# Make the protected turn affordable
+Chrome Mox + Mox Diamond + Mox Amber + Mox Opal :: Amber uses Kilo's three colors once the commander is present; Opal needs metalcraft. Chrome consumes a colored nonartifact card and Diamond consumes a land. Do not count these as unconditional colored sources in an opener.
+Ancient Tomb + Mana Vault :: Cover generic costs of artifacts and tutors. They cannot cast the three-colored commander by themselves; retain blue, red and white sources.
+Rhystic Study + Mystic Remora :: Draw while developing the actual loop. Remora's upkeep payment escalates. Study triggers on opposing spells, not on your own artifact casts, and opponents can pay.
+The One Ring :: A protected refill when a game stalls. Proliferating its burden counters also increases your next upkeep's life loss, so normally exclude it from proliferate selections.
+Smothering Tithe :: Converts opponents' draws into Treasures unless they pay. It supports the combo rather than being a required four-mana setup piece in every opening hand.
+Grand Abolisher + Silence + Teferi, Time Raveler :: Create an opening before deploying the final pieces. Silence and Teferi restrict spells, while Abolisher also restricts opposing artifact, creature and enchantment activations on your turn. They do not erase abilities already on the stack.
+Spellskite + Deflecting Swat :: Protect the particular permanent or stack item the loop needs. A redirected target must still be legal; these cannot turn an exile sweeper into harmless targeted removal.
+Force of Will + Fierce Guardianship + Pact of Negation :: Free protection leaves mana for assembly. Guardianship needs a commander, Force needs a blue pitch card, and Pact leaves a five-mana next-upkeep bill if the attempt fails.
+Cyclonic Rift + Swords to Plowshares + Wear // Tear :: Remove activation hate or spell limits before committing. Artifact-activation hate turns off Ballista and the mana rocks; creature-activation hate can stop Mantle's granted ability. Prologue plus a working proliferation engine wins without Ballista damage.
+
+# Opening hands and sequencing
+Keep functional three-color mana, acceleration, and either a loop component plus a tutor or a genuine draw engine. Mulligan hands of expensive payoffs without blue access. A natural ready-to-attack Kilo does not excuse casting an unseeded Prism and expecting it to work.
+Deploy mana, identify the outlet, establish protection, then expose the final Aura or Scepter. With a top-deck tutor, perform shuffling searches first. Target a protected turn-four-or-later attempt; this separate Bracket 4 build does not inherit the original's turn-six waiting expectation. No win-rate percentage has been measured.

@@ -12,6 +12,22 @@ Both states visually checked live. **Steam is now v64, published at the owner’
 
 
 
+## Eight separate Bracket 4 decks (2026-10-26)
+
+Owner asked for Krenko, Muxus, Kilo, Yuna's combo/enchantment version (not Grand
+Summoner), Kinnan, Vivi, Ral Monsoon Mage and Goblin Zada, with an explicit instruction
+to keep every existing Bracket 3 version. Clone seven into unique Bracket 4 stems;
+Ral is new from an EDHREC seed. All belong to zzwang. Final names: Krenko-Turbo,
+Muxus-Turbo, Kilo-Turbo, Yuna-Combo, Kinnan-Optimized, Vivi-Turbo, Ral-Storm and
+Zada-Turbo. Update themes/tiers, write guides, and publish the static/TTS catalog.
+
+All eight pass 100-card legality, pins and TTS import 100/100. Guide card references
+match their lists. SHA-256 comparison confirms all prior public files unchanged,
+including Bracket 3 guides/lists and the existing Bracket 5 Kinnan. Details, exact
+swaps, source research and tier reasoning are in the
+[Bracket 4 upgrade record](../docs/development/bracket4-upgrades-2026-10-26.md).
+No table build or Steam upload; Saved Games v73 and Steam v64 remain as before.
+
 ## Kupo sleeve deletion follow-up (2026-10-26)
 
 Checked Kupo's two Discord replies in channel `1532112515058761849`: requests

@@ -12,6 +12,16 @@ Both states visually checked live. **Steam is now v64, published at the owner’
 
 
 
+## Kupo sleeve deletion follow-up (2026-10-26)
+
+Checked Kupo's two Discord replies in channel `1532112515058761849`: requests
+`1564445986838024347` and `1564446036867555471` reference the generated **Gojo**
+(`1563752242039889961`) and **Update This Why Does** (`1563752807738380430`)
+sleeves. The latter was already removed with the eraser on 2026-10-24. Remove
+Gojo's source, published JPEG, thumbnail and both catalog entries; prune its local
+ownership/cache pointers. All other sleeves and deck records stay unchanged.
+Catalog consistency verified. No table build or Steam release.
+
 ## Sleever: Codex fallback and two rejected sleeves removed (2026-10-24)
 
 Owner identified only the last two images: the eraser (`delete-this`) and the man

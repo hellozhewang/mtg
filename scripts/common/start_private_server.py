@@ -102,21 +102,23 @@ def _write_plist(site: Path, log_path: Path) -> bool:
     PLIST.parent.mkdir(parents=True, exist_ok=True)
     log_path.parent.mkdir(parents=True, exist_ok=True)
     python_bin = shutil.which("python3") or sys.executable
+    # The repo lives on an external volume, where launchd itself may not open
+    # files (StandardOutPath fails with EX_CONFIG), so bash appends the log.
     payload = {
         "Label": LABEL,
         "ProgramArguments": [
+            "/bin/bash",
+            "-c",
+            'exec "$0" -u "$1" --serve "$2" >>"$3" 2>&1',
             python_bin,
-            "-u",
             str(Path(__file__).resolve()),
-            "--serve",
             str(site),
+            str(log_path),
         ],
         "WorkingDirectory": str(site.parent),
         "RunAtLoad": True,
         "KeepAlive": True,
         "ThrottleInterval": 10,
-        "StandardOutPath": str(log_path),
-        "StandardErrorPath": str(log_path),
     }
     raw = plistlib.dumps(payload)
     if PLIST.is_file() and PLIST.read_bytes() == raw:

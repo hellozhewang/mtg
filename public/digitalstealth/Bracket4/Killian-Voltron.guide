@@ -1,0 +1,88 @@
+The single biggest mistake a new pilot makes with Killian is viewing him as a fragile casual Voltron commander rather than an oppressive Bracket 4 combo-tempo engine. Killian's static ability discounts *any* spell targeting a creature by {2} generic mana. This does not merely accelerate your Auras: it transforms premium interaction like Dismember into free removal, turns Hatred into an instant-speed three-mana one-shot that gains back all twenty-one life via Killian's natural lifelink, and allows you to tutor and storm through your entire library with Bolas's Citadel, Sensei's Divining Top, and Aetherflux Reservoir as early as turn three.
+
+# The Ink Duelist and cost reduction mechanics
+Killian, Ink Duelist :: Two-mana commander with lifelink and menace that discounts all spells you cast targeting a creature by {2} generic mana.
+Sram, Senior Edificer :: Two-mana engine that draws a card whenever you cast an Aura or Equipment spell.
+Kor Spiritdancer :: Two-mana engine that draws a card on every Aura cast and gains +2/+2 for each Aura attached to it.
+Mesa Enchantress :: Three-mana enchantress drawing cards whenever any enchantment spell is cast.
+Esper Sentinel :: One-mana creature taxing opponent noncreature spells and drawing cards.
+Orcish Bowmasters :: Flash creature punishing opponent card draw with pings and Orc Army amass.
+Drannith Magistrate :: Two-mana hatebear that completely locks opponents out of casting commanders from the command zone, flashback spells, or exile-casts.
+
+# Instant-speed one-shots and lethal auras
+Hatred + Killian, Ink Duelist :: Cast Hatred targeting Killian for {1}{B}{B} thanks to Killian's {2} discount. Pay 19 life to give Killian +19/+0 until end of turn. Because Killian has menace and evasion, he connects for 21 lethal commander damage, and his natural lifelink immediately heals you for all 21 life, eliminating an opponent for three mana.
+Eldrazi Conscription :: Massive aura discounted from {8} to {6} by Killian; grants +10/+10, trample, and annihilator 2 to devastate opponent boards on combat.
+All That Glitters :: Discounted to {W}; gives Killian +1/+1 for every artifact and enchantment you control, scaling rapidly into lethal power.
+Ethereal Armor :: One-mana aura giving Killian first strike and +1/+1 for each enchantment you control.
+Battle Mastery :: Discounted to {W}; grants double strike to turn modest power buffs into lethal commander damage.
+Daybreak Coronet :: Two-mana aura granting +3/+3, first strike, vigilance, and lifelink.
+Spirit Mantle :: Discounted to {W}; gives +1/+1 and protection from all creatures, making Killian completely unblockable.
+Unquestioned Authority :: Discounted to {W}; replaces itself on entry and grants protection from all creatures.
+Holy Mantle :: Discounted to {W}{W}; grants +2/+2 and protection from all creatures.
+Sage's Reverie :: Discounted to {1}{W}; draws cards equal to the number of Auras attached to Killian and provides a massive power boost.
+Mantle of the Ancients :: Discounted to {1}{W}{W}; returns all Auras from your graveyard attached to Killian for an instant lethal resurrection.
+Duelist's Heritage :: Grants double strike to any attacking creature each combat, doubling Killian's damage output.
+Chains of Custody :: Discounted to {W}; exiles target nonland permanent an opponent controls and grants ward {2}.
+Angelic Destiny :: Discounted to {W}{W}; gives +4/+4, flying, and first strike, returning to your hand if Killian dies.
+Hyena Umbra :: One-mana aura providing first strike and totem armor to shield Killian from destroy effects.
+Benevolent Blessing :: Flash aura discounted to {W}; grants protection from chosen color without causing your own Auras to fall off.
+
+# Storm combos and infinite finishers
+Bolas's Citadel + Sensei's Divining Top + Aetherflux Reservoir :: Bolas's Citadel lets you cast Sensei's Divining Top from the top of your library for 1 life. Tap Top to draw a card and place Top on top of your library. Each cast triggers Aetherflux Reservoir to gain exponentially increasing life. Repeat until you have over 150 life, then activate Aetherflux Reservoir's 50-damage cannon to blast every opponent to zero.
+Heliod, Sun-Crowned + Walking Ballista :: Pay {1}{W} to give Walking Ballista lifelink. Remove a +1/+1 counter from Ballista to deal 1 damage to any target. Lifelink triggers Heliod to put a +1/+1 counter back on Ballista. Repeat infinitely for lethal table burn.
+The One Ring :: Grants protection from everything for a full turn and draws cards in rapidly accelerating bursts.
+Necropotence :: Three-mana enchantment allowing you to pay life to draw dozens of cards at end step, effortlessly replenished by Killian's lifelink.
+Smothering Tithe :: Generates explosive Treasure ramp whenever opponents draw cards.
+Black Market Connections :: Provides continuous card draw, Treasure generation, and creature bodies every upkeep.
+
+# Uncapped fast mana and tutor network
+Chrome Mox :: Zero-mana fast mana artifact imprinting a colored spell.
+Mox Diamond :: Zero-mana fast mana artifact discarding a land.
+Mana Vault :: One-mana artifact tapping for {C}{C}{C} to power out Eldrazi Conscription, Bolas's Citadel, or The One Ring.
+Sol Ring :: Premier fast mana staple.
+Lotus Petal :: Zero-mana burst mana artifact.
+Dark Ritual :: One-mana instant adding three black mana.
+Cabal Ritual :: Two-mana instant adding three (or five with threshold) black mana.
+Serra's Sanctum :: Legendary land tapping for {W} equal to the number of enchantments you control.
+Ancient Tomb :: Land tapping for {C}{C} at the cost of 2 life.
+Demonic Tutor :: Two-mana universal tutor directly to hand.
+Vampiric Tutor :: One-mana instant tutor to top of library.
+Imperial Seal :: One-mana sorcery tutor to top of library.
+Enlightened Tutor :: One-mana instant tutor for any enchantment, artifact, or aura.
+Grim Tutor :: Three-mana tutor searching for any card.
+Open the Armory :: Two-mana sorcery tutoring any Aura or Equipment card directly to hand.
+Heliod's Pilgrim :: Three-mana creature that tutors any Aura card directly to hand.
+Ranger-Captain of Eos :: Tutors Walking Ballista, Esper Sentinel, Mother of Runes, or Giver of Runes, and sacrifices to silence opponents.
+
+# Discounted removal and spot interaction
+Dismember :: Discounted by Killian to cost {0} mana and 4 life to give any creature -5/-5 at instant speed.
+Snuff Out :: Free black instant destroying target nonblack creature.
+Deadly Rollick :: Free instant exiling target creature while Killian is on the battlefield.
+Baleful Mastery :: Discounted by Killian to cost {B} to exile any creature or planeswalker.
+Infernal Grasp :: Discounted by Killian to cost {B} to destroy any creature at the cost of 2 life.
+Bitter Triumph :: Discounted by Killian to cost {B} to destroy target creature or planeswalker.
+Swords to Plowshares :: One-mana instant creature exile.
+Path to Exile :: One-mana instant creature exile.
+Toxic Deluge :: Three-mana board wipe paying life to clear the board through indestructible.
+
+# Protection, silence, and defensive shields
+Mother of Runes :: One-drop creature giving Killian protection from any color.
+Giver of Runes :: One-drop creature giving Killian protection from any color or colorless.
+Grand Abolisher :: Shuts off all opponent spells and abilities during your turn.
+Silence :: One-mana white instant that shuts off all opposing spellcasting for your turn.
+Teferi's Protection :: Phases out all your permanents and freezes your life total at instant speed.
+Timely Ward :: Flash aura discounted to {W} granting Killian indestructible at instant speed.
+Shielded by Faith :: Aura granting indestructible, movable to another creature if needed.
+Flickering Ward :: One-mana aura giving protection from chosen color with bounce ability.
+Loran's Escape :: One-mana instant granting hexproof, indestructible, and scry 1.
+Blacksmith's Skill :: One-mana instant granting hexproof and indestructible.
+Gods Willing :: One-mana instant granting protection from chosen color and scry 1.
+Sejiri Shelter :: MDFC spell granting protection from chosen color, discounted to {W} by Killian.
+Malakir Rebirth :: MDFC spell returning Killian to the battlefield if he dies, discounted to {B}.
+
+# Opening hand and sequencing
+Prioritize opening hands with fast mana (Chrome Mox, Mox Diamond, Mana Vault, Sol Ring, Dark Ritual), at least 2 lands, and either an explosive tutor, a draw engine, or an early Aura package.
+Cast Killian on turn 1 or 2 using fast mana or untapped dual lands.
+On turn 2 or 3, deploy protection (Mother of Runes, Grand Abolisher, Silence) or immediately attack and hold up {1}{B}{B} for Hatred to eliminate the most dangerous player at the table.
+Alternatively, assemble the Bolas's Citadel storm loop or the Heliod + Walking Ballista combo using your deep tutor suite to kill the entire pod simultaneously on turns 3 through 5.
+If playing the long game, use The One Ring, Necropotence, and enchantress draws to bury opponents in card advantage while controlling the board with heavily discounted removal spells.

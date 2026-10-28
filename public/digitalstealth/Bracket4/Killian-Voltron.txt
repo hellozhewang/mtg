@@ -1,0 +1,100 @@
+1 Killian, Ink Duelist
+1 Aetherflux Reservoir
+1 All That Glitters
+1 Ancient Tomb
+1 Angelic Destiny
+1 Arcane Signet
+1 Arid Mesa
+1 Baleful Mastery
+1 Battle Mastery
+1 Benevolent Blessing
+1 Bitter Triumph
+1 Black Market Connections
+1 Blacksmith's Skill
+1 Bloodstained Mire
+1 Bolas's Citadel
+1 Cabal Ritual
+1 Caves of Koilos
+1 Chains of Custody
+1 Chrome Mox
+1 City of Brass
+1 Command Tower
+1 Concealed Courtyard
+1 Dark Ritual
+1 Daybreak Coronet
+1 Deadly Rollick
+1 Demonic Tutor
+1 Dismember
+1 Drannith Magistrate
+1 Duelist's Heritage
+1 Eiganjo, Seat of the Empire
+1 Eldrazi Conscription
+1 Enlightened Tutor
+1 Esper Sentinel
+1 Ethereal Armor
+1 Fellwar Stone
+1 Fetid Heath
+1 Flickering Ward
+1 Flooded Strand
+1 Giver of Runes
+1 Godless Shrine
+1 Gods Willing
+1 Grand Abolisher
+1 Grim Tutor
+1 Hall of Heliod's Generosity
+1 Hatred
+1 Heliod, Sun-Crowned
+1 Heliod's Pilgrim
+1 Holy Mantle
+1 Hyena Umbra
+1 Imperial Seal
+1 Infernal Grasp
+1 Isolated Chapel
+1 Kor Spiritdancer
+1 Loran's Escape
+1 Lotus Petal
+1 Malakir Rebirth
+1 Mana Confluence
+1 Mana Vault
+1 Mantle of the Ancients
+1 Marsh Flats
+1 Mesa Enchantress
+1 Mother of Runes
+1 Mox Diamond
+1 Necropotence
+1 Open the Armory
+1 Orcish Bowmasters
+1 Path to Exile
+1 Plains
+1 Polluted Delta
+1 Prismatic Vista
+1 Ranger-Captain of Eos
+1 Sage's Reverie
+1 Scrubland
+1 Sejiri Shelter
+1 Sensei's Divining Top
+1 Serra's Sanctum
+1 Shadowy Backstreet
+1 Shattered Sanctum
+1 Shielded by Faith
+1 Silence
+1 Silent Clearing
+1 Smothering Tithe
+1 Snuff Out
+1 Sol Ring
+1 Spirit Mantle
+1 Sram, Senior Edificer
+1 Swamp
+1 Swords to Plowshares
+1 Takenuma, Abandoned Mire
+1 Talisman of Hierarchy
+1 Teferi's Protection
+1 The One Ring
+1 Timely Ward
+1 Toxic Deluge
+1 Unquestioned Authority
+1 Urborg, Tomb of Yawgmoth
+1 Vampiric Tutor
+1 Vault of Champions
+1 Verdant Catacombs
+1 Walking Ballista

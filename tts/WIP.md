@@ -102,6 +102,21 @@ generation prompts; no existing sleeves, table builds or Steam releases change.
 All 12 existing sleever tests pass; both generator prompt variants and the normal
 instruction template include the shared rule.
 
+## v75: Inspect retries decks TTS refused at startup (saved; not on Steam)
+
+Owner's console at load: "[Global] Lua Error: Object reference not set to an instance
+of an object." (no function or line), then `addContextMenuItem` "Function required for
+context menu (label = "Inspect", ...)" for seven decks: the same pair as v66's
+screenshot. TTS logs that refusal and returns false instead of raising, so `pcall`
+counted it a success, marked the decks attached, and the frame-10 retry skipped them:
+those decks kept no Inspect. `czsAttach` now remembers only a real success
+(`added ~= false`), and startup adds passes at 3 s and 10 s. The source of the null error
+itself is **not identified**: Player.log has no Lua traces (only two "Can't add
+component to object that is being destroyed"), and a startup null error was already
+noted at v56. v67's fix of v66 may only have changed timing. If it recurs, ask whether
+right-clicking those decks shows Inspect. Browser test: a false return isn't remembered
+and a later pass attaches once (fails without the fix).
+
 ## v74: filter menus never open empty (saved; not on Steam)
 
 Owner's screenshot: Bracket menu opened with its title and the right height but no

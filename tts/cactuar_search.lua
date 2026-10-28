@@ -661,10 +661,13 @@ local function czsAttach(obj)
   if not czsIsContainer(obj) then return end
   local guid = czsGuid(obj)
   if not guid or CZS.attached[guid] == obj then return end
-  local ok = pcall(function()
-    obj.addContextMenuItem("Inspect", function(color) czsOpen(color, obj) end)
+  local ok, added = pcall(function()
+    return obj.addContextMenuItem("Inspect", function(color) czsOpen(color, obj) end)
   end)
-  if ok then CZS.attached[guid] = obj end
+  -- TTS can refuse without raising ("Function required for context menu", seen for
+  -- every deck right after a startup script error): it logs and returns false. Only
+  -- a real success is remembered, so the later passes try again.
+  if ok and added ~= false then CZS.attached[guid] = obj end
 end
 
 -- Keep every base handler, and keep one copy of each wrapper on live reload.
@@ -720,6 +723,9 @@ local function czsAttachExisting()
 end
 Wait.frames(czsAttachExisting, 2)
 Wait.frames(czsAttachExisting, 10) -- one startup retry for native menu readiness
+-- Later passes for decks TTS refused during the startup burst (each skips attached ones).
+Wait.time(czsAttachExisting, 3)
+Wait.time(czsAttachExisting, 10)
 -- Membership refresh also handles draws, joins, splitting and the deck collapsing
 -- to one card. Sorting a copy means shuffling never changes the displayed order.
 CZS.ticker = Wait.time(function()

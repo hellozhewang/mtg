@@ -486,6 +486,17 @@ transient.addContextMenuItem = function(...)
 end
 onObjectSpawn(transient)
 check(attempts == 2 and #transient.menus == 2, "failed native registration is retried without leaving a stale attached flag")
+-- TTS's "Function required for context menu" refusal logs and returns false, no error.
+local refused = deck("refused-menu", {})
+local refusedAdd = refused.addContextMenuItem
+refused.addContextMenuItem = function() return false end
+onObjectSpawn(refused)
+check(#refused.menus == 1 and CZS.attached["refused-menu"] == nil, "a refused registration is not remembered as attached")
+refused.addContextMenuItem = refusedAdd
+for id, fn in pairs(ticks) do if id ~= CZS.ticker then fn() end end
+check(#refused.menus == 2 and CZS.attached["refused-menu"] == refused, "a later startup pass attaches it")
+for id, fn in pairs(ticks) do if id ~= CZS.ticker then fn() end end
+check(#refused.menus == 2, "and later passes never duplicate it")
 
 -- The real base clears custom menus on zone enter/leave. Restore after each event.
 local library = {}

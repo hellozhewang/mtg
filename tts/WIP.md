@@ -6,7 +6,7 @@ Codex) reads it first and updates it with every change. The [TTS development gui
 Last updated 2026-10-27 (Codex): competitive gap audit of the eight new Bracket 4
 copies; add appropriate land denial and missing engines. Bracket 3 sources preserved.
 
-Table build status (2026-10-24, Claude): delivered **v73** (fixes an onObjectDestroy error), after v72 (trigger areas end above the land line), v71 (teal stack frames; trigger areas to the land line), v70 (trigger areas in seat colours; stack panel picture), v69 (per-seat guide-line switches), v68 (edge strip redrawn as a five-slot stack), v67 (fixes v66's hand-index script errors), v66 (no music from cards in hand; Inspect deselects) and v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
+Table build status (2026-10-24, Claude): delivered **v75** (Inspect retries refused menus), after v74 (menus never open empty), v73 (fixes an onObjectDestroy error), v72 (trigger areas end above the land line), v71 (teal stack frames; trigger areas to the land line), v70 (trigger areas in seat colours; stack panel picture), v69 (per-seat guide-line switches), v68 (edge strip redrawn as a five-slot stack), v67 (fixes v66's hand-index script errors), v66 (no music from cards in hand; Inspect deselects) and v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
 Both states visually checked live. **Steam is now v64, published at the owner’s request.** See [the changelog](../docs/development/tts-changelog.md).
 
@@ -115,7 +115,8 @@ itself is **not identified**: Player.log has no Lua traces (only two "Can't add
 component to object that is being destroyed"), and a startup null error was already
 noted at v56. v67's fix of v66 may only have changed timing. If it recurs, ask whether
 right-clicking those decks shows Inspect. Browser test: a false return isn't remembered
-and a later pass attaches once (fails without the fix).
+and a later pass attaches once (fails without the fix). Source `3112854d`;
+archive `.cache/tts-builds/v75/`. **Saved Games v75; Steam v64.**
 
 ## v74: filter menus never open empty (saved; not on Steam)
 

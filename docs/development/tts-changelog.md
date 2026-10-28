@@ -8,6 +8,9 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v75 — 2026-10-28 (commit 3112854d)
+- Inspect retries decks whose menu TTS refused at startup ('Function required for context menu')
+
 ## v74 — 2026-10-27 (commit 8edbe907)
 - Filter and sleeve menus no longer open empty after the table UI was rebuilt (e.g. after loading a deck)
 

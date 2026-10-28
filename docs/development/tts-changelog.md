@@ -8,6 +8,9 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v74 — 2026-10-27 (commit 8edbe907)
+- Filter and sleeve menus no longer open empty after the table UI was rebuilt (e.g. after loading a deck)
+
 ## v73 — 2026-10-24 (commit 4d75884b)
 - Fix a 'table index is nil' Lua error in onObjectDestroy when a destroyed or merging object has no GUID
 

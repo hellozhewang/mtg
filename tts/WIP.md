@@ -112,7 +112,8 @@ rows return to their XML default `active="False"` while the cache still says "Tr
 was never re-shown. `czRenderMenu` now validates and calls the new `czForgetUI(color,
 prefixes...)` for its rows and panel, and `czslRender` does the same for the sleeve
 grid, so menus always send their rows. Browser test reproduces the reset (fails
-without the fix).
+without the fix). Source `8edbe907`; archive `.cache/tts-builds/v74/`. **Saved Games v74;
+Steam v64.**
 
 ## v73: no "table index is nil" error when an object is destroyed (saved; not on Steam)
 

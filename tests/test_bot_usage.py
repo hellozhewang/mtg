@@ -342,7 +342,7 @@ class GeminiImageQuotaTests(unittest.TestCase):
     def test_format_agy_includes_image_when_is_image_is_true(self):
         with tempfile.TemporaryDirectory() as tmp:
             home = Path(tmp)
-            future = 1792983579.0
+            future = time.time() + 3600  # always ahead of the clock
             usage.record_image_quota(home, {
                 "model": "gemini-3.1-flash-image",
                 "resets_at": future,
@@ -354,7 +354,7 @@ class GeminiImageQuotaTests(unittest.TestCase):
 
             # When is_image=True: has image line
             text_sleever = usage.format_agy(AGY_USAGE, "gemini-3.8-flash-high", image_home=home, is_image=True, discord=True)
-            self.assertIn("Image (gemini-3.1-flash-image): 0% left (resets <t:1792983579:R>)", text_sleever)
+            self.assertIn(f"Image (gemini-3.1-flash-image): 0% left (resets <t:{int(future)}:R>)", text_sleever)
             self.assertIn("5h: 93% left", text_sleever)
 
     def test_check_session_image_quota_distinguishes_turns_in_same_session(self):

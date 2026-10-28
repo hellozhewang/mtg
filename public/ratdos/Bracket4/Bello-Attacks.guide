@@ -1,0 +1,83 @@
+Bello does not merely attack; he animates non-Equipment artifacts and non-Aura enchantments with mana value 4 or greater into 4/4 indestructible, hasty Elementals that draw a card whenever they connect with an opponent's face. Crucially, they are only creatures on your turn, dodging opposing sorcery-speed removal entirely while surviving your own symmetrical sweepers like Jokulhaups, Obliterate, and Blasphemous Act because Bello grants them indestructible. Because they are creatures during your turn, untap effects like Aggravated Assault untap animated mana rocks like Thran Dynamo, Gilded Lotus, and Chromatic Orrery to trigger infinite combat loops.
+
+# The infinite combat engines
+Aggravated Assault + Chromatic Orrery :: on your turn, Chromatic Orrery is a 4/4 creature that taps for {C}{C}{C}{C}{C} (spendable as any color); pay {3}{R}{R} to activate Aggravated Assault, untapping all creatures including Orrery for infinite combat phases, infinite mana, and infinite card draw
+Aggravated Assault + Nature's Will :: Nature's Will attacks as a 4/4 indestructible Elemental; when it or any creature deals combat damage to an opponent, untap all your lands, floating mana to activate Aggravated Assault for infinite combats
+Aggravated Assault + Old Gnawbone :: connecting with two 4/4 Elementals produces 8 Treasures, easily paying {3}{R}{R} for Aggravated Assault with surplus Treasures to spare
+Aggravated Assault + Savage Ventmaw :: attacking with Savage Ventmaw generates {R}{R}{R}{G}{G}{G}, paying {3}{R}{R} for Aggravated Assault with {R}{G} mana floating each combat
+Aggravated Assault + Thran Dynamo + Gilded Lotus :: both rocks animate into hasty creatures on your turn, tapping together for {C}{C}{C}{R}{R}{R} (6 mana) to pay for Aggravated Assault ({3}{R}{R}) and net infinite combat phases and mana
+Bear Umbra :: untaps all your lands whenever enchanted creature attacks, enabling extra combat chains with Aggravated Assault when you have five lands
+
+# Asymmetrical mass land denial and sweepers
+Jokulhaups :: destroys all artifacts, creatures, and lands; your 4+ mana value artifacts and enchantments have indestructible on your turn, so your entire animated army survives while opponents lose everything
+Obliterate :: an uncounterable sweeper that wipes all artifacts, creatures, and lands; your 4+ mana value artifacts and enchantments remain intact to swing with haste and close the game on the spot
+Blasphemous Act :: one-mana board wipe that deals 13 damage to all creatures; your animated 4/4 Elementals ignore the damage thanks to Bello's indestructible aura
+
+# The graveyard storm loop
+Underworld Breach + Lion's Eye Diamond + Wheel of Fortune :: escape Lion's Eye Diamond for {R}{R}{R}, then escape Wheel of Fortune to refill seven cards, netting cards in graveyard and mana on each cycle until you draw and cast your infinite combat finishers
+
+# Animated 4+ mana value artillery
+The One Ring :: grants protection from everything, draws cards on tap, and attacks as an indestructible 4/4 with haste that draws another card on combat damage
+Chromatic Orrery :: taps for 5 mana of any color, draws cards for each color among permanents, and loops infinitely with Aggravated Assault
+Thran Dynamo :: ramps by three colorless mana, attacks as a 4/4, and untaps with Aggravated Assault
+Gilded Lotus :: fixes and ramps for three colored mana, attacks as a 4/4, and pairs with Thran Dynamo or Aggravated Assault
+The Great Henge :: enters cheaply off your 4/4 creatures, taps for {G}{G}, gains life, and draws cards whenever creatures enter
+Coveted Jewel :: draws three cards immediately, taps for three mana of any color, and swings as a 4/4 without risk of opponents stealing it that combat
+Chimil, the Inner Sun :: ensures your spells cannot be countered, discovers 5 on every end step, and swings as an indestructible 4/4
+Forsaken Monument :: buffs colorless creatures by +2/+2 and adds extra colorless mana whenever you tap Ancient Tomb, Mana Vault, or Mishra's Workshop
+Akroma's Memorial :: animates into a 4/4 and grants all your creatures flying, first strike, vigilance, trample, haste, and protection from black and red
+Portal to Phyrexia :: forces each opponent to sacrifice three creatures upon entering, reanimates threats each upkeep, and attacks as a 4/4
+
+# Animated enchantments and lockdown
+Nature's Will :: taps opposing lands and untaps yours on combat damage, locking opponents out of interaction during your second main phase
+War's Toll :: forces opponents to tap all lands when they tap one and forces all opposing creatures to attack, leaving them wide open for your counter-strike
+Stranglehold :: completely shuts down opposing library searches and extra turns while providing a 4/4 indestructible body
+Sneak Attack :: drops Old Gnawbone or Savage Ventmaw into play for {R} with haste, and animates into a 4/4 Elemental itself
+Greater Good :: lets you sacrifice your 4/4 Elementals in your post-combat main phase before your turn ends to draw four cards and discard three
+Guardian Project :: draws a card whenever nontoken creatures enter the battlefield
+Asceticism :: blankets all your creatures with hexproof and provides regeneration against bounce or exile
+Unnatural Growth :: doubles the power and toughness of each creature at each combat phase, turning your 4/4s into 8/8s and compounding with extra combats into 16/16s
+Berserkers' Onslaught :: grants all attacking creatures double strike, doubling damage output and doubling Bello's combat damage card draw
+Gratuitous Violence :: doubles creature damage to players and creatures, turning 4/4s into 8-damage beaters
+Fiery Emancipation + City on Fire :: each triples damage from any source you control, letting a single 4/4 deal 12 lethal damage to an opponent
+
+# Creature engines and tutors
+Old Gnawbone :: converts every point of combat damage into Treasure tokens to ramp or feed infinite combat loops
+Savage Ventmaw :: flies over blockers and generates six mana upon attack
+Seedborn Muse :: untaps all your permanents during each opponent's untap step to activate abilities and hold up interaction
+Toski, Bearer of Secrets :: uncounterable, indestructible card advantage engine that stacks combat damage card draw with Bello
+Roaming Throne :: name Elemental to double Bello's combat damage card draw triggers on every animated artifact and enchantment
+Professional Face-Breaker :: produces Treasures on combat damage and sacrifices Treasures for impulse card draw
+Survival of the Fittest :: repeatable creature tutor engine to discard dorks and find Old Gnawbone, Savage Ventmaw, or Seedborn Muse
+Natural Order :: sacrifices a green dork to put Old Gnawbone or Seedborn Muse directly onto the battlefield
+Finale of Devastation :: tutors any creature to hand or field, providing a game-ending overrun if cast for X=10
+Chord of Calling :: instant-speed convoke tutor to fetch combo creatures or answers
+Green Sun's Zenith :: cheap green creature tutor that shuffles back into the library
+Worldly Tutor :: one-mana instant-speed creature tutor to topdeck any creature
+Gamble :: searches for Aggravated Assault, Jokulhaups, Underworld Breach, or Chromatic Orrery
+Crop Rotation -> Gaea's Cradle :: finds Gaea's Cradle to produce massive green mana off your animated army
+Crop Rotation -> Ancient Tomb :: instant-speed acceleration to cast 4-drops ahead of curve
+
+# Fast mana and rituals
+Chrome Mox + Mox Diamond + Lotus Petal + Mana Vault + Grim Monolith + Sol Ring :: uncapped 0-1 mana artifact ramp that accelerates Bello and 4-drops onto the board on turns 1 and 2
+Mishra's Workshop :: taps for three colorless mana dedicated to casting heavy artifact threats like Chromatic Orrery, Akroma's Memorial, or Portal to Phyrexia
+Ancient Tomb :: produces two mana at the cost of two life
+Gaea's Cradle :: taps for enormous green mana once Bello animates your artifacts and enchantments into creatures
+Jeska's Will :: explosive red ritual that provides mana and exiles three cards to keep the engine rolling
+Orcish Lumberjack :: sacrifices a Forest to add three mana in any combination of red and green
+Fanatic of Rhonas :: taps for four mana once a 4-power creature is in play
+Delighted Halfling + Birds of Paradise :: provides mana fixing and uncounterability for Bello
+Elvish Spirit Guide + Simian Spirit Guide + Tinder Wall :: zero-mana burst acceleration for explosive opening turns
+
+# Protection and interaction
+Deflecting Swat :: zero-mana commander protection to redirect opposing removal spells or counterspells
+Heroic Intervention :: shields your permanents with hexproof and indestructible outside your turn
+Veil of Summer :: protects your spells from blue counterspells and black spot removal
+Red Elemental Blast + Pyroblast :: one-mana answers to blue interaction, counterspells, and Rhystic Study
+Force of Vigor :: free removal against opposing stax or combo pieces
+Beast Within + Chaos Warp :: unconditional spot removal for any problematic opposing permanent
+Sylvan Library :: early card selection to sculpt hands and dig for combo pieces
+Garruk's Uprising + Elemental Bond :: draw cards whenever your 4/4 Elementals enter the battlefield
+
+# Opening hands and sequencing
+Look for aggressive hands featuring 0-1 mana fast acceleration (Mox Diamond, Chrome Mox, Sol Ring, Mana Vault, or dorks) and at least one 4-drop artifact or enchantment. The ideal curve deploys fast mana on turn 1, casts Bello on turn 2, and drops a 4+ mana value artifact or enchantment on turn 3, immediately swinging for 4 indestructible damage and drawing a card. In Bracket 4, you do not need to wait until turn 6: assemble Aggravated Assault with Chromatic Orrery or Nature's Will as quickly as possible, or wipe the board with Jokulhaups or Obliterate while your animated army stands tall.

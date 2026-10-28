@@ -74,6 +74,7 @@
   "kupo7/Yuna-Counters": ["value", "combo", "aggro", "finalfantasy"],
   "ratdos/Aloy-Artifacts": ["aggro", "value", "combo"],
   "ratdos/Beamtown-Gifts": ["graveyard", "control", "combo"],
+  "ratdos/Bello-Attacks": ["aggro", "combo", "value"],
   "ratdos/BlackCat-Combo": ["combo", "control", "value"],
   "ratdos/BlackCat-Theft": ["control", "graveyard", "value"],
   "ratdos/BruceBanner-Combo": ["combo", "aggro"],

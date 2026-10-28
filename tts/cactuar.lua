@@ -74,6 +74,22 @@ local function czValidateUI(color)
   end
 end
 
+-- Forget what was last sent to one seat's elements whose ids start with any of
+-- `prefixes`, so the next czUI calls send them again. Menus call this as they open:
+-- if the UI was rebuilt under an open browser (a deck load can trigger the importer's
+-- round-trip), the cache would otherwise skip re-showing rows the rebuild hid.
+function czForgetUI(color, ...)
+  if not CZ.uiPaint then return end
+  local suffix = "_" .. color
+  for id in pairs(CZ.uiPaint) do
+    if id:sub(-#suffix) == suffix then
+      for _, prefix in ipairs({...}) do
+        if id:sub(1, #prefix) == prefix then CZ.uiPaint[id] = nil; break end
+      end
+    end
+  end
+end
+
 local function czText(id, text)
   czUI(id, "text", text)
 end
@@ -499,6 +515,8 @@ end
 function czRenderMenu(color)
   local s = czState(color)
   if not s.menu then return end
+  czValidateUI(color)
+  czForgetUI(color, "cz_choice_", "cz_menu_")
   local choices = czMenuChoices(color, s.menu)
   local count = #choices
   local pages = math.max(1, math.ceil(count / CZ.menuRows))

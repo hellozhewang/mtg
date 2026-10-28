@@ -109,6 +109,7 @@ do
     local sleeves = CZ.index.sleeves or {}
     local pages = math.max(1, math.ceil(#sleeves / CZ.sleeveCells))
     s.menuPage = math.max(1, math.min(s.menuPage or 1, pages))
+    if czForgetUI then czForgetUI(color, "cz_sl_", "cz_sleeves_", "cz_menu_") end   -- see czForgetUI
     czUI("cz_menu_" .. color, "active", "False")
     czUI("cz_sleeves_" .. color, "active", "True")
     czUI("cz_scrim_" .. color, "active", "True")

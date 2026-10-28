@@ -298,6 +298,15 @@ check(s.menuPage == 3, "reopening keeps selected option visible")
 CZ.index.decks = originalDecks
 czClear(white)
 
+-- The UI is rebuilt under an open browser (a deck load can round-trip it): every menu
+-- row goes back to its XML default, hidden. Opening a menu must show its rows again.
+czFilter(white, "tier"); czDismiss(white)
+for id, a in pairs(attrs) do if id:match("^cz_choice_%d+_White$") then a.active, a.text = "False", "" end end
+czFilter(white, "bracket")
+check(attrs.cz_choice_1_White.active == "True" and attrs.cz_choice_1_White.text:find("Bracket: All", 1, true),
+      "a menu re-shows its rows after the UI was reset under it")
+czDismiss(white)
+
 -- Page bounds and empty states never offer stale actions or hide total counts.
 czPage(white, "prev")
 check(s.page == 1, "Previous cannot go before first page")

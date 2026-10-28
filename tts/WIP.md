@@ -102,6 +102,18 @@ generation prompts; no existing sleeves, table builds or Steam releases change.
 All 12 existing sleever tests pass; both generator prompt variants and the normal
 instruction template include the shared rule.
 
+## v74: filter menus never open empty (saved; not on Steam)
+
+Owner's screenshot: Bracket menu opened with its title and the right height but no
+rows. `czUI` skips sending a value it already sent (`CZ.uiPaint`); if Global UI is
+rebuilt under an open browser (a deck load can trigger the importer's round-trip), the
+rows return to their XML default `active="False"` while the cache still says "True".
+`czValidateUI` only ran on main-list renders, so a menu opened straight after the reset
+was never re-shown. `czRenderMenu` now validates and calls the new `czForgetUI(color,
+prefixes...)` for its rows and panel, and `czslRender` does the same for the sleeve
+grid, so menus always send their rows. Browser test reproduces the reset (fails
+without the fix).
+
 ## v73: no "table index is nil" error when an object is destroyed (saved; not on Steam)
 
 Owner saw `[Global] Lua Error <onObjectDestroy>: Global:(5935,2-48): table index is nil`.

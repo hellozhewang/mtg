@@ -1,0 +1,100 @@
+1 Narset, Enlightened Master
+1 Aggravated Assault
+1 Ancient Tomb
+1 An Offer You Can't Refuse
+1 Aqueous Form
+1 Arcane Signet
+1 Arid Mesa
+1 Armageddon
+1 Azorius Signet
+1 Basalt Monolith
+1 Beacon of Tomorrows
+1 Bloodstained Mire
+1 Brainstorm
+1 Capture of Jingzhou
+1 Cataclysm
+1 Cavern of Souls
+1 Chrome Mox
+1 City of Brass
+1 City of Traitors
+1 Command Tower
+1 Deflecting Swat
+1 Dovin's Veto
+1 Eiganjo, Seat of the Empire
+1 Emeria's Call
+1 Enlightened Tutor
+1 Enter the Infinite
+1 Exotic Orchard
+1 Expropriate
+1 Fellwar Stone
+1 Fervor
+1 Fierce Guardianship
+1 Flawless Maneuver
+1 Flooded Strand
+1 Force of Negation
+1 Force of Will
+1 Fury of the Horde
+1 Grim Monolith
+1 Hall of the Bandit Lord
+1 Hallowed Fountain
+1 Island
+1 Izzet Signet
+1 Jeska's Will
+1 Karn's Temporal Sundering
+1 Lightning Greaves
+1 Long-Term Plans
+1 Lotus Petal
+1 Mana Confluence
+1 Mana Vault
+1 Mass Hysteria
+1 Misty Rainforest
+1 Mox Diamond
+1 Mystical Tutor
+1 Need for Speed
+1 Nexus of Fate
+1 Omniscience
+1 Otawara, Soaring City
+1 Pact of Negation
+1 Part the Waterveil
+1 Penance
+1 Personal Tutor
+1 Plateau
+1 Polluted Delta
+1 Ponder
+1 Preordain
+1 Raugrin Triome
+1 Reflecting Pool
+1 Relentless Assault
+1 Rhystic Study
+1 Rising of the Day
+1 Sacred Foundry
+1 Savage Beating
+1 Scalding Tarn
+1 Scroll Rack
+1 Sea of Clouds
+1 Seize the Day
+1 Sensei's Divining Top
+1 Silence
+1 Simian Spirit Guide
+1 Sink into Stupor
+1 Smothering Tithe
+1 Sol Ring
+1 Spectra Ward
+1 Steam Vents
+1 Steel of the Godhead
+1 Swan Song
+1 Swiftfoot Boots
+1 Talisman of Conviction
+1 Talisman of Creativity
+1 Talisman of Progress
+1 Teferi's Protection
+1 Temporal Manipulation
+1 The One Ring
+1 Time Stretch
+1 Time Warp
+1 Training Center
+1 Tundra
+1 Ugin, the Spirit Dragon
+1 Volcanic Island
+1 Wooded Foothills
+1 World at War

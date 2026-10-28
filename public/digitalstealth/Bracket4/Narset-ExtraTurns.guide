@@ -1,0 +1,76 @@
+# The biggest mistake: raw deployment without haste or topdeck setup
+
+The most catastrophic mistake with Narset is casting her onto a naked board with no haste enabler, no topdeck manipulation, and no free protection in hand. At a Bracket 4 table, opponents pack efficient sweepers, edicts, and toxic board wipes that bypass hexproof completely. Tapping out six mana for a 3/2 creature and passing the turn invites three opponents to untap, draw, and remove her before she ever attacks.
+
+Equally dangerous is swinging Narset blindly into opposing blockers without evasion. Narset is a fragile 3/2. While her attack trigger fires before blockers are declared, losing her in combat shuts off subsequent extra combats and halts your momentum. Always prioritize deploying Narset with immediate haste (Hall of the Bandit Lord, Need for Speed, Mass Hysteria, Fervor, Rising of the Day, Lightning Greaves, Swiftfoot Boots) or stacking your library's top cards (Brainstorm, Scroll Rack, Penance, Sensei's Divining Top, Personal Tutor, Mystical Tutor) so the first attack trigger connects and immediately chains into an unstoppable sequence.
+
+# The commander: deployment, timing, and timing rules
+
+Narset, Enlightened Master is a pure noncreature free-cast engine. Whenever she attacks, she exiles the top four cards of your library and permits you to cast noncreature spells among them without paying their mana costs until end of turn. 
+
+A critical Gatherer ruling that pilots frequently misunderstand: Narset's ability grants mana-cost permission and a duration ("until end of turn"), but it does NOT alter card timing restrictions. 
+* Instants (such as Fierce Guardianship, Deflecting Swat, Force of Will, Swan Song, or Savage Beating) can be cast during combat immediately after the attack trigger resolves.
+* Sorceries (such as extra turns and extra combats), enchantments (Omniscience, Aggravated Assault), artifacts (The One Ring, mana rocks), and planeswalkers (Ugin, the Spirit Dragon) MUST be cast during your postcombat main phase when the stack is empty.
+
+Do not panic if you flip sorcery extra turns during combat: they remain exiled in your exile zone, fully castable for zero mana once you move into your second main phase. Furthermore, because her ability reads "until end of turn," even if Narset is removed or killed during combat, you still get to cast all four exiled noncreature cards during that turn's postcombat main phase.
+
+# The primary win condition: extra turns and extra combat loops
+
+The deck contains 9 extra turn spells and 6 extra combat spells. The core game plan is simple: connect with Narset, exile four cards, cast an extra combat or extra turn spell in the second main phase, untap, and attack again.
+
+Because the 99 contains zero other creature spells (only the utility Simian Spirit Guide, which is never cast), every spell Narset reveals is a hit. Hitting an extra turn spell gives you a fresh untap, an additional land drop, a card draw, and another combat phase with another four Narset triggers. Hitting an extra combat spell (Relentless Assault, World at War, Seize the Day, Fury of the Horde) immediately triggers a second combat followed by a second main phase within the same turn. Once you begin chaining extra turns and combats, the probability of missing across repeated four-card exile bursts drops to zero, allowing you to deal lethal commander damage across all opponents.
+
+# The backup win condition: Omniscience and Enter the Infinite
+
+When you flip or tutor Omniscience into exile off a Narset attack, you can cast it for free in your second main phase. Following Omniscience with Enter the Infinite draws your entire library, puts one card back on top, and grants you infinite free mana and zero-cost casts for the rest of the game.
+
+From that position:
+1. Cast every extra turn spell in hand (Time Warp, Temporal Manipulation, Capture of Jingzhou, Expropriate, Time Stretch, Nexus of Fate).
+2. Cast Ugin, the Spirit Dragon to wipe opposing boards or bolt players.
+3. Cast Armageddon or Cataclysm to eradicate all opposing lands while holding free countermagic (Pact of Negation, Force of Will, Fierce Guardianship, Force of Negation, Swan Song, An Offer You Can't Refuse, Dovin's Veto, Silence).
+4. Attack uncontested with Narset until every opponent is eliminated.
+
+# Mass land denial: Armageddon and Cataclysm
+
+Bracket 4 explicitly permits mass land denial. Flipping Armageddon or Cataclysm off Narset is an immediate table lock.
+
+Because Narset casts spells for free from exile upon attacking, you do not need lands once Narset is in play. Casting Armageddon destroys all lands. Casting Cataclysm forces each player to sacrifice all but one artifact, creature, enchantment, and land—leaving you with Narset, your best mana rock (Mana Vault, Grim Monolith, Sol Ring), and your best enchantment (Omniscience, Rhystic Study, Smothering Tithe) while setting every opponent back to turn one. Backed by free counterspells in hand or exile, neither opponent can rebuild before Narset finishes the game.
+
+# Key interactions and rules quirks
+
+* **Beacon of Tomorrows and Nexus of Fate shuffle replacement:** Both spells shuffle into the library instead of going to the graveyard upon resolving. As you take extra turns and draw or exile down your library, these two spells continuously recycle into a shrinking deck, guaranteeing that you never deck yourself and can loop infinite turns indefinitely.
+* **MDFCs (Emeria's Call and Sink into Stupor):** Narset sees front faces in exile. Both are noncreature spells (a 7-mana sorcery and a 3-mana instant), so Narset can cast them for free off her trigger. In your hand, however, they can be played as untapped or tapped lands to ensure you hit land drops on early turns.
+* **Evasion auras (Steel of the Godhead, Aqueous Form, Spectra Ward):** Steel of the Godhead gives Narset +2/+2, unblockable, and lifelink. Aqueous Form makes her unblockable and lets you scry 1 before each attack's Narset trigger resolves, letting you manipulate the top card. Spectra Ward gives her +2/+2 and protection from all colours without removing your own coloured auras.
+* **Fury of the Horde alternate cost:** If drawn into hand without enough mana to cast it, you can exile two red cards (such as Simian Spirit Guide, Jeska's Will, Need for Speed, Mass Hysteria, Fervor, Rising of the Day, or Savage Beating) to cast it for free without Narset.
+* **Savage Beating timing:** Unlike the other extra combat spells, Savage Beating is an instant and must be cast during combat. If revealed by Narset, you can cast it immediately during the Declare Attackers or Declare Blockers step to grant your creatures double strike and gain an additional combat phase.
+
+# Mulligans and opening hands
+
+Your mulligan priority is aggressive acceleration and a haste enabler or topdeck tutor:
+* **The ideal hand (Turn 2-3 Narset):** Fast mana (Ancient Tomb, City of Traitors, Chrome Mox, Mox Diamond, Mana Vault, Grim Monolith, Sol Ring, Lotus Petal, Simian Spirit Guide, Talismans/Signets), one haste source (Hall of the Bandit Lord, Need for Speed, Mass Hysteria, Lightning Greaves), and 2 lands. This produces a Turn 2 or Turn 3 Narset with immediate attack capability.
+* **The tutor hand:** Fast mana plus Enlightened Tutor, Mystical Tutor, or Personal Tutor to line up Hall of the Bandit Lord, Need for Speed, Time Warp, or Omniscience on top of the library right before Narset swings.
+* **Hands to ship:** Any hand with 5+ high-cost extra turns and no fast mana rocks; hands with lands and reactive countermagic but no acceleration. Narset decks cannot play a slow midrange game; you must resolve your commander early.
+
+# Combos and deterministic loops
+
+1. **Aggravated Assault + Mana Generation:**
+   * *Prerequisites:* Aggravated Assault on the battlefield. 5 mana available (including {3}{R}{R}) each combat, provided by rocks like Grim Monolith, Basalt Monolith, Mana Vault, Sol Ring, Smothering Tithe treasures, or floating mana.
+   * *Loop:* Attack with Narset, trigger her exile ability. In postcombat main phase, pay {3}{R}{R} to untap Narset and create an additional combat phase. Repeat infinitely for infinite attack triggers and infinite damage.
+
+2. **Beacon of Tomorrows / Nexus of Fate infinite turns:**
+   * *Prerequisites:* Library thinned via Narset exiles or Enter the Infinite.
+   * *Loop:* Cast Beacon of Tomorrows or Nexus of Fate. The spell resolves, grants an extra turn, and shuffles directly back into the library. In the extra turn, Narset attacks, exiles the shuffled spell again, and casts it for free. Infinite turns, infinite combat steps, infinite damage.
+
+3. **Omniscience + Enter the Infinite:**
+   * *Prerequisites:* Omniscience cast for free off Narset.
+   * *Loop:* Cast Enter the Infinite for free, drawing the deck. Cast every extra turn, extra combat, and silence spell for free. Recast Beacon of Tomorrows every turn to kill the table.
+
+# Card-specific notes
+
+* **Penance:** An unassuming white enchantment that is an all-star in Narset. Its activated ability costs {0}: choose a black or red source, and put a card from your hand on top of your library. You can activate this at any time (even if no black or red sources exist, as choosing a source is done on resolution and doesn't require a legal target). This lets you tuck high-cost extra turns or Omniscience stuck in your hand directly onto the top of your library right before Narset attacks.
+* **Scroll Rack:** For {1}, exchange cards in your hand with the top cards of your library. Puts expensive extra turns and mass land denial from hand directly into the top four cards to be exiled by Narset.
+* **Need for Speed:** A 1-mana enchantment that lets you sacrifice a land to grant target creature haste until end of turn. Gives Narset immediate haste the turn she enters play without needing equip mana.
+* **Long-Term Plans:** A 3-mana instant that tutors any card from your deck and puts it third from the top. When Narset attacks, she exiles four cards, meaning Long-Term Plans perfectly guarantees that the tutored card is among the four exiled cards.
+* **Silence:** Cast before deploying Narset or going to combat to lock opponents out of casting spells for the rest of the turn, ensuring no counterspells or removal can disrupt your chain.
+* **Cavern of Souls:** Always name Human or Monk to ensure Narset cannot be countered on cast.
+* **The One Ring:** Provides protection from everything for a full turn cycle, buying time to deploy Narset safely, while drawing cards to find missing fast mana.

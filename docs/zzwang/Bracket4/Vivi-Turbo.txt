@@ -2,9 +2,11 @@
 1 Agatha's Soul Cauldron
 1 An Offer You Can't Refuse (FIC) 267
 1 Ancient Tomb
+1 Arcane Signet
 1 Arid Mesa
 1 Birgi, God of Storytelling (KHM) 123
 1 Bloodstained Mire
+1 Borne Upon a Wind
 1 Brain Freeze (SCG) 29
 1 Brainstorm (FCA) 28
 1 Cascade Bluffs
@@ -16,8 +18,6 @@
 1 Consider (TDC) 148
 1 Curiosity (A25) 52
 1 Deflecting Swat (CMM) 214
-1 Dizzy Spell
-1 Dualcaster Mage
 1 Exotic Orchard
 1 Faithless Looting (SOC) 244
 1 Fierce Guardianship
@@ -34,6 +34,7 @@
 1 Gitaxian Probe (NPH) 35
 1 Harmonic Prodigy (MH2) 132
 1 Hexing Squelcher (ECL) 145
+1 Hullbreaker Horror
 1 Imperial Recruiter (MH2) 281
 1 Into the Flood Maw
 1 Intuition
@@ -46,10 +47,8 @@
 1 Mental Misstep (NPH) 38
 1 Merchant Scroll
 1 Mindbreak Trap (ZEN) 57
-1 Mishra's Bauble (2XM) 274
 1 Mistrise Village
 1 Misty Rainforest
-1 Molten Duplication
 2 Mountain
 1 Mox Amber (DOM) 224
 1 Mox Diamond
@@ -57,6 +56,7 @@
 1 Muddle the Mixture
 1 Mystic Remora (DMR) 59
 1 Mystical Tutor
+1 Ophidian Eye
 1 Otawara, Soaring City
 1 Pact of Negation (TSR) 77
 1 Past in Flames
@@ -83,11 +83,11 @@
 1 Spellseeker
 1 Spirebluff Canal
 1 Steam Vents
-1 Storm-Kiln Artist (SOC) 255
 1 Stormcarved Coast
 1 Strike It Rich
 1 Sulfur Falls
 1 Swan Song (C16) 98
+1 Tandem Lookout
 1 Timetwister
 1 Training Center
 1 Underworld Breach

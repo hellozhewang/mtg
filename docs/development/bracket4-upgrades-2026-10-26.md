@@ -1,5 +1,9 @@
 # Bracket 4 copies — 2026-10-26
 
+Follow-up: the [October 27 competitive gap audit](bracket4-competitive-gap-audit-2026-10-27.md)
+updates these eight copies with disruption and missing engines. The tables below
+record the original October 26 construction, not the revised lists.
+
 Owner request: create eight separate Bracket 4 versions, cloning existing lists
 where available. **Do not alter the Bracket 3 originals.** All new files belong to
 `public/zzwang/Bracket4/`, with matching `.guide` files. Stems are distinct because

@@ -1,11 +1,11 @@
 1 Zada, Hedron Grinder (CMM) 268
-1 Accelerate
-1 Ancestors' Aid
 1 Ancestral Anger (INR) 141
 1 Ancient Tomb
 1 Arena of Glory
 1 Battle Hymn (AVR) 128
 1 Birgi, God of Storytelling (KHM) 123
+1 Blazing Crescendo
+1 Blood Moon
 1 Brightstone Ritual (ONS) 191
 1 Cavern of Souls
 1 Chaos Warp (MBC) 72
@@ -32,7 +32,6 @@
 1 Goblin Recruiter (6ED) 186
 1 Goblin Ringleader
 1 Goblin Warchief
-1 Grinning Ignus (TSR) 168
 1 Heat Shimmer
 1 Hexing Squelcher (ECL) 145
 1 Imperial Recruiter (MH2) 281
@@ -44,11 +43,11 @@
 1 Krenko's Command
 1 Lightning Crafter
 1 Lotus Petal (MB2) 226
+1 Magus of the Moon
 1 Mana Vault
 1 Might of the Meek
 1 Mogg Fanatic
 1 Mogg War Marshal (PLST) DMR-131
-1 Molten Duplication (BIG) 14
 19 Mountain
 1 Mox Diamond
 1 Muxus, Goblin Grandee (JMP) 24
@@ -63,6 +62,7 @@
 1 Renegade Tactics
 1 Rite of Flame (CSP) 96
 1 Ruby Medallion (MH3) 295
+1 Runaway Steam-Kin
 1 Seething Song
 1 Simian Spirit Guide (A25) 148
 1 Skirk Prospector (DMR) 137
@@ -71,12 +71,12 @@
 1 Sol Ring (FDC) 286
 1 Storm-Kiln Artist (SOC) 255
 1 Sudden Breakthrough
-1 Temur Battle Rage
 1 Three Tree City
 1 Torch Courier
+1 Treasonous Ogre
 1 Twinflame (SOC) 258
 1 Underworld Breach (THB) 161
-1 Untimely Malfunction
 1 Urza's Saga
 1 Valakut Awakening
+1 Witch's Mark
 1 Young Pyromancer (J25) 618

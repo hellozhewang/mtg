@@ -3,8 +3,8 @@
 Living status doc for the Tabletop Simulator table work. Whoever picks this up (Claude or
 Codex) reads it first and updates it with every change. The [TTS development guide](../docs/development/tts-development-guide.md) and README are the lasting documentation; this file tracks what is in flight.
 
-Last updated 2026-10-26 (Codex): eight separate Bracket 4 deck upgrades; existing
-Bracket 3 sources preserved. See the upgrade record below.
+Last updated 2026-10-27 (Codex): competitive gap audit of the eight new Bracket 4
+copies; add appropriate land denial and missing engines. Bracket 3 sources preserved.
 
 Table build status (2026-10-24, Claude): delivered **v73** (fixes an onObjectDestroy error), after v72 (trigger areas end above the land line), v71 (teal stack frames; trigger areas to the land line), v70 (trigger areas in seat colours; stack panel picture), v69 (per-seat guide-line switches), v68 (edge strip redrawn as a five-slot stack), v67 (fixes v66's hand-index script errors), v66 (no music from cards in hand; Inspect deselects) and v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
@@ -14,6 +14,29 @@ Both states visually checked live. **Steam is now v64, published at the owner’
 
 
 
+
+## Bracket 4 competitive gap audit (2026-10-27)
+
+Owner asks to add Blood Moon to the new Krenko and check all eight October 26
+copies against cEDH references. Make 46 swaps across those eight lists only:
+Moon effects in Krenko/Zada and Blood Moon in Muxus; Orb/Urza in Kilo; Orb,
+Deafening Silence, Drannith and Swift Druid in Yuna. Restore Krenko's Staff/refill,
+Vivi's Eye/Lookout/Horror, Kinnan's Mirror/Vitality and cheap interaction, and
+Ral's Scoundrel/Will/discounted red draw. Retain full owner-required Goblin
+packages and pins on retained cards. Update all eight guides with self-interaction
+warnings and add secondary control tags to Krenko, Kilo and Yuna.
+
+All eight pass 100-card legality and TTS import 100/100. Every guide card row
+matches its list. Other public decklists/guides, including every Bracket 3
+original and Bracket 5 Kinnan, are unchanged by SHA-256 comparison. 85 deck/guide
+regressions and the Goblin-package test pass. Full swaps, sources, thin-sample
+limitations and rejected self-hate are in the
+[competitive gap audit](../docs/development/bracket4-competitive-gap-audit-2026-10-27.md).
+Full static catalog build passes; all 5,005 unique TTS image URLs are verified.
+The five unmirrored TRC defaults were restored to their previously published,
+verified printings in the metadata cache; no source list or pin changed.
+No table build or Steam release;
+Saved Games v73 and Steam v64 remain as before.
 
 ## Eight separate Bracket 4 decks (2026-10-26)
 

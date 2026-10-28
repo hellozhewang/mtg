@@ -17,11 +17,12 @@
 1 Chrome Mox
 1 Command Tower
 1 Crop Rotation
+1 Deafening Silence
 1 Delighted Halfling
 1 Destiny Spinner
 1 Devoted Druid
+1 Drannith Magistrate
 1 Earthcraft
-1 Eidolon of Blossoms
 1 Eiganjo, Seat of the Empire
 1 Eladamri's Call
 1 Eldritch Evolution
@@ -49,14 +50,12 @@
 1 Malevolent Rumble
 1 Mana Vault
 1 Marsh Flats
-1 Mesa Enchantress
 1 Misty Rainforest
 1 Mox Diamond
 1 Nature's Claim
 1 Nature's Rhythm
 1 Pia, Aether Ascetic
 3 Plains
-1 Power Conduit
 1 Prismatic Vista
 1 Ranger-Captain of Eos
 1 Razorverge Thicket
@@ -67,7 +66,6 @@
 1 Serra's Sanctum
 1 Setessan Champion
 1 Silence
-1 Smothering Tithe
 1 Sol Ring
 1 Squirrel Nest
 1 Staff of Domination
@@ -75,6 +73,7 @@
 1 Summon: Bahamut
 1 Sunpetal Grove
 1 Survival of the Fittest
+1 Swift Reconfiguration
 1 Swords to Plowshares
 1 Sylvan Library
 1 Sythis, Harvest's Hand
@@ -88,6 +87,7 @@
 1 Walking Ballista
 1 Wild Growth
 1 Windswept Heath
+1 Winter Orb
 1 Witch Enchanter
 1 Wooded Bastion
 1 Wooded Foothills

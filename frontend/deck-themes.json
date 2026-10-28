@@ -1,5 +1,6 @@
 {
   "digitalstealth/AkromaVialSmasher-Keywords": ["aggro"],
+  "digitalstealth/AmyRose-Equipment": ["aggro", "value"],
   "digitalstealth/Azami-Wizards": ["combo", "control", "value"],
   "digitalstealth/Belakor-Demons": ["aggro", "spells", "graveyard"],
   "digitalstealth/Blitzwing-Drain": ["spells", "combo", "aggro"],

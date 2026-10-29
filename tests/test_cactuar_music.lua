@@ -319,4 +319,21 @@ check(CZM.track == "titan" and CZM.status == "loading" and plays == beforeStale,
 MusicPlayer.loaded = true; titanWait.fn()
 check(playing and CZM.track == "titan", "current highest-priority load starts once ready")
 
+-- The Sound switch: one table-wide setting for every Cactuar sound, music and turn clips.
+local shown = {}
+local switch = {call = function(fn, on) shown[#shown + 1] = on end}
+czmRegister({object = switch}); czmRegister({object = switch})
+check(#CZM.switches == 1 and shown[#shown] == true, "a switch registers once and shows sound on")
+czmToggleSound({by = "Red"})
+check(CZM.disabled and not playing and shown[#shown] == false, "the switch silences the music and shows off")
+local beforeClip = loads
+CZT.audioStatus = "untouched"
+onChat("turn sound test", Player.Red)
+check(loads == beforeClip and CZT.audioStatus == "untouched", "sound off silences the turn clips too")
+czmToggleSound({by = "Red"})
+check(not CZM.disabled and playing and shown[#shown] == true, "switching back on resumes the music")
+onChat("sound off", Player.Red)
+check(CZM.disabled and shown[#shown] == false, "sound off in chat moves the switch too")
+onChat("sound on", Player.Red)
+
 print(checks .. " music checks, 0 failed")

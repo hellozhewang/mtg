@@ -288,6 +288,22 @@ print(left, timerID == nil)
         again = build_tts_table.build(json.loads(json.dumps(table)), URL)
         self.assertEqual(sum(o.get("Nickname") == "Trigger area" for o in again["ObjectStates"]), 2)
 
+    def test_a_sound_switch_sits_below_each_cactuar_tile(self):
+        table = build_tts_table.build(json.loads(json.dumps(BASE)), URL)
+        tiles = {o["GUID"]: o["Transform"] for o in table["ObjectStates"] if o.get("Nickname") == "Cactuar decks"}
+        sound = [o for o in table["ObjectStates"] if o.get("Nickname") == "Cactuar sound"]
+        self.assertEqual(len(sound), 2)
+        for tile, guid in build_tts_table.SOUND_GUIDS.items():
+            o = next(s for s in sound if s["GUID"] == guid)
+            t, at = tiles[tile], o["Transform"]
+            self.assertEqual((at["posX"], at["rotY"]), (t["posX"], t["rotY"]))
+            self.assertLess(abs(at["posZ"]), abs(t["posZ"]))            # toward the middle
+            self.assertGreater(abs(t["posZ"] - at["posZ"]), build_tts_table.TILE_SCALE)
+            self.assertIn('Global.call("czmRegister"', o["LuaScript"])
+        self.assertIn("function czmToggleSound", table["LuaScript"])
+        again = build_tts_table.build(json.loads(json.dumps(table)), URL)
+        self.assertEqual(sum(o.get("Nickname") == "Cactuar sound" for o in again["ObjectStates"]), 2)
+
     def test_tile_guids_are_new(self):
         taken = build_tts_table._guids(BASE["ObjectStates"])
         self.assertIn("bbbbbb", taken)                              # nested objects count

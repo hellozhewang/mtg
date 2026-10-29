@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import contextlib
+import io
 import struct
 import sys
 import tempfile
@@ -130,12 +131,31 @@ class RefTests(Isolated):
                   "https://cdn/page.html": b"<html>not a picture</html>"}
 
         def fake_open(req, timeout):
-            body = bodies[req.full_url]
-            return contextlib.nullcontext(Mock(read=lambda n: body))
+            return contextlib.nullcontext(io.BytesIO(bodies[req.full_url]))
         with patch.object(sleever.urllib.request, "urlopen", fake_open):
             notes = sleever.fetch_refs(["https://cdn/a.png", "https://cdn/page.html", "http://cdn/x.png"], dest)
         self.assertEqual(sorted(p.name for p in dest.iterdir()), ["ref-1.png"])
         self.assertEqual(len(notes), 2)
+
+
+    @unittest.skipUnless(SIPS, "macOS sips only")
+    def test_any_size_or_picture_format_is_used(self):
+        dest = self.dir / "refs"
+        dest.mkdir()
+        wide = png(self.dir / "wide.png", 5000, 8)
+        tiff = self.dir / "photo.tiff"
+        sleever._sips("-s", "format", "tiff", str(png(self.dir / "p.png", 6, 6)), "--out", str(tiff))
+        bodies = {"https://cdn/wide.png": wide.read_bytes(), "https://cdn/photo.tiff": tiff.read_bytes()}
+
+        def fake_open(req, timeout):
+            return contextlib.nullcontext(io.BytesIO(bodies[req.full_url]))
+        with patch.object(sleever.urllib.request, "urlopen", fake_open), \
+                patch.object(sleever, "REF_PLAIN_BYTES", 10):      # "huge", without a huge file
+            notes = sleever.fetch_refs(list(bodies), dest)
+        self.assertEqual(notes, [])
+        self.assertEqual(sorted(p.name for p in dest.iterdir()), ["ref-1.jpg", "ref-2.jpg"])
+        self.assertEqual(sleever._size(dest / "ref-1.jpg")[0], sleever.REF_SIDE)
+        self.assertEqual(sleever._size(dest / "ref-2.jpg"), (6, 6))
 
 
 class BotTests(unittest.TestCase):

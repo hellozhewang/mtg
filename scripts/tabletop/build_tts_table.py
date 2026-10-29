@@ -276,6 +276,53 @@ end
 """
 
 
+# Sound switches (tts/cactuar_music.lua): one just below each Cactuar tile, toward
+# the middle of the table, both showing the one table-wide setting. Off silences every
+# Cactuar sound, the music and the turn clips alike. A Custom_Tile is about 2 units
+# across at scale 1, so the tile reaches TILE_SCALE from its centre.
+SOUND_GUIDS = {"c4c7a1": "c4c7c1", "c4c7a2": "c4c7c2"}  # tile GUID -> its switch
+SOUND_GAP = 0.9                                     # tile edge to the switch's centre
+SOUND_LUA = """-- Sound switch (tts/cactuar_music.lua): every Cactuar sound, for the whole table.
+function onLoad()
+  self.createButton({click_function = "czmClick", function_owner = self, label = "",
+    position = {0, 0.6, 0}, scale = {1 / 2.6, 1, 1 / 0.6}, width = 1300, height = 300,
+    font_size = 190, color = {0.13, 0.17, 0.23}, hover_color = {0.20, 0.26, 0.34},
+    font_color = {0.92, 0.88, 0.78},
+    tooltip = "Turn every Cactuar sound on or off for the whole table: music, turn sounds and the announcer."})
+  self.editButton({index = 0, label = "Sound  ━━●"})
+  Global.call("czmRegister", {object = self})
+end
+function czmShow(on)
+  self.editButton({index = 0, label = on and "Sound  ━━●" or "Sound  ○━━"})
+end
+function czmClick(_, player_color)
+  Global.call("czmToggleSound", {by = player_color})
+end
+"""
+
+
+def sound_switches() -> list[dict]:
+    """One Sound switch per Cactuar tile, on the tile's table-centre side."""
+    out = []
+    for guid, x, z, rot_y in TILES:
+        toward = 1 if z < 0 else -1
+        out.append({
+            "GUID": SOUND_GUIDS[guid], "Name": "BlockSquare",
+            "Transform": {"posX": x, "posY": 0.97,
+                          "posZ": round(z + toward * (TILE_SCALE + SOUND_GAP), 3),
+                          "rotX": 0.0, "rotY": rot_y, "rotZ": 0.0,
+                          "scaleX": SWITCH_SCALE[0], "scaleY": SWITCH_SCALE[1], "scaleZ": SWITCH_SCALE[2]},
+            "Nickname": "Cactuar sound", "Description": "Every Cactuar sound on or off, for everyone.",
+            "GMNotes": "", "ColorDiffuse": {"r": 0.13, "g": 0.17, "b": 0.23},
+            "Locked": True, "Grid": False, "Snap": False, "IgnoreFoW": False,
+            "MeasureMovement": False, "DragSelectable": False, "Autoraise": True,
+            "Sticky": False, "Tooltip": True, "GridProjection": False,
+            "HideWhenFaceDown": False, "Hands": False, "Memo": "",
+            "LuaScript": SOUND_LUA, "LuaScriptState": "", "XmlUI": "",
+        })
+    return out
+
+
 def guide_switches(base: dict) -> list[dict]:
     """Switch objects, placed from each seat's reveal and mill buttons in the base."""
     by = {o.get("GUID"): o for o in base.get("ObjectStates") or []}
@@ -311,7 +358,7 @@ def guide_switches(base: dict) -> list[dict]:
 
 def build(base: dict, base_url: str, name: str = NAME) -> dict:
     table = dict(base)
-    ours = {guid for guid, *_ in TILES} | set(SWITCH_GUIDS.values())
+    ours = {guid for guid, *_ in TILES} | set(SWITCH_GUIDS.values()) | set(SOUND_GUIDS.values())
     objects = _make_room_under_timers(
         [o for o in table.get("ObjectStates") or []
          if o.get("GUID") not in ours           # rebuilding from an earlier output
@@ -331,7 +378,8 @@ def build(base: dict, base_url: str, name: str = NAME) -> dict:
                   "VectorLines": old_lines, "SnapPoints": old_snaps + snaps,
                   "LuaScript": lua + browser_lua(base_url),
                   "XmlUI": xml + "\n\n" + browser_xml(),
-                  "ObjectStates": objects + tiles(base_url, _guids(objects)) + guide_switches(base)})
+                  "ObjectStates": objects + tiles(base_url, _guids(objects)) + guide_switches(base)
+                                     + sound_switches()})
     return table
 
 

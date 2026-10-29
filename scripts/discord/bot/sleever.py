@@ -39,8 +39,12 @@ IMAGE_TYPES = (".png", ".jpg", ".jpeg", ".webp")
 RESERVED = {"standard"}                          # Magic's own back, always listed first
 
 MAX_REFS = 6                                     # uploads the bot downloads per message
-MAX_REF_BYTES = 12_000_000
 REF_TIMEOUT = 20
+# No size limit on a reference. One over either of these is re-encoded as a JPEG at
+# most REF_SIDE pixels on its longest side, so the model gets a picture it can read;
+# so is any format other than PNG, JPEG and WebP (HEIC from a phone, AVIF, GIF...).
+REF_SIDE = 4096
+REF_PLAIN_BYTES = 12_000_000
 
 SLEEVE_LINE = re.compile(r"^\s*Sleeve:\s*(.+?)\s*$", re.M | re.I)
 ATTACH = "[[attach:{}]]"                         # deckBuilder.ts swaps this for the file
@@ -165,11 +169,23 @@ def _sniff(data: bytes) -> str | None:
     return None
 
 
+def _readable(part: Path, out: Path) -> bool:
+    """Re-encode `part` as a JPEG at `out`, no bigger than REF_SIDE; False if it is
+    not a picture macOS can read."""
+    try:
+        w, h = _size(part)
+        _sips("-s", "format", "jpeg", *(["-Z", str(REF_SIDE)] if max(w, h) > REF_SIDE else []),
+              str(part), "--out", str(out))
+    except (SleeveError, subprocess.SubprocessError, OSError):
+        return False
+    return out.is_file()
+
+
 def fetch_refs(urls: list[str], dest: Path) -> list[str]:
     """Download the user's uploads into `dest`. Returns notes on any that were skipped.
 
-    Runs outside the sandbox, so it is strict: https only, a size cap, and the bytes
-    must be a picture whatever the server claims.
+    Runs outside the sandbox, so it is strict: https only, and the bytes must be a
+    picture whatever the server claims. Any size is fine (see REF_SIDE).
     """
     notes: list[str] = []
     n = 0
@@ -177,19 +193,26 @@ def fetch_refs(urls: list[str], dest: Path) -> list[str]:
         if not url.lower().startswith("https://"):
             notes.append(f"skipped a non-https reference: {url[:80]}")
             continue
+        part = dest / f"ref-{n + 1}.part"
         try:
             req = urllib.request.Request(url, headers={"User-Agent": "mtg-sleever/1"})
-            with urllib.request.urlopen(req, timeout=REF_TIMEOUT) as r:
-                data = r.read(MAX_REF_BYTES + 1)
+            with urllib.request.urlopen(req, timeout=REF_TIMEOUT) as r, part.open("wb") as f:
+                shutil.copyfileobj(r, f, 1 << 20)
         except Exception as exc:
+            part.unlink(missing_ok=True)
             notes.append(f"could not download a reference ({type(exc).__name__})")
             continue
-        kind = _sniff(data)
-        if len(data) > MAX_REF_BYTES or kind is None:
-            notes.append("skipped a reference that was too big or not a picture")
-            continue
-        n += 1
-        (dest / f"ref-{n}{kind}").write_bytes(data)
+        with part.open("rb") as f:
+            kind = _sniff(f.read(16))
+        plain = kind in (".png", ".jpg", ".webp") and part.stat().st_size <= REF_PLAIN_BYTES
+        out = dest / f"ref-{n + 1}{kind if plain else '.jpg'}"
+        if plain:
+            part.rename(out)
+        elif not _readable(part, out):
+            notes.append("skipped a reference that is not a picture")
+        part.unlink(missing_ok=True)
+        if out.is_file():
+            n += 1
     if len(urls) > MAX_REFS:
         notes.append(f"used the first {MAX_REFS} references only")
     return notes

@@ -859,7 +859,9 @@ Creature colors come from embedded face metadata; multicolor creatures count for
 each color. Custom or changed cards can use explicit color/type tags.
 The loaded song pauses/resumes between qualifying turns; switching songs restarts
 the selected recording. Custom voices are skipped while a battle song is retained;
-native beeps/text remain. Chat `music off` / `music on` controls the soundtrack.
+native beeps/text remain. The **Sound** switch below each Cactuar tile (or chat
+`sound off` / `sound on`) turns every Cactuar sound off for the whole table: music and
+turn clips alike.
 
 **Inspect contents alphabetically:** right-click a deck or bag and choose **Inspect**.
 A private, narrow window shows four scrolling columns and a search bar, using the live

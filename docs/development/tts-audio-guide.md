@@ -50,8 +50,10 @@ same mono PCM16 22050 Hz format as the others (v48's MP3s misplayed in TTS):
 A retained song pauses/resumes between eligible turns. Switching to another song
 restarts it: MusicPlayer exposes no timestamp/seek API for separate playheads.
 Custom turn/slow-turn voices are skipped while any battle song is loaded, including
-while paused. Native beeps/text remain. `music off` / `music on` controls music
-separately from `announcer off`. Each load replaces the playlist with one entry;
+while paused. Native beeps/text remain. The **Sound** switch below each Cactuar
+tile (or chat `sound off` / `sound on`, same as `music off` / `music on`) turns every
+Cactuar sound off for the whole table: soundtrack, turn-change and slow-turn clips.
+It is saved with the game. `announcer off` mutes only the turn clips. Each load replaces the playlist with one entry;
 cannon fire clears the setup playlist. Original mono PCM16 WAVs at 22050 Hz are
 used without conversion or volume changes.
 

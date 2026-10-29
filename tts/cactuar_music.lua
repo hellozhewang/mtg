@@ -2,6 +2,10 @@
 -- that a battle song plays during a turn only while the ACTIVE player has one of
 -- its cards face up on their battlefield. Pause/resume the loaded song between
 -- eligible turns; switching songs restarts them (MusicPlayer exposes no seek API).
+--
+-- The Sound switches beside the Cactuar tiles (and "music off" / "music on" in chat)
+-- turn every Cactuar sound off for the whole table: this soundtrack and the turn
+-- clips in cactuar_turns.lua alike. CZM.disabled is that one setting; it is saved.
 local czmPrevious = CZM
 if czmPrevious and czmPrevious.ticker then pcall(function() Wait.stop(czmPrevious.ticker) end) end
 CZM = {
@@ -47,7 +51,7 @@ CZM = {
   },
   -- Name fragments that also call a song: any card with "Chocobo" in its name.
   fragments = {chocobo = {"chocobo"}},
-  status = "idle", serial = 0,
+  status = "idle", serial = 0, switches = {},
   cannonFired = false, disabled = false, ready = false,
 }
 
@@ -165,6 +169,7 @@ local function czmRestore()
     or type(music) == "table" and music.cannonFired == true
   if not CZM.settingChanged then CZM.disabled = type(music) == "table" and music.disabled == true end
   CZM.ready = true
+  czmShowSwitches()
   return true
 end
 
@@ -247,6 +252,48 @@ function czmCannonFired()
   czmTick()
 end
 
+function czmShowSwitches()
+  for _, switch in ipairs(CZM.switches) do
+    pcall(function() switch.call("czmShow", not CZM.disabled) end)
+  end
+end
+
+-- Every Cactuar sound on or off, at once and for everyone.
+function czmSetSound(on)
+  CZM.disabled = not on
+  CZM.settingChanged = true
+  if CZM.disabled then
+    -- Silence whatever is playing now, a turn clip included, and drop a queued one.
+    if CZT then CZT.audioSerial = (CZT.audioSerial or 0) + 1 end
+    pcall(MusicPlayer.pause)
+    if CZM.track and CZM.status ~= "loading" and CZM.status ~= "error" then CZM.status = "paused" end
+  elseif CZM.status == "error" then
+    CZM.track, CZM.status = nil, "idle"
+  end
+  czmTick()
+  czmShowSwitches()
+  if cztPersist then cztPersist() end
+end
+
+-- A Sound switch was clicked (from its own script).
+function czmToggleSound(params)
+  czmSetSound(CZM.disabled)
+  local by = params and params.by
+  broadcastToAll("Cactuar sounds " .. (CZM.disabled and "off" or "on")
+    .. (by and by ~= "" and (" (" .. by .. ")") or "") .. ".", {0.7, 0.7, 0.7})
+end
+
+-- Switches find themselves and register (switches outlive a script reload).
+function czmRegister(params)
+  local switch = params and params.object
+  if not switch then return end
+  for _, known in ipairs(CZM.switches) do
+    if known == switch then switch = nil; break end
+  end
+  if switch then CZM.switches[#CZM.switches + 1] = switch end
+  czmShowSwitches()
+end
+
 local function czmQueue()
   if CZM.queued then return end
   local state = CZM
@@ -283,18 +330,15 @@ function onObjectStateChange(obj, old)
 end
 function onChat(message, player)
   local m = message:lower():gsub("^%s+", ""):gsub("%s+$", "")
-  if m == "music off" or m == "music on" then
-    CZM.disabled = m == "music off"
-    CZM.settingChanged = true
-    if CZM.status == "error" and not CZM.disabled then CZM.track, CZM.status = nil, "idle" end
-    czmTick()
-    if cztPersist then cztPersist() end
+  if m == "music off" or m == "music on" or m == "sound off" or m == "sound on" then
+    czmSetSound(m:sub(-2) == "on")
   end
   if CZMB.chat then return CZMB.chat(message, player) end
 end
 
 if czmPrevious then
-  for _, key in ipairs({"ready", "cannonFired", "disabled", "settingChanged", "track", "url", "status"}) do
+  for _, key in ipairs({"ready", "cannonFired", "disabled", "settingChanged", "track", "url", "status",
+      "switches"}) do
     CZM[key] = czmPrevious[key]
   end
   if CZM.status == "loading" then CZM.track, CZM.status = nil, "idle" end

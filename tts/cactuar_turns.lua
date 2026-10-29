@@ -167,8 +167,13 @@ local function cztShowAll()
   for _, c in ipairs(CZ.seats) do cztShow(c) end
 end
 
+-- Muted by "announcer off", or by the Sound switch with everything else (CZM.disabled).
+local function cztSilent(state)
+  return state.muted or (CZM ~= nil and CZM.disabled == true)
+end
+
 local function cztPlay(sound, title)
-  if CZT.muted then return end
+  if cztSilent(CZT) then return end
   if czmBlocksVoice and czmBlocksVoice() then
     CZT.audioStatus = "suppressed for soundtrack"
     return
@@ -184,13 +189,13 @@ local function cztPlay(sound, title)
     MusicPlayer.repeat_track = false
     MusicPlayer.setCurrentAudioclip({url = state.audioURL, title = title})
     Wait.condition(function()
-      if CZT == state and state.audioSerial == serial and not state.muted then
+      if CZT == state and state.audioSerial == serial and not cztSilent(state) then
         state.audioStatus = MusicPlayer.play() == false and "error" or "playing"
         local clipOK, clip = pcall(MusicPlayer.getCurrentAudioclip)
         if clipOK and clip then state.audioObservedURL = clip.url end
       end
     end, function() return MusicPlayer.loaded end, 15, function()
-      if CZT == state and state.audioSerial == serial and not state.muted then
+      if CZT == state and state.audioSerial == serial and not cztSilent(state) then
         state.audioStatus, state.audioError = "error", "Clip load timed out"
         print("Cactuar audio: " .. state.audioError)
       end

@@ -383,7 +383,8 @@ AUTOPUSH = not os.environ.get("MTG_BOT_NO_PUSH")
 SITE_TIMEOUT = int(os.environ.get("MTG_SITE_TIMEOUT", "600"))
 # After a builder turn the bot validates the decks it wrote itself (the model can skip
 # the validator: Amy Rose shipped a card that doesn't exist), and hands any failure back
-# to the same session to fix, at most this many times, before replying anyway.
+# to the same session to fix, at most this many times, before replying anyway. A deck
+# that still fails is held back from the push and the site (_autopush).
 MAX_REPAIRS = int(os.environ.get("MTG_BOT_REPAIRS", "2"))
 VALIDATE_TIMEOUT = 300
 REPAIR_PROMPT = (
@@ -483,12 +484,25 @@ def _autopush(chan: str, source: Path | None = None, what: str = "Deck") -> None
             rel = str((source or WORKSPACE).relative_to(REPO))
             if not _git("status", "--porcelain", "--", rel).stdout.strip():
                 return                                  # nothing changed
-            site = _build_site()
+            # The gate: a deck the validator fails is never published. It stays
+            # in the working tree, out of the commit and the site, until a later
+            # turn fixes it. Every changed deck is checked, not just this turn's,
+            # or the next push would sweep up one held earlier.
+            held = sorted(_validate(_changed_decks(rel))) if source is None else []
+            hold = [f":(exclude){f.relative_to(REPO)}"
+                    for deck in held for f in (deck, deck.with_suffix(".guide"))]
+            for deck in held:
+                log().warning("autopush: holding back %s (fails validation)",
+                              deck.relative_to(WORKSPACE))
+            if not _git("status", "--porcelain", "--", rel, *hold).stdout.strip():
+                return                                  # only held decks changed
+            with _as_committed(held):
+                site = _build_site()
             maps = [
                 str((workspace.frontend_dir() / "deck-tiers.json").relative_to(REPO)),
                 str((workspace.frontend_dir() / "deck-themes.json").relative_to(REPO)),
             ] if source is None else []
-            paths = [rel, *([site] if site else []), *maps]
+            paths = [rel, *([site] if site else []), *maps, *hold]
             add = _git("add", "--", *paths)
             if add.returncode:
                 log().warning("autopush: git add failed: %s", add.stderr.strip()[:200])
@@ -554,26 +568,81 @@ def _finish(chan: str, owner: str, folder: Path, answer: str,
     return answer
 
 
-def _deck_problems(folder: Path, started: float) -> str:
-    """validate_deck.py's report on the decks written since `started`; "" if all pass
-    (or the check itself could not run: that must not hold a reply hostage)."""
-    paths = sorted(str(p) for stem in deckplacement.touched_stems(folder, started)
-                   for p in folder.glob(f"Bracket*/{stem}.txt"))
+VERDICT = re.compile(r"^(PASS|FAIL)  (.+)$")
+
+
+def _validate(paths: list[Path]) -> dict[Path, str]:
+    """validate_deck.py on `paths`: {failing deck: its FAIL line and problems}.
+    Empty if every deck passes, or if the check itself could not run: a validator
+    that crashed or hung must not hold a reply, or every other deck, hostage."""
     if not paths:
-        return ""
+        return {}
     env = {**os.environ, "MTG_NO_TOOLLOG": "1"}     # the bot's check, not the model's call
     try:
         r = subprocess.run([sys.executable, str(REPO / "scripts" / "common" / "validate_deck.py"),
-                            *paths], capture_output=True, text=True, timeout=VALIDATE_TIMEOUT,
-                           env=env)
+                            *map(str, paths)], capture_output=True, text=True,
+                           timeout=VALIDATE_TIMEOUT, env=env)
     except subprocess.SubprocessError as exc:
         log().warning("validate: did not finish (%s)", type(exc).__name__)
-        return ""
-    if r.returncode == 0:
-        return ""
-    lines = [line.strip() for line in r.stdout.splitlines()
-             if line.startswith("FAIL") or line.strip().startswith("!!")]
-    return "\n".join(lines) or (r.stdout + r.stderr).strip()[-1500:]
+        return {}
+    failing: dict[Path, list[str]] = {}
+    lines: list[str] | None = None
+    for line in r.stdout.splitlines():
+        if m := VERDICT.match(line):
+            # Labels are relative to the deck root, or as given if outside it.
+            lines = [line.strip()] if m.group(1) == "FAIL" else None
+            if lines is not None:
+                failing[(WORKSPACE / m.group(2)).resolve()] = lines
+        elif lines is not None and line.strip().startswith("!!"):
+            lines.append(line.strip())
+    if r.returncode and not failing:
+        log().warning("validate: rc=%d without a verdict: %s", r.returncode,
+                      (r.stderr or r.stdout).strip()[-300:])
+    return {path: "\n".join(lines) for path, lines in failing.items()}
+
+
+def _deck_problems(folder: Path, started: float) -> str:
+    """validate_deck.py's report on the decks written since `started`; "" if all pass."""
+    paths = sorted(p for stem in deckplacement.touched_stems(folder, started)
+                   for p in folder.glob(f"Bracket*/{stem}.txt"))
+    return "\n".join(_validate(paths).values())
+
+
+def _changed_decks(rel: str) -> list[Path]:
+    """Every decklist under `rel` whose list or guide differs from the last commit."""
+    out = _git("status", "--porcelain", "-z", "-uall", "--no-renames", "--", rel).stdout
+    decks = {(REPO / entry[3:]).with_suffix(".txt")
+             for entry in out.split("\0") if entry[3:].endswith((".txt", ".guide"))}
+    return sorted(p for p in decks if p.is_file() and p.parent.name.startswith("Bracket"))
+
+
+@contextlib.contextmanager
+def _as_committed(held: list[Path]):
+    """For the length of the block, each held deck's list and guide read as git has
+    them: the last commit's text, or absent if never committed. The site is built
+    from the working tree, so this is what keeps a failing deck off it. Put back
+    afterwards, times and all, so the session can go on fixing it."""
+    restore = []
+    try:
+        for deck in held:
+            for f in (deck, deck.with_suffix(".guide")):
+                if not f.exists():
+                    continue
+                head = _git("show", f"HEAD:{f.relative_to(REPO)}")
+                if head.returncode:                     # new: step it out of the way
+                    aside = f.with_name(f.name + ".held")
+                    f.rename(aside)
+                    restore.append(lambda f=f, aside=aside: aside.rename(f))
+                else:
+                    st, body = f.stat(), f.read_bytes()
+                    f.write_text(head.stdout, encoding="utf-8")
+                    restore.append(lambda f=f, body=body, st=st: (
+                        f.write_bytes(body),
+                        os.utime(f, ns=(st.st_atime_ns, st.st_mtime_ns))))
+        yield
+    finally:
+        for undo in reversed(restore):
+            undo()
 
 
 def _repaired(folder: Path, turn: harness.Turn, sid: str | None, chan: str,
@@ -593,7 +662,8 @@ def _repaired(folder: Path, turn: harness.Turn, sid: str | None, chan: str,
     if problems:
         log().warning("VALIDATE [%s] still failing after %d repairs: %s", chan, MAX_REPAIRS,
                       _oneline(problems)[:300])
-        turn = harness.Turn(turn.answer + "\n\n⚠️ This deck still fails the deck check:\n"
+        turn = harness.Turn(turn.answer + "\n\n⚠️ This deck still fails the deck check, so "
+                            "it won't be on the site or the table until it's fixed:\n"
                             + problems, turn.session_id, turn.output, turn.note)
     else:
         log().info("VALIDATE [%s] passes after repair", chan)

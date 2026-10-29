@@ -461,7 +461,9 @@ cutting basics safe.
 6. **Validate. This is the gate.** Run `validate_deck.py` on the file, before
    replying, and report the result. A deck you edited but did not validate is not
    done. If it fails, fix it and validate again rather than handing back a
-   failing list.
+   failing list. The bot runs it again after your reply and sends any failure
+   back to you; a deck that still fails is never published to the site or the
+   table.
 7. **Write the guide.** A `.guide` file beside the decklist — see "Writing the
    deck's guide" below. The site renders it as a Guide tab, and a deck without one
    has no tab at all, so this is part of finishing a deck rather than a bonus. Do

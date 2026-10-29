@@ -1,0 +1,2 @@
+{"v":1,"id":"digitalstealth/AmyRose-Equipment","count":1}
+{"name":"Amy Rose","mv":4.0,"faces":[{"name":"Amy Rose","mana_cost":"{2}{R}{W}","type_line":"Legendary Creature — Hedgehog Warrior","oracle_text":"Haste\nWhenever Amy Rose attacks, attach up to one target Equipment to her. Then up to one other target attacking creature gets +X/+0 until end of turn, where X is Amy Rose's power.","power":"3","toughness":"3","loyalty":"","defense":""}]}

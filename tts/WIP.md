@@ -6,7 +6,7 @@ Codex) reads it first and updates it with every change. The [TTS development gui
 Last updated 2026-10-27 (Codex): competitive gap audit of the eight new Bracket 4
 copies; add appropriate land denial and missing engines. Bracket 3 sources preserved.
 
-Table build status (2026-10-24, Claude): delivered **v75** (Inspect retries refused menus), after v74 (menus never open empty), v73 (fixes an onObjectDestroy error), v72 (trigger areas end above the land line), v71 (teal stack frames; trigger areas to the land line), v70 (trigger areas in seat colours; stack panel picture), v69 (per-seat guide-line switches), v68 (edge strip redrawn as a five-slot stack), v67 (fixes v66's hand-index script errors), v66 (no music from cards in hand; Inspect deselects) and v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
+Table build status (2026-10-29, Claude): delivered **v76** (Sound switch for every Cactuar sound), after v75 (Inspect retries refused menus), v74 (menus never open empty), v73 (fixes an onObjectDestroy error), v72 (trigger areas end above the land line), v71 (teal stack frames; trigger areas to the land line), v70 (trigger areas in seat colours; stack panel picture), v69 (per-seat guide-line switches), v68 (edge strip redrawn as a five-slot stack), v67 (fixes v66's hand-index script errors), v66 (no music from cards in hand; Inspect deselects) and v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
 Both states visually checked live. **Steam is now v64, published at the owner’s request.** See [the changelog](../docs/development/tts-changelog.md).
 
@@ -102,6 +102,20 @@ generation prompts; no existing sleeves, table builds or Steam releases change.
 All 12 existing sleever tests pass; both generator prompt variants and the normal
 instruction template include the shared rule.
 
+
+## v76: Sound switch for every Cactuar sound (saved; not on Steam)
+
+Owner: a table toggle next to the Cactuar object that turns off all our sounds, music
+and turn sounds alike. `build_tts_table.sound_switches()` places a locked BlockSquare
+switch (GUIDs c4c7c1/c4c7c2) just below each Cactuar tile, toward the middle of the
+table (z ±21.4; Card Importer at z -17.9), same look as the trigger-area switches:
+"Sound ━━●" / "Sound ○━━". Both show one table-wide setting, `CZM.disabled`, which
+was already saved with the game; it now also silences `cztPlay` (turn change and
+slow-turn clips) and pauses whatever is playing at once. Chat `sound off` / `sound on`
+are aliases of `music off` / `music on`; a click broadcasts who switched it.
+`announcer off` still mutes only the turn clips. 187 music checks + build test.
+**Not yet seen in game: the switch position below each tile needs the owner's look.**
+Source `34f957f2`; archive `.cache/tts-builds/v76/`. **Saved Games v76; Steam v64.**
 ## v75: Inspect retries decks TTS refused at startup (saved; not on Steam)
 
 Owner's console at load: "[Global] Lua Error: Object reference not set to an instance

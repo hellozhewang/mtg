@@ -6,7 +6,7 @@ Codex) reads it first and updates it with every change. The [TTS development gui
 Last updated 2026-10-27 (Codex): competitive gap audit of the eight new Bracket 4
 copies; add appropriate land denial and missing engines. Bracket 3 sources preserved.
 
-Table build status (2026-10-29, Claude): delivered **v76** (Sound switch for every Cactuar sound), after v75 (Inspect retries refused menus), v74 (menus never open empty), v73 (fixes an onObjectDestroy error), v72 (trigger areas end above the land line), v71 (teal stack frames; trigger areas to the land line), v70 (trigger areas in seat colours; stack panel picture), v69 (per-seat guide-line switches), v68 (edge strip redrawn as a five-slot stack), v67 (fixes v66's hand-index script errors), v66 (no music from cards in hand; Inspect deselects) and v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
+Table build status (2026-10-29, Claude): delivered **v77** (10-second choruses once per turn), after v76 (Sound switch for every Cactuar sound), v75 (Inspect retries refused menus), v74 (menus never open empty), v73 (fixes an onObjectDestroy error), v72 (trigger areas end above the land line), v71 (teal stack frames; trigger areas to the land line), v70 (trigger areas in seat colours; stack panel picture), v69 (per-seat guide-line switches), v68 (edge strip redrawn as a five-slot stack), v67 (fixes v66's hand-index script errors), v66 (no music from cards in hand; Inspect deselects) and v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
 Both states visually checked live. **Steam is now v64, published at the owner’s request.** See [the changelog](../docs/development/tts-changelog.md).
 
@@ -102,6 +102,23 @@ generation prompts; no existing sleeves, table builds or Steam releases change.
 All 12 existing sleever tests pass; both generator prompt variants and the normal
 instruction template include the shared rule.
 
+
+## v77: battle music as 10-second choruses, once per turn (saved; not on Steam)
+
+Owner: besides the prelude, play only each song's chorus, "the 10 most relevant
+seconds". `scripts/tabletop/make_choruses.py --analyze` ran `chorus.swift` (chroma
+self-similarity + loudness; see the audio guide) on the 16 full songs, now in
+`tts/sounds/full/` (unpublished; published sounds 293 MB -> 48 MB), and cut faded
+10 s clips under the same names. Starts (`tts/sounds/full/choruses.json`, all
+automatic): chocobo 1:32.8, alexander 0:17.8, answers 5:40.8, dragonsong 3:18.5, footfalls 2:11.2, garuda 0:35.8, gilgamesh 0:39.0, hades 1:08.5, ifrit 0:54.5, leviathan 3:41.5, omega 3:49.8, ramuh 9:44.5, shiva 0:54.8, thordan 0:34.8, titan 4:59.2, ultima 1:22.0.
+`cactuar_music.lua`: the top caller's chorus plays once per turn; mid-turn only a
+caller outranking everything heard that turn plays (`CZM.heardRank`); a caller that
+left while loading was never heard; a new turn cuts a chorus still playing; turn
+clips wait while one loads or plays. `release_tts` checks only published sounds.
+190 music checks + cutter tests. **Not yet heard: the owner should listen to each
+chorus and give a better start for any that miss** (set `start`, `"picked": "owner"`,
+rerun make_choruses.py). Source `4f9260b9`; archive `.cache/tts-builds/v77/`.
+**Saved Games v77; Steam v64.**
 
 ## v76: Sound switch for every Cactuar sound (saved; not on Steam)
 

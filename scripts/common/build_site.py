@@ -178,25 +178,53 @@ def pinned_art(deck: deckfile.Deck, cards: dict[str, dict], q: CardQuery) -> dic
         return cards
     out = dict(cards)
     for name, p in pins.items():
-        card, hit = cards[name], found.get((p.set, p.number))
-        ours = {card.get("oracle_id")} | {f.get("oracle_id") for f in card.get("card_faces") or []}
-        if not hit or not (ours - {None}) & set(hit["oracle_ids"]):
+        shown = with_printing(cards[name], found.get((p.set, p.number)))
+        if shown:
+            out[name] = shown
+    return out
+
+
+def with_printing(card: dict, hit: dict | None) -> dict | None:
+    """A copy of `card` showing printing `hit`'s pictures, or None if `hit` is
+    missing, another card, already shown, or shaped differently."""
+    ours = {card.get("oracle_id")} | {f.get("oracle_id") for f in card.get("card_faces") or []}
+    if not hit or not (ours - {None}) & set(hit["oracle_ids"]):
+        return None
+    if hit["id"] == card.get("id"):
+        # The pin IS the printing we already show. Leave the shared object
+        # alone: collect_images keeps one file per image URL, so filing the
+        # same picture under a second name would leave one of them unwritten.
+        return None
+    shown = {**card, PINNED: hit["id"]}
+    if hit["image_uris"]:
+        shown["image_uris"] = hit["image_uris"]
+    elif len(hit["face_images"]) == len(card.get("card_faces") or []):
+        shown.pop("image_uris", None)
+        shown["card_faces"] = [{**f, "image_uris": uris}
+                               for f, uris in zip(card["card_faces"], hit["face_images"])]
+    else:
+        return None
+    return shown
+
+
+def released_art(cards: dict[str, dict], q: CardQuery, today: str | None = None) -> dict[str, dict]:
+    """Unpinned cards whose default printing is a set preview show their newest
+    released printing instead. The table's image host has no picture of a preview
+    until release, and Scryfall refuses TTS's downloads, so one preview reprint
+    (Lightning Greaves in TRC) failed every build. Only the pictures change.
+    """
+    today = today or datetime.now().date().isoformat()
+    out = dict(cards)
+    for name, card in cards.items():
+        if PINNED in card or (card.get("released_at") or "") <= today:
             continue
-        if hit["id"] == card.get("id"):
-            # The pin IS the printing we already show. Leave the shared object
-            # alone: collect_images keeps one file per image URL, so filing the
-            # same picture under a second name would leave one of them unwritten.
+        try:
+            shown = with_printing(card, q.released_printing(card, today))
+        except ScryfallError as exc:
+            print(f"warning: released art not loaded for {name} ({exc})", file=sys.stderr)
             continue
-        shown = {**card, PINNED: hit["id"]}
-        if hit["image_uris"]:
-            shown["image_uris"] = hit["image_uris"]
-        elif len(hit["face_images"]) == len(card.get("card_faces") or []):
-            shown.pop("image_uris", None)
-            shown["card_faces"] = [{**f, "image_uris": uris}
-                                   for f, uris in zip(card["card_faces"], hit["face_images"])]
-        else:
-            continue
-        out[name] = shown
+        if shown:
+            out[name] = shown
     return out
 
 
@@ -317,7 +345,7 @@ class DeckInfo:
         self.depth = self.href.count("/")
         self.deck = deckfile.parse(path)
         self.cards, self.missing = q.cards(self.deck.names)
-        self.cards = pinned_art(self.deck, self.cards, q)
+        self.cards = released_art(pinned_art(self.deck, self.cards, q), q)
         self.raw = path.read_text(encoding="utf-8")
         self.guide = deckguide.load(path)
         # A guide may name a card the deck does not run — a card it beat, or one

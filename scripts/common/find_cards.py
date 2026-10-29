@@ -14,7 +14,8 @@
     ./find_cards.py --gc-only
 
 Defaults that encode this repo's rules (see README.md):
-  * `legal:commander` is always added -- banned cards never show up.
+  * `legal:commander` is always added -- banned cards never show up. Unreleased
+    (previewed) cards are included: a release date never affects legality.
   * Results are ordered by EDHREC rank, the best available proxy for "most
     powerful / most played", so the top of the list is what you actually want.
   * Game Changers are flagged [GC] straight off each card's `game_changer`
@@ -28,6 +29,7 @@ Full query syntax: https://scryfall.com/docs/syntax
 from __future__ import annotations
 
 import argparse
+from datetime import date
 import json
 import sys
 from pathlib import Path
@@ -42,7 +44,9 @@ from cardlib import CardQuery
 
 
 def build_query(args: argparse.Namespace, identity: str | None) -> str:
-    parts = ["legal:commander"]
+    # Owner rule: a release date never affects legality, so previewed cards (which
+    # Scryfall calls not_legal until they come out) are included.
+    parts = [f"(legal:commander or date>{date.today().isoformat()})"]
     if args.query:
         parts.append(f"({args.query})")
     if identity:
@@ -113,7 +117,10 @@ def show_full(card: dict) -> None:
 
     # Legality: the whole reason to print this is that --names skips the filter.
     legal = (card.get("legalities") or {}).get("commander", "unknown")
-    flag = "" if legal == "legal" else "   <-- NOT LEGAL IN COMMANDER"
+    if legal == "not_legal" and (card.get("released_at") or "") > date.today().isoformat():
+        flag = f"   (unreleased until {card['released_at']}: counts as legal)"
+    else:
+        flag = "" if legal == "legal" else "   <-- NOT LEGAL IN COMMANDER"
     p(f"    commander  {legal}{flag}")
     if card.get("reserved"):
         p("    reserved   yes (Reserved List)")

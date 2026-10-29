@@ -131,6 +131,38 @@ class CardQuery:
                     pass
         return {pair: out.get(pair) for pair in dict.fromkeys((s.upper(), n) for s, n in pairs)}
 
+    def released_printing(self, card: dict, today: str) -> dict | None:
+        """The newest printing of `card` already released by `today`, shaped like
+        `printings()`'s results; None if it has none (a brand-new card).
+
+        For a card whose default printing is a set preview. Cached by that preview's
+        id, kept out of the card store like `printings()`, and searched without
+        banking results there, which would swap the default printing site-wide.
+        """
+        if self._printings is None:
+            self._printings = PageStore(self.db_path, ttl_hours=24 * 30)
+        key = f"scryfall:released-for/{card.get('id')}/{today}"
+        hit = self._printings.get(key)
+        if hit is not None and hit.get("v") == PRINTING_FIELDS:
+            return hit.get("printing")
+        name = card.get("name", "").replace('"', "")
+        found, _total = self.api.search(f'!"{name}" date<={today}', order="released",
+                                        unique="prints", limit=1)
+        printing = None
+        if found:
+            c = found[0]
+            printing = {k: c.get(k) for k in ("id", "name", "oracle_id", "set", "collector_number")}
+            printing["oracle_ids"] = sorted(({c.get("oracle_id")} | {
+                f.get("oracle_id") for f in c.get("card_faces") or []}) - {None})
+            printing["image_uris"] = c.get("image_uris")
+            printing["face_images"] = [f["image_uris"] for f in c.get("card_faces") or []
+                                       if f.get("image_uris")]
+        try:
+            self._printings.put(key, {"v": PRINTING_FIELDS, "printing": printing})
+        except Exception:                       # read-only cache: still answer
+            pass
+        return printing
+
     def by_ids(self, ids: list[str]) -> dict[str, dict]:
         """Printings by Scryfall id, trimmed to what a card on a table needs:
         name, type, rules text, P/T or loyalty, and pictures. For tokens, which a

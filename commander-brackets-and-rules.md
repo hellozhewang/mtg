@@ -231,7 +231,9 @@ everything below.
 `legalities.commander` from Scryfall rather than a list copied into this repo, so
 it cannot go stale: Wizards updates the list a few times a year and Scryfall
 reflects it the same day. The list here is for reading; the validator is the
-check. Regenerate it with:
+check. **House rule: a release date never affects legality.** Scryfall marks a
+previewed card `not_legal` until it comes out; the validator, `find_cards.py` and
+the table all treat such a card as legal (banned cards stay banned). Regenerate it with:
 
 ```bash
 python3 -c "import sys;sys.path.insert(0,'scripts');from cardlib import ScryfallAPI;\

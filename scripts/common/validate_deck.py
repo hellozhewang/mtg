@@ -31,6 +31,7 @@ card data access goes through cardlib.CardQuery.
 from __future__ import annotations
 
 import argparse
+from datetime import date
 import re
 import sys
 from pathlib import Path
@@ -194,6 +195,18 @@ def commanders(deck: deckfile.Deck, cards: dict[str, dict]) -> list[str]:
     return names[:1]
 
 
+def unreleased(card: dict, today: str | None = None) -> bool:
+    """A previewed card: Scryfall lists it `not_legal` until its release date."""
+    return (card.get("released_at") or "") > (today or date.today().isoformat())
+
+
+def commander_legal(card: dict, today: str | None = None) -> bool:
+    """Owner rule: a release date never affects legality. A card Scryfall calls
+    `not_legal` only because it isn't out yet counts as legal; banned stays banned."""
+    status = (card.get("legalities") or {}).get("commander")
+    return status == "legal" or (status == "not_legal" and unreleased(card, today))
+
+
 def check(deck: deckfile.Deck, cards: dict[str, dict], missing: list[str],
           cap: int | None) -> tuple[list[str], set[str], list[str]]:
     """Return (problems, colour_identity, game_changers)."""
@@ -206,8 +219,7 @@ def check(deck: deckfile.Deck, cards: dict[str, dict], missing: list[str],
     # without anyone noticing. Anything not "legal" is reported with its status,
     # since `banned` and `restricted` mean different things.
     illegal = [(n, (c.get("legalities") or {}).get("commander", "unknown"))
-               for n, c in cards.items()
-               if (c.get("legalities") or {}).get("commander") != "legal"]
+               for n, c in cards.items() if not commander_legal(c)]
 
     off_colour = [(n, c) for n, c in cards.items()
                   if set(c.get("color_identity", [])) - identity]

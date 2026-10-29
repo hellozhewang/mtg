@@ -381,6 +381,18 @@ AUTOPUSH = not os.environ.get("MTG_BOT_NO_PUSH")
 # Conditional GETs save bandwidth, but thousands of URLs still take minutes;
 # leave room for both those checks and new card-thumbnail downloads.
 SITE_TIMEOUT = int(os.environ.get("MTG_SITE_TIMEOUT", "600"))
+# After a builder turn the bot validates the decks it wrote itself (the model can skip
+# the validator: Amy Rose shipped a card that doesn't exist), and hands any failure back
+# to the same session to fix, at most this many times, before replying anyway.
+MAX_REPAIRS = int(os.environ.get("MTG_BOT_REPAIRS", "2"))
+VALIDATE_TIMEOUT = 300
+REPAIR_PROMPT = (
+    "The bot ran validate_deck.py on the deck(s) you just wrote, and it FAILED:\n\n"
+    "{problems}\n\n"
+    "Fix every problem now: a name that doesn't resolve is a card that doesn't exist "
+    "under that name, so look up the real card with find_cards.py --names and "
+    "correct the list and the guide. Run validate_deck.py until it passes. Then give "
+    "the player your full reply again, in the same format as your first answer.")
 
 
 def _git(*args: str, timeout: int = 120) -> subprocess.CompletedProcess:
@@ -542,6 +554,52 @@ def _finish(chan: str, owner: str, folder: Path, answer: str,
     return answer
 
 
+def _deck_problems(folder: Path, started: float) -> str:
+    """validate_deck.py's report on the decks written since `started`; "" if all pass
+    (or the check itself could not run: that must not hold a reply hostage)."""
+    paths = sorted(str(p) for stem in deckplacement.touched_stems(folder, started)
+                   for p in folder.glob(f"Bracket*/{stem}.txt"))
+    if not paths:
+        return ""
+    env = {**os.environ, "MTG_NO_TOOLLOG": "1"}     # the bot's check, not the model's call
+    try:
+        r = subprocess.run([sys.executable, str(REPO / "scripts" / "common" / "validate_deck.py"),
+                            *paths], capture_output=True, text=True, timeout=VALIDATE_TIMEOUT,
+                           env=env)
+    except subprocess.SubprocessError as exc:
+        log().warning("validate: did not finish (%s)", type(exc).__name__)
+        return ""
+    if r.returncode == 0:
+        return ""
+    lines = [line.strip() for line in r.stdout.splitlines()
+             if line.startswith("FAIL") or line.strip().startswith("!!")]
+    return "\n".join(lines) or (r.stdout + r.stderr).strip()[-1500:]
+
+
+def _repaired(folder: Path, turn: harness.Turn, sid: str | None, chan: str,
+              started: float) -> harness.Turn:
+    """`turn`, or the session's answer after fixing what validate_deck.py reported."""
+    for attempt in range(1, MAX_REPAIRS + 1):
+        problems = _deck_problems(folder, started)
+        if not problems:
+            return turn
+        log().warning("VALIDATE [%s] failed (repair %d/%d): %s", chan, attempt, MAX_REPAIRS,
+                      _oneline(problems)[:300])
+        again = _turn(folder, REPAIR_PROMPT.format(problems=problems),
+                      turn.session_id or sid, chan)
+        turn = harness.Turn(again.answer, again.session_id or turn.session_id,
+                            turn.output + "\n" + again.output, again.note)
+    problems = _deck_problems(folder, started)
+    if problems:
+        log().warning("VALIDATE [%s] still failing after %d repairs: %s", chan, MAX_REPAIRS,
+                      _oneline(problems)[:300])
+        turn = harness.Turn(turn.answer + "\n\n⚠️ This deck still fails the deck check:\n"
+                            + problems, turn.session_id, turn.output, turn.note)
+    else:
+        log().info("VALIDATE [%s] passes after repair", chan)
+    return turn
+
+
 def _log_tool_usage(chan: str, combined: str, started: float) -> None:
     """Record which repo tools the session ran this turn.
 
@@ -652,7 +710,7 @@ def send(message: str, username: str,
     try:
         if sid:
             log().info("[%s] resuming session %s (%s)", chan, sid, HARNESS.describe())
-            turn = _turn(folder, message, sid, chan)
+            turn = _repaired(folder, _turn(folder, message, sid, chan), sid, chan, started)
             return with_usage(_finish(chan, owner, folder, turn.answer, turn.output, started))
 
         # No session pinned yet. Take the lock, then re-check: a concurrent call
@@ -663,7 +721,7 @@ def send(message: str, username: str,
             if sid:
                 log().info("[%s] another process pinned %s while waiting; resuming it",
                            chan, sid)
-                turn = _turn(folder, message, sid, chan)
+                turn = _repaired(folder, _turn(folder, message, sid, chan), sid, chan, started)
                 return with_usage(_finish(chan, owner, folder, turn.answer, turn.output, started))
 
             log().info("[%s] no pinned session; opening a new one (%s)", chan, HARNESS.describe())
@@ -678,6 +736,7 @@ def send(message: str, username: str,
                 print("warning: the harness reported no session id; session not pinned",
                       file=sys.stderr)
                 log().warning("no session id from %s; next call will start over", HARNESS.name)
+            turn = _repaired(folder, turn, turn.session_id, chan, started)
         # Same tail as the two resume paths above — a fresh session is where a
         # deck is most likely to be CREATED, so skipping this skipped autopush
         # exactly when it mattered most.

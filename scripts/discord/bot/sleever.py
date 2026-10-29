@@ -230,6 +230,16 @@ def _existing(slug: str) -> bool:
     return any((SLEEVES_DIR / f"{slug}{ext}").exists() for ext in (".jpg", ".jpeg", ".png"))
 
 
+def forget_removed(f: Path, previous: str | None) -> bool:
+    """True when `previous` is no longer on the table (the owner removed it). Its picture
+    leaves the staging folder too, so nothing of it steers the next request."""
+    if not previous or _existing(previous):
+        return False
+    for old in f.glob("sleeve.*"):
+        old.unlink(missing_ok=True)
+    return True
+
+
 def choose_slug(name: str, owner: str, previous: str | None) -> str:
     """The file name for `name`: this user's own sleeve is replaced, anyone else's never.
 

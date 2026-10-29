@@ -733,6 +733,13 @@ def send_sleever(message: str, username: str, channel: str | int | None = DEFAUL
         for note in notes:
             log().info("SLEEVER [%s] %s", chan, note)
         state = _load(conv)
+        if sleever.forget_removed(folder, state.get("sleeve")):
+            # A removed sleeve is not revised: start a fresh conversation, so neither its
+            # name, its picture nor the old chat steers this request.
+            log().info("SLEEVER [%s] previous sleeve %s was removed; starting fresh", chan, state["sleeve"])
+            state = {}
+            for key in (conv, conv + "-codex"):
+                _save(key, {})
         prompt = message
         if state.get("sleeve"):
             prompt += ("\n\nYour previous sleeve is named " + state["sleeve"] +
@@ -746,15 +753,17 @@ def send_sleever(message: str, username: str, channel: str | int | None = DEFAUL
 
         def paint(agent, key, saved):
             # Gemini and Codex must never resume each other's session. Keep the
-            # fallback's conversation separate while sharing references and art.
+            # fallback's conversation separate while sharing references and art. A session
+            # started in another folder (before the repo moved) can't run commands here.
             sid = saved.get("session_id") if (
                 saved.get("harness") == agent.name and saved.get("model") == agent.model
-                and saved.get("effort") == agent.effort) else None
+                and saved.get("effort") == agent.effort
+                and saved.get("folder") == str(folder)) else None
             attempt_started = time.time()
             turn = agent.run(folder, prompt, sid, chan=chan, timeout=TIMEOUT, writable=[])
             if turn.session_id:
                 saved.update(session_id=turn.session_id, harness=agent.name,
-                             model=agent.model, effort=agent.effort)
+                             model=agent.model, effort=agent.effort, folder=str(folder))
                 _save(key, saved)
             return sleever.publish(folder, turn.answer, owner, state.get("sleeve"), attempt_started)
 

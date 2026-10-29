@@ -238,9 +238,11 @@ class RoutingTests(Isolated):
         self.bot._autopush.assert_not_called()
 
     def test_codex_revision_keeps_references_name_and_resumes_its_own_session(self):
+        (self.sleeves / "moon.jpg").write_bytes(b"jpg")
         self.bot._save(self.conv, {"sleeve": "moon"})
         self.bot._save(self.conv + "-codex", {"session_id": "previous-codex", "harness": "codex",
-                                            "model": self.codex.model, "effort": self.codex.effort})
+                                            "model": self.codex.model, "effort": self.codex.effort,
+                                            "folder": str(sleever.folder("zzwang"))})
         def fetch(urls, folder):
             png(folder / "ref-1.png", 64, 64)
             return []
@@ -252,6 +254,30 @@ class RoutingTests(Isolated):
         self.assertIn("previous sleeve is named moon", args[1])
         self.assertTrue((args[0] / "refs" / "ref-1.png").is_file())
         self.assertIn(sleever.SLEEVE_CONTENT_RULE, (args[0] / "AGENTS.md").read_text())
+
+    def test_a_removed_previous_sleeve_starts_a_fresh_conversation(self):
+        # digitalstealth's case: their sleeve was removed, but the bot still called the
+        # next request a revision of it and showed the model the old picture.
+        f = sleever.prepare("zzwang")
+        png(f / "sleeve.png", 848, 1264)
+        self.bot._save(self.conv, {"sleeve": "gone", "session_id": "old", "harness": "agy",
+                                  "model": self.primary.model, "effort": None, "folder": str(f)})
+        self.quota.return_value = (False, None, None)
+        self.primary.run.side_effect = self.picture_turn
+        self.bot.send_sleever("make me these sleeves", "zzwang")
+        folder, prompt, sid = self.primary.run.call_args.args[:3]
+        self.assertIsNone(sid)
+        self.assertNotIn("previous sleeve", prompt)
+        self.assertEqual(self.bot._load(self.conv)["sleeve"], "moon")
+
+    def test_a_session_from_another_folder_is_not_resumed(self):
+        self.bot._save(self.conv, {"session_id": "moved", "harness": "agy", "model": self.primary.model,
+                                  "effort": None, "folder": "/old/repo/bot/.sleever/zzwang"})
+        self.quota.return_value = (False, None, None)
+        self.primary.run.side_effect = self.picture_turn
+        self.bot.send_sleever("moon sleeves", "zzwang")
+        self.assertIsNone(self.primary.run.call_args.args[2])
+        self.assertEqual(self.bot._load(self.conv)["folder"], str(sleever.folder("zzwang")))
 
     def test_normal_gemini_success_does_not_start_codex(self):
         self.quota.return_value = (False, None, None)

@@ -10,6 +10,7 @@ to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
 ## v77 — 2026-10-29 (commit 4f9260b9)
 - Battle music is now each song's 10-second chorus, played once per turn when a caller is on the active player's battlefield (a higher-priority caller landing mid-turn plays its own); the prelude still loops until the cannon
+- Published unchanged to Steam Workshop item 3822623414 on 2026-10-29; Steam confirmed EResult 1.
 
 ## v76 — 2026-10-29 (commit 34f957f2)
 - Sound switch below each Cactuar tile: turns every Cactuar sound (music, turn and announcer clips) off or on for the whole table; chat sound off / sound on does the same

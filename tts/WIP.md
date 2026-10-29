@@ -8,7 +8,7 @@ copies; add appropriate land denial and missing engines. Bracket 3 sources prese
 
 Table build status (2026-10-29, Claude): delivered **v77** (10-second choruses once per turn), after v76 (Sound switch for every Cactuar sound), v75 (Inspect retries refused menus), v74 (menus never open empty), v73 (fixes an onObjectDestroy error), v72 (trigger areas end above the land line), v71 (teal stack frames; trigger areas to the land line), v70 (trigger areas in seat colours; stack panel picture), v69 (per-seat guide-line switches), v68 (edge strip redrawn as a five-slot stack), v67 (fixes v66's hand-index script errors), v66 (no music from cards in hand; Inspect deselects) and v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
-Both states visually checked live. **Steam is now v64, published at the owner’s request.** See [the changelog](../docs/development/tts-changelog.md).
+Both states visually checked live. **Steam is now v77** (published 2026-10-29 at the owner's request; was v64). See [the changelog](../docs/development/tts-changelog.md).
 
 
 
@@ -118,7 +118,7 @@ clips wait while one loads or plays. `release_tts` checks only published sounds.
 190 music checks + cutter tests. **Not yet heard: the owner should listen to each
 chorus and give a better start for any that miss** (set `start`, `"picked": "owner"`,
 rerun make_choruses.py). Source `4f9260b9`; archive `.cache/tts-builds/v77/`.
-**Saved Games v77; Steam v64.**
+**Saved Games v77; Steam v77** (Workshop item 3822623414, EResult 1).
 
 ## v76: Sound switch for every Cactuar sound (saved; not on Steam)
 

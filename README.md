@@ -850,16 +850,13 @@ the shared Music Player. TTS's native incoming-player ping remains separate.
 Same-seat turn events play the clip too. Native End Turn can emit no Lua event
 when testing alone; chat `turn sound test` tests the clip without advancing a turn.
 
-The shared **FF14 soundtrack** uses original WAVs and loops Prelude/Discoveries
-until the cannon fires. During the active player's turn, **10+** battlefield
-objects select one looping song in priority order: **Goblins → Titan; artifacts →
-Ultima; white creatures → Thordan; black → Hades; blue → Locus; green → Garuda;
-red → Ifrit**. Library, exile, graveyard and commander columns do not count.
-Creature colors come from embedded face metadata; multicolor creatures count for
-each color. Custom or changed cards can use explicit color/type tags.
-The loaded song pauses/resumes between qualifying turns; switching songs restarts
-the selected recording. Custom voices are skipped while a battle song is retained;
-native beeps/text remain. The **Sound** switch below each Cactuar tile (or chat
+The shared **FF14 soundtrack** loops Prelude/Discoveries until the cannon fires.
+After that, named cards on the active player's battlefield call a song (see the
+[audio guide](docs/development/tts-audio-guide.md)), and the table plays that song's
+**10-second chorus once per turn**: at the start of the turn, or when the card lands.
+A higher-priority caller arriving later plays its own; nothing loops or replays that
+turn. The clips are cut by `scripts/tabletop/make_choruses.py` from the full songs in
+`tts/sounds/full/`. Turn clips wait while a chorus plays; native beeps/text remain. The **Sound** switch below each Cactuar tile (or chat
 `sound off` / `sound on`) turns every Cactuar sound off for the whole table: music and
 turn clips alike.
 

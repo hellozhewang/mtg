@@ -1,0 +1,178 @@
+{
+  "ff11_chocobo.wav": {
+    "duration": 180.09,
+    "others": [
+      113.75,
+      127.75,
+      82.5,
+      103.5
+    ],
+    "picked": "auto",
+    "start": 92.75
+  },
+  "ff14_alexander.wav": {
+    "duration": 535.95,
+    "others": [
+      28.5,
+      476.5,
+      494.5,
+      292.25
+    ],
+    "picked": "auto",
+    "start": 17.75
+  },
+  "ff14_answers.wav": {
+    "duration": 441.74,
+    "others": [
+      352.75,
+      230,
+      324.5,
+      241.25
+    ],
+    "picked": "auto",
+    "start": 340.75
+  },
+  "ff14_dragonsong.wav": {
+    "duration": 383.85,
+    "others": [
+      174.25,
+      185.5,
+      217.5,
+      64.25
+    ],
+    "picked": "auto",
+    "start": 198.5
+  },
+  "ff14_footfalls.wav": {
+    "duration": 349.9,
+    "others": [
+      271.5,
+      328.75,
+      113.75,
+      286.5
+    ],
+    "picked": "auto",
+    "start": 131.25
+  },
+  "ff14_garuda.wav": {
+    "duration": 251.84,
+    "others": [
+      46,
+      229.25,
+      56.25,
+      24.25
+    ],
+    "picked": "auto",
+    "start": 35.75
+  },
+  "ff14_gilgamesh.wav": {
+    "duration": 259.62,
+    "others": [
+      153.75,
+      139.25,
+      204.25,
+      230
+    ],
+    "picked": "auto",
+    "start": 39
+  },
+  "ff14_hades.wav": {
+    "duration": 465.92,
+    "others": [
+      96.25,
+      79.75,
+      117.75,
+      106.5
+    ],
+    "picked": "auto",
+    "start": 68.5
+  },
+  "ff14_ifrit.wav": {
+    "duration": 171.92,
+    "others": [
+      143,
+      128.25,
+      22.5,
+      36.5
+    ],
+    "picked": "auto",
+    "start": 54.5
+  },
+  "ff14_leviathan.wav": {
+    "duration": 446.08,
+    "others": [
+      284.75,
+      74.75,
+      14.75,
+      341.25
+    ],
+    "picked": "auto",
+    "start": 221.5
+  },
+  "ff14_omega.wav": {
+    "duration": 284.19,
+    "others": [
+      120.5,
+      171.5,
+      189.25,
+      80
+    ],
+    "picked": "auto",
+    "start": 229.75
+  },
+  "ff14_ramuh.wav": {
+    "duration": 614.4,
+    "others": [
+      305,
+      287.75,
+      567,
+      551.25
+    ],
+    "picked": "auto",
+    "start": 584.5
+  },
+  "ff14_shiva.wav": {
+    "duration": 475.1,
+    "others": [
+      288.25,
+      354.25,
+      237.5,
+      120.75
+    ],
+    "picked": "auto",
+    "start": 54.75
+  },
+  "ff14_thordan.wav": {
+    "duration": 512.53,
+    "others": [
+      87.75,
+      46.5,
+      261.75,
+      423.5
+    ],
+    "picked": "auto",
+    "start": 34.75
+  },
+  "ff14_titan.wav": {
+    "duration": 319.9,
+    "others": [
+      210.5,
+      10.5,
+      138.25,
+      151.25
+    ],
+    "picked": "auto",
+    "start": 299.25
+  },
+  "ff14_ultima.wav": {
+    "duration": 297.17,
+    "others": [
+      263.25,
+      248.5,
+      189,
+      234.25
+    ],
+    "picked": "auto",
+    "start": 82
+  }
+}

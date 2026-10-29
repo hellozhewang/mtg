@@ -1,5 +1,5 @@
--- Battle songs called by named cards on the active player's battlefield, and one
--- pause/resume soundtrack, with real turn hooks.
+-- Battle choruses called by named cards on the active player's battlefield, once
+-- per turn, and the looping prelude, with real turn hooks.
 local checks = 0
 local function check(value, message) checks = checks + 1; assert(value, message) end
 local function serialize(v)
@@ -40,7 +40,11 @@ MusicPlayer = {loaded = true,
   play = function() plays = plays + 1; playing = true; return true end,
   pause = function() pauses = pauses + 1; playing = false; return true end,
 }
-local function advance(seconds) now = now + seconds; if playing then position = position + seconds end end
+local function advance(seconds)
+  now = now + seconds
+  if playing then position = position + seconds end
+  if playing and not MusicPlayer.repeat_track and position >= 10 then playing = false end  -- a clip ends
+end
 local function zone() local z = {objects = {}}; z.getObjects = function() return z.objects end; return z end
 local function card(typ, name)
   local c = {type = "Card", tags = {}, attachments = {}, nickname = (name or "Card") .. "\n" .. typ .. " 2CMC"}
@@ -83,6 +87,8 @@ function onChat() baseChats = baseChats + 1 end
 dofile("tts/cactuar_turns.lua")
 CZT.restored, CZT.started, CZT.loadedAt = true, false, 0
 dofile("tts/cactuar_music.lua")
+-- A later turn of the same player, after the last chorus ended: every song can play again.
+local function nextTurn() advance(11); CZM.turnSerial = CZM.turnSerial + 1; czmTick() end
 
 czmTick()
 check(current.url:find("ff14_theme.wav", 1, true) and playing and MusicPlayer.repeat_track, "fresh table loops the original FF14 WAV")
@@ -114,40 +120,49 @@ end
 czmTick()
 check(CZM.battlefields.White.ultima == 0 and not playing, "mentions, face-down cards and excluded zones never call a song")
 table.insert(data.White.playmat.objects, card("Legendary Creature — God", "Ultima, Origin of Oblivion")); czmTick()
-check(CZM.battlefields.White.ultima == 1 and current.url:find("ff14_ultima.wav", 1, true) and playing, "Ultima, Origin of Oblivion on the battlefield loops Ultima")
+check(CZM.battlefields.White.ultima == 1 and current.url:find("ff14_ultima.wav", 1, true) and playing
+  and not MusicPlayer.repeat_track, "Ultima, Origin of Oblivion on the battlefield plays the Ultima chorus once")
 check(#playlist == 1 and playlist[1].url == current.url, "Ultima replaces every previous playlist entry")
 local ultimaLoads = loads
-advance(23); czmTick()
-check(position == 23 and loads == ultimaLoads, "steady qualification does not restart the music")
+advance(3); czmTick()
+check(position == 3 and loads == ultimaLoads and czmBlocksVoice(), "a chorus plays through without restarting, holding off turn clips")
+advance(8); czmTick()
+check(not playing and loads == ultimaLoads and not czmBlocksVoice(), "it ends after 10 seconds and is not replayed that turn")
 Turns.turn_color = "Red"; onPlayerTurn(Player.Red, Player.White)
-check(not playing and position == 23 and loads == ultimaLoads, "another player's turn pauses at the same playhead")
-check(CZT.audioStatus == "suppressed for soundtrack" and baseTurns == 1, "real turn voice is suppressed and the base handler still runs")
-advance(30)
+check(baseTurns == 1 and current.url:find("change-turn", 1, true) and loads == ultimaLoads + 1,
+  "a turn without a caller gets the turn sound; the base handler still runs")
 Turns.turn_color = "White"; onPlayerTurn(Player.White, Player.Red)
-check(playing and position == 23 and loads == ultimaLoads, "the card owner's next turn resumes without replacing the clip")
-advance(5); populate("Red", true)
+check(playing and current.url:find("ff14_ultima.wav", 1, true) and CZT.audioStatus == "suppressed for soundtrack",
+  "the caller's owner's next turn plays the chorus again, ahead of the turn sound")
+local whiteLoads = loads
+advance(4); populate("Red", true)
 Turns.turn_color = "Red"; onPlayerTurn(Player.Red, Player.White)
-check(playing and position == 28 and loads == ultimaLoads, "another player with Ultima shares the one continuous instance")
+check(playing and position == 0 and loads == whiteLoads + 1, "a new turn cuts off the last chorus and plays the new player's from the top")
 populate("Red", false); onObjectLeaveScriptingZone(data.Red.playmat, nil); flush()
-check(not playing and CZM.battlefields.Red.ultima == 0, "Ultima leaving the active player's battlefield pauses promptly")
+check(playing and CZM.battlefields.Red.ultima == 0, "a caller leaving lets its chorus finish")
 check(CZM.battlefields.White.ultima == 1, "another player's Ultima does not play on the wrong turn")
+local redLoads = loads
 populate("Red", true); onObjectEnterScriptingZone(data.Red.playmat, nil); flush()
-check(playing and position == 28 and loads == ultimaLoads and baseEnters == 1, "entering the zone resumes once and preserves the base zone event")
+check(loads == redLoads and baseEnters == 1, "the same caller returning that turn is not replayed; the base zone event still runs")
+table.insert(data.Red.playmat.objects, card("Enchantment Creature — Saga Giant", "Summon: Titan")); czmTick()
+check(playing and CZM.track == "titan" and position == 0 and loads == redLoads + 1, "a higher-priority caller landing mid-turn plays its own chorus")
+table.remove(data.Red.playmat.objects); czmTick()
+check(CZM.track == "titan" and loads == redLoads + 1, "losing it does not bring back a lower chorus that turn")
 onChat("announcer test", Player.Red)
-check(loads == ultimaLoads, "slow-turn test voices cannot overwrite the retained Ultima")
+check(loads == redLoads + 1, "slow-turn test voices cannot overwrite a chorus still playing")
 onChat("music off", Player.Red)
-check(not playing, "music off pauses without losing its position")
+check(not playing, "music off stops the chorus")
 onChat("music on", Player.Red)
-check(playing and position == 28 and loads == ultimaLoads and baseChats >= 3, "music on resumes and preserves existing chat handlers")
-Turns.enable = false; czmTick()
-check(not playing, "disabling turns pauses Ultima")
-Turns.enable = true; czmTick()
-check(playing and loads == ultimaLoads, "reenabling a qualifying turn resumes the same clip")
+check(not playing and loads == redLoads + 1 and baseChats >= 3, "music on does not replay a chorus heard this turn; chat handlers still run")
+Turns.enable = false; nextTurn()
+check(not playing, "no turns, no chorus")
+Turns.enable = true; nextTurn()
+check(playing and CZM.track == "ultima", "turns back on: the next turn plays it")
 
--- A live script patch must not restart a playing track or leave a second ticker.
-local oldTicker = CZM.ticker
+-- A live script patch must not restart a playing chorus or leave a second ticker.
+local oldTicker, reloadLoads = CZM.ticker, loads
 dofile("tts/cactuar_music.lua"); czmTick()
-check(timers[oldTicker] == nil and loads == ultimaLoads and playing, "live reload keeps the playhead and replaces its old ticker")
+check(timers[oldTicker] == nil and loads == reloadLoads and playing, "live reload keeps the chorus and replaces its old ticker")
 
 -- Saved midgame state never replays the prelude after a full module reload.
 cztPersist(); CZM = nil
@@ -164,19 +179,18 @@ local before = plays
 for _, wait in ipairs(waits) do wait.fn() end
 check(plays == before and not playing, "an obsolete prelude completion cannot play after the cannon fires")
 
--- The card may leave while Ultima downloads. Keep the file paused and resume it
--- later; neither the old trigger nor subsequent scans may restart it.
+-- The card may leave while Ultima downloads: then it does not play, and was never
+-- heard, so the card coming back that turn still gets it.
 populate("Red", true); czmTick()
 local ultimaWait = waits[#waits]
 populate("Red", false); MusicPlayer.loaded = true; ultimaWait.fn()
-check(not playing and CZM.status == "paused", "late Ultima loading rechecks a battlefield that lost its card before playback")
-local downloaded = loads
+check(not playing and CZM.status == "idle", "a chorus whose caller left while it loaded does not play")
 populate("Red", true); czmTick()
-check(playing and loads == downloaded, "a later eligible turn uses the already loaded Ultima")
+check(playing and CZM.track == "ultima", "the caller coming back that turn still gets its chorus")
 local ultimaCard = data.Red.playmat.objects[#data.Red.playmat.objects]
 ultimaCard.nickname = "Changed face\nCreature — Human"
 onObjectStateChange(ultimaCard, "old"); flush()
-check(CZM.battlefields.Red.ultima == 0 and not playing, "flipping the card to another face pauses the song")
+check(CZM.battlefields.Red.ultima == 0, "flipping the card to another face stops counting it")
 
 -- A chat mute issued during initial table setup must survive restoration.
 CZM = nil; tile.memo, Global.script_state = nil, nil; CZT.restored = false
@@ -194,6 +208,7 @@ for _, color in ipairs(CZ.seats) do
 end
 Turns.enable, Turns.turn_color = true, "White"
 local inHand = card("Enchantment Creature — Saga Knight", "Summon: Knights of Round")
+data.White.playmat.objects = {}; nextTurn()
 data.White.playmat.objects = {inHand}; Player.White.hands[1] = {inHand}; czmTick()
 check(not playing and CZM.battlefields.White.thordan == 0, "a caller in hand does not play its song")
 Player.White.hands[1] = {}; Player.White.hands[2] = {inHand}; czmTick()
@@ -202,7 +217,7 @@ Player.White.hands[2] = {}; inHand.held_by_color = "White"; czmTick()
 check(not playing, "a caller being dragged does not play its song")
 inHand.held_by_color = nil; czmTick()
 check(playing and CZM.track == "thordan", "the same card played onto the battlefield does")
-data.White.playmat.objects = {}; czmTick()
+data.White.playmat.objects = {}; nextTurn()
 
 -- Every song and every card that calls it, with turn gating.
 CZM.disabled, CZM.cannonFired, CZM.ready = false, true, true
@@ -243,28 +258,30 @@ local callers = {
 }
 for _, caller in ipairs(callers) do
   local track, name = caller[1], caller[2]
+  data.White.playmat.objects = {}; nextTurn()
   data.White.playmat.objects = {card(caller[3], name)}; czmTick()
-  check(playing and CZM.track == track and MusicPlayer.repeat_track, name .. " loops " .. track)
+  check(playing and CZM.track == track and not MusicPlayer.repeat_track, name .. " plays the " .. track .. " chorus once")
   local selectedLoads = loads
   advance(3); czmTick()
-  check(loads == selectedLoads, track .. " remains one instance without restarting")
-  Turns.turn_color = "Red"; onPlayerTurn(Player.Red, Player.White)
-  check(not playing and czmBlocksVoice(), track .. " pauses outside its owner's turn and blocks voices")
-  Turns.turn_color = "White"; onPlayerTurn(Player.White, Player.Red)
-  check(playing and loads == selectedLoads, track .. " resumes unchanged on its owner's turn")
-  data.White.playmat.objects = {}; czmTick()
+  check(loads == selectedLoads and czmBlocksVoice(), track .. " is one instance, holding off turn clips")
+  advance(8); czmTick()
+  check(not playing and loads == selectedLoads, track .. " ends after 10 seconds without replaying")
+  Turns.turn_color = "Red"; nextTurn()
+  check(not playing, track .. " does not play on another player's turn")
+  Turns.turn_color = "White"
 end
 check(CZM.cards.omega and CZM.omega:find("ff14_omega.wav", 1, true), "Omega has its own track")
 check(CZM.chocobo:find("ff11_chocobo.wav", 1, true) and CZM.priority[#CZM.priority] == "chocobo",
   "Dash de Chocobo is its own track, last in priority")
 -- Birds of Paradise and other non-Chocobo birds do not call it.
+data.White.playmat.objects = {}; nextTurn()
 data.White.playmat.objects = {card("Creature — Bird", "Birds of Paradise")}; czmTick()
 check(not playing, "Birds of Paradise calls nothing")
 -- Any other song beats Chocobo on the same battlefield.
 data.White.playmat.objects = {card("Legendary Creature — Bird", "Choco, Seeker of Paradise"),
                               card("Legendary Creature — God", "Ultima, Origin of Oblivion")}
 czmTick(); check(playing and CZM.track == "ultima", "Ultima beats Chocobo")
-data.White.playmat.objects = {}; czmTick()
+data.White.playmat.objects = {}; nextTurn()
 
 -- The front faces of double-faced cards do not call their back face's song.
 for _, name in ipairs({"Emet-Selch, Unsundered", "Crystal Fragments", "Jill, Shiva's Dominant"}) do
@@ -276,7 +293,7 @@ for _, name in ipairs({"Emet-Selch, Unsundered // Hades, Sorcerer of Eld", "[b]S
                        "Clive, Ifrit\226\128\153s Dominant"}) do
   data.White.playmat.objects = {card("Legendary Creature", name)}; czmTick()
   check(playing, name .. " is recognised")
-  data.White.playmat.objects = {}; czmTick()
+  data.White.playmat.objects = {}; nextTurn()
 end
 -- Generic Summons, other Ifrits and other Omegas are not on the list.
 for _, name in ipairs({"Summon: Fenrir", "Summon: G.F. Ifrit", "Omega Myr", "Titan of Industry"}) do
@@ -288,24 +305,26 @@ end
 local host = card("Creature — Human", "Host"); host.attachments = {{name = "Summon: Titan\nSaga"}}
 data.White.playmat.objects = {host}; czmTick()
 check(playing and CZM.track == "titan", "an attached caller counts")
+data.White.playmat.objects = {}; nextTurn()
 data.White.playmat.objects = {{type = "Deck", getObjects = function() return {
   {name = "Treasure\nArtifact"}, {name = "Summon: Titan\nSaga"}} end}}
 czmTick()
 check(not playing, "a caller buried in a face-up pile does not count")
 
--- Several callers at once: the first in CZM.priority wins, peeled off in order.
-data.White.playmat.objects = {}
-local order = {}
-for _, track in ipairs(CZM.priority) do
-  order[#order + 1] = track
-  table.insert(data.White.playmat.objects, card("Creature", CZM.cards[track][1]))
+-- Several callers at once: the first in CZM.priority wins. Mid-turn, each caller
+-- that outranks everything heard so far plays; losing the top one plays nothing.
+data.White.playmat.objects = {}; nextTurn()
+for i = #CZM.priority, 1, -1 do
+  local track = CZM.priority[i]
+  table.insert(data.White.playmat.objects, card("Creature", CZM.cards[track][1])); czmTick()
+  check(playing and CZM.track == track and position == 0, "a higher-priority " .. track .. " landing mid-turn plays")
 end
-for _, track in ipairs(order) do
-  czmTick()
-  check(playing and CZM.track == track, "priority chooses " .. track .. " before the remaining callers")
-  table.remove(data.White.playmat.objects, 1)
-end
-czmTick(); check(not playing, "no callers left pauses playback")
+local allLoads = loads
+table.remove(data.White.playmat.objects); czmTick()
+check(CZM.track == CZM.priority[1] and loads == allLoads, "losing the top caller does not play a lower one that turn")
+table.insert(data.White.playmat.objects, card("Creature", CZM.cards[CZM.priority[1]][1])); nextTurn()
+check(playing and CZM.track == CZM.priority[1], "with every caller out, a new turn plays the first in priority")
+data.White.playmat.objects = {}; nextTurn()
 
 -- A higher-priority caller can replace a loading track. Old callbacks never play.
 MusicPlayer.loaded = false
@@ -331,7 +350,7 @@ CZT.audioStatus = "untouched"
 onChat("turn sound test", Player.Red)
 check(loads == beforeClip and CZT.audioStatus == "untouched", "sound off silences the turn clips too")
 czmToggleSound({by = "Red"})
-check(not CZM.disabled and playing and shown[#shown] == true, "switching back on resumes the music")
+check(not CZM.disabled and shown[#shown] == true, "switching back on shows sound on")
 onChat("sound off", Player.Red)
 check(CZM.disabled and shown[#shown] == false, "sound off in chat moves the switch too")
 onChat("sound on", Player.Red)

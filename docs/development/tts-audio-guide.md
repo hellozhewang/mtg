@@ -5,8 +5,8 @@ Audio source assets remain in `tts/sounds/`; this guide lives in `docs/developme
 ## FF14 soundtrack (named cards, since v65)
 
 The original `ff14_theme.wav` (Prelude / Discoveries) loops until cannon/start.
-After that, a battle song plays during a turn only while the **active player** has
-one of its cards **face up on their battlefield** (attached cards count; the top card
+After that, a battle song's **10-second chorus** plays once per turn when the
+**active player** has one of its cards **face up on their battlefield** (attached cards count; the top card
 of a face-up pile counts; library, graveyard, exile, commander columns and face-down
 cards never do). If several are out, the first in this list wins:
 
@@ -47,10 +47,31 @@ Final Fantasy XIV.mp3*, converted with `afconvert -f WAVE -d LEI16@22050 -c 1` t
 same mono PCM16 22050 Hz format as the others (v48's MP3s misplayed in TTS):
 284.19 s, -14.3 LUFS, -1.5 dBFS peak.
 
-A retained song pauses/resumes between eligible turns. Switching to another song
-restarts it: MusicPlayer exposes no timestamp/seek API for separate playheads.
-Custom turn/slow-turn voices are skipped while any battle song is loaded, including
-while paused. Native beeps/text remain. The **Sound** switch below each Cactuar
+### Choruses (since v77)
+
+Battle songs play as 10-second choruses, not whole songs. At the start of a turn the
+top caller's chorus plays once; mid-turn, a caller that outranks every chorus heard
+that turn plays its own (a lower one, or the same one returning, waits for the next
+turn). A caller that leaves while its chorus loads was never heard, so it plays if it
+returns. A new turn cuts off a chorus still playing; nothing loops. Custom turn and
+slow-turn clips wait while a chorus loads or plays. Native beeps/text remain.
+
+The full recordings are in `tts/sounds/full/` (not published). The clips in
+`tts/sounds/` keep each song's file name, so `CZM` is unchanged:
+
+    python3 scripts/tabletop/make_choruses.py --analyze   # find starts, then cut
+    python3 scripts/tabletop/make_choruses.py             # re-cut from choruses.json
+
+`--analyze` runs `scripts/tabletop/chorus.swift` (AVFoundation + Accelerate): every
+0.25 s a 12-bin chroma and loudness; a 10 s window's score is how strongly the song
+repeats it (its two best matches on the chroma self-similarity diagonals) plus how
+loud it is, both z-scored; the first/last 10 s are excluded and the start is snapped
+to the biggest loudness jump within a second. Starts are in
+`tts/sounds/full/choruses.json` with the runners-up in `others`. To move one by ear,
+set its `start` and `"picked": "owner"`; `--analyze` then keeps it. Clips fade in
+0.05 s and out 1 s, in the source format.
+
+The **Sound** switch below each Cactuar
 tile (or chat `sound off` / `sound on`, same as `music off` / `music on`) turns every
 Cactuar sound off for the whole table: soundtrack, turn-change and slow-turn clips.
 It is saved with the game. `announcer off` mutes only the turn clips. Each load replaces the playlist with one entry;

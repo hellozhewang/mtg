@@ -1,7 +1,9 @@
--- One shared FF14 soundtrack. The prelude loops until the cannon fires; after
--- that a battle song plays during a turn only while the ACTIVE player has one of
--- its cards face up on their battlefield. Pause/resume the loaded song between
--- eligible turns; switching songs restarts them (MusicPlayer exposes no seek API).
+-- One shared FF14 soundtrack. The prelude loops until the cannon fires. After that,
+-- each song is a 10-second chorus (scripts/tabletop/make_choruses.py cuts them) that
+-- plays ONCE per turn when the ACTIVE player has one of its cards face up on their
+-- battlefield: at the start of the turn, or when the card lands. A higher-priority
+-- caller arriving later plays its own once; a lower one, or the same one again,
+-- waits for the next turn. Nothing loops. A new turn cuts off a chorus still playing.
 --
 -- The Sound switches beside the Cactuar tiles (and "music off" / "music on" in chat)
 -- turn every Cactuar sound off for the whole table: this soundtrack and the turn
@@ -52,6 +54,7 @@ CZM = {
   -- Name fragments that also call a song: any card with "Chocobo" in its name.
   fragments = {chocobo = {"chocobo"}},
   status = "idle", serial = 0, switches = {},
+  chorusSeconds = 10, turnSerial = 0,
   cannonFired = false, disabled = false, ready = false,
 }
 
@@ -147,9 +150,16 @@ function czmSavedState()
   return {cannonFired = CZM.cannonFired == true, disabled = CZM.disabled == true}
 end
 
+-- A chorus is heard until it ends; MusicPlayer has no end event, so time it.
+local function czmSounding()
+  return CZM.status == "playing" and os.time() < (CZM.endsAt or 0)
+end
+
 function czmBlocksVoice()
-  -- Keep the loaded battle song even while paused so voices cannot lose its position.
-  return CZM.track ~= nil and (CZM.track ~= "theme" or not CZM.cannonFired)
+  -- Turn clips wait for the prelude (before the cannon) and for a chorus that is
+  -- loading or still playing; they share the one MusicPlayer.
+  if CZM.track == "theme" then return not CZM.cannonFired end
+  return CZM.track ~= nil and (CZM.status == "loading" or czmSounding())
 end
 
 local function czmRestore()
@@ -214,27 +224,55 @@ local function czmLoad(track)
   if not ok then state.status, state.error = "error", tostring(err); print("Cactuar music: " .. state.error) end
 end
 
+local function czmPlay(loop)
+  if CZM.status == "loading" or CZM.status == "playing" or CZM.status == "error" then return end
+  MusicPlayer.repeat_track = loop
+  local ok, result = pcall(MusicPlayer.play)
+  CZM.status = ok and result ~= false and "playing" or "error"
+  CZM.endsAt = not loop and os.time() + CZM.chorusSeconds + 1 or nil
+  if not ok then CZM.error = tostring(result); print("Cactuar music: " .. CZM.error) end
+end
+
+-- Cut a chorus short (its turn ended): drop one still loading, pause one playing.
+-- Never pauses anything else, such as a turn clip playing after a chorus ended.
+local function czmCut()
+  if CZM.track == "theme" then return end
+  if CZM.status == "loading" then
+    CZM.serial, CZM.track, CZM.status = CZM.serial + 1, nil, "idle"
+  elseif czmSounding() then
+    pcall(MusicPlayer.pause)
+    CZM.status = "paused"
+  end
+end
+
 function czmTick()
   if not CZM.ready and not czmRestore() then return end
-  -- Music off stops the battlefield scan too, not just playback.
+  -- Sound off stops the battlefield scan too, not just playback.
   if CZM.disabled then czmPause(); return end
   CZM.battlefields = czmCountBattlefield()
-  local active = Turns.enable and Turns.turn_color or nil
-  local wanted = not CZM.cannonFired and "theme" or nil
-  if CZM.cannonFired and active then
-    for _, track in ipairs(CZM.priority) do
-      if ((CZM.battlefields[active] or {})[track] or 0) > 0 then
-        wanted = track; break
-      end
-    end
+  if not CZM.cannonFired then
+    if CZM.track ~= "theme" then czmLoad("theme") else czmPlay(true) end
+    return
   end
-  if wanted and wanted ~= CZM.track then czmLoad(wanted); return end
-  if not wanted then czmPause(); return end
-  if CZM.status ~= "loading" and CZM.status ~= "playing" and CZM.status ~= "error" then
-    MusicPlayer.repeat_track = true
-    local ok, result = pcall(MusicPlayer.play)
-    CZM.status = ok and result ~= false and "playing" or "error"
-    if not ok then CZM.error = tostring(result); print("Cactuar music: " .. CZM.error) end
+  local turn = CZM.turnSerial
+  local active = Turns.enable and Turns.turn_color or nil
+  if CZM.chorusTurn ~= turn or not active then czmCut() end
+  if not active then return end
+  local wanted, rank = nil, nil
+  for i, track in ipairs(CZM.priority) do
+    if ((CZM.battlefields[active] or {})[track] or 0) > 0 then wanted, rank = track, i; break end
+  end
+  -- Heard this turn: the best rank played so far. Only a better one plays now.
+  local heard = CZM.chorusTurn == turn and CZM.heardRank or nil
+  if wanted and (not heard or rank < heard) then
+    CZM.chorusTurn, CZM.heardRank = turn, rank
+    czmLoad(wanted)
+    return
+  end
+  -- A chorus that finished loading plays once, if its caller is still out; if
+  -- not, it was never heard, and the caller coming back still gets it.
+  if CZM.status == "ready" and CZM.chorusTurn == turn and CZM.track ~= "theme" then
+    if CZM.track == wanted then czmPlay(false) else CZM.status, CZM.heardRank = "idle", nil end
   end
 end
 
@@ -309,7 +347,8 @@ CZMB = CZMB or {turn = onPlayerTurn, enter = onObjectEnterScriptingZone,
   leave = onObjectLeaveScriptingZone, destroy = onObjectDestroy,
   state = onObjectStateChange, chat = onChat}
 function onPlayerTurn(player, previous)
-  czmTick() -- claim/pause soundtrack before the turn announcer can replace it
+  CZM.turnSerial = CZM.turnSerial + 1
+  czmTick() -- claim the soundtrack before the turn announcer can replace it
   if CZMB.turn then return CZMB.turn(player, previous) end
 end
 function onObjectEnterScriptingZone(zone, obj)
@@ -338,9 +377,10 @@ end
 
 if czmPrevious then
   for _, key in ipairs({"ready", "cannonFired", "disabled", "settingChanged", "track", "url", "status",
-      "switches"}) do
+      "switches", "turnSerial", "heardRank", "chorusTurn", "endsAt"}) do
     CZM[key] = czmPrevious[key]
   end
+  CZM.turnSerial = CZM.turnSerial or 0                       -- from before choruses
   if CZM.status == "loading" then CZM.track, CZM.status = nil, "idle" end
   if CZM.track and CZM.url ~= czmURL(CZM.track) then CZM.track, CZM.status = nil, "idle" end
 end

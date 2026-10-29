@@ -857,7 +857,7 @@ def send_sleever(message: str, username: str, channel: str | int | None = DEFAUL
         return with_usage(BUSY_REPLY)
     conv = f"{chan}-{owner}-sleever"
     try:
-        folder = sleever.prepare(owner)
+        folder = sleever.prepare(owner, fresh=bool(refs))
         notes = sleever.fetch_refs(refs or [], folder / "refs")
         for note in notes:
             log().info("SLEEVER [%s] %s", chan, note)

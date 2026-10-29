@@ -79,7 +79,8 @@ appear in a reply. Only the owner chooses the model.
 
 ## Making the picture
 
-1. **Use your built-in image generation tool.** Make one finished picture per request.
+1. **When you generate (see step 2), use your built-in image generation tool.** Make
+   one finished picture per request.
    Never use the ChatGPT website, browser automation, or a paid image API. For Codex,
    use the built-in `image_gen` tool and copy its selected output into this folder. If
    image generation fails due to a quota limit or capacity limit (especially on
@@ -87,11 +88,21 @@ appear in a reply. Only the owner chooses the model.
    `gemini-3.1-flash-image` has been exhausted and give the reset time if known.
    If you have no way to make pictures at all, reply `I can't make pictures right now.`
    and stop.
-2. **References.** Any pictures the user attached are in `refs/` (ref-1.png,
-   ref-2.jpg, ...). Look at every one and use them as references for character,
-   style and colours. If the message has links, you may download them into
-   `refs/` or look the subject up on the web. Make an original illustration in
-   that spirit: do not copy official artwork, or a reference, as it is.
+2. **An attached picture is the sleeve.** Pictures the user attached are in `refs/`
+   (ref-1.png, ref-2.jpg, ...). By default, use the picture itself, unchanged:
+   do not generate anything, just copy it into place, e.g.
+   `cp refs/ref-1.png sleeve.png` (keep its extension; with several, use the one
+   the user means, else the first). The bot crops it around the centre and sizes
+   it, so a picture that is not portrait or has a border is still used as it is.
+   The owner rule in step 4 still applies to it.
+   **Only generate** when the user says the picture is a reference or inspiration,
+   or asks for changes to it ("in this style", "make her a wizard", "add a
+   background", "darker"). Then look at every picture and make one in that spirit.
+   Pictures from the user's previous message, if any, are in `refs/earlier/`. Use
+   them only when the user refers back to them ("the picture I attached"); then the
+   same rule applies. With no picture, generate as usual. If the message has links, you may
+   download them into `refs/` or look the subject up on the web; a linked picture
+   follows the same rule as an attached one.
 3. **What makes a good sleeve.** It is the back of every card in the deck, seen
    small and many times over:
    - one strong motif, centred, that reads at thumbnail size; not busy;
@@ -139,8 +150,11 @@ def folder(owner: str) -> Path:
     return STAGING / owner
 
 
-def prepare(owner: str) -> Path:
-    """The user's staging folder with fresh instructions (0444) and an empty refs/."""
+def prepare(owner: str, fresh: bool = True) -> Path:
+    """The user's staging folder with fresh instructions (0444) and refs/ ready for
+    this message's pictures. `fresh` (the message has pictures) empties refs/;
+    otherwise the last message's pictures move to refs/earlier/, where the model
+    uses them only when the user refers back to them."""
     f = folder(owner)
     f.mkdir(parents=True, exist_ok=True)
     agents = f / "AGENTS.md"
@@ -151,8 +165,17 @@ def prepare(owner: str) -> Path:
         agents.write_text(text, encoding="utf-8")
     agents.chmod(0o444)
     refs = f / "refs"
-    shutil.rmtree(refs, ignore_errors=True)          # only this message's references
-    refs.mkdir()
+    if fresh:
+        shutil.rmtree(refs, ignore_errors=True)
+    else:
+        current = [p for p in refs.glob("ref-*") if p.is_file()] if refs.is_dir() else []
+        if current:
+            earlier = refs / "earlier"
+            shutil.rmtree(earlier, ignore_errors=True)
+            earlier.mkdir(parents=True)
+            for p in current:
+                p.rename(earlier / p.name)
+    refs.mkdir(exist_ok=True)
     return f
 
 

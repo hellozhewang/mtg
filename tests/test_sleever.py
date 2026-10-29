@@ -158,6 +158,18 @@ class RefTests(Isolated):
         self.assertEqual(sleever._size(dest / "ref-2.jpg"), (6, 6))
 
 
+    def test_a_follow_up_without_pictures_keeps_the_last_ones_as_earlier(self):
+        f = sleever.prepare("zz")
+        (f / "refs" / "ref-1.png").write_bytes(b"pic")
+        f = sleever.prepare("zz", fresh=False)                  # "use the picture I attached"
+        self.assertEqual([p.name for p in (f / "refs").iterdir()], ["earlier"])
+        self.assertEqual((f / "refs" / "earlier" / "ref-1.png").read_bytes(), b"pic")
+        sleever.prepare("zz", fresh=False)                      # still there a message later
+        self.assertTrue((f / "refs" / "earlier" / "ref-1.png").exists())
+        sleever.prepare("zz")                                   # new pictures replace them
+        self.assertEqual(list((f / "refs").iterdir()), [])
+
+
 class BotTests(unittest.TestCase):
     def test_a_harness_without_pictures_says_so_without_a_turn(self):
         import bot

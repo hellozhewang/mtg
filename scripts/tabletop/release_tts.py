@@ -127,8 +127,9 @@ def check_published(skip: bool) -> str:
     git("fetch", "-q", "origin")
     if subprocess.run(["git", "-C", str(REPO), "merge-base", "--is-ancestor", "HEAD", "origin/main"]).returncode:
         fail("HEAD isn't pushed to origin/main yet. Push first: the table reads Pages.")
+    # Only the clips published beside the page: tts/sounds/full/ holds source recordings.
     wanted = {name: blob for name, blob in head_files(["tts/sounds", TILE]).items()
-              if name == TILE or name.endswith((".wav", ".mp3", ".ogg"))}
+              if name == TILE or name.endswith((".wav", ".mp3", ".ogg")) and name.count("/") == 2}
     for name, blob in sorted(wanted.items()):
         url = PAGES + name.removeprefix("tts/") + f"?release={hashlib.sha256(blob).hexdigest()[:8]}"
         try:

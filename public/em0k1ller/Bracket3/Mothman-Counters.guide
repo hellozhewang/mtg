@@ -1,0 +1,75 @@
+The Wise Mothman spreads rad counters across every player at the table, turning each precombat main phase into a flurry of mill and life loss. The most common mistake is forgetting that Mothman's counter trigger fires whenever nonland cards are milled from ANY library, meaning you get triggers on opponents' upkeeps, combat steps, and your own turns alike. Distribute those counters to make Mothman an evasive lethal commander, go wide with mutant tokens, or assemble clean mill combos from turn 6 onward.
+Bracket 3: Game Changers are capped at three (Cyclonic Rift, Demonic Tutor, Rhystic Study). No mass land denial. Two-card combos are included as decisive finishes but must not be fired before turn 6 under table expectations.
+
+# The radiation and mill engine
+The engine runs on giving the entire table rad counters, causing each player to mill at their precombat main phase and lose life for nonland cards while feeding your counter triggers.
+The Wise Mothman :: enters and attacks giving each player a rad counter; distributes +1/+1 counters to up to X targets whenever X nonland cards are milled
+Mesmeric Orb :: forces every player to mill a card whenever their permanents untap; generates a constant stream of individual mill triggers across all turn cycles
+Ruin Crab :: mills each opponent for three whenever a land enters your battlefield; cracking a fetchland mills six cards per opponent
+Altar of the Brood :: triggers on every permanent entry including land drops and creature tokens, repeatedly milling each opponent
+Psychic Corrosion :: turns all of your card draw into repeatable milling across all three opponents
+Screeching Scorchbeast :: attacks to radiate the table for two counters each; creates 2/2 Zombie Mutant tokens whenever nonland cards are milled
+Mirelurk Queen :: gives target player two rad counters on entry; spawns 2/2 Mutant tokens whenever nonland cards are milled
+Tato Farmer :: gains you two rad counters on landfall and taps to ramp any land from any graveyard to the battlefield
+Glowing One :: attacks to grant four rad counters with deathtouch; gains you life equal to nonland cards milled anywhere
+Infesting Radroach :: an evasive flyer that adds rad counters on combat hit and recurs itself from your graveyard whenever nonland cards are milled
+Vexing Radgull :: early evasive flyer that seeds rad counters and gains counters whenever you proliferate
+Feral Ghoul :: grows when your creatures die and radiates each opponent for its entire counter count upon its own death
+Bloatfly Swarm :: enters with five counters, prevents combat damage by shedding counters, and radiates target player for each counter when it dies
+Mariposa Military Base :: utility land that seeds two rad counters on entry and converts spare late-game mana into extra card draw
+
+# Scaling counters and proliferate
+Mothman's triggers spread counters broadly. These amplifiers multiply those counters into massive beatdown threats and card advantage.
+Branching Evolution :: doubles the number of +1/+1 counters placed on your creatures, accelerating Mothman into one-shot commander damage range
+Corpsejack Menace :: redundant counter doubling on a solid 4/4 body to rapidly overwhelm the table
+Hardened Scales :: adds an extra +1/+1 counter to each creature receiving counters, providing huge value for just one green mana
+Winding Constrictor :: adds an additional counter to permanents and players, accelerating rad counter stacks as well as creature power
+Kami of Whispered Hopes :: adds an additional counter whenever counters are placed and taps for mana equal to its power for massive explosive turns
+Evolution Sage :: proliferates on every land drop, increasing rad counters on opponents and +1/+1 counters across your board
+Evolution Witness :: adapts to trigger itself and recurs any permanent card from your graveyard to hand whenever counters are placed on it
+Danny Pink :: turns your distributed +1/+1 counters into card draw up to once per creature each turn
+Agent Frank Horrigan :: indestructible attacker that proliferates twice whenever it enters or attacks
+Radstorm :: storm instant that proliferates multiple times at instant speed to blow out the table with rads and counters
+Inexorable Tide :: proliferates whenever you cast any spell, steadily cascading counters out of control
+
+# Graveyard recursion and card draw
+Rhystic Study :: premier card engine that taxes opposing spells and keeps your hand full of interaction
+Mystic Remora :: early tax engine that punishes artifact ramp and spell-heavy openers
+Struggle for Project Purity :: Brotherhood draws three cards each upkeep; Enclave punishes anyone attacking you with double rad counters
+The Master, Transcendent :: enters radiating a player and taps to steal any creature milled from any library that turn as a 3/3 mutant
+Muldrotha, the Gravetide :: casts permanents straight from your milled graveyard each turn, turning self-mill into pure card advantage
+Reanimate :: reanimates the best creature milled from any player's graveyard for a single black mana
+Deathrite Shaman :: utilizes spent cards in graveyards for mana acceleration, incidental life gain, and direct drain
+
+# Game-ending combos
+Under Bracket 3 table expectations, do not fire these combos before turn 6. Use them to cleanly finish long games once the table has developed.
+Duskmantle Guildmage + Mindcrank :: activate Guildmage's first ability for {1}{U}{B}; any card entering an opponent's graveyard deals 1 damage, Mindcrank mills a card, looping infinitely until life totals hit zero
+Bloodchief Ascension + Mindcrank :: with three quest counters on Ascension, any card entering an opponent's graveyard drains 2 life, Mindcrank mills two cards, creating an infinite lethal drain loop
+Bruvac the Grandiloquent + Maddening Cacophony :: kicking Cacophony for {4}{U}{U} forces opponents to mill half their libraries; Bruvac doubles the mill to their entire library, decking all opponents simultaneously
+Syr Konrad, the Grim + Mindcrank :: creature cards milled or dying deal 1 damage to each opponent, which triggers Mindcrank to mill more cards, generating a self-perpetuating mill chain
+Demonic Tutor -> Mindcrank :: fetches the missing artifact piece for either Duskmantle Guildmage or Bloodchief Ascension to close the game
+Demonic Tutor -> Maddening Cacophony :: finds the sorcery half of the Bruvac library wipe once six mana is available
+Demonic Tutor -> Cyclonic Rift :: tutors your one-sided board wipe to clear opposing blockers and swing for lethal commander damage
+
+# Interaction and board protection
+Cyclonic Rift :: asymmetric board wipe that overloads for {6}{U} to bounce all opposing permanents, opening up an immediate lethal attack
+Toxic Deluge :: efficient board wipe that clears indestructible boards and resets runaway threats for minimal mana
+Nuclear Fallout :: scales -X/-X based on mana invested while blanketing the entire table with rad counters to fuel Mothman
+Deadly Rollick :: free creature exile while your commander is on the battlefield to answer must-kill threats
+Assassin's Trophy :: universal permanent removal that cleanly answers problematic lands, enchantments, or artifacts
+Atomize :: destroys any nonland permanent and immediately proliferates rad and creature counters
+Mana Drain :: hard counter that converts countered opposing spells into colorless mana for your next main phase
+Counterspell :: clean two-mana answer to opposing sweepers or game-winning plays
+Swan Song :: one-mana defense against game-ending sorceries, instants, or enchantments
+Stubborn Denial :: active ferocious turns this into a one-mana hard counter for noncreature spells once Mothman or another mutant hits four power
+An Offer You Can't Refuse :: reliable one-mana counter against noncreature spells
+Heroic Intervention :: grants your board hexproof and indestructible at instant speed against sweepers and removal
+Mutational Advantage :: grants permanents with counters hexproof and indestructible, prevents damage, and proliferates
+Ripples of Potential :: proliferates and phases out your permanents with counters to protect them through exile sweepers like Farewell
+Swiftfoot Boots :: gives your commander hexproof and haste to attack and distribute rad counters immediately
+
+# Opening hands and sequencing
+Prioritize hands with two to three lands, early ramp (Sol Ring, a signet, Birds of Paradise, or Delighted Halfling), and an early mill or counter engine like Ruin Crab, Hardened Scales, or Mesmeric Orb.
+Cast The Wise Mothman on turn 3 or 4 to begin radiating the table. Put the first few +1/+1 counters onto Mothman to quickly reach lethal commander damage while protecting him with Stubborn Denial, Ripples of Potential, or Mutational Advantage.
+If opponents deploy heavy creature boards, rely on Glowing One and Nuclear Fallout to stabilize while ticking up rad counters.
+Once turn 6 arrives, tutor for or deploy Mindcrank alongside Duskmantle Guildmage or Bloodchief Ascension, or kick Maddening Cacophony with Bruvac, to close out the game cleanly.

@@ -48,6 +48,7 @@
   "em0k1ller/Ghidorah-Mutate": ["aggro", "value"],
   "em0k1ller/Godzilla-Stompy": ["aggro", "combo", "value"],
   "em0k1ller/GrandArbiter-Prison": ["control"],
+  "em0k1ller/Mothman-Counters": ["value", "aggro", "graveyard"],
   "em0k1ller/NivMizzet-Antispells": ["spells", "control"],
   "em0k1ller/Pantlaza-Discover": ["value"],
   "em0k1ller/RuricThar-Punisher": ["spells", "aggro"],

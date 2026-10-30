@@ -9,6 +9,7 @@
   "digitalstealth/CaptainSisay-Prison": ["control", "combo", "value"],
   "digitalstealth/CecilyElmar-Spells": ["spells", "value"],
   "digitalstealth/Davros-Daleks": ["gowide", "spells", "control"],
+  "digitalstealth/Dihada-Legends": ["value", "graveyard", "combo"],
   "digitalstealth/DoctorDoom-Discard": ["graveyard", "spells", "combo"],
   "digitalstealth/DoctorDoom-Reanimator": ["graveyard", "aggro"],
   "digitalstealth/Esika-Superfriends": ["value", "control"],

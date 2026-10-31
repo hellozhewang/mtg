@@ -1,0 +1,81 @@
+The single most important rule to understand is that you still own and control all Equipment and Auras attached to Alexios even when opponents take control of him. When an opponent attacks another opponent with Alexios and connects, triggered abilities on your equipment—such as drawing two cards from Mask of Memory, untapping all your lands from Sword of Feast and Famine, or harvesting stockpiles of Treasures from The Reaver Cleaver—trigger for YOU, not the attacking player. Crucially, commander damage is tied to the physical card: all 21 lethal points can be dealt across opponents' turns, turning Alexios into a 4-attacks-per-round freight train that forces opponents to eliminate each other while fueling your hand and mana pool.
+
+# The engine and rotation
+Alexios, Deimos of Kosmos :: passes around the table on each player's upkeep, gains a +1/+1 counter and haste, cannot attack its owner, and cannot be sacrificed; with built-in trample, he quickly snowballs into a lethal threat that attacks every single combat
+Homeward Path :: instant-speed emergency lever; tap this land to reclaim control of Alexios immediately if an opponent tries to tamper with him or make an unauthorized attack
+
+# Equipment: damage scaling and resource theft
+Commander's Plate :: premier equipment for mono-red; grants +3/+3 and protection from white, blue, black, and green, making Alexios immune to nearly all targeted removal and completely unblockable by four of the five colors
+Mask of Memory :: triggers on combat damage to draw two cards and discard one for YOU on your turn and on each opponent's combat step, drawing up to eight cards per turn cycle
+The Reaver Cleaver :: creates Treasure tokens for you equal to combat damage dealt; as Alexios grows to 6, 8, or 10 power, every swing banks an overwhelming fortune in Treasures
+Sword of Feast and Famine :: grants +2/+2 and protection from black and green; when Alexios hits an opponent, that player discards a card and YOU untap all lands you control on their turn
+Sword of Wealth and Power :: grants +2/+2 and protection from instants and sorceries, shielding Alexios from removal while granting you Treasures and free spell copies
+Sword of Fire and Ice :: provides protection from blue and red, shocks any target for 2, and draws you an additional card on every connection
+Infiltration Lens :: forces opponents into a miserable dilemma: take massive trample commander damage, or block and draw you two fresh cards
+Two-Handed Axe :: doubles Alexios's power whenever he attacks; on an opponent's turn, a 6/6 Alexios instantly attacks as a 12/6 trampler, threatening lethal commander damage out of nowhere
+Tenza, Godo's Maul :: equips to legendary creatures for {1}; because Alexios is red and legendary, it grants +3/+3 and trample, pushing him past early blockers immediately
+Brotherhood Regalia :: equips to legendary creatures for {1}, making Alexios completely unblockable and granting Ward {2}
+Mithril Coat :: flashes in at instant speed to grant indestructible and auto-attach to Alexios in response to opposing board wipes or destroy spells
+Hammer of Nazahn :: provides indestructible and +2/+0, while automatically attaching any future equipment you cast directly onto Alexios for free
+Umezawa's Jitte :: accumulates charge counters across four combats per turn cycle, giving you instant-speed creature removal, power pumps, or life gain on demand
+Beamtown Beatstick :: gives menace to bypass solo blockers and creates a Treasure token for you whenever Alexios deals combat damage
+Swiftfoot Boots :: gives haste and hexproof, shutting down targeted exile and bounce spells from opponents
+Lavaspur Boots :: cheap one-mana haste enabler that provides Ward {1} and +1/+0
+
+# Goading and combat acceleration
+Shiny Impetus :: goads the creature, grants +2/+2, and creates a Treasure token for you whenever enchanted creature attacks
+Agitator Ant :: puts two +1/+1 counters on creatures on each player's end step and goads them, supercharging Alexios and forcing opposing utility creatures into combat
+Bothersome Quasit :: whenever you cast a noncreature spell, goad target creature; prevents goaded creatures from blocking Alexios
+Jeska, Thrice Reborn :: her zero-loyalty ability triples combat damage dealt by target creature on your turn, enabling Alexios to one-shot an opponent from full health
+Professional Face-Breaker :: converts combat connections into Treasures and lets you sacrifice Treasures to impulse-draw through your deck
+
+# The turn-6 infinite finishes
+Dualcaster Mage + Twinflame :: cast Twinflame targeting any creature you control, hold priority, and flash in Dualcaster Mage; Dualcaster copies Twinflame targeting itself, creating infinite hasty Dualcaster Mage tokens to swarm the table
+Dualcaster Mage + Molten Duplication :: identical loop; Molten Duplication copies an artifact or creature, Dualcaster copies Molten Duplication on the stack, generating infinite hasty token copies
+Aggravated Assault + Sword of Feast and Famine :: on your turn, attack with equipped Alexios; combat damage untaps all your lands, letting you pay {3}{R}{R} to activate Aggravated Assault for infinite combat phases and untaps
+Aggravated Assault + The Reaver Cleaver :: dealing 5 or more combat damage produces 5+ Treasures, paying {3}{R}{R} to activate Aggravated Assault for infinite combats and infinite Treasures
+Under Bracket 3 rules, these compact two-card combos are reserved for turn 6 or later. Spend turns 1 through 5 using Alexios and stax pieces to dismantle life totals, then execute the combo if opponents manage to stabilize.
+
+# Taxes and table lockdown
+Trinisphere :: forces every spell with mana value under 3 to cost at least {3}, paralyzing opposing cheap interaction and cantrips while Alexios rampages
+Defense Grid :: taxes spells cast on other players' turns by {3}, shielding Alexios during combat and locking out opposing counterspells
+Cursed Totem :: completely shuts down activated abilities of all creatures without affecting Alexios or your equipment, neutering mana dorks and combo commanders
+Damping Sphere :: stops storm decks in their tracks and restricts lands that tap for multiple mana to a single colorless mana
+Vexing Bauble :: counters all spells cast with zero mana, shutting off opposing free countermagic like Fierce Guardianship and Force of Will
+Roiling Vortex :: prevents opponents from gaining life to escape Alexios's clock and deals 5 damage to anyone attempting to cheat mana costs
+Stranglehold :: completely shuts down opponent tutors and extra-turn spells
+Harsh Mentor :: punishes opponents for cracking fetchlands, using Treasures, or activating artifacts and lands with two damage per trigger
+
+# Tutors and recursion lines
+Imperial Recruiter -> Dualcaster Mage :: tutors the creature half of your infinite copy combo, or finds Ragavan or Goblin Engineer early
+Goblin Engineer -> Commander's Plate :: puts Commander's Plate into your graveyard to recur directly onto the battlefield with a spare Treasure
+Goblin Welder -> The One Ring :: swaps a cheap artifact or used rock for The One Ring or a game-winning equipment from your graveyard
+Reckless Handling -> Sword of Feast and Famine :: searches your library for any equipment or stax piece to assemble your engines
+Urza's Saga -> Commander's Plate :: chapter III tutors any 0 or 1-mana artifact directly into play, finding Commander's Plate, Sol Ring, Beamtown Beatstick, or Vexing Bauble
+Inventors' Fair -> The One Ring :: sacrifices to tutor The One Ring for massive card draw or finds Hammer of Nazahn to cheat equip costs
+Pinnacle Monk -> Twinflame :: recurs a countered or discarded Twinflame or Jeska's Will back to hand
+
+# Protection and interaction
+Deflecting Swat :: free redirection spell when you control your commander on your turn, or cast for three mana on opponents' turns to deflect removal away from Alexios
+Bolt Bend :: costs a single red mana when you control a 4-power creature, redirecting targeted removal onto opposing threats
+Return the Favor :: flexible modal spell that redirects spells and abilities or copies big game-ending spells
+Untimely Malfunction :: versatile answer that destroys an artifact, redirects a spell, or prevents two creatures from blocking Alexios
+Pyroblast + Red Elemental Blast :: one-mana answers to blue counterspells, bounce effects, and Cyclonic Rift
+Tibalt's Trickery :: hard counter in mono-red to stop opposing board wipes or combo spells
+Chaos Warp + Abrade :: clean spot removal for opposing stax pieces, enchantments, or troublesome blockers
+Blasphemous Act :: one-mana emergency board reset when the table gets cluttered with blockers
+
+# Fast mana and card advantage
+The One Ring :: tap to draw cards and gain protection from everything for a full turn, keeping your hand full of protection and combo pieces
+Jeska's Will :: explosive burst of red mana to cast Alexios and multiple equipment on turn 2 or 3
+Underworld Breach :: escapes rituals, equipment, and combo pieces from your graveyard to rebuild instantly or execute the win
+Wheel of Fortune :: refuels seven fresh cards while stripping opponents of sculpted hands and answers
+Tome of Legends :: gets page counters every time Alexios attacks (four times a round!), drawing an extra card for one mana each turn
+Treasonous Ogre :: pays life for red mana to deploy Alexios and equipment on turns 1 or 2
+Sol Ring + Arcane Signet + Ruby Medallion + Mind Stone + Thought Vessel + Liquimetal Torque :: reliable mana acceleration to curve smoothly into Alexios
+Lotus Petal + Simian Spirit Guide + Rite of Flame + Seething Song :: fast ritual mana for explosive early commander deployments
+
+# Opening hand and sequencing
+Prioritize hands with two or three lands and fast mana (Sol Ring, Lotus Petal, Simian Spirit Guide, Rite of Flame, or rituals) to deploy Alexios on turn 1 or turn 2. Having at least one piece of equipment (Commander's Plate, Mask of Memory, Beamtown Beatstick, or Two-Handed Axe) ready to attach on turn 2 or 3 ensures Alexios begins snowballing commander damage immediately.
+Deploy Alexios early and pass him around the table. Let opponents take the wheel and hit each other for 4, 5, 6, and 7 commander damage while your equipment draws cards and generates Treasures for you.
+Drop stax pieces (Trinisphere, Defense Grid, Cursed Totem) to prevent opponents from executing their own gameplans. If the game reaches turn 6 and opponents try to hide behind blockers, resolve Dualcaster Mage with Twinflame or Aggravated Assault with Sword of Feast and Famine to close out the table.

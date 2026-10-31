@@ -77,6 +77,7 @@
   "kupo7/Tergrid-Theft": ["control", "graveyard", "combo"],
   "kupo7/Ultimecia-Combo": ["combo", "graveyard", "finalfantasy"],
   "kupo7/Yuna-Counters": ["value", "combo", "aggro", "finalfantasy"],
+  "ratdos/Alexios-Voltron": ["aggro", "control", "combo"],
   "ratdos/Aloy-Artifacts": ["aggro", "value", "combo"],
   "ratdos/Beamtown-Gifts": ["graveyard", "control", "combo"],
   "ratdos/Bello-Attacks": ["aggro", "combo", "value"],

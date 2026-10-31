@@ -1,0 +1,85 @@
+# The biggest mistake: running damage-replacement effects that turn off Ghyrson Starn
+
+The single most common deckbuilding blunder with Ghyrson Starn is jamming traditional red damage-boosting cards like Torbran, Thane of Red Fell, Solphim, Mayhem Dominus, Mechanized Warfare, or City on Fire. In a casual burn deck, these cards are staples; in a Ghyrson Starn deck, they completely break your engine.
+
+Ghyrson Starn's ability is a triggered ability that specifically triggers "Whenever another source you control deals exactly 1 damage." Cards like Torbran, Solphim, and Mechanized Warfare contain replacement effects (worded "if a source would deal damage... it deals that much damage plus/doubled instead"). Replacement effects modify the damage event as it occurs before triggers are evaluated. If a pinger would deal 1 damage and Torbran adds 2, the damage actually dealt is 3. Because 3 is not "exactly 1," Ghyrson Starn will never trigger. This deck deliberately excludes all damage-replacement modifiers, relying instead on Ghyrson's own trigger to turn every 1-damage event into a 3-damage punch.
+
+# The commander: Three Autostubs and keyword inheritance
+
+Ghyrson Starn, Kelermorph costs {1}{U}{R} and enters as a 3/2 with innate Ward {2}, making him inherently resilient to spot removal. 
+
+His signature ability, Three Autostubs, states: "Whenever another source you control deals exactly 1 damage to a permanent or player, Ghyrson Starn deals 2 damage to that permanent or player."
+
+Critical rules interactions to master:
+* **Ghyrson is the damage source:** Ghyrson himself deals the additional 2 damage. Any combat or static keywords granting deathtouch or lifelink to Ghyrson (from Basilisk Collar or Gorgon's Head) apply directly to that 2 damage. If a 1-damage ping hits an opposing creature, Ghyrson deals 2 deathtouch damage, killing that creature instantly regardless of its toughness. If Ghyrson has lifelink, you gain 2 life for every single trigger.
+* **Combat damage triggers:** Any 1/1 creature you control (such as tokens from Third Path Iconoclast or Young Pyromancer) dealing unblocked combat damage deals exactly 1 damage, prompting Ghyrson to shoot that player for 2 more damage (totaling 3 damage per unblocked 1/1).
+* **Separate instances of damage:** Each 1-damage event triggers Ghyrson independently. A spell like End the Festivities that deals 1 damage to three opponents and five creatures creates eight separate Ghyrson triggers, dealing 2 additional damage to each target.
+
+# The primary engine: 1-mana one-sided board wipes
+
+The deck packs four ultra-efficient 1-mana sweepers: End the Festivities, Blazing Volley, Tectonic Hazard, and Electrickery.
+* On their own with Ghyrson, they deal 3 damage to every opposing creature and 3 damage to each opponent's face for just a single red mana, clearing away mana dorks, utility creatures, and token swarms.
+* When Ghyrson is equipped with Basilisk Collar or Gorgon's Head, these 1-mana spells deal deathtouch damage to every creature you don't control, acting as an asymmetrical, instant- or sorcery-speed Plague Wind for {R}.
+* If Ghyrson is enchanted with Curiosity or Ophidian Eye, hitting three opponents with End the Festivities triggers Ghyrson to deal damage to three players, immediately drawing you three fresh cards.
+
+# The spellslinger pingers: melting the table on cast
+
+Whenever you cast a cheap instant, sorcery, or noncreature spell, the deck's suite of spell-triggered pingers turns every cantrip into table-wide burn:
+* **Coruscation Mage, Kessig Flamebreather, Firebrand Archer, Electrostatic Field, Erebor Flamesmith, and Thermo-Alchemist:** Each of these deals 1 damage to each opponent. Ghyrson immediately follows up by dealing 2 damage to each opponent. A simple 1-mana Ponder, Preordain, Brainstorm, or Opt deals 3 damage to each opponent (9 damage total across the pod).
+* **Coruscation Mage with Offspring:** Paying the {2} offspring cost creates a token copy. Each noncreature spell now triggers two separate 1-damage pings to each opponent, each backed by a Ghyrson trigger, dealing a brutal 6 damage to each opponent (18 total damage to the table) per spell cast.
+* **Thermo-Alchemist and Gelectrode:** Tap to ping, cast an instant or sorcery to untap, and tap again. Thermo-Alchemist alone deals 6 damage to each opponent in a single turn off one spell.
+
+# Turn-by-turn taxes and draw punishment
+
+Opponents cannot simply pass the turn to avoid your spells; the deck punishes their standard game actions:
+* **Razorkin Needlehead:** Whenever an opponent draws a card, Needlehead deals 1 damage to them, which Ghyrson escalates to 3 damage. An opponent drawing for their turn takes 3 damage; opponents casting brainstorms, wheels, or drawing off Rhystic Study suffer game-ending life loss.
+* **Scalding Viper:** Whenever an opponent casts a spell with mana value 3 or less, the Viper deals 1 damage, turning into 3 damage from Ghyrson. Fast mana, cantrips, mana rocks, and cheap commanders cost opponents 3 life apiece.
+* **Roiling Vortex:** Deals 1 damage to each player on their upkeep (Ghyrson adds 2 to opponents, dealing 3 each), prevents all life gain for {R}, and domes any player attempting to cast free spells (such as Force of Will or Fierce Guardianship) for 5 damage.
+
+# Go-wide token aggression and unblockable pressure
+
+Third Path Iconoclast and Young Pyromancer flood the battlefield with 1/1 tokens whenever you cast noncreature or instant/sorcery spells.
+* **Cavalcade of Calamity & Raid Bombardment:** Whenever a 1/1 creature attacks, these enchantments deal 1 damage to the defending player before blockers are declared. Ghyrson triggers on that 1 damage, hitting the player for 2 more (3 damage). If the 1/1 connects unblocked, it deals another 1 damage, triggering Ghyrson again for 2 more. That is 6 damage from a single attacking 1/1 token!
+* **Tetsuko Umezawa, Fugitive:** Grants unblockable to all creatures with power or toughness 1 or less. Your 1/1 tokens and utility pingers slip past blockers uncontested.
+
+# Combos and deterministic loops
+
+1. **Niv-Mizzet, Parun + Curiosity / Ophidian Eye / Tandem Lookout:**
+   * *Prerequisites:* Niv-Mizzet, Parun on the battlefield enchanted with Curiosity or Ophidian Eye (or paired with Tandem Lookout).
+   * *Execution:* Draw a card (via any cantrip, spell, or opponent casting an instant/sorcery). Niv-Mizzet deals 1 damage to an opponent. Curiosity triggers, drawing a card. Niv-Mizzet triggers again.
+   * *Result:* Infinite damage to the table and infinite card draw until all opponents are eliminated. (With Ghyrson out, each loop deals 3 damage instead of 1, ending the game in a third of the iterations). In Bracket 3, do not execute before turn 6.
+
+2. **Goblin Sharpshooter + Deathtouch (Basilisk Collar or Gorgon's Head):**
+   * *Prerequisites:* Goblin Sharpshooter and Ghyrson Starn on the battlefield. Basilisk Collar or Gorgon's Head equipped to Ghyrson (or Sharpshooter).
+   * *Execution:* Tap Goblin Sharpshooter to deal 1 damage to any target creature. Ghyrson triggers, dealing 2 deathtouch damage to that creature. The creature dies, untapping Goblin Sharpshooter.
+   * *Result:* Machine-gun down every creature your opponents control, completely locking opponents out of maintaining any creature board presence.
+
+3. **Storm Finish via Grapeshot:**
+   * *Prerequisites:* High storm count assembled via cheap cantrips, Birgi, God of Storytelling, and Storm-Kiln Artist.
+   * *Execution:* Cast Grapeshot. Each storm copy deals 1 damage to target opponent. Ghyrson triggers on every single copy, dealing an additional 2 damage per copy.
+   * *Result:* A modest storm count of 10 deals 30 damage; a storm count of 14 kills an entire pod from full health.
+
+# Repercussion devastation
+
+Repercussion states: "Whenever a creature is dealt damage, Repercussion deals that much damage to that creature's controller."
+* When you deal 1 damage to an opponent's creature (via a pinger or End the Festivities), Ghyrson triggers and deals 2 damage to that creature (3 total damage dealt to the creature).
+* Repercussion triggers twice: once for the 1 damage (dealing 1 damage to the player, which Ghyrson turns into 3 damage!) and once for the 2 damage (dealing 2 damage to the player).
+* The controller takes 5 damage for every single creature pinged. An End the Festivities cast against a board of 6 opposing creatures deals 30+ damage straight to their face.
+
+# Mulligans and opening hands
+
+Look for hands with:
+* 2–3 lands producing both Blue and Red mana (Steam Vents, Volcanic Island, Training Center, Shivan Reef, fetchlands).
+* Early acceleration or protection (Sol Ring, Arcane Signet, Talisman of Creativity, Swiftfoot Boots).
+* At least one cheap pinger or token generator (Coruscation Mage, Kessig Flamebreather, Firebrand Archer, Third Path Iconoclast).
+* A card advantage engine or tutor (Curiosity, Rhystic Study, The One Ring, Archmage Emeritus).
+
+Ship hands that lack red mana, hands with multiple 5+ mana cards (Niv-Mizzet, Chandra's Incinerator) and no early plays, or hands with zero 1-damage sources.
+
+# Card-specific notes
+
+* **Sigil of Sleep:** An MVP 1-mana aura. When attached to Ghyrson, whenever Ghyrson deals damage to an opponent, you bounce target creature that player controls to their hand. Casting End the Festivities with Sigil of Sleep on Ghyrson bounces the best creature controlled by every opponent while burning their boards.
+* **Chandra's Incinerator:** Costs {X} less to cast, where X is noncombat damage dealt to opponents this turn. A single End the Festivities dealing 3 damage to three opponents reduces Incinerator's cost by 9, allowing you to cast this 6/6 trample threat for just {R}. Once on board, any burn to an opponent's face is mirrored onto opposing creatures and planeswalkers.
+* **Muddle the Mixture:** Serves as a counterspell for instants and sorceries, or transmutes for {1}{U}{U} to tutor any critical 2-mana card: Coruscation Mage, Kessig Flamebreather, Firebrand Archer, Electrostatic Field, Razorkin Needlehead, Third Path Iconoclast, Thermo-Alchemist, Roiling Vortex, or Cavalcade of Calamity.
+* **Slip Out the Back:** Protects Ghyrson from exile or board wipes by phasing him out until your next turn for a single blue mana, completely bypassing "destroy" and "exile" effects while retaining all attached Auras and Equipment.
+* **Sink into Stupor & Spikefield Hazard:** Dual-faced MDFCs that can be played as lands in early turns or cast for utility. Spikefield Hazard deals 1 damage to any target (exiling if it dies), which Ghyrson turns into 3 damage for {R}.

@@ -16,6 +16,7 @@
   "digitalstealth/Felothar-Reanimator": ["aggro", "graveyard"],
   "digitalstealth/GaddockTeeg-Hatebears": ["control", "aggro", "combo"],
   "digitalstealth/Galadriel-Blink": ["gowide", "value", "control"],
+  "digitalstealth/Ghyrson-Pings": ["spells", "combo"],
   "digitalstealth/Glarb-Topdeck": ["value", "graveyard"],
   "digitalstealth/Grima-Theft": ["control", "aggro"],
   "digitalstealth/Hashaton-Reanimator": ["graveyard", "gowide"],

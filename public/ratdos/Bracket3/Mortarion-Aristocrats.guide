@@ -1,0 +1,75 @@
+The single most important rule to understand is that Mortarion does not just require life loss—he requires mana to convert that lost life into Astartes tokens on your end step. You cannot simply dump 20 life and expect an army for free; you must pay {X} mana where X is capped by the life you lost this turn. Consequently, the key to piloting Mortarion is pacing: balance early life payment for cards and ramp, cultivate explosive black mana engines like Cabal Coffers, Crypt Ghast, and Phyrexian Altar, and then unleash massive life-payment engines like Bolas's Citadel, Necrodominance, or Wall of Blood to turn your life total directly into a lethal swarm of 2/2 menace Warriors.
+
+# The engine: Life loss and Astartes deployment
+Mortarion, Daemon Primarch :: a 5/6 flying commander that turns life lost this turn into 2/2 black Astartes Warrior creature tokens with menace on your end step for {X} mana
+Wall of Blood :: pays 1 life at instant speed with zero mana cost as many times as you choose, instantly unlocking any size of X for Mortarion's end step
+Unspeakable Symbol :: pays 3 life with no mana cost to put +1/+1 counters on Mortarion or your creatures, pumping your board while enabling huge Astartes swarms
+Doom Whisperer :: surveils 2 for 2 life repeatedly with no mana cost, sculpting your draws and fueling your graveyard while racking up life loss for Mortarion
+Necrodominance :: draws cards equal to life paid on your end step; paying 5 to 10 life refills your hand and immediately sets the ceiling for Mortarion's token creation
+Peer into the Abyss :: draws half your deck and loses half your life in a single spell, drawing 35+ cards and letting Mortarion spawn a massive army of menace Astartes
+Vilis, Broker of Blood :: turns every point of life lost into a fresh card draw, drawing 10 cards whenever you lose 10 life to feed Mortarion
+Black Market Connections :: chooses all three modes on your upkeep to create a 3/2 creature, create a Treasure, and draw a card for 6 life, guaranteeing 6 Astartes every turn
+Blood Celebrant :: filters mana for 1 life per activation, providing flexible mana fixing while accumulating life loss on demand
+Greed :: pays 2 life and {B} to draw cards at instant speed, converting extra black mana into hand advantage and Astartes tokens
+
+# Aristocrats drain and token payoffs
+Ayara, First of Locthwain :: whenever a black creature enters under your control, drains each opponent for 1 and gains 1 life; when Mortarion creates X black Astartes, Ayara immediately drains the table for X and refunds your spent life
+Mirkwood Bats :: drains each opponent for 1 life whenever you create or sacrifice a token; triggers on every Astartes token created and on every Treasure or token sacrificed
+Bloodletter of Aclazotz :: doubles all life loss opponents suffer during your turn, turning modest combat swings and aristocrats drain into fatal bursts
+Bastion of Remembrance :: passive enchantment that drains each opponent for 1 and gains 1 life whenever a creature you control dies
+Blood Artist + Zulaport Cutthroat :: classic aristocrats linchpins that punish opponents whenever your 2/2 menace Astartes die in combat or on altar sac outlets
+Marionette Apprentice :: fabricates a servo or gets a counter, and drains each opponent for 1 life whenever an artifact or creature you control dies
+Syr Konrad, the Grim :: pings each opponent for 1 whenever creatures die, leave the graveyard, or get milled
+Species Specialist :: choose Warrior; all your Astartes tokens are Warriors, drawing a card for each one that dies in combat or to sacrifice outlets
+Braids, Arisen Nightmare :: sacrifices a spare Astartes token on end step to force opponents to sacrifice or take 2 damage and draw you up to three cards
+Pitiless Plunderer :: converts dying Astartes tokens into Treasure tokens, generating mana to fuel Mortarion's {X} cost on future turns
+Morbid Opportunist :: draws a card on the first creature death each turn cycle
+
+# Devotion, lifegain, and life stabilization
+Gray Merchant of Asphodel :: massive devotion drain and lifegain burst that instantly replenishes 10 to 18 life after paying life for Mortarion
+Whip of Erebos :: grants lifelink to your entire creature army, letting your 2/2 menace Astartes gain back 10 to 20 life whenever they connect in combat
+Aetherflux Reservoir :: gains compounding life on every spell cast, providing an ocean of life points to pay for card draw and Mortarion triggers before firing 50-damage laser blasts
+
+# The compact finish: Infinite drain loops
+Exquisite Blood + Vito, Thorn of the Dusk Rose :: whenever an opponent loses life, you gain that much life; whenever you gain life, Vito drains target opponent, creating an instant infinite drain loop
+Exquisite Blood + Sanguine Bond :: the classic enchantment counterpart; any life gain or loss triggers an unstoppable infinite loop that drains all opponents to zero
+Bolas's Citadel + Sensei's Divining Top + Aetherflux Reservoir :: with Citadel and Reservoir in play, tap Top to draw a card, then cast Top from the top of your library for 1 life; Reservoir gains increasing life on each cast, netting infinite life and letting you activate Reservoir to deal 50 damage to every opponent
+Under Bracket 3 rules, these compact two-card combos are reserved for turn 6 or later. Spend turns 1 through 5 developing mana, paying life for cards, and swarming the board with Astartes tokens, then assemble the loop if the table stabilizes.
+
+# Sacrifice outlets and value engines
+Ashnod's Altar :: sacrifices Astartes tokens for two colorless mana each, generating the exact mana required to cast Mortarion or pay for future end-step {X} triggers
+Phyrexian Altar :: sacrifices tokens for colored black mana, enabling colored spells and infinite loops
+Skullclamp :: equips to an Astartes token and sacrifices it to an altar to draw two cards for one mana
+
+# Tutors and graveyard reanimation
+Demonic Tutor :: unrestricted two-mana tutor to search for Bolas's Citadel, Exquisite Blood, or Cabal Coffers
+Beseech the Mirror :: bargains away a spare Astartes token to search for any card and cast it for free if mana value is 4 or less, directly deploying Vito or Necrodominance
+Diabolic Intent :: sacrifices an Astartes token for {1}{B} to tutor any card straight to hand
+Reanimate + Animate Dead :: cheap reanimation spells to return Vilis, Doom Whisperer, or Gray Merchant from the graveyard for pennies
+Living Death :: wipes opposing boards while resurrecting your entire graveyard of aristocrats and demons onto the battlefield
+Plaguecrafter :: forces each opponent to sacrifice a creature or planeswalker or discard a card
+Plague Drone :: turns opposing lifegain into lethal life loss
+
+# Big mana acceleration
+Cabal Coffers + Urborg, Tomb of Yawgmoth :: the premier black mana engine, turning all lands into Swamps and tapping Coffers for double-digit black mana
+Crypt Ghast :: doubles black mana produced by Swamps and drains the table with extort triggers
+Nykthos, Shrine to Nyx :: taps for massive black mana off high-devotion permanents like Ayara, Necrodominance, and Bolas's Citadel
+Lake of the Dead :: sacrifices Swamps to add four black mana for explosive early deployments
+Phyrexian Tower :: sacrifices an Astartes token for {B}{B}
+Dark Ritual + Cabal Ritual :: burst mana acceleration to power out Mortarion or Bolas's Citadel ahead of curve
+Sol Ring + Arcane Signet + Jet Medallion + Mind Stone + Thought Vessel + Fellwar Stone + Charcoal Diamond :: rock acceleration to curve smoothly into your mid-game engines
+
+# Targeted removal and board control
+Damnation :: clean four-mana sweeper that resets opposing boards
+Snuff Out :: free creature removal spell that costs 4 life instead of mana, triggering Mortarion's life-loss count for free
+Dismember :: costs 1 mana and 4 life to eliminate indestructible or large threats, counting as 4 life lost for Mortarion
+Infernal Grasp + Bitter Triumph :: unconditional two-mana creature and planeswalker removal that cost life to fuel Mortarion's triggers
+Deadly Rollick :: free instant-speed exile removal when Mortarion is on the battlefield
+Feed the Swarm :: essential enchantment destruction in mono-black that deals damage equal to mana value to you, fueling Mortarion
+Defile :: one-mana spot removal that scales with your Swamp count
+
+# Opening hand and sequencing
+Look for opening hands with three mana sources (lands and rocks like Sol Ring or Jet Medallion) and at least one life-payment or card-advantage engine (Black Market Connections, Necrodominance, or Greed).
+Spend turns 1 through 3 deploying mana rocks and establishing utility enchantments. Deploy Mortarion on turn 4 or 5 once you have excess mana to activate his end-step ability.
+Begin losing life deliberately through fetchlands, Snuff Out, Dismember, or Wall of Blood, and pump your spare mana into Mortarion's trigger to spawn 4 to 8 menace Astartes.
+Use Ayara and Mirkwood Bats to drain opponents as tokens enter, and swing with menace Warriors. On turn 6 or later, execute an Exquisite Blood drain loop or cast Peer into the Abyss to overwhelm the table in a single turn.

@@ -96,6 +96,7 @@
   "ratdos/MaelstromWanderer-Roulette": ["value", "aggro"],
   "ratdos/MarrowGnawer-Swarm": ["gowide"],
   "ratdos/Meren-Reanimator": ["graveyard", "gowide", "control"],
+  "ratdos/Mortarion-Aristocrats": ["gowide", "spells", "combo"],
   "ratdos/Niko-Blink": ["gowide", "value"],
   "ratdos/Norin-Chaos": ["spells", "control", "gowide"],
   "ratdos/Obeka-Upkeep": ["aggro", "spells", "value"],

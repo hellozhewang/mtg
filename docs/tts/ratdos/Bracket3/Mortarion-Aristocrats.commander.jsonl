@@ -1,0 +1,2 @@
+{"v":1,"id":"ratdos/Mortarion-Aristocrats","count":1}
+{"name":"Mortarion, Daemon Primarch","mv":6.0,"faces":[{"name":"Mortarion, Daemon Primarch","mana_cost":"{5}{B}","type_line":"Legendary Creature — Demon Primarch","oracle_text":"Flying\nPrimarch of the Death Guard — At the beginning of your end step, you may pay {X}. If you do, create X 2/2 black Astartes Warrior creature tokens with menace. X can't be greater than the amount of life you lost this turn.","power":"5","toughness":"6","loyalty":"","defense":""}]}

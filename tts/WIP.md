@@ -103,7 +103,7 @@ All 12 existing sleever tests pass; both generator prompt variants and the norma
 instruction template include the shared rule.
 
 
-## v78: fanned reveal skips the Timers; Inspect for the deck's seat only (saved; not on Steam)
+## v78: fanned reveal skips the Timers; Inspect for the deck's seat only (saved and published to Steam)
 
 The base table's fanned-out reveal (`revealFan`, the Reveal button and keybind 5)
 lays cards in rows of 12 from the library toward the middle strip; its first card

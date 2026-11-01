@@ -6,7 +6,7 @@ Codex) reads it first and updates it with every change. The [TTS development gui
 Last updated 2026-10-27 (Codex): competitive gap audit of the eight new Bracket 4
 copies; add appropriate land denial and missing engines. Bracket 3 sources preserved.
 
-Table build status (2026-10-29, Claude): delivered **v77** (10-second choruses once per turn), after v76 (Sound switch for every Cactuar sound), v75 (Inspect retries refused menus), v74 (menus never open empty), v73 (fixes an onObjectDestroy error), v72 (trigger areas end above the land line), v71 (teal stack frames; trigger areas to the land line), v70 (trigger areas in seat colours; stack panel picture), v69 (per-seat guide-line switches), v68 (edge strip redrawn as a five-slot stack), v67 (fixes v66's hand-index script errors), v66 (no music from cards in hand; Inspect deselects) and v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
+Table build status (2026-11-01, Claude): delivered **v78** (fanned reveal skips the Timers; Inspect only for the deck's own seat), after v77 (10-second choruses once per turn), v76 (Sound switch for every Cactuar sound), v75 (Inspect retries refused menus), v74 (menus never open empty), v73 (fixes an onObjectDestroy error), v72 (trigger areas end above the land line), v71 (teal stack frames; trigger areas to the land line), v70 (trigger areas in seat colours; stack panel picture), v69 (per-seat guide-line switches), v68 (edge strip redrawn as a five-slot stack), v67 (fixes v66's hand-index script errors), v66 (no music from cards in hand; Inspect deselects) and v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
 Both states visually checked live. **Steam is now v77** (published 2026-10-29 at the owner's request; was v64). See [the changelog](../docs/development/tts-changelog.md).
 
@@ -102,6 +102,21 @@ generation prompts; no existing sleeves, table builds or Steam releases change.
 All 12 existing sleever tests pass; both generator prompt variants and the normal
 instruction template include the shared rule.
 
+
+## v78: fanned reveal skips the Timers; Inspect for the deck's seat only (saved; not on Steam)
+
+The base table's fanned-out reveal (`revealFan`, the Reveal button and keybind 5)
+lays cards in rows of 12 from the library toward the middle strip; its first card
+landed exactly on that seat's Timer, and the second row reached the facing seats'
+Timers. `tts/cactuar_turns.lua` redefines `revealFan` (appended after the base, so it
+wins) with the base's code, except that a slot within 2.4 x 3.0 of any Timer
+(`CZT.timers`) is skipped: rows now start two slots over. Numbering, the 10-second
+reset and `checkPosMove` are unchanged. The stacked reveal was never affected.
+
+Inspect (`tts/cactuar_search.lua`): `czsOpen` refuses a deck whose zones include
+another seat's library, graveyard or playmat zone (`data[seat]`), and tells the player
+whose it is. Decks and bags on the shared table stay open to anyone. TTS context menus
+can't be hidden per player, so the item still shows. 1622 turn and 156 Inspect checks.
 
 ## v77: battle music as 10-second choruses, once per turn (saved; not on Steam)
 

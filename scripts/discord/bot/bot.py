@@ -422,8 +422,8 @@ def _build_site() -> str | None:
         log().warning("site: build did not finish (%s)", type(exc).__name__)
         return None
     if r.returncode:
-        log().warning("site: build failed rc=%d: %s", r.returncode,
-                      (r.stderr or r.stdout).strip()[:300])
+        log().warning("site: build failed rc=%d: %s", r.returncode,     # a traceback's end says why
+                      (r.stderr or r.stdout).strip()[-1500:])
         return None
     if r.stderr.strip():                       # unavailable images, say
         log().info("site: %s", r.stderr.strip()[:300])

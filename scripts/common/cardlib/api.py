@@ -7,6 +7,8 @@ Scryfall quirk is contained here so no layer above has to care:
   * `/cards/collection` accepts at most 75 identifiers per POST.
   * Paged endpoints return `has_more` + `next_page`; follow the URL verbatim.
   * A search with no matches is a 404, not an empty result set.
+  * A 429 ("try again after 60 seconds") or a 5xx is waited out and retried;
+    giving up at once failed every site build while a builder turn was searching.
 """
 from __future__ import annotations
 
@@ -20,6 +22,8 @@ BASE = "https://api.scryfall.com"
 HEADERS = {"User-Agent": "MtgDeckTuner/1.0", "Accept": "application/json"}
 COLLECTION_LIMIT = 75          # hard cap imposed by Scryfall
 POLITE_DELAY = 0.12            # seconds between requests
+RETRIES = 3                    # extra tries after a 429 or a 5xx
+RATE_LIMIT_WAIT = 60           # what Scryfall's 429 asks for, if no Retry-After
 
 
 class ScryfallError(RuntimeError):
@@ -41,16 +45,28 @@ class ScryfallAPI:
             headers["Content-Type"] = "application/json"
         req = urllib.request.Request(
             url, data=data, headers=headers, method="POST" if data else "GET")
-        self.calls += 1
+        for attempt in range(RETRIES + 1):
+            self.calls += 1
+            try:
+                with urllib.request.urlopen(req) as r:
+                    return json.loads(r.read())
+            except urllib.error.HTTPError as e:
+                if e.code == 404:                  # "no cards matched"
+                    return {"data": [], "total_cards": 0, "has_more": False}
+                if attempt < RETRIES and (e.code == 429 or e.code >= 500):
+                    time.sleep(self._wait(e, attempt))
+                    continue
+                raise ScryfallError(f"HTTP {e.code}: {e.read().decode()[:300]}") from e
+            finally:
+                time.sleep(self.delay)
+        raise AssertionError("unreachable")
+
+    @staticmethod
+    def _wait(e: urllib.error.HTTPError, attempt: int) -> float:
         try:
-            with urllib.request.urlopen(req) as r:
-                return json.loads(r.read())
-        except urllib.error.HTTPError as e:
-            if e.code == 404:                      # "no cards matched"
-                return {"data": [], "total_cards": 0, "has_more": False}
-            raise ScryfallError(f"HTTP {e.code}: {e.read().decode()[:300]}") from e
-        finally:
-            time.sleep(self.delay)
+            return min(float(e.headers.get("Retry-After", "")), RATE_LIMIT_WAIT)
+        except (TypeError, ValueError):
+            return RATE_LIMIT_WAIT if e.code == 429 else 2 ** attempt
 
     def _get(self, path: str, params: dict) -> dict:
         return self._request(f"{BASE}{path}?{urllib.parse.urlencode(params)}")

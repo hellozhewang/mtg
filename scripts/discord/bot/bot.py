@@ -821,10 +821,12 @@ def send(message: str, username: str,
 
 
 def send_sleever(message: str, username: str, channel: str | int | None = DEFAULT_CHANNEL,
-                 *, refs: list[str] | None = None, discord: bool = False) -> str:
+                 *, refs: list[str] | None = None, replied: str | None = None,
+                 discord: bool = False) -> str:
     """One sleever request: paint a sleeve on the configured harness, then install,
-    attach and publish it (see sleever.py). Shares the builder's bot-wide lock, so
-    the two never run at once."""
+    attach and publish it (see sleever.py), or delete one. `replied` is the sleeve
+    attached to the message this one replies to. Shares the builder's bot-wide lock,
+    so the two never run at once."""
     if not message.strip():
         raise ValueError("empty message")
     username = username.strip()
@@ -846,9 +848,6 @@ def send_sleever(message: str, username: str, channel: str | int | None = DEFAUL
     if owner is None:
         log().info("REFUSED [%s] sleever: username %r cannot have a folder", chan, username)
         return "sleever can't make sleeves for this Discord username."
-    if not HARNESS.images:
-        log().info("SLEEVER [%s] the harness has no image tool", chan)
-        return with_usage(sleever.UNAVAILABLE)
 
     try:
         busy = _claim_bot()
@@ -857,11 +856,23 @@ def send_sleever(message: str, username: str, channel: str | int | None = DEFAUL
         return with_usage(BUSY_REPLY)
     conv = f"{chan}-{owner}-sleever"
     try:
+        state = _load(conv)
+        removal = sleever.delete(message, owner, last=state.get("sleeve"), replied=replied)
+        if removal is not None:
+            reply, slug = removal
+            if slug:
+                log().info("SLEEVER [%s] deleted tts/sleeves/%s", chan, slug)
+                _autopush(chan, sleever.SLEEVES_DIR, "Sleeves")
+            log().info("REPLY  [%s/sleever] %d chars %dms", chan, len(reply),
+                       int((time.time() - started) * 1000))
+            return reply
+        if not HARNESS.images:
+            log().info("SLEEVER [%s] the harness has no image tool", chan)
+            return with_usage(sleever.UNAVAILABLE)
         folder = sleever.prepare(owner, fresh=bool(refs))
         notes = sleever.fetch_refs(refs or [], folder / "refs")
         for note in notes:
             log().info("SLEEVER [%s] %s", chan, note)
-        state = _load(conv)
         if sleever.forget_removed(folder, state.get("sleeve")):
             # A removed sleeve is not revised: start a fresh conversation, so neither its
             # name, its picture nor the old chat steers this request.
@@ -957,6 +968,8 @@ def main() -> int:
                     help="make sleeves (card backs) instead of talking to the deck builder")
     ap.add_argument("--ref", action="append", default=[], metavar="URL",
                     help="sleever: a reference picture to download (repeatable)")
+    ap.add_argument("--replied", metavar="SLEEVE",
+                    help="sleever: the sleeve attached to the message this one replies to")
     ap.add_argument("--tail", type=int, nargs="?", const=20, metavar="N",
                     help="print the last N log lines (default 20)")
     args = ap.parse_args()
@@ -1011,7 +1024,7 @@ def main() -> int:
     try:
         if args.sleever:
             print(send_sleever(args.message, args.user, channel=args.channel,
-                               refs=args.ref, discord=args.discord))
+                               refs=args.ref, replied=args.replied, discord=args.discord))
         else:
             print(send(args.message, args.user, channel=args.channel, discord=args.discord))
     except harness.QuotaExhausted as exc:

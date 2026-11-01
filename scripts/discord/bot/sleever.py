@@ -1,6 +1,7 @@
 """sleever: make a sleeve (a custom card back) for the Cactuar table from a Discord message.
 
     sleever make me sailor moon sleeves          (+ optional image uploads or links)
+    sleever delete jean kirstein                 (or `sleever delete this`, replying to it)
 
 bot.py runs the turn on the same harness as the builder (whichever model the owner has
 picked), in a per-user staging folder: scripts/discord/bot/.sleever/<owner>/. The model only paints. It
@@ -69,7 +70,9 @@ You make **sleeves**: custom card backs for the Cactuar Tabletop Simulator table
 **Sleeves** menu, and every card of the next deck they load gets that back.
 
 You only make sleeves. If someone asks for a deck, a card list or anything else,
-tell them that's what `builder` is for, and stop.
+tell them that's what `builder` is for, and stop. If someone asks to delete a
+sleeve, tell them to write `sleever delete <name>`, or `sleever delete this` as a
+reply to the sleeve's message; never make a picture for it.
 
 ## Who you are, to the players
 
@@ -310,8 +313,90 @@ def choose_slug(name: str, owner: str, previous: str | None) -> str:
 def record_owner(slug: str, owner: str) -> None:
     owners = _owners()
     owners[slug] = owner
+    _save_owners(owners)
+
+
+def _save_owners(owners: dict[str, str]) -> None:
     OWNERS.parent.mkdir(parents=True, exist_ok=True)
     OWNERS.write_text(json.dumps(owners, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def label(slug: str) -> str:
+    """How the Sleeves menu names a sleeve."""
+    return slug.replace("-", " ").replace("_", " ").title()
+
+
+# ---------- deleting ----------
+
+DELETE = re.compile(r"^\s*(?:(?:please|pls|plz|can you|could you)\s+)*"
+                    r"(delete|remove|erase|get rid of|take down)\b(.*)$", re.I | re.S)
+# Words around the sleeve's name: "delete my jean kirstein sleeve please" -> jean kirstein.
+FILLER = {"the", "my", "this", "that", "these", "those", "our", "it", "one", "sleeve",
+          "sleeves", "card", "back", "backs", "please", "pls", "plz", "thanks", "thx",
+          "from", "table", "menu", "for", "me"}
+TABLE_OWNER = "zzwang"                           # may delete any sleeve, hand-made ones too
+
+
+def _sleeve_slugs() -> list[str]:
+    return sorted({p.stem for ext in (".jpg", ".jpeg", ".png") for p in SLEEVES_DIR.glob(f"*{ext}")})
+
+
+def _yours(owner: str) -> str:
+    owners = _owners()
+    mine = [label(s) for s in _sleeve_slugs() if owners.get(s) == owner]
+    return ("Your sleeves: " + ", ".join(f"**{m}**" for m in mine) + ".") if mine \
+        else "You have no sleeves on the table."
+
+
+def delete(message: str, owner: str, *, last: str | None = None,
+           replied: str | None = None) -> tuple[str, str | None] | None:
+    """Handle `message` if it asks to delete a sleeve: (reply, deleted slug or None).
+    None when it is not a delete request, so the turn paints as usual.
+
+    "delete this" (or no name) means the sleeve whose message the user replied to,
+    else their last one. A name matches a sleeve whose file name has all its words.
+    Users delete only their own sleeves; TABLE_OWNER may delete any. Done here, not
+    by the model: the model cannot write tts/sleeves/, and this works without images.
+    """
+    m = DELETE.match(message or "")
+    if not m:
+        return None
+    verb = m.group(1).lower()
+    words = re.findall(r"[a-z0-9']+", m.group(2).lower())
+    while words and words[0] in FILLER:
+        words.pop(0)
+    while words and words[-1] in FILLER:
+        words.pop()
+    slugs = _sleeve_slugs()
+    if not words:
+        target = replied if replied in slugs else last if last in slugs else None
+        if target is None:
+            return ("Which sleeve? Reply to its message with `sleever delete`, or name it: "
+                    "`sleever delete <name>`.\n\n" + _yours(owner)), None
+    else:
+        hits = [s for s in slugs if "-".join(words) == s] or \
+               [s for s in slugs if all(w in re.split(r"[-_]", s) for w in words)]
+        if len(hits) > 1:                        # prefer the asker's own
+            hits = [s for s in hits if _owners().get(s) == owner] or hits
+        if not hits:
+            if verb == "remove":                 # "remove the text from it" is an edit
+                return None
+            return f"There's no sleeve called **{' '.join(words)}**.\n\n" + _yours(owner), None
+        if len(hits) > 1:
+            return ("That matches " + ", ".join(f"**{label(s)}**" for s in hits)
+                    + ". Which one?"), None
+        target = hits[0]
+    maker = _owners().get(target)
+    if maker != owner and owner != TABLE_OWNER:
+        whose = "one of the table's own sleeves" if maker is None else f"{maker}'s sleeve"
+        return f"**{label(target)}** is {whose}, so I can't delete it for you.", None
+    for ext in (".jpg", ".jpeg", ".png"):
+        (SLEEVES_DIR / f"{target}{ext}").unlink(missing_ok=True)
+    owners = _owners()
+    if owners.pop(target, None) is not None:
+        _save_owners(owners)
+    return (f"Deleted **{label(target)}** sleeves. They leave the Sleeves menu in a few "
+            f"minutes (press **Refresh** in the deck browser)."), target
 
 
 # ---------- the picture ----------
@@ -374,10 +459,10 @@ def publish(f: Path, answer: str, owner: str, previous: str | None, since: float
     dest = SLEEVES_DIR / f"{slug}.jpg"
     finish(picture, dest)
     record_owner(slug, owner)
-    label = slug.replace("-", " ").replace("_", " ").title()
-    desc_line = body or f"Made **{label}** sleeves."
+    shown = label(slug)
+    desc_line = body or f"Made **{shown}** sleeves."
     lines = [desc_line,
-             f"In the table it's **Sleeves: {label}** in the Cactuar deck browser, a few "
+             f"In the table it's **Sleeves: {shown}** in the Cactuar deck browser, a few "
              f"minutes from now: open the browser (or press **Refresh** if it's open), then "
              f"pick it before loading a deck.",
              ATTACH.format(dest)]

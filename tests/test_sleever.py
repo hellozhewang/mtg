@@ -71,6 +71,54 @@ class NamingTests(Isolated):
         self.assertEqual(sleever.choose_slug("Desert Bloom", "zz", "cactuar-2"), "desert-bloom")
 
 
+class DeleteTests(Isolated):
+    def setUp(self):
+        super().setUp()
+        for slug, maker in (("jean-kirstein", "kupo7"), ("levi-ackerman", "kupo7"),
+                            ("moon", "ana"), ("cactuar", None)):
+            (self.sleeves / f"{slug}.jpg").write_bytes(b"x")
+            if maker:
+                sleever.record_owner(slug, maker)
+
+    def gone(self, slug):
+        return not (self.sleeves / f"{slug}.jpg").exists()
+
+    def test_by_name_deletes_your_own_and_forgets_its_owner(self):
+        reply, slug = sleever.delete("delete my Jean Kirstein sleeve please", "kupo7")
+        self.assertEqual(slug, "jean-kirstein")
+        self.assertIn("Deleted **Jean Kirstein**", reply)
+        self.assertTrue(self.gone("jean-kirstein"))
+        self.assertNotIn("jean-kirstein", sleever._owners())
+        self.assertEqual(sleever.delete("get rid of levi", "kupo7")[1], "levi-ackerman")
+
+    def test_this_means_the_replied_sleeve_then_the_last_one(self):
+        self.assertEqual(sleever.delete("delete this one", "kupo7", last="levi-ackerman",
+                                        replied="jean-kirstein")[1], "jean-kirstein")
+        self.assertEqual(sleever.delete("can you delete this", "kupo7", last="levi-ackerman")[1],
+                         "levi-ackerman")
+        reply, slug = sleever.delete("delete it", "kupo7")
+        self.assertIsNone(slug)
+        self.assertIn("Which sleeve?", reply)
+
+    def test_only_the_maker_or_the_table_owner_may_delete(self):
+        reply, slug = sleever.delete("delete moon", "kupo7")
+        self.assertIsNone(slug)
+        self.assertIn("ana's sleeve", reply)
+        reply, slug = sleever.delete("delete the cactuar sleeves", "ana")
+        self.assertIsNone(slug)
+        self.assertIn("table's own", reply)
+        self.assertFalse(self.gone("moon") or self.gone("cactuar"))
+        self.assertEqual(sleever.delete("delete moon", sleever.TABLE_OWNER)[1], "moon")
+
+    def test_other_requests_still_paint(self):
+        self.assertIsNone(sleever.delete("make me sailor moon sleeves", "ana"))
+        self.assertIsNone(sleever.delete("remove the text from the moon one", "ana"))
+        reply, slug = sleever.delete("delete sailor mars", "ana")
+        self.assertIsNone(slug)
+        self.assertIn("no sleeve called **sailor mars**", reply)
+        self.assertIn("**Moon**", reply)
+
+
 @unittest.skipUnless(SIPS, "macOS sips only")
 class PictureTests(Isolated):
     def test_wide_and_tall_pictures_become_745_by_1040_jpegs(self):
@@ -174,9 +222,21 @@ class BotTests(unittest.TestCase):
     def test_a_harness_without_pictures_says_so_without_a_turn(self):
         import bot
         with patch.object(bot.HARNESS, "images", False), patch.object(bot, "log", return_value=Mock()), \
-                patch.object(bot.HARNESS, "usage", return_value=""), patch.object(bot, "_claim_bot") as claim:
+                patch.object(bot.HARNESS, "usage", return_value=""), patch.object(bot, "_claim_bot"), \
+                patch.object(bot, "_load", return_value={}), patch.object(bot.HARNESS, "run") as run:
             self.assertEqual(bot.send_sleever("sailor moon", "zzwang"), sleever.UNAVAILABLE)
-            claim.assert_not_called()
+            run.assert_not_called()
+
+    def test_a_delete_needs_no_pictures_and_publishes(self):
+        import bot
+        removal = ("Deleted **Moon** sleeves.", "moon")
+        with patch.object(bot.HARNESS, "images", False), patch.object(bot, "log", return_value=Mock()), \
+                patch.object(bot, "_claim_bot"), patch.object(bot, "_load", return_value={}), \
+                patch.object(sleever, "delete", return_value=removal) as delete, \
+                patch.object(bot, "_autopush") as push:
+            self.assertEqual(bot.send_sleever("delete this", "ana", replied="moon"), removal[0])
+            self.assertEqual(delete.call_args.kwargs["replied"], "moon")
+            push.assert_called_once()
 
 
 @unittest.skipUnless(SIPS, "macOS sips only")

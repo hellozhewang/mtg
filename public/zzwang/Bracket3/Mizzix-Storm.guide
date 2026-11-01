@@ -1,0 +1,66 @@
+Mizzix reduces only GENERIC costs, one per experience counter, and never the coloured pips. At four experience Reiterate with buyback costs RR and Crackle with Power costs RR plus whatever X exceeds the discount. Count your coloured mana, not your total, before you start a chain.
+A Goblin storm deck by zzwang. Bracket 3: the three Game Changers are Lion's Eye Diamond, Mystical Tutor and Underworld Breach. No mass land denial.
+
+# The commander
+Mizzix of the Izmagnus :: casting an instant or sorcery with mana value greater than your experience gives another counter, and each counter makes them one cheaper. Climb it with a 1, then 2, then 3, then 4-drop; after that most of the deck costs only its pips.
+Goblin Electromancer :: another one-generic discount for the turns Mizzix is not out, and a second Goblin for the deck.
+Big Score :: costs R at three experience: two cards and two Treasures for one red.
+
+# The Reiterate kills
+Mizzix of the Izmagnus + Reiterate :: the core engine. At four experience, Reiterate with buyback costs RR and comes back to hand every time.
+Reiterate + Desperate Ritual :: cast the ritual, hold it on the stack, buy back Reiterate for RR copying it: RRR back, net +R and +1 storm each lap. Stop, resolve the original, then cast the finisher.
+Reiterate + Pyretic Ritual :: the same loop with the second ritual.
+Reiterate + Seething Song :: net +3 red and +1 storm per lap.
+Reiterate + Mana Geyser :: three tapped opposing lands make it mana-positive at four experience. Without Mizzix, six tapped lands sustain it and seven profit, but you need eleven mana to start.
+Reiterate + Turnabout :: copy Turnabout to untap your lands each lap. Three lands are enough once the first UU and RR are paid.
+Crackle with Power :: the finish: at X=8 it deals 40 to each opponent. With experience its 24 generic shrinks, the RR does not.
+Lightning Bolt :: the backup finish: buy back Reiterate on Bolt as many times as you have mana.
+Archmage Emeritus :: draws on every cast and copy and the draw is mandatory. Before an unbounded Reiterate loop, bounce it with Snap or Into the Roil, or you deck yourself.
+
+# The Breach kill
+Underworld Breach + Lion's Eye Diamond + Brain Freeze :: needs LED, Freeze and six other cards in the graveyard. Escape LED, crack it for UUU, escape Freeze on yourself for 1U to refill the graveyard. Each lap adds two casts and a floating U. Then switch LED to red and escape Crackle with Power at X=8. Mizzix is not needed.
+Lion's Eye Diamond :: also a free ritual on the Reiterate turn: crack it with the chain spell on the stack after your hand is empty.
+Brain Freeze :: on its own, a mill finish once storm is high: three cards per copy.
+Stroke of Genius :: with unlimited mana, aim it at an opponent and Reiterate copies it for the others.
+Past in Flames :: flashback all the rituals and cantrips for a second lap; also cheaper with experience.
+Mizzix's Mastery :: overloaded at high experience: cast every instant and sorcery in your graveyard for free.
+
+# Finding the pieces
+Mystical Tutor :: Reiterate, Brain Freeze or the missing ritual. It cannot find Underworld Breach, an enchantment: Muddle the Mixture does that.
+Personal Tutor :: a sorcery to the top: Mana Geyser, Past in Flames, Mizzix's Mastery or Crackle with Power.
+Firemind's Foresight :: Reiterate, Desperate Ritual and Lightning Bolt in one card: a whole kill.
+Muddle the Mixture :: transmute for Underworld Breach or Brain Freeze; the transmute cost is not discounted.
+Spellseeker :: finds Brain Freeze, Desperate Ritual or Mystical Tutor.
+Merchant Scroll :: finds a blue instant: Mystical Tutor (which then finds Reiterate), Muddle the Mixture or a counterspell for the kill turn.
+Solve the Equation :: any instant or sorcery: Reiterate, Turnabout or Crackle with Power.
+Tezzeret's Gambit :: draw two and proliferate experience.
+
+# Card flow
+Frantic Search :: free after a discount; untaps three lands.
+Snap :: untaps two lands and returns Archmage Emeritus before a loop.
+High Tide :: doubles Islands for the chain turn, and Turnabout or Frantic Search untaps them for more.
+Windfall :: a full refill for the chain turn, and cheap once Mizzix has a few counters.
+Wheel of Fortune :: the second wheel.
+Dig Through Time :: delve makes it two blue late.
+Treasure Cruise :: the same.
+Mystic Remora :: early draw; let it go once the chain starts.
+Storm-Kiln Artist :: a Treasure per instant or sorcery cast or copied: Reiterate loops make Treasures too.
+Birgi, God of Storytelling :: a red for every spell, which pays the RR on Reiterate.
+
+# Protection
+Hexing Squelcher :: makes your spells uncounterable for the chain turn.
+Pact of Negation :: free on the turn you win.
+Force of Negation :: free on an opponent's turn.
+Mana Drain :: counter, and next turn's mana funds the chain.
+Flusterstorm :: wins counter wars during the chain.
+Swan Song :: one blue for a counterspell or a sweeper.
+Into the Flood Maw :: one blue to bounce a Rule of Law or Damping Sphere that stops the engine.
+Deflecting Swat :: free with Mizzix out.
+
+# Opening hand and sequencing
+Keep lands of both colours, a cantrip and one ramp piece. Mizzix on turn 3 or 4, then climb experience with a 2-, 3- and 4-drop instant or sorcery on successive turns.
+The Reiterate and Breach loops are played from turn 6 by table agreement. Before then, build experience, sculpt the hand and hold protection.
+On the kill turn: Squelcher or a free counter up first, rituals into Reiterate, Archmage Emeritus out of the way, then Crackle with Power.
+Sol Ring :: early speed into Mizzix.
+Lotus Petal :: the last coloured mana on the chain turn.
+Simian Spirit Guide :: a free red for Reiterate.

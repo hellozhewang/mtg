@@ -1,0 +1,2 @@
+{"v":1,"id":"zzwang/Mizzix-Storm","count":1}
+{"name":"Mizzix of the Izmagnus","mv":4.0,"faces":[{"name":"Mizzix of the Izmagnus","mana_cost":"{2}{U}{R}","type_line":"Legendary Creature — Goblin Wizard","oracle_text":"Whenever you cast an instant or sorcery spell with mana value greater than the number of experience counters you have, you get an experience counter.\nInstant and sorcery spells you cast cost {1} less to cast for each experience counter you have.","power":"2","toughness":"2","loyalty":"","defense":""}]}

@@ -1,0 +1,79 @@
+Krark and Sakashima work as a pair: Sakashima enters as a copy of Krark, so every instant or sorcery flips two coins. One win and one loss is the result you want: the winning flip copies the spell AND the losing flip returns the original to your hand to cast again. Two losses waste the mana; two wins resolve everything but end the chain. It is a strong edge, not a guaranteed loop, so keep a deterministic kill in reserve.
+A Goblin storm deck by zzwang, led by both partners. Bracket 3: the three Game Changers are Jeska's Will, Mystical Tutor and Underworld Breach. No mass land denial.
+
+# The coin engine
+Krark, the Thumbless :: whenever you cast an instant or sorcery, flip: lose and it returns to hand, win and it is copied. Lost spells come back to cast again, which is what grows storm.
+Sakashima of a Thousand Faces :: enters as a copy of Krark and switches off the legend rule, so both Krarks stay and every spell gets two flips.
+Krark's Thumb :: flip two and keep the better for each trigger: makes the win-plus-loss result far more likely.
+Phantasmal Image :: a third Krark while Sakashima is out; each extra Krark adds a flip.
+Phyrexian Metamorph :: another Krark copy, or a copy of Storm-Kiln Artist.
+Veyran, Voice of Duality :: Krark's triggers come from casting an instant or sorcery, so Veyran makes each one trigger twice: four flips per spell with both Krarks.
+Storm-Kiln Artist :: a Treasure for every instant or sorcery cast or copied. Krark's copies count.
+
+# Rituals that feed the flips
+Seething Song :: the best spell to flip: one win plus one loss gives RRRRR from the copy and the Song back, net +2 mana and +1 storm per cast.
+Pyretic Ritual :: net +1 per win-plus-loss.
+Desperate Ritual :: the same, and spliceable.
+Rite of Flame :: cheap fuel; each copy counts every Rite in the graveyard.
+Jeska's Will :: copies of it are huge: red per card in an opponent's hand and three more exiled cards each.
+Strike It Rich :: a Treasure, and a flashback later.
+Birgi, God of Storytelling :: red for every spell cast, including each recast of a returned ritual.
+Electro, Assaulting Battery :: banks red for every instant or sorcery cast.
+Tavern Scoundrel :: every won flip makes Treasures; Krark flips constantly.
+Relic of Legends :: taps Krark and Sakashima for mana, even the turn they enter.
+Cerulean Wisps :: untaps a legend for another Relic of Legends mana, and draws.
+Springleaf Drum :: taps a creature for mana, summoning sick or not.
+Vivi Ornitier :: grows with every noncreature spell and pings each opponent; its mana ability works once a turn.
+
+# How you win
+Grapeshot :: each returned and recast Grapeshot grows storm again; each won flip copies it for extra damage. Copying it does not re-trigger storm, recasting does.
+Brain Freeze :: the mill finish once storm is high.
+Lightning Bolt :: a copied Bolt is three damage per copy; with a long chain it kills a player.
+Dualcaster Mage + Twinflame :: cast Twinflame on a creature, flash Dualcaster to copy it onto Dualcaster; each hasty token copies again. Unlimited hasty attackers. Start Dualcaster's copy before Krark's flip triggers resolve.
+Dualcaster Mage + Molten Duplication :: the same loop.
+Dualcaster Mage + Heat Shimmer :: the same loop for six mana.
+Underworld Breach + Lotus Petal + Brain Freeze :: Breach first, escape Petal twice for UU, escape Freeze on yourself for 1U; each lap is three casts and mills more. Then turn Freeze on the opponents. Finish with Wheel of Fortune while each opponent's library is empty and keep seven cards in yours.
+Archmage Emeritus :: draws on every cast and copy and the draw is mandatory: bounce it with Snap before a long loop or you deck yourself.
+Imperial Recruiter -> Dualcaster Mage :: when a copy spell is in hand.
+Imperial Recruiter -> Storm-Kiln Artist :: when you want the flip chain instead.
+
+# Finding the pieces
+Mystical Tutor :: Seething Song, Grapeshot, Twinflame or Brain Freeze; it cannot find Underworld Breach.
+Muddle the Mixture :: transmute for Underworld Breach, Krark's Thumb, Brain Freeze, Grapeshot, Twinflame or Molten Duplication.
+Spellseeker :: an instant or sorcery of mana value 2 or less: Twinflame, Brain Freeze, Grapeshot or Mystical Tutor.
+Flare of Duplication :: free by sacrificing a red creature: copy the chain's best spell at the right moment.
+Past in Flames :: flashback the rituals for another lap. A flashed-back spell is exiled instead of returning to hand on a lost flip, so it gets one cast each.
+Wheel of Fortune :: a fresh seven mid-chain, and the Brain Freeze kill.
+Mogg Salvage :: free artifact removal when an opponent has an Island.
+
+# Card flow
+Brainstorm :: hand selection with seven fetchlands to shuffle.
+Ponder :: one-mana selection.
+Preordain :: the same.
+Consider :: the same; copies make it draw more.
+Opt :: the same.
+Gitaxian Probe :: free storm count and a look at their hand.
+Frantic Search :: free card filtering that untaps lands.
+Harmonic Prodigy :: Krark is a Goblin Wizard, so Prodigy makes each Krark trigger twice: with Sakashima that is four flips per spell.
+Mystic Remora :: early draw before the chain turn.
+
+# Protection
+Hexing Squelcher :: your spells cannot be countered: land it before going off.
+Pact of Negation :: free on your winning turn.
+Flusterstorm :: wins counter wars mid-chain.
+Mental Misstep :: stops a one-mana answer for free.
+Mindbreak Trap :: free against another storm player.
+Swan Song :: one blue for counters and sweepers.
+Deflecting Swat :: free with a commander out.
+Pyroblast :: one red against blue answers.
+Into the Flood Maw :: bounce a Rule of Law or Damping Sphere for one blue.
+Snap :: free bounce that untaps two lands.
+Borne Upon a Wind :: flash for Dualcaster Mage's partner spells, and a card.
+
+# Opening hand and sequencing
+Keep lands of both colours, a cantrip and a mana piece. Krark comes down early as the cheap half; hold Sakashima until you can protect the pair.
+Before turn 6, use the flips for value: cantrips that come back are free card selection. The compact loops (Dualcaster with a copy spell, the Breach mill) and the big storm turn wait until turn 6 by table agreement.
+On the kill turn: Squelcher or a free counter first, Krark's Thumb if you have it, then rituals into Grapeshot or Brain Freeze.
+Sol Ring :: early speed into both commanders.
+Lotus Petal :: the last coloured mana, and the Breach piece.
+Simian Spirit Guide :: free red on the chain turn.

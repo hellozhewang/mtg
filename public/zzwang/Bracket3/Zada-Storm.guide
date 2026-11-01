@@ -1,0 +1,95 @@
+Zada copies a spell for every other creature you control, but copies are not cast: they never add to storm, and they never trigger Birgi, Electro or Runaway Steam-Kin. What they do is draw, make Treasures and trigger Storm-Kiln Artist once each. So build a wide board first, turn a one-mana cantrip into a handful of cards and Treasures, then cast those cards to grow the real storm count.
+A storm build of zzwang's Zada, separate from Zada-Goblins and Zada-Turbo: no Goblin Recruiter, Snoop, Kiki or Muxus package. Bracket 3: the three Game Changers are Gamble, Jeska's Will and Underworld Breach. No mass land denial.
+
+# The commander
+Zada, Hedron Grinder :: cast an instant or sorcery that targets only Zada and it is copied for each other creature you control, each copy aimed at a different one. Five other creatures turn a one-mana cantrip into six cards. Cast your creatures and token makers first, the targeted spells after.
+Swiftfoot Boots :: hexproof only stops opponents, so your own spells still target Zada. Keep Boots on Zada before the big turn; it is the only protection the commander has.
+
+# Bodies to copy onto
+Krenko's Command :: two Goblins for two mana, and two more copies on every Zada spell after it.
+Hordeling Outburst :: three bodies at once, the best rate in the deck.
+Dragon Fodder :: two Goblins; cheap enough to cast on the chain turn itself.
+Mogg War Marshal :: echo is optional: skip it and you still get a token when it dies.
+Goblin Instigator :: two bodies for two mana, one card.
+Young Pyromancer :: an Elemental for every instant or sorcery you cast (casts only, not copies).
+Stormsplitter :: every instant or sorcery you cast makes another hasty Stormsplitter, so each cast grows the board Zada copies onto.
+Frontline Heroism :: a Soldier when it enters, then every spell that targets only Zada makes another Soldier and copies the spell onto it. Resolve Heroism's trigger before Zada's so the new Soldier also gets a Zada copy.
+Sokenzan, Crucible of Defiance :: channel for two hasty Spirits at instant speed; a land that becomes two more copies.
+
+# Copies that make mana
+Storm-Kiln Artist :: makes a Treasure whenever you cast or copy an instant or sorcery. Zada's copies count, so one cantrip with six creatures out pays for itself several times over. The single most important creature after Zada.
+Reckless Ransacking :: a Treasure per creature when it targets Zada.
+Ancestors' Aid :: the same: a Treasure for every copy.
+Sudden Breakthrough :: the third copy-Treasure spell. With Storm-Kiln Artist each copy makes two.
+Battle Hymn :: red mana for every creature you control; best right after the token makers.
+Brightstone Ritual :: red for every Goblin on the battlefield, including the token Goblins.
+Skirk Prospector :: sacrifices Goblin tokens for red once they have done their copying.
+Treasonous Ogre :: pays life for red when the chain runs short.
+
+# Copies that draw
+Expedite :: one mana, draws a card per creature.
+Crimson Wisps :: the same at instant speed.
+Renegade Tactics :: another one-mana draw-per-creature.
+Impolite Entrance :: and another.
+Ancestral Anger :: and another; each copy also pumps.
+Might of the Meek :: instant-speed draw-per-creature.
+Accelerate :: two mana, but an instant.
+Fists of Flame :: draws per creature, and every creature grows with each card drawn this turn.
+Blazing Crescendo :: each copy exiles a card you may play until the end of your next turn: a hand's worth of extra plays.
+
+# Storm engines
+Birgi, God of Storytelling :: a red mana for every spell you cast, kept through the turn. Each ritual, cantrip and creature becomes cheaper by one.
+Runaway Steam-Kin :: three red spells give three counters, cashed in for RRR.
+Electro, Assaulting Battery :: banks red for every instant or sorcery cast.
+Ruby Medallion :: makes every red spell one cheaper, including Reiterate's buyback.
+Pinnacle Monk :: returns a spent cantrip or ritual; the land side is a Mountain in a pinch.
+
+# How you win
+Grapeshot :: the main kill: one damage per copy, and the copies are free to split between opponents.
+Empty the Warrens :: two Goblins per storm count. Those Goblins are then bodies for Zada, fuel for Skirk Prospector, or damage with Impact Tremors.
+Aetherflux Reservoir :: life for every spell cast, then 50 damage per activation. Get it down before the chain.
+Impact Tremors :: every token and creature that enters pings each opponent. It turns Empty the Warrens and the Ignus loops into damage.
+Goblin Bombardment :: sacrifices the board at the end for direct damage.
+Reiterate :: with buyback it returns to hand; on Mana Geyser, six tapped opposing lands keep the chain going forever and seven make extra mana. Expensive without discounts: eleven mana to start.
+Bonus Round :: copies every instant and sorcery cast this turn (opponents' too). Copies add no storm, so cast it before rituals and cantrips, not before Grapeshot.
+
+# Compact loops
+Birgi, God of Storytelling + Grinning Ignus :: with R floating, pay R and return Ignus for CCR; recast Ignus with that; Birgi gives the R back. Each lap adds a cast and an entry with no mana lost. Finish with Impact Tremors, Aetherflux Reservoir, or a Grapeshot after enough laps.
+Runaway Steam-Kin + Grinning Ignus :: every third Ignus recast fills Steam-Kin; its RRR pays for the next three laps. The same finishers apply.
+Dualcaster Mage + Twinflame :: cast Twinflame on a creature, flash in Dualcaster to copy it onto Dualcaster; each hasty token copies again. Unlimited hasty Dualcasters; sacrifice them to Goblin Bombardment or ping with Impact Tremors.
+Dualcaster Mage + Molten Duplication :: the same loop with a different copy spell.
+Dualcaster Mage + Heat Shimmer :: the third copy of the loop, six mana to start.
+Imperial Recruiter -> Grinning Ignus :: when Birgi or Steam-Kin is already out.
+Imperial Recruiter -> Dualcaster Mage :: when Twinflame or Molten Duplication is in hand.
+Imperial Recruiter -> Storm-Kiln Artist :: when you want the Zada chain instead.
+
+# Refuel and recursion
+Gamble :: the only open tutor. Usually Underworld Breach, Grapeshot or the missing loop piece; it discards at random, so empty your hand first.
+Underworld Breach :: recast the one-mana Zada cantrips and rituals from the graveyard for their cost plus three exiled cards. Breach is a burst, not an infinite engine here: the graveyard runs out.
+Past in Flames :: flashback every ritual and cantrip for a second lap.
+Jeska's Will :: red per card in an opponent's hand and three exiled cards to play. Cast it after the board is set.
+Wheel of Fortune :: a fresh seven, ideally after Zada has already filled your hand with mana spells you cast.
+Reforge the Soul :: another wheel; miracle it for two.
+Faithless Looting :: cheap filtering, flashback later.
+Valakut Awakening :: bottom the dead cards and redraw; a land otherwise.
+Skullclamp :: tokens die into two cards each.
+
+# Protection and answers
+Hexing Squelcher :: your spells cannot be countered while it is out. Land it before the chain.
+Deflecting Swat :: free with Zada out; redirects removal aimed at Zada.
+Pyroblast :: one red to stop a blue counter or removal spell.
+Red Elemental Blast :: the second copy.
+Untimely Malfunction :: kills a hate artifact or redirects a removal spell.
+Chaos Warp :: the catch-all answer.
+
+# Opening hand and sequencing
+Keep two lands, a mana source and either two bodies or a Zada cantrip. Do not keep a hand of payoffs.
+Turns 1-3: tokens and engines (Storm-Kiln Artist, Birgi, Young Pyromancer). Zada on turn 3-4, with Boots ready.
+Turn 4-5: one Zada cantrip at a time, building the hand and Treasures; hold the big chain until Squelcher or a Pyroblast covers it.
+The compact loops (Ignus with Birgi or Steam-Kin, Dualcaster with Twinflame) are played from turn 6 by table agreement. Before then, use Zada chains to build cards and board.
+Ruby Medallion :: one cheaper on almost everything; a priority turn-2 play.
+Sol Ring :: fast colourless for Medallion and creatures.
+Lotus Petal :: saves the chain turn's last mana.
+Mox Amber :: makes mana while a legend is out: Zada, Birgi, Electro or Ragavan.
+Ragavan, Nimble Pilferer :: a one-drop that turns combat into Treasures and stolen cards, and a legend for Mox Amber.
+Urza's Saga :: chapter III finds Sol Ring, Lotus Petal or Mox Amber.

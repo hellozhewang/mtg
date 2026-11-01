@@ -128,6 +128,13 @@ end
 local function czsIsContainer(obj)
   return obj and (obj.type == "Deck" or obj.tag == "Deck" or obj.type == "Bag" or obj.tag == "Bag")
 end
+-- An object's GUID, or nil: objects being destroyed or merged can report none, and
+-- a nil table index is an error.
+local function czsGuid(obj)
+  local ok, guid = pcall(function() return obj.getGUID() end)
+  if ok and guid ~= nil and guid ~= "" then return guid end
+end
+
 local function czsDeck(s)
   local obj = getObjectFromGUID(s.deck)
   return czsIsContainer(obj) and obj or nil
@@ -500,9 +507,35 @@ local function czsRefresh(color, force)
   return true
 end
 
+-- The seat whose library, graveyard or play area holds `obj`, or nil on the shared
+-- table. Inspect shows a library's hidden cards and can take any of them, so only
+-- that seat's player may use it there. Zones come from the base table's `data`.
+local function czsDeckSeat(obj)
+  local ok, zones = pcall(function() return obj.getZones() end)
+  if not ok or type(zones) ~= "table" or type(data) ~= "table" then return nil end
+  local held = {}
+  for _, zone in ipairs(zones) do
+    local guid = czsGuid(zone)
+    if guid then held[guid] = true end
+  end
+  for _, c in ipairs(CZ.seats) do
+    for _, key in ipairs({"libraryZone", "graveyard", "playmat"}) do
+      local zone = data[c] and data[c][key]
+      local guid = zone and czsGuid(zone)
+      if guid and held[guid] then return c end
+    end
+  end
+  return nil
+end
+
 function czsOpen(color, deck)
   if not czsSeat(color) then return end
   if not czsIsContainer(deck) then return end
+  local seat = czsDeckSeat(deck)
+  if seat and seat ~= color then
+    pcall(function() Player[color].broadcast("Only " .. seat .. " can inspect that.", {0.9, 0.6, 0.6}) end)
+    return
+  end
   -- Drop whatever the player had selected (the deck itself, usually), so table
   -- keys and drags don't act on it while they browse.
   pcall(function() Player[color].clearSelectedObjects() end)
@@ -648,13 +681,6 @@ function czsTake(player, _, id)
     czsText("czs_status_" .. player.color, "That object could not be taken. Try again.")
     czsRefresh(player.color, true)
   end
-end
-
--- An object's GUID, or nil: objects being destroyed or merged can report none, and
--- a nil table index is an error.
-local function czsGuid(obj)
-  local ok, guid = pcall(function() return obj.getGUID() end)
-  if ok and guid ~= nil and guid ~= "" then return guid end
 end
 
 local function czsAttach(obj)

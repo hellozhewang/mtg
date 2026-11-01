@@ -443,5 +443,47 @@ local beforeInvalid = #turnPlayed
 onPlayerTurn({color = "Grey"}, {color = "White"})
 check(#turnPlayed == beforeInvalid, "spectator turn events do not play the custom clip")
 
+-- ---------- fanned-out reveal ----------
+-- White's library (base table geometry); Timers where the build moves them (z ±1.96).
+function Vector(x, y, z) return {x = x, y = y, z = z} end
+local function at(x, z) return function() return Vector(x, 0, z) end end
+timers.White.getPosition, timers.Purple.getPosition = at(41.77, -1.96), at(17.05, 1.96)
+CZT.timers.Purple = CZT.timers.Purple or {obj = timers.Purple, index = 7}
+revealNrow, revealUp, revealUpS, revealRi, drawDelay = 12, 18, 3.1, 0, 0
+deckDirs = {White = -1}
+Color.White = {toHex = function() return "ffffff" end}
+function stringColorToRGB() return {1, 1, 1} end
+function buttonPress() end
+function checkPosMove() end
+local lib = {getPosition = at(41.78, -20.12), getRotation = function() return {0, 0, 0} end,
+             getTransformForward = function() return Vector(0, 0, 1) end,
+             getTransformRight = function() return Vector(1, 0, 0) end}
+local revealBtn = {memo = "0", notes = "0"}
+revealBtn.getGMNotes = function() return revealBtn.notes end
+revealBtn.setGMNotes = function(v) revealBtn.notes = v end
+data = {White = {revealButton = revealBtn, libraryZone = lib}}
+local landed = {}
+function getCardFromZone()
+  local card = {getName = function() return "Card" end, highlightOn = function() end,
+                setRotationSmooth = function() end}
+  card.setPositionSmooth = function(p) landed[#landed + 1] = p end
+  return card
+end
+for _ = 1, 22 do revealFan(revealBtn, "White") end
+local function near(p, x, z) return math.abs(p.x - x) < 0.01 and math.abs(p.z - z) < 0.01 end
+check(near(landed[1], 37.28, -2.12), "the first revealed card skips the seat's own Timer")
+check(near(landed[10], 17.03, -2.12), "the rest of the first row is the base's layout")
+check(near(landed[11], 37.28, 0.98), "the second row also starts clear of the Timer")
+check(near(landed[18], 21.53, 0.98) and near(landed[19], 41.78, 4.08),
+      "and ends before the facing seat's Timer")
+check(revealBtn.notes == "22" and broadcasts[#broadcasts]:find("22:", 1, true),
+      "cards are still numbered 1, 2, 3...")
+local seen = {}
+for _, p in ipairs(landed) do
+  local key = string.format("%.2f,%.2f", p.x, p.z)
+  check(not seen[key], "no two revealed cards share a slot (" .. key .. ")")
+  seen[key] = true
+end
+
 print(string.format("%d checks, %d failed", checks, failures))
 os.exit(failures == 0 and 0 or 1)

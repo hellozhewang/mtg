@@ -509,5 +509,23 @@ end
 check(zoneEnters == 3 and zoneLeaves == 3, "original zone handlers still execute once per event")
 check(a.menus[1] == "Cascade for X" and a.menus[2] == "Get Basic Plains", "base actions survive Inspect restoration")
 
+-- A deck in a seat's library, graveyard or play area is that seat's alone to inspect.
+local function zone(guid) return {getGUID = function() return guid end} end
+data = {Red = {libraryZone = zone("red-lib"), graveyard = zone("red-gy"), playmat = zone("red-mat")}}
+local mine = deck("deck-red", {{guid = "r1", name = "Bolt", index = 0}})
+mine.getZones = function() return {zone("red-lib")} end
+local said
+Player.White.broadcast = function(text) said = text end
+czsOpen("White", mine)
+check(CZS.state.White == nil or CZS.state.White.deck ~= "deck-red", "another seat cannot inspect a player's library")
+check(said == "Only Red can inspect that.", "and is told whose it is")
+czsOpen("Red", mine)
+check(CZS.state.Red and CZS.state.Red.deck == "deck-red", "the library's own player can")
+local shared = deck("deck-shared", {{guid = "s1", name = "Token", index = 0}})
+shared.getZones = function() return {} end
+czsOpen("White", shared)
+check(CZS.state.White and CZS.state.White.deck == "deck-shared", "a deck on the shared table stays open to anyone")
+data = nil
+
 print(string.format("%d checks, %d failed", checks, failures))
 os.exit(failures == 0 and 0 or 1)

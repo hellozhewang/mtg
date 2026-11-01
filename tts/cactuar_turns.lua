@@ -533,6 +533,71 @@ function onSave()
   return cztState()
 end
 
+-- ---------- the fanned-out reveal, kept off the Timers ----------
+-- The base's revealFan lays cards in rows of `revealNrow` from the library toward
+-- the middle strip, and its first card lands right on that seat's Timer (later rows
+-- reach the facing seats' Timers). The same reveal, except that a slot covering a
+-- Timer is skipped. Everything else is the base's own code and globals.
+local CZT_FAN_CLEAR = {x = 2.4, z = 3.0}   -- half a card plus half the clock or our total
+
+local function cztCoversTimer(pos)
+  for _, t in pairs(CZT.timers) do
+    local ok, p = pcall(function() return t.obj.getPosition() end)
+    if ok and p and math.abs(pos.x - p.x) < CZT_FAN_CLEAR.x and math.abs(pos.z - p.z) < CZT_FAN_CLEAR.z then
+      return true
+    end
+  end
+  return false
+end
+
+local function cztFanSlot(libZone, ply, slot)
+  local nUp = math.floor(slot / revealNrow)
+  local nSide = slot - nUp * revealNrow
+  local f, r, p = libZone.getTransformForward(), libZone.getTransformRight(), libZone.getPosition()
+  local up, side = revealUp + revealUpS * nUp, deckDirs[ply] * 2.25 * (nSide + revealRi)
+  return Vector(p.x + f.x * up + r.x * side, p.y + f.y * up + r.y * side, p.z + f.z * up + r.z * side)
+end
+
+function revealFan(button, ply, alt)
+  if button ~= data[ply]["revealButton"] then return end
+  if alt then
+    local rot = button.getRotation()
+    rot[3] = 180
+    button.setRotation(rot)
+    return
+  end
+  local card = getCardFromZone(data[ply]["libraryZone"])
+  local hexPrefix = '[' .. Color[ply]:toHex() .. ']'
+  buttonPress(button, drawDelay)
+  if card == nil then return end
+  local libZone = data[ply]["libraryZone"]
+  local now = os.time()
+  local nRevealed = tonumber(button.getGMNotes()) or 0
+  if now - (tonumber(button.memo) or 0) > 10 then
+    nRevealed = 0
+  end
+  button.memo = tostring(now)
+  -- The nRevealed-th slot clear of every Timer; a row skips at most a few.
+  local pos, free = nil, 0
+  for slot = 0, nRevealed + 3 * revealNrow do
+    pos = cztFanSlot(libZone, ply, slot)
+    if not cztCoversTimer(pos) then
+      if free == nRevealed then break end
+      free = free + 1
+    end
+  end
+  local rot = libZone.getRotation()
+  rot[2] = rot[2] + 180
+  rot[3] = 0
+  checkPosMove(pos, libZone)
+  card.setPositionSmooth(pos, false, true)
+  card.setRotationSmooth(rot, false, true)
+  card.highlightOn(stringColorToRGB(ply), 10)
+  nRevealed = nRevealed + 1
+  button.setGMNotes(tostring(nRevealed))
+  broadcastToAll(hexPrefix .. '[b]' .. nRevealed .. ':[/b][-] ' .. card.getName():gsub('\n', ' | '))
+end
+
 CZT.loadedAt = (cztPrevious and cztPrevious.loadedAt) or os.time()
 
 -- Start ticking once loaded. A game nobody has rolled for waits for the die; a

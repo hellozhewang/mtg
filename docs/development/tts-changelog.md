@@ -8,6 +8,9 @@ Data changes don't need a new version: decks and sleeves reach every table throu
 published site (press **Refresh** in the deck browser). A new version is only for changes
 to the table itself: its Lua, its panel, the tiles, and clip or tile URLs.
 
+## v79 — 2026-11-14 (commit 97892d29)
+- Battle choruses play once when their card lands on a battlefield, on any turn, and not again while it stays out (leaving and coming back plays it again); previously they replayed at the start of each of the owner's turns
+
 ## v78 — 2026-11-01 (commit 83cb8ef4)
 - Fanned-out reveal skips any slot that would cover a turn Timer (its own seat's or a facing seat's)
 - Inspect on a deck in a seat's library, graveyard or play area works only for that seat; decks on the shared table stay open to anyone

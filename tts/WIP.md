@@ -6,7 +6,7 @@ Codex) reads it first and updates it with every change. The [TTS development gui
 Last updated 2026-10-27 (Codex): competitive gap audit of the eight new Bracket 4
 copies; add appropriate land denial and missing engines. Bracket 3 sources preserved.
 
-Table build status (2026-11-01, Claude): delivered **v78** (fanned reveal skips the Timers; Inspect only for the deck's own seat), after v77 (10-second choruses once per turn), v76 (Sound switch for every Cactuar sound), v75 (Inspect retries refused menus), v74 (menus never open empty), v73 (fixes an onObjectDestroy error), v72 (trigger areas end above the land line), v71 (teal stack frames; trigger areas to the land line), v70 (trigger areas in seat colours; stack panel picture), v69 (per-seat guide-line switches), v68 (edge strip redrawn as a five-slot stack), v67 (fixes v66's hand-index script errors), v66 (no music from cards in hand; Inspect deselects) and v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
+Table build status (2026-11-14, Claude): delivered **v79** (a chorus plays once when its card lands), after v78 (fanned reveal skips the Timers; Inspect only for the deck's own seat; on Steam), v77 (10-second choruses once per turn), v76 (Sound switch for every Cactuar sound), v75 (Inspect retries refused menus), v74 (menus never open empty), v73 (fixes an onObjectDestroy error), v72 (trigger areas end above the land line), v71 (teal stack frames; trigger areas to the land line), v70 (trigger areas in seat colours; stack panel picture), v69 (per-seat guide-line switches), v68 (edge strip redrawn as a five-slot stack), v67 (fixes v66's hand-index script errors), v66 (no music from cards in hand; Inspect deselects) and v65 (battle music by named cards, nine new songs; see below). Previously (Codex): delivered **v64**, using explicit white Text
 for Show commander / Hide commander after v63's native label remained dark.
 Both states visually checked live. **Steam is now v77** (published 2026-10-29 at the owner's request; was v64). See [the changelog](../docs/development/tts-changelog.md).
 
@@ -102,6 +102,19 @@ generation prompts; no existing sleeves, table builds or Steam releases change.
 All 12 existing sleever tests pass; both generator prompt variants and the normal
 instruction template include the shared rule.
 
+
+## v79: a chorus plays once when its card lands (saved; not on Steam)
+
+The owner heard Ifrit replay on an opponent's turns (Em0k1ller's commander Clive,
+Ifrit's Dominant): v77 replayed a song at the start of every turn of a player who had
+its card out. Now `czmCountBattlefield` also returns, per battlefield object (by
+GUID), the best song it calls; `czmTick` compares that with the last scan and plays
+the best caller that newly appeared, on any turn. Staying out never replays it;
+leaving and coming back (recast commander, blink) is a new landing. A card being
+dragged keeps its previous state. The first scan, a module reload and sound coming
+back on all start from what is already out, so nothing replays. A landing while a
+chorus is loading or playing replaces it only if it ranks higher. A new turn still cuts
+a chorus off. 194 music checks.
 
 ## v78: fanned reveal skips the Timers; Inspect for the deck's seat only (saved and published to Steam)
 

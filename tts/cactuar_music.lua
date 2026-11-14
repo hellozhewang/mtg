@@ -1,9 +1,11 @@
 -- One shared FF14 soundtrack. The prelude loops until the cannon fires. After that,
 -- each song is a 10-second chorus (scripts/tabletop/make_choruses.py cuts them) that
--- plays ONCE per turn when the ACTIVE player has one of its cards face up on their
--- battlefield: at the start of the turn, or when the card lands. A higher-priority
--- caller arriving later plays its own once; a lower one, or the same one again,
--- waits for the next turn. Nothing loops. A new turn cuts off a chorus still playing.
+-- plays ONCE when one of its cards lands face up on a battlefield, whoever's turn it
+-- is. It does not play again while that card stays out; leaving (to hand, graveyard,
+-- command zone...) and coming back is a new landing. Several landing together: the
+-- first in CZM.priority plays. A landing while a chorus plays replaces it only if it
+-- ranks higher. Nothing loops. A new turn cuts off a chorus still playing. Cards
+-- already out when the table loads, or when the sound comes back on, do not play.
 --
 -- The Sound switches beside the Cactuar tiles (and "music off" / "music on" in chat)
 -- turn every Cactuar sound off for the whole table: this soundtrack and the turn
@@ -70,10 +72,11 @@ local function czmKey(name)
   return (name:gsub("^%s+", ""):gsub("%s+$", ""):lower())
 end
 
-CZM.byName = {}
+CZM.byName, CZM.rank = {}, {}
 for track, names in pairs(CZM.cards) do
   for _, name in ipairs(names) do CZM.byName[czmKey(name)] = track end
 end
+for i, track in ipairs(CZM.priority) do CZM.rank[track] = i end
 
 -- The song a card calls, if any. A full "Front // Back" name counts by either part.
 local function czmTrackFor(name)
@@ -96,8 +99,11 @@ local function czmObjects(zone)
   return ok and objects or {}
 end
 
+-- Per seat, how many of each song's cards are out; and per object on a battlefield
+-- (keyed by GUID), the best song it calls, for spotting landings. Objects being
+-- dragged are listed in `held`: they have neither left nor landed.
 function czmCountBattlefield()
-  local counts, excluded, seen = {}, {}, {}
+  local counts, excluded, seen, present, held = {}, {}, {}, {}, {}
   -- The battlefield zones already end before the commander/library/exile/GY
   -- columns. Explicitly exclude library/GY objects as well if zones overlap.
   for _, color in ipairs(CZ.seats) do
@@ -118,16 +124,20 @@ function czmCountBattlefield()
   for _, color in ipairs(CZ.seats) do
     local count, seat = {}, data and data[color]
     for _, track in ipairs(CZM.priority) do count[track] = 0 end
-    local function add(name)
-      local track = czmTrackFor(name)
-      if track then count[track] = count[track] + 1 end
-    end
     for _, obj in ipairs(czmObjects(seat and seat.playmat)) do
       if not excluded[obj] and not seen[obj] then
         seen[obj] = true
+        local okGuid, guid = pcall(function() return obj.getGUID() end)
+        local id = okGuid and guid or obj
+        local function add(name)
+          local track = czmTrackFor(name)
+          if not track then return end
+          count[track] = count[track] + 1
+          if not present[id] or CZM.rank[track] < CZM.rank[present[id]] then present[id] = track end
+        end
         pcall(function()
           if obj.is_face_down then return end
-          if obj.held_by_color then return end      -- being dragged, not played
+          if obj.held_by_color then held[id] = true; return end   -- being dragged, not played
           if obj.type == "Deck" or obj.tag == "Deck" then
             -- A face-up pile: only its top card is showing.
             local cards = obj.getObjects()
@@ -143,7 +153,7 @@ function czmCountBattlefield()
     end
     counts[color] = count
   end
-  return counts
+  return counts, present, held
 end
 
 function czmSavedState()
@@ -247,32 +257,41 @@ end
 
 function czmTick()
   if not CZM.ready and not czmRestore() then return end
-  -- Sound off stops the battlefield scan too, not just playback.
-  if CZM.disabled then czmPause(); return end
-  CZM.battlefields = czmCountBattlefield()
+  -- Sound off stops the battlefield scan too, not just playback. What lands while
+  -- it is off is never played: the next scan starts from what is out then.
+  if CZM.disabled then czmPause(); CZM.present = nil; return end
+  local before, held = CZM.present, nil
+  CZM.battlefields, CZM.present, held = czmCountBattlefield()
+  for id, track in pairs(before or {}) do
+    if held[id] then CZM.present[id] = track end
+  end
   if not CZM.cannonFired then
     if CZM.track ~= "theme" then czmLoad("theme") else czmPlay(true) end
     return
   end
   local turn = CZM.turnSerial
-  local active = Turns.enable and Turns.turn_color or nil
-  if CZM.chorusTurn ~= turn or not active then czmCut() end
-  if not active then return end
-  local wanted, rank = nil, nil
-  for i, track in ipairs(CZM.priority) do
-    if ((CZM.battlefields[active] or {})[track] or 0) > 0 then wanted, rank = track, i; break end
+  if CZM.chorusTurn ~= turn then czmCut() end
+  -- Callers that landed since the last scan (none on the first): the best one plays.
+  local landed, rank = nil, nil
+  if before then
+    for id, track in pairs(CZM.present) do
+      if before[id] ~= track and (not rank or CZM.rank[track] < rank) then
+        landed, rank = id, CZM.rank[track]
+      end
+    end
   end
-  -- Heard this turn: the best rank played so far. Only a better one plays now.
-  local heard = CZM.chorusTurn == turn and CZM.heardRank or nil
-  if wanted and (not heard or rank < heard) then
-    CZM.chorusTurn, CZM.heardRank = turn, rank
-    czmLoad(wanted)
-    return
+  if landed then
+    local busy = CZM.chorusTurn == turn and CZM.track ~= "theme"
+      and (CZM.status == "loading" or CZM.status == "ready" or czmSounding())
+    if not busy or rank < (CZM.rank[CZM.track] or math.huge) then
+      CZM.chorusTurn, CZM.caller = turn, landed
+      czmLoad(CZM.present[landed])
+      return
+    end
   end
-  -- A chorus that finished loading plays once, if its caller is still out; if
-  -- not, it was never heard, and the caller coming back still gets it.
+  -- A chorus that finished loading plays once, if its caller is still out.
   if CZM.status == "ready" and CZM.chorusTurn == turn and CZM.track ~= "theme" then
-    if CZM.track == wanted then czmPlay(false) else CZM.status, CZM.heardRank = "idle", nil end
+    if CZM.present[CZM.caller] == CZM.track then czmPlay(false) else CZM.status = "idle" end
   end
 end
 
@@ -377,7 +396,7 @@ end
 
 if czmPrevious then
   for _, key in ipairs({"ready", "cannonFired", "disabled", "settingChanged", "track", "url", "status",
-      "switches", "turnSerial", "heardRank", "chorusTurn", "endsAt"}) do
+      "switches", "turnSerial", "chorusTurn", "endsAt", "present", "caller"}) do
     CZM[key] = czmPrevious[key]
   end
   CZM.turnSerial = CZM.turnSerial or 0                       -- from before choruses

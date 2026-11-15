@@ -1,0 +1,84 @@
+The mistake new pilots make with Sun Quan is rushing him onto the battlefield on turn six without protection or board presence. Horsemanship grants unblockability because practically zero opponents play horsemanship creatures, but Sun Quan costs six mana and is a prime target for removal. Deploy your combat engines, card-advantage creatures, and mana acceleration first; then cast Sun Quan with counter magic or boots ready, swinging the entire army immediately for devastating unblockable combat triggers.
+This is a Bracket 3 deck featuring Three Kingdoms historical figures and stratagems alongside an optimized mono-blue combat shell. It runs exactly three Game Changers: Cyclonic Rift, Fierce Guardianship, and Rhystic Study. There is no mass land denial. Win conditions are combat damage, lethal infect, and board lockouts rather than infinite loops, closing games decisively from turn 6 onward.
+
+# Wu commanders and Three Kingdoms stratagems
+Sun Quan, Lord of Wu :: six-mana commander giving all your creatures horsemanship, converting your entire board into unblockable attackers the turn he resolves
+Capture of Jingzhou :: five-mana extra-turn sorcery from Portal Three Kingdoms; grants an immediate second combat phase to double unblockable damage and triggers
+Borrowing 100,000 Arrows :: Three Kingdoms stratagem drawing cards equal to the number of tapped creatures an opponent controls after they swing out
+Strategic Planning :: two-mana filtration digging three cards deep to find interaction or key threats
+Lu Xun, Scholar General :: four-mana horsemanship commander who draws a card every time he connects with an opponent
+Sun Ce, Young Conquerer :: five-mana horsemanship general who bounces an opposing problem creature upon entry
+Lu Meng, Wu General :: efficient 4/4 horsemanship beater applying reliable unblockable pressure
+Lady Sun :: taps before attacks are declared to bounce herself and an opposing commander or threat back to hand
+Zhuge Jin, Wu Strategist :: taps before combat to make any creature explicitly unblockable before Sun Quan is deployed
+Lu Su, Wu Advisor :: taps during your turn before attacks to draw cards and maintain resources
+Council of Advisors :: cantrips upon entering the battlefield while providing an early blocker or horsemanship body
+
+# Unblockable combat payoffs and finishers
+Cephalid Constable :: returns target permanents to their owners' hands equal to combat damage dealt; with horsemanship, a single unblocked hit bounces all of an opponent's lands and key permanents
+Blightsteel Colossus :: 11/11 indestructible trampler with infect; horsemanship makes it impossible to block, eliminating an opponent in a single swing
+Blighted Agent :: two-mana infect threat that scales lethal poison damage rapidly
+Ancient Silver Dragon :: flying beater that rolls a d20 on combat damage, drawing up to 20 cards in a single hit
+Thada Adel, Acquisitor :: unblockable attacker that exiles opposing Sol Rings, mana rocks, or combo pieces straight out of their libraries
+Chasm Skulker :: amasses +1/+1 counters on card draws, exploding into dozens of 1/1 Islandwalk Squids that Sun Quan turns into horsemanship attackers
+Hullbreaker Horror :: uncounterable late-game finisher that bounces opposing spells and permanents on every instant you cast
+Nezahal, Primal Tide :: uncounterable draw engine drawing off opposing noncreature spells while dodging removal by blinking
+Psychosis Crawler :: turns the mass card draw from combat triggers into direct life loss for each opponent simultaneously
+Roaming Throne :: chooses Human or Soldier to double Sun Quan, Lu Xun, or Cephalid Constable triggers
+Malcolm, Alluring Scoundrel :: loots on combat damage and casts spells from hand for free once loaded with choruses
+Faerie Mastermind :: flash threat that draws extra cards whenever an opponent draws their second card each turn
+
+# Coastal piracy and draw engines
+Rhystic Study :: premier card-advantage enchantment taxing opposing spells or drawing cards continuously
+Mystic Remora :: early enchantment tax that draws deep into your deck against fast artifact and spell starts
+Bident of Thassa :: draws a card whenever any creature deals combat damage to an opponent, and can force opposing attacks to leave them tapped out
+Coastal Piracy :: draws a card on every unblockable combat hit across your horsemanship army
+Reconnaissance Mission :: cycling combat draw enchantment rewarding unblockable attacks with full grips of cards
+Enduring Curiosity :: flash enchantment creature that turns every connected attack into card draw
+Teferi's Ageless Insight :: doubles every non-draw-step card you draw, turning combat hits into massive bursts
+Windfall :: punishes opponents with full hands while refilling your grip and loading graveyards
+Grazilaxx, Illithid Scholar :: draws on combat damage and bounces your blocked creatures back to hand to protect them
+Propaganda :: taxes opposing attackers to keep your life total safe while you swing overhead
+
+# Turn protection and interaction
+Fierce Guardianship :: free noncreature counterspell while Sun Quan is on the battlefield, protecting your commander from removal
+Cyclonic Rift :: two-mana bounce or seven-mana instant overload that wipes all opposing nonland permanents to clear the way for lethal
+Counterspell :: clean two-mana hard counter
+Mana Drain :: counters any spell and converts its mana value into colorless acceleration on your next turn
+Force of Negation :: free noncreature counterspell on opposing turns to shut down fast wins or sweepers
+An Offer You Can't Refuse :: hard noncreature counter for one blue mana
+Swan Song :: one-mana counterspell hitting instants, sorceries, and enchantments
+Arcane Denial :: unconditional two-mana counter cantrip
+Mystic Denial :: Three Kingdoms counterspell stopping an opposing creature or sorcery
+Pongify :: one-mana instant destroying any creature and replacing it with a 3/3 Ape
+Rapid Hybridization :: one-mana instant destroying a problem creature and leaving a 3/3 Frog Lizard
+Resculpt :: exiles target creature or artifact for two mana
+Forced Retreat :: Three Kingdoms removal tucking target creature onto its owner's library
+Corrupted Conscience :: steals an opposing commander or threat and gives it infect to swing with horsemanship
+
+# Equipment and combat buffs
+Lightning Greaves :: grants haste and shroud, ensuring Sun Quan or Cephalid Constable attacks the turn they enter
+Swiftfoot Boots :: grants haste and hexproof, keeping your commander safe from targeted removal
+Commander's Plate :: grants +3/+3 and protection from white, black, red, and green, making Sun Quan virtually unkillable
+Sword of Feast and Famine :: untaps all your lands on unblockable combat damage and forces discards, funding second main phase bombs
+Sword of the Animist :: ramps a basic Island straight onto the battlefield on every attack
+Dowsing Dagger :: flips into Lost Vale on unblockable combat connection, tapping for three mana of any color
+
+# Mana base and opening hands
+Sol Ring :: premier one-mana rock producing two mana
+Arcane Signet :: clean two-mana colored rock
+Thought Vessel :: two-mana rock granting no maximum hand size
+Mind Stone :: two-mana rock that cycles in the late game
+Liquimetal Torque :: two-mana rock that can turn problem permanents into artifacts for Resculpt
+Sapphire Medallion :: discounts all blue spells by one generic mana
+Wayfarer's Bauble :: one-mana artifact ramping a basic Island onto the battlefield
+High Tide :: doubles Island mana for an explosive turn to deploy Sun Quan and hold up counterspells
+Nykthos, Shrine to Nyx :: taps for massive blue mana scaling with your high blue devotion
+Minamo, School at Water's Edge :: untaps Sun Quan, Lady Sun, or Thada Adel for multi-use turns
+Otawara, Soaring City :: uncounterable channel ability bouncing any nonland permanent at instant speed
+Mystic Sanctuary :: fetches a key counterspell or Capture of Jingzhou from graveyard to top of library
+Reliquary Tower :: removes maximum hand size to hold 20+ cards after Ancient Silver Dragon attacks
+War Room :: taps to draw cards at the cost of 1 life
+Scavenger Grounds :: instant-speed graveyard exile to shut down reanimator strategies
+
+Keep opening hands with 3 lands, at least one mana rock or early ramp spell (Sol Ring, Sapphire Medallion, Wayfarer's Bauble), an early card advantage engine (Rhystic Study, Mystic Remora, Lu Xun, Thada Adel), and a piece of cheap interaction. Do not keep hands filled with 5+ mana bombs and no early plays. Spend turns 1 through 4 establishing your mana and deploying combat draw engines, resolve Sun Quan on turn 5 or 6 with protection, and close the game out with an unstoppable horsemanship charge.

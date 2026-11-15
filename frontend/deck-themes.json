@@ -188,6 +188,7 @@
   "zzwang/Sephiroth-Aristocrats": ["combo", "gowide", "graveyard", "finalfantasy"],
   "zzwang/Shorikai-Prison": ["control", "value"],
   "zzwang/Squall-Aggro": ["aggro", "graveyard", "finalfantasy"],
+  "zzwang/SunQuan-Horsemanship": ["aggro", "value", "control"],
   "zzwang/Sythis-Enchantress": ["value", "control", "gowide"],
   "zzwang/Terra-Enchantress": ["value", "graveyard", "combo", "finalfantasy"],
   "zzwang/Terra-Herald": ["aggro", "graveyard", "finalfantasy"],

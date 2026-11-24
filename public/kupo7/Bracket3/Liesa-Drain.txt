@@ -1,0 +1,98 @@
+1 Liesa, Shroud of Dusk
+1 Aetherflux Reservoir
+1 Anguished Unmaking
+1 Arcane Signet
+1 Arid Mesa
+1 Authority of the Consuls
+1 Beseech the Mirror
+1 Black Market Connections
+1 Bleachbone Verge
+1 Blind Obedience
+1 Bloodchief Ascension
+1 Bloodstained Mire
+1 Bloodthirsty Conqueror
+1 Bojuka Bog
+1 Bolas's Citadel
+1 Brightclimb Pathway
+1 Cabal Coffers
+1 Cabal Ritual
+1 Caves of Koilos
+1 Charismatic Conqueror
+1 City of Brass
+1 Clever Concealment
+1 Command Tower
+1 Concealed Courtyard
+1 Damn
+1 Dark Ritual
+1 Dauthi Voidwalker
+1 Deadly Rollick
+1 Demonic Tutor
+1 Diabolic Intent
+1 Eiganjo, Seat of the Empire
+1 Elas il-Kor, Sadistic Pilgrim
+1 Enduring Tenacity
+1 Esper Sentinel
+1 Exotic Orchard
+1 Exquisite Blood
+1 Fell the Profane
+1 Fellwar Stone
+1 Fetid Heath
+1 Flawless Maneuver
+1 Flooded Strand
+1 Generous Gift
+1 Godless Shrine
+1 Grand Abolisher
+1 Grim Tutor
+1 Heliod's Intervention
+1 Heliod, Sun-Crowned
+1 Idyllic Tutor
+1 Isolated Chapel
+1 Kambal, Consul of Allocation
+1 Kambal, Profiteering Mayor
+1 Liesa, Forgotten Archangel
+1 Lightning Greaves
+1 Lotho, Corrupt Shirriff
+1 Mana Confluence
+1 Marsh Flats
+1 Mindcrank
+1 Mother of Runes
+1 Orzhov Signet
+1 Path to Exile
+1 Polluted Delta
+1 Prismatic Vista
+1 Ranger-Captain of Eos
+1 Recruiter of the Guard
+1 Sanguine Bond
+1 Scrubland
+1 Search for Glory
+1 Sensei's Divining Top
+1 Serra Ascendant
+1 Shadowy Backstreet
+1 Shattered Sanctum
+1 Sheoldred, the Apocalypse
+1 Silent Clearing
+1 Snuff Out
+1 Sol Ring
+1 Soul Warden
+1 Soul's Attendant
+1 Swords to Plowshares
+1 Tainted Field
+1 Takenuma, Abandoned Mire
+1 Talisman of Hierarchy
+1 The Meathook Massacre
+1 The One Ring
+1 Toxic Deluge
+1 Trouble in Pairs
+1 Urborg, Tomb of Yawgmoth
+1 Vanquish the Horde
+1 Vault of Champions
+1 Vault of the Archangel
+1 Verdant Catacombs
+1 Vito, Thorn of the Dusk Rose
+1 Vizkopa Guildmage
+1 Walking Ballista
+1 Windswept Heath
+1 Wishclaw Talisman
+1 Witch Enchanter
+2 Plains
+2 Swamp

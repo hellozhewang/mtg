@@ -1,0 +1,48 @@
+The single thing a new pilot gets wrong is treating Liesa like a passive lifegain commander instead of an aggressive tax clock that breaks symmetry. Liesa's tax is not standard mana commander tax: she always costs {2}{W}{W}{B} plus 2 life per previous cast, completely bypassing mana scaling while punishing every opponent 2 life for every spell they cast. With 5/5 flying lifelink and soul sisters buffering your life total, opponents bleed out rapidly while you assemble instant two-card drain finishes.
+
+# The primary drain loops
+Exquisite Blood + Sanguine Bond :: Classic infinite drain loop. Gaining 1 life or dealing 1 damage to an opponent triggers a self-sustaining cycle that drains the entire table to zero.
+Exquisite Blood + Vito, Thorn of the Dusk Rose :: Compact 3-mana creature half of the drain loop that Vito can activate at instant speed or trigger off any combat hit.
+Exquisite Blood + Enduring Tenacity :: Resilient enchantment creature redundancy for Sanguine Bond that recurs as an enchantment if removed as a creature.
+Exquisite Blood + Vizkopa Guildmage :: Activate Vizkopa's second ability for {1}{W}{B} to turn any lifegain trigger into an instant-speed infinite drain table kill.
+Bloodthirsty Conqueror + Sanguine Bond :: Foundations redundancy for Exquisite Blood on a 5/5 flying deathtouch body, triggering the infinite damage/drain loop whenever an opponent loses life.
+Bloodthirsty Conqueror + Vito, Thorn of the Dusk Rose :: Infinite damage and lifegain loop pairing the 5-mana flying vampire with Vito.
+Bloodthirsty Conqueror + Enduring Tenacity :: Redundant creature-and-enchantment drain loop that bypasses enchantment removal on the Conqueror half.
+Bloodthirsty Conqueror + Vizkopa Guildmage :: Activate Vizkopa and deal combat damage or trigger Liesa's tax to drain the pod immediately.
+
+# Secondary combos and storm finishes
+Heliod, Sun-Crowned + Walking Ballista :: Give Walking Ballista lifelink for {1}{W} with Heliod; ping an opponent to trigger Heliod's +1/+1 counter placement on Ballista, repeating for infinite damage.
+Bloodchief Ascension + Mindcrank :: Once Ascension has three quest counters, any card entering an opponent's graveyard triggers Mindcrank mill and Ascension 2-life drain into an infinite loop.
+Bolas's Citadel + Sensei's Divining Top + Aetherflux Reservoir :: Tap Top to draw a card and put Top on top of your library; recast Top from the library paying 1 life with Citadel. Aetherflux gains triangular life each cast, generating lethal life to laser the table for 50 damage bursts.
+Bolas's Citadel + Sensei's Divining Top :: Without Aetherflux, Citadel and Top let you pay 1 life per card to dig deep into your library and assemble any of your two-card win conditions.
+
+# Tutors and assembly
+Demonic Tutor -> Exquisite Blood :: Unconditional 2-mana tutor directly finding whatever half of the infinite loop you are missing.
+Diabolic Intent -> Bloodthirsty Conqueror :: Sacrifice a Soul Warden or Lotho token to tutor your combo piece or wipe to hand.
+Grim Tutor -> Heliod, Sun-Crowned :: 3-mana tutor with negligible 3-life loss that Liesa's lifelink quickly recoups.
+Beseech the Mirror -> Bolas's Citadel :: Bargain an artifact token, Treasure, or spent Blind Obedience to cast Bolas's Citadel directly onto the battlefield.
+Idyllic Tutor -> Exquisite Blood :: Searches up any enchantment piece, including Exquisite Blood, Enduring Tenacity, Bloodchief Ascension, or Black Market Connections.
+Search for Glory -> Bolas's Citadel :: Tutors any legendary card, finding Bolas's Citadel, The One Ring, Heliod, or Sheoldred to hand.
+Ranger-Captain of Eos -> Walking Ballista :: Searches up Walking Ballista, Esper Sentinel, or Serra Ascendant, while sacrificing to silence opponents on your combo turn.
+Recruiter of the Guard -> Vito, Thorn of the Dusk Rose :: Searches any creature with toughness 2 or less, fetching Vito, Grand Abolisher, Soul Warden, or Dauthi Voidwalker.
+Wishclaw Talisman -> Demonic Tutor :: Cheap artifact tutor that finds your winning combo piece before an opponent ever gets to untap and use the claw.
+
+# Life tax and defense
+Liesa, Shroud of Dusk :: Symmetrical 2-life spell tax that punishes storm, combo, and cantrips while providing a 5/5 flying lifelink beater that evades mana commander tax.
+Kambal, Consul of Allocation :: Drains opponents for 2 life whenever they cast noncreature spells, doubling up on Liesa's burn against control and combo pods.
+Sheoldred, the Apocalypse :: Punishes card draw for 2 life while granting 2 life per draw of your own, weaponizing enemy wheels and draw engines.
+Blind Obedience :: Slows aggressive attackers and Treasure tokens, providing Extort triggers on cheap spells to drain the table and kick off Blood combos.
+Authority of the Consuls :: Forces opposing creatures to enter tapped while padding your life total against token decks.
+Charismatic Conqueror :: Taxes opposing artifact and creature enters, supplying Vampire tokens or tapping enemy blockers and mana rocks.
+The One Ring :: Grants protection from everything for a turn cycle and draws deep into combo pieces while life total is high.
+Trouble in Pairs :: Heavy white card engine punishing extra draws, extra attacks, and multiple spell casts per turn.
+Grand Abolisher :: Shuts off opposing interaction completely during your turn, guaranteeing that your combo resolves uninterrupted.
+Clever Concealment :: Phasing protection that convokes for free to shield your entire board from farewell or board wipes.
+Flawless Maneuver :: Free indestructible protection spell while Liesa is on the battlefield.
+Deadly Rollick :: Free exile creature removal while Liesa is under your control.
+
+# Opening hand and sequencing
+Keep opening hands with 2-3 lands, early acceleration (Sol Ring, Signets, Talismans), and either early card draw (Esper Sentinel, Black Market Connections) or early disruption (Authority of the Consuls, Blind Obedience).
+Cast Liesa early on turns 3-4 to begin taxing opponent life totals immediately before they develop their engines.
+In Bracket 3 games, your two-card infinite combos (Exquisite Blood, Bloodthirsty Conqueror, Heliod + Ballista) wait until turn 6 or later; use turns 1-5 to establish stax pieces, gain incremental life, and tutor your pieces safely into hand.
+When ready to win, deploy Grand Abolisher or sacrifice Ranger-Captain of Eos on your upkeep to lock out enemy counterspells and removal before executing the drain loop.
